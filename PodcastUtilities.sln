@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratePlaylist", "GeneratePlaylist\GeneratePlaylist.csproj", "{3550DE2A-F52B-4D65-987B-47ADC3BCB0BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncPodcasts", "SyncPodcasts\SyncPodcasts.csproj", "{4457040C-41F9-4B33-85D4-8B096E5957C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilities.Common", "PodcastUtilities.Common\PodcastUtilities.Common.csproj", "{37562F85-B1BD-4AB8-B74B-685B05F9CF41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3550DE2A-F52B-4D65-987B-47ADC3BCB0BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3550DE2A-F52B-4D65-987B-47ADC3BCB0BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3550DE2A-F52B-4D65-987B-47ADC3BCB0BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3550DE2A-F52B-4D65-987B-47ADC3BCB0BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4457040C-41F9-4B33-85D4-8B096E5957C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4457040C-41F9-4B33-85D4-8B096E5957C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4457040C-41F9-4B33-85D4-8B096E5957C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4457040C-41F9-4B33-85D4-8B096E5957C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37562F85-B1BD-4AB8-B74B-685B05F9CF41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37562F85-B1BD-4AB8-B74B-685B05F9CF41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37562F85-B1BD-4AB8-B74B-685B05F9CF41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37562F85-B1BD-4AB8-B74B-685B05F9CF41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
