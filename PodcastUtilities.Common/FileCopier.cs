@@ -1,16 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
+using PodcastUtilities.Common.IO;
 
 namespace PodcastUtilities.Common
 {
-    public class FileCopier
+    public class FileCopier : IFileCopier
     {
-        public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
+    	public FileCopier(
+			IDriveInfoProvider driveInfoProvider,
+			IFileUtilities fileUtilities)
+    	{
+    		DriveInfoProvider = driveInfoProvider;
+    		FileUtilities = fileUtilities;
+    	}
 
-        private void OnStatusUpdate(string message)
+    	public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
+
+    	private IDriveInfoProvider DriveInfoProvider { get; set; }
+    	private IFileUtilities FileUtilities { get; set; }
+
+    	private void OnStatusUpdate(string message)
         {
             OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
         }
@@ -21,33 +31,38 @@ namespace PodcastUtilities.Common
                 StatusUpdate(this, e);
         }
 
-        public void CopyFilesToTarget(List<SyncItem> sourceFiles, ControlFile control, bool whatif)
+        public void CopyFilesToTarget(
+			List<SyncItem> sourceFiles,
+			string sourceRootPath,
+			string destinationRootPath,
+			long freeSpaceToLeaveOnDestination,
+			bool whatif)
         {
             foreach (SyncItem thisItem in sourceFiles)
             {
                 string sourceRelativePath = thisItem.Source.FullName;
-                string absRoot = Path.GetFullPath(control.SourceRoot);
+                string absRoot = Path.GetFullPath(sourceRootPath);
                 if (sourceRelativePath.StartsWith(absRoot))
                 {
                     sourceRelativePath = sourceRelativePath.Substring(absRoot.Length);
                 }
 
-                string destFilename = Path.GetFullPath(control.DestinationRoot) + sourceRelativePath;
-                if (!File.Exists(destFilename))
+                string destFilename = Path.GetFullPath(destinationRootPath) + sourceRelativePath;
+                if (!FileUtilities.FileExists(destFilename))
                 {
                     OnStatusUpdate(string.Format("Copying to: {0}", destFilename));
                     if (!whatif)
                     {
                         try
                         {
-                            if (IsDestinationDriveFull(control))
+                            if (IsDestinationDriveFull(destinationRootPath, freeSpaceToLeaveOnDestination))
                                 return;
 
-                            File.Copy(thisItem.Source.FullName, destFilename);
+                            FileUtilities.FileCopy(thisItem.Source.FullName, destFilename);
                             thisItem.DestinationPath = destFilename;
                             thisItem.Copied = true;
                         }
-                        catch (System.IO.IOException ex)
+                        catch (IOException ex)
                         {
                             OnStatusUpdate(
                                 new StatusUpdateEventArgs(
@@ -62,24 +77,25 @@ namespace PodcastUtilities.Common
             }
         }
 
-        private bool IsDestinationDriveFull(ControlFile control)
+        private bool IsDestinationDriveFull(string destinationRootPath, long freeSpaceToLeaveOnDestination)
         {
-            DirectoryInfo dest = new DirectoryInfo(control.DestinationRoot);
-            DriveInfo drive = new DriveInfo(dest.Root.FullName);
-            long freeKB = 0;
+        	var driveInfo = DriveInfoProvider.GetDriveInfo(destinationRootPath);
+        	long availableFreeSpace = driveInfo.AvailableFreeSpace;
+
+			long freeKB = 0;
             double freeMB = 0;
             double freeGB = 0;
-            if (drive.AvailableFreeSpace > 0)
-                freeKB = (drive.AvailableFreeSpace / 1024);
+			if (availableFreeSpace > 0)
+				freeKB = (availableFreeSpace / 1024);
             if (freeKB > 0)
                 freeMB = (freeKB / 1024);
             if (freeMB > 0)
                 freeGB = (freeMB / 1024);
 
-            if (freeMB < control.FreeSpaceToLeaveOnDestination)
+            if (freeMB < freeSpaceToLeaveOnDestination)
             {
-                OnStatusUpdate(string.Format("Destination drive is full leaving {0:#,0.##} MB free", control.FreeSpaceToLeaveOnDestination));
-                OnStatusUpdate(string.Format("Free Space on drive {0} is {1:#,0.##} KB, {2:#,0.##} MB, {3:#,0.##} GB", drive.Name, freeKB, freeMB, freeGB));
+                OnStatusUpdate(string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeSpaceToLeaveOnDestination));
+                OnStatusUpdate(string.Format("Free Space on drive {0} is {1:#,0.##} KB, {2:#,0.##} MB, {3:#,0.##} GB", driveInfo.Name, freeKB, freeMB, freeGB));
                 return true;
             }
             return false;

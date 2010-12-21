@@ -7,6 +7,7 @@ using System.IO;
 using System.Xml;
 
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.IO;
 
 namespace SyncPodcasts
 {
@@ -36,23 +37,39 @@ namespace SyncPodcasts
 				return;
 			}
 
+			LinFuIocContainer iocContainer = InitializeIocContainer();
+
 			ControlFile control = new ControlFile(args[0]);
             FileFinder finder = new FileFinder();
             finder.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
-            FileCopier copier = new FileCopier();
+			var copier = iocContainer.Resolve<IFileCopier>();
             copier.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
             PlaylistGenerator generator = new PlaylistGenerator();
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
 			List<SyncItem> sourceFiles = finder.GetAllSourceFiles(control,true);
 
-			copier.CopyFilesToTarget(sourceFiles, control, false);
+			copier.CopyFilesToTarget(
+				sourceFiles,
+				control.SourceRoot,
+                control.DestinationRoot,
+                control.FreeSpaceToLeaveOnDestination,
+				false);
 
 			if (!string.IsNullOrEmpty(control.PlaylistFilename))
 				generator.GeneratePlaylist(control, true);
 		}
 
-        static void StatusUpdate(object sender, StatusUpdateEventArgs e)
+		private static LinFuIocContainer InitializeIocContainer()
+		{
+			var container =  new LinFuIocContainer();
+
+			IocRegistration.RegisterServices(container);
+
+			return container;
+		}
+
+		static void StatusUpdate(object sender, StatusUpdateEventArgs e)
         {
             // maybe we want to optionally filter verbose message
             Console.WriteLine(e.Message);
