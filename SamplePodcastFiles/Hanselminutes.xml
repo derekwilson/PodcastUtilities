@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2enclosuresfull.xsl"?>
+<?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+
+  <channel>
+    <ttl>30</ttl>
+    <title>Hanselminutes</title>
+    <link>http://www.hanselminutes.com</link>
+    <language>en-us</language>
+    <description>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</description>
+    <copyright>Copyright © 2006-2010 by Pwop Productions</copyright>
+    <managingEditor>scott@hanselman.com (Scott Hanselman)</managingEditor>
+    <webMaster>scott@hanselman.com (Scott Hanselman)</webMaster>
+    <rating>G</rating>
+    <pubDate>Tue, 21 Dec 2010 06:28:43 EST</pubDate>
+    <lastBuildDate>Tue, 21 Dec 2010 06:28:43 EST</lastBuildDate>
+    <cloud domain="http://www.hanselminutes.com" port="80" path="/RPC2" registerProcedure="pingMe" protocol="soap"> </cloud>
+
+    <image>
+      <url>http://www.pwop.com/itunes_hanselminutes.jpg</url>
+      <title>Hanselminutes</title>
+      <link>http://www.hanselminutes.com</link>
+      <width>144</width>
+      <height>300</height>
+      <description>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</description>
+    </image>
+    <category>Programming</category>
+    <category>Talk</category>
+    <category>ASP.NET</category>
+    <category>Podcast</category>
+
+    <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:author>Scott Hanselman</itunes:author>
+    <itunes:summary>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:summary>
+    <itunes:owner>
+      <itunes:name>Scott Hanselman</itunes:name>
+      <itunes:email>scott@hanselman.com (Scott Hanselman)</itunes:email>
+    </itunes:owner>
+
+    <itunes:image href="http://www.pwop.com/itunes_hanselminutes.jpg" />
+    <itunes:category text="Technology">
+      <itunes:category text="Software How-To" />
+    </itunes:category>
+    <itunes:category text="Technology">
+      <itunes:category text="Gadgets" />
+    </itunes:category>
+    <itunes:category text="Technology">
+      <itunes:category text="Software How-To" />
+    </itunes:category>
+
+
+
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/Hanselminutes" />
+    <feedburner:info uri="hanselminutes" />
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" />
+    <media:copyright>Copyright © 2006-2010 by Pwop Productions</media:copyright>
+    <media:thumbnail url="http://www.pwop.com/itunes_hanselminutes.jpg" />
+    <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Software How-To</media:category>
+    <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Gadgets</media:category>
+    <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Software How-To</media:category>
+    <item>
+      <title>Transitions - Exploring issues moving from small companies to large corporations</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/VINYaW-LPqw/default.aspx</link>
+      <pubDate>Fri, 17 Dec 2010 17:59:59 EST</pubDate>
+      <description>
+        Scott talks to his friend John Batdorf about their move from small consultancies to large corporations. What kinds of issues do we deal with as employees and what kinds of issues do IT departments come upon as companies grow?
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/J42QiT_0qYwgpJrcy-ogjLuYYKA/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/J42QiT_0qYwgpJrcy-ogjLuYYKA/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/J42QiT_0qYwgpJrcy-ogjLuYYKA/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/J42QiT_0qYwgpJrcy-ogjLuYYKA/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/VINYaW-LPqw" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=264</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott talks to his friend John Batdorf about their move from small consultancies to large corporations. What kinds of issues do we deal with as employees and what kinds of issues do IT departments come upon as companies grow?</itunes:summary>
+
+
+      <itunes:duration>00:35:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/F7iXvG5pbww/hanselminutes_0245.mp3" fileSize="25360773" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=264</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/F7iXvG5pbww/hanselminutes_0245.mp3" length="25360773" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0245.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Kayak, OWIN, Open Source Web Servers and more with Benjamin van der Veen</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/JERyca8cDVs/default.aspx</link>
+      <pubDate>Fri, 10 Dec 2010 01:53:29 EST</pubDate>
+      <description>
+        Scott sits down with open source developers Benjamin van der Veen to talk about his C# Web Server, Kayak, as well as OWIN, Open Source Web Servers and his thoughts on where server-side web development is going.
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/JQyBxI3OOTqxOudhJHV43JxZRWw/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/JQyBxI3OOTqxOudhJHV43JxZRWw/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/JQyBxI3OOTqxOudhJHV43JxZRWw/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/JQyBxI3OOTqxOudhJHV43JxZRWw/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/JERyca8cDVs" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=263</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott sits down with open source developers Benjamin van der Veen to talk about his C# Web Server, Kayak, as well as OWIN, Open Source Web Servers and his thoughts on where server-side web development is going.</itunes:summary>
+
+
+      <itunes:duration>00:30:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/ot5BO58oI0E/hanselminutes_0244.mp3" fileSize="21908441" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=263</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/ot5BO58oI0E/hanselminutes_0244.mp3" length="21908441" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0244.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Knockout Javascript with Steve Sanderson</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/WCIQ74S5mIQ/default.aspx</link>
+      <pubDate>Tue, 30 Nov 2010 20:49:07 EST</pubDate>
+      <description>
+        Steve Sanderson has created an interesting MVVM Javascript library for ASP.NET MVC. Yes, you read that right! MVVM on the client, MVC on the server, living together happily  may make a more enjoyable development experience. All this plus HTML, data binding, jQuery, text boxes over data, ASP.NET and more.
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/NE8izkAbZYEtqsQMJxZ4dsJuhMg/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/NE8izkAbZYEtqsQMJxZ4dsJuhMg/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/NE8izkAbZYEtqsQMJxZ4dsJuhMg/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/NE8izkAbZYEtqsQMJxZ4dsJuhMg/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/WCIQ74S5mIQ" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=262</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Steve Sanderson has created an interesting MVVM Javascript library for ASP.NET MVC. Yes, you read that right! MVVM on the client, MVC on the server, living together happily  may make a more enjoyable development experience. All this plus HTML, data binding, jQuery, text boxes over data, ASP.NET and more.</itunes:summary>
+
+
+      <itunes:duration>00:41:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/hfGFjAphhbI/hanselminutes_0243.mp3" fileSize="29645492" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=262</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/hfGFjAphhbI/hanselminutes_0243.mp3" length="29645492" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0243.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>The Plight of the Remote Worker with Pete Brown</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/ZW4iKhmkA7Q/default.aspx</link>
+      <pubDate>Wed, 24 Nov 2010 16:55:57 EST</pubDate>
+      <description>
+        Scott and Pete have both worked for Microsoft for a while now as remote workers. What works, what doesn't? Why is Scott obsessed with video portals and cameras and does it help? Pete shares his thoughts and tips on the remote life.
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/ssQf1kjvPotQlljf5Et06vBIk0M/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/ssQf1kjvPotQlljf5Et06vBIk0M/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/ssQf1kjvPotQlljf5Et06vBIk0M/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/ssQf1kjvPotQlljf5Et06vBIk0M/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/ZW4iKhmkA7Q" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=261</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott and Pete have both worked for Microsoft for a while now as remote workers. What works, what doesn't? Why is Scott obsessed with video portals and cameras and does it help? Pete shares his thoughts and tips on the remote life.</itunes:summary>
+
+
+      <itunes:duration>00:30:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/RSDJ9dzLE5A/hanselminutes_0242.mp3" fileSize="22260153" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=261</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/RSDJ9dzLE5A/hanselminutes_0242.mp3" length="22260153" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0242.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>The MVVM Pattern with Laurent Bugnion</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/TrWsX5r-Pqc/default.aspx</link>
+      <pubDate>Thu, 18 Nov 2010 18:25:04 EST</pubDate>
+      <description>
+        Scott talks to Laurent Bugnion about the often misunderstood Model-View-ViewModel (MVVM) pattern. What's the different between this pattern and MVC? Can I use this pattern for Silverlight, WPF and Windows Phone 7, and what Open Source projects can support this pattern?
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/VyCKP75mib7nn81mEPZyWSENq2U/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/VyCKP75mib7nn81mEPZyWSENq2U/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/VyCKP75mib7nn81mEPZyWSENq2U/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/VyCKP75mib7nn81mEPZyWSENq2U/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/TrWsX5r-Pqc" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=260</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott talks to Laurent Bugnion about the often misunderstood Model-View-ViewModel (MVVM) pattern. What's the different between this pattern and MVC? Can I use this pattern for Silverlight, WPF and Windows Phone 7, and what Open Source projects can support this pattern?</itunes:summary>
+
+
+      <itunes:duration>00:32:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/gJLjHiBqZ7Q/hanselminutes_0241.mp3" fileSize="23443584" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=260</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/gJLjHiBqZ7Q/hanselminutes_0241.mp3" length="23443584" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0241.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Developing Indie Games for Xbox 360 and XNA with George Clingerman</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/PuvAC72v9Dg/default.aspx</link>
+      <pubDate>Fri, 12 Nov 2010 13:17:44 EST</pubDate>
+      <description>
+        This week Scott talks to George Clingerman, a member of the Independant Xbox Game Development Community (Indie Games). George is a business developer by day and a game developer by night, using C# and managed code in both instances. How does this all work and how can you develop and sell your own games?
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/SbuU9SAx35aUZTqUQo7wQiIodEU/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/SbuU9SAx35aUZTqUQo7wQiIodEU/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/SbuU9SAx35aUZTqUQo7wQiIodEU/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/SbuU9SAx35aUZTqUQo7wQiIodEU/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/PuvAC72v9Dg" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=259</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>This week Scott talks to George Clingerman, a member of the Independant Xbox Game Development Community (Indie Games). George is a business developer by day and a game developer by night, using C# and managed code in both instances. How does this all work and how can you develop and sell your own games?</itunes:summary>
+
+
+      <itunes:duration>00:37:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/BUsjIvUwx5U/hanselminutes_0240.mp3" fileSize="27089546" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=259</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/BUsjIvUwx5U/hanselminutes_0240.mp3" length="27089546" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0240.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Creative Outlets with Rob Conery</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/7rshSPY5d2o/default.aspx</link>
+      <pubDate>Thu, 04 Nov 2010 17:34:32 EST</pubDate>
+      <description>
+        Rob joins Scott this week as they talk about their new (and very different) podcast "This Developer's Life." Why does Rob feel the need to create? What's the process? How does one create their own podcast and what are some tips for not just success, but feeling good after!
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/Y6wBtaRxKx5TOby06hH7zco8ITE/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Y6wBtaRxKx5TOby06hH7zco8ITE/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/Y6wBtaRxKx5TOby06hH7zco8ITE/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Y6wBtaRxKx5TOby06hH7zco8ITE/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/7rshSPY5d2o" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=258</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Rob joins Scott this week as they talk about their new (and very different) podcast "This Developer's Life." Why does Rob feel the need to create? What's the process? How does one create their own podcast and what are some tips for not just success, but feeling good after!</itunes:summary>
+
+
+      <itunes:duration>00:32:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/17cwsKlVZY0/hanselminutes_0239.mp3" fileSize="23750471" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=258</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/17cwsKlVZY0/hanselminutes_0239.mp3" length="23750471" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0239.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>ASP.NET MVC 3 RC and NuGet Package Management with Phil Haack</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/hkPMZMDMq9Q/default.aspx</link>
+      <pubDate>Wed, 27 Oct 2010 19:31:44 EST</pubDate>
+      <description>
+        It's PDC week and Scott's on campus with Phil Haack talking about ASP.NET MVC 3 RC and the NuPack^H^H^H^H^H^H^H NuGet Package Manager.
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/e8YPMlRpHIanbgSFgiW4dIl9Hus/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/e8YPMlRpHIanbgSFgiW4dIl9Hus/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/e8YPMlRpHIanbgSFgiW4dIl9Hus/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/e8YPMlRpHIanbgSFgiW4dIl9Hus/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/hkPMZMDMq9Q" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=257</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>It's PDC week and Scott's on campus with Phil Haack talking about ASP.NET MVC 3 RC and the NuPack^H^H^H^H^H^H^H NuGet Package Manager.</itunes:summary>
+
+
+      <itunes:duration>00:30:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/vP4jaH2ogwY/hanselminutes_0238.mp3" fileSize="22079595" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=257</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/vP4jaH2ogwY/hanselminutes_0238.mp3" length="22079595" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0238.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Deeper into the Netduino with Chris Walker from Secret Labs</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/dSmztJlxPRU/default.aspx</link>
+      <pubDate>Thu, 21 Oct 2010 12:57:59 EST</pubDate>
+      <description>
+        Scott chats with Chris from Secret Labs about the Netduino Open Source hardware platform. How does Netduino  and Netduino Plus relate to the .NET Microframework and which parts of Open Source? What can I build with it and it how? What kinds of capabilities does this little piece of hardware have, and can it give even smaller?
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/QfcINHLgedsjas9PR6KtqeSxo_c/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/QfcINHLgedsjas9PR6KtqeSxo_c/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/QfcINHLgedsjas9PR6KtqeSxo_c/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/QfcINHLgedsjas9PR6KtqeSxo_c/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/dSmztJlxPRU" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=256</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott chats with Chris from Secret Labs about the Netduino Open Source hardware platform. How does Netduino  and Netduino Plus relate to the .NET Microframework and which parts of Open Source? What can I build with it and it how? What kinds of capabilities does this little piece of hardware have, and can it give even smaller? </itunes:summary>
+
+
+      <itunes:duration>00:32:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/F4eqtbJkNP0/hanselminutes_0237.mp3" fileSize="23177992" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=256</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/F4eqtbJkNP0/hanselminutes_0237.mp3" length="23177992" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0237.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Misunderstanding REST with Mike Amundsen</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/6RdVnN_Vs8Y/default.aspx</link>
+      <pubDate>Thu, 07 Oct 2010 18:53:36 EST</pubDate>
+      <description>
+        Web Services with SOAP are a pretty well understood thing, but what's all this appeal about REST? Is REST just CRUD (Create Read Update Delete) for the Web? Is it a pattern, a style or dogma? Recognized REST expert Mike Amundsen sets Scott straight.
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/oj3f1zhtxljqBHF_6KUuKcmg4Cs/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/oj3f1zhtxljqBHF_6KUuKcmg4Cs/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/oj3f1zhtxljqBHF_6KUuKcmg4Cs/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/oj3f1zhtxljqBHF_6KUuKcmg4Cs/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/6RdVnN_Vs8Y" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=255</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Web Services with SOAP are a pretty well understood thing, but what's all this appeal about REST? Is REST just CRUD (Create Read Update Delete) for the Web? Is it a pattern, a style or dogma? Recognized REST expert Mike Amundsen sets Scott straight.</itunes:summary>
+
+
+      <itunes:duration>00:25:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/i0ifF_3iFj4/hanselminutes_0236.mp3" fileSize="18473757" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=255</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/i0ifF_3iFj4/hanselminutes_0236.mp3" length="18473757" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0236.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Making a hobby a job - Talking with Eric Herbrandson about his Silverlight-based MicroISV</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/Vb95IObZ7xE/default.aspx</link>
+      <pubDate>Thu, 07 Oct 2010 18:49:23 EST</pubDate>
+      <description>
+        Eric Herbrandson has been working on the site creating a Silverlight-based audio mixer at night and weekends. What's the best way to hold down a full time job while pursuing your passion? Was it hard for Eric to learn a new technology and apply it to his little ISV? And some tech chat about his product, AudioOrchard (now ScratchAudio), what was possible and what wasn't.
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/sULvYKfcikBcQpgioZdZRel4hkc/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/sULvYKfcikBcQpgioZdZRel4hkc/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/sULvYKfcikBcQpgioZdZRel4hkc/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/sULvYKfcikBcQpgioZdZRel4hkc/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/Vb95IObZ7xE" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=254</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Eric Herbrandson has been working on the site creating a Silverlight-based audio mixer at night and weekends. What's the best way to hold down a full time job while pursuing your passion? Was it hard for Eric to learn a new technology and apply it to his little ISV? And some tech chat about his product, AudioOrchard (now ScratchAudio), what was possible and what wasn't.</itunes:summary>
+
+
+      <itunes:duration>00:34:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/PRwLuW0ndEA/hanselminutes_0235.mp3" fileSize="24503654" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=254</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/PRwLuW0ndEA/hanselminutes_0235.mp3" length="24503654" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0235.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Getting Things Done with Lane Newsom</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/uVll0K4zdcE/default.aspx</link>
+      <pubDate>Tue, 28 Sep 2010 18:44:19 EST</pubDate>
+      <description>
+        Scott chats with Getting Things Done (GTD) practitioner and MBA student Lane Newsom. How does she apply the principals of GTD in a practical way to her daily life?
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/JHGhb0j4JoE2y8coq6ODvvd3SEg/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/JHGhb0j4JoE2y8coq6ODvvd3SEg/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/JHGhb0j4JoE2y8coq6ODvvd3SEg/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/JHGhb0j4JoE2y8coq6ODvvd3SEg/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/uVll0K4zdcE" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=253</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott chats with Getting Things Done (GTD) practitioner and MBA student Lane Newsom. How does she apply the principals of GTD in a practical way to her daily life?</itunes:summary>
+
+
+      <itunes:duration>00:35:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/1brt-OaktWw/hanselminutes_0234.mp3" fileSize="25314913" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=253</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/1brt-OaktWw/hanselminutes_0234.mp3" length="25314913" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0234.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Inside the Naked Objects Framework with Richard Pawson</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/StalptVWxOo/default.aspx</link>
+      <pubDate>Thu, 16 Sep 2010 15:07:23 EST</pubDate>
+      <description>
+        Richard Pawson wrote his PhD thesis on "Naked Objects." Scott sits down to chat with Richard about the framework. Too complex? Too simple? How does Naked Objects apply in today's object oriented systems and what does it learn from yesterday's?
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/J2zUHAog85mqoOHuvU2AbYz11m0/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/J2zUHAog85mqoOHuvU2AbYz11m0/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/J2zUHAog85mqoOHuvU2AbYz11m0/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/J2zUHAog85mqoOHuvU2AbYz11m0/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/StalptVWxOo" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=252</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Richard Pawson wrote his PhD thesis on "Naked Objects." Scott sits down to chat with Richard about the framework. Too complex? Too simple? How does Naked Objects apply in today's object oriented systems and what does it learn from yesterday's?</itunes:summary>
+
+
+      <itunes:duration>00:33:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/qYRkz2etBxE/hanselminutes_0233.mp3" fileSize="24359144" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=252</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/qYRkz2etBxE/hanselminutes_0233.mp3" length="24359144" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0233.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>.NET Micro Framework with Colin Miller</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/edOkQlAZFvM/default.aspx</link>
+      <pubDate>Thu, 09 Sep 2010 13:57:42 EST</pubDate>
+      <description>
+        Scott talks to Colin Miller about the .NET Micro Framework. It's a "tiny CLR" that runs in as little as 64k! He explains how it started with the SPOT Watch (remember that) and how it's grown to an Open Source project under the Apache 2.0 license with a broad ecosystem and dozens of hardware boards available from partners.
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/7Ek3hBg4otqO778XGnh7UeNII8Y/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/7Ek3hBg4otqO778XGnh7UeNII8Y/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/7Ek3hBg4otqO778XGnh7UeNII8Y/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/7Ek3hBg4otqO778XGnh7UeNII8Y/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/edOkQlAZFvM" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=251</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott talks to Colin Miller about the .NET Micro Framework. It's a "tiny CLR" that runs in as little as 64k! He explains how it started with the SPOT Watch (remember that) and how it's grown to an Open Source project under the Apache 2.0 license with a broad ecosystem and dozens of hardware boards available from partners.</itunes:summary>
+
+
+      <itunes:duration>00:32:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/GV8kClC30cc/hanselminutes_0232.mp3" fileSize="23135987" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=251</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/GV8kClC30cc/hanselminutes_0232.mp3" length="23135987" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0232.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Eric Sink on Distributed Version Control Systems</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/-fyYL8rinuE/default.aspx</link>
+      <pubDate>Thu, 02 Sep 2010 13:33:26 EST</pubDate>
+      <description>
+        Scott chats with Eric Sink from SourceGear about DVCS. How bad IS SourceSafe? What kinds of things should you think about when moving to more modern source control system like SVN? Then what about moving to a proper distributed system? Mercurial vs. Git and more.
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/0wazKExTnqXoeXZthgr7WHDNQ34/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/0wazKExTnqXoeXZthgr7WHDNQ34/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/0wazKExTnqXoeXZthgr7WHDNQ34/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/0wazKExTnqXoeXZthgr7WHDNQ34/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/-fyYL8rinuE" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=250</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott chats with Eric Sink from SourceGear about DVCS. How bad IS SourceSafe? What kinds of things should you think about when moving to more modern source control system like SVN? Then what about moving to a proper distributed system? Mercurial vs. Git and more.</itunes:summary>
+
+
+      <itunes:duration>00:32:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/NlVIOP5Q2Us/hanselminutes_0231.mp3" fileSize="23556120" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=250</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/NlVIOP5Q2Us/hanselminutes_0231.mp3" length="23556120" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0231.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Continuous Web Deployment with Jon Tørresdal</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/cz9YSemR44E/default.aspx</link>
+      <pubDate>Thu, 26 Aug 2010 13:09:29 EST</pubDate>
+      <description>
+        This week Scott talks to Jon Tørresdal from Norway via Skype. Jon is an Architect for a  Norwegian insurance company, and an editor for InfoQ. His agile team practice Scrum and Jon shares his experiences making web deployment a no-click affair. What are the tools and techniques you need to make your automated build automate deployment to a production web farm?
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/J61MZDzv-FQZXZJDmfPbycBiLZI/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/J61MZDzv-FQZXZJDmfPbycBiLZI/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/J61MZDzv-FQZXZJDmfPbycBiLZI/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/J61MZDzv-FQZXZJDmfPbycBiLZI/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/cz9YSemR44E" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=248</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>This week Scott talks to Jon Tørresdal from Norway via Skype. Jon is an Architect for a  Norwegian insurance company, and an editor for InfoQ. His agile team practice Scrum and Jon shares his experiences making web deployment a no-click affair. What are the tools and techniques you need to make your automated build automate deployment to a production web farm?</itunes:summary>
+
+
+      <itunes:duration>00:35:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/9awLZZbn_2Y/hanselminutes_0230.mp3" fileSize="25854540" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=248</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/9awLZZbn_2Y/hanselminutes_0230.mp3" length="25854540" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0230.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>OpenID and OpenAuth with DotNetOpenAuth open source programmer Andrew Arnott</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/DSQJTb2VmTA/default.aspx</link>
+      <pubDate>Thu, 19 Aug 2010 15:21:27 EST</pubDate>
+      <description>
+        Scott talks to Andrew Arnott about OpenID and OpenAuth. What are these two protocols, how do they relate to each other and what do we as programmers need to know about them? Do you use Twitter? Then you use OpenAuth and may not realize it. Andrew works at Microsoft and works on the side on his open source project DotNetOpenAuth.
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/eqm1XeOyUu8df_U8KqoSuKr52MM/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/eqm1XeOyUu8df_U8KqoSuKr52MM/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/eqm1XeOyUu8df_U8KqoSuKr52MM/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/eqm1XeOyUu8df_U8KqoSuKr52MM/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/DSQJTb2VmTA" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=247</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott talks to Andrew Arnott about OpenID and OpenAuth. What are these two protocols, how do they relate to each other and what do we as programmers need to know about them? Do you use Twitter? Then you use OpenAuth and may not realize it. Andrew works at Microsoft and works on the side on his open source project DotNetOpenAuth.</itunes:summary>
+
+
+      <itunes:duration>00:35:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/T_FovlCOauc/hanselminutes_0229.mp3" fileSize="25480967" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=247</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/T_FovlCOauc/hanselminutes_0229.mp3" length="25480967" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0229.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Performance of Silverlight on Windows Phone 7</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/7Jd5C-Fe7tI/default.aspx</link>
+      <pubDate>Thu, 12 Aug 2010 17:52:41 EST</pubDate>
+      <description>
+        Scott talks to Jeff Wilcox, a Developer on the Silverlight Team about developing on Windows Phone 7. What kinds of performance can we expect from the phone? Jeff Wilcox shows Scott some tips and tricks on how to get the smoothest animations from your phone. Frame Rate Counters and more fun are explained!
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/Syaxw-qg0VE-OKfI9fXaejmxXsw/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Syaxw-qg0VE-OKfI9fXaejmxXsw/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/Syaxw-qg0VE-OKfI9fXaejmxXsw/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Syaxw-qg0VE-OKfI9fXaejmxXsw/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/7Jd5C-Fe7tI" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=246</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott talks to Jeff Wilcox, a Developer on the Silverlight Team about developing on Windows Phone 7. What kinds of performance can we expect from the phone? Jeff Wilcox shows Scott some tips and tricks on how to get the smoothest animations from your phone. Frame Rate Counters and more fun are explained!</itunes:summary>
+
+
+      <itunes:duration>00:40:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/zptslN5xwr8/hanselminutes_0228.mp3" fileSize="28899665" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=246</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/zptslN5xwr8/hanselminutes_0228.mp3" length="28899665" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0228.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Inside Expression SuperPreview with developer Mike Calvo</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/xq5CspfPjvo/default.aspx</link>
+      <pubDate>Tue, 10 Aug 2010 20:09:34 EST</pubDate>
+      <description>
+        Scott talks to Mike Calvo, a Microsoft Lead Developer based out of Minnesota (!) about Expression SuperPreview. SuperPreview helps developers and designers with cross-browser CSS and HTML issues. How'd they build it and with what? What's inside? How does the cloud fit in and how do they support Safari?
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/vH0G26APyoDB3viwrstv0MqGXV4/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/vH0G26APyoDB3viwrstv0MqGXV4/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/vH0G26APyoDB3viwrstv0MqGXV4/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/vH0G26APyoDB3viwrstv0MqGXV4/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/xq5CspfPjvo" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=245</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott talks to Mike Calvo, a Microsoft Lead Developer based out of Minnesota (!) about Expression SuperPreview. SuperPreview helps developers and designers with cross-browser CSS and HTML issues. How'd they build it and with what? What's inside? How does the cloud fit in and how do they support Safari?</itunes:summary>
+
+
+      <itunes:duration>00:33:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/JpQqUwvy3wM/hanselminutes_0227.mp3" fileSize="23815818" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=245</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/JpQqUwvy3wM/hanselminutes_0227.mp3" length="23815818" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0227.mp3</feedburner:origEnclosureLink>
+    </item>
+
+
+    <item>
+      <title>Building your own Ultimate Developer PC 2.0 with Pete Brown</title>
+      <link>http://feedproxy.google.com/~r/Hanselminutes/~3/vKQ0Th1peAI/default.aspx</link>
+      <pubDate>Mon, 09 Aug 2010 17:37:31 EST</pubDate>
+      <description>
+        Scott catches up with Pete Brown after they've both built their "Ultimate Developer PCs." Any regrets? What'd they learn and how you can learn from their mistakes and successes.
+        &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/Bj6wUADrmFZ36AYmDnNX_M8R9dA/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Bj6wUADrmFZ36AYmDnNX_M8R9dA/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+        &lt;a href="http://feedads.g.doubleclick.net/~a/Bj6wUADrmFZ36AYmDnNX_M8R9dA/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Bj6wUADrmFZ36AYmDnNX_M8R9dA/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Hanselminutes/~4/vKQ0Th1peAI" height="1" width="1"/&gt;
+      </description>
+      <source url="http://www.hanselminutes.com">Hanselminutes</source>
+
+      <guid isPermaLink="false">http://www.hanselminutes.com/default.aspx?ShowID=244</guid>
+
+      <itunes:author>Scott Hanselman</itunes:author>
+      <itunes:subtitle>Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</itunes:subtitle>
+      <itunes:summary>Scott catches up with Pete Brown after they've both built their "Ultimate Developer PCs." Any regrets? What'd they learn and how you can learn from their mistakes and successes.</itunes:summary>
+
+
+      <itunes:duration>00:37:00</itunes:duration>
+      <itunes:keywords />
+      <media:content url="http://feedproxy.google.com/~r/Hanselminutes/~5/AGKQB7hKocM/hanselminutes_0226.mp3" fileSize="26326394" type="audio/mp3" />
+      <itunes:explicit>no</itunes:explicit>
+      <feedburner:origLink>http://www.hanselminutes.com/default.aspx?ShowID=244</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/Hanselminutes/~5/AGKQB7hKocM/hanselminutes_0226.mp3" length="26326394" type="audio/mp3" />
+      <feedburner:origEnclosureLink>http://s3.amazonaws.com/hanselminutes/hanselminutes_0226.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <media:credit role="author">Scott Hanselman</media:credit>
+    <media:rating>nonadult</media:rating>
+    <media:description type="plain">Hanselminutes is a weekly audio talk show with noted web developer and technologist Scott Hanselman and hosted by Carl Franklin. Scott discusses utilities and tools, gives practical how-to advice, and discusses ASP.NET or Windows issues and workarounds.</media:description>
+  </channel>
+</rss>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:ppg="http://bbc.co.uk/2009/01/ppgRss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Mark Kermode and Simon Mayo's Film Reviews</title>
+    <link>http://www.bbc.co.uk/programmes/b00lvdrj</link>
+    <description>Mark Kermode discusses the latest film releases with Simon Mayo. Lively, controversial and unmissable movie discussion. Broadcast live on Fridays at 2pm on BBC Radio 5 live.</description>
+    <itunes:summary>Mark Kermode discusses the latest film releases with Simon Mayo. Lively, controversial and unmissable movie discussion. Broadcast live on Fridays at 2pm on BBC Radio 5 live.</itunes:summary>
+    <itunes:author>BBC Radio 5 live</itunes:author>
+    <itunes:owner>
+      <itunes:name>BBC</itunes:name>
+      <itunes:email>podcast.support@bbc.co.uk</itunes:email>
+    </itunes:owner>
+    <language>en-gb</language>
+    <ttl>720</ttl>
+    <ppg:systemRef systemId="pid.brand" key="b0070ltf" />
+    <ppg:systemRef systemId="pid.brand" key="b00ccc03" />
+    <ppg:systemRef systemId="pid.brand" key="b00lvdrj" />
+    <ppg:systemRef systemId="pid.genre" key="C00046" />
+    <ppg:systemRef systemId="pid.genre" key="C00200" />
+    <ppg:systemRef systemId="pid.genre" key="C00193" />
+    <ppg:network id="5live" name="BBC Radio 5 live" />
+    <ppg:seriesDetails typicalDuration="PT91M" active="true" public="true" region="all" wwpid="0" launchDate="2009-01-21" frequency="weekly" daysLive="-1" liveItems="15" />
+    <image>
+      <url>http://www.bbc.co.uk/radio/podcasts/kermode/assets/_300x300.jpg</url>
+      <title>Mark Kermode and Simon Mayo's Film Reviews</title>
+      <link>http://www.bbc.co.uk/programmes/b00lvdrj</link>
+    </image>
+    <itunes:image href="http://www.bbc.co.uk/radio/podcasts/kermode/assets/_300x300.jpg" />
+    <copyright>(C) BBC 2010</copyright>
+    <pubDate>Fri, 17 Dec 2010 19:53:53 +0000</pubDate>
+    <itunes:category text="TV &amp; Film" />
+    <itunes:keywords>Movies, cinema, Hollywood</itunes:keywords>
+    <media:keywords>Movies, cinema, Hollywood</media:keywords>
+    <itunes:explicit>no</itunes:explicit>
+    <media:rating scheme="urn:simple">nonadult</media:rating>
+    <atom:link href="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kermode: Tron: Legacy, 17 Dec 10</title>
+      <description>Mark Kermode and Simon Mayo discuss the latest film releases, including Burlesque, Catfish, Fred: The Movie and Tron: Legacy. They also find the time to chat to actor Mark Strong, who's starring in new movie The Way Back.</description>
+      <itunes:subtitle>Mark Kermode and Simon Mayo discuss the latest film releases, including Burlesque, Catfish, Fred: The Movie and Tron: Legacy. They also find the time to chat to actor Mark Strong, who's starring in new movie The Way Back....</itunes:subtitle>
+      <itunes:summary>Mark Kermode and Simon Mayo discuss the latest film releases, including Burlesque, Catfish, Fred: The Movie and Tron: Legacy. They also find the time to chat to actor Mark Strong, who's starring in new movie The Way Back.</itunes:summary>
+      <pubDate>Fri, 17 Dec 2010 17:49:00 +0000</pubDate>
+      <itunes:duration>88:17</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101217-1749d.mp3" length="42476120" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101217-1749.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101217-1749d.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101217-1749d.mp3" fileSize="42476120" type="audio/mpeg" medium="audio" expression="full" duration="5297" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: The Tourist, 10 Dec 10</title>
+      <description>Mark and Simon review Johnny Depp and Angelina Jolie's thriller The Tourist. Also under the spotlight are Somewhere, Narnia: The Voyage of the Dawn Treader, For Colored Girls, In Our Name, A Serbian Film and Outcast.</description>
+      <itunes:subtitle>Mark and Simon review Johnny Depp and Angelina Jolie's thriller The Tourist. Also under the spotlight are Somewhere, Narnia: The Voyage of the Dawn Treader, For Colored Girls, In Our Name, A Serbian Film and Outcast....</itunes:subtitle>
+      <itunes:summary>Mark and Simon review Johnny Depp and Angelina Jolie's thriller The Tourist. Also under the spotlight are Somewhere, Narnia: The Voyage of the Dawn Treader, For Colored Girls, In Our Name, A Serbian Film and Outcast.</itunes:summary>
+      <pubDate>Fri, 10 Dec 2010 17:18:00 +0000</pubDate>
+      <itunes:duration>94:03</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101210-1718a.mp3" length="45241542" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101210-1718.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101210-1718a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101210-1718a.mp3" fileSize="45241542" type="audio/mpeg" medium="audio" expression="full" duration="5643" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: Monsters, 03 Dec 10</title>
+      <description>
+        Mark and Simon are joined by Riz Ahmed, who starred in Chris Morris's jihadist comedy satire Four Lions. He's been nominated for best performance by an actor at this weekend's British Independent Film Awards. There's also the UK Top 10 and reviews of Megamind, Of Gods and Men, The Be All and End All&#xD;
+        and Monsters. Plus, the new feature Miracle Watch.
+      </description>
+      <itunes:subtitle>Mark and Simon are joined by Riz Ahmed, who starred in Chris Morris's jihadist comedy satire Four Lions. He's been nominated for best performance by an actor at this weekend's British Independent Film Awards. There's also the UK Top 10 and reviews of...</itunes:subtitle>
+      <itunes:summary>
+        Mark and Simon are joined by Riz Ahmed, who starred in Chris Morris's jihadist comedy satire Four Lions. He's been nominated for best performance by an actor at this weekend's British Independent Film Awards. There's also the UK Top 10 and reviews of Megamind, Of Gods and Men, The Be All and End All&#xD;
+        and Monsters. Plus, the new feature Miracle Watch.
+      </itunes:summary>
+      <pubDate>Fri, 03 Dec 2010 16:49:00 +0000</pubDate>
+      <itunes:duration>89:49</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101203-1649a.mp3" length="43210883" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101203-1649.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101203-1649a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101203-1649a.mp3" fileSize="43210883" type="audio/mpeg" medium="audio" expression="full" duration="5389" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: The American, 26 Nov 10</title>
+      <description>
+        Mark Kermode and Simon Mayo discuss the latest film releases, including The American, Machete and Unstoppable.&#xD;
+        &#xD;
+        They also find the time to chat to Gareth Edwards, whose first feature film Monsters is out next week.
+      </description>
+      <itunes:subtitle>
+        Mark Kermode and Simon Mayo discuss the latest film releases, including The American, Machete and Unstoppable.&#xD;
+        &#xD;
+        They also find the time to chat to Gareth Edwards, whose first feature film Monsters is out next week....
+      </itunes:subtitle>
+      <itunes:summary>
+        Mark Kermode and Simon Mayo discuss the latest film releases, including The American, Machete and Unstoppable.&#xD;
+        &#xD;
+        They also find the time to chat to Gareth Edwards, whose first feature film Monsters is out next week.
+      </itunes:summary>
+      <pubDate>Fri, 26 Nov 2010 17:42:00 +0000</pubDate>
+      <itunes:duration>90:26</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101126-1742a.mp3" length="43509030" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101126-1742.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101126-1742a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101126-1742a.mp3" fileSize="43509030" type="audio/mpeg" medium="audio" expression="full" duration="5426" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: Harry Potter and the Code of Conduct; 19 Nov 10</title>
+      <description>
+        It's the review of Harry Potter and the Deathly Hallows - Part 1. &#xD;
+        &#xD;
+        Plus Mark and Simon unveil the brand new (laminated) Cinema Code of Conduct - a helpful guide on movie-going etiquette.&#xD;
+        &#xD;
+        Plus interviews with Oscar-winning producer Jeremy Thomas and film editor Thelma Schoonmaker.&#xD;
+        &#xD;
+        Other films up for review are Chico &amp; Rita, Uncle Boonmee Who Can Recall His Past Lives, and Dream Home.
+      </description>
+      <itunes:subtitle>
+        It's the review of Harry Potter and the Deathly Hallows - Part 1. Plus Mark and Simon unveil the brand new (laminated) Cinema Code of Conduct - a helpful guide on movie-going etiquette.&#xD;
+        &#xD;
+        Plus interviews with Oscar-winning producer Jeremy Thomas and...
+      </itunes:subtitle>
+      <itunes:summary>
+        It's the review of Harry Potter and the Deathly Hallows - Part 1. &#xD;
+        &#xD;
+        Plus Mark and Simon unveil the brand new (laminated) Cinema Code of Conduct - a helpful guide on movie-going etiquette.&#xD;
+        &#xD;
+        Plus interviews with Oscar-winning producer Jeremy Thomas and film editor Thelma Schoonmaker.&#xD;
+        &#xD;
+        Other films up for review are Chico &amp; Rita, Uncle Boonmee Who Can Recall His Past Lives, and Dream Home.
+      </itunes:summary>
+      <pubDate>Fri, 19 Nov 2010 17:00:00 +0000</pubDate>
+      <itunes:duration>94:20</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101119-1700b.mp3" length="45383225" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101119-1700.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101119-1700b.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101119-1700b.mp3" fileSize="45383225" type="audio/mpeg" medium="audio" expression="full" duration="5660" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: Skyline, 12 Nov 10</title>
+      <description>Mark and Simon's favourite listener Jason Isaacs chats about his role as Lucius Malfoy in Harry Potter and the Deathly Hallows: Part 1. Colin Farrell reveals all about playing an ex-con opposite Ray Winstone and Keira Knightley in new gangster thriller London Boulevard. Listeners offer more suggestions for Mark and Simon's Cinema Code of Conduct. Plus, this week's new releases reviewed are: Skyline, Let Me In, We Are What We Are and You Again.</description>
+      <itunes:subtitle>Mark and Simon's favourite listener Jason Isaacs chats about his role as Lucius Malfoy in Harry Potter and the Deathly Hallows: Part 1. Colin Farrell reveals all about playing an ex-con opposite Ray Winstone and Keira Knightley in new gangster...</itunes:subtitle>
+      <itunes:summary>Mark and Simon's favourite listener Jason Isaacs chats about his role as Lucius Malfoy in Harry Potter and the Deathly Hallows: Part 1. Colin Farrell reveals all about playing an ex-con opposite Ray Winstone and Keira Knightley in new gangster thriller London Boulevard. Listeners offer more suggestions for Mark and Simon's Cinema Code of Conduct. Plus, this week's new releases reviewed are: Skyline, Let Me In, We Are What We Are and You Again.</itunes:summary>
+      <pubDate>Fri, 12 Nov 2010 17:05:00 +0000</pubDate>
+      <itunes:duration>95:31</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101112-1705a.mp3" length="45944013" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101112-1705.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101112-1705a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101112-1705a.mp3" fileSize="45944013" type="audio/mpeg" medium="audio" expression="full" duration="5731" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: The Kids Are All Right, 29 Oct 10</title>
+      <description>Colin Paterson, Boyd Hilton and Nigel Floyd sit in for Mark and Simon. John Landis tells the boys about his new film - Burke and Hare and talks about his love for The Two Ronnies! Plus, Julianne Moore and Mark Ruffalo talk about new film The Kids Are All Right. And they bring you reviews of Burke And Hare, The Hunter, Involuntary, The Kids Are All Right and Saw (3D).</description>
+      <itunes:subtitle>Colin Paterson, Boyd Hilton and Nigel Floyd sit in for Mark and Simon. John Landis tells the boys about his new film - Burke and Hare and talks about his love for The Two Ronnies! Plus, Julianne Moore and Mark Ruffalo talk about new film The Kids Are...</itunes:subtitle>
+      <itunes:summary>Colin Paterson, Boyd Hilton and Nigel Floyd sit in for Mark and Simon. John Landis tells the boys about his new film - Burke and Hare and talks about his love for The Two Ronnies! Plus, Julianne Moore and Mark Ruffalo talk about new film The Kids Are All Right. And they bring you reviews of Burke And Hare, The Hunter, Involuntary, The Kids Are All Right and Saw (3D).</itunes:summary>
+      <pubDate>Fri, 29 Oct 2010 17:14:00 +0100</pubDate>
+      <itunes:duration>94:53</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101029-1714b.mp3" length="45641963" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101029-1714.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101029-1714b.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101029-1714b.mp3" fileSize="45641963" type="audio/mpeg" medium="audio" expression="full" duration="5693" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: Paranormal Activity 2, 22 Oct 10</title>
+      <description>Lesley Manville joins Mark and Simon to talk about her role in the new Mike Leigh film, Another Year. Rhidian Brook will also be in to chat about Africa United. Movies up for review this week include - Paranormal Activity 2, Legends Of The Guardians, The Owls Of Ga'Hoole 3D, Easy A, Red, Alpha &amp; Omega 3D.... enjoy.</description>
+      <itunes:subtitle>Lesley Manville joins Mark and Simon to talk about her role in the new Mike Leigh film, Another Year. Rhidian Brook will also be in to chat about Africa United. Movies up for review this week include - Paranormal Activity 2, Legends Of The Guardians,...</itunes:subtitle>
+      <itunes:summary>Lesley Manville joins Mark and Simon to talk about her role in the new Mike Leigh film, Another Year. Rhidian Brook will also be in to chat about Africa United. Movies up for review this week include - Paranormal Activity 2, Legends Of The Guardians, The Owls Of Ga'Hoole 3D, Easy A, Red, Alpha &amp; Omega 3D.... enjoy.</itunes:summary>
+      <pubDate>Fri, 22 Oct 2010 16:42:00 +0100</pubDate>
+      <itunes:duration>96:44</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101022-1642a.mp3" length="46528191" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101022-1642.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101022-1642a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101022-1642a.mp3" fileSize="46528191" type="audio/mpeg" medium="audio" expression="full" duration="5804" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: The Social Network, 15 Oct 10</title>
+      <description>Joining the good doctors on the podcast this week - Anton Corbijn, the director of George Clooney's new film The American and film music composer David Arnold. Films up for review include The Social Network, Despicable Me and Vampires Suck (which strangely - is what Mark thought of it as well).</description>
+      <itunes:subtitle>Joining the good doctors on the podcast this week - Anton Corbijn, the director of George Clooney's new film The American and film music composer David Arnold. Films up for review include The Social Network, Despicable Me and Vampires Suck (which...</itunes:subtitle>
+      <itunes:summary>Joining the good doctors on the podcast this week - Anton Corbijn, the director of George Clooney's new film The American and film music composer David Arnold. Films up for review include The Social Network, Despicable Me and Vampires Suck (which strangely - is what Mark thought of it as well).</itunes:summary>
+      <pubDate>Fri, 15 Oct 2010 17:03:00 +0100</pubDate>
+      <itunes:duration>92:59</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101015-1703a.mp3" length="44730546" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101015-1703.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101015-1703a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101015-1703a.mp3" fileSize="44730546" type="audio/mpeg" medium="audio" expression="full" duration="5579" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: Wall Street: Money Never Sleeps, 08 Oct 10</title>
+      <description>Simon Mayo and Mark Kermode are at Mark's favourite cinema, The Phoenix in East Finchley, for a special live wittertainment. They're joined by Aaron Sorkin, creator of The West Wing, to talk about the screenplay for his new movie The Social Network. Mark and Simon also pass judgement on movies including Wall Street: Money Never Sleeps and The Death and Life of Charlie St. Cloud.</description>
+      <itunes:subtitle>Simon Mayo and Mark Kermode are at Mark's favourite cinema, The Phoenix in East Finchley, for a special live wittertainment. They're joined by Aaron Sorkin, creator of The West Wing, to talk about the screenplay for his new movie The Social Network....</itunes:subtitle>
+      <itunes:summary>Simon Mayo and Mark Kermode are at Mark's favourite cinema, The Phoenix in East Finchley, for a special live wittertainment. They're joined by Aaron Sorkin, creator of The West Wing, to talk about the screenplay for his new movie The Social Network. Mark and Simon also pass judgement on movies including Wall Street: Money Never Sleeps and The Death and Life of Charlie St. Cloud.</itunes:summary>
+      <pubDate>Fri, 08 Oct 2010 17:37:00 +0100</pubDate>
+      <itunes:duration>91:47</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101008-1737d.mp3" length="44153008" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101008-1737.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101008-1737d.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101008-1737d.mp3" fileSize="44153008" type="audio/mpeg" medium="audio" expression="full" duration="5507" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: Made in Dagenham, 01 Oct 10</title>
+      <description>After planning a 60 minute pre-recorded programme, Simon and Mark are called upon to fill the void left by a rain-delayed Ryder Cup. The doctors do so admirably, talking to veteran film producer Stephen Woolley about his latest, Made in Daghenham. Dr K then reviews said flick, along with Buried, Takers and The First Movie.</description>
+      <itunes:subtitle>After planning a 60 minute pre-recorded programme, Simon and Mark are called upon to fill the void left by a rain-delayed Ryder Cup. The doctors do so admirably, talking to veteran film producer Stephen Woolley about his latest, Made in Daghenham. Dr...</itunes:subtitle>
+      <itunes:summary>After planning a 60 minute pre-recorded programme, Simon and Mark are called upon to fill the void left by a rain-delayed Ryder Cup. The doctors do so admirably, talking to veteran film producer Stephen Woolley about his latest, Made in Daghenham. Dr K then reviews said flick, along with Buried, Takers and The First Movie.</itunes:summary>
+      <pubDate>Fri, 01 Oct 2010 17:16:00 +0100</pubDate>
+      <itunes:duration>86:34</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101001-1716a.mp3" length="41648363" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101001-1716.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101001-1716a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20101001-1716a.mp3" fileSize="41648363" type="audio/mpeg" medium="audio" expression="full" duration="5194" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: The Hole 3D, 24 Sep 10</title>
+      <description>It's a another dose of Friday film fun. Mark and Simon are joined by Mark Cousins, a critic who's just released his first feature film, The First Movie. Reviews this week include Joe Dante's horror film for kids, The Hole 3D, and Ben Affleck's The Town. Dr Kermode also has a thing or two to say about Julia Robert's new flick Eat, Pray, Love.</description>
+      <itunes:subtitle>It's a another dose of Friday film fun. Mark and Simon are joined by Mark Cousins, a critic who's just released his first feature film, The First Movie. Reviews this week include Joe Dante's horror film for kids, The Hole 3D, and Ben Affleck's The...</itunes:subtitle>
+      <itunes:summary>It's a another dose of Friday film fun. Mark and Simon are joined by Mark Cousins, a critic who's just released his first feature film, The First Movie. Reviews this week include Joe Dante's horror film for kids, The Hole 3D, and Ben Affleck's The Town. Dr Kermode also has a thing or two to say about Julia Robert's new flick Eat, Pray, Love.</itunes:summary>
+      <pubDate>Fri, 24 Sep 2010 17:00:00 +0100</pubDate>
+      <itunes:duration>95:43</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100924-1700a.mp3" length="46041535" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100924-1700.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100924-1700a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100924-1700a.mp3" fileSize="46041535" type="audio/mpeg" medium="audio" expression="full" duration="5743" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: Septemberfest, 17 Sep 10</title>
+      <description>The two doctors are on Tyneside at 5 live's Septemberfest. A Q&amp;A reveals that Mark's barely seen The Simpsons but likes Life On Mars, that he doesn't know who Alan Shearer is and  that he has no strong feelings on the subject of cabbage. Movie reviews include I'm Still Here, The Other Guys and Winter's Bone.</description>
+      <itunes:subtitle>The two doctors are on Tyneside at 5 live's Septemberfest. A Q&amp;A reveals that Mark's barely seen The Simpsons but likes Life On Mars, that he doesn't know who Alan Shearer is and that he has no strong feelings on the subject of cabbage. Movie reviews...</itunes:subtitle>
+      <itunes:summary>The two doctors are on Tyneside at 5 live's Septemberfest. A Q&amp;A reveals that Mark's barely seen The Simpsons but likes Life On Mars, that he doesn't know who Alan Shearer is and  that he has no strong feelings on the subject of cabbage. Movie reviews include I'm Still Here, The Other Guys and Winter's Bone.</itunes:summary>
+      <pubDate>Fri, 17 Sep 2010 17:13:00 +0100</pubDate>
+      <itunes:duration>88:14</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100917-1713a.mp3" length="42449361" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100917-1713.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100917-1713a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100917-1713a.mp3" fileSize="42449361" type="audio/mpeg" medium="audio" expression="full" duration="5294" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: Tamara Drewe, 10 Sep 10</title>
+      <description>The Good Doctor is back from his Shetland adventures and joins Simon in the studio with a couple of guests: director Joe Dante of Gremlins fame and Oscar-winning screenwriter Christopher Hampton. The movies under the microscope this week include Tamara Drewe starring Gemma Arterton, Cyrus and Resident Evil: Afterlife.</description>
+      <itunes:subtitle>The Good Doctor is back from his Shetland adventures and joins Simon in the studio with a couple of guests: director Joe Dante of Gremlins fame and Oscar-winning screenwriter Christopher Hampton. The movies under the microscope this week include...</itunes:subtitle>
+      <itunes:summary>The Good Doctor is back from his Shetland adventures and joins Simon in the studio with a couple of guests: director Joe Dante of Gremlins fame and Oscar-winning screenwriter Christopher Hampton. The movies under the microscope this week include Tamara Drewe starring Gemma Arterton, Cyrus and Resident Evil: Afterlife.</itunes:summary>
+      <pubDate>Fri, 10 Sep 2010 16:13:00 +0100</pubDate>
+      <itunes:duration>91:14</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100910-1613a.mp3" length="43890400" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100910-1613.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100910-1613a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100910-1613a.mp3" fileSize="43890400" type="audio/mpeg" medium="audio" expression="full" duration="5474" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+    <item>
+      <title>Kermode: Dinner For Schmucks, 03 Sept 10</title>
+      <description>After a break for the summer Simon and Mark return (hooray). Mark is at the Shetland Screenplay while Simon's back in the studio. However, through the power of modern technology they still manage to review Dinner For Schmucks, The Switch, Certified Copy, Last Exorcism, Jonah Hex and Cherry Tree Lane. Plus they speak to the film, music and documentary director Julien Temple and good friend to the show Jason Isaacs (hello).</description>
+      <itunes:subtitle>After a break for the summer Simon and Mark return (hooray). Mark is at the Shetland Screenplay while Simon's back in the studio. However, through the power of modern technology they still manage to review Dinner For Schmucks, The Switch, Certified...</itunes:subtitle>
+      <itunes:summary>After a break for the summer Simon and Mark return (hooray). Mark is at the Shetland Screenplay while Simon's back in the studio. However, through the power of modern technology they still manage to review Dinner For Schmucks, The Switch, Certified Copy, Last Exorcism, Jonah Hex and Cherry Tree Lane. Plus they speak to the film, music and documentary director Julien Temple and good friend to the show Jason Isaacs (hello).</itunes:summary>
+      <pubDate>Fri, 03 Sep 2010 17:57:00 +0100</pubDate>
+      <itunes:duration>84:48</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100903-1757a.mp3" length="40800272" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100903-1757.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100903-1757a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/kermode_20100903-1757a.mp3" fileSize="40800272" type="audio/mpeg" medium="audio" expression="full" duration="5088" />
+      <itunes:author>BBC Radio 5 live</itunes:author>
+    </item>
+  </channel>
+</rss>
