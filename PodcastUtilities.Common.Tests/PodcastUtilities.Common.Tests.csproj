@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{37562F85-B1BD-4AB8-B74B-685B05F9CF41}</ProjectGuid>
+    <ProjectGuid>{03BAF930-2492-4792-9EBC-4FFAA9D3D60B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PodcastUtilities.Common</RootNamespace>
-    <AssemblyName>PodcastUtilities.Common</AssemblyName>
+    <RootNamespace>PodcastUtilities.Common.Tests</RootNamespace>
+    <AssemblyName>PodcastUtilities.Common.Tests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\Rhino\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -45,32 +53,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlFile.cs" />
-    <Compile Include="FileCopier.cs" />
-    <Compile Include="IFileCopier.cs" />
-    <Compile Include="IO\FileUtilities.cs" />
-    <Compile Include="IO\IDirectoryInfo.cs" />
-    <Compile Include="IO\IDirectoryInfoProvider.cs" />
-    <Compile Include="IO\IDriveInfo.cs" />
-    <Compile Include="IO\IDriveInfoProvider.cs" />
-    <Compile Include="IO\IFileUtilities.cs" />
-    <Compile Include="IO\SystemDirectoryInfo.cs" />
-    <Compile Include="IO\SystemDirectoryInfoProvider.cs" />
-    <Compile Include="IO\SystemDriveInfo.cs" />
-    <Compile Include="IO\SystemDriveInfoProvider.cs" />
-    <Compile Include="IPlaylist.cs" />
-    <Compile Include="PlaylistAsx.cs" />
-    <Compile Include="PlaylistFormat.cs" />
-    <Compile Include="PlaylistGenerator.cs" />
-    <Compile Include="PlaylistWpl.cs" />
+    <Compile Include="FileCopierTests\WhenDestinationDriveIsAlreadyFull.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FileFinder.cs" />
-    <Compile Include="StatusUpdateEventArgs.cs" />
-    <Compile Include="SyncItem.cs" />
+    <Compile Include="SpecTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="XML\asxPlaylist.xml" />
-    <EmbeddedResource Include="XML\wplPlaylist.xml" />
+    <ProjectReference Include="..\PodcastUtilities.Common\PodcastUtilities.Common.csproj">
+      <Project>{37562F85-B1BD-4AB8-B74B-685B05F9CF41}</Project>
+      <Name>PodcastUtilities.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
