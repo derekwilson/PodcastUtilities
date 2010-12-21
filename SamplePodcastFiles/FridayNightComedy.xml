@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:ppg="http://bbc.co.uk/2009/01/ppgRss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Friday Night Comedy from BBC Radio 4</title>
+    <link>http://www.bbc.co.uk/radio4/programmes/genres/comedy/satire/</link>
+    <description>Bringing you a satirical take on the week's news with the cream of UK comedy talent from BBC Radio 4.</description>
+    <itunes:summary>Bringing you a satirical take on the week's news with the cream of UK comedy talent from BBC Radio 4.</itunes:summary>
+    <itunes:author>BBC Radio 4</itunes:author>
+    <itunes:owner>
+      <itunes:name>BBC</itunes:name>
+      <itunes:email>podcast.support@bbc.co.uk</itunes:email>
+    </itunes:owner>
+    <language>en-gb</language>
+    <ttl>720</ttl>
+    <ppg:systemRef systemId="pid.brand" key="b006qgt7" />
+    <ppg:systemRef systemId="pid.brand" key="b006r9yq" />
+    <ppg:systemRef systemId="pid.brand" key="b00ry8mt" />
+    <ppg:systemRef systemId="pid.format" key="PT008" />
+    <ppg:systemRef systemId="pid.genre" key="C00079" />
+    <ppg:systemRef systemId="pid.genre" key="C00195" />
+    <ppg:systemRef systemId="pid.genre" key="C00200" />
+    <ppg:network id="radio4" name="BBC Radio 4" />
+    <ppg:seriesDetails typicalDuration="PT28M" active="true" public="true" region="all" wwpid="0" launchDate="2009-01-21" frequency="weekly" daysLive="7" liveItems="1" />
+    <image>
+      <url>http://www.bbc.co.uk/podcasts/assets/artwork/fricomedy.jpg</url>
+      <title>Friday Night Comedy from BBC Radio 4</title>
+      <link>http://www.bbc.co.uk/radio4/programmes/genres/comedy/satire/</link>
+    </image>
+    <itunes:image href="http://www.bbc.co.uk/podcasts/assets/artwork/fricomedy.jpg" />
+    <copyright>(C) BBC 2010</copyright>
+    <pubDate>Fri, 17 Dec 2010 19:00:10 +0000</pubDate>
+    <itunes:category text="Comedy" />
+    <itunes:keywords>Now Show, News Quiz, satire, topical, panel, quiz, Steve Punt, Hugh Dennis, Mitch Benn</itunes:keywords>
+    <media:keywords>Now Show, News Quiz, satire, topical, panel, quiz, Steve Punt, Hugh Dennis, Mitch Benn</media:keywords>
+    <itunes:explicit>no</itunes:explicit>
+    <media:rating scheme="urn:simple">nonadult</media:rating>
+    <atom:link href="http://downloads.bbc.co.uk/podcasts/radio4/fricomedy/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FriComedy: Xmas party political indiscretions</title>
+      <description>On the last 'normal' show of the year (next week is The Now Show panto) Marcus Brigstocke talks about the English Defence League and the other Terry Jones; Jon Holmes travels into the Matrix of real and unreal news; Mitch Benn assesses how happy we are this Christmas and our audience reflect on the most memorable moments of 2010.</description>
+      <itunes:subtitle>On the last 'normal' show of the year (next week is The Now Show panto) Marcus Brigstocke talks about the English Defence League and the other Terry Jones; Jon Holmes travels into the Matrix of real and unreal news; Mitch Benn assesses how happy we...</itunes:subtitle>
+      <itunes:summary>On the last 'normal' show of the year (next week is The Now Show panto) Marcus Brigstocke talks about the English Defence League and the other Terry Jones; Jon Holmes travels into the Matrix of real and unreal news; Mitch Benn assesses how happy we are this Christmas and our audience reflect on the most memorable moments of 2010.</itunes:summary>
+      <pubDate>Fri, 17 Dec 2010 19:00:00 +0000</pubDate>
+      <itunes:duration>27:21</itunes:duration>
+      <enclosure url="http://downloads.bbc.co.uk/podcasts/radio4/fricomedy/fricomedy_20101217-1900a.mp3" length="26334467" type="audio/mpeg" />
+      <guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/radio4/fricomedy/fricomedy_20101217-1900.mp3</guid>
+      <link>http://downloads.bbc.co.uk/podcasts/radio4/fricomedy/fricomedy_20101217-1900a.mp3</link>
+      <media:content url="http://downloads.bbc.co.uk/podcasts/radio4/fricomedy/fricomedy_20101217-1900a.mp3" fileSize="26334467" type="audio/mpeg" medium="audio" expression="full" duration="1641" />
+      <itunes:author>BBC Radio 4</itunes:author>
+    </item>
+  </channel>
+</rss>
