@@ -20,17 +20,6 @@ namespace PodcastUtilities.Common
     	private IDriveInfoProvider DriveInfoProvider { get; set; }
     	private IFileUtilities FileUtilities { get; set; }
 
-    	private void OnStatusUpdate(string message)
-        {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
-        }
-
-        private void OnStatusUpdate(StatusUpdateEventArgs e)
-        {
-            if (StatusUpdate != null)
-                StatusUpdate(this, e);
-        }
-
         public void CopyFilesToTarget(
 			List<SyncItem> sourceFiles,
 			string sourceRootPath,
@@ -82,23 +71,34 @@ namespace PodcastUtilities.Common
         	var driveInfo = DriveInfoProvider.GetDriveInfo(destinationRootPath);
         	long availableFreeSpace = driveInfo.AvailableFreeSpace;
 
-			long freeKB = 0;
-            double freeMB = 0;
-            double freeGB = 0;
+			long freeKb = 0;
+            double freeMb = 0;
+            double freeGb = 0;
 			if (availableFreeSpace > 0)
-				freeKB = (availableFreeSpace / 1024);
-            if (freeKB > 0)
-                freeMB = (freeKB / 1024);
-            if (freeMB > 0)
-                freeGB = (freeMB / 1024);
+				freeKb = (availableFreeSpace / 1024);
+            if (freeKb > 0)
+                freeMb = (freeKb / 1024);
+            if (freeMb > 0)
+                freeGb = (freeMb / 1024);
 
-            if (freeMB < freeSpaceToLeaveOnDestination)
+            if (freeMb < freeSpaceToLeaveOnDestination)
             {
                 OnStatusUpdate(string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeSpaceToLeaveOnDestination));
-                OnStatusUpdate(string.Format("Free Space on drive {0} is {1:#,0.##} KB, {2:#,0.##} MB, {3:#,0.##} GB", driveInfo.Name, freeKB, freeMB, freeGB));
+                OnStatusUpdate(string.Format("Free Space on drive {0} is {1:#,0.##} KB, {2:#,0.##} MB, {3:#,0.##} GB", driveInfo.Name, freeKb, freeMb, freeGb));
                 return true;
             }
             return false;
         }
-    }
+
+		private void OnStatusUpdate(string message)
+		{
+			OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
+		}
+
+		private void OnStatusUpdate(StatusUpdateEventArgs e)
+		{
+			if (StatusUpdate != null)
+				StatusUpdate(this, e);
+		}
+	}
 }
