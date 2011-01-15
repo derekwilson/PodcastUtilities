@@ -6,7 +6,7 @@ using Rhino.Mocks;
 namespace PodcastUtilities.Common.Tests.FileCopierTests
 {
 	public abstract class WhenTestingFileCopier
-		: SpecTestBase
+		: WhenTestingBehaviour
 	{
 		protected FileCopier FileCopier { get; set; }
 		
