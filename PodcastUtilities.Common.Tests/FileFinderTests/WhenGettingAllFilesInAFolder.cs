@@ -8,27 +8,19 @@ namespace PodcastUtilities.Common.Tests.FileFinderTests
 	{
 		protected override void When()
 		{
-			FoundFiles = FileFinder.GetFiles(@"c:\blah", "*.mp3", -1, "name", true);
+			FoundFiles = FileFinder.GetFiles(@"d:\podcasts", "*.wma");
 		}
 
 		[Test]
 		public void ItShouldGetTheDirectoryInfoFromTheProvider()
 		{
-			DirectoryInfoProvider.AssertWasCalled(d => d.GetDirectoryInfo(@"c:\blah"));
+			DirectoryInfoProvider.AssertWasCalled(d => d.GetDirectoryInfo(@"d:\podcasts"));
 		}
 
 		[Test]
 		public void ItShouldGetTheFilesFromTheDirectoryInfo()
 		{
-			DirectoryInfo.AssertWasCalled(d => d.GetFiles("*.mp3"));
-		}
-
-		[Test]
-		public void ItShouldSortTheFiles()
-		{
-			FileSorter.AssertWasCalled(
-				s => s.Sort(null, "name", true),
-				o => o.Constraints(R.Property.Value("Count", 3), R.Is.Equal("name"), R.Is.Equal(true)));
+			DirectoryInfo.AssertWasCalled(d => d.GetFiles("*.wma"));
 		}
 
 		[Test]

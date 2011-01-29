@@ -7,6 +7,7 @@ using System.IO;
 
 using PodcastUtilities.Common;
 using System.Xml;
+using PodcastUtilities.Common.IO;
 
 namespace GeneratePlaylist
 {
@@ -36,15 +37,17 @@ namespace GeneratePlaylist
                 return;
             }
 
-            ControlFile control = new ControlFile(args[0]);
-            PlaylistGenerator generator = new PlaylistGenerator(new FileFinder());
-            generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(generator_StatusUpdate);
+            var control = new ControlFile(args[0]);
+        	var finder = new FileFinder(new FileSorter(), new SystemDirectoryInfoProvider());
+
+			var generator = new PlaylistGenerator(finder);
+            generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(GeneratorStatusUpdate);
 
             if (!string.IsNullOrEmpty(control.PlaylistFilename))
                 generator.GeneratePlaylist(control, false);
         }
 
-        static void generator_StatusUpdate(object sender, StatusUpdateEventArgs e)
+        static void GeneratorStatusUpdate(object sender, StatusUpdateEventArgs e)
         {
             // maybe we want to optionally filter verbose message
             Console.WriteLine(e.Message);
