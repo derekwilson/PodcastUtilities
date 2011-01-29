@@ -12,7 +12,9 @@ namespace SyncPodcasts
 			container.Register<IFileUtilities, FileUtilities>();
 			container.Register<IFileCopier, FileCopier>();
 			container.Register<IFileFinder, FileFinder>();
+			container.Register<IFileSorter, FileSorter>();
 			container.Register<IUnwantedFileRemover, UnwantedFileRemover>();
+			container.Register<IPlaylistFactory, PlaylistFactory>();
 		}
 	}
 }

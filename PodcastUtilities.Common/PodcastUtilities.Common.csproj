@@ -89,8 +89,10 @@
     <Compile Include="IO\SystemDriveInfoProvider.cs" />
     <Compile Include="IO\SystemFileInfo.cs" />
     <Compile Include="IPlaylist.cs" />
+    <Compile Include="IPlaylistFactory.cs" />
     <Compile Include="IUnwantedFileRemover.cs" />
     <Compile Include="PlaylistAsx.cs" />
+    <Compile Include="PlaylistFactory.cs" />
     <Compile Include="PlaylistFormat.cs" />
     <Compile Include="PlaylistGenerator.cs" />
     <Compile Include="PlaylistWpl.cs" />
