@@ -84,6 +84,9 @@
     <Compile Include="FileFinderTests\WhenGettingAllFilesInAFolder.cs" />
     <Compile Include="FileFinderTests\WhenGettingLessThanAllFilesInAFolder.cs" />
     <Compile Include="FileFinderTests\WhenTestingFileFinder.cs" />
+    <Compile Include="PodcastSynchronizerTests\WhenSubscribingToStatusUpdateEvent.cs" />
+    <Compile Include="PodcastSynchronizerTests\WhenTestingPodcastSynchronizer.cs" />
+    <Compile Include="PodcastSynchronizerTests\WhenUsingPodcastSynchronizerToSynchronize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenTestingBehaviour.cs" />
   </ItemGroup>
