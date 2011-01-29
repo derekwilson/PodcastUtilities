@@ -37,7 +37,7 @@ namespace GeneratePlaylist
             }
 
             ControlFile control = new ControlFile(args[0]);
-            PlaylistGenerator generator = new PlaylistGenerator();
+            PlaylistGenerator generator = new PlaylistGenerator(new FileFinder());
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(generator_StatusUpdate);
 
             if (!string.IsNullOrEmpty(control.PlaylistFilename))

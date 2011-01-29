@@ -81,6 +81,9 @@
     <Compile Include="FileCopierTests\WhenDestinationDriveIsAlreadyFull.cs" />
     <Compile Include="FileCopierTests\WhenDestinationFileAlreadyExists.cs" />
     <Compile Include="FileCopierTests\WhenTestingFileCopier.cs" />
+    <Compile Include="FileFinderTests\WhenGettingAllFilesInAFolder.cs" />
+    <Compile Include="FileFinderTests\WhenGettingLessThanAllFilesInAFolder.cs" />
+    <Compile Include="FileFinderTests\WhenTestingFileFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenTestingBehaviour.cs" />
   </ItemGroup>

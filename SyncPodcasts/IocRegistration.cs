@@ -11,6 +11,8 @@ namespace SyncPodcasts
 			container.Register<IDirectoryInfoProvider, SystemDirectoryInfoProvider>();
 			container.Register<IFileUtilities, FileUtilities>();
 			container.Register<IFileCopier, FileCopier>();
+			container.Register<IFileFinder, FileFinder>();
+			container.Register<IUnwantedFileRemover, UnwantedFileRemover>();
 		}
 	}
 }
