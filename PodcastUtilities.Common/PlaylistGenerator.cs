@@ -9,16 +9,20 @@ namespace PodcastUtilities.Common
 {
     public class PlaylistGenerator
     {
-    	public PlaylistGenerator(IFileFinder fileFinder)
+    	public PlaylistGenerator(
+			IFileFinder fileFinder,
+			IPlaylistFactory playlistFactory)
     	{
     		FileFinder = fileFinder;
+    		PlaylistFactory = playlistFactory;
     	}
 
     	public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
     	private IFileFinder FileFinder { get; set; }
+    	private IPlaylistFactory PlaylistFactory { get; set; }
 
-		private void OnStatusUpdate(string message)
+    	private void OnStatusUpdate(string message)
         {
             OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
         }
@@ -29,24 +33,13 @@ namespace PodcastUtilities.Common
                 StatusUpdate(this, e);
         }
 
-        static private IPlaylist PlaylistFactory(IControlFile control)
-        {
-            switch (control.PlaylistFormat)
-            {
-                case PlaylistFormat.ASX:
-                    return new PlaylistAsx(control.PlaylistFilename, true);
-                case PlaylistFormat.WPL:
-                    return new PlaylistWpl(control.PlaylistFilename, true);
-            }
-            throw new IndexOutOfRangeException("Unknown playlist format");
-        }
-
         public void GeneratePlaylist(IControlFile control, bool copyToDestination)
         {
 			var allDestFiles = control.Podcasts.SelectMany(
         		podcast => FileFinder.GetFiles(Path.Combine(control.DestinationRoot, podcast.Folder), podcast.Pattern));
 
-            IPlaylist p = PlaylistFactory(control);
+			IPlaylist p = PlaylistFactory.CreatePlaylist(control.PlaylistFormat, control.PlaylistFilename);
+
             foreach (IFileInfo thisFile in allDestFiles)
             {
                 string thisRelativeFile = thisFile.FullName;

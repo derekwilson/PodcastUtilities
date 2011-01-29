@@ -39,8 +39,9 @@ namespace GeneratePlaylist
 
             var control = new ControlFile(args[0]);
         	var finder = new FileFinder(new FileSorter(), new SystemDirectoryInfoProvider());
+        	var playlistFactory = new PlaylistFactory();
 
-			var generator = new PlaylistGenerator(finder);
+			var generator = new PlaylistGenerator(finder, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(GeneratorStatusUpdate);
 
             if (!string.IsNullOrEmpty(control.PlaylistFilename))
