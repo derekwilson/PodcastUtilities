@@ -83,7 +83,13 @@
     <Compile Include="FileCopierTests\WhenTestingFileCopier.cs" />
     <Compile Include="FileFinderTests\WhenGettingAllFilesInAFolder.cs" />
     <Compile Include="FileFinderTests\WhenGettingLessThanAllFilesInAFolder.cs" />
+    <Compile Include="FileFinderTests\WhenGettingUnlimitedSortedFilesInAFolder.cs" />
     <Compile Include="FileFinderTests\WhenTestingFileFinder.cs" />
+    <Compile Include="FileSorterTests\WhenSortingByCreationTimeAscending.cs" />
+    <Compile Include="FileSorterTests\WhenSortingByCreationTimeDescending.cs" />
+    <Compile Include="FileSorterTests\WhenSortingByNameAscending.cs" />
+    <Compile Include="FileSorterTests\WhenSortingByNameDescending.cs" />
+    <Compile Include="FileSorterTests\WhenTestingFileSorter.cs" />
     <Compile Include="PodcastSynchronizerTests\WhenSubscribingToStatusUpdateEvent.cs" />
     <Compile Include="PodcastSynchronizerTests\WhenTestingPodcastSynchronizer.cs" />
     <Compile Include="PodcastSynchronizerTests\WhenUsingPodcastSynchronizerToSynchronize.cs" />

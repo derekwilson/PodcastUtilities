@@ -13,11 +13,6 @@ namespace PodcastUtilities.Common
     		DirectoryInfoProvider = directoryInfoProvider;
     	}
 
-    	public FileFinder()
-			: this(new FileSorter(), new SystemDirectoryInfoProvider())
-    	{
-    	}
-
 
     	private IFileSorter FileSorter { get; set; }
     	private IDirectoryInfoProvider DirectoryInfoProvider { get; set; }
