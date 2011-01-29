@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using PodcastUtilities.Common.IO;
 
 namespace PodcastUtilities.Common
 {
     public class PlaylistGenerator
     {
-        public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
+    	public PlaylistGenerator(IFileFinder fileFinder)
+    	{
+    		FileFinder = fileFinder;
+    	}
 
-        private void OnStatusUpdate(string message)
+    	public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
+
+    	private IFileFinder FileFinder { get; set; }
+
+		private void OnStatusUpdate(string message)
         {
             OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
         }
@@ -21,7 +29,7 @@ namespace PodcastUtilities.Common
                 StatusUpdate(this, e);
         }
 
-        static private IPlaylist PlaylistFactory(ControlFile control)
+        static private IPlaylist PlaylistFactory(IControlFile control)
         {
             switch (control.PlaylistFormat)
             {
@@ -33,14 +41,13 @@ namespace PodcastUtilities.Common
             throw new IndexOutOfRangeException("Unknown playlist format");
         }
 
-        public void GeneratePlaylist(ControlFile control, bool copyToDestination)
+        public void GeneratePlaylist(IControlFile control, bool copyToDestination)
         {
-            FileFinder finder = new FileFinder();
-            finder.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(finder_StatusUpdate);
-            List<FileInfo> allDestFiles = finder.GetAllFilesInTarget(control);
+			var allDestFiles = control.Podcasts.SelectMany(
+        		podcast => FileFinder.GetFiles(Path.Combine(control.DestinationRoot, podcast.Folder), podcast.Pattern));
 
             IPlaylist p = PlaylistFactory(control);
-            foreach (FileInfo thisFile in allDestFiles)
+            foreach (IFileInfo thisFile in allDestFiles)
             {
                 string thisRelativeFile = thisFile.FullName;
                 string absRoot = Path.GetFullPath(control.DestinationRoot);

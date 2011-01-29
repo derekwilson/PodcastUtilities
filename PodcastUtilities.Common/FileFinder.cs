@@ -1,178 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Xml;
-using System.IO;
+using PodcastUtilities.Common.IO;
 
 namespace PodcastUtilities.Common
 {
     public class FileFinder
+		: IFileFinder
     {
-        public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
+    	public FileFinder(IFileSorter fileSorter, IDirectoryInfoProvider directoryInfoProvider)
+    	{
+    		FileSorter = fileSorter;
+    		DirectoryInfoProvider = directoryInfoProvider;
+    	}
 
-        private void OnStatusUpdate(string message)
+    	public FileFinder()
+			: this(new FileSorter(), new SystemDirectoryInfoProvider())
+    	{
+    	}
+
+
+    	private IFileSorter FileSorter { get; set; }
+    	private IDirectoryInfoProvider DirectoryInfoProvider { get; set; }
+
+
+		public List<IFileInfo> GetFiles(
+			string folderPath,
+			string pattern,
+			int maximumNumberOfFiles,
+			string sortField,
+			bool ascendingSort)
+		{
+			var directoryInfo = DirectoryInfoProvider.GetDirectoryInfo(folderPath);
+
+			var sortedFiles = GetSortedFiles(directoryInfo, pattern, sortField, ascendingSort);
+			if (maximumNumberOfFiles >= 0)
+			{
+				sortedFiles = sortedFiles.Take(maximumNumberOfFiles);
+			}
+
+			return sortedFiles.ToList();
+		}
+
+		public List<IFileInfo> GetFiles(
+			string folderPath,
+			string pattern)
+		{
+			var directoryInfo = DirectoryInfoProvider.GetDirectoryInfo(folderPath);
+
+			return directoryInfo.GetFiles(pattern).ToList();
+		}
+
+
+        private IEnumerable<IFileInfo> GetSortedFiles(IDirectoryInfo src, string pattern, string sortField, bool ascendingSort)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
-        }
+            var fileList = new List<IFileInfo>(src.GetFiles(pattern));
 
-        private void OnStatusUpdate(StatusUpdateEventArgs e)
-        {
-            if (StatusUpdate != null)
-                StatusUpdate(this, e);
-        }
-
-        public List<FileInfo> GetAllFilesInTarget(ControlFile control)
-        {
-            List<FileInfo> allDestFiles = new List<FileInfo>();
-
-            string destRoot = control.DestinationRoot;
-
-            XmlNodeList list = control.SelectNodes("podcasts/podcast");
-            if (list != null)
-            {
-                foreach (XmlNode node in list)
-                {
-                    string folder = control.GetNodeText(node, "folder");
-                    string pattern = control.GetNodeText(node, "pattern");
-
-                    string destFolder = Path.Combine(destRoot, folder);
-                    DirectoryInfo dest = new DirectoryInfo(destFolder);
-                    if (!dest.Exists)
-                        continue;
-
-                    FileInfo[] files = dest.GetFiles(pattern);
-                    if (files.Length == 0)
-                        continue;
-
-                    allDestFiles.AddRange(files);
-                }
-            }
-
-            return allDestFiles;
-        }
-
-        public List<SyncItem> GetAllSourceFiles(ControlFile control, bool performDeleteOnTarget)
-        {
-            List<SyncItem> allSourceFiles = new List<SyncItem>();
-
-            string sourceRoot = control.SourceRoot;
-            string destRoot = control.DestinationRoot;
-
-            XmlNodeList list = control.SelectNodes("podcasts/podcast");
-            if (list != null)
-            {
-                foreach (XmlNode node in list)
-                {
-                    string folder = control.GetNodeText(node, "folder");
-                    string pattern = control.GetNodeText(node, "pattern");
-                    string sortField = GetSortField(control, node);
-                    bool ascendingSort = !(GetSortDirection(control, node).ToLower().StartsWith("desc"));
-                    int nFilesToAdd = Convert.ToInt32(control.GetNodeText(node, "number"));
-
-                    string sourceFolder = Path.Combine(sourceRoot, folder);
-                    List<SyncItem> theseFiles = GetSourceFiles(sourceFolder, pattern, nFilesToAdd, sortField, ascendingSort);
-
-                    if (performDeleteOnTarget)
-                    {
-                        string destFolder = Path.Combine(destRoot, folder);
-                        RemoveUnwatedFilesFromTarget(theseFiles, destFolder, pattern, false);
-                    }
-
-                    allSourceFiles.AddRange(theseFiles);
-                }
-            }
-
-            return allSourceFiles;
-        }
-
-        private static string GetSortField(ControlFile control, XmlNode node)
-        {
-            try
-            {
-                return control.GetNodeText(node, "sortfield");
-            }
-            catch
-            {
-                return control.SortField;
-            }
-        }
-
-        private static string GetSortDirection(ControlFile control, XmlNode node)
-        {
-            try
-            {
-                return control.GetNodeText(node, "sortdirection");
-            }
-            catch
-            {
-                return control.SortDirection;
-            }
-        }
-
-        private static IEnumerable<FileInfo> GetSortedFiles(DirectoryInfo src, string pattern, string sortField, bool ascendingSort)
-        {
-            List<FileInfo> fileList = new List<FileInfo>(src.GetFiles(pattern));
-
-            switch (sortField.ToLower())
-            {
-                case "creationtime":
-                    fileList.Sort((f1, f2) => f1.CreationTime.CompareTo(f2.CreationTime));
-                    break;
-
-                default:
-                    fileList.Sort((f1, f2) => f1.Name.CompareTo(f2.Name));
-                    break;
-            }
-
-            if (!ascendingSort)
-            {
-                fileList.Reverse();
-            }
+        	FileSorter.Sort(fileList, sortField, ascendingSort);
 
             return fileList;
         }
 
-		private static List<SyncItem> GetSourceFiles(string sourceFolder, string pattern, int nFilesToAdd, string sortField, bool ascendingSort)
-        {
-            List<SyncItem> retval = new List<SyncItem>();
-            DirectoryInfo src = new DirectoryInfo(sourceFolder);
-            var files = GetSortedFiles(src, pattern, sortField, ascendingSort); 
-
-            int nAdded = 0;
-            foreach (FileInfo file in files)
-            {
-                if (nFilesToAdd >= 0 && nAdded >= nFilesToAdd)
-                    break;
-
-                nAdded++;
-                retval.Add(new SyncItem() { Source = file, Copied = false, DestinationPath = "" });
-            }
-
-            return retval;
-        }
-
-        private void RemoveUnwatedFilesFromTarget(List<SyncItem> sourceFiles, string destFolder, string pattern, bool whatif)
-        {
-            DirectoryInfo dest = new DirectoryInfo(destFolder);
-            if (!dest.Exists)
-                dest.Create();
-
-            FileInfo[] files = dest.GetFiles(pattern);
-            if (files.Length == 0)
-                return;
-
-            foreach (FileInfo thisFile in files)
-            {
-                SyncItem thisItem = new SyncItem() { Source = thisFile, Copied = false, DestinationPath = "" };
-                if (sourceFiles.Find(delegate(SyncItem item) { return item.Source.Name == thisItem.Source.Name; }) == null)
-                {
-                    // we cannot find the file that is in the destination in the source
-                    OnStatusUpdate(string.Format("Removing: {0}", thisFile.FullName));
-                    if (!whatif)
-                        File.Delete(thisFile.FullName);
-                }
-            }
-        }
     }
 }
