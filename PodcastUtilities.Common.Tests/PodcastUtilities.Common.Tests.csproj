@@ -94,6 +94,10 @@
     <Compile Include="PodcastSynchronizerTests\WhenTestingPodcastSynchronizer.cs" />
     <Compile Include="PodcastSynchronizerTests\WhenUsingPodcastSynchronizerToSynchronize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnwantedFileRemoverTests\WhenDestinationDirectoryDoesNotExist.cs" />
+    <Compile Include="UnwantedFileRemoverTests\WhenTestingUnwantedFileRemover.cs" />
+    <Compile Include="UnwantedFileRemoverTests\WhenThereAreFilesToKeep.cs" />
+    <Compile Include="UnwantedFileRemoverTests\WhenThereAreNoFilesToKeep.cs" />
     <Compile Include="WhenTestingBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
