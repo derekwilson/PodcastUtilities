@@ -71,26 +71,38 @@
   <ItemGroup>
     <Compile Include="ControlFile.cs" />
     <Compile Include="FileCopier.cs" />
+    <Compile Include="FileSorter.cs" />
+    <Compile Include="IControlFile.cs" />
     <Compile Include="IFileCopier.cs" />
+    <Compile Include="IFileFinder.cs" />
+    <Compile Include="IFileSorter.cs" />
     <Compile Include="IO\FileUtilities.cs" />
     <Compile Include="IO\IDirectoryInfo.cs" />
     <Compile Include="IO\IDirectoryInfoProvider.cs" />
     <Compile Include="IO\IDriveInfo.cs" />
     <Compile Include="IO\IDriveInfoProvider.cs" />
+    <Compile Include="IO\IFileInfo.cs" />
     <Compile Include="IO\IFileUtilities.cs" />
     <Compile Include="IO\SystemDirectoryInfo.cs" />
     <Compile Include="IO\SystemDirectoryInfoProvider.cs" />
     <Compile Include="IO\SystemDriveInfo.cs" />
     <Compile Include="IO\SystemDriveInfoProvider.cs" />
+    <Compile Include="IO\SystemFileInfo.cs" />
     <Compile Include="IPlaylist.cs" />
+    <Compile Include="IPlaylistFactory.cs" />
+    <Compile Include="IUnwantedFileRemover.cs" />
     <Compile Include="PlaylistAsx.cs" />
+    <Compile Include="PlaylistFactory.cs" />
     <Compile Include="PlaylistFormat.cs" />
     <Compile Include="PlaylistGenerator.cs" />
     <Compile Include="PlaylistWpl.cs" />
+    <Compile Include="PodcastInfo.cs" />
+    <Compile Include="PodcastSynchronizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FileFinder.cs" />
     <Compile Include="StatusUpdateEventArgs.cs" />
     <Compile Include="SyncItem.cs" />
+    <Compile Include="UnwantedFileRemover.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="XML\asxPlaylist.xml" />

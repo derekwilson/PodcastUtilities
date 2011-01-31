@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Reflection;
-using System.IO;
-using System.Xml;
-
 using PodcastUtilities.Common;
-using PodcastUtilities.Common.IO;
 
 namespace SyncPodcasts
 {
@@ -39,22 +32,19 @@ namespace SyncPodcasts
 
 			LinFuIocContainer iocContainer = InitializeIocContainer();
 
-			ControlFile control = new ControlFile(args[0]);
-            FileFinder finder = new FileFinder();
-            finder.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
+			var control = new ControlFile(args[0]);
+			var finder = iocContainer.Resolve<IFileFinder>();
 			var copier = iocContainer.Resolve<IFileCopier>();
-            copier.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
-            PlaylistGenerator generator = new PlaylistGenerator();
+			var remover = iocContainer.Resolve<IUnwantedFileRemover>();
+			var playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
+
+            var generator = new PlaylistGenerator(finder, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
-			List<SyncItem> sourceFiles = finder.GetAllSourceFiles(control,true);
+			var synchronizer = new PodcastSynchronizer(finder, copier, remover);
+			synchronizer.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
-			copier.CopyFilesToTarget(
-				sourceFiles,
-				control.SourceRoot,
-                control.DestinationRoot,
-                control.FreeSpaceToLeaveOnDestination,
-				false);
+			synchronizer.Synchronize(control, false);
 
 			if (!string.IsNullOrEmpty(control.PlaylistFilename))
 				generator.GeneratePlaylist(control, true);

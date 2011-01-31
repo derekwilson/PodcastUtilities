@@ -1,43 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml;
 
 namespace PodcastUtilities.Common
 {
-	public class ControlFile : XmlDocument
+	public class ControlFile : IControlFile
 	{
         private const string DefaultSortField = "Name";
         private const string DefaultSortDirection = "ascending";
         
-        private string _filename;
+        private readonly XmlDocument _xmlDocument;
+
+		private List<PodcastInfo> _podcasts;
 
 		public ControlFile(string filename)
 		{
-			_filename = filename;
+			_xmlDocument = new XmlDocument();
 
-			Load(_filename);
-		}
+			_xmlDocument.Load(filename);
 
-        private string GetNodeText(string xpath)
-		{
-			XmlNode n = SelectSingleNode(xpath);
-			if (n == null)
-			{
-				throw new System.Exception("GetNodeText : Node path '" + xpath + "' not found");
-			}
-			return n.InnerText;
-		}
-
-		public string GetNodeText(XmlNode root, string xpath)
-		{
-			XmlNode n = root.SelectSingleNode(xpath);
-			if (n == null)
-			{
-				throw new System.Exception("GetNodeText : Node path '" + xpath + "' not found");
-			}
-			return n.InnerText;
+			ReadPodcasts();
 		}
 
 		public string SourceRoot
@@ -81,23 +63,21 @@ namespace PodcastUtilities.Common
                 }
                 catch
                 {
+					return 0;
                 }
-                return 0;
             }
         }
 
-        public string SortField
+		public IList<PodcastInfo> Podcasts
+		{
+			get { return _podcasts; }
+		}
+
+		public string SortField
         {
             get
             {
-                try
-                {
-                    return GetNodeText("podcasts/global/sortfield");
-                }
-                catch
-                {
-                    return DefaultSortField;
-                }
+				return GetNodeTextOrDefault("podcasts/global/sortfield", DefaultSortField);
             }
         }
 
@@ -105,15 +85,60 @@ namespace PodcastUtilities.Common
         {
             get
             {
-                try
-                {
-                    return GetNodeText("podcasts/global/sortdirection");
-                }
-                catch
-                {
-                    return DefaultSortDirection;
-                }
+            	return GetNodeTextOrDefault("podcasts/global/sortdirection", DefaultSortDirection);
             }
         }
-    }
+
+
+		private void ReadPodcasts()
+		{
+			_podcasts = new List<PodcastInfo>();
+
+			var podcastNodes = _xmlDocument.SelectNodes("podcasts/podcast");
+
+			if (podcastNodes != null)
+			{
+				foreach (XmlNode podcastNode in podcastNodes)
+				{
+					var podcastInfo = new PodcastInfo
+					{
+						Folder = GetNodeText(podcastNode, "folder"),
+						Pattern = GetNodeText(podcastNode, "pattern"),
+						MaximumNumberOfFiles = Convert.ToInt32(GetNodeTextOrDefault(podcastNode, "number", "-1")),
+						SortField = GetNodeTextOrDefault(podcastNode, "sortfield", SortField),
+						AscendingSort = !(GetNodeTextOrDefault(podcastNode, "sortdirection", SortDirection).ToLower().StartsWith("desc"))
+					};
+
+					_podcasts.Add(podcastInfo);
+				}
+			}
+		}
+
+		private string GetNodeText(string xpath)
+		{
+			return GetNodeText(_xmlDocument, xpath);
+		}
+
+		private string GetNodeTextOrDefault(string xpath, string defaultText)
+		{
+			return GetNodeTextOrDefault(_xmlDocument, xpath, defaultText);
+		}
+
+		private static string GetNodeText(XmlNode root, string xpath)
+		{
+			XmlNode n = root.SelectSingleNode(xpath);
+			if (n == null)
+			{
+				throw new System.Exception("GetNodeText : Node path '" + xpath + "' not found");
+			}
+			return n.InnerText;
+		}
+
+		private static string GetNodeTextOrDefault(XmlNode root, string xpath, string defaultText)
+		{
+			XmlNode n = root.SelectSingleNode(xpath);
+
+			return ((n != null) ? n.InnerText : defaultText);
+		}
+	}
 }

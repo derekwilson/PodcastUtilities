@@ -3,14 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using PodcastUtilities.Common.IO;
 
 namespace PodcastUtilities.Common
 {
     public class PlaylistGenerator
     {
-        public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
+    	public PlaylistGenerator(
+			IFileFinder fileFinder,
+			IPlaylistFactory playlistFactory)
+    	{
+    		FileFinder = fileFinder;
+    		PlaylistFactory = playlistFactory;
+    	}
 
-        private void OnStatusUpdate(string message)
+    	public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
+
+    	private IFileFinder FileFinder { get; set; }
+    	private IPlaylistFactory PlaylistFactory { get; set; }
+
+    	private void OnStatusUpdate(string message)
         {
             OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
         }
@@ -21,26 +33,14 @@ namespace PodcastUtilities.Common
                 StatusUpdate(this, e);
         }
 
-        static private IPlaylist PlaylistFactory(ControlFile control)
+        public void GeneratePlaylist(IControlFile control, bool copyToDestination)
         {
-            switch (control.PlaylistFormat)
-            {
-                case PlaylistFormat.ASX:
-                    return new PlaylistAsx(control.PlaylistFilename, true);
-                case PlaylistFormat.WPL:
-                    return new PlaylistWpl(control.PlaylistFilename, true);
-            }
-            throw new IndexOutOfRangeException("Unknown playlist format");
-        }
+			var allDestFiles = control.Podcasts.SelectMany(
+        		podcast => FileFinder.GetFiles(Path.Combine(control.DestinationRoot, podcast.Folder), podcast.Pattern));
 
-        public void GeneratePlaylist(ControlFile control, bool copyToDestination)
-        {
-            FileFinder finder = new FileFinder();
-            finder.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(finder_StatusUpdate);
-            List<FileInfo> allDestFiles = finder.GetAllFilesInTarget(control);
+			IPlaylist p = PlaylistFactory.CreatePlaylist(control.PlaylistFormat, control.PlaylistFilename);
 
-            IPlaylist p = PlaylistFactory(control);
-            foreach (FileInfo thisFile in allDestFiles)
+            foreach (IFileInfo thisFile in allDestFiles)
             {
                 string thisRelativeFile = thisFile.FullName;
                 string absRoot = Path.GetFullPath(control.DestinationRoot);

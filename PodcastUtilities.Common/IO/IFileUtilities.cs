@@ -5,5 +5,7 @@
 		bool FileExists(string path);
 
 		void FileCopy(string sourceFileName, string destinationFileName);
+
+		void FileDelete(string path);
 	}
 }
