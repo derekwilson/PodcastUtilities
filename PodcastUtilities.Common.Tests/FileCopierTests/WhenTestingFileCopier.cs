@@ -6,7 +6,7 @@ using Rhino.Mocks;
 namespace PodcastUtilities.Common.Tests.FileCopierTests
 {
 	public abstract class WhenTestingFileCopier
-		: SpecTestBase
+		: WhenTestingBehaviour
 	{
 		protected FileCopier FileCopier { get; set; }
 		
@@ -32,9 +32,11 @@ namespace PodcastUtilities.Common.Tests.FileCopierTests
 
 			SourceFiles = new List<SyncItem>
 			              	{
-			              		new SyncItem {Source = new FileInfo(@"c:\Source\A")},
-			              		new SyncItem {Source = new FileInfo(@"c:\Source\B")}
+			              		new SyncItem {Source = GenerateMock<IFileInfo>()},
+			              		new SyncItem {Source = GenerateMock<IFileInfo>()}
 			              	};
+			SourceFiles[0].Source.Stub(s => s.FullName).Return(@"c:\Source\A");
+			SourceFiles[1].Source.Stub(s => s.FullName).Return(@"c:\Source\B");
 
 			StatusUpdates = new List<StatusUpdateEventArgs>();
 
