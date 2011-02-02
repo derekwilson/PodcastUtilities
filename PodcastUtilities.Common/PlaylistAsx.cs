@@ -1,36 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
 using System.IO;
-using System.Reflection;
 
 namespace PodcastUtilities.Common
 {
-    public class PlaylistAsx : XmlDocument, IPlaylist
+	public class PlaylistAsx : XmlFileBase, IPlaylist
 	{
-        public static string C_ASX_XML = "PodcastUtilities.Common.XML.asxPlaylist.xml";
-
-		private string _filename;
+        public static string EmptyAsxResource = "PodcastUtilities.Common.XML.asxPlaylist.xml";
 
 		public PlaylistAsx(string filename, bool create)
+			: base(filename, create, EmptyAsxResource)
 		{
-			_filename = filename;
-
 			if (create)
 			{
-				Load(GetXmlStream(C_ASX_XML));
-				Title = System.IO.Path.GetFileNameWithoutExtension(filename);
+				Title = Path.GetFileNameWithoutExtension(filename);
 			}
-			else
-				Load(_filename);
-		}
-
-		protected Stream GetXmlStream(string xmlfile)
-		{
-			Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(xmlfile);
-			return s;
 		}
 
 		public int NumberOfTracks
@@ -43,34 +26,6 @@ namespace PodcastUtilities.Common
 
 				return 0;
 			}
-		}
-
-		public string Filename
-		{
-			get
-			{
-				return _filename;
-			}
-		}
-
-		private string GetNodeText(string xpath)
-		{
-			XmlNode n = SelectSingleNode(xpath);
-			if (n == null)
-			{
-				throw new System.Exception("GetNodeText : Node path '" + xpath + "' not found");
-			}
-			return n.InnerText;
-		}
-
-		private void SetNodeText(string xpath, string val)
-		{
-			XmlNode n = SelectSingleNode(xpath);
-			if (n == null)
-			{
-				throw new System.Exception("SetNodeText : Node path '" + xpath + "' not found");
-			}
-			n.InnerText = val;
 		}
 
 		public string Title
@@ -100,11 +55,6 @@ namespace PodcastUtilities.Common
 			newParent.AppendChild(newNode);
 			n.AppendChild(newParent);
 			return true;
-		}
-
-		public void SavePlaylist()
-		{
-			this.Save(_filename);
 		}
 	}
 }
