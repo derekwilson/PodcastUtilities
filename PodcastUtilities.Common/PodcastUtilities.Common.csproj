@@ -103,6 +103,7 @@
     <Compile Include="StatusUpdateEventArgs.cs" />
     <Compile Include="SyncItem.cs" />
     <Compile Include="UnwantedFileRemover.cs" />
+    <Compile Include="XmlFileBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="XML\asxPlaylist.xml" />
