@@ -90,7 +90,11 @@
     <Compile Include="FileSorterTests\WhenSortingByNameAscending.cs" />
     <Compile Include="FileSorterTests\WhenSortingByNameDescending.cs" />
     <Compile Include="FileSorterTests\WhenTestingFileSorter.cs" />
+    <Compile Include="PlaylistAsxTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
+    <Compile Include="PlaylistAsxTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
+    <Compile Include="PlaylistAsxTests\WhenCreatingNewPlaylist.cs" />
     <Compile Include="PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
+    <Compile Include="PlaylistWplTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
     <Compile Include="PodcastSynchronizerTests\WhenSubscribingToStatusUpdateEvent.cs" />
     <Compile Include="PlaylistWplTests\WhenCreatingNewPlaylist.cs" />
     <Compile Include="PodcastSynchronizerTests\WhenTestingPodcastSynchronizer.cs" />
