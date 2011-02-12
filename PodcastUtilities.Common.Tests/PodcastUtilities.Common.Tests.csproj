@@ -78,7 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlFileTests\WhenCreatingAControlFile.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentAmountOfSpaceToLeave.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentPlaylistFormats.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="ControlFileTests\WhenTestingAControlFile.cs" />
     <Compile Include="FileCopierTests\WhenCopyingFileThrowsAnException.cs" />
     <Compile Include="FileCopierTests\WhenDestinationDriveIsAlreadyFull.cs" />
@@ -140,7 +142,9 @@
     <EmbeddedResource Include="XML\testfile.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="XML\testcontrolfile.xml" />
+    <EmbeddedResource Include="XML\testcontrolfile.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
