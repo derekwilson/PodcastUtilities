@@ -7,7 +7,7 @@ namespace PodcastUtilities.Common
         bool AddTrack(string filepath);
         string Filename { get; }
         int NumberOfTracks { get; }
-        void SavePlaylist();
+        void SaveFile();
         string Title { get; set; }
     }
 }
