@@ -51,7 +51,7 @@ namespace PodcastUtilities.Common
                 p.AddTrack("." + thisRelativeFile);
             }
 
-            p.SavePlaylist();
+            p.SaveFile();
 
             if (copyToDestination)
             {

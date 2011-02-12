@@ -77,6 +77,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlFileTests\WhenCreatingAControlFile.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentPlaylistFormats.cs" />
+    <Compile Include="ControlFileTests\WhenTestingAControlFile.cs" />
     <Compile Include="FileCopierTests\WhenCopyingFileThrowsAnException.cs" />
     <Compile Include="FileCopierTests\WhenDestinationDriveIsAlreadyFull.cs" />
     <Compile Include="FileCopierTests\WhenDestinationFileAlreadyExists.cs" />
@@ -106,6 +109,9 @@
     <Compile Include="UnwantedFileRemoverTests\WhenThereAreFilesToKeep.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenThereAreNoFilesToKeep.cs" />
     <Compile Include="WhenTestingBehaviour.cs" />
+    <Compile Include="XmlFileBaseTests\WhenSettingTextNodes.cs" />
+    <Compile Include="XmlFileBaseTests\WhenTestingAnXmlFile.cs" />
+    <Compile Include="XmlFileBaseTests\WhenGettingTextNodes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PodcastUtilities.Common\PodcastUtilities.Common.csproj">
@@ -129,6 +135,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testfile.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testcontrolfile.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

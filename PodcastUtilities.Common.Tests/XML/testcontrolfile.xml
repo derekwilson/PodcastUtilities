@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<podcasts version="1.0">
+    <global>
+        <sourceRoot>.\profile\iPodder\downloads</sourceRoot>
+        <destinationRoot>W:\Podcasts</destinationRoot>
+        <playlistFilename>podcasts.wpl</playlistFilename>
+        <playlistFormat>wpl</playlistFormat>
+        <freeSpaceToLeaveOnDestinationMB>2000</freeSpaceToLeaveOnDestinationMB>
+        <sortfield>name</sortfield>
+        <sortdirection>asc</sortdirection>
+    </global>
+    <podcast>
+        <folder>Test Match Special</folder>
+        <pattern>*.mp3</pattern>
+        <number>-1</number>
+    </podcast>
+    <podcast>
+        <folder>Hanselminutes</folder>
+        <pattern>*.mp3</pattern>
+        <number>34</number>
+        <sortfield>fred</sortfield>
+        <sortdirection>desc</sortdirection>
+    </podcast>
+</podcasts>

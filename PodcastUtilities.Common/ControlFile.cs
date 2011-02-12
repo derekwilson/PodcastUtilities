@@ -22,6 +22,16 @@ namespace PodcastUtilities.Common
 			ReadPodcasts();
 		}
 
+        /// <summary>
+        /// for testing
+        /// </summary>
+        public ControlFile(XmlDocument document)
+		{
+		    _xmlDocument = document;
+
+            ReadPodcasts();
+		}
+
 		public string SourceRoot
 		{
 			get { return GetNodeText("podcasts/global/sourceRoot"); }
