@@ -64,11 +64,5 @@ namespace PodcastUtilities.Common
                 OnStatusUpdate(string.Format("Playlist with {0} items generated: {1}", p.NumberOfTracks, control.PlaylistFilename));
             }
         }
-
-        void finder_StatusUpdate(object sender, StatusUpdateEventArgs e)
-        {
-            // pass it on
-            OnStatusUpdate(e);
-        }
     }
 }
