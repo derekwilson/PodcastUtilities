@@ -6,25 +6,21 @@ namespace PodcastUtilities.Common
 {
 	public class XmlFileBase : XmlDocument
 	{
-		protected XmlFileBase(string filename, bool create, string emptyPlaylistResource)
-		{
-			Filename = filename;
-			
-			if (create)
-			{
-				Load(GetXmlStream(emptyPlaylistResource));
-			}
-			else
-				Load(Filename);
-		}
+        protected XmlFileBase(string filename, bool create, string emptyPlaylistResource, Assembly resourceAssembly)
+        {
+            Filename = filename;
 
-		/// <summary>
-		/// override this to have an xml resource in a different assembly
-		/// this is called from the constructor so you should make any overrides stateless - do not depend upoon member variables to be inialised
-		/// </summary>
-        protected virtual Stream GetXmlStream(string xmlfile)
+            if (create)
+            {
+                Load(GetXmlStream(resourceAssembly, emptyPlaylistResource));
+            }
+            else
+                Load(Filename);
+        }
+
+        protected Stream GetXmlStream(Assembly assembly, string xmlfile)
 		{
-			Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(xmlfile);
+			Stream s = assembly.GetManifestResourceStream(xmlfile);
 			return s;
 		}
 
