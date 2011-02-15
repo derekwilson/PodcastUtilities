@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Reflection;
+using System.Xml;
 using System.IO;
 
 namespace PodcastUtilities.Common
@@ -8,7 +9,7 @@ namespace PodcastUtilities.Common
         public static string EmptyAsxResource = "PodcastUtilities.Common.XML.asxPlaylist.xml";
 
 		public PlaylistAsx(string filename, bool create)
-			: base(filename, create, EmptyAsxResource)
+			: base(filename, create, EmptyAsxResource, Assembly.GetExecutingAssembly())
 		{
 			if (create)
 			{

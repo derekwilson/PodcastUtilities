@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Reflection;
 using System.Xml;
 
 namespace PodcastUtilities.Common
@@ -8,7 +9,7 @@ namespace PodcastUtilities.Common
         public static string EmptyWplResource = "PodcastUtilities.Common.XML.wplPlaylist.xml";
 		
 		public PlaylistWpl(string filename, bool create)
-			: base(filename, create, EmptyWplResource)
+			: base(filename, create, EmptyWplResource, Assembly.GetExecutingAssembly())
 		{
 			if (create)
 			{

@@ -9,15 +9,8 @@ namespace PodcastUtilities.Common.Tests.XmlFileBaseTests
 {
     public class TestXmlFile : XmlFileBase
     {
-        public TestXmlFile(string filename, bool create, string emptyResource) : base(filename,create,emptyResource)
+        public TestXmlFile(string filename, bool create, string emptyResource) : base(filename,create,emptyResource,Assembly.GetExecutingAssembly())
         {
-        }
-
-        protected override System.IO.Stream GetXmlStream(string xmlfile)
-        {
-            // we need to do this because the xml file is in the tests assembly
-            Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(xmlfile);
-            return s;
         }
 
         public new string GetNodeText(string xpath)
