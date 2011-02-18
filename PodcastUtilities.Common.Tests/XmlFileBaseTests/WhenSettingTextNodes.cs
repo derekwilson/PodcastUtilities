@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 
 namespace PodcastUtilities.Common.Tests.XmlFileBaseTests
 {
-    public class WhenSettingTextNodes : WhenTestingAnXmlFile
+	public abstract class WhenSettingTextNodes : WhenTestingAnXmlFile
     {
         protected string TextValue { get; set; }
         protected string Result { get; set; }

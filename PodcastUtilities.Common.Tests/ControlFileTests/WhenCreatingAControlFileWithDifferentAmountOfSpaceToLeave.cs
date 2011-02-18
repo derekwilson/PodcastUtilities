@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml;
 using NUnit.Framework;
 
 namespace PodcastUtilities.Common.Tests.ControlFileTests
 {
-    public class WhenCreatingAControlFileWithDifferentAmountOfSpaceToLeave : WhenTestingAControlFile
+    public abstract class WhenCreatingAControlFileWithDifferentAmountOfSpaceToLeave : WhenTestingAControlFile
     {
         protected string ControlFileFreeSpaceText { get; set; }
         protected long FreeSpaceToLeave { get; set; }
