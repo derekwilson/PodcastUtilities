@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using PodcastUtilities.Common.IO;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.PlaylistGeneratorTests
@@ -11,6 +9,7 @@ namespace PodcastUtilities.Common.Tests.PlaylistGeneratorTests
     {
         protected PlaylistGenerator PlaylistGenerator { get; set; }
 
+        protected IFileUtilities FileUtilities { get; set; }
         protected IFileFinder Finder { get; set; }
         protected IPlaylistFactory Factory { get; set; }
         protected IPlaylist Playlist { get; set; }
@@ -27,14 +26,16 @@ namespace PodcastUtilities.Common.Tests.PlaylistGeneratorTests
             ControlFile.Stub(ctrl => ctrl.SourceRoot).Return("c:\\source");
             ControlFile.Stub(ctrl => ctrl.DestinationRoot).Return("c:\\destination");
             ControlFile.Stub(ctrl => ctrl.Podcasts).Return(Podcasts);
+            ControlFile.Stub(ctrl => ctrl.PlaylistFilename).Return("MyPodcasts.wpl");
 
             Finder = GenerateMock<IFileFinder>();
+            FileUtilities = GenerateMock<IFileUtilities>();
 
             Playlist = GenerateMock<IPlaylist>();
             Factory = GenerateMock<IPlaylistFactory>();
             Factory.Stub(factory => factory.CreatePlaylist(PlaylistFormat.WPL, null)).IgnoreArguments().Return(Playlist);
 
-            PlaylistGenerator = new PlaylistGenerator(Finder, Factory);
+            PlaylistGenerator = new PlaylistGenerator(Finder, FileUtilities, Factory);
         }
     }
 

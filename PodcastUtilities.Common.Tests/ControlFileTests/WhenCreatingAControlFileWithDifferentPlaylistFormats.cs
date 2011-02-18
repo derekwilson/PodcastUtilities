@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml;
 using NUnit.Framework;
 
 namespace PodcastUtilities.Common.Tests.ControlFileTests
 {
-    class WhenCreatingAControlFileWithDifferentPlaylistFormats : WhenTestingAControlFile
+    abstract class WhenCreatingAControlFileWithDifferentPlaylistFormats : WhenTestingAControlFile
     {
         protected string ControlFileFormatText { get; set; }
         protected PlaylistFormat Format { get; set; }

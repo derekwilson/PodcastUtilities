@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.IO;
 using PodcastUtilities.Common.IO;
 
@@ -11,15 +9,18 @@ namespace PodcastUtilities.Common
     {
     	public PlaylistGenerator(
 			IFileFinder fileFinder,
+			IFileUtilities fileUtilities,
 			IPlaylistFactory playlistFactory)
     	{
     		FileFinder = fileFinder;
+    		FileUtilities = fileUtilities;
     		PlaylistFactory = playlistFactory;
     	}
 
     	public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
     	private IFileFinder FileFinder { get; set; }
+    	private IFileUtilities FileUtilities { get; set; }
     	private IPlaylistFactory PlaylistFactory { get; set; }
 
     	private void OnStatusUpdate(string message)
@@ -57,7 +58,7 @@ namespace PodcastUtilities.Common
             {
                 string destPlaylist = Path.Combine(control.DestinationRoot, control.PlaylistFilename);
                 OnStatusUpdate(string.Format("Copying Playlist with {0} items to {1}", p.NumberOfTracks, destPlaylist));
-                File.Copy(control.PlaylistFilename, destPlaylist, true);
+				FileUtilities.FileCopy(control.PlaylistFilename, destPlaylist, true);
             }
             else
             {

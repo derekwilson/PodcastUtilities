@@ -11,6 +11,11 @@ namespace PodcastUtilities.Common.IO
 
 		public void FileCopy(string sourceFileName, string destinationFileName)
 		{
+			FileCopy(sourceFileName, destinationFileName, false);
+		}
+
+		public void FileCopy(string sourceFileName, string destinationFileName, bool allowOverwrite)
+		{
 			// Make sure directory exists
 			var destinationDirectory = Path.GetDirectoryName(destinationFileName);
 			if (destinationDirectory != null)
@@ -18,7 +23,7 @@ namespace PodcastUtilities.Common.IO
 				Directory.CreateDirectory(destinationDirectory);
 			}
 
-			File.Copy(sourceFileName, destinationFileName);
+			File.Copy(sourceFileName, destinationFileName, allowOverwrite);
 		}
 
 		public void FileDelete(string path)

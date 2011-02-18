@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.IO;
 
 namespace SyncPodcasts
 {
@@ -36,9 +37,10 @@ namespace SyncPodcasts
 			var finder = iocContainer.Resolve<IFileFinder>();
 			var copier = iocContainer.Resolve<IFileCopier>();
 			var remover = iocContainer.Resolve<IUnwantedFileRemover>();
+			var fileUtilities = iocContainer.Resolve<IFileUtilities>();
 			var playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
 
-            var generator = new PlaylistGenerator(finder, playlistFactory);
+            var generator = new PlaylistGenerator(finder, fileUtilities, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
 			var synchronizer = new PodcastSynchronizer(finder, copier, remover);

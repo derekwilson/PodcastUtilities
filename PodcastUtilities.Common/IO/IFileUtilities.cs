@@ -5,6 +5,7 @@
 		bool FileExists(string path);
 
 		void FileCopy(string sourceFileName, string destinationFileName);
+		void FileCopy(string sourceFileName, string destinationFileName, bool allowOverwrite);
 
 		void FileDelete(string path);
 	}
