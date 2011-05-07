@@ -1,4 +1,4 @@
-call GenerateCoverageXml.bat
+call ".\PartCover Scripts\GenerateCoverageXml.bat"
 
 if "%ProgramFilesPath%" == "" exit 1
 
