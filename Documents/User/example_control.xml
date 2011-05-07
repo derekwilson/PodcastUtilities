@@ -1,0 +1,21 @@
+<podcasts version="1.0">
+	<global>
+		<sourceRoot>.\downloads</sourceRoot>
+		<destinationRoot>W:\Podcasts</destinationRoot>
+		<playlistFilename>podcasts.wpl</playlistFilename>
+		<playlistFormat>wpl</playlistFormat>
+		<freeSpaceToLeaveOnDestinationMB>2000</freeSpaceToLeaveOnDestinationMB>
+		<sortfield>name</sortfield>
+		<sortdirection>asc</sortdirection>
+	</global>
+	<podcast>
+		<folder>Mark Kermode and Simon Mayos Film Reviews</folder>
+		<pattern>*.mp3</pattern>
+		<number>3</number>
+	</podcast>
+	<podcast>
+		<folder>Hanselminutes</folder>
+		<pattern>*.mp3</pattern>
+		<number>-1</number>
+	</podcast>
+</podcasts>
