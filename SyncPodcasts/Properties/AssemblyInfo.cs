@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SyncPodcasts")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Media Sync Utility")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SyncPodcasts")]
-[assembly: AssemblyCopyright("Copyright ©  2009")]
+[assembly: AssemblyCompany("AAD")]
+[assembly: AssemblyProduct("PodcastUtilities")]
+[assembly: AssemblyCopyright("Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
