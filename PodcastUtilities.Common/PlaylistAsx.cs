@@ -4,11 +4,22 @@ using System.IO;
 
 namespace PodcastUtilities.Common
 {
-	public class PlaylistAsx : XmlFileBase, IPlaylist
+	/// <summary>
+	/// ASX playlist
+	/// </summary>
+    public class PlaylistAsx : XmlFileBase, IPlaylist
 	{
+        /// <summary>
+        /// the resource path to the ASX template
+        /// </summary>
         public static string EmptyAsxResource = "PodcastUtilities.Common.XML.asxPlaylist.xml";
 
-		public PlaylistAsx(string filename, bool create)
+		/// <summary>
+		/// create a new playlist object
+		/// </summary>
+        /// <param name="filename">filename that will be used to save the file, and possibly load an existing playlist from</param>
+        /// <param name="create">true to load a blank template playlist false to load an existing playlist from disk</param>
+        public PlaylistAsx(string filename, bool create)
 			: base(filename, create, EmptyAsxResource, Assembly.GetExecutingAssembly())
 		{
 			if (create)
@@ -17,7 +28,10 @@ namespace PodcastUtilities.Common
 			}
 		}
 
-		public int NumberOfTracks
+	    /// <summary>
+	    /// number of tracks in the playlist
+	    /// </summary>
+	    public int NumberOfTracks
 		{
 			get
 			{
@@ -29,13 +43,21 @@ namespace PodcastUtilities.Common
 			}
 		}
 
-		public string Title
+	    /// <summary>
+	    /// the title of the playlist
+	    /// </summary>
+	    public string Title
 		{
 			get { return GetNodeText("ASX/TITLE"); }
 			set { SetNodeText("ASX/TITLE", value); }
 		}
 
-		public bool AddTrack(string filepath)
+	    /// <summary>
+	    /// Add a track to the playlist
+	    /// </summary>
+	    /// <param name="filepath">pathname to add, can be relative or absolute</param>
+	    /// <returns>true if the file was added false if the track was already present</returns>
+	    public bool AddTrack(string filepath)
 		{
 			XmlNode n = SelectSingleNode(string.Format("ASX/ENTRY/REF[@HREF = '{0}']", filepath));
 			if (n != null)

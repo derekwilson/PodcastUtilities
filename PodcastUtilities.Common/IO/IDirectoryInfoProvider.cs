@@ -2,8 +2,16 @@ using System;
 
 namespace PodcastUtilities.Common.IO
 {
-	public interface IDirectoryInfoProvider
+	/// <summary>
+	/// used to provide the physical file system to the main code and a mock file system to the units tests
+	/// </summary>
+    public interface IDirectoryInfoProvider
 	{
-		IDirectoryInfo GetDirectoryInfo(string path);
+		/// <summary>
+		/// create an abstract directory object
+		/// </summary>
+		/// <param name="path">full path to the directory</param>
+		/// <returns>an abstrcat object</returns>
+        IDirectoryInfo GetDirectoryInfo(string path);
 	}
 }

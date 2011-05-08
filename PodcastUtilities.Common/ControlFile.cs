@@ -4,7 +4,10 @@ using System.Xml;
 
 namespace PodcastUtilities.Common
 {
-	public class ControlFile : IControlFile
+	/// <summary>
+	/// this object represents the xml control file
+	/// </summary>
+    public class ControlFile : IControlFile
 	{
         private const string DefaultSortField = "Name";
         private const string DefaultSortDirection = "ascending";
@@ -13,7 +16,11 @@ namespace PodcastUtilities.Common
 
 		private List<PodcastInfo> _podcasts;
 
-		public ControlFile(string filename)
+		/// <summary>
+		/// create the object and read the control file from the specified filename
+		/// </summary>
+		/// <param name="filename">pathname to the control file xml</param>
+        public ControlFile(string filename)
 		{
 			_xmlDocument = new XmlDocument();
 
@@ -23,7 +30,7 @@ namespace PodcastUtilities.Common
 		}
 
         /// <summary>
-        /// for testing
+        /// only used for unit testing
         /// </summary>
         public ControlFile(XmlDocument document)
 		{
@@ -32,21 +39,33 @@ namespace PodcastUtilities.Common
             ReadPodcasts();
 		}
 
-		public string SourceRoot
+		/// <summary>
+		/// pathname to the root folder to copy from when synchronising
+		/// </summary>
+        public string SourceRoot
 		{
 			get { return GetNodeText("podcasts/global/sourceRoot"); }
 		}
 		
-		public string DestinationRoot
+		/// <summary>
+		/// pathname to the destination root folder
+		/// </summary>
+        public string DestinationRoot
 		{
 			get { return GetNodeText("podcasts/global/destinationRoot"); }
 		}
 
-		public string PlaylistFilename
+		/// <summary>
+		/// filename and extension for the generated playlist
+		/// </summary>
+        public string PlaylistFilename
 		{
 			get { return GetNodeText("podcasts/global/playlistFilename"); }
 		}
 
+        /// <summary>
+        /// the format for the generated playlist
+        /// </summary>
         public PlaylistFormat PlaylistFormat
         {
             get
@@ -63,6 +82,9 @@ namespace PodcastUtilities.Common
             }
         }
 
+        /// <summary>
+        /// free space in MB to leave on the destination device
+        /// </summary>
         public long FreeSpaceToLeaveOnDestination
         {
             get
@@ -78,12 +100,18 @@ namespace PodcastUtilities.Common
             }
         }
 
-		public IList<PodcastInfo> Podcasts
+		/// <summary>
+		/// the configuration for the individual podcasts
+		/// </summary>
+        public IList<PodcastInfo> Podcasts
 		{
 			get { return _podcasts; }
 		}
 
-		public string SortField
+		/// <summary>
+		/// the field we are using to sort the podcasts on
+		/// </summary>
+        public string SortField
         {
             get
             {
@@ -91,6 +119,9 @@ namespace PodcastUtilities.Common
             }
         }
 
+        /// <summary>
+        /// direction to sort in
+        /// </summary>
         public string SortDirection
         {
             get

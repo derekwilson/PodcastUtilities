@@ -4,10 +4,23 @@ using PodcastUtilities.Common.IO;
 
 namespace PodcastUtilities.Common
 {
-	public interface IUnwantedFileRemover
+    /// <summary>
+    /// supports the ability to remove unwanted files
+    /// </summary>
+    public interface IUnwantedFileRemover
 	{
-		event EventHandler<StatusUpdateEventArgs> StatusUpdate;
+        /// <summary>
+        /// event that is fired whenever a file is removed of an error occurs
+        /// </summary>
+        event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
-		void RemoveUnwantedFiles(IEnumerable<IFileInfo> filesToKeep, string folderToRemoveFrom, string pattern, bool whatif);
+		/// <summary>
+		/// remove the files that are not specified in the list of files to keep
+		/// </summary>
+		/// <param name="filesToKeep">the files to be kept</param>
+		/// <param name="folderToRemoveFrom">folder to remove files from</param>
+		/// <param name="pattern">file patter to look for eg. *.mp3</param>
+        /// <param name="whatif">true to emit all the status updates but not actually perform the deletes, false to do the delete</param>
+        void RemoveUnwantedFiles(IEnumerable<IFileInfo> filesToKeep, string folderToRemoveFrom, string pattern, bool whatif);
 	}
 }

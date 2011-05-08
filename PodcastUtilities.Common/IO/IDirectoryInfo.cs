@@ -1,15 +1,35 @@
 namespace PodcastUtilities.Common.IO
 {
-	public interface IDirectoryInfo
+    /// <summary>
+    /// methods to interact with directories in the physical file system and abstract away the file system from the main body of code
+    /// </summary>
+    public interface IDirectoryInfo
 	{
-		IDirectoryInfo Root { get; }
+		/// <summary>
+		/// gets the abstract root of the filing system
+		/// </summary>
+        IDirectoryInfo Root { get; }
 
-		string FullName { get; }
+		/// <summary>
+		/// the full pathname of the directory
+		/// </summary>
+        string FullName { get; }
 
-		bool Exists { get; }
+		/// <summary>
+		/// true if it exists
+		/// </summary>
+        bool Exists { get; }
 
-		IFileInfo[] GetFiles(string pattern);
+		/// <summary>
+		/// gets an abstract collection of files that are contained by by the directory
+		/// </summary>
+		/// <param name="pattern">a search patter for example *.mp3</param>
+		/// <returns>a collection of abstracted files</returns>
+        IFileInfo[] GetFiles(string pattern);
 
-		void Create();
+		/// <summary>
+		/// create the directory in the file system
+		/// </summary>
+        void Create();
 	}
 }

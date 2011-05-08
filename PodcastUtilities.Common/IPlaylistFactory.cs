@@ -1,7 +1,16 @@
 ﻿namespace PodcastUtilities.Common
 {
-	public interface IPlaylistFactory
+	/// <summary>
+	/// supports the factory pattern for playlists
+	/// </summary>
+    public interface IPlaylistFactory
 	{
-		IPlaylist CreatePlaylist(PlaylistFormat playlistFormat, string filename);
+        /// <summary>
+        /// create the correct playlist format
+        /// </summary>
+        /// <param name="playlistFormat">the playlist format required</param>
+        /// <param name="filename">filename to use for the playlist</param>
+        /// <returns></returns>
+        IPlaylist CreatePlaylist(PlaylistFormat playlistFormat, string filename);
 	}
 }

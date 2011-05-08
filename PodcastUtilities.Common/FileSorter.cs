@@ -3,11 +3,20 @@ using PodcastUtilities.Common.IO;
 
 namespace PodcastUtilities.Common
 {
-	public class FileSorter : IFileSorter
+	/// <summary>
+	/// a file sorter
+	/// </summary>
+    public class FileSorter : IFileSorter
 	{
 		#region Implementation of IFileSorter
 
-		public void Sort(List<IFileInfo> files, string sortField, bool ascendingSort)
+	    /// <summary>
+	    /// sort the supplied list of abstract files
+	    /// </summary>
+	    /// <param name="files">list of abstract files</param>
+	    /// <param name="sortField">field to sort on "creationtime" to use the file created time anything else to use the file name</param>
+	    /// <param name="ascendingSort">true to sort ascending false to sort descending</param>
+	    public void Sort(List<IFileInfo> files, string sortField, bool ascendingSort)
 		{
 			switch (sortField.ToLower())
 			{

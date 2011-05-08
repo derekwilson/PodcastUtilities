@@ -2,10 +2,19 @@
 
 namespace PodcastUtilities.Common.IO
 {
-	public interface IDriveInfo
+	/// <summary>
+    /// methods to query file system drives in the physical file system and abstract away the file system from the main body of code
+	/// </summary>
+    public interface IDriveInfo
 	{
-		long AvailableFreeSpace { get; }
+		/// <summary>
+		/// the free space in bytes
+		/// </summary>
+        long AvailableFreeSpace { get; }
 
-		string Name { get; }
+		/// <summary>
+		/// the name of the drive
+		/// </summary>
+        string Name { get; }
 	}
 }

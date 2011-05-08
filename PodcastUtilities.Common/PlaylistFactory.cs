@@ -2,11 +2,20 @@
 
 namespace PodcastUtilities.Common
 {
-	public class PlaylistFactory : IPlaylistFactory
+	/// <summary>
+	/// factory to generate the correct playlist object
+	/// </summary>
+    public class PlaylistFactory : IPlaylistFactory
 	{
 		#region Implementation of IPlaylistFactory
 
-		public IPlaylist CreatePlaylist(PlaylistFormat playlistFormat, string filename)
+		/// <summary>
+		/// create the correct playlist format
+		/// </summary>
+		/// <param name="playlistFormat">the playlist format required</param>
+		/// <param name="filename">filename to use for the playlist</param>
+		/// <returns></returns>
+        public IPlaylist CreatePlaylist(PlaylistFormat playlistFormat, string filename)
 		{
 			switch (playlistFormat)
 			{
