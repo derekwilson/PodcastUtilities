@@ -3,43 +3,71 @@ using System.Linq;
 
 namespace PodcastUtilities.Common.IO
 {
-	internal class SystemDirectoryInfo : IDirectoryInfo
+    /// <summary>
+    /// methods to interact with directories in the physical file system and abstract away the file system from the main body of code
+    /// </summary>
+    internal class SystemDirectoryInfo : IDirectoryInfo
 	{
 		private readonly DirectoryInfo _directoryInfo;
 
-		public SystemDirectoryInfo(string path)
+		/// <summary>
+		/// object constructor from a pathname as a string
+		/// </summary>
+		/// <param name="path">pathname</param>
+        public SystemDirectoryInfo(string path)
 			: this(new DirectoryInfo(path))
 		{
 		}
 
-		public SystemDirectoryInfo(DirectoryInfo directoryInfo)
+        /// <summary>
+        /// object constructor from another abstracted object
+        /// </summary>
+        /// <param name="directoryInfo">object to be constructed from</param>
+        public SystemDirectoryInfo(DirectoryInfo directoryInfo)
 		{
 			_directoryInfo = directoryInfo;
 		}
 
-		public IDirectoryInfo Root
+        /// <summary>
+        /// gets the abstract root of the filing system
+        /// </summary>
+        public IDirectoryInfo Root
 		{
 			get { return new SystemDirectoryInfo(_directoryInfo.Root); }
 		}
 
-		public bool Exists
+        /// <summary>
+        /// true if it exists
+        /// </summary>
+        public bool Exists
 		{
 			get { return _directoryInfo.Exists; }
 		}
 
-		public string FullName
+        /// <summary>
+        /// the full pathname of the directory
+        /// </summary>
+        public string FullName
 		{
 			get { return _directoryInfo.FullName; }
 		}
 
-		public IFileInfo[] GetFiles(string pattern)
+        /// <summary>
+        /// gets an abstract collection of files that are contained by by the directory
+        /// </summary>
+        /// <param name="pattern">a search patter for example *.mp3</param>
+        /// <returns>a collection of abstracted files</returns>
+        public IFileInfo[] GetFiles(string pattern)
 		{
 			var realFiles = _directoryInfo.GetFiles(pattern);
 
 			return realFiles.Select(f => new SystemFileInfo(f)).ToArray();
 		}
 
-		public void Create()
+        /// <summary>
+        /// create the directory in the file system
+        /// </summary>
+        public void Create()
 		{
 			_directoryInfo.Create();
 		}

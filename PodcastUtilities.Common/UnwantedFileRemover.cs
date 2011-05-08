@@ -5,9 +5,17 @@ using PodcastUtilities.Common.IO;
 
 namespace PodcastUtilities.Common
 {
-	public class UnwantedFileRemover : IUnwantedFileRemover
+    /// <summary>
+    /// remove unwanted files, when files are removed from the source and we need to synchronise the delete
+    /// </summary>
+    public class UnwantedFileRemover : IUnwantedFileRemover
 	{
-		public UnwantedFileRemover(
+		/// <summary>
+		/// construct the remover
+		/// </summary>
+        ///<param name="directoryInfoProvider">abstract access to the file system</param>
+        ///<param name="fileUtilities">abstract file utilities</param>
+        public UnwantedFileRemover(
 			IDirectoryInfoProvider directoryInfoProvider,
 			IFileUtilities fileUtilities)
 		{
@@ -20,9 +28,19 @@ namespace PodcastUtilities.Common
 
 		#region Implementation of IUnwantedFileRemover
 
-		public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
+        /// <summary>
+        /// event that is fired whenever a file is removed of an error occurs
+        /// </summary>
+        public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
-		public void RemoveUnwantedFiles(IEnumerable<IFileInfo> filesToKeep, string folderToRemoveFrom, string pattern, bool whatif)
+        /// <summary>
+        /// remove the files that are not specified in the list of files to keep
+        /// </summary>
+        /// <param name="filesToKeep">the files to be kept</param>
+        /// <param name="folderToRemoveFrom">folder to remove files from</param>
+        /// <param name="pattern">file patter to look for eg. *.mp3</param>
+        /// <param name="whatif">true to emit all the status updates but not actually perform the deletes, false to do the delete</param>
+        public void RemoveUnwantedFiles(IEnumerable<IFileInfo> filesToKeep, string folderToRemoveFrom, string pattern, bool whatif)
 		{
 			var removeDirectory = DirectoryInfoProvider.GetDirectoryInfo(folderToRemoveFrom);
 			if (!removeDirectory.Exists)

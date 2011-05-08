@@ -2,18 +2,39 @@
 
 namespace PodcastUtilities.Common
 {
-	public interface IControlFile
+    /// <summary>
+    /// this object represents the xml control file
+    /// </summary>
+    public interface IControlFile
 	{
-		string SourceRoot { get; }
+        /// <summary>
+        /// pathname to the root folder to copy from when synchronising
+        /// </summary>
+        string SourceRoot { get; }
 
-		string DestinationRoot { get; }
+        /// <summary>
+        /// pathname to the destination root folder
+        /// </summary>
+        string DestinationRoot { get; }
 
-		string PlaylistFilename { get; }
+        /// <summary>
+        /// filename and extension for the generated playlist
+        /// </summary>
+        string PlaylistFilename { get; }
 
-		PlaylistFormat PlaylistFormat { get; }
+        /// <summary>
+        /// the format for the generated playlist
+        /// </summary>
+        PlaylistFormat PlaylistFormat { get; }
 
-		long FreeSpaceToLeaveOnDestination { get; }
+        /// <summary>
+        /// free space in MB to leave on the destination device
+        /// </summary>
+        long FreeSpaceToLeaveOnDestination { get; }
 
-		IList<PodcastInfo> Podcasts { get; }
+        /// <summary>
+        /// the configuration for the individual podcasts
+        /// </summary>
+        IList<PodcastInfo> Podcasts { get; }
 	}
 }

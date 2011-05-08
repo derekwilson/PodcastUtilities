@@ -5,9 +5,18 @@ using PodcastUtilities.Common.IO;
 
 namespace PodcastUtilities.Common
 {
+    /// <summary>
+    /// generate a playlist
+    /// </summary>
     public class PlaylistGenerator
     {
-    	public PlaylistGenerator(
+    	/// <summary>
+    	/// create a playlist generator
+    	/// </summary>
+    	/// <param name="fileFinder">abstract access to the file system to find the files for the playlist</param>
+        /// <param name="fileUtilities">abstract file utilities</param>
+    	/// <param name="playlistFactory">factpry to generate the correct playlist object depending upon the selected format</param>
+        public PlaylistGenerator(
 			IFileFinder fileFinder,
 			IFileUtilities fileUtilities,
 			IPlaylistFactory playlistFactory)
@@ -17,7 +26,10 @@ namespace PodcastUtilities.Common
     		PlaylistFactory = playlistFactory;
     	}
 
-    	public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
+        /// <summary>
+        /// event that is fired when the playlist is generated or copied
+        /// </summary>
+        public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
     	private IFileFinder FileFinder { get; set; }
     	private IFileUtilities FileUtilities { get; set; }
@@ -34,6 +46,11 @@ namespace PodcastUtilities.Common
                 StatusUpdate(this, e);
         }
 
+        /// <summary>
+        /// generate a playlist
+        /// </summary>
+        /// <param name="control">control file to use to find the destinationRoot, and playlist format</param>
+        /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
         public void GeneratePlaylist(IControlFile control, bool copyToDestination)
         {
 			var allDestFiles = control.Podcasts.SelectMany(

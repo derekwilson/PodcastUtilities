@@ -2,19 +2,40 @@
 
 namespace PodcastUtilities.Common.IO
 {
-	public class FileUtilities : IFileUtilities
+	/// <summary>
+	/// utility methods to manipulate files in the physical file system
+	/// this class abstracts away the file system from the main body of code
+	/// </summary>
+    public class FileUtilities : IFileUtilities
 	{
-		public bool FileExists(string path)
+		/// <summary>
+		/// check if a file exists
+		/// </summary>
+		/// <param name="path">pathname to check</param>
+		/// <returns>true if the file exists</returns>
+        public bool FileExists(string path)
 		{
 			return File.Exists(path);
 		}
 
-		public void FileCopy(string sourceFileName, string destinationFileName)
+	    /// <summary>
+	    /// copy a file - will not overwrite an existing file
+	    /// the containing folder will be created if it does not exist
+	    /// </summary>
+	    /// <param name="sourceFileName">source pathname</param>
+	    /// <param name="destinationFileName">destination pathname</param>
+	    public void FileCopy(string sourceFileName, string destinationFileName)
 		{
 			FileCopy(sourceFileName, destinationFileName, false);
 		}
 
-		public void FileCopy(string sourceFileName, string destinationFileName, bool allowOverwrite)
+	    /// <summary>
+	    /// copy a file - the containing folder will be created if it does not exist
+	    /// </summary>
+	    /// <param name="sourceFileName">source pathname</param>
+	    /// <param name="destinationFileName">destination pathname</param>
+	    /// <param name="allowOverwrite">set to true to overwrite an existing file</param>
+	    public void FileCopy(string sourceFileName, string destinationFileName, bool allowOverwrite)
 		{
 			// Make sure directory exists
 			var destinationDirectory = Path.GetDirectoryName(destinationFileName);
@@ -26,7 +47,11 @@ namespace PodcastUtilities.Common.IO
 			File.Copy(sourceFileName, destinationFileName, allowOverwrite);
 		}
 
-		public void FileDelete(string path)
+	    /// <summary>
+	    /// delete a file
+	    /// </summary>
+	    /// <param name="path">pathname of the file to delete</param>
+	    public void FileDelete(string path)
 		{
 			File.Delete(path);
 		}

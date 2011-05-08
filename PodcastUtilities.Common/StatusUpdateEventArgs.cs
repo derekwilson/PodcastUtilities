@@ -6,15 +6,30 @@ using System.Text;
 namespace PodcastUtilities.Common
 {
     /// <summary>
-    /// This is the event arg status update
+    /// This is the event argument that is passed whenever a status update is fired
     /// </summary>
     public class StatusUpdateEventArgs : System.EventArgs
     {
+        /// <summary>
+        /// the type of the update
+        /// </summary>
         public enum Level
         {
+            /// <summary>
+            /// information to be displayed
+            /// </summary>
             Status,
+            /// <summary>
+            /// a non critical warning
+            /// </summary>
             Warning,
+            /// <summary>
+            /// a fatal error
+            /// </summary>
             Error,
+            /// <summary>
+            /// extra information that may be useful
+            /// </summary>
             Verbose
         }
 
@@ -31,7 +46,7 @@ namespace PodcastUtilities.Common
         }
 
         /// <summary>
-        /// Get the message level
+        /// Get the type of the update
         /// </summary>
         public Level MessageLevel
         {

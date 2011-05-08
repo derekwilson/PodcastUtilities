@@ -3,21 +3,34 @@ using System.IO;
 
 namespace PodcastUtilities.Common.IO
 {
-	internal class SystemDriveInfo : IDriveInfo
+    /// <summary>
+    /// methods to query file system drives in the physical file system and abstract away the file system from the main body of code
+    /// </summary>
+    internal class SystemDriveInfo : IDriveInfo
 	{
 		private readonly DriveInfo _driveInfo;
 
-		public SystemDriveInfo(string driveName)
+		/// <summary>
+		/// construct an object from the specified name
+		/// </summary>
+		/// <param name="driveName"></param>
+        public SystemDriveInfo(string driveName)
 		{
 			_driveInfo = new DriveInfo(driveName);
 		}
 
-		public long AvailableFreeSpace
+        /// <summary>
+        /// the free space in bytes
+        /// </summary>
+        public long AvailableFreeSpace
 		{
 			get { return _driveInfo.AvailableFreeSpace; }
 		}
 
-		public string Name
+        /// <summary>
+        /// the name of the drive
+        /// </summary>
+        public string Name
 		{
 			get { return _driveInfo.Name; }
 		}

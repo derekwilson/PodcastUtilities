@@ -5,9 +5,18 @@ using System.Linq;
 
 namespace PodcastUtilities.Common
 {
-	public class PodcastSynchronizer
+	/// <summary>
+	/// synchronise a podcasts
+	/// </summary>
+    public class PodcastSynchronizer
 	{
-		public PodcastSynchronizer(
+		/// <summary>
+		/// construct a podcast synchroniser
+		/// </summary>
+		/// <param name="fileFinder">abstract interface to the file system to find media files</param>
+		/// <param name="fileCopier">abstract file copier</param>
+		/// <param name="fileRemover">abstract file remover, to synchronise deleted files in the source to the destination</param>
+        public PodcastSynchronizer(
 			IFileFinder fileFinder,
 			IFileCopier fileCopier,
 			IUnwantedFileRemover fileRemover)
@@ -17,7 +26,10 @@ namespace PodcastUtilities.Common
 			FileRemover = fileRemover;
 		}
 
-		public event EventHandler<StatusUpdateEventArgs> StatusUpdate
+        /// <summary>
+        /// event that is fired whenever as each operation is performed or if an error occurs
+        /// </summary>
+        public event EventHandler<StatusUpdateEventArgs> StatusUpdate
 		{
 			add
 			{
@@ -35,7 +47,12 @@ namespace PodcastUtilities.Common
 		private IFileCopier FileCopier { get; set; }
 		private IUnwantedFileRemover FileRemover { get; set; }
 
-		public void Synchronize(IControlFile controlFile, bool whatIf)
+		/// <summary>
+		/// synchronise podcast media files
+		/// </summary>
+		/// <param name="controlFile">control file to use to control the process</param>
+		/// <param name="whatIf">true to generate the status messages but not to actually perform the file copy / deletes</param>
+        public void Synchronize(IControlFile controlFile, bool whatIf)
 		{
 			var filesToCopy = new List<SyncItem>();
 
