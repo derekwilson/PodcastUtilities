@@ -73,7 +73,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IIocContainer.cs" />
     <Compile Include="IocRegistration.cs" />
     <Compile Include="LinFuIocContainer.cs" />
     <Compile Include="Program.cs" />

@@ -98,13 +98,26 @@
     <Compile Include="PlaylistAsxTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="PlaylistAsxTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
     <Compile Include="PlaylistAsxTests\WhenCreatingNewPlaylist.cs" />
+    <Compile Include="PlaylistFactoryTests\WhenCreatingANewAsxPlaylist.cs" />
     <Compile Include="PlaylistFactoryTests\WhenCreatingANewPlaylist.cs" />
+    <Compile Include="PlaylistFactoryTests\WhenCreatingANewUnknownPlaylist.cs" />
+    <Compile Include="PlaylistFactoryTests\WhenCreatingANewWplPlaylist.cs" />
     <Compile Include="PlaylistGeneratorTests\WhenCopyToDestinationIsSpecified.cs" />
     <Compile Include="PlaylistGeneratorTests\WhenTestingThePlaylistGenerator.cs" />
     <Compile Include="PlaylistGeneratorTests\WhenThereAreNoSourcePodcasts.cs" />
     <Compile Include="PlaylistGeneratorTests\WhenThereAreSomePodcastsContainingFiles.cs" />
     <Compile Include="PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="PlaylistWplTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
+    <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloader.cs" />
+    <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
+    <Compile Include="PodcastFeedFactoryTests\WhenCreatingANewAtomPodcastFeed.cs" />
+    <Compile Include="PodcastFeedFactoryTests\WhenCreatingANewPodcastFeed.cs" />
+    <Compile Include="PodcastFeedFactoryTests\WhenCreatingANewRssPodcastFeed.cs" />
+    <Compile Include="PodcastFeedInRssFormatTests\WhenConstructingAFeedFromExampleXml.cs" />
+    <Compile Include="PodcastFeedInRssFormatTests\WhenLoadingALargeExmapleFile.cs" />
+    <Compile Include="PodcastFeedInRssFormatTests\WhenLoadingTheEpisodesFromExampleXml.cs" />
+    <Compile Include="PodcastFeedInRssFormatTests\WhenTestingAnEmptyExampleRssXml.cs" />
+    <Compile Include="PodcastFeedInRssFormatTests\WhenTestingTheFeed.cs" />
     <Compile Include="PodcastSynchronizerTests\WhenSubscribingToStatusUpdateEvent.cs" />
     <Compile Include="PlaylistWplTests\WhenCreatingNewPlaylist.cs" />
     <Compile Include="PodcastSynchronizerTests\WhenTestingPodcastSynchronizer.cs" />
@@ -149,6 +162,15 @@
     <EmbeddedResource Include="XML\testcontrolfile.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testbigrssfeed.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testrssfeed.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testemptyrssfeed.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,5 +1,4 @@
 ﻿using System;
-using NUnit.Framework;
 
 namespace PodcastUtilities.Common.Tests.PlaylistFactoryTests
 {
@@ -10,6 +9,7 @@ namespace PodcastUtilities.Common.Tests.PlaylistFactoryTests
         protected IPlaylist Playlist { get; set; }
         protected IPlaylistFactory PlaylistFactory { get; set; }
         protected string PlayllistFilename { get; set; }
+        protected Exception ThrownException { get; set; }
 
         protected override void GivenThat()
         {
@@ -20,51 +20,15 @@ namespace PodcastUtilities.Common.Tests.PlaylistFactoryTests
 
         protected override void When()
         {
-            Playlist = PlaylistFactory.CreatePlaylist(PlayListFormat, PlayllistFilename);
-        }
-    }
-
-    public class WhenCreatingANewAsxPlaylist
-        : WhenCreatingANewPlaylist
-    {
-        protected override void GivenThat()
-        {
-            base.GivenThat();
-            PlayListFormat = PlaylistFormat.ASX;
-        }
-
-        [Test]
-        public void ItShouldReturnTheCorrectObject()
-        {
-            Assert.That(Playlist, Is.InstanceOf<PlaylistAsx>());
-        }
-
-        [Test]
-        public void ItShouldSetTheTitle()
-        {
-            Assert.AreEqual("myplaylist", Playlist.Title);
-        }
-    }
-
-    public class WhenCreatingANewWplPlaylist
-        : WhenCreatingANewPlaylist
-    {
-        protected override void GivenThat()
-        {
-            base.GivenThat();
-            PlayListFormat = PlaylistFormat.WPL;
-        }
-
-        [Test]
-        public void ItShouldReturnTheCorrectObject()
-        {
-            Assert.That(Playlist, Is.InstanceOf<PlaylistWpl>());
-        }
-
-        [Test]
-        public void ItShouldSetTheTitle()
-        {
-            Assert.AreEqual("myplaylist", Playlist.Title);
+            ThrownException = null;
+            try
+            {
+                Playlist = PlaylistFactory.CreatePlaylist(PlayListFormat, PlayllistFilename);
+            }
+            catch (Exception e)
+            {
+                ThrownException = e;
+            }
         }
     }
 }
