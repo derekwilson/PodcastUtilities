@@ -1,4 +1,5 @@
 ﻿using LinFu.IoC;
+using PodcastUtilities.Common;
 
 namespace SyncPodcasts
 {

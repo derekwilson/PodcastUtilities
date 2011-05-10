@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2enclosuresfull.xsl"?>
+<?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?>
+<rss xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+    <channel>
+        <title>This Developer's Life</title>
+        <link>http://thisdeveloperslife.com</link>
+        <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/ThisDevelopersLife" />
+        <description>Stories About Developers and Their Lives</description>
+        <language>en</language>
+        <lastBuildDate>Tue, 17 Aug 2010 17:00:00 PDT</lastBuildDate>
+        <generator>Web Matrix http://asp.net/webmatrix</generator>
+        <feedburner:info uri="thisdeveloperslife" />
+        <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" />
+        <media:copyright>Copyright 2010, Rob Conery</media:copyright>
+        <media:thumbnail url="http://media.wekeroad.com/tdl2.png" />
+        <media:keywords>technology,stories</media:keywords>
+        <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Tech News</media:category>
+        <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Software How-To</media:category>
+        <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology</media:category>
+        <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="http://media.wekeroad.com/tdl2.png" />
+        <itunes:keywords>technology,stories</itunes:keywords>
+        <itunes:subtitle>Stories about developers and their lives</itunes:subtitle>
+        <itunes:summary>Bringing a human slant to the tech industry</itunes:summary>
+        <itunes:category text="Technology">
+            <itunes:category text="Tech News" />
+        </itunes:category>
+        <itunes:category text="Technology">
+            <itunes:category text="Software How-To" />
+        </itunes:category>
+        <itunes:category text="Technology" />
+        <creativeCommons:license>http://creativecommons.org/licenses/by-nc-nd/3.0/</creativeCommons:license>
+        <feedburner:feedFlare href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.newsgator.com/images/ngsub1.gif">Subscribe with NewsGator</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.netvibes.com/subscribe.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.netvibes.com/img/add2netvibes.gif">Subscribe with Netvibes</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://us.i1.yimg.com/us.yimg.com/i/us/my/addtomyyahoo4.gif">Subscribe with My Yahoo!</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://fusion.google.com/add?feedurl=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://buttons.googlesyndication.com/fusion/add.gif">Subscribe with Google</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.plusmo.com/add?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://plusmo.com/res/graphics/fbplusmo.gif">Subscribe with Plusmo</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.thefreedictionary.com/_/hp/AddRSS.aspx?http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://img.tfd.com/hp/addToTheFreeDictionary.gif">Subscribe with The Free Dictionary</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.bitty.com/manual/?contenttype=rssfeed&amp;contentvalue=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.bitty.com/img/bittychicklet_91x17.gif">Subscribe with Bitty Browser</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.live.com/?add=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://tkfiles.storage.msn.com/x1piYkpqHC_35nIp1gLE68-wvzLZO8iXl_JMledmJQXP-XTBOLfmQv4zhj4MhcWEJh_GtoBIiAl1Mjh-ndp9k47If7hTaFno0mxW9_i3p_5qQw">Subscribe with Live.com</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://mix.excite.eu/add?feedurl=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://image.excite.co.uk/mix/addtomix.gif">Subscribe with Excite MIX</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.webwag.com/wwgthis.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.webwag.com/images/wwgthis.gif">Subscribe with Webwag</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.podcastready.com/oneclick_bookmark.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.podcastready.com/images/podcastready_button.gif">Subscribe with Podcast Ready</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.wikio.com/subscribe?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.wikio.com/shared/img/add2wikio.gif">Subscribe with Wikio</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.dailyrotation.com/index.php?feed=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.dailyrotation.com/rss-dr2.gif">Subscribe with Daily Rotation</feedburner:feedFlare>
+        <item>
+            <title>1.1.5 Revolt</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/eEOwWxtaEE4/1-1-5-revolt</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Tue, 22 Mar 2011 10:17:29 PDT</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2011-03-22:/post/1-1-5-revolt</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/15-revolution.jpg' /&gt;&lt;/p&gt;&lt;p&gt;In this special episode we explore the Egyptian revolution. We talk to Remon Zakaria about his experience writing software for a day job and overthrowing the government at night. Big thanks to Ahmed Remy and Reem Ahmed for their help.&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/15-Revolt.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/mN1tJi2aU1A/15-Revolt.mp3" fileSize="70229343" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> In this special episode we explore the Egyptian revolution. We talk to Remon Zakaria about his experience writing software for a day job and overthrowing the government at night. Big thanks to Ahmed Remy and Reem Ahmed for their help. Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> In this special episode we explore the Egyptian revolution. We talk to Remon Zakaria about his experience writing software for a day job and overthrowing the government at night. Big thanks to Ahmed Remy and Reem Ahmed for their help. Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1-1-5-revolt</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/mN1tJi2aU1A/15-Revolt.mp3" length="70229343" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/15-Revolt.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.1.4 Obsession</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/QHZ6T8VxJzs/1-1-4-obsession</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Wed, 02 Mar 2011 16:00:00 PST</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2011-03-03:/post/1-1-4-obsession</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/14-lead.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;Rob Sullivan talks about his obsessiveness and how it helps him, and hinders him in his job. Rory Blythe and Scott then talk openly about Rory's compulsion to keep learning - which he has embraced completely.&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/114_Obsession.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/2qlRrShu5FA/114_Obsession.mp3" fileSize="71585666" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> Rob Sullivan talks about his obsessiveness and how it helps him, and hinders him in his job. Rory Blythe and Scott then talk openly about Rory's compulsion to keep learning - which he has embraced completely. Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> Rob Sullivan talks about his obsessiveness and how it helps him, and hinders him in his job. Rory Blythe and Scott then talk openly about Rory's compulsion to keep learning - which he has embraced completely. Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1-1-4-obsession</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/2qlRrShu5FA/114_Obsession.mp3" length="71585666" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/114_Obsession.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.1.3 Competition</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/i5JDIdL1dBw/1-1-3-competition</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Wed, 09 Feb 2011 16:00:00 PST</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2011-02-10:/post/1-1-3-competition</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/13-Competition.jpg' /&gt;&lt;/p&gt;&lt;p&gt;In this episode we talk to competitors who are also programmers. Or, programmers who also compete. Are coders pre-wired for this? Jon Skeet, David Fowler, Aaron Jensen and Danielle Banks share their stories.&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/13-Competition.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/N0yb6sbO338/13-Competition.mp3" fileSize="85536446" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> In this episode we talk to competitors who are also programmers. Or, programmers who also compete. Are coders pre-wired for this? Jon Skeet, David Fowler, Aaron Jensen and Danielle Banks share their stories. Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> In this episode we talk to competitors who are also programmers. Or, programmers who also compete. Are coders pre-wired for this? Jon Skeet, David Fowler, Aaron Jensen and Danielle Banks share their stories. Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1-1-3-competition</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/N0yb6sbO338/13-Competition.mp3" length="85536446" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/13-Competition.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.1.2 Drive</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/LbTgm2BCbkQ/1-1-2-drive</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Thu, 27 Jan 2011 16:00:00 PST</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2011-01-28:/post/1-1-2-drive</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/12-Lead.jpg' /&gt;&lt;/p&gt;&lt;p&gt;In this episode Scott and Rob talk to 4 entrepreneurs about the risks they take, and what's happened as a result. Dave Nielsen, Tom Preston-Werner, and Nate and Niki Kohari.&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/12-Drive.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/mhexwxxGAWk/12-Drive.mp3" fileSize="83041856" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> In this episode Scott and Rob talk to 4 entrepreneurs about the risks they take, and what's happened as a result. Dave Nielsen, Tom Preston-Werner, and Nate and Niki Kohari. Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> In this episode Scott and Rob talk to 4 entrepreneurs about the risks they take, and what's happened as a result. Dave Nielsen, Tom Preston-Werner, and Nate and Niki Kohari. Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1-1-2-drive</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/mhexwxxGAWk/12-Drive.mp3" length="83041856" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/12-Drive.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.1.1 Scars</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/_iC7f3OcSnM/1-1-1-scars</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Thu, 06 Jan 2011 16:00:00 PST</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2011-01-07:/post/1-1-1-scars</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/11-lead.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;In this episode Scott and Rob talk to Chad Myers, Chad Fowler, and Doug Rohrer about the scars they've received from dead end projects they've been on. In addition - Sara Chipps contributes her first story for us - interviewing Scott Reynolds.&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/11-Scars.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/PbpU0Cby8fE/11-Scars.mp3" fileSize="82397990" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> In this episode Scott and Rob talk to Chad Myers, Chad Fowler, and Doug Rohrer about the scars they've received from dead end projects they've been on. In addition - Sara Chipps contributes her first story for us - interviewing Scott Reynolds. Download H</itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> In this episode Scott and Rob talk to Chad Myers, Chad Fowler, and Doug Rohrer about the scars they've received from dead end projects they've been on. In addition - Sara Chipps contributes her first story for us - interviewing Scott Reynolds. Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1-1-1-scars</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/PbpU0Cby8fE/11-Scars.mp3" length="82397990" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/11-Scars.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.1.0 Disconnecting</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/UmWan6Ly1ag/1-1-0-disconnecting</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Thu, 16 Dec 2010 16:00:00 PST</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-12-17:/post/1-1-0-disconnecting</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/10-lead.jpg' /&gt;&lt;/p&gt;&lt;p&gt;This week it's just Scott and me - Scott gets to go off to Disneyland with his wife and 2 boys, and I get to hang out with my girls for a week as their mom goes on a retreat in California.&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/10-Disconnecting.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/-2FSwiOFWAs/10-Disconnecting.mp3" fileSize="77834514" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> This week it's just Scott and me - Scott gets to go off to Disneyland with his wife and 2 boys, and I get to hang out with my girls for a week as their mom goes on a retreat in California. Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> This week it's just Scott and me - Scott gets to go off to Disneyland with his wife and 2 boys, and I get to hang out with my girls for a week as their mom goes on a retreat in California. Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1-1-0-disconnecting</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/-2FSwiOFWAs/10-Disconnecting.mp3" length="77834514" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/10-Disconnecting.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.0.9 Management</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/bopI_GAkJ7E/1-0-9-management</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Thu, 02 Dec 2010 16:00:00 PST</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-12-03:/post/2089407008/1-0-9-management</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/dilbert-boss.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;In this episode Scott and I talk to technical folks who have moved on up to Management - and what it means to them&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/09-Management.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/bhedOboHGrU/09-Management.mp3" fileSize="82828695" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> In this episode Scott and I talk to technical folks who have moved on up to Management - and what it means to them Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> In this episode Scott and I talk to technical folks who have moved on up to Management - and what it means to them Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/2089407008/1-0-9-management</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/bhedOboHGrU/09-Management.mp3" length="82828695" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/09-Management.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.0.8 Motivation</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/KcBX2ffGf10/1-0-8-motivation</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Thu, 18 Nov 2010 16:00:00 PST</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-11-19:/post/1620026288/1-0-8-motivation</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/motives.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;In this episode Scott and I talk to 2 people with fairly different stories, about what motivates them&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/08-Motivation.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/q75A_9C6ACE/08-Motivation.mp3" fileSize="80744751" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> In this episode Scott and I talk to 2 people with fairly different stories, about what motivates them Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> In this episode Scott and I talk to 2 people with fairly different stories, about what motivates them Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1620026288/1-0-8-motivation</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/q75A_9C6ACE/08-Motivation.mp3" length="80744751" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/08-Motivation.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.0.7 Audacity</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/pHBwElrz3M8/1-0-7-audacity</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Tue, 02 Nov 2010 17:00:00 PDT</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-11-03:/post/1475231255/1-0-7-audacity</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/07-lead.png' /&gt;&lt;/p&gt;&lt;p&gt;In this episode Scott and I talk to 3 developers who have pulled off some pretty audacious maneuvers.&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/07-Audacity.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/bZ_ubQhMl-4/07-Audacity.mp3" fileSize="78687733" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> In this episode Scott and I talk to 3 developers who have pulled off some pretty audacious maneuvers. Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> In this episode Scott and I talk to 3 developers who have pulled off some pretty audacious maneuvers. Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1475231255/1-0-7-audacity</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/bZ_ubQhMl-4/07-Audacity.mp3" length="78687733" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/07-Audacity.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.0.6 Abstraction</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/vOPnaRfyNxg/1-0-6-abstraction</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Tue, 19 Oct 2010 17:00:00 PDT</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-10-20:/post/1361199493/1-0-6-abstraction</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/blue-circuit-board.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;In this episode Scott and I discuss "what you need to know as a software developer". How many layers of abstraction do you need to understand? How many geek trading cards should you have in your collection? To find out more, we talked to 3 prominent, living-history  developers.&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/06-Abstraction.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/a9T_IARbwOo/06-Abstraction.mp3" fileSize="73131227" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> In this episode Scott and I discuss "what you need to know as a software developer". How many layers of abstraction do you need to understand? How many geek trading cards should you have in your collection? To find out more, we talked to 3 prominent, liv</itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> In this episode Scott and I discuss "what you need to know as a software developer". How many layers of abstraction do you need to understand? How many geek trading cards should you have in your collection? To find out more, we talked to 3 prominent, living-history developers. Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1361199493/1-0-6-abstraction</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/a9T_IARbwOo/06-Abstraction.mp3" length="73131227" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/06-Abstraction.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.0.5 Homerun</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/RSMmzkj3T8I/1-0-5-homerun</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Sun, 10 Oct 2010 17:00:00 PDT</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-10-11:/post/1270441885/1-0-5-homerun</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/05-lead.jpg' /&gt;&lt;/p&gt;&lt;p&gt;In this episode Scott and I talk to two developers who created something phenomenal: they hit a Homerun if you will.&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/05-Homerun.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/EpuSa9S-pMc/05-Homerun.mp3" fileSize="65159921" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> In this episode Scott and I talk to two developers who created something phenomenal: they hit a Homerun if you will. Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> In this episode Scott and I talk to two developers who created something phenomenal: they hit a Homerun if you will. Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1270441885/1-0-5-homerun</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/EpuSa9S-pMc/05-Homerun.mp3" length="65159921" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/05-Homerun.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.0.4 Being Mean</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/JrixwqZndtU/1-0-4-being-mean</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Fri, 01 Oct 2010 17:00:00 PDT</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-10-02:/post/1197337846/1-0-4-being-mean</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/04-lead.png' /&gt;&lt;/p&gt;&lt;p&gt;In this episode I�m joined once again by Scott Hanselman and we explore the idea of �being mean� - and what makes people mean in our industry.&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/04-Being-Mean.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/oPHvINZSyLc/04-Being-Mean.mp3" fileSize="61045804" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> In this episode I�m joined once again by Scott Hanselman and we explore the idea of �being mean� - and what makes people mean in our industry. Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> In this episode I�m joined once again by Scott Hanselman and we explore the idea of �being mean� - and what makes people mean in our industry. Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1197337846/1-0-4-being-mean</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/oPHvINZSyLc/04-Being-Mean.mp3" length="61045804" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/04-Being-Mean.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.0.3 Problems</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/PSfSYwU48YA/1-0-3-problems</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Fri, 17 Sep 2010 17:00:00 PDT</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-09-18:/post/1106029175/1-0-3-problems</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/03-lead.png' /&gt;&lt;/p&gt;&lt;p&gt;How do you solve problems as a developer? How do you tackle issues that seem completely unsolvable - as an individual or on a team?&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/03-problems.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/Fg0ERPjrsyI/03-problems.mp3" fileSize="63302136" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> How do you solve problems as a developer? How do you tackle issues that seem completely unsolvable - as an individual or on a team? Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> How do you solve problems as a developer? How do you tackle issues that seem completely unsolvable - as an individual or on a team? Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1106029175/1-0-3-problems</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/Fg0ERPjrsyI/03-problems.mp3" length="63302136" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/03-problems.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.0.2 Fame and Notoriety</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/KwlBrikTxGg/1-0-2-fame-and-notoriety</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Wed, 01 Sep 2010 17:00:00 PDT</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-09-02:/post/1055964765/1-0-2-fame-and-notoriety</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/02-lead.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;In this episode I talk to 2 developers about the fame and how it relates to their career as developers&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/02-Fame.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/6oJWmrx3tvU/02-Fame.mp3" fileSize="56462130" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> In this episode I talk to 2 developers about the fame and how it relates to their career as developers Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> In this episode I talk to 2 developers about the fame and how it relates to their career as developers Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1055964765/1-0-2-fame-and-notoriety</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/6oJWmrx3tvU/02-Fame.mp3" length="56462130" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/02-Fame.mp3</feedburner:origEnclosureLink>
+        </item>
+        <item>
+            <title>1.0.1 Getting Fired</title>
+            <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/FCT71Wmr_Kw/1-0-1-getting-fired</link>
+            <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+            <pubDate>Tue, 17 Aug 2010 17:00:00 PDT</pubDate>
+            <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-08-18:/post/1203177584/1-0-1-getting-fired</guid>
+            <description>
+                &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/01-lead.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;This is the very first episode of a little experiment of mine - telling stories about development following in the footsteps of my favorite podcast: This American Life&lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/01-Getting-Fired.mp3'&gt;Download Here&lt;/a&gt;&lt;/p&gt;
+            </description>
+            <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/3d_AAidWzXs/01-Getting-Fired.mp3" fileSize="58747576" type="audio/mpeg" />
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:subtitle> This is the very first episode of a little experiment of mine - telling stories about development following in the footsteps of my favorite podcast: This American Life Download Here </itunes:subtitle>
+            <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+            <itunes:summary> This is the very first episode of a little experiment of mine - telling stories about development following in the footsteps of my favorite podcast: This American Life Download Here </itunes:summary>
+            <itunes:keywords>technology,stories</itunes:keywords>
+            <feedburner:origLink>http://thisdeveloperslife.com/post/1203177584/1-0-1-getting-fired</feedburner:origLink>
+            <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/3d_AAidWzXs/01-Getting-Fired.mp3" length="58747576" type="audio/mpeg" />
+            <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/01-Getting-Fired.mp3</feedburner:origEnclosureLink>
+        </item>
+        <copyright>Copyright 2010, Rob Conery</copyright>
+        <media:credit role="author">Rob Conery and Scott Hanselman</media:credit>
+        <media:rating>nonadult</media:rating>
+        <media:description type="plain">Stories about developers and their lives</media:description>
+    </channel>
+</rss>

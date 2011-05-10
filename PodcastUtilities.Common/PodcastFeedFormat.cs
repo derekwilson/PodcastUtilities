@@ -6,21 +6,17 @@ using System.Text;
 namespace PodcastUtilities.Common
 {
     /// <summary>
-    /// the type of the playlist
+    /// format of the feed
     /// </summary>
-    public enum PlaylistFormat
+    public enum PodcastFeedFormat
     {
         /// <summary>
-        /// ASX playlist
+        /// RSS format
         /// </summary>
-        ASX,
+        RSS,
         /// <summary>
-        /// WPL playlist
+        /// ATOM format
         /// </summary>
-        WPL,
-        /// <summary>
-        /// Unknown playlist format
-        /// </summary>
-        Unknown
+        ATOM
     }
 }

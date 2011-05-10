@@ -24,7 +24,7 @@ namespace PodcastUtilities.Common
 				case PlaylistFormat.WPL:
 					return new PlaylistWpl(filename, true);
 			}
-			throw new IndexOutOfRangeException("Unknown playlist format");
+            throw new ArgumentOutOfRangeException("playlistFormat");
 		}
 
 		#endregion
