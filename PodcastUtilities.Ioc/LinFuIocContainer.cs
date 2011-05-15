@@ -1,7 +1,7 @@
 ﻿using LinFu.IoC;
 using PodcastUtilities.Common;
 
-namespace SyncPodcasts
+namespace PodcastUtilities.Ioc
 {
 	public class LinFuIocContainer : IIocContainer
 	{

@@ -73,8 +73,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IocRegistration.cs" />
-    <Compile Include="LinFuIocContainer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -82,6 +80,10 @@
     <ProjectReference Include="..\PodcastUtilities.Common\PodcastUtilities.Common.csproj">
       <Project>{37562F85-B1BD-4AB8-B74B-685B05F9CF41}</Project>
       <Name>PodcastUtilities.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PodcastUtilities.Ioc\PodcastUtilities.Ioc.csproj">
+      <Project>{F3DA4F48-7AB2-4D45-9C44-6F7AA9019DF1}</Project>
+      <Name>PodcastUtilities.Ioc</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
