@@ -2,6 +2,7 @@
 using System.Reflection;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.IO;
+using PodcastUtilities.Ioc;
 
 namespace SyncPodcasts
 {
@@ -56,7 +57,8 @@ namespace SyncPodcasts
 		{
 			var container =  new LinFuIocContainer();
 
-			IocRegistration.RegisterServices(container);
+            IocRegistration.RegisterFileServices(container);
+            IocRegistration.RegisterPlaylistServices(container);
 
 			return container;
 		}

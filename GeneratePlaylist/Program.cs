@@ -8,6 +8,7 @@ using System.IO;
 using PodcastUtilities.Common;
 using System.Xml;
 using PodcastUtilities.Common.IO;
+using PodcastUtilities.Ioc;
 
 namespace GeneratePlaylist
 {
@@ -37,16 +38,28 @@ namespace GeneratePlaylist
                 return;
             }
 
+            LinFuIocContainer iocContainer = InitializeIocContainer();
+
             var control = new ControlFile(args[0]);
-        	var finder = new FileFinder(new FileSorter(), new SystemDirectoryInfoProvider());
-        	var fileUtilities = new FileUtilities();
-        	var playlistFactory = new PlaylistFactory();
+            var finder = iocContainer.Resolve<IFileFinder>();
+            var fileUtilities = iocContainer.Resolve<IFileUtilities>();
+            var playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
 
 			var generator = new PlaylistGenerator(finder, fileUtilities, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(GeneratorStatusUpdate);
 
             if (!string.IsNullOrEmpty(control.PlaylistFilename))
                 generator.GeneratePlaylist(control, false);
+        }
+
+        private static LinFuIocContainer InitializeIocContainer()
+        {
+            var container = new LinFuIocContainer();
+
+            IocRegistration.RegisterFileServices(container);
+            IocRegistration.RegisterPlaylistServices(container);
+
+            return container;
         }
 
         static void GeneratorStatusUpdate(object sender, StatusUpdateEventArgs e)

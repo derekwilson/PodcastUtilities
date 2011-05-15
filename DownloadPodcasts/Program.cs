@@ -8,6 +8,7 @@ using System.Text;
 using System.Xml;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.IO;
+using PodcastUtilities.Ioc;
 
 namespace DownloadPodcasts
 {
@@ -68,6 +69,15 @@ namespace DownloadPodcasts
             Console.WriteLine("Download Complete.");
         }
 
+        private static LinFuIocContainer InitializeIocContainer()
+        {
+            var container = new LinFuIocContainer();
+
+            IocRegistration.RegisterFeedServices(container);
+
+            return container;
+        }
+
         static void Main(string[] args)
         {
             DisplayBanner();
@@ -76,6 +86,8 @@ namespace DownloadPodcasts
                 DisplayHelp();
                 return;
             }
+
+            LinFuIocContainer iocContainer = InitializeIocContainer();
 
             var control = new ControlFile(args[0]);
 
@@ -88,10 +100,11 @@ namespace DownloadPodcasts
 
             using (var webClient = new SystemNetWebClient())
             {
-                var factory = new PodcastFeedFactory();
+                var factory = iocContainer.Resolve<IPodcastFeedFactory>();
+
                 var downloader = new PodcastFeedDownloader(webClient,factory);
 
-                var feed1 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://www.thenakedscientists.com/naked_scientists_podcast.xml"));
+                var feed1 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://feeds.feedburner.com/thisdeveloperslife"));
                 Console.WriteLine("Feed1 title: {0}", feed1.Title);
                 foreach (var podcastFeedItem in feed1.GetFeedEpisodes())
                 {
