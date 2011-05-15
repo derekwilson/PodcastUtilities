@@ -113,6 +113,7 @@
     <Compile Include="PodcastSynchronizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FileFinder.cs" />
+    <Compile Include="Rfc822DateTime.cs" />
     <Compile Include="StatusUpdateEventArgs.cs" />
     <Compile Include="SyncItem.cs" />
     <Compile Include="UnwantedFileRemover.cs" />

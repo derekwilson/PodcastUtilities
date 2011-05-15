@@ -21,6 +21,11 @@ namespace PodcastUtilities.Common
         Uri Address { get; set; }
 
         /// <summary>
+        /// the date the episode was published
+        /// </summary>
+        DateTime Published { get; set; }
+
+        /// <summary>
         /// filename to use when saving the podcast file
         /// </summary>
         /// <returns></returns>
