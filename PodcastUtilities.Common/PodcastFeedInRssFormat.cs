@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Xml;
 using PodcastUtilities.Common.IO;
@@ -50,12 +51,21 @@ namespace PodcastUtilities.Common
             {
                 if (node.SelectSingleNode("enclosure") != null)
                 {
-                    episodes.Add(
-                        new PodcastFeedItem()
+                    try
+                    {
+                        episodes.Add(
+                            new PodcastFeedItem()
                             {
                                 Address = new Uri(GetNodeText(node, "enclosure/@url")),
-                                Title = GetNodeText(node, "title")
+                                Title = GetNodeText(node, "title"),
+                                Published = Rfc822DateTime.Parse(GetNodeText(node, "pubDate"))
                             });
+
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(string.Format("GetFeedEpisodes: error {0}", ex.Message));
+                    }
                 }
             }
 

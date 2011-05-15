@@ -123,6 +123,7 @@
     <Compile Include="PodcastSynchronizerTests\WhenTestingPodcastSynchronizer.cs" />
     <Compile Include="PodcastSynchronizerTests\WhenUsingPodcastSynchronizerToSynchronize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rfc822DateTimeTests\WhenConvertingToDateDime.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenDestinationDirectoryDoesNotExist.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenTestingUnwantedFileRemover.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenThereAreFilesToKeep.cs" />

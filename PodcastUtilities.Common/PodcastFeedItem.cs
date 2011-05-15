@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace PodcastUtilities.Common
 {
@@ -18,12 +19,32 @@ namespace PodcastUtilities.Common
         public Uri Address { get; set; }
 
         /// <summary>
+        /// the date the episode was published
+        /// </summary>
+        public DateTime Published { get; set; }
+
+        /// <summary>
         /// filename to use when saving the podcast file
         /// </summary>
         /// <returns></returns>
         public string GetFilename()
         {
-            throw new NotImplementedException();
+            string filename = Address.Segments[Address.Segments.Length - 1];
+            
+            if (filename.IndexOfAny(Path.GetInvalidFileNameChars()) != -1)
+            {
+                filename = RemoveInvalidChars(filename);
+            }
+            return filename;
+        }
+
+        private static string RemoveInvalidChars(string filename)
+        {
+            foreach (char invalidFileNameChar in Path.GetInvalidFileNameChars())
+            {
+                filename = filename.Replace(invalidFileNameChar, '_');
+            }
+            return filename;
         }
     }
 }
