@@ -83,7 +83,9 @@ namespace PodcastUtilities.Common
                 }
                 else
                 {
-                    formats = new string[35];
+                    formats = new string[67];
+
+                    // with seconds
 
                     // two-digit day, four-digit year patterns
                     formats[0] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'fffffff zzzz";
@@ -125,10 +127,52 @@ namespace PodcastUtilities.Common
                     formats[30] = "ddd',' d MMM yy HH':'mm':'ss'.'f zzzz";
                     formats[31] = "ddd',' d MMM yy HH':'mm':'ss zzzz";
 
+                    // without seconds
+
+                    // two-digit day, four-digit year patterns
+                    formats[32] = "ddd',' dd MMM yyyy HH':'mm'.'fffffff zzzz";
+                    formats[33] = "ddd',' dd MMM yyyy HH':'mm'.'ffffff zzzz";
+                    formats[34] = "ddd',' dd MMM yyyy HH':'mm'.'fffff zzzz";
+                    formats[35] = "ddd',' dd MMM yyyy HH':'mm'.'ffff zzzz";
+                    formats[36] = "ddd',' dd MMM yyyy HH':'mm'.'fff zzzz";
+                    formats[37] = "ddd',' dd MMM yyyy HH':'mm'.'ff zzzz";
+                    formats[38] = "ddd',' dd MMM yyyy HH':'mm'.'f zzzz";
+                    formats[39] = "ddd',' dd MMM yyyy HH':'mm zzzz";
+
+                    // two-digit day, two-digit year patterns
+                    formats[40] = "ddd',' dd MMM yy HH':'mm'.'fffffff zzzz";
+                    formats[41] = "ddd',' dd MMM yy HH':'mm'.'ffffff zzzz";
+                    formats[42] = "ddd',' dd MMM yy HH':'mm'.'fffff zzzz";
+                    formats[43] = "ddd',' dd MMM yy HH':'mm'.'ffff zzzz";
+                    formats[44] = "ddd',' dd MMM yy HH':'mm'.'fff zzzz";
+                    formats[45] = "ddd',' dd MMM yy HH':'mm'.'ff zzzz";
+                    formats[46] = "ddd',' dd MMM yy HH':'mm'.'f zzzz";
+                    formats[47] = "ddd',' dd MMM yy HH':'mm zzzz";
+
+                    // one-digit day, four-digit year patterns
+                    formats[48] = "ddd',' d MMM yyyy HH':'mm'.'fffffff zzzz";
+                    formats[49] = "ddd',' d MMM yyyy HH':'mm'.'ffffff zzzz";
+                    formats[50] = "ddd',' d MMM yyyy HH':'mm'.'fffff zzzz";
+                    formats[51] = "ddd',' d MMM yyyy HH':'mm'.'ffff zzzz";
+                    formats[52] = "ddd',' d MMM yyyy HH':'mm'.'fff zzzz";
+                    formats[53] = "ddd',' d MMM yyyy HH':'mm'.'ff zzzz";
+                    formats[54] = "ddd',' d MMM yyyy HH':'mm'.'f zzzz";
+                    formats[55] = "ddd',' d MMM yyyy HH':'mm zzzz";
+
+                    // two-digit day, two-digit year patterns
+                    formats[56] = "ddd',' d MMM yy HH':'mm'.'fffffff zzzz";
+                    formats[57] = "ddd',' d MMM yy HH':'mm'.'ffffff zzzz";
+                    formats[58] = "ddd',' d MMM yy HH':'mm'.'fffff zzzz";
+                    formats[59] = "ddd',' d MMM yy HH':'mm'.'ffff zzzz";
+                    formats[60] = "ddd',' d MMM yy HH':'mm'.'fff zzzz";
+                    formats[61] = "ddd',' d MMM yy HH':'mm'.'ff zzzz";
+                    formats[62] = "ddd',' d MMM yy HH':'mm'.'f zzzz";
+                    formats[63] = "ddd',' d MMM yy HH':'mm zzzz";
+
                     // Fall back patterns
-                    formats[32] = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK"; // RoundtripDateTimePattern
-                    formats[33] = DateTimeFormatInfo.InvariantInfo.UniversalSortableDateTimePattern;
-                    formats[34] = DateTimeFormatInfo.InvariantInfo.SortableDateTimePattern;
+                    formats[64] = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK"; // RoundtripDateTimePattern
+                    formats[65] = DateTimeFormatInfo.InvariantInfo.UniversalSortableDateTimePattern;
+                    formats[66] = DateTimeFormatInfo.InvariantInfo.SortableDateTimePattern;
 
                     return formats;
                 }

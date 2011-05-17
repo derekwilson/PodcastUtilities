@@ -110,6 +110,8 @@ namespace DownloadPodcasts
                 {
                     Console.WriteLine(" Episode: {0}", podcastFeedItem.Title);
                     Console.WriteLine("  Url: {0}", podcastFeedItem.Address);
+                    Console.WriteLine("  FIlename: {0}", podcastFeedItem.GetFilename());
+                    Console.WriteLine("  Published: {0} {1}", podcastFeedItem.Published.ToShortDateString(), podcastFeedItem.Published.ToShortTimeString());
                 }
 
                 var feed2 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://downloads.bbc.co.uk/podcasts/radio4/fricomedy/rss.xml"));
@@ -118,6 +120,8 @@ namespace DownloadPodcasts
                 {
                     Console.WriteLine(" Episode: {0}", podcastFeedItem.Title);
                     Console.WriteLine("  Url: {0}", podcastFeedItem.Address);
+                    Console.WriteLine("  FIlename: {0}", podcastFeedItem.GetFilename());
+                    Console.WriteLine("  Published: {0} {1}", podcastFeedItem.Published.ToShortDateString(), podcastFeedItem.Published.ToShortTimeString());
                 }
             }
 
