@@ -15,6 +15,10 @@
         <number>-1</number>
     </podcast>
     <podcast>
+        <feed>
+            <url>http://www.hanselminutes.com/hanselminutes_MP3Direct.xml</url>
+            <format>rss</format>
+        </feed>
         <folder>Hanselminutes</folder>
         <pattern>*.mp3</pattern>
         <number>34</number>

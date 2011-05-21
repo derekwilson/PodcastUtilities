@@ -6,9 +6,9 @@ using System.Linq;
 namespace PodcastUtilities.Common
 {
 	/// <summary>
-	/// synchronise a podcasts
+	/// synchronise the files from the podcasts in a control file
 	/// </summary>
-    public class PodcastSynchronizer
+    public class PodcastFileSynchronizer
 	{
 		/// <summary>
 		/// construct a podcast synchroniser
@@ -16,7 +16,7 @@ namespace PodcastUtilities.Common
 		/// <param name="fileFinder">abstract interface to the file system to find media files</param>
 		/// <param name="fileCopier">abstract file copier</param>
 		/// <param name="fileRemover">abstract file remover, to synchronise deleted files in the source to the destination</param>
-        public PodcastSynchronizer(
+        public PodcastFileSynchronizer(
 			IFileFinder fileFinder,
 			IFileCopier fileCopier,
 			IUnwantedFileRemover fileRemover)

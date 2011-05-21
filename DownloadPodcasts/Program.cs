@@ -105,24 +105,12 @@ namespace DownloadPodcasts
                 var downloader = new PodcastFeedDownloader(webClient,factory);
 
                 var feed1 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://feeds.feedburner.com/thisdeveloperslife"));
-                Console.WriteLine("Feed1 title: {0}", feed1.Title);
-                foreach (var podcastFeedItem in feed1.GetFeedEpisodes())
-                {
-                    Console.WriteLine(" Episode: {0}", podcastFeedItem.Title);
-                    Console.WriteLine("  Url: {0}", podcastFeedItem.Address);
-                    Console.WriteLine("  FIlename: {0}", podcastFeedItem.GetFilename());
-                    Console.WriteLine("  Published: {0} {1}", podcastFeedItem.Published.ToShortDateString(), podcastFeedItem.Published.ToShortTimeString());
-                }
+                feed1.StatusUpdate += StatusUpdate;
+                feed1.GetFeedEpisodes();
 
                 var feed2 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://downloads.bbc.co.uk/podcasts/radio4/fricomedy/rss.xml"));
-                Console.WriteLine("Feed1 title: {0}", feed2.Title);
-                foreach (var podcastFeedItem in feed2.GetFeedEpisodes())
-                {
-                    Console.WriteLine(" Episode: {0}", podcastFeedItem.Title);
-                    Console.WriteLine("  Url: {0}", podcastFeedItem.Address);
-                    Console.WriteLine("  FIlename: {0}", podcastFeedItem.GetFilename());
-                    Console.WriteLine("  Published: {0} {1}", podcastFeedItem.Published.ToShortDateString(), podcastFeedItem.Published.ToShortTimeString());
-                }
+                feed2.StatusUpdate += StatusUpdate;
+                feed2.GetFeedEpisodes();
             }
 
             Console.WriteLine("Done");

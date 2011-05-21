@@ -23,12 +23,16 @@ namespace PodcastUtilities.Common.Tests.ControlFileTests
         public void ItShouldReadThePodcasts()
         {
             Assert.That(ControlFile.Podcasts.Count, Is.EqualTo(2));
+
+            Assert.That(ControlFile.Podcasts[0].Feed, Is.Null);
             Assert.That(ControlFile.Podcasts[0].Folder, Is.EqualTo("Test Match Special"));
             Assert.That(ControlFile.Podcasts[0].MaximumNumberOfFiles, Is.EqualTo(-1));
             Assert.That(ControlFile.Podcasts[0].Pattern, Is.EqualTo("*.mp3"));
             Assert.That(ControlFile.Podcasts[0].SortField, Is.EqualTo("name"));
             Assert.That(ControlFile.Podcasts[0].AscendingSort, Is.True);
 
+            Assert.That(ControlFile.Podcasts[1].Feed.Address, Is.EqualTo("http://www.hanselminutes.com/hanselminutes_MP3Direct.xml"));
+            Assert.That(ControlFile.Podcasts[1].Feed.Format, Is.EqualTo(PodcastFeedFormat.RSS));
             Assert.That(ControlFile.Podcasts[1].Folder, Is.EqualTo("Hanselminutes"));
             Assert.That(ControlFile.Podcasts[1].MaximumNumberOfFiles, Is.EqualTo(34));
             Assert.That(ControlFile.Podcasts[1].Pattern, Is.EqualTo("*.mp3"));

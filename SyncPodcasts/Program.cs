@@ -44,7 +44,7 @@ namespace SyncPodcasts
             var generator = new PlaylistGenerator(finder, fileUtilities, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
-			var synchronizer = new PodcastSynchronizer(finder, copier, remover);
+			var synchronizer = new PodcastFileSynchronizer(finder, copier, remover);
 			synchronizer.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
 			synchronizer.Synchronize(control, false);

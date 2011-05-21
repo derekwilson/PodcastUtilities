@@ -1,4 +1,6 @@
-﻿namespace PodcastUtilities.Common
+﻿using System;
+
+namespace PodcastUtilities.Common
 {
 	/// <summary>
 	/// an individual podcast
@@ -25,5 +27,9 @@
 		/// maximum number of files to copy, -1 for unlimited
 		/// </summary>
         public int MaximumNumberOfFiles { get; set; }
+        /// <summary>
+        /// the configuration info for the feed
+        /// </summary>
+        public FeedInfo Feed { get; set; }
 	}
 }

@@ -12,7 +12,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedInRssFormatTests
         [Test]
         public void ItShouldGetTheCorrectTitle()
         {
-            Assert.That(Feed.Title, Is.EqualTo("This Developer's Life"));
+            Assert.That(Feed.PodcastTitle, Is.EqualTo("This Developer's Life"));
         }
     }
 }
