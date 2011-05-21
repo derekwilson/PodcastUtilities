@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlFile.cs" />
+    <Compile Include="FeedInfo.cs" />
     <Compile Include="FileCopier.cs" />
     <Compile Include="FileSorter.cs" />
     <Compile Include="IControlFile.cs" />

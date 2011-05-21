@@ -3,7 +3,7 @@ namespace PodcastUtilities.Common.Tests.PodcastSynchronizerTests
 	public abstract class WhenTestingPodcastSynchronizer
 		: WhenTestingBehaviour
 	{
-		protected PodcastSynchronizer PodcastSynchronizer { get; set; }
+		protected PodcastFileSynchronizer PodcastSynchronizer { get; set; }
 
 		protected IControlFile ControlFile { get; set; }
 		protected IFileFinder FileFinder { get; set; }
@@ -20,7 +20,7 @@ namespace PodcastUtilities.Common.Tests.PodcastSynchronizerTests
 			FileCopier = GenerateMock<IFileCopier>();
 			FileRemover = GenerateMock<IUnwantedFileRemover>();
 
-			PodcastSynchronizer = new PodcastSynchronizer(FileFinder, FileCopier, FileRemover);
+			PodcastSynchronizer = new PodcastFileSynchronizer(FileFinder, FileCopier, FileRemover);
 		}
 	}
 }

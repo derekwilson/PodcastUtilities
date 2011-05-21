@@ -11,7 +11,7 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// title of the item
         /// </summary>
-        public string Title  { get; set; }
+        public string EpisodeTitle  { get; set; }
 
         /// <summary>
         /// address of the attachment to download

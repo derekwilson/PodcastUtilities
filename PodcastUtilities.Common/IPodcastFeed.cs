@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -12,7 +13,12 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// the title of the podcast
         /// </summary>
-        string Title { get; }
+        string PodcastTitle { get; }
+
+        /// <summary>
+        /// event that is fired whenever a file is copied of an error occurs
+        /// </summary>
+        event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
         /// <summary>
         /// get the episodes of a feed

@@ -130,6 +130,30 @@ namespace PodcastUtilities.Common
             }
         }
 
+        private PodcastFeedFormat ReadFeedFormat(string format)
+        {
+            switch (format.ToLower())
+            {
+                case "rss":
+                    return PodcastFeedFormat.RSS;
+                case "atom":
+                    return PodcastFeedFormat.ATOM;
+            }
+            throw new IndexOutOfRangeException(string.Format("{0} is not a valid value for the feed format", format));
+        }
+
+        private FeedInfo ReadFeedInfo(XmlNode feedNode)
+        {
+            if (feedNode == null)
+            {
+                return null;
+            }
+            return new FeedInfo()
+                       {
+                           Address = GetNodeText(feedNode, "url"),
+                           Format = ReadFeedFormat(GetNodeText(feedNode, "format"))
+                       };
+        }
 
 		private void ReadPodcasts()
 		{
@@ -143,7 +167,8 @@ namespace PodcastUtilities.Common
 				{
 					var podcastInfo = new PodcastInfo
 					{
-						Folder = GetNodeText(podcastNode, "folder"),
+                        Feed = ReadFeedInfo(podcastNode.SelectSingleNode("feed")),
+                        Folder = GetNodeText(podcastNode, "folder"),
 						Pattern = GetNodeText(podcastNode, "pattern"),
 						MaximumNumberOfFiles = Convert.ToInt32(GetNodeTextOrDefault(podcastNode, "number", "-1")),
 						SortField = GetNodeTextOrDefault(podcastNode, "sortfield", SortField),
