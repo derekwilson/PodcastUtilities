@@ -112,6 +112,7 @@
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeed.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedThatIsAlreadyDownloaded.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedWithOutOfDateEpisodes.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAnEmptyFeed.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenUsingTheEpisodeFinder.cs" />
     <Compile Include="PodcastFeedFactoryTests\WhenCreatingANewAtomPodcastFeed.cs" />

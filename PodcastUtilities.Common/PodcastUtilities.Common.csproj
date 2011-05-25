@@ -88,7 +88,9 @@
     <Compile Include="IO\IDriveInfoProvider.cs" />
     <Compile Include="IO\IFileInfo.cs" />
     <Compile Include="IO\IFileUtilities.cs" />
+    <Compile Include="IO\ITimeProvider.cs" />
     <Compile Include="IO\IWebClient.cs" />
+    <Compile Include="IO\SystemDateTimeProvider.cs" />
     <Compile Include="IO\SystemDirectoryInfo.cs" />
     <Compile Include="IO\SystemDirectoryInfoProvider.cs" />
     <Compile Include="IO\SystemDriveInfo.cs" />
