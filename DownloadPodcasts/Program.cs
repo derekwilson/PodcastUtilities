@@ -97,12 +97,12 @@ namespace DownloadPodcasts
             //GetFileUsingWebClient("http://www.thenakedscientists.com/naked_scientists_podcast.xml", "test.xml");
             //GetFileUsingWebClientAsync("http://www.thenakedscientists.com/naked_scientists_podcast.xml", "test.xml");
 
-
-            using (var webClient = new SystemNetWebClient())
+            var webClientFactory = iocContainer.Resolve<IWebClientFactory>();
+            using (var webClient = webClientFactory.GetWebClient())
             {
-                var factory = iocContainer.Resolve<IPodcastFeedFactory>();
+                var feedFactory = iocContainer.Resolve<IPodcastFeedFactory>();
 
-                var downloader = new PodcastFeedDownloader(webClient,factory);
+                var downloader = new PodcastFeedDownloader(webClient,feedFactory);
 
                 var feed1 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://feeds.feedburner.com/thisdeveloperslife"));
                 feed1.StatusUpdate += StatusUpdate;

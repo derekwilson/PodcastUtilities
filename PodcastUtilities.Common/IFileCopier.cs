@@ -22,7 +22,7 @@ namespace PodcastUtilities.Common
 		/// <param name="freeSpaceToLeaveOnDestination">free space to meave on the destination in MB</param>
 		/// <param name="whatif">true to emit all the status updates but not actually perform the copy, false to do the copy</param>
         void CopyFilesToTarget(
-			List<SyncItem> sourceFiles,
+			List<FileSyncItem> sourceFiles,
 			string sourceRootPath,
 			string destinationRootPath,
 			long freeSpaceToLeaveOnDestination,

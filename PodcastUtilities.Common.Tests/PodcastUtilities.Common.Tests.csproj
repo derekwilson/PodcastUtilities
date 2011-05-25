@@ -110,6 +110,10 @@
     <Compile Include="PlaylistWplTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloader.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeed.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedThatIsAlreadyDownloaded.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAnEmptyFeed.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenUsingTheEpisodeFinder.cs" />
     <Compile Include="PodcastFeedFactoryTests\WhenCreatingANewAtomPodcastFeed.cs" />
     <Compile Include="PodcastFeedFactoryTests\WhenCreatingANewPodcastFeed.cs" />
     <Compile Include="PodcastFeedFactoryTests\WhenCreatingANewRssPodcastFeed.cs" />

@@ -5,7 +5,7 @@ namespace PodcastUtilities.Common
 	/// <summary>
 	/// an individulal item to be synchronised
 	/// </summary>
-    public class SyncItem
+    public class FileSyncItem
 	{
         /// <summary>
         /// the item in the file system to be synchronised

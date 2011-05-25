@@ -24,6 +24,7 @@ namespace PodcastUtilities.Ioc
         public static void RegisterFeedServices(IIocContainer container)
         {
             container.Register<IPodcastFeedFactory, PodcastFeedFactory>();
+            container.Register<IWebClientFactory, WebClientFactory>();
         }
     }
 }

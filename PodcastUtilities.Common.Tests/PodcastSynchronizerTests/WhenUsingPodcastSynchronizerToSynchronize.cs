@@ -12,7 +12,7 @@ namespace PodcastUtilities.Common.Tests.PodcastSynchronizerTests
 		protected List<IFileInfo> PodcastFiles1 { get; set; }
 		protected List<IFileInfo> PodcastFiles2 { get; set; }
 
-		protected List<SyncItem> FilesToCopy { get; set; }
+		protected List<FileSyncItem> FilesToCopy { get; set; }
 
 		protected override void GivenThat()
 		{
@@ -55,7 +55,7 @@ namespace PodcastUtilities.Common.Tests.PodcastSynchronizerTests
 
 			FileCopier.Stub(c => c.CopyFilesToTarget(null, null, null, 0, false))
 				.IgnoreArguments()
-				.WhenCalled(invocation => FilesToCopy = (List<SyncItem>) invocation.Arguments[0]);
+				.WhenCalled(invocation => FilesToCopy = (List<FileSyncItem>) invocation.Arguments[0]);
 		}
 
 		protected override void When()

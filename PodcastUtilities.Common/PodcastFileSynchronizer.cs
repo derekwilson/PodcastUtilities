@@ -54,7 +54,7 @@ namespace PodcastUtilities.Common
 		/// <param name="whatIf">true to generate the status messages but not to actually perform the file copy / deletes</param>
         public void Synchronize(IControlFile controlFile, bool whatIf)
 		{
-			var filesToCopy = new List<SyncItem>();
+			var filesToCopy = new List<FileSyncItem>();
 
 			foreach (var podcast in controlFile.Podcasts)
 			{
@@ -70,7 +70,7 @@ namespace PodcastUtilities.Common
 
 				FileRemover.RemoveUnwantedFiles(podcastSourceFiles, podcastDestinationPath, podcast.Pattern, whatIf);
 
-				var podcastSyncItems = podcastSourceFiles.Select(p => new SyncItem {Source = p});
+				var podcastSyncItems = podcastSourceFiles.Select(p => new FileSyncItem {Source = p});
 
 				filesToCopy.AddRange(podcastSyncItems);
 			}
