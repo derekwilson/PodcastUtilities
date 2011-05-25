@@ -132,6 +132,7 @@
     <Compile Include="UnwantedFileRemoverTests\WhenTestingUnwantedFileRemover.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenThereAreFilesToKeep.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenThereAreNoFilesToKeep.cs" />
+    <Compile Include="WebClientFactoryTests\WhenUsingAWebClientFactory.cs" />
     <Compile Include="WhenTestingBehaviour.cs" />
     <Compile Include="XmlFileBaseTests\WhenSettingTextNodes.cs" />
     <Compile Include="XmlFileBaseTests\WhenTestingAnXmlFile.cs" />
