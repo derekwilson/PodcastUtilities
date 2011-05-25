@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace PodcastUtilities.Common.Tests.PodcastFeedInRssFormatTests
@@ -6,11 +7,34 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedInRssFormatTests
     public class WhenLoadingTheEpisodesFromExampleXml : WhenTestingTheFeed
     {
         private IList<IPodcastFeedItem> _episodes;
+        private bool _statusUpdate;
+        private bool _statusError;
+        private bool _statusWarning;
 
         protected override void GivenThat()
         {
             base.GivenThat();
             Feed = new PodcastFeedInRssFormat(FeedXmlStream);
+            Feed.StatusUpdate += new System.EventHandler<StatusUpdateEventArgs>(Feed_StatusUpdate);
+            _statusError = false;
+            _statusWarning = false;
+            _statusUpdate = false;
+        }
+
+        void Feed_StatusUpdate(object sender, StatusUpdateEventArgs e)
+        {
+            switch (e.MessageLevel)
+            {
+                case StatusUpdateEventArgs.Level.Warning:
+                    _statusWarning = true;
+                    break;
+                case StatusUpdateEventArgs.Level.Error:
+                    _statusError = true;
+                    break;
+                case StatusUpdateEventArgs.Level.Verbose:
+                    _statusUpdate = true;
+                    break;
+            }
         }
 
         protected override void When()
@@ -22,6 +46,14 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedInRssFormatTests
         public void ItShouldLoadTheEpisodes()
         {
             Assert.That(_episodes.Count, Is.EqualTo(14));
+        }
+
+        [Test]
+        public void ItShouldFireTheStatusEvent()
+        {
+            Assert.That(_statusError, Is.False);
+            Assert.That(_statusWarning, Is.True);
+            Assert.That(_statusUpdate, Is.True);
         }
 
         [Test]

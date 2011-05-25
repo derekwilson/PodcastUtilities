@@ -4,16 +4,19 @@ using NUnit.Framework;
 
 namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
 {
-    public class WhenFindingEpisodesInAFeed : WhenUsingTheEpisodeFinder
+    public class WhenFindingEpisodesInAFeedWithOutOfDateEpisodes : WhenUsingTheEpisodeFinder
     {
         protected override void SetupData()
         {
             base.SetupData();
+
+            _feedInfo.MaximumDaysOld = 35;
+
             _podcastFeedItems.Add(new PodcastFeedItem()
                                       {
                                           Address = new Uri("http://test/podcast.mp3"),
                                           EpisodeTitle = "TestEpisode",
-                                          Published = _now.AddMonths(-1)
+                                          Published = _now.AddMonths(-2)
                                       });
             _podcastFeedItems.Add(new PodcastFeedItem()
                                       {
@@ -21,11 +24,6 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
                                           EpisodeTitle = "TestEpisode2",
                                           Published = _now.AddMonths(-1)
                                       });
-        }
-
-        protected override void GivenThat()
-        {
-            base.GivenThat();
         }
 
         protected override void When()
@@ -36,11 +34,9 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
         [Test]
         public void ItShouldReturnTheList()
         {
-            Assert.That(_episodesToSync.Count, Is.EqualTo(2));
-            Assert.That(_episodesToSync[0].EpisodeUrl.ToString(), Is.EqualTo("http://test/podcast.mp3"));
-            Assert.That(_episodesToSync[0].DestinationPath, Is.EqualTo(Path.Combine(_rootFolder, "podcast.mp3")));
-            Assert.That(_episodesToSync[1].EpisodeUrl.ToString(), Is.EqualTo("http://test/podcast2.mp3"));
-            Assert.That(_episodesToSync[1].DestinationPath, Is.EqualTo(Path.Combine(_rootFolder, "podcast2.mp3")));
+            Assert.That(_episodesToSync.Count, Is.EqualTo(1));
+            Assert.That(_episodesToSync[0].EpisodeUrl.ToString(), Is.EqualTo("http://test/podcast2.mp3"));
+            Assert.That(_episodesToSync[0].DestinationPath, Is.EqualTo(Path.Combine(_rootFolder, "podcast2.mp3")));
         }
     }
 }

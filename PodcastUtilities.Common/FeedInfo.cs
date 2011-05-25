@@ -19,5 +19,10 @@ namespace PodcastUtilities.Common
         /// the format the feed is in
         /// </summary>
         public PodcastFeedFormat Format { get; set; }
+
+        /// <summary>
+        /// do not download podcasts that werre published before this number of days ago
+        /// </summary>
+        public int MaximumDaysOld { get; set; }
     }
 }

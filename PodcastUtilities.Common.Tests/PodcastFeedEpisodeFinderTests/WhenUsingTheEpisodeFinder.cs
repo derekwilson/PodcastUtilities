@@ -17,6 +17,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
         protected IWebClient _webClient;
         protected IPodcastFeedFactory _feedFactory;
         protected IFileUtilities _fileUtilities;
+        protected ITimeProvider _timeProvider;
 
         protected string _rootFolder;
         protected FeedInfo _feedInfo;
@@ -32,6 +33,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
         {
             base.GivenThat();
 
+            _timeProvider = GenerateMock<ITimeProvider>();
             _webClientFactory = GenerateMock<IWebClientFactory>();
             _webClient = GenerateMock<IWebClient>();
             _feedFactory = GenerateMock<IPodcastFeedFactory>();
@@ -41,7 +43,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
             SetupData();
             SetupStubs();
 
-            _episodeFinder = new PodcastFeedEpisodeFinder(_fileUtilities,_feedFactory,_webClientFactory);
+            _episodeFinder = new PodcastFeedEpisodeFinder(_fileUtilities,_feedFactory,_webClientFactory,_timeProvider);
         }
 
         protected virtual void SetupData()
@@ -54,6 +56,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
             _feedInfo = new FeedInfo();
             _feedInfo.Format = PodcastFeedFormat.RSS;
             _feedInfo.Address = new Uri(_feedAddress);
+            _feedInfo.MaximumDaysOld = int.MaxValue;
 
             _podcastFeedItems = new List<IPodcastFeedItem>(10);
             _episodesToSync = new List<FeedSyncItem>(10);
@@ -61,6 +64,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
 
         protected virtual void SetupStubs()
         {
+            _timeProvider.Stub(time => time.UtcNow).Return(_now);
             _webClient.Stub(client => client.OpenRead(_feedInfo.Address)).Return(_stream);
             _webClientFactory.Stub(factory => factory.GetWebClient()).Return(_webClient);
             _feedFactory.Stub(factory => factory.CreatePodcastFeed(_feedInfo.Format, _stream)).Return(_podcastFeed);
