@@ -6,7 +6,7 @@ namespace PodcastUtilities.Common
     /// <summary>
     /// An item in a podcast feed
     /// </summary>
-    class PodcastFeedItem : IPodcastFeedItem
+    public class PodcastFeedItem : IPodcastFeedItem
     {
         /// <summary>
         /// title of the item

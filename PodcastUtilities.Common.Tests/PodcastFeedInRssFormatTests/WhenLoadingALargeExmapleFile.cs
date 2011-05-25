@@ -10,7 +10,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedInRssFormatTests
     class WhenLoadingALargeExmapleFile
         : WhenTestingTheFeed
     {
-        private List<IPodcastFeedItem> _episodes;
+        private IList<IPodcastFeedItem> _episodes;
 
         protected override void GivenThat()
         {

@@ -13,7 +13,7 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// the address of the podcast feed
         /// </summary>
-        public string Address { get; set; }
+        public Uri Address { get; set; }
 
         /// <summary>
         /// the format the feed is in

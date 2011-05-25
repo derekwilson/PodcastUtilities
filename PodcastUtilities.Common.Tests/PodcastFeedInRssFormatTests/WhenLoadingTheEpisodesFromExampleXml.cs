@@ -5,7 +5,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedInRssFormatTests
 {
     public class WhenLoadingTheEpisodesFromExampleXml : WhenTestingTheFeed
     {
-        private List<IPodcastFeedItem> _episodes;
+        private IList<IPodcastFeedItem> _episodes;
 
         protected override void GivenThat()
         {

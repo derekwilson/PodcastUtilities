@@ -150,7 +150,7 @@ namespace PodcastUtilities.Common
             }
             return new FeedInfo()
                        {
-                           Address = GetNodeText(feedNode, "url"),
+                           Address = new Uri(GetNodeText(feedNode, "url")),
                            Format = ReadFeedFormat(GetNodeText(feedNode, "format"))
                        };
         }

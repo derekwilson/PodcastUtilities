@@ -9,7 +9,7 @@ namespace PodcastUtilities.Common.IO
     /// <summary>
     /// methods to interact with the internet to isolate the main body of the code from the physical network
     /// </summary>
-    public interface IWebClient
+    public interface IWebClient : IDisposable
     {
         /// <summary>
         /// open a readable stream from the supplied url

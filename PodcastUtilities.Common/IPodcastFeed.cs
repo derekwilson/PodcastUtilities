@@ -24,6 +24,6 @@ namespace PodcastUtilities.Common
         /// get the episodes of a feed
         /// </summary>
         /// <returns></returns>
-        List<IPodcastFeedItem> GetFeedEpisodes();
+        IList<IPodcastFeedItem> GetFeedEpisodes();
     }
 }

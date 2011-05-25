@@ -41,7 +41,7 @@ namespace PodcastUtilities.Common
         /// get the episodes of a feed
         /// </summary>
         /// <returns></returns>
-        public List<IPodcastFeedItem> GetFeedEpisodes()
+        public IList<IPodcastFeedItem> GetFeedEpisodes()
         {
             var episodes = new List<IPodcastFeedItem>(20);
 

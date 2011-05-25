@@ -14,7 +14,7 @@ namespace PodcastUtilities.Common.Tests.FileCopierTests
 		protected IDriveInfoProvider DriveInfoProvider { get; set; }
 		protected IFileUtilities FileUtilities { get; set; }
 
-		protected List<SyncItem> SourceFiles { get; set; }
+		protected List<FileSyncItem> SourceFiles { get; set; }
 		protected List<StatusUpdateEventArgs> StatusUpdates { get; set; }
 
 		protected override void GivenThat()
@@ -30,10 +30,10 @@ namespace PodcastUtilities.Common.Tests.FileCopierTests
 
 			FileUtilities = GenerateMock<IFileUtilities>();
 
-			SourceFiles = new List<SyncItem>
+			SourceFiles = new List<FileSyncItem>
 			              	{
-			              		new SyncItem {Source = GenerateMock<IFileInfo>()},
-			              		new SyncItem {Source = GenerateMock<IFileInfo>()}
+			              		new FileSyncItem {Source = GenerateMock<IFileInfo>()},
+			              		new FileSyncItem {Source = GenerateMock<IFileInfo>()}
 			              	};
 			SourceFiles[0].Source.Stub(s => s.FullName).Return(@"c:\Source\A");
 			SourceFiles[1].Source.Stub(s => s.FullName).Return(@"c:\Source\B");
