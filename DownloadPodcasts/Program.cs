@@ -73,6 +73,8 @@ namespace DownloadPodcasts
         {
             var container = new LinFuIocContainer();
 
+            IocRegistration.RegisterSystemServices(container);
+            IocRegistration.RegisterFileServices(container);
             IocRegistration.RegisterFeedServices(container);
 
             return container;
@@ -97,21 +99,33 @@ namespace DownloadPodcasts
             //GetFileUsingWebClient("http://www.thenakedscientists.com/naked_scientists_podcast.xml", "test.xml");
             //GetFileUsingWebClientAsync("http://www.thenakedscientists.com/naked_scientists_podcast.xml", "test.xml");
 
-            var webClientFactory = iocContainer.Resolve<IWebClientFactory>();
-            using (var webClient = webClientFactory.GetWebClient())
+            var episodes = new List<FeedSyncItem>(20);
+            var podcastEpisodeFinder = iocContainer.Resolve<IPodcastFeedEpisodeFinder>();
+            podcastEpisodeFinder.StatusUpdate += StatusUpdate;
+            foreach (var podcastInfo in control.Podcasts)
             {
-                var feedFactory = iocContainer.Resolve<IPodcastFeedFactory>();
-
-                var downloader = new PodcastFeedDownloader(webClient,feedFactory);
-
-                var feed1 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://feeds.feedburner.com/thisdeveloperslife"));
-                feed1.StatusUpdate += StatusUpdate;
-                feed1.GetFeedEpisodes();
-
-                var feed2 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://downloads.bbc.co.uk/podcasts/radio4/fricomedy/rss.xml"));
-                feed2.StatusUpdate += StatusUpdate;
-                feed2.GetFeedEpisodes();
+                if (podcastInfo.Feed != null)
+                {
+                    podcastEpisodeFinder.FindEpisodesToDownload(podcastInfo.Folder, podcastInfo.Feed, episodes);
+                }
             }
+
+
+            //var webClientFactory = iocContainer.Resolve<IWebClientFactory>();
+            //using (var webClient = webClientFactory.GetWebClient())
+            //{
+            //    var feedFactory = iocContainer.Resolve<IPodcastFeedFactory>();
+
+            //    var downloader = new PodcastFeedDownloader(webClient,feedFactory);
+
+            //    var feed1 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://feeds.feedburner.com/thisdeveloperslife"));
+            //    feed1.StatusUpdate += StatusUpdate;
+            //    feed1.GetFeedEpisodes();
+
+            //    var feed2 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://downloads.bbc.co.uk/podcasts/radio4/fricomedy/rss.xml"));
+            //    feed2.StatusUpdate += StatusUpdate;
+            //    feed2.GetFeedEpisodes();
+            //}
 
             Console.WriteLine("Done");
         }

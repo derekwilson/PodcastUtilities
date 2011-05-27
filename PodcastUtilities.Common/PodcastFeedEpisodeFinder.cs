@@ -11,7 +11,7 @@ namespace PodcastUtilities.Common
     /// <summary>
     /// discover items to be downloaded from a feed
     /// </summary>
-    public class PodcastFeedEpisodeFinder
+    public class PodcastFeedEpisodeFinder : IPodcastFeedEpisodeFinder
     {
         private readonly IFileUtilities _fileUtilities;
         private readonly IPodcastFeedFactory _feedFactory;
@@ -69,10 +69,35 @@ namespace PodcastUtilities.Common
                                 DestinationPath = destinationPath
                             };
                             episodesToDownload.Add(downloadItem);
+                            OnStatusMessageUpdate(string.Format("Queued: Episode: {0}", podcastFeedItem.EpisodeTitle));
                         }
+                        else
+                        {
+                            OnStatusVerbose(string.Format("Episode already downloaded",podcastFeedItem.EpisodeTitle));
+                        }
+                    }
+                    else
+                    {
+                        OnStatusVerbose(string.Format("Episode too old: {0}",podcastFeedItem.EpisodeTitle));
                     }
                 }
             }
+        }
+
+        private void OnStatusVerbose(string message)
+        {
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Verbose, message));
+        }
+
+        private void OnStatusMessageUpdate(string message)
+        {
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
+        }
+
+        private void OnStatusUpdate(StatusUpdateEventArgs e)
+        {
+            if (StatusUpdate != null)
+                StatusUpdate(this, e);
         }
     }
 }

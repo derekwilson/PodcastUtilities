@@ -8,6 +8,9 @@
         <freeSpaceToLeaveOnDestinationMB>2000</freeSpaceToLeaveOnDestinationMB>
         <sortfield>name</sortfield>
         <sortdirection>asc</sortdirection>
+        <feed>
+            <format>rss</format>
+        </feed>
     </global>
     <podcast>
         <folder>Test Match Special</folder>
@@ -17,9 +20,20 @@
     <podcast>
         <feed>
             <url>http://www.hanselminutes.com/hanselminutes_MP3Direct.xml</url>
-            <format>rss</format>
+            <maximumDaysOld>11</maximumDaysOld>
         </feed>
         <folder>Hanselminutes</folder>
+        <pattern>*.mp3</pattern>
+        <number>34</number>
+        <sortfield>fred</sortfield>
+        <sortdirection>desc</sortdirection>
+    </podcast>
+    <podcast>
+        <feed>
+            <url>http://www.hanselminutes.com/hanselminutes_MP3Direct.xml</url>
+            <format>rss</format>
+        </feed>
+        <folder>Test2</folder>
         <pattern>*.mp3</pattern>
         <number>34</number>
         <sortfield>fred</sortfield>

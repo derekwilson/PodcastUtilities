@@ -16,6 +16,11 @@ namespace PodcastUtilities.Ioc
             container.Register<IUnwantedFileRemover, UnwantedFileRemover>();
         }
 
+        public static void RegisterSystemServices(IIocContainer container)
+        {
+            container.Register<ITimeProvider, SystemDateTimeProvider>();
+        }
+
         public static void RegisterPlaylistServices(IIocContainer container)
         {
             container.Register<IPlaylistFactory, PlaylistFactory>();
@@ -25,6 +30,7 @@ namespace PodcastUtilities.Ioc
         {
             container.Register<IPodcastFeedFactory, PodcastFeedFactory>();
             container.Register<IWebClientFactory, WebClientFactory>();
+            container.Register<IPodcastFeedEpisodeFinder, PodcastFeedEpisodeFinder>();
         }
     }
 }

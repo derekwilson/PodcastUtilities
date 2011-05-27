@@ -65,7 +65,7 @@ namespace PodcastUtilities.Common
                                 Published = Rfc822DateTime.Parse(GetNodeText(node, "pubDate"))
                             };
                         episodes.Add(episode);
-                        OnStatusUpdate(string.Format("Feed: {0}, Episode: {1}", PodcastTitle, episode.EpisodeTitle));
+                        OnStatusUpdate(string.Format("Found: Feed: {0}, Episode: {1}", PodcastTitle, episode.EpisodeTitle));
                     }
                     catch (Exception ex)
                     {
