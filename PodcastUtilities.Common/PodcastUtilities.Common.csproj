@@ -101,6 +101,7 @@
     <Compile Include="IPlaylistFactory.cs" />
     <Compile Include="IPodcastFeed.cs" />
     <Compile Include="IPodcastFeedDownloader.cs" />
+    <Compile Include="IPodcastFeedEpisodeFinder.cs" />
     <Compile Include="IPodcastFeedFactory.cs" />
     <Compile Include="IPodcastFeedItem.cs" />
     <Compile Include="IUnwantedFileRemover.cs" />

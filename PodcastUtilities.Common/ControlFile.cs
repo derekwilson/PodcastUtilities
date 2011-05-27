@@ -11,6 +11,7 @@ namespace PodcastUtilities.Common
 	{
         private const string DefaultSortField = "Name";
         private const string DefaultSortDirection = "ascending";
+	    private const string DefaultFeedFormat = "rss";
         
         private readonly XmlDocument _xmlDocument;
 
@@ -126,7 +127,29 @@ namespace PodcastUtilities.Common
         {
             get
             {
-            	return GetNodeTextOrDefault("podcasts/global/sortdirection", DefaultSortDirection);
+                return GetNodeTextOrDefault("podcasts/global/sortdirection", DefaultSortDirection);
+            }
+        }
+
+        /// <summary>
+        /// global default maximum days old for feed download
+        /// </summary>
+        public string MaximumDaysOld
+        {
+            get
+            {
+                return GetNodeTextOrDefault("podcasts/global/feed/maximumDaysOld", int.MaxValue.ToString());
+            }
+        }
+
+        /// <summary>
+        /// global default feed format
+        /// </summary>
+        public string FeedFormat
+        {
+            get
+            {
+                return GetNodeTextOrDefault("podcasts/global/feed/format", DefaultFeedFormat);
             }
         }
 
@@ -142,6 +165,22 @@ namespace PodcastUtilities.Common
             throw new IndexOutOfRangeException(string.Format("{0} is not a valid value for the feed format", format));
         }
 
+        private int ReadMaximumDaysOld(XmlNode feedNode)
+        {
+            if (feedNode == null)
+            {
+                return int.MaxValue;
+            }
+            try
+            {
+                return Convert.ToInt32(GetNodeTextOrDefault(feedNode, "maximumDaysOld",MaximumDaysOld));
+            }
+            catch
+            {
+                return int.MaxValue;
+            }
+        }
+
         private FeedInfo ReadFeedInfo(XmlNode feedNode)
         {
             if (feedNode == null)
@@ -151,7 +190,8 @@ namespace PodcastUtilities.Common
             return new FeedInfo()
                        {
                            Address = new Uri(GetNodeText(feedNode, "url")),
-                           Format = ReadFeedFormat(GetNodeText(feedNode, "format"))
+                           Format = ReadFeedFormat(GetNodeTextOrDefault(feedNode, "format",FeedFormat)),
+                           MaximumDaysOld = ReadMaximumDaysOld(feedNode)
                        };
         }
 
