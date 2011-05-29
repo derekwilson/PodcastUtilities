@@ -23,14 +23,9 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
                                       });
         }
 
-        protected override void GivenThat()
-        {
-            base.GivenThat();
-        }
-
         protected override void When()
         {
-            _episodeFinder.FindEpisodesToDownload(_rootFolder, _feedInfo, _episodesToSync);
+            _episodeFinder.FindEpisodesToDownload(_rootFolder, _podcastInfo, _episodesToSync);
         }
 
         [Test]
@@ -38,9 +33,9 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
         {
             Assert.That(_episodesToSync.Count, Is.EqualTo(2));
             Assert.That(_episodesToSync[0].EpisodeUrl.ToString(), Is.EqualTo("http://test/podcast.mp3"));
-            Assert.That(_episodesToSync[0].DestinationPath, Is.EqualTo(Path.Combine(_rootFolder, "podcast.mp3")));
+            Assert.That(_episodesToSync[0].DestinationPath, Is.EqualTo(Path.Combine(Path.Combine(_rootFolder,_podcastInfo.Folder), "podcast.mp3")));
             Assert.That(_episodesToSync[1].EpisodeUrl.ToString(), Is.EqualTo("http://test/podcast2.mp3"));
-            Assert.That(_episodesToSync[1].DestinationPath, Is.EqualTo(Path.Combine(_rootFolder, "podcast2.mp3")));
+            Assert.That(_episodesToSync[1].DestinationPath, Is.EqualTo(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "podcast2.mp3")));
         }
     }
 }

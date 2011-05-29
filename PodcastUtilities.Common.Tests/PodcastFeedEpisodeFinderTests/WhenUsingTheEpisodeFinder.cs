@@ -20,6 +20,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
         protected ITimeProvider _timeProvider;
 
         protected string _rootFolder;
+        protected PodcastInfo _podcastInfo;
         protected FeedInfo _feedInfo;
         protected IList<FeedSyncItem> _episodesToSync;
         protected string _feedAddress;
@@ -50,13 +51,17 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
         {
             _now = new DateTime(2010,5,1,10,11,12);
 
-            _rootFolder = "c:\\TestFeed";
             _feedAddress = "http://test";
 
             _feedInfo = new FeedInfo();
             _feedInfo.Format = PodcastFeedFormat.RSS;
             _feedInfo.Address = new Uri(_feedAddress);
             _feedInfo.MaximumDaysOld = int.MaxValue;
+
+            _rootFolder = "c:\\TestRoot";
+            _podcastInfo = new PodcastInfo();
+            _podcastInfo.Folder = "TestFolder";
+            _podcastInfo.Feed = _feedInfo;
 
             _podcastFeedItems = new List<IPodcastFeedItem>(10);
             _episodesToSync = new List<FeedSyncItem>(10);
