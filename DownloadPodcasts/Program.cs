@@ -14,6 +14,8 @@ namespace DownloadPodcasts
 {
     class Program
     {
+        private static bool _verbose = false;
+
         static private void DisplayBanner()
         {
             // do not move the GetExecutingAssembly call from here into a supporting DLL
@@ -92,6 +94,10 @@ namespace DownloadPodcasts
             LinFuIocContainer iocContainer = InitializeIocContainer();
 
             var control = new ControlFile(args[0]);
+            if (args.Count() > 1)
+            {
+                _verbose = args[1].Contains('v');
+            }
 
             //var rssxml = new XmlDocument();
             //rssxml.Load(GetStreamUsingWebClient("http://www.thenakedscientists.com/naked_scientists_podcast.xml"));
@@ -104,13 +110,17 @@ namespace DownloadPodcasts
             podcastEpisodeFinder.StatusUpdate += StatusUpdate;
             foreach (var podcastInfo in control.Podcasts)
             {
-                if (podcastInfo.Feed != null)
-                {
-                    podcastEpisodeFinder.FindEpisodesToDownload(podcastInfo.Folder, podcastInfo.Feed, episodes);
-                }
+                podcastEpisodeFinder.FindEpisodesToDownload(control.SourceRoot, podcastInfo, episodes);
             }
 
+            foreach (var feedSyncItem in episodes)
+            {
+                Console.WriteLine("Download {0} -> {1}", feedSyncItem.EpisodeUrl, feedSyncItem.DestinationPath);
+                GetFileUsingWebClient(feedSyncItem.EpisodeUrl.ToString(),feedSyncItem.DestinationPath);
+            }
 
+            //GetFileUsingWebClientAsync();
+            
             //var webClientFactory = iocContainer.Resolve<IWebClientFactory>();
             //using (var webClient = webClientFactory.GetWebClient())
             //{
@@ -132,7 +142,10 @@ namespace DownloadPodcasts
 
         static void StatusUpdate(object sender, StatusUpdateEventArgs e)
         {
-            // maybe we want to optionally filter verbose message
+            if (e.MessageLevel == StatusUpdateEventArgs.Level.Verbose && !_verbose)
+            {
+                return;
+            }
             Console.WriteLine(e.Message);
         }
     }

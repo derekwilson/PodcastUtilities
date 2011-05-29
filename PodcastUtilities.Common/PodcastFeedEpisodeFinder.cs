@@ -37,30 +37,35 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// Find episodes to download
         /// </summary>
-        /// <param name="rootFolder">the folder into which we will download</param>
-        /// <param name="feedInfo">feed information</param>
+        /// <param name="rootFolder">the root folder for all downloads</param>
+        /// <param name="podcastInfo">info on the podcast to download</param>
         /// <param name="episodesToDownload">list of items to download, will be added to</param>
-        public void FindEpisodesToDownload(string rootFolder, FeedInfo feedInfo, IList<FeedSyncItem> episodesToDownload)
+        public void FindEpisodesToDownload(string rootFolder, PodcastInfo podcastInfo, IList<FeedSyncItem> episodesToDownload)
         {
+            if (podcastInfo.Feed == null)
+            {
+                // it is optional to have a feed
+                return;
+            }
             using (var webClient = _webClientFactory.GetWebClient())
             {
                 var downloader = new PodcastFeedDownloader(webClient, _feedFactory);
 
-                var feed = downloader.DownLoadFeed(feedInfo.Format, feedInfo.Address);
+                var feed = downloader.DownLoadFeed(podcastInfo.Feed.Format, podcastInfo.Feed.Address);
                 feed.StatusUpdate += StatusUpdate;
                 var episodes = feed.GetFeedEpisodes();
 
                 var oldestEpisodeToAccept = DateTime.MinValue;
-                if (feedInfo.MaximumDaysOld < int.MaxValue)
+                if (podcastInfo.Feed.MaximumDaysOld < int.MaxValue)
                 {
-                    oldestEpisodeToAccept = _timeProvider.UtcNow.AddDays(-feedInfo.MaximumDaysOld);
+                    oldestEpisodeToAccept = _timeProvider.UtcNow.AddDays(-podcastInfo.Feed.MaximumDaysOld);
                 }
 
                 foreach (IPodcastFeedItem podcastFeedItem in episodes)
                 {
                     if (podcastFeedItem.Published > oldestEpisodeToAccept)
                     {
-                        var destinationPath = Path.Combine(rootFolder, podcastFeedItem.GetFilename());
+                        var destinationPath = Path.Combine(Path.Combine(rootFolder,podcastInfo.Folder), podcastFeedItem.GetFilename());
                         if (!_fileUtilities.FileExists(destinationPath))
                         {
                             var downloadItem = new FeedSyncItem()
@@ -69,7 +74,7 @@ namespace PodcastUtilities.Common
                                 DestinationPath = destinationPath
                             };
                             episodesToDownload.Add(downloadItem);
-                            OnStatusMessageUpdate(string.Format("Queued: Episode: {0}", podcastFeedItem.EpisodeTitle));
+                            OnStatusMessageUpdate(string.Format("Queued: {0}, Episode: {1}", podcastInfo.Folder, podcastFeedItem.EpisodeTitle));
                         }
                         else
                         {
