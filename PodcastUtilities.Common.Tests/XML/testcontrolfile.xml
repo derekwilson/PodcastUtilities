@@ -10,6 +10,8 @@
         <sortdirection>asc</sortdirection>
         <feed>
             <format>rss</format>
+            <namingStyle>pubdate_url</namingStyle>
+            <maximumDaysOld>99</maximumDaysOld>
         </feed>
     </global>
     <podcast>
@@ -20,7 +22,6 @@
     <podcast>
         <feed>
             <url>http://www.hanselminutes.com/hanselminutes_MP3Direct.xml</url>
-            <maximumDaysOld>11</maximumDaysOld>
         </feed>
         <folder>Hanselminutes</folder>
         <pattern>*.mp3</pattern>
@@ -31,7 +32,9 @@
     <podcast>
         <feed>
             <url>http://www.hanselminutes.com/hanselminutes_MP3Direct.xml</url>
+            <maximumDaysOld>11</maximumDaysOld>
             <format>rss</format>
+            <namingStyle>pubdate_title_url</namingStyle>
         </feed>
         <folder>Test2</folder>
         <pattern>*.mp3</pattern>

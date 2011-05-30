@@ -111,6 +111,7 @@
     <Compile Include="PlaylistFormat.cs" />
     <Compile Include="PlaylistGenerator.cs" />
     <Compile Include="PlaylistWpl.cs" />
+    <Compile Include="PodcastEpisodeNamingStyle.cs" />
     <Compile Include="PodcastFeedDownloader.cs" />
     <Compile Include="PodcastFeedFormat.cs" />
     <Compile Include="PodcastFeedInRssFormat.cs" />
