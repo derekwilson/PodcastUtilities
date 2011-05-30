@@ -17,5 +17,10 @@ namespace PodcastUtilities.Common
         /// pathname to be downloaded to
         /// </summary>
         public string DestinationPath { get; set; }
+
+        /// <summary>
+        /// the title of the eposide
+        /// </summary>
+        public string EpisodeTitle { get; set; }
     }
 }

@@ -97,14 +97,15 @@ namespace PodcastUtilities.Common
                             var downloadItem = new FeedSyncItem()
                             {
                                 EpisodeUrl = podcastFeedItem.Address,
-                                DestinationPath = destinationPath
+                                DestinationPath = destinationPath,
+                                EpisodeTitle = podcastFeedItem.EpisodeTitle
                             };
                             episodesToDownload.Add(downloadItem);
                             OnStatusMessageUpdate(string.Format("Queued: {0}, Episode: {1}", podcastInfo.Folder, podcastFeedItem.EpisodeTitle));
                         }
                         else
                         {
-                            OnStatusVerbose(string.Format("Episode already downloaded",podcastFeedItem.EpisodeTitle));
+                            OnStatusVerbose(string.Format("Episode already downloaded: {0}", podcastFeedItem.EpisodeTitle));
                         }
                     }
                     else
