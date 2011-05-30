@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -14,6 +15,8 @@ namespace DownloadPodcasts
 {
     class Program
     {
+        static object _synclock = new object();
+
         private static bool _verbose = false;
 
         static private void DisplayBanner()
@@ -51,24 +54,49 @@ namespace DownloadPodcasts
             }
         }
 
-        static void GetFileUsingWebClientAsync(string url, string filename)
+        static void GetFileUsingWebClientAsync(FeedSyncItem syncItem)
         {
             using (WebClient client = new System.Net.WebClient())
             {
                 client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
-                client.DownloadDataCompleted += new DownloadDataCompletedEventHandler(client_DownloadDataCompleted);
-                client.DownloadFileAsync(new Uri(url), filename);
+                client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
+                client.DownloadFileAsync(syncItem.EpisodeUrl, syncItem.DestinationPath, syncItem);
+                while (client.IsBusy)
+                {
+                    System.Threading.Thread.Sleep(1000);
+                }
+            }
+        }
+
+        static void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            var syncItem = e.UserState as FeedSyncItem;
+            if (syncItem == null)
+            {
+                throw new Exception("Missing token from download completed");
+            }
+            lock (_synclock)
+            {
+                Console.WriteLine("\nCompleted: {0}", syncItem.EpisodeTitle);
+                if (e.Cancelled)
+                {
+                    Console.WriteLine("Download Cancelled.");
+                }
+                else if (e.Error != null && e.Error.InnerException != null)
+                {
+                    Console.WriteLine("Error: {0} {1}", e.Error.InnerException.Message,
+                                      e.Error.InnerException.StackTrace);
+                }
+                else if (e.Error != null)
+                {
+                    Console.WriteLine("Error: {0} {1}", e.Error.Message, e.Error.StackTrace);
+                }
             }
         }
 
         static void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            Console.WriteLine("Downloaded {0}%",e.ProgressPercentage);
-        }
-
-        static void client_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
-        {
-            Console.WriteLine("Download Complete.");
+            Console.Write("\rDownloaded {0}%",e.ProgressPercentage);
         }
 
         private static LinFuIocContainer InitializeIocContainer()
@@ -116,7 +144,8 @@ namespace DownloadPodcasts
             foreach (var feedSyncItem in episodes)
             {
                 Console.WriteLine("Download {0} -> {1}", feedSyncItem.EpisodeUrl, feedSyncItem.DestinationPath);
-                GetFileUsingWebClient(feedSyncItem.EpisodeUrl.ToString(),feedSyncItem.DestinationPath);
+                //GetFileUsingWebClient(feedSyncItem.EpisodeUrl.ToString(),feedSyncItem.DestinationPath);
+                GetFileUsingWebClientAsync(feedSyncItem);
             }
 
             //GetFileUsingWebClientAsync();
