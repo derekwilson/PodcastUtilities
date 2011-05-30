@@ -79,6 +79,9 @@
   <ItemGroup>
     <Compile Include="ControlFileTests\WhenCreatingAControlFile.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentAmountOfSpaceToLeave.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentEpisodeNamingStyles.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedConfigurations.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedEpisodeExpiry.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentPlaylistFormats.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="ControlFileTests\WhenTestingAControlFile.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloader.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeed.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedNamedByPubDate.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedThatIsAlreadyDownloaded.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedWithOutOfDateEpisodes.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAnEmptyFeed.cs" />

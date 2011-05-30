@@ -134,7 +134,7 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// global default maximum days old for feed download
         /// </summary>
-        public string MaximumDaysOld
+        public string FeedMaximumDaysOld
         {
             get
             {
@@ -150,6 +150,17 @@ namespace PodcastUtilities.Common
             get
             {
                 return GetNodeTextOrDefault("podcasts/global/feed/format", DefaultFeedFormat);
+            }
+        }
+
+        /// <summary>
+        /// global default for naming downloaded episodes
+        /// </summary>
+        protected string FeedEpisodeNamingStyle
+        {
+            get
+            {
+                return GetNodeTextOrDefault("podcasts/global/feed/namingStyle", DefaultFeedFormat);
             }
         }
 
@@ -173,13 +184,29 @@ namespace PodcastUtilities.Common
             }
             try
             {
-                return Convert.ToInt32(GetNodeTextOrDefault(feedNode, "maximumDaysOld",MaximumDaysOld));
+                return Convert.ToInt32(GetNodeTextOrDefault(feedNode, "maximumDaysOld",FeedMaximumDaysOld));
             }
             catch
             {
                 return int.MaxValue;
             }
         }
+
+        private PodcastEpisodeNamingStyle ReadFeedEpisodeNamingStyle(string format)
+        {
+            switch (format.ToLower())
+            {
+                case "pubdate_url":
+                    return PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime;
+                case "pubdate_title_url":
+                    return PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime;
+                default:
+                    return PodcastEpisodeNamingStyle.UrlFilename;
+
+            }
+            throw new IndexOutOfRangeException(string.Format("{0} is not a valid value for the feed format", format));
+        }
+
 
         private FeedInfo ReadFeedInfo(XmlNode feedNode)
         {
@@ -191,11 +218,12 @@ namespace PodcastUtilities.Common
                        {
                            Address = new Uri(GetNodeText(feedNode, "url")),
                            Format = ReadFeedFormat(GetNodeTextOrDefault(feedNode, "format",FeedFormat)),
-                           MaximumDaysOld = ReadMaximumDaysOld(feedNode)
+                           MaximumDaysOld = ReadMaximumDaysOld(feedNode),
+                           NamingStyle = ReadFeedEpisodeNamingStyle(GetNodeTextOrDefault(feedNode, "namingStyle", FeedEpisodeNamingStyle))
                        };
         }
 
-		private void ReadPodcasts()
+	    private void ReadPodcasts()
 		{
 			_podcasts = new List<PodcastInfo>();
 

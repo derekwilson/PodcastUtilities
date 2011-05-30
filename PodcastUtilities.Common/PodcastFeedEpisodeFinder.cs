@@ -34,6 +34,32 @@ namespace PodcastUtilities.Common
         /// </summary>
         public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
+        private string GetDownloadPathname(string rootFolder, PodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
+        {
+            var proposedFilename = podcastFeedItem.GetFilename();
+
+            switch (podcastInfo.Feed.NamingStyle)
+            {
+                case PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime:
+                    proposedFilename = string.Format("{0}_{1}",
+                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_hhmm"),
+                                                    proposedFilename);
+                    break;
+                case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime:
+                    proposedFilename = string.Format("{0}_{1}_{2}",
+                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_hhmm"),
+                                                    podcastInfo.Folder,
+                                                    proposedFilename);
+                    break;
+                case PodcastEpisodeNamingStyle.UrlFilename:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("NamingStyle");
+            }
+
+            return Path.Combine(Path.Combine(rootFolder, podcastInfo.Folder), proposedFilename);
+        }
+
         /// <summary>
         /// Find episodes to download
         /// </summary>
@@ -65,7 +91,7 @@ namespace PodcastUtilities.Common
                 {
                     if (podcastFeedItem.Published > oldestEpisodeToAccept)
                     {
-                        var destinationPath = Path.Combine(Path.Combine(rootFolder,podcastInfo.Folder), podcastFeedItem.GetFilename());
+                        var destinationPath = GetDownloadPathname(rootFolder, podcastInfo, podcastFeedItem);
                         if (!_fileUtilities.FileExists(destinationPath))
                         {
                             var downloadItem = new FeedSyncItem()

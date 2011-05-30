@@ -32,15 +32,11 @@ namespace PodcastUtilities.Common.Tests.ControlFileTests
             Assert.That(ControlFile.Podcasts[0].AscendingSort, Is.True);
 
             Assert.That(ControlFile.Podcasts[1].Feed.Address.ToString(), Is.EqualTo("http://www.hanselminutes.com/hanselminutes_MP3Direct.xml"));
-            Assert.That(ControlFile.Podcasts[1].Feed.Format, Is.EqualTo(PodcastFeedFormat.RSS));
-            Assert.That(ControlFile.Podcasts[1].Feed.MaximumDaysOld, Is.EqualTo(11));
             Assert.That(ControlFile.Podcasts[1].Folder, Is.EqualTo("Hanselminutes"));
             Assert.That(ControlFile.Podcasts[1].MaximumNumberOfFiles, Is.EqualTo(34));
             Assert.That(ControlFile.Podcasts[1].Pattern, Is.EqualTo("*.mp3"));
             Assert.That(ControlFile.Podcasts[1].SortField, Is.EqualTo("fred"));
             Assert.That(ControlFile.Podcasts[1].AscendingSort, Is.False);
-
-            Assert.That(ControlFile.Podcasts[2].Feed.MaximumDaysOld, Is.EqualTo(int.MaxValue));
         }
 
         [Test]

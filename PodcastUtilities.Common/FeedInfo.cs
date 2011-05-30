@@ -24,5 +24,10 @@ namespace PodcastUtilities.Common
         /// do not download podcasts that werre published before this number of days ago
         /// </summary>
         public int MaximumDaysOld { get; set; }
+
+        /// <summary>
+        /// the naming style to use for episodes downloaded from the feed
+        /// </summary>
+        public PodcastEpisodeNamingStyle NamingStyle { get; set; }
     }
 }
