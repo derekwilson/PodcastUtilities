@@ -6,13 +6,8 @@ namespace PodcastUtilities.Common
     /// <summary>
     /// identify the episodes that need to be downloaded in a feed
     /// </summary>
-    public interface IPodcastFeedEpisodeFinder
+    public interface IPodcastFeedEpisodeFinder : IStatusUpdate
     {
-        /// <summary>
-        /// event that is fired whenever a file is copied of an error occurs
-        /// </summary>
-        event EventHandler<StatusUpdateEventArgs> StatusUpdate;
-
         /// <summary>
         /// Find episodes to download
         /// </summary>

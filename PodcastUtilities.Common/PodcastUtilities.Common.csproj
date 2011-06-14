@@ -72,6 +72,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlFile.cs" />
+    <Compile Include="DownloaderException.cs" />
+    <Compile Include="IFeedSyncItem.cs" />
+    <Compile Include="IPodcastEpisodeDownloader.cs" />
+    <Compile Include="IStatusUpdate.cs" />
+    <Compile Include="PodcastEpisodeDownloader.cs" />
     <Compile Include="FeedInfo.cs" />
     <Compile Include="FeedSyncItem.cs" />
     <Compile Include="FileCopier.cs" />
@@ -104,6 +109,7 @@
     <Compile Include="IPodcastFeedEpisodeFinder.cs" />
     <Compile Include="IPodcastFeedFactory.cs" />
     <Compile Include="IPodcastFeedItem.cs" />
+    <Compile Include="ITask.cs" />
     <Compile Include="IUnwantedFileRemover.cs" />
     <Compile Include="IWebClientFactory.cs" />
     <Compile Include="PlaylistAsx.cs" />
@@ -124,6 +130,7 @@
     <Compile Include="Rfc822DateTime.cs" />
     <Compile Include="StatusUpdateEventArgs.cs" />
     <Compile Include="FileSyncItem.cs" />
+    <Compile Include="TaskPool.cs" />
     <Compile Include="UnwantedFileRemover.cs" />
     <Compile Include="WebClientFactory.cs" />
     <Compile Include="XmlFileBase.cs" />
