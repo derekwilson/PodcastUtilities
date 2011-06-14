@@ -7,13 +7,8 @@ namespace PodcastUtilities.Common
     /// <summary>
     /// supports the ability to remove unwanted files
     /// </summary>
-    public interface IUnwantedFileRemover
+    public interface IUnwantedFileRemover : IStatusUpdate
 	{
-        /// <summary>
-        /// event that is fired whenever a file is removed of an error occurs
-        /// </summary>
-        event EventHandler<StatusUpdateEventArgs> StatusUpdate;
-
 		/// <summary>
 		/// remove the files that are not specified in the list of files to keep
 		/// </summary>

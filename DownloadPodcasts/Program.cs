@@ -15,8 +15,8 @@ namespace DownloadPodcasts
 {
     class Program
     {
+        private static TaskPool _taskPool;
         static object _synclock = new object();
-
         private static bool _verbose = false;
 
         static private void DisplayBanner()
@@ -127,11 +127,8 @@ namespace DownloadPodcasts
                 _verbose = args[1].Contains('v');
             }
 
-            //var rssxml = new XmlDocument();
-            //rssxml.Load(GetStreamUsingWebClient("http://www.thenakedscientists.com/naked_scientists_podcast.xml"));
-
-            //GetFileUsingWebClient("http://www.thenakedscientists.com/naked_scientists_podcast.xml", "test.xml");
-            //GetFileUsingWebClientAsync("http://www.thenakedscientists.com/naked_scientists_podcast.xml", "test.xml");
+            int numberOfConnections = 10;
+            System.Net.ServicePointManager.DefaultConnectionLimit = numberOfConnections;
 
             var episodes = new List<FeedSyncItem>(20);
             var podcastEpisodeFinder = iocContainer.Resolve<IPodcastFeedEpisodeFinder>();
@@ -141,32 +138,33 @@ namespace DownloadPodcasts
                 podcastEpisodeFinder.FindEpisodesToDownload(control.SourceRoot, podcastInfo, episodes);
             }
 
-            foreach (var feedSyncItem in episodes)
+            if (episodes.Count > 0)
             {
-                Console.WriteLine("Download {0} -> {1}", feedSyncItem.EpisodeUrl, feedSyncItem.DestinationPath);
-                //GetFileUsingWebClient(feedSyncItem.EpisodeUrl.ToString(),feedSyncItem.DestinationPath);
-                GetFileUsingWebClientAsync(feedSyncItem);
+                PodcastEpisodeDownloader[] downloadTasks =
+                    (from episode in episodes
+                     select new PodcastEpisodeDownloader(iocContainer.Resolve<IWebClientFactory>()) { SyncItem = episode }).ToArray();
+
+                foreach (var podcastEpisodeDownloader in downloadTasks)
+                {
+                    podcastEpisodeDownloader.StatusUpdate += StatusUpdate;
+                }
+
+                _taskPool = new TaskPool();
+                Console.CancelKeyPress += new ConsoleCancelEventHandler(Console_CancelKeyPress);
+                _taskPool.RunAllTasks(numberOfConnections, downloadTasks);
             }
 
-            //GetFileUsingWebClientAsync();
-            
-            //var webClientFactory = iocContainer.Resolve<IWebClientFactory>();
-            //using (var webClient = webClientFactory.GetWebClient())
-            //{
-            //    var feedFactory = iocContainer.Resolve<IPodcastFeedFactory>();
-
-            //    var downloader = new PodcastFeedDownloader(webClient,feedFactory);
-
-            //    var feed1 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://feeds.feedburner.com/thisdeveloperslife"));
-            //    feed1.StatusUpdate += StatusUpdate;
-            //    feed1.GetFeedEpisodes();
-
-            //    var feed2 = downloader.DownLoadFeed(PodcastFeedFormat.RSS, new Uri("http://downloads.bbc.co.uk/podcasts/radio4/fricomedy/rss.xml"));
-            //    feed2.StatusUpdate += StatusUpdate;
-            //    feed2.GetFeedEpisodes();
-            //}
-
             Console.WriteLine("Done");
+        }
+
+        static void Console_CancelKeyPress(object sender, ConsoleCancelEventArgs e)
+        {
+            Console.WriteLine("CTRL C pressed");
+            if (_taskPool != null)
+            {
+                _taskPool.CancelAllTasks();
+            }
+            e.Cancel = true;
         }
 
         static void StatusUpdate(object sender, StatusUpdateEventArgs e)
@@ -175,7 +173,32 @@ namespace DownloadPodcasts
             {
                 return;
             }
-            Console.WriteLine(e.Message);
+
+            if (e.MessageLevel == StatusUpdateEventArgs.Level.Progress)
+            {
+                IPodcastEpisodeDownloader downloader = sender as IPodcastEpisodeDownloader;
+                int percentage = Convert.ToInt32(e.Message);
+                if (downloader != null && percentage % 10 == 0)
+                {
+                    Console.WriteLine(string.Format("{0} {1}%",downloader.SyncItem.EpisodeTitle, percentage));
+                }
+                return;
+            }
+
+            if (e.Exception != null)
+            {
+                lock (_synclock)
+                {
+                    // keep all the message together
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.Exception.StackTrace);
+                    throw e.Exception;
+                }
+            }
+            else
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

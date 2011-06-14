@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Net;
 
@@ -29,6 +30,40 @@ namespace PodcastUtilities.Common.IO
         public Stream OpenRead(Uri address)
         {
             return _webClient.OpenRead(address);
+        }
+
+        /// <summary>
+        /// event for progress
+        /// </summary>
+        public event DownloadProgressChangedEventHandler DownloadProgressChanged
+        {
+            add { _webClient.DownloadProgressChanged += value; }
+            remove { _webClient.DownloadProgressChanged -= value; }
+        }
+
+        ///<summary>
+        /// event for completion
+        ///</summary>
+        public event AsyncCompletedEventHandler DownloadFileCompleted
+        {
+            add { _webClient.DownloadFileCompleted += value; }
+            remove { _webClient.DownloadFileCompleted -= value; }
+        }
+
+        /// <summary>
+        /// download a file async
+        /// </summary>
+        public void DownloadFileAsync(Uri address, string fileName, object userToken)
+        {
+            _webClient.DownloadFileAsync(address,fileName,userToken);
+        }
+
+        /// <summary>
+        /// cancel an async operation
+        /// </summary>
+        public void CancelAsync()
+        {
+            _webClient.CancelAsync();
         }
 
         /// <summary>

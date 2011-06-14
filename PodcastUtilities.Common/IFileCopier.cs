@@ -6,13 +6,8 @@ namespace PodcastUtilities.Common
     /// <summary>
     /// supports the ability to copy a number of SyncItem
     /// </summary>
-    public interface IFileCopier
+    public interface IFileCopier : IStatusUpdate
 	{
-		/// <summary>
-		/// event that is fired whenever a file is copied of an error occurs
-		/// </summary>
-        event EventHandler<StatusUpdateEventArgs> StatusUpdate;
-
 		/// <summary>
 		/// perform the copy operation
 		/// </summary>

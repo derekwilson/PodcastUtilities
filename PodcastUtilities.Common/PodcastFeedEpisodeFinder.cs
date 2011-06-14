@@ -98,7 +98,7 @@ namespace PodcastUtilities.Common
                             {
                                 EpisodeUrl = podcastFeedItem.Address,
                                 DestinationPath = destinationPath,
-                                EpisodeTitle = podcastFeedItem.EpisodeTitle
+                                EpisodeTitle = string.Format("{0} {1}", podcastInfo.Folder,podcastFeedItem.EpisodeTitle)
                             };
                             episodesToDownload.Add(downloadItem);
                             OnStatusMessageUpdate(string.Format("Queued: {0}, Episode: {1}", podcastInfo.Folder, podcastFeedItem.EpisodeTitle));
