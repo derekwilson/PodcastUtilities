@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using PodcastUtilities.Common.IO;
+using PodcastUtilities.Common.Platform;
 using Rhino.Mocks;
 using R = Rhino.Mocks.Constraints;
 

@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
-using PodcastUtilities.Common.IO;
+using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common
 {

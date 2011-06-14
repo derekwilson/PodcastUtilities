@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Xml;
-using PodcastUtilities.Common.IO;
 
 namespace PodcastUtilities.Common
 {

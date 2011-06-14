@@ -1,4 +1,4 @@
-﻿namespace PodcastUtilities.Common.IO
+﻿namespace PodcastUtilities.Common.Platform
 {
     /// <summary>
     /// methods to manipulate files in the physical file system and abstract away the file system from the main body of code

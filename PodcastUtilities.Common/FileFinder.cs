@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using PodcastUtilities.Common.IO;
+using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common
 {

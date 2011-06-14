@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace PodcastUtilities.Common.IO
+namespace PodcastUtilities.Common.Platform
 {
     /// <summary>
     /// abstract the date time for testing

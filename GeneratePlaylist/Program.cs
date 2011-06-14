@@ -7,7 +7,7 @@ using System.IO;
 
 using PodcastUtilities.Common;
 using System.Xml;
-using PodcastUtilities.Common.IO;
+using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Ioc;
 
 namespace GeneratePlaylist

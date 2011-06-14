@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using PodcastUtilities.Common;
-using PodcastUtilities.Common.IO;
+using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Ioc;
 
 namespace SyncPodcasts

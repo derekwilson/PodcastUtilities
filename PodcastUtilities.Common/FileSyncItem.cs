@@ -1,4 +1,4 @@
-﻿using PodcastUtilities.Common.IO;
+﻿using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common
 {

@@ -1,5 +1,5 @@
 ﻿using PodcastUtilities.Common;
-using PodcastUtilities.Common.IO;
+using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Ioc
 {

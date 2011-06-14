@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace PodcastUtilities.Common.IO
+namespace PodcastUtilities.Common.Platform
 {
 	/// <summary>
 	/// utility methods to manipulate files in the physical file system

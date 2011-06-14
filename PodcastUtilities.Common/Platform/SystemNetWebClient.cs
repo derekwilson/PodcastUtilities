@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Net;
 
-namespace PodcastUtilities.Common.IO
+namespace PodcastUtilities.Common.Platform
 {
     /// <summary>
     /// provides access to the physical internet

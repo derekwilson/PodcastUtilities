@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
-namespace PodcastUtilities.Common.IO
+namespace PodcastUtilities.Common.Platform
 {
     /// <summary>
     /// methods to query file system drives in the physical file system and abstract away the file system from the main body of code
