@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PodcastUtilities.Common.IO
+namespace PodcastUtilities.Common.Platform
 {
     /// <summary>
     /// access the System.DateTime for 

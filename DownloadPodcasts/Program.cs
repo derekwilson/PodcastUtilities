@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using PodcastUtilities.Common;
-using PodcastUtilities.Common.IO;
 using PodcastUtilities.Ioc;
 
 namespace DownloadPodcasts

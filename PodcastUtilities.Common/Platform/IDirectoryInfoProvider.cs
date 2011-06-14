@@ -1,6 +1,4 @@
-using System;
-
-namespace PodcastUtilities.Common.IO
+namespace PodcastUtilities.Common.Platform
 {
 	/// <summary>
 	/// used to provide the physical file system to the main code and a mock file system to the units tests

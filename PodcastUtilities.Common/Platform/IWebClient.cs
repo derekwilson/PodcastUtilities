@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 
-namespace PodcastUtilities.Common.IO
+namespace PodcastUtilities.Common.Platform
 {
     /// <summary>
     /// methods to interact with the internet to isolate the main body of the code from the physical network

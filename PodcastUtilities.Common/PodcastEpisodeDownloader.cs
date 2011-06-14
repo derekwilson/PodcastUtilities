@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Net;
 using System.Threading;
-using PodcastUtilities.Common.IO;
+using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common
 {

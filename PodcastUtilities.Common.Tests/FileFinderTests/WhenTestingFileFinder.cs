@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using PodcastUtilities.Common.IO;
+using PodcastUtilities.Common.Platform;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.FileFinderTests

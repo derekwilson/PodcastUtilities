@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using PodcastUtilities.Common.IO;
+using PodcastUtilities.Common.Platform;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
