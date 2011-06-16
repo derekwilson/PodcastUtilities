@@ -36,5 +36,10 @@ namespace PodcastUtilities.Common
         /// the configuration for the individual podcasts
         /// </summary>
         IList<PodcastInfo> Podcasts { get; }
+
+        /// <summary>
+        /// maximum number of background downloads
+        /// </summary>
+        int MaximumNumberOfConcurrentDownloads { get; }
 	}
 }
