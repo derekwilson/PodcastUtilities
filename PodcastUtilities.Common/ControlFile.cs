@@ -109,7 +109,25 @@ namespace PodcastUtilities.Common
 			get { return _podcasts; }
 		}
 
-		/// <summary>
+	    /// <summary>
+	    /// maximum number of background downloads
+	    /// </summary>
+	    public int MaximumNumberOfConcurrentDownloads
+	    {
+            get
+            {
+                try
+                {
+                    return Convert.ToInt32(GetNodeText("podcasts/global/maximumNumberOfConcurrentDownloads"));
+                }
+                catch
+                {
+                    return 5;
+                }
+            }
+	    }
+
+	    /// <summary>
 		/// the field we are using to sort the podcasts on
 		/// </summary>
         public string SortField

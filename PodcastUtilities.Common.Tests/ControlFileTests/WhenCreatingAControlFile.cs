@@ -42,6 +42,7 @@ namespace PodcastUtilities.Common.Tests.ControlFileTests
         [Test]
         public void ItShouldReadTheGlobalInformation()
         {
+            Assert.That(ControlFile.MaximumNumberOfConcurrentDownloads, Is.EqualTo(10));
             Assert.That(ControlFile.SourceRoot,Is.EqualTo(".\\profile\\iPodder\\downloads"));
             Assert.That(ControlFile.DestinationRoot,Is.EqualTo("W:\\Podcasts"));
             Assert.That(ControlFile.PlaylistFilename,Is.EqualTo("podcasts.wpl"));

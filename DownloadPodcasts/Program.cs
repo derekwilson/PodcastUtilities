@@ -126,7 +126,7 @@ namespace DownloadPodcasts
                 _verbose = args[1].Contains('v');
             }
 
-            int numberOfConnections = 10;
+            int numberOfConnections = control.MaximumNumberOfConcurrentDownloads;
             System.Net.ServicePointManager.DefaultConnectionLimit = numberOfConnections;
 
             var episodes = new List<FeedSyncItem>(20);
