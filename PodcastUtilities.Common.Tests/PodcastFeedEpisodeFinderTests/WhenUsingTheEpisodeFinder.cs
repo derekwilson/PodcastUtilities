@@ -22,7 +22,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
         protected string _rootFolder;
         protected PodcastInfo _podcastInfo;
         protected FeedInfo _feedInfo;
-        protected IList<FeedSyncItem> _episodesToSync;
+        protected IList<IFeedSyncItem> _episodesToSync;
         protected string _feedAddress;
         protected MemoryStream _stream;
         protected IPodcastFeed _podcastFeed;
@@ -65,7 +65,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
             _podcastInfo.Feed = _feedInfo;
 
             _podcastFeedItems = new List<IPodcastFeedItem>(10);
-            _episodesToSync = new List<FeedSyncItem>(10);
+            _episodesToSync = new List<IFeedSyncItem>(10);
         }
 
         protected virtual void SetupStubs()

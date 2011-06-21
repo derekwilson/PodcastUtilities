@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common
     /// a pool of tasks to be performed
     /// used in preference to the ThreadPool as we need long running tasks
     /// </summary>
-    public class TaskPool
+    public class TaskPool : ITaskPool
     {
         private object _lock = new object();
         private ITask[] _tasks;
