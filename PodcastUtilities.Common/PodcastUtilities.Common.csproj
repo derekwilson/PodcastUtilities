@@ -74,8 +74,11 @@
     <Compile Include="ControlFile.cs" />
     <Compile Include="DownloaderException.cs" />
     <Compile Include="IFeedSyncItem.cs" />
+    <Compile Include="IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter.cs" />
     <Compile Include="IPodcastEpisodeDownloader.cs" />
+    <Compile Include="IPodcastEpisodeDownloaderFactory.cs" />
     <Compile Include="IStatusUpdate.cs" />
+    <Compile Include="ITaskPool.cs" />
     <Compile Include="PodcastEpisodeDownloader.cs" />
     <Compile Include="FeedInfo.cs" />
     <Compile Include="FeedSyncItem.cs" />
@@ -117,6 +120,8 @@
     <Compile Include="PlaylistFormat.cs" />
     <Compile Include="PlaylistGenerator.cs" />
     <Compile Include="PlaylistWpl.cs" />
+    <Compile Include="PodcastEpisodeDownloaderFactory.cs" />
+    <Compile Include="FeedSyncItemToPodcastEpisodeDownloaderTaskConverter.cs" />
     <Compile Include="PodcastEpisodeNamingStyle.cs" />
     <Compile Include="PodcastFeedDownloader.cs" />
     <Compile Include="PodcastFeedFormat.cs" />

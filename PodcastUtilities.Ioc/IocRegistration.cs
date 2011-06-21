@@ -31,6 +31,9 @@ namespace PodcastUtilities.Ioc
             container.Register<IPodcastFeedFactory, PodcastFeedFactory>();
             container.Register<IWebClientFactory, WebClientFactory>();
             container.Register<IPodcastFeedEpisodeFinder, PodcastFeedEpisodeFinder>();
+            container.Register<IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter, FeedSyncItemToPodcastEpisodeDownloaderTaskConverter>();
+            container.Register<IPodcastEpisodeDownloaderFactory, PodcastEpisodeDownloaderFactory>();
+            container.Register<ITaskPool, TaskPool>();
         }
     }
 }

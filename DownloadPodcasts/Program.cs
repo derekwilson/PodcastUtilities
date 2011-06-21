@@ -14,7 +14,7 @@ namespace DownloadPodcasts
 {
     class Program
     {
-        private static TaskPool _taskPool;
+        private static ITaskPool _taskPool;
         static object _synclock = new object();
         private static bool _verbose = false;
 
@@ -129,7 +129,7 @@ namespace DownloadPodcasts
             int numberOfConnections = control.MaximumNumberOfConcurrentDownloads;
             System.Net.ServicePointManager.DefaultConnectionLimit = numberOfConnections;
 
-            var episodes = new List<FeedSyncItem>(20);
+            var episodes = new List<IFeedSyncItem>(20);
             var podcastEpisodeFinder = iocContainer.Resolve<IPodcastFeedEpisodeFinder>();
             podcastEpisodeFinder.StatusUpdate += StatusUpdate;
             foreach (var podcastInfo in control.Podcasts)
@@ -139,16 +139,10 @@ namespace DownloadPodcasts
 
             if (episodes.Count > 0)
             {
-                PodcastEpisodeDownloader[] downloadTasks =
-                    (from episode in episodes
-                     select new PodcastEpisodeDownloader(iocContainer.Resolve<IWebClientFactory>()) { SyncItem = episode }).ToArray();
+                var converter = iocContainer.Resolve<IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter>();
+                IPodcastEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(episodes, StatusUpdate);
 
-                foreach (var podcastEpisodeDownloader in downloadTasks)
-                {
-                    podcastEpisodeDownloader.StatusUpdate += StatusUpdate;
-                }
-
-                _taskPool = new TaskPool();
+                _taskPool = iocContainer.Resolve<ITaskPool>();
                 Console.CancelKeyPress += new ConsoleCancelEventHandler(Console_CancelKeyPress);
                 _taskPool.RunAllTasks(numberOfConnections, downloadTasks);
             }
@@ -191,7 +185,6 @@ namespace DownloadPodcasts
                     // keep all the message together
                     Console.WriteLine(e.Message);
                     Console.WriteLine(e.Exception.StackTrace);
-                    throw e.Exception;
                 }
             }
             else

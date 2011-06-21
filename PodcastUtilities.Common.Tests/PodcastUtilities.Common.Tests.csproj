@@ -85,6 +85,9 @@
     <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentPlaylistFormats.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="ControlFileTests\WhenTestingAControlFile.cs" />
+    <Compile Include="FeedSyncItemToPodcastEpisodeDownloaderTaskConverterTests\WhenTestingTheConverter.cs" />
+    <Compile Include="FeedSyncItemToPodcastEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsItems.cs" />
+    <Compile Include="FeedSyncItemToPodcastEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsNoItems.cs" />
     <Compile Include="FileCopierTests\WhenCopyingFileThrowsAnException.cs" />
     <Compile Include="FileCopierTests\WhenDestinationDriveIsAlreadyFull.cs" />
     <Compile Include="FileCopierTests\WhenDestinationFileAlreadyExists.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="PlaylistGeneratorTests\WhenThereAreSomePodcastsContainingFiles.cs" />
     <Compile Include="PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="PlaylistWplTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
+    <Compile Include="PodcastEpisodeDownloaderFactoryTests\WhenUsingAPodcastEpisodeDownloaderFactory.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloader.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeed.cs" />

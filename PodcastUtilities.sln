@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownloadPodcasts", "Downloa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilities.Ioc", "PodcastUtilities.Ioc\PodcastUtilities.Ioc.csproj", "{F3DA4F48-7AB2-4D45-9C44-6F7AA9019DF1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{5EBE0497-9E0E-4614-8BA1-EF31925A39A7}"
+	ProjectSection(SolutionItems) = preProject
+		Shared\AssemblyInfo.cs = Shared\AssemblyInfo.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
