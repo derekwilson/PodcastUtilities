@@ -117,6 +117,10 @@
     <Compile Include="PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="PlaylistWplTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
     <Compile Include="PodcastEpisodeDownloaderFactoryTests\WhenUsingAPodcastEpisodeDownloaderFactory.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenStartingTheDownloader.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenStartingTheDownloaderTwice.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenStartingTheDownloaderWithoutASyncItem.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenTestingTheDownloader.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloader.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeed.cs" />
