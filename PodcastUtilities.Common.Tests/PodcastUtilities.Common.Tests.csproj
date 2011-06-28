@@ -101,6 +101,7 @@
     <Compile Include="FileSorterTests\WhenSortingByNameAscending.cs" />
     <Compile Include="FileSorterTests\WhenSortingByNameDescending.cs" />
     <Compile Include="FileSorterTests\WhenTestingFileSorter.cs" />
+    <Compile Include="PlaylistAsxTests\WhenAddinATrackToAnInvalidPlaylist.cs" />
     <Compile Include="PlaylistAsxTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="PlaylistAsxTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
     <Compile Include="PlaylistAsxTests\WhenCreatingNewPlaylist.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="PlaylistGeneratorTests\WhenTestingThePlaylistGenerator.cs" />
     <Compile Include="PlaylistGeneratorTests\WhenThereAreNoSourcePodcasts.cs" />
     <Compile Include="PlaylistGeneratorTests\WhenThereAreSomePodcastsContainingFiles.cs" />
+    <Compile Include="PlaylistWplTests\WhenAddinATrackToAnInvalidPlaylist.cs" />
     <Compile Include="PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="PlaylistWplTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
     <Compile Include="PodcastEpisodeDownloaderFactoryTests\WhenUsingAPodcastEpisodeDownloaderFactory.cs" />
