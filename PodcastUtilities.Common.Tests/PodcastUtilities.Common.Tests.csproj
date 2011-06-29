@@ -117,10 +117,17 @@
     <Compile Include="PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="PlaylistWplTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
     <Compile Include="PodcastEpisodeDownloaderFactoryTests\WhenUsingAPodcastEpisodeDownloaderFactory.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenCancellingADownloadThatHasNotBeenStarted.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenCancellingAStartedDownload.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenCancellingTheDownloader.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenCompletingTheDownloader.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WhenStartingTheDownloader.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WhenStartingTheDownloaderTwice.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WhenStartingTheDownloaderWithoutASyncItem.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WhenTestingTheDownloader.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenTheDownloaderCompleteWithMissingToken.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenTheDownloaderReportsAnError.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenTheDownloaderReportsANestedError.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloader.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeed.cs" />
