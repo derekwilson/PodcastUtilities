@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using PodcastUtilities.Common.Platform;
 using Rhino.Mocks;
@@ -22,6 +24,8 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
 
         protected System.Exception _exception;
 
+        protected StatusUpdateEventArgs _statusUpdateArgs;
+
         protected override void GivenThat()
         {
             base.GivenThat();
@@ -36,6 +40,12 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
             SetupStubs();
 
             _downloader = new PodcastEpisodeDownloader(_webClientFactory);
+            _downloader.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(DownloaderStatusUpdate);
+        }
+
+        protected virtual void DownloaderStatusUpdate(object sender, StatusUpdateEventArgs e)
+        {
+            _statusUpdateArgs = e;
         }
 
         protected virtual void SetupData()
@@ -49,6 +59,21 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
         {
             _webClient.Stub(client => client.OpenRead(_syncItem.EpisodeUrl)).Return(_stream);
             _webClientFactory.Stub(factory => factory.GetWebClient()).Return(_webClient);
+        }
+    }
+
+    public abstract class WhenTestingTheDownloaderCompletedMechanism : WhenTestingTheDownloader
+    {
+        protected System.Exception _reportedError;
+
+        protected override void GivenThat()
+        {
+            base.GivenThat();
+
+            _reportedError = new Exception("TEST ERROR");
+
+            _downloader.SyncItem = _syncItem;
+            _downloader.Start(null);
         }
     }
 }
