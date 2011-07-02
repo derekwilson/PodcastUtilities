@@ -1,14 +1,16 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
+namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientEvent.DownloadFileCompleted
 {
-    public class WhenTheDownloaderCompleteWithMissingToken : WhenTestingTheDownloaderCompletedMechanism
+    public class WhenTheDownloaderReportsANestedError : WhenTestingTheDownloaderCompletedMechanism
     {
         protected override void When()
         {
-            _webClient.Raise(client => client.DownloadFileCompleted += null, this, new AsyncCompletedEventArgs(null, false, null));
+            _webClient.Raise(client => client.DownloadFileCompleted += null, this,
+                             new AsyncCompletedEventArgs(new Exception("OUTER ERROR", _reportedError), false, _syncItem));
         }
 
         [Test]
@@ -21,9 +23,9 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
         [Test]
         public void ItShouldSendTheCorrectStatus()
         {
-            Assert.That(_statusUpdateArgs.Exception, Is.Null);
+            Assert.That(_statusUpdateArgs.Exception, Is.SameAs(_reportedError));
             Assert.That(_statusUpdateArgs.MessageLevel, Is.EqualTo(StatusUpdateEventArgs.Level.Error));
-            Assert.That(_statusUpdateArgs.Message, Is.StringContaining("Missing token"));
+            Assert.That(_statusUpdateArgs.Message, Is.StringContaining("TEST ERROR"));
         }
 
         [Test]

@@ -117,17 +117,22 @@
     <Compile Include="PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="PlaylistWplTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
     <Compile Include="PodcastEpisodeDownloaderFactoryTests\WhenUsingAPodcastEpisodeDownloaderFactory.cs" />
-    <Compile Include="PodcastEpisodeDownloaderTests\WhenCancellingADownloadThatHasNotBeenStarted.cs" />
-    <Compile Include="PodcastEpisodeDownloaderTests\WhenCancellingAStartedDownload.cs" />
-    <Compile Include="PodcastEpisodeDownloaderTests\WhenCancellingTheDownloader.cs" />
-    <Compile Include="PodcastEpisodeDownloaderTests\WhenCompletingTheDownloader.cs" />
-    <Compile Include="PodcastEpisodeDownloaderTests\WhenStartingTheDownloader.cs" />
-    <Compile Include="PodcastEpisodeDownloaderTests\WhenStartingTheDownloaderTwice.cs" />
-    <Compile Include="PodcastEpisodeDownloaderTests\WhenStartingTheDownloaderWithoutASyncItem.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Cancel\WhenCancellingADownloadThatHasNotBeenStarted.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Cancel\WhenCancellingAStartedDownload.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderAfterItHasCompleted.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCancellingTheDownloader.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCompletingTheDownloader.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloader.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderTwice.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderWithoutASyncItem.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTestingTheDownloaderProgressChangedMechanism.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTheProgressChanges.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WhenTestingTheDownloader.cs" />
-    <Compile Include="PodcastEpisodeDownloaderTests\WhenTheDownloaderCompleteWithMissingToken.cs" />
-    <Compile Include="PodcastEpisodeDownloaderTests\WhenTheDownloaderReportsAnError.cs" />
-    <Compile Include="PodcastEpisodeDownloaderTests\WhenTheDownloaderReportsANestedError.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderCompleteWithMissingToken.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderReportsAnError.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderReportsANestedError.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTestingTheDownloaderCompletedMechanism.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenTestingTheInitialState.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloader.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeed.cs" />
@@ -201,6 +206,7 @@
   <ItemGroup>
     <EmbeddedResource Include="XML\testemptyrssfeed.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

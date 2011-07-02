@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
+namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.Start
 {
     public class WhenStartingTheDownloader : WhenTestingTheDownloader
     {
