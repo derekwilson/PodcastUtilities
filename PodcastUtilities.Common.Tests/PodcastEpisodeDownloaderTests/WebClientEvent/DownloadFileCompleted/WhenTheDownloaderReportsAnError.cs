@@ -1,16 +1,15 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
+namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientEvent.DownloadFileCompleted
 {
-    public class WhenTheDownloaderReportsANestedError : WhenTestingTheDownloaderCompletedMechanism
+    public class WhenTheDownloaderReportsAnError : WhenTestingTheDownloaderCompletedMechanism
     {
         protected override void When()
         {
             _webClient.Raise(client => client.DownloadFileCompleted += null, this,
-                             new AsyncCompletedEventArgs(new Exception("OUTER ERROR", _reportedError), false, _syncItem));
+                             new AsyncCompletedEventArgs(_reportedError, false, _syncItem));
         }
 
         [Test]

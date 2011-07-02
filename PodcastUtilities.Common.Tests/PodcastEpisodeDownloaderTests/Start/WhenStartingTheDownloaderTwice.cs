@@ -1,10 +1,17 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
+namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.Start
 {
-    public class WhenStartingTheDownloaderWithoutASyncItem : WhenTestingTheDownloader
+    public class WhenStartingTheDownloaderTwice : WhenTestingTheDownloader
     {
+        protected override void GivenThat()
+        {
+            base.GivenThat();
+            _downloader.SyncItem = _syncItem;
+            _downloader.Start(null);
+        }
+
         protected override void When()
         {
             _exception = null;
@@ -21,7 +28,7 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
         [Test]
         public void ItShouldThrow()
         {
-            Assert.IsInstanceOf(typeof(DownloaderException),_exception);
+            Assert.IsInstanceOf(typeof(DownloaderException), _exception);
         }
     }
 }

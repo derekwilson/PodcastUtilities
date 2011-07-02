@@ -1,7 +1,9 @@
 ﻿using NUnit.Framework;
+using PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientEvent;
+using PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientEvent.DownloadFileCompleted;
 using Rhino.Mocks;
 
-namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
+namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.Cancel
 {
     public class WhenCancellingAStartedDownload : WhenTestingTheDownloaderCompletedMechanism
     {
