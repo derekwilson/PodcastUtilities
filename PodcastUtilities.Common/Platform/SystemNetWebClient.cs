@@ -13,6 +13,17 @@ namespace PodcastUtilities.Common.Platform
         private readonly WebClient _webClient;
 
         /// <summary>
+        /// event for progress
+        /// </summary>
+        public event EventHandler<DownloadProgressEventArgs> ProgressUpdate;
+
+        private void OnProgressUpdate(DownloadProgressEventArgs e)
+        {
+            if (ProgressUpdate != null)
+                ProgressUpdate(this, e);
+        }
+
+        /// <summary>
         /// provides access to the physical internet
         /// </summary>
         public SystemNetWebClient()
@@ -20,6 +31,23 @@ namespace PodcastUtilities.Common.Platform
             _webClient = new WebClient();
             // some servers can die without a user-agent
             _webClient.Headers.Add("User-Agent", "Mozilla/4.0+");
+            _webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(WebClientDownloadProgressChanged);
+        }
+
+        private void WebClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            // we need to repack the System.Net.DownloadProgressChangedEventArgs
+            // into a PodcastUtilities.Common.DownloadProgressEventArgs
+            // as the System.Net.DownloadProgressChangedEventArgs cannot be constructed for testing as it has an internat constructor
+
+            var progress = new DownloadProgressEventArgs()
+                               {
+                                   ProgressPercentage = e.ProgressPercentage,
+                                   BytesReceived = e.BytesReceived,
+                                   TotalBytesToReceive = e.TotalBytesToReceive,
+                                   UserState = e.UserState
+                               };
+            OnProgressUpdate(progress);
         }
 
         /// <summary>
@@ -30,15 +58,6 @@ namespace PodcastUtilities.Common.Platform
         public Stream OpenRead(Uri address)
         {
             return _webClient.OpenRead(address);
-        }
-
-        /// <summary>
-        /// event for progress
-        /// </summary>
-        public event DownloadProgressChangedEventHandler DownloadProgressChanged
-        {
-            add { _webClient.DownloadProgressChanged += value; }
-            remove { _webClient.DownloadProgressChanged -= value; }
         }
 
         ///<summary>

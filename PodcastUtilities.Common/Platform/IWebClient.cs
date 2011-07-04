@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Platform
     /// <summary>
     /// methods to interact with the internet to isolate the main body of the code from the physical network
     /// </summary>
-    public interface IWebClient : IDisposable
+    public interface IWebClient : IDownloadProgressUpdate, IDisposable
     {
         /// <summary>
         /// open a readable stream from the supplied url
@@ -16,11 +16,6 @@ namespace PodcastUtilities.Common.Platform
         /// <param name="address">url</param>
         /// <returns>readable stream</returns>
         Stream OpenRead(Uri address);
-
-        /// <summary>
-        /// event for progress
-        /// </summary>
-        event DownloadProgressChangedEventHandler DownloadProgressChanged;
 
         ///<summary>
         /// event for completion

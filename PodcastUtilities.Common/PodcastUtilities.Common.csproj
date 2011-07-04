@@ -73,6 +73,8 @@
   <ItemGroup>
     <Compile Include="ControlFile.cs" />
     <Compile Include="DownloaderException.cs" />
+    <Compile Include="DownloadProgressEventArgs.cs" />
+    <Compile Include="IDownloadProgressUpdate.cs" />
     <Compile Include="IFeedSyncItem.cs" />
     <Compile Include="IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter.cs" />
     <Compile Include="IPodcastEpisodeDownloader.cs" />

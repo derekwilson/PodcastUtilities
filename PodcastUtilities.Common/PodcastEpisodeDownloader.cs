@@ -82,13 +82,29 @@ namespace PodcastUtilities.Common
                 _progressPercentage = 0;
 
                 _client = _webClientFactory.GetWebClient();
-                _client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
-                _client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
+                _client.ProgressUpdate += new EventHandler<DownloadProgressEventArgs>(ClientProgressUpdate);
+                _client.DownloadFileCompleted += new AsyncCompletedEventHandler(ClientDownloadFileCompleted);
                 _client.DownloadFileAsync(SyncItem.EpisodeUrl, SyncItem.DestinationPath, SyncItem);
             }
         }
 
-        void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        void ClientProgressUpdate(object sender, DownloadProgressEventArgs e)
+        {
+            lock (_lock)
+            {
+                if (_progressPercentage == e.ProgressPercentage)
+                {
+                    return;
+                }
+                _progressPercentage = e.ProgressPercentage;
+            }
+
+            StatusUpdateEventArgs args = null;
+            args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Progress, e.ProgressPercentage.ToString(), e);
+            OnStatusUpdate(args);
+        }
+
+        void ClientDownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             StatusUpdateEventArgs args = null;
             lock (_lock)
@@ -123,22 +139,6 @@ namespace PodcastUtilities.Common
                 _complete = true;
                 TaskComplete.Set();
             }
-        }
-
-        void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            lock (_lock)
-            {
-                if (_progressPercentage == e.ProgressPercentage)
-                {
-                    return;
-                }
-                _progressPercentage = e.ProgressPercentage;
-            }
-
-            StatusUpdateEventArgs args = null;
-            args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Progress, e.ProgressPercentage.ToString());
-            OnStatusUpdate(args);
         }
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)
