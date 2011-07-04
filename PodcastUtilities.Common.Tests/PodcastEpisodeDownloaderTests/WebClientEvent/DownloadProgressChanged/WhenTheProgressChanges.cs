@@ -5,17 +5,21 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientE
 {
     public class WhenTheProgressChanges : WhenTestingTheDownloaderProgressChangedMechanism
     {
-        protected override void CreateData()
+        protected override void GivenThat()
         {
-            base.CreateData();
-            _bytesReceived = 111;
-            _totalBytes = 222;
-            _percentage = 50;
+            base.GivenThat();
+            _progressEventArgs = new DownloadProgressEventArgs()
+            {
+                BytesReceived = 11,
+                ProgressPercentage = 50,
+                TotalBytesToReceive = 22,
+                UserState = _syncItem
+            };
         }
 
         protected override void When()
         {
-            _webClient.Raise(client => client.DownloadProgressChanged += null, this, _progressEventArgs);
+            _webClient.Raise(client => client.ProgressUpdate += null, this, _progressEventArgs);
         }
 
         [Test]
@@ -31,6 +35,7 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientE
             Assert.That(_statusUpdateArgs.Exception, Is.Null);
             Assert.That(_statusUpdateArgs.MessageLevel, Is.EqualTo(StatusUpdateEventArgs.Level.Progress));
             Assert.That(_statusUpdateArgs.Message, Is.StringContaining("50"));
+            Assert.That(_statusUpdateArgs.State, Is.SameAs(_progressEventArgs));
         }
     }
 }

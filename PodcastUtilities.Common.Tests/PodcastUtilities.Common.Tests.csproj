@@ -85,6 +85,8 @@
     <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentPlaylistFormats.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="ControlFileTests\WhenTestingAControlFile.cs" />
+    <Compile Include="DownloaderExceptionTests\WhenCreatingAnException.cs" />
+    <Compile Include="DownloaderExceptionTests\WhenCreatingAnExceptionWithAnInnerException.cs" />
     <Compile Include="FeedSyncItemToPodcastEpisodeDownloaderTaskConverterTests\WhenTestingTheConverter.cs" />
     <Compile Include="FeedSyncItemToPodcastEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsItems.cs" />
     <Compile Include="FeedSyncItemToPodcastEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsNoItems.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderWithoutASyncItem.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTestingTheDownloaderProgressChangedMechanism.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTheProgressChanges.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTheProgressHasNotChanged.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WhenTestingTheDownloader.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderCompleteWithMissingToken.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderReportsAnError.cs" />
