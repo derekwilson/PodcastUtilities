@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Platform
     /// <summary>
     /// methods to interact with the internet to isolate the main body of the code from the physical network
     /// </summary>
-    public interface IWebClient : IDownloadProgressUpdate, IDisposable
+    public interface IWebClient : IProgressUpdate, IDisposable
     {
         /// <summary>
         /// open a readable stream from the supplied url

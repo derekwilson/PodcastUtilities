@@ -9,7 +9,7 @@ namespace PodcastUtilities.Common
     /// <summary>
     /// a task that can be performed on a background thread
     /// </summary>
-    public interface ITask : IStatusUpdate
+    public interface ITask : IStatusUpdate, IProgressUpdate
     {
         /// <summary>
         /// the event that is fired when the task completes

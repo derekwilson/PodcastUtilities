@@ -15,9 +15,9 @@ namespace PodcastUtilities.Common.Platform
         /// <summary>
         /// event for progress
         /// </summary>
-        public event EventHandler<DownloadProgressEventArgs> ProgressUpdate;
+        public event EventHandler<ProgressEventArgs> ProgressUpdate;
 
-        private void OnProgressUpdate(DownloadProgressEventArgs e)
+        private void OnProgressUpdate(ProgressEventArgs e)
         {
             if (ProgressUpdate != null)
                 ProgressUpdate(this, e);
@@ -40,11 +40,11 @@ namespace PodcastUtilities.Common.Platform
             // into a PodcastUtilities.Common.DownloadProgressEventArgs
             // as the System.Net.DownloadProgressChangedEventArgs cannot be constructed for testing as it has an internat constructor
 
-            var progress = new DownloadProgressEventArgs()
+            var progress = new ProgressEventArgs()
                                {
                                    ProgressPercentage = e.ProgressPercentage,
-                                   BytesReceived = e.BytesReceived,
-                                   TotalBytesToReceive = e.TotalBytesToReceive,
+                                   ItemsProcessed = e.BytesReceived,
+                                   TotalItemsToProcess = e.TotalBytesToReceive,
                                    UserState = e.UserState
                                };
             OnProgressUpdate(progress);

@@ -8,11 +8,11 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientE
         protected override void GivenThat()
         {
             base.GivenThat();
-            _progressEventArgs = new DownloadProgressEventArgs()
+            _progressEventArgs = new ProgressEventArgs()
             {
-                BytesReceived = 11,
+                ItemsProcessed = 11,
                 ProgressPercentage = 50,
-                TotalBytesToReceive = 22,
+                TotalItemsToProcess = 22,
                 UserState = _syncItem
             };
         }
@@ -32,10 +32,10 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientE
         [Test]
         public void ItShouldReportProgress()
         {
-            Assert.That(_statusUpdateArgs.Exception, Is.Null);
-            Assert.That(_statusUpdateArgs.MessageLevel, Is.EqualTo(StatusUpdateEventArgs.Level.Progress));
-            Assert.That(_statusUpdateArgs.Message, Is.StringContaining("50"));
-            Assert.That(_statusUpdateArgs.State, Is.SameAs(_progressEventArgs));
+            Assert.That(_progressUpdateArgs.ItemsProcessed, Is.EqualTo(11));
+            Assert.That(_progressUpdateArgs.ProgressPercentage, Is.EqualTo(50));
+            Assert.That(_progressUpdateArgs.TotalItemsToProcess, Is.EqualTo(22));
+            Assert.That(_progressUpdateArgs.UserState, Is.SameAs(_syncItem));
         }
     }
 }

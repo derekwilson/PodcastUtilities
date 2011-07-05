@@ -33,71 +33,6 @@ namespace DownloadPodcasts
             Console.WriteLine("  <controlfile> = XML control file eg. podcasts.xml");
         }
 
-        static Stream GetStreamUsingWebClient(string url)
-        {
-            using (WebClient client = new System.Net.WebClient())
-            {
-                // some servers can die without a user-agent
-                client.Headers.Add("User-Agent", "Mozilla/4.0+");
-                return client.OpenRead(url);
-            }
-        }
-
-        static void GetFileUsingWebClient(string url, string filename)
-        {
-            using (WebClient client = new System.Net.WebClient())
-            {
-                // some servers can die without a user-agent
-                client.Headers.Add("User-Agent", "Mozilla/4.0+"); 
-                client.DownloadFile(url, filename);
-            }
-        }
-
-        static void GetFileUsingWebClientAsync(FeedSyncItem syncItem)
-        {
-            using (WebClient client = new System.Net.WebClient())
-            {
-                client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
-                client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
-                client.DownloadFileAsync(syncItem.EpisodeUrl, syncItem.DestinationPath, syncItem);
-                while (client.IsBusy)
-                {
-                    System.Threading.Thread.Sleep(1000);
-                }
-            }
-        }
-
-        static void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            var syncItem = e.UserState as FeedSyncItem;
-            if (syncItem == null)
-            {
-                throw new Exception("Missing token from download completed");
-            }
-            lock (_synclock)
-            {
-                Console.WriteLine("\nCompleted: {0}", syncItem.EpisodeTitle);
-                if (e.Cancelled)
-                {
-                    Console.WriteLine("Download Cancelled.");
-                }
-                else if (e.Error != null && e.Error.InnerException != null)
-                {
-                    Console.WriteLine("Error: {0} {1}", e.Error.InnerException.Message,
-                                      e.Error.InnerException.StackTrace);
-                }
-                else if (e.Error != null)
-                {
-                    Console.WriteLine("Error: {0} {1}", e.Error.Message, e.Error.StackTrace);
-                }
-            }
-        }
-
-        static void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            Console.Write("\rDownloaded {0}%",e.ProgressPercentage);
-        }
-
         private static LinFuIocContainer InitializeIocContainer()
         {
             var container = new LinFuIocContainer();
@@ -129,6 +64,7 @@ namespace DownloadPodcasts
             int numberOfConnections = control.MaximumNumberOfConcurrentDownloads;
             System.Net.ServicePointManager.DefaultConnectionLimit = numberOfConnections;
 
+            // find the episodes to download
             var episodes = new List<IFeedSyncItem>(20);
             var podcastEpisodeFinder = iocContainer.Resolve<IPodcastFeedEpisodeFinder>();
             podcastEpisodeFinder.StatusUpdate += StatusUpdate;
@@ -139,9 +75,11 @@ namespace DownloadPodcasts
 
             if (episodes.Count > 0)
             {
+                // convert them to tasks
                 var converter = iocContainer.Resolve<IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter>();
-                IPodcastEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(episodes, StatusUpdate);
+                IPodcastEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(episodes, StatusUpdate, ProgressUpdate);
 
+                // run them in a task pool
                 _taskPool = iocContainer.Resolve<ITaskPool>();
                 Console.CancelKeyPress += new ConsoleCancelEventHandler(Console_CancelKeyPress);
                 _taskPool.RunAllTasks(numberOfConnections, downloadTasks);
@@ -160,21 +98,22 @@ namespace DownloadPodcasts
             e.Cancel = true;
         }
 
+        static void ProgressUpdate(object sender, ProgressEventArgs e)
+        {
+            IFeedSyncItem syncItem = e.UserState as IFeedSyncItem;
+            if (e.ProgressPercentage % 10 == 0)
+            {
+                Console.WriteLine(string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
+                                                DisplayFormatter.RenderFileSize(e.ItemsProcessed),
+                                                DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
+                                                e.ProgressPercentage));
+            }
+        }
+
         static void StatusUpdate(object sender, StatusUpdateEventArgs e)
         {
             if (e.MessageLevel == StatusUpdateEventArgs.Level.Verbose && !_verbose)
             {
-                return;
-            }
-
-            if (e.MessageLevel == StatusUpdateEventArgs.Level.Progress)
-            {
-                IPodcastEpisodeDownloader downloader = sender as IPodcastEpisodeDownloader;
-                int percentage = Convert.ToInt32(e.Message);
-                if (downloader != null && percentage % 10 == 0)
-                {
-                    Console.WriteLine(string.Format("{0} {1}%",downloader.SyncItem.EpisodeTitle, percentage));
-                }
                 return;
             }
 

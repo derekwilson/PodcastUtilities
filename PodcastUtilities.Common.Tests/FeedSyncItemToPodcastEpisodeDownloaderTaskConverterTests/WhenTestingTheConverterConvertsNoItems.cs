@@ -6,7 +6,7 @@ namespace PodcastUtilities.Common.Tests.FeedSyncItemToPodcastEpisodeDownloaderTa
     {
         protected override void When()
         {
-            _tasks = _converter.ConvertItemsToTasks(_downloadItems, null);
+            _tasks = _converter.ConvertItemsToTasks(_downloadItems, null, null);
         }
 
         [Test]
