@@ -8,18 +8,18 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientE
         protected override void GivenThat()
         {
             base.GivenThat();
-            _progressEventArgs = new DownloadProgressEventArgs()
+            _progressEventArgs = new ProgressEventArgs()
                                      {
-                                         BytesReceived = 11,
+                                         ItemsProcessed = 11,
                                          ProgressPercentage = 50,
-                                         TotalBytesToReceive = 22,
+                                         TotalItemsToProcess = 22,
                                          UserState = _syncItem
                                      };
             _webClient.Raise(client => client.ProgressUpdate += null, this, _progressEventArgs);
             // we are not interested in the first update
             _statusUpdateArgs = null;
             // bytes has changed but not percentage
-            _progressEventArgs.BytesReceived = 12;
+            _progressEventArgs.ItemsProcessed = 12;
         }
 
         protected override void When()

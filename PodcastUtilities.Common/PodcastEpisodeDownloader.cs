@@ -47,6 +47,11 @@ namespace PodcastUtilities.Common
         public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
         /// <summary>
+        /// event for progress
+        /// </summary>
+        public event EventHandler<ProgressEventArgs> ProgressUpdate;
+
+        /// <summary>
         /// the event that is fired when the task completes
         /// </summary>
         public EventWaitHandle TaskComplete { get; protected set; }
@@ -82,26 +87,31 @@ namespace PodcastUtilities.Common
                 _progressPercentage = 0;
 
                 _client = _webClientFactory.GetWebClient();
-                _client.ProgressUpdate += new EventHandler<DownloadProgressEventArgs>(ClientProgressUpdate);
+                _client.ProgressUpdate += new EventHandler<ProgressEventArgs>(ClientProgressUpdate);
                 _client.DownloadFileCompleted += new AsyncCompletedEventHandler(ClientDownloadFileCompleted);
                 _client.DownloadFileAsync(SyncItem.EpisodeUrl, SyncItem.DestinationPath, SyncItem);
             }
         }
 
-        void ClientProgressUpdate(object sender, DownloadProgressEventArgs e)
+        void ClientProgressUpdate(object sender, ProgressEventArgs e)
         {
             lock (_lock)
             {
                 if (_progressPercentage == e.ProgressPercentage)
                 {
+                    // only report progress if we have moved on in percentage terms
                     return;
                 }
                 _progressPercentage = e.ProgressPercentage;
             }
 
-            StatusUpdateEventArgs args = null;
-            args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Progress, e.ProgressPercentage.ToString(), e);
-            OnStatusUpdate(args);
+            OnProgressUpdate(e);
+        }
+
+        private void OnProgressUpdate(ProgressEventArgs e)
+        {
+            if (ProgressUpdate != null)
+                ProgressUpdate(this, e);
         }
 
         void ClientDownloadFileCompleted(object sender, AsyncCompletedEventArgs e)

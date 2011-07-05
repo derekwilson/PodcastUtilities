@@ -25,6 +25,7 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
         protected System.Exception _exception;
 
         protected StatusUpdateEventArgs _statusUpdateArgs;
+        protected ProgressEventArgs _progressUpdateArgs;
 
         protected override void GivenThat()
         {
@@ -41,6 +42,12 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
 
             _downloader = new PodcastEpisodeDownloader(_webClientFactory);
             _downloader.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(DownloaderStatusUpdate);
+            _downloader.ProgressUpdate += new EventHandler<ProgressEventArgs>(DownloaderProgressUpdate);
+        }
+
+        protected virtual void DownloaderProgressUpdate(object sender, ProgressEventArgs e)
+        {
+            _progressUpdateArgs = e;
         }
 
         protected virtual void DownloaderStatusUpdate(object sender, StatusUpdateEventArgs e)

@@ -30,17 +30,12 @@ namespace PodcastUtilities.Common
             /// <summary>
             /// extra information that may be useful
             /// </summary>
-            Verbose,
-            /// <summary>
-            /// progress update
-            /// </summary>
-            Progress
+            Verbose
         }
 
         private readonly Level _level;
         private readonly string _message;
         private readonly Exception _excpetion;
-        private readonly object _state;
 
         /// <summary>
         /// Construct a new message event arg.
@@ -60,16 +55,6 @@ namespace PodcastUtilities.Common
             _message = message;
             _level = level;
             _excpetion = exception;
-        }
-
-        /// <summary>
-        /// Construct a new message event arg.
-        /// </summary>
-        public StatusUpdateEventArgs(Level level, string message, object state)
-        {
-            _message = message;
-            _level = level;
-            _state = state;
         }
 
         /// <summary>
@@ -100,16 +85,6 @@ namespace PodcastUtilities.Common
             get
             {
                 return _excpetion;
-            }
-        }
-        /// <summary>
-        /// Get the state
-        /// </summary>
-        public object State
-        {
-            get
-            {
-                return _state;
             }
         }
     }

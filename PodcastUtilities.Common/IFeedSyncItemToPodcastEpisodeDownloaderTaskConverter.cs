@@ -13,7 +13,8 @@ namespace PodcastUtilities.Common
         /// </summary>
         /// <param name="downloadItems">the items to be downloaded</param>
         /// <param name="statusUpdate">the update mechanism for the download - can be null</param>
+        /// <param name="progressUpdate">the progress mechanism for the download - can be null</param>
         /// <returns>an array of tasks suitable to be run in a task pool</returns>
-        IPodcastEpisodeDownloader[] ConvertItemsToTasks(List<IFeedSyncItem> downloadItems, EventHandler<StatusUpdateEventArgs> statusUpdate);
+        IPodcastEpisodeDownloader[] ConvertItemsToTasks(List<IFeedSyncItem> downloadItems, EventHandler<StatusUpdateEventArgs> statusUpdate, EventHandler<ProgressEventArgs> progressUpdate);
     }
 }

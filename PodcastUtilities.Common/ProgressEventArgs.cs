@@ -6,9 +6,9 @@ using System.Text;
 namespace PodcastUtilities.Common
 {
     /// <summary>
-    /// information on the download progress
+    /// information on the progress of a task
     /// </summary>
-    public class DownloadProgressEventArgs : EventArgs
+    public class ProgressEventArgs : EventArgs
     {
         /// <summary>
         /// percentage of the download that is complete
@@ -16,17 +16,17 @@ namespace PodcastUtilities.Common
         public int ProgressPercentage { get; set; }
 
         /// <summary>
-        /// number of bytes that have been downloaded
+        /// number of items processed - for example number of bytes that have been downloaded
         /// </summary>
-        public long BytesReceived { get; set; }
+        public long ItemsProcessed { get; set; }
 
         /// <summary>
-        /// total number of bytes we are to download
+        /// total number of items to process - for example total number of bytes we are to download
         /// </summary>
-        public long TotalBytesToReceive { get; set; }
+        public long TotalItemsToProcess { get; set; }
 
         /// <summary>
-        /// state that was passed to the downloader
+        /// user state that was passed to the task
         /// </summary>
         public object UserState { get; set; }
     }

@@ -7,7 +7,7 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientE
 {
     public abstract class WhenTestingTheDownloaderProgressChangedMechanism : WhenTestingTheDownloader
     {
-        protected DownloadProgressEventArgs _progressEventArgs;
+        protected ProgressEventArgs _progressEventArgs;
         protected long _bytesReceived;
         protected long _totalBytes;
         protected int _percentage;

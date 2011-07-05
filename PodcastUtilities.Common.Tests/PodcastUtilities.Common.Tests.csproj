@@ -85,6 +85,7 @@
     <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentPlaylistFormats.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="ControlFileTests\WhenTestingAControlFile.cs" />
+    <Compile Include="DisplayFormatterTests\WhenTestingTheRenderFileSizeDisplayFormatter.cs" />
     <Compile Include="DownloaderExceptionTests\WhenCreatingAnException.cs" />
     <Compile Include="DownloaderExceptionTests\WhenCreatingAnExceptionWithAnInnerException.cs" />
     <Compile Include="FeedSyncItemToPodcastEpisodeDownloaderTaskConverterTests\WhenTestingTheConverter.cs" />
