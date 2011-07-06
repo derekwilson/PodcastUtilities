@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Net;
 using System.Threading;
 using PodcastUtilities.Common.Platform;
@@ -12,6 +13,8 @@ namespace PodcastUtilities.Common
     public class PodcastEpisodeDownloader : IPodcastEpisodeDownloader
     {
         private readonly IWebClientFactory _webClientFactory;
+        private readonly IDirectoryInfoProvider _directoryInfoProvider;
+        private readonly IFileUtilities _fileUtilities;
 
         private object _lock = new object();
         private IWebClient _client;
@@ -59,10 +62,11 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// create a task
         /// </summary>
-        /// <param name="webClientFactory"></param>
-        public PodcastEpisodeDownloader(IWebClientFactory webClientFactory)
+        public PodcastEpisodeDownloader(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities)
         {
             _webClientFactory = webClientFactory;
+            _fileUtilities = fileUtilities;
+            _directoryInfoProvider = directoryInfoProvider;
             TaskComplete = new ManualResetEvent(false);
         }
 
@@ -89,8 +93,29 @@ namespace PodcastUtilities.Common
                 _client = _webClientFactory.GetWebClient();
                 _client.ProgressUpdate += new EventHandler<ProgressEventArgs>(ClientProgressUpdate);
                 _client.DownloadFileCompleted += new AsyncCompletedEventHandler(ClientDownloadFileCompleted);
-                _client.DownloadFileAsync(SyncItem.EpisodeUrl, SyncItem.DestinationPath, SyncItem);
+
+                CreateFolderIfNeeded();
+                _client.DownloadFileAsync(SyncItem.EpisodeUrl, GetDownloadFilename(), SyncItem);
             }
+        }
+
+        private void CreateFolderIfNeeded()
+        {
+            string folder = Path.GetDirectoryName(_syncItem.DestinationPath);
+            IDirectoryInfo dir = _directoryInfoProvider.GetDirectoryInfo(folder);
+            if (!dir.Exists)
+            {
+                dir.Create();
+            }
+            if (_fileUtilities.FileExists(_syncItem.DestinationPath))
+            {
+                _fileUtilities.FileDelete(_syncItem.DestinationPath);
+            }
+        }
+
+        private string GetDownloadFilename()
+        {
+            return Path.ChangeExtension(SyncItem.DestinationPath, "partial");
         }
 
         void ClientProgressUpdate(object sender, ProgressEventArgs e)
@@ -140,12 +165,14 @@ namespace PodcastUtilities.Common
                 else
                 {
                     args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, string.Format("{0} Completed", syncItem.EpisodeTitle));
+                    _fileUtilities.FileRename(GetDownloadFilename(), _syncItem.DestinationPath, true);
                 }
 
                 OnStatusUpdate(args);
 
                 _client.Dispose();
                 _client = null;
+
                 _complete = true;
                 TaskComplete.Set();
             }

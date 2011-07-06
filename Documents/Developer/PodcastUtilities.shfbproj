@@ -24,8 +24,8 @@
     <ProjectSummary>PodcastUtilities are a set of utilities designed to help manage digital media on removable drives. Including utilities to sync podcasts and generate playlists.</ProjectSummary>
     <CopyrightText>%28c%29 2011 Andrew Trevarrow and Derek Wilson</CopyrightText>
     <NamespaceSummaries>
-      <NamespaceSummaryItem name="PodcastUtilities.Common" isDocumented="True" xmlns="">The Common namespace contains all the objects needed to programatically sync files and generate playlists</NamespaceSummaryItem>
-<NamespaceSummaryItem name="PodcastUtilities.Common.IO" isDocumented="True" xmlns="">The IO namespace is used to isolate the main code from its environment to enable more effective unit tests to be written, developers should not normally need to directly use these objects</NamespaceSummaryItem></NamespaceSummaries>
+      <NamespaceSummaryItem name="PodcastUtilities.Common" isDocumented="True">The Common namespace contains all the objects needed to programatically download media, sync files and generate playlists</NamespaceSummaryItem>
+<NamespaceSummaryItem name="PodcastUtilities.Common.Platform" isDocumented="True">The Platform namespace is used to isolate the main code from its environment to enable more effective unit tests to be written, developers should not normally need to directly use these objects</NamespaceSummaryItem></NamespaceSummaries>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

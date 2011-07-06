@@ -123,6 +123,7 @@
     <Compile Include="PodcastEpisodeDownloaderTests\Cancel\WhenCancellingADownloadThatHasNotBeenStarted.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\Cancel\WhenCancellingAStartedDownload.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderAfterItHasCompleted.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderWhenFolderDoesNotExist.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCancellingTheDownloader.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCompletingTheDownloader.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloader.cs" />

@@ -3,7 +3,7 @@ using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.Start
 {
-    public class WhenStartingTheDownloader : WhenTestingTheDownloader
+    public class WhenStartingTheDownloaderWhenFolderDoesNotExist : WhenTestingTheDownloader
     {
         protected override void GivenThat()
         {
@@ -11,6 +11,12 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.Start
             _downloader.SyncItem = _syncItem;
         }
 
+        protected override void SetupStubs()
+        {
+            base.SetupStubs();
+            _directoryInfo.Stub(dir => dir.Exists).Return(false);
+        }
+        
         protected override void When()
         {
             _downloader.Start(null);
@@ -30,9 +36,9 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.Start
         }
 
         [Test]
-        public void ItShouldDownloadTheFile()
+        public void ItShouldCreateTheFolder()
         {
-            _webClient.AssertWasCalled(client => client.DownloadFileAsync(_syncItem.EpisodeUrl, "c:\\folder\\file.partial", _syncItem));
+            _directoryInfo.AssertWasCalled(dir => dir.Create());
         }
     }
 }

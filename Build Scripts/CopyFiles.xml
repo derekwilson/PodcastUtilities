@@ -8,10 +8,13 @@
 
 	<ItemGroup>
 		<Files Include="$(MSBuildProjectDirectory)\..\Documents\User\*"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\Documents\Developer\Help\*.chm"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts\bin\$(Configuration)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts\bin\$(Configuration)\*.exe"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist\bin\$(Configuration)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist\bin\$(Configuration)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts\bin\$(Configuration)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts\bin\$(Configuration)\*.exe"/>
 	</ItemGroup>
 
 	<Target Name="CopyToCurrentBuild" DependsOnTargets="">
