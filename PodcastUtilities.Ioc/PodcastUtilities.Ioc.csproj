@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Shared\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="IocRegistration.cs" />
     <Compile Include="LinFuIocContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

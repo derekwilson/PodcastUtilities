@@ -1,18 +1,24 @@
-﻿namespace PodcastUtilities.Common
+﻿using PodcastUtilities.Common.Platform;
+
+namespace PodcastUtilities.Common
 {
     /// <summary>
     /// factory for a downloader task
     /// </summary>
     public class PodcastEpisodeDownloaderFactory : IPodcastEpisodeDownloaderFactory
     {
-        private IWebClientFactory _webClientFactory;
+        private readonly IWebClientFactory _webClientFactory;
+        private readonly IDirectoryInfoProvider _directoryInfoProvider;
+        private readonly IFileUtilities _fileUtilities;
 
         /// <summary>
         /// construct the factory
         /// </summary>
-        public PodcastEpisodeDownloaderFactory(IWebClientFactory webClientFactory)
+        public PodcastEpisodeDownloaderFactory(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities)
         {
             _webClientFactory = webClientFactory;
+            _fileUtilities = fileUtilities;
+            _directoryInfoProvider = directoryInfoProvider;
         }
 
         /// <summary>
@@ -21,7 +27,7 @@
         /// <returns></returns>
         public IPodcastEpisodeDownloader CreateDownloader()
         {
-            return new PodcastEpisodeDownloader(_webClientFactory);
+            return new PodcastEpisodeDownloader(_webClientFactory,_directoryInfoProvider,_fileUtilities);
         }
     }
 }

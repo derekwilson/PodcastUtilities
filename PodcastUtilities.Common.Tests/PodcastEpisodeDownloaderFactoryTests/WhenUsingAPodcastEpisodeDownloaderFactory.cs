@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderFactoryTests
 {
@@ -10,6 +11,8 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderFactoryTests
                 : WhenTestingBehaviour
     {
         private IPodcastEpisodeDownloaderFactory _factory;
+        private IDirectoryInfoProvider _directoryInfoProvider;
+        private IFileUtilities _fileUtilities;
         private IWebClientFactory _webClientFactory;
         private IPodcastEpisodeDownloader _downloader;
 
@@ -17,7 +20,9 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderFactoryTests
         {
             base.GivenThat();
             _webClientFactory = new WebClientFactory();
-            _factory = new PodcastEpisodeDownloaderFactory(_webClientFactory);
+            _directoryInfoProvider = GenerateMock<IDirectoryInfoProvider>();
+            _fileUtilities = GenerateMock<IFileUtilities>();
+            _factory = new PodcastEpisodeDownloaderFactory(_webClientFactory, _directoryInfoProvider,_fileUtilities);
         }
 
         protected override void When()

@@ -27,12 +27,20 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
         protected StatusUpdateEventArgs _statusUpdateArgs;
         protected ProgressEventArgs _progressUpdateArgs;
 
+        protected IDirectoryInfoProvider _directoryInfoProvider;
+        protected IFileUtilities _fileUtilities;
+        protected IDirectoryInfo _directoryInfo;
+        protected string _downloadFolder;
+
         protected override void GivenThat()
         {
             base.GivenThat();
 
             _webClientFactory = GenerateMock<IWebClientFactory>();
             _webClient = GenerateMock<IWebClient>();
+            _directoryInfoProvider = GenerateMock<IDirectoryInfoProvider>();
+            _directoryInfo = GenerateMock<IDirectoryInfo>();
+            _fileUtilities = GenerateMock<IFileUtilities>();
 
             _syncItem = new FeedSyncItem();
             _exception = null;
@@ -40,7 +48,7 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
             SetupData();
             SetupStubs();
 
-            _downloader = new PodcastEpisodeDownloader(_webClientFactory);
+            _downloader = new PodcastEpisodeDownloader(_webClientFactory, _directoryInfoProvider,_fileUtilities);
             _downloader.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(DownloaderStatusUpdate);
             _downloader.ProgressUpdate += new EventHandler<ProgressEventArgs>(DownloaderProgressUpdate);
         }
@@ -57,8 +65,10 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
 
         protected virtual void SetupData()
         {
+            _downloadFolder = "c:\\folder";
+
             _syncItem.EpisodeUrl = new Uri("http://test");
-            _syncItem.DestinationPath = "c:\\folder\\file.ext";
+            _syncItem.DestinationPath = Path.Combine(_downloadFolder,"file.ext");
             _syncItem.EpisodeTitle = "title";
         }
 
@@ -66,6 +76,7 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
         {
             _webClient.Stub(client => client.OpenRead(_syncItem.EpisodeUrl)).Return(_stream);
             _webClientFactory.Stub(factory => factory.GetWebClient()).Return(_webClient);
+            _directoryInfoProvider.Stub(dir => dir.GetDirectoryInfo(_downloadFolder)).Return(_directoryInfo);
         }
     }
 }

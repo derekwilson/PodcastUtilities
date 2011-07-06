@@ -12,6 +12,21 @@
         /// <returns>true if the file exists</returns>
         bool FileExists(string path);
 
+        /// <summary>
+        /// rename / move a file
+        /// </summary>
+        /// <param name="sourceFileName">source pathname</param>
+        /// <param name="destinationFileName">destination pathname</param>
+        void FileRename(string sourceFileName, string destinationFileName);
+
+        /// <summary>
+        /// rename / move a file
+        /// </summary>
+        /// <param name="sourceFileName">source pathname</param>
+        /// <param name="destinationFileName">destination pathname</param>
+        /// <param name="allowOverwrite">set to true to overwrite an existing destination file</param>
+        void FileRename(string sourceFileName, string destinationFileName, bool allowOverwrite);
+
 		/// <summary>
 		/// copy a file - will not overwrite an existing file
 		/// the containing folder will be created if it does not exist

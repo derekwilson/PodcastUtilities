@@ -71,6 +71,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Shared\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="ControlFile.cs" />
     <Compile Include="DisplayFormatter.cs" />
     <Compile Include="DownloaderException.cs" />

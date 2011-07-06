@@ -18,7 +18,35 @@ namespace PodcastUtilities.Common.Platform
 			return File.Exists(path);
 		}
 
-	    /// <summary>
+        /// <summary>
+        /// rename / move a file
+        /// </summary>
+        /// <param name="sourceFileName">source pathname</param>
+        /// <param name="destinationFileName">destination pathname</param>
+        public void FileRename(string sourceFileName, string destinationFileName)
+        {
+            FileRename(sourceFileName,destinationFileName,false);
+        }
+
+        /// <summary>
+        /// rename / move a file
+        /// </summary>
+        /// <param name="sourceFileName">source pathname</param>
+        /// <param name="destinationFileName">destination pathname</param>
+        /// <param name="allowOverwrite">set to true to overwrite an existing destination file</param>
+        public void FileRename(string sourceFileName, string destinationFileName, bool allowOverwrite)
+        {
+            if (allowOverwrite)
+            {
+                if (File.Exists(destinationFileName))
+                {
+                    File.Delete(destinationFileName);
+                }
+            }
+            File.Move(sourceFileName, destinationFileName);
+        }
+
+        /// <summary>
 	    /// copy a file - will not overwrite an existing file
 	    /// the containing folder will be created if it does not exist
 	    /// </summary>
