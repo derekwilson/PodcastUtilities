@@ -77,41 +77,48 @@ namespace PodcastUtilities.Common
             {
                 var downloader = new PodcastFeedDownloader(webClient, _feedFactory);
 
-                var feed = downloader.DownLoadFeed(podcastInfo.Feed.Format, podcastInfo.Feed.Address);
-                feed.StatusUpdate += StatusUpdate;
-                var episodes = feed.GetFeedEpisodes();
-
-                var oldestEpisodeToAccept = DateTime.MinValue;
-                if (podcastInfo.Feed.MaximumDaysOld < int.MaxValue)
+                try
                 {
-                    oldestEpisodeToAccept = _timeProvider.UtcNow.AddDays(-podcastInfo.Feed.MaximumDaysOld);
-                }
+                    var feed = downloader.DownLoadFeed(podcastInfo.Feed.Format, podcastInfo.Feed.Address);
+                    feed.StatusUpdate += StatusUpdate;
+                    var episodes = feed.GetFeedEpisodes();
 
-                foreach (IPodcastFeedItem podcastFeedItem in episodes)
-                {
-                    if (podcastFeedItem.Published > oldestEpisodeToAccept)
+                    var oldestEpisodeToAccept = DateTime.MinValue;
+                    if (podcastInfo.Feed.MaximumDaysOld < int.MaxValue)
                     {
-                        var destinationPath = GetDownloadPathname(rootFolder, podcastInfo, podcastFeedItem);
-                        if (!_fileUtilities.FileExists(destinationPath))
+                        oldestEpisodeToAccept = _timeProvider.UtcNow.AddDays(-podcastInfo.Feed.MaximumDaysOld);
+                    }
+
+                    foreach (IPodcastFeedItem podcastFeedItem in episodes)
+                    {
+                        if (podcastFeedItem.Published > oldestEpisodeToAccept)
                         {
-                            var downloadItem = new FeedSyncItem()
+                            var destinationPath = GetDownloadPathname(rootFolder, podcastInfo, podcastFeedItem);
+                            if (!_fileUtilities.FileExists(destinationPath))
                             {
-                                EpisodeUrl = podcastFeedItem.Address,
-                                DestinationPath = destinationPath,
-                                EpisodeTitle = string.Format("{0} {1}", podcastInfo.Folder,podcastFeedItem.EpisodeTitle)
-                            };
-                            episodesToDownload.Add(downloadItem);
-                            OnStatusMessageUpdate(string.Format("Queued: {0}, Episode: {1}", podcastInfo.Folder, podcastFeedItem.EpisodeTitle));
+                                var downloadItem = new FeedSyncItem()
+                                                       {
+                                                           EpisodeUrl = podcastFeedItem.Address,
+                                                           DestinationPath = destinationPath,
+                                                           EpisodeTitle = string.Format("{0} {1}", podcastInfo.Folder,podcastFeedItem.EpisodeTitle)
+                                                       };
+                                episodesToDownload.Add(downloadItem);
+                                OnStatusMessageUpdate(string.Format("Queued: {0}, Episode: {1}", podcastInfo.Folder, podcastFeedItem.EpisodeTitle));
+                            }
+                            else
+                            {
+                                OnStatusVerbose(string.Format("Episode already downloaded: {0}", podcastFeedItem.EpisodeTitle));
+                            }
                         }
                         else
                         {
-                            OnStatusVerbose(string.Format("Episode already downloaded: {0}", podcastFeedItem.EpisodeTitle));
+                            OnStatusVerbose(string.Format("Episode too old: {0}",podcastFeedItem.EpisodeTitle));
                         }
                     }
-                    else
-                    {
-                        OnStatusVerbose(string.Format("Episode too old: {0}",podcastFeedItem.EpisodeTitle));
-                    }
+                }
+                catch (Exception e)
+                {
+                    OnStatusError(string.Format("Error processing feed {0}: {1}", podcastInfo.Feed.Address, e.Message));
                 }
             }
         }
@@ -124,6 +131,11 @@ namespace PodcastUtilities.Common
         private void OnStatusMessageUpdate(string message)
         {
             OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
+        }
+
+        private void OnStatusError(string message)
+        {
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Error, message));
         }
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)
