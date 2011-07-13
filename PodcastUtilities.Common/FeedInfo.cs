@@ -29,5 +29,10 @@ namespace PodcastUtilities.Common
         /// the naming style to use for episodes downloaded from the feed
         /// </summary>
         public PodcastEpisodeNamingStyle NamingStyle { get; set; }
+
+        /// <summary>
+        /// the strategy to be used when downloading episodes
+        /// </summary>
+        public PodcastEpisodeDownloadStrategy DownloadStrategy { get; set; }
     }
 }

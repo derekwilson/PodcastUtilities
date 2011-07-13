@@ -8,6 +8,16 @@ namespace PodcastUtilities.Common
     public interface IFeedSyncItem
     {
         /// <summary>
+        /// date time the episode was published
+        /// </summary>
+        DateTime Published { get; set; }
+
+        /// <summary>
+        /// state key
+        /// </summary>
+        string StateKey { get; set; }
+
+        /// <summary>
         /// the url to download from
         /// </summary>
         Uri EpisodeUrl { get; set; }

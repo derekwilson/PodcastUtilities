@@ -28,7 +28,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
 
         protected override void When()
         {
-            _episodeFinder.FindEpisodesToDownload(_rootFolder, _podcastInfo, _episodesToSync);
+            _episodesToSync = _episodeFinder.FindEpisodesToDownload(_rootFolder, _podcastInfo);
         }
 
         [Test]

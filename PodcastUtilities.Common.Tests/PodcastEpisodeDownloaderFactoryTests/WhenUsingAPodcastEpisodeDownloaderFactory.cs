@@ -15,14 +15,16 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderFactoryTests
         private IFileUtilities _fileUtilities;
         private IWebClientFactory _webClientFactory;
         private IPodcastEpisodeDownloader _downloader;
+        private IStateProvider _stateProvider;
 
         protected override void GivenThat()
         {
             base.GivenThat();
+            _stateProvider = GenerateMock<IStateProvider>();
             _webClientFactory = new WebClientFactory();
             _directoryInfoProvider = GenerateMock<IDirectoryInfoProvider>();
             _fileUtilities = GenerateMock<IFileUtilities>();
-            _factory = new PodcastEpisodeDownloaderFactory(_webClientFactory, _directoryInfoProvider,_fileUtilities);
+            _factory = new PodcastEpisodeDownloaderFactory(_webClientFactory, _directoryInfoProvider,_fileUtilities,_stateProvider);
         }
 
         protected override void When()
