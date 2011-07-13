@@ -9,6 +9,16 @@ namespace PodcastUtilities.Common
     public class FeedSyncItem : IFeedSyncItem
     {
         /// <summary>
+        /// date time the episode was published
+        /// </summary>
+        public DateTime Published { get; set; }
+
+        /// <summary>
+        /// state key
+        /// </summary>
+        public string StateKey { get; set; }
+
+        /// <summary>
         /// the url to download from
         /// </summary>
         public Uri EpisodeUrl { get; set; }

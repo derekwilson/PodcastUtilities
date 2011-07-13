@@ -34,6 +34,7 @@ namespace PodcastUtilities.Ioc
             container.Register<IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter, FeedSyncItemToPodcastEpisodeDownloaderTaskConverter>();
             container.Register<IPodcastEpisodeDownloaderFactory, PodcastEpisodeDownloaderFactory>();
             container.Register<ITaskPool, TaskPool>();
+            container.Register<IStateProvider, StateProvider>();
         }
     }
 }

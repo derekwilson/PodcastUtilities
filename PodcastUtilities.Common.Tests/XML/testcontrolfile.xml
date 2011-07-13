@@ -13,6 +13,7 @@
             <format>rss</format>
             <namingStyle>pubdate_url</namingStyle>
             <maximumDaysOld>99</maximumDaysOld>
+            <downloadStrategy>all</downloadStrategy>
         </feed>
     
 </global>
@@ -37,6 +38,7 @@
             <maximumDaysOld>11</maximumDaysOld>
             <format>rss</format>
             <namingStyle>pubdate_title_url</namingStyle>
+            <downloadStrategy>high_tide</downloadStrategy>
         </feed>
         <folder>Test2</folder>
         <pattern>*.mp3</pattern>

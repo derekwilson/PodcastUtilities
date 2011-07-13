@@ -65,19 +65,20 @@ namespace DownloadPodcasts
             System.Net.ServicePointManager.DefaultConnectionLimit = numberOfConnections;
 
             // find the episodes to download
-            var episodes = new List<IFeedSyncItem>(20);
+            var allEpisodes = new List<IFeedSyncItem>(20);
             var podcastEpisodeFinder = iocContainer.Resolve<IPodcastFeedEpisodeFinder>();
             podcastEpisodeFinder.StatusUpdate += StatusUpdate;
             foreach (var podcastInfo in control.Podcasts)
             {
-                podcastEpisodeFinder.FindEpisodesToDownload(control.SourceRoot, podcastInfo, episodes);
+                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(control.SourceRoot, podcastInfo);
+                allEpisodes.AddRange(episodesInThisFeed);
             }
 
-            if (episodes.Count > 0)
+            if (allEpisodes.Count > 0)
             {
                 // convert them to tasks
                 var converter = iocContainer.Resolve<IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter>();
-                IPodcastEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(episodes, StatusUpdate, ProgressUpdate);
+                IPodcastEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(allEpisodes, StatusUpdate, ProgressUpdate);
 
                 // run them in a task pool
                 _taskPool = iocContainer.Resolve<ITaskPool>();
