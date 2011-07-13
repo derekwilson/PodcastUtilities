@@ -1,0 +1,13 @@
+<?wpl version="1.0"?>
+<smil>
+  <head>
+    <meta name="Generator" content="Generate Playlist" />
+    <title>WPL Test</title>
+  </head>
+  <body>
+    <seq>
+      <media src="Cricinfo The Switch Hit Cricket Show\2069.1.mp3" />
+      <media src="Cricinfo The Switch Hit Cricket Show\2076.1.mp3" />
+    </seq>
+  </body>
+</smil>

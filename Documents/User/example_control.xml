@@ -1,0 +1,32 @@
+<podcasts version="1.0">
+	<global>
+		<sourceRoot>.\downloads</sourceRoot>
+		<destinationRoot>W:\Podcasts</destinationRoot>
+		<playlistFilename>podcasts.wpl</playlistFilename>
+		<playlistFormat>wpl</playlistFormat>
+		<freeSpaceToLeaveOnDestinationMB>2000</freeSpaceToLeaveOnDestinationMB>
+		<sortfield>name</sortfield>
+		<sortdirection>asc</sortdirection>
+    <maximumNumberOfConcurrentDownloads>20</maximumNumberOfConcurrentDownloads>
+    <feed>
+        <maximumDaysOld>31</maximumDaysOld>
+        <format>rss</format>
+    </feed>
+	</global>
+	<podcast>
+    <feed>
+        <url>http://downloads.bbc.co.uk/rmhttp/downloadtrial/fivelive/markkermodesfilmreviews/rss.xml</url>
+    </feed>
+		<folder>Mark Kermode and Simon Mayos Film Reviews</folder>
+		<pattern>*.mp3</pattern>
+		<number>3</number>
+	</podcast>
+	<podcast>
+    <feed>
+        <url>http://www.hanselminutes.com/hanselminutes_MP3Direct.xml</url>
+    </feed>
+		<folder>Hanselminutes</folder>
+		<pattern>*.mp3</pattern>
+		<number>-1</number>
+	</podcast>
+</podcasts>

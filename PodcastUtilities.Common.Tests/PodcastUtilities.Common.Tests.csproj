@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03BAF930-2492-4792-9EBC-4FFAA9D3D60B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PodcastUtilities.Common.Tests</RootNamespace>
+    <AssemblyName>PodcastUtilities.Common.Tests</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rhino\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlFileTests\WhenCreatingAControlFile.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentAmountOfSpaceToLeave.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentEpisodeNamingStyles.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedConfigurations.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedEpisodeExpiry.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentPlaylistFormats.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAnInvalidControlFile.cs" />
+    <Compile Include="ControlFileTests\WhenTestingAControlFile.cs" />
+    <Compile Include="DisplayFormatterTests\WhenTestingTheRenderFileSizeDisplayFormatter.cs" />
+    <Compile Include="DownloaderExceptionTests\WhenCreatingAnException.cs" />
+    <Compile Include="DownloaderExceptionTests\WhenCreatingAnExceptionWithAnInnerException.cs" />
+    <Compile Include="FeedSyncItemToPodcastEpisodeDownloaderTaskConverterTests\WhenTestingTheConverter.cs" />
+    <Compile Include="FeedSyncItemToPodcastEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsItems.cs" />
+    <Compile Include="FeedSyncItemToPodcastEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsNoItems.cs" />
+    <Compile Include="FileCopierTests\WhenCopyingFileThrowsAnException.cs" />
+    <Compile Include="FileCopierTests\WhenDestinationDriveIsAlreadyFull.cs" />
+    <Compile Include="FileCopierTests\WhenDestinationFileAlreadyExists.cs" />
+    <Compile Include="FileCopierTests\WhenTestingFileCopier.cs" />
+    <Compile Include="FileFinderTests\WhenGettingAllFilesInAFolder.cs" />
+    <Compile Include="FileFinderTests\WhenGettingLessThanAllFilesInAFolder.cs" />
+    <Compile Include="FileFinderTests\WhenGettingUnlimitedSortedFilesInAFolder.cs" />
+    <Compile Include="FileFinderTests\WhenTestingFileFinder.cs" />
+    <Compile Include="FileSorterTests\WhenSortingByCreationTimeAscending.cs" />
+    <Compile Include="FileSorterTests\WhenSortingByCreationTimeDescending.cs" />
+    <Compile Include="FileSorterTests\WhenSortingByNameAscending.cs" />
+    <Compile Include="FileSorterTests\WhenSortingByNameDescending.cs" />
+    <Compile Include="FileSorterTests\WhenTestingFileSorter.cs" />
+    <Compile Include="PlaylistAsxTests\WhenAddinATrackToAnInvalidPlaylist.cs" />
+    <Compile Include="PlaylistAsxTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
+    <Compile Include="PlaylistAsxTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
+    <Compile Include="PlaylistAsxTests\WhenCreatingNewPlaylist.cs" />
+    <Compile Include="PlaylistFactoryTests\WhenCreatingANewAsxPlaylist.cs" />
+    <Compile Include="PlaylistFactoryTests\WhenCreatingANewPlaylist.cs" />
+    <Compile Include="PlaylistFactoryTests\WhenCreatingANewUnknownPlaylist.cs" />
+    <Compile Include="PlaylistFactoryTests\WhenCreatingANewWplPlaylist.cs" />
+    <Compile Include="PlaylistGeneratorTests\WhenCopyToDestinationIsSpecified.cs" />
+    <Compile Include="PlaylistGeneratorTests\WhenTestingThePlaylistGenerator.cs" />
+    <Compile Include="PlaylistGeneratorTests\WhenThereAreNoSourcePodcasts.cs" />
+    <Compile Include="PlaylistGeneratorTests\WhenThereAreSomePodcastsContainingFiles.cs" />
+    <Compile Include="PlaylistWplTests\WhenAddinATrackToAnInvalidPlaylist.cs" />
+    <Compile Include="PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
+    <Compile Include="PlaylistWplTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
+    <Compile Include="PodcastEpisodeDownloaderFactoryTests\WhenUsingAPodcastEpisodeDownloaderFactory.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Cancel\WhenCancellingADownloadThatHasNotBeenStarted.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Cancel\WhenCancellingAStartedDownload.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderAfterItHasCompleted.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderWhenFolderDoesNotExist.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCancellingTheDownloader.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCompletingTheDownloader.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloader.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderTwice.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderWithoutASyncItem.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTestingTheDownloaderProgressChangedMechanism.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTheProgressChanges.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTheProgressHasNotChanged.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenTestingTheDownloader.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderCompleteWithMissingToken.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderReportsAnError.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderReportsANestedError.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTestingTheDownloaderCompletedMechanism.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WhenTestingTheInitialState.cs" />
+    <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloader.cs" />
+    <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeed.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedNamedByPubDate.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedNamedByPubDateAndFolder.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedThatIsAlreadyDownloaded.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedWithOutOfDateEpisodes.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAnEmptyFeed.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenUsingTheEpisodeFinder.cs" />
+    <Compile Include="PodcastFeedFactoryTests\WhenCreatingANewAtomPodcastFeed.cs" />
+    <Compile Include="PodcastFeedFactoryTests\WhenCreatingANewPodcastFeed.cs" />
+    <Compile Include="PodcastFeedFactoryTests\WhenCreatingANewRssPodcastFeed.cs" />
+    <Compile Include="PodcastFeedInRssFormatTests\WhenConstructingAFeedFromExampleXml.cs" />
+    <Compile Include="PodcastFeedInRssFormatTests\WhenLoadingALargeExmapleFile.cs" />
+    <Compile Include="PodcastFeedInRssFormatTests\WhenLoadingTheEpisodesFromExampleXml.cs" />
+    <Compile Include="PodcastFeedInRssFormatTests\WhenTestingAnEmptyExampleRssXml.cs" />
+    <Compile Include="PodcastFeedInRssFormatTests\WhenTestingTheFeed.cs" />
+    <Compile Include="PodcastSynchronizerTests\WhenSubscribingToStatusUpdateEvent.cs" />
+    <Compile Include="PlaylistWplTests\WhenCreatingNewPlaylist.cs" />
+    <Compile Include="PodcastSynchronizerTests\WhenTestingPodcastSynchronizer.cs" />
+    <Compile Include="PodcastSynchronizerTests\WhenUsingPodcastSynchronizerToSynchronize.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rfc822DateTimeTests\WhenConvertingToDateDime.cs" />
+    <Compile Include="TaskPoolTests\TestTask.cs" />
+    <Compile Include="TaskPoolTests\WhenATaskCompletesAndThereAreStillTasksLeftToRun.cs" />
+    <Compile Include="TaskPoolTests\WhenRunningSomeTasksOnLessThreadsThanTasks.cs" />
+    <Compile Include="TaskPoolTests\WhenRunningTasks.cs" />
+    <Compile Include="TaskPoolTests\WhenTestingTheTaskPool.cs" />
+    <Compile Include="TaskPoolTests\WhenTheLastTaskCompletes.cs" />
+    <Compile Include="UnwantedFileRemoverTests\WhenDestinationDirectoryDoesNotExist.cs" />
+    <Compile Include="UnwantedFileRemoverTests\WhenTestingUnwantedFileRemover.cs" />
+    <Compile Include="UnwantedFileRemoverTests\WhenThereAreFilesToKeep.cs" />
+    <Compile Include="UnwantedFileRemoverTests\WhenThereAreNoFilesToKeep.cs" />
+    <Compile Include="WebClientFactoryTests\WhenUsingAWebClientFactory.cs" />
+    <Compile Include="WhenTestingBehaviour.cs" />
+    <Compile Include="XmlFileBaseTests\WhenSettingTextNodes.cs" />
+    <Compile Include="XmlFileBaseTests\WhenTestingAnXmlFile.cs" />
+    <Compile Include="XmlFileBaseTests\WhenGettingTextNodes.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PodcastUtilities.Common\PodcastUtilities.Common.csproj">
+      <Project>{37562F85-B1BD-4AB8-B74B-685B05F9CF41}</Project>
+      <Name>PodcastUtilities.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testfile.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testcontrolfile.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testbigrssfeed.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testrssfeed.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testemptyrssfeed.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
