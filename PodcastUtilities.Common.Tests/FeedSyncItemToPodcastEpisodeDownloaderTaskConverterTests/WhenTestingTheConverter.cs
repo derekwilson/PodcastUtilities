@@ -14,6 +14,7 @@ namespace PodcastUtilities.Common.Tests.FeedSyncItemToPodcastEpisodeDownloaderTa
         protected IWebClientFactory _webClientFactory;
         protected IDirectoryInfoProvider _directoryInfoProvider;
         protected IFileUtilities _fileUtilities;
+        protected IStateProvider _stateProvider;
 
         protected IPodcastEpisodeDownloaderFactory _downloaderFactory;
 
@@ -24,8 +25,9 @@ namespace PodcastUtilities.Common.Tests.FeedSyncItemToPodcastEpisodeDownloaderTa
         {
             base.GivenThat();
 
+            _stateProvider = GenerateMock<IStateProvider>();
             _webClientFactory = GenerateMock<IWebClientFactory>();
-            _downloaderFactory = new PodcastEpisodeDownloaderFactory(_webClientFactory,_directoryInfoProvider,_fileUtilities);
+            _downloaderFactory = new PodcastEpisodeDownloaderFactory(_webClientFactory,_directoryInfoProvider,_fileUtilities,_stateProvider);
             _downloadItems = new List<IFeedSyncItem>(10);
 
             SetupData();

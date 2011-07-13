@@ -10,13 +10,15 @@ namespace PodcastUtilities.Common
         private readonly IWebClientFactory _webClientFactory;
         private readonly IDirectoryInfoProvider _directoryInfoProvider;
         private readonly IFileUtilities _fileUtilities;
+        private readonly IStateProvider _stateProvider;
 
         /// <summary>
         /// construct the factory
         /// </summary>
-        public PodcastEpisodeDownloaderFactory(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities)
+        public PodcastEpisodeDownloaderFactory(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities, IStateProvider stateProvider)
         {
             _webClientFactory = webClientFactory;
+            _stateProvider = stateProvider;
             _fileUtilities = fileUtilities;
             _directoryInfoProvider = directoryInfoProvider;
         }
@@ -27,7 +29,7 @@ namespace PodcastUtilities.Common
         /// <returns></returns>
         public IPodcastEpisodeDownloader CreateDownloader()
         {
-            return new PodcastEpisodeDownloader(_webClientFactory,_directoryInfoProvider,_fileUtilities);
+            return new PodcastEpisodeDownloader(_webClientFactory,_directoryInfoProvider,_fileUtilities, _stateProvider);
         }
     }
 }

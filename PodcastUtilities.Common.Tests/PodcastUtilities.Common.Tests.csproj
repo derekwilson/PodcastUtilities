@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="ControlFileTests\WhenCreatingAControlFile.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentAmountOfSpaceToLeave.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentEpisodeDownloadStrategies.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentEpisodeNamingStyles.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedConfigurations.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedEpisodeExpiry.cs" />
@@ -140,10 +141,13 @@
     <Compile Include="PodcastEpisodeDownloaderTests\WhenTestingTheInitialState.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloader.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
-    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeed.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\DownloadStrategy\WhenFindingAllEpisodesInAFeed.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\DownloadStrategy\WhenFindingLatestEpisodesInAFeed.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\DownloadStrategy\WhenFindingNewEpisodesInAFeed.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedNamedByPubDate.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedNamedByPubDateAndFolder.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedThatIsAlreadyDownloaded.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedThatThrowsAnError.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedWithOutOfDateEpisodes.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAnEmptyFeed.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenUsingTheEpisodeFinder.cs" />
@@ -161,6 +165,12 @@
     <Compile Include="PodcastSynchronizerTests\WhenUsingPodcastSynchronizerToSynchronize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rfc822DateTimeTests\WhenConvertingToDateDime.cs" />
+    <Compile Include="StateProviderTests\WhenTestingTheStateProvider.cs" />
+    <Compile Include="XmlStateTests\WhenLoadingTheTestState.cs" />
+    <Compile Include="XmlStateTests\WhenSettingTheHighTide.cs" />
+    <Compile Include="XmlStateTests\WhenSettingTheHighTideToAnEarlyDate.cs" />
+    <Compile Include="XmlStateTests\WhenUsingEmptyState.cs" />
+    <Compile Include="XmlStateTests\WhenUsingTestState.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenDestinationDirectoryDoesNotExist.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenTestingUnwantedFileRemover.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenThereAreFilesToKeep.cs" />
@@ -211,7 +221,9 @@
   <ItemGroup>
     <EmbeddedResource Include="XML\testemptyrssfeed.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="XML\teststate.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

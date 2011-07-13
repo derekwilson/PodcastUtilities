@@ -11,6 +11,8 @@
     <feed>
         <maximumDaysOld>31</maximumDaysOld>
         <format>rss</format>
+        <downloadStrategy>high_tide</downloadStrategy>
+        <namingStyle>pubdate_url</namingStyle>
     </feed>
 	</global>
 	<podcast>

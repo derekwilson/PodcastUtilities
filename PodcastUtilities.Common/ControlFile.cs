@@ -12,6 +12,7 @@ namespace PodcastUtilities.Common
         private const string DefaultSortField = "Name";
         private const string DefaultSortDirection = "ascending";
 	    private const string DefaultFeedFormat = "rss";
+	    private const string DefaultFeedEpisodeDownloadStrategy = "high_tide";
         
         private readonly XmlDocument _xmlDocument;
 
@@ -182,6 +183,17 @@ namespace PodcastUtilities.Common
             }
         }
 
+        /// <summary>
+        /// global default for naming downloaded episodes
+        /// </summary>
+        protected string FeedEpisodeDownloadStrategy
+        {
+            get
+            {
+                return GetNodeTextOrDefault("podcasts/global/feed/downloadStrategy", DefaultFeedEpisodeDownloadStrategy);
+            }
+        }
+
         private PodcastFeedFormat ReadFeedFormat(string format)
         {
             switch (format.ToLower())
@@ -225,6 +237,23 @@ namespace PodcastUtilities.Common
             throw new IndexOutOfRangeException(string.Format("{0} is not a valid value for the feed format", format));
         }
 
+        private PodcastEpisodeDownloadStrategy ReadFeedEpisodeDownloadStrategy(string strategy)
+        {
+            switch (strategy.ToLower())
+            {
+                case "high_tide":
+                    return PodcastEpisodeDownloadStrategy.HighTide;
+                case "all":
+                    return PodcastEpisodeDownloadStrategy.All;
+                case "latest":
+                    return PodcastEpisodeDownloadStrategy.Latest;
+                default:
+                    return PodcastEpisodeDownloadStrategy.All;
+
+            }
+            throw new IndexOutOfRangeException(string.Format("{0} is not a valid value for the feed download strategy", strategy));
+        }
+
 
         private FeedInfo ReadFeedInfo(XmlNode feedNode)
         {
@@ -237,7 +266,8 @@ namespace PodcastUtilities.Common
                            Address = new Uri(GetNodeText(feedNode, "url")),
                            Format = ReadFeedFormat(GetNodeTextOrDefault(feedNode, "format",FeedFormat)),
                            MaximumDaysOld = ReadMaximumDaysOld(feedNode),
-                           NamingStyle = ReadFeedEpisodeNamingStyle(GetNodeTextOrDefault(feedNode, "namingStyle", FeedEpisodeNamingStyle))
+                           NamingStyle = ReadFeedEpisodeNamingStyle(GetNodeTextOrDefault(feedNode, "namingStyle", FeedEpisodeNamingStyle)),
+                           DownloadStrategy = ReadFeedEpisodeDownloadStrategy(GetNodeTextOrDefault(feedNode, "downloadStrategy", FeedEpisodeDownloadStrategy))
                        };
         }
 
