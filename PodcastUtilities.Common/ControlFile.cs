@@ -230,6 +230,8 @@ namespace PodcastUtilities.Common
                     return PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime;
                 case "pubdate_title_url":
                     return PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime;
+                case "pubdate_folder_title_url":
+                    return PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder;
                 default:
                     return PodcastEpisodeNamingStyle.UrlFilename;
 

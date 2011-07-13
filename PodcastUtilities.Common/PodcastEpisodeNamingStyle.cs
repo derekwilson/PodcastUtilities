@@ -16,6 +16,10 @@
         /// <summary>
         /// use the filename from the url, the title of the feed and the published date time
         /// </summary>
-        UrlFilenameFeedTitleAndPublishDateTime
+        UrlFilenameFeedTitleAndPublishDateTime,
+        /// <summary>
+        /// as UrlFilenameFeedTitleAndPublishDateTime but each month is put in a folder
+        /// </summary>
+        UrlFilenameFeedTitleAndPublishDateTimeInFolder
     }
 }

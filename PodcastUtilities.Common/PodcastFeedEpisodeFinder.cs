@@ -53,6 +53,13 @@ namespace PodcastUtilities.Common
                                                     podcastInfo.Folder,
                                                     proposedFilename);
                     break;
+                case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder:
+                    proposedFilename = string.Format("{0}\\{1}_{2}_{3}",
+                                                    podcastFeedItem.Published.ToString("yyyy_MM"),
+                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
+                                                    podcastInfo.Folder,
+                                                    proposedFilename);
+                    break;
                 case PodcastEpisodeNamingStyle.UrlFilename:
                     break;
                 default:

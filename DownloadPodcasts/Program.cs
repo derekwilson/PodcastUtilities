@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Ioc;
 
 namespace DownloadPodcasts
@@ -17,6 +18,9 @@ namespace DownloadPodcasts
         private static ITaskPool _taskPool;
         static object _synclock = new object();
         private static bool _verbose = false;
+        static LinFuIocContainer _iocContainer;
+        static IDriveInfoProvider _driveInfoProvider;
+        static ControlFile _control;
 
         static private void DisplayBanner()
         {
@@ -53,40 +57,43 @@ namespace DownloadPodcasts
                 return;
             }
 
-            LinFuIocContainer iocContainer = InitializeIocContainer();
+            Console.WriteLine("Started - {0}", DateTime.Now.ToString());
 
-            var control = new ControlFile(args[0]);
+            _iocContainer = InitializeIocContainer();
+            _control = new ControlFile(args[0]);
             if (args.Count() > 1)
             {
                 _verbose = args[1].Contains('v');
             }
 
-            int numberOfConnections = control.MaximumNumberOfConcurrentDownloads;
+            _driveInfoProvider = _iocContainer.Resolve<IDriveInfoProvider>();
+
+            int numberOfConnections = _control.MaximumNumberOfConcurrentDownloads;
             System.Net.ServicePointManager.DefaultConnectionLimit = numberOfConnections;
 
             // find the episodes to download
             var allEpisodes = new List<IFeedSyncItem>(20);
-            var podcastEpisodeFinder = iocContainer.Resolve<IPodcastFeedEpisodeFinder>();
+            var podcastEpisodeFinder = _iocContainer.Resolve<IPodcastFeedEpisodeFinder>();
             podcastEpisodeFinder.StatusUpdate += StatusUpdate;
-            foreach (var podcastInfo in control.Podcasts)
+            foreach (var podcastInfo in _control.Podcasts)
             {
-                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(control.SourceRoot, podcastInfo);
+                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(_control.SourceRoot, podcastInfo);
                 allEpisodes.AddRange(episodesInThisFeed);
             }
 
             if (allEpisodes.Count > 0)
             {
                 // convert them to tasks
-                var converter = iocContainer.Resolve<IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter>();
+                var converter = _iocContainer.Resolve<IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter>();
                 IPodcastEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(allEpisodes, StatusUpdate, ProgressUpdate);
 
                 // run them in a task pool
-                _taskPool = iocContainer.Resolve<ITaskPool>();
+                _taskPool = _iocContainer.Resolve<ITaskPool>();
                 Console.CancelKeyPress += new ConsoleCancelEventHandler(Console_CancelKeyPress);
                 _taskPool.RunAllTasks(numberOfConnections, downloadTasks);
             }
 
-            Console.WriteLine("Done");
+            Console.WriteLine("Done - {0}",DateTime.Now.ToString());
         }
 
         static void Console_CancelKeyPress(object sender, ConsoleCancelEventArgs e)
@@ -109,7 +116,35 @@ namespace DownloadPodcasts
                                                 DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
                                                 e.ProgressPercentage));
             }
+            if (IsDestinationDriveFull(_control.SourceRoot,_control.FreeSpaceToLeaveOnDestination))
+            {
+                if (_taskPool != null)
+                {
+                    _taskPool.CancelAllTasks();
+                }
+            }
         }
+
+        static bool IsDestinationDriveFull(string destinationRootPath, long freeSpaceToLeaveOnDestination)
+        {
+            var driveInfo = _driveInfoProvider.GetDriveInfo(Path.GetPathRoot(Path.GetFullPath(destinationRootPath)));
+            long availableFreeSpace = driveInfo.AvailableFreeSpace;
+
+            long freeKb = 0;
+            double freeMb = 0;
+            if (availableFreeSpace > 0)
+                freeKb = (availableFreeSpace / 1024);
+            if (freeKb > 0)
+                freeMb = (freeKb / 1024);
+
+            if (freeMb < freeSpaceToLeaveOnDestination)
+            {
+                Console.WriteLine(string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeMb));
+                return true;
+            }
+            return false;
+        }
+
 
         static void StatusUpdate(object sender, StatusUpdateEventArgs e)
         {
