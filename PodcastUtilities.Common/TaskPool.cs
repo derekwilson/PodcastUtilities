@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading;
 
 namespace PodcastUtilities.Common
@@ -10,30 +9,33 @@ namespace PodcastUtilities.Common
     /// </summary>
     public class TaskPool : ITaskPool
     {
-        private object _lock = new object();
+        private readonly object _lock = new object();
         private ITask[] _tasks;
 
         /// <summary>
         /// run all the tasks in the pool
         /// </summary>
-        /// <param name="numberOfTHreads">number of background threads to use</param>
+        /// <param name="numberOfThreads">number of background threads to use</param>
         /// <param name="tasks">tasks to run</param>
-        public void RunAllTasks(int numberOfTHreads, ITask[] tasks)
+        public void RunAllTasks(int numberOfThreads, ITask[] tasks)
         {
             lock (_lock)
             {
                 _tasks = tasks;
             }
 
-            var runningTasks = StartTasks(numberOfTHreads);
+			var currentlyRunningTasks = new List<EventWaitHandle>(StartTasks(numberOfThreads));
 
-            while (runningTasks.Length > 0)
-            {
-                WaitHandle.WaitAny(runningTasks);
+			while (currentlyRunningTasks.Count > 0)
+			{
+				var completedIndex = WaitHandle.WaitAny(currentlyRunningTasks.ToArray());
 
-                // start the next task in the pool
-                runningTasks = StartTasks(1);
-            }
+				currentlyRunningTasks.RemoveAt(completedIndex);
+
+				var newTasks = StartTasks(1);
+
+				currentlyRunningTasks.AddRange(newTasks);
+			}
         }
 
         /// <summary>
@@ -57,11 +59,15 @@ namespace PodcastUtilities.Common
 
         private EventWaitHandle[] StartTasks(int numberOfTasks)
         {
+        	var newStartedTasks = new List<EventWaitHandle>();
+
             foreach (var task in _tasks)
             {
                 if (!task.IsStarted() && !task.IsComplete())
                 {
                     task.Start(null);
+					newStartedTasks.Add(task.TaskComplete);
+
                     numberOfTasks--;
                     if (numberOfTasks == 0)
                     {
@@ -69,11 +75,8 @@ namespace PodcastUtilities.Common
                     }
                 }
             }
-            var runningTasks =
-                (from task in _tasks
-                 where task.IsStarted() && !task.IsComplete()
-                 select task.TaskComplete).ToArray();
-            return runningTasks;
+
+        	return newStartedTasks.ToArray();
         }
     }
 }

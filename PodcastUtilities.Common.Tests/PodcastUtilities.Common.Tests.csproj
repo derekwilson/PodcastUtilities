@@ -161,6 +161,12 @@
     <Compile Include="PodcastSynchronizerTests\WhenUsingPodcastSynchronizerToSynchronize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rfc822DateTimeTests\WhenConvertingToDateDime.cs" />
+    <Compile Include="TaskPoolTests\TestTask.cs" />
+    <Compile Include="TaskPoolTests\WhenATaskCompletesAndThereAreStillTasksLeftToRun.cs" />
+    <Compile Include="TaskPoolTests\WhenRunningSomeTasksOnLessThreadsThanTasks.cs" />
+    <Compile Include="TaskPoolTests\WhenRunningTasks.cs" />
+    <Compile Include="TaskPoolTests\WhenTestingTheTaskPool.cs" />
+    <Compile Include="TaskPoolTests\WhenTheLastTaskCompletes.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenDestinationDirectoryDoesNotExist.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenTestingUnwantedFileRemover.cs" />
     <Compile Include="UnwantedFileRemoverTests\WhenThereAreFilesToKeep.cs" />

@@ -9,9 +9,9 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// run all the tasks in the pool
         /// </summary>
-        /// <param name="numberOfTHreads">number of background threads to use</param>
+        /// <param name="numberOfThreads">number of background threads to use</param>
         /// <param name="tasks">tasks to run</param>
-        void RunAllTasks(int numberOfTHreads, ITask[] tasks);
+        void RunAllTasks(int numberOfThreads, ITask[] tasks);
 
         /// <summary>
         /// abandon all the incomplete and instarted tasks in the pool
