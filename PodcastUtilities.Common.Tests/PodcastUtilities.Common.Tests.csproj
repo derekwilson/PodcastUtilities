@@ -144,8 +144,9 @@
     <Compile Include="PodcastFeedEpisodeFinderTests\DownloadStrategy\WhenFindingAllEpisodesInAFeed.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\DownloadStrategy\WhenFindingLatestEpisodesInAFeed.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\DownloadStrategy\WhenFindingNewEpisodesInAFeed.cs" />
-    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedNamedByPubDate.cs" />
-    <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedNamedByPubDateAndFolder.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByPubDate.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByPubDateAndFolder.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByPubDateAndFolderInFolders.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedThatIsAlreadyDownloaded.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedThatThrowsAnError.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\WhenFindingEpisodesInAFeedWithOutOfDateEpisodes.cs" />

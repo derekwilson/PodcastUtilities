@@ -2,9 +2,9 @@
 using System.IO;
 using NUnit.Framework;
 
-namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
+namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests.NamingStyle
 {
-    public class WhenFindingEpisodesInAFeedNamedByPubDateAndFolder : WhenUsingTheEpisodeFinder
+    public class WhenFindingEpisodesInAFeedNamedByPubDate : WhenUsingTheEpisodeFinder
     {
         protected override void SetupData()
         {
@@ -16,7 +16,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
                                           Published = _now.AddMonths(-1)
                                       });
 
-            _podcastInfo.Feed.NamingStyle = PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime;
+            _podcastInfo.Feed.NamingStyle = PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime;
         }
 
         protected override void When()
@@ -29,7 +29,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
         {
             Assert.That(_episodesToSync.Count, Is.EqualTo(1));
             Assert.That(_episodesToSync[0].EpisodeUrl.ToString(), Is.EqualTo("http://test/podcast.mp3"));
-            Assert.That(_episodesToSync[0].DestinationPath, Is.EqualTo(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_01_1611_TestFolder_podcast.mp3")));
+            Assert.That(_episodesToSync[0].DestinationPath, Is.EqualTo(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_01_1611_podcast.mp3")));
         }
     }
 }
