@@ -84,5 +84,4 @@ namespace PodcastUtilities.Common.Tests.ControlFileTests
             Assert.That(NamingStyle2, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime));
         }
     }
-
 }

@@ -17,13 +17,15 @@ namespace PodcastUtilities.Common
         private readonly IPodcastFeedFactory _feedFactory;
         private readonly IWebClientFactory _webClientFactory;
         private readonly ITimeProvider _timeProvider;
+        private readonly IStateProvider _stateProvider;
 
         /// <summary>
         /// discover items to be downloaded from a feed
         /// </summary>
-        public PodcastFeedEpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider)
+        public PodcastFeedEpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider, IStateProvider stateProvider)
         {
             _fileUtilities = fileFinder;
+            _stateProvider = stateProvider;
             _timeProvider = timeProvider;
             _webClientFactory = webClientFactory;
             _feedFactory = feedFactory;
@@ -42,12 +44,12 @@ namespace PodcastUtilities.Common
             {
                 case PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime:
                     proposedFilename = string.Format("{0}_{1}",
-                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_hhmm"),
+                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
                                                     proposedFilename);
                     break;
                 case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime:
                     proposedFilename = string.Format("{0}_{1}_{2}",
-                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_hhmm"),
+                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
                                                     podcastInfo.Folder,
                                                     proposedFilename);
                     break;
@@ -60,19 +62,52 @@ namespace PodcastUtilities.Common
             return Path.Combine(Path.Combine(rootFolder, podcastInfo.Folder), proposedFilename);
         }
 
+        private List<IFeedSyncItem> ApplyDownloadStrategy(string stateKey, PodcastInfo podcastInfo, List<IFeedSyncItem> episodesFound)
+        {
+            switch (podcastInfo.Feed.DownloadStrategy)
+            {
+                case PodcastEpisodeDownloadStrategy.All:
+                    return episodesFound;
+
+                case PodcastEpisodeDownloadStrategy.HighTide:
+                    var state = _stateProvider.GetState(stateKey);
+                    var newEpisodes =
+                        (from episode in episodesFound
+                         where episode.Published > state.DownloadHighTide
+                         select episode);
+                    var filteredEpisodes =  new List<IFeedSyncItem>(1);
+                    filteredEpisodes.AddRange(newEpisodes);
+                    return filteredEpisodes;
+
+                case PodcastEpisodeDownloadStrategy.Latest:
+                    episodesFound.Sort((e1, e2) => e2.Published.CompareTo(e1.Published));
+                    var latestEpisodes =  new List<IFeedSyncItem>(1);
+                    latestEpisodes.AddRange(episodesFound.Take(1));
+                    return latestEpisodes;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+
         /// <summary>
         /// Find episodes to download
         /// </summary>
         /// <param name="rootFolder">the root folder for all downloads</param>
         /// <param name="podcastInfo">info on the podcast to download</param>
-        /// <param name="episodesToDownload">list of items to download, will be added to</param>
-        public void FindEpisodesToDownload(string rootFolder, PodcastInfo podcastInfo, IList<IFeedSyncItem> episodesToDownload)
+        /// <returns>list of episodes to be downloaded for the supplied podcastInfo</returns>
+        public IList<IFeedSyncItem> FindEpisodesToDownload(string rootFolder, PodcastInfo podcastInfo)
         {
+            List<IFeedSyncItem> episodesToDownload = new List<IFeedSyncItem>(10);
             if (podcastInfo.Feed == null)
             {
                 // it is optional to have a feed
-                return;
+                return episodesToDownload;
             }
+
+            var stateKey = Path.Combine(rootFolder, podcastInfo.Folder);
+
             using (var webClient = _webClientFactory.GetWebClient())
             {
                 var downloader = new PodcastFeedDownloader(webClient, _feedFactory);
@@ -98,12 +133,13 @@ namespace PodcastUtilities.Common
                             {
                                 var downloadItem = new FeedSyncItem()
                                                        {
+                                                           StateKey = stateKey,
+                                                           Published = podcastFeedItem.Published,
                                                            EpisodeUrl = podcastFeedItem.Address,
                                                            DestinationPath = destinationPath,
                                                            EpisodeTitle = string.Format("{0} {1}", podcastInfo.Folder,podcastFeedItem.EpisodeTitle)
                                                        };
                                 episodesToDownload.Add(downloadItem);
-                                OnStatusMessageUpdate(string.Format("Queued: {0}, Episode: {1}", podcastInfo.Folder, podcastFeedItem.EpisodeTitle));
                             }
                             else
                             {
@@ -121,6 +157,13 @@ namespace PodcastUtilities.Common
                     OnStatusError(string.Format("Error processing feed {0}: {1}", podcastInfo.Feed.Address, e.Message));
                 }
             }
+
+            var filteredEpisodes = ApplyDownloadStrategy(stateKey, podcastInfo, episodesToDownload);
+            foreach (var filteredEpisode in filteredEpisodes)
+            {
+                OnStatusMessageUpdate(string.Format("Queued: {0}", filteredEpisode.EpisodeTitle));
+            }
+            return filteredEpisodes;
         }
 
         private void OnStatusVerbose(string message)

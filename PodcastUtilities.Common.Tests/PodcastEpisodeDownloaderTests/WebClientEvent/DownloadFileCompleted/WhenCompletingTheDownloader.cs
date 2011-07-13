@@ -38,5 +38,12 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientE
         {
             _fileUtilities.AssertWasCalled(utils => utils.FileRename("c:\\folder\\file.partial",_syncItem.DestinationPath,true));
         }
+
+        [Test]
+        public void ItShouldUpdateTheState()
+        {
+            _state.AssertWasCalled(state => state.DownloadHighTide = _published);
+            _state.AssertWasCalled(state => state.SaveState(_downloadFolder));
+        }
     }
 }

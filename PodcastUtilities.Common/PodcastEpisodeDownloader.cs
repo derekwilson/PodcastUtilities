@@ -15,6 +15,7 @@ namespace PodcastUtilities.Common
         private readonly IWebClientFactory _webClientFactory;
         private readonly IDirectoryInfoProvider _directoryInfoProvider;
         private readonly IFileUtilities _fileUtilities;
+        private readonly IStateProvider _stateProvider;
 
         private object _lock = new object();
         private IWebClient _client;
@@ -62,9 +63,10 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// create a task
         /// </summary>
-        public PodcastEpisodeDownloader(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities)
+        public PodcastEpisodeDownloader(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities, IStateProvider stateProvider)
         {
             _webClientFactory = webClientFactory;
+            _stateProvider = stateProvider;
             _fileUtilities = fileUtilities;
             _directoryInfoProvider = directoryInfoProvider;
             TaskComplete = new ManualResetEvent(false);
@@ -166,6 +168,10 @@ namespace PodcastUtilities.Common
                 {
                     args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, string.Format("{0} Completed", syncItem.EpisodeTitle));
                     _fileUtilities.FileRename(GetDownloadFilename(), _syncItem.DestinationPath, true);
+
+                    var state = _stateProvider.GetState(_syncItem.StateKey);
+                    state.DownloadHighTide = _syncItem.Published;
+                    state.SaveState(_syncItem.StateKey);
                 }
 
                 OnStatusUpdate(args);

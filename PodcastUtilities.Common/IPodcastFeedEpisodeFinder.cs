@@ -13,7 +13,7 @@ namespace PodcastUtilities.Common
         /// </summary>
         /// <param name="rootFolder">the root folder for all downloads</param>
         /// <param name="podcastInfo">info on the podcast to download</param>
-        /// <param name="episodesToDownload">list of items to download, will be added to</param>
-        void FindEpisodesToDownload(string rootFolder, PodcastInfo podcastInfo, IList<IFeedSyncItem> episodesToDownload);
+        /// <returns>list of episodes to be downloaded for the supplied podcastInfo</returns>
+        IList<IFeedSyncItem> FindEpisodesToDownload(string rootFolder, PodcastInfo podcastInfo);
     }
 }
