@@ -82,6 +82,7 @@
     <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentEpisodeDownloadStrategies.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentEpisodeNamingStyles.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedConfigurations.cs" />
+    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedDeleteOldDownloads.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedEpisodeExpiry.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentPlaylistFormats.cs" />
     <Compile Include="ControlFileTests\WhenCreatingAnInvalidControlFile.cs" />
@@ -139,11 +140,17 @@
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderReportsANestedError.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTestingTheDownloaderCompletedMechanism.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WhenTestingTheInitialState.cs" />
+    <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurger.cs" />
+    <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWithAPublishedDate.cs" />
+    <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWithoutAPublishedDate.cs" />
+    <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWhenPurgingIsNotSelected.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloader.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\DownloadStrategy\WhenFindingAllEpisodesInAFeed.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\DownloadStrategy\WhenFindingLatestEpisodesInAFeed.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\DownloadStrategy\WhenFindingNewEpisodesInAFeed.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByEpisodeTitle.cs" />
+    <Compile Include="PodcastFeedEpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByEpisodeTitleAndPublishedDate.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByPubDate.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByPubDateAndFolder.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByPubDateAndFolderInFolders.cs" />

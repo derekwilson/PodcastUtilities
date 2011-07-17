@@ -60,6 +60,14 @@ namespace PodcastUtilities.Common
                                                     podcastInfo.Folder,
                                                     proposedFilename);
                     break;
+                case PodcastEpisodeNamingStyle.EpisodeTitle:
+                    proposedFilename = podcastFeedItem.GetTitleAsFilename();
+                    break;
+                case PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
+                    proposedFilename = string.Format("{0}_{1}",
+                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
+                                                    podcastFeedItem.GetTitleAsFilename());
+                    break;
                 case PodcastEpisodeNamingStyle.UrlFilename:
                     break;
                 default:

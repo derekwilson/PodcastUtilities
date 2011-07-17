@@ -18,6 +18,7 @@
 	<podcast>
     <feed>
         <url>http://downloads.bbc.co.uk/rmhttp/downloadtrial/fivelive/markkermodesfilmreviews/rss.xml</url>
+        <deleteDownloadsDaysOld>31</deleteDownloadsDaysOld>
     </feed>
 		<folder>Mark Kermode and Simon Mayos Film Reviews</folder>
 		<pattern>*.mp3</pattern>

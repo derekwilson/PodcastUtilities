@@ -20,6 +20,14 @@
         /// <summary>
         /// as UrlFilenameFeedTitleAndPublishDateTime but each month is put in a folder
         /// </summary>
-        UrlFilenameFeedTitleAndPublishDateTimeInFolder
+        UrlFilenameFeedTitleAndPublishDateTimeInFolder,
+        /// <summary>
+        /// use the podcast title as the name
+        /// </summary>
+        EpisodeTitle,
+        /// <summary>
+        /// use the published date time and the episode title
+        /// </summary>
+        EpisodeTitleAndPublishDateTime,
     }
 }

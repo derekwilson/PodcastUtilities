@@ -34,5 +34,10 @@ namespace PodcastUtilities.Common
         /// the strategy to be used when downloading episodes
         /// </summary>
         public PodcastEpisodeDownloadStrategy DownloadStrategy { get; set; }
+
+        /// <summary>
+        /// number of days before we delete a download
+        /// </summary>
+        public int DeleteDownloadsDaysOld { get; set; }
     }
 }
