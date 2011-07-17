@@ -77,9 +77,11 @@
     <Compile Include="ControlFile.cs" />
     <Compile Include="DisplayFormatter.cs" />
     <Compile Include="DownloaderException.cs" />
+    <Compile Include="IPodcastEpisodePurger.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="IStateProvider.cs" />
     <Compile Include="PodcastEpisodeDownloadStrategy.cs" />
+    <Compile Include="PodcastEpisodePurger.cs" />
     <Compile Include="ProgressEventArgs.cs" />
     <Compile Include="IProgressUpdate.cs" />
     <Compile Include="IFeedSyncItem.cs" />

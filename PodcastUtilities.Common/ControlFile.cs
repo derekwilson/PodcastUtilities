@@ -162,6 +162,17 @@ namespace PodcastUtilities.Common
         }
 
         /// <summary>
+        /// global default number of days before deleteing a download
+        /// </summary>
+        public string FeedDeleteDownloadsDaysOld
+        {
+            get
+            {
+                return GetNodeTextOrDefault("podcasts/global/feed/deleteDownloadsDaysOld", int.MaxValue.ToString());
+            }
+        }
+
+        /// <summary>
         /// global default feed format
         /// </summary>
         public string FeedFormat
@@ -214,7 +225,28 @@ namespace PodcastUtilities.Common
             }
             try
             {
-                return Convert.ToInt32(GetNodeTextOrDefault(feedNode, "maximumDaysOld",FeedMaximumDaysOld));
+                return Convert.ToInt32(GetNodeTextOrDefault(feedNode, "maximumDaysOld", FeedMaximumDaysOld));
+            }
+            catch
+            {
+                return int.MaxValue;
+            }
+        }
+
+        private int ReadDeleteDownloadsDaysOld(XmlNode feedNode)
+        {
+            if (feedNode == null)
+            {
+                return int.MaxValue;
+            }
+            try
+            {
+                var days = Convert.ToInt32(GetNodeTextOrDefault(feedNode, "deleteDownloadsDaysOld", FeedDeleteDownloadsDaysOld));
+                if (days == 0)
+                {
+                    return int.MaxValue;
+                }
+                return days;
             }
             catch
             {
@@ -232,6 +264,10 @@ namespace PodcastUtilities.Common
                     return PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime;
                 case "pubdate_folder_title_url":
                     return PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder;
+                case "etitle":
+                    return PodcastEpisodeNamingStyle.EpisodeTitle;
+                case "pubdate_etitle":
+                    return PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime;
                 default:
                     return PodcastEpisodeNamingStyle.UrlFilename;
 
@@ -269,7 +305,8 @@ namespace PodcastUtilities.Common
                            Format = ReadFeedFormat(GetNodeTextOrDefault(feedNode, "format",FeedFormat)),
                            MaximumDaysOld = ReadMaximumDaysOld(feedNode),
                            NamingStyle = ReadFeedEpisodeNamingStyle(GetNodeTextOrDefault(feedNode, "namingStyle", FeedEpisodeNamingStyle)),
-                           DownloadStrategy = ReadFeedEpisodeDownloadStrategy(GetNodeTextOrDefault(feedNode, "downloadStrategy", FeedEpisodeDownloadStrategy))
+                           DownloadStrategy = ReadFeedEpisodeDownloadStrategy(GetNodeTextOrDefault(feedNode, "downloadStrategy", FeedEpisodeDownloadStrategy)),
+                           DeleteDownloadsDaysOld = ReadDeleteDownloadsDaysOld(feedNode)
                        };
         }
 

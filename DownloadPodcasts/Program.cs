@@ -21,6 +21,8 @@ namespace DownloadPodcasts
         static LinFuIocContainer _iocContainer;
         static IDriveInfoProvider _driveInfoProvider;
         static ControlFile _control;
+        private static int _number_of_files_to_download;
+        private static int _number_of_files_downloaded;
 
         static private void DisplayBanner()
         {
@@ -57,7 +59,9 @@ namespace DownloadPodcasts
                 return;
             }
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Started - {0}", DateTime.Now.ToString());
+            Console.ResetColor();
 
             _iocContainer = InitializeIocContainer();
             _control = new ControlFile(args[0]);
@@ -81,8 +85,14 @@ namespace DownloadPodcasts
                 allEpisodes.AddRange(episodesInThisFeed);
             }
 
-            if (allEpisodes.Count > 0)
+            _number_of_files_to_download = allEpisodes.Count;
+            _number_of_files_downloaded = 0;
+            if (_number_of_files_to_download > 0)
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Downloading {0} episodes", _number_of_files_to_download);
+                Console.ResetColor();
+
                 // convert them to tasks
                 var converter = _iocContainer.Resolve<IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter>();
                 IPodcastEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(allEpisodes, StatusUpdate, ProgressUpdate);
@@ -93,7 +103,9 @@ namespace DownloadPodcasts
                 _taskPool.RunAllTasks(numberOfConnections, downloadTasks);
             }
 
-            Console.WriteLine("Done - {0}",DateTime.Now.ToString());
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Done - {0}", DateTime.Now.ToString());
+            Console.ResetColor();
         }
 
         static void Console_CancelKeyPress(object sender, ConsoleCancelEventArgs e)
@@ -116,6 +128,14 @@ namespace DownloadPodcasts
                                                 DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
                                                 e.ProgressPercentage));
             }
+            if (e.ProgressPercentage == 100)
+            {
+                _number_of_files_downloaded++;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Completed {0} of {1} downloads",_number_of_files_downloaded, _number_of_files_to_download);
+                Console.ResetColor();
+            }
+
             if (IsDestinationDriveFull(_control.SourceRoot,_control.FreeSpaceToLeaveOnDestination))
             {
                 if (_taskPool != null)
@@ -160,11 +180,17 @@ namespace DownloadPodcasts
                     // keep all the message together
                     Console.WriteLine(e.Message);
                     Console.WriteLine(e.Exception.StackTrace);
+                    Console.ResetColor();
                 }
             }
             else
             {
+                if (e.MessageLevel == StatusUpdateEventArgs.Level.Error)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
                 Console.WriteLine(e.Message);
+                Console.ResetColor();
             }
         }
     }

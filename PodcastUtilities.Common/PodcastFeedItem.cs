@@ -30,7 +30,22 @@ namespace PodcastUtilities.Common
         public string GetFilename()
         {
             string filename = Address.Segments[Address.Segments.Length - 1];
-            
+
+            if (filename.IndexOfAny(Path.GetInvalidFileNameChars()) != -1)
+            {
+                filename = RemoveInvalidChars(filename);
+            }
+            return filename;
+        }
+
+        /// <summary>
+        /// get the episode title in a form that can be used as a filename
+        /// </summary>
+        /// <returns></returns>
+        public string GetTitleAsFilename()
+        {
+            string filename = Path.ChangeExtension(EpisodeTitle,Path.GetExtension(GetFilename()));
+
             if (filename.IndexOfAny(Path.GetInvalidFileNameChars()) != -1)
             {
                 filename = RemoveInvalidChars(filename);

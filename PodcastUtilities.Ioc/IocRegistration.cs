@@ -14,6 +14,7 @@ namespace PodcastUtilities.Ioc
 			container.Register<IFileFinder, FileFinder>();
 			container.Register<IFileSorter, FileSorter>();
             container.Register<IUnwantedFileRemover, UnwantedFileRemover>();
+            container.Register<IPodcastEpisodePurger, PodcastEpisodePurger>();
         }
 
         public static void RegisterSystemServices(IIocContainer container)

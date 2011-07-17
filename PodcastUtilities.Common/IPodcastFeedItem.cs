@@ -30,5 +30,12 @@ namespace PodcastUtilities.Common
         /// </summary>
         /// <returns></returns>
         string GetFilename();
+
+        /// <summary>
+        /// get the episode title in a form that can be used as a filename
+        /// </summary>
+        /// <returns></returns>
+        string GetTitleAsFilename();
+
     }
 }
