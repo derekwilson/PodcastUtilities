@@ -52,7 +52,7 @@ namespace PodcastUtilities.Common
             {
                 _xmlDocument.Load(filename);
             }
-            catch
+            catch (XmlException)
             {
                 Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(_emptyStateResource);
                 _xmlDocument.Load(s);

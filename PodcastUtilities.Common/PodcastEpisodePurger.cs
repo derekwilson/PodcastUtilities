@@ -33,7 +33,14 @@ namespace PodcastUtilities.Common
                 case PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime:
                 case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime:
                 case PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
-                    return ConvertFilenameToPublishedDate(Path.GetFileNameWithoutExtension(file.FullName));
+                    try
+                    {
+                        return ConvertFilenameToPublishedDate(Path.GetFileNameWithoutExtension(file.FullName));
+                    }
+                    catch (Exception)
+                    {
+                        return file.CreationTime;
+                    }
                 case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder:
                     // TODO support this properly
                     return file.CreationTime;

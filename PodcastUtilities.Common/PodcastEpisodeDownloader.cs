@@ -25,6 +25,11 @@ namespace PodcastUtilities.Common
         private int _progressPercentage;
 
         /// <summary>
+        /// control the amount - if any - time to sleep
+        /// </summary>
+        public int SleepTimeOnRetryInSeconds { get; set; }
+
+        /// <summary>
         /// the item to download
         /// </summary>
         public IFeedSyncItem SyncItem
@@ -70,6 +75,7 @@ namespace PodcastUtilities.Common
             _fileUtilities = fileUtilities;
             _directoryInfoProvider = directoryInfoProvider;
             TaskComplete = new ManualResetEvent(false);
+            SleepTimeOnRetryInSeconds = 3;
         }
 
         /// <summary>
@@ -158,20 +164,41 @@ namespace PodcastUtilities.Common
                 }
                 else if (e.Error != null && e.Error.InnerException != null) 
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Error, e.Error.InnerException.Message, e.Error.InnerException);
+                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Error, string.Format("{0} {1}", syncItem.EpisodeTitle, e.Error.InnerException.Message), e.Error.InnerException);
                 }
                 else if (e.Error != null)
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Error, e.Error.Message, e.Error);
+                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Error, string.Format("{0} {1}", syncItem.EpisodeTitle, e.Error.Message), e.Error);
                 }
                 else
                 {
                     args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, string.Format("{0} Completed", syncItem.EpisodeTitle));
                     _fileUtilities.FileRename(GetDownloadFilename(), _syncItem.DestinationPath, true);
 
-                    var state = _stateProvider.GetState(_syncItem.StateKey);
-                    state.DownloadHighTide = _syncItem.Published;
-                    state.SaveState(_syncItem.StateKey);
+                    var retry = 3;
+                    do
+                    {
+                        try
+                        {
+                            var state = _stateProvider.GetState(_syncItem.StateKey);
+                            state.DownloadHighTide = _syncItem.Published;
+                            state.SaveState(_syncItem.StateKey);
+                            retry = 0;
+                        }
+                        catch (System.IO.IOException)
+                        {
+                            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Warning, string.Format("{0}, cannot write to state file, will retry",syncItem.EpisodeTitle), null));
+                            if (SleepTimeOnRetryInSeconds > 0)
+                            {
+                                Thread.Sleep(1000 * SleepTimeOnRetryInSeconds);
+                            }
+                            retry--;
+                            if (retry == 0)
+                            {
+                                throw;
+                            }
+                        }
+                    } while (retry > 0);
                 }
 
                 OnStatusUpdate(args);
