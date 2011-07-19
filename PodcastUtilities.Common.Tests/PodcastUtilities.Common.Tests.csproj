@@ -131,6 +131,8 @@
     <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloader.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderTwice.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\Start\WhenStartingTheDownloaderWithoutASyncItem.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCompletingTheDownloaderWithTheStateFileLocked.cs" />
+    <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCompletingTheDownloaderWithTheStateFileLockedForever.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTestingTheDownloaderProgressChangedMechanism.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTheProgressChanges.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTheProgressHasNotChanged.cs" />
@@ -237,6 +239,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="XML\teststate.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\teststateinvalid.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

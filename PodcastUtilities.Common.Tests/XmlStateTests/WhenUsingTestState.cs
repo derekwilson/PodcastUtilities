@@ -9,7 +9,7 @@ namespace PodcastUtilities.Common.Tests.XmlStateTests
     {
         protected XmlState _state;
         protected string _testStateFileResourcePath;
-        public XmlDocument _testXmlDocument;
+        protected XmlDocument _testXmlDocument;
 
         protected override void GivenThat()
         {

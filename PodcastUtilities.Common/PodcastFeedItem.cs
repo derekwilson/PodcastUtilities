@@ -8,6 +8,8 @@ namespace PodcastUtilities.Common
     /// </summary>
     public class PodcastFeedItem : IPodcastFeedItem
     {
+        private static char[] xml_invalid_chars = {'\'','"'};
+
         /// <summary>
         /// title of the item
         /// </summary>
@@ -31,10 +33,8 @@ namespace PodcastUtilities.Common
         {
             string filename = Address.Segments[Address.Segments.Length - 1];
 
-            if (filename.IndexOfAny(Path.GetInvalidFileNameChars()) != -1)
-            {
-                filename = RemoveInvalidChars(filename);
-            }
+            filename = ProcessFilenameForInvalidChars(filename);
+
             return filename;
         }
 
@@ -46,16 +46,28 @@ namespace PodcastUtilities.Common
         {
             string filename = Path.ChangeExtension(EpisodeTitle,Path.GetExtension(GetFilename()));
 
+            filename = ProcessFilenameForInvalidChars(filename);
+
+            return filename;
+        }
+
+        private string ProcessFilenameForInvalidChars(string filename)
+        {
             if (filename.IndexOfAny(Path.GetInvalidFileNameChars()) != -1)
             {
-                filename = RemoveInvalidChars(filename);
+                filename = RemoveInvalidChars(filename, Path.GetInvalidFileNameChars());
+            }
+
+            if (filename.IndexOfAny(xml_invalid_chars) != -1)
+            {
+                filename = RemoveInvalidChars(filename, xml_invalid_chars);
             }
             return filename;
         }
 
-        private static string RemoveInvalidChars(string filename)
+        private static string RemoveInvalidChars(string filename, char[] invalid)
         {
-            foreach (char invalidFileNameChar in Path.GetInvalidFileNameChars())
+            foreach (char invalidFileNameChar in invalid)
             {
                 filename = filename.Replace(invalidFileNameChar, '_');
             }

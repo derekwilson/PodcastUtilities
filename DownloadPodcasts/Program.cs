@@ -178,6 +178,7 @@ namespace DownloadPodcasts
                 lock (_synclock)
                 {
                     // keep all the message together
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(e.Message);
                     Console.WriteLine(e.Exception.StackTrace);
                     Console.ResetColor();
@@ -188,6 +189,10 @@ namespace DownloadPodcasts
                 if (e.MessageLevel == StatusUpdateEventArgs.Level.Error)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
+                }
+                else if (e.MessageLevel == StatusUpdateEventArgs.Level.Warning)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
                 }
                 Console.WriteLine(e.Message);
                 Console.ResetColor();

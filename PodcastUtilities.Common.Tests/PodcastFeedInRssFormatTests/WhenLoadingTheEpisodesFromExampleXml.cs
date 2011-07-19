@@ -59,7 +59,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedInRssFormatTests
         [Test]
         public void ItShouldExcludeIllegalFilenames()
         {
-            Assert.That(_episodes[0].GetFilename(), Is.EqualTo("15-Revolt_.mp3"));
+            Assert.That(_episodes[0].GetFilename(), Is.EqualTo("15-_Revolt_.mp3"));
             Assert.That(_episodes[2].GetFilename(), Is.EqualTo("___"));
         }
 

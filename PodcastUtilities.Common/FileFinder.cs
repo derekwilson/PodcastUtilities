@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using PodcastUtilities.Common.Platform;
 
@@ -63,19 +65,35 @@ namespace PodcastUtilities.Common
 			string folderPath,
 			string pattern)
 		{
-			var directoryInfo = DirectoryInfoProvider.GetDirectoryInfo(folderPath);
+            try
+            {
+                var directoryInfo = DirectoryInfoProvider.GetDirectoryInfo(folderPath);
 
-			return directoryInfo.GetFiles(pattern).ToList();
-		}
+                return directoryInfo.GetFiles(pattern).ToList();
+            }
+            catch (DirectoryNotFoundException)
+            {
+                // if the folder is not there then there is nothing to do
+                return new List<IFileInfo>();
+            }
+        }
 
 
         private IEnumerable<IFileInfo> GetSortedFiles(IDirectoryInfo src, string pattern, string sortField, bool ascendingSort)
         {
-            var fileList = new List<IFileInfo>(src.GetFiles(pattern));
+            try
+            {
+                var fileList = new List<IFileInfo>(src.GetFiles(pattern));
 
-        	FileSorter.Sort(fileList, sortField, ascendingSort);
+                FileSorter.Sort(fileList, sortField, ascendingSort);
 
-            return fileList;
+                return fileList;
+            }
+            catch (DirectoryNotFoundException)
+            {
+                // if the folder is not there then there is nothing to do
+                return new List<IFileInfo>();
+            }
         }
 
     }
