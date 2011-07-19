@@ -75,7 +75,7 @@ namespace PodcastUtilities.Common
             _fileUtilities = fileUtilities;
             _directoryInfoProvider = directoryInfoProvider;
             TaskComplete = new ManualResetEvent(false);
-            SleepTimeOnRetryInSeconds = 3;
+            SleepTimeOnRetryInSeconds = 5;
         }
 
         /// <summary>

@@ -33,6 +33,7 @@ namespace PodcastUtilities.Common
                 case PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime:
                 case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime:
                 case PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
+                case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder:
                     try
                     {
                         return ConvertFilenameToPublishedDate(Path.GetFileNameWithoutExtension(file.FullName));
@@ -41,9 +42,6 @@ namespace PodcastUtilities.Common
                     {
                         return file.CreationTime;
                     }
-                case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder:
-                    // TODO support this properly
-                    return file.CreationTime;
                 case PodcastEpisodeNamingStyle.EpisodeTitle:
                 case PodcastEpisodeNamingStyle.UrlFilename:
                     return file.CreationTime;
@@ -87,17 +85,57 @@ namespace PodcastUtilities.Common
                 oldestEpisodeToKeep = _timeProvider.UtcNow.AddDays(-podcastInfo.Feed.DeleteDownloadsDaysOld);
             }
 
-            var directoryInfo = _directoryInfoProvider.GetDirectoryInfo(feedDownloadsFolder);
+            if (IsSubFolderBasedNaming(podcastInfo.Feed.NamingStyle))
+            {
+                ScanSubFoldersForOldFiles(feedDownloadsFolder, oldestEpisodeToKeep, episodesToDelete, podcastInfo);
+            }
+            else
+            {
+                ScanFolderForOldFiles(feedDownloadsFolder,oldestEpisodeToKeep,episodesToDelete,podcastInfo);
+            }
 
-            IFileInfo[] files;
+            return episodesToDelete;
+        }
+
+        private bool IsSubFolderBasedNaming(PodcastEpisodeNamingStyle style)
+        {
+            return style == PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder;
+        }
+
+        private void ScanSubFoldersForOldFiles(string folderToScan, DateTime oldestEpisodeToKeep, List<IFileInfo> episodesToDelete, PodcastInfo podcastInfo)
+        {
+            var directoryInfo = _directoryInfoProvider.GetDirectoryInfo(folderToScan);
+
+            IDirectoryInfo[] subFolders;
             try
             {
-                files = directoryInfo.GetFiles("*.*");
+                subFolders = directoryInfo.GetDirectories("*.*");
             }
             catch (DirectoryNotFoundException)
             {
                 // if the folder is not there then there is nothing to do
-                return episodesToDelete;
+                return;
+            }
+
+            foreach (var subFolder in subFolders)
+            {
+                ScanFolderForOldFiles(subFolder.FullName,oldestEpisodeToKeep,episodesToDelete,podcastInfo);
+            }
+        }
+
+        private void ScanFolderForOldFiles(string folderToScan, DateTime oldestEpisodeToKeep, List<IFileInfo> episodesToDelete, PodcastInfo podcastInfo)
+        {
+            var directoryInfo = _directoryInfoProvider.GetDirectoryInfo(folderToScan);
+
+            IFileInfo[] files;
+            try
+            {
+                files = directoryInfo.GetFiles(podcastInfo.Pattern);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                // if the folder is not there then there is nothing to do
+                return;
             }
 
             foreach (var file in files)
@@ -108,11 +146,9 @@ namespace PodcastUtilities.Common
                     // do not delete the state file
                     continue;
                 }
-                if (GetWhenDownloadWasPublished(podcastInfo,file) < oldestEpisodeToKeep)
+                if (GetWhenDownloadWasPublished(podcastInfo, file) < oldestEpisodeToKeep)
                     episodesToDelete.Add(file);
             }
-
-            return episodesToDelete;
         }
     }
 }
