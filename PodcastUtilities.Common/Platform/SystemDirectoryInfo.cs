@@ -53,16 +53,28 @@ namespace PodcastUtilities.Common.Platform
 		}
 
         /// <summary>
-        /// gets an abstract collection of files that are contained by by the directory
+        /// gets an abstract collection of files that are contained by the directory
         /// </summary>
         /// <param name="pattern">a search patter for example *.mp3</param>
         /// <returns>a collection of abstracted files</returns>
         public IFileInfo[] GetFiles(string pattern)
-		{
-			var realFiles = _directoryInfo.GetFiles(pattern);
+        {
+            var realFiles = _directoryInfo.GetFiles(pattern);
 
-			return realFiles.Select(f => new SystemFileInfo(f)).ToArray();
-		}
+            return realFiles.Select(f => new SystemFileInfo(f)).ToArray();
+        }
+
+        /// <summary>
+        /// gets an abstract collection of directories that are contained by the directory
+        /// </summary>
+        /// <param name="pattern">a search patter for example *.*</param>
+        /// <returns>a collection of abstracted files</returns>
+        public IDirectoryInfo[] GetDirectories(string pattern)
+        {
+            var realDirs = _directoryInfo.GetDirectories(pattern);
+
+            return realDirs.Select(d => new SystemDirectoryInfo(d)).ToArray();
+        }
 
         /// <summary>
         /// create the directory in the file system

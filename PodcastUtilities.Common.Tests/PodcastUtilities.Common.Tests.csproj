@@ -143,6 +143,7 @@
     <Compile Include="PodcastEpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTestingTheDownloaderCompletedMechanism.cs" />
     <Compile Include="PodcastEpisodeDownloaderTests\WhenTestingTheInitialState.cs" />
     <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurger.cs" />
+    <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWithAFolderNamingStyle.cs" />
     <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWithAPublishedDate.cs" />
     <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWithoutAPublishedDate.cs" />
     <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWhenPurgingIsNotSelected.cs" />

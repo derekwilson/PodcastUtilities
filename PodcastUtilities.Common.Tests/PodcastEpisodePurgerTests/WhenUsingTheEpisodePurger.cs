@@ -22,6 +22,7 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodePurgerTests
 
         protected IDirectoryInfo _directoryInfo;
         protected IFileInfo[] _downloadedFiles;
+        protected IDirectoryInfo[] _subFolders;
 
         protected DateTime _now;
         private string _feedAddress;
@@ -58,14 +59,35 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodePurgerTests
             _rootFolder = "c:\\TestRoot";
             _podcastInfo = new PodcastInfo();
             _podcastInfo.Folder = "TestFolder";
+            _podcastInfo.Pattern = "*.mp3";
             _podcastInfo.Feed = _feedInfo;
         }
 
         protected virtual void SetupStubs()
         {
             _timeProvider.Stub(time => time.UtcNow).Return(_now);
-            _directoryInfo.Stub(dir => dir.GetFiles("*.*")).Return(_downloadedFiles);
+            _directoryInfo.Stub(dir => dir.GetFiles(_podcastInfo.Pattern)).Return(_downloadedFiles);
+            _directoryInfo.Stub(dir => dir.GetDirectories("*.*")).Return(_subFolders);
             _directoryInfoProvider.Stub(prov => prov.GetDirectoryInfo(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_directoryInfo);
+
+            // yes I know I return the same folder twice but it dows not need to be a real file system
+            _directoryInfoProvider.Stub(prov => prov.GetDirectoryInfo(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "sub1"))).Return(_directoryInfo);
+            _directoryInfoProvider.Stub(prov => prov.GetDirectoryInfo(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "sub2"))).Return(_directoryInfo);
+        }
+
+        protected virtual void StubSubFolders()
+        {
+            _subFolders = new IDirectoryInfo[]
+            {
+			    GenerateMock<IDirectoryInfo>(),
+				GenerateMock<IDirectoryInfo>(),
+			};
+
+            _subFolders[0].Stub(dir => dir.GetFiles(_podcastInfo.Pattern)).Return(_downloadedFiles);
+            _subFolders[1].Stub(dir => dir.GetFiles(_podcastInfo.Pattern)).Return(_downloadedFiles);
+
+            _subFolders[0].Stub(dir => dir.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "sub1"));
+            _subFolders[1].Stub(dir => dir.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "sub2"));
         }
 
         protected virtual void StubFiles()
@@ -91,5 +113,5 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodePurgerTests
             _downloadedFiles[3].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_20_1611_title_.mp3"));
             _downloadedFiles[4].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "state.xml"));
         }
-}
+    }
 }
