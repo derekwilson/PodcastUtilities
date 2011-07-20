@@ -6,12 +6,6 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientE
 {
     public class WhenCompletingTheDownloaderWithTheStateFileLocked : WhenTestingTheDownloaderCompletedMechanism
     {
-        protected override void GivenThat()
-        {
-            base.GivenThat();
-            _downloader.SleepTimeOnRetryInSeconds = 0;
-        }
-
         protected override void SetupStubs()
         {
             base.SetupStubs();

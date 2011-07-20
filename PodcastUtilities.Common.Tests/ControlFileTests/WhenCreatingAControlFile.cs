@@ -42,12 +42,14 @@ namespace PodcastUtilities.Common.Tests.ControlFileTests
         [Test]
         public void ItShouldReadTheGlobalInformation()
         {
+            Assert.That(ControlFile.RetryWaitInSeconds, Is.EqualTo(77));
             Assert.That(ControlFile.MaximumNumberOfConcurrentDownloads, Is.EqualTo(10));
-            Assert.That(ControlFile.SourceRoot,Is.EqualTo(".\\profile\\iPodder\\downloads"));
+            Assert.That(ControlFile.SourceRoot, Is.EqualTo(".\\profile\\iPodder\\downloads"));
             Assert.That(ControlFile.DestinationRoot,Is.EqualTo("W:\\Podcasts"));
             Assert.That(ControlFile.PlaylistFilename,Is.EqualTo("podcasts.wpl"));
-            Assert.That(ControlFile.FreeSpaceToLeaveOnDestination,Is.EqualTo(2000));
-            Assert.That(ControlFile.PlaylistFormat,Is.EqualTo(PlaylistFormat.WPL));
+            Assert.That(ControlFile.FreeSpaceToLeaveOnDestination, Is.EqualTo(2000));
+            Assert.That(ControlFile.FreeSpaceToLeaveOnDownload, Is.EqualTo(3000));
+            Assert.That(ControlFile.PlaylistFormat, Is.EqualTo(PlaylistFormat.WPL));
         }
     }
 }

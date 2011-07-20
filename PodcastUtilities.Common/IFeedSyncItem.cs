@@ -31,5 +31,10 @@ namespace PodcastUtilities.Common
         /// the title of the eposide
         /// </summary>
         string EpisodeTitle { get; set; }
+
+        /// <summary>
+        /// time to wait if there is a file lock on state
+        /// </summary>
+        int RetryWaitTimeInSeconds { get; set; }
     }
 }

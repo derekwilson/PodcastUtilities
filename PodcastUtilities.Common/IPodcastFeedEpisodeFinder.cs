@@ -12,8 +12,9 @@ namespace PodcastUtilities.Common
         /// Find episodes to download
         /// </summary>
         /// <param name="rootFolder">the root folder for all downloads</param>
+        /// <param name="retryWaitTimeInseconds">time to wait if there is a file access lock</param>
         /// <param name="podcastInfo">info on the podcast to download</param>
         /// <returns>list of episodes to be downloaded for the supplied podcastInfo</returns>
-        IList<IFeedSyncItem> FindEpisodesToDownload(string rootFolder, PodcastInfo podcastInfo);
+        IList<IFeedSyncItem> FindEpisodesToDownload(string rootFolder, int retryWaitTimeInseconds, PodcastInfo podcastInfo);
     }
 }

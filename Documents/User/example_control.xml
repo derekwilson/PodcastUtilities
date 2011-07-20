@@ -5,9 +5,11 @@
 		<playlistFilename>podcasts.wpl</playlistFilename>
 		<playlistFormat>wpl</playlistFormat>
 		<freeSpaceToLeaveOnDestinationMB>2000</freeSpaceToLeaveOnDestinationMB>
+    <freeSpaceToLeaveOnDownloadMB>3000</freeSpaceToLeaveOnDownloadMB>
 		<sortfield>name</sortfield>
 		<sortdirection>asc</sortdirection>
     <maximumNumberOfConcurrentDownloads>20</maximumNumberOfConcurrentDownloads>
+    <retryWaitInSeconds>10</retryWaitInSeconds>
     <feed>
         <maximumDaysOld>31</maximumDaysOld>
         <format>rss</format>

@@ -22,6 +22,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
         protected IState _state;
 
         protected string _rootFolder;
+        protected int _retryWaitTime;
         protected PodcastInfo _podcastInfo;
         protected FeedInfo _feedInfo;
         protected IList<IFeedSyncItem> _episodesToSync;
@@ -73,6 +74,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
             _feedInfo.MaximumDaysOld = int.MaxValue;
             _feedInfo.DownloadStrategy = PodcastEpisodeDownloadStrategy.All;
 
+            _retryWaitTime = 13;
             _rootFolder = "c:\\TestRoot";
             _podcastInfo = new PodcastInfo();
             _podcastInfo.Folder = "TestFolder";

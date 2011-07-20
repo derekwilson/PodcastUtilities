@@ -25,7 +25,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests.DownloadSt
 
         protected override void When()
         {
-            _episodesToSync = _episodeFinder.FindEpisodesToDownload(_rootFolder, _podcastInfo);
+            _episodesToSync = _episodeFinder.FindEpisodesToDownload(_rootFolder,_retryWaitTime, _podcastInfo);
         }
 
         [Test]
@@ -42,6 +42,15 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests.DownloadSt
             Assert.That(_episodesToSync[1].DestinationPath, Is.EqualTo(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "podcast2.mp3")));
             Assert.That(_episodesToSync[1].StateKey, Is.EqualTo(Path.Combine(_rootFolder, _podcastInfo.Folder)));
             Assert.That(_episodesToSync[1].Published, Is.EqualTo(_now.AddMonths(-1)));
+        }
+
+        [Test]
+        public void ItShouldSetTheRetryTime()
+        {
+            foreach (var episode in _episodesToSync)
+            {
+                Assert.That(episode.RetryWaitTimeInSeconds, Is.EqualTo(_retryWaitTime));
+            }
         }
     }
 }
