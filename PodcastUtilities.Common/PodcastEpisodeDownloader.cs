@@ -25,11 +25,6 @@ namespace PodcastUtilities.Common
         private int _progressPercentage;
 
         /// <summary>
-        /// control the amount - if any - time to sleep
-        /// </summary>
-        public int SleepTimeOnRetryInSeconds { get; set; }
-
-        /// <summary>
         /// the item to download
         /// </summary>
         public IFeedSyncItem SyncItem
@@ -75,7 +70,6 @@ namespace PodcastUtilities.Common
             _fileUtilities = fileUtilities;
             _directoryInfoProvider = directoryInfoProvider;
             TaskComplete = new ManualResetEvent(false);
-            SleepTimeOnRetryInSeconds = 5;
         }
 
         /// <summary>
@@ -175,7 +169,7 @@ namespace PodcastUtilities.Common
                     args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, string.Format("{0} Completed", syncItem.EpisodeTitle));
                     _fileUtilities.FileRename(GetDownloadFilename(), _syncItem.DestinationPath, true);
 
-                    var retry = 3;
+                    var retry = 5;
                     do
                     {
                         try
@@ -188,9 +182,9 @@ namespace PodcastUtilities.Common
                         catch (System.IO.IOException)
                         {
                             OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Warning, string.Format("{0}, cannot write to state file, will retry",syncItem.EpisodeTitle), null));
-                            if (SleepTimeOnRetryInSeconds > 0)
+                            if (_syncItem.RetryWaitTimeInSeconds > 0)
                             {
-                                Thread.Sleep(1000 * SleepTimeOnRetryInSeconds);
+                                Thread.Sleep(1000 * _syncItem.RetryWaitTimeInSeconds);
                             }
                             retry--;
                             if (retry == 0)

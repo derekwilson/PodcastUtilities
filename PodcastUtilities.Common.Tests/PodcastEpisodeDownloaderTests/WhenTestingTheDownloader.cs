@@ -79,6 +79,7 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
             _syncItem.EpisodeTitle = "title";
             _syncItem.Published = _published;
             _syncItem.StateKey = _downloadFolder;
+            _syncItem.RetryWaitTimeInSeconds = 0;
         }
 
         protected virtual void SetupStubs()

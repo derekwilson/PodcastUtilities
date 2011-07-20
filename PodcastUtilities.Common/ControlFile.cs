@@ -85,7 +85,7 @@ namespace PodcastUtilities.Common
         }
 
         /// <summary>
-        /// free space in MB to leave on the destination device
+        /// free space in MB to leave on the destination device when syncing
         /// </summary>
         public long FreeSpaceToLeaveOnDestination
         {
@@ -97,12 +97,30 @@ namespace PodcastUtilities.Common
                 }
                 catch
                 {
-					return 0;
+                    return 0;
                 }
             }
         }
 
-		/// <summary>
+        /// <summary>
+        /// free space in MB to leave on the download device - when downloading
+        /// </summary>
+        public long FreeSpaceToLeaveOnDownload
+        {
+            get
+            {
+                try
+                {
+                    return Convert.ToInt64(GetNodeText("podcasts/global/freeSpaceToLeaveOnDownloadMB"));
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+        }
+
+        /// <summary>
 		/// the configuration for the individual podcasts
 		/// </summary>
         public IList<PodcastInfo> Podcasts
@@ -110,11 +128,11 @@ namespace PodcastUtilities.Common
 			get { return _podcasts; }
 		}
 
-	    /// <summary>
-	    /// maximum number of background downloads
-	    /// </summary>
-	    public int MaximumNumberOfConcurrentDownloads
-	    {
+        /// <summary>
+        /// maximum number of background downloads
+        /// </summary>
+        public int MaximumNumberOfConcurrentDownloads
+        {
             get
             {
                 try
@@ -126,9 +144,27 @@ namespace PodcastUtilities.Common
                     return 5;
                 }
             }
-	    }
+        }
 
-	    /// <summary>
+        /// <summary>
+        /// number of seconds to wait when trying a file conflict
+        /// </summary>
+        public int RetryWaitInSeconds
+        {
+            get
+            {
+                try
+                {
+                    return Convert.ToInt32(GetNodeText("podcasts/global/retryWaitInSeconds"));
+                }
+                catch
+                {
+                    return 10;
+                }
+            }
+        }
+
+        /// <summary>
 		/// the field we are using to sort the podcasts on
 		/// </summary>
         public string SortField

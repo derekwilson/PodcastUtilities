@@ -9,12 +9,6 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.WebClientE
     {
         private Exception _thrownException;
 
-        protected override void GivenThat()
-        {
-            base.GivenThat();
-            _downloader.SleepTimeOnRetryInSeconds = 0;
-        }
-
         protected override void SetupStubs()
         {
             base.SetupStubs();

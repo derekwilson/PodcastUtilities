@@ -110,9 +110,10 @@ namespace PodcastUtilities.Common
         /// Find episodes to download
         /// </summary>
         /// <param name="rootFolder">the root folder for all downloads</param>
+        /// <param name="retryWaitTimeInseconds">time to wait if there is a file access lock</param>
         /// <param name="podcastInfo">info on the podcast to download</param>
         /// <returns>list of episodes to be downloaded for the supplied podcastInfo</returns>
-        public IList<IFeedSyncItem> FindEpisodesToDownload(string rootFolder, PodcastInfo podcastInfo)
+        public IList<IFeedSyncItem> FindEpisodesToDownload(string rootFolder, int retryWaitTimeInseconds, PodcastInfo podcastInfo)
         {
             List<IFeedSyncItem> episodesToDownload = new List<IFeedSyncItem>(10);
             if (podcastInfo.Feed == null)
@@ -149,6 +150,7 @@ namespace PodcastUtilities.Common
                                 var downloadItem = new FeedSyncItem()
                                                        {
                                                            StateKey = stateKey,
+                                                           RetryWaitTimeInSeconds = retryWaitTimeInseconds,
                                                            Published = podcastFeedItem.Published,
                                                            EpisodeUrl = podcastFeedItem.Address,
                                                            DestinationPath = destinationPath,

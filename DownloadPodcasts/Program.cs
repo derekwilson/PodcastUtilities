@@ -81,7 +81,7 @@ namespace DownloadPodcasts
             podcastEpisodeFinder.StatusUpdate += StatusUpdate;
             foreach (var podcastInfo in _control.Podcasts)
             {
-                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(_control.SourceRoot, podcastInfo);
+                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(_control.SourceRoot, _control.RetryWaitInSeconds, podcastInfo);
                 allEpisodes.AddRange(episodesInThisFeed);
             }
 
@@ -136,7 +136,7 @@ namespace DownloadPodcasts
                 Console.ResetColor();
             }
 
-            if (IsDestinationDriveFull(_control.SourceRoot,_control.FreeSpaceToLeaveOnDestination))
+            if (IsDestinationDriveFull(_control.SourceRoot,_control.FreeSpaceToLeaveOnDownload))
             {
                 if (_taskPool != null)
                 {

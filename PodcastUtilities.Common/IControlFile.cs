@@ -28,9 +28,14 @@ namespace PodcastUtilities.Common
         PlaylistFormat PlaylistFormat { get; }
 
         /// <summary>
-        /// free space in MB to leave on the destination device
+        /// free space in MB to leave on the destination device - when syncing
         /// </summary>
         long FreeSpaceToLeaveOnDestination { get; }
+
+        /// <summary>
+        /// free space in MB to leave on the download device - when downloading
+        /// </summary>
+        long FreeSpaceToLeaveOnDownload { get; }
 
         /// <summary>
         /// the configuration for the individual podcasts
@@ -41,5 +46,10 @@ namespace PodcastUtilities.Common
         /// maximum number of background downloads
         /// </summary>
         int MaximumNumberOfConcurrentDownloads { get; }
-	}
+
+        /// <summary>
+        /// number of seconds to wait when trying a file conflict
+        /// </summary>
+        int RetryWaitInSeconds { get; }
+    }
 }
