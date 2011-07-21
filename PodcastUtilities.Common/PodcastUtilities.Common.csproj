@@ -75,8 +75,10 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ControlFile.cs" />
+    <Compile Include="ControlFileFactory.cs" />
     <Compile Include="DisplayFormatter.cs" />
     <Compile Include="DownloaderException.cs" />
+    <Compile Include="IControlFileFactory.cs" />
     <Compile Include="IPodcastEpisodePurger.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="IStateProvider.cs" />
