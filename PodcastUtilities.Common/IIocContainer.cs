@@ -11,5 +11,12 @@ namespace PodcastUtilities.Common
 		/// <typeparam name="TService">the service to be registered, usually an interface</typeparam>
 		/// <typeparam name="TImplementor">the concrete implementation</typeparam>
         void Register<TService, TImplementor>() where TImplementor : TService;
+
+		///<summary>
+		/// Resolve a service
+		///</summary>
+		///<typeparam name="TService"></typeparam>
+		///<returns></returns>
+		TService Resolve<TService>();
 	}
 }
