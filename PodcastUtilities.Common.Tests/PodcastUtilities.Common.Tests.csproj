@@ -170,6 +170,7 @@
     <Compile Include="PodcastFeedInRssFormatTests\WhenLoadingTheEpisodesFromExampleXml.cs" />
     <Compile Include="PodcastFeedInRssFormatTests\WhenTestingAnEmptyExampleRssXml.cs" />
     <Compile Include="PodcastFeedInRssFormatTests\WhenTestingTheFeed.cs" />
+    <Compile Include="PodcastFeedItemTests\WhenTitleContainsInvalidCharacters.cs" />
     <Compile Include="PodcastSynchronizerTests\WhenSubscribingToStatusUpdateEvent.cs" />
     <Compile Include="PlaylistWplTests\WhenCreatingNewPlaylist.cs" />
     <Compile Include="PodcastSynchronizerTests\WhenTestingPodcastSynchronizer.cs" />
@@ -244,6 +245,7 @@
   <ItemGroup>
     <EmbeddedResource Include="XML\teststateinvalid.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

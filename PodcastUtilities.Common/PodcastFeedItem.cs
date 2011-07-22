@@ -44,11 +44,9 @@ namespace PodcastUtilities.Common
         /// <returns></returns>
         public string GetTitleAsFilename()
         {
-            string filename = Path.ChangeExtension(EpisodeTitle,Path.GetExtension(GetFilename()));
+        	var sanitizedTitle = ProcessFilenameForInvalidChars(EpisodeTitle);
 
-            filename = ProcessFilenameForInvalidChars(filename);
-
-            return filename;
+            return Path.ChangeExtension(sanitizedTitle, Path.GetExtension(GetFilename()));
         }
 
         private string ProcessFilenameForInvalidChars(string filename)
