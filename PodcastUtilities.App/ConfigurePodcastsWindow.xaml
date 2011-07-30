@@ -1,0 +1,21 @@
+﻿<Window x:Class="PodcastUtilities.App.ConfigurePodcastsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Configure Podcasts" Height="350" Width="525">
+    <Window.Resources>
+        <DataTemplate x:Key="PodcastInfoTemplate">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Folder}" FontWeight="Bold"/>
+                <TextBlock Margin="10,0,0,0" Text="{Binding Path=Feed.Address}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button HorizontalAlignment="Left" Padding="4,0,4,0" Command="{Binding OpenFileCommand}">Open Control File...</Button>
+        <ListBox Name="_podcastList" Grid.Row="1" ItemsSource="{Binding Podcasts}" ItemTemplate="{StaticResource PodcastInfoTemplate}" />
+    </Grid>
+</Window>

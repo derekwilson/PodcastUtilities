@@ -1,0 +1,10 @@
+<PartCoverSettings>
+  <Target>C:\Program Files\NUnit 2.5.7\bin\net-2.0\nunit-console-x86.exe</Target>
+  <TargetWorkDir>.\PodcastUtilities.Common.Tests\bin\Debug</TargetWorkDir>
+  <TargetArgs>/noshadow PodcastUtilities.Common.Tests.dll</TargetArgs>
+  <Rule>+[*]*</Rule>
+  <Rule>-[ISymWrapper*]*</Rule>
+  <Rule>-[nunit*]*</Rule>
+  <Rule>-[Rhino.Mocks*]*</Rule>
+  <Rule>-[PodcastUtilities.Common.Tests*]*</Rule>
+</PartCoverSettings>
