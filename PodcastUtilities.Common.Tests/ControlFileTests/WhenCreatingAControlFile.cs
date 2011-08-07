@@ -16,7 +16,7 @@ namespace PodcastUtilities.Common.Tests.ControlFileTests
         [Test]
         public void ItShouldCreateAnObject()
         {
-            Assert.That(ControlFile, Is.Not.Null);
+            Assert.That(ControlFile, Is.Null);
         }
 
         [Test]
