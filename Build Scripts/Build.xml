@@ -16,6 +16,7 @@
     <SolutionName>PodcastUtilities</SolutionName>
     <BuildOutputRoot>$(MSBuildProjectDirectory)\..\CurrentBuild</BuildOutputRoot>
     <ReleasesRoot>$(MSBuildProjectDirectory)\..\Releases</ReleasesRoot>
+    <NUnitPath>"C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0\nunit-console.exe"</NUnitPath>
   </PropertyGroup>
 
 	<!-- Code to get the name of the project directory which should be the same as the name of the solution file -->
@@ -34,6 +35,10 @@
 		<Message Importance="high" Text="-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"/>
 		<Message Importance="high" Text="If you are happy with the build please remember to check it in "/>
 		<Message Importance="high" Text="-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"/>
+	</Target>
+
+	<Target Name="BuildAndUnitTest" DependsOnTargets="Build">
+    <Exec Command="$(NUnitPath) &quot;$(SolutionRoot)\PodcastUtilities.nunit&quot; /nologo /config=$(Configuration) /xml=&quot;$(BuildOutputRoot)\TestOutput.xml&quot;" />
 	</Target>
 
   <!-- Clean and rebuild the solution -->
