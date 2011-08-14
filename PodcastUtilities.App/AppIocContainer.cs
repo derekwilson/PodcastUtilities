@@ -16,7 +16,14 @@ namespace PodcastUtilities.App
 			IocRegistration.RegisterFileServices(Container);
 			IocRegistration.RegisterSystemServices(Container);
 
+			RegisterPresentationServices();
+		}
+
+		private static void RegisterPresentationServices()
+		{
+			Container.Register<IApplicationService, ApplicationServiceWpf>();
 			Container.Register<IBrowseForFileService, BrowseForFileServiceWpf>();
+			Container.Register<IDialogService, DialogServiceWpf>();
 		}
 	}
 }

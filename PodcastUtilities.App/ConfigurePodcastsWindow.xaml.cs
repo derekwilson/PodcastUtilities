@@ -15,8 +15,10 @@ namespace PodcastUtilities.App
             InitializeComponent();
 
         	var viewModel = new ConfigurePodcastsViewModel(
-        		AppIocContainer.Container.Resolve<IControlFileFactory>(),
-        		AppIocContainer.Container.Resolve<IBrowseForFileService>());
+				AppIocContainer.Container.Resolve<IApplicationService>(),
+				AppIocContainer.Container.Resolve<IBrowseForFileService>(),
+				AppIocContainer.Container.Resolve<IDialogService>(),
+				AppIocContainer.Container.Resolve<IControlFileFactory>());
 
             DataContext = viewModel;
         }
