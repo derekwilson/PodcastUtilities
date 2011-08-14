@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using PodcastUtilities.Common;
+using PodcastUtilities.Presentation.ViewModels;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewModelTests
@@ -8,13 +9,13 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 	public class WhenExecutingOpenFileCommandButBrowseCancelled
 		: WhenTestingConfigurePodcastsViewModel
 	{
-		public PodcastInfo OriginalPodcast { get; set; }
+		public PodcastViewModel OriginalPodcast { get; set; }
 
 		protected override void GivenThat()
 		{
 			base.GivenThat();
 
-			OriginalPodcast = new PodcastInfo();
+			OriginalPodcast = new PodcastViewModel(null);
 
 			ViewModel.Podcasts.Add(OriginalPodcast);
 
