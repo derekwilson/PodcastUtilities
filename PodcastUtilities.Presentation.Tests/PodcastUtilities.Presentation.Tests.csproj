@@ -48,12 +48,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DelegateCommandTests\WhenCallingCanExecuteCommand.cs" />
+    <Compile Include="DelegateCommandTests\WhenCanExecuteDelegateIsNull.cs" />
     <Compile Include="DelegateCommandTests\WhenExecutingCommand.cs" />
     <Compile Include="DelegateCommandTests\WhenTestingDelegateCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenExecutingEditPodcastCommand.cs" />
+    <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenExecutingExitCommand.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenExecutingOpenFileCommand.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenExecutingOpenFileCommandButBrowseCancelled.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenTestingConfigurePodcastsViewModel.cs" />
+    <Compile Include="ViewModels\EditPodcastViewModelTests\WhenExecutingAcceptCommand.cs" />
+    <Compile Include="ViewModels\EditPodcastViewModelTests\WhenPodcastAddressIsEmpty.cs" />
+    <Compile Include="ViewModels\EditPodcastViewModelTests\WhenPodcastNameAndAddressAreBothValid.cs" />
+    <Compile Include="ViewModels\EditPodcastViewModelTests\WhenPodcastPropertyChanges.cs" />
+    <Compile Include="ViewModels\EditPodcastViewModelTests\WhenPodcastNameIsEmpty.cs" />
+    <Compile Include="ViewModels\EditPodcastViewModelTests\WhenTestingEditPodcastViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PodcastUtilities.Common.Tests\PodcastUtilities.Common.Tests.csproj">
