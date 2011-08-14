@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using PodcastUtilities.Common;
+using PodcastUtilities.Presentation.ViewModels;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewModelTests
@@ -16,7 +17,7 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 		{
 			base.GivenThat();
 
-			ViewModel.Podcasts.Add(new PodcastInfo());
+			ViewModel.Podcasts.Add(new PodcastViewModel(null));
 
 			BrowseForFileService.Stub(s => s.BrowseForFileToOpen("Control Files|*.xml"))
 				.Return(@"C:\blah\test.xml");
@@ -51,9 +52,9 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 		public void ItShouldUpdateThePodcastsFromNewFile()
 		{
 			Assert.That(ViewModel.Podcasts.Count, Is.EqualTo(3));
-			Assert.That(ViewModel.Podcasts[0], Is.EqualTo(Podcasts[0]));
-			Assert.That(ViewModel.Podcasts[1], Is.EqualTo(Podcasts[1]));
-			Assert.That(ViewModel.Podcasts[2], Is.EqualTo(Podcasts[2]));
+			Assert.That(ViewModel.Podcasts[0].Podcast, Is.EqualTo(Podcasts[0]));
+			Assert.That(ViewModel.Podcasts[1].Podcast, Is.EqualTo(Podcasts[1]));
+			Assert.That(ViewModel.Podcasts[2].Podcast, Is.EqualTo(Podcasts[2]));
 		}
 	}
 }

@@ -82,7 +82,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behaviours\MouseDoubleClickBehaviour.cs" />
+    <Compile Include="EditPodcastWindow.xaml.cs">
+      <DependentUpon>EditPodcastWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ApplicationServiceWpf.cs" />
     <Compile Include="Services\BrowseForFileServiceWpf.cs" />
+    <Compile Include="Services\DialogServiceWpf.cs" />
+    <Compile Include="Wpf\DialogCloser.cs" />
     <Page Include="ConfigurePodcastsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -96,6 +103,10 @@
       <DependentUpon>ConfigurePodcastsWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="EditPodcastWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
