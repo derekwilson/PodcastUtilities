@@ -7,6 +7,7 @@ namespace PodcastUtilities.Presentation.ViewModels
 		: ViewModel
 	{
 		private readonly PodcastInfo _podcast;
+		private PodcastInfo _backupPodcastInfo;
 
 		public PodcastViewModel(PodcastInfo podcast)
 		{
@@ -43,5 +44,27 @@ namespace PodcastUtilities.Presentation.ViewModels
 				}
 			}
 		}
+
+	    public virtual void StartEditing()
+	    {
+	        _backupPodcastInfo = new PodcastInfo
+	                                   {
+	                                       Folder = _podcast.Folder,
+                                           Feed = new FeedInfo { Address = new Uri(_podcast.Feed.Address.AbsoluteUri )}
+	                                   };
+	    }
+
+	    public virtual void AcceptEdit()
+	    {
+	        _backupPodcastInfo = null;
+	    }
+
+	    public virtual void CancelEdit()
+	    {
+	        Name = _backupPodcastInfo.Folder;
+	        Address = _backupPodcastInfo.Feed.Address;
+
+	        _backupPodcastInfo = null;
+	    }
 	}
 }

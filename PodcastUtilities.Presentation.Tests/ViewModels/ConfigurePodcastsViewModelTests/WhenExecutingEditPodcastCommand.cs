@@ -1,4 +1,6 @@
+using System;
 using NUnit.Framework;
+using PodcastUtilities.Common;
 using PodcastUtilities.Presentation.ViewModels;
 using Rhino.Mocks;
 
@@ -13,7 +15,12 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 		{
 			base.GivenThat();
 
-			SelectedPodcast = new PodcastViewModel(null);
+		    SelectedPodcast = GeneratePartialMock<PodcastViewModel>(
+                new PodcastInfo
+                    {
+                        Folder = "Original name",
+                        Feed = new FeedInfo { Address = new Uri("http://www.blah.com/rss.xml")}
+                    });
 
 			ViewModel.SelectedPodcast = SelectedPodcast;
 		}
@@ -26,7 +33,13 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 		[Test]
 		public void ItShouldShowEditPodcastDialogForSelectedPodcast()
 		{
-			DialogService.AssertWasCalled(s => s.ShowEditPodcastDialog(SelectedPodcast));
+            DialogService.AssertWasCalled(s => s.ShowEditPodcastDialog(SelectedPodcast));
 		}
+
+		[Test]
+		public void ItShouldStartEditingThePodcast()
+		{
+            SelectedPodcast.AssertWasCalled(p => p.StartEditing());
+        }
 	}
 }
