@@ -81,7 +81,16 @@ namespace PodcastUtilities.Presentation.ViewModels
 
 		private void ExecuteEditPodcastCommand(object parameter)
 		{
-			_dialogService.ShowEditPodcastDialog(SelectedPodcast);
+		    SelectedPodcast.StartEditing();
+
+			if (_dialogService.ShowEditPodcastDialog(SelectedPodcast))
+			{
+			    SelectedPodcast.AcceptEdit();
+			}
+            else
+			{
+			    SelectedPodcast.CancelEdit();
+			}
 		}
 
 		#endregion
