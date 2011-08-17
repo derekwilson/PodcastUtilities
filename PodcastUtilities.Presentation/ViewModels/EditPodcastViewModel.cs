@@ -9,7 +9,7 @@ namespace PodcastUtilities.Presentation.ViewModels
 	{
 		private bool? _dialogResult;
 
-		private DelegateCommand _acceptCommand;
+		private readonly DelegateCommand _acceptCommand;
 
 		public EditPodcastViewModel(PodcastViewModel podcast)
 		{
