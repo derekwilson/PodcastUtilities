@@ -15,6 +15,7 @@ namespace PodcastUtilities.Presentation.ViewModels
     	private readonly IControlFileFactory _controlFileFactory;
     	private IControlFile _controlFile;
 		private PodcastViewModel _selectedPodcast;
+        private DelegateCommand _editPodcastCommand;
 
         private ObservableCollection<PodcastViewModel> _podcasts;
 
@@ -31,7 +32,7 @@ namespace PodcastUtilities.Presentation.ViewModels
 
 			OpenFileCommand = new DelegateCommand(ExecuteOpenFileCommand, CanExecuteOpenFileCommand);
 			ExitCommand = new DelegateCommand(ExecuteExitCommand);
-			EditPodcastCommand = new DelegateCommand(ExecuteEditPodcastCommand);
+            _editPodcastCommand = new DelegateCommand(ExecuteEditPodcastCommand, CanExecuteEditPodcastCommand);
 
 			_podcasts = new ObservableCollection<PodcastViewModel>();
         }
@@ -40,9 +41,12 @@ namespace PodcastUtilities.Presentation.ViewModels
 
     	public ICommand ExitCommand { get; private set; }
 
-    	public ICommand EditPodcastCommand { get; private set; }
+        public ICommand EditPodcastCommand
+        {
+            get { return _editPodcastCommand; }
+        }
 
-		public ObservableCollection<PodcastViewModel> Podcasts
+        public ObservableCollection<PodcastViewModel> Podcasts
         {
             get { return _podcasts; }
             private set { SetProperty(ref _podcasts, value, "Podcasts"); }
@@ -51,7 +55,11 @@ namespace PodcastUtilities.Presentation.ViewModels
     	public PodcastViewModel SelectedPodcast
     	{
     		get { return _selectedPodcast; }
-    		set { SetProperty(ref _selectedPodcast, value, "SelectedPodcast"); }
+    		set
+    		{
+    		    SetProperty(ref _selectedPodcast, value, "SelectedPodcast");
+                _editPodcastCommand.RaiseCanExecuteChanged(this);
+    		}
     	}
 
     	#region Command handling
@@ -92,6 +100,11 @@ namespace PodcastUtilities.Presentation.ViewModels
 			    SelectedPodcast.CancelEdit();
 			}
 		}
+
+        private bool CanExecuteEditPodcastCommand(object parameter)
+        {
+            return (SelectedPodcast != null);
+        }
 
 		#endregion
 	}
