@@ -58,6 +58,9 @@
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenExecutingExitCommand.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenExecutingOpenFileCommand.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenExecutingOpenFileCommandButBrowseCancelled.cs" />
+    <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenSelectedPodcastChanges.cs" />
+    <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenSelectedPodcastIsNotNull.cs" />
+    <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenSelectedPodcastIsNull.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenTestingConfigurePodcastsViewModel.cs" />
     <Compile Include="ViewModels\EditPodcastViewModelTests\WhenExecutingAcceptCommand.cs" />
     <Compile Include="ViewModels\EditPodcastViewModelTests\WhenPodcastAddressIsEmpty.cs" />
