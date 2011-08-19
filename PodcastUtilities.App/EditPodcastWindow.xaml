@@ -16,11 +16,15 @@
         </Grid.RowDefinitions>
         
         <Label Margin="4">Name:</Label>
-        <TextBox Margin="4" Grid.Column="1" Width="300" Text="{Binding Path=Podcast.Name, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Name="_NameText" Margin="4" Grid.Column="1" Width="300"
+                 Text="{Binding Path=Podcast.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"
+                 ToolTip="{Binding ElementName=_NameText, Path=(Validation.Errors)[0].ErrorContent}" />
 
         <Label Margin="4,0,4,4" Grid.Row="1">Address:</Label>
-        <TextBox Margin="4,0,4,4" Grid.Row="1" Grid.Column="1" Width="300" Text="{Binding Path=Podcast.Address, UpdateSourceTrigger=PropertyChanged}"/>
-        
+        <TextBox Name="_AddressText" Margin="4,0,4,4" Grid.Row="1" Grid.Column="1" Width="300"
+                 Text="{Binding Path=Podcast.Address, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"
+                 ToolTip="{Binding ElementName=_AddressText, Path=(Validation.Errors)[0].ErrorContent}" />
+
         <Grid Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
