@@ -2,7 +2,7 @@
 using System.Xml;
 using NUnit.Framework;
 
-namespace PodcastUtilities.Common.Tests.ControlFileTests
+namespace PodcastUtilities.Common.Tests.ControlFileTests.Creation
 {
     public abstract class WhenCreatingAControlFileWithDifferentAmountOfSpaceToLeave : WhenTestingAControlFile
     {
