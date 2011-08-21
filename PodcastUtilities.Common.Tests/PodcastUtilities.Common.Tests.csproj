@@ -77,15 +77,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlFileTests\WhenCreatingAControlFile.cs" />
-    <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentAmountOfSpaceToLeave.cs" />
-    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentEpisodeDownloadStrategies.cs" />
-    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentEpisodeNamingStyles.cs" />
-    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedConfigurations.cs" />
-    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedDeleteOldDownloads.cs" />
-    <Compile Include="ControlFileTests\WhenCreatingAControlfileWithDifferentFeedEpisodeExpiry.cs" />
-    <Compile Include="ControlFileTests\WhenCreatingAControlFileWithDifferentPlaylistFormats.cs" />
-    <Compile Include="ControlFileTests\WhenCreatingAnInvalidControlFile.cs" />
+    <Compile Include="ControlFileTests\Creation\WhenCreatingAControlFile.cs" />
+    <Compile Include="ControlFileTests\Creation\WhenCreatingWithDifferentAmountOfSpaceToLeave.cs" />
+    <Compile Include="ControlFileTests\Creation\WhenCreatingWithDifferentEpisodeDownloadStrategies.cs" />
+    <Compile Include="ControlFileTests\Creation\WhenCreatingWithDifferentEpisodeNamingStyles.cs" />
+    <Compile Include="ControlFileTests\Creation\WhenCreatingWithDifferentFeedConfigurations.cs" />
+    <Compile Include="ControlFileTests\Creation\WhenCreatingWithDifferentFeedDeleteOldDownloads.cs" />
+    <Compile Include="ControlFileTests\Creation\WhenCreatingWithDifferentFeedEpisodeExpiry.cs" />
+    <Compile Include="ControlFileTests\Creation\WhenCreatingWithDifferentPlaylistFormats.cs" />
+    <Compile Include="ControlFileTests\Creation\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="ControlFileTests\WhenTestingAControlFile.cs" />
     <Compile Include="DisplayFormatterTests\WhenTestingTheRenderFileSizeDisplayFormatter.cs" />
     <Compile Include="DownloaderExceptionTests\WhenCreatingAnException.cs" />
