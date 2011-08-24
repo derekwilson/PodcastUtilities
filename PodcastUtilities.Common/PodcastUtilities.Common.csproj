@@ -78,12 +78,16 @@
     <Compile Include="ControlFileFactory.cs" />
     <Compile Include="DisplayFormatter.cs" />
     <Compile Include="DownloaderException.cs" />
+    <Compile Include="HardcodedPodcastDefaultsProvider.cs" />
     <Compile Include="IControlFileFactory.cs" />
+    <Compile Include="IPodcastDefaultsProvider.cs" />
     <Compile Include="IPodcastEpisodePurger.cs" />
+    <Compile Include="IPodcastFactory.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="IStateProvider.cs" />
     <Compile Include="PodcastEpisodeDownloadStrategy.cs" />
     <Compile Include="PodcastEpisodePurger.cs" />
+    <Compile Include="PodcastFactory.cs" />
     <Compile Include="ProgressEventArgs.cs" />
     <Compile Include="IProgressUpdate.cs" />
     <Compile Include="IFeedSyncItem.cs" />

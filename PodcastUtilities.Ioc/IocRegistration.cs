@@ -28,6 +28,12 @@ namespace PodcastUtilities.Ioc
             container.Register<IPlaylistFactory, PlaylistFactory>();
         }
 
+        public static void RegisterPodcastServices(IIocContainer container)
+        {
+            container.Register<IPodcastFactory, PodcastFactory>();
+            container.Register<IPodcastDefaultsProvider, HardcodedPodcastDefaultsProvider>();
+        }
+
         public static void RegisterFeedServices(IIocContainer container)
         {
             container.Register<IPodcastFeedFactory, PodcastFeedFactory>();

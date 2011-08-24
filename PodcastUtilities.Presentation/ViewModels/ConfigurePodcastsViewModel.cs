@@ -13,9 +13,10 @@ namespace PodcastUtilities.Presentation.ViewModels
     	private readonly IBrowseForFileService _browseForFileService;
     	private readonly IDialogService _dialogService;
     	private readonly IControlFileFactory _controlFileFactory;
-    	private IControlFile _controlFile;
+        private readonly IPodcastFactory _podcastFactory;
+        private IControlFile _controlFile;
 		private PodcastViewModel _selectedPodcast;
-        private DelegateCommand _editPodcastCommand;
+        private readonly DelegateCommand _editPodcastCommand;
 
         private ObservableCollection<PodcastViewModel> _podcasts;
 
@@ -23,15 +24,18 @@ namespace PodcastUtilities.Presentation.ViewModels
 			IApplicationService applicationService,
 			IBrowseForFileService browseForFileService,
 			IDialogService dialogService,
-			IControlFileFactory controlFileFactory)
+			IControlFileFactory controlFileFactory,
+            IPodcastFactory podcastFactory)
         {
         	_applicationService = applicationService;
         	_browseForFileService = browseForFileService;
         	_dialogService = dialogService;
         	_controlFileFactory = controlFileFactory;
+            _podcastFactory = podcastFactory;
 
-			OpenFileCommand = new DelegateCommand(ExecuteOpenFileCommand, CanExecuteOpenFileCommand);
+            OpenFileCommand = new DelegateCommand(ExecuteOpenFileCommand, CanExecuteOpenFileCommand);
 			ExitCommand = new DelegateCommand(ExecuteExitCommand);
+			AddPodcastCommand = new DelegateCommand(ExecuteAddPodcastCommand);
             _editPodcastCommand = new DelegateCommand(ExecuteEditPodcastCommand, CanExecuteEditPodcastCommand);
 
 			_podcasts = new ObservableCollection<PodcastViewModel>();
@@ -45,6 +49,8 @@ namespace PodcastUtilities.Presentation.ViewModels
         {
             get { return _editPodcastCommand; }
         }
+
+        public ICommand AddPodcastCommand { get; private set; }
 
         public ObservableCollection<PodcastViewModel> Podcasts
         {
@@ -89,16 +95,7 @@ namespace PodcastUtilities.Presentation.ViewModels
 
 		private void ExecuteEditPodcastCommand(object parameter)
 		{
-		    SelectedPodcast.StartEditing();
-
-			if (_dialogService.ShowEditPodcastDialog(SelectedPodcast))
-			{
-			    SelectedPodcast.AcceptEdit();
-			}
-            else
-			{
-			    SelectedPodcast.CancelEdit();
-			}
+            EditPodcast(SelectedPodcast);
 		}
 
         private bool CanExecuteEditPodcastCommand(object parameter)
@@ -106,6 +103,35 @@ namespace PodcastUtilities.Presentation.ViewModels
             return (SelectedPodcast != null);
         }
 
+        private void ExecuteAddPodcastCommand(object parameter)
+        {
+            var newPodcast = _podcastFactory.CreatePodcast();
+            var newPodcastViewModel = new PodcastViewModel(newPodcast);
+
+            if (EditPodcast(newPodcastViewModel))
+            {
+                Podcasts.Add(newPodcastViewModel);
+            }
+        }
+
 		#endregion
-	}
+
+        private bool EditPodcast(PodcastViewModel podcast)
+        {
+            podcast.StartEditing();
+
+            var acceptedEdit = _dialogService.ShowEditPodcastDialog(podcast);
+
+            if (acceptedEdit)
+            {
+                podcast.AcceptEdit();
+            }
+            else
+            {
+                podcast.CancelEdit();
+            }
+
+            return acceptedEdit;
+        }
+    }
 }

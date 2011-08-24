@@ -39,7 +39,7 @@ namespace PodcastUtilities.Presentation.ViewModels
 
 		private bool CanExecuteAcceptCommand(object obj)
 		{
-			return !String.IsNullOrEmpty(Podcast.Name) && !String.IsNullOrEmpty(Podcast.Address.ToString());
+		    return Podcast.IsValid;
 		}
 
 		private void PodcastPropertyChanged(object sender, PropertyChangedEventArgs e)

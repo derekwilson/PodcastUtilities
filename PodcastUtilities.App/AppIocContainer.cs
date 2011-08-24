@@ -15,6 +15,7 @@ namespace PodcastUtilities.App
 
 			IocRegistration.RegisterFileServices(Container);
 			IocRegistration.RegisterSystemServices(Container);
+			IocRegistration.RegisterPodcastServices(Container);
 
 			RegisterPresentationServices();
 		}
