@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -14,6 +15,7 @@ namespace PodcastUtilities.Presentation.ViewModels
     	private readonly IDialogService _dialogService;
     	private readonly IControlFileFactory _controlFileFactory;
         private readonly IPodcastFactory _podcastFactory;
+        private readonly IClipboardService _clipboardService;
         private IControlFile _controlFile;
 		private PodcastViewModel _selectedPodcast;
         private readonly DelegateCommand _editPodcastCommand;
@@ -25,13 +27,15 @@ namespace PodcastUtilities.Presentation.ViewModels
 			IBrowseForFileService browseForFileService,
 			IDialogService dialogService,
 			IControlFileFactory controlFileFactory,
-            IPodcastFactory podcastFactory)
+            IPodcastFactory podcastFactory,
+            IClipboardService clipboardService)
         {
         	_applicationService = applicationService;
         	_browseForFileService = browseForFileService;
         	_dialogService = dialogService;
         	_controlFileFactory = controlFileFactory;
             _podcastFactory = podcastFactory;
+            _clipboardService = clipboardService;
 
             OpenFileCommand = new DelegateCommand(ExecuteOpenFileCommand, CanExecuteOpenFileCommand);
 			ExitCommand = new DelegateCommand(ExecuteExitCommand);
@@ -105,7 +109,8 @@ namespace PodcastUtilities.Presentation.ViewModels
 
         private void ExecuteAddPodcastCommand(object parameter)
         {
-            var newPodcast = _podcastFactory.CreatePodcast();
+            var newPodcast = CreateNewPodcast(_clipboardService.GetText());
+
             var newPodcastViewModel = new PodcastViewModel(newPodcast);
 
             if (EditPodcast(newPodcastViewModel))
@@ -132,6 +137,18 @@ namespace PodcastUtilities.Presentation.ViewModels
             }
 
             return acceptedEdit;
+        }
+
+        private PodcastInfo CreateNewPodcast(string possiblePodcastAddress)
+        {
+            var newPodcast = _podcastFactory.CreatePodcast();
+
+            if ((possiblePodcastAddress != null) && Uri.IsWellFormedUriString(possiblePodcastAddress, UriKind.Absolute))
+            {
+                newPodcast.Feed.Address = new Uri(possiblePodcastAddress);
+            }
+
+            return newPodcast;
         }
     }
 }

@@ -19,7 +19,8 @@ namespace PodcastUtilities.App
 				AppIocContainer.Container.Resolve<IBrowseForFileService>(),
 				AppIocContainer.Container.Resolve<IDialogService>(),
 				AppIocContainer.Container.Resolve<IControlFileFactory>(),
-                AppIocContainer.Container.Resolve<IPodcastFactory>());
+                AppIocContainer.Container.Resolve<IPodcastFactory>(),
+                AppIocContainer.Container.Resolve<IClipboardService>());
 
             DataContext = viewModel;
         }

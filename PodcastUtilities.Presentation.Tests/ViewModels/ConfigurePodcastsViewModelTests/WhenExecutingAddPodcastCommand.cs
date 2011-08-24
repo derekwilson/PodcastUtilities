@@ -46,34 +46,4 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
             DialogService.AssertWasCalled(s => s.ShowEditPodcastDialog(Arg<PodcastViewModel>.Matches(p => p.Podcast == CreatedPodcast)));
         }
     }
-
-    public class WhenAddPodcastIsAccepted : WhenExecutingAddPodcastCommand
-    {
-        protected override bool EditPodcastDialogReturn
-        {
-            get { return true; }
-        }
-
-        [Test]
-        public void ItShouldAddTheNewPodcastToTheCollection()
-        {
-            Assert.That(ViewModel.Podcasts.Count, Is.EqualTo(2));
-            Assert.That(ViewModel.Podcasts[1], Is.SameAs(CreatedPodcastViewModel));
-        }
-    }
-
-    public class WhenAddPodcastIsCancelled : WhenExecutingAddPodcastCommand
-    {
-        protected override bool EditPodcastDialogReturn
-        {
-            get { return false; }
-        }
-
-        [Test]
-        public void ItShouldNotAddTheNewPodcastToTheCollection()
-        {
-            Assert.That(ViewModel.Podcasts.Count, Is.EqualTo(1));
-            Assert.That(!ViewModel.Podcasts.Contains(CreatedPodcastViewModel));
-        }
-    }
 }
