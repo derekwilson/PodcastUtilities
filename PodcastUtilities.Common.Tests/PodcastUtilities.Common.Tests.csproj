@@ -147,6 +147,7 @@
     <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWithAPublishedDate.cs" />
     <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWithoutAPublishedDate.cs" />
     <Compile Include="PodcastEpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWhenPurgingIsNotSelected.cs" />
+    <Compile Include="PodcastFactoryTests\WhenCreatingAPodcast.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloader.cs" />
     <Compile Include="PodcastFeedDownloaderTests\WhenTestingTheDownloaderInRss.cs" />
     <Compile Include="PodcastFeedEpisodeFinderTests\DownloadStrategy\WhenFindingAllEpisodesInAFeed.cs" />

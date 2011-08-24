@@ -7,6 +7,14 @@ namespace PodcastUtilities.Common
 	/// </summary>
     public class PodcastInfo
 	{
+	    ///<summary>
+	    /// Podcast ctor
+	    ///</summary>
+	    public PodcastInfo()
+	    {
+	        Feed = new FeedInfo();
+	    }
+
 		/// <summary>
 		/// the folder relative to the source root that contains the media for the podcast
 		/// </summary>

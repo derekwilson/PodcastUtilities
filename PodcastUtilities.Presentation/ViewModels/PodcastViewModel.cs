@@ -46,12 +46,24 @@ namespace PodcastUtilities.Presentation.ViewModels
 			}
 		}
 
+	    public bool IsEditing
+	    {
+            get { return (_backupPodcastInfo != null); }
+	    }
+
+        public bool IsValid
+        {
+            get { return ((this["Name"] == null) && (this["Address"] == null)); }
+        }
+
 	    public virtual void StartEditing()
 	    {
+	        var copyAddress = ((_podcast.Feed.Address == null) ? null : new Uri(_podcast.Feed.Address.AbsoluteUri));
+
 	        _backupPodcastInfo = new PodcastInfo
 	                                   {
 	                                       Folder = _podcast.Folder,
-                                           Feed = new FeedInfo { Address = new Uri(_podcast.Feed.Address.AbsoluteUri )}
+                                           Feed = new FeedInfo { Address = copyAddress }
 	                                   };
 	    }
 
