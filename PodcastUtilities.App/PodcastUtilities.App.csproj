@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="Services\ApplicationServiceWpf.cs" />
     <Compile Include="Services\BrowseForFileServiceWpf.cs" />
+    <Compile Include="Services\ClipboardService.cs" />
     <Compile Include="Services\DialogServiceWpf.cs" />
     <Compile Include="Wpf\CommandReference.cs" />
     <Compile Include="Wpf\DialogCloser.cs" />

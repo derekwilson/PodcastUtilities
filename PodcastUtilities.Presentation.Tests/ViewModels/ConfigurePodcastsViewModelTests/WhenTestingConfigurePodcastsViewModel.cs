@@ -20,6 +20,8 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 
 		protected IPodcastFactory PodcastFactory { get; set; }
 
+		protected IClipboardService ClipboardService { get; set; }
+
 		protected override void GivenThat()
 		{
 			base.GivenThat();
@@ -29,13 +31,15 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 			DialogService = GenerateMock<IDialogService>();
 			ControlFileFactory = GenerateMock<IControlFileFactory>();
 			PodcastFactory = GenerateMock<IPodcastFactory>();
+            ClipboardService = GenerateMock<IClipboardService>();
 
 			ViewModel = new ConfigurePodcastsViewModel(
 				ApplicationService,
 				BrowseForFileService,
 				DialogService,
 				ControlFileFactory,
-                PodcastFactory);
+                PodcastFactory,
+                ClipboardService);
 		}
 	}
 }

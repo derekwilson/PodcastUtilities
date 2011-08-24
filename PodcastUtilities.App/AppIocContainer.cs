@@ -25,6 +25,7 @@ namespace PodcastUtilities.App
 			Container.Register<IApplicationService, ApplicationServiceWpf>();
 			Container.Register<IBrowseForFileService, BrowseForFileServiceWpf>();
 			Container.Register<IDialogService, DialogServiceWpf>();
+			Container.Register<IClipboardService, ClipboardService>();
 		}
 	}
 }
