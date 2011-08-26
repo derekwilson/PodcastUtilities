@@ -32,11 +32,11 @@ namespace PodcastUtilities.Common
         /// load a stream from an assembly
         /// </summary>
         /// <param name="assembly">assembly to use</param>
-        /// <param name="xmlfile">resource path to the xml file</param>
+        /// <param name="xmlFileResourcePath">resource path to the xml file</param>
         /// <returns></returns>
-        protected Stream GetXmlStream(Assembly assembly, string xmlfile)
+        protected static Stream GetXmlStream(Assembly assembly, string xmlFileResourcePath)
 		{
-			Stream s = assembly.GetManifestResourceStream(xmlfile);
+			Stream s = assembly.GetManifestResourceStream(xmlFileResourcePath);
 			return s;
 		}
 
@@ -72,15 +72,15 @@ namespace PodcastUtilities.Common
 		/// set the text for the specified node, an exception is thrown if the node does not exist
 		/// </summary>
         /// <param name="xpath">xpath to the node</param>
-        /// <param name="val">value to set</param>
-        protected void SetNodeText(string xpath, string val)
+        /// <param name="nodeValue">value to set</param>
+        protected void SetNodeText(string xpath, string nodeValue)
 		{
 			XmlNode n = SelectSingleNode(xpath);
 			if (n == null)
 			{
 				throw new System.Exception("SetNodeText : Node path '" + xpath + "' not found");
 			}
-			n.InnerText = val;
+			n.InnerText = nodeValue;
 		}
 	}
 }

@@ -1,0 +1,2251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="10.0" Name="My FxCop Project">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">$(FxCopDir)\Xml\FxCopReport.xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded, Good, Noise" NewOnly="False" />
+   <Report Status="Active, Good, Noise" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>10</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>1</RuleExceptionsThreshold>
+  <Spelling Locale="en-US" />
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>False</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+  <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
+ </ProjectOptions>
+ <Targets>
+  <Target Name="$(ProjectDir)/PodcastUtilities.Common/bin/Debug/PodcastUtilities.Common.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/PodcastUtilities.Ioc/bin/Debug/PodcastUtilities.Ioc.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/PodcastUtilities.Presentation/bin/Debug/PodcastUtilities.Presentation.dll" Analyze="True" AnalyzeAllChildren="True" />
+ </Targets>
+ <Rules>
+  <RuleFiles>
+   <RuleFile Name="$(FxCopDir)\Rules\DesignRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityTransparencyRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\UsageRules.dll" Enabled="True" AllRulesEnabled="True" />
+  </RuleFiles>
+  <Groups />
+  <Settings />
+ </Rules>
+ <FxCopReport Version="10.0">
+  <Namespaces>
+   <Namespace Name="PodcastUtilities.Presentation">
+    <Messages>
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Created="2011-08-26 16:22:44Z">
+      <Issue>
+       <Item>PodcastUtilities.Presentation</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+   <Namespace Name="PodcastUtilities.Presentation.Services">
+    <Messages>
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Created="2011-08-26 16:22:44Z">
+      <Issue>
+       <Item>PodcastUtilities.Presentation.Services</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+   <Namespace Name="PodcastUtilities.Presentation.ViewModels">
+    <Messages>
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Created="2011-08-26 16:22:44Z">
+      <Issue>
+       <Item>PodcastUtilities.Presentation.ViewModels</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+  </Namespaces>
+  <Targets>
+   <Target Name="$(ProjectDir)/PodcastUtilities.Common/bin/Debug/PodcastUtilities.Common.dll">
+    <Modules>
+     <Module Name="podcastutilities.common.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2011-08-26 16:22:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'PodcastUtilities.Common.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2011-08-26 16:22:44Z">
+        <Issue>
+         <Item>'PodcastUtilities.Common.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="PodcastUtilities.Common">
+        <Types>
+         <Type Name="ControlFile">
+          <Members>
+           <Member Name="#.ctor(System.String)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'ControlFile.ControlFile(string)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#.ctor(System.Xml.XmlDocument)">
+            <Messages>
+             <Message Id="System.Xml.XmlNode" TypeName="MembersShouldNotExposeCertainConcreteTypes" Category="Microsoft.Design" CheckId="CA1059" Created="2011-08-26 16:22:44Z">
+              <Issue Name="Xml">
+               <Item>'ControlFile.ControlFile(XmlDocument)'</Item>
+               <Item>'XmlDocument'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#FeedDeleteDownloadsDaysOld">
+            <Accessors>
+             <Accessor Name="#get_FeedDeleteDownloadsDaysOld()">
+              <Messages>
+               <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+                <Issue Name="IFormatProviderAlternateString">
+                 <Item>'int.ToString()'</Item>
+                 <Item>'ControlFile.FeedDeleteDownloadsDaysOld.get()'</Item>
+                 <Item>'int.ToString(IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#FeedMaximumDaysOld">
+            <Accessors>
+             <Accessor Name="#get_FeedMaximumDaysOld()">
+              <Messages>
+               <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+                <Issue Name="IFormatProviderAlternateString">
+                 <Item>'int.ToString()'</Item>
+                 <Item>'ControlFile.FeedMaximumDaysOld.get()'</Item>
+                 <Item>'int.ToString(IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#FreeSpaceToLeaveOnDestination">
+            <Accessors>
+             <Accessor Name="#get_FreeSpaceToLeaveOnDestination()">
+              <Messages>
+               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
+                <Issue>
+                 <Item>'ControlFile.FreeSpaceToLeaveOnDestination.get()'</Item>
+                 <Item>'object'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.Convert.ToInt64(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+                <Issue Name="IFormatProviderAlternate">
+                 <Item>'Convert.ToInt64(string)'</Item>
+                 <Item>'ControlFile.FreeSpaceToLeaveOnDestination.get()'</Item>
+                 <Item>'Convert.ToInt64(string, IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#FreeSpaceToLeaveOnDownload">
+            <Accessors>
+             <Accessor Name="#get_FreeSpaceToLeaveOnDownload()">
+              <Messages>
+               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
+                <Issue>
+                 <Item>'ControlFile.FreeSpaceToLeaveOnDownload.get()'</Item>
+                 <Item>'object'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.Convert.ToInt64(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+                <Issue Name="IFormatProviderAlternate">
+                 <Item>'Convert.ToInt64(string)'</Item>
+                 <Item>'ControlFile.FreeSpaceToLeaveOnDownload.get()'</Item>
+                 <Item>'Convert.ToInt64(string, IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#GetNodeText(System.Xml.XmlNode,System.String)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
+              <Issue Name="TooGeneric">
+               <Item>'ControlFile.GetNodeText(XmlNode, string)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#MaximumNumberOfConcurrentDownloads">
+            <Accessors>
+             <Accessor Name="#get_MaximumNumberOfConcurrentDownloads()">
+              <Messages>
+               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
+                <Issue>
+                 <Item>'ControlFile.MaximumNumberOfConcurrentDownloads.get()'</Item>
+                 <Item>'object'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+                <Issue Name="IFormatProviderAlternate">
+                 <Item>'Convert.ToInt32(string)'</Item>
+                 <Item>'ControlFile.MaximumNumberOfConcurrentDownloads.get()'</Item>
+                 <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#PlaylistFormat">
+            <Accessors>
+             <Accessor Name="#get_PlaylistFormat()">
+              <Messages>
+               <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Created="2011-08-26 16:22:44Z" FixCategory="Breaking">
+                <Issue Name="PropertyGetter" Level="Warning">
+                 <Item>'ControlFile.PlaylistFormat.get()'</Item>
+                 <Item>'IndexOutOfRangeException'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
+                <Issue Name="Reserved">
+                 <Item>'ControlFile.PlaylistFormat.get()'</Item>
+                 <Item>'IndexOutOfRangeException'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
+                <Issue>
+                 <Item>'string.ToLower()'</Item>
+                 <Item>'ControlFile.PlaylistFormat.get()'</Item>
+                 <Item>'string.ToLower(CultureInfo)'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+                <Issue Name="IFormatProviderAlternateString">
+                 <Item>'string.Format(string, object)'</Item>
+                 <Item>'ControlFile.PlaylistFormat.get()'</Item>
+                 <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#ReadDeleteDownloadsDaysOld(System.Xml.XmlNode)">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'ControlFile.ReadDeleteDownloadsDaysOld(XmlNode)'</Item>
+               <Item>'object'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'ControlFile.ReadDeleteDownloadsDaysOld(XmlNode)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReadFeedEpisodeDownloadStrategy(System.String)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'ControlFile.ReadFeedEpisodeDownloadStrategy(string)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'string.ToLower()'</Item>
+               <Item>'ControlFile.ReadFeedEpisodeDownloadStrategy(string)'</Item>
+               <Item>'string.ToLower(CultureInfo)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReadFeedEpisodeNamingStyle(System.String)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'ControlFile.ReadFeedEpisodeNamingStyle(string)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'string.ToLower()'</Item>
+               <Item>'ControlFile.ReadFeedEpisodeNamingStyle(string)'</Item>
+               <Item>'string.ToLower(CultureInfo)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReadFeedFormat(System.String)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
+              <Issue Name="Reserved">
+               <Item>'ControlFile.ReadFeedFormat(string)'</Item>
+               <Item>'IndexOutOfRangeException'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'ControlFile.ReadFeedFormat(string)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'string.ToLower()'</Item>
+               <Item>'ControlFile.ReadFeedFormat(string)'</Item>
+               <Item>'string.ToLower(CultureInfo)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'ControlFile.ReadFeedFormat(string)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReadMaximumDaysOld(System.Xml.XmlNode)">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'ControlFile.ReadMaximumDaysOld(XmlNode)'</Item>
+               <Item>'object'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'ControlFile.ReadMaximumDaysOld(XmlNode)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReadPodcasts()">
+            <Messages>
+             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'string.ToLower()'</Item>
+               <Item>'ControlFile.ReadPodcasts()'</Item>
+               <Item>'string.ToLower(CultureInfo)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'ControlFile.ReadPodcasts()'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'string.StartsWith(string)'</Item>
+               <Item>'ControlFile.ReadPodcasts()'</Item>
+               <Item>'string.StartsWith(string, StringComparison)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RetryWaitInSeconds">
+            <Accessors>
+             <Accessor Name="#get_RetryWaitInSeconds()">
+              <Messages>
+               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
+                <Issue>
+                 <Item>'ControlFile.RetryWaitInSeconds.get()'</Item>
+                 <Item>'object'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+                <Issue Name="IFormatProviderAlternate">
+                 <Item>'Convert.ToInt32(string)'</Item>
+                 <Item>'ControlFile.RetryWaitInSeconds.get()'</Item>
+                 <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="DisplayFormatter">
+          <Messages>
+           <Message TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053" Created="2011-08-26 16:22:44Z">
+            <Issue>
+             <Item>'DisplayFormatter'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#RenderFileSize(System.Int64)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'DisplayFormatter.RenderFileSize(long)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'DisplayFormatter.RenderFileSize(long)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'DisplayFormatter.RenderFileSize(long)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'DisplayFormatter.RenderFileSize(long)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="DownloaderException">
+          <Messages>
+           <Message TypeName="ImplementStandardExceptionConstructors" Category="Microsoft.Design" CheckId="CA1032" Created="2011-08-26 16:22:44Z">
+            <Issue Name="MissingConstructor">
+             <Item>'DownloaderException'</Item>
+             <Item>protected DownloaderException(SerializationInfo, StreamingContext)</Item>
+            </Issue>
+            <Issue Name="MissingConstructor">
+             <Item>'DownloaderException'</Item>
+             <Item>public DownloaderException()</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Created="2011-08-26 16:22:44Z">
+            <Issue Certainty="95" Level="Error">
+             <Item>'DownloaderException'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="FeedSyncItemToPodcastEpisodeDownloaderTaskConverter">
+          <Members>
+           <Member Name="#ConvertItemsToTasks(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.IFeedSyncItem&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.StatusUpdateEventArgs&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.ProgressEventArgs&gt;)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'List&lt;IFeedSyncItem&gt;'</Item>
+               <Item>'FeedSyncItemToPodcastEpisodeDownloaderTaskConverter.ConvertItemsToTasks(List&lt;IFeedSyncItem&gt;, EventHandler&lt;StatusUpdateEventArgs&gt;, EventHandler&lt;ProgressEventArgs&gt;)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="FileCopier">
+          <Members>
+           <Member Name="#CopyFilesToTarget(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.FileSyncItem&gt;,System.String,System.String,System.Int64,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'List&lt;FileSyncItem&gt;'</Item>
+               <Item>'FileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'FileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'FileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'string.StartsWith(string)'</Item>
+               <Item>'FileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
+               <Item>'string.StartsWith(string, StringComparison)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#IsDestinationDriveFull(System.String,System.Int64)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'FileCopier.IsDestinationDriveFull(string, long)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, params object[])'</Item>
+               <Item>'FileCopier.IsDestinationDriveFull(string, long)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="FileFinder">
+          <Members>
+           <Member Name="#GetFiles(System.String,System.String)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'FileFinder.GetFiles(string, string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetFiles(System.String,System.String,System.Int32,System.String,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'FileFinder.GetFiles(string, string, int, string, bool)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="FileSorter">
+          <Members>
+           <Member Name="#Sort(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Platform.IFileInfo&gt;,System.String,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'FileSorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'string.ToLower()'</Item>
+               <Item>'FileSorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
+               <Item>'string.ToLower(CultureInfo)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.CompareTo(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'string.CompareTo(string)'</Item>
+               <Item>'FileSorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
+               <Item>'string.Compare(string, string, StringComparison)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IControlFile">
+          <Members>
+           <Member Name="#PlaylistFilename">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'IControlFile.PlaylistFilename'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IControlFileFactory">
+          <Members>
+           <Member Name="#OpenControlFile(System.String)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'IControlFileFactory.OpenControlFile(string)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter">
+          <Members>
+           <Member Name="#ConvertItemsToTasks(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.IFeedSyncItem&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.StatusUpdateEventArgs&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.ProgressEventArgs&gt;)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'List&lt;IFeedSyncItem&gt;'</Item>
+               <Item>'IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter.ConvertItemsToTasks(List&lt;IFeedSyncItem&gt;, EventHandler&lt;StatusUpdateEventArgs&gt;, EventHandler&lt;ProgressEventArgs&gt;)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IFileCopier">
+          <Members>
+           <Member Name="#CopyFilesToTarget(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.FileSyncItem&gt;,System.String,System.String,System.Int64,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'List&lt;FileSyncItem&gt;'</Item>
+               <Item>'IFileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="whatif" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameter">
+               <Item>'IFileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
+               <Item>whatif</Item>
+               <Item>'whatif'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IFileFinder">
+          <Members>
+           <Member Name="#GetFiles(System.String,System.String)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'IFileFinder.GetFiles(string, string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetFiles(System.String,System.String,System.Int32,System.String,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'IFileFinder.GetFiles(string, string, int, string, bool)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IFileSorter">
+          <Members>
+           <Member Name="#Sort(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Platform.IFileInfo&gt;,System.String,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'IFileSorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IIocContainer">
+          <Members>
+           <Member Name="#Register`2()">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'IIocContainer.Register&lt;TService, TImplementor&gt;()'</Item>
+               <Item>'TImplementor'</Item>
+              </Issue>
+              <Issue>
+               <Item>'IIocContainer.Register&lt;TService, TImplementor&gt;()'</Item>
+               <Item>'TService'</Item>
+              </Issue>
+             </Message>
+             <Message Id="Implementor" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
+              <Issue Name="MethodTypeParameter">
+               <Item>'IIocContainer.Register&lt;TService, TImplementor&gt;()'</Item>
+               <Item>Implementor</Item>
+               <Item>'TImplementor'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IPlaylist">
+          <Members>
+           <Member Name="#AddTrack(System.String)">
+            <Messages>
+             <Message Id="filepath" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameter">
+               <Item>'IPlaylist.AddTrack(string)'</Item>
+               <Item>filepath</Item>
+               <Item>'filepath'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Filename">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'IPlaylist.Filename'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IPlaylistFactory">
+          <Members>
+           <Member Name="#CreatePlaylist(PodcastUtilities.Common.PlaylistFormat,System.String)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'IPlaylistFactory.CreatePlaylist(PlaylistFormat, string)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IPodcastEpisodePurger">
+          <Messages>
+           <Message Id="Purger" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+            <Issue Name="Type">
+             <Item>Purger</Item>
+             <Item>'IPodcastEpisodePurger'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="IPodcastFeed">
+          <Members>
+           <Member Name="#GetFeedEpisodes()">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2011-08-26 16:22:44Z">
+              <Issue Certainty="50">
+               <Item>'IPodcastFeed.GetFeedEpisodes()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IPodcastFeedDownloader">
+          <Members>
+           <Member Name="#DownLoadFeed(PodcastUtilities.Common.PodcastFeedFormat,System.Uri)">
+            <Messages>
+             <Message Id="DownLoad" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberShouldBeDiscreteTerm">
+               <Item>DownLoad</Item>
+               <Item>'IPodcastFeedDownloader.DownLoadFeed(PodcastFeedFormat, Uri)'</Item>
+               <Item>Download</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IPodcastFeedItem">
+          <Members>
+           <Member Name="#GetFilename()">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'IPodcastFeedItem.GetFilename()'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2011-08-26 16:22:44Z">
+              <Issue Certainty="50">
+               <Item>'IPodcastFeedItem.GetFilename()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTitleAsFilename()">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'IPodcastFeedItem.GetTitleAsFilename()'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2011-08-26 16:22:44Z">
+              <Issue Certainty="50">
+               <Item>'IPodcastFeedItem.GetTitleAsFilename()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ITask">
+          <Members>
+           <Member Name="#GetName()">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2011-08-26 16:22:44Z">
+              <Issue Certainty="50">
+               <Item>'ITask.GetName()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IWebClientFactory">
+          <Members>
+           <Member Name="#GetWebClient()">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2011-08-26 16:22:44Z">
+              <Issue Certainty="50">
+               <Item>'IWebClientFactory.GetWebClient()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PlaylistAsx">
+          <Messages>
+           <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Created="2011-08-26 16:22:44Z">
+            <Issue Certainty="60">
+             <Item>'PlaylistAsx'</Item>
+             <Item>IEnumerable</Item>
+            </Issue>
+           </Message>
+           <Message Id="Asx" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+            <Issue Name="Type">
+             <Item>Asx</Item>
+             <Item>'PlaylistAsx'</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2011-08-26 16:22:44Z">
+            <Issue>
+             <Item>'PlaylistAsx'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(System.String,System.Boolean)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'PlaylistAsx.PlaylistAsx(string, bool)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#AddTrack(System.String)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
+              <Issue Name="TooGeneric">
+               <Item>'PlaylistAsx.AddTrack(string)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'PlaylistAsx.AddTrack(string)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#EmptyAsxResource">
+            <Messages>
+             <Message Id="Asx" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+              <Issue Name="Member">
+               <Item>Asx</Item>
+               <Item>'PlaylistAsx.EmptyAsxResource'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'PlaylistAsx.EmptyAsxResource'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PlaylistFormat">
+          <Members>
+           <Member Name="#ASX">
+            <Messages>
+             <Message Id="ASX" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2011-08-26 16:22:44Z">
+              <Issue Name="Member">
+               <Item>ASX</Item>
+               <Item>'PlaylistFormat.ASX'</Item>
+               <Item>Asx</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#WPL">
+            <Messages>
+             <Message Id="WPL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2011-08-26 16:22:44Z">
+              <Issue Name="Member">
+               <Item>WPL</Item>
+               <Item>'PlaylistFormat.WPL'</Item>
+               <Item>Wpl</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PlaylistGenerator">
+          <Members>
+           <Member Name="#GeneratePlaylist(PodcastUtilities.Common.IControlFile,System.Boolean)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'PlaylistGenerator.GeneratePlaylist(IControlFile, bool)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'PlaylistGenerator.GeneratePlaylist(IControlFile, bool)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'string.StartsWith(string)'</Item>
+               <Item>'PlaylistGenerator.GeneratePlaylist(IControlFile, bool)'</Item>
+               <Item>'string.StartsWith(string, StringComparison)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PlaylistWpl">
+          <Messages>
+           <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Created="2011-08-26 16:22:44Z">
+            <Issue Certainty="60">
+             <Item>'PlaylistWpl'</Item>
+             <Item>IEnumerable</Item>
+            </Issue>
+           </Message>
+           <Message Id="Wpl" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+            <Issue Name="Type">
+             <Item>Wpl</Item>
+             <Item>'PlaylistWpl'</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2011-08-26 16:22:44Z">
+            <Issue>
+             <Item>'PlaylistWpl'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(System.String,System.Boolean)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'PlaylistWpl.PlaylistWpl(string, bool)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#AddTrack(System.String)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
+              <Issue Name="TooGeneric">
+               <Item>'PlaylistWpl.AddTrack(string)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'PlaylistWpl.AddTrack(string)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#EmptyWplResource">
+            <Messages>
+             <Message Id="Wpl" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+              <Issue Name="Member">
+               <Item>Wpl</Item>
+               <Item>'PlaylistWpl.EmptyWplResource'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'PlaylistWpl.EmptyWplResource'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PodcastEpisodeDownloader">
+          <Members>
+           <Member Name="#ClientDownloadFileCompleted(System.Object,System.ComponentModel.AsyncCompletedEventArgs)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'PodcastEpisodeDownloader.ClientDownloadFileCompleted(object, AsyncCompletedEventArgs)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'PodcastEpisodeDownloader.ClientDownloadFileCompleted(object, AsyncCompletedEventArgs)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'PodcastEpisodeDownloader.ClientDownloadFileCompleted(object, AsyncCompletedEventArgs)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'PodcastEpisodeDownloader.ClientDownloadFileCompleted(object, AsyncCompletedEventArgs)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'PodcastEpisodeDownloader.ClientDownloadFileCompleted(object, AsyncCompletedEventArgs)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PodcastEpisodeNamingStyle">
+          <Members>
+           <Member Name="#UrlFilename">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'PodcastEpisodeNamingStyle.UrlFilename'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UrlFilenameAndPublishDateTime">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UrlFilenameFeedTitleAndPublishDateTime">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UrlFilenameFeedTitleAndPublishDateTimeInFolder">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+             <Message Id="InFolder" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberShouldBeDiscreteTerm">
+               <Item>InFolder</Item>
+               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder'</Item>
+               <Item>Infolder</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PodcastEpisodePurger">
+          <Messages>
+           <Message Id="Purger" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+            <Issue Name="Type">
+             <Item>Purger</Item>
+             <Item>'PodcastEpisodePurger'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#_fileUtilities">
+            <Messages>
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'PodcastEpisodePurger._fileUtilities'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ConvertFilenameToPublishedDate(System.String)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'PodcastEpisodePurger.ConvertFilenameToPublishedDate(string)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'PodcastEpisodePurger.ConvertFilenameToPublishedDate(string)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'PodcastEpisodePurger.ConvertFilenameToPublishedDate(string)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'PodcastEpisodePurger.ConvertFilenameToPublishedDate(string)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'PodcastEpisodePurger.ConvertFilenameToPublishedDate(string)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'PodcastEpisodePurger.ConvertFilenameToPublishedDate(string)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetWhenDownloadWasPublished(PodcastUtilities.Common.PodcastInfo,PodcastUtilities.Common.Platform.IFileInfo)">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'PodcastEpisodePurger.GetWhenDownloadWasPublished(PodcastInfo, IFileInfo)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IncorrectParameterName">
+               <Item>'PodcastEpisodePurger.GetWhenDownloadWasPublished(PodcastInfo, IFileInfo)'</Item>
+               <Item>NamingStyle</Item>
+               <Item>'paramName'</Item>
+               <Item>'ArgumentOutOfRangeException'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#IsSubFolderBasedNaming(PodcastUtilities.Common.PodcastEpisodeNamingStyle)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'PodcastEpisodePurger.IsSubFolderBasedNaming(PodcastEpisodeNamingStyle)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ScanFolderForOldFiles(System.String,System.DateTime,System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Platform.IFileInfo&gt;,PodcastUtilities.Common.PodcastInfo)">
+            <Messages>
+             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'string.ToLower()'</Item>
+               <Item>'PodcastEpisodePurger.ScanFolderForOldFiles(string, DateTime, List&lt;IFileInfo&gt;, PodcastInfo)'</Item>
+               <Item>'string.ToLower(CultureInfo)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PodcastFeedEpisodeFinder">
+          <Members>
+           <Member Name="#ApplyDownloadStrategy(System.String,PodcastUtilities.Common.PodcastInfo,System.Collections.Generic.List`1&lt;PodcastUtilities.Common.IFeedSyncItem&gt;)">
+            <Messages>
+             <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Created="2011-08-26 16:22:44Z">
+              <Issue Name="NoArguments">
+               <Item>'ArgumentOutOfRangeException'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#FindEpisodesToDownload(System.String,System.Int32,PodcastUtilities.Common.PodcastInfo)">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetDownloadPathname(System.String,PodcastUtilities.Common.PodcastInfo,PodcastUtilities.Common.IPodcastFeedItem)">
+            <Messages>
+             <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IncorrectParameterName">
+               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>NamingStyle</Item>
+               <Item>'paramName'</Item>
+               <Item>'ArgumentOutOfRangeException'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.DateTime.ToString(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'DateTime.ToString(string)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'DateTime.ToString(string)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'DateTime.ToString(string)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'DateTime.ToString(string)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'DateTime.ToString(string)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object, object)'</Item>
+               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, params object[])'</Item>
+               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PodcastFeedFormat">
+          <Members>
+           <Member Name="#ATOM">
+            <Messages>
+             <Message Id="ATOM" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2011-08-26 16:22:44Z">
+              <Issue Name="Member">
+               <Item>ATOM</Item>
+               <Item>'PodcastFeedFormat.ATOM'</Item>
+               <Item>Atom</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PodcastFeedInRssFormat">
+          <Messages>
+           <Message Id="Rss" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+            <Issue Name="Type">
+             <Item>Rss</Item>
+             <Item>'PodcastFeedInRssFormat'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#GetFeedEpisodes()">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'PodcastFeedInRssFormat.GetFeedEpisodes()'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'PodcastFeedInRssFormat.GetFeedEpisodes()'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'PodcastFeedInRssFormat.GetFeedEpisodes()'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'PodcastFeedInRssFormat.GetFeedEpisodes()'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetNodeText(System.Xml.XmlNode,System.String)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
+              <Issue Name="TooGeneric">
+               <Item>'PodcastFeedInRssFormat.GetNodeText(XmlNode, string)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PodcastFeedItem">
+          <Members>
+           <Member Name="#ProcessFilenameForInvalidChars(System.String)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'PodcastFeedItem.ProcessFilenameForInvalidChars(string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Rfc822DateTime">
+          <Messages>
+           <Message Id="Rfc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+            <Issue Name="Type">
+             <Item>Rfc</Item>
+             <Item>'Rfc822DateTime'</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053" Created="2011-08-26 16:22:44Z">
+            <Issue>
+             <Item>'Rfc822DateTime'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#ConvertZoneToLocalDifferential(System.String)">
+            <Messages>
+             <Message Id="s" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'s'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.LastIndexOf(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+              <Issue>
+               <Item>'string.LastIndexOf(string)'</Item>
+               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
+               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Parse(System.String)">
+            <Messages>
+             <Message Id="s" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Rfc822DateTime.Parse(string)'</Item>
+               <Item>'s'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Rfc822DateTimeFormat">
+            <Messages>
+             <Message Id="Rfc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+              <Issue Name="Member">
+               <Item>Rfc</Item>
+               <Item>'Rfc822DateTime.Rfc822DateTimeFormat'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Rfc822DateTimePatterns">
+            <Messages>
+             <Message Id="Rfc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+              <Issue Name="Member">
+               <Item>Rfc</Item>
+               <Item>'Rfc822DateTime.Rfc822DateTimePatterns'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'Rfc822DateTime.Rfc822DateTimePatterns'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ToString(System.DateTime)">
+            <Messages>
+             <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IncorrectMessage">
+               <Item>'Rfc822DateTime.ToString(DateTime)'</Item>
+               <Item>utcDateTime</Item>
+               <Item>'message'</Item>
+               <Item>'ArgumentException'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#TryParse(System.String,System.DateTime&amp;)">
+            <Messages>
+             <Message Id="s" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Rfc822DateTime.TryParse(string, out DateTime)'</Item>
+               <Item>'s'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="StatusUpdateEventArgs+Level">
+          <Messages>
+           <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Created="2011-08-26 16:22:44Z">
+            <Issue>
+             <Item>'StatusUpdateEventArgs.Level'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="UnwantedFileRemover">
+          <Members>
+           <Member Name="#RemoveUnwantedFiles(System.Collections.Generic.IEnumerable`1&lt;PodcastUtilities.Common.Platform.IFileInfo&gt;,System.String,System.String,System.Boolean)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'UnwantedFileRemover.RemoveUnwantedFiles(IEnumerable&lt;IFileInfo&gt;, string, string, bool)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="XmlFileBase">
+          <Messages>
+           <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Created="2011-08-26 16:22:44Z">
+            <Issue Certainty="60">
+             <Item>'XmlFileBase'</Item>
+             <Item>IEnumerable</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2011-08-26 16:22:44Z">
+            <Issue>
+             <Item>'XmlFileBase'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="TypesShouldNotExtendCertainBaseTypes" Category="Microsoft.Design" CheckId="CA1058" Created="2011-08-26 16:22:44Z">
+            <Issue Name="System.Xml.XmlDocument">
+             <Item>'XmlFileBase'</Item>
+             <Item>'XmlDocument'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(System.String,System.Boolean,System.String,System.Reflection.Assembly)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'XmlFileBase.XmlFileBase(string, bool, string, Assembly)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'XmlFileBase.XmlFileBase(string, bool, string, Assembly)'</Item>
+               <Item>&#xD;&#xA;&#xD;&#xA;XmlFileBase..ctor(String, Boolean, String, Assembly)&#xD;&#xA;XmlDocument.Load(Stream):Void</Item>
+              </Issue>
+              <Issue>
+               <Item>'XmlFileBase.XmlFileBase(string, bool, string, Assembly)'</Item>
+               <Item>&#xD;&#xA;&#xD;&#xA;XmlFileBase..ctor(String, Boolean, String, Assembly)&#xD;&#xA;XmlDocument.Load(Stream):Void&#xD;&#xA;XmlDocument.Load(String):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Filename">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'XmlFileBase.Filename'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetNodeText(System.String)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
+              <Issue Name="TooGeneric">
+               <Item>'XmlFileBase.GetNodeText(string)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="xpath" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameter">
+               <Item>'XmlFileBase.GetNodeText(string)'</Item>
+               <Item>xpath</Item>
+               <Item>'xpath'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#SetNodeText(System.String,System.String)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
+              <Issue Name="TooGeneric">
+               <Item>'XmlFileBase.SetNodeText(string, string)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="xpath" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameter">
+               <Item>'XmlFileBase.SetNodeText(string, string)'</Item>
+               <Item>xpath</Item>
+               <Item>'xpath'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="XmlState">
+          <Members>
+           <Member Name="#.ctor(System.String)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'XmlState.XmlState(string)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#.ctor(System.Xml.XmlDocument)">
+            <Messages>
+             <Message Id="System.Xml.XmlNode" TypeName="MembersShouldNotExposeCertainConcreteTypes" Category="Microsoft.Design" CheckId="CA1059" Created="2011-08-26 16:22:44Z">
+              <Issue Name="Xml">
+               <Item>'XmlState.XmlState(XmlDocument)'</Item>
+               <Item>'XmlDocument'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#_emptyStateResource">
+            <Messages>
+             <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'XmlState._emptyStateResource'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetDate(System.Xml.XmlNode)">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'XmlState.GetDate(XmlNode)'</Item>
+               <Item>'object'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetInt(System.Xml.XmlNode,System.String,System.Int32)">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'XmlState.GetInt(XmlNode, string, int)'</Item>
+               <Item>'object'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'XmlState.GetInt(XmlNode, string, int)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'int.ToString()'</Item>
+               <Item>'XmlState.GetInt(XmlNode, string, int)'</Item>
+               <Item>'int.ToString(IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetText(System.Xml.XmlNode,System.String,System.String)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'XmlState.GetText(XmlNode, string, string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#SetDate(System.Xml.XmlNode,System.DateTime)">
+            <Messages>
+             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'int.ToString()'</Item>
+               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
+               <Item>'int.ToString(IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'int.ToString()'</Item>
+               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
+               <Item>'int.ToString(IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'int.ToString()'</Item>
+               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
+               <Item>'int.ToString(IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'int.ToString()'</Item>
+               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
+               <Item>'int.ToString(IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'int.ToString()'</Item>
+               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
+               <Item>'int.ToString(IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'int.ToString()'</Item>
+               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
+               <Item>'int.ToString(IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#SetText(System.Xml.XmlNode,System.String,System.String)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'XmlState.SetText(XmlNode, string, string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#STATE_FILE_NAME">
+            <Messages>
+             <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'XmlState.STATE_FILE_NAME'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PodcastUtilities.Common.Platform">
+        <Types>
+         <Type Name="SystemFileInfo">
+          <Members>
+           <Member Name="#.ctor(System.String)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'SystemFileInfo.SystemFileInfo(string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="SystemNetWebClient">
+          <Messages>
+           <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2011-08-26 16:22:44Z">
+            <Issue Name="ProvideDisposeBool">
+             <Item>'SystemNetWebClient'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Dispose()">
+            <Messages>
+             <Message TypeName="CallGCSuppressFinalizeCorrectly" Category="Microsoft.Usage" CheckId="CA1816" Created="2011-08-26 16:22:44Z">
+              <Issue Name="NotCalled">
+               <Item>'SystemNetWebClient.Dispose()'</Item>
+               <Item>'GC.SuppressFinalize(object)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2011-08-26 16:22:44Z">
+              <Issue Name="DisposeImplementation">
+               <Item>'SystemNetWebClient.Dispose()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/PodcastUtilities.Ioc/bin/Debug/PodcastUtilities.Ioc.dll">
+    <Modules>
+     <Module Name="podcastutilities.ioc.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2011-08-26 16:22:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'PodcastUtilities.Ioc.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2011-08-26 16:22:44Z">
+        <Issue>
+         <Item>'PodcastUtilities.Ioc.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="PodcastUtilities.Ioc">
+        <Types>
+         <Type Name="LinFuIocContainer">
+          <Messages>
+           <Message Id="Fu" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2011-08-26 16:22:44Z">
+            <Issue Name="Type">
+             <Item>Fu</Item>
+             <Item>'LinFuIocContainer'</Item>
+             <Item>FU</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Register`2()">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'LinFuIocContainer.Register&lt;TService, TImplementor&gt;()'</Item>
+               <Item>'TImplementor'</Item>
+              </Issue>
+              <Issue>
+               <Item>'LinFuIocContainer.Register&lt;TService, TImplementor&gt;()'</Item>
+               <Item>'TService'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/PodcastUtilities.Presentation/bin/Debug/PodcastUtilities.Presentation.dll">
+    <Modules>
+     <Module Name="podcastutilities.presentation.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2011-08-26 16:22:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'PodcastUtilities.Presentation.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2011-08-26 16:22:44Z">
+        <Issue>
+         <Item>'PodcastUtilities.Presentation.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="PodcastUtilities.Presentation">
+        <Types>
+         <Type Name="DelegateCommand">
+          <Members>
+           <Member Name="#RaiseCanExecuteChanged(System.Object)">
+            <Messages>
+             <Message TypeName="UseEventsWhereAppropriate" Category="Microsoft.Design" CheckId="CA1030" Created="2011-08-26 16:22:44Z">
+              <Issue>
+               <Item>'DelegateCommand.RaiseCanExecuteChanged(object)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PodcastUtilities.Presentation.Services">
+        <Types>
+         <Type Name="IClipboardService">
+          <Members>
+           <Member Name="#GetText()">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2011-08-26 16:22:44Z">
+              <Issue Certainty="50">
+               <Item>'IClipboardService.GetText()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PodcastUtilities.Presentation.ViewModels">
+        <Types>
+         <Type Name="PodcastViewModel">
+          <Members>
+           <Member Name="#Error">
+            <Accessors>
+             <Accessor Name="#get_Error()">
+              <Messages>
+               <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Created="2011-08-26 16:22:44Z" FixCategory="Breaking">
+                <Issue Name="PropertyGetter" Level="Warning">
+                 <Item>'PodcastViewModel.Error.get()'</Item>
+                 <Item>'NotImplementedException'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ViewModel">
+          <Members>
+           <Member Name="#SetProperty`1(!!0&amp;,!!0,System.String)">
+            <Messages>
+             <Message Id="0#" TypeName="DoNotPassTypesByReference" Category="Microsoft.Design" CheckId="CA1045" Created="2011-08-26 16:22:44Z">
+              <Issue Level="CriticalWarning">
+               <Item>'property'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+  </Targets>
+  <Rules>
+   <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+    <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020">
+    <Resolution Name="Default">Consider merging the types defined in '{0}' with another namespace.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+    <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+    <Resolution Name="Default">It appears that field {0} is never used or is only ever assigned to. Use this field or remove it.</Resolution>
+   </Rule>
+   <Rule TypeName="CallGCSuppressFinalizeCorrectly" Category="Microsoft.Usage" CheckId="CA1816">
+    <Resolution Name="NotCalled">Change {0} to call {1}. This will prevent derived types that introduce a finalizer from needing to re-implement 'IDisposable' to call it.</Resolution>
+   </Rule>
+   <Rule TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010">
+    <Resolution Name="Default">{0} appears to be a non-generic, strongly typed collection. Add an implementation to the instance of {1}&lt;T&gt; where T is the underlying element type of {0}.</Resolution>
+   </Rule>
+   <Rule TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702">
+    <Resolution Name="MemberParameterShouldBeCompoundWord">In member {0}, the discrete term '{1}' in parameter name {2} should be expressed as a compound word, '{3}'.</Resolution>
+    <Resolution Name="MemberShouldBeCompoundWord">The discrete term '{0}' in member name {1} should be expressed as a compound word, '{2}'.</Resolution>
+    <Resolution Name="MemberShouldBeDiscreteTerm">The compound word '{0}' in member name {1} exists as a discrete term. If your usage is intended to be single word, case it as '{2}' or strip the first token entirely if it represents any sort of Hungarian notation.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214">
+    <Resolution Name="Default">{0} contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: {1}</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+    <Resolution Name="Default">Modify {0} to catch a more specific exception than {1} or rethrow the exception.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002">
+    <Resolution Name="Default">Change {0} in {1} to use Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; or KeyedCollection&lt;K,V&gt;</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotPassTypesByReference" Category="Microsoft.Design" CheckId="CA1045">
+    <Resolution Name="Default">Consider a design that does not require that {0} be a reference parameter.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065">
+    <Resolution Name="PropertyGetter">{0} creates an exception of type {1}, an exception type that should not be raised in a property. If this exception instance might be raised, use a different exception type, convert this property into a method, or change this property's logic so that it no longer raises an exception.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201">
+    <Resolution Name="Reserved">{0} creates an exception of type {1}, an exception type that is reserved by the runtime and should never be raised by managed code. If this exception instance might be thrown, use a different exception type.</Resolution>
+    <Resolution Name="TooGeneric">{0} creates an exception of type {1}, an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Resolution>
+   </Rule>
+   <Rule TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004">
+    <Resolution Name="Default">Consider a design where {0} doesn't require explicit type parameter {1} in any call to it.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+    <Resolution Name="Member">Correct the casing of '{0}' in member name {1} by changing it to '{2}'.</Resolution>
+    <Resolution Name="Type">Correct the casing of '{0}' in type name {1} by changing it to '{2}'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+    <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+    <Resolution Name="MemberParameter">In method {0}, correct the spelling of '{1}' in parameter name {2} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+    <Resolution Name="MemberParameterMoreMeaningfulName">In method {0}, consider providing a more meaningful name than parameter name {1}.</Resolution>
+    <Resolution Name="MethodTypeParameter">On method {0}, correct the spelling of '{1}' in generic type parameter name {2}.</Resolution>
+    <Resolution Name="Type">Correct the spelling of '{0}' in type name {1}.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710">
+    <Resolution Name="Default">Rename {0} to end in '{1}'.</Resolution>
+   </Rule>
+   <Rule TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063">
+    <Resolution Name="DisposeImplementation">Modify {0} so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Resolution>
+    <Resolution Name="ProvideDisposeBool">Provide an overridable implementation of Dispose(bool) on {0} or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Resolution>
+   </Rule>
+   <Rule TypeName="ImplementStandardExceptionConstructors" Category="Microsoft.Design" CheckId="CA1032">
+    <Resolution Name="MissingConstructor">Add the following constructor to {0}: {1}.</Resolution>
+   </Rule>
+   <Rule TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208">
+    <Resolution Name="IncorrectMessage">Method {0} passes parameter name '{1}' as the {2} argument to a {3} constructor. Replace this argument with a descriptive message and pass the parameter name in the correct position.</Resolution>
+    <Resolution Name="IncorrectParameterName">Method {0} passes '{1}' as the {2} argument to a {3} constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Resolution>
+    <Resolution Name="NoArguments">Call the {0} constructor that contains a message and/or paramName parameter.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
+    <Resolution Name="Default">Mark {0} with CLSCompliant(true) because it exposes externally visible types.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237">
+    <Resolution Name="Default">Add [Serializable] to {0} as this type implements ISerializable.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+    <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
+   </Rule>
+   <Rule TypeName="MembersShouldNotExposeCertainConcreteTypes" Category="Microsoft.Design" CheckId="CA1059">
+    <Resolution Name="Xml">Modify member {0} so that it no longer exposes the concrete type {1}. Use IXPathNavigable to represent XML data sources.</Resolution>
+   </Rule>
+   <Rule TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034">
+    <Resolution Name="Default">Do not nest type {0}. Alternatively, change its accessibility so that it is not externally visible.</Resolution>
+   </Rule>
+   <Rule TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211">
+    <Resolution Name="Default">Consider making {0} non-public or a constant.</Resolution>
+   </Rule>
+   <Rule TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819">
+    <Resolution Name="Default">Change {0} to return a collection or make it a method.</Resolution>
+   </Rule>
+   <Rule TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304">
+    <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'CultureInfo' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Resolution>
+   </Rule>
+   <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+    <Resolution Name="IFormatProviderAlternate">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be based on input from the user, specify {3} as the 'IFormatProvider' parameter. Otherwise, if the result will based on input stored and accessed by software, such as when it is loaded from disk or from a database, specify {4}.</Resolution>
+    <Resolution Name="IFormatProviderAlternateString">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify {3} as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify {4}.</Resolution>
+   </Rule>
+   <Rule TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307">
+    <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, such as when sorting a list of items for display in a list box, specify 'StringComparison.CurrentCulture' or 'StringComparison.CurrentCultureIgnoreCase' as the 'StringComparison' parameter. If comparing case-insensitive identifiers, such as file paths, environment variables, or registry keys and values, specify 'StringComparison.OrdinalIgnoreCase'. Otherwise, if comparing case-sensitive identifiers, specify 'StringComparison.Ordinal'.</Resolution>
+   </Rule>
+   <Rule TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053">
+    <Resolution Name="Default">Because type {0} contains only 'static' ('Shared' in Visual Basic) members, add a default private constructor to prevent the compiler from adding a default public constructor.</Resolution>
+   </Rule>
+   <Rule TypeName="TypesShouldNotExtendCertainBaseTypes" Category="Microsoft.Design" CheckId="CA1058">
+    <Resolution Name="System.Xml.XmlDocument">Change the base type of {0} so that it no longer extends {1}. The preferred design is to decouple the underlying XmlDocument representation from the type's interface by using containment instead of inheritance.</Resolution>
+   </Rule>
+   <Rule TypeName="UseEventsWhereAppropriate" Category="Microsoft.Design" CheckId="CA1030">
+    <Resolution Name="Default">Consider making {0} an event.</Resolution>
+   </Rule>
+   <Rule TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024">
+    <Resolution Name="Default">Change {0} to a property if appropriate.</Resolution>
+   </Rule>
+  </Rules>
+ </FxCopReport>
+</FxCopProject>

@@ -15,7 +15,7 @@ namespace PodcastUtilities.Common
 		/// <param name="filesToKeep">the files to be kept</param>
 		/// <param name="folderToRemoveFrom">folder to remove files from</param>
 		/// <param name="pattern">file patter to look for eg. *.mp3</param>
-        /// <param name="whatif">true to emit all the status updates but not actually perform the deletes, false to do the delete</param>
-        void RemoveUnwantedFiles(IEnumerable<IFileInfo> filesToKeep, string folderToRemoveFrom, string pattern, bool whatif);
+        /// <param name="whatIf">true to emit all the status updates but not actually perform the deletes, false to do the delete</param>
+        void RemoveUnwantedFiles(IEnumerable<IFileInfo> filesToKeep, string folderToRemoveFrom, string pattern, bool whatIf);
 	}
 }
