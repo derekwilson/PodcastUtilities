@@ -88,6 +88,7 @@
     <Compile Include="PodcastEpisodeDownloadStrategy.cs" />
     <Compile Include="PodcastEpisodePurger.cs" />
     <Compile Include="PodcastFactory.cs" />
+    <Compile Include="PodcastFeedFactory.cs" />
     <Compile Include="ProgressEventArgs.cs" />
     <Compile Include="IProgressUpdate.cs" />
     <Compile Include="IFeedSyncItem.cs" />
