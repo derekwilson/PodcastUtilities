@@ -146,7 +146,6 @@ namespace PodcastUtilities.Common
             StatusUpdateEventArgs args = null;
             lock (_lock)
             {
-                Exception exception = e.UserState as Exception;
                 var syncItem = e.UserState as FeedSyncItem;
                 if (syncItem == null)
                 {

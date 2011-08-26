@@ -39,8 +39,8 @@ namespace PodcastUtilities.Common
         /// <param name="filesToKeep">the files to be kept</param>
         /// <param name="folderToRemoveFrom">folder to remove files from</param>
         /// <param name="pattern">file patter to look for eg. *.mp3</param>
-        /// <param name="whatif">true to emit all the status updates but not actually perform the deletes, false to do the delete</param>
-        public void RemoveUnwantedFiles(IEnumerable<IFileInfo> filesToKeep, string folderToRemoveFrom, string pattern, bool whatif)
+        /// <param name="whatIf">true to emit all the status updates but not actually perform the deletes, false to do the delete</param>
+        public void RemoveUnwantedFiles(IEnumerable<IFileInfo> filesToKeep, string folderToRemoveFrom, string pattern, bool whatIf)
 		{
 			var removeDirectory = DirectoryInfoProvider.GetDirectoryInfo(folderToRemoveFrom);
 			if (!removeDirectory.Exists)
@@ -57,7 +57,7 @@ namespace PodcastUtilities.Common
 				{
 					//we cannot find the file that is in the destination in the source
 					OnStatusUpdate(string.Format("Removing: {0}", thisFile.FullName));
-					if (!whatif)
+					if (!whatIf)
 						FileUtilities.FileDelete(thisFile.FullName);
 				}
 			}
