@@ -660,13 +660,6 @@
                <Item>'IFileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
               </Issue>
              </Message>
-             <Message Id="whatif" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberParameter">
-               <Item>'IFileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
-               <Item>whatif</Item>
-               <Item>'whatif'</Item>
-              </Issue>
-             </Message>
             </Messages>
            </Member>
           </Members>
@@ -723,13 +716,6 @@
                <Item>'TService'</Item>
               </Issue>
              </Message>
-             <Message Id="Implementor" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
-              <Issue Name="MethodTypeParameter">
-               <Item>'IIocContainer.Register&lt;TService, TImplementor&gt;()'</Item>
-               <Item>Implementor</Item>
-               <Item>'TImplementor'</Item>
-              </Issue>
-             </Message>
             </Messages>
            </Member>
           </Members>
@@ -775,16 +761,6 @@
             </Messages>
            </Member>
           </Members>
-         </Type>
-         <Type Name="IPodcastEpisodePurger">
-          <Messages>
-           <Message Id="Purger" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-            <Issue Name="Type">
-             <Item>Purger</Item>
-             <Item>'IPodcastEpisodePurger'</Item>
-            </Issue>
-           </Message>
-          </Messages>
          </Type>
          <Type Name="IPodcastFeed">
           <Members>
@@ -884,12 +860,6 @@
              <Item>IEnumerable</Item>
             </Issue>
            </Message>
-           <Message Id="Asx" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-            <Issue Name="Type">
-             <Item>Asx</Item>
-             <Item>'PlaylistAsx'</Item>
-            </Issue>
-           </Message>
            <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2011-08-26 16:22:44Z">
             <Issue>
              <Item>'PlaylistAsx'</Item>
@@ -931,41 +901,9 @@
            </Member>
            <Member Name="#EmptyAsxResource">
             <Messages>
-             <Message Id="Asx" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-              <Issue Name="Member">
-               <Item>Asx</Item>
-               <Item>'PlaylistAsx.EmptyAsxResource'</Item>
-              </Issue>
-             </Message>
              <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Created="2011-08-26 16:22:44Z">
               <Issue>
                <Item>'PlaylistAsx.EmptyAsxResource'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="PlaylistFormat">
-          <Members>
-           <Member Name="#ASX">
-            <Messages>
-             <Message Id="ASX" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2011-08-26 16:22:44Z">
-              <Issue Name="Member">
-               <Item>ASX</Item>
-               <Item>'PlaylistFormat.ASX'</Item>
-               <Item>Asx</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#WPL">
-            <Messages>
-             <Message Id="WPL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2011-08-26 16:22:44Z">
-              <Issue Name="Member">
-               <Item>WPL</Item>
-               <Item>'PlaylistFormat.WPL'</Item>
-               <Item>Wpl</Item>
               </Issue>
              </Message>
             </Messages>
@@ -1011,12 +949,6 @@
              <Item>IEnumerable</Item>
             </Issue>
            </Message>
-           <Message Id="Wpl" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-            <Issue Name="Type">
-             <Item>Wpl</Item>
-             <Item>'PlaylistWpl'</Item>
-            </Issue>
-           </Message>
            <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2011-08-26 16:22:44Z">
             <Issue>
              <Item>'PlaylistWpl'</Item>
@@ -1058,12 +990,6 @@
            </Member>
            <Member Name="#EmptyWplResource">
             <Messages>
-             <Message Id="Wpl" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-              <Issue Name="Member">
-               <Item>Wpl</Item>
-               <Item>'PlaylistWpl.EmptyWplResource'</Item>
-              </Issue>
-             </Message>
              <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Created="2011-08-26 16:22:44Z">
               <Issue>
                <Item>'PlaylistWpl.EmptyWplResource'</Item>
@@ -1176,14 +1102,6 @@
           </Members>
          </Type>
          <Type Name="PodcastEpisodePurger">
-          <Messages>
-           <Message Id="Purger" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-            <Issue Name="Type">
-             <Item>Purger</Item>
-             <Item>'PodcastEpisodePurger'</Item>
-            </Issue>
-           </Message>
-          </Messages>
           <Members>
            <Member Name="#_fileUtilities">
             <Messages>
@@ -1430,30 +1348,7 @@
            </Member>
           </Members>
          </Type>
-         <Type Name="PodcastFeedFormat">
-          <Members>
-           <Member Name="#ATOM">
-            <Messages>
-             <Message Id="ATOM" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2011-08-26 16:22:44Z">
-              <Issue Name="Member">
-               <Item>ATOM</Item>
-               <Item>'PodcastFeedFormat.ATOM'</Item>
-               <Item>Atom</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="PodcastFeedInRssFormat">
-          <Messages>
-           <Message Id="Rss" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-            <Issue Name="Type">
-             <Item>Rss</Item>
-             <Item>'PodcastFeedInRssFormat'</Item>
-            </Issue>
-           </Message>
-          </Messages>
           <Members>
            <Member Name="#GetFeedEpisodes()">
             <Messages>
@@ -1517,12 +1412,6 @@
          </Type>
          <Type Name="Rfc822DateTime">
           <Messages>
-           <Message Id="Rfc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-            <Issue Name="Type">
-             <Item>Rfc</Item>
-             <Item>'Rfc822DateTime'</Item>
-            </Issue>
-           </Message>
            <Message TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053" Created="2011-08-26 16:22:44Z">
             <Issue>
              <Item>'Rfc822DateTime'</Item>
@@ -1532,12 +1421,6 @@
           <Members>
            <Member Name="#ConvertZoneToLocalDifferential(System.String)">
             <Messages>
-             <Message Id="s" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberParameterMoreMeaningfulName">
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'s'</Item>
-              </Issue>
-             </Message>
              <Message Id="System.String.LastIndexOf(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
               <Issue>
                <Item>'string.LastIndexOf(string)'</Item>
@@ -1617,34 +1500,8 @@
              </Message>
             </Messages>
            </Member>
-           <Member Name="#Parse(System.String)">
-            <Messages>
-             <Message Id="s" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberParameterMoreMeaningfulName">
-               <Item>'Rfc822DateTime.Parse(string)'</Item>
-               <Item>'s'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Rfc822DateTimeFormat">
-            <Messages>
-             <Message Id="Rfc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-              <Issue Name="Member">
-               <Item>Rfc</Item>
-               <Item>'Rfc822DateTime.Rfc822DateTimeFormat'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
            <Member Name="#Rfc822DateTimePatterns">
             <Messages>
-             <Message Id="Rfc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-              <Issue Name="Member">
-               <Item>Rfc</Item>
-               <Item>'Rfc822DateTime.Rfc822DateTimePatterns'</Item>
-              </Issue>
-             </Message>
              <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Created="2011-08-26 16:22:44Z">
               <Issue>
                <Item>'Rfc822DateTime.Rfc822DateTimePatterns'</Item>
@@ -1660,16 +1517,6 @@
                <Item>utcDateTime</Item>
                <Item>'message'</Item>
                <Item>'ArgumentException'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#TryParse(System.String,System.DateTime&amp;)">
-            <Messages>
-             <Message Id="s" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberParameterMoreMeaningfulName">
-               <Item>'Rfc822DateTime.TryParse(string, out DateTime)'</Item>
-               <Item>'s'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -1765,13 +1612,6 @@
                <Item>'Exception'</Item>
               </Issue>
              </Message>
-             <Message Id="xpath" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberParameter">
-               <Item>'XmlFileBase.GetNodeText(string)'</Item>
-               <Item>xpath</Item>
-               <Item>'xpath'</Item>
-              </Issue>
-             </Message>
             </Messages>
            </Member>
            <Member Name="#SetNodeText(System.String,System.String)">
@@ -1780,13 +1620,6 @@
               <Issue Name="TooGeneric">
                <Item>'XmlFileBase.SetNodeText(string, string)'</Item>
                <Item>'Exception'</Item>
-              </Issue>
-             </Message>
-             <Message Id="xpath" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberParameter">
-               <Item>'XmlFileBase.SetNodeText(string, string)'</Item>
-               <Item>xpath</Item>
-               <Item>'xpath'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -1999,25 +1832,11 @@
          <Item>'PodcastUtilities.Ioc.dll'</Item>
         </Issue>
        </Message>
-       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2011-08-26 16:22:44Z">
-        <Issue>
-         <Item>'PodcastUtilities.Ioc.dll'</Item>
-        </Issue>
-       </Message>
       </Messages>
       <Namespaces>
        <Namespace Name="PodcastUtilities.Ioc">
         <Types>
          <Type Name="LinFuIocContainer">
-          <Messages>
-           <Message Id="Fu" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2011-08-26 16:22:44Z">
-            <Issue Name="Type">
-             <Item>Fu</Item>
-             <Item>'LinFuIocContainer'</Item>
-             <Item>FU</Item>
-            </Issue>
-           </Message>
-          </Messages>
           <Members>
            <Member Name="#Register`2()">
             <Messages>
@@ -2177,16 +1996,8 @@
    <Rule TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004">
     <Resolution Name="Default">Consider a design where {0} doesn't require explicit type parameter {1} in any call to it.</Resolution>
    </Rule>
-   <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
-    <Resolution Name="Member">Correct the casing of '{0}' in member name {1} by changing it to '{2}'.</Resolution>
-    <Resolution Name="Type">Correct the casing of '{0}' in type name {1} by changing it to '{2}'.</Resolution>
-   </Rule>
    <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
-    <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
     <Resolution Name="MemberParameter">In method {0}, correct the spelling of '{1}' in parameter name {2} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
-    <Resolution Name="MemberParameterMoreMeaningfulName">In method {0}, consider providing a more meaningful name than parameter name {1}.</Resolution>
-    <Resolution Name="MethodTypeParameter">On method {0}, correct the spelling of '{1}' in generic type parameter name {2}.</Resolution>
-    <Resolution Name="Type">Correct the spelling of '{0}' in type name {1}.</Resolution>
    </Rule>
    <Rule TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710">
     <Resolution Name="Default">Rename {0} to end in '{1}'.</Resolution>
