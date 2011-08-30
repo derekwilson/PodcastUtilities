@@ -1,11 +1,13 @@
-﻿using PodcastUtilities.Common;
+﻿using System;
+using PodcastUtilities.Common;
 using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Ioc
 {
 	public static class IocRegistration
 	{
-		public static void RegisterFileServices(IIocContainer container)
+        [CLSCompliant(false)]
+        public static void RegisterFileServices(IIocContainer container)
 		{
 			container.Register<IDriveInfoProvider, SystemDriveInfoProvider>();
 			container.Register<IDirectoryInfoProvider, SystemDirectoryInfoProvider>();
@@ -18,22 +20,26 @@ namespace PodcastUtilities.Ioc
             container.Register<IControlFileFactory, ControlFileFactory>();
         }
 
+        [CLSCompliant(false)]
         public static void RegisterSystemServices(IIocContainer container)
         {
             container.Register<ITimeProvider, SystemDateTimeProvider>();
         }
 
+        [CLSCompliant(false)]
         public static void RegisterPlaylistServices(IIocContainer container)
         {
             container.Register<IPlaylistFactory, PlaylistFactory>();
         }
 
+        [CLSCompliant(false)]
         public static void RegisterPodcastServices(IIocContainer container)
         {
             container.Register<IPodcastFactory, PodcastFactory>();
             container.Register<IPodcastDefaultsProvider, HardcodedPodcastDefaultsProvider>();
         }
 
+        [CLSCompliant(false)]
         public static void RegisterFeedServices(IIocContainer container)
         {
             container.Register<IPodcastFeedFactory, PodcastFeedFactory>();

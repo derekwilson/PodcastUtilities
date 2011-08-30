@@ -20,11 +20,11 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// Private member to hold array of formats that RFC 822 date-time representations conform to.
         /// </summary>
-        private static string[] formats = new string[0];
+        private static string[] _formats = new string[0];
         /// <summary>
         /// Private member to hold the DateTime format string for representing a DateTime in the RFC 822 format.
         /// </summary>
-        private const string format = "ddd, dd MMM yyyy HH:mm:ss K";
+        private const string Format = "ddd, dd MMM yyyy HH:mm:ss K";
         #endregion
 
         //============================================================
@@ -55,7 +55,7 @@ namespace PodcastUtilities.Common
         {
             get
             {
-                return format;
+                return Format;
             }
         }
         #endregion
@@ -77,104 +77,104 @@ namespace PodcastUtilities.Common
         {
             get
             {
-                if (formats.Length > 0)
+                if (_formats.Length > 0)
                 {
-                    return formats;
+                    return _formats;
                 }
                 else
                 {
-                    formats = new string[67];
+                    _formats = new string[67];
 
                     // with seconds
 
                     // two-digit day, four-digit year patterns
-                    formats[0] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'fffffff zzzz";
-                    formats[1] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'ffffff zzzz";
-                    formats[2] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'fffff zzzz";
-                    formats[3] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'ffff zzzz";
-                    formats[4] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'fff zzzz";
-                    formats[5] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'ff zzzz";
-                    formats[6] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'f zzzz";
-                    formats[7] = "ddd',' dd MMM yyyy HH':'mm':'ss zzzz";
+                    _formats[0] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'fffffff zzzz";
+                    _formats[1] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'ffffff zzzz";
+                    _formats[2] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'fffff zzzz";
+                    _formats[3] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'ffff zzzz";
+                    _formats[4] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'fff zzzz";
+                    _formats[5] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'ff zzzz";
+                    _formats[6] = "ddd',' dd MMM yyyy HH':'mm':'ss'.'f zzzz";
+                    _formats[7] = "ddd',' dd MMM yyyy HH':'mm':'ss zzzz";
 
                     // two-digit day, two-digit year patterns
-                    formats[8] = "ddd',' dd MMM yy HH':'mm':'ss'.'fffffff zzzz";
-                    formats[9] = "ddd',' dd MMM yy HH':'mm':'ss'.'ffffff zzzz";
-                    formats[10] = "ddd',' dd MMM yy HH':'mm':'ss'.'fffff zzzz";
-                    formats[11] = "ddd',' dd MMM yy HH':'mm':'ss'.'ffff zzzz";
-                    formats[12] = "ddd',' dd MMM yy HH':'mm':'ss'.'fff zzzz";
-                    formats[13] = "ddd',' dd MMM yy HH':'mm':'ss'.'ff zzzz";
-                    formats[14] = "ddd',' dd MMM yy HH':'mm':'ss'.'f zzzz";
-                    formats[15] = "ddd',' dd MMM yy HH':'mm':'ss zzzz";
+                    _formats[8] = "ddd',' dd MMM yy HH':'mm':'ss'.'fffffff zzzz";
+                    _formats[9] = "ddd',' dd MMM yy HH':'mm':'ss'.'ffffff zzzz";
+                    _formats[10] = "ddd',' dd MMM yy HH':'mm':'ss'.'fffff zzzz";
+                    _formats[11] = "ddd',' dd MMM yy HH':'mm':'ss'.'ffff zzzz";
+                    _formats[12] = "ddd',' dd MMM yy HH':'mm':'ss'.'fff zzzz";
+                    _formats[13] = "ddd',' dd MMM yy HH':'mm':'ss'.'ff zzzz";
+                    _formats[14] = "ddd',' dd MMM yy HH':'mm':'ss'.'f zzzz";
+                    _formats[15] = "ddd',' dd MMM yy HH':'mm':'ss zzzz";
 
                     // one-digit day, four-digit year patterns
-                    formats[16] = "ddd',' d MMM yyyy HH':'mm':'ss'.'fffffff zzzz";
-                    formats[17] = "ddd',' d MMM yyyy HH':'mm':'ss'.'ffffff zzzz";
-                    formats[18] = "ddd',' d MMM yyyy HH':'mm':'ss'.'fffff zzzz";
-                    formats[19] = "ddd',' d MMM yyyy HH':'mm':'ss'.'ffff zzzz";
-                    formats[20] = "ddd',' d MMM yyyy HH':'mm':'ss'.'fff zzzz";
-                    formats[21] = "ddd',' d MMM yyyy HH':'mm':'ss'.'ff zzzz";
-                    formats[22] = "ddd',' d MMM yyyy HH':'mm':'ss'.'f zzzz";
-                    formats[23] = "ddd',' d MMM yyyy HH':'mm':'ss zzzz";
+                    _formats[16] = "ddd',' d MMM yyyy HH':'mm':'ss'.'fffffff zzzz";
+                    _formats[17] = "ddd',' d MMM yyyy HH':'mm':'ss'.'ffffff zzzz";
+                    _formats[18] = "ddd',' d MMM yyyy HH':'mm':'ss'.'fffff zzzz";
+                    _formats[19] = "ddd',' d MMM yyyy HH':'mm':'ss'.'ffff zzzz";
+                    _formats[20] = "ddd',' d MMM yyyy HH':'mm':'ss'.'fff zzzz";
+                    _formats[21] = "ddd',' d MMM yyyy HH':'mm':'ss'.'ff zzzz";
+                    _formats[22] = "ddd',' d MMM yyyy HH':'mm':'ss'.'f zzzz";
+                    _formats[23] = "ddd',' d MMM yyyy HH':'mm':'ss zzzz";
 
                     // two-digit day, two-digit year patterns
-                    formats[24] = "ddd',' d MMM yy HH':'mm':'ss'.'fffffff zzzz";
-                    formats[25] = "ddd',' d MMM yy HH':'mm':'ss'.'ffffff zzzz";
-                    formats[26] = "ddd',' d MMM yy HH':'mm':'ss'.'fffff zzzz";
-                    formats[27] = "ddd',' d MMM yy HH':'mm':'ss'.'ffff zzzz";
-                    formats[28] = "ddd',' d MMM yy HH':'mm':'ss'.'fff zzzz";
-                    formats[29] = "ddd',' d MMM yy HH':'mm':'ss'.'ff zzzz";
-                    formats[30] = "ddd',' d MMM yy HH':'mm':'ss'.'f zzzz";
-                    formats[31] = "ddd',' d MMM yy HH':'mm':'ss zzzz";
+                    _formats[24] = "ddd',' d MMM yy HH':'mm':'ss'.'fffffff zzzz";
+                    _formats[25] = "ddd',' d MMM yy HH':'mm':'ss'.'ffffff zzzz";
+                    _formats[26] = "ddd',' d MMM yy HH':'mm':'ss'.'fffff zzzz";
+                    _formats[27] = "ddd',' d MMM yy HH':'mm':'ss'.'ffff zzzz";
+                    _formats[28] = "ddd',' d MMM yy HH':'mm':'ss'.'fff zzzz";
+                    _formats[29] = "ddd',' d MMM yy HH':'mm':'ss'.'ff zzzz";
+                    _formats[30] = "ddd',' d MMM yy HH':'mm':'ss'.'f zzzz";
+                    _formats[31] = "ddd',' d MMM yy HH':'mm':'ss zzzz";
 
                     // without seconds
 
                     // two-digit day, four-digit year patterns
-                    formats[32] = "ddd',' dd MMM yyyy HH':'mm'.'fffffff zzzz";
-                    formats[33] = "ddd',' dd MMM yyyy HH':'mm'.'ffffff zzzz";
-                    formats[34] = "ddd',' dd MMM yyyy HH':'mm'.'fffff zzzz";
-                    formats[35] = "ddd',' dd MMM yyyy HH':'mm'.'ffff zzzz";
-                    formats[36] = "ddd',' dd MMM yyyy HH':'mm'.'fff zzzz";
-                    formats[37] = "ddd',' dd MMM yyyy HH':'mm'.'ff zzzz";
-                    formats[38] = "ddd',' dd MMM yyyy HH':'mm'.'f zzzz";
-                    formats[39] = "ddd',' dd MMM yyyy HH':'mm zzzz";
+                    _formats[32] = "ddd',' dd MMM yyyy HH':'mm'.'fffffff zzzz";
+                    _formats[33] = "ddd',' dd MMM yyyy HH':'mm'.'ffffff zzzz";
+                    _formats[34] = "ddd',' dd MMM yyyy HH':'mm'.'fffff zzzz";
+                    _formats[35] = "ddd',' dd MMM yyyy HH':'mm'.'ffff zzzz";
+                    _formats[36] = "ddd',' dd MMM yyyy HH':'mm'.'fff zzzz";
+                    _formats[37] = "ddd',' dd MMM yyyy HH':'mm'.'ff zzzz";
+                    _formats[38] = "ddd',' dd MMM yyyy HH':'mm'.'f zzzz";
+                    _formats[39] = "ddd',' dd MMM yyyy HH':'mm zzzz";
 
                     // two-digit day, two-digit year patterns
-                    formats[40] = "ddd',' dd MMM yy HH':'mm'.'fffffff zzzz";
-                    formats[41] = "ddd',' dd MMM yy HH':'mm'.'ffffff zzzz";
-                    formats[42] = "ddd',' dd MMM yy HH':'mm'.'fffff zzzz";
-                    formats[43] = "ddd',' dd MMM yy HH':'mm'.'ffff zzzz";
-                    formats[44] = "ddd',' dd MMM yy HH':'mm'.'fff zzzz";
-                    formats[45] = "ddd',' dd MMM yy HH':'mm'.'ff zzzz";
-                    formats[46] = "ddd',' dd MMM yy HH':'mm'.'f zzzz";
-                    formats[47] = "ddd',' dd MMM yy HH':'mm zzzz";
+                    _formats[40] = "ddd',' dd MMM yy HH':'mm'.'fffffff zzzz";
+                    _formats[41] = "ddd',' dd MMM yy HH':'mm'.'ffffff zzzz";
+                    _formats[42] = "ddd',' dd MMM yy HH':'mm'.'fffff zzzz";
+                    _formats[43] = "ddd',' dd MMM yy HH':'mm'.'ffff zzzz";
+                    _formats[44] = "ddd',' dd MMM yy HH':'mm'.'fff zzzz";
+                    _formats[45] = "ddd',' dd MMM yy HH':'mm'.'ff zzzz";
+                    _formats[46] = "ddd',' dd MMM yy HH':'mm'.'f zzzz";
+                    _formats[47] = "ddd',' dd MMM yy HH':'mm zzzz";
 
                     // one-digit day, four-digit year patterns
-                    formats[48] = "ddd',' d MMM yyyy HH':'mm'.'fffffff zzzz";
-                    formats[49] = "ddd',' d MMM yyyy HH':'mm'.'ffffff zzzz";
-                    formats[50] = "ddd',' d MMM yyyy HH':'mm'.'fffff zzzz";
-                    formats[51] = "ddd',' d MMM yyyy HH':'mm'.'ffff zzzz";
-                    formats[52] = "ddd',' d MMM yyyy HH':'mm'.'fff zzzz";
-                    formats[53] = "ddd',' d MMM yyyy HH':'mm'.'ff zzzz";
-                    formats[54] = "ddd',' d MMM yyyy HH':'mm'.'f zzzz";
-                    formats[55] = "ddd',' d MMM yyyy HH':'mm zzzz";
+                    _formats[48] = "ddd',' d MMM yyyy HH':'mm'.'fffffff zzzz";
+                    _formats[49] = "ddd',' d MMM yyyy HH':'mm'.'ffffff zzzz";
+                    _formats[50] = "ddd',' d MMM yyyy HH':'mm'.'fffff zzzz";
+                    _formats[51] = "ddd',' d MMM yyyy HH':'mm'.'ffff zzzz";
+                    _formats[52] = "ddd',' d MMM yyyy HH':'mm'.'fff zzzz";
+                    _formats[53] = "ddd',' d MMM yyyy HH':'mm'.'ff zzzz";
+                    _formats[54] = "ddd',' d MMM yyyy HH':'mm'.'f zzzz";
+                    _formats[55] = "ddd',' d MMM yyyy HH':'mm zzzz";
 
                     // two-digit day, two-digit year patterns
-                    formats[56] = "ddd',' d MMM yy HH':'mm'.'fffffff zzzz";
-                    formats[57] = "ddd',' d MMM yy HH':'mm'.'ffffff zzzz";
-                    formats[58] = "ddd',' d MMM yy HH':'mm'.'fffff zzzz";
-                    formats[59] = "ddd',' d MMM yy HH':'mm'.'ffff zzzz";
-                    formats[60] = "ddd',' d MMM yy HH':'mm'.'fff zzzz";
-                    formats[61] = "ddd',' d MMM yy HH':'mm'.'ff zzzz";
-                    formats[62] = "ddd',' d MMM yy HH':'mm'.'f zzzz";
-                    formats[63] = "ddd',' d MMM yy HH':'mm zzzz";
+                    _formats[56] = "ddd',' d MMM yy HH':'mm'.'fffffff zzzz";
+                    _formats[57] = "ddd',' d MMM yy HH':'mm'.'ffffff zzzz";
+                    _formats[58] = "ddd',' d MMM yy HH':'mm'.'fffff zzzz";
+                    _formats[59] = "ddd',' d MMM yy HH':'mm'.'ffff zzzz";
+                    _formats[60] = "ddd',' d MMM yy HH':'mm'.'fff zzzz";
+                    _formats[61] = "ddd',' d MMM yy HH':'mm'.'ff zzzz";
+                    _formats[62] = "ddd',' d MMM yy HH':'mm'.'f zzzz";
+                    _formats[63] = "ddd',' d MMM yy HH':'mm zzzz";
 
                     // Fall back patterns
-                    formats[64] = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK"; // RoundtripDateTimePattern
-                    formats[65] = DateTimeFormatInfo.InvariantInfo.UniversalSortableDateTimePattern;
-                    formats[66] = DateTimeFormatInfo.InvariantInfo.SortableDateTimePattern;
+                    _formats[64] = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK"; // RoundtripDateTimePattern
+                    _formats[65] = DateTimeFormatInfo.InvariantInfo.UniversalSortableDateTimePattern;
+                    _formats[66] = DateTimeFormatInfo.InvariantInfo.SortableDateTimePattern;
 
-                    return formats;
+                    return _formats;
                 }
             }
         }
@@ -187,35 +187,35 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// Converts the specified string representation of a date and time to its <see cref="DateTime"/> equivalent.
         /// </summary>
-        /// <param name="s">A string containing a date and time to convert.</param>
+        /// <param name="dateTime">A string containing a date and time to convert.</param>
         /// <returns>
-        /// A <see cref="DateTime"/> equivalent to the date and time contained in <paramref name="s"/>, 
+        /// A <see cref="DateTime"/> equivalent to the date and time contained in <paramref name="dateTime"/>, 
         /// expressed as <i>Coordinated Universal Time (UTC)</i>.
         /// </returns>
         /// <remarks>
-        /// The string <paramref name="s"/> is parsed using formatting information in the <see cref="DateTimeFormatInfo.InvariantInfo"/> object.
+        /// The string <paramref name="dateTime"/> is parsed using formatting information in the <see cref="DateTimeFormatInfo.InvariantInfo"/> object.
         /// </remarks>
-        /// <exception cref="ArgumentNullException"><paramref name="s"/> is a <b>null</b> reference (Nothing in Visual Basic).</exception>
-        /// <exception cref="ArgumentNullException"><paramref name="s"/> is an empty string.</exception>
-        /// <exception cref="FormatException"><paramref name="s"/> does not contain a valid RFC 822 string representation of a date and time.</exception>
-        public static DateTime Parse(string s)
+        /// <exception cref="ArgumentNullException"><paramref name="dateTime"/> is a <b>null</b> reference (Nothing in Visual Basic).</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="dateTime"/> is an empty string.</exception>
+        /// <exception cref="FormatException"><paramref name="dateTime"/> does not contain a valid RFC 822 string representation of a date and time.</exception>
+        public static DateTime Parse(string dateTime)
         {
             //------------------------------------------------------------
             //  Validate parameter
             //------------------------------------------------------------
-            if (String.IsNullOrEmpty(s))
+            if (String.IsNullOrEmpty(dateTime))
             {
-                throw new ArgumentNullException("s");
+                throw new ArgumentNullException("dateTime");
             }
 
             DateTime result;
-            if (Rfc822DateTime.TryParse(s, out result))
+            if (Rfc822DateTime.TryParse(dateTime, out result))
             {
                 return result;
             }
             else
             {
-                throw new FormatException(String.Format(null, "{0} is not a valid RFC 822 string representation of a date and time.", s));
+                throw new FormatException(String.Format(null, "{0} is not a valid RFC 822 string representation of a date and time.", dateTime));
             }
         }
         #endregion
@@ -224,85 +224,85 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// Converts the time zone component of an RFC 822 date and time string representation to its local differential (time zone offset).
         /// </summary>
-        /// <param name="s">A string containing an RFC 822 date and time to convert.</param>
-        /// <returns>A date and time string that uses local differential to describe the time zone equivalent to the date and time contained in <paramref name="s"/>.</returns>
-        /// <exception cref="ArgumentNullException"><paramref name="s"/> is a <b>null</b> reference (Nothing in Visual Basic).</exception>
-        /// <exception cref="ArgumentNullException"><paramref name="s"/> is an empty string.</exception>
-        public static string ConvertZoneToLocalDifferential(string s)
+        /// <param name="dateTime">A string containing an RFC 822 date and time to convert.</param>
+        /// <returns>A date and time string that uses local differential to describe the time zone equivalent to the date and time contained in <paramref name="dateTime"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="dateTime"/> is a <b>null</b> reference (Nothing in Visual Basic).</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="dateTime"/> is an empty string.</exception>
+        public static string ConvertZoneToLocalDifferential(string dateTime)
         {
             string zoneRepresentedAsLocalDifferential = String.Empty;
 
             //------------------------------------------------------------
             //  Validate parameter
             //------------------------------------------------------------
-            if (String.IsNullOrEmpty(s))
+            if (String.IsNullOrEmpty(dateTime))
             {
-                throw new ArgumentNullException("s");
+                throw new ArgumentNullException("dateTime");
             }
 
-            if (s.EndsWith(" UT", StringComparison.OrdinalIgnoreCase))
+            if (dateTime.EndsWith(" UT", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" UT") + 1)), "+00:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" UT") + 1)), "+00:00");
             }
-            else if (s.EndsWith(" GMT", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" GMT", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" GMT") + 1)), "+00:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" GMT") + 1)), "+00:00");
             }
-            else if (s.EndsWith(" EST", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" EST", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" EST") + 1)), "-05:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" EST") + 1)), "-05:00");
             }
-            else if (s.EndsWith(" EDT", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" EDT", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" EDT") + 1)), "-04:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" EDT") + 1)), "-04:00");
             }
-            else if (s.EndsWith(" CST", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" CST", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" CST") + 1)), "-06:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" CST") + 1)), "-06:00");
             }
-            else if (s.EndsWith(" CDT", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" CDT", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" CDT") + 1)), "-05:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" CDT") + 1)), "-05:00");
             }
-            else if (s.EndsWith(" MST", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" MST", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" MST") + 1)), "-07:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" MST") + 1)), "-07:00");
             }
-            else if (s.EndsWith(" MDT", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" MDT", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" MDT") + 1)), "-06:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" MDT") + 1)), "-06:00");
             }
-            else if (s.EndsWith(" PST", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" PST", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" PST") + 1)), "-08:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" PST") + 1)), "-08:00");
             }
-            else if (s.EndsWith(" PDT", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" PDT", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" PDT") + 1)), "-07:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" PDT") + 1)), "-07:00");
             }
-            else if (s.EndsWith(" Z", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" Z", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" Z") + 1)), "+00:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" Z") + 1)), "+00:00");
             }
-            else if (s.EndsWith(" A", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" A", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" A") + 1)), "-01:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" A") + 1)), "-01:00");
             }
-            else if (s.EndsWith(" M", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" M", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" M") + 1)), "-12:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" M") + 1)), "-12:00");
             }
-            else if (s.EndsWith(" N", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" N", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" N") + 1)), "+01:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" N") + 1)), "+01:00");
             }
-            else if (s.EndsWith(" Y", StringComparison.OrdinalIgnoreCase))
+            else if (dateTime.EndsWith(" Y", StringComparison.OrdinalIgnoreCase))
             {
-                zoneRepresentedAsLocalDifferential = String.Concat(s.Substring(0, (s.LastIndexOf(" Y") + 1)), "+12:00");
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" Y") + 1)), "+12:00");
             }
             else
             {
-                zoneRepresentedAsLocalDifferential = s;
+                zoneRepresentedAsLocalDifferential = dateTime;
             }
 
             return zoneRepresentedAsLocalDifferential;
@@ -331,20 +331,20 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// Converts the specified string representation of a date and time to its <see cref="DateTime"/> equivalent.
         /// </summary>
-        /// <param name="s">A string containing a date and time to convert.</param>
+        /// <param name="dateTime">A string containing a date and time to convert.</param>
         /// <param name="result">
         /// When this method returns, contains the <see cref="DateTime"/> value equivalent to the date and time 
-        /// contained in <paramref name="s"/>, expressed as <i>Coordinated Universal Time (UTC)</i>, 
+        /// contained in <paramref name="dateTime"/>, expressed as <i>Coordinated Universal Time (UTC)</i>, 
         /// if the conversion succeeded, or <see cref="DateTime.MinValue">MinValue</see> if the conversion failed. 
         /// The conversion fails if the s parameter is a <b>null</b> reference (Nothing in Visual Basic), 
         /// or does not contain a valid string representation of a date and time. 
         /// This parameter is passed uninitialized.
         /// </param>
-        /// <returns><b>true</b> if the <paramref name="s"/> parameter was converted successfully; otherwise, <b>false</b>.</returns>
+        /// <returns><b>true</b> if the <paramref name="dateTime"/> parameter was converted successfully; otherwise, <b>false</b>.</returns>
         /// <remarks>
-        /// The string <paramref name="s"/> is parsed using formatting information in the <see cref="DateTimeFormatInfo.InvariantInfo"/> object. 
+        /// The string <paramref name="dateTime"/> is parsed using formatting information in the <see cref="DateTimeFormatInfo.InvariantInfo"/> object. 
         /// </remarks>
-        public static bool TryParse(string s, out DateTime result)
+        public static bool TryParse(string dateTime, out DateTime result)
         {
             //------------------------------------------------------------
             //  Attempt to convert string representation
@@ -352,10 +352,10 @@ namespace PodcastUtilities.Common
             bool wasConverted = false;
             result = DateTime.MinValue;
 
-            if (!String.IsNullOrEmpty(s))
+            if (!String.IsNullOrEmpty(dateTime))
             {
                 DateTime parseResult;
-                if (DateTime.TryParseExact(Rfc822DateTime.ConvertZoneToLocalDifferential(s), Rfc822DateTime.Rfc822DateTimePatterns, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.AdjustToUniversal, out parseResult))
+                if (DateTime.TryParseExact(Rfc822DateTime.ConvertZoneToLocalDifferential(dateTime), Rfc822DateTime.Rfc822DateTimePatterns, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.AdjustToUniversal, out parseResult))
                 {
                     result = DateTime.SpecifyKind(parseResult, DateTimeKind.Utc);
                     wasConverted = true;
