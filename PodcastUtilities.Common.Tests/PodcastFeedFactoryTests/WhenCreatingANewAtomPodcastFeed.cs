@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common.Tests.PodcastFeedFactoryTests
 {
@@ -21,7 +22,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedFactoryTests
         [Test]
         public void ItShouldThrow()
         {
-            Assert.That(ThrownException, Is.InstanceOf<ArgumentOutOfRangeException>());
+            Assert.That(ThrownException, Is.InstanceOf<EnumOutOfRangeException>());
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using PodcastUtilities.Common.Exceptions;
 using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common
@@ -47,18 +48,18 @@ namespace PodcastUtilities.Common
                 case PodcastEpisodeNamingStyle.UrlFilename:
                     return file.CreationTime;
                 default:
-                    throw new IndexOutOfRangeException("NamingStyle");
+                    throw new EnumOutOfRangeException("NamingStyle");
             }
         }
 
         private static DateTime ConvertFilenameToPublishedDate(string fileName)
         {
             return new DateTime(
-                    Convert.ToInt32(fileName.Substring(0, 4)),
-                    Convert.ToInt32(fileName.Substring(5, 2)),
-                    Convert.ToInt32(fileName.Substring(8, 2)),
-                    Convert.ToInt32(fileName.Substring(11, 2)),
-                    Convert.ToInt32(fileName.Substring(13, 2)),
+                    Convert.ToInt32(fileName.Substring(0, 4), CultureInfo.InvariantCulture),
+                    Convert.ToInt32(fileName.Substring(5, 2), CultureInfo.InvariantCulture),
+                    Convert.ToInt32(fileName.Substring(8, 2), CultureInfo.InvariantCulture),
+                    Convert.ToInt32(fileName.Substring(11, 2), CultureInfo.InvariantCulture),
+                    Convert.ToInt32(fileName.Substring(13, 2), CultureInfo.InvariantCulture),
                     0
                 );
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
+using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common
 {
@@ -80,7 +81,7 @@ namespace PodcastUtilities.Common
                     case "asx":
                         return PlaylistFormat.ASX;
                 }
-                throw new IndexOutOfRangeException(string.Format("{0} is not a valid value for the playlist format",format));
+                throw new ControlFileValueFormatException(string.Format("{0} is not a valid value for the playlist format", format));
             }
         }
 
@@ -250,7 +251,7 @@ namespace PodcastUtilities.Common
                 case "atom":
                     return PodcastFeedFormat.ATOM;
             }
-            throw new IndexOutOfRangeException(string.Format("{0} is not a valid value for the feed format", format));
+            throw new ControlFileValueFormatException(string.Format("{0} is not a valid value for the feed format", format));
         }
 
         private int ReadMaximumDaysOld(XmlNode feedNode)
@@ -308,7 +309,7 @@ namespace PodcastUtilities.Common
                     return PodcastEpisodeNamingStyle.UrlFilename;
 
             }
-            throw new IndexOutOfRangeException(string.Format("{0} is not a valid value for the feed format", format));
+            throw new ControlFileValueFormatException(string.Format("{0} is not a valid value for the feed format", format));
         }
 
         private PodcastEpisodeDownloadStrategy ReadFeedEpisodeDownloadStrategy(string strategy)
@@ -325,7 +326,7 @@ namespace PodcastUtilities.Common
                     return PodcastEpisodeDownloadStrategy.All;
 
             }
-            throw new IndexOutOfRangeException(string.Format("{0} is not a valid value for the feed download strategy", strategy));
+            throw new ControlFileValueFormatException(string.Format("{0} is not a valid value for the feed download strategy", strategy));
         }
 
 
@@ -386,7 +387,7 @@ namespace PodcastUtilities.Common
 			XmlNode n = root.SelectSingleNode(xpath);
 			if (n == null)
 			{
-				throw new System.Exception("GetNodeText : Node path '" + xpath + "' not found");
+				throw new XmlStructureException("GetNodeText : Node path '" + xpath + "' not found");
 			}
 			return n.InnerText;
 		}

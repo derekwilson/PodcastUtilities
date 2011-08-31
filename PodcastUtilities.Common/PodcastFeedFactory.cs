@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common
 {
@@ -21,7 +22,7 @@ namespace PodcastUtilities.Common
                 case PodcastFeedFormat.RSS:
                     return new PodcastFeedInRssFormat(feedData);
                 default:
-                    throw new ArgumentOutOfRangeException("playlistFormat");
+                    throw new EnumOutOfRangeException("playlistFormat");
             }
         }
     }

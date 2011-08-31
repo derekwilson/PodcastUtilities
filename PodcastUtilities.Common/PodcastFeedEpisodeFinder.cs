@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
+using PodcastUtilities.Common.Exceptions;
 using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common
@@ -72,7 +73,7 @@ namespace PodcastUtilities.Common
                 case PodcastEpisodeNamingStyle.UrlFilename:
                     break;
                 default:
-                    throw new IndexOutOfRangeException("NamingStyle");
+                    throw new EnumOutOfRangeException("NamingStyle");
             }
 
             return Path.Combine(Path.Combine(rootFolder, podcastInfo.Folder), proposedFilename);
@@ -102,7 +103,7 @@ namespace PodcastUtilities.Common
                     return latestEpisodes;
 
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new EnumOutOfRangeException();
             }
         }
 

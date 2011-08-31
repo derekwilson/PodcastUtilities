@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using System.Xml;
@@ -8,6 +9,7 @@ namespace PodcastUtilities.Common
 	/// <summary>
 	/// base class for XML files for example playlists
 	/// </summary>
+    [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix")]
     public class XmlFileBase : XmlDocument
 	{
         /// <summary>

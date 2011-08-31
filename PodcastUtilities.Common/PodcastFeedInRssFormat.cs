@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Xml;
+using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common
 {
@@ -40,6 +42,7 @@ namespace PodcastUtilities.Common
         /// get the episodes of a feed
         /// </summary>
         /// <returns></returns>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public IList<IPodcastFeedItem> GetFeedEpisodes()
         {
             var episodes = new List<IPodcastFeedItem>(20);
@@ -87,7 +90,7 @@ namespace PodcastUtilities.Common
             XmlNode n = root.SelectSingleNode(xpath);
             if (n == null)
             {
-                throw new System.Exception("GetNodeText : Node path '" + xpath + "' not found");
+                throw new XmlStructureException("GetNodeText : Node path '" + xpath + "' not found");
             }
             return n.InnerText;
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.IO;
 using PodcastUtilities.Common.Platform;
@@ -74,12 +75,12 @@ namespace PodcastUtilities.Common
             if (copyToDestination)
             {
                 string destPlaylist = Path.Combine(control.DestinationRoot, control.PlaylistFileName);
-                OnStatusUpdate(string.Format("Copying Playlist with {0} items to {1}", p.NumberOfTracks, destPlaylist));
+                OnStatusUpdate(string.Format(CultureInfo.InvariantCulture,"Copying Playlist with {0} items to {1}", p.NumberOfTracks, destPlaylist));
 				FileUtilities.FileCopy(control.PlaylistFileName, destPlaylist, true);
             }
             else
             {
-                OnStatusUpdate(string.Format("Playlist with {0} items generated: {1}", p.NumberOfTracks, control.PlaylistFileName));
+                OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Playlist with {0} items generated: {1}", p.NumberOfTracks, control.PlaylistFileName));
             }
         }
     }
