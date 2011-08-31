@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -54,8 +56,7 @@ namespace PodcastUtilities.Common
             }
             catch (XmlException)
             {
-                Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(EmptyStateResource);
-                _xmlDocument.Load(s);
+                _xmlDocument.Load(Assembly.GetExecutingAssembly().GetManifestResourceStream(EmptyStateResource));
             }
 
             InitialiseState();
@@ -88,12 +89,13 @@ namespace PodcastUtilities.Common
             return n.InnerText;
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         private static int GetInt(XmlNode context, string xPathSelect, int defaultValue)
         {
             int retval = defaultValue;
             try
             {
-                retval = Convert.ToInt32(GetText(context, xPathSelect, retval.ToString()));
+                retval = Convert.ToInt32(GetText(context, xPathSelect, retval.ToString(CultureInfo.InvariantCulture)), CultureInfo.InvariantCulture);
             }
             catch
             {
@@ -105,6 +107,7 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// convert an XML tree into a datetime
         /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         private static System.DateTime GetDate(XmlNode node)
         {
             System.DateTime retval;
@@ -138,12 +141,12 @@ namespace PodcastUtilities.Common
 
         private static void SetDate(XmlNode xmlNode, DateTime highTide)
         {
-            SetText(xmlNode, "year", highTide.Year.ToString());
-            SetText(xmlNode, "month", highTide.Month.ToString());
-            SetText(xmlNode, "day", highTide.Day.ToString());
-            SetText(xmlNode, "hour", highTide.Hour.ToString());
-            SetText(xmlNode, "minute", highTide.Minute.ToString());
-            SetText(xmlNode, "second", highTide.Second.ToString());
+            SetText(xmlNode, "year", highTide.Year.ToString(CultureInfo.InvariantCulture));
+            SetText(xmlNode, "month", highTide.Month.ToString(CultureInfo.InvariantCulture));
+            SetText(xmlNode, "day", highTide.Day.ToString(CultureInfo.InvariantCulture));
+            SetText(xmlNode, "hour", highTide.Hour.ToString(CultureInfo.InvariantCulture));
+            SetText(xmlNode, "minute", highTide.Minute.ToString(CultureInfo.InvariantCulture));
+            SetText(xmlNode, "second", highTide.Second.ToString(CultureInfo.InvariantCulture));
         }
 
         private static void SetText(XmlNode xmlNode, string xPath, string text)

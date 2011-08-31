@@ -198,16 +198,6 @@
              </Accessor>
             </Accessors>
            </Member>
-           <Member Name="#GetNodeText(System.Xml.XmlNode,System.String)">
-            <Messages>
-             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
-              <Issue Name="TooGeneric">
-               <Item>'ControlFile.GetNodeText(XmlNode, string)'</Item>
-               <Item>'Exception'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
            <Member Name="#MaximumNumberOfConcurrentDownloads">
             <Accessors>
              <Accessor Name="#get_MaximumNumberOfConcurrentDownloads()">
@@ -238,13 +228,7 @@
                <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Created="2011-08-26 16:22:44Z" FixCategory="Breaking">
                 <Issue Name="PropertyGetter" Level="Warning">
                  <Item>'ControlFile.PlaylistFormat.get()'</Item>
-                 <Item>'IndexOutOfRangeException'</Item>
-                </Issue>
-               </Message>
-               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
-                <Issue Name="Reserved">
-                 <Item>'ControlFile.PlaylistFormat.get()'</Item>
-                 <Item>'IndexOutOfRangeException'</Item>
+                 <Item>'ControlFileValueFormatException'</Item>
                 </Issue>
                </Message>
                <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
@@ -320,12 +304,6 @@
            </Member>
            <Member Name="#ReadFeedFormat(System.String)">
             <Messages>
-             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
-              <Issue Name="Reserved">
-               <Item>'ControlFile.ReadFeedFormat(string)'</Item>
-               <Item>'IndexOutOfRangeException'</Item>
-              </Issue>
-             </Message>
              <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
               <Issue>
                <Item>'ControlFile.ReadFeedFormat(string)'</Item>
@@ -674,22 +652,6 @@
            </Member>
           </Members>
          </Type>
-         <Type Name="IPlaylistFactory">
-          <Members>
-           <Member Name="#CreatePlaylist(PodcastUtilities.Common.PlaylistFormat,System.String)">
-            <Messages>
-             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberParameterShouldBeCompoundWord">
-               <Item>'IPlaylistFactory.CreatePlaylist(PlaylistFormat, string)'</Item>
-               <Item>filename</Item>
-               <Item>'filename'</Item>
-               <Item>fileName</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="IPodcastFeedDownloader">
           <Members>
            <Member Name="#DownLoadFeed(PodcastUtilities.Common.PodcastFeedFormat,System.Uri)">
@@ -719,22 +681,6 @@
           <Members>
            <Member Name="#GeneratePlaylist(PodcastUtilities.Common.IControlFile,System.Boolean)">
             <Messages>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'PlaylistGenerator.GeneratePlaylist(IControlFile, bool)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'PlaylistGenerator.GeneratePlaylist(IControlFile, bool)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
              <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
               <Issue>
                <Item>'string.StartsWith(string)'</Item>
@@ -755,53 +701,6 @@
             </Issue>
            </Message>
           </Messages>
-         </Type>
-         <Type Name="PodcastEpisodeDownloader">
-          <Members>
-           <Member Name="#ClientDownloadFileCompleted(System.Object,System.ComponentModel.AsyncCompletedEventArgs)">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'PodcastEpisodeDownloader.ClientDownloadFileCompleted(object, AsyncCompletedEventArgs)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'PodcastEpisodeDownloader.ClientDownloadFileCompleted(object, AsyncCompletedEventArgs)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'PodcastEpisodeDownloader.ClientDownloadFileCompleted(object, AsyncCompletedEventArgs)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'PodcastEpisodeDownloader.ClientDownloadFileCompleted(object, AsyncCompletedEventArgs)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'PodcastEpisodeDownloader.ClientDownloadFileCompleted(object, AsyncCompletedEventArgs)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
          </Type>
          <Type Name="PodcastEpisodeNamingStyle">
           <Members>
@@ -858,72 +757,8 @@
            </Member>
           </Members>
          </Type>
-         <Type Name="PodcastEpisodePurger">
-          <Members>
-           <Member Name="#ConvertFilenameToPublishedDate(System.String)">
-            <Messages>
-             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternate">
-               <Item>'Convert.ToInt32(string)'</Item>
-               <Item>'PodcastEpisodePurger.ConvertFilenameToPublishedDate(string)'</Item>
-               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternate">
-               <Item>'Convert.ToInt32(string)'</Item>
-               <Item>'PodcastEpisodePurger.ConvertFilenameToPublishedDate(string)'</Item>
-               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternate">
-               <Item>'Convert.ToInt32(string)'</Item>
-               <Item>'PodcastEpisodePurger.ConvertFilenameToPublishedDate(string)'</Item>
-               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternate">
-               <Item>'Convert.ToInt32(string)'</Item>
-               <Item>'PodcastEpisodePurger.ConvertFilenameToPublishedDate(string)'</Item>
-               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternate">
-               <Item>'Convert.ToInt32(string)'</Item>
-               <Item>'PodcastEpisodePurger.ConvertFilenameToPublishedDate(string)'</Item>
-               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#GetWhenDownloadWasPublished(PodcastUtilities.Common.PodcastInfo,PodcastUtilities.Common.Platform.IFileInfo)">
-            <Messages>
-             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-31 19:10:32Z">
-              <Issue Name="Reserved">
-               <Item>'PodcastEpisodePurger.GetWhenDownloadWasPublished(PodcastInfo, IFileInfo)'</Item>
-               <Item>'IndexOutOfRangeException'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="PodcastFeedEpisodeFinder">
           <Members>
-           <Member Name="#ApplyDownloadStrategy(System.String,PodcastUtilities.Common.PodcastInfo,System.Collections.Generic.List`1&lt;PodcastUtilities.Common.IFeedSyncItem&gt;)">
-            <Messages>
-             <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Created="2011-08-26 16:22:44Z">
-              <Issue Name="NoArguments">
-               <Item>'ArgumentOutOfRangeException'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
            <Member Name="#FindEpisodesToDownload(System.String,System.Int32,PodcastUtilities.Common.PodcastInfo)">
             <Messages>
              <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
@@ -969,12 +804,6 @@
            </Member>
            <Member Name="#GetDownloadPathname(System.String,PodcastUtilities.Common.PodcastInfo,PodcastUtilities.Common.IPodcastFeedItem)">
             <Messages>
-             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-31 19:40:54Z">
-              <Issue Name="Reserved">
-               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'IndexOutOfRangeException'</Item>
-              </Issue>
-             </Message>
              <Message Id="System.DateTime.ToString(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
               <Issue Name="IFormatProviderAlternateString">
                <Item>'DateTime.ToString(string)'</Item>
@@ -1054,12 +883,6 @@
           <Members>
            <Member Name="#GetFeedEpisodes()">
             <Messages>
-             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'PodcastFeedInRssFormat.GetFeedEpisodes()'</Item>
-               <Item>'Exception'</Item>
-              </Issue>
-             </Message>
              <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
               <Issue Name="IFormatProviderAlternateString">
                <Item>'string.Format(string, object)'</Item>
@@ -1087,110 +910,10 @@
              </Message>
             </Messages>
            </Member>
-           <Member Name="#GetNodeText(System.Xml.XmlNode,System.String)">
-            <Messages>
-             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-26 16:22:44Z">
-              <Issue Name="TooGeneric">
-               <Item>'PodcastFeedInRssFormat.GetNodeText(XmlNode, string)'</Item>
-               <Item>'Exception'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
           </Members>
          </Type>
          <Type Name="Rfc822DateTime">
           <Members>
-           <Member Name="#ConvertZoneToLocalDifferential(System.String)">
-            <Messages>
-             <Message Id="System.String.LastIndexOf(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'string.LastIndexOf(string)'</Item>
-               <Item>'Rfc822DateTime.ConvertZoneToLocalDifferential(string)'</Item>
-               <Item>'string.LastIndexOf(string, StringComparison)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#Rfc822DateTimePatterns">
-            <Messages>
-             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'Rfc822DateTime.Rfc822DateTimePatterns'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
            <Member Name="#ToString(System.DateTime)">
             <Messages>
              <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Created="2011-08-26 16:22:44Z">
@@ -1214,35 +937,12 @@
            </Message>
           </Messages>
          </Type>
-         <Type Name="UnwantedFileRemover">
-          <Members>
-           <Member Name="#RemoveUnwantedFiles(System.Collections.Generic.IEnumerable`1&lt;PodcastUtilities.Common.Platform.IFileInfo&gt;,System.String,System.String,System.Boolean)">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'UnwantedFileRemover.RemoveUnwantedFiles(IEnumerable&lt;IFileInfo&gt;, string, string, bool)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="XmlFileBase">
           <Messages>
            <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Created="2011-08-26 16:22:44Z">
             <Issue Certainty="60">
              <Item>'XmlFileBase'</Item>
              <Item>IEnumerable</Item>
-            </Issue>
-           </Message>
-           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2011-08-26 16:22:44Z">
-            <Issue>
-             <Item>'XmlFileBase'</Item>
-             <Item>Collection</Item>
             </Issue>
            </Message>
            <Message TypeName="TypesShouldNotExtendCertainBaseTypes" Category="Microsoft.Design" CheckId="CA1058" Created="2011-08-26 16:22:44Z">
@@ -1277,92 +977,6 @@
               <Issue Name="Xml">
                <Item>'XmlState.XmlState(XmlDocument)'</Item>
                <Item>'XmlDocument'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#GetDate(System.Xml.XmlNode)">
-            <Messages>
-             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'XmlState.GetDate(XmlNode)'</Item>
-               <Item>'object'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#GetInt(System.Xml.XmlNode,System.String,System.Int32)">
-            <Messages>
-             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'XmlState.GetInt(XmlNode, string, int)'</Item>
-               <Item>'object'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternate">
-               <Item>'Convert.ToInt32(string)'</Item>
-               <Item>'XmlState.GetInt(XmlNode, string, int)'</Item>
-               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'int.ToString()'</Item>
-               <Item>'XmlState.GetInt(XmlNode, string, int)'</Item>
-               <Item>'int.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#SetDate(System.Xml.XmlNode,System.DateTime)">
-            <Messages>
-             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'int.ToString()'</Item>
-               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
-               <Item>'int.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'int.ToString()'</Item>
-               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
-               <Item>'int.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'int.ToString()'</Item>
-               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
-               <Item>'int.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'int.ToString()'</Item>
-               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
-               <Item>'int.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'int.ToString()'</Item>
-               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
-               <Item>'int.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'int.ToString()'</Item>
-               <Item>'XmlState.SetDate(XmlNode, DateTime)'</Item>
-               <Item>'int.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -1541,15 +1155,8 @@
    <Rule TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065">
     <Resolution Name="PropertyGetter">{0} creates an exception of type {1}, an exception type that should not be raised in a property. If this exception instance might be raised, use a different exception type, convert this property into a method, or change this property's logic so that it no longer raises an exception.</Resolution>
    </Rule>
-   <Rule TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201">
-    <Resolution Name="Reserved">{0} creates an exception of type {1}, an exception type that is reserved by the runtime and should never be raised by managed code. If this exception instance might be thrown, use a different exception type.</Resolution>
-    <Resolution Name="TooGeneric">{0} creates an exception of type {1}, an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Resolution>
-   </Rule>
    <Rule TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004">
     <Resolution Name="Default">Consider a design where {0} doesn't require explicit type parameter {1} in any call to it.</Resolution>
-   </Rule>
-   <Rule TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710">
-    <Resolution Name="Default">Rename {0} to end in '{1}'.</Resolution>
    </Rule>
    <Rule TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063">
     <Resolution Name="DisposeImplementation">Modify {0} so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Resolution>
@@ -1557,7 +1164,6 @@
    </Rule>
    <Rule TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208">
     <Resolution Name="IncorrectMessage">Method {0} passes parameter name '{1}' as the {2} argument to a {3} constructor. Replace this argument with a descriptive message and pass the parameter name in the correct position.</Resolution>
-    <Resolution Name="NoArguments">Call the {0} constructor that contains a message and/or paramName parameter.</Resolution>
    </Rule>
    <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
     <Resolution Name="Default">Mark {0} with CLSCompliant(true) because it exposes externally visible types.</Resolution>
@@ -1570,9 +1176,6 @@
    </Rule>
    <Rule TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034">
     <Resolution Name="Default">Do not nest type {0}. Alternatively, change its accessibility so that it is not externally visible.</Resolution>
-   </Rule>
-   <Rule TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819">
-    <Resolution Name="Default">Change {0} to return a collection or make it a method.</Resolution>
    </Rule>
    <Rule TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304">
     <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'CultureInfo' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Resolution>

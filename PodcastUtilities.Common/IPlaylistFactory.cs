@@ -9,8 +9,8 @@
         /// create the correct playlist format
         /// </summary>
         /// <param name="playlistFormat">the playlist format required</param>
-        /// <param name="filename">filename to use for the playlist</param>
+        /// <param name="fileName">filename to use for the playlist</param>
         /// <returns></returns>
-        IPlaylist CreatePlaylist(PlaylistFormat playlistFormat, string filename);
+        IPlaylist CreatePlaylist(PlaylistFormat playlistFormat, string fileName);
 	}
 }

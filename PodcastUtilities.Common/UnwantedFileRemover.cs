@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using PodcastUtilities.Common.Platform;
 
@@ -56,7 +57,7 @@ namespace PodcastUtilities.Common
 				if (!filesToKeep.Any(f => f.Name == thisFile.Name))
 				{
 					//we cannot find the file that is in the destination in the source
-					OnStatusUpdate(string.Format("Removing: {0}", thisFile.FullName));
+					OnStatusUpdate(string.Format(CultureInfo.InvariantCulture,"Removing: {0}", thisFile.FullName));
 					if (!whatIf)
 						FileUtilities.FileDelete(thisFile.FullName);
 				}

@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace PodcastUtilities.Common.Exceptions
 {
     /// <summary>
-    /// exceptions that relate to downloads
+    /// exceptions that relate the structure of xml such that the expected xpath does not work
     /// </summary>
     [Serializable]
     public class XmlStructureException : System.Exception

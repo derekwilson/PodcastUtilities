@@ -13,16 +13,16 @@ namespace PodcastUtilities.Common
 		/// create the correct playlist format
 		/// </summary>
 		/// <param name="playlistFormat">the playlist format required</param>
-		/// <param name="filename">filename to use for the playlist</param>
+		/// <param name="fileName">filename to use for the playlist</param>
 		/// <returns></returns>
-        public IPlaylist CreatePlaylist(PlaylistFormat playlistFormat, string filename)
+        public IPlaylist CreatePlaylist(PlaylistFormat playlistFormat, string fileName)
 		{
 			switch (playlistFormat)
 			{
 				case PlaylistFormat.ASX:
-					return new PlaylistAsx(filename, true);
+					return new PlaylistAsx(fileName, true);
 				case PlaylistFormat.WPL:
-					return new PlaylistWpl(filename, true);
+					return new PlaylistWpl(fileName, true);
 			}
             throw new ArgumentOutOfRangeException("playlistFormat");
 		}

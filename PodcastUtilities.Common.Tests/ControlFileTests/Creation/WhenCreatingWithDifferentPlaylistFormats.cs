@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml;
 using NUnit.Framework;
+using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common.Tests.ControlFileTests.Creation
 {
@@ -87,7 +88,7 @@ namespace PodcastUtilities.Common.Tests.ControlFileTests.Creation
         [Test]
         public void ItShouldThorw()
         {
-            Assert.That(ThrownException, Is.InstanceOf<IndexOutOfRangeException>());
+            Assert.That(ThrownException, Is.InstanceOf<ControlFileValueFormatException>());
         }
     }
 }

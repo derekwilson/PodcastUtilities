@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Threading;
@@ -18,7 +19,7 @@ namespace PodcastUtilities.Common
         private readonly IFileUtilities _fileUtilities;
         private readonly IStateProvider _stateProvider;
 
-        private object _lock = new object();
+        private readonly object _lock = new object();
         private IWebClient _client;
         private bool _started;
         private bool _complete;
@@ -154,19 +155,19 @@ namespace PodcastUtilities.Common
                 }
                 else if (e.Cancelled)
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, string.Format("{0} Cancelled",syncItem.EpisodeTitle));
+                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, string.Format(CultureInfo.InvariantCulture, "{0} Cancelled",syncItem.EpisodeTitle));
                 }
                 else if (e.Error != null && e.Error.InnerException != null) 
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Error, string.Format("{0} {1}", syncItem.EpisodeTitle, e.Error.InnerException.Message), e.Error.InnerException);
+                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Error, string.Format(CultureInfo.InvariantCulture, "{0} {1}", syncItem.EpisodeTitle, e.Error.InnerException.Message), e.Error.InnerException);
                 }
                 else if (e.Error != null)
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Error, string.Format("{0} {1}", syncItem.EpisodeTitle, e.Error.Message), e.Error);
+                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Error, string.Format(CultureInfo.InvariantCulture, "{0} {1}", syncItem.EpisodeTitle, e.Error.Message), e.Error);
                 }
                 else
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, string.Format("{0} Completed", syncItem.EpisodeTitle));
+                    args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, string.Format(CultureInfo.InvariantCulture, "{0} Completed", syncItem.EpisodeTitle));
                     _fileUtilities.FileRename(GetDownloadFilename(), _syncItem.DestinationPath, true);
 
                     var retry = 5;
@@ -181,7 +182,7 @@ namespace PodcastUtilities.Common
                         }
                         catch (System.IO.IOException)
                         {
-                            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Warning, string.Format("{0}, cannot write to state file, will retry",syncItem.EpisodeTitle), null));
+                            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Warning, string.Format(CultureInfo.InvariantCulture, "{0}, cannot write to state file, will retry", syncItem.EpisodeTitle), null));
                             if (_syncItem.RetryWaitTimeInSeconds > 0)
                             {
                                 Thread.Sleep(1000 * _syncItem.RetryWaitTimeInSeconds);

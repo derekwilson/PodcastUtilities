@@ -77,7 +77,9 @@
     <Compile Include="ControlFile.cs" />
     <Compile Include="ControlFileFactory.cs" />
     <Compile Include="DisplayFormatter.cs" />
+    <Compile Include="Exceptions\ControlFileValueFormatException.cs" />
     <Compile Include="Exceptions\DownloaderException.cs" />
+    <Compile Include="Exceptions\EnumOutOfRangeException.cs" />
     <Compile Include="Exceptions\XmlStructureException.cs" />
     <Compile Include="HardcodedPodcastDefaultsProvider.cs" />
     <Compile Include="IControlFileFactory.cs" />
