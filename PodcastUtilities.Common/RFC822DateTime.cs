@@ -11,7 +11,7 @@ namespace PodcastUtilities.Common
     /// to and from the equivalent <a href="http://www.w3.org/Protocols/rfc822/#z28">RFC 822</a> 
     /// string representation.
     /// </summary>
-    public class Rfc822DateTime
+    public sealed class Rfc822DateTime
     {
         // For FxCop rule: StaticHolderTypesShouldNotHaveConstructors
         private Rfc822DateTime() {}

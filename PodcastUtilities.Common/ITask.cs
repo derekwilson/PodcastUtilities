@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -20,6 +21,7 @@ namespace PodcastUtilities.Common
         /// gets the display name for the task
         /// </summary>
         /// <returns></returns>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         string GetName();
         
         /// <summary>

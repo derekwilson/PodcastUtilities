@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 
@@ -19,6 +20,7 @@ namespace PodcastUtilities.Common
         /// get the episodes of a feed
         /// </summary>
         /// <returns></returns>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         IList<IPodcastFeedItem> GetFeedEpisodes();
     }
 }

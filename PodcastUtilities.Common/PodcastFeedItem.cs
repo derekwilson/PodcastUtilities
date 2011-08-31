@@ -42,7 +42,7 @@ namespace PodcastUtilities.Common
         /// get the episode title in a form that can be used as a filename
         /// </summary>
         /// <returns></returns>
-        public string GetTitleAsFilename()
+        public string GetTitleAsFileName()
         {
         	var sanitizedTitle = ProcessFilenameForInvalidChars(EpisodeTitle);
 

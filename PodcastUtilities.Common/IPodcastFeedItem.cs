@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 
@@ -29,13 +30,15 @@ namespace PodcastUtilities.Common
         /// filename to use when saving the podcast file
         /// </summary>
         /// <returns></returns>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         string GetFileName();
 
         /// <summary>
         /// get the episode title in a form that can be used as a filename
         /// </summary>
         /// <returns></returns>
-        string GetTitleAsFilename();
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        string GetTitleAsFileName();
 
     }
 }

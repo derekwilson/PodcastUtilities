@@ -690,19 +690,6 @@
            </Member>
           </Members>
          </Type>
-         <Type Name="IPodcastFeed">
-          <Members>
-           <Member Name="#GetFeedEpisodes()">
-            <Messages>
-             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2011-08-26 16:22:44Z">
-              <Issue Certainty="50">
-               <Item>'IPodcastFeed.GetFeedEpisodes()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="IPodcastFeedDownloader">
           <Members>
            <Member Name="#DownLoadFeed(PodcastUtilities.Common.PodcastFeedFormat,System.Uri)">
@@ -712,61 +699,6 @@
                <Item>DownLoad</Item>
                <Item>'IPodcastFeedDownloader.DownLoadFeed(PodcastFeedFormat, Uri)'</Item>
                <Item>Download</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="IPodcastFeedItem">
-          <Members>
-           <Member Name="#GetFileName()">
-            <Messages>
-             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2011-08-31 19:28:17Z">
-              <Issue Certainty="50">
-               <Item>'IPodcastFeedItem.GetFileName()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#GetTitleAsFilename()">
-            <Messages>
-             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberShouldBeCompoundWord">
-               <Item>Filename</Item>
-               <Item>'IPodcastFeedItem.GetTitleAsFilename()'</Item>
-               <Item>FileName</Item>
-              </Issue>
-             </Message>
-             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2011-08-26 16:22:44Z">
-              <Issue Certainty="50">
-               <Item>'IPodcastFeedItem.GetTitleAsFilename()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="ITask">
-          <Members>
-           <Member Name="#GetName()">
-            <Messages>
-             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2011-08-26 16:22:44Z">
-              <Issue Certainty="50">
-               <Item>'ITask.GetName()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="IWebClientFactory">
-          <Members>
-           <Member Name="#GetWebClient()">
-            <Messages>
-             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2011-08-26 16:22:44Z">
-              <Issue Certainty="50">
-               <Item>'IWebClientFactory.GetWebClient()'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -977,21 +909,6 @@
                <Item>'IndexOutOfRangeException'</Item>
               </Issue>
              </Message>
-             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-31 19:24:16Z" FixCategory="NonBreaking">
-              <Issue>
-               <Item>'PodcastEpisodePurger.GetWhenDownloadWasPublished(PodcastInfo, IFileInfo)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#ScanFolderForOldFiles(System.String,System.DateTime,System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Platform.IFileInfo&gt;,PodcastUtilities.Common.PodcastInfo)">
-            <Messages>
-             <Message TypeName="NormalizeStringsToUppercase" Category="Microsoft.Globalization" CheckId="CA1308" Created="2011-08-31 18:52:10Z">
-              <Issue Name="ToUpperInvariant">
-               <Item>'PodcastEpisodePurger.ScanFolderForOldFiles(string, DateTime, List&lt;IFileInfo&gt;, PodcastInfo)'</Item>
-               <Item>'string.ToLower(CultureInfo)'</Item>
-              </Issue>
-             </Message>
             </Messages>
            </Member>
           </Members>
@@ -1009,12 +926,6 @@
            </Member>
            <Member Name="#FindEpisodesToDownload(System.String,System.Int32,PodcastUtilities.Common.PodcastInfo)">
             <Messages>
-             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
-               <Item>'Exception'</Item>
-              </Issue>
-             </Message>
              <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
               <Issue Name="IFormatProviderAlternateString">
                <Item>'string.Format(string, object)'</Item>
@@ -1058,17 +969,10 @@
            </Member>
            <Member Name="#GetDownloadPathname(System.String,PodcastUtilities.Common.PodcastInfo,PodcastUtilities.Common.IPodcastFeedItem)">
             <Messages>
-             <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IncorrectParameterName">
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2011-08-31 19:40:54Z">
+              <Issue Name="Reserved">
                <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>NamingStyle</Item>
-               <Item>'paramName'</Item>
-               <Item>'ArgumentOutOfRangeException'</Item>
-              </Issue>
-             </Message>
-             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
-              <Issue>
-               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'IndexOutOfRangeException'</Item>
               </Issue>
              </Message>
              <Message Id="System.DateTime.ToString(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
@@ -1196,13 +1100,6 @@
           </Members>
          </Type>
          <Type Name="Rfc822DateTime">
-          <Messages>
-           <Message TypeName="StaticHolderTypesShouldBeSealed" Category="Microsoft.Design" CheckId="CA1052" Created="2011-08-31 19:26:57Z">
-            <Issue>
-             <Item>'Rfc822DateTime'</Item>
-            </Issue>
-           </Message>
-          </Messages>
           <Members>
            <Member Name="#ConvertZoneToLocalDifferential(System.String)">
             <Messages>
@@ -1660,7 +1557,6 @@
    </Rule>
    <Rule TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208">
     <Resolution Name="IncorrectMessage">Method {0} passes parameter name '{1}' as the {2} argument to a {3} constructor. Replace this argument with a descriptive message and pass the parameter name in the correct position.</Resolution>
-    <Resolution Name="IncorrectParameterName">Method {0} passes '{1}' as the {2} argument to a {3} constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Resolution>
     <Resolution Name="NoArguments">Call the {0} constructor that contains a message and/or paramName parameter.</Resolution>
    </Rule>
    <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
@@ -1675,9 +1571,6 @@
    <Rule TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034">
     <Resolution Name="Default">Do not nest type {0}. Alternatively, change its accessibility so that it is not externally visible.</Resolution>
    </Rule>
-   <Rule TypeName="NormalizeStringsToUppercase" Category="Microsoft.Globalization" CheckId="CA1308">
-    <Resolution Name="ToUpperInvariant">In method {0}, replace the call to {1} with String.ToUpperInvariant().</Resolution>
-   </Rule>
    <Rule TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819">
     <Resolution Name="Default">Change {0} to return a collection or make it a method.</Resolution>
    </Rule>
@@ -1690,9 +1583,6 @@
    </Rule>
    <Rule TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307">
     <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, such as when sorting a list of items for display in a list box, specify 'StringComparison.CurrentCulture' or 'StringComparison.CurrentCultureIgnoreCase' as the 'StringComparison' parameter. If comparing case-insensitive identifiers, such as file paths, environment variables, or registry keys and values, specify 'StringComparison.OrdinalIgnoreCase'. Otherwise, if comparing case-sensitive identifiers, specify 'StringComparison.Ordinal'.</Resolution>
-   </Rule>
-   <Rule TypeName="StaticHolderTypesShouldBeSealed" Category="Microsoft.Design" CheckId="CA1052">
-    <Resolution Name="Default">Because type {0} contains only 'static' ('Shared' in Visual Basic) members, mark it as 'sealed' ('NotInheritable' in Visual Basic) to prevent consumers from inheriting from it.</Resolution>
    </Rule>
    <Rule TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053">
     <Resolution Name="Default">Because type {0} contains only 'static' ('Shared' in Visual Basic) members, add a default private constructor to prevent the compiler from adding a default public constructor.</Resolution>
