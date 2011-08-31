@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common.Tests.DownloaderExceptionTests
 {

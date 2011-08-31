@@ -38,7 +38,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -77,7 +77,8 @@
     <Compile Include="ControlFile.cs" />
     <Compile Include="ControlFileFactory.cs" />
     <Compile Include="DisplayFormatter.cs" />
-    <Compile Include="DownloaderException.cs" />
+    <Compile Include="Exceptions\DownloaderException.cs" />
+    <Compile Include="Exceptions\XmlStructureException.cs" />
     <Compile Include="HardcodedPodcastDefaultsProvider.cs" />
     <Compile Include="IControlFileFactory.cs" />
     <Compile Include="IPodcastDefaultsProvider.cs" />

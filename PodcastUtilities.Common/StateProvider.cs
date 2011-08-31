@@ -27,7 +27,7 @@ namespace PodcastUtilities.Common
         /// </summary>
         public IState GetState(string podcastRoot)
         {
-            string filename = Path.Combine(podcastRoot, XmlState.STATE_FILE_NAME);
+            string filename = Path.Combine(podcastRoot, XmlState.StateFileName);
             if (_fileUtilities.FileExists(filename))
             {
                 return new XmlState(filename);

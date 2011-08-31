@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Threading;
+using PodcastUtilities.Common.Exceptions;
 using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common

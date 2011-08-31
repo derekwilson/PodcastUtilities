@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common.Tests.DownloaderExceptionTests
 {

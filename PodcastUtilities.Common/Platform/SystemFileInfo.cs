@@ -10,15 +10,6 @@ namespace PodcastUtilities.Common.Platform
 	{
 		private readonly FileInfo _fileInfo;
 
-		/// <summary>
-		/// construct from a file pathname as a string
-		/// </summary>
-		/// <param name="path"></param>
-        public SystemFileInfo(string path)
-			: this(new FileInfo(path))
-		{
-		}
-
         /// <summary>
         /// construct from anothe absract object
         /// </summary>

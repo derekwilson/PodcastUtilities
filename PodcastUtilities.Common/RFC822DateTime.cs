@@ -13,6 +13,9 @@ namespace PodcastUtilities.Common
     /// </summary>
     public class Rfc822DateTime
     {
+        // For FxCop rule: StaticHolderTypesShouldNotHaveConstructors
+        private Rfc822DateTime() {}
+
         //============================================================
         //  Private members
         //============================================================

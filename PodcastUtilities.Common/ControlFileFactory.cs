@@ -10,11 +10,11 @@
 		///<summary>
 		/// Opens an existing control file
 		///</summary>
-		///<param name="filename"></param>
+		///<param name="fileName"></param>
 		///<returns></returns>
-		public IControlFile OpenControlFile(string filename)
+		public IControlFile OpenControlFile(string fileName)
 		{
-			return new ControlFile(filename);
+			return new ControlFile(fileName);
 		}
 
 		#endregion

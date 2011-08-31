@@ -48,7 +48,7 @@ namespace GeneratePlaylist
 			var generator = new PlaylistGenerator(finder, fileUtilities, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(GeneratorStatusUpdate);
 
-            if (!string.IsNullOrEmpty(control.PlaylistFilename))
+            if (!string.IsNullOrEmpty(control.PlaylistFileName))
                 generator.GeneratePlaylist(control, false);
         }
 

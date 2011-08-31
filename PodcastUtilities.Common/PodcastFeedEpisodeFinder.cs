@@ -38,7 +38,7 @@ namespace PodcastUtilities.Common
 
         private string GetDownloadPathname(string rootFolder, PodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
         {
-            var proposedFilename = podcastFeedItem.GetFilename();
+            var proposedFilename = podcastFeedItem.GetFileName();
 
             switch (podcastInfo.Feed.NamingStyle)
             {

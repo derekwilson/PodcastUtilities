@@ -10,14 +10,14 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// Add a track to the playlist
         /// </summary>
-        /// <param name="filepath">pathname to add, can be relative or absolute</param>
+        /// <param name="filePath">pathname to add, can be relative or absolute</param>
         /// <returns>true if the file was added false if the track was already present</returns>
-        bool AddTrack(string filepath);
+        bool AddTrack(string filePath);
 
         /// <summary>
         /// filename to use when saving the playlist file
         /// </summary>
-        string Filename { get; }
+        string FileName { get; }
 
         /// <summary>
         /// number of tracks in the playlist

@@ -29,7 +29,7 @@ namespace PodcastUtilities.Common
         /// filename to use when saving the podcast file
         /// </summary>
         /// <returns></returns>
-        public string GetFilename()
+        public string GetFileName()
         {
             string filename = Address.Segments[Address.Segments.Length - 1];
 
@@ -46,10 +46,10 @@ namespace PodcastUtilities.Common
         {
         	var sanitizedTitle = ProcessFilenameForInvalidChars(EpisodeTitle);
 
-            return Path.ChangeExtension(sanitizedTitle, Path.GetExtension(GetFilename()));
+            return Path.ChangeExtension(sanitizedTitle, Path.GetExtension(GetFileName()));
         }
 
-        private string ProcessFilenameForInvalidChars(string filename)
+        private static string ProcessFilenameForInvalidChars(string filename)
         {
             if (filename.IndexOfAny(Path.GetInvalidFileNameChars()) != -1)
             {

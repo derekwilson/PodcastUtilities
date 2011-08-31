@@ -26,7 +26,7 @@ namespace PodcastUtilities.Common.Tests.PlaylistGeneratorTests
             ControlFile.Stub(ctrl => ctrl.SourceRoot).Return("c:\\source");
             ControlFile.Stub(ctrl => ctrl.DestinationRoot).Return("c:\\destination");
             ControlFile.Stub(ctrl => ctrl.Podcasts).Return(Podcasts);
-            ControlFile.Stub(ctrl => ctrl.PlaylistFilename).Return("MyPodcasts.wpl");
+            ControlFile.Stub(ctrl => ctrl.PlaylistFileName).Return("MyPodcasts.wpl");
 
             Finder = GenerateMock<IFileFinder>();
             FileUtilities = GenerateMock<IFileUtilities>();
