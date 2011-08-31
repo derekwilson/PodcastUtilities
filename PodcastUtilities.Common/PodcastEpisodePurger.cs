@@ -27,7 +27,7 @@ namespace PodcastUtilities.Common
         }
 
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        private DateTime GetWhenDownloadWasPublished(PodcastInfo podcastInfo, IFileInfo file)
+        private static DateTime GetWhenDownloadWasPublished(PodcastInfo podcastInfo, IFileInfo file)
         {
             switch (podcastInfo.Feed.NamingStyle)
             {
@@ -142,7 +142,7 @@ namespace PodcastUtilities.Common
             foreach (var file in files)
             {
                 var extension = Path.GetExtension(file.FullName);
-                if (extension != null && extension.ToLower(CultureInfo.InvariantCulture) == ".xml")
+                if (extension != null && extension.ToUpperInvariant() == ".XML")
                 {
                     // do not delete the state file
                     continue;

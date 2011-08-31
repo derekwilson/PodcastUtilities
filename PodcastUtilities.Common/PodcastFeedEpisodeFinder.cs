@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Security.Policy;
@@ -36,7 +37,7 @@ namespace PodcastUtilities.Common
         /// </summary>
         public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
-        private string GetDownloadPathname(string rootFolder, PodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
+        private static string GetDownloadPathname(string rootFolder, PodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
         {
             var proposedFilename = podcastFeedItem.GetFileName();
 
@@ -61,17 +62,17 @@ namespace PodcastUtilities.Common
                                                     proposedFilename);
                     break;
                 case PodcastEpisodeNamingStyle.EpisodeTitle:
-                    proposedFilename = podcastFeedItem.GetTitleAsFilename();
+                    proposedFilename = podcastFeedItem.GetTitleAsFileName();
                     break;
                 case PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
                     proposedFilename = string.Format("{0}_{1}",
                                                     podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
-                                                    podcastFeedItem.GetTitleAsFilename());
+                                                    podcastFeedItem.GetTitleAsFileName());
                     break;
                 case PodcastEpisodeNamingStyle.UrlFilename:
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException("NamingStyle");
+                    throw new IndexOutOfRangeException("NamingStyle");
             }
 
             return Path.Combine(Path.Combine(rootFolder, podcastInfo.Folder), proposedFilename);
@@ -113,6 +114,7 @@ namespace PodcastUtilities.Common
         /// <param name="retryWaitTimeInSeconds">time to wait if there is a file access lock</param>
         /// <param name="podcastInfo">info on the podcast to download</param>
         /// <returns>list of episodes to be downloaded for the supplied podcastInfo</returns>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public IList<IFeedSyncItem> FindEpisodesToDownload(string rootFolder, int retryWaitTimeInSeconds, PodcastInfo podcastInfo)
         {
             List<IFeedSyncItem> episodesToDownload = new List<IFeedSyncItem>(10);

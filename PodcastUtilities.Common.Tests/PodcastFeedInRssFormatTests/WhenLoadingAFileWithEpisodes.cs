@@ -39,7 +39,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedInRssFormatTests
         {
             var proposedFilename = string.Format("{0}_{1}",
                                                  podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
-                                                 podcastFeedItem.GetTitleAsFilename());
+                                                 podcastFeedItem.GetTitleAsFileName());
 
             //Debug.WriteLine(string.Format("Filename: {0}",proposedFilename));
 

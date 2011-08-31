@@ -23,7 +23,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedItemTests
 
 		protected override void When()
 		{
-			Filename = FeedItem.GetTitleAsFilename();
+			Filename = FeedItem.GetTitleAsFileName();
 		}
 
 		[Test]
