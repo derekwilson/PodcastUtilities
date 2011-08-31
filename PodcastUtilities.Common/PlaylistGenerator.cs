@@ -56,7 +56,7 @@ namespace PodcastUtilities.Common
 			var allDestFiles = control.Podcasts.SelectMany(
         		podcast => FileFinder.GetFiles(Path.Combine(control.DestinationRoot, podcast.Folder), podcast.Pattern));
 
-			IPlaylist p = PlaylistFactory.CreatePlaylist(control.PlaylistFormat, control.PlaylistFilename);
+			IPlaylist p = PlaylistFactory.CreatePlaylist(control.PlaylistFormat, control.PlaylistFileName);
 
             foreach (IFileInfo thisFile in allDestFiles)
             {
@@ -73,13 +73,13 @@ namespace PodcastUtilities.Common
 
             if (copyToDestination)
             {
-                string destPlaylist = Path.Combine(control.DestinationRoot, control.PlaylistFilename);
+                string destPlaylist = Path.Combine(control.DestinationRoot, control.PlaylistFileName);
                 OnStatusUpdate(string.Format("Copying Playlist with {0} items to {1}", p.NumberOfTracks, destPlaylist));
-				FileUtilities.FileCopy(control.PlaylistFilename, destPlaylist, true);
+				FileUtilities.FileCopy(control.PlaylistFileName, destPlaylist, true);
             }
             else
             {
-                OnStatusUpdate(string.Format("Playlist with {0} items generated: {1}", p.NumberOfTracks, control.PlaylistFilename));
+                OnStatusUpdate(string.Format("Playlist with {0} items generated: {1}", p.NumberOfTracks, control.PlaylistFileName));
             }
         }
     }

@@ -49,7 +49,7 @@ namespace SyncPodcasts
 
 			synchronizer.Synchronize(control, false);
 
-			if (!string.IsNullOrEmpty(control.PlaylistFilename))
+			if (!string.IsNullOrEmpty(control.PlaylistFileName))
 				generator.GeneratePlaylist(control, true);
 		}
 

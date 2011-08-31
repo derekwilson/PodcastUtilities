@@ -10,8 +10,8 @@ namespace PodcastUtilities.Common
 		///<summary>
 		/// Opens an existing control file
 		///</summary>
-		///<param name="filename"></param>
+        ///<param name="fileName"></param>
 		///<returns></returns>
-		IControlFile OpenControlFile(string filename);
+		IControlFile OpenControlFile(string fileName);
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using NUnit.Framework;
+using PodcastUtilities.Common.Exceptions;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests.Start

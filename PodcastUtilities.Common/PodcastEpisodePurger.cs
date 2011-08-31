@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,19 +15,18 @@ namespace PodcastUtilities.Common
     public class PodcastEpisodePurger : IPodcastEpisodePurger
     {
         private IDirectoryInfoProvider _directoryInfoProvider;
-        private readonly IFileUtilities _fileUtilities;
         private readonly ITimeProvider _timeProvider;
 
         /// <summary>
         /// create the purger
         /// </summary>
-        public PodcastEpisodePurger(IFileUtilities fileUtilities, ITimeProvider timeProvider, IDirectoryInfoProvider directoryInfoProvider)
+        public PodcastEpisodePurger(ITimeProvider timeProvider, IDirectoryInfoProvider directoryInfoProvider)
         {
-            _fileUtilities = fileUtilities;
             _directoryInfoProvider = directoryInfoProvider;
             _timeProvider = timeProvider;
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         private DateTime GetWhenDownloadWasPublished(PodcastInfo podcastInfo, IFileInfo file)
         {
             switch (podcastInfo.Feed.NamingStyle)
@@ -46,11 +47,11 @@ namespace PodcastUtilities.Common
                 case PodcastEpisodeNamingStyle.UrlFilename:
                     return file.CreationTime;
                 default:
-                    throw new ArgumentOutOfRangeException("NamingStyle");
+                    throw new IndexOutOfRangeException("NamingStyle");
             }
         }
 
-        private DateTime ConvertFilenameToPublishedDate(string fileName)
+        private static DateTime ConvertFilenameToPublishedDate(string fileName)
         {
             return new DateTime(
                     Convert.ToInt32(fileName.Substring(0, 4)),
@@ -97,7 +98,7 @@ namespace PodcastUtilities.Common
             return episodesToDelete;
         }
 
-        private bool IsSubFolderBasedNaming(PodcastEpisodeNamingStyle style)
+        private static bool IsSubFolderBasedNaming(PodcastEpisodeNamingStyle style)
         {
             return style == PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder;
         }
@@ -141,7 +142,7 @@ namespace PodcastUtilities.Common
             foreach (var file in files)
             {
                 var extension = Path.GetExtension(file.FullName);
-                if (extension != null && extension.ToLower() == ".xml")
+                if (extension != null && extension.ToLower(CultureInfo.InvariantCulture) == ".xml")
                 {
                     // do not delete the state file
                     continue;

@@ -60,7 +60,7 @@ namespace PodcastUtilities.Common
 		/// <summary>
 		/// filename and extension for the generated playlist
 		/// </summary>
-        public string PlaylistFilename
+        public string PlaylistFileName
 		{
 			get { return GetNodeText("podcasts/global/playlistFilename"); }
 		}

@@ -21,7 +21,7 @@ namespace PodcastUtilities.Common.Tests.PlaylistAsxTests
 		[Test]
 		public void ItShouldSetTheFilename()
 		{
-			Assert.AreEqual("MyPodcastPlaylist.asx", Playlist.Filename);
+			Assert.AreEqual("MyPodcastPlaylist.asx", Playlist.FileName);
 		}
 
 		[Test]

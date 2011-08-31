@@ -29,7 +29,7 @@ namespace PodcastUtilities.Common
         /// filename to use when saving the podcast file
         /// </summary>
         /// <returns></returns>
-        string GetFilename();
+        string GetFileName();
 
         /// <summary>
         /// get the episode title in a form that can be used as a filename

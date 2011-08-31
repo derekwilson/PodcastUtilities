@@ -20,12 +20,12 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// resource path to the WPL template
         /// </summary>
-        public static string _emptyStateResource = "PodcastUtilities.Common.XML.state.xml";
+        public const string EmptyStateResource = "PodcastUtilities.Common.XML.state.xml";
 
         /// <summary>
         /// name of the file we keep state in
         /// </summary>
-        public static string STATE_FILE_NAME = "state.xml";
+        public const string StateFileName = "state.xml";
 
         /// <summary>
         /// create a new empty state
@@ -34,7 +34,7 @@ namespace PodcastUtilities.Common
         {
             _xmlDocument = new XmlDocument();
 
-            Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(_emptyStateResource);
+            Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(EmptyStateResource);
             _xmlDocument.Load(s);
 
             InitialiseState();
@@ -43,18 +43,18 @@ namespace PodcastUtilities.Common
         /// <summary>
 		/// create the object and read the control file from the specified filename
 		/// </summary>
-		/// <param name="filename">pathname to the control file xml</param>
-        public XmlState(string filename)
+		/// <param name="fileName">pathname to the control file xml</param>
+        public XmlState(string fileName)
 		{
 			_xmlDocument = new XmlDocument();
 
             try
             {
-                _xmlDocument.Load(filename);
+                _xmlDocument.Load(fileName);
             }
             catch (XmlException)
             {
-                Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(_emptyStateResource);
+                Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(EmptyStateResource);
                 _xmlDocument.Load(s);
             }
 
@@ -76,7 +76,7 @@ namespace PodcastUtilities.Common
             _highTide = GetHighTideDate();
         }
 
-        private string GetText(XmlNode context, string xPathSelect, string defaultValue)
+        private static string GetText(XmlNode context, string xPathSelect, string defaultValue)
         {
             if (context == null)
                 return defaultValue;
@@ -88,7 +88,7 @@ namespace PodcastUtilities.Common
             return n.InnerText;
         }
 
-        private int GetInt(XmlNode context, string xPathSelect, int defaultValue)
+        private static int GetInt(XmlNode context, string xPathSelect, int defaultValue)
         {
             int retval = defaultValue;
             try
@@ -105,7 +105,7 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// convert an XML tree into a datetime
         /// </summary>
-        private System.DateTime GetDate(XmlNode node)
+        private static System.DateTime GetDate(XmlNode node)
         {
             System.DateTime retval;
             try
@@ -136,7 +136,7 @@ namespace PodcastUtilities.Common
             SetDate(_xmlDocument.SelectSingleNode("state/highTide"),highTide);
         }
 
-        private void SetDate(XmlNode xmlNode, DateTime highTide)
+        private static void SetDate(XmlNode xmlNode, DateTime highTide)
         {
             SetText(xmlNode, "year", highTide.Year.ToString());
             SetText(xmlNode, "month", highTide.Month.ToString());
@@ -146,7 +146,7 @@ namespace PodcastUtilities.Common
             SetText(xmlNode, "second", highTide.Second.ToString());
         }
 
-        private void SetText(XmlNode xmlNode, string xPath, string text)
+        private static void SetText(XmlNode xmlNode, string xPath, string text)
         {
             XmlNode n = xmlNode.SelectSingleNode(xPath);
             n.InnerText = text;
@@ -176,7 +176,7 @@ namespace PodcastUtilities.Common
         /// </summary>
         public void SaveState(string folder)
         {
-            _xmlDocument.Save(Path.Combine(folder,STATE_FILE_NAME));
+            _xmlDocument.Save(Path.Combine(folder,StateFileName));
         }
     }
 }

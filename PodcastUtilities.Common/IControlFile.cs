@@ -20,7 +20,7 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// filename and extension for the generated playlist
         /// </summary>
-        string PlaylistFilename { get; }
+        string PlaylistFileName { get; }
 
         /// <summary>
         /// the format for the generated playlist

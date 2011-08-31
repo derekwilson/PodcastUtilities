@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace PodcastUtilities.Common
 {
 	/// <summary>
@@ -17,6 +19,6 @@ namespace PodcastUtilities.Common
 		///</summary>
 		///<typeparam name="TService"></typeparam>
 		///<returns></returns>
-		TService Resolve<TService>();
+        TService Resolve<TService>();
 	}
 }

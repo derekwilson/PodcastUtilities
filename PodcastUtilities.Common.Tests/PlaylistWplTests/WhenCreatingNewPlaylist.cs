@@ -22,7 +22,7 @@ namespace PodcastUtilities.Common.Tests.PlaylistWplTests
 		[Test]
 		public void ItShouldSetTheFilename()
 		{
-			Assert.AreEqual("MyPodcastPlaylist.wpl", Playlist.Filename);
+			Assert.AreEqual("MyPodcastPlaylist.wpl", Playlist.FileName);
 		}
 
 		[Test]
