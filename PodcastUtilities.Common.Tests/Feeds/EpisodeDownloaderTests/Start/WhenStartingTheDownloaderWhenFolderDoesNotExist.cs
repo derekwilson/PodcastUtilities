@@ -32,7 +32,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests.Start
         [Test]
         public void ItShouldSetTheTitle()
         {
-            Assert.That(_downloader.GetName(), Is.EqualTo("title"));
+            Assert.That(_downloader.Name, Is.EqualTo("title"));
         }
 
         [Test]

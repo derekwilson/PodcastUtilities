@@ -21,7 +21,7 @@ namespace PodcastUtilities.Common.Tests.WebClientFactoryTests
 
         protected override void When()
         {
-            _client = _factory.GetWebClient();
+            _client = _factory.CreateWebClient();
         }
 
         [Test]

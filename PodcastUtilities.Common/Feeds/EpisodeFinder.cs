@@ -39,7 +39,7 @@ namespace PodcastUtilities.Common.Feeds
 
         private static string GetDownloadPathname(string rootFolder, PodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
         {
-            var proposedFilename = podcastFeedItem.GetFileName();
+            var proposedFilename = podcastFeedItem.FileName;
 
             switch (podcastInfo.Feed.NamingStyle)
             {
@@ -62,12 +62,12 @@ namespace PodcastUtilities.Common.Feeds
                                                     proposedFilename);
                     break;
                 case PodcastEpisodeNamingStyle.EpisodeTitle:
-                    proposedFilename = podcastFeedItem.GetTitleAsFileName();
+                    proposedFilename = podcastFeedItem.TitleAsFileName;
                     break;
                 case PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
                     proposedFilename = string.Format("{0}_{1}",
                                                     podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
-                                                    podcastFeedItem.GetTitleAsFileName());
+                                                    podcastFeedItem.TitleAsFileName);
                     break;
                 case PodcastEpisodeNamingStyle.UrlFilename:
                     break;
@@ -126,7 +126,7 @@ namespace PodcastUtilities.Common.Feeds
 
             var stateKey = Path.Combine(rootFolder, podcastInfo.Folder);
 
-            using (var webClient = _webClientFactory.GetWebClient())
+            using (var webClient = _webClientFactory.CreateWebClient())
             {
                 var downloader = new Downloader(webClient, _feedFactory);
 
@@ -134,7 +134,7 @@ namespace PodcastUtilities.Common.Feeds
                 {
                     var feed = downloader.DownLoadFeed(podcastInfo.Feed.Format, podcastInfo.Feed.Address);
                     feed.StatusUpdate += StatusUpdate;
-                    var episodes = feed.GetFeedEpisodes();
+                    var episodes = feed.Episodes;
 
                     var oldestEpisodeToAccept = DateTime.MinValue;
                     if (podcastInfo.Feed.MaximumDaysOld < int.MaxValue)

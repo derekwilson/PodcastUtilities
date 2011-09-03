@@ -26,16 +26,12 @@ namespace PodcastUtilities.Common.Feeds
         /// <summary>
         /// filename to use when saving the podcast file
         /// </summary>
-        /// <returns></returns>
-        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
-        string GetFileName();
+        string FileName { get;  }
 
         /// <summary>
         /// get the episode title in a form that can be used as a filename
         /// </summary>
-        /// <returns></returns>
-        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
-        string GetTitleAsFileName();
+        string TitleAsFileName { get; }
 
     }
 }

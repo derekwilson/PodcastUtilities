@@ -26,7 +26,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
 
         protected override void When()
         {
-            _episodes = Feed.GetFeedEpisodes();
+            _episodes = Feed.Episodes;
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
         {
             var proposedFilename = string.Format("{0}_{1}",
                                                  podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
-                                                 podcastFeedItem.GetTitleAsFileName());
+                                                 podcastFeedItem.TitleAsFileName);
 
             //Debug.WriteLine(string.Format("Filename: {0}",proposedFilename));
 

@@ -94,310 +94,6 @@
       <Namespaces>
        <Namespace Name="PodcastUtilities.Common">
         <Types>
-         <Type Name="ControlFile">
-          <Members>
-           <Member Name="#.ctor(System.String)">
-            <Messages>
-             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberParameterShouldBeCompoundWord">
-               <Item>'ControlFile.ControlFile(string)'</Item>
-               <Item>filename</Item>
-               <Item>'filename'</Item>
-               <Item>fileName</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#.ctor(System.Xml.XmlDocument)">
-            <Messages>
-             <Message Id="System.Xml.XmlNode" TypeName="MembersShouldNotExposeCertainConcreteTypes" Category="Microsoft.Design" CheckId="CA1059" Created="2011-08-26 16:22:44Z">
-              <Issue Name="Xml">
-               <Item>'ControlFile.ControlFile(XmlDocument)'</Item>
-               <Item>'XmlDocument'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#FeedDeleteDownloadsDaysOld">
-            <Accessors>
-             <Accessor Name="#get_FeedDeleteDownloadsDaysOld()">
-              <Messages>
-               <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-                <Issue Name="IFormatProviderAlternateString">
-                 <Item>'int.ToString()'</Item>
-                 <Item>'ControlFile.FeedDeleteDownloadsDaysOld.get()'</Item>
-                 <Item>'int.ToString(IFormatProvider)'</Item>
-                 <Item>'CultureInfo.CurrentCulture'</Item>
-                 <Item>'CultureInfo.InvariantCulture'</Item>
-                </Issue>
-               </Message>
-              </Messages>
-             </Accessor>
-            </Accessors>
-           </Member>
-           <Member Name="#FeedMaximumDaysOld">
-            <Accessors>
-             <Accessor Name="#get_FeedMaximumDaysOld()">
-              <Messages>
-               <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-                <Issue Name="IFormatProviderAlternateString">
-                 <Item>'int.ToString()'</Item>
-                 <Item>'ControlFile.FeedMaximumDaysOld.get()'</Item>
-                 <Item>'int.ToString(IFormatProvider)'</Item>
-                 <Item>'CultureInfo.CurrentCulture'</Item>
-                 <Item>'CultureInfo.InvariantCulture'</Item>
-                </Issue>
-               </Message>
-              </Messages>
-             </Accessor>
-            </Accessors>
-           </Member>
-           <Member Name="#FreeSpaceToLeaveOnDestination">
-            <Accessors>
-             <Accessor Name="#get_FreeSpaceToLeaveOnDestination()">
-              <Messages>
-               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
-                <Issue>
-                 <Item>'ControlFile.FreeSpaceToLeaveOnDestination.get()'</Item>
-                 <Item>'object'</Item>
-                </Issue>
-               </Message>
-               <Message Id="System.Convert.ToInt64(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-                <Issue Name="IFormatProviderAlternate">
-                 <Item>'Convert.ToInt64(string)'</Item>
-                 <Item>'ControlFile.FreeSpaceToLeaveOnDestination.get()'</Item>
-                 <Item>'Convert.ToInt64(string, IFormatProvider)'</Item>
-                 <Item>'CultureInfo.CurrentCulture'</Item>
-                 <Item>'CultureInfo.InvariantCulture'</Item>
-                </Issue>
-               </Message>
-              </Messages>
-             </Accessor>
-            </Accessors>
-           </Member>
-           <Member Name="#FreeSpaceToLeaveOnDownload">
-            <Accessors>
-             <Accessor Name="#get_FreeSpaceToLeaveOnDownload()">
-              <Messages>
-               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
-                <Issue>
-                 <Item>'ControlFile.FreeSpaceToLeaveOnDownload.get()'</Item>
-                 <Item>'object'</Item>
-                </Issue>
-               </Message>
-               <Message Id="System.Convert.ToInt64(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-                <Issue Name="IFormatProviderAlternate">
-                 <Item>'Convert.ToInt64(string)'</Item>
-                 <Item>'ControlFile.FreeSpaceToLeaveOnDownload.get()'</Item>
-                 <Item>'Convert.ToInt64(string, IFormatProvider)'</Item>
-                 <Item>'CultureInfo.CurrentCulture'</Item>
-                 <Item>'CultureInfo.InvariantCulture'</Item>
-                </Issue>
-               </Message>
-              </Messages>
-             </Accessor>
-            </Accessors>
-           </Member>
-           <Member Name="#MaximumNumberOfConcurrentDownloads">
-            <Accessors>
-             <Accessor Name="#get_MaximumNumberOfConcurrentDownloads()">
-              <Messages>
-               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
-                <Issue>
-                 <Item>'ControlFile.MaximumNumberOfConcurrentDownloads.get()'</Item>
-                 <Item>'object'</Item>
-                </Issue>
-               </Message>
-               <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-                <Issue Name="IFormatProviderAlternate">
-                 <Item>'Convert.ToInt32(string)'</Item>
-                 <Item>'ControlFile.MaximumNumberOfConcurrentDownloads.get()'</Item>
-                 <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
-                 <Item>'CultureInfo.CurrentCulture'</Item>
-                 <Item>'CultureInfo.InvariantCulture'</Item>
-                </Issue>
-               </Message>
-              </Messages>
-             </Accessor>
-            </Accessors>
-           </Member>
-           <Member Name="#PlaylistFormat">
-            <Accessors>
-             <Accessor Name="#get_PlaylistFormat()">
-              <Messages>
-               <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Created="2011-08-26 16:22:44Z" FixCategory="Breaking">
-                <Issue Name="PropertyGetter" Level="Warning">
-                 <Item>'ControlFile.PlaylistFormat.get()'</Item>
-                 <Item>'ControlFileValueFormatException'</Item>
-                </Issue>
-               </Message>
-               <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
-                <Issue>
-                 <Item>'string.ToLower()'</Item>
-                 <Item>'ControlFile.PlaylistFormat.get()'</Item>
-                 <Item>'string.ToLower(CultureInfo)'</Item>
-                </Issue>
-               </Message>
-               <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-                <Issue Name="IFormatProviderAlternateString">
-                 <Item>'string.Format(string, object)'</Item>
-                 <Item>'ControlFile.PlaylistFormat.get()'</Item>
-                 <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-                 <Item>'CultureInfo.CurrentCulture'</Item>
-                 <Item>'CultureInfo.InvariantCulture'</Item>
-                </Issue>
-               </Message>
-              </Messages>
-             </Accessor>
-            </Accessors>
-           </Member>
-           <Member Name="#ReadDeleteDownloadsDaysOld(System.Xml.XmlNode)">
-            <Messages>
-             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'ControlFile.ReadDeleteDownloadsDaysOld(XmlNode)'</Item>
-               <Item>'object'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternate">
-               <Item>'Convert.ToInt32(string)'</Item>
-               <Item>'ControlFile.ReadDeleteDownloadsDaysOld(XmlNode)'</Item>
-               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#ReadFeedEpisodeDownloadStrategy(System.String)">
-            <Messages>
-             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
-              <Issue>
-               <Item>'ControlFile.ReadFeedEpisodeDownloadStrategy(string)'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'string.ToLower()'</Item>
-               <Item>'ControlFile.ReadFeedEpisodeDownloadStrategy(string)'</Item>
-               <Item>'string.ToLower(CultureInfo)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#ReadFeedEpisodeNamingStyle(System.String)">
-            <Messages>
-             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
-              <Issue>
-               <Item>'ControlFile.ReadFeedEpisodeNamingStyle(string)'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'string.ToLower()'</Item>
-               <Item>'ControlFile.ReadFeedEpisodeNamingStyle(string)'</Item>
-               <Item>'string.ToLower(CultureInfo)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#ReadFeedFormat(System.String)">
-            <Messages>
-             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-08-26 16:22:44Z" FixCategory="NonBreaking">
-              <Issue>
-               <Item>'ControlFile.ReadFeedFormat(string)'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'string.ToLower()'</Item>
-               <Item>'ControlFile.ReadFeedFormat(string)'</Item>
-               <Item>'string.ToLower(CultureInfo)'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'ControlFile.ReadFeedFormat(string)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#ReadMaximumDaysOld(System.Xml.XmlNode)">
-            <Messages>
-             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'ControlFile.ReadMaximumDaysOld(XmlNode)'</Item>
-               <Item>'object'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternate">
-               <Item>'Convert.ToInt32(string)'</Item>
-               <Item>'ControlFile.ReadMaximumDaysOld(XmlNode)'</Item>
-               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#ReadPodcasts()">
-            <Messages>
-             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'string.ToLower()'</Item>
-               <Item>'ControlFile.ReadPodcasts()'</Item>
-               <Item>'string.ToLower(CultureInfo)'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternate">
-               <Item>'Convert.ToInt32(string)'</Item>
-               <Item>'ControlFile.ReadPodcasts()'</Item>
-               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'string.StartsWith(string)'</Item>
-               <Item>'ControlFile.ReadPodcasts()'</Item>
-               <Item>'string.StartsWith(string, StringComparison)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#RetryWaitInSeconds">
-            <Accessors>
-             <Accessor Name="#get_RetryWaitInSeconds()">
-              <Messages>
-               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-08-26 16:22:44Z">
-                <Issue>
-                 <Item>'ControlFile.RetryWaitInSeconds.get()'</Item>
-                 <Item>'object'</Item>
-                </Issue>
-               </Message>
-               <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-                <Issue Name="IFormatProviderAlternate">
-                 <Item>'Convert.ToInt32(string)'</Item>
-                 <Item>'ControlFile.RetryWaitInSeconds.get()'</Item>
-                 <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
-                 <Item>'CultureInfo.CurrentCulture'</Item>
-                 <Item>'CultureInfo.InvariantCulture'</Item>
-                </Issue>
-               </Message>
-              </Messages>
-             </Accessor>
-            </Accessors>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="DisplayFormatter">
           <Messages>
            <Message TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053" Created="2011-08-26 16:22:44Z">
@@ -443,197 +139,6 @@
            </Member>
           </Members>
          </Type>
-         <Type Name="FeedSyncItemToPodcastEpisodeDownloaderTaskConverter">
-          <Members>
-           <Member Name="#ConvertItemsToTasks(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.IFeedSyncItem&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.StatusUpdateEventArgs&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.ProgressEventArgs&gt;)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'List&lt;IFeedSyncItem&gt;'</Item>
-               <Item>'FeedSyncItemToPodcastEpisodeDownloaderTaskConverter.ConvertItemsToTasks(List&lt;IFeedSyncItem&gt;, EventHandler&lt;StatusUpdateEventArgs&gt;, EventHandler&lt;ProgressEventArgs&gt;)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="FileCopier">
-          <Members>
-           <Member Name="#CopyFilesToTarget(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.FileSyncItem&gt;,System.String,System.String,System.Int64,System.Boolean)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'List&lt;FileSyncItem&gt;'</Item>
-               <Item>'FileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'FileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'FileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'string.StartsWith(string)'</Item>
-               <Item>'FileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
-               <Item>'string.StartsWith(string, StringComparison)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#IsDestinationDriveFull(System.String,System.Int64)">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'FileCopier.IsDestinationDriveFull(string, long)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, params object[])'</Item>
-               <Item>'FileCopier.IsDestinationDriveFull(string, long)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="FileFinder">
-          <Members>
-           <Member Name="#GetFiles(System.String,System.String)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'List&lt;IFileInfo&gt;'</Item>
-               <Item>'FileFinder.GetFiles(string, string)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#GetFiles(System.String,System.String,System.Int32,System.String,System.Boolean)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'List&lt;IFileInfo&gt;'</Item>
-               <Item>'FileFinder.GetFiles(string, string, int, string, bool)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="FileSorter">
-          <Members>
-           <Member Name="#Sort(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Platform.IFileInfo&gt;,System.String,System.Boolean)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'List&lt;IFileInfo&gt;'</Item>
-               <Item>'FileSorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'string.ToLower()'</Item>
-               <Item>'FileSorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
-               <Item>'string.ToLower(CultureInfo)'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.CompareTo(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'string.CompareTo(string)'</Item>
-               <Item>'FileSorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
-               <Item>'string.Compare(string, string, StringComparison)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter">
-          <Members>
-           <Member Name="#ConvertItemsToTasks(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.IFeedSyncItem&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.StatusUpdateEventArgs&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.ProgressEventArgs&gt;)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'List&lt;IFeedSyncItem&gt;'</Item>
-               <Item>'IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter.ConvertItemsToTasks(List&lt;IFeedSyncItem&gt;, EventHandler&lt;StatusUpdateEventArgs&gt;, EventHandler&lt;ProgressEventArgs&gt;)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="IFileCopier">
-          <Members>
-           <Member Name="#CopyFilesToTarget(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.FileSyncItem&gt;,System.String,System.String,System.Int64,System.Boolean)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'List&lt;FileSyncItem&gt;'</Item>
-               <Item>'IFileCopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="IFileFinder">
-          <Members>
-           <Member Name="#GetFiles(System.String,System.String)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'List&lt;IFileInfo&gt;'</Item>
-               <Item>'IFileFinder.GetFiles(string, string)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#GetFiles(System.String,System.String,System.Int32,System.String,System.Boolean)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'List&lt;IFileInfo&gt;'</Item>
-               <Item>'IFileFinder.GetFiles(string, string, int, string, bool)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="IFileSorter">
-          <Members>
-           <Member Name="#Sort(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Platform.IFileInfo&gt;,System.String,System.Boolean)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'List&lt;IFileInfo&gt;'</Item>
-               <Item>'IFileSorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="IIocContainer">
           <Members>
            <Member Name="#Register`2()">
@@ -646,266 +151,6 @@
               <Issue>
                <Item>'IIocContainer.Register&lt;TService, TImplementor&gt;()'</Item>
                <Item>'TService'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="IPodcastFeedDownloader">
-          <Members>
-           <Member Name="#DownLoadFeed(PodcastUtilities.Common.PodcastFeedFormat,System.Uri)">
-            <Messages>
-             <Message Id="DownLoad" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberShouldBeDiscreteTerm">
-               <Item>DownLoad</Item>
-               <Item>'IPodcastFeedDownloader.DownLoadFeed(PodcastFeedFormat, Uri)'</Item>
-               <Item>Download</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="PlaylistAsx">
-          <Messages>
-           <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Created="2011-08-26 16:22:44Z">
-            <Issue Certainty="60">
-             <Item>'PlaylistAsx'</Item>
-             <Item>IEnumerable</Item>
-            </Issue>
-           </Message>
-          </Messages>
-         </Type>
-         <Type Name="PlaylistGenerator">
-          <Members>
-           <Member Name="#GeneratePlaylist(PodcastUtilities.Common.IControlFile,System.Boolean)">
-            <Messages>
-             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'string.StartsWith(string)'</Item>
-               <Item>'PlaylistGenerator.GeneratePlaylist(IControlFile, bool)'</Item>
-               <Item>'string.StartsWith(string, StringComparison)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="PlaylistWpl">
-          <Messages>
-           <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Created="2011-08-26 16:22:44Z">
-            <Issue Certainty="60">
-             <Item>'PlaylistWpl'</Item>
-             <Item>IEnumerable</Item>
-            </Issue>
-           </Message>
-          </Messages>
-         </Type>
-         <Type Name="PodcastEpisodeNamingStyle">
-          <Members>
-           <Member Name="#UrlFilename">
-            <Messages>
-             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberShouldBeCompoundWord">
-               <Item>Filename</Item>
-               <Item>'PodcastEpisodeNamingStyle.UrlFilename'</Item>
-               <Item>FileName</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#UrlFilenameAndPublishDateTime">
-            <Messages>
-             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberShouldBeCompoundWord">
-               <Item>Filename</Item>
-               <Item>'PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime'</Item>
-               <Item>FileName</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#UrlFilenameFeedTitleAndPublishDateTime">
-            <Messages>
-             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberShouldBeCompoundWord">
-               <Item>Filename</Item>
-               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime'</Item>
-               <Item>FileName</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#UrlFilenameFeedTitleAndPublishDateTimeInFolder">
-            <Messages>
-             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberShouldBeCompoundWord">
-               <Item>Filename</Item>
-               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder'</Item>
-               <Item>FileName</Item>
-              </Issue>
-             </Message>
-             <Message Id="InFolder" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-08-26 16:22:44Z">
-              <Issue Name="MemberShouldBeDiscreteTerm">
-               <Item>InFolder</Item>
-               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder'</Item>
-               <Item>Infolder</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="PodcastFeedEpisodeFinder">
-          <Members>
-           <Member Name="#FindEpisodesToDownload(System.String,System.Int32,PodcastUtilities.Common.PodcastInfo)">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#GetDownloadPathname(System.String,PodcastUtilities.Common.PodcastInfo,PodcastUtilities.Common.IPodcastFeedItem)">
-            <Messages>
-             <Message Id="System.DateTime.ToString(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'DateTime.ToString(string)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'DateTime.ToString(string)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'DateTime.ToString(string)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'DateTime.ToString(string)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'DateTime.ToString(string)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object, object)'</Item>
-               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, params object[])'</Item>
-               <Item>'PodcastFeedEpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="PodcastFeedInRssFormat">
-          <Members>
-           <Member Name="#GetFeedEpisodes()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'PodcastFeedInRssFormat.GetFeedEpisodes()'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'PodcastFeedInRssFormat.GetFeedEpisodes()'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'PodcastFeedInRssFormat.GetFeedEpisodes()'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -937,38 +182,6 @@
            </Message>
           </Messages>
          </Type>
-         <Type Name="XmlFileBase">
-          <Messages>
-           <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Created="2011-08-26 16:22:44Z">
-            <Issue Certainty="60">
-             <Item>'XmlFileBase'</Item>
-             <Item>IEnumerable</Item>
-            </Issue>
-           </Message>
-           <Message TypeName="TypesShouldNotExtendCertainBaseTypes" Category="Microsoft.Design" CheckId="CA1058" Created="2011-08-26 16:22:44Z">
-            <Issue Name="System.Xml.XmlDocument">
-             <Item>'XmlFileBase'</Item>
-             <Item>'XmlDocument'</Item>
-            </Issue>
-           </Message>
-          </Messages>
-          <Members>
-           <Member Name="#.ctor(System.String,System.Boolean,System.String,System.Reflection.Assembly)">
-            <Messages>
-             <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Created="2011-08-26 16:22:44Z">
-              <Issue>
-               <Item>'XmlFileBase.XmlFileBase(string, bool, string, Assembly)'</Item>
-               <Item>&#xD;&#xA;&#xD;&#xA;XmlFileBase..ctor(String, Boolean, String, Assembly)&#xD;&#xA;XmlDocument.Load(Stream):Void</Item>
-              </Issue>
-              <Issue>
-               <Item>'XmlFileBase.XmlFileBase(string, bool, string, Assembly)'</Item>
-               <Item>&#xD;&#xA;&#xD;&#xA;XmlFileBase..ctor(String, Boolean, String, Assembly)&#xD;&#xA;XmlDocument.Load(Stream):Void&#xD;&#xA;XmlDocument.Load(String):Void</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="XmlState">
           <Members>
            <Member Name="#.ctor(System.Xml.XmlDocument)">
@@ -977,6 +190,737 @@
               <Issue Name="Xml">
                <Item>'XmlState.XmlState(XmlDocument)'</Item>
                <Item>'XmlDocument'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PodcastUtilities.Common.Configuration">
+        <Types>
+         <Type Name="ControlFile">
+          <Members>
+           <Member Name="#.ctor(System.String)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'ControlFile.ControlFile(string)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#.ctor(System.Xml.XmlDocument)">
+            <Messages>
+             <Message Id="System.Xml.XmlNode" TypeName="MembersShouldNotExposeCertainConcreteTypes" Category="Microsoft.Design" CheckId="CA1059" Created="2011-09-03 09:32:09Z">
+              <Issue Name="Xml">
+               <Item>'ControlFile.ControlFile(XmlDocument)'</Item>
+               <Item>'XmlDocument'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#FeedDeleteDownloadsDaysOld">
+            <Accessors>
+             <Accessor Name="#get_FeedDeleteDownloadsDaysOld()">
+              <Messages>
+               <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+                <Issue Name="IFormatProviderAlternateString">
+                 <Item>'int.ToString()'</Item>
+                 <Item>'ControlFile.FeedDeleteDownloadsDaysOld.get()'</Item>
+                 <Item>'int.ToString(IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#FeedMaximumDaysOld">
+            <Accessors>
+             <Accessor Name="#get_FeedMaximumDaysOld()">
+              <Messages>
+               <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+                <Issue Name="IFormatProviderAlternateString">
+                 <Item>'int.ToString()'</Item>
+                 <Item>'ControlFile.FeedMaximumDaysOld.get()'</Item>
+                 <Item>'int.ToString(IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#FreeSpaceToLeaveOnDestination">
+            <Accessors>
+             <Accessor Name="#get_FreeSpaceToLeaveOnDestination()">
+              <Messages>
+               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-09-03 09:32:09Z">
+                <Issue>
+                 <Item>'ControlFile.FreeSpaceToLeaveOnDestination.get()'</Item>
+                 <Item>'object'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.Convert.ToInt64(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+                <Issue Name="IFormatProviderAlternate">
+                 <Item>'Convert.ToInt64(string)'</Item>
+                 <Item>'ControlFile.FreeSpaceToLeaveOnDestination.get()'</Item>
+                 <Item>'Convert.ToInt64(string, IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#FreeSpaceToLeaveOnDownload">
+            <Accessors>
+             <Accessor Name="#get_FreeSpaceToLeaveOnDownload()">
+              <Messages>
+               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-09-03 09:32:09Z">
+                <Issue>
+                 <Item>'ControlFile.FreeSpaceToLeaveOnDownload.get()'</Item>
+                 <Item>'object'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.Convert.ToInt64(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+                <Issue Name="IFormatProviderAlternate">
+                 <Item>'Convert.ToInt64(string)'</Item>
+                 <Item>'ControlFile.FreeSpaceToLeaveOnDownload.get()'</Item>
+                 <Item>'Convert.ToInt64(string, IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#MaximumNumberOfConcurrentDownloads">
+            <Accessors>
+             <Accessor Name="#get_MaximumNumberOfConcurrentDownloads()">
+              <Messages>
+               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-09-03 09:32:09Z">
+                <Issue>
+                 <Item>'ControlFile.MaximumNumberOfConcurrentDownloads.get()'</Item>
+                 <Item>'object'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+                <Issue Name="IFormatProviderAlternate">
+                 <Item>'Convert.ToInt32(string)'</Item>
+                 <Item>'ControlFile.MaximumNumberOfConcurrentDownloads.get()'</Item>
+                 <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#PlaylistFormat">
+            <Accessors>
+             <Accessor Name="#get_PlaylistFormat()">
+              <Messages>
+               <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Created="2011-09-03 09:32:09Z" FixCategory="Breaking">
+                <Issue Name="PropertyGetter" Level="Warning">
+                 <Item>'ControlFile.PlaylistFormat.get()'</Item>
+                 <Item>'ControlFileValueFormatException'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-09-03 09:32:09Z">
+                <Issue>
+                 <Item>'string.ToLower()'</Item>
+                 <Item>'ControlFile.PlaylistFormat.get()'</Item>
+                 <Item>'string.ToLower(CultureInfo)'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+                <Issue Name="IFormatProviderAlternateString">
+                 <Item>'string.Format(string, object)'</Item>
+                 <Item>'ControlFile.PlaylistFormat.get()'</Item>
+                 <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#ReadDeleteDownloadsDaysOld(System.Xml.XmlNode)">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'ControlFile.ReadDeleteDownloadsDaysOld(XmlNode)'</Item>
+               <Item>'object'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'ControlFile.ReadDeleteDownloadsDaysOld(XmlNode)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReadFeedEpisodeDownloadStrategy(System.String)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-09-03 09:32:09Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'ControlFile.ReadFeedEpisodeDownloadStrategy(string)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'string.ToLower()'</Item>
+               <Item>'ControlFile.ReadFeedEpisodeDownloadStrategy(string)'</Item>
+               <Item>'string.ToLower(CultureInfo)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReadFeedEpisodeNamingStyle(System.String)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-09-03 09:32:09Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'ControlFile.ReadFeedEpisodeNamingStyle(string)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'string.ToLower()'</Item>
+               <Item>'ControlFile.ReadFeedEpisodeNamingStyle(string)'</Item>
+               <Item>'string.ToLower(CultureInfo)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReadFeedFormat(System.String)">
+            <Messages>
+             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'string.ToLower()'</Item>
+               <Item>'ControlFile.ReadFeedFormat(string)'</Item>
+               <Item>'string.ToLower(CultureInfo)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'ControlFile.ReadFeedFormat(string)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReadMaximumDaysOld(System.Xml.XmlNode)">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'ControlFile.ReadMaximumDaysOld(XmlNode)'</Item>
+               <Item>'object'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'ControlFile.ReadMaximumDaysOld(XmlNode)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReadPodcasts()">
+            <Messages>
+             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'string.ToLower()'</Item>
+               <Item>'ControlFile.ReadPodcasts()'</Item>
+               <Item>'string.ToLower(CultureInfo)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'ControlFile.ReadPodcasts()'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'string.StartsWith(string)'</Item>
+               <Item>'ControlFile.ReadPodcasts()'</Item>
+               <Item>'string.StartsWith(string, StringComparison)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RetryWaitInSeconds">
+            <Accessors>
+             <Accessor Name="#get_RetryWaitInSeconds()">
+              <Messages>
+               <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-09-03 09:32:09Z">
+                <Issue>
+                 <Item>'ControlFile.RetryWaitInSeconds.get()'</Item>
+                 <Item>'object'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+                <Issue Name="IFormatProviderAlternate">
+                 <Item>'Convert.ToInt32(string)'</Item>
+                 <Item>'ControlFile.RetryWaitInSeconds.get()'</Item>
+                 <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PodcastEpisodeNamingStyle">
+          <Members>
+           <Member Name="#UrlFilename">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'PodcastEpisodeNamingStyle.UrlFilename'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UrlFilenameAndPublishDateTime">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UrlFilenameFeedTitleAndPublishDateTime">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UrlFilenameFeedTitleAndPublishDateTimeInFolder">
+            <Messages>
+             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
+              <Issue Name="MemberShouldBeCompoundWord">
+               <Item>Filename</Item>
+               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder'</Item>
+               <Item>FileName</Item>
+              </Issue>
+             </Message>
+             <Message Id="InFolder" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
+              <Issue Name="MemberShouldBeDiscreteTerm">
+               <Item>InFolder</Item>
+               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder'</Item>
+               <Item>Infolder</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PodcastUtilities.Common.Feeds">
+        <Types>
+         <Type Name="EpisodeFinder">
+          <Members>
+           <Member Name="#FindEpisodesToDownload(System.String,System.Int32,PodcastUtilities.Common.Configuration.PodcastInfo)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'EpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'EpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'EpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'EpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'EpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetDownloadPathname(System.String,PodcastUtilities.Common.Configuration.PodcastInfo,PodcastUtilities.Common.Feeds.IPodcastFeedItem)">
+            <Messages>
+             <Message Id="System.DateTime.ToString(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'DateTime.ToString(string)'</Item>
+               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'DateTime.ToString(string)'</Item>
+               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'DateTime.ToString(string)'</Item>
+               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'DateTime.ToString(string)'</Item>
+               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'DateTime.ToString(string)'</Item>
+               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object, object)'</Item>
+               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, params object[])'</Item>
+               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IDownloader">
+          <Members>
+           <Member Name="#DownLoadFeed(PodcastUtilities.Common.Configuration.PodcastFeedFormat,System.Uri)">
+            <Messages>
+             <Message Id="DownLoad" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
+              <Issue Name="MemberShouldBeDiscreteTerm">
+               <Item>DownLoad</Item>
+               <Item>'IDownloader.DownLoadFeed(PodcastFeedFormat, Uri)'</Item>
+               <Item>Download</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ISyncItemToEpisodeDownloaderTaskConverter">
+          <Members>
+           <Member Name="#ConvertItemsToTasks(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Feeds.ISyncItem&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.StatusUpdateEventArgs&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.ProgressEventArgs&gt;)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'List&lt;ISyncItem&gt;'</Item>
+               <Item>'ISyncItemToEpisodeDownloaderTaskConverter.ConvertItemsToTasks(List&lt;ISyncItem&gt;, EventHandler&lt;StatusUpdateEventArgs&gt;, EventHandler&lt;ProgressEventArgs&gt;)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PodcastFeedInRssFormat">
+          <Members>
+           <Member Name="#Episodes">
+            <Accessors>
+             <Accessor Name="#get_Episodes()">
+              <Messages>
+               <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:39:30Z">
+                <Issue Name="IFormatProviderAlternateString">
+                 <Item>'string.Format(string, object)'</Item>
+                 <Item>'PodcastFeedInRssFormat.Episodes.get()'</Item>
+                 <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+               <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:39:30Z">
+                <Issue Name="IFormatProviderAlternateString">
+                 <Item>'string.Format(string, object, object)'</Item>
+                 <Item>'PodcastFeedInRssFormat.Episodes.get()'</Item>
+                 <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+                <Issue Name="IFormatProviderAlternateString">
+                 <Item>'string.Format(string, object, object)'</Item>
+                 <Item>'PodcastFeedInRssFormat.Episodes.get()'</Item>
+                 <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+                 <Item>'CultureInfo.CurrentCulture'</Item>
+                 <Item>'CultureInfo.InvariantCulture'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="SyncItemToEpisodeDownloaderTaskConverter">
+          <Members>
+           <Member Name="#ConvertItemsToTasks(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Feeds.ISyncItem&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.StatusUpdateEventArgs&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.ProgressEventArgs&gt;)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'List&lt;ISyncItem&gt;'</Item>
+               <Item>'SyncItemToEpisodeDownloaderTaskConverter.ConvertItemsToTasks(List&lt;ISyncItem&gt;, EventHandler&lt;StatusUpdateEventArgs&gt;, EventHandler&lt;ProgressEventArgs&gt;)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PodcastUtilities.Common.Files">
+        <Types>
+         <Type Name="Copier">
+          <Members>
+           <Member Name="#CopyFilesToTarget(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Files.FileSyncItem&gt;,System.String,System.String,System.Int64,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'List&lt;FileSyncItem&gt;'</Item>
+               <Item>'Copier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'Copier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'Copier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'string.StartsWith(string)'</Item>
+               <Item>'Copier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
+               <Item>'string.StartsWith(string, StringComparison)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#IsDestinationDriveFull(System.String,System.Int64)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'Copier.IsDestinationDriveFull(string, long)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, params object[])'</Item>
+               <Item>'Copier.IsDestinationDriveFull(string, long)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Finder">
+          <Members>
+           <Member Name="#GetFiles(System.String,System.String)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'Finder.GetFiles(string, string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetFiles(System.String,System.String,System.Int32,System.String,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'Finder.GetFiles(string, string, int, string, bool)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ICopier">
+          <Members>
+           <Member Name="#CopyFilesToTarget(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Files.FileSyncItem&gt;,System.String,System.String,System.Int64,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'List&lt;FileSyncItem&gt;'</Item>
+               <Item>'ICopier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IFinder">
+          <Members>
+           <Member Name="#GetFiles(System.String,System.String)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'IFinder.GetFiles(string, string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetFiles(System.String,System.String,System.Int32,System.String,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'IFinder.GetFiles(string, string, int, string, bool)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ISorter">
+          <Members>
+           <Member Name="#Sort(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Platform.IFileInfo&gt;,System.String,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'ISorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Sorter">
+          <Members>
+           <Member Name="#Sort(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Platform.IFileInfo&gt;,System.String,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'List&lt;IFileInfo&gt;'</Item>
+               <Item>'Sorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'string.ToLower()'</Item>
+               <Item>'Sorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
+               <Item>'string.ToLower(CultureInfo)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.CompareTo(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'string.CompareTo(string)'</Item>
+               <Item>'Sorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
+               <Item>'string.Compare(string, string, StringComparison)'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -1015,20 +959,78 @@
          </Type>
         </Types>
        </Namespace>
+       <Namespace Name="PodcastUtilities.Common.Playlists">
+        <Types>
+         <Type Name="Generator">
+          <Members>
+           <Member Name="#GeneratePlaylist(PodcastUtilities.Common.Configuration.IControlFile,System.Boolean)">
+            <Messages>
+             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'string.StartsWith(string)'</Item>
+               <Item>'Generator.GeneratePlaylist(IControlFile, bool)'</Item>
+               <Item>'string.StartsWith(string, StringComparison)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PlaylistAsx">
+          <Messages>
+           <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Created="2011-09-03 09:32:09Z">
+            <Issue Certainty="60">
+             <Item>'PlaylistAsx'</Item>
+             <Item>IEnumerable</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="PlaylistWpl">
+          <Messages>
+           <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Created="2011-09-03 09:32:09Z">
+            <Issue Certainty="60">
+             <Item>'PlaylistWpl'</Item>
+             <Item>IEnumerable</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="XmlFileBase">
+          <Messages>
+           <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Created="2011-09-03 09:32:09Z">
+            <Issue Certainty="60">
+             <Item>'XmlFileBase'</Item>
+             <Item>IEnumerable</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="TypesShouldNotExtendCertainBaseTypes" Category="Microsoft.Design" CheckId="CA1058" Created="2011-09-03 09:32:09Z">
+            <Issue Name="System.Xml.XmlDocument">
+             <Item>'XmlFileBase'</Item>
+             <Item>'XmlDocument'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(System.String,System.Boolean,System.String,System.Reflection.Assembly)">
+            <Messages>
+             <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Created="2011-09-03 09:32:09Z">
+              <Issue>
+               <Item>'XmlFileBase.XmlFileBase(string, bool, string, Assembly)'</Item>
+               <Item>&#xD;&#xA;&#xD;&#xA;XmlFileBase..ctor(String, Boolean, String, Assembly)&#xD;&#xA;XmlDocument.Load(Stream):Void</Item>
+              </Issue>
+              <Issue>
+               <Item>'XmlFileBase.XmlFileBase(string, bool, string, Assembly)'</Item>
+               <Item>&#xD;&#xA;&#xD;&#xA;XmlFileBase..ctor(String, Boolean, String, Assembly)&#xD;&#xA;XmlDocument.Load(Stream):Void&#xD;&#xA;XmlDocument.Load(String):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
       </Namespaces>
-     </Module>
-    </Modules>
-   </Target>
-   <Target Name="$(ProjectDir)/PodcastUtilities.Ioc/bin/Debug/PodcastUtilities.Ioc.dll">
-    <Modules>
-     <Module Name="podcastutilities.ioc.dll">
-      <Messages>
-       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2011-08-26 16:22:44Z">
-        <Issue Name="NoStrongName">
-         <Item>'PodcastUtilities.Ioc.dll'</Item>
-        </Issue>
-       </Message>
-      </Messages>
      </Module>
     </Modules>
    </Target>

@@ -11,13 +11,12 @@ namespace PodcastUtilities.Common.Feeds
         /// <summary>
         /// the title of the podcast
         /// </summary>
-        string PodcastTitle { get; }
+        string Title { get; }
 
         /// <summary>
         /// get the episodes of a feed
         /// </summary>
         /// <returns></returns>
-        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
-        IList<IPodcastFeedItem> GetFeedEpisodes();
+        IList<IPodcastFeedItem> Episodes { get; }
     }
 }

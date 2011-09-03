@@ -92,15 +92,15 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
         {
             _timeProvider.Stub(time => time.UtcNow).Return(_now);
             _webClient.Stub(client => client.OpenRead(_feedInfo.Address)).Return(_stream);
-            _webClientFactory.Stub(factory => factory.GetWebClient()).Return(_webClient);
+            _webClientFactory.Stub(factory => factory.CreateWebClient()).Return(_webClient);
             _feedFactory.Stub(factory => factory.CreatePodcastFeed(_feedInfo.Format, _stream)).Return(_podcastFeed);
             if (throwErrorFromFeed)
             {
-                _podcastFeed.Stub(feed => feed.GetFeedEpisodes()).Throw(new Exception("ERROR"));
+                _podcastFeed.Stub(feed => feed.Episodes).Throw(new Exception("ERROR"));
             }
             else
             {
-                _podcastFeed.Stub(feed => feed.GetFeedEpisodes()).Return(_podcastFeedItems);
+                _podcastFeed.Stub(feed => feed.Episodes).Return(_podcastFeedItems);
             }
             _stateProvider.Stub(provider => provider.GetState(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_state);
         }

@@ -25,7 +25,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
 
         protected override void When()
         {
-            _episodes = Feed.GetFeedEpisodes();
+            _episodes = Feed.Episodes;
         }
 
         [Test]

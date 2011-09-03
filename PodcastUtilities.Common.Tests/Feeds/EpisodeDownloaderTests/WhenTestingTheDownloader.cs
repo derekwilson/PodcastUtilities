@@ -81,7 +81,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests
         protected virtual void SetupStubs()
         {
             _webClient.Stub(client => client.OpenRead(_syncItem.EpisodeUrl)).Return(_stream);
-            _webClientFactory.Stub(factory => factory.GetWebClient()).Return(_webClient);
+            _webClientFactory.Stub(factory => factory.CreateWebClient()).Return(_webClient);
             _directoryInfoProvider.Stub(dir => dir.GetDirectoryInfo(_downloadFolder)).Return(_directoryInfo);
             _stateProvider.Stub(provider => provider.GetState(_syncItem.StateKey)).Return(_state);
         }

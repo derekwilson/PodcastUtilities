@@ -62,6 +62,24 @@ namespace PodcastUtilities.Common.Feeds
         public EventWaitHandle TaskComplete { get; protected set; }
 
         /// <summary>
+        /// gets the display name for the task
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                lock (_lock)
+                {
+                    if (SyncItem == null)
+                    {
+                        return "<UNSTARTED TASK>";
+                    }
+                    return SyncItem.EpisodeTitle;
+                }
+            }
+        }
+
+        /// <summary>
         /// create a task
         /// </summary>
         public EpisodeDownloader(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities, IStateProvider stateProvider)
@@ -93,7 +111,7 @@ namespace PodcastUtilities.Common.Feeds
                 _started = true;
                 _progressPercentage = 0;
 
-                _client = _webClientFactory.GetWebClient();
+                _client = _webClientFactory.CreateWebClient();
                 _client.ProgressUpdate += new EventHandler<ProgressEventArgs>(ClientProgressUpdate);
                 _client.DownloadFileCompleted += new AsyncCompletedEventHandler(ClientDownloadFileCompleted);
 
@@ -209,22 +227,6 @@ namespace PodcastUtilities.Common.Feeds
         {
             if (StatusUpdate != null)
                 StatusUpdate(this, e);
-        }
-
-        /// <summary>
-        /// gets the display name for the task
-        /// </summary>
-        /// <returns></returns>
-        public string GetName()
-        {
-            lock (_lock)
-            {
-                if (SyncItem == null)
-                {
-                    return "<UNSTARTED TASK>";
-                }
-                return SyncItem.EpisodeTitle;
-            }
         }
 
         /// <summary>

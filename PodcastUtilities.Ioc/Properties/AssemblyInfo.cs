@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -21,5 +22,8 @@ using System.Runtime.InteropServices;
 [assembly: Guid("19cbc8e3-ebb3-4614-b0e6-af46733763e9")]
 
 [assembly: CLSCompliant(true)]
+
+// we cannot have a strong name as we depend on LinFu Core and it does not have a string name
+[module: SuppressMessage("Microsoft.Design", "CA2210:AssembliesShouldHaveValidStrongNames")]
 
 // Version information is in the shared AssemblyInfo
