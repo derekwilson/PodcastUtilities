@@ -9,7 +9,7 @@ namespace PodcastUtilities.Common.Tests.FileCopierTests
 	public abstract class WhenTestingFileCopier
 		: WhenTestingBehaviour
 	{
-		protected FileCopier FileCopier { get; set; }
+		protected Copier FileCopier { get; set; }
 		
 		protected IDriveInfo DestinationDriveInfo { get; set; }
 		protected IDriveInfoProvider DriveInfoProvider { get; set; }
@@ -41,7 +41,7 @@ namespace PodcastUtilities.Common.Tests.FileCopierTests
 
 			StatusUpdates = new List<StatusUpdateEventArgs>();
 
-			FileCopier = new FileCopier(DriveInfoProvider, FileUtilities);
+			FileCopier = new Copier(DriveInfoProvider, FileUtilities);
 			FileCopier.StatusUpdate += (sender, e) => StatusUpdates.Add(e);
 		}
 

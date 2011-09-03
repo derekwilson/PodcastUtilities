@@ -5,7 +5,7 @@ namespace PodcastUtilities.Common.Files
     /// <summary>
     /// supports the ability to copy a number of SyncItem
     /// </summary>
-    public interface IFileCopier : IStatusUpdate
+    public interface ICopier : IStatusUpdate
 	{
 		/// <summary>
 		/// perform the copy operation

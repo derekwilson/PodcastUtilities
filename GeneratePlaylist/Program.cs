@@ -44,11 +44,11 @@ namespace GeneratePlaylist
             LinFuIocContainer iocContainer = InitializeIocContainer();
 
             var control = new ControlFile(args[0]);
-            var finder = iocContainer.Resolve<IFileFinder>();
+            var finder = iocContainer.Resolve<IFinder>();
             var fileUtilities = iocContainer.Resolve<IFileUtilities>();
             var playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
 
-			var generator = new PlaylistGenerator(finder, fileUtilities, playlistFactory);
+			var generator = new Generator(finder, fileUtilities, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(GeneratorStatusUpdate);
 
             if (!string.IsNullOrEmpty(control.PlaylistFileName))

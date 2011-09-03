@@ -9,7 +9,7 @@ namespace PodcastUtilities.Common.Files
 	/// <summary>
 	/// synchronise the files from the podcasts in a control file
 	/// </summary>
-    public class PodcastFileSynchronizer
+    public class PodcastSynchronizer
 	{
 		/// <summary>
 		/// construct a podcast synchroniser
@@ -17,9 +17,9 @@ namespace PodcastUtilities.Common.Files
 		/// <param name="fileFinder">abstract interface to the file system to find media files</param>
 		/// <param name="fileCopier">abstract file copier</param>
 		/// <param name="fileRemover">abstract file remover, to synchronise deleted files in the source to the destination</param>
-        public PodcastFileSynchronizer(
-			IFileFinder fileFinder,
-			IFileCopier fileCopier,
+        public PodcastSynchronizer(
+			IFinder fileFinder,
+			ICopier fileCopier,
 			IUnwantedFileRemover fileRemover)
 		{
 			FileFinder = fileFinder;
@@ -44,8 +44,8 @@ namespace PodcastUtilities.Common.Files
 			}
 		}
 
-		private IFileFinder FileFinder { get; set; }
-		private IFileCopier FileCopier { get; set; }
+		private IFinder FileFinder { get; set; }
+		private ICopier FileCopier { get; set; }
 		private IUnwantedFileRemover FileRemover { get; set; }
 
 		/// <summary>

@@ -38,16 +38,16 @@ namespace SyncPodcasts
 			LinFuIocContainer iocContainer = InitializeIocContainer();
 
 			var control = new ControlFile(args[0]);
-			var finder = iocContainer.Resolve<IFileFinder>();
-			var copier = iocContainer.Resolve<IFileCopier>();
+			var finder = iocContainer.Resolve<IFinder>();
+			var copier = iocContainer.Resolve<ICopier>();
 			var remover = iocContainer.Resolve<IUnwantedFileRemover>();
 			var fileUtilities = iocContainer.Resolve<IFileUtilities>();
 			var playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
 
-            var generator = new PlaylistGenerator(finder, fileUtilities, playlistFactory);
+            var generator = new Generator(finder, fileUtilities, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
-			var synchronizer = new PodcastFileSynchronizer(finder, copier, remover);
+			var synchronizer = new PodcastSynchronizer(finder, copier, remover);
 			synchronizer.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
 			synchronizer.Synchronize(control, false);

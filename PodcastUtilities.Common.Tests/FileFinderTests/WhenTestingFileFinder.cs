@@ -8,9 +8,9 @@ namespace PodcastUtilities.Common.Tests.FileFinderTests
 	public abstract class WhenTestingFileFinder
 		: WhenTestingBehaviour
 	{
-		protected FileFinder FileFinder { get; set; }
+		protected Finder FileFinder { get; set; }
 		
-		protected IFileSorter FileSorter { get; set; }
+		protected ISorter FileSorter { get; set; }
 		protected IDirectoryInfoProvider DirectoryInfoProvider { get; set; }
 		protected IDirectoryInfo DirectoryInfo { get; set; }
 
@@ -23,7 +23,7 @@ namespace PodcastUtilities.Common.Tests.FileFinderTests
 		{
 			base.GivenThat();
 
-			FileSorter = GenerateMock<IFileSorter>();
+			FileSorter = GenerateMock<ISorter>();
 			DirectoryInfoProvider = GenerateMock<IDirectoryInfoProvider>();
 			DirectoryInfo = GenerateMock<IDirectoryInfo>();
 
@@ -42,7 +42,7 @@ namespace PodcastUtilities.Common.Tests.FileFinderTests
 				.IgnoreArguments()
 				.Return(DirectoryInfo);
 
-			FileFinder = new FileFinder(FileSorter, DirectoryInfoProvider);
+			FileFinder = new Finder(FileSorter, DirectoryInfoProvider);
 		}
 	}
 }

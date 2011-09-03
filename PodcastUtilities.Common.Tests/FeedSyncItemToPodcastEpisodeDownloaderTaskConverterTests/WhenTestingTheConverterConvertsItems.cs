@@ -9,13 +9,13 @@ namespace PodcastUtilities.Common.Tests.FeedSyncItemToPodcastEpisodeDownloaderTa
         protected override void SetupData()
         {
             base.SetupData();
-            _downloadItems.Add(new FeedSyncItem()
+            _downloadItems.Add(new SyncItem()
                                    {
                                        DestinationPath = "destination1",
                                        EpisodeTitle = "item1",
                                        EpisodeUrl = new Uri("http://test1")
                                    });
-            _downloadItems.Add(new FeedSyncItem()
+            _downloadItems.Add(new SyncItem()
                                    {
                                        DestinationPath = "destination2",
                                        EpisodeTitle = "item2",

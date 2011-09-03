@@ -13,7 +13,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
     public abstract class WhenUsingTheEpisodeFinder
         : WhenTestingBehaviour
     {
-        protected PodcastFeedEpisodeFinder _episodeFinder;
+        protected EpisodeFinder _episodeFinder;
 
         protected IWebClientFactory _webClientFactory;
         protected IWebClient _webClient;
@@ -27,7 +27,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
         protected int _retryWaitTime;
         protected PodcastInfo _podcastInfo;
         protected FeedInfo _feedInfo;
-        protected IList<IFeedSyncItem> _episodesToSync;
+        protected IList<ISyncItem> _episodesToSync;
         protected string _feedAddress;
         protected MemoryStream _stream;
         protected IPodcastFeed _podcastFeed;
@@ -53,7 +53,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
             SetupData();
             SetupStubs();
 
-            _episodeFinder = new PodcastFeedEpisodeFinder(_fileUtilities,_feedFactory,_webClientFactory,_timeProvider,_stateProvider);
+            _episodeFinder = new EpisodeFinder(_fileUtilities,_feedFactory,_webClientFactory,_timeProvider,_stateProvider);
             _episodeFinder.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(EpisodeFinderStatusUpdate);
             _latestUpdate = null;
         }

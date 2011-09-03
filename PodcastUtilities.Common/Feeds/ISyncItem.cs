@@ -1,40 +1,40 @@
-﻿using System;
+using System;
 
 namespace PodcastUtilities.Common.Feeds
 {
     /// <summary>
     /// an item to be downloaded
     /// </summary>
-    public class FeedSyncItem : IFeedSyncItem
+    public interface ISyncItem
     {
         /// <summary>
         /// date time the episode was published
         /// </summary>
-        public DateTime Published { get; set; }
+        DateTime Published { get; set; }
 
         /// <summary>
         /// state key
         /// </summary>
-        public string StateKey { get; set; }
+        string StateKey { get; set; }
 
         /// <summary>
         /// the url to download from
         /// </summary>
-        public Uri EpisodeUrl { get; set; }
+        Uri EpisodeUrl { get; set; }
 
         /// <summary>
         /// pathname to be downloaded to
         /// </summary>
-        public string DestinationPath { get; set; }
+        string DestinationPath { get; set; }
 
         /// <summary>
         /// the title of the eposide
         /// </summary>
-        public string EpisodeTitle { get; set; }
+        string EpisodeTitle { get; set; }
 
         /// <summary>
         /// time to wait if there is a file lock on state
         /// </summary>
-        public int RetryWaitTimeInSeconds { get; set; }
+        int RetryWaitTimeInSeconds { get; set; }
     }
 }
