@@ -1,6 +1,7 @@
 using System;
 using NUnit.Framework;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Presentation.ViewModels;
 using Rhino.Mocks;
 

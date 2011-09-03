@@ -1,6 +1,10 @@
 ﻿using System;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Feeds;
+using PodcastUtilities.Common.Files;
 using PodcastUtilities.Common.Platform;
+using PodcastUtilities.Common.Playlists;
 
 namespace PodcastUtilities.Ioc
 {

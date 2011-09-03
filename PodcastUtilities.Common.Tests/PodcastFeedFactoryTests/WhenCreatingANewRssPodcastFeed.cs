@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Feeds;
 
 namespace PodcastUtilities.Common.Tests.PodcastFeedFactoryTests
 {

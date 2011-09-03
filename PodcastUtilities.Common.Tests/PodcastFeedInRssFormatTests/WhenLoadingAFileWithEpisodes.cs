@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using NUnit.Framework;
+using PodcastUtilities.Common.Feeds;
 
 namespace PodcastUtilities.Common.Tests.PodcastFeedInRssFormatTests
 {

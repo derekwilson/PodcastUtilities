@@ -1,5 +1,6 @@
 ﻿using System;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Tests;
 using PodcastUtilities.Presentation.ViewModels;
 

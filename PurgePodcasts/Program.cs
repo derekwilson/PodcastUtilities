@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Files;
 using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Ioc;
 

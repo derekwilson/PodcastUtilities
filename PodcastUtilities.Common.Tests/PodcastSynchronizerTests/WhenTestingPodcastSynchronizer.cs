@@ -1,3 +1,6 @@
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Files;
+
 namespace PodcastUtilities.Common.Tests.PodcastSynchronizerTests
 {
 	public abstract class WhenTestingPodcastSynchronizer

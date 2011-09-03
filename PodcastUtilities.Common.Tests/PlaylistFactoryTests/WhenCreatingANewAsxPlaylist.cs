@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using PodcastUtilities.Common.Playlists;
 
 namespace PodcastUtilities.Common.Tests.PlaylistFactoryTests
 {

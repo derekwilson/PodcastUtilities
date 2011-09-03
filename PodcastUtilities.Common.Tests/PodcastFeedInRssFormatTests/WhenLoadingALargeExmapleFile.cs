@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using NUnit.Framework;
+using PodcastUtilities.Common.Feeds;
 
 namespace PodcastUtilities.Common.Tests.PodcastFeedInRssFormatTests
 {

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Files;
 using PodcastUtilities.Common.Platform;
 using Rhino.Mocks;
 

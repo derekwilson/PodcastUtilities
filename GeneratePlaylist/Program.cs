@@ -7,7 +7,10 @@ using System.IO;
 
 using PodcastUtilities.Common;
 using System.Xml;
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Files;
 using PodcastUtilities.Common.Platform;
+using PodcastUtilities.Common.Playlists;
 using PodcastUtilities.Ioc;
 
 namespace GeneratePlaylist

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using NUnit.Framework;
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Feeds;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests.DownloadStrategy

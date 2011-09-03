@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Presentation.ViewModels;
 
 namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewModelTests

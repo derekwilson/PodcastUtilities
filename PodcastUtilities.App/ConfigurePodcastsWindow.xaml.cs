@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Presentation.Services;
 using PodcastUtilities.Presentation.ViewModels;
 
