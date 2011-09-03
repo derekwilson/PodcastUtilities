@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Feeds
     /// <summary>
     /// object to download the feed channel data
     /// </summary>
-    public class PodcastFeedDownloader : IPodcastFeedDownloader
+    public class Downloader : IDownloader
     {
         private IWebClient _webClient;
         private IPodcastFeedFactory _feedFactory;
@@ -18,7 +18,7 @@ namespace PodcastUtilities.Common.Feeds
         /// </summary>
         /// <param name="webClient">access to the internet</param>
         /// <param name="feedFactory">factory to create a feed</param>
-        public PodcastFeedDownloader(IWebClient webClient, IPodcastFeedFactory feedFactory)
+        public Downloader(IWebClient webClient, IPodcastFeedFactory feedFactory)
         {
             _webClient = webClient;
             _feedFactory = feedFactory;

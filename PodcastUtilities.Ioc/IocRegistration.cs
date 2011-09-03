@@ -16,9 +16,9 @@ namespace PodcastUtilities.Ioc
 			container.Register<IDriveInfoProvider, SystemDriveInfoProvider>();
 			container.Register<IDirectoryInfoProvider, SystemDirectoryInfoProvider>();
 			container.Register<IFileUtilities, FileUtilities>();
-			container.Register<IFileCopier, FileCopier>();
-			container.Register<IFileFinder, FileFinder>();
-			container.Register<IFileSorter, FileSorter>();
+			container.Register<ICopier, Copier>();
+			container.Register<IFinder, Finder>();
+			container.Register<ISorter, Sorter>();
             container.Register<IUnwantedFileRemover, UnwantedFileRemover>();
             container.Register<IPodcastEpisodePurger, PodcastEpisodePurger>();
             container.Register<IControlFileFactory, ControlFileFactory>();
@@ -48,9 +48,9 @@ namespace PodcastUtilities.Ioc
         {
             container.Register<IPodcastFeedFactory, PodcastFeedFactory>();
             container.Register<IWebClientFactory, WebClientFactory>();
-            container.Register<IPodcastFeedEpisodeFinder, PodcastFeedEpisodeFinder>();
-            container.Register<IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter, FeedSyncItemToPodcastEpisodeDownloaderTaskConverter>();
-            container.Register<IPodcastEpisodeDownloaderFactory, PodcastEpisodeDownloaderFactory>();
+            container.Register<IEpisodeFinder, EpisodeFinder>();
+            container.Register<ISyncItemToEpisodeDownloaderTaskConverter, SyncItemToEpisodeDownloaderTaskConverter>();
+            container.Register<IEpisodeDownloaderFactory, EpisodeDownloaderFactory>();
             container.Register<ITaskPool, TaskPool>();
             container.Register<IStateProvider, StateProvider>();
         }

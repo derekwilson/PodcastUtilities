@@ -6,7 +6,7 @@ namespace PodcastUtilities.Common.Files
 	/// <summary>
 	/// a file sorter
 	/// </summary>
-    public class FileSorter : IFileSorter
+    public class Sorter : ISorter
 	{
 		#region Implementation of IFileSorter
 

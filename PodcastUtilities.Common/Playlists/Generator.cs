@@ -11,7 +11,7 @@ namespace PodcastUtilities.Common.Playlists
     /// <summary>
     /// generate a playlist
     /// </summary>
-    public class PlaylistGenerator
+    public class Generator
     {
     	/// <summary>
     	/// create a playlist generator
@@ -19,8 +19,8 @@ namespace PodcastUtilities.Common.Playlists
     	/// <param name="fileFinder">abstract access to the file system to find the files for the playlist</param>
         /// <param name="fileUtilities">abstract file utilities</param>
     	/// <param name="playlistFactory">factpry to generate the correct playlist object depending upon the selected format</param>
-        public PlaylistGenerator(
-			IFileFinder fileFinder,
+        public Generator(
+			IFinder fileFinder,
 			IFileUtilities fileUtilities,
 			IPlaylistFactory playlistFactory)
     	{
@@ -34,7 +34,7 @@ namespace PodcastUtilities.Common.Playlists
         /// </summary>
         public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
-    	private IFileFinder FileFinder { get; set; }
+    	private IFinder FileFinder { get; set; }
     	private IFileUtilities FileUtilities { get; set; }
     	private IPlaylistFactory PlaylistFactory { get; set; }
 

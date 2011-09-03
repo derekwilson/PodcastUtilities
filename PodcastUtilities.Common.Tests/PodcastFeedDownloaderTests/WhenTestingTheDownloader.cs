@@ -13,7 +13,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedDownloaderTests
     public abstract class WhenTestingTheDownloader
         : WhenTestingBehaviour
     {
-        protected PodcastFeedDownloader FeedDownloader { get; set; }
+        protected Downloader FeedDownloader { get; set; }
         protected IWebClient WebClient { get; set; }
         protected IPodcastFeedFactory FeedFactory { get; set; }
         protected Uri Address { get; set; }
@@ -28,7 +28,7 @@ namespace PodcastUtilities.Common.Tests.PodcastFeedDownloaderTests
             Address = new Uri("http://localhost/fred");
             WebClient = GenerateMock<IWebClient>();
             FeedFactory = GenerateMock<IPodcastFeedFactory>();
-            FeedDownloader = new PodcastFeedDownloader(WebClient,FeedFactory);
+            FeedDownloader = new Downloader(WebClient,FeedFactory);
 
             StreamData = new MemoryStream();
 

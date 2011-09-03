@@ -6,7 +6,7 @@ namespace PodcastUtilities.Common.Files
 	/// <summary>
 	/// supports the ability to sort files
 	/// </summary>
-    public interface IFileSorter
+    public interface ISorter
 	{
 		/// <summary>
 		/// sort the supplied list of abstract files

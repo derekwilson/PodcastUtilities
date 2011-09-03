@@ -12,7 +12,7 @@ namespace PodcastUtilities.Common.Feeds
     /// <summary>
     /// discover items to be downloaded from a feed
     /// </summary>
-    public class PodcastFeedEpisodeFinder : IPodcastFeedEpisodeFinder
+    public class EpisodeFinder : IEpisodeFinder
     {
         private readonly IFileUtilities _fileUtilities;
         private readonly IPodcastFeedFactory _feedFactory;
@@ -23,7 +23,7 @@ namespace PodcastUtilities.Common.Feeds
         /// <summary>
         /// discover items to be downloaded from a feed
         /// </summary>
-        public PodcastFeedEpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider, IStateProvider stateProvider)
+        public EpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider, IStateProvider stateProvider)
         {
             _fileUtilities = fileFinder;
             _stateProvider = stateProvider;
@@ -78,7 +78,7 @@ namespace PodcastUtilities.Common.Feeds
             return Path.Combine(Path.Combine(rootFolder, podcastInfo.Folder), proposedFilename);
         }
 
-        private List<IFeedSyncItem> ApplyDownloadStrategy(string stateKey, PodcastInfo podcastInfo, List<IFeedSyncItem> episodesFound)
+        private List<ISyncItem> ApplyDownloadStrategy(string stateKey, PodcastInfo podcastInfo, List<ISyncItem> episodesFound)
         {
             switch (podcastInfo.Feed.DownloadStrategy)
             {
@@ -91,13 +91,13 @@ namespace PodcastUtilities.Common.Feeds
                         (from episode in episodesFound
                          where episode.Published > state.DownloadHighTide
                          select episode);
-                    var filteredEpisodes =  new List<IFeedSyncItem>(1);
+                    var filteredEpisodes =  new List<ISyncItem>(1);
                     filteredEpisodes.AddRange(newEpisodes);
                     return filteredEpisodes;
 
                 case PodcastEpisodeDownloadStrategy.Latest:
                     episodesFound.Sort((e1, e2) => e2.Published.CompareTo(e1.Published));
-                    var latestEpisodes =  new List<IFeedSyncItem>(1);
+                    var latestEpisodes =  new List<ISyncItem>(1);
                     latestEpisodes.AddRange(episodesFound.Take(1));
                     return latestEpisodes;
 
@@ -115,9 +115,9 @@ namespace PodcastUtilities.Common.Feeds
         /// <param name="podcastInfo">info on the podcast to download</param>
         /// <returns>list of episodes to be downloaded for the supplied podcastInfo</returns>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        public IList<IFeedSyncItem> FindEpisodesToDownload(string rootFolder, int retryWaitTimeInSeconds, PodcastInfo podcastInfo)
+        public IList<ISyncItem> FindEpisodesToDownload(string rootFolder, int retryWaitTimeInSeconds, PodcastInfo podcastInfo)
         {
-            List<IFeedSyncItem> episodesToDownload = new List<IFeedSyncItem>(10);
+            List<ISyncItem> episodesToDownload = new List<ISyncItem>(10);
             if (podcastInfo.Feed == null)
             {
                 // it is optional to have a feed
@@ -128,7 +128,7 @@ namespace PodcastUtilities.Common.Feeds
 
             using (var webClient = _webClientFactory.GetWebClient())
             {
-                var downloader = new PodcastFeedDownloader(webClient, _feedFactory);
+                var downloader = new Downloader(webClient, _feedFactory);
 
                 try
                 {
@@ -149,7 +149,7 @@ namespace PodcastUtilities.Common.Feeds
                             var destinationPath = GetDownloadPathname(rootFolder, podcastInfo, podcastFeedItem);
                             if (!_fileUtilities.FileExists(destinationPath))
                             {
-                                var downloadItem = new FeedSyncItem()
+                                var downloadItem = new SyncItem()
                                                        {
                                                            StateKey = stateKey,
                                                            RetryWaitTimeInSeconds = retryWaitTimeInSeconds,

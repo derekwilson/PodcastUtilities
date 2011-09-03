@@ -8,22 +8,22 @@ namespace PodcastUtilities.Common.Files
     /// <summary>
     /// finds files
     /// </summary>
-    public class FileFinder
-		: IFileFinder
+    public class Finder
+		: IFinder
     {
     	/// <summary>
     	/// construct the copier
     	/// </summary>
     	/// <param name="fileSorter">object used to sort the files</param>
     	/// <param name="directoryInfoProvider">astract access to the file system</param>
-        public FileFinder(IFileSorter fileSorter, IDirectoryInfoProvider directoryInfoProvider)
+        public Finder(ISorter fileSorter, IDirectoryInfoProvider directoryInfoProvider)
     	{
     		FileSorter = fileSorter;
     		DirectoryInfoProvider = directoryInfoProvider;
     	}
 
 
-    	private IFileSorter FileSorter { get; set; }
+    	private ISorter FileSorter { get; set; }
     	private IDirectoryInfoProvider DirectoryInfoProvider { get; set; }
 
 

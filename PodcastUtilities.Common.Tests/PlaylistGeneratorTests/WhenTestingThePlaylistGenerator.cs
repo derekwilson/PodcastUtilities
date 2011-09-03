@@ -10,10 +10,10 @@ namespace PodcastUtilities.Common.Tests.PlaylistGeneratorTests
     public abstract class WhenTestingThePlaylistGenerator
         : WhenTestingBehaviour
     {
-        protected PlaylistGenerator PlaylistGenerator { get; set; }
+        protected Generator PlaylistGenerator { get; set; }
 
         protected IFileUtilities FileUtilities { get; set; }
-        protected IFileFinder Finder { get; set; }
+        protected IFinder Finder { get; set; }
         protected IPlaylistFactory Factory { get; set; }
         protected IPlaylist Playlist { get; set; }
         protected IControlFile ControlFile { get; set; }
@@ -31,14 +31,14 @@ namespace PodcastUtilities.Common.Tests.PlaylistGeneratorTests
             ControlFile.Stub(ctrl => ctrl.Podcasts).Return(Podcasts);
             ControlFile.Stub(ctrl => ctrl.PlaylistFileName).Return("MyPodcasts.wpl");
 
-            Finder = GenerateMock<IFileFinder>();
+            Finder = GenerateMock<IFinder>();
             FileUtilities = GenerateMock<IFileUtilities>();
 
             Playlist = GenerateMock<IPlaylist>();
             Factory = GenerateMock<IPlaylistFactory>();
             Factory.Stub(factory => factory.CreatePlaylist(PlaylistFormat.WPL, null)).IgnoreArguments().Return(Playlist);
 
-            PlaylistGenerator = new PlaylistGenerator(Finder, FileUtilities, Factory);
+            PlaylistGenerator = new Generator(Finder, FileUtilities, Factory);
         }
     }
 

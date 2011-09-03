@@ -6,7 +6,7 @@ namespace PodcastUtilities.Common.Files
     /// <summary>
     /// supports the ability find files
     /// </summary>
-    public interface IFileFinder
+    public interface IFinder
 	{
 		/// <summary>
         /// gets a number of files that match a given pattern

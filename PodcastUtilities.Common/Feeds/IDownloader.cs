@@ -6,7 +6,7 @@ namespace PodcastUtilities.Common.Feeds
     /// <summary>
     /// download the feed channel data
     /// </summary>
-    public interface IPodcastFeedDownloader
+    public interface IDownloader
     {
         /// <summary>
         /// populate a PodcastFeed from the supplied URI

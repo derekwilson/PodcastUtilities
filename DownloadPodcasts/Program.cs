@@ -78,8 +78,8 @@ namespace DownloadPodcasts
             System.Net.ServicePointManager.DefaultConnectionLimit = numberOfConnections;
 
             // find the episodes to download
-            var allEpisodes = new List<IFeedSyncItem>(20);
-            var podcastEpisodeFinder = _iocContainer.Resolve<IPodcastFeedEpisodeFinder>();
+            var allEpisodes = new List<ISyncItem>(20);
+            var podcastEpisodeFinder = _iocContainer.Resolve<IEpisodeFinder>();
             podcastEpisodeFinder.StatusUpdate += StatusUpdate;
             foreach (var podcastInfo in _control.Podcasts)
             {
@@ -96,8 +96,8 @@ namespace DownloadPodcasts
                 Console.ResetColor();
 
                 // convert them to tasks
-                var converter = _iocContainer.Resolve<IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter>();
-                IPodcastEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(allEpisodes, StatusUpdate, ProgressUpdate);
+                var converter = _iocContainer.Resolve<ISyncItemToEpisodeDownloaderTaskConverter>();
+                IEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(allEpisodes, StatusUpdate, ProgressUpdate);
 
                 // run them in a task pool
                 _taskPool = _iocContainer.Resolve<ITaskPool>();
@@ -122,7 +122,7 @@ namespace DownloadPodcasts
 
         static void ProgressUpdate(object sender, ProgressEventArgs e)
         {
-            IFeedSyncItem syncItem = e.UserState as IFeedSyncItem;
+            ISyncItem syncItem = e.UserState as ISyncItem;
             if (e.ProgressPercentage % 10 == 0)
             {
                 Console.WriteLine(string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,

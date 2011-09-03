@@ -8,14 +8,14 @@ namespace PodcastUtilities.Common.Files
     /// <summary>
     /// copy files in the file system
     /// </summary>
-    public class FileCopier : IFileCopier
+    public class Copier : ICopier
     {
     	///<summary>
     	/// construct the copier
     	///</summary>
     	///<param name="driveInfoProvider">abstract access to the file system drive</param>
     	///<param name="fileUtilities">abstract file utilities</param>
-    	public FileCopier(
+    	public Copier(
 			IDriveInfoProvider driveInfoProvider,
 			IFileUtilities fileUtilities)
     	{

@@ -11,7 +11,7 @@ namespace PodcastUtilities.Common.Feeds
     /// <summary>
     /// a task that will download a podcast episode on a background thread
     /// </summary>
-    public class PodcastEpisodeDownloader : IPodcastEpisodeDownloader
+    public class EpisodeDownloader : IEpisodeDownloader
     {
         private readonly IWebClientFactory _webClientFactory;
         private readonly IDirectoryInfoProvider _directoryInfoProvider;
@@ -22,13 +22,13 @@ namespace PodcastUtilities.Common.Feeds
         private IWebClient _client;
         private bool _started;
         private bool _complete;
-        private IFeedSyncItem _syncItem;
+        private ISyncItem _syncItem;
         private int _progressPercentage;
 
         /// <summary>
         /// the item to download
         /// </summary>
-        public IFeedSyncItem SyncItem
+        public ISyncItem SyncItem
         {
             get
             {
@@ -64,7 +64,7 @@ namespace PodcastUtilities.Common.Feeds
         /// <summary>
         /// create a task
         /// </summary>
-        public PodcastEpisodeDownloader(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities, IStateProvider stateProvider)
+        public EpisodeDownloader(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities, IStateProvider stateProvider)
         {
             _webClientFactory = webClientFactory;
             _stateProvider = stateProvider;
@@ -147,7 +147,7 @@ namespace PodcastUtilities.Common.Feeds
             StatusUpdateEventArgs args = null;
             lock (_lock)
             {
-                var syncItem = e.UserState as FeedSyncItem;
+                var syncItem = e.UserState as SyncItem;
                 if (syncItem == null)
                 {
                     args = new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Error, "Missing token from download completed");

@@ -10,17 +10,17 @@ namespace PodcastUtilities.Common.Tests.FeedSyncItemToPodcastEpisodeDownloaderTa
     public abstract class WhenTestingTheConverter
         : WhenTestingBehaviour
     {
-        protected FeedSyncItemToPodcastEpisodeDownloaderTaskConverter _converter;
+        protected SyncItemToEpisodeDownloaderTaskConverter _converter;
 
         protected IWebClientFactory _webClientFactory;
         protected IDirectoryInfoProvider _directoryInfoProvider;
         protected IFileUtilities _fileUtilities;
         protected IStateProvider _stateProvider;
 
-        protected IPodcastEpisodeDownloaderFactory _downloaderFactory;
+        protected IEpisodeDownloaderFactory _downloaderFactory;
 
-        protected List<IFeedSyncItem> _downloadItems;
-        protected IPodcastEpisodeDownloader[] _tasks;
+        protected List<ISyncItem> _downloadItems;
+        protected IEpisodeDownloader[] _tasks;
 
         protected override void GivenThat()
         {
@@ -28,13 +28,13 @@ namespace PodcastUtilities.Common.Tests.FeedSyncItemToPodcastEpisodeDownloaderTa
 
             _stateProvider = GenerateMock<IStateProvider>();
             _webClientFactory = GenerateMock<IWebClientFactory>();
-            _downloaderFactory = new PodcastEpisodeDownloaderFactory(_webClientFactory,_directoryInfoProvider,_fileUtilities,_stateProvider);
-            _downloadItems = new List<IFeedSyncItem>(10);
+            _downloaderFactory = new EpisodeDownloaderFactory(_webClientFactory,_directoryInfoProvider,_fileUtilities,_stateProvider);
+            _downloadItems = new List<ISyncItem>(10);
 
             SetupData();
             SetupStubs();
 
-            _converter = new FeedSyncItemToPodcastEpisodeDownloaderTaskConverter(_downloaderFactory);
+            _converter = new SyncItemToEpisodeDownloaderTaskConverter(_downloaderFactory);
         }
 
         protected virtual void SetupData()

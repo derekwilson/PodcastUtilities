@@ -14,12 +14,12 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
     public abstract class WhenTestingTheDownloader
         : WhenTestingBehaviour
     {
-        protected PodcastEpisodeDownloader _downloader;
+        protected EpisodeDownloader _downloader;
 
         protected IWebClientFactory _webClientFactory;
         protected IWebClient _webClient;
 
-        protected IFeedSyncItem _syncItem;
+        protected ISyncItem _syncItem;
 
         protected MemoryStream _stream;
 
@@ -49,13 +49,13 @@ namespace PodcastUtilities.Common.Tests.PodcastEpisodeDownloaderTests
             _stateProvider = GenerateMock<IStateProvider>();
             _state = GenerateMock<IState>();
 
-            _syncItem = new FeedSyncItem();
+            _syncItem = new SyncItem();
             _exception = null;
 
             SetupData();
             SetupStubs();
 
-            _downloader = new PodcastEpisodeDownloader(_webClientFactory, _directoryInfoProvider,_fileUtilities,_stateProvider);
+            _downloader = new EpisodeDownloader(_webClientFactory, _directoryInfoProvider,_fileUtilities,_stateProvider);
             _downloader.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(DownloaderStatusUpdate);
             _downloader.ProgressUpdate += new EventHandler<ProgressEventArgs>(DownloaderProgressUpdate);
         }

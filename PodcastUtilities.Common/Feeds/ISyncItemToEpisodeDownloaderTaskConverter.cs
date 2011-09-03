@@ -6,7 +6,7 @@ namespace PodcastUtilities.Common.Feeds
     /// <summary>
     /// converts a number of IFeedSyncItem to IPodcastEpisodeDownloader tasks
     /// </summary>
-    public interface IFeedSyncItemToPodcastEpisodeDownloaderTaskConverter
+    public interface ISyncItemToEpisodeDownloaderTaskConverter
     {
         /// <summary>
         /// converts a number of IFeedSyncItem to IPodcastEpisodeDownloader tasks
@@ -15,6 +15,6 @@ namespace PodcastUtilities.Common.Feeds
         /// <param name="statusUpdate">the update mechanism for the download - can be null</param>
         /// <param name="progressUpdate">the progress mechanism for the download - can be null</param>
         /// <returns>an array of tasks suitable to be run in a task pool</returns>
-        IPodcastEpisodeDownloader[] ConvertItemsToTasks(List<IFeedSyncItem> downloadItems, EventHandler<StatusUpdateEventArgs> statusUpdate, EventHandler<ProgressEventArgs> progressUpdate);
+        IEpisodeDownloader[] ConvertItemsToTasks(List<ISyncItem> downloadItems, EventHandler<StatusUpdateEventArgs> statusUpdate, EventHandler<ProgressEventArgs> progressUpdate);
     }
 }

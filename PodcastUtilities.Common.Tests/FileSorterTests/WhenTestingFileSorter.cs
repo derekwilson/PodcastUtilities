@@ -9,7 +9,7 @@ namespace PodcastUtilities.Common.Tests.FileSorterTests
 	public abstract class WhenTestingFileSorter
 		: WhenTestingBehaviour
 	{
-		protected FileSorter FileSorter { get; set; }
+		protected Sorter FileSorter { get; set; }
 
 		protected List<IFileInfo> OriginalFiles { get; set; }
 
@@ -40,7 +40,7 @@ namespace PodcastUtilities.Common.Tests.FileSorterTests
 
 			SortedFiles = new List<IFileInfo>(OriginalFiles);
 
-			FileSorter = new FileSorter();
+			FileSorter = new Sorter();
 		}
 	}
 }
