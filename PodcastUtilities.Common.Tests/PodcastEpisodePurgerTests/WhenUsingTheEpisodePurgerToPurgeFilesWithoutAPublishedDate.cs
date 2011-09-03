@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.Common.Tests.PodcastEpisodePurgerTests
 {

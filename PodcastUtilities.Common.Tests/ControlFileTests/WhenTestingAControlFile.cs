@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml;
+using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.Common.Tests.ControlFileTests
 {

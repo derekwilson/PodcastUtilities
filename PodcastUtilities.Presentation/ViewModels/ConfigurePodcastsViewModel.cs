@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Presentation.Services;
 
 namespace PodcastUtilities.Presentation.ViewModels

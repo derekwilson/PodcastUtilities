@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Files;
 using PodcastUtilities.Common.Platform;
+using PodcastUtilities.Common.Playlists;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.PlaylistGeneratorTests

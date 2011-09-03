@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.Common.Platform;
 using Rhino.Mocks;
 

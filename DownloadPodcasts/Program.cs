@@ -8,6 +8,8 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Ioc;
 

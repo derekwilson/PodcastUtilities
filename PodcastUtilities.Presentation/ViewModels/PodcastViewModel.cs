@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.Presentation.ViewModels
 {

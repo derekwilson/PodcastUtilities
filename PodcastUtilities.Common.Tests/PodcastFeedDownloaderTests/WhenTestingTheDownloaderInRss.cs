@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using PodcastUtilities.Common.Configuration;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.PodcastFeedDownloaderTests

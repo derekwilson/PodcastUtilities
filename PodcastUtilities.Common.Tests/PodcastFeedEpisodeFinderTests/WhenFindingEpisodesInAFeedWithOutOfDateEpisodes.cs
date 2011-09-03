@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using NUnit.Framework;
+using PodcastUtilities.Common.Feeds;
 
 namespace PodcastUtilities.Common.Tests.PodcastFeedEpisodeFinderTests
 {

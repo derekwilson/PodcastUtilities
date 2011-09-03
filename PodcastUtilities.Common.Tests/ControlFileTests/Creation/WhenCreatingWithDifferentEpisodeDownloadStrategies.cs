@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml;
 using NUnit.Framework;
+using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.Common.Tests.ControlFileTests.Creation
 {

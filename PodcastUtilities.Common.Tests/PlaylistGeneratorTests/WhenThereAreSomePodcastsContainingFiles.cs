@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using NUnit.Framework;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Platform;
 using Rhino.Mocks;
 

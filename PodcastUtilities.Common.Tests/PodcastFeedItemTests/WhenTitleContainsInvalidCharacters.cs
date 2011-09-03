@@ -1,5 +1,6 @@
 using System;
 using NUnit.Framework;
+using PodcastUtilities.Common.Feeds;
 
 namespace PodcastUtilities.Common.Tests.PodcastFeedItemTests
 {
