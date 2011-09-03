@@ -20,7 +20,7 @@ namespace PodcastUtilities.Ioc
 			container.Register<IFinder, Finder>();
 			container.Register<ISorter, Sorter>();
             container.Register<IUnwantedFileRemover, UnwantedFileRemover>();
-            container.Register<IPodcastEpisodePurger, PodcastEpisodePurger>();
+            container.Register<IEpisodePurger, EpisodePurger>();
             container.Register<IControlFileFactory, ControlFileFactory>();
         }
 
