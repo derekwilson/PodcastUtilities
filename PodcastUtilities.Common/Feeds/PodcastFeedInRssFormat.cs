@@ -32,7 +32,7 @@ namespace PodcastUtilities.Common.Feeds
         /// <summary>
         /// the title of the podcast
         /// </summary>
-        public string PodcastTitle
+        public string Title
         {
             get { return GetNodeText("rss/channel/title"); }
         }
@@ -42,41 +42,44 @@ namespace PodcastUtilities.Common.Feeds
         /// </summary>
         /// <returns></returns>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        public IList<IPodcastFeedItem> GetFeedEpisodes()
+        public IList<IPodcastFeedItem> Episodes
         {
-            var episodes = new List<IPodcastFeedItem>(20);
-
-            XmlNodeList nodes = _feedXml.SelectNodes("rss/channel/item");
-            if (nodes == null || nodes.Count < 1)
+            get
             {
-                return episodes;
-            }
+                var episodes = new List<IPodcastFeedItem>(20);
 
-            foreach (XmlNode node in nodes)
-            {
-                if (node.SelectSingleNode("enclosure") != null)
+                XmlNodeList nodes = _feedXml.SelectNodes("rss/channel/item");
+                if (nodes == null || nodes.Count < 1)
                 {
-                    try
+                    return episodes;
+                }
+
+                foreach (XmlNode node in nodes)
+                {
+                    if (node.SelectSingleNode("enclosure") != null)
                     {
-                        var episode = 
-                            new PodcastFeedItem()
-                            {
-                                Address = new Uri(GetNodeText(node, "enclosure/@url")),
-                                EpisodeTitle = GetNodeText(node, "title"),
-                                Published = Rfc822DateTime.Parse(GetNodeText(node, "pubDate"))
-                            };
-                        episodes.Add(episode);
-                        OnStatusUpdate(string.Format("Found: Feed: {0}, Episode: {1}", PodcastTitle, episode.EpisodeTitle));
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.WriteLine(string.Format("GetFeedEpisodes: error {0}", ex.Message));
-                        OnWarningUpdate(string.Format("GetFeedEpisodes: warning, unable to add an episode for {0}, {1}", PodcastTitle, ex.Message));
+                        try
+                        {
+                            var episode =
+                                new PodcastFeedItem()
+                                {
+                                    Address = new Uri(GetNodeText(node, "enclosure/@url")),
+                                    EpisodeTitle = GetNodeText(node, "title"),
+                                    Published = Rfc822DateTime.Parse(GetNodeText(node, "pubDate"))
+                                };
+                            episodes.Add(episode);
+                            OnStatusUpdate(string.Format("Found: Feed: {0}, Episode: {1}", Title, episode.EpisodeTitle));
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Diagnostics.Debug.WriteLine(string.Format("GetFeedEpisodes: error {0}", ex.Message));
+                            OnWarningUpdate(string.Format("GetFeedEpisodes: warning, unable to add an episode for {0}, {1}", Title, ex.Message));
+                        }
                     }
                 }
-            }
 
-            return episodes;
+                return episodes;
+            }
         }
 
         private string GetNodeText(string xpath)

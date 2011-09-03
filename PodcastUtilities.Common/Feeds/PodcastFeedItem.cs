@@ -28,25 +28,29 @@ namespace PodcastUtilities.Common.Feeds
         /// <summary>
         /// filename to use when saving the podcast file
         /// </summary>
-        /// <returns></returns>
-        public string GetFileName()
+        public string FileName
         {
-            string filename = Address.Segments[Address.Segments.Length - 1];
+            get
+            {
+                string filename = Address.Segments[Address.Segments.Length - 1];
 
-            filename = ProcessFilenameForInvalidChars(filename);
+                filename = ProcessFilenameForInvalidChars(filename);
 
-            return filename;
+                return filename;
+            }
         }
 
         /// <summary>
         /// get the episode title in a form that can be used as a filename
         /// </summary>
-        /// <returns></returns>
-        public string GetTitleAsFileName()
+        public string TitleAsFileName
         {
-        	var sanitizedTitle = ProcessFilenameForInvalidChars(EpisodeTitle);
+            get
+            {
+                var sanitizedTitle = ProcessFilenameForInvalidChars(EpisodeTitle);
 
-            return Path.ChangeExtension(sanitizedTitle, Path.GetExtension(GetFileName()));
+                return Path.ChangeExtension(sanitizedTitle, Path.GetExtension(FileName));
+            }
         }
 
         private static string ProcessFilenameForInvalidChars(string filename)

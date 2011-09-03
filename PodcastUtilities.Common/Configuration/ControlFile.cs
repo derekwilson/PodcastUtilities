@@ -243,7 +243,7 @@ namespace PodcastUtilities.Common.Configuration
             }
         }
 
-        private PodcastFeedFormat ReadFeedFormat(string format)
+        private static PodcastFeedFormat ReadFeedFormat(string format)
         {
             switch (format.ToLower())
             {

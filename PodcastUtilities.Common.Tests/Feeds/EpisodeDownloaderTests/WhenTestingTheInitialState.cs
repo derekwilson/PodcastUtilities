@@ -14,7 +14,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests
         public void ItShouldSetTheName()
         {
             // we do not care what the default name is, only that it has one
-            Assert.That(_downloader.GetName().Length, Is.GreaterThan(0));
+            Assert.That(_downloader.Name.Length, Is.GreaterThan(0));
         }
 
         [Test]

@@ -15,7 +15,7 @@ namespace PodcastUtilities.Common
         /// generate a new web client - do not forget to dispose it
         /// </summary>
         /// <returns>a web client</returns>
-        public IWebClient GetWebClient()
+        public IWebClient CreateWebClient()
         {
             return new SystemNetWebClient();
         }

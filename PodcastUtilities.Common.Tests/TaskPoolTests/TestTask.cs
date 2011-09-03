@@ -52,10 +52,10 @@ namespace PodcastUtilities.Common.Tests.TaskPoolTests
 
 		public EventWaitHandle TaskComplete { get; private set; }
 
-		public string GetName()
-		{
-			return _name;
-		}
+	    public string Name
+	    {
+            get { return _name; }
+	    }
 
 		public void Start(object state)
 		{

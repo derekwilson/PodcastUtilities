@@ -20,9 +20,7 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// gets the display name for the task
         /// </summary>
-        /// <returns></returns>
-        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
-        string GetName();
+        string Name { get; }
         
         /// <summary>
         /// start running the task - the task is started in the background and the method will return
