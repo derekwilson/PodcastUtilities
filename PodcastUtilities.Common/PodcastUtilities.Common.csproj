@@ -84,12 +84,12 @@
     <Compile Include="Configuration\HardcodedPodcastDefaultsProvider.cs" />
     <Compile Include="Configuration\IControlFileFactory.cs" />
     <Compile Include="Configuration\IPodcastDefaultsProvider.cs" />
-    <Compile Include="Files\IPodcastEpisodePurger.cs" />
+    <Compile Include="Files\IEpisodePurger.cs" />
     <Compile Include="Configuration\IPodcastFactory.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="IStateProvider.cs" />
     <Compile Include="Configuration\PodcastEpisodeDownloadStrategy.cs" />
-    <Compile Include="Files\PodcastEpisodePurger.cs" />
+    <Compile Include="Files\EpisodePurger.cs" />
     <Compile Include="Configuration\PodcastFactory.cs" />
     <Compile Include="Feeds\PodcastFeedFactory.cs" />
     <Compile Include="ProgressEventArgs.cs" />
@@ -150,7 +150,7 @@
     <Compile Include="Feeds\PodcastFeedItem.cs" />
     <Compile Include="Feeds\EpisodeFinder.cs" />
     <Compile Include="Configuration\PodcastInfo.cs" />
-    <Compile Include="Files\PodcastSynchronizer.cs" />
+    <Compile Include="Files\Synchronizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Files\Finder.cs" />
     <Compile Include="Rfc822DateTime.cs" />

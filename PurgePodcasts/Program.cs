@@ -60,7 +60,7 @@ namespace PurgePodcasts
 
             // find the episodes to delete
             var allFilesToDelete = new List<IFileInfo>(20);
-            var podcastEpisodePurger = _iocContainer.Resolve<IPodcastEpisodePurger>();
+            var podcastEpisodePurger = _iocContainer.Resolve<IEpisodePurger>();
             foreach (var podcastInfo in _control.Podcasts)
             {
                 var filesToDeleteFromThisFeed = podcastEpisodePurger.FindEpisodesToPurge(_control.SourceRoot, podcastInfo);
