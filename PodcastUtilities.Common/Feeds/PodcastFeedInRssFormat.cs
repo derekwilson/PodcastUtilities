@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.IO;
 using System.Xml;
 using PodcastUtilities.Common.Exceptions;
@@ -68,12 +69,12 @@ namespace PodcastUtilities.Common.Feeds
                                     Published = Rfc822DateTime.Parse(GetNodeText(node, "pubDate"))
                                 };
                             episodes.Add(episode);
-                            OnStatusUpdate(string.Format("Found: Feed: {0}, Episode: {1}", Title, episode.EpisodeTitle));
+                            OnStatusUpdate(string.Format(CultureInfo.InvariantCulture,"Found: Feed: {0}, Episode: {1}", Title, episode.EpisodeTitle));
                         }
                         catch (Exception ex)
                         {
-                            System.Diagnostics.Debug.WriteLine(string.Format("GetFeedEpisodes: error {0}", ex.Message));
-                            OnWarningUpdate(string.Format("GetFeedEpisodes: warning, unable to add an episode for {0}, {1}", Title, ex.Message));
+                            System.Diagnostics.Debug.WriteLine(string.Format(CultureInfo.InvariantCulture, "GetFeedEpisodes: error {0}", ex.Message));
+                            OnWarningUpdate(string.Format(CultureInfo.InvariantCulture, "GetFeedEpisodes: warning, unable to add an episode for {0}, {1}", Title, ex.Message));
                         }
                     }
                 }

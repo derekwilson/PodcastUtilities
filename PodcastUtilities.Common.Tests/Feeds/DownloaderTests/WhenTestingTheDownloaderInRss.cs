@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.DownloaderTests
     {
         protected override void When()
         {
-            Feed = FeedDownloader.DownLoadFeed(PodcastFeedFormat.RSS,Address);
+            Feed = FeedDownloader.DownloadFeed(PodcastFeedFormat.RSS,Address);
         }
 
         [Test]

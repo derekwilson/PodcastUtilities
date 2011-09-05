@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using PodcastUtilities.Common.Platform;
 
@@ -50,7 +51,7 @@ namespace PodcastUtilities.Common.Files
             {
                 string sourceRelativePath = thisItem.Source.FullName;
                 string absRoot = Path.GetFullPath(sourceRootPath);
-                if (sourceRelativePath.StartsWith(absRoot))
+                if (sourceRelativePath.StartsWith(absRoot,StringComparison.Ordinal))
                 {
                     sourceRelativePath = sourceRelativePath.Substring(absRoot.Length);
                 }
@@ -58,7 +59,7 @@ namespace PodcastUtilities.Common.Files
                 string destFilename = Path.GetFullPath(destinationRootPath) + sourceRelativePath;
                 if (!FileUtilities.FileExists(destFilename))
                 {
-                    OnStatusUpdate(string.Format("Copying to: {0}", destFilename));
+                    OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Copying to: {0}", destFilename));
                     if (!whatif)
                     {
                         try
@@ -74,8 +75,8 @@ namespace PodcastUtilities.Common.Files
                         {
                             OnStatusUpdate(
                                 new StatusUpdateEventArgs(
-                                    StatusUpdateEventArgs.Level.Error, 
-                                    string.Format("Error writing file: {0}", ex.Message)
+                                    StatusUpdateEventArgs.Level.Error,
+                                    string.Format(CultureInfo.InvariantCulture, "Error writing file: {0}", ex.Message)
                                 )
                             );
                             return;
@@ -102,8 +103,8 @@ namespace PodcastUtilities.Common.Files
 
             if (freeMb < freeSpaceToLeaveOnDestination)
             {
-                OnStatusUpdate(string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeSpaceToLeaveOnDestination));
-                OnStatusUpdate(string.Format("Free Space on drive {0} is {1:#,0.##} KB, {2:#,0.##} MB, {3:#,0.##} GB", driveInfo.Name, freeKb, freeMb, freeGb));
+                OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Destination drive is full leaving {0:#,0.##} MB free", freeSpaceToLeaveOnDestination));
+                OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Free Space on drive {0} is {1:#,0.##} KB, {2:#,0.##} MB, {3:#,0.##} GB", driveInfo.Name, freeKb, freeMb, freeGb));
                 return true;
             }
             return false;

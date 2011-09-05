@@ -102,42 +102,6 @@
             </Issue>
            </Message>
           </Messages>
-          <Members>
-           <Member Name="#RenderFileSize(System.Int64)">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-08-26 16:22:44Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'DisplayFormatter.RenderFileSize(long)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'DisplayFormatter.RenderFileSize(long)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'DisplayFormatter.RenderFileSize(long)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'DisplayFormatter.RenderFileSize(long)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
          </Type>
          <Type Name="IIocContainer">
           <Members>
@@ -378,11 +342,6 @@
            </Member>
            <Member Name="#ReadFeedEpisodeDownloadStrategy(System.String)">
             <Messages>
-             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-09-03 09:32:09Z" FixCategory="NonBreaking">
-              <Issue>
-               <Item>'ControlFile.ReadFeedEpisodeDownloadStrategy(string)'</Item>
-              </Issue>
-             </Message>
              <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-09-03 09:32:09Z">
               <Issue>
                <Item>'string.ToLower()'</Item>
@@ -394,11 +353,6 @@
            </Member>
            <Member Name="#ReadFeedEpisodeNamingStyle(System.String)">
             <Messages>
-             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-09-03 09:32:09Z" FixCategory="NonBreaking">
-              <Issue>
-               <Item>'ControlFile.ReadFeedEpisodeNamingStyle(string)'</Item>
-              </Issue>
-             </Message>
              <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-09-03 09:32:09Z">
               <Issue>
                <Item>'string.ToLower()'</Item>
@@ -499,202 +453,10 @@
            </Member>
           </Members>
          </Type>
-         <Type Name="PodcastEpisodeNamingStyle">
-          <Members>
-           <Member Name="#UrlFilename">
-            <Messages>
-             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
-              <Issue Name="MemberShouldBeCompoundWord">
-               <Item>Filename</Item>
-               <Item>'PodcastEpisodeNamingStyle.UrlFilename'</Item>
-               <Item>FileName</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#UrlFilenameAndPublishDateTime">
-            <Messages>
-             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
-              <Issue Name="MemberShouldBeCompoundWord">
-               <Item>Filename</Item>
-               <Item>'PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime'</Item>
-               <Item>FileName</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#UrlFilenameFeedTitleAndPublishDateTime">
-            <Messages>
-             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
-              <Issue Name="MemberShouldBeCompoundWord">
-               <Item>Filename</Item>
-               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime'</Item>
-               <Item>FileName</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#UrlFilenameFeedTitleAndPublishDateTimeInFolder">
-            <Messages>
-             <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
-              <Issue Name="MemberShouldBeCompoundWord">
-               <Item>Filename</Item>
-               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder'</Item>
-               <Item>FileName</Item>
-              </Issue>
-             </Message>
-             <Message Id="InFolder" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
-              <Issue Name="MemberShouldBeDiscreteTerm">
-               <Item>InFolder</Item>
-               <Item>'PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder'</Item>
-               <Item>Infolder</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
         </Types>
        </Namespace>
        <Namespace Name="PodcastUtilities.Common.Feeds">
         <Types>
-         <Type Name="EpisodeFinder">
-          <Members>
-           <Member Name="#FindEpisodesToDownload(System.String,System.Int32,PodcastUtilities.Common.Configuration.PodcastInfo)">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'EpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'EpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'EpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'EpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'EpisodeFinder.FindEpisodesToDownload(string, int, PodcastInfo)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#GetDownloadPathname(System.String,PodcastUtilities.Common.Configuration.PodcastInfo,PodcastUtilities.Common.Feeds.IPodcastFeedItem)">
-            <Messages>
-             <Message Id="System.DateTime.ToString(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'DateTime.ToString(string)'</Item>
-               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'DateTime.ToString(string)'</Item>
-               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'DateTime.ToString(string)'</Item>
-               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'DateTime.ToString(string)'</Item>
-               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'DateTime.ToString(string)'</Item>
-               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'DateTime.ToString(string, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object)'</Item>
-               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object, object, object)'</Item>
-               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, params object[])'</Item>
-               <Item>'EpisodeFinder.GetDownloadPathname(string, PodcastInfo, IPodcastFeedItem)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="IDownloader">
-          <Members>
-           <Member Name="#DownLoadFeed(PodcastUtilities.Common.Configuration.PodcastFeedFormat,System.Uri)">
-            <Messages>
-             <Message Id="DownLoad" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2011-09-03 09:32:09Z">
-              <Issue Name="MemberShouldBeDiscreteTerm">
-               <Item>DownLoad</Item>
-               <Item>'IDownloader.DownLoadFeed(PodcastFeedFormat, Uri)'</Item>
-               <Item>Download</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="ISyncItemToEpisodeDownloaderTaskConverter">
           <Members>
            <Member Name="#ConvertItemsToTasks(System.Collections.Generic.List`1&lt;PodcastUtilities.Common.Feeds.ISyncItem&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.StatusUpdateEventArgs&gt;,System.EventHandler`1&lt;PodcastUtilities.Common.ProgressEventArgs&gt;)">
@@ -706,43 +468,6 @@
               </Issue>
              </Message>
             </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="PodcastFeedInRssFormat">
-          <Members>
-           <Member Name="#Episodes">
-            <Accessors>
-             <Accessor Name="#get_Episodes()">
-              <Messages>
-               <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:39:30Z">
-                <Issue Name="IFormatProviderAlternateString">
-                 <Item>'string.Format(string, object)'</Item>
-                 <Item>'PodcastFeedInRssFormat.Episodes.get()'</Item>
-                 <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-                 <Item>'CultureInfo.CurrentCulture'</Item>
-                 <Item>'CultureInfo.InvariantCulture'</Item>
-                </Issue>
-               </Message>
-               <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:39:30Z">
-                <Issue Name="IFormatProviderAlternateString">
-                 <Item>'string.Format(string, object, object)'</Item>
-                 <Item>'PodcastFeedInRssFormat.Episodes.get()'</Item>
-                 <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-                 <Item>'CultureInfo.CurrentCulture'</Item>
-                 <Item>'CultureInfo.InvariantCulture'</Item>
-                </Issue>
-                <Issue Name="IFormatProviderAlternateString">
-                 <Item>'string.Format(string, object, object)'</Item>
-                 <Item>'PodcastFeedInRssFormat.Episodes.get()'</Item>
-                 <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-                 <Item>'CultureInfo.CurrentCulture'</Item>
-                 <Item>'CultureInfo.InvariantCulture'</Item>
-                </Issue>
-               </Message>
-              </Messages>
-             </Accessor>
-            </Accessors>
            </Member>
           </Members>
          </Type>
@@ -772,51 +497,6 @@
               <Issue>
                <Item>'List&lt;FileSyncItem&gt;'</Item>
                <Item>'Copier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'Copier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'Copier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-09-03 09:32:09Z">
-              <Issue>
-               <Item>'string.StartsWith(string)'</Item>
-               <Item>'Copier.CopyFilesToTarget(List&lt;FileSyncItem&gt;, string, string, long, bool)'</Item>
-               <Item>'string.StartsWith(string, StringComparison)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#IsDestinationDriveFull(System.String,System.Int64)">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, object)'</Item>
-               <Item>'Copier.IsDestinationDriveFull(string, long)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-09-03 09:32:09Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'string.Format(string, params object[])'</Item>
-               <Item>'Copier.IsDestinationDriveFull(string, long)'</Item>
-               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
-               <Item>'CultureInfo.CurrentCulture'</Item>
-               <Item>'CultureInfo.InvariantCulture'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -909,20 +589,6 @@
                <Item>'Sorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
               </Issue>
              </Message>
-             <Message Id="System.String.ToLower" TypeName="SpecifyCultureInfo" Category="Microsoft.Globalization" CheckId="CA1304" Created="2011-09-03 09:32:09Z">
-              <Issue>
-               <Item>'string.ToLower()'</Item>
-               <Item>'Sorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
-               <Item>'string.ToLower(CultureInfo)'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.CompareTo(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-09-03 09:32:09Z">
-              <Issue>
-               <Item>'string.CompareTo(string)'</Item>
-               <Item>'Sorter.Sort(List&lt;IFileInfo&gt;, string, bool)'</Item>
-               <Item>'string.Compare(string, string, StringComparison)'</Item>
-              </Issue>
-             </Message>
             </Messages>
            </Member>
           </Members>
@@ -961,21 +627,6 @@
        </Namespace>
        <Namespace Name="PodcastUtilities.Common.Playlists">
         <Types>
-         <Type Name="Generator">
-          <Members>
-           <Member Name="#GeneratePlaylist(PodcastUtilities.Common.Configuration.IControlFile,System.Boolean)">
-            <Messages>
-             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-09-03 09:32:09Z">
-              <Issue>
-               <Item>'string.StartsWith(string)'</Item>
-               <Item>'Generator.GeneratePlaylist(IControlFile, bool)'</Item>
-               <Item>'string.StartsWith(string, StringComparison)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="PlaylistAsx">
           <Messages>
            <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Created="2011-09-03 09:32:09Z">
@@ -1139,8 +790,6 @@
    </Rule>
    <Rule TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702">
     <Resolution Name="MemberParameterShouldBeCompoundWord">In member {0}, the discrete term '{1}' in parameter name {2} should be expressed as a compound word, '{3}'.</Resolution>
-    <Resolution Name="MemberShouldBeCompoundWord">The discrete term '{0}' in member name {1} should be expressed as a compound word, '{2}'.</Resolution>
-    <Resolution Name="MemberShouldBeDiscreteTerm">The compound word '{0}' in member name {1} exists as a discrete term. If your usage is intended to be single word, case it as '{2}' or strip the first token entirely if it represents any sort of Hungarian notation.</Resolution>
    </Rule>
    <Rule TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214">
     <Resolution Name="Default">{0} contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: {1}</Resolution>
@@ -1169,9 +818,6 @@
    </Rule>
    <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
     <Resolution Name="Default">Mark {0} with CLSCompliant(true) because it exposes externally visible types.</Resolution>
-   </Rule>
-   <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
-    <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
    </Rule>
    <Rule TypeName="MembersShouldNotExposeCertainConcreteTypes" Category="Microsoft.Design" CheckId="CA1059">
     <Resolution Name="Xml">Modify member {0} so that it no longer exposes the concrete type {1}. Use IXPathNavigable to represent XML data sources.</Resolution>

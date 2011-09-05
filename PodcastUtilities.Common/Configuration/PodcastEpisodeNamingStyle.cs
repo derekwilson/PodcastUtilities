@@ -8,19 +8,19 @@
         /// <summary>
         /// use the filename part of the url as the name
         /// </summary>
-        UrlFilename,
+        UrlFileName,
         /// <summary>
         /// use the filename from the url and the date time the episode was published
         /// </summary>
-        UrlFilenameAndPublishDateTime,
+        UrlFileNameAndPublishDateTime,
         /// <summary>
         /// use the filename from the url, the title of the feed and the published date time
         /// </summary>
-        UrlFilenameFeedTitleAndPublishDateTime,
+        UrlFileNameFeedTitleAndPublishDateTime,
         /// <summary>
         /// as UrlFilenameFeedTitleAndPublishDateTime but each month is put in a folder
         /// </summary>
-        UrlFilenameFeedTitleAndPublishDateTimeInFolder,
+        UrlFileNameFeedTitleAndPublishDateTimeInfolder,
         /// <summary>
         /// use the podcast title as the name
         /// </summary>

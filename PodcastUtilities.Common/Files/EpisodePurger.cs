@@ -31,10 +31,10 @@ namespace PodcastUtilities.Common.Files
         {
             switch (podcastInfo.Feed.NamingStyle)
             {
-                case PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime:
-                case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime:
+                case PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime:
+                case PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime:
                 case PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
-                case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder:
+                case PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder:
                     try
                     {
                         return ConvertFilenameToPublishedDate(Path.GetFileNameWithoutExtension(file.FullName));
@@ -44,7 +44,7 @@ namespace PodcastUtilities.Common.Files
                         return file.CreationTime;
                     }
                 case PodcastEpisodeNamingStyle.EpisodeTitle:
-                case PodcastEpisodeNamingStyle.UrlFilename:
+                case PodcastEpisodeNamingStyle.UrlFileName:
                     return file.CreationTime;
                 default:
                     throw new EnumOutOfRangeException("NamingStyle");
@@ -100,7 +100,7 @@ namespace PodcastUtilities.Common.Files
 
         private static bool IsSubFolderBasedNaming(PodcastEpisodeNamingStyle style)
         {
-            return style == PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder;
+            return style == PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder;
         }
 
         private void ScanSubFoldersForOldFiles(string folderToScan, DateTime oldestEpisodeToKeep, List<IFileInfo> episodesToDelete, PodcastInfo podcastInfo)
