@@ -318,7 +318,7 @@ namespace PodcastUtilities.Common
         {
             if (utcDateTime.Kind != DateTimeKind.Utc)
             {
-                throw new ArgumentException("utcDateTime");
+                throw new ArgumentException("the date time needs to be UTC","utcDateTime");
             }
 
             return utcDateTime.ToString(Rfc822DateTime.Rfc822DateTimeFormat, DateTimeFormatInfo.InvariantInfo);

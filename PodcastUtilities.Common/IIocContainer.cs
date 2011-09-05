@@ -12,6 +12,7 @@ namespace PodcastUtilities.Common
 		/// </summary>
 		/// <typeparam name="TService">the service to be registered, usually an interface</typeparam>
 		/// <typeparam name="TImplementor">the concrete implementation</typeparam>
+        [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
         void Register<TService, TImplementor>() where TImplementor : TService;
 
 		///<summary>
