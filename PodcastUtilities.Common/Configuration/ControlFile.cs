@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Xml;
 using PodcastUtilities.Common.Exceptions;
 using PodcastUtilities.Common.Playlists;
@@ -23,12 +25,12 @@ namespace PodcastUtilities.Common.Configuration
 		/// <summary>
 		/// create the object and read the control file from the specified filename
 		/// </summary>
-		/// <param name="filename">pathname to the control file xml</param>
-        public ControlFile(string filename)
+		/// <param name="fileName">pathname to the control file xml</param>
+        public ControlFile(string fileName)
 		{
 			_xmlDocument = new XmlDocument();
 
-			_xmlDocument.Load(filename);
+			_xmlDocument.Load(fileName);
 
 			ReadPodcasts();
 		}
@@ -74,28 +76,29 @@ namespace PodcastUtilities.Common.Configuration
         {
             get
             {
-                string format = GetNodeText("podcasts/global/playlistFormat").ToLower();
+                string format = GetNodeText("podcasts/global/playlistFormat").ToUpperInvariant();
                 switch (format)
                 {
-                    case "wpl":
+                    case "WPL":
                         return PlaylistFormat.WPL;
-                    case "asx":
+                    case "ASX":
                         return PlaylistFormat.ASX;
                 }
-                throw new ControlFileValueFormatException(string.Format("{0} is not a valid value for the playlist format", format));
+                throw new ControlFileValueFormatException(string.Format(CultureInfo.InvariantCulture,"{0} is not a valid value for the playlist format", format));
             }
         }
 
         /// <summary>
         /// free space in MB to leave on the destination device when syncing
         /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public long FreeSpaceToLeaveOnDestination
         {
             get
             {
                 try
                 {
-                    return Convert.ToInt64(GetNodeText("podcasts/global/freeSpaceToLeaveOnDestinationMB"));
+                    return Convert.ToInt64(GetNodeText("podcasts/global/freeSpaceToLeaveOnDestinationMB"), CultureInfo.InvariantCulture);
                 }
                 catch
                 {
@@ -107,13 +110,14 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// free space in MB to leave on the download device - when downloading
         /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public long FreeSpaceToLeaveOnDownload
         {
             get
             {
                 try
                 {
-                    return Convert.ToInt64(GetNodeText("podcasts/global/freeSpaceToLeaveOnDownloadMB"));
+                    return Convert.ToInt64(GetNodeText("podcasts/global/freeSpaceToLeaveOnDownloadMB"), CultureInfo.InvariantCulture);
                 }
                 catch
                 {
@@ -133,13 +137,14 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// maximum number of background downloads
         /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public int MaximumNumberOfConcurrentDownloads
         {
             get
             {
                 try
                 {
-                    return Convert.ToInt32(GetNodeText("podcasts/global/maximumNumberOfConcurrentDownloads"));
+                    return Convert.ToInt32(GetNodeText("podcasts/global/maximumNumberOfConcurrentDownloads"),CultureInfo.InvariantCulture);
                 }
                 catch
                 {
@@ -151,13 +156,14 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// number of seconds to wait when trying a file conflict
         /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public int RetryWaitInSeconds
         {
             get
             {
                 try
                 {
-                    return Convert.ToInt32(GetNodeText("podcasts/global/retryWaitInSeconds"));
+                    return Convert.ToInt32(GetNodeText("podcasts/global/retryWaitInSeconds"), CultureInfo.InvariantCulture);
                 }
                 catch
                 {
@@ -195,7 +201,7 @@ namespace PodcastUtilities.Common.Configuration
         {
             get
             {
-                return GetNodeTextOrDefault("podcasts/global/feed/maximumDaysOld", int.MaxValue.ToString());
+                return GetNodeTextOrDefault("podcasts/global/feed/maximumDaysOld", int.MaxValue.ToString(CultureInfo.InvariantCulture));
             }
         }
 
@@ -206,7 +212,7 @@ namespace PodcastUtilities.Common.Configuration
         {
             get
             {
-                return GetNodeTextOrDefault("podcasts/global/feed/deleteDownloadsDaysOld", int.MaxValue.ToString());
+                return GetNodeTextOrDefault("podcasts/global/feed/deleteDownloadsDaysOld", int.MaxValue.ToString(CultureInfo.InvariantCulture));
             }
         }
 
@@ -245,16 +251,17 @@ namespace PodcastUtilities.Common.Configuration
 
         private static PodcastFeedFormat ReadFeedFormat(string format)
         {
-            switch (format.ToLower())
+            switch (format.ToUpperInvariant())
             {
-                case "rss":
+                case "RSS":
                     return PodcastFeedFormat.RSS;
-                case "atom":
+                case "ATOM":
                     return PodcastFeedFormat.ATOM;
             }
-            throw new ControlFileValueFormatException(string.Format("{0} is not a valid value for the feed format", format));
+            throw new ControlFileValueFormatException(string.Format(CultureInfo.InvariantCulture, "{0} is not a valid value for the feed format", format));
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         private int ReadMaximumDaysOld(XmlNode feedNode)
         {
             if (feedNode == null)
@@ -263,7 +270,7 @@ namespace PodcastUtilities.Common.Configuration
             }
             try
             {
-                return Convert.ToInt32(GetNodeTextOrDefault(feedNode, "maximumDaysOld", FeedMaximumDaysOld));
+                return Convert.ToInt32(GetNodeTextOrDefault(feedNode, "maximumDaysOld", FeedMaximumDaysOld), CultureInfo.InvariantCulture);
             }
             catch
             {
@@ -271,6 +278,7 @@ namespace PodcastUtilities.Common.Configuration
             }
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         private int ReadDeleteDownloadsDaysOld(XmlNode feedNode)
         {
             if (feedNode == null)
@@ -279,7 +287,7 @@ namespace PodcastUtilities.Common.Configuration
             }
             try
             {
-                var days = Convert.ToInt32(GetNodeTextOrDefault(feedNode, "deleteDownloadsDaysOld", FeedDeleteDownloadsDaysOld));
+                var days = Convert.ToInt32(GetNodeTextOrDefault(feedNode, "deleteDownloadsDaysOld", FeedDeleteDownloadsDaysOld), CultureInfo.InvariantCulture);
                 if (days == 0)
                 {
                     return int.MaxValue;
@@ -294,40 +302,38 @@ namespace PodcastUtilities.Common.Configuration
 
         private static PodcastEpisodeNamingStyle ReadFeedEpisodeNamingStyle(string format)
         {
-            switch (format.ToLower())
+            switch (format.ToUpperInvariant())
             {
-                case "pubdate_url":
+                case "PUBDATE_URL":
                     return PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime;
-                case "pubdate_title_url":
+                case "PUBDATE_TITLE_URL":
                     return PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime;
-                case "pubdate_folder_title_url":
+                case "PUBDATE_FOLDER_TITLE_URL":
                     return PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder;
-                case "etitle":
+                case "ETITLE":
                     return PodcastEpisodeNamingStyle.EpisodeTitle;
-                case "pubdate_etitle":
+                case "PUBDATE_ETITLE":
                     return PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime;
                 default:
                     return PodcastEpisodeNamingStyle.UrlFileName;
 
             }
-            throw new ControlFileValueFormatException(string.Format("{0} is not a valid value for the feed format", format));
         }
 
         private static PodcastEpisodeDownloadStrategy ReadFeedEpisodeDownloadStrategy(string strategy)
         {
-            switch (strategy.ToLower())
+            switch (strategy.ToUpperInvariant())
             {
-                case "high_tide":
+                case "HIGH_TIDE":
                     return PodcastEpisodeDownloadStrategy.HighTide;
-                case "all":
+                case "ALL":
                     return PodcastEpisodeDownloadStrategy.All;
-                case "latest":
+                case "LATEST":
                     return PodcastEpisodeDownloadStrategy.Latest;
                 default:
                     return PodcastEpisodeDownloadStrategy.All;
 
             }
-            throw new ControlFileValueFormatException(string.Format("{0} is not a valid value for the feed download strategy", strategy));
         }
 
 
@@ -363,9 +369,9 @@ namespace PodcastUtilities.Common.Configuration
                         Feed = ReadFeedInfo(podcastNode.SelectSingleNode("feed")),
                         Folder = GetNodeText(podcastNode, "folder"),
 						Pattern = GetNodeText(podcastNode, "pattern"),
-						MaximumNumberOfFiles = Convert.ToInt32(GetNodeTextOrDefault(podcastNode, "number", "-1")),
+                        MaximumNumberOfFiles = Convert.ToInt32(GetNodeTextOrDefault(podcastNode, "number", "-1"), CultureInfo.InvariantCulture),
 						SortField = GetNodeTextOrDefault(podcastNode, "sortfield", SortField),
-						AscendingSort = !(GetNodeTextOrDefault(podcastNode, "sortdirection", SortDirection).ToLower().StartsWith("desc"))
+						AscendingSort = !(GetNodeTextOrDefault(podcastNode, "sortdirection", SortDirection).ToUpperInvariant().StartsWith("DESC",StringComparison.Ordinal))
 					};
 
 					_podcasts.Add(podcastInfo);
