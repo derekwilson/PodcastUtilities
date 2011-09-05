@@ -65,7 +65,7 @@ namespace PodcastUtilities.Common.Playlists
             {
                 string thisRelativeFile = thisFile.FullName;
                 string absRoot = Path.GetFullPath(control.DestinationRoot);
-                if (thisRelativeFile.StartsWith(absRoot))
+                if (thisRelativeFile.StartsWith(absRoot,StringComparison.Ordinal))
                 {
                     thisRelativeFile = thisRelativeFile.Substring(absRoot.Length);
                 }

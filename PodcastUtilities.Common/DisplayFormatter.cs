@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -36,17 +37,17 @@ namespace PodcastUtilities.Common
 
             if (gb > 1)
             {
-                return string.Format("{0:#,0.##} GB", gb);
+                return string.Format(CultureInfo.InvariantCulture, "{0:#,0.##} GB", gb);
             }
             if (mb > 1)
             {
-                return string.Format("{0:#,0.##} MB", mb);
+                return string.Format(CultureInfo.InvariantCulture, "{0:#,0.##} MB", mb);
             }
             if (kb > 1)
             {
-                return string.Format("{0:#,0.##} KB", kb);
+                return string.Format(CultureInfo.InvariantCulture, "{0:#,0.##} KB", kb);
             }
-            return string.Format("{0:#,0.##} bytes", numberOfBytes);
+            return string.Format(CultureInfo.InvariantCulture, "{0:#,0.##} bytes", numberOfBytes);
         }
     }
 }

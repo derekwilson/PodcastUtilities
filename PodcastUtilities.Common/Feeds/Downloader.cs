@@ -30,7 +30,7 @@ namespace PodcastUtilities.Common.Feeds
         /// <param name="feedFormat">the format of the feed</param>
         /// <param name="address">the url to get the feed from</param>
         /// <returns>the podcast feed</returns>
-        public IPodcastFeed DownLoadFeed(PodcastFeedFormat feedFormat, Uri address)
+        public IPodcastFeed DownloadFeed(PodcastFeedFormat feedFormat, Uri address)
         {
             Stream feedData = _webClient.OpenRead(address);
 

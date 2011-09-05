@@ -18,7 +18,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests.NamingStyle
                                           Published = _now.AddMonths(-1)
                                       });
 
-            _podcastInfo.Feed.NamingStyle = PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder;
+            _podcastInfo.Feed.NamingStyle = PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder;
         }
 
         protected override void When()

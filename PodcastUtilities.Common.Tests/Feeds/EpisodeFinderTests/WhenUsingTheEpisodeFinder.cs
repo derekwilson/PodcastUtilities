@@ -69,7 +69,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
 
             _feedInfo = new FeedInfo();
             _feedInfo.Format = PodcastFeedFormat.RSS;
-            _feedInfo.NamingStyle = PodcastEpisodeNamingStyle.UrlFilename;
+            _feedInfo.NamingStyle = PodcastEpisodeNamingStyle.UrlFileName;
             _feedInfo.Address = new Uri(_feedAddress);
             _feedInfo.MaximumDaysOld = int.MaxValue;
             _feedInfo.DownloadStrategy = PodcastEpisodeDownloadStrategy.All;

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common.Files
@@ -18,14 +20,14 @@ namespace PodcastUtilities.Common.Files
 	    /// <param name="ascendingSort">true to sort ascending false to sort descending</param>
 	    public void Sort(List<IFileInfo> files, string sortField, bool ascendingSort)
 		{
-			switch (sortField.ToLower())
+			switch (sortField.ToUpperInvariant())
 			{
-				case "creationtime":
+				case "CREATIONTIME":
 					files.Sort((f1, f2) => f1.CreationTime.CompareTo(f2.CreationTime));
 					break;
 
 				default:
-					files.Sort((f1, f2) => f1.Name.CompareTo(f2.Name));
+					files.Sort((f1, f2) => string.Compare(f1.Name, f2.Name,StringComparison.OrdinalIgnoreCase));
 					break;
 			}
 

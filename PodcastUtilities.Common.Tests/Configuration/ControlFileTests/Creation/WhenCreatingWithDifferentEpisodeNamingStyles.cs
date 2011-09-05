@@ -56,8 +56,8 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
         [Test]
         public void ItShouldReadTheFormat()
         {
-            Assert.That(NamingStyle1, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFilename));
-            Assert.That(NamingStyle2, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime));
+            Assert.That(NamingStyle1, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileName));
+            Assert.That(NamingStyle2, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime));
         }
     }
 
@@ -78,8 +78,8 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
         [Test]
         public void ItShouldReadTheFormat()
         {
-            Assert.That(NamingStyle1, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime));
-            Assert.That(NamingStyle2, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime));
+            Assert.That(NamingStyle1, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime));
+            Assert.That(NamingStyle2, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime));
         }
     }
 }

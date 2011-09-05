@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using PodcastUtilities.Common.Configuration;
@@ -43,21 +44,21 @@ namespace PodcastUtilities.Common.Feeds
 
             switch (podcastInfo.Feed.NamingStyle)
             {
-                case PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime:
-                    proposedFilename = string.Format("{0}_{1}",
-                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
+                case PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime:
+                    proposedFilename = string.Format(CultureInfo.InvariantCulture, "{0}_{1}",
+                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm",CultureInfo.InvariantCulture),
                                                     proposedFilename);
                     break;
-                case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime:
-                    proposedFilename = string.Format("{0}_{1}_{2}",
-                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
+                case PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime:
+                    proposedFilename = string.Format(CultureInfo.InvariantCulture, "{0}_{1}_{2}",
+                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm",CultureInfo.InvariantCulture),
                                                     podcastInfo.Folder,
                                                     proposedFilename);
                     break;
-                case PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder:
-                    proposedFilename = string.Format("{0}\\{1}_{2}_{3}",
-                                                    podcastFeedItem.Published.ToString("yyyy_MM"),
-                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
+                case PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder:
+                    proposedFilename = string.Format(CultureInfo.InvariantCulture, "{0}\\{1}_{2}_{3}",
+                                                    podcastFeedItem.Published.ToString("yyyy_MM",CultureInfo.InvariantCulture),
+                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm",CultureInfo.InvariantCulture),
                                                     podcastInfo.Folder,
                                                     proposedFilename);
                     break;
@@ -65,11 +66,11 @@ namespace PodcastUtilities.Common.Feeds
                     proposedFilename = podcastFeedItem.TitleAsFileName;
                     break;
                 case PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
-                    proposedFilename = string.Format("{0}_{1}",
-                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
+                    proposedFilename = string.Format(CultureInfo.InvariantCulture, "{0}_{1}",
+                                                    podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm",CultureInfo.InvariantCulture),
                                                     podcastFeedItem.TitleAsFileName);
                     break;
-                case PodcastEpisodeNamingStyle.UrlFilename:
+                case PodcastEpisodeNamingStyle.UrlFileName:
                     break;
                 default:
                     throw new EnumOutOfRangeException("NamingStyle");
@@ -132,7 +133,7 @@ namespace PodcastUtilities.Common.Feeds
 
                 try
                 {
-                    var feed = downloader.DownLoadFeed(podcastInfo.Feed.Format, podcastInfo.Feed.Address);
+                    var feed = downloader.DownloadFeed(podcastInfo.Feed.Format, podcastInfo.Feed.Address);
                     feed.StatusUpdate += StatusUpdate;
                     var episodes = feed.Episodes;
 
@@ -156,31 +157,31 @@ namespace PodcastUtilities.Common.Feeds
                                                            Published = podcastFeedItem.Published,
                                                            EpisodeUrl = podcastFeedItem.Address,
                                                            DestinationPath = destinationPath,
-                                                           EpisodeTitle = string.Format("{0} {1}", podcastInfo.Folder,podcastFeedItem.EpisodeTitle)
+                                                           EpisodeTitle = string.Format(CultureInfo.InvariantCulture, "{0} {1}", podcastInfo.Folder, podcastFeedItem.EpisodeTitle)
                                                        };
                                 episodesToDownload.Add(downloadItem);
                             }
                             else
                             {
-                                OnStatusVerbose(string.Format("Episode already downloaded: {0}", podcastFeedItem.EpisodeTitle));
+                                OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Episode already downloaded: {0}", podcastFeedItem.EpisodeTitle));
                             }
                         }
                         else
                         {
-                            OnStatusVerbose(string.Format("Episode too old: {0}",podcastFeedItem.EpisodeTitle));
+                            OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Episode too old: {0}", podcastFeedItem.EpisodeTitle));
                         }
                     }
                 }
                 catch (Exception e)
                 {
-                    OnStatusError(string.Format("Error processing feed {0}: {1}", podcastInfo.Feed.Address, e.Message));
+                    OnStatusError(string.Format(CultureInfo.InvariantCulture, "Error processing feed {0}: {1}", podcastInfo.Feed.Address, e.Message));
                 }
             }
 
             var filteredEpisodes = ApplyDownloadStrategy(stateKey, podcastInfo, episodesToDownload);
             foreach (var filteredEpisode in filteredEpisodes)
             {
-                OnStatusMessageUpdate(string.Format("Queued: {0}", filteredEpisode.EpisodeTitle));
+                OnStatusMessageUpdate(string.Format(CultureInfo.InvariantCulture, "Queued: {0}", filteredEpisode.EpisodeTitle));
             }
             return filteredEpisodes;
         }

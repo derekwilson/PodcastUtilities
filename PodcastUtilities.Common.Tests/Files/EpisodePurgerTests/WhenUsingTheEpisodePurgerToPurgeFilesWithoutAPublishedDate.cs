@@ -10,7 +10,7 @@ namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
             base.SetupData();
 
             _feedInfo.DeleteDownloadsDaysOld = 5;
-            _feedInfo.NamingStyle = PodcastEpisodeNamingStyle.UrlFilename;
+            _feedInfo.NamingStyle = PodcastEpisodeNamingStyle.UrlFileName;
         }
 
         protected override void SetupStubs()

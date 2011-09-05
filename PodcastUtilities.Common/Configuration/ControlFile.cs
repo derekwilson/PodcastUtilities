@@ -292,28 +292,28 @@ namespace PodcastUtilities.Common.Configuration
             }
         }
 
-        private PodcastEpisodeNamingStyle ReadFeedEpisodeNamingStyle(string format)
+        private static PodcastEpisodeNamingStyle ReadFeedEpisodeNamingStyle(string format)
         {
             switch (format.ToLower())
             {
                 case "pubdate_url":
-                    return PodcastEpisodeNamingStyle.UrlFilenameAndPublishDateTime;
+                    return PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime;
                 case "pubdate_title_url":
-                    return PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTime;
+                    return PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime;
                 case "pubdate_folder_title_url":
-                    return PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder;
+                    return PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder;
                 case "etitle":
                     return PodcastEpisodeNamingStyle.EpisodeTitle;
                 case "pubdate_etitle":
                     return PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime;
                 default:
-                    return PodcastEpisodeNamingStyle.UrlFilename;
+                    return PodcastEpisodeNamingStyle.UrlFileName;
 
             }
             throw new ControlFileValueFormatException(string.Format("{0} is not a valid value for the feed format", format));
         }
 
-        private PodcastEpisodeDownloadStrategy ReadFeedEpisodeDownloadStrategy(string strategy)
+        private static PodcastEpisodeDownloadStrategy ReadFeedEpisodeDownloadStrategy(string strategy)
         {
             switch (strategy.ToLower())
             {
