@@ -23,7 +23,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
         [Test]
         public void ItShouldUpdateTheStatus()
         {
-            Assert.That(_latestUpdate.MessageLevel, Is.EqualTo(StatusUpdateEventArgs.Level.Error));
+            Assert.That(_latestUpdate.MessageLevel, Is.EqualTo(StatusUpdateLevel.Error));
         }
     }
 }

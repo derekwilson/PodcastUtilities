@@ -36,7 +36,7 @@ namespace PodcastUtilities.Common.Tests.Files.CopierTests
 		{
 			Assert.AreEqual(1, StatusUpdates.Count);
 
-			Assert.AreEqual(StatusUpdateEventArgs.Level.Status, StatusUpdates[0].MessageLevel);
+			Assert.AreEqual(StatusUpdateLevel.Status, StatusUpdates[0].MessageLevel);
 			Assert.AreEqual(@"Copying to: d:\Dest\B", StatusUpdates[0].Message);
 		}
 

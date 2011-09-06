@@ -23,7 +23,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests.WebClientEv
         public void ItShouldSendTheCorrectStatus()
         {
             Assert.That(_statusUpdateArgs.Exception, Is.Null);
-            Assert.That(_statusUpdateArgs.MessageLevel, Is.EqualTo(StatusUpdateEventArgs.Level.Status));
+            Assert.That(_statusUpdateArgs.MessageLevel, Is.EqualTo(StatusUpdateLevel.Status));
             Assert.That(_statusUpdateArgs.Message, Is.StringContaining("Completed"));
         }
 

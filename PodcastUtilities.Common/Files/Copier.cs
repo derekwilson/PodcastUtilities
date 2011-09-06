@@ -41,7 +41,7 @@ namespace PodcastUtilities.Common.Files
         /// <param name="freeSpaceToLeaveOnDestination">free space to meave on the destination in MB</param>
         /// <param name="whatif">true to emit all the status update but not actually perform the copy, false to do the copy</param>
         public void CopyFilesToTarget(
-			List<FileSyncItem> sourceFiles,
+			IEnumerable<FileSyncItem> sourceFiles,
 			string sourceRootPath,
 			string destinationRootPath,
 			long freeSpaceToLeaveOnDestination,
@@ -75,7 +75,7 @@ namespace PodcastUtilities.Common.Files
                         {
                             OnStatusUpdate(
                                 new StatusUpdateEventArgs(
-                                    StatusUpdateEventArgs.Level.Error,
+                                    StatusUpdateLevel.Error,
                                     string.Format(CultureInfo.InvariantCulture, "Error writing file: {0}", ex.Message)
                                 )
                             );
@@ -112,7 +112,7 @@ namespace PodcastUtilities.Common.Files
 
 		private void OnStatusUpdate(string message)
 		{
-			OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
+			OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message));
 		}
 
 		private void OnStatusUpdate(StatusUpdateEventArgs e)

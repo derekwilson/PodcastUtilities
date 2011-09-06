@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml;
+using System.Xml.XPath;
 
 namespace PodcastUtilities.Common
 {
@@ -65,9 +66,10 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// only used for unit testing
         /// </summary>
-        public XmlState(XmlDocument document)
+        public XmlState(IXPathNavigable document)
 		{
-		    _xmlDocument = document;
+            _xmlDocument = new XmlDocument();
+            _xmlDocument.InnerXml = document.CreateNavigator().InnerXml;
 
             InitialiseState();
         }

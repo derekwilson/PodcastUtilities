@@ -32,10 +32,9 @@ namespace PodcastUtilities.Common.Tests.Playlists.PlaylistAsxTests
 		[Test]
 		public void ItShouldNotInsertTheXmlTwice()
 		{
-			var podcastNodes = Playlist.SelectNodes(@"ASX/ENTRY/REF[@HREF = 'c:\podcasts\1.mp3']");
+			var podcastNodes = Playlist.GetNumberOfNodes(@"ASX/ENTRY/REF[@HREF = 'c:\podcasts\1.mp3']");
 
-			Assert.IsNotNull(podcastNodes);
-			Assert.AreEqual(1, podcastNodes.Count);
+			Assert.AreEqual(1, podcastNodes);
 		}
 	}
 }

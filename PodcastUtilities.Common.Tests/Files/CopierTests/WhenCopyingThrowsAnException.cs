@@ -23,7 +23,7 @@ namespace PodcastUtilities.Common.Tests.Files.CopierTests
 		{
 			Assert.AreEqual(2, StatusUpdates.Count);
 
-			Assert.AreEqual(StatusUpdateEventArgs.Level.Error, StatusUpdates[1].MessageLevel);
+			Assert.AreEqual(StatusUpdateLevel.Error, StatusUpdates[1].MessageLevel);
 			Assert.AreEqual("Error writing file: blah", StatusUpdates[1].Message);
 		}
 

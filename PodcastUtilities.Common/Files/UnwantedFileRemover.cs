@@ -68,7 +68,7 @@ namespace PodcastUtilities.Common.Files
 
 		private void OnStatusUpdate(string message)
 		{
-			OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
+			OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message));
 		}
 
 		private void OnStatusUpdate(StatusUpdateEventArgs e)

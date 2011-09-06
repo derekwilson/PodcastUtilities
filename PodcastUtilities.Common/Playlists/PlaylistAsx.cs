@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Xml;
 using System.IO;
+using System.Xml.XPath;
 using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common.Playlists
@@ -39,11 +40,7 @@ namespace PodcastUtilities.Common.Playlists
 		{
 			get
 			{
-				XmlNodeList list = SelectNodes("ASX/ENTRY/REF");
-				if (list != null)
-					return list.Count;
-
-				return 0;
+                return GetNumberOfNodes("ASX/ENTRY/REF");
 			}
 		}
 
@@ -63,25 +60,19 @@ namespace PodcastUtilities.Common.Playlists
 	    /// <returns>true if the file was added false if the track was already present</returns>
 	    public bool AddTrack(string filePath)
 		{
-            XmlNode n = SelectSingleNode(string.Format(CultureInfo.InvariantCulture,"ASX/ENTRY/REF[@HREF = '{0}']", filePath));
-			if (n != null)
+            if (GetNumberOfNodes(string.Format(CultureInfo.InvariantCulture, "ASX/ENTRY/REF[@HREF = '{0}']", filePath)) > 0)
 				return false;
 
-			n = SelectSingleNode("ASX");
+            IXPathNavigable n = FindNode("ASX");
 			if (n == null)
 			{
                 throw new XmlStructureException("AddTrack : ASX : path not found");
 			}
 
 			// we can find the parent node for the keys so create the key element
-			XmlNode newParent = CreateElement("ENTRY");
-			XmlNode newNode = CreateElement("REF");
-			XmlAttribute attr = CreateAttribute("HREF");
-            attr.Value = filePath;
-			newNode.Attributes.Append(attr);
-			newParent.AppendChild(newNode);
-			n.AppendChild(newParent);
-			return true;
+            n.CreateNavigator().AppendChild(string.Format(CultureInfo.InvariantCulture, "<ENTRY><REF HREF='{0}' /></ENTRY>", filePath)); 
+
+            return true;
 		}
 	}
 }

@@ -80,6 +80,7 @@
     <Compile Include="Exceptions\ControlFileValueFormatException.cs" />
     <Compile Include="Exceptions\DownloaderException.cs" />
     <Compile Include="Exceptions\EnumOutOfRangeException.cs" />
+    <Compile Include="Exceptions\FeedStructureException.cs" />
     <Compile Include="Exceptions\XmlStructureException.cs" />
     <Compile Include="Configuration\HardcodedPodcastDefaultsProvider.cs" />
     <Compile Include="Configuration\IControlFileFactory.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Files\Finder.cs" />
     <Compile Include="Rfc822DateTime.cs" />
+    <Compile Include="StatusUpdateLevel.cs" />
     <Compile Include="XmlState.cs" />
     <Compile Include="StateProvider.cs" />
     <Compile Include="StatusUpdateEventArgs.cs" />

@@ -188,17 +188,17 @@ namespace PodcastUtilities.Common.Feeds
 
         private void OnStatusVerbose(string message)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Verbose, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Verbose, message));
         }
 
         private void OnStatusMessageUpdate(string message)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Status, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message));
         }
 
         private void OnStatusError(string message)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Error, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Error, message));
         }
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)

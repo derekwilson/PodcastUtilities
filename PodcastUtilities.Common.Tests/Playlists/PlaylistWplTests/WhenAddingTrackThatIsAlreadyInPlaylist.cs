@@ -32,10 +32,9 @@ namespace PodcastUtilities.Common.Tests.Playlists.PlaylistWplTests
 		[Test]
 		public void ItShouldNotInsertTheXmlTwice()
 		{
-			var podcastNodes = Playlist.SelectNodes(@"smil/body/seq/media[@src = 'c:\podcasts\1.mp3']");
+			var podcastNodes = Playlist.GetNumberOfNodes(@"smil/body/seq/media[@src = 'c:\podcasts\1.mp3']");
 
-			Assert.IsNotNull(podcastNodes);
-			Assert.AreEqual(1, podcastNodes.Count);
+			Assert.AreEqual(1, podcastNodes);
 		}
 	}
 }

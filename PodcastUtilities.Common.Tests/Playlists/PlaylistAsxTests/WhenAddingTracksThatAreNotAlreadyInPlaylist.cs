@@ -30,8 +30,8 @@ namespace PodcastUtilities.Common.Tests.Playlists.PlaylistAsxTests
 		[Test]
 		public void ItShouldInsertTheCorrectXml()
 		{
-			Assert.IsNotNull(Playlist.SelectSingleNode(@"ASX/ENTRY/REF[@HREF = 'c:\podcasts\1.mp3']"));
-			Assert.IsNotNull(Playlist.SelectSingleNode(@"ASX/ENTRY/REF[@HREF = 'c:\podcasts\2.mp3']"));
+			Assert.IsNotNull(Playlist.FindNode(@"ASX/ENTRY/REF[@HREF = 'c:\podcasts\1.mp3']"));
+			Assert.IsNotNull(Playlist.FindNode(@"ASX/ENTRY/REF[@HREF = 'c:\podcasts\2.mp3']"));
 		}
 	}
 }

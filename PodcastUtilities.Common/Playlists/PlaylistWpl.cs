@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Xml;
+using System.Xml.XPath;
 using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common.Playlists
@@ -39,11 +40,7 @@ namespace PodcastUtilities.Common.Playlists
 		{
 			get
 			{
-				XmlNodeList list = SelectNodes("smil/body/seq/media");
-				if (list != null)
-					return list.Count;
-
-				return 0;
+                return GetNumberOfNodes("smil/body/seq/media");
 			}
 		}
 
@@ -63,23 +60,18 @@ namespace PodcastUtilities.Common.Playlists
         /// <returns>true if the file was added false if the track was already present</returns>
         public bool AddTrack(string filePath)
 		{
-            XmlNode n = SelectSingleNode(string.Format(CultureInfo.InvariantCulture,"smil/body/seq/media[@src = '{0}']", filePath));
-			if (n != null)
-				return false;
+            if (GetNumberOfNodes(string.Format(CultureInfo.InvariantCulture, "smil/body/seq/media[@src = '{0}']", filePath)) > 0)
+                return false;
 
-			n = SelectSingleNode("smil/body/seq");
+			IXPathNavigable n = FindNode("smil/body/seq");
 			if (n == null)
 			{
 				throw new XmlStructureException("AddTrack : smil/body/seq : path not found");
 			}
 
 			// we can find the parent node for the keys so create the key element
-			XmlNode newNode = CreateElement("media");
-			XmlAttribute attr = CreateAttribute("src");
-            attr.Value = filePath;
-			newNode.Attributes.Append(attr);
-			n.AppendChild(newNode); 
+            n.CreateNavigator().AppendChild(string.Format(CultureInfo.InvariantCulture,"<media src='{0}' />",filePath)); 
 			return true;
-		}
+        }
 	}
 }

@@ -25,13 +25,13 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
         {
             switch (e.MessageLevel)
             {
-                case StatusUpdateEventArgs.Level.Warning:
+                case StatusUpdateLevel.Warning:
                     _statusWarning = true;
                     break;
-                case StatusUpdateEventArgs.Level.Error:
+                case StatusUpdateLevel.Error:
                     _statusError = true;
                     break;
-                case StatusUpdateEventArgs.Level.Verbose:
+                case StatusUpdateLevel.Verbose:
                     _statusUpdate = true;
                     break;
             }

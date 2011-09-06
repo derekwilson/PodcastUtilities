@@ -1,7 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Xml;
+using System.Xml.XPath;
 using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common.Playlists
@@ -9,9 +11,10 @@ namespace PodcastUtilities.Common.Playlists
 	/// <summary>
 	/// base class for XML files for example playlists
 	/// </summary>
-    [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix")]
-    public class XmlFileBase : XmlDocument
+    public class XmlFileBase
 	{
+	    private XmlDocument _xmlDocument;
+
         /// <summary>
         /// create the XML file object
         /// </summary>
@@ -22,13 +25,14 @@ namespace PodcastUtilities.Common.Playlists
         protected XmlFileBase(string fileName, bool create, string emptyPlaylistResource, Assembly resourceAssembly)
         {
             FileName = fileName;
+            _xmlDocument = new XmlDocument();
 
             if (create)
             {
-                Load(GetXmlStream(resourceAssembly, emptyPlaylistResource));
+                _xmlDocument.Load(GetXmlStream(resourceAssembly, emptyPlaylistResource));
             }
             else
-                Load(FileName);
+                _xmlDocument.Load(FileName);
         }
 
         /// <summary>
@@ -47,14 +51,35 @@ namespace PodcastUtilities.Common.Playlists
 		/// the filename for the XML file
 		/// </summary>
         public string FileName { get; private set; }
-		
+
+		/// <summary>
+		/// replace all the xml
+		/// </summary>
+		/// <param name="xml">the xml to inject</param>
+        public void LoadXmlString(string xml)
+		{
+		    _xmlDocument.LoadXml(xml);
+		}
+
 		/// <summary>
 		/// persist the XML to disk
 		/// </summary>
         public void SaveFile()
 		{
-			Save(FileName);
+            _xmlDocument.Save(FileName);
 		}
+
+        /// <summary>
+        /// number of tracks in the playlist
+        /// </summary>
+        public int GetNumberOfNodes(string xpath)
+        {
+            XmlNodeList list = _xmlDocument.SelectNodes(xpath);
+            if (list != null)
+                return list.Count;
+
+            return 0;
+        }
 
 		/// <summary>
 		/// return the text from a specified node
@@ -63,7 +88,7 @@ namespace PodcastUtilities.Common.Playlists
 		/// <returns>the node text, an exception is thrown if the node does not ecist</returns>
         protected string GetNodeText(string xpath)
 		{
-			XmlNode n = SelectSingleNode(xpath);
+            XmlNode n = _xmlDocument.SelectSingleNode(xpath);
 			if (n == null)
 			{
 				throw new XmlStructureException("GetNodeText : Node path '" + xpath + "' not found");
@@ -78,12 +103,22 @@ namespace PodcastUtilities.Common.Playlists
         /// <param name="nodeValue">value to set</param>
         protected void SetNodeText(string xpath, string nodeValue)
 		{
-			XmlNode n = SelectSingleNode(xpath);
+            XmlNode n = _xmlDocument.SelectSingleNode(xpath);
 			if (n == null)
 			{
                 throw new XmlStructureException("SetNodeText : Node path '" + xpath + "' not found");
 			}
 			n.InnerText = nodeValue;
 		}
+
+        /// <summary>
+        /// find a specific node
+        /// </summary>
+        /// <param name="xpath">xpath to the node</param>
+        /// <returns>node or null</returns>
+        public IXPathNavigable FindNode(string xpath)
+        {
+            return _xmlDocument.SelectSingleNode(xpath);
+        }
 	}
 }

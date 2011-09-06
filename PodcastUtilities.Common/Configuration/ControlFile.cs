@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
+using System.Xml.XPath;
 using PodcastUtilities.Common.Exceptions;
 using PodcastUtilities.Common.Playlists;
 
@@ -38,9 +39,10 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// only used for unit testing
         /// </summary>
-        public ControlFile(XmlDocument document)
+        public ControlFile(IXPathNavigable document)
 		{
-		    _xmlDocument = document;
+            _xmlDocument = new XmlDocument();
+		    _xmlDocument.InnerXml = document.CreateNavigator().InnerXml;
 
             ReadPodcasts();
 		}
@@ -84,7 +86,7 @@ namespace PodcastUtilities.Common.Configuration
                     case "ASX":
                         return PlaylistFormat.ASX;
                 }
-                throw new ControlFileValueFormatException(string.Format(CultureInfo.InvariantCulture,"{0} is not a valid value for the playlist format", format));
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture,"{0} is not a valid value for the playlist format", format));
             }
         }
 

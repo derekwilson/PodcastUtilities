@@ -9,7 +9,7 @@ namespace PodcastUtilities.Common.Platform
     /// <summary>
     /// provides access to the physical internet
     /// </summary>
-    public class SystemNetWebClient : IWebClient
+    public sealed class SystemNetWebClient : IWebClient
     {
         private readonly WebClient _webClient;
 

@@ -14,7 +14,7 @@ namespace PodcastUtilities.Common.Tests.Playlists.PlaylistAsxTests
             base.GivenThat();
 
             Playlist = new PlaylistAsx("MyPodcastPlaylist.asx", true);
-            Playlist.LoadXml("<xyz></xyz>");
+            Playlist.LoadXmlString("<xyz></xyz>");
         }
 
         protected override void When()

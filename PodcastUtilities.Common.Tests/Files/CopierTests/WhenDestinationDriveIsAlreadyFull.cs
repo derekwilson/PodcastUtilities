@@ -26,9 +26,9 @@ namespace PodcastUtilities.Common.Tests.Files.CopierTests
 		{
 			Assert.AreEqual(3, StatusUpdates.Count);
 
-			Assert.AreEqual(StatusUpdateEventArgs.Level.Status, StatusUpdates[1].MessageLevel);
+			Assert.AreEqual(StatusUpdateLevel.Status, StatusUpdates[1].MessageLevel);
 			Assert.AreEqual("Destination drive is full leaving 1,000 MB free", StatusUpdates[1].Message);
-			Assert.AreEqual(StatusUpdateEventArgs.Level.Status, StatusUpdates[2].MessageLevel);
+			Assert.AreEqual(StatusUpdateLevel.Status, StatusUpdates[2].MessageLevel);
 			Assert.AreEqual("Free Space on drive D is 1,022,976 KB, 999 MB, 0.98 GB", StatusUpdates[2].Message);
 		}
 	}

@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using PodcastUtilities.Common.Playlists;
+using System.Xml;
 
 namespace PodcastUtilities.Common.Tests.Playlists.PlaylistWplTests
 {
@@ -16,8 +17,8 @@ namespace PodcastUtilities.Common.Tests.Playlists.PlaylistWplTests
 		[Test]
 		public void ItShouldLoadTheEmptyPlaylistResource()
 		{
-			Assert.IsNotNull(Playlist.SelectSingleNode("smil/head"));
-			Assert.IsNotNull(Playlist.SelectSingleNode("smil/body/seq"));
+			Assert.IsNotNull(Playlist.FindNode("smil/head"));
+            Assert.IsNotNull(Playlist.FindNode("smil/body/seq"));
 		}
 
 		[Test]
@@ -30,7 +31,8 @@ namespace PodcastUtilities.Common.Tests.Playlists.PlaylistWplTests
 		public void ItShouldSetTheTitle()
 		{
 			Assert.AreEqual("MyPodcastPlaylist", Playlist.Title);
-			Assert.AreEqual("MyPodcastPlaylist", Playlist.SelectSingleNode("smil/head/title").InnerText);
+            var node = Playlist.FindNode("smil/head/title") as XmlNode;
+            Assert.AreEqual("MyPodcastPlaylist", node.InnerText);
 		}
 
 		[Test]

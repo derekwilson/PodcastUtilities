@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml;
 using NUnit.Framework;
 using PodcastUtilities.Common.Playlists;
 
@@ -14,7 +15,7 @@ namespace PodcastUtilities.Common.Tests.Playlists.PlaylistWplTests
             base.GivenThat();
 
             Playlist = new PlaylistWpl("MyPodcastPlaylist.wpl", true);
-            var node = Playlist.SelectSingleNode(@"smil/body");
+            var node = Playlist.FindNode(@"smil/body") as XmlNode;
             node.RemoveAll();
         }
 
