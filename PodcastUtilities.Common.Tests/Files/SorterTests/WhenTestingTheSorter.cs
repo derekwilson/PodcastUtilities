@@ -13,7 +13,7 @@ namespace PodcastUtilities.Common.Tests.Files.SorterTests
 
 		protected List<IFileInfo> OriginalFiles { get; set; }
 
-		protected List<IFileInfo> SortedFiles { get; set; }
+		protected IList<IFileInfo> SortedFiles { get; set; }
 
 		protected override void GivenThat()
 		{
@@ -37,8 +37,6 @@ namespace PodcastUtilities.Common.Tests.Files.SorterTests
 			                		file2,
 			                		file3
 			                	};
-
-			SortedFiles = new List<IFileInfo>(OriginalFiles);
 
 			FileSorter = new Sorter();
 		}

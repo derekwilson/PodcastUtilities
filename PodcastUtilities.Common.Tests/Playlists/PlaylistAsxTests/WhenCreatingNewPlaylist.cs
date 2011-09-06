@@ -1,3 +1,4 @@
+using System.Xml;
 using NUnit.Framework;
 using PodcastUtilities.Common.Playlists;
 
@@ -16,7 +17,7 @@ namespace PodcastUtilities.Common.Tests.Playlists.PlaylistAsxTests
 		[Test]
 		public void ItShouldLoadTheEmptyPlaylistResource()
 		{
-			Assert.IsNotNull(Playlist.SelectSingleNode("ASX/TITLE"));
+			Assert.IsNotNull(Playlist.FindNode("ASX/TITLE"));
 		}
 
 		[Test]
@@ -29,7 +30,8 @@ namespace PodcastUtilities.Common.Tests.Playlists.PlaylistAsxTests
 		public void ItShouldSetTheTitle()
 		{
 			Assert.AreEqual("MyPodcastPlaylist", Playlist.Title);
-			Assert.AreEqual("MyPodcastPlaylist", Playlist.SelectSingleNode("ASX/TITLE").InnerText);
+		    var node = Playlist.FindNode("ASX/TITLE") as XmlNode;
+			Assert.AreEqual("MyPodcastPlaylist", node.InnerText);
 		}
 
 		[Test]

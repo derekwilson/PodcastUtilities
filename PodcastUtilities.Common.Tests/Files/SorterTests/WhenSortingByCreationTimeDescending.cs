@@ -6,7 +6,7 @@ namespace PodcastUtilities.Common.Tests.Files.SorterTests
 	{
 		protected override void When()
 		{
-			FileSorter.Sort(SortedFiles, "creationtime", false);
+            SortedFiles = FileSorter.Sort(OriginalFiles, "creationtime", false);
 		}
 
 		[Test]

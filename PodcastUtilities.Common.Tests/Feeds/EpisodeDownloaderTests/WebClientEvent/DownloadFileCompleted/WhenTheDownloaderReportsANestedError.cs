@@ -24,7 +24,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests.WebClientEv
         public void ItShouldSendTheCorrectStatus()
         {
             Assert.That(_statusUpdateArgs.Exception, Is.SameAs(_reportedError));
-            Assert.That(_statusUpdateArgs.MessageLevel, Is.EqualTo(StatusUpdateEventArgs.Level.Error));
+            Assert.That(_statusUpdateArgs.MessageLevel, Is.EqualTo(StatusUpdateLevel.Error));
             Assert.That(_statusUpdateArgs.Message, Is.StringContaining("TEST ERROR"));
         }
 

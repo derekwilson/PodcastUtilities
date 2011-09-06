@@ -31,9 +31,9 @@ namespace PodcastUtilities.Common.Tests.Playlists.PlaylistWplTests
 		[Test]
 		public void ItShouldInsertTheCorrectXml()
 		{
-			Assert.IsNotNull(Playlist.SelectSingleNode(@"smil/body/seq/media[@src = 'c:\podcasts\1.mp3']"));
-			Assert.IsNotNull(Playlist.SelectSingleNode(@"smil/body/seq/media[@src = 'c:\podcasts\2.mp3']"));
-			Assert.IsNotNull(Playlist.SelectSingleNode(@"smil/body/seq/media[@src = 'c:\podcasts\3.wma']"));
+			Assert.IsNotNull(Playlist.FindNode(@"smil/body/seq/media[@src = 'c:\podcasts\1.mp3']"));
+            Assert.IsNotNull(Playlist.FindNode(@"smil/body/seq/media[@src = 'c:\podcasts\2.mp3']"));
+            Assert.IsNotNull(Playlist.FindNode(@"smil/body/seq/media[@src = 'c:\podcasts\3.wma']"));
 		}
 	}
 }

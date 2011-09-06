@@ -1,4 +1,5 @@
 ﻿using System;
+using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common.Playlists
 {
@@ -24,7 +25,7 @@ namespace PodcastUtilities.Common.Playlists
 				case PlaylistFormat.WPL:
 					return new PlaylistWpl(fileName, true);
 			}
-            throw new ArgumentOutOfRangeException("playlistFormat");
+            throw new EnumOutOfRangeException("playlistFormat");
 		}
 
 		#endregion

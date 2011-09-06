@@ -10,37 +10,14 @@ namespace PodcastUtilities.Common
     /// </summary>
     public class StatusUpdateEventArgs : System.EventArgs
     {
-        /// <summary>
-        /// the type of the update
-        /// </summary>
-        public enum Level
-        {
-            /// <summary>
-            /// information to be displayed
-            /// </summary>
-            Status,
-            /// <summary>
-            /// a non critical warning
-            /// </summary>
-            Warning,
-            /// <summary>
-            /// a fatal error
-            /// </summary>
-            Error,
-            /// <summary>
-            /// extra information that may be useful
-            /// </summary>
-            Verbose
-        }
-
-        private readonly Level _level;
+        private readonly StatusUpdateLevel _level;
         private readonly string _message;
         private readonly Exception _excpetion;
 
         /// <summary>
         /// Construct a new message event arg.
         /// </summary>
-        public StatusUpdateEventArgs(Level level, string message)
+        public StatusUpdateEventArgs(StatusUpdateLevel level, string message)
         {
             _message = message;
             _level = level;
@@ -50,7 +27,7 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// Construct a new message event arg.
         /// </summary>
-        public StatusUpdateEventArgs(Level level, string message, Exception exception)
+        public StatusUpdateEventArgs(StatusUpdateLevel level, string message, Exception exception)
         {
             _message = message;
             _level = level;
@@ -60,7 +37,7 @@ namespace PodcastUtilities.Common
         /// <summary>
         /// Get the type of the update
         /// </summary>
-        public Level MessageLevel
+        public StatusUpdateLevel MessageLevel
         {
             get
             {

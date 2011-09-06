@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -21,5 +22,7 @@ using System.Runtime.InteropServices;
 [assembly: Guid("f9e4ad19-91f1-44a8-9b46-f72c2d966ee3")]
 
 [assembly: CLSCompliant(true)]
+
+[module: SuppressMessage("Microsoft.Design", "CA2210:AssembliesShouldHaveValidStrongNames")]
 
 // Version information is in the shared AssemblyInfo

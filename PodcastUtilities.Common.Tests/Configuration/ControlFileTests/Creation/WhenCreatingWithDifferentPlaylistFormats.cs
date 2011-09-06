@@ -90,7 +90,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
         [Test]
         public void ItShouldThorw()
         {
-            Assert.That(ThrownException, Is.InstanceOf<ControlFileValueFormatException>());
+            Assert.That(ThrownException, Is.InstanceOf<NotSupportedException>());
         }
     }
 }

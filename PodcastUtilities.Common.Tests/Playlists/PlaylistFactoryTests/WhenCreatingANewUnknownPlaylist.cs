@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using PodcastUtilities.Common.Exceptions;
 using PodcastUtilities.Common.Playlists;
 
 namespace PodcastUtilities.Common.Tests.Playlists.PlaylistFactoryTests
@@ -22,7 +23,7 @@ namespace PodcastUtilities.Common.Tests.Playlists.PlaylistFactoryTests
         [Test]
         public void ItShouldSetTheTitle()
         {
-            Assert.That(ThrownException, Is.InstanceOf<ArgumentOutOfRangeException>());
+            Assert.That(ThrownException, Is.InstanceOf<EnumOutOfRangeException>());
         }
     }
 }

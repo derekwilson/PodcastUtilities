@@ -93,19 +93,19 @@ namespace PodcastUtilities.Common.Feeds
             XmlNode n = root.SelectSingleNode(xpath);
             if (n == null)
             {
-                throw new XmlStructureException("GetNodeText : Node path '" + xpath + "' not found");
+                throw new FeedStructureException("GetNodeText : Node path '" + xpath + "' not found");
             }
             return n.InnerText;
         }
 
         private void OnStatusUpdate(string message)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Verbose, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Verbose, message));
         }
 
         private void OnWarningUpdate(string message)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateEventArgs.Level.Warning, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Warning, message));
         }
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)

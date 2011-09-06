@@ -170,7 +170,7 @@ namespace DownloadPodcasts
 
         static void StatusUpdate(object sender, StatusUpdateEventArgs e)
         {
-            if (e.MessageLevel == StatusUpdateEventArgs.Level.Verbose && !_verbose)
+            if (e.MessageLevel == StatusUpdateLevel.Verbose && !_verbose)
             {
                 return;
             }
@@ -188,11 +188,11 @@ namespace DownloadPodcasts
             }
             else
             {
-                if (e.MessageLevel == StatusUpdateEventArgs.Level.Error)
+                if (e.MessageLevel == StatusUpdateLevel.Error)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                 }
-                else if (e.MessageLevel == StatusUpdateEventArgs.Level.Warning)
+                else if (e.MessageLevel == StatusUpdateLevel.Warning)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
                 }

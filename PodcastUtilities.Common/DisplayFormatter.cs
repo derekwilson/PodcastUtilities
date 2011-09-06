@@ -9,8 +9,10 @@ namespace PodcastUtilities.Common
     /// <summary>
     /// render data for display
     /// </summary>
-    public class DisplayFormatter
+    public static class DisplayFormatter
     {
+        // For FxCop rule: StaticHolderTypesShouldNotHaveConstructors
+
         /// <summary>
         /// render a file size into KB or MB or GB as appropriate
         /// </summary>

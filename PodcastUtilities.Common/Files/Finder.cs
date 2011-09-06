@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using PodcastUtilities.Common.Platform;
@@ -36,7 +37,7 @@ namespace PodcastUtilities.Common.Files
         /// <param name="sortField">field to sort on</param>
         /// <param name="ascendingSort">true to sort ascending false to sort descending</param>
         /// <returns></returns>
-        public List<IFileInfo> GetFiles(
+        public IList<IFileInfo> GetFiles(
 			string folderPath,
 			string pattern,
 			int maximumNumberOfFiles,
@@ -60,7 +61,7 @@ namespace PodcastUtilities.Common.Files
         /// <param name="folderPath">folder to look in</param>
         /// <param name="pattern">pattern to look for eg. *.mp3</param>
         /// <returns></returns>
-        public List<IFileInfo> GetFiles(
+        public IList<IFileInfo> GetFiles(
 			string folderPath,
 			string pattern)
 		{
@@ -82,16 +83,14 @@ namespace PodcastUtilities.Common.Files
         {
             try
             {
-                var fileList = new List<IFileInfo>(src.GetFiles(pattern));
+                var fileList = new Collection<IFileInfo>(src.GetFiles(pattern));
 
-                FileSorter.Sort(fileList, sortField, ascendingSort);
-
-                return fileList;
+                return FileSorter.Sort(fileList, sortField, ascendingSort);
             }
             catch (DirectoryNotFoundException)
             {
                 // if the folder is not there then there is nothing to do
-                return new List<IFileInfo>();
+                return new Collection<IFileInfo>();
             }
         }
 
