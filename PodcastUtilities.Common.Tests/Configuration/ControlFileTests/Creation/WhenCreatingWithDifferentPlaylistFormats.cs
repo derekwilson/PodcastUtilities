@@ -20,7 +20,6 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             XmlNode n = ControlFileXmlDocument.SelectSingleNode("podcasts/global/playlistFormat");
             n.InnerText = ControlFileFormatText;
 
-            ControlFile = new ControlFile(ControlFileXmlDocument);
         }
 
         protected override void When()
@@ -28,6 +27,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             ThrownException = null;
             try
             {
+                ControlFile = new ReadOnlyControlFile(ControlFileXmlDocument);
                 Format = ControlFile.PlaylistFormat;
             }
             catch (Exception exception)

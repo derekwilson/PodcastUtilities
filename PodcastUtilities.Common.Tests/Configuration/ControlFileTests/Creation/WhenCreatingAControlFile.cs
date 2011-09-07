@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
     {
         protected override void When()
         {
-            ControlFile = new ControlFile(ControlFileXmlDocument);
+            ControlFile = new ReadOnlyControlFile(ControlFileXmlDocument);
         }
 
         [Test]

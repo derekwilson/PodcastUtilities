@@ -37,7 +37,7 @@ namespace SyncPodcasts
 
 			LinFuIocContainer iocContainer = InitializeIocContainer();
 
-			var control = new ControlFile(args[0]);
+			var control = new ReadOnlyControlFile(args[0]);
 			var finder = iocContainer.Resolve<IFinder>();
 			var copier = iocContainer.Resolve<ICopier>();
 			var remover = iocContainer.Resolve<IUnwantedFileRemover>();

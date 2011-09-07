@@ -14,7 +14,7 @@ namespace PurgePodcasts
     class Program
     {
         static LinFuIocContainer _iocContainer;
-        static ControlFile _control;
+        static ReadOnlyControlFile _control;
         private static bool _quiet = false;
 
         static private void DisplayBanner()
@@ -52,7 +52,7 @@ namespace PurgePodcasts
             }
 
             _iocContainer = InitializeIocContainer();
-            _control = new ControlFile(args[0]);
+            _control = new ReadOnlyControlFile(args[0]);
             if (args.Count() > 1)
             {
                 _quiet = args[1].Contains('q');

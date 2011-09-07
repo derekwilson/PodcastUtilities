@@ -53,7 +53,7 @@ namespace PodcastUtilities.Common.Files
 		/// </summary>
 		/// <param name="controlFile">control file to use to control the process</param>
 		/// <param name="whatIf">true to generate the status messages but not to actually perform the file copy / deletes</param>
-        public void Synchronize(IControlFile controlFile, bool whatIf)
+        public void Synchronize(IReadOnlyControlFile controlFile, bool whatIf)
 		{
 			var filesToCopy = new List<FileSyncItem>();
 

@@ -22,7 +22,7 @@ namespace DownloadPodcasts
         private static bool _verbose = false;
         static LinFuIocContainer _iocContainer;
         static IDriveInfoProvider _driveInfoProvider;
-        static ControlFile _control;
+        static ReadOnlyControlFile _control;
         private static int _number_of_files_to_download;
         private static int _number_of_files_downloaded;
 
@@ -66,7 +66,7 @@ namespace DownloadPodcasts
             Console.ResetColor();
 
             _iocContainer = InitializeIocContainer();
-            _control = new ControlFile(args[0]);
+            _control = new ReadOnlyControlFile(args[0]);
             if (args.Count() > 1)
             {
                 _verbose = args[1].Contains('v');

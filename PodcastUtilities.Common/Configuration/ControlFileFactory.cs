@@ -12,9 +12,9 @@
 		///</summary>
 		///<param name="fileName"></param>
 		///<returns></returns>
-		public IControlFile OpenControlFile(string fileName)
+		public IReadOnlyControlFile OpenControlFile(string fileName)
 		{
-			return new ControlFile(fileName);
+			return new ReadOnlyControlFile(fileName);
 		}
 
 		#endregion

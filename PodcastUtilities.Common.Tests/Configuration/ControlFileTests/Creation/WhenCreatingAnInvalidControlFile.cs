@@ -15,8 +15,6 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
 
             XmlNode n = ControlFileXmlDocument.SelectSingleNode("podcasts/global/sourceRoot");
             n.ParentNode.RemoveChild(n);
-
-            ControlFile = new ControlFile(ControlFileXmlDocument);
         }
 
         protected override void When()
@@ -24,7 +22,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             ThrownException = null;
             try
             {
-                var sourceRoot = ControlFile.SourceRoot;
+                ControlFile = new ReadOnlyControlFile(ControlFileXmlDocument);
             }
             catch (Exception exception)
             {

@@ -17,7 +17,7 @@ namespace PodcastUtilities.Presentation.ViewModels
     	private readonly IControlFileFactory _controlFileFactory;
         private readonly IPodcastFactory _podcastFactory;
         private readonly IClipboardService _clipboardService;
-        private IControlFile _controlFile;
+        private IReadOnlyControlFile _controlFile;
 		private PodcastViewModel _selectedPodcast;
         private readonly DelegateCommand _editPodcastCommand;
 
