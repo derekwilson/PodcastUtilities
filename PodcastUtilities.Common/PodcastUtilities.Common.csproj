@@ -74,8 +74,11 @@
     <Compile Include="..\Shared\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Configuration\ControlFile.cs" />
+    <Compile Include="Configuration\BaseControlFile.cs" />
+    <Compile Include="Configuration\ReadOnlyControlFile.cs" />
     <Compile Include="Configuration\ControlFileFactory.cs" />
+    <Compile Include="Configuration\IPersistentControlFile.cs" />
+    <Compile Include="Configuration\PersistentControlFile.cs" />
     <Compile Include="DisplayFormatter.cs" />
     <Compile Include="Exceptions\ControlFileValueFormatException.cs" />
     <Compile Include="Exceptions\DownloaderException.cs" />
@@ -106,7 +109,7 @@
     <Compile Include="Feeds\SyncItem.cs" />
     <Compile Include="Files\Copier.cs" />
     <Compile Include="Files\Sorter.cs" />
-    <Compile Include="Configuration\IControlFile.cs" />
+    <Compile Include="Configuration\IReadOnlyControlFile.cs" />
     <Compile Include="Files\ICopier.cs" />
     <Compile Include="Files\IFinder.cs" />
     <Compile Include="Files\ISorter.cs" />

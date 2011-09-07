@@ -18,7 +18,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             XmlNode n = ControlFileXmlDocument.SelectSingleNode("podcasts/global/freeSpaceToLeaveOnDestinationMB");
             n.InnerText = ControlFileFreeSpaceText;
 
-            ControlFile = new ControlFile(ControlFileXmlDocument);
+            ControlFile = new ReadOnlyControlFile(ControlFileXmlDocument);
         }
 
         protected override void When()

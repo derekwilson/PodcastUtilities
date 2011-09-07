@@ -54,7 +54,7 @@ namespace PodcastUtilities.Common.Playlists
         /// </summary>
         /// <param name="control">control file to use to find the destinationRoot, and playlist format</param>
         /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
-        public void GeneratePlaylist(IControlFile control, bool copyToDestination)
+        public void GeneratePlaylist(IReadOnlyControlFile control, bool copyToDestination)
         {
 			var allDestFiles = control.Podcasts.SelectMany(
         		podcast => FileFinder.GetFiles(Path.Combine(control.DestinationRoot, podcast.Folder), podcast.Pattern));

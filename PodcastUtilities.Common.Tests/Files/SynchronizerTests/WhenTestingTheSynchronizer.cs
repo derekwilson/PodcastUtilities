@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 	{
 		protected Synchronizer PodcastSynchronizer { get; set; }
 
-		protected IControlFile ControlFile { get; set; }
+		protected IReadOnlyControlFile ControlFile { get; set; }
 		protected IFinder FileFinder { get; set; }
 		protected ICopier FileCopier { get; set; }
 		protected IUnwantedFileRemover FileRemover { get; set; }
@@ -18,7 +18,7 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 		{
 			base.GivenThat();
 
-			ControlFile = GenerateMock<IControlFile>();
+			ControlFile = GenerateMock<IReadOnlyControlFile>();
 			FileFinder = GenerateMock<IFinder>();
 			FileCopier = GenerateMock<ICopier>();
 			FileRemover = GenerateMock<IUnwantedFileRemover>();

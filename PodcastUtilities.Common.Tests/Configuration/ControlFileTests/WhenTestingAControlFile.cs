@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests
     public abstract class WhenTestingAControlFile
         : WhenTestingBehaviour
     {
-        protected IControlFile ControlFile { get; set; }
+        protected IReadOnlyControlFile ControlFile { get; set; }
         protected string TestControlFileResourcePath { get; set; }
         public XmlDocument ControlFileXmlDocument { get; set; }
 

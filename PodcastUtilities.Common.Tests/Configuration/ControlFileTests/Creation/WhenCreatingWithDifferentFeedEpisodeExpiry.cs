@@ -25,7 +25,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             ThrownException = null;
             try
             {
-                ControlFile = new ControlFile(ControlFileXmlDocument);
+                ControlFile = new ReadOnlyControlFile(ControlFileXmlDocument);
 
                 // this will be the defaulted value from the global section
                 MaxDaysOld1 = ControlFile.Podcasts[1].Feed.MaximumDaysOld;
