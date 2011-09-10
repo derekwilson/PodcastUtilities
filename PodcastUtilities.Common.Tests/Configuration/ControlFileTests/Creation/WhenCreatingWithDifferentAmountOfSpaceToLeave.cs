@@ -26,7 +26,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             ThrownException = null;
             try
             {
-                FreeSpaceToLeave = ControlFile.FreeSpaceToLeaveOnDestination;
+                FreeSpaceToLeave = ControlFile.GetFreeSpaceToLeaveOnDestination();
             }
             catch (Exception exception)
             {

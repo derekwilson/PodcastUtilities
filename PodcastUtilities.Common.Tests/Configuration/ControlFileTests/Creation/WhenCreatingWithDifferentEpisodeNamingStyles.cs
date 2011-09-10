@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Xml;
 using NUnit.Framework;
 using PodcastUtilities.Common.Configuration;
@@ -28,9 +29,9 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
                 ControlFile = new ReadOnlyControlFile(ControlFileXmlDocument);
 
                 // this will be the defaulted value from the global section
-                NamingStyle1 = ControlFile.Podcasts[1].Feed.NamingStyle;
+                NamingStyle1 = ControlFile.GetPodcasts().ElementAt(1).Feed.NamingStyle;
                 // this is set explicitly by the feed
-                NamingStyle2 = ControlFile.Podcasts[2].Feed.NamingStyle;
+                NamingStyle2 = ControlFile.GetPodcasts().ElementAt(2).Feed.NamingStyle;
             }
             catch (Exception exception)
             {

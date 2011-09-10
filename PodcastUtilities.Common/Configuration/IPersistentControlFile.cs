@@ -11,47 +11,42 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// pathname to the root folder to copy from when synchronising
         /// </summary>
-        string SourceRoot { get; set; }
+        void SetSourceRoot(string value);
 
         /// <summary>
         /// pathname to the destination root folder
         /// </summary>
-        string DestinationRoot { get; set; }
+        void SetDestinationRoot(string value);
 
         /// <summary>
         /// filename and extension for the generated playlist
         /// </summary>
-        string PlaylistFileName { get; set; }
+        void SetPlaylistFileName(string value);
 
         /// <summary>
         /// the format for the generated playlist
         /// </summary>
-        PlaylistFormat PlaylistFormat { get; set; }
+        void SetPlaylistFormat(PlaylistFormat value);
 
         /// <summary>
-        /// free space in MB to leave on the destination device - when syncing
+        /// free space in MB to leave on the destination device when syncing
         /// </summary>
-        long FreeSpaceToLeaveOnDestination { get; set; }
+        void SetFreeSpaceToLeaveOnDestination(long value);
 
         /// <summary>
         /// free space in MB to leave on the download device - when downloading
         /// </summary>
-        long FreeSpaceToLeaveOnDownload { get; set; }
-
-        /// <summary>
-        /// the configuration for the individual podcasts
-        /// </summary>
-        IList<PodcastInfo> Podcasts { get; }
+        void SetFreeSpaceToLeaveOnDownload(long value);
 
         /// <summary>
         /// maximum number of background downloads
         /// </summary>
-        int MaximumNumberOfConcurrentDownloads { get; set; }
+        void SetMaximumNumberOfConcurrentDownloads(int value);
 
         /// <summary>
         /// number of seconds to wait when trying a file conflict
         /// </summary>
-        int RetryWaitInSeconds { get; set; }
+        void SetRetryWaitInSeconds(int value);
 
         /// <summary>
         /// persist the control file to disk

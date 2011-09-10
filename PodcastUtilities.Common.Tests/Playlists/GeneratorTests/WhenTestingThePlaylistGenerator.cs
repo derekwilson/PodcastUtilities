@@ -26,10 +26,10 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
             Podcasts = new List<PodcastInfo>(10);
 
             ControlFile = GenerateMock<IReadOnlyControlFile>();
-            ControlFile.Stub(ctrl => ctrl.SourceRoot).Return("c:\\source");
-            ControlFile.Stub(ctrl => ctrl.DestinationRoot).Return("c:\\destination");
-            ControlFile.Stub(ctrl => ctrl.Podcasts).Return(Podcasts);
-            ControlFile.Stub(ctrl => ctrl.PlaylistFileName).Return("MyPodcasts.wpl");
+            ControlFile.Stub(ctrl => ctrl.GetSourceRoot()).Return("c:\\source");
+            ControlFile.Stub(ctrl => ctrl.GetDestinationRoot()).Return("c:\\destination");
+            ControlFile.Stub(ctrl => ctrl.GetPodcasts()).Return(Podcasts);
+            ControlFile.Stub(ctrl => ctrl.GetPlaylistFileName()).Return("MyPodcasts.wpl");
 
             Finder = GenerateMock<IFinder>();
             FileUtilities = GenerateMock<IFileUtilities>();

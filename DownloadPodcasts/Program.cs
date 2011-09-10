@@ -74,16 +74,16 @@ namespace DownloadPodcasts
 
             _driveInfoProvider = _iocContainer.Resolve<IDriveInfoProvider>();
 
-            int numberOfConnections = _control.MaximumNumberOfConcurrentDownloads;
+            int numberOfConnections = _control.GetMaximumNumberOfConcurrentDownloads();
             System.Net.ServicePointManager.DefaultConnectionLimit = numberOfConnections;
 
             // find the episodes to download
             var allEpisodes = new List<ISyncItem>(20);
             var podcastEpisodeFinder = _iocContainer.Resolve<IEpisodeFinder>();
             podcastEpisodeFinder.StatusUpdate += StatusUpdate;
-            foreach (var podcastInfo in _control.Podcasts)
+            foreach (var podcastInfo in _control.GetPodcasts())
             {
-                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(_control.SourceRoot, _control.RetryWaitInSeconds, podcastInfo);
+                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(_control.GetSourceRoot(), _control.GetRetryWaitInSeconds(), podcastInfo);
                 allEpisodes.AddRange(episodesInThisFeed);
             }
 
@@ -138,7 +138,7 @@ namespace DownloadPodcasts
                 Console.ResetColor();
             }
 
-            if (IsDestinationDriveFull(_control.SourceRoot,_control.FreeSpaceToLeaveOnDownload))
+            if (IsDestinationDriveFull(_control.GetSourceRoot(),_control.GetFreeSpaceToLeaveOnDownload()))
             {
                 if (_taskPool != null)
                 {

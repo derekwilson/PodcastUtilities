@@ -84,7 +84,7 @@ namespace PodcastUtilities.Presentation.ViewModels
 				_controlFile = _controlFileFactory.OpenControlFile(selectedFile);
 
 				Podcasts = new ObservableCollection<PodcastViewModel>(
-					_controlFile.Podcasts.Select(p => new PodcastViewModel(p)));
+					_controlFile.GetPodcasts().Select(p => new PodcastViewModel(p)));
 			}
 		}
 

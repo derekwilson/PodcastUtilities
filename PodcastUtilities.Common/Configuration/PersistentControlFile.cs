@@ -13,81 +13,65 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// pathname to the root folder to copy from when synchronising
         /// </summary>
-        public string SourceRoot
+        public void SetSourceRoot(string value)
         {
-            get { return SourceRootBackingField; }
-            set { SourceRootBackingField = value; }
+            SourceRoot = value;
         }
 
         /// <summary>
         /// pathname to the destination root folder
         /// </summary>
-        public string DestinationRoot
+        public void SetDestinationRoot(string value)
         {
-            get { return DestinationRootBackingField; }
-            set { DestinationRootBackingField = value; }
+            DestinationRoot = value;
         }
 
         /// <summary>
         /// filename and extension for the generated playlist
         /// </summary>
-        public string PlaylistFileName
+        public void SetPlaylistFileName(string value)
         {
-            get { return PlaylistFileNameBackingField; }
-            set { PlaylistFileNameBackingField = value; }
+            PlaylistFileName = value;
         }
 
         /// <summary>
         /// the format for the generated playlist
         /// </summary>
-        public PlaylistFormat PlaylistFormat
+        public void SetPlaylistFormat(PlaylistFormat value)
         {
-            get { return PlaylistFormatBackingField; }
-            set { PlaylistFormatBackingField = value; }
+            PlaylistFormat = value;
         }
 
         /// <summary>
         /// free space in MB to leave on the destination device when syncing
         /// </summary>
-        public long FreeSpaceToLeaveOnDestination
+        public void SetFreeSpaceToLeaveOnDestination(long value)
         {
-            get { return FreeSpaceToLeaveOnDestinationBackingField; }
-            set { FreeSpaceToLeaveOnDestinationBackingField = value; }
+            FreeSpaceToLeaveOnDestination = value;
         }
 
         /// <summary>
         /// free space in MB to leave on the download device - when downloading
         /// </summary>
-        public long FreeSpaceToLeaveOnDownload
+        public void SetFreeSpaceToLeaveOnDownload(long value)
         {
-            get { return FreeSpaceToLeaveOnDownloadBackingField; }
-            set { FreeSpaceToLeaveOnDownloadBackingField = value; }
-        }
-
-        /// <summary>
-        /// the configuration for the individual podcasts
-        /// </summary>
-        public IList<PodcastInfo> Podcasts
-        {
-            get { return PodcastsBackingField; }
+            FreeSpaceToLeaveOnDownload = value;
         }
 
         /// <summary>
         /// maximum number of background downloads
         /// </summary>
-        public int MaximumNumberOfConcurrentDownloads
+        public void SetMaximumNumberOfConcurrentDownloads(int value)
         {
-            get { return MaximumNumberOfConcurrentDownloadsBackingField; }
-            set { MaximumNumberOfConcurrentDownloadsBackingField = value; }
+            MaximumNumberOfConcurrentDownloads = value;
         }
 
         /// <summary>
         /// number of seconds to wait when trying a file conflict
         /// </summary>
-        public int RetryWaitInSeconds
+        public void SetRetryWaitInSeconds(int value)
         {
-            get { return RetryWaitInSecondsBackingField; }
-            set { RetryWaitInSecondsBackingField = value; }
+            RetryWaitInSeconds = value;
         }
 
         /// <summary>

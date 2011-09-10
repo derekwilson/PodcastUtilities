@@ -56,15 +56,15 @@ namespace PodcastUtilities.Common.Playlists
         /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
         public void GeneratePlaylist(IReadOnlyControlFile control, bool copyToDestination)
         {
-			var allDestFiles = control.Podcasts.SelectMany(
-        		podcast => FileFinder.GetFiles(Path.Combine(control.DestinationRoot, podcast.Folder), podcast.Pattern));
+			var allDestFiles = control.GetPodcasts().SelectMany(
+        		podcast => FileFinder.GetFiles(Path.Combine(control.GetDestinationRoot(), podcast.Folder), podcast.Pattern));
 
-			IPlaylist p = PlaylistFactory.CreatePlaylist(control.PlaylistFormat, control.PlaylistFileName);
+			IPlaylist p = PlaylistFactory.CreatePlaylist(control.GetPlaylistFormat(), control.GetPlaylistFileName());
 
             foreach (IFileInfo thisFile in allDestFiles)
             {
                 string thisRelativeFile = thisFile.FullName;
-                string absRoot = Path.GetFullPath(control.DestinationRoot);
+                string absRoot = Path.GetFullPath(control.GetDestinationRoot());
                 if (thisRelativeFile.StartsWith(absRoot,StringComparison.Ordinal))
                 {
                     thisRelativeFile = thisRelativeFile.Substring(absRoot.Length);
@@ -76,13 +76,13 @@ namespace PodcastUtilities.Common.Playlists
 
             if (copyToDestination)
             {
-                string destPlaylist = Path.Combine(control.DestinationRoot, control.PlaylistFileName);
+                string destPlaylist = Path.Combine(control.GetDestinationRoot(), control.GetPlaylistFileName());
                 OnStatusUpdate(string.Format(CultureInfo.InvariantCulture,"Copying Playlist with {0} items to {1}", p.NumberOfTracks, destPlaylist));
-				FileUtilities.FileCopy(control.PlaylistFileName, destPlaylist, true);
+				FileUtilities.FileCopy(control.GetPlaylistFileName(), destPlaylist, true);
             }
             else
             {
-                OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Playlist with {0} items generated: {1}", p.NumberOfTracks, control.PlaylistFileName));
+                OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Playlist with {0} items generated: {1}", p.NumberOfTracks, control.GetPlaylistFileName()));
             }
         }
     }
