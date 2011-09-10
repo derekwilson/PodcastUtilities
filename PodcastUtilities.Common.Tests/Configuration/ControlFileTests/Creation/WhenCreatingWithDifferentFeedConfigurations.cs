@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Xml;
 using NUnit.Framework;
 using PodcastUtilities.Common.Configuration;
@@ -29,9 +30,9 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
                 ControlFile = new ReadOnlyControlFile(ControlFileXmlDocument);
 
                 // this will be the defaulted value from the global section
-                Format1 = ControlFile.Podcasts[1].Feed.Format;
+                Format1 = ControlFile.GetPodcasts().ElementAt(1).Feed.Format;
                 // this is set explicitly by the feed
-                Format2 = ControlFile.Podcasts[2].Feed.Format;
+                Format2 = ControlFile.GetPodcasts().ElementAt(2).Feed.Format;
             }
             catch (Exception exception)
             {

@@ -40,14 +40,14 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 			PodcastFiles1 = new List<IFileInfo> {GenerateMock<IFileInfo>(), GenerateMock<IFileInfo>()};
 			PodcastFiles2 = new List<IFileInfo> {GenerateMock<IFileInfo>(), GenerateMock<IFileInfo>(), GenerateMock<IFileInfo>()};
 
-			ControlFile.Stub(c => c.Podcasts)
+			ControlFile.Stub(c => c.GetPodcasts())
 				.Return(new List<PodcastInfo> {podcast1, podcast2});
 
-			ControlFile.Stub(c => c.SourceRoot)
+			ControlFile.Stub(c => c.GetSourceRoot())
 				.Return(@"c:\media\blah");
-			ControlFile.Stub(c => c.DestinationRoot)
+			ControlFile.Stub(c => c.GetDestinationRoot())
 				.Return(@"k:\podcasts");
-			ControlFile.Stub(c => c.FreeSpaceToLeaveOnDestination)
+			ControlFile.Stub(c => c.GetFreeSpaceToLeaveOnDestination())
 				.Return(500);
 
 			FileFinder.Stub(f => f.GetFiles(@"c:\media\blah\pod1", "*.mp3", 2, "name", true))

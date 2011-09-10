@@ -34,7 +34,7 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 							new PodcastInfo(),
 							new PodcastInfo()
 			           	};
-			ControlFile.Stub(f => f.Podcasts)
+			ControlFile.Stub(f => f.GetPodcasts())
 				.Return(Podcasts);
 		}
 

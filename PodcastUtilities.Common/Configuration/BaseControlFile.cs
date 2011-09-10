@@ -20,149 +20,178 @@ namespace PodcastUtilities.Common.Configuration
         private const string DefaultFeedEpisodeDownloadStrategy = "high_tide";
 
         /// <summary>
-        /// pathname to the root folder to copy from when synchronising
-        /// </summary>
-        private string _sourceRootBackingField;
-        /// <summary>
-        /// pathname to the destination root folder
-        /// </summary>
-        private string _destinationRootBackingField;
-        /// <summary>
-        /// filename and extension for the generated playlist
-        /// </summary>
-        private string _playlistFileNameBackingField;
-        /// <summary>
-        /// the format for the generated playlist
-        /// </summary>
-        private PlaylistFormat _playlistFormatBackingField;
-        /// <summary>
-        /// free space in MB to leave on the destination device when syncing
-        /// </summary>
-        private long _freeSpaceToLeaveOnDestinationBackingField = 0;
-        /// <summary>
-        /// free space in MB to leave on the download device - when downloading
-        /// </summary>
-        private long _freeSpaceToLeaveOnDownloadBackingField = 0;
-        /// <summary>
-        /// the configuration for the individual podcasts
-        /// </summary>
-        private IList<PodcastInfo> _podcastsBackingField;
-        /// <summary>
-        /// maximum number of background downloads
-        /// </summary>
-        private int _maximumNumberOfConcurrentDownloadsBackingField = 5;
-        /// <summary>
-        /// number of seconds to wait when trying a file conflict
-        /// </summary>
-        private int _retryWaitInSecondsBackingField = 10;
-
-        /// <summary>
         /// the field we are using to sort the podcasts on
         /// </summary>
-        private string _sortFieldBackingField;
+        private string _sortField;
         /// <summary>
         /// direction to sort in
         /// </summary>
-        private string _sortDirectionBackingField;
+        private string _sortDirection;
         /// <summary>
         /// global default maximum days old for feed download
         /// </summary>
-        private string _feedMaximumDaysOldBackingField;
+        private string _feedMaximumDaysOld;
         /// <summary>
         /// global default number of days before deleteing a download
         /// </summary>
-        private string _feedDeleteDownloadsDaysOldBackingField;
+        private string _feedDeleteDownloadsDaysOld;
         /// <summary>
         /// global default feed format 
         /// </summary>
-        private string _feedFormatBackingField;
+        private string _feedFormat;
         /// <summary>
         /// global default for naming downloaded episodes
         /// </summary>
-        private string _feedEpisodeNamingStyleBackingField;
+        private string _feedEpisodeNamingStyle;
         /// <summary>
         /// global default for naming downloaded episodes
         /// </summary>
-        private string _feedEpisodeDownloadStrategyBackingField;
+        private string _feedEpisodeDownloadStrategy;
+
+        /// <summary>
+        /// setup the hard coded defaults
+        /// </summary>
+        protected BaseControlFile()
+        {
+            FreeSpaceToLeaveOnDestination = 0;
+            FreeSpaceToLeaveOnDownload = 0;
+            MaximumNumberOfConcurrentDownloads = 5;
+            RetryWaitInSeconds = 10;
+        }
 
         /// <summary>
         /// pathname to the root folder to copy from when synchronising
         /// </summary>
-        protected internal string SourceRootBackingField
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal string SourceRoot { get; set; }
+
+        /// <summary>
+        /// pathname to the destination root folder
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal string DestinationRoot { get; set; }
+
+        /// <summary>
+        /// filename and extension for the generated playlist
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal string PlaylistFileName { get; set; }
+
+        /// <summary>
+        /// the format for the generated playlist
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal PlaylistFormat PlaylistFormat { get; set; }
+
+        /// <summary>
+        /// free space in MB to leave on the destination device when syncing
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal long FreeSpaceToLeaveOnDestination { get; set; }
+
+        /// <summary>
+        /// free space in MB to leave on the download device - when downloading
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal long FreeSpaceToLeaveOnDownload { get; set; }
+
+        /// <summary>
+        /// the configuration for the individual podcasts
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal IList<PodcastInfo> Podcasts { get; private set; }
+
+        /// <summary>
+        /// maximum number of background downloads
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal int MaximumNumberOfConcurrentDownloads { get; set; }
+
+        /// <summary>
+        /// number of seconds to wait when trying a file conflict
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal int RetryWaitInSeconds { get; set; }
+
+        /// <summary>
+        /// pathname to the root folder to copy from when synchronising
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public string GetSourceRoot()
         {
-            get { return _sourceRootBackingField; }
-            set { _sourceRootBackingField = value; }
+            return SourceRoot;
         }
 
         /// <summary>
         /// pathname to the destination root folder
         /// </summary>
-        protected internal string DestinationRootBackingField
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public string GetDestinationRoot()
         {
-            get { return _destinationRootBackingField; }
-            set { _destinationRootBackingField = value; }
+            return DestinationRoot;
         }
 
         /// <summary>
         /// filename and extension for the generated playlist
         /// </summary>
-        protected internal string PlaylistFileNameBackingField
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public string GetPlaylistFileName()
         {
-            get { return _playlistFileNameBackingField; }
-            set { _playlistFileNameBackingField = value; }
+            return PlaylistFileName;
         }
 
         /// <summary>
         /// the format for the generated playlist
         /// </summary>
-        protected internal PlaylistFormat PlaylistFormatBackingField
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public PlaylistFormat GetPlaylistFormat()
         {
-            get { return _playlistFormatBackingField; }
-            set { _playlistFormatBackingField = value; }
+            return PlaylistFormat;
         }
 
         /// <summary>
         /// free space in MB to leave on the destination device when syncing
         /// </summary>
-        protected internal long FreeSpaceToLeaveOnDestinationBackingField
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public long GetFreeSpaceToLeaveOnDestination()
         {
-            get { return _freeSpaceToLeaveOnDestinationBackingField; }
-            set { _freeSpaceToLeaveOnDestinationBackingField = value; }
+            return FreeSpaceToLeaveOnDestination;
         }
 
         /// <summary>
         /// free space in MB to leave on the download device - when downloading
         /// </summary>
-        protected internal long FreeSpaceToLeaveOnDownloadBackingField
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public long GetFreeSpaceToLeaveOnDownload()
         {
-            get { return _freeSpaceToLeaveOnDownloadBackingField; }
-            set { _freeSpaceToLeaveOnDownloadBackingField = value; }
+            return FreeSpaceToLeaveOnDownload;
         }
 
         /// <summary>
         /// the configuration for the individual podcasts
         /// </summary>
-        protected internal IList<PodcastInfo> PodcastsBackingField
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public IEnumerable<PodcastInfo> GetPodcasts()
         {
-            get { return _podcastsBackingField; }
+            return Podcasts;
         }
 
         /// <summary>
         /// maximum number of background downloads
         /// </summary>
-        protected internal int MaximumNumberOfConcurrentDownloadsBackingField
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public int GetMaximumNumberOfConcurrentDownloads()
         {
-            get { return _maximumNumberOfConcurrentDownloadsBackingField; }
-            set { _maximumNumberOfConcurrentDownloadsBackingField = value; }
+            return MaximumNumberOfConcurrentDownloads;
         }
 
         /// <summary>
         /// number of seconds to wait when trying a file conflict
         /// </summary>
-        protected internal int RetryWaitInSecondsBackingField
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public int GetRetryWaitInSeconds()
         {
-            get { return _retryWaitInSecondsBackingField; }
-            set { _retryWaitInSecondsBackingField = value; }
+            return RetryWaitInSeconds;
         }
 
         /// <summary>
@@ -194,18 +223,18 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         private void ReadGlobalSection(XmlDocument xmlDocument)
         {
-            _sourceRootBackingField = GetNodeText(xmlDocument,"podcasts/global/sourceRoot");
-            _destinationRootBackingField = GetNodeText(xmlDocument,"podcasts/global/destinationRoot");
-            _playlistFileNameBackingField = GetNodeText(xmlDocument,"podcasts/global/playlistFilename");
+            SourceRoot = GetNodeText(xmlDocument,"podcasts/global/sourceRoot");
+            DestinationRoot = GetNodeText(xmlDocument,"podcasts/global/destinationRoot");
+            PlaylistFileName = GetNodeText(xmlDocument,"podcasts/global/playlistFilename");
 
             string format = GetNodeText(xmlDocument,"podcasts/global/playlistFormat").ToUpperInvariant();
             switch (format)
             {
                 case "WPL":
-                    _playlistFormatBackingField = PlaylistFormat.WPL;
+                    PlaylistFormat = PlaylistFormat.WPL;
                     break;
                 case "ASX":
-                    _playlistFormatBackingField = PlaylistFormat.ASX;
+                    PlaylistFormat = PlaylistFormat.ASX;
                     break;
                 default:
                     throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "{0} is not a valid value for the playlist format", format));
@@ -213,40 +242,40 @@ namespace PodcastUtilities.Common.Configuration
 
             try
             {
-                _freeSpaceToLeaveOnDestinationBackingField = Convert.ToInt64(GetNodeText(xmlDocument,"podcasts/global/freeSpaceToLeaveOnDestinationMB"), CultureInfo.InvariantCulture);
+                FreeSpaceToLeaveOnDestination = Convert.ToInt64(GetNodeText(xmlDocument,"podcasts/global/freeSpaceToLeaveOnDestinationMB"), CultureInfo.InvariantCulture);
             }
             catch {}
 
             try
             {
-                _freeSpaceToLeaveOnDownloadBackingField = Convert.ToInt64(GetNodeText(xmlDocument,"podcasts/global/freeSpaceToLeaveOnDownloadMB"), CultureInfo.InvariantCulture);
+                FreeSpaceToLeaveOnDownload = Convert.ToInt64(GetNodeText(xmlDocument,"podcasts/global/freeSpaceToLeaveOnDownloadMB"), CultureInfo.InvariantCulture);
             }
             catch { }
 
             try
             {
-                _maximumNumberOfConcurrentDownloadsBackingField = Convert.ToInt32(GetNodeText(xmlDocument, "podcasts/global/maximumNumberOfConcurrentDownloads"), CultureInfo.InvariantCulture);
+                MaximumNumberOfConcurrentDownloads = Convert.ToInt32(GetNodeText(xmlDocument, "podcasts/global/maximumNumberOfConcurrentDownloads"), CultureInfo.InvariantCulture);
             }
             catch { }
 
             try
             {
-                _retryWaitInSecondsBackingField = Convert.ToInt32(GetNodeText(xmlDocument,"podcasts/global/retryWaitInSeconds"), CultureInfo.InvariantCulture);
+                RetryWaitInSeconds = Convert.ToInt32(GetNodeText(xmlDocument,"podcasts/global/retryWaitInSeconds"), CultureInfo.InvariantCulture);
             }
             catch { }
 
-            _sortFieldBackingField = GetNodeTextOrDefault(xmlDocument,"podcasts/global/sortfield", DefaultSortField);
-            _sortDirectionBackingField = GetNodeTextOrDefault(xmlDocument,"podcasts/global/sortdirection", DefaultSortDirection);
-            _feedMaximumDaysOldBackingField = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/maximumDaysOld", int.MaxValue.ToString(CultureInfo.InvariantCulture));
-            _feedDeleteDownloadsDaysOldBackingField = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/deleteDownloadsDaysOld", int.MaxValue.ToString(CultureInfo.InvariantCulture));
-            _feedFormatBackingField = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/format", DefaultFeedFormat);
-            _feedEpisodeNamingStyleBackingField = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/namingStyle", DefaultFeedFormat);
-            _feedEpisodeDownloadStrategyBackingField = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/downloadStrategy", DefaultFeedEpisodeDownloadStrategy);
+            _sortField = GetNodeTextOrDefault(xmlDocument,"podcasts/global/sortfield", DefaultSortField);
+            _sortDirection = GetNodeTextOrDefault(xmlDocument,"podcasts/global/sortdirection", DefaultSortDirection);
+            _feedMaximumDaysOld = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/maximumDaysOld", int.MaxValue.ToString(CultureInfo.InvariantCulture));
+            _feedDeleteDownloadsDaysOld = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/deleteDownloadsDaysOld", int.MaxValue.ToString(CultureInfo.InvariantCulture));
+            _feedFormat = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/format", DefaultFeedFormat);
+            _feedEpisodeNamingStyle = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/namingStyle", DefaultFeedFormat);
+            _feedEpisodeDownloadStrategy = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/downloadStrategy", DefaultFeedEpisodeDownloadStrategy);
         }
 
         private void ReadPodcasts(XmlDocument xmlDocument)
         {
-            _podcastsBackingField = new List<PodcastInfo>();
+            Podcasts = new List<PodcastInfo>();
 
             var podcastNodes = xmlDocument.SelectNodes("podcasts/podcast");
 
@@ -260,11 +289,11 @@ namespace PodcastUtilities.Common.Configuration
                         Folder = GetNodeText(podcastNode, "folder"),
                         Pattern = GetNodeText(podcastNode, "pattern"),
                         MaximumNumberOfFiles = Convert.ToInt32(GetNodeTextOrDefault(podcastNode, "number", "-1"), CultureInfo.InvariantCulture),
-                        SortField = GetNodeTextOrDefault(podcastNode, "sortfield", _sortFieldBackingField),
-                        AscendingSort = !(GetNodeTextOrDefault(podcastNode, "sortdirection", _sortDirectionBackingField).ToUpperInvariant().StartsWith("DESC", StringComparison.Ordinal))
+                        SortField = GetNodeTextOrDefault(podcastNode, "sortfield", _sortField),
+                        AscendingSort = !(GetNodeTextOrDefault(podcastNode, "sortdirection", _sortDirection).ToUpperInvariant().StartsWith("DESC", StringComparison.Ordinal))
                     };
 
-                    _podcastsBackingField.Add(podcastInfo);
+                    Podcasts.Add(podcastInfo);
                 }
             }
         }
@@ -278,10 +307,10 @@ namespace PodcastUtilities.Common.Configuration
             return new FeedInfo()
             {
                 Address = new Uri(GetNodeText(feedNode, "url")),
-                Format = ReadFeedFormat(GetNodeTextOrDefault(feedNode, "format", _feedFormatBackingField)),
+                Format = ReadFeedFormat(GetNodeTextOrDefault(feedNode, "format", _feedFormat)),
                 MaximumDaysOld = ReadMaximumDaysOld(feedNode),
-                NamingStyle = ReadFeedEpisodeNamingStyle(GetNodeTextOrDefault(feedNode, "namingStyle", _feedEpisodeNamingStyleBackingField)),
-                DownloadStrategy = ReadFeedEpisodeDownloadStrategy(GetNodeTextOrDefault(feedNode, "downloadStrategy", _feedEpisodeDownloadStrategyBackingField)),
+                NamingStyle = ReadFeedEpisodeNamingStyle(GetNodeTextOrDefault(feedNode, "namingStyle", _feedEpisodeNamingStyle)),
+                DownloadStrategy = ReadFeedEpisodeDownloadStrategy(GetNodeTextOrDefault(feedNode, "downloadStrategy", _feedEpisodeDownloadStrategy)),
                 DeleteDownloadsDaysOld = ReadDeleteDownloadsDaysOld(feedNode)
             };
         }
@@ -307,7 +336,7 @@ namespace PodcastUtilities.Common.Configuration
             }
             try
             {
-                return Convert.ToInt32(GetNodeTextOrDefault(feedNode, "maximumDaysOld", _feedMaximumDaysOldBackingField), CultureInfo.InvariantCulture);
+                return Convert.ToInt32(GetNodeTextOrDefault(feedNode, "maximumDaysOld", _feedMaximumDaysOld), CultureInfo.InvariantCulture);
             }
             catch
             {
@@ -324,7 +353,7 @@ namespace PodcastUtilities.Common.Configuration
             }
             try
             {
-                var days = Convert.ToInt32(GetNodeTextOrDefault(feedNode, "deleteDownloadsDaysOld", _feedDeleteDownloadsDaysOldBackingField), CultureInfo.InvariantCulture);
+                var days = Convert.ToInt32(GetNodeTextOrDefault(feedNode, "deleteDownloadsDaysOld", _feedDeleteDownloadsDaysOld), CultureInfo.InvariantCulture);
                 if (days == 0)
                 {
                     return int.MaxValue;

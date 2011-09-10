@@ -52,7 +52,7 @@ namespace SyncPodcasts
 
 			synchronizer.Synchronize(control, false);
 
-			if (!string.IsNullOrEmpty(control.PlaylistFileName))
+			if (!string.IsNullOrEmpty(control.GetPlaylistFileName()))
 				generator.GeneratePlaylist(control, true);
 		}
 

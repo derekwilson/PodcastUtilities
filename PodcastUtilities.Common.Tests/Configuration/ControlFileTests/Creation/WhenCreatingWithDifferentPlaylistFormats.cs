@@ -28,7 +28,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             try
             {
                 ControlFile = new ReadOnlyControlFile(ControlFileXmlDocument);
-                Format = ControlFile.PlaylistFormat;
+                Format = ControlFile.GetPlaylistFormat();
             }
             catch (Exception exception)
             {

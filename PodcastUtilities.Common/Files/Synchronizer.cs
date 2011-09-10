@@ -57,10 +57,10 @@ namespace PodcastUtilities.Common.Files
 		{
 			var filesToCopy = new List<FileSyncItem>();
 
-			foreach (var podcast in controlFile.Podcasts)
+			foreach (var podcast in controlFile.GetPodcasts())
 			{
-				var podcastSourcePath = Path.Combine(controlFile.SourceRoot, podcast.Folder);
-				var podcastDestinationPath = Path.Combine(controlFile.DestinationRoot, podcast.Folder);
+				var podcastSourcePath = Path.Combine(controlFile.GetSourceRoot(), podcast.Folder);
+				var podcastDestinationPath = Path.Combine(controlFile.GetDestinationRoot(), podcast.Folder);
 
 				var podcastSourceFiles = FileFinder.GetFiles(
 						podcastSourcePath,
@@ -78,9 +78,9 @@ namespace PodcastUtilities.Common.Files
 
 			FileCopier.CopyFilesToTarget(
 				filesToCopy,
-				controlFile.SourceRoot,
-				controlFile.DestinationRoot,
-				controlFile.FreeSpaceToLeaveOnDestination,
+				controlFile.GetSourceRoot(),
+				controlFile.GetDestinationRoot(),
+				controlFile.GetFreeSpaceToLeaveOnDestination(),
 				whatIf);
 		}
 	}
