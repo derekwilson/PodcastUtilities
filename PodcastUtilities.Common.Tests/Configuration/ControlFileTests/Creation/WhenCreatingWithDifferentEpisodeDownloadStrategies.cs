@@ -55,9 +55,14 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
         }
 
         [Test]
-        public void ItShouldReadTheFormat()
+        public void ItShouldReadTheGlobalFormat()
         {
             Assert.That(Strategy1, Is.EqualTo(PodcastEpisodeDownloadStrategy.All));
+        }
+
+        [Test]
+        public void ItShouldReadTheSetFormat()
+        {
             Assert.That(Strategy2, Is.EqualTo(PodcastEpisodeDownloadStrategy.HighTide));
         }
     }

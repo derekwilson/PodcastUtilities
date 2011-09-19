@@ -1,3 +1,4 @@
+using System;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Tests;
@@ -23,12 +24,16 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 
 		protected IClipboardService ClipboardService { get; set; }
 
+        protected IReadOnlyControlFile ControlFile { get; set; }
+
 		protected override void GivenThat()
 		{
 			base.GivenThat();
 
-			ApplicationService = GenerateMock<IApplicationService>();
-			BrowseForFileService = GenerateMock<IBrowseForFileService>();
+            ControlFile = GenerateMock<IReadOnlyControlFile>();
+
+            ApplicationService = GenerateMock<IApplicationService>();
+            BrowseForFileService = GenerateMock<IBrowseForFileService>();
 			DialogService = GenerateMock<IDialogService>();
 			ControlFileFactory = GenerateMock<IControlFileFactory>();
 			PodcastFactory = GenerateMock<IPodcastFactory>();
@@ -42,5 +47,6 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
                 PodcastFactory,
                 ClipboardService);
 		}
+
 	}
 }

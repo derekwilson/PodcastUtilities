@@ -12,8 +12,8 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
 		{
 			base.GivenThat();
 
-			Podcasts.Add(new PodcastInfo { Folder = "Hanselminutes", Pattern = "*.mp3" });
-			Podcasts.Add(new PodcastInfo { Folder = "This Developers Life", Pattern = "*.wma" });
+			Podcasts.Add(new PodcastInfo(ControlFile) { Folder = "Hanselminutes", Pattern = "*.mp3" });
+			Podcasts.Add(new PodcastInfo(ControlFile) { Folder = "This Developers Life", Pattern = "*.wma" });
 
 			var podcastFiles1 = new List<IFileInfo> {GenerateMock<IFileInfo>(), GenerateMock<IFileInfo>()};
 			podcastFiles1[0].Stub(f => f.FullName).Return(@"c:\destination\Hanselminutes\001.mp3");

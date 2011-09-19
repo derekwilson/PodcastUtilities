@@ -13,7 +13,7 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.PodcastViewModelTests
         {
             base.GivenThat();
 
-            ViewModel = new PodcastViewModel(new PodcastInfo());
+            ViewModel = new PodcastViewModel(new PodcastInfo(ControlFile));
         }
 
         protected override void When()

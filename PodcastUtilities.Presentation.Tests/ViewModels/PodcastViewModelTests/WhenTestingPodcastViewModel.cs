@@ -11,14 +11,18 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.PodcastViewModelTests
     {
         protected PodcastViewModel ViewModel { get; set; }
 
+        protected IReadOnlyControlFile ControlFile { get; set; }
+
         protected override void GivenThat()
         {
             base.GivenThat();
 
-            var podcast = new PodcastInfo
+            ControlFile = GenerateMock<IReadOnlyControlFile>();
+
+            var podcast = new PodcastInfo(ControlFile)
                               {
                                   Folder = "Original Name",
-                                  Feed = new FeedInfo { Address = new Uri("http://www.originaladdress.com/ppp.xml") }
+                                  Feed = new FeedInfo(ControlFile) { Address = new Uri("http://www.originaladdress.com/ppp.xml") }
                               };
 
             ViewModel = new PodcastViewModel(podcast);

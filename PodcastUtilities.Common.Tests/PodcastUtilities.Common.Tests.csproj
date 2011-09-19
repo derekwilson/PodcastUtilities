@@ -87,6 +87,9 @@
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentPlaylistFormats.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\WhenTestingAControlFile.cs" />
+    <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfo.cs" />
+    <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfoWithAFeed.cs" />
+    <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfoWithoutAFeed.cs" />
     <Compile Include="DisplayFormatterTests\WhenTestingTheRenderFileSizeDisplayFormatter.cs" />
     <Compile Include="Exceptions\DownloaderExceptionTests\WhenCreatingAnException.cs" />
     <Compile Include="Exceptions\DownloaderExceptionTests\WhenCreatingAnExceptionWithAnInnerException.cs" />
@@ -180,6 +183,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rfc822DateTimeTests\WhenConvertingToDateDime.cs" />
     <Compile Include="StateProviderTests\WhenTestingTheStateProvider.cs" />
+    <Compile Include="TestControlFile.cs" />
     <Compile Include="XmlStateTests\WhenLoadingTheTestState.cs" />
     <Compile Include="XmlStateTests\WhenSettingTheHighTide.cs" />
     <Compile Include="XmlStateTests\WhenSettingTheHighTideToAnEarlyDate.cs" />

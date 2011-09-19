@@ -7,15 +7,18 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastFactoryTests
     public class WhenCreatingAPodcast
         : WhenTestingBehaviour
     {
+        protected IReadOnlyControlFile _controlFile;
         protected IPodcastDefaultsProvider DefaultsProvider { get; set; }
 
         protected PodcastFactory PodcastFactory { get; set; }
 
-        protected PodcastInfo CreatedPodcast { get; set; }
+        protected IPodcastInfo CreatedPodcast { get; set; }
 
         protected override void GivenThat()
         {
             base.GivenThat();
+
+            _controlFile = TestControlFileFactory.CreateControlFile();
 
             DefaultsProvider = GenerateMock<IPodcastDefaultsProvider>();
 
@@ -32,7 +35,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastFactoryTests
 
         protected override void When()
         {
-            CreatedPodcast = PodcastFactory.CreatePodcast();
+            CreatedPodcast = PodcastFactory.CreatePodcast(_controlFile);
         }
 
         [Test]

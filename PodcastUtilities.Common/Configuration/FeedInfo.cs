@@ -5,8 +5,18 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
     /// configuration info for a podcast feed
     /// </summary>
-    public class FeedInfo
+    public class FeedInfo : IFeedInfo
     {
+        private IControlFileGlobalDefaults _controlFileGlobalDefaults;
+
+        /// <summary>
+        /// construct a new feed element
+        /// </summary>
+        public FeedInfo(IControlFileGlobalDefaults controlFileGlobalDefaults)
+        {
+            _controlFileGlobalDefaults = controlFileGlobalDefaults;
+        }
+
         /// <summary>
         /// the address of the podcast feed
         /// </summary>
@@ -32,9 +42,34 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         public PodcastEpisodeDownloadStrategy DownloadStrategy { get; set; }
 
+        private int? _deleteDownloadsDaysOld;
+
         /// <summary>
         /// number of days before we delete a download
         /// </summary>
-        public int DeleteDownloadsDaysOld { get; set; }
+        public int DeleteDownloadsDaysOld
+        {
+            get { return _deleteDownloadsDaysOld.GetValueOrDefault(_controlFileGlobalDefaults.DefaultDeleteDownloadsDaysOld); }
+            set { _deleteDownloadsDaysOld = value; }
+        }
+
+        /// <summary>
+        /// Creates a new object that is a copy of the current instance.
+        /// </summary>
+        /// <returns>
+        /// A new object that is a copy of this instance.
+        /// </returns>
+        /// <filterpriority>2</filterpriority>
+        public object Clone()
+        {
+            var copy = new FeedInfo(_controlFileGlobalDefaults) {Address = Address};
+            copy.DownloadStrategy = DownloadStrategy;
+            copy.Format = Format;
+            copy.MaximumDaysOld = MaximumDaysOld;
+            copy.NamingStyle = NamingStyle;
+            copy._deleteDownloadsDaysOld = _deleteDownloadsDaysOld;
+
+            return copy;
+        }
     }
 }

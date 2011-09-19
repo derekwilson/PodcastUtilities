@@ -14,7 +14,7 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
         {
             base.GivenThat();
 
-            ViewModel.SelectedPodcast = new PodcastViewModel(new PodcastInfo());
+            ViewModel.SelectedPodcast = new PodcastViewModel(new PodcastInfo(ControlFile));
         }
 
         protected override void When()

@@ -35,9 +35,13 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
 
         protected StatusUpdateEventArgs _latestUpdate;
 
+        protected IReadOnlyControlFile _controlFile;
+
         protected override void GivenThat()
         {
             base.GivenThat();
+
+            _controlFile = TestControlFileFactory.CreateControlFile();
 
             _stateProvider = GenerateMock<IStateProvider>();
             _state = GenerateMock<IState>();
@@ -67,7 +71,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
 
             _feedAddress = "http://test";
 
-            _feedInfo = new FeedInfo();
+            _feedInfo = new FeedInfo(_controlFile);
             _feedInfo.Format = PodcastFeedFormat.RSS;
             _feedInfo.NamingStyle = PodcastEpisodeNamingStyle.UrlFileName;
             _feedInfo.Address = new Uri(_feedAddress);
@@ -76,7 +80,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
 
             _retryWaitTime = 13;
             _rootFolder = "c:\\TestRoot";
-            _podcastInfo = new PodcastInfo();
+            _podcastInfo = new PodcastInfo(_controlFile);
             _podcastInfo.Folder = "TestFolder";
             _podcastInfo.Feed = _feedInfo;
 

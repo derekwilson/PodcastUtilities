@@ -8,15 +8,15 @@ namespace PodcastUtilities.Presentation.ViewModels
 	public class PodcastViewModel
 		: ViewModel, IDataErrorInfo
 	{
-		private readonly PodcastInfo _podcast;
-		private PodcastInfo _backupPodcastInfo;
+		private readonly IPodcastInfo _podcast;
+		private IPodcastInfo _backupPodcastInfo;
 
-		public PodcastViewModel(PodcastInfo podcast)
+		public PodcastViewModel(IPodcastInfo podcast)
 		{
 			_podcast = podcast;
 		}
 
-		public PodcastInfo Podcast
+		public IPodcastInfo Podcast
 		{
 			get { return _podcast; }
 		}
@@ -61,11 +61,8 @@ namespace PodcastUtilities.Presentation.ViewModels
 	    {
 	        var copyAddress = ((_podcast.Feed.Address == null) ? null : new Uri(_podcast.Feed.Address.AbsoluteUri));
 
-	        _backupPodcastInfo = new PodcastInfo
-	                                   {
-	                                       Folder = _podcast.Folder,
-                                           Feed = new FeedInfo { Address = copyAddress }
-	                                   };
+	        _backupPodcastInfo = _podcast.Clone() as PodcastInfo;
+	        _backupPodcastInfo.Feed.Address = copyAddress;
 	    }
 
 	    public virtual void AcceptEdit()

@@ -8,7 +8,8 @@ namespace PodcastUtilities.Common.Configuration
         ///<summary>
         /// Create a new podcast
         ///</summary>
+        ///<param name="controlFile"></param>
         ///<returns></returns>
-        PodcastInfo CreatePodcast();
+        IPodcastInfo CreatePodcast(IControlFileGlobalDefaults controlFile);
     }
 }

@@ -20,7 +20,7 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 
         protected override void When()
         {
-            ViewModel.SelectedPodcast = new PodcastViewModel(new PodcastInfo());
+            ViewModel.SelectedPodcast = new PodcastViewModel(new PodcastInfo(ControlFile));
         }
 
         [Test]
