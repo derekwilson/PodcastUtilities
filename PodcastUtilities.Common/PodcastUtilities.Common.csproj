@@ -75,7 +75,7 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Configuration\BaseControlFile.cs" />
-    <Compile Include="Configuration\IBaseControlFile.cs" />
+    <Compile Include="Configuration\IControlFileGlobalDefaults.cs" />
     <Compile Include="Configuration\IFeedInfo.cs" />
     <Compile Include="Configuration\IPodcastInfo.cs" />
     <Compile Include="Configuration\ReadOnlyControlFile.cs" />
