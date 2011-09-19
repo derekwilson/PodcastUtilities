@@ -14,13 +14,17 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.EditPodcastViewModelTes
 
 		protected PodcastViewModel PodcastViewModel { get; set; }
 
+        protected IReadOnlyControlFile ControlFile { get; set; }
+
 		protected override void GivenThat()
 		{
 			base.GivenThat();
 
-			Podcast = new PodcastInfo
+		    ControlFile = GenerateMock<IReadOnlyControlFile>();
+
+			Podcast = new PodcastInfo(ControlFile)
 			          	{
-			          		Feed = new FeedInfo()
+			          		Feed = new FeedInfo(ControlFile)
 			          	};
 
 			PodcastViewModel = new PodcastViewModel(Podcast);

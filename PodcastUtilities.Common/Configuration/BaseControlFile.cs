@@ -12,12 +12,12 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
     /// base operations to work with controlfiles
     /// </summary>
-    public abstract class BaseControlFile
+    public abstract class BaseControlFile : IControlFileGlobalDefaults
     {
         private const string DefaultSortField = "Name";
         private const string DefaultSortDirection = "ascending";
         private const string DefaultFeedFormat = "rss";
-        private const string DefaultFeedEpisodeDownloadStrategy = "high_tide";
+        private const string DefaultFeedEpisodeDownloadStrategy = "all";
 
         /// <summary>
         /// the field we are using to sort the podcasts on
@@ -57,6 +57,14 @@ namespace PodcastUtilities.Common.Configuration
             FreeSpaceToLeaveOnDownload = 0;
             MaximumNumberOfConcurrentDownloads = 5;
             RetryWaitInSeconds = 10;
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        public int DefaultDeleteDownloadsDaysOld
+        {
+            get { return Convert.ToInt32(_feedDeleteDownloadsDaysOld, CultureInfo.InvariantCulture); }
         }
 
         /// <summary>
@@ -283,7 +291,7 @@ namespace PodcastUtilities.Common.Configuration
             {
                 foreach (XmlNode podcastNode in podcastNodes)
                 {
-                    var podcastInfo = new PodcastInfo
+                    var podcastInfo = new PodcastInfo(this)
                     {
                         Feed = ReadFeedInfo(podcastNode.SelectSingleNode("feed")),
                         Folder = GetNodeText(podcastNode, "folder"),
@@ -298,13 +306,13 @@ namespace PodcastUtilities.Common.Configuration
             }
         }
 
-        private FeedInfo ReadFeedInfo(XmlNode feedNode)
+        private IFeedInfo ReadFeedInfo(XmlNode feedNode)
         {
             if (feedNode == null)
             {
                 return null;
             }
-            return new FeedInfo()
+            return new FeedInfo(this)
             {
                 Address = new Uri(GetNodeText(feedNode, "url")),
                 Format = ReadFeedFormat(GetNodeTextOrDefault(feedNode, "format", _feedFormat)),
@@ -416,7 +424,7 @@ namespace PodcastUtilities.Common.Configuration
         {
             XmlNode n = root.SelectSingleNode(xpath);
 
-            return ((n != null) ? n.InnerText : defaultText);
+            return ((n != null && !string.IsNullOrEmpty(n.InnerText)) ? n.InnerText : defaultText);
         }
     }
 }

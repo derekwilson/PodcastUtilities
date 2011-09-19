@@ -20,7 +20,7 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 		{
 			base.GivenThat();
 
-			var podcast1 = new PodcastInfo
+			var podcast1 = new PodcastInfo(ControlFile)
 			               	{
 			               		Folder = "pod1",
 			               		Pattern = "*.mp3",
@@ -28,7 +28,7 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 			               		SortField = "name",
 			               		AscendingSort = true
 			               	};
-			var podcast2 = new PodcastInfo
+			var podcast2 = new PodcastInfo(ControlFile)
 			               	{
 			               		Folder = "AnotherPodcast",
 			               		Pattern = "*.wma",

@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
     /// this object represents the xml control file
     /// </summary>
-    public interface IReadOnlyControlFile
+    public interface IReadOnlyControlFile : IControlFileGlobalDefaults
     {
         /// <summary>
         /// pathname to the root folder to copy from when synchronising

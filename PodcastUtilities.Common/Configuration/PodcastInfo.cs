@@ -1,19 +1,24 @@
-﻿namespace PodcastUtilities.Common.Configuration
+﻿using System;
+
+namespace PodcastUtilities.Common.Configuration
 {
 	/// <summary>
 	/// an individual podcast
 	/// </summary>
-    public class PodcastInfo
+    public class PodcastInfo : IPodcastInfo
 	{
-	    ///<summary>
+        private IControlFileGlobalDefaults _controlFileGlobalDefaults;
+
+        ///<summary>
 	    /// Podcast ctor
 	    ///</summary>
-	    public PodcastInfo()
-	    {
-	        Feed = new FeedInfo();
-	    }
+	    public PodcastInfo(IControlFileGlobalDefaults controlFileGlobalDefaults)
+        {
+            Feed = new FeedInfo(controlFileGlobalDefaults);
+            _controlFileGlobalDefaults = controlFileGlobalDefaults;
+        }
 
-		/// <summary>
+	    /// <summary>
 		/// the folder relative to the source root that contains the media for the podcast
 		/// </summary>
         public string Folder { get; set; }
@@ -36,6 +41,31 @@
         /// <summary>
         /// the configuration info for the feed
         /// </summary>
-        public FeedInfo Feed { get; set; }
+        public IFeedInfo Feed { get; set; }
+
+	    /// <summary>
+	    /// Creates a new object that is a copy of the current instance.
+	    /// </summary>
+	    /// <returns>
+	    /// A new object that is a copy of this instance.
+	    /// </returns>
+	    /// <filterpriority>2</filterpriority>
+	    public object Clone()
+	    {
+	        var newInfo = new PodcastInfo(_controlFileGlobalDefaults)
+	                   {
+	                       Folder = Folder,
+                           Pattern = Pattern,
+                           SortField = SortField,
+                           AscendingSort = AscendingSort,
+                           MaximumNumberOfFiles = MaximumNumberOfFiles
+	                   };
+            if (Feed != null)
+            {
+                newInfo.Feed = Feed.Clone() as IFeedInfo;
+            }
+
+            return newInfo;
+	    }
 	}
 }

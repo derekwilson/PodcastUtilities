@@ -23,11 +23,11 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
         {
             base.GivenThat();
 
-            ViewModel.Podcasts.Add(new PodcastViewModel(new PodcastInfo()));
+            ViewModel.Podcasts.Add(new PodcastViewModel(new PodcastInfo(ControlFile)));
 
-            CreatedPodcast = new PodcastInfo();
+            CreatedPodcast = new PodcastInfo(ControlFile);
 
-            PodcastFactory.Stub(f => f.CreatePodcast())
+            PodcastFactory.Stub(f => f.CreatePodcast(null))
                 .Return(CreatedPodcast);
 
             DialogService.Stub(s => s.ShowEditPodcastDialog(null))

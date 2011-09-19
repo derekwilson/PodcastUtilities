@@ -10,8 +10,6 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 	public class WhenExecutingOpenFileCommand
 		: WhenTestingConfigurePodcastsViewModel
 	{
-		protected IReadOnlyControlFile ControlFile { get; set; }
-
 		public List<PodcastInfo> Podcasts { get; set; }
 
 		protected override void GivenThat()
@@ -23,16 +21,14 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 			BrowseForFileService.Stub(s => s.BrowseForFileToOpen("Control Files|*.xml"))
 				.Return(@"C:\blah\test.xml");
 
-			ControlFile = GenerateMock<IReadOnlyControlFile>();
-
 			ControlFileFactory.Stub(f => f.OpenControlFile(@"C:\blah\test.xml"))
 				.Return(ControlFile);
 
 			Podcasts = new List<PodcastInfo>
 			           	{
-			           		new PodcastInfo(),
-							new PodcastInfo(),
-							new PodcastInfo()
+			           		new PodcastInfo(ControlFile),
+							new PodcastInfo(ControlFile),
+							new PodcastInfo(ControlFile)
 			           	};
 			ControlFile.Stub(f => f.GetPodcasts())
 				.Return(Podcasts);

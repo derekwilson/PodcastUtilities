@@ -140,9 +140,9 @@ namespace PodcastUtilities.Presentation.ViewModels
             return acceptedEdit;
         }
 
-        private PodcastInfo CreateNewPodcast(string possiblePodcastAddress)
+        private IPodcastInfo CreateNewPodcast(string possiblePodcastAddress)
         {
-            var newPodcast = _podcastFactory.CreatePodcast();
+            var newPodcast = _podcastFactory.CreatePodcast(_controlFile);
 
             if ((possiblePodcastAddress != null) && Uri.IsWellFormedUriString(possiblePodcastAddress, UriKind.Absolute))
             {

@@ -17,10 +17,10 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 			base.GivenThat();
 
 		    SelectedPodcast = GeneratePartialMock<PodcastViewModel>(
-                new PodcastInfo
+                new PodcastInfo(ControlFile)
                     {
                         Folder = "Original name",
-                        Feed = new FeedInfo { Address = new Uri("http://www.blah.com/rss.xml")}
+                        Feed = new FeedInfo(ControlFile) { Address = new Uri("http://www.blah.com/rss.xml")}
                     });
 
 			ViewModel.SelectedPodcast = SelectedPodcast;

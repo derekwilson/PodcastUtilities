@@ -19,15 +19,16 @@
         ///<summary>
         /// Create a new podcast
         ///</summary>
+        ///<param name="controlFile"></param>
         ///<returns></returns>
-        public PodcastInfo CreatePodcast()
+        public IPodcastInfo CreatePodcast(IControlFileGlobalDefaults controlFile)
         {
-            return new PodcastInfo
+            return new PodcastInfo (controlFile)
                        {
                            Pattern = _podcastDefaultsProvider.Pattern,
                            SortField = _podcastDefaultsProvider.SortField,
                            AscendingSort = _podcastDefaultsProvider.AscendingSort,
-                           Feed = new FeedInfo
+                           Feed = new FeedInfo (controlFile)
                                       {
                                           Format = _podcastDefaultsProvider.FeedFormat,
                                           NamingStyle = _podcastDefaultsProvider.EpisodeNamingStyle,
