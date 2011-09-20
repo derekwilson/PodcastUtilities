@@ -102,7 +102,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
         [Test]
         public void ItShouldReadTheValue()
         {
-            Assert.That(MaxDaysOld1, Is.EqualTo(int.MaxValue));
+            Assert.That(MaxDaysOld1, Is.EqualTo(0));
             Assert.That(MaxDaysOld2, Is.EqualTo(14));
         }
     }

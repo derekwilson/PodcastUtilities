@@ -87,6 +87,9 @@
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentPlaylistFormats.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\WhenTestingAControlFile.cs" />
+    <Compile Include="Configuration\FeedInfoTests\Clone\WhenCloningAnUnpopulatedFeedInfo.cs" />
+    <Compile Include="Configuration\FeedInfoTests\Clone\WhenCloningAFeedInfo.cs" />
+    <Compile Include="Configuration\FeedInfoTests\Clone\WhenCloningAPopulatedFeedInfo.cs" />
     <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfo.cs" />
     <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfoWithAFeed.cs" />
     <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfoWithoutAFeed.cs" />
@@ -250,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="XML\teststateinvalid.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\FeedInfoTests\GlobalDefaults\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

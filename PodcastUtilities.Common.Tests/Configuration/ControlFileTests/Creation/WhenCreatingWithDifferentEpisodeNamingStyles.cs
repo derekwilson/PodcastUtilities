@@ -57,7 +57,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
         [Test]
         public void ItShouldReadTheFormat()
         {
-            Assert.That(NamingStyle1, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileName));
+            Assert.That(NamingStyle1, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime));
             Assert.That(NamingStyle2, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime));
         }
     }
@@ -66,7 +66,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
     {
         protected override void GivenThat()
         {
-            NamingStyleTextText = "pubdate_url";
+            NamingStyleTextText = "etitle";
             base.GivenThat();
         }
 
@@ -79,7 +79,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
         [Test]
         public void ItShouldReadTheFormat()
         {
-            Assert.That(NamingStyle1, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime));
+            Assert.That(NamingStyle1, Is.EqualTo(PodcastEpisodeNamingStyle.EpisodeTitle));
             Assert.That(NamingStyle2, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime));
         }
     }

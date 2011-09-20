@@ -1,21 +1,21 @@
 using PodcastUtilities.Common.Configuration;
 
-namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
+namespace PodcastUtilities.Common.Tests.Configuration.FeedInfoTests.Clone
 {
-    public abstract class WhenCloningAPodcastInfo
+    public abstract class WhenCloningAFeedInfo
         : WhenTestingBehaviour
     {
         protected IReadOnlyControlFile _controlFile;
 
-        protected PodcastInfo _pocastInfo;
-        protected PodcastInfo _clonedPodcast;
+        protected FeedInfo _feedInfo;
+        protected FeedInfo _clonedFeedInfo;
 
         protected override void GivenThat()
         {
             base.GivenThat();
 
             _controlFile = TestControlFileFactory.CreateControlFile();
-            _pocastInfo = new PodcastInfo(_controlFile);
+            _feedInfo = new FeedInfo(_controlFile);
         }
     }
 }
