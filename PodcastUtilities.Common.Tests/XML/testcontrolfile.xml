@@ -12,11 +12,11 @@
         <maximumNumberOfConcurrentDownloads>10</maximumNumberOfConcurrentDownloads>
         <retryWaitInSeconds>77</retryWaitInSeconds>
         <feed>
-            <format>rss</format>
+            <format>atom</format>
             <namingStyle>pubdate_url</namingStyle>
             <maximumDaysOld>99</maximumDaysOld>
-            <downloadStrategy>all</downloadStrategy>
-            <deleteDownloadsDaysOld>0</deleteDownloadsDaysOld>
+            <downloadStrategy>latest</downloadStrategy>
+            <deleteDownloadsDaysOld>88</deleteDownloadsDaysOld>
         </feed>
     
 </global>

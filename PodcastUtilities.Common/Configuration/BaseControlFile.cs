@@ -14,10 +14,11 @@ namespace PodcastUtilities.Common.Configuration
     /// </summary>
     public abstract class BaseControlFile : IControlFileGlobalDefaults
     {
-        private const string DefaultSortField = "Name";
-        private const string DefaultSortDirection = "ascending";
-        private const string DefaultFeedFormat = "rss";
-        private const string DefaultFeedEpisodeDownloadStrategy = "all";
+        private const string DefaultSortFieldToken = "Name";
+        private const string DefaultSortDirectionToken = "ascending";
+        private const string DefaultFeedFormatToken = "rss";
+        private const string DefaultFeedNamingStyleToken = "pubdate_url";
+        private const string DefaultFeedEpisodeDownloadStrategyToken = "all";
 
         /// <summary>
         /// the field we are using to sort the podcasts on
@@ -65,6 +66,38 @@ namespace PodcastUtilities.Common.Configuration
         public int DefaultDeleteDownloadsDaysOld
         {
             get { return Convert.ToInt32(_feedDeleteDownloadsDaysOld, CultureInfo.InvariantCulture); }
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        public PodcastEpisodeDownloadStrategy DefaultDownloadStrategy
+        {
+            get { return ReadFeedEpisodeDownloadStrategy(_feedEpisodeDownloadStrategy); }
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        public PodcastFeedFormat DefaultFeedFormat
+        {
+            get { return ReadFeedFormat(_feedFormat); }
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        public int DefaultMaximumDaysOld
+        {
+            get { return Convert.ToInt32(_feedMaximumDaysOld, CultureInfo.InvariantCulture); }
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        public PodcastEpisodeNamingStyle DefaultNamingStyle
+        {
+            get { return ReadFeedEpisodeNamingStyle(_feedEpisodeNamingStyle); }
         }
 
         /// <summary>
@@ -272,13 +305,13 @@ namespace PodcastUtilities.Common.Configuration
             }
             catch { }
 
-            _sortField = GetNodeTextOrDefault(xmlDocument,"podcasts/global/sortfield", DefaultSortField);
-            _sortDirection = GetNodeTextOrDefault(xmlDocument,"podcasts/global/sortdirection", DefaultSortDirection);
+            _sortField = GetNodeTextOrDefault(xmlDocument,"podcasts/global/sortfield", DefaultSortFieldToken);
+            _sortDirection = GetNodeTextOrDefault(xmlDocument,"podcasts/global/sortdirection", DefaultSortDirectionToken);
             _feedMaximumDaysOld = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/maximumDaysOld", int.MaxValue.ToString(CultureInfo.InvariantCulture));
             _feedDeleteDownloadsDaysOld = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/deleteDownloadsDaysOld", int.MaxValue.ToString(CultureInfo.InvariantCulture));
-            _feedFormat = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/format", DefaultFeedFormat);
-            _feedEpisodeNamingStyle = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/namingStyle", DefaultFeedFormat);
-            _feedEpisodeDownloadStrategy = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/downloadStrategy", DefaultFeedEpisodeDownloadStrategy);
+            _feedFormat = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/format", DefaultFeedFormatToken);
+            _feedEpisodeNamingStyle = GetNodeTextOrDefault(xmlDocument, "podcasts/global/feed/namingStyle", DefaultFeedNamingStyleToken);
+            _feedEpisodeDownloadStrategy = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/downloadStrategy", DefaultFeedEpisodeDownloadStrategyToken);
         }
 
         private void ReadPodcasts(XmlDocument xmlDocument)
@@ -312,15 +345,42 @@ namespace PodcastUtilities.Common.Configuration
             {
                 return null;
             }
-            return new FeedInfo(this)
+            var newFeed = new FeedInfo(this)
             {
                 Address = new Uri(GetNodeText(feedNode, "url")),
-                Format = ReadFeedFormat(GetNodeTextOrDefault(feedNode, "format", _feedFormat)),
-                MaximumDaysOld = ReadMaximumDaysOld(feedNode),
-                NamingStyle = ReadFeedEpisodeNamingStyle(GetNodeTextOrDefault(feedNode, "namingStyle", _feedEpisodeNamingStyle)),
-                DownloadStrategy = ReadFeedEpisodeDownloadStrategy(GetNodeTextOrDefault(feedNode, "downloadStrategy", _feedEpisodeDownloadStrategy)),
-                DeleteDownloadsDaysOld = ReadDeleteDownloadsDaysOld(feedNode)
             };
+
+            var nodeTest = GetNodeTextOrDefault(feedNode, "format", "");
+            if (!string.IsNullOrEmpty(nodeTest))
+            {
+                newFeed.Format = ReadFeedFormat(nodeTest);
+            }
+
+            nodeTest = GetNodeTextOrDefault(feedNode, "namingStyle", "");
+            if (!string.IsNullOrEmpty(nodeTest))
+            {
+                newFeed.NamingStyle = ReadFeedEpisodeNamingStyle(nodeTest);
+            }
+
+            nodeTest = GetNodeTextOrDefault(feedNode, "downloadStrategy", "");
+            if (!string.IsNullOrEmpty(nodeTest))
+            {
+                newFeed.DownloadStrategy = ReadFeedEpisodeDownloadStrategy(nodeTest);
+            }
+
+            nodeTest = GetNodeTextOrDefault(feedNode, "maximumDaysOld", "");
+            if (!string.IsNullOrEmpty(nodeTest))
+            {
+                newFeed.MaximumDaysOld = ReadMaximumDaysOld(feedNode);
+            }
+
+            nodeTest = GetNodeTextOrDefault(feedNode, "deleteDownloadsDaysOld", "");
+            if (!string.IsNullOrEmpty(nodeTest))
+            {
+                newFeed.DeleteDownloadsDaysOld = ReadDeleteDownloadsDaysOld(feedNode);
+            }
+
+            return newFeed;
         }
 
         private static PodcastFeedFormat ReadFeedFormat(string format)

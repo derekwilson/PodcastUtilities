@@ -36,5 +36,31 @@ namespace PodcastUtilities.Common.Configuration
         /// number of days before we delete a download
         /// </summary>
         int DeleteDownloadsDaysOld { get; set; }
+
+
+        /// <summary>
+        /// remove the Format, in other words revert to the global default
+        /// </summary>
+        void RemoveFormat();
+
+        /// <summary>
+        /// remove the MaximumDaysOld, in other words revert to the global default
+        /// </summary>
+        void RemoveMaximumDaysOld();
+
+        /// <summary>
+        /// remove the NamingStyle, in other words revert to the global default
+        /// </summary>
+        void RemoveNamingStyle();
+
+        /// <summary>
+        /// remove the DownloadStrategy, in other words revert to the global default
+        /// </summary>
+        void RemoveDownloadStrategy();
+
+        /// <summary>
+        /// remove the DeleteDownloadsDaysOld, in other words revert to the global default
+        /// </summary>
+        void RemoveDeleteDownloadsDaysOld();
     }
 }
