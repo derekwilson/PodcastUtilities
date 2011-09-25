@@ -23,19 +23,18 @@
         ///<returns></returns>
         public IPodcastInfo CreatePodcast(IControlFileGlobalDefaults controlFile)
         {
-            return new PodcastInfo (controlFile)
+            var podcast = new PodcastInfo (controlFile)
                        {
                            Pattern = _podcastDefaultsProvider.Pattern,
                            SortField = _podcastDefaultsProvider.SortField,
                            AscendingSort = _podcastDefaultsProvider.AscendingSort,
                            Feed = new FeedInfo (controlFile)
-                                      {
-                                          Format = _podcastDefaultsProvider.FeedFormat,
-                                          NamingStyle = _podcastDefaultsProvider.EpisodeNamingStyle,
-                                          DownloadStrategy = _podcastDefaultsProvider.EpisodeDownloadStrategy,
-                                          MaximumDaysOld = _podcastDefaultsProvider.MaximumDaysOld
-                                      }
                        };
+            podcast.Feed.Format.Value = _podcastDefaultsProvider.FeedFormat;
+            podcast.Feed.NamingStyle.Value = _podcastDefaultsProvider.EpisodeNamingStyle;
+            podcast.Feed.DownloadStrategy.Value = _podcastDefaultsProvider.EpisodeDownloadStrategy;
+            podcast.Feed.MaximumDaysOld.Value = _podcastDefaultsProvider.MaximumDaysOld;
+            return podcast;
         }
     }
 }

@@ -87,6 +87,10 @@
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentPlaylistFormats.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\WhenTestingAControlFile.cs" />
+    <Compile Include="Configuration\DefaultableItemTests\WhenCreatingAnItem.cs" />
+    <Compile Include="Configuration\DefaultableItemTests\WhenRevertingValue.cs" />
+    <Compile Include="Configuration\DefaultableItemTests\WhenSettingAValue.cs" />
+    <Compile Include="Configuration\DefaultableItemTests\WhenTestingAnItem.cs" />
     <Compile Include="Configuration\FeedInfoTests\Clone\WhenCloningAnUnpopulatedFeedInfo.cs" />
     <Compile Include="Configuration\FeedInfoTests\Clone\WhenCloningAFeedInfo.cs" />
     <Compile Include="Configuration\FeedInfoTests\Clone\WhenCloningAPopulatedFeedInfo.cs" />

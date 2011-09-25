@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
         {
             base.SetupData();
 
-            _feedInfo.DeleteDownloadsDaysOld = int.MaxValue;
+            _feedInfo.DeleteDownloadsDaysOld.Value = int.MaxValue;
         }
 
         protected override void SetupStubs()

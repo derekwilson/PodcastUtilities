@@ -29,9 +29,9 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
                 ControlFile = new ReadOnlyControlFile(ControlFileXmlDocument);
 
                 // this will be the defaulted value from the global section
-                Strategy1 = ControlFile.GetPodcasts().ElementAt(1).Feed.DownloadStrategy;
+                Strategy1 = ControlFile.GetPodcasts().ElementAt(1).Feed.DownloadStrategy.Value;
                 // this is set explicitly by the feed
-                Strategy2 = ControlFile.GetPodcasts().ElementAt(2).Feed.DownloadStrategy;
+                Strategy2 = ControlFile.GetPodcasts().ElementAt(2).Feed.DownloadStrategy.Value;
             }
             catch (Exception exception)
             {

@@ -12,7 +12,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests.DownloadStrateg
         {
             base.SetupData();
 
-            _feedInfo.DownloadStrategy = PodcastEpisodeDownloadStrategy.Latest;
+            _feedInfo.DownloadStrategy.Value = PodcastEpisodeDownloadStrategy.Latest;
 
             _podcastFeedItems.Add(new PodcastFeedItem()
                                       {

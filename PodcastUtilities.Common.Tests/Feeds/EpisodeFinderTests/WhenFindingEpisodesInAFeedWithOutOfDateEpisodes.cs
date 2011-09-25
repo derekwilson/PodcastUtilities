@@ -11,7 +11,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
         {
             base.SetupData();
 
-            _feedInfo.MaximumDaysOld = 35;
+            _feedInfo.MaximumDaysOld.Value = 35;
 
             _podcastFeedItems.Add(new PodcastFeedItem()
                                       {

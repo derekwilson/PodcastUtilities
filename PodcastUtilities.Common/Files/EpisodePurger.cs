@@ -29,7 +29,7 @@ namespace PodcastUtilities.Common.Files
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         private static DateTime GetWhenDownloadWasPublished(PodcastInfo podcastInfo, IFileInfo file)
         {
-            switch (podcastInfo.Feed.NamingStyle)
+            switch (podcastInfo.Feed.NamingStyle.Value)
             {
                 case PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime:
                 case PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime:
@@ -81,12 +81,12 @@ namespace PodcastUtilities.Common.Files
 
             var feedDownloadsFolder = Path.Combine(rootFolder, podcastInfo.Folder);
             var oldestEpisodeToKeep = DateTime.MinValue;
-            if (podcastInfo.Feed.DeleteDownloadsDaysOld < int.MaxValue)
+            if (podcastInfo.Feed.DeleteDownloadsDaysOld.Value < int.MaxValue)
             {
-                oldestEpisodeToKeep = _timeProvider.UtcNow.AddDays(-podcastInfo.Feed.DeleteDownloadsDaysOld);
+                oldestEpisodeToKeep = _timeProvider.UtcNow.AddDays(-podcastInfo.Feed.DeleteDownloadsDaysOld.Value);
             }
 
-            if (IsSubFolderBasedNaming(podcastInfo.Feed.NamingStyle))
+            if (IsSubFolderBasedNaming(podcastInfo.Feed.NamingStyle.Value))
             {
                 ScanSubFoldersForOldFiles(feedDownloadsFolder, oldestEpisodeToKeep, episodesToDelete, podcastInfo);
             }

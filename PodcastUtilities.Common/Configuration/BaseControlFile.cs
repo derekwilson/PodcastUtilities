@@ -63,41 +63,46 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// the global default for feeds
         /// </summary>
-        public int DefaultDeleteDownloadsDaysOld
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public int GetDefaultDeleteDownloadsDaysOld()
         {
-            get { return Convert.ToInt32(_feedDeleteDownloadsDaysOld, CultureInfo.InvariantCulture); }
+            return Convert.ToInt32(_feedDeleteDownloadsDaysOld, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
         /// the global default for feeds
         /// </summary>
-        public PodcastEpisodeDownloadStrategy DefaultDownloadStrategy
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public PodcastEpisodeDownloadStrategy GetDefaultDownloadStrategy()
         {
-            get { return ReadFeedEpisodeDownloadStrategy(_feedEpisodeDownloadStrategy); }
+            return ReadFeedEpisodeDownloadStrategy(_feedEpisodeDownloadStrategy);
         }
 
         /// <summary>
         /// the global default for feeds
         /// </summary>
-        public PodcastFeedFormat DefaultFeedFormat
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public PodcastFeedFormat GetDefaultFeedFormat()
         {
-            get { return ReadFeedFormat(_feedFormat); }
+            return ReadFeedFormat(_feedFormat);
         }
 
         /// <summary>
         /// the global default for feeds
         /// </summary>
-        public int DefaultMaximumDaysOld
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public int GetDefaultMaximumDaysOld()
         {
-            get { return Convert.ToInt32(_feedMaximumDaysOld, CultureInfo.InvariantCulture); }
+            return Convert.ToInt32(_feedMaximumDaysOld, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
         /// the global default for feeds
         /// </summary>
-        public PodcastEpisodeNamingStyle DefaultNamingStyle
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public PodcastEpisodeNamingStyle GetDefaultNamingStyle()
         {
-            get { return ReadFeedEpisodeNamingStyle(_feedEpisodeNamingStyle); }
+            return ReadFeedEpisodeNamingStyle(_feedEpisodeNamingStyle);
         }
 
         /// <summary>
@@ -353,31 +358,31 @@ namespace PodcastUtilities.Common.Configuration
             var nodeTest = GetNodeTextOrDefault(feedNode, "format", "");
             if (!string.IsNullOrEmpty(nodeTest))
             {
-                newFeed.Format = ReadFeedFormat(nodeTest);
+                newFeed.Format.Value = ReadFeedFormat(nodeTest);
             }
 
             nodeTest = GetNodeTextOrDefault(feedNode, "namingStyle", "");
             if (!string.IsNullOrEmpty(nodeTest))
             {
-                newFeed.NamingStyle = ReadFeedEpisodeNamingStyle(nodeTest);
+                newFeed.NamingStyle.Value = ReadFeedEpisodeNamingStyle(nodeTest);
             }
 
             nodeTest = GetNodeTextOrDefault(feedNode, "downloadStrategy", "");
             if (!string.IsNullOrEmpty(nodeTest))
             {
-                newFeed.DownloadStrategy = ReadFeedEpisodeDownloadStrategy(nodeTest);
+                newFeed.DownloadStrategy.Value = ReadFeedEpisodeDownloadStrategy(nodeTest);
             }
 
             nodeTest = GetNodeTextOrDefault(feedNode, "maximumDaysOld", "");
             if (!string.IsNullOrEmpty(nodeTest))
             {
-                newFeed.MaximumDaysOld = ReadMaximumDaysOld(feedNode);
+                newFeed.MaximumDaysOld.Value = ReadMaximumDaysOld(feedNode);
             }
 
             nodeTest = GetNodeTextOrDefault(feedNode, "deleteDownloadsDaysOld", "");
             if (!string.IsNullOrEmpty(nodeTest))
             {
-                newFeed.DeleteDownloadsDaysOld = ReadDeleteDownloadsDaysOld(feedNode);
+                newFeed.DeleteDownloadsDaysOld.Value = ReadDeleteDownloadsDaysOld(feedNode);
             }
 
             return newFeed;

@@ -29,9 +29,9 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
                 ControlFile = new ReadOnlyControlFile(ControlFileXmlDocument);
 
                 // this will be the defaulted value from the global section
-                MaxDaysOld1 = ControlFile.GetPodcasts().ElementAt(1).Feed.MaximumDaysOld;
+                MaxDaysOld1 = ControlFile.GetPodcasts().ElementAt(1).Feed.MaximumDaysOld.Value;
                 // this is set explicitly by the feed
-                MaxDaysOld2 = ControlFile.GetPodcasts().ElementAt(2).Feed.MaximumDaysOld;
+                MaxDaysOld2 = ControlFile.GetPodcasts().ElementAt(2).Feed.MaximumDaysOld.Value;
             }
             catch (Exception exception)
             {
