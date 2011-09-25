@@ -72,11 +72,11 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
             _feedAddress = "http://test";
 
             _feedInfo = new FeedInfo(_controlFile);
-            _feedInfo.Format = PodcastFeedFormat.RSS;
-            _feedInfo.NamingStyle = PodcastEpisodeNamingStyle.UrlFileName;
+            _feedInfo.Format.Value = PodcastFeedFormat.RSS;
+            _feedInfo.NamingStyle.Value = PodcastEpisodeNamingStyle.UrlFileName;
             _feedInfo.Address = new Uri(_feedAddress);
-            _feedInfo.MaximumDaysOld = int.MaxValue;
-            _feedInfo.DownloadStrategy = PodcastEpisodeDownloadStrategy.All;
+            _feedInfo.MaximumDaysOld.Value = int.MaxValue;
+            _feedInfo.DownloadStrategy.Value = PodcastEpisodeDownloadStrategy.All;
 
             _retryWaitTime = 13;
             _rootFolder = "c:\\TestRoot";
@@ -97,7 +97,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
             _timeProvider.Stub(time => time.UtcNow).Return(_now);
             _webClient.Stub(client => client.OpenRead(_feedInfo.Address)).Return(_stream);
             _webClientFactory.Stub(factory => factory.CreateWebClient()).Return(_webClient);
-            _feedFactory.Stub(factory => factory.CreatePodcastFeed(_feedInfo.Format, _stream)).Return(_podcastFeed);
+            _feedFactory.Stub(factory => factory.CreatePodcastFeed(_feedInfo.Format.Value, _stream)).Return(_podcastFeed);
             if (throwErrorFromFeed)
             {
                 _podcastFeed.Stub(feed => feed.Episodes).Throw(new Exception("ERROR"));

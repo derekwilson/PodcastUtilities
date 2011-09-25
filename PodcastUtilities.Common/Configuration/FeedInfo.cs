@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace PodcastUtilities.Common.Configuration
-{
+{    
     /// <summary>
     /// configuration info for a podcast feed
     /// </summary>
@@ -15,6 +15,11 @@ namespace PodcastUtilities.Common.Configuration
         public FeedInfo(IControlFileGlobalDefaults controlFileGlobalDefaults)
         {
             _controlFileGlobalDefaults = controlFileGlobalDefaults;
+            Format = new DefaultableItem<PodcastFeedFormat>(_controlFileGlobalDefaults.GetDefaultFeedFormat);
+            MaximumDaysOld = new DefaultableItem<int>(_controlFileGlobalDefaults.GetDefaultMaximumDaysOld);
+            NamingStyle = new DefaultableItem<PodcastEpisodeNamingStyle>(_controlFileGlobalDefaults.GetDefaultNamingStyle);
+            DownloadStrategy = new DefaultableItem<PodcastEpisodeDownloadStrategy>(_controlFileGlobalDefaults.GetDefaultDownloadStrategy);
+            DeleteDownloadsDaysOld = new DefaultableItem<int>(_controlFileGlobalDefaults.GetDefaultDeleteDownloadsDaysOld);
         }
 
         /// <summary>
@@ -22,100 +27,30 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         public Uri Address { get; set; }
 
-        private PodcastFeedFormat? _format;
-
         /// <summary>
         /// the format the feed is in
         /// </summary>
-        public PodcastFeedFormat Format
-        {
-            get { return _format.GetValueOrDefault(_controlFileGlobalDefaults.DefaultFeedFormat); }
-            set { _format = value; }
-        }
-
-        private int? _maximumDaysOld;
+        public IDefaultableItem<PodcastFeedFormat> Format { get; set; }
 
         /// <summary>
         /// do not download podcasts that werre published before this number of days ago
         /// </summary>
-        public int MaximumDaysOld
-        {
-            get { return _maximumDaysOld.GetValueOrDefault(_controlFileGlobalDefaults.DefaultMaximumDaysOld); }
-            set { _maximumDaysOld = value; }
-        }
-
-        private PodcastEpisodeNamingStyle? _namingStyle;
+        public IDefaultableItem<int> MaximumDaysOld { get; set; }
 
         /// <summary>
         /// the naming style to use for episodes downloaded from the feed
         /// </summary>
-        public PodcastEpisodeNamingStyle NamingStyle
-        {
-            get { return _namingStyle.GetValueOrDefault(_controlFileGlobalDefaults.DefaultNamingStyle); }
-            set { _namingStyle = value; }
-        }
-
-        private PodcastEpisodeDownloadStrategy? _downloadStrategy;
+        public IDefaultableItem<PodcastEpisodeNamingStyle> NamingStyle { get; set; }
 
         /// <summary>
         /// the strategy to be used when downloading episodes
         /// </summary>
-        public PodcastEpisodeDownloadStrategy DownloadStrategy
-        {
-            get { return _downloadStrategy.GetValueOrDefault(_controlFileGlobalDefaults.DefaultDownloadStrategy); }
-            set { _downloadStrategy = value; }
-        }
-
-        private int? _deleteDownloadsDaysOld;
+        public IDefaultableItem<PodcastEpisodeDownloadStrategy> DownloadStrategy { get; set; }
 
         /// <summary>
         /// number of days before we delete a download
         /// </summary>
-        public int DeleteDownloadsDaysOld
-        {
-            get { return _deleteDownloadsDaysOld.GetValueOrDefault(_controlFileGlobalDefaults.DefaultDeleteDownloadsDaysOld); }
-            set { _deleteDownloadsDaysOld = value; }
-        }
-
-        /// <summary>
-        /// remove the Format, in other words revert to the global default
-        /// </summary>
-        public void RemoveFormat()
-        {
-            _format = null;
-        }
-
-        /// <summary>
-        /// remove the MaximumDaysOld, in other words revert to the global default
-        /// </summary>
-        public void RemoveMaximumDaysOld()
-        {
-            _maximumDaysOld = null;
-        }
-
-        /// <summary>
-        /// remove the NamingStyle, in other words revert to the global default
-        /// </summary>
-        public void RemoveNamingStyle()
-        {
-            _namingStyle = null;
-        }
-
-        /// <summary>
-        /// remove the DownloadStrategy, in other words revert to the global default
-        /// </summary>
-        public void RemoveDownloadStrategy()
-        {
-            _downloadStrategy = null;
-        }
-
-        /// <summary>
-        /// remove the DeleteDownloadsDaysOld, in other words revert to the global default
-        /// </summary>
-        public void RemoveDeleteDownloadsDaysOld()
-        {
-            _deleteDownloadsDaysOld = null;
-        }
+        public IDefaultableItem<int> DeleteDownloadsDaysOld { get; set;  }
 
         /// <summary>
         /// Creates a new object that is a copy of the current instance.
@@ -127,13 +62,29 @@ namespace PodcastUtilities.Common.Configuration
         public object Clone()
         {
             var copy = new FeedInfo(_controlFileGlobalDefaults) {Address = Address};
-            copy._downloadStrategy = _downloadStrategy;
-            copy._format = _format;
-            copy._maximumDaysOld = _maximumDaysOld;
-            copy._namingStyle = _namingStyle;
-            copy._deleteDownloadsDaysOld = _deleteDownloadsDaysOld;
+            if (DownloadStrategy.IsSet)
+            {
+                copy.DownloadStrategy.Value = DownloadStrategy.Value;
+            }
+            if (Format.IsSet)
+            {
+                copy.Format.Value = Format.Value;
+            }
+            if (MaximumDaysOld.IsSet)
+            {
+                copy.MaximumDaysOld.Value = MaximumDaysOld.Value;
+            }
+            if (NamingStyle.IsSet)
+            {
+                copy.NamingStyle.Value = NamingStyle.Value;
+            }
+            if (DeleteDownloadsDaysOld.IsSet)
+            {
+                copy.DeleteDownloadsDaysOld.Value = DeleteDownloadsDaysOld.Value;
+            }
 
             return copy;
         }
+
     }
 }

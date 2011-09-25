@@ -1,4 +1,5 @@
-﻿namespace PodcastUtilities.Common.Configuration
+﻿using System.Diagnostics.CodeAnalysis;
+namespace PodcastUtilities.Common.Configuration
 {
     /// <summary>
     /// the properties of the global section that are used to fill in missing values in podcasts and feeds
@@ -8,26 +9,31 @@
         /// <summary>
         /// the global default for feeds
         /// </summary>
-        int DefaultDeleteDownloadsDaysOld { get; }
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        int GetDefaultDeleteDownloadsDaysOld();
 
         /// <summary>
         /// the global default for feeds
         /// </summary>
-        PodcastEpisodeDownloadStrategy DefaultDownloadStrategy { get; }
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        PodcastEpisodeDownloadStrategy GetDefaultDownloadStrategy();
 
         /// <summary>
         /// the global default for feeds
         /// </summary>
-        PodcastFeedFormat DefaultFeedFormat { get; }
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        PodcastFeedFormat GetDefaultFeedFormat();
 
         /// <summary>
         /// the global default for feeds
         /// </summary>
-        int DefaultMaximumDaysOld { get; }
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        int GetDefaultMaximumDaysOld();
 
         /// <summary>
         /// the global default for feeds
         /// </summary>
-        PodcastEpisodeNamingStyle DefaultNamingStyle { get; }
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        PodcastEpisodeNamingStyle GetDefaultNamingStyle();
     }
 }

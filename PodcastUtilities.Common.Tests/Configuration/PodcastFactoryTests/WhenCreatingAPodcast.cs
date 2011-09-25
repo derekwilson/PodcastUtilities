@@ -50,10 +50,10 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastFactoryTests
             Assert.That(CreatedPodcast.Pattern, Is.EqualTo("*.blah"));
             Assert.That(CreatedPodcast.SortField, Is.EqualTo("name"));
             Assert.That(CreatedPodcast.AscendingSort, Is.True);
-            Assert.That(CreatedPodcast.Feed.Format, Is.EqualTo(PodcastFeedFormat.ATOM));
-            Assert.That(CreatedPodcast.Feed.NamingStyle, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime));
-            Assert.That(CreatedPodcast.Feed.DownloadStrategy, Is.EqualTo(PodcastEpisodeDownloadStrategy.HighTide));
-            Assert.That(CreatedPodcast.Feed.MaximumDaysOld, Is.EqualTo(33));
+            Assert.That(CreatedPodcast.Feed.Format.Value, Is.EqualTo(PodcastFeedFormat.ATOM));
+            Assert.That(CreatedPodcast.Feed.NamingStyle.Value, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime));
+            Assert.That(CreatedPodcast.Feed.DownloadStrategy.Value, Is.EqualTo(PodcastEpisodeDownloadStrategy.HighTide));
+            Assert.That(CreatedPodcast.Feed.MaximumDaysOld.Value, Is.EqualTo(33));
         }
     }
 }

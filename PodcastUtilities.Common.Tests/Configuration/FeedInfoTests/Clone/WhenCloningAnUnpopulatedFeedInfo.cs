@@ -24,11 +24,11 @@ namespace PodcastUtilities.Common.Tests.Configuration.FeedInfoTests.Clone
         public void ItShouldCloneTheFeed()
         {
             Assert.That(_clonedFeedInfo.Address.ToString(), Is.EqualTo("http://test.com/"));
-            Assert.That(_clonedFeedInfo.DeleteDownloadsDaysOld, Is.EqualTo(88));
-            Assert.That(_clonedFeedInfo.DownloadStrategy, Is.EqualTo(PodcastEpisodeDownloadStrategy.Latest));
-            Assert.That(_clonedFeedInfo.Format, Is.EqualTo(PodcastFeedFormat.ATOM));
-            Assert.That(_clonedFeedInfo.MaximumDaysOld, Is.EqualTo(99));
-            Assert.That(_clonedFeedInfo.NamingStyle, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime));
+            Assert.That(_clonedFeedInfo.DeleteDownloadsDaysOld.Value, Is.EqualTo(88));
+            Assert.That(_clonedFeedInfo.DownloadStrategy.Value, Is.EqualTo(PodcastEpisodeDownloadStrategy.Latest));
+            Assert.That(_clonedFeedInfo.Format.Value, Is.EqualTo(PodcastFeedFormat.ATOM));
+            Assert.That(_clonedFeedInfo.MaximumDaysOld.Value, Is.EqualTo(99));
+            Assert.That(_clonedFeedInfo.NamingStyle.Value, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime));
         }
     }
 }

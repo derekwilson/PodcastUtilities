@@ -18,12 +18,12 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
             _pocastInfo.Feed = new FeedInfo(_controlFile)
                                    {
                                        Address = new Uri("http://test.com"),
-                                       DeleteDownloadsDaysOld = 456,
-                                       DownloadStrategy = PodcastEpisodeDownloadStrategy.HighTide,
-                                       Format = PodcastFeedFormat.RSS,
-                                       MaximumDaysOld = 789,
-                                       NamingStyle = PodcastEpisodeNamingStyle.UrlFileName
                                    };
+            _pocastInfo.Feed.DeleteDownloadsDaysOld.Value = 456;
+            _pocastInfo.Feed.DownloadStrategy.Value = PodcastEpisodeDownloadStrategy.HighTide;
+            _pocastInfo.Feed.Format.Value = PodcastFeedFormat.RSS;
+            _pocastInfo.Feed.MaximumDaysOld.Value = 789;
+            _pocastInfo.Feed.NamingStyle.Value = PodcastEpisodeNamingStyle.UrlFileName;
         }
 
         protected override void When()
@@ -45,11 +45,11 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         public void ItShouldCloneTheFeed()
         {
             Assert.That(_clonedPodcast.Feed.Address.ToString(), Is.EqualTo("http://test.com/"));
-            Assert.That(_clonedPodcast.Feed.DeleteDownloadsDaysOld, Is.EqualTo(456));
-            Assert.That(_clonedPodcast.Feed.DownloadStrategy, Is.EqualTo(PodcastEpisodeDownloadStrategy.HighTide));
-            Assert.That(_clonedPodcast.Feed.Format, Is.EqualTo(PodcastFeedFormat.RSS));
-            Assert.That(_clonedPodcast.Feed.MaximumDaysOld, Is.EqualTo(789));
-            Assert.That(_clonedPodcast.Feed.NamingStyle, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileName));
+            Assert.That(_clonedPodcast.Feed.DeleteDownloadsDaysOld.Value, Is.EqualTo(456));
+            Assert.That(_clonedPodcast.Feed.DownloadStrategy.Value, Is.EqualTo(PodcastEpisodeDownloadStrategy.HighTide));
+            Assert.That(_clonedPodcast.Feed.Format.Value, Is.EqualTo(PodcastFeedFormat.RSS));
+            Assert.That(_clonedPodcast.Feed.MaximumDaysOld.Value, Is.EqualTo(789));
+            Assert.That(_clonedPodcast.Feed.NamingStyle.Value, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileName));
         }
     }
 }

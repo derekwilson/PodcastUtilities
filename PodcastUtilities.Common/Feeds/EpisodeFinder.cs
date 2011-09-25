@@ -42,7 +42,7 @@ namespace PodcastUtilities.Common.Feeds
         {
             var proposedFilename = podcastFeedItem.FileName;
 
-            switch (podcastInfo.Feed.NamingStyle)
+            switch (podcastInfo.Feed.NamingStyle.Value)
             {
                 case PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime:
                     proposedFilename = string.Format(CultureInfo.InvariantCulture, "{0}_{1}",
@@ -81,7 +81,7 @@ namespace PodcastUtilities.Common.Feeds
 
         private List<ISyncItem> ApplyDownloadStrategy(string stateKey, PodcastInfo podcastInfo, List<ISyncItem> episodesFound)
         {
-            switch (podcastInfo.Feed.DownloadStrategy)
+            switch (podcastInfo.Feed.DownloadStrategy.Value)
             {
                 case PodcastEpisodeDownloadStrategy.All:
                     return episodesFound;
@@ -133,14 +133,14 @@ namespace PodcastUtilities.Common.Feeds
 
                 try
                 {
-                    var feed = downloader.DownloadFeed(podcastInfo.Feed.Format, podcastInfo.Feed.Address);
+                    var feed = downloader.DownloadFeed(podcastInfo.Feed.Format.Value, podcastInfo.Feed.Address);
                     feed.StatusUpdate += StatusUpdate;
                     var episodes = feed.Episodes;
 
                     var oldestEpisodeToAccept = DateTime.MinValue;
-                    if (podcastInfo.Feed.MaximumDaysOld < int.MaxValue)
+                    if (podcastInfo.Feed.MaximumDaysOld.Value < int.MaxValue)
                     {
-                        oldestEpisodeToAccept = _timeProvider.UtcNow.AddDays(-podcastInfo.Feed.MaximumDaysOld);
+                        oldestEpisodeToAccept = _timeProvider.UtcNow.AddDays(-podcastInfo.Feed.MaximumDaysOld.Value);
                     }
 
                     foreach (IPodcastFeedItem podcastFeedItem in episodes)

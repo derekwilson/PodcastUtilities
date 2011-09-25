@@ -52,12 +52,12 @@ namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
             _feedAddress = "http://test";
 
             _feedInfo = new FeedInfo(_controlFile);
-            _feedInfo.Format = PodcastFeedFormat.RSS;
-            _feedInfo.NamingStyle = PodcastEpisodeNamingStyle.UrlFileName;
+            _feedInfo.Format.Value = PodcastFeedFormat.RSS;
+            _feedInfo.NamingStyle.Value = PodcastEpisodeNamingStyle.UrlFileName;
             _feedInfo.Address = new Uri(_feedAddress);
-            _feedInfo.MaximumDaysOld = int.MaxValue;
-            _feedInfo.DownloadStrategy = PodcastEpisodeDownloadStrategy.All;
-            _feedInfo.DeleteDownloadsDaysOld = int.MaxValue;
+            _feedInfo.MaximumDaysOld.Value = int.MaxValue;
+            _feedInfo.DownloadStrategy.Value = PodcastEpisodeDownloadStrategy.All;
+            _feedInfo.DeleteDownloadsDaysOld.Value = int.MaxValue;
 
             _rootFolder = "c:\\TestRoot";
             _podcastInfo = new PodcastInfo(_controlFile);
