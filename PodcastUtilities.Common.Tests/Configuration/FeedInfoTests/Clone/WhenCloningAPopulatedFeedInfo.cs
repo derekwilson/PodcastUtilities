@@ -26,13 +26,38 @@ namespace PodcastUtilities.Common.Tests.Configuration.FeedInfoTests.Clone
         }
 
         [Test]
-        public void ItShouldCloneTheFeed()
+        public void ItShouldCloneTheAddress()
         {
             Assert.That(_clonedFeedInfo.Address.ToString(), Is.EqualTo("http://test.com/"));
+        }
+
+        [Test]
+        public void ItShouldCloneTheDeleteDownloadsDaysOld()
+        {
             Assert.That(_clonedFeedInfo.DeleteDownloadsDaysOld.Value, Is.EqualTo(456));
+        }
+
+        [Test]
+        public void ItShouldCloneTheDownloadStrategy()
+        {
             Assert.That(_clonedFeedInfo.DownloadStrategy.Value, Is.EqualTo(PodcastEpisodeDownloadStrategy.HighTide));
+        }
+
+        [Test]
+        public void ItShouldCloneTheFormat()
+        {
             Assert.That(_clonedFeedInfo.Format.Value, Is.EqualTo(PodcastFeedFormat.RSS));
+        }
+
+        [Test]
+        public void ItShouldCloneTheMaximumDaysOld()
+        {
             Assert.That(_clonedFeedInfo.MaximumDaysOld.Value, Is.EqualTo(789));
+        }
+
+        [Test]
+        public void ItShouldCloneTheNamingStyle()
+        {
             Assert.That(_clonedFeedInfo.NamingStyle.Value, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileName));
         }
 
