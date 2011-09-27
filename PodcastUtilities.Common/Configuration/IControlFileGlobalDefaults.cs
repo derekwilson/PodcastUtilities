@@ -35,5 +35,17 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         PodcastEpisodeNamingStyle GetDefaultNamingStyle();
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        bool GetDefaultAscendingSort();
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        PodcastFileSortField GetDefaultSortField();
     }
 }

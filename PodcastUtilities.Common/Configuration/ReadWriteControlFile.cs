@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
     /// controlfile implementation that supports loading and saving
     /// </summary>
-    public class PersistentControlFile : BaseControlFile, IPersistentControlFile
+    public class ReadWriteControlFile : BaseControlFile, IReadWriteControlFile
     {
         /// <summary>
         /// pathname to the root folder to copy from when synchronising

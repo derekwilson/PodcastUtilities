@@ -1,11 +1,12 @@
 using System;
+using System.Xml.Serialization;
 
 namespace PodcastUtilities.Common.Configuration
 {
     /// <summary>
     /// an individual podcast
     /// </summary>
-    public interface IPodcastInfo : ICloneable
+    public interface IPodcastInfo : ICloneable, IXmlSerializable
     {
         /// <summary>
         /// the folder relative to the source root that contains the media for the podcast
@@ -20,12 +21,12 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// field to sort on "creationtime" to use the file created time anything else to use the file name
         /// </summary>
-        string SortField { get; set; }
+        IDefaultableItem<PodcastFileSortField> SortField { get; set; }
 
         /// <summary>
         /// true for an ascending sort, false for a descending
         /// </summary>
-        bool AscendingSort { get; set; }
+        IDefaultableItem<bool> AscendingSort { get; set; }
 
         /// <summary>
         /// maximum number of files to copy, -1 for unlimited

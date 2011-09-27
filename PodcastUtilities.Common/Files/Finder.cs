@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common.Files
@@ -37,12 +38,7 @@ namespace PodcastUtilities.Common.Files
         /// <param name="sortField">field to sort on</param>
         /// <param name="ascendingSort">true to sort ascending false to sort descending</param>
         /// <returns></returns>
-        public IList<IFileInfo> GetFiles(
-			string folderPath,
-			string pattern,
-			int maximumNumberOfFiles,
-			string sortField,
-			bool ascendingSort)
+        public IList<IFileInfo> GetFiles(string folderPath, string pattern, int maximumNumberOfFiles, PodcastFileSortField sortField, bool ascendingSort)
 		{
 			var directoryInfo = DirectoryInfoProvider.GetDirectoryInfo(folderPath);
 
@@ -79,7 +75,7 @@ namespace PodcastUtilities.Common.Files
         }
 
 
-        private IEnumerable<IFileInfo> GetSortedFiles(IDirectoryInfo src, string pattern, string sortField, bool ascendingSort)
+        private IEnumerable<IFileInfo> GetSortedFiles(IDirectoryInfo src, string pattern, PodcastFileSortField sortField, bool ascendingSort)
         {
             try
             {

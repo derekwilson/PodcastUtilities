@@ -19,23 +19,31 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
         }
 
         [Test]
-        public void ItShouldReadThePodcasts()
+        public void ItShouldGetThePodcasts()
         {
             Assert.That(ControlFile.GetPodcasts().Count(), Is.EqualTo(3));
+        }
 
+        [Test]
+        public void ItShouldReadPodcast1()
+        {
             Assert.That(ControlFile.GetPodcasts().ElementAt(0).Feed, Is.Null);
             Assert.That(ControlFile.GetPodcasts().ElementAt(0).Folder, Is.EqualTo("Test Match Special"));
             Assert.That(ControlFile.GetPodcasts().ElementAt(0).MaximumNumberOfFiles, Is.EqualTo(-1));
             Assert.That(ControlFile.GetPodcasts().ElementAt(0).Pattern, Is.EqualTo("*.mp3"));
-            Assert.That(ControlFile.GetPodcasts().ElementAt(0).SortField, Is.EqualTo("name"));
-            Assert.That(ControlFile.GetPodcasts().ElementAt(0).AscendingSort, Is.True);
+            Assert.That(ControlFile.GetPodcasts().ElementAt(0).SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
+            Assert.That(ControlFile.GetPodcasts().ElementAt(0).AscendingSort.Value, Is.True);
+        }
 
+        [Test]
+        public void ItShouldReadPodcast2()
+        {
             Assert.That(ControlFile.GetPodcasts().ElementAt(1).Feed.Address.ToString(), Is.EqualTo("http://www.hanselminutes.com/hanselminutes_MP3Direct.xml"));
             Assert.That(ControlFile.GetPodcasts().ElementAt(1).Folder, Is.EqualTo("Hanselminutes"));
             Assert.That(ControlFile.GetPodcasts().ElementAt(1).MaximumNumberOfFiles, Is.EqualTo(34));
             Assert.That(ControlFile.GetPodcasts().ElementAt(1).Pattern, Is.EqualTo("*.mp3"));
-            Assert.That(ControlFile.GetPodcasts().ElementAt(1).SortField, Is.EqualTo("fred"));
-            Assert.That(ControlFile.GetPodcasts().ElementAt(1).AscendingSort, Is.False);
+            Assert.That(ControlFile.GetPodcasts().ElementAt(1).SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
+            Assert.That(ControlFile.GetPodcasts().ElementAt(1).AscendingSort.Value, Is.False);
         }
 
         [Test]
