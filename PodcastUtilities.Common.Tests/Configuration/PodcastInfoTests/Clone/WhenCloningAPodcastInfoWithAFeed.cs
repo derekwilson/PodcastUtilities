@@ -9,11 +9,11 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         protected override void GivenThat()
         {
             base.GivenThat();
-            _pocastInfo.AscendingSort = true;
+            _pocastInfo.AscendingSort.Value = true;
             _pocastInfo.Folder = "FOLDER";
             _pocastInfo.MaximumNumberOfFiles = 123;
             _pocastInfo.Pattern = "PATTERN";
-            _pocastInfo.SortField = "SORT";
+            _pocastInfo.SortField.Value = PodcastFileSortField.FileName;
 
             _pocastInfo.Feed = new FeedInfo(_controlFile)
                                    {
@@ -32,23 +32,62 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         }
 
         [Test]
-        public void ItShouldCloneThePodcast()
+        public void ItShouldCloneThePodcastAscendingSort()
         {
-            Assert.That(_clonedPodcast.AscendingSort, Is.EqualTo(true));
-            Assert.That(_clonedPodcast.Folder, Is.EqualTo("FOLDER"));
-            Assert.That(_clonedPodcast.MaximumNumberOfFiles, Is.EqualTo(123));
-            Assert.That(_clonedPodcast.Pattern, Is.EqualTo("PATTERN"));
-            Assert.That(_clonedPodcast.SortField, Is.EqualTo("SORT"));
+            Assert.That(_clonedPodcast.AscendingSort.Value, Is.EqualTo(true));
         }
 
         [Test]
-        public void ItShouldCloneTheFeed()
+        public void ItShouldCloneThePodcastFolder()
+        {
+            Assert.That(_clonedPodcast.Folder, Is.EqualTo("FOLDER"));
+        }
+
+        [Test]
+        public void ItShouldCloneThePodcastMaximumNumberOfFiles()
+        {
+            Assert.That(_clonedPodcast.MaximumNumberOfFiles, Is.EqualTo(123));
+        }
+
+        [Test]
+        public void ItShouldCloneThePodcastSortField()
+        {
+            Assert.That(_clonedPodcast.SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
+        }
+
+        [Test]
+        public void ItShouldCloneTheFeedAddress()
         {
             Assert.That(_clonedPodcast.Feed.Address.ToString(), Is.EqualTo("http://test.com/"));
+        }
+
+        [Test]
+        public void ItShouldCloneTheFeedDeleteDownloadsDaysOld()
+        {
             Assert.That(_clonedPodcast.Feed.DeleteDownloadsDaysOld.Value, Is.EqualTo(456));
+        }
+
+        [Test]
+        public void ItShouldCloneTheFeedDownloadStrategy()
+        {
             Assert.That(_clonedPodcast.Feed.DownloadStrategy.Value, Is.EqualTo(PodcastEpisodeDownloadStrategy.HighTide));
+        }
+
+        [Test]
+        public void ItShouldCloneTheFeedFormat()
+        {
             Assert.That(_clonedPodcast.Feed.Format.Value, Is.EqualTo(PodcastFeedFormat.RSS));
+        }
+
+        [Test]
+        public void ItShouldCloneTheFeedMaximumDaysOld()
+        {
             Assert.That(_clonedPodcast.Feed.MaximumDaysOld.Value, Is.EqualTo(789));
+        }
+
+        [Test]
+        public void ItShouldCloneTheFeedNamingStyle()
+        {
             Assert.That(_clonedPodcast.Feed.NamingStyle.Value, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileName));
         }
     }

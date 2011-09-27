@@ -106,6 +106,24 @@ namespace PodcastUtilities.Common.Configuration
         }
 
         /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public bool GetDefaultAscendingSort()
+        {
+            return !_sortDirection.ToUpperInvariant().StartsWith("DESC", StringComparison.Ordinal);
+        }
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public PodcastFileSortField GetDefaultSortField()
+        {
+            return ReadSortField(_sortField);
+        }
+
+        /// <summary>
         /// pathname to the root folder to copy from when synchronising
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
@@ -330,14 +348,28 @@ namespace PodcastUtilities.Common.Configuration
                 foreach (XmlNode podcastNode in podcastNodes)
                 {
                     var podcastInfo = new PodcastInfo(this)
+                                          {
+                                              Feed = ReadFeedInfo(podcastNode.SelectSingleNode("feed")),
+                                              Folder = GetNodeText(podcastNode, "folder"),
+                                              Pattern = GetNodeText(podcastNode, "pattern"),
+                                              MaximumNumberOfFiles =
+                                                  Convert.ToInt32(GetNodeTextOrDefault(podcastNode, "number", "-1"),
+                                                                  CultureInfo.InvariantCulture)
+                                          };
+
+                    var nodeText = GetNodeTextOrDefault(podcastNode, "sortdirection", "");
+                    if (!string.IsNullOrEmpty(nodeText))
                     {
-                        Feed = ReadFeedInfo(podcastNode.SelectSingleNode("feed")),
-                        Folder = GetNodeText(podcastNode, "folder"),
-                        Pattern = GetNodeText(podcastNode, "pattern"),
-                        MaximumNumberOfFiles = Convert.ToInt32(GetNodeTextOrDefault(podcastNode, "number", "-1"), CultureInfo.InvariantCulture),
-                        SortField = GetNodeTextOrDefault(podcastNode, "sortfield", _sortField),
-                        AscendingSort = !(GetNodeTextOrDefault(podcastNode, "sortdirection", _sortDirection).ToUpperInvariant().StartsWith("DESC", StringComparison.Ordinal))
-                    };
+                        podcastInfo.AscendingSort.Value =
+                            !(nodeText.ToUpperInvariant().StartsWith("DESC", StringComparison.Ordinal));
+                    }
+
+                    nodeText = GetNodeTextOrDefault(podcastNode, "sortfield", "");
+                    if (!string.IsNullOrEmpty(nodeText))
+                    {
+                        podcastInfo.SortField.Value = ReadSortField(nodeText);
+                    }
+
 
                     Podcasts.Add(podcastInfo);
                 }
@@ -355,37 +387,48 @@ namespace PodcastUtilities.Common.Configuration
                 Address = new Uri(GetNodeText(feedNode, "url")),
             };
 
-            var nodeTest = GetNodeTextOrDefault(feedNode, "format", "");
-            if (!string.IsNullOrEmpty(nodeTest))
+            var nodeText = GetNodeTextOrDefault(feedNode, "format", "");
+            if (!string.IsNullOrEmpty(nodeText))
             {
-                newFeed.Format.Value = ReadFeedFormat(nodeTest);
+                newFeed.Format.Value = ReadFeedFormat(nodeText);
             }
 
-            nodeTest = GetNodeTextOrDefault(feedNode, "namingStyle", "");
-            if (!string.IsNullOrEmpty(nodeTest))
+            nodeText = GetNodeTextOrDefault(feedNode, "namingStyle", "");
+            if (!string.IsNullOrEmpty(nodeText))
             {
-                newFeed.NamingStyle.Value = ReadFeedEpisodeNamingStyle(nodeTest);
+                newFeed.NamingStyle.Value = ReadFeedEpisodeNamingStyle(nodeText);
             }
 
-            nodeTest = GetNodeTextOrDefault(feedNode, "downloadStrategy", "");
-            if (!string.IsNullOrEmpty(nodeTest))
+            nodeText = GetNodeTextOrDefault(feedNode, "downloadStrategy", "");
+            if (!string.IsNullOrEmpty(nodeText))
             {
-                newFeed.DownloadStrategy.Value = ReadFeedEpisodeDownloadStrategy(nodeTest);
+                newFeed.DownloadStrategy.Value = ReadFeedEpisodeDownloadStrategy(nodeText);
             }
 
-            nodeTest = GetNodeTextOrDefault(feedNode, "maximumDaysOld", "");
-            if (!string.IsNullOrEmpty(nodeTest))
+            nodeText = GetNodeTextOrDefault(feedNode, "maximumDaysOld", "");
+            if (!string.IsNullOrEmpty(nodeText))
             {
                 newFeed.MaximumDaysOld.Value = ReadMaximumDaysOld(feedNode);
             }
 
-            nodeTest = GetNodeTextOrDefault(feedNode, "deleteDownloadsDaysOld", "");
-            if (!string.IsNullOrEmpty(nodeTest))
+            nodeText = GetNodeTextOrDefault(feedNode, "deleteDownloadsDaysOld", "");
+            if (!string.IsNullOrEmpty(nodeText))
             {
                 newFeed.DeleteDownloadsDaysOld.Value = ReadDeleteDownloadsDaysOld(feedNode);
             }
 
             return newFeed;
+        }
+
+        private static PodcastFileSortField ReadSortField(string sortField)
+        {
+            switch (sortField.ToUpperInvariant())
+            {
+                case "CREATIONTIME":
+                    return PodcastFileSortField.CreationTime;
+                default:
+                    return PodcastFileSortField.FileName;
+            }
         }
 
         private static PodcastFeedFormat ReadFeedFormat(string format)

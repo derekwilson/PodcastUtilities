@@ -24,18 +24,19 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 			               	{
 			               		Folder = "pod1",
 			               		Pattern = "*.mp3",
-			               		MaximumNumberOfFiles = 2,
-			               		SortField = "name",
-			               		AscendingSort = true
+			               		MaximumNumberOfFiles = 2
 			               	};
+		    podcast1.AscendingSort.Value = true;
+		    podcast1.SortField.Value = PodcastFileSortField.FileName;
+
 			var podcast2 = new PodcastInfo(ControlFile)
 			               	{
 			               		Folder = "AnotherPodcast",
 			               		Pattern = "*.wma",
-			               		MaximumNumberOfFiles = 3,
-			               		SortField = "creationtime",
-			               		AscendingSort = false
+			               		MaximumNumberOfFiles = 3
 			               	};
+            podcast2.AscendingSort.Value = false;
+            podcast2.SortField.Value = PodcastFileSortField.CreationTime;
 
 			PodcastFiles1 = new List<IFileInfo> {GenerateMock<IFileInfo>(), GenerateMock<IFileInfo>()};
 			PodcastFiles2 = new List<IFileInfo> {GenerateMock<IFileInfo>(), GenerateMock<IFileInfo>(), GenerateMock<IFileInfo>()};
@@ -50,9 +51,9 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 			ControlFile.Stub(c => c.GetFreeSpaceToLeaveOnDestination())
 				.Return(500);
 
-			FileFinder.Stub(f => f.GetFiles(@"c:\media\blah\pod1", "*.mp3", 2, "name", true))
+            FileFinder.Stub(f => f.GetFiles(@"c:\media\blah\pod1", "*.mp3", 2, PodcastFileSortField.FileName, true))
 				.Return(PodcastFiles1);
-			FileFinder.Stub(f => f.GetFiles(@"c:\media\blah\AnotherPodcast", "*.wma", 3, "creationtime", false))
+            FileFinder.Stub(f => f.GetFiles(@"c:\media\blah\AnotherPodcast", "*.wma", 3, PodcastFileSortField.CreationTime, false))
 				.Return(PodcastFiles2);
 
 			FileCopier.Stub(c => c.CopyFilesToTarget(null, null, null, 0, false))
@@ -68,9 +69,9 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 		[Test]
 		public void ItShouldFindTheSourceFilesForEachPodcast()
 		{
-			FileFinder.AssertWasCalled(f => f.GetFiles(@"c:\media\blah\pod1", "*.mp3", 2, "name", true));
+            FileFinder.AssertWasCalled(f => f.GetFiles(@"c:\media\blah\pod1", "*.mp3", 2, PodcastFileSortField.FileName, true));
 
-			FileFinder.AssertWasCalled(f => f.GetFiles(@"c:\media\blah\AnotherPodcast", "*.wma", 3, "creationtime", false));
+            FileFinder.AssertWasCalled(f => f.GetFiles(@"c:\media\blah\AnotherPodcast", "*.wma", 3, PodcastFileSortField.CreationTime, false));
 		}
 
 		[Test]

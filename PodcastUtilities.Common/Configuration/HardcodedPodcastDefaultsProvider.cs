@@ -16,9 +16,9 @@
         ///<summary>
         /// Default sort field
         ///</summary>
-        public string SortField
+        public PodcastFileSortField SortField
         {
-            get { return "name"; }
+            get { return PodcastFileSortField.FileName; }
         }
 
         ///<summary>

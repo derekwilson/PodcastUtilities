@@ -6,7 +6,7 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
     /// this object represents the xml control file
     /// </summary>
-    public interface IPersistentControlFile
+    public interface IReadWriteControlFile
     {
         /// <summary>
         /// pathname to the root folder to copy from when synchronising

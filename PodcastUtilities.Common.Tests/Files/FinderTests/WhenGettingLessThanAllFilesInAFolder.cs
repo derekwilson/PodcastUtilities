@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using PodcastUtilities.Common.Configuration;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.Files.FinderTests
@@ -7,7 +8,7 @@ namespace PodcastUtilities.Common.Tests.Files.FinderTests
 	{
 		protected override void When()
 		{
-			FoundFiles = FileFinder.GetFiles(@"c:\blah", "*.mp3", 2, "name", true);
+            FoundFiles = FileFinder.GetFiles(@"c:\blah", "*.mp3", 2, PodcastFileSortField.FileName, true);
 		}
 
 		[Test]
@@ -26,8 +27,8 @@ namespace PodcastUtilities.Common.Tests.Files.FinderTests
 		public void ItShouldSortTheFiles()
 		{
 			FileSorter.AssertWasCalled(
-				s => s.Sort(null, "name", true),
-				o => o.Constraints(Rhino.Mocks.Constraints.Property.Value("Count", 3), Rhino.Mocks.Constraints.Is.Equal("name"), Rhino.Mocks.Constraints.Is.Equal(true)));
+                s => s.Sort(null, PodcastFileSortField.FileName, true),
+                o => o.Constraints(Rhino.Mocks.Constraints.Property.Value("Count", 3), Rhino.Mocks.Constraints.Is.Equal(PodcastFileSortField.FileName), Rhino.Mocks.Constraints.Is.Equal(true)));
 		}
 
 		[Test]

@@ -1,11 +1,12 @@
 using System;
+using System.Xml.Serialization;
 
 namespace PodcastUtilities.Common.Configuration
 {
     /// <summary>
     /// configuration info for a podcast feed
     /// </summary>
-    public interface IFeedInfo : ICloneable
+    public interface IFeedInfo : ICloneable, IXmlSerializable
     {
         /// <summary>
         /// the address of the podcast feed

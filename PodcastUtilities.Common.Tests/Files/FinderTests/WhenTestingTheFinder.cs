@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Files;
 using PodcastUtilities.Common.Platform;
 using Rhino.Mocks;
@@ -42,7 +43,7 @@ namespace PodcastUtilities.Common.Tests.Files.FinderTests
 				.IgnoreArguments()
 				.Return(DirectoryInfo);
 
-		    FileSorter.Stub(finder => finder.Sort(FilesInDirectory, "name", true)).Return(FilesInDirectory);
+            FileSorter.Stub(finder => finder.Sort(FilesInDirectory, PodcastFileSortField.FileName, true)).Return(FilesInDirectory);
 
 			FileFinder = new Finder(FileSorter, DirectoryInfoProvider);
 		}

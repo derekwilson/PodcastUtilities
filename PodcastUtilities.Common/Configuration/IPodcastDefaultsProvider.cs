@@ -12,7 +12,7 @@ namespace PodcastUtilities.Common.Configuration
         ///<summary>
         /// Default sort field
         ///</summary>
-        string SortField { get; }
+        PodcastFileSortField SortField { get; }
         ///<summary>
         /// Default sort direction
         ///</summary>

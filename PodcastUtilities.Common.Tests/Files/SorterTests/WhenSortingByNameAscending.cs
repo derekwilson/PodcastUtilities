@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.Common.Tests.Files.SorterTests
 {
@@ -6,7 +7,7 @@ namespace PodcastUtilities.Common.Tests.Files.SorterTests
 	{
 		protected override void When()
 		{
-            SortedFiles = FileSorter.Sort(OriginalFiles, "name", true);
+            SortedFiles = FileSorter.Sort(OriginalFiles, PodcastFileSortField.FileName, true);
 		}
 
 		[Test]

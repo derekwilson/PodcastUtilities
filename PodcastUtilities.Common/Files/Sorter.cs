@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common.Files
@@ -19,13 +20,13 @@ namespace PodcastUtilities.Common.Files
 	    /// <param name="files">list of abstract files</param>
 	    /// <param name="sortField">field to sort on "creationtime" to use the file created time anything else to use the file name</param>
 	    /// <param name="ascendingSort">true to sort ascending false to sort descending</param>
-        public IList<IFileInfo> Sort(IEnumerable<IFileInfo> files, string sortField, bool ascendingSort)
+	    public IList<IFileInfo> Sort(IEnumerable<IFileInfo> files, PodcastFileSortField sortField, bool ascendingSort)
 		{
             List<IFileInfo> sortedFiles = new List<IFileInfo>(files);
 
-			switch (sortField.ToUpperInvariant())
+			switch (sortField)
 			{
-				case "CREATIONTIME":
+				case PodcastFileSortField.CreationTime:
                     sortedFiles.Sort((f1, f2) => f1.CreationTime.CompareTo(f2.CreationTime));
 					break;
 

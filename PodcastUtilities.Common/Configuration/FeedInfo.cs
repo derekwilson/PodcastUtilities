@@ -9,7 +9,7 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
     /// configuration info for a podcast feed
     /// </summary>
-    public class FeedInfo : IFeedInfo, IXmlSerializable
+    public class FeedInfo : IFeedInfo
     {
         private readonly IControlFileGlobalDefaults _controlFileGlobalDefaults;
 

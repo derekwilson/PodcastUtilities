@@ -66,8 +66,8 @@ namespace PodcastUtilities.Common.Files
 						podcastSourcePath,
 						podcast.Pattern,
 						podcast.MaximumNumberOfFiles,
-						podcast.SortField,
-						podcast.AscendingSort);
+						podcast.SortField.Value,
+						podcast.AscendingSort.Value);
 
 				FileRemover.RemoveUnwantedFiles(podcastSourceFiles, podcastDestinationPath, podcast.Pattern, whatIf);
 
