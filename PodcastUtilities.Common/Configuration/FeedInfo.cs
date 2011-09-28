@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
+using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -66,27 +68,52 @@ namespace PodcastUtilities.Common.Configuration
         /// <filterpriority>2</filterpriority>
         public object Clone()
         {
-            var copy = new FeedInfo(_controlFileGlobalDefaults) {Address = Address};
-            if (DownloadStrategy.IsSet)
-            {
-                copy.DownloadStrategy.Value = DownloadStrategy.Value;
-            }
-            if (Format.IsSet)
-            {
-                copy.Format.Value = Format.Value;
-            }
-            if (MaximumDaysOld.IsSet)
-            {
-                copy.MaximumDaysOld.Value = MaximumDaysOld.Value;
-            }
-            if (NamingStyle.IsSet)
-            {
-                copy.NamingStyle.Value = NamingStyle.Value;
-            }
-            if (DeleteDownloadsDaysOld.IsSet)
-            {
-                copy.DeleteDownloadsDaysOld.Value = DeleteDownloadsDaysOld.Value;
-            }
+            XmlWriterSettings writeSettings = new XmlWriterSettings();
+            writeSettings.OmitXmlDeclaration = true;
+            writeSettings.ConformanceLevel = ConformanceLevel.Fragment;
+            writeSettings.CloseOutput = false;
+            writeSettings.Encoding = Encoding.UTF8;
+
+            MemoryStream memoryStream = new MemoryStream();
+            var xmlWriter = XmlWriter.Create(memoryStream, writeSettings);
+
+            // simulate the behaviour of XmlSerialisation
+            xmlWriter.WriteStartElement("feed");
+            this.WriteXml(xmlWriter);
+            xmlWriter.WriteEndElement();
+
+            xmlWriter.Flush(); 
+            memoryStream.Position = 0;
+
+            XmlReaderSettings readSettings = new XmlReaderSettings();
+            readSettings.ConformanceLevel = ConformanceLevel.Fragment;
+            var reader = XmlReader.Create(memoryStream, readSettings);
+
+            var copy = new FeedInfo(_controlFileGlobalDefaults);
+
+            copy.ReadXml(reader);
+
+            //var copy = new FeedInfo(_controlFileGlobalDefaults) {Address = Address};
+            //if (DownloadStrategy.IsSet)
+            //{
+            //    copy.DownloadStrategy.Value = DownloadStrategy.Value;
+            //}
+            //if (Format.IsSet)
+            //{
+            //    copy.Format.Value = Format.Value;
+            //}
+            //if (MaximumDaysOld.IsSet)
+            //{
+            //    copy.MaximumDaysOld.Value = MaximumDaysOld.Value;
+            //}
+            //if (NamingStyle.IsSet)
+            //{
+            //    copy.NamingStyle.Value = NamingStyle.Value;
+            //}
+            //if (DeleteDownloadsDaysOld.IsSet)
+            //{
+            //    copy.DeleteDownloadsDaysOld.Value = DeleteDownloadsDaysOld.Value;
+            //}
 
             return copy;
         }
@@ -109,7 +136,55 @@ namespace PodcastUtilities.Common.Configuration
         ///                 </param>
         public void ReadXml(XmlReader reader)
         {
-            throw new NotImplementedException();
+            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "feed")
+            {
+                reader.Read(); // Skip ahead to next node
+                var element = reader.MoveToContent();
+                while (element != XmlNodeType.None)
+                {
+                    if (element == XmlNodeType.EndElement && reader.LocalName == "feed")
+                    {
+                        break;
+                    }
+                    if (reader.IsStartElement())
+                    {
+                        var elementName = reader.LocalName;
+                        reader.Read();
+                        ProcessFeedElements(elementName, reader.Value.Trim());
+                        reader.Read();
+                    }
+                    else
+                    {
+                        reader.Read();
+                    }
+                    element = reader.MoveToContent();
+                }
+            }
+        }
+
+        private void ProcessFeedElements(string localName, string content)
+        {
+            switch (localName)
+            {
+                case "url":
+                    Address = new Uri(content);
+                    break;
+                case "downloadStrategy":
+                    DownloadStrategy.Value = ReadFeedEpisodeDownloadStrategy(content);
+                    break;
+                case "format":
+                    Format.Value = ReadFeedFormat(content);
+                    break;
+                case "maximumDaysOld":
+                    MaximumDaysOld.Value = Convert.ToInt32(content,CultureInfo.InvariantCulture);
+                    break;
+                case "namingStyle":
+                    NamingStyle.Value = ReadFeedEpisodeNamingStyle(content);
+                    break;
+                case "deleteDownloadsDaysOld":
+                    DeleteDownloadsDaysOld.Value = Convert.ToInt32(content,CultureInfo.InvariantCulture);
+                    break;
+            }
         }
 
         /// <summary>
@@ -119,14 +194,17 @@ namespace PodcastUtilities.Common.Configuration
         ///                 </param>
         public void WriteXml(XmlWriter writer)
         {
-            writer.WriteElementString("url", Address.ToString());
+            if (Address != null)
+            {
+                writer.WriteElementString("url", Address.ToString());
+            }
             if (DownloadStrategy.IsSet)
             {
-                writer.WriteElementString("downloadStrategy", WriteStrategy(DownloadStrategy));
+                writer.WriteElementString("downloadStrategy", WriteFeedEpisodeDownloadStrategy(DownloadStrategy));
             }
             if (Format.IsSet)
             {
-                writer.WriteElementString("format", WriteFormat(Format));
+                writer.WriteElementString("format", WriteFeedFormat(Format));
             }
             if (MaximumDaysOld.IsSet)
             {
@@ -134,7 +212,7 @@ namespace PodcastUtilities.Common.Configuration
             }
             if (NamingStyle.IsSet)
             {
-                writer.WriteElementString("namingStyle", WriteNamingStyle(NamingStyle));
+                writer.WriteElementString("namingStyle", WriteFeedEpisodeNamingStyle(NamingStyle));
             }
             if (DeleteDownloadsDaysOld.IsSet)
             {
@@ -142,7 +220,32 @@ namespace PodcastUtilities.Common.Configuration
             }
         }
 
-        private static string WriteNamingStyle(IDefaultableItem<PodcastEpisodeNamingStyle> namingStyle)
+        /// <summary>
+        /// parse the feed naming style
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        public static PodcastEpisodeNamingStyle ReadFeedEpisodeNamingStyle(string format)
+        {
+            switch (format.ToUpperInvariant())
+            {
+                case "PUBDATE_URL":
+                    return PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime;
+                case "PUBDATE_TITLE_URL":
+                    return PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime;
+                case "PUBDATE_FOLDER_TITLE_URL":
+                    return PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder;
+                case "ETITLE":
+                    return PodcastEpisodeNamingStyle.EpisodeTitle;
+                case "PUBDATE_ETITLE":
+                    return PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime;
+                default:
+                    return PodcastEpisodeNamingStyle.UrlFileName;
+
+            }
+        }
+
+        private static string WriteFeedEpisodeNamingStyle(IDefaultableItem<PodcastEpisodeNamingStyle> namingStyle)
         {
             switch (namingStyle.Value)
             {
@@ -163,7 +266,28 @@ namespace PodcastUtilities.Common.Configuration
             }
         }
 
-        private static string WriteStrategy(IDefaultableItem<PodcastEpisodeDownloadStrategy> downloadStrategy)
+        /// <summary>
+        /// parse the download strategy
+        /// </summary>
+        /// <param name="strategy"></param>
+        /// <returns></returns>
+        public static PodcastEpisodeDownloadStrategy ReadFeedEpisodeDownloadStrategy(string strategy)
+        {
+            switch (strategy.ToUpperInvariant())
+            {
+                case "HIGH_TIDE":
+                    return PodcastEpisodeDownloadStrategy.HighTide;
+                case "ALL":
+                    return PodcastEpisodeDownloadStrategy.All;
+                case "LATEST":
+                    return PodcastEpisodeDownloadStrategy.Latest;
+                default:
+                    return PodcastEpisodeDownloadStrategy.All;
+
+            }
+        }
+
+        private static string WriteFeedEpisodeDownloadStrategy(IDefaultableItem<PodcastEpisodeDownloadStrategy> downloadStrategy)
         {
             switch (downloadStrategy.Value)
             {
@@ -178,7 +302,22 @@ namespace PodcastUtilities.Common.Configuration
             }
         }
 
-        private static string WriteFormat(IDefaultableItem<PodcastFeedFormat> format)
+        /// <summary>
+        /// parse the feed format
+        /// </summary>
+        public static PodcastFeedFormat ReadFeedFormat(string format)
+        {
+            switch (format.ToUpperInvariant())
+            {
+                case "RSS":
+                    return PodcastFeedFormat.RSS;
+                case "ATOM":
+                    return PodcastFeedFormat.ATOM;
+            }
+            throw new ControlFileValueFormatException(string.Format(CultureInfo.InvariantCulture, "{0} is not a valid value for the feed format", format));
+        }
+
+        private static string WriteFeedFormat(IDefaultableItem<PodcastFeedFormat> format)
         {
             switch (format.Value)
             {
