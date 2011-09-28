@@ -151,12 +151,8 @@ namespace PodcastUtilities.Common.Configuration
                         var elementName = reader.LocalName;
                         reader.Read();
                         ProcessFeedElements(elementName, reader.Value.Trim());
-                        reader.Read();
                     }
-                    else
-                    {
-                        reader.Read();
-                    }
+                    reader.Read();
                     element = reader.MoveToContent();
                 }
             }
