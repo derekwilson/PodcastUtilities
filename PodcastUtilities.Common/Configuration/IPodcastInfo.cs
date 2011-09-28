@@ -37,5 +37,10 @@ namespace PodcastUtilities.Common.Configuration
         /// the configuration info for the feed
         /// </summary>
         IFeedInfo Feed { get; set; }
+
+        /// <summary>
+        /// create a feed in the podcast
+        /// </summary>
+        void CreateFeed();
     }
 }

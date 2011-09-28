@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -129,7 +130,7 @@ namespace PodcastUtilities.Common.Configuration
             }
             if (MaximumDaysOld.IsSet)
             {
-                writer.WriteElementString("maximumDaysOld", MaximumDaysOld.Value.ToString());
+                writer.WriteElementString("maximumDaysOld", MaximumDaysOld.Value.ToString(CultureInfo.InvariantCulture));
             }
             if (NamingStyle.IsSet)
             {
@@ -137,7 +138,7 @@ namespace PodcastUtilities.Common.Configuration
             }
             if (DeleteDownloadsDaysOld.IsSet)
             {
-                writer.WriteElementString("deleteDownloadsDaysOld", DeleteDownloadsDaysOld.Value.ToString());
+                writer.WriteElementString("deleteDownloadsDaysOld", DeleteDownloadsDaysOld.Value.ToString(CultureInfo.InvariantCulture));
             }
         }
 

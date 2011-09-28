@@ -25,7 +25,11 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 
             ViewModel.Podcasts.Add(new PodcastViewModel(new PodcastInfo(ControlFile)));
 
-            CreatedPodcast = new PodcastInfo(ControlFile);
+            CreatedPodcast = new PodcastInfo(ControlFile)
+                                 {
+                                     Folder = "created",
+                                     Feed = new FeedInfo(ControlFile)
+                                 };
 
             PodcastFactory.Stub(f => f.CreatePodcast(null))
                 .Return(CreatedPodcast);

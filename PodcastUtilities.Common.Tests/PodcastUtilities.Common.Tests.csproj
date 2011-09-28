@@ -96,10 +96,13 @@
     <Compile Include="Configuration\FeedInfoTests\Clone\WhenCloningAPopulatedFeedInfo.cs" />
     <Compile Include="Configuration\FeedInfoTests\Serialisation\Write\WhenWritingAFeedInfo.cs" />
     <Compile Include="Configuration\FeedInfoTests\Serialisation\Write\WhenWritingAFullyPopulatedFeedInfo.cs" />
-    <Compile Include="Configuration\FeedInfoTests\Serialisation\Write\WhenWritingAnEmptyFeedInfo.cs" />
+    <Compile Include="Configuration\FeedInfoTests\Serialisation\Write\WhenWritingAnUnpopulatedFeedInfo.cs" />
     <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfo.cs" />
     <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfoWithAFeed.cs" />
     <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfoWithoutAFeed.cs" />
+    <Compile Include="Configuration\PodcastInfoTests\Serialisation\Write\WhenWritingAnUnpopulatedPodcastInfo.cs" />
+    <Compile Include="Configuration\PodcastInfoTests\Serialisation\Write\WhenWritingAPodcastInfo.cs" />
+    <Compile Include="Configuration\PodcastInfoTests\Serialisation\Write\WhenWritingAPopulatedPodcastInfo.cs" />
     <Compile Include="DisplayFormatterTests\WhenTestingTheRenderFileSizeDisplayFormatter.cs" />
     <Compile Include="Exceptions\DownloaderExceptionTests\WhenCreatingAnException.cs" />
     <Compile Include="Exceptions\DownloaderExceptionTests\WhenCreatingAnExceptionWithAnInnerException.cs" />

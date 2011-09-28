@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Xml;
 using System.Xml.Schema;
 
@@ -16,7 +17,6 @@ namespace PodcastUtilities.Common.Configuration
 	    ///</summary>
 	    public PodcastInfo(IControlFileGlobalDefaults controlFileGlobalDefaults)
         {
-            Feed = new FeedInfo(controlFileGlobalDefaults);
             _controlFileGlobalDefaults = controlFileGlobalDefaults;
             AscendingSort = new DefaultableItem<bool>(_controlFileGlobalDefaults.GetDefaultAscendingSort);
             SortField = new DefaultableItem<PodcastFileSortField>(_controlFileGlobalDefaults.GetDefaultSortField);
@@ -46,6 +46,14 @@ namespace PodcastUtilities.Common.Configuration
         /// the configuration info for the feed
         /// </summary>
         public IFeedInfo Feed { get; set; }
+
+	    /// <summary>
+	    /// create a feed in the podcast
+	    /// </summary>
+	    public void CreateFeed()
+	    {
+            Feed = new FeedInfo(_controlFileGlobalDefaults);
+        }
 
 	    /// <summary>
 	    /// Creates a new object that is a copy of the current instance.
@@ -104,7 +112,41 @@ namespace PodcastUtilities.Common.Configuration
 	    ///                 </param>
 	    public void WriteXml(XmlWriter writer)
 	    {
-	        throw new NotImplementedException();
+            writer.WriteElementString("folder", Folder);
+            writer.WriteElementString("pattern", Pattern);
+            writer.WriteElementString("number", MaximumNumberOfFiles.ToString(CultureInfo.InvariantCulture));
+            if (SortField.IsSet)
+            {
+                writer.WriteElementString("sortfield", WriteSortField(SortField));
+            }
+            if (AscendingSort.IsSet)
+            {
+                writer.WriteElementString("sortdirection", WriteSortDirection(AscendingSort));
+            }
+            if (Feed != null)
+            {
+                Feed.WriteXml(writer);
+            }
+        }
+
+	    private static string WriteSortField(IDefaultableItem<PodcastFileSortField> sortField)
+	    {
+	        switch (sortField.Value)
+	        {
+	            case PodcastFileSortField.CreationTime:
+                    return "creationtime";
+                default:
+                    return "name";
+            }
+	    }
+
+	    private static string WriteSortDirection(IDefaultableItem<bool> ascendingSort)
+	    {
+	        if (ascendingSort.Value)
+	        {
+	            return "asc";
+	        }
+	        return "desc";
 	    }
 	}
 }
