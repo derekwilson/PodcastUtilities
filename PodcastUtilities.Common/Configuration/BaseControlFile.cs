@@ -75,7 +75,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public PodcastEpisodeDownloadStrategy GetDefaultDownloadStrategy()
         {
-            return ReadFeedEpisodeDownloadStrategy(_feedEpisodeDownloadStrategy);
+            return FeedInfo.ReadFeedEpisodeDownloadStrategy(_feedEpisodeDownloadStrategy);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public PodcastFeedFormat GetDefaultFeedFormat()
         {
-            return ReadFeedFormat(_feedFormat);
+            return FeedInfo.ReadFeedFormat(_feedFormat);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public PodcastEpisodeNamingStyle GetDefaultNamingStyle()
         {
-            return ReadFeedEpisodeNamingStyle(_feedEpisodeNamingStyle);
+            return FeedInfo.ReadFeedEpisodeNamingStyle(_feedEpisodeNamingStyle);
         }
 
         /// <summary>
@@ -390,19 +390,19 @@ namespace PodcastUtilities.Common.Configuration
             var nodeText = GetNodeTextOrDefault(feedNode, "format", "");
             if (!string.IsNullOrEmpty(nodeText))
             {
-                newFeed.Format.Value = ReadFeedFormat(nodeText);
+                newFeed.Format.Value = FeedInfo.ReadFeedFormat(nodeText);
             }
 
             nodeText = GetNodeTextOrDefault(feedNode, "namingStyle", "");
             if (!string.IsNullOrEmpty(nodeText))
             {
-                newFeed.NamingStyle.Value = ReadFeedEpisodeNamingStyle(nodeText);
+                newFeed.NamingStyle.Value = FeedInfo.ReadFeedEpisodeNamingStyle(nodeText);
             }
 
             nodeText = GetNodeTextOrDefault(feedNode, "downloadStrategy", "");
             if (!string.IsNullOrEmpty(nodeText))
             {
-                newFeed.DownloadStrategy.Value = ReadFeedEpisodeDownloadStrategy(nodeText);
+                newFeed.DownloadStrategy.Value = FeedInfo.ReadFeedEpisodeDownloadStrategy(nodeText);
             }
 
             nodeText = GetNodeTextOrDefault(feedNode, "maximumDaysOld", "");
@@ -429,18 +429,6 @@ namespace PodcastUtilities.Common.Configuration
                 default:
                     return PodcastFileSortField.FileName;
             }
-        }
-
-        private static PodcastFeedFormat ReadFeedFormat(string format)
-        {
-            switch (format.ToUpperInvariant())
-            {
-                case "RSS":
-                    return PodcastFeedFormat.RSS;
-                case "ATOM":
-                    return PodcastFeedFormat.ATOM;
-            }
-            throw new ControlFileValueFormatException(string.Format(CultureInfo.InvariantCulture, "{0} is not a valid value for the feed format", format));
         }
 
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
@@ -479,42 +467,6 @@ namespace PodcastUtilities.Common.Configuration
             catch
             {
                 return int.MaxValue;
-            }
-        }
-
-        private static PodcastEpisodeNamingStyle ReadFeedEpisodeNamingStyle(string format)
-        {
-            switch (format.ToUpperInvariant())
-            {
-                case "PUBDATE_URL":
-                    return PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime;
-                case "PUBDATE_TITLE_URL":
-                    return PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime;
-                case "PUBDATE_FOLDER_TITLE_URL":
-                    return PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder;
-                case "ETITLE":
-                    return PodcastEpisodeNamingStyle.EpisodeTitle;
-                case "PUBDATE_ETITLE":
-                    return PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime;
-                default:
-                    return PodcastEpisodeNamingStyle.UrlFileName;
-
-            }
-        }
-
-        private static PodcastEpisodeDownloadStrategy ReadFeedEpisodeDownloadStrategy(string strategy)
-        {
-            switch (strategy.ToUpperInvariant())
-            {
-                case "HIGH_TIDE":
-                    return PodcastEpisodeDownloadStrategy.HighTide;
-                case "ALL":
-                    return PodcastEpisodeDownloadStrategy.All;
-                case "LATEST":
-                    return PodcastEpisodeDownloadStrategy.Latest;
-                default:
-                    return PodcastEpisodeDownloadStrategy.All;
-
             }
         }
 
