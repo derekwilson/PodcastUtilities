@@ -13,7 +13,10 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.PodcastViewModelTests
         {
             base.GivenThat();
 
-            ViewModel = new PodcastViewModel(new PodcastInfo(ControlFile));
+            ViewModel = new PodcastViewModel(new PodcastInfo(ControlFile) {
+                Folder = "New Name",
+                Feed = new FeedInfo(ControlFile) { Address = new Uri("http://www.newaddress.com/ppp.xml") }
+            });
         }
 
         protected override void When()

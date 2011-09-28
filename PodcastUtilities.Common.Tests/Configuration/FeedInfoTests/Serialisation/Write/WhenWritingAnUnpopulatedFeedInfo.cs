@@ -4,7 +4,7 @@ using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.Common.Tests.Configuration.FeedInfoTests.Serialisation.Write
 {
-    public class WhenWritingAnEmptyFeedInfo : WhenWritingAFeedInfo
+    public class WhenWritingAnUnpopulatedFeedInfo : WhenWritingAFeedInfo
     {
         protected override void GivenThat()
         {
