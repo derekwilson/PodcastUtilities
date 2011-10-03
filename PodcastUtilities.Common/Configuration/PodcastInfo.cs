@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
+using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 
@@ -64,24 +66,57 @@ namespace PodcastUtilities.Common.Configuration
 	    /// <filterpriority>2</filterpriority>
 	    public object Clone()
 	    {
-	        var newInfo = new PodcastInfo(_controlFileGlobalDefaults)
-	                   {
-	                       Folder = Folder,
-                           Pattern = Pattern,
-                           SortField = SortField,
-                           MaximumNumberOfFiles = MaximumNumberOfFiles
-	                   };
+            XmlWriterSettings writeSettings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = true,
+                ConformanceLevel = ConformanceLevel.Fragment,
+                CloseOutput = false,
+                Encoding = Encoding.UTF8
+            };
+
+            MemoryStream memoryStream = new MemoryStream();
+            var xmlWriter = XmlWriter.Create(memoryStream, writeSettings);
+
+            // simulate the behaviour of XmlSerialisation
+            xmlWriter.WriteStartElement("podcast");
+            this.WriteXml(xmlWriter);
+            xmlWriter.WriteEndElement();
+
+            xmlWriter.Flush();
+            memoryStream.Position = 0;
+
+            XmlReaderSettings readSettings = new XmlReaderSettings { ConformanceLevel = ConformanceLevel.Fragment };
+            var reader = XmlReader.Create(memoryStream, readSettings);
+
+            var copy = new PodcastInfo(_controlFileGlobalDefaults);
+
+            copy.ReadXml(reader);
+
             if (Feed != null)
             {
-                newInfo.Feed = Feed.Clone() as IFeedInfo;
+                copy.Feed = Feed.Clone() as IFeedInfo;
             }
 
-            if (AscendingSort.IsSet)
-            {
-                newInfo.AscendingSort.Value = AscendingSort.Value;
-            }
+	        return copy;
 
-            return newInfo;
+	        //var newInfo = new PodcastInfo(_controlFileGlobalDefaults)
+	        //           {
+	        //               Folder = Folder,
+	        //               Pattern = Pattern,
+	        //               SortField = SortField,
+	        //               MaximumNumberOfFiles = MaximumNumberOfFiles
+	        //           };
+	        //if (Feed != null)
+	        //{
+	        //    newInfo.Feed = Feed.Clone() as IFeedInfo;
+	        //}
+
+	        //if (AscendingSort.IsSet)
+	        //{
+	        //    newInfo.AscendingSort.Value = AscendingSort.Value;
+	        //}
+
+	        //return newInfo;
 	    }
 
 	    /// <summary>
@@ -102,8 +137,49 @@ namespace PodcastUtilities.Common.Configuration
 	    ///                 </param>
 	    public void ReadXml(XmlReader reader)
 	    {
-	        throw new NotImplementedException();
-	    }
+            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "podcast")
+            {
+                reader.Read(); // Skip ahead to next node
+                var element = reader.MoveToContent();
+                while (element != XmlNodeType.None)
+                {
+                    if (element == XmlNodeType.EndElement && reader.LocalName == "podcast")
+                    {
+                        break;
+                    }
+                    if (reader.IsStartElement())
+                    {
+                        var elementName = reader.LocalName;
+                        reader.Read();
+                        ProcessFeedElements(elementName, reader.Value.Trim());
+                    }
+                    reader.Read();
+                    element = reader.MoveToContent();
+                }
+            }
+        }
+
+	    private void ProcessFeedElements(string localName, string content)
+	    {
+            switch (localName)
+            {
+                case "folder":
+                    Folder = content;
+                    break;
+                case "pattern":
+                    Pattern = content;
+                    break;
+                case "number":
+                    MaximumNumberOfFiles = Convert.ToInt32(content, CultureInfo.InvariantCulture);
+                    break;
+                case "sortfield":
+                    SortField.Value = ReadSortField(content);
+                    break;
+                case "sortdirection":
+                    AscendingSort.Value = ReadSortDirection(content);
+                    break;
+            }
+        }
 
 	    /// <summary>
 	    /// Converts an object into its XML representation.
@@ -129,6 +205,22 @@ namespace PodcastUtilities.Common.Configuration
             }
         }
 
+        /// <summary>
+        /// parse the sort field
+        /// </summary>
+        /// <param name="sortField"></param>
+        /// <returns></returns>
+        public static PodcastFileSortField ReadSortField(string sortField)
+        {
+            switch (sortField.ToUpperInvariant())
+            {
+                case "CREATIONTIME":
+                    return PodcastFileSortField.CreationTime;
+                default:
+                    return PodcastFileSortField.FileName;
+            }
+        }
+
 	    private static string WriteSortField(IDefaultableItem<PodcastFileSortField> sortField)
 	    {
 	        switch (sortField.Value)
@@ -139,6 +231,16 @@ namespace PodcastUtilities.Common.Configuration
                     return "name";
             }
 	    }
+
+        /// <summary>
+        /// parse the sort direction
+        /// </summary>
+        /// <param name="sortDirection"></param>
+        /// <returns></returns>
+        public static bool ReadSortDirection(string sortDirection)
+        {
+            return !sortDirection.ToUpperInvariant().StartsWith("DESC", StringComparison.Ordinal);
+        }
 
 	    private static string WriteSortDirection(IDefaultableItem<bool> ascendingSort)
 	    {

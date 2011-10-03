@@ -36,9 +36,24 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
         public void ItShouldReturnTheList()
         {
             Assert.That(_episodesToSync.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void ItShouldReturnTheUrl()
+        {
             Assert.That(_episodesToSync[0].EpisodeUrl.ToString(), Is.EqualTo("http://test/podcast2.mp3"));
+        }
+
+        [Test]
+        public void ItShouldReturnTheDestinationPath()
+        {
             Assert.That(_episodesToSync[0].DestinationPath, Is.EqualTo(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "podcast2.mp3")));
-            Assert.That(_episodesToSync[0].RetryWaitTimeInSeconds,Is.EqualTo(_retryWaitTime));
+        }
+
+        [Test]
+        public void ItShouldReturnTheRetryWaitTimeInSeconds()
+        {
+            Assert.That(_episodesToSync[0].RetryWaitTimeInSeconds, Is.EqualTo(_retryWaitTime));
         }
 
         [Test]

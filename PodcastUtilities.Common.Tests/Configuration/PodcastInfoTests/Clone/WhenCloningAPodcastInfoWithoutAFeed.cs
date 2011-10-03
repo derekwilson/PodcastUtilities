@@ -21,12 +21,32 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         }
 
         [Test]
-        public void ItShouldCloneThePodcast()
+        public void ItShouldCloneThePodcastSortDirection()
         {
             Assert.That(_clonedPodcast.AscendingSort.Value, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void ItShouldCloneThePodcastFolder()
+        {
             Assert.That(_clonedPodcast.Folder, Is.EqualTo("FOLDER"));
+        }
+
+        [Test]
+        public void ItShouldCloneThePodcastMaximumNumberOfFiles()
+        {
             Assert.That(_clonedPodcast.MaximumNumberOfFiles, Is.EqualTo(123));
+        }
+
+        [Test]
+        public void ItShouldCloneThePodcastPattern()
+        {
             Assert.That(_clonedPodcast.Pattern, Is.EqualTo("PATTERN"));
+        }
+
+        [Test]
+        public void ItShouldCloneThePodcastSortField()
+        {
             Assert.That(_clonedPodcast.SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
         }
     }

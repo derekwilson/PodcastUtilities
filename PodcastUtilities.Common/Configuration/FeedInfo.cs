@@ -68,11 +68,13 @@ namespace PodcastUtilities.Common.Configuration
         /// <filterpriority>2</filterpriority>
         public object Clone()
         {
-            XmlWriterSettings writeSettings = new XmlWriterSettings();
-            writeSettings.OmitXmlDeclaration = true;
-            writeSettings.ConformanceLevel = ConformanceLevel.Fragment;
-            writeSettings.CloseOutput = false;
-            writeSettings.Encoding = Encoding.UTF8;
+            XmlWriterSettings writeSettings = new XmlWriterSettings
+                                                  {
+                                                      OmitXmlDeclaration = true,
+                                                      ConformanceLevel = ConformanceLevel.Fragment,
+                                                      CloseOutput = false,
+                                                      Encoding = Encoding.UTF8
+                                                  };
 
             MemoryStream memoryStream = new MemoryStream();
             var xmlWriter = XmlWriter.Create(memoryStream, writeSettings);
@@ -85,8 +87,7 @@ namespace PodcastUtilities.Common.Configuration
             xmlWriter.Flush(); 
             memoryStream.Position = 0;
 
-            XmlReaderSettings readSettings = new XmlReaderSettings();
-            readSettings.ConformanceLevel = ConformanceLevel.Fragment;
+            XmlReaderSettings readSettings = new XmlReaderSettings {ConformanceLevel = ConformanceLevel.Fragment};
             var reader = XmlReader.Create(memoryStream, readSettings);
 
             var copy = new FeedInfo(_controlFileGlobalDefaults);

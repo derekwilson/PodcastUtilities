@@ -30,7 +30,17 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests.NamingStyle
         public void ItShouldReturnTheList()
         {
             Assert.That(_episodesToSync.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void ItShouldReturnTheUrl()
+        {
             Assert.That(_episodesToSync[0].EpisodeUrl.ToString(), Is.EqualTo("http://test/podcast.mp3"));
+        }
+
+        [Test]
+        public void ItShouldReturnTheDestinationPath()
+        {
             Assert.That(_episodesToSync[0].DestinationPath, Is.EqualTo(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04\\2010_04_01_1611_TestFolder_podcast.mp3")));
         }
 
