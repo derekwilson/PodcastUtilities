@@ -29,20 +29,29 @@ namespace PodcastUtilities.Common.Tests.Feeds.SyncItemToEpisodeDownloaderTaskCon
         }
 
         [Test]
-        public void ItShouldReturnTheCorrectTypes()
+        public void ItShouldReturnTheCorrectNumberOfTasks()
         {
             Assert.That(_tasks.Length, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void ItShouldReturnTheCorrectTypes()
+        {
             Assert.IsInstanceOf(typeof(ITask), _tasks[0]);
             Assert.IsInstanceOf(typeof(ITask), _tasks[1]);
         }
 
         [Test]
-        public void ItShouldReturnTheTasks()
+        public void ItShouldReturnTasks0()
         {
-            Assert.That(_tasks.Length, Is.EqualTo(2));
             Assert.That(_tasks[0].SyncItem.DestinationPath, Is.EqualTo("destination1"));
             Assert.That(_tasks[0].SyncItem.EpisodeTitle, Is.EqualTo("item1"));
             Assert.That(_tasks[0].SyncItem.EpisodeUrl.ToString(), Is.EqualTo("http://test1/"));
+        }
+
+        [Test]
+        public void ItShouldReturnTasks1()
+        {
             Assert.That(_tasks[1].SyncItem.DestinationPath, Is.EqualTo("destination2"));
             Assert.That(_tasks[1].SyncItem.EpisodeTitle, Is.EqualTo("item2"));
             Assert.That(_tasks[1].SyncItem.EpisodeUrl.ToString(), Is.EqualTo("http://test2/"));

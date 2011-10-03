@@ -111,7 +111,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public bool GetDefaultAscendingSort()
         {
-            return !_sortDirection.ToUpperInvariant().StartsWith("DESC", StringComparison.Ordinal);
+            return PodcastInfo.ReadSortDirection(_sortDirection);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public PodcastFileSortField GetDefaultSortField()
         {
-            return ReadSortField(_sortField);
+            return PodcastInfo.ReadSortField(_sortField);
         }
 
         /// <summary>
@@ -367,7 +367,7 @@ namespace PodcastUtilities.Common.Configuration
                     nodeText = GetNodeTextOrDefault(podcastNode, "sortfield", "");
                     if (!string.IsNullOrEmpty(nodeText))
                     {
-                        podcastInfo.SortField.Value = ReadSortField(nodeText);
+                        podcastInfo.SortField.Value = PodcastInfo.ReadSortField(nodeText);
                     }
 
 
@@ -418,17 +418,6 @@ namespace PodcastUtilities.Common.Configuration
             }
 
             return newFeed;
-        }
-
-        private static PodcastFileSortField ReadSortField(string sortField)
-        {
-            switch (sortField.ToUpperInvariant())
-            {
-                case "CREATIONTIME":
-                    return PodcastFileSortField.CreationTime;
-                default:
-                    return PodcastFileSortField.FileName;
-            }
         }
 
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
