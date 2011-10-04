@@ -58,7 +58,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.FeedInfoTests.Clone
         [Test]
         public void ItShouldCloneTheNamingStyle()
         {
-            Assert.That(_clonedFeedInfo.NamingStyle.Value, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileName));
+            Assert.That(_clonedFeedInfo.NamingStyle.Value, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime));
         }
 
     }

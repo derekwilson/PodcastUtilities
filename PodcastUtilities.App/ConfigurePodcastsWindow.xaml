@@ -27,6 +27,7 @@
         <Menu>
             <MenuItem Header="_File">
                 <MenuItem Command="{Binding OpenFileCommand}" Header="_Open Control File..." />
+                <MenuItem Command="{Binding SaveFileCommand}" Header="_Save Control File..." />
                 <MenuItem Command="{Binding ExitCommand}"  Header="E_xit" />
             </MenuItem>
             <MenuItem Header="_Podcast">

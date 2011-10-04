@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
+using System.IO;
+using System.Reflection;
+using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 using PodcastUtilities.Common.Playlists;
 
 namespace PodcastUtilities.Common.Configuration
@@ -10,6 +16,19 @@ namespace PodcastUtilities.Common.Configuration
     /// </summary>
     public class ReadWriteControlFile : BaseControlFile, IReadWriteControlFile
     {
+        		/// <summary>
+		/// create the object and read the control file from the specified filename
+		/// </summary>
+		/// <param name="fileName">pathname to the control file xml</param>
+        public ReadWriteControlFile(string fileName)
+		{
+            XmlReaderSettings readSettings = new XmlReaderSettings { ConformanceLevel = ConformanceLevel.Fragment };
+
+            FileStream fileStream = new FileStream(fileName, FileMode.Open);
+
+            ReadXml(XmlReader.Create(fileStream, readSettings));
+        }
+
         /// <summary>
         /// pathname to the root folder to copy from when synchronising
         /// </summary>
@@ -80,7 +99,101 @@ namespace PodcastUtilities.Common.Configuration
         /// <param name="fileName"></param>
         public void SaveToFile(string fileName)
         {
-            throw new NotImplementedException();
+            XmlWriterSettings writeSettings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = false,
+                Indent = true,
+                ConformanceLevel = ConformanceLevel.Document,
+                CloseOutput = true,
+                Encoding = Encoding.UTF8
+            };
+
+            FileStream fileStream = new FileStream(fileName,FileMode.Create);
+            var xmlWriter = XmlWriter.Create(fileStream, writeSettings);
+
+            // simulate the behaviour of XmlSerialisation
+            xmlWriter.WriteStartElement("podcasts");
+            WriteXml(xmlWriter);
+            xmlWriter.WriteEndElement();
+
+            xmlWriter.Flush();
+            xmlWriter.Close();
+        }
+
+        /// <summary>
+        /// This method is reserved and should not be used. When implementing the IXmlSerializable interface, you should return null (Nothing in Visual Basic) from this method, and instead, if specifying a custom schema is required, apply the <see cref="T:System.Xml.Serialization.XmlSchemaProviderAttribute"/> to the class.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="T:System.Xml.Schema.XmlSchema"/> that describes the XML representation of the object that is produced by the <see cref="M:System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter)"/> method and consumed by the <see cref="M:System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader)"/> method.
+        /// </returns>
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Converts an object into its XML representation.
+        /// </summary>
+        /// <param name="writer">The <see cref="T:System.Xml.XmlWriter"/> stream to which the object is serialized. 
+        ///                 </param>
+        public void WriteXml(XmlWriter writer)
+        {
+            Assembly me = System.Reflection.Assembly.GetExecutingAssembly();
+            AssemblyName name = me.GetName();
+            writer.WriteComment(string.Format(CultureInfo.InvariantCulture, "Written by PodcastUtilities.Common v{0}",name.Version));
+
+            writer.WriteStartElement("global");
+            if (SourceRoot != null)
+            {
+                writer.WriteElementString("sourceRoot", SourceRoot);
+            }
+            if (DestinationRoot != null)
+            {
+                writer.WriteElementString("destinationRoot", DestinationRoot);
+            }
+            if (PlaylistFileName != null)
+            {
+                writer.WriteElementString("playlistFilename", PlaylistFileName);
+            }
+            writer.WriteElementString("playlistFormat", WritePlaylistFormat(PlaylistFormat));
+            writer.WriteElementString("freeSpaceToLeaveOnDestinationMB", FreeSpaceToLeaveOnDestination.ToString(CultureInfo.InvariantCulture));
+            writer.WriteElementString("freeSpaceToLeaveOnDownloadMB", FreeSpaceToLeaveOnDownload.ToString(CultureInfo.InvariantCulture));
+            writer.WriteElementString("maximumNumberOfConcurrentDownloads", MaximumNumberOfConcurrentDownloads.ToString(CultureInfo.InvariantCulture));
+            writer.WriteElementString("retryWaitInSeconds", RetryWaitInSeconds.ToString(CultureInfo.InvariantCulture));
+
+            writer.WriteElementString("sortfield", PodcastInfo.WriteSortField(DefaultSortField));
+            writer.WriteElementString("sortdirection", PodcastInfo.WriteSortDirection(DefaultAscendingSort));
+
+            writer.WriteStartElement("feed");
+            writer.WriteElementString("maximumDaysOld", DefaultFeedMaximumDaysOld.ToString(CultureInfo.InvariantCulture));
+            writer.WriteElementString("deleteDownloadsDaysOld", DefaultFeedDeleteDownloadsDaysOld.ToString(CultureInfo.InvariantCulture));
+            writer.WriteElementString("format", FeedInfo.WriteFeedFormat(DefaultFeedFormat));
+            writer.WriteElementString("namingStyle", FeedInfo.WriteFeedEpisodeNamingStyle(DefaultFeedEpisodeNamingStyle));
+            writer.WriteElementString("downloadStrategy", FeedInfo.WriteFeedEpisodeDownloadStrategy(DefaultFeedEpisodeDownloadStrategy));
+            writer.WriteEndElement();
+
+            writer.WriteEndElement();
+
+            foreach (var podcastInfo in Podcasts)
+            {
+                // simulate the behaviour of XmlSerialisation
+                writer.WriteStartElement("podcast");
+                podcastInfo.WriteXml(writer);
+                writer.WriteEndElement();
+            }
+        }
+
+        private static string WritePlaylistFormat(PlaylistFormat playlistFormat)
+        {
+            switch (playlistFormat)
+            {
+                case PlaylistFormat.ASX:
+                    return "asx";
+                case PlaylistFormat.WPL:
+                    return "wpl";
+                default:
+                    throw new ArgumentOutOfRangeException("playlistFormat");
+            }
         }
     }
 }

@@ -86,6 +86,7 @@
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentFeedEpisodeExpiry.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentPlaylistFormats.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingAnInvalidControlFile.cs" />
+    <Compile Include="Configuration\ControlFileTests\Serialisation\Read\WhenReadingAControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\WhenTestingAControlFile.cs" />
     <Compile Include="Configuration\DefaultableItemTests\WhenCreatingAnItem.cs" />
     <Compile Include="Configuration\DefaultableItemTests\WhenRevertingValue.cs" />

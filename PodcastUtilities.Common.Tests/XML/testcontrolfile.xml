@@ -18,8 +18,7 @@
             <downloadStrategy>latest</downloadStrategy>
             <deleteDownloadsDaysOld>88</deleteDownloadsDaysOld>
         </feed>
-    
-</global>
+    </global>
     <podcast>
         <folder>Test Match Special</folder>
         <pattern>*.mp3</pattern>

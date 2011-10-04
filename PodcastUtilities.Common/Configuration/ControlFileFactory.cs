@@ -7,14 +7,14 @@
 	{
 		#region Implementation of IControlFileFactory
 
-		///<summary>
-		/// Opens an existing control file
-		///</summary>
-		///<param name="fileName"></param>
-		///<returns></returns>
-		public IReadOnlyControlFile OpenControlFile(string fileName)
+	    ///<summary>
+	    /// Opens an existing control file
+	    ///</summary>
+	    ///<param name="fileName"></param>
+	    ///<returns></returns>
+	    public IReadWriteControlFile OpenControlFile(string fileName)
 		{
-			return new ReadOnlyControlFile(fileName);
+			return new ReadWriteControlFile(fileName);
 		}
 
 		#endregion
