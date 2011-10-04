@@ -92,11 +92,6 @@ namespace PodcastUtilities.Common.Configuration
 
             copy.ReadXml(reader);
 
-            if (Feed != null)
-            {
-                copy.Feed = Feed.Clone() as IFeedInfo;
-            }
-
 	        return copy;
 
 	        //var newInfo = new PodcastInfo(_controlFileGlobalDefaults)
@@ -150,8 +145,17 @@ namespace PodcastUtilities.Common.Configuration
                     if (reader.IsStartElement())
                     {
                         var elementName = reader.LocalName;
-                        reader.Read();
-                        ProcessFeedElements(elementName, reader.Value.Trim());
+
+                        if (elementName == "feed")
+                        {
+                            Feed = new FeedInfo(_controlFileGlobalDefaults);
+                            Feed.ReadXml(reader);
+                        }
+                        else
+                        {
+                            reader.Read();
+                            ProcessFeedElements(elementName, reader.Value.Trim());
+                        }
                     }
                     reader.Read();
                     element = reader.MoveToContent();
@@ -193,15 +197,17 @@ namespace PodcastUtilities.Common.Configuration
             writer.WriteElementString("number", MaximumNumberOfFiles.ToString(CultureInfo.InvariantCulture));
             if (SortField.IsSet)
             {
-                writer.WriteElementString("sortfield", WriteSortField(SortField));
+                writer.WriteElementString("sortfield", WriteSortField(SortField.Value));
             }
             if (AscendingSort.IsSet)
             {
-                writer.WriteElementString("sortdirection", WriteSortDirection(AscendingSort));
+                writer.WriteElementString("sortdirection", WriteSortDirection(AscendingSort.Value));
             }
             if (Feed != null)
             {
+                writer.WriteStartElement("feed");
                 Feed.WriteXml(writer);
+                writer.WriteEndElement();
             }
         }
 
@@ -221,9 +227,13 @@ namespace PodcastUtilities.Common.Configuration
             }
         }
 
-	    private static string WriteSortField(IDefaultableItem<PodcastFileSortField> sortField)
+        /// <summary>
+        /// convert the sortfield for serialisation
+        /// </summary>
+        /// <returns></returns>
+        public static string WriteSortField(PodcastFileSortField sortField)
 	    {
-	        switch (sortField.Value)
+	        switch (sortField)
 	        {
 	            case PodcastFileSortField.CreationTime:
                     return "creationtime";
@@ -242,9 +252,13 @@ namespace PodcastUtilities.Common.Configuration
             return !sortDirection.ToUpperInvariant().StartsWith("DESC", StringComparison.Ordinal);
         }
 
-	    private static string WriteSortDirection(IDefaultableItem<bool> ascendingSort)
+        /// <summary>
+        /// convert the sortdirection for serialisation
+        /// </summary>
+        /// <returns></returns>
+        public static string WriteSortDirection(bool ascendingSort)
 	    {
-	        if (ascendingSort.Value)
+	        if (ascendingSort)
 	        {
 	            return "asc";
 	        }

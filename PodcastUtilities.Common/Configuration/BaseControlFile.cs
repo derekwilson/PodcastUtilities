@@ -14,50 +14,66 @@ namespace PodcastUtilities.Common.Configuration
     /// </summary>
     public abstract class BaseControlFile : IControlFileGlobalDefaults
     {
-        private const string DefaultSortFieldToken = "Name";
-        private const string DefaultSortDirectionToken = "ascending";
-        private const string DefaultFeedFormatToken = "rss";
-        private const string DefaultFeedNamingStyleToken = "pubdate_url";
-        private const string DefaultFeedEpisodeDownloadStrategyToken = "all";
-
         /// <summary>
         /// the field we are using to sort the podcasts on
         /// </summary>
-        private string _sortField;
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal PodcastFileSortField DefaultSortField { get; set; }
         /// <summary>
         /// direction to sort in
         /// </summary>
-        private string _sortDirection;
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal bool DefaultAscendingSort { get; set; }
         /// <summary>
         /// global default maximum days old for feed download
         /// </summary>
-        private string _feedMaximumDaysOld;
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal int DefaultFeedMaximumDaysOld { get; set; }
         /// <summary>
         /// global default number of days before deleteing a download
         /// </summary>
-        private string _feedDeleteDownloadsDaysOld;
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal int DefaultFeedDeleteDownloadsDaysOld { get; set; }
         /// <summary>
         /// global default feed format 
         /// </summary>
-        private string _feedFormat;
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal PodcastFeedFormat DefaultFeedFormat { get; set; }
         /// <summary>
         /// global default for naming downloaded episodes
         /// </summary>
-        private string _feedEpisodeNamingStyle;
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal PodcastEpisodeNamingStyle DefaultFeedEpisodeNamingStyle { get; set; }
         /// <summary>
         /// global default for naming downloaded episodes
         /// </summary>
-        private string _feedEpisodeDownloadStrategy;
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal PodcastEpisodeDownloadStrategy DefaultFeedEpisodeDownloadStrategy { get; set; }
 
         /// <summary>
         /// setup the hard coded defaults
         /// </summary>
         protected BaseControlFile()
         {
+            SetHardcodedDefaults();
+        }
+
+        void SetHardcodedDefaults()
+        {
+            DefaultAscendingSort = true;
+            DefaultSortField = PodcastFileSortField.FileName;
+            DefaultFeedFormat = PodcastFeedFormat.RSS;
+            DefaultFeedEpisodeNamingStyle = PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime;
+            DefaultFeedEpisodeDownloadStrategy = PodcastEpisodeDownloadStrategy.All;
+            DefaultFeedMaximumDaysOld = int.MaxValue;
+            DefaultFeedDeleteDownloadsDaysOld = int.MaxValue;
+
             FreeSpaceToLeaveOnDestination = 0;
             FreeSpaceToLeaveOnDownload = 0;
             MaximumNumberOfConcurrentDownloads = 5;
             RetryWaitInSeconds = 10;
+
+            Podcasts = new List<PodcastInfo>();
         }
 
         /// <summary>
@@ -66,7 +82,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public int GetDefaultDeleteDownloadsDaysOld()
         {
-            return Convert.ToInt32(_feedDeleteDownloadsDaysOld, CultureInfo.InvariantCulture);
+            return DefaultFeedDeleteDownloadsDaysOld;
         }
 
         /// <summary>
@@ -75,7 +91,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public PodcastEpisodeDownloadStrategy GetDefaultDownloadStrategy()
         {
-            return FeedInfo.ReadFeedEpisodeDownloadStrategy(_feedEpisodeDownloadStrategy);
+            return DefaultFeedEpisodeDownloadStrategy;
         }
 
         /// <summary>
@@ -84,7 +100,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public PodcastFeedFormat GetDefaultFeedFormat()
         {
-            return FeedInfo.ReadFeedFormat(_feedFormat);
+            return DefaultFeedFormat;
         }
 
         /// <summary>
@@ -93,7 +109,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public int GetDefaultMaximumDaysOld()
         {
-            return Convert.ToInt32(_feedMaximumDaysOld, CultureInfo.InvariantCulture);
+            return DefaultFeedMaximumDaysOld;
         }
 
         /// <summary>
@@ -102,7 +118,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public PodcastEpisodeNamingStyle GetDefaultNamingStyle()
         {
-            return FeedInfo.ReadFeedEpisodeNamingStyle(_feedEpisodeNamingStyle);
+            return DefaultFeedEpisodeNamingStyle;
         }
 
         /// <summary>
@@ -111,7 +127,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public bool GetDefaultAscendingSort()
         {
-            return PodcastInfo.ReadSortDirection(_sortDirection);
+            return DefaultAscendingSort;
         }
 
         /// <summary>
@@ -120,7 +136,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public PodcastFileSortField GetDefaultSortField()
         {
-            return PodcastInfo.ReadSortField(_sortField);
+            return DefaultSortField;
         }
 
         /// <summary>
@@ -259,221 +275,185 @@ namespace PodcastUtilities.Common.Configuration
         }
 
         /// <summary>
-        /// load the control file from an xml file on disk
+        /// Generates an object from its XML representation.
         /// </summary>
-        /// <param name="fileName">filename of the xml file</param>
-        protected void LoadFromFile(string fileName)
+        /// <param name="reader">The <see cref="T:System.Xml.XmlReader"/> stream from which the object is deserialized. 
+        ///                 </param>
+        public void ReadXml(XmlReader reader)
         {
-            var xmlDocument = new XmlDocument();
-            xmlDocument.Load(fileName);
+            SetHardcodedDefaults();
 
-            ReadGlobalSection(xmlDocument);
-            ReadPodcasts(xmlDocument);
+            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "podcasts")
+            {
+                reader.Read(); // Skip ahead to next node
+                var element = reader.MoveToContent();
+                while (element != XmlNodeType.None)
+                {
+                    if (element == XmlNodeType.EndElement && reader.LocalName == "podcasts")
+                    {
+                        break;
+                    }
+                    if (reader.IsStartElement())
+                    {
+                        var elementName = reader.LocalName;
+                        switch (elementName)
+                        {
+                            case "global":
+                                ProcessGlobalSection(reader);
+                                break;
+                            case "podcast":
+                                var newPodcast = new PodcastInfo(this);
+                                newPodcast.ReadXml(reader);
+                                Podcasts.Add(newPodcast);
+                                break;
+                        }
+                    }
+                    reader.Read();
+                    element = reader.MoveToContent();
+                }
+            }
         }
 
-        /// <summary>
-        /// load the control file from an in memory object
-        /// </summary>
-        /// <param name="document">doument to load from</param>
-        protected void LoadFromXml(IXPathNavigable document)
+        private void ProcessGlobalSection(XmlReader reader)
         {
-            var xmlDocument = new XmlDocument();
-            xmlDocument.InnerXml = document.CreateNavigator().InnerXml;
-
-            ReadGlobalSection(xmlDocument);
-            ReadPodcasts(xmlDocument);
+            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "global")
+            {
+                reader.Read(); // Skip ahead to next node
+                var element = reader.MoveToContent();
+                while (element != XmlNodeType.None)
+                {
+                    if (element == XmlNodeType.EndElement && reader.LocalName == "global")
+                    {
+                        break;
+                    }
+                    if (reader.IsStartElement())
+                    {
+                        var elementName = reader.LocalName;
+                        if (elementName == "feed")
+                        {
+                            ProcessGlobalFeedSection(reader);
+                        }
+                        else
+                        {
+                            reader.Read();
+                            ProcessGlobalElements(elementName, reader.Value.Trim());
+                        }
+                    }
+                    reader.Read();
+                    element = reader.MoveToContent();
+                }
+            }
         }
 
-        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        private void ReadGlobalSection(XmlDocument xmlDocument)
+        private void ProcessGlobalFeedSection(XmlReader reader)
         {
-            SourceRoot = GetNodeText(xmlDocument,"podcasts/global/sourceRoot");
-            DestinationRoot = GetNodeText(xmlDocument,"podcasts/global/destinationRoot");
-            PlaylistFileName = GetNodeText(xmlDocument,"podcasts/global/playlistFilename");
+            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "feed")
+            {
+                reader.Read(); // Skip ahead to next node
+                var element = reader.MoveToContent();
+                while (element != XmlNodeType.None)
+                {
+                    if (element == XmlNodeType.EndElement && reader.LocalName == "feed")
+                    {
+                        break;
+                    }
+                    if (reader.IsStartElement())
+                    {
+                        var elementName = reader.LocalName;
+                        reader.Read();
+                        ProcessGlobalFeedElements(elementName, reader.Value.Trim());
+                    }
+                    reader.Read();
+                    element = reader.MoveToContent();
+                }
+            }
+        }
 
-            string format = GetNodeText(xmlDocument,"podcasts/global/playlistFormat").ToUpperInvariant();
-            switch (format)
+        private void ProcessGlobalFeedElements(string elementName, string content)
+        {
+            int intValue;
+            switch (elementName)
+            {
+                case "maximumDaysOld":
+                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture, out intValue))
+                    {
+                        DefaultFeedMaximumDaysOld = intValue;
+                    }
+                    break;
+                case "deleteDownloadsDaysOld":
+                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture, out intValue))
+                    {
+                        DefaultFeedDeleteDownloadsDaysOld = intValue;
+                    }
+                    break;
+                case "format":
+                    DefaultFeedFormat = FeedInfo.ReadFeedFormat(content);
+                    break;
+                case "namingStyle":
+                    DefaultFeedEpisodeNamingStyle = FeedInfo.ReadFeedEpisodeNamingStyle(content);
+                    break;
+                case "downloadStrategy":
+                    DefaultFeedEpisodeDownloadStrategy = FeedInfo.ReadFeedEpisodeDownloadStrategy(content);
+                    break;
+            }
+        }
+
+        private void ProcessGlobalElements(string elementName, string content)
+        {
+            long longValue;
+            int intValue;
+            switch (elementName)
+            {
+                case "sourceRoot":
+                    SourceRoot = content;
+                    break;
+                case "destinationRoot":
+                    DestinationRoot = content;
+                    break;
+                case "playlistFilename":
+                    PlaylistFileName = content;
+                    break;
+                case "playlistFormat":
+                    PlaylistFormat = ReadPlaylistFormat(content);
+                    break;
+                case "freeSpaceToLeaveOnDestinationMB":
+                    if (long.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture,out longValue))
+                    {
+                        FreeSpaceToLeaveOnDestination = longValue;
+                    }
+                    break;
+                case "freeSpaceToLeaveOnDownloadMB":
+                    if (long.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture,out longValue))
+                    {
+                        FreeSpaceToLeaveOnDownload = longValue;
+                    }
+                    break;
+                case "maximumNumberOfConcurrentDownloads":
+                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture,out intValue))
+                    {
+                        MaximumNumberOfConcurrentDownloads = intValue;
+                    }
+                    break;
+                case "retryWaitInSeconds":
+                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture,out intValue))
+                    {
+                        RetryWaitInSeconds = intValue;
+                    }
+                    break;
+            }
+        }
+
+        private static PlaylistFormat ReadPlaylistFormat(string format)
+        {
+            switch (format.ToUpperInvariant())
             {
                 case "WPL":
-                    PlaylistFormat = PlaylistFormat.WPL;
-                    break;
+                    return PlaylistFormat.WPL;
                 case "ASX":
-                    PlaylistFormat = PlaylistFormat.ASX;
-                    break;
+                    return PlaylistFormat.ASX;
                 default:
                     throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "{0} is not a valid value for the playlist format", format));
             }
-
-            try
-            {
-                FreeSpaceToLeaveOnDestination = Convert.ToInt64(GetNodeText(xmlDocument,"podcasts/global/freeSpaceToLeaveOnDestinationMB"), CultureInfo.InvariantCulture);
-            }
-            catch {}
-
-            try
-            {
-                FreeSpaceToLeaveOnDownload = Convert.ToInt64(GetNodeText(xmlDocument,"podcasts/global/freeSpaceToLeaveOnDownloadMB"), CultureInfo.InvariantCulture);
-            }
-            catch { }
-
-            try
-            {
-                MaximumNumberOfConcurrentDownloads = Convert.ToInt32(GetNodeText(xmlDocument, "podcasts/global/maximumNumberOfConcurrentDownloads"), CultureInfo.InvariantCulture);
-            }
-            catch { }
-
-            try
-            {
-                RetryWaitInSeconds = Convert.ToInt32(GetNodeText(xmlDocument,"podcasts/global/retryWaitInSeconds"), CultureInfo.InvariantCulture);
-            }
-            catch { }
-
-            _sortField = GetNodeTextOrDefault(xmlDocument,"podcasts/global/sortfield", DefaultSortFieldToken);
-            _sortDirection = GetNodeTextOrDefault(xmlDocument,"podcasts/global/sortdirection", DefaultSortDirectionToken);
-            _feedMaximumDaysOld = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/maximumDaysOld", int.MaxValue.ToString(CultureInfo.InvariantCulture));
-            _feedDeleteDownloadsDaysOld = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/deleteDownloadsDaysOld", int.MaxValue.ToString(CultureInfo.InvariantCulture));
-            _feedFormat = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/format", DefaultFeedFormatToken);
-            _feedEpisodeNamingStyle = GetNodeTextOrDefault(xmlDocument, "podcasts/global/feed/namingStyle", DefaultFeedNamingStyleToken);
-            _feedEpisodeDownloadStrategy = GetNodeTextOrDefault(xmlDocument,"podcasts/global/feed/downloadStrategy", DefaultFeedEpisodeDownloadStrategyToken);
-        }
-
-        private void ReadPodcasts(XmlDocument xmlDocument)
-        {
-            Podcasts = new List<PodcastInfo>();
-
-            var podcastNodes = xmlDocument.SelectNodes("podcasts/podcast");
-
-            if (podcastNodes != null)
-            {
-                foreach (XmlNode podcastNode in podcastNodes)
-                {
-                    var podcastInfo = new PodcastInfo(this)
-                                          {
-                                              Feed = ReadFeedInfo(podcastNode.SelectSingleNode("feed")),
-                                              Folder = GetNodeText(podcastNode, "folder"),
-                                              Pattern = GetNodeText(podcastNode, "pattern"),
-                                              MaximumNumberOfFiles =
-                                                  Convert.ToInt32(GetNodeTextOrDefault(podcastNode, "number", "-1"),
-                                                                  CultureInfo.InvariantCulture)
-                                          };
-
-                    var nodeText = GetNodeTextOrDefault(podcastNode, "sortdirection", "");
-                    if (!string.IsNullOrEmpty(nodeText))
-                    {
-                        podcastInfo.AscendingSort.Value =
-                            !(nodeText.ToUpperInvariant().StartsWith("DESC", StringComparison.Ordinal));
-                    }
-
-                    nodeText = GetNodeTextOrDefault(podcastNode, "sortfield", "");
-                    if (!string.IsNullOrEmpty(nodeText))
-                    {
-                        podcastInfo.SortField.Value = PodcastInfo.ReadSortField(nodeText);
-                    }
-
-
-                    Podcasts.Add(podcastInfo);
-                }
-            }
-        }
-
-        private IFeedInfo ReadFeedInfo(XmlNode feedNode)
-        {
-            if (feedNode == null)
-            {
-                return null;
-            }
-            var newFeed = new FeedInfo(this)
-            {
-                Address = new Uri(GetNodeText(feedNode, "url")),
-            };
-
-            var nodeText = GetNodeTextOrDefault(feedNode, "format", "");
-            if (!string.IsNullOrEmpty(nodeText))
-            {
-                newFeed.Format.Value = FeedInfo.ReadFeedFormat(nodeText);
-            }
-
-            nodeText = GetNodeTextOrDefault(feedNode, "namingStyle", "");
-            if (!string.IsNullOrEmpty(nodeText))
-            {
-                newFeed.NamingStyle.Value = FeedInfo.ReadFeedEpisodeNamingStyle(nodeText);
-            }
-
-            nodeText = GetNodeTextOrDefault(feedNode, "downloadStrategy", "");
-            if (!string.IsNullOrEmpty(nodeText))
-            {
-                newFeed.DownloadStrategy.Value = FeedInfo.ReadFeedEpisodeDownloadStrategy(nodeText);
-            }
-
-            nodeText = GetNodeTextOrDefault(feedNode, "maximumDaysOld", "");
-            if (!string.IsNullOrEmpty(nodeText))
-            {
-                newFeed.MaximumDaysOld.Value = ReadMaximumDaysOld(feedNode);
-            }
-
-            nodeText = GetNodeTextOrDefault(feedNode, "deleteDownloadsDaysOld", "");
-            if (!string.IsNullOrEmpty(nodeText))
-            {
-                newFeed.DeleteDownloadsDaysOld.Value = ReadDeleteDownloadsDaysOld(feedNode);
-            }
-
-            return newFeed;
-        }
-
-        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        private int ReadMaximumDaysOld(XmlNode feedNode)
-        {
-            if (feedNode == null)
-            {
-                return int.MaxValue;
-            }
-            try
-            {
-                return Convert.ToInt32(GetNodeTextOrDefault(feedNode, "maximumDaysOld", _feedMaximumDaysOld), CultureInfo.InvariantCulture);
-            }
-            catch
-            {
-                return int.MaxValue;
-            }
-        }
-
-        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        private int ReadDeleteDownloadsDaysOld(XmlNode feedNode)
-        {
-            if (feedNode == null)
-            {
-                return int.MaxValue;
-            }
-            try
-            {
-                var days = Convert.ToInt32(GetNodeTextOrDefault(feedNode, "deleteDownloadsDaysOld", _feedDeleteDownloadsDaysOld), CultureInfo.InvariantCulture);
-                if (days == 0)
-                {
-                    return int.MaxValue;
-                }
-                return days;
-            }
-            catch
-            {
-                return int.MaxValue;
-            }
-        }
-
-        private static string GetNodeText(XmlNode root, string xpath)
-        {
-            XmlNode n = root.SelectSingleNode(xpath);
-            if (n == null)
-            {
-                throw new XmlStructureException("GetNodeText : Node path '" + xpath + "' not found");
-            }
-            return n.InnerText;
-        }
-
-        private static string GetNodeTextOrDefault(XmlNode root, string xpath, string defaultText)
-        {
-            XmlNode n = root.SelectSingleNode(xpath);
-
-            return ((n != null && !string.IsNullOrEmpty(n.InnerText)) ? n.InnerText : defaultText);
         }
     }
 }

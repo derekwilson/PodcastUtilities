@@ -24,13 +24,13 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 
 		protected IClipboardService ClipboardService { get; set; }
 
-        protected IReadOnlyControlFile ControlFile { get; set; }
+        protected IReadWriteControlFile ControlFile { get; set; }
 
 		protected override void GivenThat()
 		{
 			base.GivenThat();
 
-            ControlFile = GenerateMock<IReadOnlyControlFile>();
+            ControlFile = GenerateMock<IReadWriteControlFile>();
 
             ApplicationService = GenerateMock<IApplicationService>();
             BrowseForFileService = GenerateMock<IBrowseForFileService>();

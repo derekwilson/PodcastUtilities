@@ -197,11 +197,11 @@ namespace PodcastUtilities.Common.Configuration
             }
             if (DownloadStrategy.IsSet)
             {
-                writer.WriteElementString("downloadStrategy", WriteFeedEpisodeDownloadStrategy(DownloadStrategy));
+                writer.WriteElementString("downloadStrategy", WriteFeedEpisodeDownloadStrategy(DownloadStrategy.Value));
             }
             if (Format.IsSet)
             {
-                writer.WriteElementString("format", WriteFeedFormat(Format));
+                writer.WriteElementString("format", WriteFeedFormat(Format.Value));
             }
             if (MaximumDaysOld.IsSet)
             {
@@ -209,7 +209,7 @@ namespace PodcastUtilities.Common.Configuration
             }
             if (NamingStyle.IsSet)
             {
-                writer.WriteElementString("namingStyle", WriteFeedEpisodeNamingStyle(NamingStyle));
+                writer.WriteElementString("namingStyle", WriteFeedEpisodeNamingStyle(NamingStyle.Value));
             }
             if (DeleteDownloadsDaysOld.IsSet)
             {
@@ -237,14 +237,18 @@ namespace PodcastUtilities.Common.Configuration
                 case "PUBDATE_ETITLE":
                     return PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime;
                 default:
-                    return PodcastEpisodeNamingStyle.UrlFileName;
+                    return PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime;
 
             }
         }
 
-        private static string WriteFeedEpisodeNamingStyle(IDefaultableItem<PodcastEpisodeNamingStyle> namingStyle)
+        /// <summary>
+        /// convert the namingstyle for serialisation
+        /// </summary>
+        /// <returns></returns>
+        public static string WriteFeedEpisodeNamingStyle(PodcastEpisodeNamingStyle namingStyle)
         {
-            switch (namingStyle.Value)
+            switch (namingStyle)
             {
                 case PodcastEpisodeNamingStyle.UrlFileName:
                     return "url";
@@ -284,9 +288,13 @@ namespace PodcastUtilities.Common.Configuration
             }
         }
 
-        private static string WriteFeedEpisodeDownloadStrategy(IDefaultableItem<PodcastEpisodeDownloadStrategy> downloadStrategy)
+        /// <summary>
+        /// convert the download strategy for serialisation
+        /// </summary>
+        /// <returns></returns>
+        public static string WriteFeedEpisodeDownloadStrategy(PodcastEpisodeDownloadStrategy downloadStrategy)
         {
-            switch (downloadStrategy.Value)
+            switch (downloadStrategy)
             {
                 case PodcastEpisodeDownloadStrategy.All:
                     return "all";
@@ -314,9 +322,13 @@ namespace PodcastUtilities.Common.Configuration
             throw new ControlFileValueFormatException(string.Format(CultureInfo.InvariantCulture, "{0} is not a valid value for the feed format", format));
         }
 
-        private static string WriteFeedFormat(IDefaultableItem<PodcastFeedFormat> format)
+        /// <summary>
+        /// convert the feedformat for serialisation
+        /// </summary>
+        /// <returns></returns>
+        public static string WriteFeedFormat(PodcastFeedFormat format)
         {
-            switch (format.Value)
+            switch (format)
             {
                 case PodcastFeedFormat.RSS:
                     return "rss";

@@ -47,12 +47,6 @@ namespace PodcastUtilities.Common.Configuration
         long GetFreeSpaceToLeaveOnDownload();
 
         /// <summary>
-        /// the configuration for the individual podcasts
-        /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
-        IEnumerable<PodcastInfo> GetPodcasts();
-
-        /// <summary>
         /// maximum number of background downloads
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
@@ -63,5 +57,11 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         int GetRetryWaitInSeconds();
+
+        /// <summary>
+        /// the configuration for the individual podcasts
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        IEnumerable<PodcastInfo> GetPodcasts();
     }
 }

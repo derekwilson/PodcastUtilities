@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Xml.Serialization;
 using PodcastUtilities.Common.Playlists;
 
 namespace PodcastUtilities.Common.Configuration
@@ -6,7 +6,7 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
     /// this object represents the xml control file
     /// </summary>
-    public interface IReadWriteControlFile
+    public interface IReadWriteControlFile : IReadOnlyControlFile, IXmlSerializable
     {
         /// <summary>
         /// pathname to the root folder to copy from when synchronising

@@ -5,11 +5,11 @@ namespace PodcastUtilities.Common.Configuration
 	///</summary>
 	public interface IControlFileFactory
 	{
-        ///<summary>
-        /// Opens an existing control file
-        ///</summary>
-        ///<param name="fileName"></param>
-        ///<returns></returns>
-        IReadOnlyControlFile OpenControlFile(string fileName);
+	    ///<summary>
+	    /// Opens an existing control file
+	    ///</summary>
+	    ///<param name="fileName"></param>
+	    ///<returns></returns>
+	    IReadWriteControlFile OpenControlFile(string fileName);
     }
 }

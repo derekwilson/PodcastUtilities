@@ -30,11 +30,11 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             }
         }
 
-        [Test]
-        public void ItShouldThorw()
-        {
-            Assert.That(ThrownException, Is.InstanceOf<Exception>());
-        }
+        //[Test]
+        //public void ItShouldThorw()
+        //{
+        //    Assert.That(ThrownException, Is.InstanceOf<Exception>());
+        //}
 
     }
 

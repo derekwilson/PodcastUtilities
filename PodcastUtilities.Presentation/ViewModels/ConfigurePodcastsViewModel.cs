@@ -17,7 +17,7 @@ namespace PodcastUtilities.Presentation.ViewModels
     	private readonly IControlFileFactory _controlFileFactory;
         private readonly IPodcastFactory _podcastFactory;
         private readonly IClipboardService _clipboardService;
-        private IReadOnlyControlFile _controlFile;
+        private IReadWriteControlFile _controlFile;
 		private PodcastViewModel _selectedPodcast;
         private readonly DelegateCommand _editPodcastCommand;
 
@@ -39,6 +39,7 @@ namespace PodcastUtilities.Presentation.ViewModels
             _clipboardService = clipboardService;
 
             OpenFileCommand = new DelegateCommand(ExecuteOpenFileCommand, CanExecuteOpenFileCommand);
+            SaveFileCommand = new DelegateCommand(ExecuteSaveFileCommand, CanExecuteSaveFileCommand);
 			ExitCommand = new DelegateCommand(ExecuteExitCommand);
 			AddPodcastCommand = new DelegateCommand(ExecuteAddPodcastCommand);
             _editPodcastCommand = new DelegateCommand(ExecuteEditPodcastCommand, CanExecuteEditPodcastCommand);
@@ -46,7 +47,9 @@ namespace PodcastUtilities.Presentation.ViewModels
 			_podcasts = new ObservableCollection<PodcastViewModel>();
         }
 
-    	public ICommand OpenFileCommand { get; private set; }
+        public ICommand OpenFileCommand { get; private set; }
+
+        public ICommand SaveFileCommand { get; private set; }
 
     	public ICommand ExitCommand { get; private set; }
 
@@ -92,6 +95,21 @@ namespace PodcastUtilities.Presentation.ViewModels
 		{
 			return true;
 		}
+
+        private bool CanExecuteSaveFileCommand(object obj)
+        {
+            return true;
+        }
+
+        private void ExecuteSaveFileCommand(object parameter)
+        {
+            var selectedFile = _browseForFileService.BrowseForFileToSave("Control Files|*.xml");
+
+            if (selectedFile != null)
+            {
+                _controlFile.SaveToFile(selectedFile);
+            }
+        }
 
 		private void ExecuteExitCommand(object parameter)
 		{

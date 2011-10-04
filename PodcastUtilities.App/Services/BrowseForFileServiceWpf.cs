@@ -8,18 +8,30 @@ namespace PodcastUtilities.App.Services
 	{
 		#region Implementation of IBrowseForFileService
 
-		public string BrowseForFileToOpen(string fileFilter)
-		{
-			var fileDialog = new OpenFileDialog
-			                 	{
-			                 		Filter = fileFilter
-			                 	};
+        public string BrowseForFileToOpen(string fileFilter)
+        {
+            var fileDialog = new OpenFileDialog
+            {
+                Filter = fileFilter
+            };
 
-			var fileSelected = fileDialog.ShowDialog().GetValueOrDefault(false);
+            var fileSelected = fileDialog.ShowDialog().GetValueOrDefault(false);
 
-			return (fileSelected ? fileDialog.FileName : null);
-		}
+            return (fileSelected ? fileDialog.FileName : null);
+        }
 
-		#endregion
+        public string BrowseForFileToSave(string fileFilter)
+        {
+            var fileDialog = new SaveFileDialog()
+            {
+                Filter = fileFilter
+            };
+
+            var fileSelected = fileDialog.ShowDialog().GetValueOrDefault(false);
+
+            return (fileSelected ? fileDialog.FileName : null);
+        }
+
+        #endregion
 	}
 }
