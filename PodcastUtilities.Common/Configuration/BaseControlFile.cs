@@ -282,124 +282,47 @@ namespace PodcastUtilities.Common.Configuration
         public void ReadXml(XmlReader reader)
         {
             SetHardcodedDefaults();
-
-            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "podcasts")
-            {
-                reader.Read(); // Skip ahead to next node
-                var element = reader.MoveToContent();
-                while (element != XmlNodeType.None)
-                {
-                    if (element == XmlNodeType.EndElement && reader.LocalName == "podcasts")
-                    {
-                        break;
-                    }
-                    if (reader.IsStartElement())
-                    {
-                        var elementName = reader.LocalName;
-                        switch (elementName)
-                        {
-                            case "global":
-                                ProcessGlobalSection(reader);
-                                break;
-                            case "podcast":
-                                var newPodcast = new PodcastInfo(this);
-                                newPodcast.ReadXml(reader);
-                                Podcasts.Add(newPodcast);
-                                break;
-                        }
-                    }
-                    reader.Read();
-                    element = reader.MoveToContent();
-                }
-            }
+            XmlSerializationHelper.ProcessElement(reader, "podcasts", ProcessPodcastsElements);
         }
 
-        private void ProcessGlobalSection(XmlReader reader)
+        private ProcessorResult ProcessPodcastsElements(XmlReader reader)
         {
-            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "global")
-            {
-                reader.Read(); // Skip ahead to next node
-                var element = reader.MoveToContent();
-                while (element != XmlNodeType.None)
-                {
-                    if (element == XmlNodeType.EndElement && reader.LocalName == "global")
-                    {
-                        break;
-                    }
-                    if (reader.IsStartElement())
-                    {
-                        var elementName = reader.LocalName;
-                        if (elementName == "feed")
-                        {
-                            ProcessGlobalFeedSection(reader);
-                        }
-                        else
-                        {
-                            reader.Read();
-                            ProcessGlobalElements(elementName, reader.Value.Trim());
-                        }
-                    }
-                    reader.Read();
-                    element = reader.MoveToContent();
-                }
-            }
-        }
+            var result = ProcessorResult.Processed;
 
-        private void ProcessGlobalFeedSection(XmlReader reader)
-        {
-            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "feed")
-            {
-                reader.Read(); // Skip ahead to next node
-                var element = reader.MoveToContent();
-                while (element != XmlNodeType.None)
-                {
-                    if (element == XmlNodeType.EndElement && reader.LocalName == "feed")
-                    {
-                        break;
-                    }
-                    if (reader.IsStartElement())
-                    {
-                        var elementName = reader.LocalName;
-                        reader.Read();
-                        ProcessGlobalFeedElements(elementName, reader.Value.Trim());
-                    }
-                    reader.Read();
-                    element = reader.MoveToContent();
-                }
-            }
-        }
+            var elementName = reader.LocalName;
 
-        private void ProcessGlobalFeedElements(string elementName, string content)
-        {
-            int intValue;
             switch (elementName)
             {
-                case "maximumDaysOld":
-                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture, out intValue))
-                    {
-                        DefaultFeedMaximumDaysOld = intValue;
-                    }
+                case "global":
+                    XmlSerializationHelper.ProcessElement(reader, "global", ProcessGlobalElements);
                     break;
-                case "deleteDownloadsDaysOld":
-                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture, out intValue))
-                    {
-                        DefaultFeedDeleteDownloadsDaysOld = intValue;
-                    }
+                case "podcast":
+                    var newPodcast = new PodcastInfo(this);
+                    newPodcast.ReadXml(reader);
+                    Podcasts.Add(newPodcast);
                     break;
-                case "format":
-                    DefaultFeedFormat = FeedInfo.ReadFeedFormat(content);
-                    break;
-                case "namingStyle":
-                    DefaultFeedEpisodeNamingStyle = FeedInfo.ReadFeedEpisodeNamingStyle(content);
-                    break;
-                case "downloadStrategy":
-                    DefaultFeedEpisodeDownloadStrategy = FeedInfo.ReadFeedEpisodeDownloadStrategy(content);
+                default:
+                    result = ProcessorResult.Ignored;
                     break;
             }
+
+            return result;
         }
 
-        private void ProcessGlobalElements(string elementName, string content)
+        private ProcessorResult ProcessGlobalElements(XmlReader reader)
         {
+            var result = ProcessorResult.Processed;
+
+            var elementName = reader.LocalName;
+
+            if (elementName == "feed")
+            {
+                XmlSerializationHelper.ProcessElement(reader, "feed", ProcessGlobalFeedElements);
+            }
+            
+            reader.Read();
+            var content = reader.Value.Trim();
+
             long longValue;
             int intValue;
             switch (elementName)
@@ -441,6 +364,46 @@ namespace PodcastUtilities.Common.Configuration
                     }
                     break;
             }
+            return result;
+        }
+
+        private ProcessorResult ProcessGlobalFeedElements(XmlReader reader)
+        {
+            var result = ProcessorResult.Processed;
+
+            var elementName = reader.LocalName;
+            reader.Read();
+            var content = reader.Value.Trim();
+
+            int intValue;
+            switch (elementName)
+            {
+                case "maximumDaysOld":
+                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture, out intValue))
+                    {
+                        DefaultFeedMaximumDaysOld = intValue;
+                    }
+                    break;
+                case "deleteDownloadsDaysOld":
+                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture, out intValue))
+                    {
+                        DefaultFeedDeleteDownloadsDaysOld = intValue;
+                    }
+                    break;
+                case "format":
+                    DefaultFeedFormat = FeedInfo.ReadFeedFormat(content);
+                    break;
+                case "namingStyle":
+                    DefaultFeedEpisodeNamingStyle = FeedInfo.ReadFeedEpisodeNamingStyle(content);
+                    break;
+                case "downloadStrategy":
+                    DefaultFeedEpisodeDownloadStrategy = FeedInfo.ReadFeedEpisodeDownloadStrategy(content);
+                    break;
+                default:
+                    result = ProcessorResult.Ignored;
+                    break;
+            }
+            return result;
         }
 
         private static PlaylistFormat ReadPlaylistFormat(string format)

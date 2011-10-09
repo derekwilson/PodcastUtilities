@@ -85,6 +85,7 @@
     <Compile Include="Configuration\ControlFileFactory.cs" />
     <Compile Include="Configuration\IReadWriteControlFile.cs" />
     <Compile Include="Configuration\ReadWriteControlFile.cs" />
+    <Compile Include="Configuration\XmlSerialisationHelper.cs" />
     <Compile Include="DisplayFormatter.cs" />
     <Compile Include="Exceptions\ControlFileValueFormatException.cs" />
     <Compile Include="Exceptions\DownloaderException.cs" />
