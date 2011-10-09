@@ -23,13 +23,6 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastFactoryTests
             DefaultsProvider = GenerateMock<IPodcastDefaultsProvider>();
 
             DefaultsProvider.Stub(p => p.Pattern).Return("*.blah");
-            DefaultsProvider.Stub(p => p.SortField).Return(PodcastFileSortField.FileName);
-            DefaultsProvider.Stub(p => p.AscendingSort).Return(true);
-            DefaultsProvider.Stub(p => p.FeedFormat).Return(PodcastFeedFormat.ATOM);
-            DefaultsProvider.Stub(p => p.EpisodeNamingStyle).Return(PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime);
-            DefaultsProvider.Stub(p => p.EpisodeDownloadStrategy).Return(PodcastEpisodeDownloadStrategy.HighTide);
-            DefaultsProvider.Stub(p => p.MaximumDaysOld).Return(33);
-
             PodcastFactory = new PodcastFactory(DefaultsProvider);
         }
 
@@ -48,36 +41,6 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastFactoryTests
         public void ItShouldInitializeThePodcastUsingDefaultsPattern()
         {
             Assert.That(CreatedPodcast.Pattern, Is.EqualTo("*.blah"));
-        }
-        [Test]
-        public void ItShouldInitializeThePodcastUsingDefaultsSortField()
-        {
-            Assert.That(CreatedPodcast.SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
-        }
-        [Test]
-        public void ItShouldInitializeThePodcastUsingDefaultsAscendingSort()
-        {
-            Assert.That(CreatedPodcast.AscendingSort.Value, Is.True);
-        }
-        [Test]
-        public void ItShouldInitializeThePodcastUsingDefaultsFeedFormat()
-        {
-            Assert.That(CreatedPodcast.Feed.Format.Value, Is.EqualTo(PodcastFeedFormat.ATOM));
-        }
-        [Test]
-        public void ItShouldInitializeThePodcastUsingDefaultsFeedNamingStyle()
-        {
-            Assert.That(CreatedPodcast.Feed.NamingStyle.Value, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime));
-        }
-        [Test]
-        public void ItShouldInitializeThePodcastUsingDefaultsFeedDownloadStrategy()
-        {
-            Assert.That(CreatedPodcast.Feed.DownloadStrategy.Value, Is.EqualTo(PodcastEpisodeDownloadStrategy.HighTide));
-        }
-        [Test]
-        public void ItShouldInitializeThePodcastUsingDefaultsFeedMaximumDaysOld()
-        {
-            Assert.That(CreatedPodcast.Feed.MaximumDaysOld.Value, Is.EqualTo(33));
         }
     }
 }

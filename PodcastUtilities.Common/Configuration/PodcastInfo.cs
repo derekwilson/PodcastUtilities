@@ -93,25 +93,6 @@ namespace PodcastUtilities.Common.Configuration
             copy.ReadXml(reader);
 
 	        return copy;
-
-	        //var newInfo = new PodcastInfo(_controlFileGlobalDefaults)
-	        //           {
-	        //               Folder = Folder,
-	        //               Pattern = Pattern,
-	        //               SortField = SortField,
-	        //               MaximumNumberOfFiles = MaximumNumberOfFiles
-	        //           };
-	        //if (Feed != null)
-	        //{
-	        //    newInfo.Feed = Feed.Clone() as IFeedInfo;
-	        //}
-
-	        //if (AscendingSort.IsSet)
-	        //{
-	        //    newInfo.AscendingSort.Value = AscendingSort.Value;
-	        //}
-
-	        //return newInfo;
 	    }
 
 	    /// <summary>
@@ -125,47 +106,33 @@ namespace PodcastUtilities.Common.Configuration
 	        return null;
 	    }
 
-	    /// <summary>
-	    /// Generates an object from its XML representation.
-	    /// </summary>
-	    /// <param name="reader">The <see cref="T:System.Xml.XmlReader"/> stream from which the object is deserialized. 
-	    ///                 </param>
-	    public void ReadXml(XmlReader reader)
-	    {
-            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "podcast")
-            {
-                reader.Read(); // Skip ahead to next node
-                var element = reader.MoveToContent();
-                while (element != XmlNodeType.None)
-                {
-                    if (element == XmlNodeType.EndElement && reader.LocalName == "podcast")
-                    {
-                        break;
-                    }
-                    if (reader.IsStartElement())
-                    {
-                        var elementName = reader.LocalName;
-
-                        if (elementName == "feed")
-                        {
-                            Feed = new FeedInfo(_controlFileGlobalDefaults);
-                            Feed.ReadXml(reader);
-                        }
-                        else
-                        {
-                            reader.Read();
-                            ProcessFeedElements(elementName, reader.Value.Trim());
-                        }
-                    }
-                    reader.Read();
-                    element = reader.MoveToContent();
-                }
-            }
+        /// <summary>
+        /// Generates an object from its XML representation.
+        /// </summary>
+        /// <param name="reader">The <see cref="T:System.Xml.XmlReader"/> stream from which the object is deserialized. 
+        ///                 </param>
+        public void ReadXml(XmlReader reader)
+        {
+            XmlSerializationHelper.ProcessElement(reader, "podcast", ProcessPodcastElements);
         }
 
-	    private void ProcessFeedElements(string localName, string content)
+        private ProcessorResult ProcessPodcastElements(XmlReader reader)
 	    {
-            switch (localName)
+            var result = ProcessorResult.Processed;
+
+            var elementName = reader.LocalName;
+
+            if (elementName == "feed")
+            {
+                Feed = new FeedInfo(_controlFileGlobalDefaults);
+                Feed.ReadXml(reader);
+                return result;
+            }
+            
+            reader.Read();
+            var content = reader.Value.Trim();
+
+            switch (elementName)
             {
                 case "folder":
                     Folder = content;
@@ -182,7 +149,11 @@ namespace PodcastUtilities.Common.Configuration
                 case "sortdirection":
                     AscendingSort.Value = ReadSortDirection(content);
                     break;
+                default:
+                    result = ProcessorResult.Ignored;
+                    break;
             }
+            return result;
         }
 
 	    /// <summary>

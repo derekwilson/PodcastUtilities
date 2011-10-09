@@ -29,13 +29,6 @@
                            Feed = new FeedInfo (controlFile)
                        };
 
-            podcast.AscendingSort.Value = _podcastDefaultsProvider.AscendingSort;
-            podcast.SortField.Value = _podcastDefaultsProvider.SortField;
-
-            podcast.Feed.Format.Value = _podcastDefaultsProvider.FeedFormat;
-            podcast.Feed.NamingStyle.Value = _podcastDefaultsProvider.EpisodeNamingStyle;
-            podcast.Feed.DownloadStrategy.Value = _podcastDefaultsProvider.EpisodeDownloadStrategy;
-            podcast.Feed.MaximumDaysOld.Value = _podcastDefaultsProvider.MaximumDaysOld;
             return podcast;
         }
     }

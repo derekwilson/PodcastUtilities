@@ -94,28 +94,6 @@ namespace PodcastUtilities.Common.Configuration
 
             copy.ReadXml(reader);
 
-            //var copy = new FeedInfo(_controlFileGlobalDefaults) {Address = Address};
-            //if (DownloadStrategy.IsSet)
-            //{
-            //    copy.DownloadStrategy.Value = DownloadStrategy.Value;
-            //}
-            //if (Format.IsSet)
-            //{
-            //    copy.Format.Value = Format.Value;
-            //}
-            //if (MaximumDaysOld.IsSet)
-            //{
-            //    copy.MaximumDaysOld.Value = MaximumDaysOld.Value;
-            //}
-            //if (NamingStyle.IsSet)
-            //{
-            //    copy.NamingStyle.Value = NamingStyle.Value;
-            //}
-            //if (DeleteDownloadsDaysOld.IsSet)
-            //{
-            //    copy.DeleteDownloadsDaysOld.Value = DeleteDownloadsDaysOld.Value;
-            //}
-
             return copy;
         }
 
@@ -137,31 +115,17 @@ namespace PodcastUtilities.Common.Configuration
         ///                 </param>
         public void ReadXml(XmlReader reader)
         {
-            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "feed")
-            {
-                reader.Read(); // Skip ahead to next node
-                var element = reader.MoveToContent();
-                while (element != XmlNodeType.None)
-                {
-                    if (element == XmlNodeType.EndElement && reader.LocalName == "feed")
-                    {
-                        break;
-                    }
-                    if (reader.IsStartElement())
-                    {
-                        var elementName = reader.LocalName;
-                        reader.Read();
-                        ProcessFeedElements(elementName, reader.Value.Trim());
-                    }
-                    reader.Read();
-                    element = reader.MoveToContent();
-                }
-            }
+            XmlSerializationHelper.ProcessElement(reader, "feed", ProcessFeedElements);
         }
 
-        private void ProcessFeedElements(string localName, string content)
+        private ProcessorResult ProcessFeedElements(XmlReader reader)
         {
-            switch (localName)
+            var result = ProcessorResult.Processed;
+
+            var elementName = reader.LocalName;
+            reader.Read();
+            var content = reader.Value.Trim();
+            switch (elementName)
             {
                 case "url":
                     Address = new Uri(content);
@@ -181,7 +145,12 @@ namespace PodcastUtilities.Common.Configuration
                 case "deleteDownloadsDaysOld":
                     DeleteDownloadsDaysOld.Value = Convert.ToInt32(content,CultureInfo.InvariantCulture);
                     break;
+                default:
+                    result = ProcessorResult.Ignored;
+                    break;
+
             }
+            return result;
         }
 
         /// <summary>
