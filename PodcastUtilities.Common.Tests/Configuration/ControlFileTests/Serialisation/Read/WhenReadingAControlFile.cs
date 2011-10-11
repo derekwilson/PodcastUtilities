@@ -51,7 +51,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Serialisa
         {
             Assert.That(_controlFile.GetPodcasts().ElementAt(0).Folder, Is.EqualTo("Test Match Special"));
             Assert.That(_controlFile.GetPodcasts().ElementAt(0).MaximumNumberOfFiles, Is.EqualTo(-1));
-            Assert.That(_controlFile.GetPodcasts().ElementAt(0).Pattern, Is.EqualTo("*.mp3"));
+            Assert.That(_controlFile.GetPodcasts().ElementAt(0).Pattern.Value, Is.EqualTo("*.xyz"));
             Assert.That(_controlFile.GetPodcasts().ElementAt(0).SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
             Assert.That(_controlFile.GetPodcasts().ElementAt(0).AscendingSort.Value, Is.True);
         }
@@ -67,7 +67,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Serialisa
         {
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Folder, Is.EqualTo("Hanselminutes"));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).MaximumNumberOfFiles, Is.EqualTo(34));
-            Assert.That(_controlFile.GetPodcasts().ElementAt(1).Pattern, Is.EqualTo("*.mp3"));
+            Assert.That(_controlFile.GetPodcasts().ElementAt(1).Pattern.Value, Is.EqualTo("*.mp3"));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).AscendingSort.Value, Is.False);
         }

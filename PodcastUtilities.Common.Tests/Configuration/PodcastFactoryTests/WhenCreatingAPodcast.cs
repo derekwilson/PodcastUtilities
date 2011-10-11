@@ -8,7 +8,6 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastFactoryTests
         : WhenTestingBehaviour
     {
         protected IReadOnlyControlFile _controlFile;
-        protected IPodcastDefaultsProvider DefaultsProvider { get; set; }
 
         protected PodcastFactory PodcastFactory { get; set; }
 
@@ -20,10 +19,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastFactoryTests
 
             _controlFile = TestControlFileFactory.CreateControlFile();
 
-            DefaultsProvider = GenerateMock<IPodcastDefaultsProvider>();
-
-            DefaultsProvider.Stub(p => p.Pattern).Return("*.blah");
-            PodcastFactory = new PodcastFactory(DefaultsProvider);
+            PodcastFactory = new PodcastFactory();
         }
 
         protected override void When()
@@ -38,9 +34,9 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastFactoryTests
         }
 
         [Test]
-        public void ItShouldInitializeThePodcastUsingDefaultsPattern()
+        public void ItShouldCreateAPodcastFeedObject()
         {
-            Assert.That(CreatedPodcast.Pattern, Is.EqualTo("*.blah"));
+            Assert.That(CreatedPodcast.Feed, Is.Not.Null);
         }
     }
 }

@@ -11,7 +11,6 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Serialisa
             _podcastInfo = new PodcastInfo(_controlFile)
                                {
                                    Folder = "folder",
-                                   Pattern = "pattern",
                                    MaximumNumberOfFiles = 123
                                };
         }
@@ -25,7 +24,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Serialisa
         [Test]
         public void ItShouldWriteTheXml()
         {
-            Assert.That(_textReader.ReadToEnd(), Is.EqualTo("<folder>folder</folder><pattern>pattern</pattern><number>123</number>"));
+            Assert.That(_textReader.ReadToEnd(), Is.EqualTo("<folder>folder</folder><number>123</number>"));
         }
     }
 }

@@ -16,7 +16,7 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// file pattern for the media files eg. *.mp3
         /// </summary>
-        string Pattern { get; set; }
+        IDefaultableItem<string> Pattern { get; set; }
 
         /// <summary>
         /// field to sort on "creationtime" to use the file created time anything else to use the file name

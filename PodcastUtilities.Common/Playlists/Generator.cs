@@ -57,7 +57,7 @@ namespace PodcastUtilities.Common.Playlists
         public void GeneratePlaylist(IReadOnlyControlFile control, bool copyToDestination)
         {
 			var allDestFiles = control.GetPodcasts().SelectMany(
-        		podcast => FileFinder.GetFiles(Path.Combine(control.GetDestinationRoot(), podcast.Folder), podcast.Pattern));
+        		podcast => FileFinder.GetFiles(Path.Combine(control.GetDestinationRoot(), podcast.Folder), podcast.Pattern.Value));
 
 			IPlaylist p = PlaylistFactory.CreatePlaylist(control.GetPlaylistFormat(), control.GetPlaylistFileName());
 

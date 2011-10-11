@@ -20,6 +20,7 @@ namespace PodcastUtilities.Common.Configuration
 	    public PodcastInfo(IControlFileGlobalDefaults controlFileGlobalDefaults)
         {
             _controlFileGlobalDefaults = controlFileGlobalDefaults;
+            Pattern = new DefaultableReferenceTypeItem<string>(_controlFileGlobalDefaults.GetDefaultFilePattern);
             AscendingSort = new DefaultableValueTypeItem<bool>(_controlFileGlobalDefaults.GetDefaultAscendingSort);
             SortField = new DefaultableValueTypeItem<PodcastFileSortField>(_controlFileGlobalDefaults.GetDefaultSortField);
         }
@@ -31,7 +32,7 @@ namespace PodcastUtilities.Common.Configuration
 		/// <summary>
 		/// file pattern for the media files eg. *.mp3
 		/// </summary>
-        public string Pattern { get; set; }
+        public IDefaultableItem<string> Pattern { get; set; }
         /// <summary>
         /// field to sort on "creationtime" to use the file created time anything else to use the file name
         /// </summary>
@@ -114,7 +115,7 @@ namespace PodcastUtilities.Common.Configuration
                     Folder = content;
                     break;
                 case "pattern":
-                    Pattern = content;
+                    Pattern.Value = content;
                     break;
                 case "number":
                     MaximumNumberOfFiles = Convert.ToInt32(content, CultureInfo.InvariantCulture);
@@ -140,7 +141,10 @@ namespace PodcastUtilities.Common.Configuration
 	    public void WriteXml(XmlWriter writer)
 	    {
             writer.WriteElementString("folder", Folder);
-            writer.WriteElementString("pattern", Pattern);
+            if (Pattern.IsSet)
+            {
+                writer.WriteElementString("pattern", Pattern.Value);
+            }
             writer.WriteElementString("number", MaximumNumberOfFiles.ToString(CultureInfo.InvariantCulture));
             if (SortField.IsSet)
             {

@@ -12,7 +12,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
             _pocastInfo.AscendingSort.Value = true;
             _pocastInfo.Folder = "FOLDER";
             _pocastInfo.MaximumNumberOfFiles = 123;
-            _pocastInfo.Pattern = "PATTERN";
+            _pocastInfo.Pattern.Value = "PATTERN";
             _pocastInfo.SortField.Value = PodcastFileSortField.FileName;
 
             _pocastInfo.Feed = new FeedInfo(_controlFile)
