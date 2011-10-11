@@ -40,6 +40,12 @@ namespace PodcastUtilities.Common.Configuration
         /// the global default for podcasts
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        string GetDefaultFilePattern();
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         bool GetDefaultAscendingSort();
 
         /// <summary>

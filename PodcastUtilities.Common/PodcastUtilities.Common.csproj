@@ -94,9 +94,7 @@
     <Compile Include="Exceptions\EnumOutOfRangeException.cs" />
     <Compile Include="Exceptions\FeedStructureException.cs" />
     <Compile Include="Exceptions\XmlStructureException.cs" />
-    <Compile Include="Configuration\HardcodedPodcastDefaultsProvider.cs" />
     <Compile Include="Configuration\IControlFileFactory.cs" />
-    <Compile Include="Configuration\IPodcastDefaultsProvider.cs" />
     <Compile Include="Files\IEpisodePurger.cs" />
     <Compile Include="Configuration\IPodcastFactory.cs" />
     <Compile Include="IState.cs" />

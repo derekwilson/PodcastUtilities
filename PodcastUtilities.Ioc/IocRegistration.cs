@@ -40,7 +40,6 @@ namespace PodcastUtilities.Ioc
         public static void RegisterPodcastServices(IIocContainer container)
         {
             container.Register<IPodcastFactory, PodcastFactory>();
-            container.Register<IPodcastDefaultsProvider, HardcodedPodcastDefaultsProvider>();
         }
 
         [CLSCompliant(false)]

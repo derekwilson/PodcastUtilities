@@ -131,7 +131,7 @@ namespace PodcastUtilities.Common.Files
             IFileInfo[] files;
             try
             {
-                files = directoryInfo.GetFiles(podcastInfo.Pattern);
+                files = directoryInfo.GetFiles(podcastInfo.Pattern.Value);
             }
             catch (DirectoryNotFoundException)
             {

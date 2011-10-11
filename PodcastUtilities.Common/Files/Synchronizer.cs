@@ -64,12 +64,12 @@ namespace PodcastUtilities.Common.Files
 
 				var podcastSourceFiles = FileFinder.GetFiles(
 						podcastSourcePath,
-						podcast.Pattern,
+						podcast.Pattern.Value,
 						podcast.MaximumNumberOfFiles,
 						podcast.SortField.Value,
 						podcast.AscendingSort.Value);
 
-				FileRemover.RemoveUnwantedFiles(podcastSourceFiles, podcastDestinationPath, podcast.Pattern, whatIf);
+				FileRemover.RemoveUnwantedFiles(podcastSourceFiles, podcastDestinationPath, podcast.Pattern.Value, whatIf);
 
 				var podcastSyncItems = podcastSourceFiles.Select(p => new FileSyncItem {Source = p});
 

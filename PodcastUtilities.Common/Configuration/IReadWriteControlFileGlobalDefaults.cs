@@ -33,6 +33,11 @@
         /// <summary>
         /// the global default for podcasts
         /// </summary>
+        void SetDefaultFilePattern(string pattern);
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
         void SetDefaultAscendingSort(bool ascendingSort);
 
         /// <summary>

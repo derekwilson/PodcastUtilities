@@ -7,6 +7,7 @@
         <playlistFormat>wpl</playlistFormat>
         <freeSpaceToLeaveOnDestinationMB>2000</freeSpaceToLeaveOnDestinationMB>
         <freeSpaceToLeaveOnDownloadMB>3000</freeSpaceToLeaveOnDownloadMB>
+        <pattern>*.xyz</pattern>
         <sortfield>name</sortfield>
         <sortdirection>asc</sortdirection>
         <maximumNumberOfConcurrentDownloads>10</maximumNumberOfConcurrentDownloads>
@@ -21,7 +22,6 @@
     </global>
     <podcast>
         <folder>Test Match Special</folder>
-        <pattern>*.mp3</pattern>
         <number>-1</number>
     </podcast>
     <podcast>

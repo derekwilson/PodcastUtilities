@@ -62,14 +62,14 @@ namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
             _rootFolder = "c:\\TestRoot";
             _podcastInfo = new PodcastInfo(_controlFile);
             _podcastInfo.Folder = "TestFolder";
-            _podcastInfo.Pattern = "*.mp3";
+            _podcastInfo.Pattern.Value = "*.mp3";
             _podcastInfo.Feed = _feedInfo;
         }
 
         protected virtual void SetupStubs()
         {
             _timeProvider.Stub(time => time.UtcNow).Return(_now);
-            _directoryInfo.Stub(dir => dir.GetFiles(_podcastInfo.Pattern)).Return(_downloadedFiles);
+            _directoryInfo.Stub(dir => dir.GetFiles(_podcastInfo.Pattern.Value)).Return(_downloadedFiles);
             _directoryInfo.Stub(dir => dir.GetDirectories("*.*")).Return(_subFolders);
             _directoryInfoProvider.Stub(prov => prov.GetDirectoryInfo(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_directoryInfo);
 
@@ -86,8 +86,8 @@ namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
 				GenerateMock<IDirectoryInfo>(),
 			};
 
-            _subFolders[0].Stub(dir => dir.GetFiles(_podcastInfo.Pattern)).Return(_downloadedFiles);
-            _subFolders[1].Stub(dir => dir.GetFiles(_podcastInfo.Pattern)).Return(_downloadedFiles);
+            _subFolders[0].Stub(dir => dir.GetFiles(_podcastInfo.Pattern.Value)).Return(_downloadedFiles);
+            _subFolders[1].Stub(dir => dir.GetFiles(_podcastInfo.Pattern.Value)).Return(_downloadedFiles);
 
             _subFolders[0].Stub(dir => dir.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "sub1"));
             _subFolders[1].Stub(dir => dir.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "sub2"));

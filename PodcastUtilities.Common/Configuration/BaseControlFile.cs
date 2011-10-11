@@ -15,6 +15,11 @@ namespace PodcastUtilities.Common.Configuration
     public abstract class BaseControlFile : IControlFileGlobalDefaults
     {
         /// <summary>
+        /// the file pattern for files that are in a podcast
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal string DefaultFilePattern { get; set; }
+        /// <summary>
         /// the field we are using to sort the podcasts on
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
@@ -45,7 +50,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal PodcastEpisodeNamingStyle DefaultFeedEpisodeNamingStyle { get; set; }
         /// <summary>
-        /// global default for naming downloaded episodes
+        /// global default for mechanism for downloading episodes
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal PodcastEpisodeDownloadStrategy DefaultFeedEpisodeDownloadStrategy { get; set; }
@@ -60,6 +65,7 @@ namespace PodcastUtilities.Common.Configuration
 
         void SetHardcodedDefaults()
         {
+            DefaultFilePattern = "*.mp3";
             DefaultAscendingSort = true;
             DefaultSortField = PodcastFileSortField.FileName;
             DefaultFeedFormat = PodcastFeedFormat.RSS;
@@ -119,6 +125,15 @@ namespace PodcastUtilities.Common.Configuration
         public PodcastEpisodeNamingStyle GetDefaultNamingStyle()
         {
             return DefaultFeedEpisodeNamingStyle;
+        }
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public string GetDefaultFilePattern()
+        {
+            return DefaultFilePattern;
         }
 
         /// <summary>
@@ -362,6 +377,21 @@ namespace PodcastUtilities.Common.Configuration
                     {
                         RetryWaitInSeconds = intValue;
                     }
+                    break;
+                case "pattern":
+                    if (!string.IsNullOrEmpty(content))
+                    {
+                        DefaultFilePattern = content;
+                    }
+                    break;
+                case "sortfield":
+                    DefaultSortField = PodcastInfo.ReadSortField(content);
+                    break;
+                case "sortdirection":
+                    DefaultAscendingSort = PodcastInfo.ReadSortDirection(content);
+                    break;
+                default:
+                    result = ProcessorResult.Ignored;
                     break;
             }
             return result;

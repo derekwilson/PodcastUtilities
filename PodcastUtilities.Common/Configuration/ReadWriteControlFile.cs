@@ -72,6 +72,14 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// the global default for podcasts
         /// </summary>
+        public void SetDefaultFilePattern(string pattern)
+        {
+            DefaultFilePattern = pattern;
+        }
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
         public void SetDefaultAscendingSort(bool ascendingSort)
         {
             DefaultAscendingSort = ascendingSort;
@@ -217,6 +225,7 @@ namespace PodcastUtilities.Common.Configuration
             writer.WriteElementString("maximumNumberOfConcurrentDownloads", MaximumNumberOfConcurrentDownloads.ToString(CultureInfo.InvariantCulture));
             writer.WriteElementString("retryWaitInSeconds", RetryWaitInSeconds.ToString(CultureInfo.InvariantCulture));
 
+            writer.WriteElementString("pattern", DefaultFilePattern);
             writer.WriteElementString("sortfield", PodcastInfo.WriteSortField(DefaultSortField));
             writer.WriteElementString("sortdirection", PodcastInfo.WriteSortDirection(DefaultAscendingSort));
 

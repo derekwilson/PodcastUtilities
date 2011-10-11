@@ -11,9 +11,9 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Serialisa
             _podcastInfo = new PodcastInfo(_controlFile)
                                {
                                    Folder = "folder",
-                                   Pattern = "pattern",
                                    MaximumNumberOfFiles = 123,
                                };
+            _podcastInfo.Pattern.Value = "pattern";
             _podcastInfo.SortField.Value = PodcastFileSortField.CreationTime;
             _podcastInfo.AscendingSort.Value = true;
         }
