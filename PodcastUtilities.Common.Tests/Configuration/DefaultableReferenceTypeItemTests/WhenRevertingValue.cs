@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using PodcastUtilities.Common.Configuration;
 
-namespace PodcastUtilities.Common.Tests.Configuration.DefaultableItemTests
+namespace PodcastUtilities.Common.Tests.Configuration.DefaultableReferenceTypeItemTests
 {
     public class WhenRevertingValue : WhenTestingAnItem
     {
         protected override void GivenThat()
         {
             base.GivenThat();
-            _item = new DefaultableItem<int>(DefaultProvider);
-            _item.Value = 456;
+            _item = new DefaultableReferenceTypeItem<string>(DefaultProvider);
+            _item.Value = "new value";
         }
 
         protected override void When()
@@ -30,7 +26,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.DefaultableItemTests
         [Test]
         public void ItShouldReturnTheDefaultValue()
         {
-            Assert.That(_item.Value, Is.EqualTo(123));
+            Assert.That(_item.Value, Is.EqualTo("default"));
         }
     }
 

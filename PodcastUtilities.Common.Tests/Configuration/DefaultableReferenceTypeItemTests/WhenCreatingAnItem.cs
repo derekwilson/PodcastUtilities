@@ -1,14 +1,13 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using PodcastUtilities.Common.Configuration;
 
-namespace PodcastUtilities.Common.Tests.Configuration.DefaultableItemTests
+namespace PodcastUtilities.Common.Tests.Configuration.DefaultableReferenceTypeItemTests
 {
     public class WhenCreatingAnItem : WhenTestingAnItem
     {
         protected override void When()
         {
-            _item = new DefaultableItem<int>(DefaultProvider);
+            _item = new DefaultableReferenceTypeItem<string>(DefaultProvider);
         }
 
         [Test]
@@ -20,7 +19,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.DefaultableItemTests
         [Test]
         public void ItShouldReturnTheDefaultValue()
         {
-            Assert.That(_item.Value, Is.EqualTo(123));
+            Assert.That(_item.Value, Is.EqualTo("default"));
         }
     }
 

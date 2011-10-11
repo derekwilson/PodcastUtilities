@@ -20,8 +20,8 @@ namespace PodcastUtilities.Common.Configuration
 	    public PodcastInfo(IControlFileGlobalDefaults controlFileGlobalDefaults)
         {
             _controlFileGlobalDefaults = controlFileGlobalDefaults;
-            AscendingSort = new DefaultableItem<bool>(_controlFileGlobalDefaults.GetDefaultAscendingSort);
-            SortField = new DefaultableItem<PodcastFileSortField>(_controlFileGlobalDefaults.GetDefaultSortField);
+            AscendingSort = new DefaultableValueTypeItem<bool>(_controlFileGlobalDefaults.GetDefaultAscendingSort);
+            SortField = new DefaultableValueTypeItem<PodcastFileSortField>(_controlFileGlobalDefaults.GetDefaultSortField);
         }
 
 	    /// <summary>
