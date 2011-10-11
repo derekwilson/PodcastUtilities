@@ -14,7 +14,7 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
 	/// this object represents the xml control file
 	/// </summary>
-    public class ReadOnlyControlFile : BaseControlFile, IReadOnlyControlFile
+    public class ReadOnlyControlFile : BaseControlFile, IReadOnlyControlFile, IControlFileGlobalDefaults
 	{
         /// <summary>
         /// create an empty control file

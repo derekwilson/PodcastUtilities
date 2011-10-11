@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Xml.Serialization;
 using PodcastUtilities.Common.Playlists;
 
 namespace PodcastUtilities.Common.Configuration

@@ -14,7 +14,7 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
     /// controlfile implementation that supports loading and saving
     /// </summary>
-    public class ReadWriteControlFile : BaseControlFile, IReadWriteControlFile
+    public class ReadWriteControlFile : BaseControlFile, IReadWriteControlFile, IReadWriteControlFileGlobalDefaults
     {
         		/// <summary>
 		/// create the object and read the control file from the specified filename
@@ -27,6 +27,62 @@ namespace PodcastUtilities.Common.Configuration
             FileStream fileStream = new FileStream(fileName, FileMode.Open);
 
             ReadXml(XmlReader.Create(fileStream, readSettings));
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        public void SetDefaultDeleteDownloadsDaysOld(int deleteDaysOld)
+        {
+            DefaultFeedDeleteDownloadsDaysOld = deleteDaysOld;
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        public void SetDefaultDownloadStrategy(PodcastEpisodeDownloadStrategy strategy)
+        {
+            DefaultFeedEpisodeDownloadStrategy = strategy;
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        public void SetDefaultFeedFormat(PodcastFeedFormat format)
+        {
+            DefaultFeedFormat = format;
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        public void SetDefaultMaximumDaysOld(int maximumDaysOld)
+        {
+            DefaultFeedMaximumDaysOld = maximumDaysOld;
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        public void SetDefaultNamingStyle(PodcastEpisodeNamingStyle namingStyle)
+        {
+            DefaultFeedEpisodeNamingStyle = namingStyle;
+        }
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        public void SetDefaultAscendingSort(bool ascendingSort)
+        {
+            DefaultAscendingSort = ascendingSort;
+        }
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        public void SetDefaultSortField(PodcastFileSortField sortField)
+        {
+            DefaultSortField = sortField;
         }
 
         /// <summary>
