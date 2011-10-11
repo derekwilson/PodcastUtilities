@@ -22,11 +22,11 @@ namespace PodcastUtilities.Common.Configuration
         public FeedInfo(IControlFileGlobalDefaults controlFileGlobalDefaults)
         {
             _controlFileGlobalDefaults = controlFileGlobalDefaults;
-            Format = new DefaultableItem<PodcastFeedFormat>(_controlFileGlobalDefaults.GetDefaultFeedFormat);
-            MaximumDaysOld = new DefaultableItem<int>(_controlFileGlobalDefaults.GetDefaultMaximumDaysOld);
-            NamingStyle = new DefaultableItem<PodcastEpisodeNamingStyle>(_controlFileGlobalDefaults.GetDefaultNamingStyle);
-            DownloadStrategy = new DefaultableItem<PodcastEpisodeDownloadStrategy>(_controlFileGlobalDefaults.GetDefaultDownloadStrategy);
-            DeleteDownloadsDaysOld = new DefaultableItem<int>(_controlFileGlobalDefaults.GetDefaultDeleteDownloadsDaysOld);
+            Format = new DefaultableValueTypeItem<PodcastFeedFormat>(_controlFileGlobalDefaults.GetDefaultFeedFormat);
+            MaximumDaysOld = new DefaultableValueTypeItem<int>(_controlFileGlobalDefaults.GetDefaultMaximumDaysOld);
+            NamingStyle = new DefaultableValueTypeItem<PodcastEpisodeNamingStyle>(_controlFileGlobalDefaults.GetDefaultNamingStyle);
+            DownloadStrategy = new DefaultableValueTypeItem<PodcastEpisodeDownloadStrategy>(_controlFileGlobalDefaults.GetDefaultDownloadStrategy);
+            DeleteDownloadsDaysOld = new DefaultableValueTypeItem<int>(_controlFileGlobalDefaults.GetDefaultDeleteDownloadsDaysOld);
         }
 
         /// <summary>

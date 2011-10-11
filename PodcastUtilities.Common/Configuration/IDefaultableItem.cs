@@ -4,7 +4,7 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
     /// an item that can have a value or provide a default value
     /// </summary>
-    public interface IDefaultableItem<T> where T : struct
+    public interface IDefaultableItem<T>
     {
         /// <summary>
         /// true if the value is set at this level

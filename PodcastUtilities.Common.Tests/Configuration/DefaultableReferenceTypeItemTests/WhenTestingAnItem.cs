@@ -1,14 +1,14 @@
 using PodcastUtilities.Common.Configuration;
 
-namespace PodcastUtilities.Common.Tests.Configuration.DefaultableItemTests
+namespace PodcastUtilities.Common.Tests.Configuration.DefaultableReferenceTypeItemTests
 {
     public abstract class WhenTestingAnItem
         : WhenTestingBehaviour
     {
-        protected IDefaultableItem<int> _item;
-        protected int _defaultValue;
+        protected IDefaultableItem<string> _item;
+        protected string _defaultValue;
 
-        protected int DefaultProvider()
+        protected string DefaultProvider()
         {
             return _defaultValue;
         }
@@ -17,7 +17,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.DefaultableItemTests
         {
             base.GivenThat();
 
-            _defaultValue = 123;
+            _defaultValue = "default";
         }
     }
 }

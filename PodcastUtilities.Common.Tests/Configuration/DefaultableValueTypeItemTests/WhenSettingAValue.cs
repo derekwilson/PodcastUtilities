@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using PodcastUtilities.Common.Configuration;
 
-namespace PodcastUtilities.Common.Tests.Configuration.DefaultableItemTests
+namespace PodcastUtilities.Common.Tests.Configuration.DefaultableValueTypeItemTests
 {
     public class WhenSettingAValue : WhenTestingAnItem
     {
         protected override void GivenThat()
         {
             base.GivenThat();
-            _item = new DefaultableItem<int>(DefaultProvider);
+            _item = new DefaultableValueTypeItem<int>(DefaultProvider);
         }
 
         protected override void When()

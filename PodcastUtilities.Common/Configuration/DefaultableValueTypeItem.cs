@@ -8,16 +8,16 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
     /// an item that can have a value or provide a default value
     /// </summary>
-    public class DefaultableItem<T> : IDefaultableItem<T> where T : struct 
+    public class DefaultableValueTypeItem<T> : IDefaultableItem<T> where T : struct 
     {
-        private Func<T> _findDefaultValue;
+        private readonly Func<T> _findDefaultValue;
 
         private T? _value;
 
         /// <summary>
         /// create a defaultable item and specify the method of obtaining the default value
         /// </summary>
-        public DefaultableItem(Func<T> defaultValueFinder)
+        public DefaultableValueTypeItem(Func<T> defaultValueFinder)
         {
             _findDefaultValue = defaultValueFinder;
         }
