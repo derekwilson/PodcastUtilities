@@ -68,32 +68,8 @@ namespace PodcastUtilities.Common.Configuration
         /// <filterpriority>2</filterpriority>
         public object Clone()
         {
-            XmlWriterSettings writeSettings = new XmlWriterSettings
-                                                  {
-                                                      OmitXmlDeclaration = true,
-                                                      ConformanceLevel = ConformanceLevel.Fragment,
-                                                      CloseOutput = false,
-                                                      Encoding = Encoding.UTF8
-                                                  };
-
-            MemoryStream memoryStream = new MemoryStream();
-            var xmlWriter = XmlWriter.Create(memoryStream, writeSettings);
-
-            // simulate the behaviour of XmlSerialisation
-            xmlWriter.WriteStartElement("feed");
-            this.WriteXml(xmlWriter);
-            xmlWriter.WriteEndElement();
-
-            xmlWriter.Flush(); 
-            memoryStream.Position = 0;
-
-            XmlReaderSettings readSettings = new XmlReaderSettings {ConformanceLevel = ConformanceLevel.Fragment};
-            var reader = XmlReader.Create(memoryStream, readSettings);
-
             var copy = new FeedInfo(_controlFileGlobalDefaults);
-
-            copy.ReadXml(reader);
-
+            XmlSerializationHelper.CloneUsingXmlSerialization("feed", this, copy);
             return copy;
         }
 

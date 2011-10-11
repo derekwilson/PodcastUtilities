@@ -80,6 +80,7 @@
     <Compile Include="Configuration\IDefaultableItem.cs" />
     <Compile Include="Configuration\IFeedInfo.cs" />
     <Compile Include="Configuration\IPodcastInfo.cs" />
+    <Compile Include="Configuration\IReadWriteControlFileGlobalDefaults.cs" />
     <Compile Include="Configuration\PodcastFileSortField.cs" />
     <Compile Include="Configuration\ReadOnlyControlFile.cs" />
     <Compile Include="Configuration\ControlFileFactory.cs" />
