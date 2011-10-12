@@ -65,7 +65,7 @@ namespace PodcastUtilities.Common.Files
 				var podcastSourceFiles = FileFinder.GetFiles(
 						podcastSourcePath,
 						podcast.Pattern.Value,
-						podcast.MaximumNumberOfFiles,
+						podcast.MaximumNumberOfFiles.Value,
 						podcast.SortField.Value,
 						podcast.AscendingSort.Value);
 

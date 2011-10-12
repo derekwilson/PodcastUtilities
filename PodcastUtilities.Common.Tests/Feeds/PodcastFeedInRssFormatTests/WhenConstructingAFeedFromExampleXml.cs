@@ -7,7 +7,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
     {
         protected override void When()
         {
-            Feed = new PodcastFeedInRssFormat(FeedXmlStream);
+            Feed = new PodcastFeedInRssFormat(FeedXmlStream,null);
         }
 
         [Test]

@@ -111,6 +111,7 @@
     <Compile Include="DisplayFormatterTests\WhenTestingTheRenderFileSizeDisplayFormatter.cs" />
     <Compile Include="Exceptions\DownloaderExceptionTests\WhenCreatingAnException.cs" />
     <Compile Include="Exceptions\DownloaderExceptionTests\WhenCreatingAnExceptionWithAnInnerException.cs" />
+    <Compile Include="Feeds\DownloaderTests\WhenTestingTheDownloaderInRssRetainingTheFile.cs" />
     <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverter.cs" />
     <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsItems.cs" />
     <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsNoItems.cs" />

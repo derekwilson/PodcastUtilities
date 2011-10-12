@@ -13,7 +13,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
         protected override void GivenThat()
         {
             base.GivenThat();
-            Feed = new PodcastFeedInRssFormat(FeedXmlStream);
+            Feed = new PodcastFeedInRssFormat(FeedXmlStream,null);
         }
 
         protected override void CreateData()

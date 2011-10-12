@@ -12,7 +12,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedFactoryTests
             ThrownException = null;
             try
             {
-                Feed = FeedFactory.CreatePodcastFeed(PodcastFeedFormat.ATOM, FeedData);
+                Feed = FeedFactory.CreatePodcastFeed(PodcastFeedFormat.ATOM, FeedData, null);
             }
             catch (Exception e)
             {

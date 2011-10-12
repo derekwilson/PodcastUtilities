@@ -13,6 +13,8 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
     {
         protected EpisodeFinder _episodeFinder;
 
+        protected bool _retainFeedXml;
+
         protected IWebClientFactory _webClientFactory;
         protected IWebClient _webClient;
         protected IPodcastFeedFactory _feedFactory;
@@ -20,6 +22,8 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
         protected ITimeProvider _timeProvider;
         protected IStateProvider _stateProvider;
         protected IState _state;
+        protected IDirectoryInfoProvider _directoryInfoProvider;
+        protected IDirectoryInfo _directoryInfo;
 
         protected string _rootFolder;
         protected int _retryWaitTime;
@@ -51,11 +55,13 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
             _feedFactory = GenerateMock<IPodcastFeedFactory>();
             _fileUtilities = GenerateMock<IFileUtilities>();
             _podcastFeed = GenerateMock<IPodcastFeed>();
+            _directoryInfoProvider = GenerateMock<IDirectoryInfoProvider>();
+            _directoryInfo = GenerateMock<IDirectoryInfo>();
 
             SetupData();
             SetupStubs();
 
-            _episodeFinder = new EpisodeFinder(_fileUtilities,_feedFactory,_webClientFactory,_timeProvider,_stateProvider);
+            _episodeFinder = new EpisodeFinder(_fileUtilities,_feedFactory,_webClientFactory,_timeProvider,_stateProvider,_directoryInfoProvider);
             _episodeFinder.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(EpisodeFinderStatusUpdate);
             _latestUpdate = null;
         }
@@ -67,6 +73,8 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
 
         protected virtual void SetupData()
         {
+            _retainFeedXml = false;
+
             _now = new DateTime(2010,5,1,16,11,12);
 
             _feedAddress = "http://test";
@@ -97,7 +105,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
             _timeProvider.Stub(time => time.UtcNow).Return(_now);
             _webClient.Stub(client => client.OpenRead(_feedInfo.Address)).Return(_stream);
             _webClientFactory.Stub(factory => factory.CreateWebClient()).Return(_webClient);
-            _feedFactory.Stub(factory => factory.CreatePodcastFeed(_feedInfo.Format.Value, _stream)).Return(_podcastFeed);
+            _feedFactory.Stub(factory => factory.CreatePodcastFeed(_feedInfo.Format.Value, _stream, null)).Return(_podcastFeed);
             if (throwErrorFromFeed)
             {
                 _podcastFeed.Stub(feed => feed.Episodes).Throw(new Exception("ERROR"));
@@ -107,6 +115,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
                 _podcastFeed.Stub(feed => feed.Episodes).Return(_podcastFeedItems);
             }
             _stateProvider.Stub(provider => provider.GetState(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_state);
+            _directoryInfoProvider.Stub(dir => dir.GetDirectoryInfo(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_directoryInfo);
         }
     }
 }

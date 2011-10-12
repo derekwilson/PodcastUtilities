@@ -10,6 +10,16 @@ namespace PodcastUtilities.Common.Configuration
     public interface IReadWriteControlFile : IReadOnlyControlFile, IXmlSerializable
     {
         /// <summary>
+        /// level of diagnostic output
+        /// </summary>
+        void SetDiagnosticOutput(DiagnosticOutputLevel level);
+
+        /// <summary>
+        /// set to retain intermediate files
+        /// </summary>
+        void SetDiagnosticRetainTemporaryFiles(bool retainFiles);
+
+        /// <summary>
         /// pathname to the root folder to copy from when synchronising
         /// </summary>
         void SetSourceRoot(string value);

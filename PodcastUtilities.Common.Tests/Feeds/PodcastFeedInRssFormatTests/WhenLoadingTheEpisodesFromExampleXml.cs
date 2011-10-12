@@ -14,7 +14,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
         protected override void GivenThat()
         {
             base.GivenThat();
-            Feed = new PodcastFeedInRssFormat(FeedXmlStream);
+            Feed = new PodcastFeedInRssFormat(FeedXmlStream,null);
             Feed.StatusUpdate += new System.EventHandler<StatusUpdateEventArgs>(Feed_StatusUpdate);
             _statusError = false;
             _statusWarning = false;

@@ -7,6 +7,7 @@
         <playlistFormat>wpl</playlistFormat>
         <freeSpaceToLeaveOnDestinationMB>2000</freeSpaceToLeaveOnDestinationMB>
         <freeSpaceToLeaveOnDownloadMB>3000</freeSpaceToLeaveOnDownloadMB>
+        <number>987</number>
         <pattern>*.xyz</pattern>
         <sortfield>name</sortfield>
         <sortdirection>asc</sortdirection>
@@ -19,10 +20,13 @@
             <downloadStrategy>latest</downloadStrategy>
             <deleteDownloadsDaysOld>88</deleteDownloadsDaysOld>
         </feed>
+        <diagnostics>
+            <outputLevel>verbose</outputLevel>
+            <retainTempFiles>true</retainTempFiles>
+        </diagnostics>
     </global>
     <podcast>
         <folder>Test Match Special</folder>
-        <number>-1</number>
     </podcast>
     <podcast>
         <feed>

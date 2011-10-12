@@ -50,7 +50,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Serialisa
         public void ItShouldReadPodcast1()
         {
             Assert.That(_controlFile.GetPodcasts().ElementAt(0).Folder, Is.EqualTo("Test Match Special"));
-            Assert.That(_controlFile.GetPodcasts().ElementAt(0).MaximumNumberOfFiles, Is.EqualTo(-1));
+            Assert.That(_controlFile.GetPodcasts().ElementAt(0).MaximumNumberOfFiles.Value, Is.EqualTo(987));
             Assert.That(_controlFile.GetPodcasts().ElementAt(0).Pattern.Value, Is.EqualTo("*.xyz"));
             Assert.That(_controlFile.GetPodcasts().ElementAt(0).SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
             Assert.That(_controlFile.GetPodcasts().ElementAt(0).AscendingSort.Value, Is.True);
@@ -66,7 +66,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Serialisa
         public void ItShouldReadPodcast2()
         {
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Folder, Is.EqualTo("Hanselminutes"));
-            Assert.That(_controlFile.GetPodcasts().ElementAt(1).MaximumNumberOfFiles, Is.EqualTo(34));
+            Assert.That(_controlFile.GetPodcasts().ElementAt(1).MaximumNumberOfFiles.Value, Is.EqualTo(34));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Pattern.Value, Is.EqualTo("*.mp3"));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).AscendingSort.Value, Is.False);
@@ -88,9 +88,15 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Serialisa
         }
 
         [Test]
-        public void ItShouldReadTheGlobalRetryWaitInSeconds()
+        public void ItShouldReadTheDiagnosticOutputLevel()
         {
-            Assert.That(_controlFile.GetRetryWaitInSeconds(), Is.EqualTo(77));
+            Assert.That(_controlFile.GetDiagnosticOutput(), Is.EqualTo(DiagnosticOutputLevel.Verbose));
+        }
+
+        [Test]
+        public void ItShouldReadTheDiagnosticRetainFilesFlag()
+        {
+            Assert.That(_controlFile.GetDiagnosticRetainTemporaryFiles(), Is.EqualTo(true));
         }
 
         [Test]

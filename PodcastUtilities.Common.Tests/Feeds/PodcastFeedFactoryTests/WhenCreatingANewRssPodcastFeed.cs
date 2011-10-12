@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedFactoryTests
     {
         protected override void When()
         {
-            Feed = FeedFactory.CreatePodcastFeed(PodcastFeedFormat.RSS, FeedData);
+            Feed = FeedFactory.CreatePodcastFeed(PodcastFeedFormat.RSS, FeedData, null);
         }
 
         [Test]

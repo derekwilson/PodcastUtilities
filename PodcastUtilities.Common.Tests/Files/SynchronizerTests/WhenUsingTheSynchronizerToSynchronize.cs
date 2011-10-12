@@ -22,19 +22,19 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 
 			var podcast1 = new PodcastInfo(ControlFile)
 			               	{
-			               		Folder = "pod1",
-			               		MaximumNumberOfFiles = 2
+			               		Folder = "pod1"
 			               	};
             podcast1.Pattern.Value = "*.mp3";
+		    podcast1.MaximumNumberOfFiles.Value = 2;
 		    podcast1.AscendingSort.Value = true;
 		    podcast1.SortField.Value = PodcastFileSortField.FileName;
 
 			var podcast2 = new PodcastInfo(ControlFile)
 			               	{
-			               		Folder = "AnotherPodcast",
-			               		MaximumNumberOfFiles = 3
+			               		Folder = "AnotherPodcast"
 			               	};
             podcast2.Pattern.Value = "*.wma";
+            podcast2.MaximumNumberOfFiles.Value = 3;
             podcast2.AscendingSort.Value = false;
             podcast2.SortField.Value = PodcastFileSortField.CreationTime;
 
