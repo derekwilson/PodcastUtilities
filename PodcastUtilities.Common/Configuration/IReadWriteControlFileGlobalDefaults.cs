@@ -33,6 +33,11 @@
         /// <summary>
         /// the global default for podcasts
         /// </summary>
+        void SetDefaultNumberOfFiles(int numberOfFiles);
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
         void SetDefaultFilePattern(string pattern);
 
         /// <summary>

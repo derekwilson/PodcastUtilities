@@ -23,6 +23,7 @@ namespace PodcastUtilities.Common.Configuration
             Pattern = new DefaultableReferenceTypeItem<string>(_controlFileGlobalDefaults.GetDefaultFilePattern);
             AscendingSort = new DefaultableValueTypeItem<bool>(_controlFileGlobalDefaults.GetDefaultAscendingSort);
             SortField = new DefaultableValueTypeItem<PodcastFileSortField>(_controlFileGlobalDefaults.GetDefaultSortField);
+            MaximumNumberOfFiles = new DefaultableValueTypeItem<int>(_controlFileGlobalDefaults.GetDefaultNumberOfFiles);
         }
 
 	    /// <summary>
@@ -44,7 +45,7 @@ namespace PodcastUtilities.Common.Configuration
 		/// <summary>
 		/// maximum number of files to copy, -1 for unlimited
 		/// </summary>
-        public int MaximumNumberOfFiles { get; set; }
+        public IDefaultableItem<int> MaximumNumberOfFiles { get; set; }
         /// <summary>
         /// the configuration info for the feed
         /// </summary>
@@ -118,7 +119,7 @@ namespace PodcastUtilities.Common.Configuration
                     Pattern.Value = content;
                     break;
                 case "number":
-                    MaximumNumberOfFiles = Convert.ToInt32(content, CultureInfo.InvariantCulture);
+                    MaximumNumberOfFiles.Value = Convert.ToInt32(content, CultureInfo.InvariantCulture);
                     break;
                 case "sortfield":
                     SortField.Value = ReadSortField(content);
@@ -145,7 +146,10 @@ namespace PodcastUtilities.Common.Configuration
             {
                 writer.WriteElementString("pattern", Pattern.Value);
             }
-            writer.WriteElementString("number", MaximumNumberOfFiles.ToString(CultureInfo.InvariantCulture));
+            if (MaximumNumberOfFiles.IsSet)
+            {
+                writer.WriteElementString("number", MaximumNumberOfFiles.Value.ToString(CultureInfo.InvariantCulture));
+            }
             if (SortField.IsSet)
             {
                 writer.WriteElementString("sortfield", WriteSortField(SortField.Value));

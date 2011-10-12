@@ -10,12 +10,12 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Serialisa
             base.GivenThat();
             _podcastInfo = new PodcastInfo(_controlFile)
                                {
-                                   Folder = "folder",
-                                   MaximumNumberOfFiles = 123,
+                                   Folder = "folder"
                                };
             _podcastInfo.Pattern.Value = "pattern";
             _podcastInfo.SortField.Value = PodcastFileSortField.CreationTime;
             _podcastInfo.AscendingSort.Value = true;
+            _podcastInfo.MaximumNumberOfFiles.Value = 123;
         }
 
         protected override void When()

@@ -19,10 +19,56 @@ namespace PodcastUtilities.Common.Feeds
         /// create a feed from the supplied stream
         /// </summary>
         /// <param name="feedXml">the feed xml</param>
-        public PodcastFeedInRssFormat(Stream feedXml)
+        /// <param name="retainCopyFileName">pathname to save the feed xml to, null to not save</param>
+        public PodcastFeedInRssFormat(Stream feedXml, string retainCopyFileName)
         {
             _feedXml = new XmlDocument();
-            _feedXml.Load(feedXml);
+
+            if (retainCopyFileName != null)
+            {
+                Stream seekableStream = CopyStream(feedXml);
+
+                seekableStream.Position = 0;
+                SaveStreamToFile(seekableStream, retainCopyFileName);
+
+                seekableStream.Position = 0;
+                _feedXml.Load(seekableStream);
+            }
+            else
+            {
+                _feedXml.Load(feedXml);
+            }
+        }
+
+        private static Stream CopyStream(Stream feedXml)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+
+            int Length = 256;
+            Byte[] buffer = new Byte[Length];
+            int bytesRead = feedXml.Read(buffer, 0, Length);
+            while (bytesRead > 0)
+            {
+                memoryStream.Write(buffer, 0, bytesRead);
+                bytesRead = feedXml.Read(buffer, 0, Length);
+            }
+            return memoryStream;
+        }
+
+        private static void SaveStreamToFile(Stream feedXml, string filename)
+        {
+            FileStream writeStream = new FileStream(filename, FileMode.Create, FileAccess.Write);
+
+            int Length = 256;
+            Byte [] buffer = new Byte[Length];
+            int bytesRead = feedXml.Read(buffer,0,Length);
+            while( bytesRead > 0 ) 
+            {
+                writeStream.Write(buffer,0,bytesRead);
+                bytesRead = feedXml.Read(buffer,0,Length);
+            }
+            writeStream.Flush();
+            writeStream.Close();
         }
 
         /// <summary>

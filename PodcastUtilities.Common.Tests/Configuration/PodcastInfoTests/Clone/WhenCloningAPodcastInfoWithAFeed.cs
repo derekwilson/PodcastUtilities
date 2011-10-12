@@ -11,7 +11,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
             base.GivenThat();
             _pocastInfo.AscendingSort.Value = true;
             _pocastInfo.Folder = "FOLDER";
-            _pocastInfo.MaximumNumberOfFiles = 123;
+            _pocastInfo.MaximumNumberOfFiles.Value = 123;
             _pocastInfo.Pattern.Value = "PATTERN";
             _pocastInfo.SortField.Value = PodcastFileSortField.FileName;
 
@@ -46,7 +46,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         [Test]
         public void ItShouldCloneThePodcastMaximumNumberOfFiles()
         {
-            Assert.That(_clonedPodcast.MaximumNumberOfFiles, Is.EqualTo(123));
+            Assert.That(_clonedPodcast.MaximumNumberOfFiles.Value, Is.EqualTo(123));
         }
 
         [Test]

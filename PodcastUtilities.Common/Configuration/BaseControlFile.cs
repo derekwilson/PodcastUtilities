@@ -18,6 +18,11 @@ namespace PodcastUtilities.Common.Configuration
         /// the file pattern for files that are in a podcast
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal int DefaultNumberOfFiles { get; set; }
+        /// <summary>
+        /// the file pattern for files that are in a podcast
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal string DefaultFilePattern { get; set; }
         /// <summary>
         /// the field we are using to sort the podcasts on
@@ -65,6 +70,7 @@ namespace PodcastUtilities.Common.Configuration
 
         void SetHardcodedDefaults()
         {
+            DefaultNumberOfFiles = -1;
             DefaultFilePattern = "*.mp3";
             DefaultAscendingSort = true;
             DefaultSortField = PodcastFileSortField.FileName;
@@ -78,6 +84,8 @@ namespace PodcastUtilities.Common.Configuration
             FreeSpaceToLeaveOnDownload = 0;
             MaximumNumberOfConcurrentDownloads = 5;
             RetryWaitInSeconds = 10;
+            DiagnosticOutput = DiagnosticOutputLevel.None;
+            DiagnosticRetainTemporaryFiles = false;
 
             Podcasts = new List<PodcastInfo>();
         }
@@ -131,6 +139,15 @@ namespace PodcastUtilities.Common.Configuration
         /// the global default for podcasts
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public int GetDefaultNumberOfFiles()
+        {
+            return DefaultNumberOfFiles;
+        }
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public string GetDefaultFilePattern()
         {
             return DefaultFilePattern;
@@ -153,6 +170,18 @@ namespace PodcastUtilities.Common.Configuration
         {
             return DefaultSortField;
         }
+
+        /// <summary>
+        /// level of diagnostic output
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal DiagnosticOutputLevel DiagnosticOutput { get; set; }
+
+        /// <summary>
+        /// set to retain intermediate files
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal bool DiagnosticRetainTemporaryFiles { get; set; }
 
         /// <summary>
         /// pathname to the root folder to copy from when synchronising
@@ -207,6 +236,24 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal int RetryWaitInSeconds { get; set; }
+
+        /// <summary>
+        /// level of diagnostic output
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public DiagnosticOutputLevel GetDiagnosticOutput()
+        {
+            return DiagnosticOutput;
+        }
+
+        /// <summary>
+        /// set to retain intermediate files
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public bool GetDiagnosticRetainTemporaryFiles()
+        {
+            return DiagnosticRetainTemporaryFiles;
+        }
 
         /// <summary>
         /// pathname to the root folder to copy from when synchronising
@@ -334,6 +381,10 @@ namespace PodcastUtilities.Common.Configuration
             {
                 XmlSerializationHelper.ProcessElement(reader, "feed", ProcessGlobalFeedElements);
             }
+            if (elementName == "diagnostics")
+            {
+                XmlSerializationHelper.ProcessElement(reader, "diagnostics", ProcessGlobalDiagnosticsElements);
+            }
             
             reader.Read();
             var content = reader.Value.Trim();
@@ -373,9 +424,15 @@ namespace PodcastUtilities.Common.Configuration
                     }
                     break;
                 case "retryWaitInSeconds":
-                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture,out intValue))
+                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture, out intValue))
                     {
                         RetryWaitInSeconds = intValue;
+                    }
+                    break;
+                case "number":
+                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture, out intValue))
+                    {
+                        DefaultNumberOfFiles = intValue;
                     }
                     break;
                 case "pattern":
@@ -389,6 +446,29 @@ namespace PodcastUtilities.Common.Configuration
                     break;
                 case "sortdirection":
                     DefaultAscendingSort = PodcastInfo.ReadSortDirection(content);
+                    break;
+                default:
+                    result = ProcessorResult.Ignored;
+                    break;
+            }
+            return result;
+        }
+
+        private ProcessorResult ProcessGlobalDiagnosticsElements(XmlReader reader)
+        {
+            var result = ProcessorResult.Processed;
+
+            var elementName = reader.LocalName;
+            reader.Read();
+            var content = reader.Value.Trim();
+
+            switch (elementName)
+            {
+                case "outputLevel":
+                    DiagnosticOutput = ReadDiagnosticOutputLevel(content);
+                    break;
+                case "retainTempFiles":
+                    DiagnosticRetainTemporaryFiles = ReadDiagnosticRetainTemporaryFiles(content);
                     break;
                 default:
                     result = ProcessorResult.Ignored;
@@ -446,6 +526,24 @@ namespace PodcastUtilities.Common.Configuration
                     return PlaylistFormat.ASX;
                 default:
                     throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "{0} is not a valid value for the playlist format", format));
+            }
+        }
+
+        private static bool ReadDiagnosticRetainTemporaryFiles(string content)
+        {
+            return content.ToUpperInvariant().StartsWith("TRUE", StringComparison.Ordinal);
+        }
+
+        private static DiagnosticOutputLevel ReadDiagnosticOutputLevel(string format)
+        {
+            switch (format.ToUpperInvariant())
+            {
+                case "VERBOSE":
+                    return DiagnosticOutputLevel.Verbose;
+                case "NONE":
+                    return DiagnosticOutputLevel.None;
+                default:
+                    throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "{0} is not a valid value for the diagnostic output level", format));
             }
         }
     }

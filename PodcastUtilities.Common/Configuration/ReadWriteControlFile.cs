@@ -72,6 +72,14 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// the global default for podcasts
         /// </summary>
+        public void SetDefaultNumberOfFiles(int numberOfFiles)
+        {
+            DefaultNumberOfFiles = numberOfFiles;
+        }
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
         public void SetDefaultFilePattern(string pattern)
         {
             DefaultFilePattern = pattern;
@@ -91,6 +99,22 @@ namespace PodcastUtilities.Common.Configuration
         public void SetDefaultSortField(PodcastFileSortField sortField)
         {
             DefaultSortField = sortField;
+        }
+
+        /// <summary>
+        /// level of diagnostic output
+        /// </summary>
+        public void SetDiagnosticOutput(DiagnosticOutputLevel level)
+        {
+            DiagnosticOutput = level;
+        }
+
+        /// <summary>
+        /// set to retain intermediate files
+        /// </summary>
+        public void SetDiagnosticRetainTemporaryFiles(bool retainFiles)
+        {
+            DiagnosticRetainTemporaryFiles = retainFiles;
         }
 
         /// <summary>
@@ -225,6 +249,7 @@ namespace PodcastUtilities.Common.Configuration
             writer.WriteElementString("maximumNumberOfConcurrentDownloads", MaximumNumberOfConcurrentDownloads.ToString(CultureInfo.InvariantCulture));
             writer.WriteElementString("retryWaitInSeconds", RetryWaitInSeconds.ToString(CultureInfo.InvariantCulture));
 
+            writer.WriteElementString("number", DefaultNumberOfFiles.ToString(CultureInfo.InvariantCulture));
             writer.WriteElementString("pattern", DefaultFilePattern);
             writer.WriteElementString("sortfield", PodcastInfo.WriteSortField(DefaultSortField));
             writer.WriteElementString("sortdirection", PodcastInfo.WriteSortDirection(DefaultAscendingSort));
@@ -237,6 +262,11 @@ namespace PodcastUtilities.Common.Configuration
             writer.WriteElementString("downloadStrategy", FeedInfo.WriteFeedEpisodeDownloadStrategy(DefaultFeedEpisodeDownloadStrategy));
             writer.WriteEndElement();
 
+            writer.WriteStartElement("diagnostics");
+            writer.WriteElementString("retainTempFiles", WriteDiagnosticRetainTemporaryFiles(DiagnosticRetainTemporaryFiles));
+            writer.WriteElementString("outputLevel", WriteDiagnosticOutputLevel(DiagnosticOutput));
+            writer.WriteEndElement();
+
             writer.WriteEndElement();
 
             foreach (var podcastInfo in Podcasts)
@@ -246,6 +276,26 @@ namespace PodcastUtilities.Common.Configuration
                 podcastInfo.WriteXml(writer);
                 writer.WriteEndElement();
             }
+        }
+
+        private static string WriteDiagnosticOutputLevel(DiagnosticOutputLevel diagnosticOutput)
+        {
+            switch (diagnosticOutput)
+            {
+                case DiagnosticOutputLevel.Verbose:
+                    return "verbose";
+                default:
+                    return "none";
+            }
+        }
+
+        private static string WriteDiagnosticRetainTemporaryFiles(bool diagnosticRetainTemporaryFiles)
+        {
+            if (diagnosticRetainTemporaryFiles)
+            {
+                return "true";
+            }
+            return "false";
         }
 
         private static string WritePlaylistFormat(PlaylistFormat playlistFormat)

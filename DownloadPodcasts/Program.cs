@@ -67,10 +67,7 @@ namespace DownloadPodcasts
 
             _iocContainer = InitializeIocContainer();
             _control = new ReadOnlyControlFile(args[0]);
-            if (args.Count() > 1)
-            {
-                _verbose = args[1].Contains('v');
-            }
+            _verbose = _control.GetDiagnosticOutput() == DiagnosticOutputLevel.Verbose;
 
             _driveInfoProvider = _iocContainer.Resolve<IDriveInfoProvider>();
 
@@ -83,7 +80,7 @@ namespace DownloadPodcasts
             podcastEpisodeFinder.StatusUpdate += StatusUpdate;
             foreach (var podcastInfo in _control.GetPodcasts())
             {
-                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(_control.GetSourceRoot(), _control.GetRetryWaitInSeconds(), podcastInfo);
+                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(_control.GetSourceRoot(), _control.GetRetryWaitInSeconds(), podcastInfo, _control.GetDiagnosticRetainTemporaryFiles());
                 allEpisodes.AddRange(episodesInThisFeed);
             }
 

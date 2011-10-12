@@ -15,6 +15,7 @@ namespace PodcastUtilities.Common.Feeds
     /// </summary>
     public class EpisodeFinder : IEpisodeFinder
     {
+        private readonly IDirectoryInfoProvider _directoryInfoProvider;
         private readonly IFileUtilities _fileUtilities;
         private readonly IPodcastFeedFactory _feedFactory;
         private readonly IWebClientFactory _webClientFactory;
@@ -24,9 +25,10 @@ namespace PodcastUtilities.Common.Feeds
         /// <summary>
         /// discover items to be downloaded from a feed
         /// </summary>
-        public EpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider, IStateProvider stateProvider)
+        public EpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider, IStateProvider stateProvider, IDirectoryInfoProvider directoryInfoProvider)
         {
             _fileUtilities = fileFinder;
+            _directoryInfoProvider = directoryInfoProvider;
             _stateProvider = stateProvider;
             _timeProvider = timeProvider;
             _webClientFactory = webClientFactory;
@@ -107,6 +109,14 @@ namespace PodcastUtilities.Common.Feeds
             }
         }
 
+        private void CreateFolderIfNeeded(string folder)
+        {
+            IDirectoryInfo dir = _directoryInfoProvider.GetDirectoryInfo(folder);
+            if (!dir.Exists)
+            {
+                dir.Create();
+            }
+        }
 
         /// <summary>
         /// Find episodes to download
@@ -114,9 +124,10 @@ namespace PodcastUtilities.Common.Feeds
         /// <param name="rootFolder">the root folder for all downloads</param>
         /// <param name="retryWaitTimeInSeconds">time to wait if there is a file access lock</param>
         /// <param name="podcastInfo">info on the podcast to download</param>
+        /// <param name="retainFeedStream">true to keep the downloaded stream</param>
         /// <returns>list of episodes to be downloaded for the supplied podcastInfo</returns>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        public IList<ISyncItem> FindEpisodesToDownload(string rootFolder, int retryWaitTimeInSeconds, PodcastInfo podcastInfo)
+        public IList<ISyncItem> FindEpisodesToDownload(string rootFolder, int retryWaitTimeInSeconds, PodcastInfo podcastInfo, bool retainFeedStream)
         {
             List<ISyncItem> episodesToDownload = new List<ISyncItem>(10);
             if (podcastInfo.Feed == null)
@@ -126,6 +137,12 @@ namespace PodcastUtilities.Common.Feeds
             }
 
             var stateKey = Path.Combine(rootFolder, podcastInfo.Folder);
+            CreateFolderIfNeeded(stateKey);
+            string feedSaveFile = null;
+            if (retainFeedStream)
+            {
+                feedSaveFile = Path.Combine(Path.Combine(rootFolder, podcastInfo.Folder), "last_download_feed.xml");
+            }
 
             using (var webClient = _webClientFactory.CreateWebClient())
             {
@@ -133,7 +150,7 @@ namespace PodcastUtilities.Common.Feeds
 
                 try
                 {
-                    var feed = downloader.DownloadFeed(podcastInfo.Feed.Format.Value, podcastInfo.Feed.Address);
+                    var feed = downloader.DownloadFeed(podcastInfo.Feed.Format.Value, podcastInfo.Feed.Address,feedSaveFile);
                     feed.StatusUpdate += StatusUpdate;
                     var episodes = feed.Episodes;
 

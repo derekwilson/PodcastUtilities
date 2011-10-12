@@ -31,7 +31,7 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// maximum number of files to copy, -1 for unlimited
         /// </summary>
-        int MaximumNumberOfFiles { get; set; }
+        IDefaultableItem<int> MaximumNumberOfFiles { get; set; }
 
         /// <summary>
         /// the configuration info for the feed

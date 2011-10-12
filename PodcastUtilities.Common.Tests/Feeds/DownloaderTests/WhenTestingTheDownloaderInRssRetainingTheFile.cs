@@ -4,11 +4,11 @@ using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.Feeds.DownloaderTests
 {
-    public class WhenTestingTheDownloaderInRss : WhenTestingTheDownloader
+    public class WhenTestingTheDownloaderInRssRetainingTheFile : WhenTestingTheDownloader
     {
         protected override void When()
         {
-            Feed = FeedDownloader.DownloadFeed(PodcastFeedFormat.RSS,Address, null);
+            Feed = FeedDownloader.DownloadFeed(PodcastFeedFormat.RSS, Address, "fred");
         }
 
         [Test]
@@ -20,7 +20,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.DownloaderTests
         [Test]
         public void ItShouldReturnAFeed()
         {
-            FeedFactory.AssertWasCalled(f => f.CreatePodcastFeed(PodcastFeedFormat.RSS, StreamData, null));
+            FeedFactory.AssertWasCalled(f => f.CreatePodcastFeed(PodcastFeedFormat.RSS, StreamData, "fred"));
         }
     }
 }
