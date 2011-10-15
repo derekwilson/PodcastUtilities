@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
+using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.Presentation.ViewModels
 {
@@ -19,10 +21,14 @@ namespace PodcastUtilities.Presentation.ViewModels
 
 			_acceptCommand = new DelegateCommand(ExecuteAcceptCommand, CanExecuteAcceptCommand);
 
+            NamingStyles = CollectionHelper.CreateForDefaultableEnum<PodcastEpisodeNamingStyle>();
+
 			Podcast.PropertyChanged += PodcastPropertyChanged;
 		}
 
 		public PodcastViewModel Podcast { get; private set; }
+
+        public IEnumerable<DefaultableValueTypeItem<PodcastEpisodeNamingStyle>> NamingStyles { get; private set; }
 
 		public ICommand AcceptCommand { get { return _acceptCommand; } }
 

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 
@@ -47,7 +48,27 @@ namespace PodcastUtilities.Presentation.ViewModels
 			}
 		}
 
-	    public bool IsEditing
+        public IDefaultableItem<PodcastEpisodeNamingStyle> NamingStyle
+        {
+            get { return _podcast.Feed.NamingStyle; }
+            set
+            {
+                if (!_podcast.Feed.NamingStyle.Equals(value))
+                {
+                    if (value.IsSet)
+                    {
+                        _podcast.Feed.NamingStyle.Value = value.Value;
+                    }
+                    else
+                    {
+                        _podcast.Feed.NamingStyle.RevertToDefault();
+                    }
+                    OnPropertyChanged("NamingStyle");
+                }
+            }
+        }
+
+        public bool IsEditing
 	    {
             get { return (_backupPodcastInfo != null); }
 	    }
@@ -59,10 +80,7 @@ namespace PodcastUtilities.Presentation.ViewModels
 
 	    public virtual void StartEditing()
 	    {
-	        var copyAddress = ((_podcast.Feed.Address == null) ? null : new Uri(_podcast.Feed.Address.AbsoluteUri));
-
 	        _backupPodcastInfo = _podcast.Clone() as PodcastInfo;
-	        _backupPodcastInfo.Feed.Address = copyAddress;
 	    }
 
 	    public virtual void AcceptEdit()
