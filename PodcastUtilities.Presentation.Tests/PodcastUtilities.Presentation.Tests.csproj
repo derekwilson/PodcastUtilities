@@ -47,6 +47,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollectionHelperTests\WhenCreatingForEnumGivenNonEnumType.cs" />
+    <Compile Include="CollectionHelperTests\WhenCreatingForValidEnumType.cs" />
     <Compile Include="DelegateCommandTests\WhenCallingCanExecuteCommand.cs" />
     <Compile Include="DelegateCommandTests\WhenCanExecuteDelegateIsNull.cs" />
     <Compile Include="DelegateCommandTests\WhenExecutingCommand.cs" />

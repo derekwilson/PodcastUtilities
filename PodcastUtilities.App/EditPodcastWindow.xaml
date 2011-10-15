@@ -4,12 +4,26 @@
         xmlns:AppWpf="clr-namespace:PodcastUtilities.App.Wpf"
         Title="Podcast Properties" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight"
         AppWpf:DialogCloser.DialogResult="{Binding DialogResult}">
+
+    <Window.Resources>
+        <DataTemplate x:Key="NamingStyleTemplate">
+            <TextBlock Name="NamingStyleValue" Text="{Binding Value}" />
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding IsSet}" Value="false">
+                    <Setter TargetName="NamingStyleValue" Property="Text" Value="Use default value" />
+                    <Setter TargetName="NamingStyleValue" Property="FontStyle" Value="Italic" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -25,7 +39,13 @@
                  Text="{Binding Path=Podcast.Address, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"
                  ToolTip="{Binding ElementName=_AddressText, Path=(Validation.Errors)[0].ErrorContent}" />
 
-        <Grid Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+        <Label Margin="4,0,4,4" Grid.Row="2">Naming style:</Label>
+        <ComboBox Name="_NamingStyle" Margin="4,0,4,4" Grid.Row="2" Grid.Column="1" Width="300"
+                  ItemsSource="{Binding NamingStyles}"
+                  ItemTemplate="{StaticResource NamingStyleTemplate}"
+                  SelectedItem="{Binding Podcast.NamingStyle, Mode=TwoWay}"/>
+
+        <Grid Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
