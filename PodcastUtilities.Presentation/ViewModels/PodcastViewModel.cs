@@ -68,6 +68,26 @@ namespace PodcastUtilities.Presentation.ViewModels
             }
         }
 
+        public IDefaultableItem<PodcastEpisodeDownloadStrategy> DownloadStrategy
+        {
+            get { return _podcast.Feed.DownloadStrategy; }
+            set
+            {
+                if (!_podcast.Feed.DownloadStrategy.Equals(value))
+                {
+                    if (value.IsSet)
+                    {
+                        _podcast.Feed.DownloadStrategy.Value = value.Value;
+                    }
+                    else
+                    {
+                        _podcast.Feed.DownloadStrategy.RevertToDefault();
+                    }
+                    OnPropertyChanged("DownloadStrategy");
+                }
+            }
+        }
+
         public bool IsEditing
 	    {
             get { return (_backupPodcastInfo != null); }

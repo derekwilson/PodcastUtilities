@@ -6,8 +6,10 @@
         AppWpf:DialogCloser.DialogResult="{Binding DialogResult}">
 
     <Window.Resources>
-        <DataTemplate x:Key="NamingStyleTemplate">
-            <TextBlock Name="NamingStyleValue" Text="{Binding Value}" />
+        <DataTemplate x:Key="DefaultableItemTemplate">
+            <StackPanel>
+                <TextBlock Name="NamingStyleValue" Text="{Binding Value}" />
+            </StackPanel>
             <DataTemplate.Triggers>
                 <DataTrigger Binding="{Binding IsSet}" Value="false">
                     <Setter TargetName="NamingStyleValue" Property="Text" Value="Use default value" />
@@ -27,25 +29,32 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
         <Label Margin="4">Name:</Label>
         <TextBox Name="_NameText" Margin="4" Grid.Column="1" Width="300"
                  Text="{Binding Path=Podcast.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"
-                 ToolTip="{Binding ElementName=_NameText, Path=(Validation.Errors)[0].ErrorContent}" />
+                 />
 
         <Label Margin="4,0,4,4" Grid.Row="1">Address:</Label>
         <TextBox Name="_AddressText" Margin="4,0,4,4" Grid.Row="1" Grid.Column="1" Width="300"
                  Text="{Binding Path=Podcast.Address, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"
-                 ToolTip="{Binding ElementName=_AddressText, Path=(Validation.Errors)[0].ErrorContent}" />
+                 />
 
         <Label Margin="4,0,4,4" Grid.Row="2">Naming style:</Label>
         <ComboBox Name="_NamingStyle" Margin="4,0,4,4" Grid.Row="2" Grid.Column="1" Width="300"
                   ItemsSource="{Binding NamingStyles}"
-                  ItemTemplate="{StaticResource NamingStyleTemplate}"
-                  SelectedItem="{Binding Podcast.NamingStyle, Mode=TwoWay}"/>
+                  SelectedItem="{Binding SelectedNamingStyle, Mode=TwoWay}"
+                  ItemTemplate="{StaticResource DefaultableItemTemplate}"/>
 
-        <Grid Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+        <Label Margin="4,0,4,4" Grid.Row="3">Download strategy:</Label>
+        <ComboBox Name="_DownloadStrategy" Margin="4,0,4,4" Grid.Row="3" Grid.Column="1" Width="300"
+                  ItemsSource="{Binding DownloadStrategies}"
+                  SelectedItem="{Binding SelectedDownloadStrategy, Mode=TwoWay}"
+                  ItemTemplate="{StaticResource DefaultableItemTemplate}"/>
+
+        <Grid Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace PodcastUtilities.Common.Configuration
 {
     /// <summary>
     /// an item that can have a value or provide a default value
     /// </summary>
-    public class DefaultableValueTypeItem<T> : IDefaultableItem<T> where T : struct 
+    public class DefaultableValueTypeItem<T> : IDefaultableItem<T> where T : struct
     {
         private readonly Func<T> _findDefaultValue;
 
