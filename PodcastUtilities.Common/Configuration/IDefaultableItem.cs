@@ -1,5 +1,4 @@
-﻿using System;
-namespace PodcastUtilities.Common.Configuration
+﻿namespace PodcastUtilities.Common.Configuration
 {
     /// <summary>
     /// an item that can have a value or provide a default value
@@ -20,5 +19,12 @@ namespace PodcastUtilities.Common.Configuration
         /// the item value, or its default value if not set
         /// </summary>
         T Value { get; set; }
+
+        ///<summary>
+        /// Make this into a copy of the source, ie. if the source IsSet copy its value,
+        /// otherwise revert this to default.
+        ///</summary>
+        ///<param name="source"></param>
+        void Copy(IDefaultableItem<T> source);
     }
 }

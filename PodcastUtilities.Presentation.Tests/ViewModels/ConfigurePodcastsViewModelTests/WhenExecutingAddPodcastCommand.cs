@@ -13,6 +13,7 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
         public PodcastViewModel CreatedPodcastViewModel { get; set; }
 
         public PodcastInfo CreatedPodcast { get; set; }
+        public IPodcastInfo EditedPodcast { get; set; }
 
         protected virtual bool EditPodcastDialogReturn
         {
@@ -36,7 +37,11 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 
             DialogService.Stub(s => s.ShowEditPodcastDialog(null))
                 .IgnoreArguments()
-                .WhenCalled(invocation => CreatedPodcastViewModel = (PodcastViewModel) invocation.Arguments[0])
+                .WhenCalled(invocation =>
+                                {
+                                    CreatedPodcastViewModel = (PodcastViewModel) invocation.Arguments[0];
+                                    EditedPodcast = CreatedPodcastViewModel.Podcast;
+                                })
                 .Return(EditPodcastDialogReturn);
         }
 
@@ -48,7 +53,7 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
         [Test]
         public void ItShouldCreatePodcastAndShowEditPodcastDialog()
         {
-            DialogService.AssertWasCalled(s => s.ShowEditPodcastDialog(Arg<PodcastViewModel>.Matches(p => p.Podcast == CreatedPodcast)));
+            Assert.That(EditedPodcast, Is.SameAs(CreatedPodcast));
         }
     }
 }

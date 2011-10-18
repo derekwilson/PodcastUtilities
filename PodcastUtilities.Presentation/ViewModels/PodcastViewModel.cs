@@ -1,7 +1,5 @@
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.Presentation.ViewModels
@@ -9,7 +7,7 @@ namespace PodcastUtilities.Presentation.ViewModels
 	public class PodcastViewModel
 		: ViewModel, IDataErrorInfo
 	{
-		private readonly IPodcastInfo _podcast;
+		private IPodcastInfo _podcast;
 		private IPodcastInfo _backupPodcastInfo;
 
 		public PodcastViewModel(IPodcastInfo podcast)
@@ -48,46 +46,6 @@ namespace PodcastUtilities.Presentation.ViewModels
 			}
 		}
 
-        public IDefaultableItem<PodcastEpisodeNamingStyle> NamingStyle
-        {
-            get { return _podcast.Feed.NamingStyle; }
-            set
-            {
-                if (!_podcast.Feed.NamingStyle.Equals(value))
-                {
-                    if (value.IsSet)
-                    {
-                        _podcast.Feed.NamingStyle.Value = value.Value;
-                    }
-                    else
-                    {
-                        _podcast.Feed.NamingStyle.RevertToDefault();
-                    }
-                    OnPropertyChanged("NamingStyle");
-                }
-            }
-        }
-
-        public IDefaultableItem<PodcastEpisodeDownloadStrategy> DownloadStrategy
-        {
-            get { return _podcast.Feed.DownloadStrategy; }
-            set
-            {
-                if (!_podcast.Feed.DownloadStrategy.Equals(value))
-                {
-                    if (value.IsSet)
-                    {
-                        _podcast.Feed.DownloadStrategy.Value = value.Value;
-                    }
-                    else
-                    {
-                        _podcast.Feed.DownloadStrategy.RevertToDefault();
-                    }
-                    OnPropertyChanged("DownloadStrategy");
-                }
-            }
-        }
-
         public bool IsEditing
 	    {
             get { return (_backupPodcastInfo != null); }
@@ -110,8 +68,7 @@ namespace PodcastUtilities.Presentation.ViewModels
 
 	    public virtual void CancelEdit()
 	    {
-	        Name = _backupPodcastInfo.Folder;
-	        Address = _backupPodcastInfo.Feed.Address;
+	        _podcast = _backupPodcastInfo;
 
 	        _backupPodcastInfo = null;
 	    }

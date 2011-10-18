@@ -45,14 +45,7 @@ namespace PodcastUtilities.Presentation.ViewModels
             {
                 if (!Podcast.Podcast.Feed.NamingStyle.Equals(value))
                 {
-                    if (value.IsSet)
-                    {
-                        Podcast.Podcast.Feed.NamingStyle.Value = value.Value;
-                    }
-                    else
-                    {
-                        Podcast.Podcast.Feed.NamingStyle.RevertToDefault();
-                    }
+                    Podcast.Podcast.Feed.NamingStyle.Copy(value);
                     OnPropertyChanged("SelectedNamingStyle");
                 }
             }
@@ -68,14 +61,7 @@ namespace PodcastUtilities.Presentation.ViewModels
             {
                 if (!Podcast.Podcast.Feed.DownloadStrategy.Equals(value))
                 {
-                    if (value.IsSet)
-                    {
-                        Podcast.Podcast.Feed.DownloadStrategy.Value = value.Value;
-                    }
-                    else
-                    {
-                        Podcast.Podcast.Feed.DownloadStrategy.RevertToDefault();
-                    }
+                    Podcast.Podcast.Feed.DownloadStrategy.Copy(value);
                     OnPropertyChanged("SelectedDownloadStrategy");
                 }
             }
