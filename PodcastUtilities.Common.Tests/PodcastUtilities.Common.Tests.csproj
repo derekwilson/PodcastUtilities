@@ -88,6 +88,8 @@
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\Serialisation\Read\WhenReadingAControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\WhenTestingAControlFile.cs" />
+    <Compile Include="Configuration\DefaultableReferenceTypeItemTests\WhenCopyingADefaultedItem.cs" />
+    <Compile Include="Configuration\DefaultableReferenceTypeItemTests\WhenCopyingANonDefaultedItem.cs" />
     <Compile Include="Configuration\DefaultableReferenceTypeItemTests\WhenCreatingAnItem.cs" />
     <Compile Include="Configuration\DefaultableReferenceTypeItemTests\WhenRevertingValue.cs" />
     <Compile Include="Configuration\DefaultableReferenceTypeItemTests\WhenSettingAValue.cs" />
@@ -95,6 +97,8 @@
     <Compile Include="Configuration\DefaultableValueTypeItemTests\WhenComparingEqualItems.cs" />
     <Compile Include="Configuration\DefaultableValueTypeItemTests\WhenComparingUnequalItems.cs" />
     <Compile Include="Configuration\DefaultableValueTypeItemTests\WhenComparingWithObjectOfDifferentType.cs" />
+    <Compile Include="Configuration\DefaultableValueTypeItemTests\WhenCopyingADefaultedItem.cs" />
+    <Compile Include="Configuration\DefaultableValueTypeItemTests\WhenCopyingANonDefaultedItem.cs" />
     <Compile Include="Configuration\DefaultableValueTypeItemTests\WhenCreatingAnItem.cs" />
     <Compile Include="Configuration\DefaultableValueTypeItemTests\WhenRevertingValue.cs" />
     <Compile Include="Configuration\DefaultableValueTypeItemTests\WhenSettingAValue.cs" />

@@ -44,6 +44,23 @@ namespace PodcastUtilities.Common.Configuration
             _value = null;
         }
 
+        ///<summary>
+        /// Make this into a copy of the source, ie. if the source IsSet copy its value,
+        /// otherwise revert this to default.
+        ///</summary>
+        ///<param name="source"></param>
+        public void Copy(IDefaultableItem<T> source)
+        {
+            if (source.IsSet)
+            {
+                Value = source.Value;
+            }
+            else
+            {
+                RevertToDefault();
+            }
+        }
+
         /// <summary>
         /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
         /// </summary>
