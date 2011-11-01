@@ -104,6 +104,7 @@
     <Compile Include="Files\EpisodePurger.cs" />
     <Compile Include="Configuration\PodcastFactory.cs" />
     <Compile Include="Feeds\PodcastFeedFactory.cs" />
+    <Compile Include="IXmlEncoder.cs" />
     <Compile Include="ProgressEventArgs.cs" />
     <Compile Include="IProgressUpdate.cs" />
     <Compile Include="Feeds\ISyncItem.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Files\Finder.cs" />
     <Compile Include="Rfc822DateTime.cs" />
     <Compile Include="StatusUpdateLevel.cs" />
+    <Compile Include="XmlEncoder.cs" />
     <Compile Include="XmlState.cs" />
     <Compile Include="StateProvider.cs" />
     <Compile Include="StatusUpdateEventArgs.cs" />
