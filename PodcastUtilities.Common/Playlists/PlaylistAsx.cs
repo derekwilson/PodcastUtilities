@@ -60,7 +60,9 @@ namespace PodcastUtilities.Common.Playlists
 	    /// <returns>true if the file was added false if the track was already present</returns>
 	    public bool AddTrack(string filePath)
 		{
-            if (GetNumberOfNodes(string.Format(CultureInfo.InvariantCulture, "ASX/ENTRY/REF[@HREF = '{0}']", filePath)) > 0)
+            var encodedFilePath = XmlEncodeString(filePath);
+
+            if (GetNumberOfNodes(string.Format(CultureInfo.InvariantCulture, "ASX/ENTRY/REF[@HREF = '{0}']", encodedFilePath)) > 0)
 				return false;
 
             IXPathNavigable n = FindNode("ASX");
@@ -70,7 +72,7 @@ namespace PodcastUtilities.Common.Playlists
 			}
 
 			// we can find the parent node for the keys so create the key element
-            n.CreateNavigator().AppendChild(string.Format(CultureInfo.InvariantCulture, "<ENTRY><REF HREF='{0}' /></ENTRY>", filePath)); 
+            n.CreateNavigator().AppendChild(string.Format(CultureInfo.InvariantCulture, "<ENTRY><REF HREF='{0}' /></ENTRY>", encodedFilePath)); 
 
             return true;
 		}

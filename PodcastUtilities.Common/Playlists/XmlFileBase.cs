@@ -14,8 +14,9 @@ namespace PodcastUtilities.Common.Playlists
     public class XmlFileBase
 	{
 	    private XmlDocument _xmlDocument;
+	    private XmlEncoder _xmlEncoder;
 
-        /// <summary>
+	    /// <summary>
         /// create the XML file object
         /// </summary>
         /// <param name="fileName">filename to read from and will be used to save to</param>
@@ -24,6 +25,8 @@ namespace PodcastUtilities.Common.Playlists
         /// <param name="resourceAssembly">assembly to use to load the blank template from</param>
         protected XmlFileBase(string fileName, bool create, string emptyPlaylistResource, Assembly resourceAssembly)
         {
+            _xmlEncoder = new XmlEncoder();
+
             FileName = fileName;
             _xmlDocument = new XmlDocument();
 
@@ -32,7 +35,9 @@ namespace PodcastUtilities.Common.Playlists
                 _xmlDocument.Load(GetXmlStream(resourceAssembly, emptyPlaylistResource));
             }
             else
+            {
                 _xmlDocument.Load(FileName);
+            }
         }
 
         /// <summary>
@@ -110,6 +115,16 @@ namespace PodcastUtilities.Common.Playlists
 			}
 			n.InnerText = nodeValue;
 		}
+
+        /// <summary>
+        /// Encode/escape any special xml characters
+        /// </summary>
+        /// <param name="source">string which may contain special xml chracters</param>
+        /// <returns>escaped output</returns>
+        protected string XmlEncodeString(string source)
+        {
+            return _xmlEncoder.Encode(source);
+        }
 
         /// <summary>
         /// find a specific node

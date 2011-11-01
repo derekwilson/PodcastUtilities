@@ -59,8 +59,10 @@ namespace PodcastUtilities.Common.Playlists
         /// <param name="filePath">pathname to add, can be relative or absolute</param>
         /// <returns>true if the file was added false if the track was already present</returns>
         public bool AddTrack(string filePath)
-		{
-            if (GetNumberOfNodes(string.Format(CultureInfo.InvariantCulture, "smil/body/seq/media[@src = '{0}']", filePath)) > 0)
+        {
+            var encodedFilePath = XmlEncodeString(filePath);
+
+            if (GetNumberOfNodes(string.Format(CultureInfo.InvariantCulture, "smil/body/seq/media[@src = '{0}']", encodedFilePath)) > 0)
                 return false;
 
 			IXPathNavigable n = FindNode("smil/body/seq");
@@ -70,7 +72,7 @@ namespace PodcastUtilities.Common.Playlists
 			}
 
 			// we can find the parent node for the keys so create the key element
-            n.CreateNavigator().AppendChild(string.Format(CultureInfo.InvariantCulture,"<media src='{0}' />",filePath)); 
+            n.CreateNavigator().AppendChild(string.Format(CultureInfo.InvariantCulture, "<media src='{0}' />", encodedFilePath)); 
 			return true;
         }
 	}

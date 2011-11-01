@@ -137,6 +137,7 @@
     <Compile Include="Files\SorterTests\WhenSortingByNameDescending.cs" />
     <Compile Include="Files\SorterTests\WhenTestingTheSorter.cs" />
     <Compile Include="Playlists\PlaylistAsxTests\WhenAddinATrackToAnInvalidPlaylist.cs" />
+    <Compile Include="Playlists\PlaylistAsxTests\WhenAddingTrackContainingAmpersands.cs" />
     <Compile Include="Playlists\PlaylistAsxTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="Playlists\PlaylistAsxTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
     <Compile Include="Playlists\PlaylistAsxTests\WhenCreatingNewPlaylist.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Playlists\GeneratorTests\WhenThereAreNoSourcePodcasts.cs" />
     <Compile Include="Playlists\GeneratorTests\WhenThereAreSomePodcastsContainingFiles.cs" />
     <Compile Include="Playlists\PlaylistWplTests\WhenAddinATrackToAnInvalidPlaylist.cs" />
+    <Compile Include="Playlists\PlaylistWplTests\WhenAddingTrackContainingAmpersands.cs" />
     <Compile Include="Playlists\PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="Playlists\PlaylistWplTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
     <Compile Include="Feeds\EpisodeDownloaderFactoryTests\WhenUsingAnEpisodeDownloaderFactory.cs" />
@@ -211,6 +213,7 @@
     <Compile Include="Rfc822DateTimeTests\WhenConvertingToDateDime.cs" />
     <Compile Include="StateProviderTests\WhenTestingTheStateProvider.cs" />
     <Compile Include="TestControlFile.cs" />
+    <Compile Include="XmlEncoderTests\WhenEncodingXml.cs" />
     <Compile Include="XmlStateTests\WhenLoadingTheTestState.cs" />
     <Compile Include="XmlStateTests\WhenSettingTheHighTide.cs" />
     <Compile Include="XmlStateTests\WhenSettingTheHighTideToAnEarlyDate.cs" />
