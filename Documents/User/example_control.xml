@@ -16,6 +16,10 @@
         <downloadStrategy>high_tide</downloadStrategy>
         <namingStyle>pubdate_url</namingStyle>
     </feed>
+    <diagnostics>
+      <retainTempFiles>false</retainTempFiles>
+      <outputLevel>none</outputLevel>
+    </diagnostics>
 	</global>
 	<podcast>
     <feed>
