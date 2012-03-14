@@ -3,6 +3,7 @@ using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.Common.Files;
+using PodcastUtilities.Common.Perfmon;
 using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Common.Playlists;
 
@@ -28,6 +29,9 @@ namespace PodcastUtilities.Ioc
         public static void RegisterSystemServices(IIocContainer container)
         {
             container.Register<ITimeProvider, SystemDateTimeProvider>();
+            container.Register<IPerfmonCounterUtilities, SystemPerfmonCounterUtilities>();
+            container.Register<IPerfmonCounterProvider, SystemPerfmonCounterProvider>();
+            container.Register<ICategoryInstaller, CategoryInstaller>();
         }
 
         [CLSCompliant(false)]
