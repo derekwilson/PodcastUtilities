@@ -28,6 +28,11 @@
         void SaveFile();
 
         /// <summary>
+        /// persist the playlist to disk
+        /// </summary>
+        void SaveFile(string overrideFilename);
+
+        /// <summary>
         /// the title of the playlist
         /// </summary>
         string Title { get; set; }
