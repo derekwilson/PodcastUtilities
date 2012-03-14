@@ -72,16 +72,15 @@ namespace PodcastUtilities.Common.Playlists
                 p.AddTrack("." + thisRelativeFile);
             }
 
-            p.SaveFile();
-
             if (copyToDestination)
             {
                 string destPlaylist = Path.Combine(control.GetDestinationRoot(), control.GetPlaylistFileName());
                 OnStatusUpdate(string.Format(CultureInfo.InvariantCulture,"Copying Playlist with {0} items to {1}", p.NumberOfTracks, destPlaylist));
-				FileUtilities.FileCopy(control.GetPlaylistFileName(), destPlaylist, true);
+                p.SaveFile(destPlaylist);
             }
             else
             {
+                p.SaveFile();
                 OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Playlist with {0} items generated: {1}", p.NumberOfTracks, control.GetPlaylistFileName()));
             }
         }

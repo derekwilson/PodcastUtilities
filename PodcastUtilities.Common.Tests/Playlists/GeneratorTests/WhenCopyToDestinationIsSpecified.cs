@@ -13,7 +13,7 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
 		[Test]
 		public void ItShouldCopyTheFileToTheDestination()
 		{
-			FileUtilities.AssertWasCalled(f => f.FileCopy("MyPodcasts.wpl", @"c:\destination\MyPodcasts.wpl", true));
+            Playlist.AssertWasCalled(p => p.SaveFile(@"c:\destination\MyPodcasts.wpl"));
 		}
 	}
 }

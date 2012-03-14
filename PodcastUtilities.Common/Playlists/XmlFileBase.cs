@@ -66,13 +66,21 @@ namespace PodcastUtilities.Common.Playlists
 		    _xmlDocument.LoadXml(xml);
 		}
 
-		/// <summary>
-		/// persist the XML to disk
-		/// </summary>
+        /// <summary>
+        /// persist the XML to disk
+        /// </summary>
         public void SaveFile()
-		{
+        {
             _xmlDocument.Save(FileName);
-		}
+        }
+
+        /// <summary>
+        /// persist the XML to disk
+        /// </summary>
+        public void SaveFile(string overrideFilename)
+        {
+            _xmlDocument.Save(overrideFilename);
+        }
 
         /// <summary>
         /// number of tracks in the playlist

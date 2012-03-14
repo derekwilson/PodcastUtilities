@@ -25,6 +25,7 @@ namespace DownloadPodcasts
         static ReadOnlyControlFile _control;
         private static int _number_of_files_to_download;
         private static int _number_of_files_downloaded;
+        private static bool _reported_driveinfo_error = false;
 
         static private void DisplayBanner()
         {
@@ -146,8 +147,21 @@ namespace DownloadPodcasts
 
         static bool IsDestinationDriveFull(string destinationRootPath, long freeSpaceToLeaveOnDestination)
         {
-            var driveInfo = _driveInfoProvider.GetDriveInfo(Path.GetPathRoot(Path.GetFullPath(destinationRootPath)));
-            long availableFreeSpace = driveInfo.AvailableFreeSpace;
+            long availableFreeSpace = 0;
+            try
+            {
+                var driveInfo = _driveInfoProvider.GetDriveInfo(Path.GetPathRoot(Path.GetFullPath(destinationRootPath)));
+                availableFreeSpace = driveInfo.AvailableFreeSpace;
+            }
+            catch (Exception ex)
+            {
+                if (!_reported_driveinfo_error)
+                {
+                    Console.WriteLine(string.Format("Cannot find available free space on drive, will continue to download. Error: {0}", ex.Message));
+                }
+                _reported_driveinfo_error = true;
+                return false;
+            }
 
             long freeKb = 0;
             double freeMb = 0;
