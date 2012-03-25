@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using PodcastUtilities.Common.Feeds;
+using PodcastUtilities.Common.Perfmon;
 using PodcastUtilities.Common.Platform;
 using Rhino.Mocks;
 
@@ -24,6 +25,9 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests
         protected ProgressEventArgs _progressUpdateArgs;
 
         protected IStateProvider _stateProvider;
+        protected ICounterFactory _counterFactory;
+        protected IAverageCounter _averageCounterTime;
+        protected IAverageCounter _averageCounterSize;
 
         protected IDirectoryInfoProvider _directoryInfoProvider;
         protected IFileUtilities _fileUtilities;
@@ -42,6 +46,9 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests
             _directoryInfo = GenerateMock<IDirectoryInfo>();
             _fileUtilities = GenerateMock<IFileUtilities>();
             _stateProvider = GenerateMock<IStateProvider>();
+            _counterFactory = GenerateMock<ICounterFactory>();
+            _averageCounterTime = GenerateMock<IAverageCounter>();
+            _averageCounterSize = GenerateMock<IAverageCounter>();
             _state = GenerateMock<IState>();
 
             _syncItem = new SyncItem();
@@ -50,7 +57,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests
             SetupData();
             SetupStubs();
 
-            _downloader = new EpisodeDownloader(_webClientFactory, _directoryInfoProvider,_fileUtilities,_stateProvider);
+            _downloader = new EpisodeDownloader(_webClientFactory, _directoryInfoProvider,_fileUtilities,_stateProvider,_counterFactory);
             _downloader.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(DownloaderStatusUpdate);
             _downloader.ProgressUpdate += new EventHandler<ProgressEventArgs>(DownloaderProgressUpdate);
         }
@@ -84,6 +91,17 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests
             _webClientFactory.Stub(factory => factory.CreateWebClient()).Return(_webClient);
             _directoryInfoProvider.Stub(dir => dir.GetDirectoryInfo(_downloadFolder)).Return(_directoryInfo);
             _stateProvider.Stub(provider => provider.GetState(_syncItem.StateKey)).Return(_state);
+
+            _counterFactory.Stub(
+                factory => factory.CreateAverageCounter(CategoryInstaller.PodcastUtilitiesCommonCounterCategory,
+                                             CategoryInstaller.AverageMBDownload,
+                                             CategoryInstaller.SizeOfDownloads))
+                            .Return(_averageCounterSize);
+            _counterFactory.Stub(
+                factory => factory.CreateAverageCounter(CategoryInstaller.PodcastUtilitiesCommonCounterCategory,
+                                             CategoryInstaller.AverageTimeToDownload,
+                                             CategoryInstaller.NumberOfDownloads))
+                            .Return(_averageCounterTime);
         }
     }
 }
