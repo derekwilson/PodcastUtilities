@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using PodcastUtilities.Common.Perfmon;
+using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Ioc;
 
 namespace PerfmonCountersInstaller
@@ -37,10 +39,28 @@ namespace PerfmonCountersInstaller
             return container;
         }
 
+        private static void TestCounters()
+        {
+            var factory = _iocContainer.Resolve<ICounterFactory>();
+
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            Thread.Sleep(1000);
+            
+            var aveCounter1 = factory.CreateAverageCounter(CategoryInstaller.PodcastUtilitiesCommonCounterCategory,
+                                                 CategoryInstaller.AverageTimeToDownload,
+                                                 CategoryInstaller.NumberOfDownloads);
+            var aveCounter2 = factory.CreateAverageCounter(CategoryInstaller.PodcastUtilitiesCommonCounterCategory,
+                                                 CategoryInstaller.AverageMBDownload,
+                                                 CategoryInstaller.SizeOfDownloads);
+            aveCounter1.RegisterTime(stopwatch);
+            aveCounter2.RegisterValue(5);
+        }
+
         static void Main(string[] args)
         {
             DisplayBanner();
-            if (args.Length > 0 && args[0].ToUpperInvariant() != "DEL")
+            if (args.Length > 0 && args[0].ToUpperInvariant() != "DEL" && args[0].ToUpperInvariant() != "TEST")
             {
                 DisplayHelp();
                 return;
@@ -55,11 +75,18 @@ namespace PerfmonCountersInstaller
             {
                 result = installer.DeleteCatagory(CategoryInstaller.PodcastUtilitiesCommonCounterCategory);
             }
+            else if (args.Length > 0 && args[0].ToUpperInvariant() == "TEST")
+            {
+                TestCounters();
+                return;
+            }
             else
             {
-                installer.AddCounter(CategoryInstaller.AverageTimeToDownload, "Measures ms for the download call",PerformanceCounterType.AverageTimer32);
+                installer.AddCounter(CategoryInstaller.AverageTimeToDownload, "Measures ms for the download call",PerformanceCounterType.AverageCount64);
                 installer.AddCounter(CategoryInstaller.AverageTimeToDownload + "Base", "Measures ms for the download call",PerformanceCounterType.AverageBase);
                 installer.AddCounter(CategoryInstaller.NumberOfDownloads, "Total number of downloads", PerformanceCounterType.NumberOfItems64);
+                installer.AddCounter(CategoryInstaller.AverageMBDownload, "Measures MB for the download call", PerformanceCounterType.AverageCount64);
+                installer.AddCounter(CategoryInstaller.AverageMBDownload + "Base", "Measures MB for the download call", PerformanceCounterType.AverageBase);
                 installer.AddCounter(CategoryInstaller.SizeOfDownloads, "Total size of downloads in kb", PerformanceCounterType.NumberOfItems64);
 
                 result = installer.RefreshCatagoryWithCounters(CategoryInstaller.PodcastUtilitiesCommonCounterCategory,"PodcastUtilities.Common counters");

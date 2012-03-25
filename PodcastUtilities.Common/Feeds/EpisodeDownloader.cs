@@ -1,9 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Threading;
 using PodcastUtilities.Common.Exceptions;
+using PodcastUtilities.Common.Perfmon;
 using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common.Feeds
@@ -17,6 +19,7 @@ namespace PodcastUtilities.Common.Feeds
         private readonly IDirectoryInfoProvider _directoryInfoProvider;
         private readonly IFileUtilities _fileUtilities;
         private readonly IStateProvider _stateProvider;
+        private readonly ICounterFactory _counterFactory;
 
         private readonly object _lock = new object();
         private IWebClient _client;
@@ -24,6 +27,8 @@ namespace PodcastUtilities.Common.Feeds
         private bool _complete;
         private ISyncItem _syncItem;
         private int _progressPercentage;
+        private long _bytesDownloaded;
+        private Stopwatch _stopWatch;
 
         /// <summary>
         /// the item to download
@@ -82,9 +87,10 @@ namespace PodcastUtilities.Common.Feeds
         /// <summary>
         /// create a task
         /// </summary>
-        public EpisodeDownloader(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities, IStateProvider stateProvider)
+        public EpisodeDownloader(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities, IStateProvider stateProvider, ICounterFactory counterFactory)
         {
             _webClientFactory = webClientFactory;
+            _counterFactory = counterFactory;
             _stateProvider = stateProvider;
             _fileUtilities = fileUtilities;
             _directoryInfoProvider = directoryInfoProvider;
@@ -110,6 +116,9 @@ namespace PodcastUtilities.Common.Feeds
 
                 _started = true;
                 _progressPercentage = 0;
+                _bytesDownloaded = 0;
+                _stopWatch = new Stopwatch();
+                _stopWatch.Start();
 
                 _client = _webClientFactory.CreateWebClient();
                 _client.ProgressUpdate += new EventHandler<ProgressEventArgs>(ClientProgressUpdate);
@@ -149,6 +158,7 @@ namespace PodcastUtilities.Common.Feeds
                     return;
                 }
                 _progressPercentage = e.ProgressPercentage;
+                _bytesDownloaded = e.ItemsProcessed;
             }
 
             OnProgressUpdate(e);
@@ -158,6 +168,22 @@ namespace PodcastUtilities.Common.Feeds
         {
             if (ProgressUpdate != null)
                 ProgressUpdate(this, e);
+        }
+
+        private int ConvertBytesToMB(long bytes)
+        {
+            long kb = 0;
+            double mb = 0;
+
+            if (bytes > 0)
+            {
+                kb = (bytes / 1024);
+            }
+            if (kb > 0)
+            {
+                mb = (kb / 1024);
+            }
+            return (int)mb;
         }
 
         void ClientDownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
@@ -219,6 +245,12 @@ namespace PodcastUtilities.Common.Feeds
                 _client = null;
 
                 _complete = true;
+                _counterFactory.CreateAverageCounter(CategoryInstaller.PodcastUtilitiesCommonCounterCategory,
+                                                     CategoryInstaller.AverageTimeToDownload,
+                                                     CategoryInstaller.NumberOfDownloads).RegisterTime(_stopWatch);
+                _counterFactory.CreateAverageCounter(CategoryInstaller.PodcastUtilitiesCommonCounterCategory,
+                                                     CategoryInstaller.AverageMBDownload,
+                                                     CategoryInstaller.SizeOfDownloads).RegisterValue(ConvertBytesToMB(_bytesDownloaded));
                 TaskComplete.Set();
             }
         }

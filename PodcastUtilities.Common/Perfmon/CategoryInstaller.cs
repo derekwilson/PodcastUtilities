@@ -16,17 +16,22 @@ namespace PodcastUtilities.Common.Perfmon
         /// <summary>
         /// counter name
         /// </summary>
-        public const string AverageTimeToDownload = "AverageTimeToDownload";
+        public const string AverageTimeToDownload = "AverageTimeToDownloadInMs";
         /// <summary>
         /// counter name
         /// </summary>
         public const string NumberOfDownloads = "TotalNumberOfDownloads";
+        
+        /// <summary>
+        /// counter name
+        /// </summary>
+        public const string AverageMBDownload = "AverageSizeOfADownloadInMB";
         /// <summary>
         /// counter name
         /// </summary>
         public const string SizeOfDownloads = "TotalSizeOfDownloads";
 
-        private IPerfmonCounterProvider _counterCreator;
+        private IPerfmonCounterCreationDataProvider _counterCreator;
         private IPerfmonCounterUtilities _performanceCounterCategoryProxy;
         private CounterCreationDataCollection _counters;
 
@@ -35,7 +40,7 @@ namespace PodcastUtilities.Common.Perfmon
         /// </summary>
         public CategoryInstaller(
             IPerfmonCounterUtilities performanceCounterCategoryProxy,
-            IPerfmonCounterProvider counterFactory)
+            IPerfmonCounterCreationDataProvider counterFactory)
         {
             _performanceCounterCategoryProxy = performanceCounterCategoryProxy;
             _counterCreator = counterFactory;

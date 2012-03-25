@@ -30,8 +30,9 @@ namespace PodcastUtilities.Ioc
         {
             container.Register<ITimeProvider, SystemDateTimeProvider>();
             container.Register<IPerfmonCounterUtilities, SystemPerfmonCounterUtilities>();
-            container.Register<IPerfmonCounterProvider, SystemPerfmonCounterProvider>();
+            container.Register<IPerfmonCounterCreationDataProvider, SystemPerfmonCounterCreationDataProvider>();
             container.Register<ICategoryInstaller, CategoryInstaller>();
+            container.Register<ICounterFactory, CounterFactory>();
         }
 
         [CLSCompliant(false)]

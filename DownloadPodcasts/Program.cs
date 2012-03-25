@@ -10,6 +10,7 @@ using System.Xml;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
+using PodcastUtilities.Common.Perfmon;
 using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Ioc;
 
@@ -53,6 +54,20 @@ namespace DownloadPodcasts
             return container;
         }
 
+        private static void ResetCounters()
+        {
+            var factory = _iocContainer.Resolve<ICounterFactory>();
+
+            var aveCounter1 = factory.CreateAverageCounter(CategoryInstaller.PodcastUtilitiesCommonCounterCategory,
+                                                           CategoryInstaller.AverageTimeToDownload,
+                                                           CategoryInstaller.NumberOfDownloads);
+            aveCounter1.Reset();
+            var aveCounter2 = factory.CreateAverageCounter(CategoryInstaller.PodcastUtilitiesCommonCounterCategory,
+                                                           CategoryInstaller.AverageMBDownload,
+                                                           CategoryInstaller.SizeOfDownloads);
+            aveCounter2.Reset();
+        }
+
         static void Main(string[] args)
         {
             DisplayBanner();
@@ -74,6 +89,8 @@ namespace DownloadPodcasts
 
             int numberOfConnections = _control.GetMaximumNumberOfConcurrentDownloads();
             System.Net.ServicePointManager.DefaultConnectionLimit = numberOfConnections;
+
+            ResetCounters();
 
             // find the episodes to download
             var allEpisodes = new List<ISyncItem>(20);
