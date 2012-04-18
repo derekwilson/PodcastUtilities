@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 using PodcastUtilities.Common.Playlists;
 
@@ -7,7 +8,7 @@ namespace PodcastUtilities.Common.Configuration
     /// <summary>
     /// this object represents the xml control file
     /// </summary>
-    public interface IReadWriteControlFile : IReadOnlyControlFile, IXmlSerializable
+    public interface IReadWriteControlFile : IReadOnlyControlFile, ICloneable, IXmlSerializable
     {
         /// <summary>
         /// level of diagnostic output

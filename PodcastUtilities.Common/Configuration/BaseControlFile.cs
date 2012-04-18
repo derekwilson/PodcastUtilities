@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IO;
 using System.Xml;
 using System.Xml.XPath;
 using PodcastUtilities.Common.Exceptions;
@@ -59,6 +60,37 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal PodcastEpisodeDownloadStrategy DefaultFeedEpisodeDownloadStrategy { get; set; }
+
+        /// <summary>
+        /// only used for unit testing
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
+        public BaseControlFile(XmlDocument document)
+        {
+            SetHardcodedDefaults();
+            MemoryStream stream = new MemoryStream();
+            document.Save(stream);
+            stream.Position = 0;
+            ReadXml(XmlReader.Create(stream));
+        }
+
+        /// <summary>
+        /// only used for unit testing
+        /// </summary>
+        public BaseControlFile(Stream stream)
+        {
+            SetHardcodedDefaults();
+            ReadXml(XmlReader.Create(stream));
+        }
+
+        /// <summary>
+        /// only used for unit testing
+        /// </summary>
+        public BaseControlFile(XmlReader xml)
+        {
+            SetHardcodedDefaults();
+            ReadXml(xml);
+        }
 
         /// <summary>
         /// setup the hard coded defaults
@@ -380,10 +412,12 @@ namespace PodcastUtilities.Common.Configuration
             if (elementName == "feed")
             {
                 XmlSerializationHelper.ProcessElement(reader, "feed", ProcessGlobalFeedElements);
+                return result;
             }
             if (elementName == "diagnostics")
             {
                 XmlSerializationHelper.ProcessElement(reader, "diagnostics", ProcessGlobalDiagnosticsElements);
+                return result;
             }
             
             reader.Read();
