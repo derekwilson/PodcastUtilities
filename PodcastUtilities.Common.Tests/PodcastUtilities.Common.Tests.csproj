@@ -77,6 +77,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ControlFileTests\Clone\WhenCloningAControlFile.cs" />
+    <Compile Include="Configuration\ControlFileTests\Clone\WhenCloningTheTestControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingAControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentAmountOfSpaceToLeave.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentEpisodeDownloadStrategies.cs" />
@@ -212,7 +214,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rfc822DateTimeTests\WhenConvertingToDateDime.cs" />
     <Compile Include="StateProviderTests\WhenTestingTheStateProvider.cs" />
-    <Compile Include="TestControlFile.cs" />
+    <Compile Include="TestControlFileFactory.cs" />
     <Compile Include="XmlEncoderTests\WhenEncodingXml.cs" />
     <Compile Include="XmlStateTests\WhenLoadingTheTestState.cs" />
     <Compile Include="XmlStateTests\WhenSettingTheHighTide.cs" />

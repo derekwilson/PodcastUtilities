@@ -13,13 +13,18 @@ namespace PodcastUtilities.Common.Tests
     {
         public static IReadOnlyControlFile CreateControlFile()
         {
+            return CreateReadWriteControlFile();
+        }
+
+        public static IReadWriteControlFile CreateReadWriteControlFile()
+        {
             var testControlFileResourcePath = "PodcastUtilities.Common.Tests.XML.testcontrolfile.xml";
 
             Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(testControlFileResourcePath);
             var controlFileXmlDocument = new XmlDocument();
             controlFileXmlDocument.Load(s);
 
-            return new ReadOnlyControlFile(controlFileXmlDocument);
+            return new ReadWriteControlFile(controlFileXmlDocument);
         }
     }
 }

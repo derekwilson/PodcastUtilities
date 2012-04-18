@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
@@ -27,6 +28,36 @@ namespace PodcastUtilities.Common.Configuration
             FileStream fileStream = new FileStream(fileName, FileMode.Open);
 
             ReadXml(XmlReader.Create(fileStream, readSettings));
+        }
+
+        /// <summary>
+        /// used for cloning
+        /// </summary>
+        protected ReadWriteControlFile() : base()
+        {
+        }
+
+                /// <summary>
+        /// only used for unit testing
+        /// </summary>
+        public ReadWriteControlFile(XmlReader xml) : base(xml)
+        {
+        }
+
+        /// <summary>
+        /// only used for unit testing
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
+        public ReadWriteControlFile(XmlDocument document) : base(document)
+        {
+        }
+
+        /// <summary>
+        /// only used for unit testing
+        /// </summary>
+        public ReadWriteControlFile(Stream stream)
+            : base(stream)
+        {
         }
 
         /// <summary>
@@ -206,6 +237,20 @@ namespace PodcastUtilities.Common.Configuration
 
             xmlWriter.Flush();
             xmlWriter.Close();
+        }
+
+        /// <summary>
+        /// Creates a new object that is a copy of the current instance.
+        /// </summary>
+        /// <returns>
+        /// A new object that is a copy of this instance.
+        /// </returns>
+        /// <filterpriority>2</filterpriority>
+        public object Clone()
+        {
+            var copy = new ReadWriteControlFile();
+            XmlSerializationHelper.CloneUsingXmlSerialization("podcasts", this, copy);
+            return copy;
         }
 
         /// <summary>
