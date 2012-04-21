@@ -137,27 +137,33 @@ namespace DownloadPodcasts
 
         static void ProgressUpdate(object sender, ProgressEventArgs e)
         {
-            ISyncItem syncItem = e.UserState as ISyncItem;
-            if (e.ProgressPercentage % 10 == 0)
+            lock (_synclock)
             {
-                Console.WriteLine(string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
-                                                DisplayFormatter.RenderFileSize(e.ItemsProcessed),
-                                                DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
-                                                e.ProgressPercentage));
-            }
-            if (e.ProgressPercentage == 100)
-            {
-                _number_of_files_downloaded++;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Completed {0} of {1} downloads",_number_of_files_downloaded, _number_of_files_to_download);
-                Console.ResetColor();
-            }
+                // keep all the message together
 
-            if (IsDestinationDriveFull(_control.GetSourceRoot(),_control.GetFreeSpaceToLeaveOnDownload()))
-            {
-                if (_taskPool != null)
+                ISyncItem syncItem = e.UserState as ISyncItem;
+                if (e.ProgressPercentage % 10 == 0)
                 {
-                    _taskPool.CancelAllTasks();
+                    Console.WriteLine(string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
+                                                    DisplayFormatter.RenderFileSize(e.ItemsProcessed),
+                                                    DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
+                                                    e.ProgressPercentage));
+                }
+
+                if (e.ProgressPercentage == 100)
+                {
+                        _number_of_files_downloaded++;
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Completed {0} of {1} downloads",_number_of_files_downloaded, _number_of_files_to_download);
+                        Console.ResetColor();
+                }
+
+                if (IsDestinationDriveFull(_control.GetSourceRoot(),_control.GetFreeSpaceToLeaveOnDownload()))
+                {
+                    if (_taskPool != null)
+                    {
+                        _taskPool.CancelAllTasks();
+                    }
                 }
             }
         }
@@ -203,29 +209,28 @@ namespace DownloadPodcasts
                 return;
             }
 
-            if (e.Exception != null)
+            lock (_synclock)
             {
-                lock (_synclock)
+                // keep all the message together
+                if (e.Exception != null)
                 {
-                    // keep all the message together
-                    Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(e.ToString());
+                        Console.ResetColor();
+                }
+                else
+                {
+                    if (e.MessageLevel == StatusUpdateLevel.Error)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+                    else if (e.MessageLevel == StatusUpdateLevel.Warning)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                    }
                     Console.WriteLine(e.Message);
-                    Console.WriteLine(e.Exception.StackTrace);
                     Console.ResetColor();
                 }
-            }
-            else
-            {
-                if (e.MessageLevel == StatusUpdateLevel.Error)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                }
-                else if (e.MessageLevel == StatusUpdateLevel.Warning)
-                {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                }
-                Console.WriteLine(e.Message);
-                Console.ResetColor();
             }
         }
     }

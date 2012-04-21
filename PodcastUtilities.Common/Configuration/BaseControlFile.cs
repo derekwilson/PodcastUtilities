@@ -75,24 +75,6 @@ namespace PodcastUtilities.Common.Configuration
         }
 
         /// <summary>
-        /// only used for unit testing
-        /// </summary>
-        public BaseControlFile(Stream stream)
-        {
-            SetHardcodedDefaults();
-            ReadXml(XmlReader.Create(stream));
-        }
-
-        /// <summary>
-        /// only used for unit testing
-        /// </summary>
-        public BaseControlFile(XmlReader xml)
-        {
-            SetHardcodedDefaults();
-            ReadXml(xml);
-        }
-
-        /// <summary>
         /// setup the hard coded defaults
         /// </summary>
         protected BaseControlFile()
@@ -558,6 +540,8 @@ namespace PodcastUtilities.Common.Configuration
                     return PlaylistFormat.WPL;
                 case "ASX":
                     return PlaylistFormat.ASX;
+                case "UNKNOWN":
+                    return PlaylistFormat.Unknown;
                 default:
                     throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "{0} is not a valid value for the playlist format", format));
             }

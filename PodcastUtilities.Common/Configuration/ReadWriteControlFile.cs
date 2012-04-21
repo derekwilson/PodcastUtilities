@@ -37,26 +37,11 @@ namespace PodcastUtilities.Common.Configuration
         {
         }
 
-                /// <summary>
-        /// only used for unit testing
-        /// </summary>
-        public ReadWriteControlFile(XmlReader xml) : base(xml)
-        {
-        }
-
         /// <summary>
         /// only used for unit testing
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
         public ReadWriteControlFile(XmlDocument document) : base(document)
-        {
-        }
-
-        /// <summary>
-        /// only used for unit testing
-        /// </summary>
-        public ReadWriteControlFile(Stream stream)
-            : base(stream)
         {
         }
 
@@ -351,6 +336,8 @@ namespace PodcastUtilities.Common.Configuration
                     return "asx";
                 case PlaylistFormat.WPL:
                     return "wpl";
+                case PlaylistFormat.Unknown:
+                    return "unknown";
                 default:
                     throw new ArgumentOutOfRangeException("playlistFormat");
             }

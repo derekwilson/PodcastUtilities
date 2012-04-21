@@ -50,6 +50,18 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
         }
 
         [Test]
+        public void ItShouldCloneTheDefaultDeleteDaysOld()
+        {
+            Assert.That(_clonedControlFile.GetDefaultDeleteDownloadsDaysOld(), Is.EqualTo(88));
+        }
+
+        [Test]
+        public void ItShouldCloneTheDefaultMaximumDaysOld()
+        {
+            Assert.That(_clonedControlFile.GetDefaultMaximumDaysOld(), Is.EqualTo(99));
+        }
+
+        [Test]
         public void ItShouldCloneTheDefaultNumber()
         {
             Assert.That(_clonedControlFile.GetDefaultNumberOfFiles(), Is.EqualTo(987));
@@ -98,3 +110,4 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
         }
     }
 }
+
