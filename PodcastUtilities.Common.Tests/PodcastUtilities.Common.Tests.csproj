@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ControlFileTests\Clone\WhenCloningAControlFile.cs" />
+    <Compile Include="Configuration\ControlFileTests\Clone\WhenCloningAControlFileAfterSettingProperties.cs" />
     <Compile Include="Configuration\ControlFileTests\Clone\WhenCloningTheTestControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingAControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentAmountOfSpaceToLeave.cs" />

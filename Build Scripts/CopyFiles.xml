@@ -17,6 +17,8 @@
 		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts\bin\$(Configuration)\*.exe"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts\bin\$(Configuration)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts\bin\$(Configuration)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.exe"/>
 	</ItemGroup>
 
 	<Target Name="CopyToCurrentBuild" DependsOnTargets="">

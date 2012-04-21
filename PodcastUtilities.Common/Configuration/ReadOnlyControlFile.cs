@@ -39,22 +39,8 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// only used for unit testing
         /// </summary>
-        public ReadOnlyControlFile(XmlReader xml) : base(xml)
-        {
-        }
-
-        /// <summary>
-        /// only used for unit testing
-        /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
         public ReadOnlyControlFile(XmlDocument document) : base(document)
-        {
-        }
-
-        /// <summary>
-        /// only used for unit testing
-        /// </summary>
-        public ReadOnlyControlFile(Stream stream) : base (stream)
         {
         }
     }

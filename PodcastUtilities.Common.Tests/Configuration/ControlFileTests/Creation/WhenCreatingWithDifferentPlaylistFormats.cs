@@ -88,6 +88,27 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
         }
 
         [Test]
+        public void ItShouldNotThorw()
+        {
+            Assert.That(ThrownException, Is.Null);
+        }
+
+        [Test]
+        public void ItShouldReadPlaylistFormat()
+        {
+            Assert.That(Format, Is.EqualTo(PlaylistFormat.Unknown));
+        }
+    }
+
+    class WhenCreatingAControlFileWithAnInvalidPlaylistFormat : WhenCreatingAControlFileWithDifferentPlaylistFormats
+    {
+        protected override void GivenThat()
+        {
+            ControlFileFormatText = "INVALID";
+            base.GivenThat();
+        }
+
+        [Test]
         public void ItShouldThorw()
         {
             Assert.That(ThrownException, Is.InstanceOf<NotSupportedException>());
