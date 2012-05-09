@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:behaviours="clr-namespace:PodcastUtilities.App.Behaviours"
         xmlns:AppWpf="clr-namespace:PodcastUtilities.App.Wpf"
-        Title="Configure Podcasts" Height="350" Width="525">
+        Title="Configure Podcasts" Height="350" Width="525" AllowDrop="True">
     <Window.Resources>
         <DataTemplate x:Key="PodcastInfoTemplate">
             <StackPanel Orientation="Vertical">
