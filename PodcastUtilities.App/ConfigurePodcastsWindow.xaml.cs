@@ -1,7 +1,4 @@
 ﻿using System.Windows;
-using PodcastUtilities.Common;
-using PodcastUtilities.Common.Configuration;
-using PodcastUtilities.Presentation.Services;
 using PodcastUtilities.Presentation.ViewModels;
 
 namespace PodcastUtilities.App
@@ -15,13 +12,7 @@ namespace PodcastUtilities.App
         {
             InitializeComponent();
 
-        	var viewModel = new ConfigurePodcastsViewModel(
-				AppIocContainer.Container.Resolve<IApplicationService>(),
-				AppIocContainer.Container.Resolve<IBrowseForFileService>(),
-				AppIocContainer.Container.Resolve<IDialogService>(),
-				AppIocContainer.Container.Resolve<IControlFileFactory>(),
-                AppIocContainer.Container.Resolve<IPodcastFactory>(),
-                AppIocContainer.Container.Resolve<IClipboardService>());
+            var viewModel = AppIocContainer.Container.Resolve<ConfigurePodcastsViewModel>();
 
             DataContext = viewModel;
         }
