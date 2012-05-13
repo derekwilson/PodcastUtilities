@@ -56,8 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenAddingPodcastWithNonUriTextOnClipboard.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenAddingPodcastWithUriTextOnClipboard.cs" />
+    <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenAddingPodcastWithDataObject.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenAddPodcastIsAccepted.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenAddPodcastIsCancelled.cs" />
+    <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenAskingCanExecuteAddPodcastCommand.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenEditPodcastIsAccepted.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenEditPodcastIsCancelled.cs" />
     <Compile Include="ViewModels\ConfigurePodcastsViewModelTests\WhenExecutingAddPodcastCommand.cs" />
