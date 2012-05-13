@@ -1,6 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
@@ -11,6 +12,8 @@ namespace PodcastUtilities.Presentation.ViewModels
     public class ConfigurePodcastsViewModel
         : ViewModel
     {
+        private const string TextDataFormat = "Text";
+
     	private readonly IApplicationService _applicationService;
     	private readonly IBrowseForFileService _browseForFileService;
     	private readonly IDialogService _dialogService;
@@ -41,7 +44,7 @@ namespace PodcastUtilities.Presentation.ViewModels
             OpenFileCommand = new DelegateCommand(ExecuteOpenFileCommand, CanExecuteOpenFileCommand);
             SaveFileCommand = new DelegateCommand(ExecuteSaveFileCommand, CanExecuteSaveFileCommand);
 			ExitCommand = new DelegateCommand(ExecuteExitCommand);
-			AddPodcastCommand = new DelegateCommand(ExecuteAddPodcastCommand);
+            AddPodcastCommand = new DelegateCommand(ExecuteAddPodcastCommand, CanExecuteAddPodcastCommand);
             _editPodcastCommand = new DelegateCommand(ExecuteEditPodcastCommand, CanExecuteEditPodcastCommand);
 
 			_podcasts = new ObservableCollection<PodcastViewModel>();
@@ -128,7 +131,11 @@ namespace PodcastUtilities.Presentation.ViewModels
 
         private void ExecuteAddPodcastCommand(object parameter)
         {
-            var newPodcast = CreateNewPodcast(_clipboardService.GetText());
+            var dataObject = parameter as IDataObject;
+
+            var newPodcast = (dataObject != null)
+                                 ? CreateNewPodcast((string) dataObject.GetData(TextDataFormat))
+                                 : CreateNewPodcast(_clipboardService.GetText());
 
             var newPodcastViewModel = new PodcastViewModel(newPodcast);
 
@@ -136,6 +143,16 @@ namespace PodcastUtilities.Presentation.ViewModels
             {
                 Podcasts.Add(newPodcastViewModel);
             }
+        }
+
+        private static bool CanExecuteAddPodcastCommand(object parameter)
+        {
+            var dataObject = parameter as IDataObject;
+            if (dataObject == null)
+            {
+                return true;
+            }
+            return IsValidUri((string)dataObject.GetData(TextDataFormat));
         }
 
 		#endregion
@@ -162,12 +179,17 @@ namespace PodcastUtilities.Presentation.ViewModels
         {
             var newPodcast = _podcastFactory.CreatePodcast(_controlFile);
 
-            if ((possiblePodcastAddress != null) && Uri.IsWellFormedUriString(possiblePodcastAddress, UriKind.Absolute))
+            if (IsValidUri(possiblePodcastAddress))
             {
                 newPodcast.Feed.Address = new Uri(possiblePodcastAddress);
             }
 
             return newPodcast;
+        }
+
+        private static bool IsValidUri(string address)
+        {
+            return ((address != null) && Uri.IsWellFormedUriString(address, UriKind.Absolute));
         }
     }
 }
