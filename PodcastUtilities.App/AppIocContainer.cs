@@ -1,6 +1,7 @@
 using PodcastUtilities.App.Services;
 using PodcastUtilities.Common;
 using PodcastUtilities.Ioc;
+using PodcastUtilities.Presentation;
 using PodcastUtilities.Presentation.Services;
 using PodcastUtilities.Presentation.ViewModels;
 
@@ -28,6 +29,8 @@ namespace PodcastUtilities.App
 			Container.Register<IBrowseForFileService, BrowseForFileServiceWpf>();
 			Container.Register<IDialogService, DialogServiceWpf>();
 			Container.Register<IClipboardService, ClipboardService>();
+
+			Container.Register<IDataObjectUriExtractor, DataObjectUriExtractor>();
 		}
 
         private static void RegisterViewModels()
