@@ -30,24 +30,32 @@ namespace PodcastUtilities.App.Behaviours
 
             element.Drop += (sender, eventArgs) =>
                                 {
-                                    Debug.WriteLine("Drop");
                                     var command = GetCommand(element);
                                     if (command.CanExecute(eventArgs.Data))
                                     {
                                         GetCommand(element).Execute(eventArgs.Data);
+                                        eventArgs.Effects = GetDragDropEffect(eventArgs.AllowedEffects);
+                                        eventArgs.Handled = true;
                                     }
                                 };
 
             element.DragOver += (sender, eventArgs) =>
                                     {
-                                        Debug.WriteLine("DragOver");
-                                        Debug.WriteLine(string.Join(", ", eventArgs.Data.GetFormats()));
-
                                         eventArgs.Effects = GetCommand(element).CanExecute(eventArgs.Data)
-                                                                ? DragDropEffects.Copy
+                                                                ? GetDragDropEffect(eventArgs.AllowedEffects)
                                                                 : DragDropEffects.None;
                                         eventArgs.Handled = true;
                                     };
+        }
+
+        private static DragDropEffects GetDragDropEffect(DragDropEffects allowedEffects)
+        {
+            if ((allowedEffects & DragDropEffects.Link) == DragDropEffects.Link)
+            {
+                return DragDropEffects.Link;
+            }
+
+            return DragDropEffects.Copy;
         }
     }
 }
