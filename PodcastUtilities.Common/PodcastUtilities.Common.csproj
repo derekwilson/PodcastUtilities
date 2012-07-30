@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{37562F85-B1BD-4AB8-B74B-685B05F9CF41}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PodcastUtilities.Common</RootNamespace>
+    <AssemblyName>PodcastUtilities.Common</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>PodcastUtilities.Common.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>PodcastUtilities.Common.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Configuration\BaseControlFile.cs" />
+    <Compile Include="Configuration\DefaultableValueTypeItem.cs" />
+    <Compile Include="Configuration\DefaultableReferenceTypeItem.cs" />
+    <Compile Include="Configuration\DiagnosticOutputLevel.cs" />
+    <Compile Include="Configuration\IControlFileGlobalDefaults.cs" />
+    <Compile Include="Configuration\IDefaultableItem.cs" />
+    <Compile Include="Configuration\IFeedInfo.cs" />
+    <Compile Include="Configuration\IPodcastInfo.cs" />
+    <Compile Include="Configuration\IReadWriteControlFileGlobalDefaults.cs" />
+    <Compile Include="Configuration\PodcastFileSortField.cs" />
+    <Compile Include="Configuration\ReadOnlyControlFile.cs" />
+    <Compile Include="Configuration\ControlFileFactory.cs" />
+    <Compile Include="Configuration\IReadWriteControlFile.cs" />
+    <Compile Include="Configuration\ReadWriteControlFile.cs" />
+    <Compile Include="Configuration\XmlSerialisationHelper.cs" />
+    <Compile Include="DisplayFormatter.cs" />
+    <Compile Include="Exceptions\ControlFileValueFormatException.cs" />
+    <Compile Include="Exceptions\DownloaderException.cs" />
+    <Compile Include="Exceptions\EnumOutOfRangeException.cs" />
+    <Compile Include="Exceptions\FeedStructureException.cs" />
+    <Compile Include="Exceptions\XmlStructureException.cs" />
+    <Compile Include="Configuration\IControlFileFactory.cs" />
+    <Compile Include="Files\IEpisodePurger.cs" />
+    <Compile Include="Configuration\IPodcastFactory.cs" />
+    <Compile Include="IState.cs" />
+    <Compile Include="IStateProvider.cs" />
+    <Compile Include="Configuration\PodcastEpisodeDownloadStrategy.cs" />
+    <Compile Include="Files\EpisodePurger.cs" />
+    <Compile Include="Configuration\PodcastFactory.cs" />
+    <Compile Include="Feeds\PodcastFeedFactory.cs" />
+    <Compile Include="IXmlEncoder.cs" />
+    <Compile Include="Perfmon\AverageCounter.cs" />
+    <Compile Include="Perfmon\CategoryInstaller.cs" />
+    <Compile Include="Perfmon\ICounterFactory.cs" />
+    <Compile Include="Platform\SystemPerfmonCounter.cs" />
+    <Compile Include="Perfmon\CounterFactory.cs" />
+    <Compile Include="Perfmon\IAverageCounter.cs" />
+    <Compile Include="Platform\IPerfmonCounter.cs" />
+    <Compile Include="Perfmon\NullAverageTimeCounter.cs" />
+    <Compile Include="Perfmon\NullCounter.cs" />
+    <Compile Include="Platform\SystemPerfmonCounterCreationDataProvider.cs" />
+    <Compile Include="Perfmon\ICategoryInstaller.cs" />
+    <Compile Include="Platform\IPerfmonCounterCreationDataProvider.cs" />
+    <Compile Include="Perfmon\CategoryInstallerRefeshResult.cs" />
+    <Compile Include="Platform\IPerfmonCounterUtilities.cs" />
+    <Compile Include="Platform\SystemPerfmonCounterUtilities.cs" />
+    <Compile Include="ProgressEventArgs.cs" />
+    <Compile Include="IProgressUpdate.cs" />
+    <Compile Include="Feeds\ISyncItem.cs" />
+    <Compile Include="Feeds\ISyncItemToEpisodeDownloaderTaskConverter.cs" />
+    <Compile Include="Feeds\IEpisodeDownloader.cs" />
+    <Compile Include="Feeds\IEpisodeDownloaderFactory.cs" />
+    <Compile Include="IStatusUpdate.cs" />
+    <Compile Include="ITaskPool.cs" />
+    <Compile Include="Feeds\EpisodeDownloader.cs" />
+    <Compile Include="Configuration\FeedInfo.cs" />
+    <Compile Include="Feeds\SyncItem.cs" />
+    <Compile Include="Files\Copier.cs" />
+    <Compile Include="Files\Sorter.cs" />
+    <Compile Include="Configuration\IReadOnlyControlFile.cs" />
+    <Compile Include="Files\ICopier.cs" />
+    <Compile Include="Files\IFinder.cs" />
+    <Compile Include="Files\ISorter.cs" />
+    <Compile Include="IIocContainer.cs" />
+    <Compile Include="Platform\FileUtilities.cs" />
+    <Compile Include="Platform\IDirectoryInfo.cs" />
+    <Compile Include="Platform\IDirectoryInfoProvider.cs" />
+    <Compile Include="Platform\IDriveInfo.cs" />
+    <Compile Include="Platform\IDriveInfoProvider.cs" />
+    <Compile Include="Platform\IFileInfo.cs" />
+    <Compile Include="Platform\IFileUtilities.cs" />
+    <Compile Include="Platform\ITimeProvider.cs" />
+    <Compile Include="Platform\IWebClient.cs" />
+    <Compile Include="Platform\SystemDateTimeProvider.cs" />
+    <Compile Include="Platform\SystemDirectoryInfo.cs" />
+    <Compile Include="Platform\SystemDirectoryInfoProvider.cs" />
+    <Compile Include="Platform\SystemDriveInfo.cs" />
+    <Compile Include="Platform\SystemDriveInfoProvider.cs" />
+    <Compile Include="Platform\SystemFileInfo.cs" />
+    <Compile Include="Platform\SystemNetWebClient.cs" />
+    <Compile Include="Playlists\IPlaylist.cs" />
+    <Compile Include="Playlists\IPlaylistFactory.cs" />
+    <Compile Include="Feeds\IPodcastFeed.cs" />
+    <Compile Include="Feeds\IDownloader.cs" />
+    <Compile Include="Feeds\IEpisodeFinder.cs" />
+    <Compile Include="Feeds\IPodcastFeedFactory.cs" />
+    <Compile Include="Feeds\IPodcastFeedItem.cs" />
+    <Compile Include="ITask.cs" />
+    <Compile Include="Files\IUnwantedFileRemover.cs" />
+    <Compile Include="IWebClientFactory.cs" />
+    <Compile Include="Playlists\PlaylistAsx.cs" />
+    <Compile Include="Playlists\PlaylistFactory.cs" />
+    <Compile Include="Playlists\PlaylistFormat.cs" />
+    <Compile Include="Playlists\Generator.cs" />
+    <Compile Include="Playlists\PlaylistWpl.cs" />
+    <Compile Include="Feeds\EpisodeDownloaderFactory.cs" />
+    <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverter.cs" />
+    <Compile Include="Configuration\PodcastEpisodeNamingStyle.cs" />
+    <Compile Include="Feeds\Downloader.cs" />
+    <Compile Include="Configuration\PodcastFeedFormat.cs" />
+    <Compile Include="Feeds\PodcastFeedInRssFormat.cs" />
+    <Compile Include="Feeds\PodcastFeedItem.cs" />
+    <Compile Include="Feeds\EpisodeFinder.cs" />
+    <Compile Include="Configuration\PodcastInfo.cs" />
+    <Compile Include="Files\Synchronizer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Files\Finder.cs" />
+    <Compile Include="Rfc822DateTime.cs" />
+    <Compile Include="StatusUpdateLevel.cs" />
+    <Compile Include="XmlEncoder.cs" />
+    <Compile Include="XmlState.cs" />
+    <Compile Include="StateProvider.cs" />
+    <Compile Include="StatusUpdateEventArgs.cs" />
+    <Compile Include="Files\FileSyncItem.cs" />
+    <Compile Include="TaskPool.cs" />
+    <Compile Include="Files\UnwantedFileRemover.cs" />
+    <Compile Include="WebClientFactory.cs" />
+    <Compile Include="Playlists\XmlFileBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\asxPlaylist.xml" />
+    <EmbeddedResource Include="XML\wplPlaylist.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\state.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

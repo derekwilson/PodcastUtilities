@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:gml="http://www.opengis.net/gml" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" version="2.0">
+  <channel>
+    <title>Technology: Tech Weekly | guardian.co.uk</title>
+    <link>http://www.guardian.co.uk/technology/series/techweekly</link>
+    <description>The Guardian's tech team with news and discussion from the digital worlds of technology, gaming and the web</description>
+    <language>en-gb</language>
+    <copyright>&amp;copy; Guardian News &amp; Media Limited 2010</copyright>
+    <lastBuildDate>Wed, 15 Dec 2010 09:25:24 GMT</lastBuildDate>
+    <docs>http://www.guardian.co.uk/webfeeds</docs>
+    <ttl>15</ttl>
+    <image>
+      <title>Technology: Tech Weekly | guardian.co.uk</title>
+      <url>http://image.guardian.co.uk/sitecrumbs/Guardian.gif</url>
+      <link>http://www.guardian.co.uk/technology/series/techweekly</link>
+    </image>
+    <item>
+      <title>Tech Weekly podcast: WikiLeaks, Anonymous and cyber war</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/dec/14/tech-weekly-wikileaks-cables-cyberwar-audio</link>
+      <description>&lt;p&gt;This week we turn the whole programme over to the extraordinary events that have taken place on the web over the past fortnight.&lt;/p&gt;&lt;p&gt;Since the Guardian and four other newspapers around the world printed the details of US diplomatic cables that were leaked to whistleblowing website WikiLeaks, &lt;a href="http://www.guardian.co.uk/media/2010/dec/11/wikileaks-backlash-cyber-war"&gt;major internet companies and services have been taken offline in a battle between hackers and governments&lt;/a&gt; – all over the principle of the freedom of the internet.&lt;/p&gt;&lt;p&gt;In this programme we'll discuss whether this could be the first global cyber war, as well as looking at what has happened so far and how the attacks took place.&lt;/p&gt;&lt;p&gt;We'll hear how Tom Cruise's video on the virtues of Scientology helped spawn online activists Anonymous, and an expert on electronic transactions gives his view of the success of the Operation Payback attacks.&lt;/p&gt;&lt;p&gt;The programme is presented by Jemima Kiss, who is joined by the Guardian's technology editor Charles Arthur, Professor William H Dutton of the Oxford Internet Institute and Graham Cluley, senior technology consultant at security experts Sophos.&lt;/p&gt;&lt;p&gt;You may also want to listen to our recent &lt;a href="http://bit.ly/fWliHM"&gt;Guardian Focus podcast&lt;/a&gt; which looks at the future of US diplomacy and the &lt;a href="http://bit.ly/fcvvQJ"&gt;Politics Weekly podcast&lt;/a&gt; which discusses whether governments can - and should - keep secrets from their voters.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://bit.ly/6hVs7l"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://bit.ly/cxE82m"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Like our &lt;a href="http://on.fb.me/9LOUCG"&gt;Facebook page&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://bit.ly/G1VN0"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://bit.ly/3kqBIm"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/jemimakiss"&gt;Jemima Kiss&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/charlesarthur"&gt;Charles Arthur&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Hacking</category>
+      <category domain="http://www.guardian.co.uk/technology">Internet</category>
+      <category domain="http://www.guardian.co.uk/media">WikiLeaks</category>
+      <category domain="http://www.guardian.co.uk/world">The US embassy cables</category>
+      <category domain="http://www.guardian.co.uk/technology">Anonymous</category>
+      <category domain="http://www.guardian.co.uk/media">Julian Assange</category>
+      <category domain="http://www.guardian.co.uk/technology">Amazon.com</category>
+      <category domain="http://www.guardian.co.uk/world">United States</category>
+      <category domain="http://www.guardian.co.uk/uk">UK news</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/media">Media</category>
+      <category domain="http://www.guardian.co.uk/world">World news</category>
+      <category domain="http://www.guardian.co.uk/media">Digital media</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Editorial</category>
+      <pubDate>Tue, 14 Dec 2010 18:29:02 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/dec/14/tech-weekly-wikileaks-cables-cyberwar-audio</guid>
+      <dc:creator>Jemima Kiss, Charles Arthur, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-12-15T09:25:24Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>369749819</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2010/12/3/1291367118585/Wikileaks-page-001.jpg">
+        <media:credit scheme="urn:ebu">Alamy</media:credit>
+        <media:description>Wikileaks page Photograph: Alamy</media:description>
+      </media:content>
+      <media:content duration="2341" fileSize="18782006" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1292347119167/9523/gdn.tec.101214.sc.tech-weekly-wikileaks-cables-cyberwar-audio.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly podcast: Joi Ito on Creative Commons, game-ify your commute with Chromaroma</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/dec/07/tech-weekly-joi-ito-creative-commons-chromaroma-audio</link>
+      <description>&lt;p&gt;On this week's Tech Weekly, &lt;strong&gt;Aleks Krotoski&lt;/strong&gt; and &lt;strong&gt;Jemima Kiss&lt;/strong&gt; brighten up the dark winter nights with two people who are trying the make the world a better place.&lt;/p&gt;&lt;p&gt;&lt;a href="http://joi.ito.com/"&gt;Joi Ito&lt;/a&gt; is the chief executive of &lt;a href="http://creativecommons.org/"&gt;Creative Commons&lt;/a&gt;, a not-for-profit organisation that is tackling head on the challenges of intellectual property and copyright ownership in a digital age. Joi argues that permissive licences, which allow people to share creative and other materials, are good for innovation.  There's more from Joi in &lt;a href="http://www.guardian.co.uk/science/blog/audio/2010/dec/06/science-weekly-podcast-arsenic-nasa-bacterium"&gt;this week's Science Weekly podcast&lt;/a&gt; and in the &lt;a href="http://www.guardian.co.uk/technology/2010/dec/05/my-bright-idea-joi-ito"&gt;Observer's Discover section&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a href="http://www.wearemudlark.com/about-us/toby-barnes/"&gt;Toby Barnes&lt;/a&gt; wants to make the daily commute fun, rather than a slog. His company, &lt;a href="http://www.wearemudlark.com/"&gt;Mudlark&lt;/a&gt;, is "game-ifying" the London public transport system with &lt;a href="http://www.chromaroma.com/"&gt;Chromaroma&lt;/a&gt;, drawing out connections, creating challenges and reaffirming community on the bus, the tube, the train and the cycle. Is it a capital-wide group hug or harbinger of an incentivisation culture?&lt;/p&gt;&lt;p&gt;Even the news gets a makeover, so listen to 30 minutes of sunshine in the depth of midwinter.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://bit.ly/6hVs7l"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://bit.ly/cxE82m"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Like our &lt;a href="http://on.fb.me/9LOUCG"&gt;Facebook page&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://bit.ly/G1VN0"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://bit.ly/3kqBIm"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/alekskrotoski"&gt;Aleks Krotoski&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/jemimakiss"&gt;Jemima Kiss&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/media">Digital media</category>
+      <category domain="http://www.guardian.co.uk/technology">Games</category>
+      <category domain="http://www.guardian.co.uk/uk">Transport</category>
+      <category domain="http://www.guardian.co.uk/uk">Rail transport</category>
+      <category domain="http://www.guardian.co.uk/travel">Rail travel</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/media">Media</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Editorial</category>
+      <pubDate>Tue, 07 Dec 2010 15:54:32 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/dec/07/tech-weekly-joi-ito-creative-commons-chromaroma-audio</guid>
+      <dc:creator>Aleks Krotoski, Jemima Kiss, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-12-07T17:37:23Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>369471392</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Technology/Pix/pictures/2009/09/23/joiito-3.jpg">
+        <media:credit scheme="urn:ebu">Alicia Canter/Guardian</media:credit>
+        <media:description>Joi Ito, chief executive of Creative Commons</media:description>
+      </media:content>
+      <media:content duration="1776" fileSize="14248183" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1291731402584/3855/gdn.tec.101107.sc.tech-weekly-joi-ito-creative-commons-chromaroma-audio.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly podcast in Dublin</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/nov/30/tech-weekly-ireland-startup-internet-audio</link>
+      <description>&lt;p&gt;Tech Weekly visits Dublin to check out the thriving local startup scene. The tech community has benefited from assistance through development agencies such as Enterprise Ireland that help to foster and fund new tech businesses.  Ireland has also benefited from the presence of tech giants such as Google, Apple, Facebook, Microsoft, HP, Dell and others in the country.&lt;/p&gt;&lt;p&gt;But will all this success be put into jeopardy? Ireland has just accepted a €85bn bailout from the International Monetary Fund – will talented developers emigrate as their financial situations worsen? Will the tech giants that were attracted by favourable corporation tax rates leave the country if the government has to raise the rate? It would appear not however, and most entrepreneurs in the programme were upbeat about future prospects. &lt;/p&gt;&lt;p&gt;Charles Arthur and Jemima Kiss tour the city, meeting up with &lt;a href="http://www.enterprise-ireland.com/en/"&gt;Enterprise Ireland&lt;/a&gt; to hear how it helps fund and foster the country's new digital businesses. We also meet &lt;a href="http://www.guardian.co.uk/technology/pda/2010/nov/25/startups-ireland-cloudsplit-cloud"&gt;Joe Drumgoole of Cloudsplit&lt;/a&gt;, who tells us how punishing the cost of failure is in Ireland, and how startups shouldn't be worried – just learn from the mistakes.&lt;/p&gt;&lt;p&gt;&lt;a href="http://www.guardian.co.uk/media/pda/2010/nov/24/online-games-dublin"&gt;Dylan Collins of Jolt&lt;/a&gt; discusses Ireland's success as a hub for online gaming, and his role as a mentor for other startups, and &lt;a href="http://www.guardian.co.uk/technology/blog/2010/nov/24/infacta-irish-startup-email-sms"&gt;Rob Martin of Infacta&lt;/a&gt; explains how Ireland's infrastructure such as broadband has been challenging for his business.&lt;/p&gt;&lt;p&gt;Plus we get some interesting projects to pitch us their ideas at a listener meetup.&lt;/p&gt;&lt;p&gt;You can find links to the startups and projects mentioned on the &lt;a href="http://www.guardian.co.uk/technology/series/guardian-technology-in-ireland"&gt;Guardian Technology in Ireland&lt;/a&gt; page.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://bit.ly/6hVs7l"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://bit.ly/cxE82m"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Like our &lt;a href="http://on.fb.me/9LOUCG"&gt;Facebook page&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://bit.ly/G1VN0"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://bit.ly/3kqBIm"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Technology startups</category>
+      <category domain="http://www.guardian.co.uk/business">Entrepreneurs</category>
+      <category domain="http://www.guardian.co.uk/business">Technology sector</category>
+      <category domain="http://www.guardian.co.uk/media">Digital media</category>
+      <category domain="http://www.guardian.co.uk/business">Ireland bailout</category>
+      <category domain="http://www.guardian.co.uk/world">Ireland</category>
+      <category domain="http://www.guardian.co.uk/technology">Cloud computing</category>
+      <category domain="http://www.guardian.co.uk/technology">Games</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Editorial</category>
+      <pubDate>Tue, 30 Nov 2010 16:45:01 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/nov/30/tech-weekly-ireland-startup-internet-audio</guid>
+      <dc:creator />
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-11-30T17:27:56Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>369206728</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2010/11/27/1290854474187/An-Irish-protester-waves--003.jpg">
+        <media:credit scheme="urn:ebu">Cathal Mcnaughton/Reuters</media:credit>
+        <media:description>An Irish protester waves a tricolour flag outside Government Buildings in Dublin during midweek protests against the austerity plans.  Photograph: Cathal Mcnaughton/Reuters</media:description>
+      </media:content>
+      <media:content duration="1775" fileSize="14248663" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1291137887073/3236/gdn.tec.101130.sc.tech-weekly-ireland-startup-internet-audio.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly podcast: Net neutrality and where do good ideas come from?</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/nov/22/tech-weekly-net-neutrality-stephen-johnson-audio</link>
+      <description>&lt;p&gt;Join Aleks Krotoski, Jemima Kiss and Tom Loosemore for 30 minutes of debate and discussion about the latest technology headlines. This week, Tom, the former head of 4iP and Ofcom insider, lays out the implications of Ed Vaizey's vision of a two-tiered internet future: what effect will his attack on net neutrality have on the digital content industry and the average web user in the future? Jemima thinks Vaizey wants to please all of the people all of the time, and critcises his speech for making many threats and few promises.&lt;/p&gt;&lt;p&gt;The team tackle the dangers of Facebook: its new Messages service marks yet another way the social network is building a walled garden around the web experience for its of users; Messages could provide a solution to information overload for 500 million Facebook account holders, but how much does it endanger the openness of the web? Or will the next generation eschew Facebook for another online hotspot in the future?&lt;/p&gt;&lt;p&gt;Steven Johnson talks to Charles Arthur about where good ideas come from, and discusses the ways we – and the web – foster innovation.&lt;/p&gt;&lt;p&gt;And Tom describes what's happening with Direct.gov.uk, in the runup to the release of a report from UK digital champion Martha Lane Fox.&lt;/p&gt;&lt;p&gt;Finally, what are your technology highlights of 2010, and what do you predict for 2011? We're recording our holiday specials and want to feature your highs and lows. Let us know in the comments below.&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/alekskrotoski"&gt;Aleks Krotoski&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/jemimakiss"&gt;Jemima Kiss&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/charlesarthur"&gt;Charles Arthur&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Net neutrality</category>
+      <category domain="http://www.guardian.co.uk/technology">Internet</category>
+      <category domain="http://www.guardian.co.uk/technology">Facebook</category>
+      <category domain="http://www.guardian.co.uk/technology">Email</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/media">Media</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Interviews</category>
+      <pubDate>Tue, 23 Nov 2010 11:32:05 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/nov/22/tech-weekly-net-neutrality-stephen-johnson-audio</guid>
+      <dc:creator>Aleks Krotoski, Jemima Kiss, Charles Arthur, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-11-24T10:08:56Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>368925815</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Guardian/About/General/2010/11/17/1290029696534/Ed-Vaizey-MP-Minister-for-002.jpg">
+        <media:credit scheme="urn:ebu">David Wimsett/Photoshot</media:credit>
+        <media:description>Ed Vaizey, minister for culture, communications and creative industries speaking at the FT World Telecoms conference in London today. Photograph: David Wimsett/Photoshot</media:description>
+      </media:content>
+      <media:content duration="2031" fileSize="16283946" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1290430576074/3471/tech-weekly-net-neutrality-steven-johnson-audio.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly podcast: Stories in games at the Bradford Animation Festival</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/nov/16/tech-weekly-video-game-stories-audio</link>
+      <description>&lt;p&gt;&lt;strong&gt;Keith Stuart&lt;/strong&gt; presents this special discussion programme on stories in games, recorded at the National Media Museum for the Bradford Animation Festival.&lt;/p&gt;&lt;p&gt;Video game narrative is put under the microscope – how far has storytelling come in game design over the past 30 years, and has it come far enough? Are there lessons to be learned from the animation and comic book industries, both of which have provided visual inspiration to game developers?&lt;/p&gt;&lt;p&gt;Veteran game designer &lt;strong&gt;Charles Cecil&lt;/strong&gt; – famous for the Broken Sword adventures, as well as the BBC's brilliant new Doctor Who games – details what it was like working with the programme team, and how parts of the new Tardis were designed purely for the game.&lt;br /&gt; &lt;br /&gt;We also welcome &lt;strong&gt;Kieron Gillen&lt;/strong&gt;, once one of the most respected games journalists in the world before he packed it all in to write comic books for Marvel.&lt;/p&gt;&lt;p&gt;And we hear from &lt;strong&gt;Dan Pinchbeck&lt;/strong&gt;, an experimental game developer and senior lecturer at Portsmouth University, where he specialises in the significance of narrative within video games. He discusses how putting yourself in a game using new technology, such as Microsoft's Kinect, might not be ideal: "If I pick up a novel, I don't want a blank space and a paragraph for me to fill in the main character."&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Comment below&lt;br /&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://www.twitter.com/guardiantw"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://twitter.com/guardiantw/guardian-tech-podders"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Like our &lt;a href="http://www.facebook.com/pages/Guardian-Tech-Weekly/175078939169801"&gt;Facebook page&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://www.flickr.com/photos/guardiantechweekly/"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://www.flickr.com/groups/guardiantechweekly/"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/keithstuart"&gt;Keith Stuart&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Games</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/culture">Culture</category>
+      <category domain="http://www.guardian.co.uk/media">Digital media</category>
+      <category domain="http://www.guardian.co.uk/media">Media</category>
+      <category domain="http://www.guardian.co.uk/tv-and-radio">Doctor Who</category>
+      <category domain="http://www.guardian.co.uk/technology">Kinect</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Interviews</category>
+      <pubDate>Tue, 16 Nov 2010 14:08:28 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/nov/16/tech-weekly-video-game-stories-audio</guid>
+      <dc:creator>Keith Stuart, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-11-16T17:39:55Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>368736761</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Guardian/About/General/2010/6/27/1277640364386/Doctor-Who-002.jpg">
+        <media:credit scheme="urn:ebu">Adrian Rogers/BBC</media:credit>
+        <media:description>Matt Smith as the Doctor, a very likable addition to the weekend. Photograph: Adrian Rogers/BBC</media:description>
+      </media:content>
+      <media:content duration="2148" fileSize="17240803" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1289912198100/8761/gdn.tec.101116.sc.tech-weekly-video-game-stories-audio.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly podcast: Internet Week Europe, Google and Dentsu</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/nov/09/internet-digital-media</link>
+      <description>&lt;p&gt;The very first &lt;a href="http://www.internetweekeurope.com/"&gt;Internet Week Europe&lt;/a&gt; has kicked off in London, so this week's programme brings you a taste of the five-day festival of events celebrating the internet. &lt;/p&gt;&lt;p&gt;We visit Google's London offices to hear their Creative Lab leader Tom Uglow explain how they created a &lt;a href="http://www.youtube.com/user/symphony"&gt;symphony orchestra out of YouTube&lt;/a&gt;,  and how visualizing tangible objects helps him develop things for the web. &lt;/p&gt;&lt;p&gt;Creative agency &lt;a href="http://www.dentsulondon.com/"&gt;Dentsu London&lt;/a&gt; show us how their work has been influenced by innovation from their partners in Tokyo, highlightinh work such as &lt;a href="http://www.youtube.com/watch?v=0TKCuUKm3JY"&gt;Melody Road&lt;/a&gt; and &lt;a href="http://www.dentsulondon.com/blog/2010/09/14/light-painting/"&gt;light painting with iPads&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Finally, the co-chairman of the week's events, Nick Farnhill explains the thinking behind the festival, and back at Google, we speak to Paul Truong after his presentation on HTML5.  He explains how it will shape the web and tells us why we should be starting to use it now, despite an unclear ratification date.&lt;/p&gt;&lt;p&gt;Later in November, Tech Weekly is out and about again, coming to Dublin for a meetup – &lt;a href="http://www.guardian.co.uk/technology/pda/2010/oct/25/dublin-guardian-meetup"&gt;Jemima has more details here&lt;/a&gt; – come and visit us!&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Comment below&lt;br /&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://www.twitter.com/guardiantw"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://twitter.com/guardiantw/guardian-tech-podders"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Join our &lt;a href="http://www.facebook.com/group.php?gid=15548445443"&gt;Facebook group&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://www.flickr.com/photos/guardiantechweekly/"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://www.flickr.com/groups/guardiantechweekly/"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/alekskrotoski"&gt;Aleks Krotoski&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/charlesarthur"&gt;Charles Arthur&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/jemimakiss"&gt;Jemima Kiss&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Internet</category>
+      <category domain="http://www.guardian.co.uk/media">Digital media</category>
+      <category domain="http://www.guardian.co.uk/technology">Google</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/media">Media</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Interviews</category>
+      <pubDate>Tue, 09 Nov 2010 18:04:13 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/nov/09/internet-digital-media</guid>
+      <dc:creator>Aleks Krotoski, Charles Arthur, Jemima Kiss, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-11-16T10:51:21Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>368520425</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Media/Pix/pictures/2010/11/9/1289325832981/Internet-Week-Europe-001.jpg">
+        <media:credit scheme="urn:ebu">Public Domain</media:credit>
+        <media:description>Internet Week Europe</media:description>
+      </media:content>
+      <media:content duration="1616" fileSize="12944802" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1289322671970/2574/gdm.tec.101109.sc.internet-week-london-google-dentsu.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly podcast: Can Call of Duty take another $1bn?</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/nov/02/tech-weekly-call-duty-limewire-audio</link>
+      <description>&lt;p&gt;Join Aleks Krotoski, Charles Arthur and Jemima Kiss as they tackle this week's technology news on Tech Weekly. The team jump on board the Start-up Shuttle, a new networking concept that brings funders and digital entrepreneurs together on the rails. Is train-based communicating really the answer for tech developers?&lt;/p&gt;&lt;p&gt;The music industry continues to take action against peer to peer filesharing technology, bringing an injunction against Limewire. Charles thinks the move will be ineffective, while Jemima claims the music biz is an easy target for criticism. What's the best new media model for musos?&lt;/p&gt;&lt;p&gt;Keith Stuart speaks to David Vonderhaar from Treyarch at the launch of the latest in the profoundly successful Call of Duty video game series, a franchise that's only been beaten in the box office by four films and two games.&lt;/p&gt;&lt;p&gt;And the generational shift between web 1.0 and 2.0 is cemented as several of Google's greatest developers set sail for Silicon Valley and social networking service Facebook.&lt;/p&gt;&lt;p&gt;Don't forget – Tech Weekly is coming to the Bradford animation festival at the National Media Museum on 9 November.  Our guests will include Charles Cecil, Kieron Gillen and Dan Pinchbeck, and it'll all be presented by Keith Stuart.  &lt;/p&gt;&lt;p&gt;&lt;a href="http://www.nationalmediamuseum.org.uk/baf/film_detail.asp?filmid=9317"&gt;There's details on how to come join us here – tickets are FREE&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;And later in November Tech Weekly is coming to Dublin for a meetup – &lt;a href="http://www.guardian.co.uk/technology/pda/2010/oct/25/dublin-guardian-meetup"&gt;Jemima has more details here&lt;/a&gt; – come and visit us!&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Comment below&lt;br /&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://www.twitter.com/guardiantw"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://twitter.com/guardiantw/guardian-tech-podders"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Join our &lt;a href="http://www.facebook.com/group.php?gid=15548445443"&gt;Facebook group&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://www.flickr.com/photos/guardiantechweekly/"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://www.flickr.com/groups/guardiantechweekly/"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/alekskrotoski"&gt;Aleks Krotoski&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/jemimakiss"&gt;Jemima Kiss&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/charlesarthur"&gt;Charles Arthur&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/keithstuart"&gt;Keith Stuart&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/technology">Games</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology startups</category>
+      <category domain="http://www.guardian.co.uk/technology">Shoot 'em ups</category>
+      <category domain="http://www.guardian.co.uk/technology">Free our data</category>
+      <category domain="http://www.guardian.co.uk/technology">Internet</category>
+      <category domain="http://www.guardian.co.uk/uk">Rail transport</category>
+      <category domain="http://www.guardian.co.uk/uk">Transport</category>
+      <category domain="http://www.guardian.co.uk/media">Media</category>
+      <category domain="http://www.guardian.co.uk/uk">UK news</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Interviews</category>
+      <pubDate>Wed, 03 Nov 2010 07:33:00 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/nov/02/tech-weekly-call-duty-limewire-audio</guid>
+      <dc:creator>Aleks Krotoski, Jemima Kiss, Charles Arthur, Keith Stuart, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-11-04T10:48:43Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>368281756</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Technology/Pix/pictures/2010/5/28/1275065788078/Call-of-Duty-Black-Ops-001.jpg">
+        <media:credit scheme="urn:ebu">PR</media:credit>
+        <media:description>Call of Duty: Black Ops video game</media:description>
+      </media:content>
+      <media:content duration="2179" fileSize="17468198" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1288867620728/9034/gdn.tec.101102.sc.call-duty-black-ops-limewire-startup-shuttle2.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly: Google Street View row rolls on, Robert Llewellyn on Carpool</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/oct/26/tech-weekly-google-streetview-audio</link>
+      <description>&lt;p&gt;On this week's Tech Weekly, the comedian and presenter &lt;strong&gt;Robert Llewellyn&lt;/strong&gt; joins &lt;strong&gt;Aleks Krotoski&lt;/strong&gt; to talk about Carpool, his hugely popular web chatshow with celebrities, scientists and the general public, set in his car. Tech Crunch's &lt;strong&gt;Mike Butcher&lt;/strong&gt; jumps on board too, giving his insights into the top news stories this week.&lt;/p&gt;&lt;p&gt;The trio talk about Google Street View's latest privacy fumbles, as the UK's information commissioner re-opens its case against the mapping service. Allegations around the world suggest that the company collected email addresses, email content and passwords in addition to the photos that make up the 3D representations of cities, inspiring privacy campaigners to call foul.&lt;/p&gt;&lt;p&gt;Robert is vocal in his concerns about the source of the £530m earmarked by the coalition government in last week's comprehensive spending review for broadband rollout; the BBC isn't a source for such infrastructure, he says. Mike concurs. And all three are curious about the future of software distribution via Lion OS for Mac, but what will the walled garden mean for consumers?&lt;/p&gt;&lt;p&gt;Don't forget – Tech Weekly is coming to the Bradford animation festival at the National Media Museum on 9 November.  Our guests will include Charles Cecil, Kieron Gillen and Dan Pinchbeck, and it'll all be presented by Keith Stuart.  &lt;/p&gt;&lt;p&gt;&lt;a href="http://www.nationalmediamuseum.org.uk/baf/film_detail.asp?filmid=9317"&gt;There's details on how to come join us here – tickets are FREE&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;And later in November Tech Weekly is coming to Dublin for a meetup – &lt;a href="http://www.guardian.co.uk/technology/pda/2010/oct/25/dublin-guardian-meetup"&gt;Jemima has more details here&lt;/a&gt; – come and visit us!&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Comment below&lt;br /&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://www.twitter.com/guardiantw"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://twitter.com/guardiantw/guardian-tech-podders"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Join our &lt;a href="http://www.facebook.com/group.php?gid=15548445443"&gt;Facebook group&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://www.flickr.com/photos/guardiantechweekly/"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://www.flickr.com/groups/guardiantechweekly/"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/alekskrotoski"&gt;Aleks Krotoski&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/robert-llewellyn"&gt;Robert Llewellyn&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Google Street View</category>
+      <category domain="http://www.guardian.co.uk/technology">Wi-Fi</category>
+      <category domain="http://www.guardian.co.uk/info">Privacy</category>
+      <category domain="http://www.guardian.co.uk/world">Privacy</category>
+      <category domain="http://www.guardian.co.uk/technology">Broadband</category>
+      <category domain="http://www.guardian.co.uk/politics">Spending review 2010</category>
+      <category domain="http://www.guardian.co.uk/technology">Internet</category>
+      <category domain="http://www.guardian.co.uk/technology">Apple</category>
+      <category domain="http://www.guardian.co.uk/technology">Apps</category>
+      <category domain="http://www.guardian.co.uk/technology">Computing</category>
+      <category domain="http://www.guardian.co.uk/technology">Software</category>
+      <category domain="http://www.guardian.co.uk/tv-and-radio">Television</category>
+      <category domain="http://www.guardian.co.uk/technology">Television</category>
+      <category domain="http://www.guardian.co.uk/media">Digital media</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/media">Media</category>
+      <category domain="http://www.guardian.co.uk/uk">UK news</category>
+      <category domain="http://www.guardian.co.uk/uk">Information commissioner</category>
+      <category domain="http://www.guardian.co.uk/world">World news</category>
+      <category domain="http://www.guardian.co.uk/politics">Politics</category>
+      <category domain="http://www.guardian.co.uk/tv-and-radio">Television &amp; radio</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Interviews</category>
+      <pubDate>Tue, 26 Oct 2010 17:09:47 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/oct/26/tech-weekly-google-streetview-audio</guid>
+      <dc:creator>Aleks Krotoski, Robert Llewellyn, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-10-27T09:21:39Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>368073344</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Guardian/Pix/commercial/2010/1/18/1263813676680/Robert-Llewellyn-004.jpg">
+        <media:credit scheme="urn:ebu">Shamil Tanna/Guardian</media:credit>
+        <media:description>Lights, camera, action: things can only get better. Photograph: Shamil Tanna</media:description>
+      </media:content>
+      <media:content duration="1965" fileSize="15757282" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1288114809637/932/gdn.tec.101026.sc.tech-weekly-google-streetview-audio2.mp3" />
+    </item>
+    <item>
+      <title>Audio: Tech Weekly podcast: Apple's results - more iPads than Macs, Ray Ozzie leaves Microsoft</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/oct/19/tech-weekly-apple-profits-audio</link>
+      <description>&lt;p&gt;This week, &lt;strong&gt;Jemima Kiss&lt;/strong&gt; is joined by &lt;strong&gt;Charles Arthur&lt;/strong&gt; to analyse how Apple are edging towards being the biggest company in the world. They also discuss Ray Ozzie's departure from Microsoft, AOL's interest in Yahoo and whether cyber warfare will be the defining characteristic of a new era of global terrorism.&lt;/p&gt;&lt;p&gt;We're also joined by games designer Kevin Slavin, founder of the New York-based games company Area/Code. He has a vision of the future of TV ... lying outside the traditional television industry.&lt;/p&gt;&lt;p&gt;Heads up!  Tech Weekly is coming to the Bradford Animation Festival at the National Media Museum on 9 November.  Our guests will include Charles Cecil, Kieron Gillen and Dan Pinchbeck, and it'll all be presented by Keith Stuart.  &lt;/p&gt;&lt;p&gt;&lt;a href="http://www.nationalmediamuseum.org.uk/baf/film_detail.asp?filmid=9317"&gt;There's details on how to come join us here - tickets are FREE&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;And later in November we'll be bringing Tech Weekly to Dublin - more details next week.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Comment below&lt;br /&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://www.twitter.com/guardiantw"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://twitter.com/guardiantw/guardian-tech-podders"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Join our &lt;a href="http://www.facebook.com/group.php?gid=15548445443"&gt;Facebook group&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://www.flickr.com/photos/guardiantechweekly/"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://www.flickr.com/groups/guardiantechweekly/"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/jemimakiss"&gt;Jemima Kiss&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/charlesarthur"&gt;Charles Arthur&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Apple</category>
+      <category domain="http://www.guardian.co.uk/technology">Microsoft</category>
+      <category domain="http://www.guardian.co.uk/technology">Internet</category>
+      <category domain="http://www.guardian.co.uk/technology">Data and computer security</category>
+      <category domain="http://www.guardian.co.uk/politics">Terrorism policy</category>
+      <category domain="http://www.guardian.co.uk/uk">UK security and terrorism</category>
+      <category domain="http://www.guardian.co.uk/world">Global terrorism</category>
+      <category domain="http://www.guardian.co.uk/technology">AOL</category>
+      <category domain="http://www.guardian.co.uk/technology">Yahoo</category>
+      <category domain="http://www.guardian.co.uk/technology">Yahoo takeover</category>
+      <category domain="http://www.guardian.co.uk/technology">Television</category>
+      <category domain="http://www.guardian.co.uk/media">Digital media</category>
+      <category domain="http://www.guardian.co.uk/media">Social networking</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/media">Media</category>
+      <category domain="http://www.guardian.co.uk/politics">Politics</category>
+      <category domain="http://www.guardian.co.uk/uk">UK news</category>
+      <category domain="http://www.guardian.co.uk/world">World news</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Editorial</category>
+      <pubDate>Wed, 20 Oct 2010 08:06:00 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/oct/19/tech-weekly-apple-profits-audio</guid>
+      <dc:creator>Jemima Kiss, Charles Arthur, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-10-20T08:06:12Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>367839370</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2010/10/19/1287443168863/File-photo-of-Apple-iPad--002.jpg">
+        <media:credit scheme="urn:ebu">Robert Galbraith/Reuters</media:credit>
+        <media:description>Steve Jobs says Apple now sells more iPads than Macs, 'a new model of computing'. Photograph: Robert Galbraith/Reuters</media:description>
+      </media:content>
+      <media:content duration="1439" fileSize="11571655" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1287507433510/8001/gdn.tec.101019.sc.apple-results-ray-ozzie-microsoft2.mp3.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly podcast: Stephen Fry's verdict on Windows Phone 7. Flip Video, 4iP and Google Cars</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/oct/12/stephen-fry-windows-phone-7-audio</link>
+      <description>&lt;p&gt;Join &lt;strong&gt;Aleks Krotoski&lt;/strong&gt;, &lt;strong&gt;Jemima Kiss&lt;/strong&gt; and &lt;strong&gt;Charles Arthur&lt;/strong&gt; on Tech Weekly for a programme about transformations: Microsoft takes the plunge into the mobile market, Google launches a car, and 4IP goes from online autonomy to being integrated into the public service Borg.&lt;/p&gt;&lt;p&gt;Charles grills &lt;strong&gt;Ashley Highfield&lt;/strong&gt;, head of Microsoft UK, about the Windows Phone 7, and gets a few choice words from comedian and polymath &lt;strong&gt;Stephen Fry&lt;/strong&gt;, whose technophilia knows no bounds.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Gareth Jones&lt;/strong&gt; of Cisco tells Charles about the latest transformation in the Flip camera series. Spoiler alert: not much has changed &lt;a href="http://www.guardian.co.uk/technology/blog/audio/2009/jul/28/tech-weekly-podcast-flip-video"&gt;since our July 2009 interview&lt;/a&gt; with the company. Oh dear.&lt;/p&gt;&lt;p&gt;There's all the usual news, views and clever quips from the team that make this week's podcast simply unmissable. So please don't.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Comment below&lt;br /&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://www.twitter.com/guardiantw"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://twitter.com/guardiantw/guardian-tech-podders"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Join our &lt;a href="http://www.facebook.com/group.php?gid=15548445443"&gt;Facebook group&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://www.flickr.com/photos/guardiantechweekly/"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://www.flickr.com/groups/guardiantechweekly/"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/alekskrotoski"&gt;Aleks Krotoski&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/charlesarthur"&gt;Charles Arthur&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/jemimakiss"&gt;Jemima Kiss&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/stephenfry"&gt;Stephen Fry&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Mobile phones</category>
+      <category domain="http://www.guardian.co.uk/technology">Microsoft</category>
+      <category domain="http://www.guardian.co.uk/culture">Stephen Fry</category>
+      <category domain="http://www.guardian.co.uk/media">Ashley Highfield</category>
+      <category domain="http://www.guardian.co.uk/technology">Google</category>
+      <category domain="http://www.guardian.co.uk/technology">Motoring</category>
+      <category domain="http://www.guardian.co.uk/media">Channel 4</category>
+      <category domain="http://www.guardian.co.uk/media">Digital media</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology startups</category>
+      <category domain="http://www.guardian.co.uk/technology">Gadgets</category>
+      <category domain="http://www.guardian.co.uk/technology">Digital video</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/media">Media</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Interviews</category>
+      <pubDate>Wed, 13 Oct 2010 08:03:47 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/oct/12/stephen-fry-windows-phone-7-audio</guid>
+      <dc:creator>Aleks Krotoski, Charles Arthur, Jemima Kiss, Stephen Fry, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-10-13T12:40:35Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>367574864</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Guardian/Pix/pixies/2010/9/22/1285115551103/Stephen-Fry-002.jpg">
+        <media:credit scheme="urn:ebu">Ian Nicholson/PA</media:credit>
+        <media:description>'Slick and occasionally disarming' Stephen Fry. Photograph: Ian Nicholson/PA</media:description>
+      </media:content>
+      <media:content duration="1949" fileSize="15628322" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1286902053154/5321/gdn.tec.101012.sc.windows-phone-stephen-fry-flip-video2.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly podcast: Jason Calacanis hits back at TechCrunch, latest Startup Surgery</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/oct/05/broadband-bt-fibre-calcanis-techcrunch</link>
+      <description>&lt;p&gt;Join Aleks Krotoski, Jemjma Kiss and Charles Arthur for a start-up special on Tech Weekly this week. Simon Carmichael, head of private placements and venture sellsides and director at Torch Partners, takes your questions, whether you're looking for angel, first-round or later investment. But rather than just taking his word for it, we're also speaking with Sam Barnett from struq.com, who self-funded through the lean years of 2008-10, establishing a successful behavioural retargetting advertising company. He offers his advice and a word on how to avoid the pitfalls of digital hubris.&lt;/p&gt;&lt;p&gt;The team also get to grips with Angelgate, the business story rocking Silicon Valley. Internet entrepreneur Jason Calacanis weighs in during an interview with Jemima, and throws a few well-placed barbs at his old business partner, Michael Arrington of TechCrunch.&lt;/p&gt;&lt;p&gt;We'll find out why the mobile industry is suing itself, and what BT has that the other fibre-optic broadband providers want.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Comment below&lt;br /&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://www.twitter.com/guardiantw"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://twitter.com/guardiantw/guardian-tech-podders"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Join our &lt;a href="http://www.facebook.com/group.php?gid=15548445443"&gt;Facebook group&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://www.flickr.com/photos/guardiantechweekly/"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://www.flickr.com/groups/guardiantechweekly/"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/alekskrotoski"&gt;Aleks Krotoski&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/charlesarthur"&gt;Charles Arthur&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/jemimakiss"&gt;Jemima Kiss&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Broadband</category>
+      <category domain="http://www.guardian.co.uk/technology">Internet</category>
+      <category domain="http://www.guardian.co.uk/business">BT</category>
+      <category domain="http://www.guardian.co.uk/technology">Microsoft</category>
+      <category domain="http://www.guardian.co.uk/technology">Android</category>
+      <category domain="http://www.guardian.co.uk/technology">Mobile phones</category>
+      <category domain="http://www.guardian.co.uk/technology">Intellectual property</category>
+      <category domain="http://www.guardian.co.uk/technology">Google</category>
+      <category domain="http://www.guardian.co.uk/technology">Evan Williams</category>
+      <category domain="http://www.guardian.co.uk/technology">Twitter</category>
+      <category domain="http://www.guardian.co.uk/media">Blogging</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology startups</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/media">Media</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Editorial</category>
+      <pubDate>Wed, 06 Oct 2010 14:59:03 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/oct/05/broadband-bt-fibre-calcanis-techcrunch</guid>
+      <dc:creator>Aleks Krotoski, Charles Arthur, Jemima Kiss, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-10-08T08:16:21Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>367333209</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Guardian/About/General/2010/5/13/1273775036024/Fibre-optic-technology-002.jpg">
+        <media:credit scheme="urn:ebu">Corbis</media:credit>
+        <media:description>Fibre optic technology will make speeds of 100Mb per second possible for some broadband users. Photograph: Corbis</media:description>
+      </media:content>
+      <media:content duration="2142" fileSize="17177166" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1286297902349/6858/gdn.tec.101005.sc.broadband-bt-fibre-calcanis-techcrunch.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly podcast: The Social Network - our verdict on the Facebook film</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/sep/28/facebook-film-social-network-acs-law</link>
+      <description>&lt;p&gt;Join Aleks Krotoski, Jemima Kiss, Gia Milinovich and Charles Arthur for the latest technology news. This week, they dissect The Social Network, often referred to as The Facebook Movie, because it documents the rise and rise and rise of the most popular social networking site in the world. 500 million users can't be wrong, right? Charles, Jemima and Gia report back from this week's special preview screening.&lt;/p&gt;&lt;p&gt;Also this week, the virtual and the real worlds are under threat from hackers. An Iranian nuclear power plant has been infiltrated by a computer worm that attacks the integral systems of the plant's workings. Charles suggests it's a government job, and Gia gets excited about nuclear espionage.&lt;/p&gt;&lt;p&gt;Alexander Hanff from Privacy International gives us the implications of the 750 MB file accidentally revealed on the ACS:Law website after it was taken down by members of the 4Chan social network - and what legal recourse the 10,000 email and ISP address owners have against the firm, who have the details as part of investigations into illegal peer-to-peer filesharing.&lt;/p&gt;&lt;p&gt;Next week, as previously billed for this programme, the team are joined by Simon Carmichael from Torch Partners who will be answering your pressing start-up questions in the latest in our Start-Up Surgery series.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Comment below&lt;br /&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://www.twitter.com/guardiantw"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://twitter.com/guardiantw/guardian-tech-podders"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Join our &lt;a href="http://www.facebook.com/group.php?gid=15548445443"&gt;Facebook group&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://www.flickr.com/photos/guardiantechweekly/"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://www.flickr.com/groups/guardiantechweekly/"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/alekskrotoski"&gt;Aleks Krotoski&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/charlesarthur"&gt;Charles Arthur&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/jemimakiss"&gt;Jemima Kiss&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Facebook</category>
+      <category domain="http://www.guardian.co.uk/technology">Mark Zuckerberg</category>
+      <category domain="http://www.guardian.co.uk/technology">P2P</category>
+      <category domain="http://www.guardian.co.uk/technology">Filesharing</category>
+      <category domain="http://www.guardian.co.uk/technology">Piracy</category>
+      <category domain="http://www.guardian.co.uk/technology">Hacking</category>
+      <category domain="http://www.guardian.co.uk/world">Iran</category>
+      <category domain="http://www.guardian.co.uk/environment">Nuclear power</category>
+      <category domain="http://www.guardian.co.uk/technology">Microsoft</category>
+      <category domain="http://www.guardian.co.uk/technology">Mobile phones</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/film">Film</category>
+      <category domain="http://www.guardian.co.uk/science">Science</category>
+      <category domain="http://www.guardian.co.uk/media">Media</category>
+      <category domain="http://www.guardian.co.uk/world">World news</category>
+      <category domain="http://www.guardian.co.uk/film">David Fincher</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Editorial</category>
+      <pubDate>Tue, 28 Sep 2010 17:41:03 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/sep/28/facebook-film-social-network-acs-law</guid>
+      <dc:creator>Aleks Krotoski, Charles Arthur, Jemima Kiss, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-09-29T07:33:37Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>367123328</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Film/Pix/pictures/2010/8/27/1282902608527/The-Social-Network-002.jpg">
+        <media:credit scheme="urn:ebu">PR</media:credit>
+        <media:description>The Social Network</media:description>
+      </media:content>
+      <media:content duration="1922" fileSize="15413781" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1285694657426/7801/gdn.tec.100928.sc.facebook-film-social-network-acs-law.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly podcast: Email overload</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/sep/21/email-xobni-haystack-diaspora</link>
+      <description>&lt;p&gt;On this week's programme we discuss the waning influence of email, as users turn to different tools to communicate more effectively with one another. Are priority inboxes the answer? Or is a whole new method of communication in order? We speak with Jeff Bonfiorte from &lt;a href="http://www.xobni.com/"&gt;Xobni&lt;/a&gt; (it's inbox, spelt backwards) who explains why email isn't dead, just misunderstood. He offers his insight on how to reach the fabled Inbox Zero.&lt;/p&gt;&lt;p&gt;Charles follows &lt;a href="http://www.guardian.co.uk/technology/2010/sep/17/haystack-software-security-concerns"&gt;the collapse of Haystack&lt;/a&gt;, the US State Department's-sponsored anti-censorship software, celebrated for its role in opening up the Iranian web during the violence in the aftermath of Iran's 2009 elections. It has been found to make its users vulnerable to the authoritarian government, rather than anonymous; the team dissects the hype.&lt;/p&gt;&lt;p&gt;We look at the latest hacker actions taken against the RIAA and the MPAA, causing their services to go down. Charles argues that there's nothing to be done to stop attacks like this in the future; it's simply part of the weather of the Internet, and we should just bring our umbrellas.&lt;/p&gt;&lt;p&gt;And Jemima weighs in on the open-source social network &lt;a href="http://www.guardian.co.uk/media/pda/2010/sep/16/diaspora-facebook-privacy-social-network"&gt;Diaspora, which has released its first code&lt;/a&gt;. The project promotes personal data ownership, a criticism levied against Mark Zuckerberg's Facebook.&lt;/p&gt;&lt;p&gt;Plus - we want your questions for the next in our installment of the Startup Surgery. Next week corporate finance specialist Simon Carmichael of Torch Partners will be answering your questions on refining your proposition to take your business to the next level.  &lt;a href="http://www.guardian.co.uk/technology/pda/2010/sep/20/startup-surgery-simon-carmichael"&gt;Questions to him on the PDA blog&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Comment below&lt;br /&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://www.twitter.com/guardiantw"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://twitter.com/guardiantw/guardian-tech-podders"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Join our &lt;a href="http://www.facebook.com/group.php?gid=15548445443"&gt;Facebook group&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://www.flickr.com/photos/guardiantechweekly/"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://www.flickr.com/groups/guardiantechweekly/"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/alekskrotoski"&gt;Aleks Krotoski&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/charlesarthur"&gt;Charles Arthur&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/jemimakiss"&gt;Jemima Kiss&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Email</category>
+      <category domain="http://www.guardian.co.uk/technology">Internet</category>
+      <category domain="http://www.guardian.co.uk/world">Iran</category>
+      <category domain="http://www.guardian.co.uk/world">Censorship</category>
+      <category domain="http://www.guardian.co.uk/world">World news</category>
+      <category domain="http://www.guardian.co.uk/technology">Software</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Editorial</category>
+      <pubDate>Tue, 21 Sep 2010 15:59:11 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/sep/21/email-xobni-haystack-diaspora</guid>
+      <dc:creator>Aleks Krotoski, Charles Arthur, Jemima Kiss, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-09-27T11:21:30Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>366911501</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Money/Pix/pictures/2009/7/31/1249034410186/Spam-emails-in-a-computer-004.jpg">
+        <media:credit scheme="urn:ebu">Roger Tooth</media:credit>
+        <media:description>Spam emails in a computer's inbox. Photograph: Roger Tooth</media:description>
+      </media:content>
+      <media:content duration="1874" fileSize="15035886" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1285079180069/2551/gdn.tec.100921.sc.email-xobni-haystack-diaspora.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly at Nokia World</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/sep/15/nokia-world-jane-mcgonigal-mobile-gartenberg</link>
+      <description>&lt;p&gt;Aleks Krotoski presents this week's programme from Nokia World – the Finnish mobile communication giant's world conference and developer summit in London's Docklands.&lt;/p&gt;&lt;p&gt;Charles Arthur catches up with technology analyst Michael Gartenberg to find out what he makes of &lt;a href="http://www.guardian.co.uk/technology/2010/sep/14/nokia-chairman-ollia-departing"&gt;this week's movements at the top of Nokia&lt;/a&gt; that have seen its chairman and former chief executive Jorma Ollia, its current chief executive Olli-Pekka Kallasvuo, and the head of mobile Anssi Vanjoki announce their departures from the company.&lt;/p&gt;&lt;p&gt;They also discuss &lt;a href="http://www.guardian.co.uk/technology/blog/2010/sep/09/apple-app-store-flash-open"&gt;the latest changes in Apple's app store rules,&lt;/a&gt; and &lt;a href="http://www.guardian.co.uk/technology/blog/2010/sep/08/google-instant-search-launched"&gt;the launch of Google Instant search&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Also in the programme, Aleks speaks to game developer Jane McGonigal from the Institute of the Future and hears about how she intends to bring other developers together with a social network – &lt;a href="http://gameful.org/"&gt;Gameful&lt;/a&gt; – to create games for good.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Comment below&lt;br /&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://www.twitter.com/guardiantw"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://twitter.com/guardiantw/guardian-tech-podders"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Join our &lt;a href="http://www.facebook.com/group.php?gid=15548445443"&gt;Facebook group&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://www.flickr.com/photos/guardiantechweekly/"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://www.flickr.com/groups/guardiantechweekly/"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/alekskrotoski"&gt;Aleks Krotoski&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/charlesarthur"&gt;Charles Arthur&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/business">Nokia</category>
+      <category domain="http://www.guardian.co.uk/technology">Nokia</category>
+      <category domain="http://www.guardian.co.uk/technology">Mobile phones</category>
+      <category domain="http://www.guardian.co.uk/technology">Games</category>
+      <category domain="http://www.guardian.co.uk/technology">Technology</category>
+      <category domain="http://www.guardian.co.uk/technology">Apple</category>
+      <category domain="http://www.guardian.co.uk/technology">Apps</category>
+      <category domain="http://www.guardian.co.uk/technology">Google</category>
+      <category domain="http://www.guardian.co.uk/technology">Search engines</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Interviews</category>
+      <pubDate>Wed, 15 Sep 2010 10:59:29 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/sep/15/nokia-world-jane-mcgonigal-mobile-gartenberg</guid>
+      <dc:creator>Aleks Krotoski, Charles Arthur, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-09-15T10:59:42Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>366715688</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2009/4/16/1239920047173/Nokia-003.jpg">
+        <media:credit scheme="urn:ebu">Antti Aimo-Koivisto/AFP/Getty Images</media:credit>
+        <media:description>Nokia's Research centre in Helsinki.  Photograph: Antti Aimo-Koivisto/AFP/Getty Images</media:description>
+      </media:content>
+      <media:content duration="1735" fileSize="13918606" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1284545164424/8792/gdn.tec.100915.sc.nokia-world-jane-mcgonigal-mobile-gartenberg.mp3" />
+    </item>
+    <item>
+      <title>Tech Weekly: The year in games, and Edinburgh Interactive Festival</title>
+      <link>http://www.guardian.co.uk/technology/blog/audio/2010/sep/07/games-spiderman-edinburgh-interactive-duke-nukem</link>
+      <description>&lt;p&gt;Join Aleks Krotoski, Keith Stuart and GameBrief.com's Nicholas Lovell on Tech Weekly for a games special.&lt;/p&gt;&lt;p&gt;The panel bring you the latest on the 13-year struggle to take Duke Nukem Forever from idea to release – is a mysogynistic, two-dimensional games character relevant in today's more mature gaming culture? There's also a round-up of the headlines from the Edinburgh Interactive Festival: is 3D a gimmick, and is the games industry suffering from a post-modern identity crisis? And the team look back at 2010 with their business analysis of the UK games industry.&lt;/p&gt;&lt;p&gt;Also on this week's show, Jack Arnott speaks with Stephane Gravel, producer at Beenox, who are responsible for the mutli-layered universe in the latest adventure for Spider-Man: Shattered Dimensions.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Don't forget to ...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;• Comment below&lt;br /&gt;• Mail us at &lt;a href="mailto:tech@guardian.co.uk"&gt;tech@guardian.co.uk&lt;/a&gt;&lt;br /&gt;• Get our &lt;a href="http://www.twitter.com/guardiantw"&gt;Twitter feed&lt;/a&gt; for programme updates or follow our &lt;a href="http://twitter.com/guardiantw/guardian-tech-podders"&gt;Twitter list&lt;/a&gt;&lt;br /&gt;• Join our &lt;a href="http://www.facebook.com/group.php?gid=15548445443"&gt;Facebook group&lt;/a&gt;&lt;br /&gt;• See our &lt;a href="http://www.flickr.com/photos/guardiantechweekly/"&gt;pics on Flickr&lt;/a&gt;/Post &lt;a href="http://www.flickr.com/groups/guardiantechweekly/"&gt;your tech pics&lt;/a&gt;&lt;/p&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/alekskrotoski"&gt;Aleks Krotoski&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/keithstuart"&gt;Keith Stuart&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/jackarnott"&gt;Jack Arnott&lt;/a&gt;&lt;/div&gt;&lt;div class="author"&gt;&lt;a href="http://www.guardian.co.uk/profile/scottcawley"&gt;Scott Cawley&lt;/a&gt;&lt;/div&gt;&lt;br/&gt;&lt;p style="clear:both" /&gt;</description>
+      <category domain="http://www.guardian.co.uk/technology">Games</category>
+      <category domain="http://www.guardian.co.uk/books">Comics and graphic novels</category>
+      <category domain="http://www.guardian.co.uk/books">Books</category>
+      <category domain="http://www.guardian.co.uk/publication">guardian.co.uk</category>
+      <category domain="http://www.guardian.co.uk/tone">Interviews</category>
+      <pubDate>Wed, 08 Sep 2010 10:45:36 GMT</pubDate>
+      <guid>http://www.guardian.co.uk/technology/blog/audio/2010/sep/07/games-spiderman-edinburgh-interactive-duke-nukem</guid>
+      <dc:creator>Aleks Krotoski, Keith Stuart, Jack Arnott, Scott Cawley</dc:creator>
+      <dc:subject>Technology</dc:subject>
+      <dc:date>2010-09-08T12:06:52Z</dc:date>
+      <dc:type>Audio</dc:type>
+      <dc:identifier>366500639</dc:identifier>
+      <media:content height="84" type="image/jpeg" width="140" url="http://static.guim.co.uk/sys-images/Arts/Arts_/Pictures/2008/10/10/spidey140.jpg">
+        <media:credit scheme="urn:ebu">Kobal</media:credit>
+      </media:content>
+      <media:content duration="1833" fileSize="14705213" type="audio/mpeg" url="http://download.guardian.co.uk/audio/kip/technology/series/techweekly/1283946992699/863/gdn.tec.100907.sc.games-edinburgh-interactive-spiderman-duke-nukem.mp3" />
+    </item>
+  </channel>
+</rss>
+

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0" xml:lang="en">
+  <channel>
+    <title>gdgt weekly</title>
+    <link>http://gdgt.com/</link>
+    <description>gdgt weekly, distributed in MP3</description>
+    <language>en</language>
+    <copyright>Copyright 2010</copyright>
+    <pubDate>Wed, 27 Oct 2010 09:43:00 -0500</pubDate>
+    <category>Gadgets</category>
+
+    <image>
+      <url>http://media.gdgt.com/img/site/gdgt-weekly-logo.jpg</url>
+      <title>gdgt weekly</title>
+      <link>http://gdgt.com/</link>
+    </image>
+
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.gdgt.com/gdgt/podcast-mp3" />
+    <feedburner:info uri="gdgt/podcast-mp3" />
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" />
+    <item>
+      <title>gdgt roundtable 086</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/FHcOxFXC6kI/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>If there was any doubt about Android's prominence, it surely can't be questioned now that &lt;a href="http://www.npd.com/press/releases/press_100804.html"&gt;NPD has announced it's the top selling consumer smartphone OS in the US&lt;/a&gt; -- and we've even brought on NPD analyst and longtime friend of the show Ross Rubin to help tell us more. We're also talking about getting hands-on with the new &lt;a href="http://gdgt.com/rim/blackberry/torch/9800/"&gt;RIM BlackBerry Torch 9800&lt;/a&gt; and &lt;a href="http://gdgt.com/rim/blackberry-os/60/"&gt;BlackBerry OS 6&lt;/a&gt; (both of which launched to mixed reviews this week), as well as the newly announced &lt;a href="http://gdgt.com/amazon/kindle/3rd-gen/"&gt;Amazon Kindle 3rd-gen&lt;/a&gt; and &lt;a href="http://gdgt.com/apple/magic-trackpad/"&gt;Apple Magic Trackpad&lt;/a&gt;. Oh, and did we mention the &lt;a href="http://www.engadget.com/2010/07/26/library-of-congress-adds-dmca-exception-for-jailbreaking-or-root/"&gt;government granted a DMCA exception for rooting and jailbreaking&lt;/a&gt; your devices? Listen up!&lt;br /&gt;&lt;br /&gt;Guests: &lt;a href="http://www.pcmag.com/current_archive/0,1204,s%253D27595%2526t%253D2,00.asp"&gt;Sascha Segan&lt;/a&gt;, &lt;a href="http://www.rossrubin.com/outofthebox/"&gt;Ross Rubin&lt;/a&gt;&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/FHcOxFXC6kI" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/08/06/gdgt-weekly-086-08-06-2010/</guid>
+      <pubDate>Fri, 06 Aug 2010 18:15:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/08/06/gdgt-weekly-086-08-06-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/jUwrMjdMtiM/gdgt-weekly-086.mp3" length="35424528" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-086.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt roundtable 085</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/w9VtBdCz1P4/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>Well, at least we've finally got a bit of &lt;a href="http://live.gdgt.com/2010/07/16/live-iphone-4-press-event-coverage/"&gt;closure when it comes to the iPhone 4's antenna woes&lt;/a&gt;, which as you might expect we'll be digging into in this week's roundtable. We're also bidding farewell to the &lt;a href="http://gdgt.com/htc/google/nexus-one/"&gt;Google Nexus One&lt;/a&gt;, and potentially also to &lt;a href="http://www.engadget.com/2010/07/19/nokia-looking-for-new-ceo-to-replace-olli-pekka-kallasvuo-says/"&gt;Nokia CEO Olli Pekka Kallasvuo&lt;/a&gt;, as well as saying hello to &lt;a href="http://gdgt.com/samsung/galaxy/s/"&gt;Samsung's Galaxy S&lt;/a&gt;. We'll be back next week, but hopefully we'll see you live and in person in Seattle on the 27th!&lt;br /&gt;&lt;br /&gt;Guests: &lt;a href="http://twit.tv/tnt"&gt;Tom Merritt&lt;/a&gt;, &lt;a href="http://www.engadget.com/"&gt;Joanna Stern&lt;/a&gt;&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/w9VtBdCz1P4" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/07/26/gdgt-weekly-085-07-26-2010/</guid>
+      <pubDate>Mon, 26 Jul 2010 13:50:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/07/26/gdgt-weekly-085-07-26-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/9o87LIOR-xc/gdgt-weekly-085.mp3" length="24623208" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-085.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt roundtable 084</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/Vq_OCLUtzNk/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>
+        No surprise, topping this week's charts is &lt;a href="http://gdgt.com/apple/iphone/4/"&gt;Apple's iPhone 4&lt;/a&gt; antenna &lt;a href="http://gdgt.com/discuss/consumer-reports-retracted-its-recommendation-iphone-4-9f3/"&gt;death grip boondoggle&lt;/a&gt;, which we'll be discussing at length. (Disclaimer: this week's show was recorded shortly before &lt;a href="http://live.gdgt.com/2010/07/16/live-iphone-4-press-event-coverage/"&gt;Apple called this Friday's press conference&lt;/a&gt;!) We're also talking about NTP, returned and ready to rumble with Apple, Microsoft, and HTC (among others), &lt;a href="http://gdgt.com/palm/"&gt;Palm&lt;/a&gt;'s completed acquisition by &lt;a href="http://gdgt.com/hp/"&gt;HP&lt;/a&gt;, &lt;a href="http://gdgt.com/microsoft/"&gt;Microsoft&lt;/a&gt; killing the &lt;a href="http://gdgt.com/microsoft/kin/one/"&gt;KIN&lt;/a&gt;, &lt;a href="http://gdgt.com/sony/handycam/nex-vg10/"&gt;Sony's Handycam NEX-VG10&lt;/a&gt;, and &lt;a href="http://hulu.com/plus/"&gt;Hulu Plus&lt;/a&gt;. Oh, and did we mention we're trying out the roundtable format as our regular program? Let us know what you think in comments!&lt;br /&gt;&lt;br /&gt;
+        Guests: &lt;a href="http://www.engadget.com/"&gt;Nilay Patel&lt;/a&gt;, &lt;a href="http://www.currentanalysis.com"&gt;Avi Greengart&lt;/a&gt;&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/Vq_OCLUtzNk" height="1" width="1"/&gt;
+      </description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/07/15/gdgt-weekly-084-07-15-2010/</guid>
+      <pubDate>Thu, 15 Jul 2010 13:57:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/07/15/gdgt-weekly-084-07-15-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/39qQ2rPRP44/gdgt-weekly-084.mp3" length="47688704" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-084.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt roundtable - iPhone 4 and Android</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/kON4Tr8COI4/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>We've finally returned, and with a roundtable no less! Plenty's gone on while we've been away on our little&lt;a href="http://gdgt.com/google/android/2-2/"&gt; &lt;/a&gt;summer sabbatical, but there's one thing on our (and, well, a lot of people's) minds right now: &lt;a href="http://gdgt.com/apple/iphone/4/"&gt;iPhone 4&lt;/a&gt; and &lt;a href="http://gdgt.com/google/android/2-2/"&gt;Android&lt;/a&gt;. That means we're talking &lt;a href="http://gdgt.com/apple/ios/4/"&gt;iOS 4&lt;/a&gt;, &lt;a href="http://gdgt.com/htc/evo-4g/"&gt;EVO&lt;/a&gt;, &lt;a href="http://gdgt.com/motorola/droid/x/"&gt;DROID X&lt;/a&gt;, and even &lt;a href="http://gdgt.com/google/android/gingerbread/"&gt;Gingerbread&lt;/a&gt;, so listen in -- and welcome back!&lt;br /&gt;&lt;br /&gt;Guests: &lt;a href="http://mobile.engadget.com/"&gt;Chris Ziegler&lt;/a&gt;, &lt;a href="http://twitter.com/claytonmorris"&gt;Clayton Morris&lt;/a&gt;&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/kON4Tr8COI4" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/07/09/gdgt-weekly-83-07-09-2010/</guid>
+      <pubDate>Fri, 09 Jul 2010 13:35:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/07/09/gdgt-weekly-83-07-09-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/bmt-cCQdMSo/gdgt-weekly-083.mp3" length="34338843" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-083.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 082</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/uf7d8pLZLCI/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>Sorry we're a little late in posting this week, but we've got plenty of show to go around when it comes to the big announcements at Google IO: &lt;a href="http://gdgt.com/google/google-tv/"&gt;Google TV&lt;/a&gt; and &lt;a href="http://gdgt.com/google/android/2-2/"&gt;Android 2.2 (Froyo)&lt;/a&gt;. We've also got live interviews from our Chicago event with the folks &lt;a href="http://gdgt.com/microsoft/kin/"&gt;Microsoft KIN&lt;/a&gt;, &lt;a href="http://gdgt.com/cherrypal/"&gt;CherryPal&lt;/a&gt;, &lt;a href="http://gdgt.com/syabas/popbox/"&gt;Popbox&lt;/a&gt;, &lt;a href="http://gdgt.com/htc/"&gt;HTC&lt;/a&gt;, and &lt;a href="http://gdgt.com/boxee/"&gt;Boxee&lt;/a&gt;!&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/uf7d8pLZLCI" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/05/25/gdgt-weekly-082-05-25-2010/</guid>
+      <pubDate>Tue, 25 May 2010 13:08:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/05/25/gdgt-weekly-082-05-25-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/eiYRzMa8BY4/gdgt-weekly-082.mp3" length="35599026" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-082.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 081</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/tfD41lt7aEA/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>This week we've got an extended hands on discussion of Microsoft's new &lt;a href="http://gdgt.com/microsoft/kin/one/"&gt;KIN ONE&lt;/a&gt; and &lt;a href="http://gdgt.com/microsoft/kin/two/"&gt;KIN TWO&lt;/a&gt;, but we're also talking about the (possible) deaths of the &lt;a href="http://gdgt.com/hp/slate/"&gt;HP Slate&lt;/a&gt; and &lt;a href="http://gdgt.com/microsoft/courier/"&gt;Microsoft Courier&lt;/a&gt;, and a few new launches, including &lt;a href="http://gdgt.com/hp/envy/14/"&gt;HP Envy 14&lt;/a&gt;, &lt;a href="http://gdgt.com/hp/envy/17/"&gt;Envy 17&lt;/a&gt;, and &lt;a href="http://gdgt.com/seagate/freeagent/goflex/pro/"&gt;Seagate's FreeAgent GoFlex Pro&lt;/a&gt; external drive system.&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/tfD41lt7aEA" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/05/06/gdgt-weekly-081-05-06-2010/</guid>
+      <pubDate>Thu, 06 May 2010 15:06:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/05/06/gdgt-weekly-081-05-06-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/AqpMKaxylYs/gdgt-weekly-081.mp3" length="24977428" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-081.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 080</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/V2l9sFt6NK0/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>As usual, lots going down in the mobile world this week, not the least of which being the blockbuster news that HP is acquiring Palm for $1.2b! We've also got the scoop on &lt;a href="http://gdgt.com/nokia/n8/"&gt;Nokia's new touchscreen N&lt;/a&gt;8, the &lt;a href="http://gdgt.com/dell/lightning/"&gt;Dell Lighning&lt;/a&gt;, &lt;a href="http://news.gdgt.com/2010/04/28/gigaom/"&gt;T-Mobile's HSPA+ throttling&lt;/a&gt;, and hands-ons with the &lt;a href="http://gdgt.com/htc/droid/incredible/"&gt;HTC Droid Incredible&lt;/a&gt;, and two PCs: the &lt;a href="http://gdgt.com/sony/vaio/vpcl111fx-b/"&gt;Sony VAIO L&lt;/a&gt;, and the &lt;a href="http://gdgt.com/toshiba/satellite/t135/"&gt;Toshiba T135&lt;/a&gt;. Also, don't forget about our upcoming Chicago event if you're anywhere in the area, it's going to be off the hook!&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/V2l9sFt6NK0" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/05/03/gdgt-weekly-080-05-03-2010/</guid>
+      <pubDate>Mon, 03 May 2010 13:46:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/05/03/gdgt-weekly-080-05-03-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/5n9B9XjoHtg/gdgt-weekly-080.mp3" length="23082819" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-080.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt roundtable - Apple iPad</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/v62RSZiFmxA/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>Our long-awaited &lt;a href="http://gdgt.com/apple/ipad/"&gt;Apple iPad&lt;/a&gt; roundtable arrives! We've assembled a great panel to really dig into on the viability of the iPad where all previous tablets have failed, whether it's really everything Jobs cracked it up to be at its January launch, and a few of our favorite apps (so far). Not to be missed!&lt;br /&gt;&lt;br /&gt;Guests: &lt;a href="http://www.engadget.com/"&gt;Josh Topolsky&lt;/a&gt;, &lt;a href="http://www.rossrubin.com/outofthebox/"&gt;Ross Rubin&lt;/a&gt;, &lt;a href="http://jkontherun.com/"&gt;Kevin Tofel&lt;/a&gt;&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/v62RSZiFmxA" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/04/23/gdgt-weekly-079-04-23-2010/</guid>
+      <pubDate>Fri, 23 Apr 2010 12:18:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/04/23/gdgt-weekly-079-04-23-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/RDd5sWTjvS4/gdgt-weekly-079.mp3" length="33804512" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-079.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 078</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/0xNIUIHJHyQ/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>After a brief (unintentional) hiatus, we're back! But if you're looking for iPad stuff, you're going to have to wait for our forthcoming iPad roundtable -- this week we're digging into the launch of Microsoft's &lt;a href="http://gdgt.com/microsoft/kin/one/"&gt;KIN ONE&lt;/a&gt; and &lt;a href="http://gdgt.com/microsoft/kin/two/"&gt;KIN TWO&lt;/a&gt;, &lt;a href="http://live.gdgt.com/2010/04/08/live-iphone-os-4-0-event-coverage/"&gt;Apple's announcement&lt;/a&gt; of &lt;a href="http://gdgt.com/apple/iphone-os/4-0/"&gt;iPhone OS 4&lt;/a&gt;, the latest &lt;a href="http://gdgt.com/apple/macbook-pro/15-inch/unibody/"&gt;MacBook Pro refreshes&lt;/a&gt; with Core i5 / i7 CPUs, &lt;a href="http://news.gdgt.com/2010/04/12/bloomberg-palm-is-up-for-sale-engadget/"&gt;Palm possibly putting itself up on the auction block&lt;/a&gt;, and &lt;a href="http://gdgt.com/pure-digital/flip/slide-hd/"&gt;Pure's new Flip Slide HD&lt;/a&gt;.&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/0xNIUIHJHyQ" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/04/14/gdgt-weekly-078-04-14-2010/</guid>
+      <pubDate>Wed, 14 Apr 2010 20:15:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/04/14/gdgt-weekly-078-04-14-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/hOxxY6sFtIw/gdgt-weekly-078.mp3" length="27013517" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-078.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 077</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/QcJcLuhfkdM/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>It's CTIA week, which means we've got another mobile-heavy (well, actually more Android-heavy) show. Among the week's news, &lt;a href="http://gdgt.com/htc/supersonic/"&gt;Sprint and HTC announced the first WiMAX phone: the Evo&lt;/a&gt;, while &lt;a href="http://gdgt.com/samsung/galaxy/s/"&gt;Samsung launched the Galaxy S&lt;/a&gt;, and Dell showed off the &lt;a href="http://gdgt.com/dell/mini/3i/"&gt;Aero (aka Mini 3i)&lt;/a&gt;. &lt;a href="http://news.gdgt.com/2010/03/19/palm-this-is-your-survival-guide-engadget/"&gt;Palm's stock took a huge tumble&lt;/a&gt; after a depressing earnings call, but we're looking forward to &lt;a href="http://news.gdgt.com/2010/03/17/google-tv-android-based-web-platform-for-the-living-room-with-help-from-intel-sony-and-logitech-engadget/"&gt;Google TV&lt;/a&gt; and the &lt;a href="http://gdgt.com/nintendo/3ds/"&gt;Nintendo 3DS&lt;/a&gt;, which we'll hopefully learn more about soon. Finally, Peter got a little hands-on time with the &lt;a href="http://discuss.gdgt.com/sony/playstation/3/general/Checking-out-PlayStation-Move-today-any-questions/"&gt;PlayStation Move&lt;/a&gt;, and we'll dig into motion-based gaming once more.&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/QcJcLuhfkdM" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/03/25/gdgt-weekly-077-03-25-2010/</guid>
+      <pubDate>Thu, 25 Mar 2010 22:28:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/03/25/gdgt-weekly-077-03-25-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/H3ZmsN8-US0/gdgt-weekly-077.mp3" length="28766438" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-077.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 076</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/fSLBLWxBSDQ/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>We're home from &lt;a href="http://features.gdgt.com/2010/03/04/gdgt-live-in-austin-save-the-date-march-15th/"&gt;gdgt Austin&lt;/a&gt; (where a good time was had by all) and back to business. Up this week: the &lt;a href="http://gdgt.com/htc/google/nexus-one/"&gt;Nexus One&lt;/a&gt; is &lt;a href="http://news.gdgt.com/2010/03/17/make-it-four-googles-nexus-one-coming-to-sprint-engadget/"&gt;now available on AT&amp;amp;T 3G and is coming up on Sprint&lt;/a&gt;, &lt;a href="http://gdgt.com/microsoft/windows/phone/7-series/"&gt;Windows Phone 7 Series&lt;/a&gt; had even &lt;a href="http://news.gdgt.com/2010/03/15/microsoft-announces-windows-phone-7-series-dev-partners-and-details-apps-sling-pandora-foursquare-and-xbox-gaming-video-engadget/"&gt;more details surface at MIX&lt;/a&gt; (plus we've got a hands-on), &lt;a href="http://news.gdgt.com/2010/03/18/so-is-this-where-verizons-fios-deployment-ends-50-served-hopefully-you-got-fios-during-the-first-deployment-wave-dslreportscom/"&gt;Verizon may be slowing -- even ceasing -- FiOS rollouts&lt;/a&gt;, &lt;a href="http://news.gdgt.com/2010/03/10/playstation-move-motion-controller-launched-at-gdc-starter-kit-to-be-under-100-with-game-engadget/"&gt;Sony's Playstation Move motion controller&lt;/a&gt; was officially announced at GDC, &lt;a href="http://news.gdgt.com/2010/03/16/rumor-mill-says-nintendo-ds2-might-be-headed-for-e3-unveiling-engadget/"&gt;rumors of a Nintendo DS2 at E3&lt;/a&gt; have already begun, and a &lt;a href="http://news.gdgt.com/2010/03/16/a-television-project-that-might-make-steve-jobs-irate-nyt-tech/"&gt;TV show based on the reign of his Steveness&lt;/a&gt; is apparently in development. Oh, and we've also got our first hands-on with the &lt;a href="http://gdgt.com/htc/legend/"&gt;HTC Legend&lt;/a&gt;, too, so clearly this is not an ep to miss.&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/fSLBLWxBSDQ" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/03/18/gdgt-weekly-076-03-18-2010/</guid>
+      <pubDate>Thu, 18 Mar 2010 14:53:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/03/18/gdgt-weekly-076-03-18-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/aZ8NlpLxjTQ/gdgt-weekly-076.mp3" length="25197066" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-076.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 075</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/sgHK4zIdUIM/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>Big movement in the gadget world this week: just before announcing the &lt;a href="http://gdgt.com/apple/ipad/"&gt;iPad&lt;/a&gt;'s &lt;a href="http://news.gdgt.com/2010/03/05/ipad-launches-on-april-3rd-pre-orders-begin-march-12th-engadget/"&gt;April 3rd launch date&lt;/a&gt;, &lt;a href="http://news.gdgt.com/2010/03/02/apple-vs-htc-a-patent-breakdown-engadget/"&gt;Apple called out HTC in a massive 20 patent lawsuit&lt;/a&gt; (which we've brought on our old pal &lt;a href="http://www.engadget.com/editor/nilay-patel"&gt;Nilay Patel&lt;/a&gt; from &lt;a href="http://www.engadget.com/"&gt;Engadget&lt;/a&gt; to help us dissect). &lt;a href="http://gdgt.com/tivo/"&gt;TiVo&lt;/a&gt; also announced its completely overhauled &lt;a href="http://gdgt.com/tivo/premiere/"&gt;Premiere and Premiere XL&lt;/a&gt; DVRs, while Microsoft let loose some &lt;a href="http://gdgt.com/microsoft/windows/phone/7-series/"&gt;new details about Windows Phone 7 Series&lt;/a&gt;. Turns out this week was also a &lt;a href="http://news.gdgt.com/2010/03/01/ps3-issues-apparently-resolved-game-on-engadget/"&gt;little trying for PS3 users&lt;/a&gt;, but we were stoked to finally try out &lt;a href="http://news.gdgt.com/2010/02/27/the-official-palm-blog-whats-new-in-palm-webos-14-palm-blog/"&gt;Palm's webOS 1.4&lt;/a&gt;, as well the &lt;a href="http://gdgt.com/fitbit/fitbit/"&gt;Fitbit&lt;/a&gt;. By the way, have you heard we're c&lt;a href="http://features.gdgt.com/2010/03/04/gdgt-live-in-austin-save-the-date-march-15th/"&gt;oming to Austin in a little more than a week&lt;/a&gt;? Because we are, and you should definitely come out for this one: &lt;a href="http://www.facebook.com/event.php?eid=337245508795"&gt;details here&lt;/a&gt;!&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/sgHK4zIdUIM" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/03/07/gdgt-weekly-075-03-07-2010/</guid>
+      <pubDate>Sun, 07 Mar 2010 15:40:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/03/07/gdgt-weekly-075-03-07-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/nOFdHkB-XTc/gdgt-weekly-075.mp3" length="36320841" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-075.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 074</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/XsqybeQ-MvI/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>Well, by now you've likely heard &lt;a href="http://news.gdgt.com/2010/02/24/analysts-turn-sour-on-palm-stock-cite-weak-sales-on-verizon-engadget/"&gt;Palm isn't having the best go of things lately&lt;/a&gt;, but on the brighter side, &lt;a href="http://news.gdgt.com/2010/02/23/windows-phone-7-series-to-have-three-chassis-ars-technica/"&gt;Windows Phone 7 Series looks like it's going to have some sweet launch hardware&lt;/a&gt;, &lt;a href="http://news.gdgt.com/2010/02/22/wal-mart-buying-vudu-streaming-movie-service-update-yes-engadget/"&gt;Vudu got picked up by Wal-Mart&lt;/a&gt;, and PMA saw some interesting devices, like the &lt;a href="http://gdgt.com/samsung/nx10/"&gt;Samsung NX10&lt;/a&gt; and &lt;a href="http://gdgt.com/sony/ultra-compact-dslr/"&gt;Sony ultra-compact DSLR concept&lt;/a&gt;. Oh, and let's not forget about the imminent release of the &lt;a href="http://gdgt.com/nintendo/dsi/xl/"&gt;Nintendo DSi XL here in the US&lt;/a&gt;.&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/XsqybeQ-MvI" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/02/26/gdgt-weekly-074-02-26-2010/</guid>
+      <pubDate>Fri, 26 Feb 2010 17:50:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/02/26/gdgt-weekly-074-02-26-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/fyebTEBVav8/gdgt-weekly-074.mp3" length="21657579" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-074.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 073</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/hPwQc4TTpIk/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>It's Mobile World Congress week this week, so it might not be much of a surprise that we've got scads of mobile stories: &lt;a href="http://gdgt.com/microsoft/windows/phone/7-series/"&gt;Microsoft Windows Phone 7 Series&lt;/a&gt; finally launches, &lt;a href="http://gdgt.com/symbian-foundation/symbian3/"&gt;Symbian S^3&lt;/a&gt; shown off for the first time, &lt;a href="http://gdgt.com/nokia/meego/"&gt;Maemo and Mobilin merge&lt;/a&gt;, becoming &lt;a href="http://gdgt.com/nokia/meego/"&gt;MeeGo&lt;/a&gt;, &lt;a href="http://news.gdgt.com/2010/02/16/verizon-to-allow-unlimited-skype-calling-over-3g-starting-next-month-engadget/"&gt;Skype gets free calling via Verizon (we think)&lt;/a&gt;, and a bunch of carriers join forces to take on the App Store with the &lt;a href="http://news.gdgt.com/2010/02/15/twenty-four-telecom-operators-unite-to-form-wholesale-applications-community-engadget/"&gt;Wholesale Applications Community&lt;/a&gt;. Oh, and we got some hands-on time with the &lt;a href="http://discuss.gdgt.com/microsoft/xbox/360/general/Checking-out-Project-Natal-today-any-questions/"&gt;Xbox 360's Project Natal&lt;/a&gt;, you don't want to miss that.&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/hPwQc4TTpIk" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/02/20/gdgt-weekly-073-02-20-2010/</guid>
+      <pubDate>Sat, 20 Feb 2010 19:43:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/02/20/gdgt-weekly-073-02-20-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/VyT3AozWk8k/gdgt-weekly-073.mp3" length="36341739" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-073.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 072</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/O-GWv3wAtRs/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>We're back! Granted, we're still in the midst of the post post-CES, post-Apple gadget news lull, but this week we're talking about &lt;a href="http://news.gdgt.com/2010/02/02/nexus-one-gets-a-software-update-enables-multitouch-updated-with-video-engadget/"&gt;Android 2.1's multi-touch update&lt;/a&gt;, &lt;a href="http://news.gdgt.com/2010/02/04/symbian-going-open-source-from-today-symbian-gizmodo/"&gt;Symbian going open source&lt;/a&gt;, the insane new &lt;a href="http://gdgt.com/dell/ultrasharp/u2711/"&gt;Dell UltraSharp U2711 27-inch IPS monitor&lt;/a&gt;, &lt;a href="http://news.gdgt.com/2010/02/05/major-nelson/"&gt;original Xbox getting kicked from Live service in April&lt;/a&gt;, the &lt;a href="http://gdgt.com/canon/eos/550d/"&gt;Canon EOS 550D / T2i&lt;/a&gt;, and &lt;a href="http://news.gdgt.com/2010/02/04/att-letting-slingplayer-stream-over-3g-on-the-iphone-at-long-last-engadget/"&gt;AT&amp;amp;T finally granting SlingPlayer access on iPhones&lt;/a&gt;. We're also highlighting a discussion this week: &lt;a href="http://discuss.gdgt.com/apple/ipad/general/So-it-s-got-an-LCD-screen-so-basically-useless-as-an-e-reader/"&gt;LCD vs. E Ink&lt;/a&gt; -- what do you like for reading? Oh, and just as a reminder, be sure to check out our &lt;a href="http://features.gdgt.com/2010/02/10/gdgt-giveaway-win-a-sonos-s5-wireless-music-system-/"&gt;latest Sonos S5 contest&lt;/a&gt;, as well as the &lt;a href="http://features.gdgt.com/2010/02/10/gdgt-iphone-cases-now-on-sale-/"&gt;gdgt iPhone cases now on sale&lt;/a&gt;!&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/O-GWv3wAtRs" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/02/11/gdgt-weekly-072-02-11-2010/</guid>
+      <pubDate>Thu, 11 Feb 2010 14:14:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/02/11/gdgt-weekly-072-02-11-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/nukTPzbky5E/gdgt-weekly-072.mp3" length="24921213" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-072.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 071</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/0OQsWE73weY/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>Not that this will come as a shock or anything, but this week we're talking &lt;a href="http://gdgt.com/apple/ipad/"&gt;Apple iPad&lt;/a&gt; -- and pretty much nothing else. Yeah, we'll get into a few other tablets, too, like the &lt;a href="http://gdgt.com/dell/streak/"&gt;Dell Mini 5&lt;/a&gt;, the &lt;a href="http://gdgt.com/hp/slate/"&gt;HP slate&lt;/a&gt;, the &lt;a href="http://gdgt.com/fusion-garage/joojoo/"&gt;Fusion Garage JooJoo&lt;/a&gt;, and so on, but you can definitely consider this one our &lt;a href="http://gdgt.com/apple/ipad/"&gt;iPad&lt;/a&gt; show!&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/0OQsWE73weY" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/01/30/gdgt-weekly-071-01-30-2010/</guid>
+      <pubDate>Sat, 30 Jan 2010 22:34:05 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/01/30/gdgt-weekly-071-01-30-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/4kOJiM6j0Pk/gdgt-weekly-071.mp3" length="38399770" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-071.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 070</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/l1Xfm_LPv8Y/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>The industry is still taking a post-CES breather, but &lt;a href="http://live.gdgt.com/2010/01/27/live-apple-come-see-our-latest-creation-tablet-event-coverage/"&gt;Apple's tablet event on the 27th&lt;/a&gt; was obviously the biggest news we'll be digging into this week. We're also talking about the &lt;a href="http://news.gdgt.com/2010/01/20/sony-ps3-motion-controller-delayed-until-fall-2010-globally-engadget/"&gt;delay of Sony's PS3 Motion Controller&lt;/a&gt;, the new &lt;a href="http://gdgt.com/aliph/jawbone/icon/"&gt;Jawbone ICON&lt;/a&gt; and &lt;a href="http://gdgt.com/motorola/motoroi/"&gt;Motorola MOTOROI&lt;/a&gt;, &lt;a href="http://news.gdgt.com/2010/01/20/slidescreen-android-app-replaces-homescreen-with-beautiful-information-android-apps-gizmodo/"&gt;SlideScreen for Android&lt;/a&gt;, and our hands-on impressions of the &lt;a href="http://gdgt.com/nokia/n900/"&gt;Nokia N900&lt;/a&gt;.&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/l1Xfm_LPv8Y" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2010/01/21/gdgt-weekly-070-01-21-2010/</guid>
+      <pubDate>Thu, 21 Jan 2010 14:46:00 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2010/01/21/gdgt-weekly-070-01-21-2010/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/FMngcpPUIqg/gdgt-weekly-070.mp3" length="26994917" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-070.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 069 - CES wrap-up, part 2</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/MC3sX0NCa7k/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>In part two of our CES wrap-up / 2010 kickoff, we'll digging in on &lt;a href="http://gdgt.com/browse/handhelds/e-book-readers/"&gt;e-book readers&lt;/a&gt; -- specifically the &lt;a href="http://gdgt.com/plastic-logic/que/proreader/"&gt;Plastic Logic QUE proReader&lt;/a&gt;, &lt;a href="http://gdgt.com/spring-design/alex/"&gt;Spring Design Alex&lt;/a&gt;, and the &lt;a href="http://gdgt.com/skiff/reader/"&gt;Skiff Reader&lt;/a&gt; -- and &lt;a href="http://news.gdgt.com/2010/01/08/e-ink-is-dead-pixel-qis-amazing-transflective-lcd-just-killed-it-ereader-gizmodo/"&gt;Pixel Qi's potentially game (or at least category)-changing display&lt;/a&gt;. We've also got word on the &lt;a href="http://gdgt.com/sierra-wireless/overdrive-3g4g/"&gt;WiMAX-enabled Sprint Overdrive&lt;/a&gt;, &lt;a href="http://news.gdgt.com/2010/01/06/microsoft-confirms-xbox-natal-to-ship-holiday-2010-gaming-gizmodo/"&gt;Project Natal's 2010 release&lt;/a&gt;, &lt;a href="http://gdgt.com/d-link/dir-632/"&gt;D-Link's DIR-632 8-port 802.11n router&lt;/a&gt;, and even a bit on some upcoming smartbooks, like the &lt;a href="http://gdgt.com/lenovo/skylight/"&gt;Lenovo Skylight&lt;/a&gt;.&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/MC3sX0NCa7k" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">tag:gdgt.com,2010-01-17-23-40</guid>
+      <pubDate>Sun, 17 Jan 2010 23:40:00 -0500</pubDate>
+
+      <feedburner:origLink>http://gdgt.com/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/fls_XoNgbiU/gdgt-weekly-069b.mp3" length="24917243" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-069b.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 069 - CES wrap-up, part 1</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/MC3sX0NCa7k/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>Now that the CES stragglers have all wrapped and everybody's had a few days to reflect, we're catching up on the most important trends and announcements kicking off 2010 in this two part episode. In this, part one, we've got &lt;a href="http://gdgt.com/htc/google/nexus-one/"&gt;Nexus One&lt;/a&gt; and &lt;a href="http://gdgt.com/palm/pre/plus/"&gt;Palm Pre plus&lt;/a&gt; and &lt;a href="http://gdgt.com/palm/pixi/plus/"&gt;Pixi plus&lt;/a&gt; hands-on impressions, the &lt;a href="http://news.gdgt.com/2010/01/05/24-hour-3d-television-channel-coming-in-2011-ces2010-gizmodo/"&gt;straight dope on 3D HDTV&lt;/a&gt;, and everything you need to know about this new crop of tablet devices coming up, like the &lt;a href="http://gdgt.com/hp/slate/"&gt;HP slate&lt;/a&gt;, the &lt;a href="http://gdgt.com/dell/streak/"&gt;Dell Streak&lt;/a&gt;, and the &lt;a href="http://gdgt.com/lenovo/ideapad/u1-hybrid/"&gt;Lenovo Ideapad U1 Hybrid&lt;/a&gt;.&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/MC3sX0NCa7k" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">tag:gdgt.com,2010-01-17-23-17</guid>
+      <pubDate>Sun, 17 Jan 2010 23:17:47 -0500</pubDate>
+
+      <feedburner:origLink>http://gdgt.com/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/g1ohKMDziwE/gdgt-weekly-069a.mp3" length="24646197" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-069a.mp3</feedburner:origEnclosureLink>
+    </item>
+
+    <item>
+      <title>gdgt weekly 068 - Modern Warfare 2 geekout edition</title>
+      <link>http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~3/-AyD5LC9DlI/</link>
+      <dc:creator>Ryan Block</dc:creator>
+      <description>This year for the holidays, Peter and I decided to take advantage of the annual dropoff in gadget news to give ourselves a little something we've been waiting for all year: an hour to just sit down and geek out about the &lt;a href="http://gdgt.com/microsoft/xbox/360/"&gt;Xbox 360&lt;/a&gt;'s and &lt;a href="http://gdgt.com/sony/playstation/3/"&gt;PS3&lt;/a&gt;'s killer app: &lt;a href="http://modernwarfare2.infinityward.com/"&gt;Modern Warfare 2&lt;/a&gt; -- the biggest title of the year and the favorite game of team gdgt. We even brought on &lt;a href="http://fourzerotwo.com/" style="text-decoration: underline; "&gt;Robert Bowling&lt;/a&gt; (aka &lt;a href="http://twitter.com/fourzerotwo" style="text-decoration: underline; "&gt;fourzerotwo&lt;/a&gt;), who graciously indulged our nerdiest of questions about everything from how MW2 was made to what classes the team at Infinity Ward plays with.&lt;br /&gt;&lt;br /&gt;Oh, and perhaps best of all, we're also giving away a Modern Warfare 2 edition &lt;a href="http://gdgt.com/microsoft/xbox/360/"&gt;Xbox 360&lt;/a&gt;. Not bad, right? To win, just add the Xbox 360 to your Want list and &lt;a href="http://user.gdgt.com/settings/services/"&gt;link up your Twitter and/or Facebook account&lt;/a&gt; with gdgt (both or either one will qualify you). That's it! We'll pick a winner at midnight ET on Sunday, Jan 10th. Sorry, but this one is open to US residents only!&lt;br /&gt;&lt;br /&gt;We'll be back next week live from CES -- with more gadgets than we know what to do with. Until then have a happy and safe New Year, and thanks for listening in 2009!&lt;img src="http://feeds.feedburner.com/~r/gdgt/podcast-mp3/~4/-AyD5LC9DlI" height="1" width="1"/&gt;</description>
+      <guid isPermaLink="false">http://features.gdgt.com/2009/12/30/gdgt-weekly-068-12-30-2009/</guid>
+      <pubDate>Wed, 30 Dec 2009 19:28:30 -0500</pubDate>
+
+      <feedburner:origLink>http://features.gdgt.com/2009/12/30/gdgt-weekly-068-12-30-2009/</feedburner:origLink>
+      <enclosure url="http://feeds.gdgt.com/~r/gdgt/podcast-mp3/~5/3LcWjTNHBtQ/gdgt-weekly-068.mp3" length="23818327" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://media.gdgt.com/audio/gdgt-weekly-068.mp3</feedburner:origEnclosureLink>
+    </item>
+
+  </channel>
+</rss>

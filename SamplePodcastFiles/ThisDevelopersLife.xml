@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2enclosuresfull.xsl"?>
+<?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?>
+<rss xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+  <channel>
+    <title>This Developer's Life</title>
+    <link>http://thisdeveloperslife.com</link>
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/ThisDevelopersLife" />
+    <description>Stories About Developers and Their Lives</description>
+    <language>en</language>
+    <lastBuildDate>Thu, 16 Dec 2010 16:00:00 PST</lastBuildDate>
+    <generator>Nesta http://effectif.com/nesta</generator>
+    <feedburner:info uri="thisdeveloperslife" />
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" />
+    <media:copyright>Copyright 2010, Rob Conery</media:copyright>
+    <media:thumbnail url="http://media.wekeroad.com/tdl2.png" />
+    <media:keywords>technology,stories</media:keywords>
+    <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Tech News</media:category>
+    <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Software How-To</media:category>
+    <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology</media:category>
+    <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:image href="http://media.wekeroad.com/tdl2.png" />
+    <itunes:keywords>technology,stories</itunes:keywords>
+    <itunes:subtitle>Stories about developers and their lives</itunes:subtitle>
+    <itunes:summary>Bringing a human slant to the tech industry</itunes:summary>
+    <itunes:category text="Technology">
+      <itunes:category text="Tech News" />
+    </itunes:category>
+    <itunes:category text="Technology">
+      <itunes:category text="Software How-To" />
+    </itunes:category>
+    <itunes:category text="Technology" />
+    <creativeCommons:license>http://creativecommons.org/licenses/by-nc-nd/3.0/</creativeCommons:license>
+    <feedburner:feedFlare href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.newsgator.com/images/ngsub1.gif">Subscribe with NewsGator</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.netvibes.com/subscribe.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.netvibes.com/img/add2netvibes.gif">Subscribe with Netvibes</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://us.i1.yimg.com/us.yimg.com/i/us/my/addtomyyahoo4.gif">Subscribe with My Yahoo!</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://fusion.google.com/add?feedurl=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://buttons.googlesyndication.com/fusion/add.gif">Subscribe with Google</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.plusmo.com/add?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://plusmo.com/res/graphics/fbplusmo.gif">Subscribe with Plusmo</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.thefreedictionary.com/_/hp/AddRSS.aspx?http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://img.tfd.com/hp/addToTheFreeDictionary.gif">Subscribe with The Free Dictionary</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.bitty.com/manual/?contenttype=rssfeed&amp;contentvalue=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.bitty.com/img/bittychicklet_91x17.gif">Subscribe with Bitty Browser</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.live.com/?add=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://tkfiles.storage.msn.com/x1piYkpqHC_35nIp1gLE68-wvzLZO8iXl_JMledmJQXP-XTBOLfmQv4zhj4MhcWEJh_GtoBIiAl1Mjh-ndp9k47If7hTaFno0mxW9_i3p_5qQw">Subscribe with Live.com</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://mix.excite.eu/add?feedurl=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://image.excite.co.uk/mix/addtomix.gif">Subscribe with Excite MIX</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.webwag.com/wwgthis.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.webwag.com/images/wwgthis.gif">Subscribe with Webwag</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.podcastready.com/oneclick_bookmark.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.podcastready.com/images/podcastready_button.gif">Subscribe with Podcast Ready</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.wikio.com/subscribe?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.wikio.com/shared/img/add2wikio.gif">Subscribe with Wikio</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.dailyrotation.com/index.php?feed=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.dailyrotation.com/rss-dr2.gif">Subscribe with Daily Rotation</feedburner:feedFlare>
+    <item>
+      <title>1.1.0 Disconnecting</title>
+      <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/UmWan6Ly1ag/1-1-0-disconnecting</link>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+      <pubDate>Thu, 16 Dec 2010 16:00:00 PST</pubDate>
+      <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-12-17:/post/1-1-0-disconnecting</guid>
+      <description>
+        &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/10-lead.jpg' /&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;In this episode Scott and Rob take you with them as they unplug and spend some much needed time with their families.&lt;/p&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;
+        This week it's just Scott and me - Scott gets to go off to Disneyland with his wife and 2 boys, and I get to hang out with my girls for a week as their mom goes on a retreat in California.
+        &lt;/p&gt;
+        &lt;p&gt;
+        &lt;script type="text/javascript" src="http://player.wizzard.tv/player/o/j/x/129265601079/config/k-27721e9f4e6ff19c/uuid/root/height/325/width/325/episode/k-28f28350a5c361b6.m4v"&gt;&lt;/script&gt;
+        &lt;/p&gt;
+        &lt;h2&gt;Music&lt;/h2&gt;
+        &lt;p&gt;The tracks for this week are used under Creative Commons from Magnatunes:&lt;/p&gt;
+        &lt;ul&gt;
+        &lt;li&gt;
+        &lt;a href='http://ghosts.nin.com/main/home'&gt;Nine Inch Nails&lt;/a&gt;
+        - Ghosts
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/general-fuzz/id359064275'&gt;General Fuzz&lt;/a&gt;
+        - A Spy in the House of Love
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/general-fuzz/id359064275'&gt;General Fuzz&lt;/a&gt;
+        - Walking Home
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/days-end/id257797507?i=257798416'&gt;John Williams&lt;/a&gt;
+        - Days End
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://www.youtube.com/watch?v=szrhsPmQT3s'&gt;Melissa Polinar&lt;/a&gt;
+        - Perfectly Distracted. You can see more of Melissa at
+        &lt;a href='http://www.melissapolinar.com'&gt;http://www.melissapolinar.com.&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/linber/id399882981?i=399883232'&gt;Rildrim&lt;/a&gt;
+        - Linber
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/jasmines-song/id390524288?i=390524381'&gt;OGMA&lt;/a&gt;
+        -Jasmine's Song
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/entertainment/id354557016'&gt;Fischerspooner&lt;/a&gt;
+        - Jasmine's Song
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;
+        The following tracks were used sparingly, but are not Creative Commons. If you like them - please buy them:
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/justins-lullabye/id18241285?i=18241279'&gt;Hapa&lt;/a&gt;
+        - Justin's Lullabye
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/justins-lullabye/id18241285?i=18241279'&gt;Hapa&lt;/a&gt;
+        - Ka Uluwehi O Ke Kai
+        &lt;/li&gt;
+        &lt;/p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/10-Disconnecting.mp3'&gt;Dowload Here&lt;/a&gt;&lt;/p&gt;
+      </description>
+      <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/-2FSwiOFWAs/10-Disconnecting.mp3" fileSize="77834514" type="audio/mpeg" />
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle> In this episode Scott and Rob take you with them as they unplug and spend some much needed time with their families. This week it's just Scott and me - Scott gets to go off to Disneyland with his wife and 2 boys, and I get to hang out with my girls for a</itunes:subtitle>
+      <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+      <itunes:summary> In this episode Scott and Rob take you with them as they unplug and spend some much needed time with their families. This week it's just Scott and me - Scott gets to go off to Disneyland with his wife and 2 boys, and I get to hang out with my girls for a week as their mom goes on a retreat in California. Music The tracks for this week are used under Creative Commons from Magnatunes: Nine Inch Nails - Ghosts General Fuzz - A Spy in the House of Love General Fuzz - Walking Home John Williams - Days End Melissa Polinar - Perfectly Distracted. You can see more of Melissa at http://www.melissapolinar.com. Rildrim - Linber OGMA -Jasmine's Song Fischerspooner - Jasmine's Song The following tracks were used sparingly, but are not Creative Commons. If you like them - please buy them: Hapa - Justin's Lullabye Hapa - Ka Uluwehi O Ke Kai Dowload Here</itunes:summary>
+      <itunes:keywords>technology,stories</itunes:keywords>
+      <feedburner:origLink>http://thisdeveloperslife.com/post/1-1-0-disconnecting</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/-2FSwiOFWAs/10-Disconnecting.mp3" length="77834514" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/10-Disconnecting.mp3</feedburner:origEnclosureLink>
+    </item>
+    <item>
+      <title>1.0.9 Management</title>
+      <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/bopI_GAkJ7E/1-0-9-management</link>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+      <pubDate>Thu, 02 Dec 2010 16:00:00 PST</pubDate>
+      <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-12-03:/post/2089407008/1-0-9-management</guid>
+      <description>
+        &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/dilbert-boss.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;In this episode Scott and I talk to technical folks who have moved on up to Management - and what it means to them.&lt;/p&gt;&lt;/p&gt;&lt;p&gt;&lt;ul&gt;
+        &lt;li&gt;
+        &lt;a href='http://markfreedman.com/'&gt;Mark Freedman&lt;/a&gt;
+        shares his story about clawing his way out of a successful career as a manager at a rather large, growing company. A good job, lots of respect, and he hates it.
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://weblogs.asp.net/bleroy'&gt;Bertrand LeRoy&lt;/a&gt;
+        talks about charting his own path right at Microsoft after graduating with a PhD in Physics and how he maintains a career right down in the middle of manager and coder.
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;strong&gt;Todd Baesen&lt;/strong&gt;
+        talks about moving from Chemical Engineer to Nuclear Engineer on the USS Enterprise (literally), and then to senior management at a big engineering firm in the SF Bay Area.
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;
+        &lt;script type="text/javascript" src="http://player.wizzard.tv/player/o/j/x/129167056374/config/k-27721e9f4e6ff19c/uuid/root/height/325/width/325/episode/k-71b07f102271a575.m4v"&gt;&lt;/script&gt;
+        &lt;/p&gt;
+        &lt;h2&gt;Music&lt;/h2&gt;
+        &lt;p&gt;The tracks for this week are used under Creative Commons from Magnatunes:&lt;/p&gt;
+        &lt;ul&gt;
+        &lt;li&gt;&lt;a href='http://itunes.apple.com/us/album/colors-of-spain/id370502116'&gt;Daniel Estrem&lt;/a&gt;- Asturias (Leyenda) no. 1 from Cantos de Espana
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/the-glass-desert/id319950002'&gt;Harlan Williams&lt;/a&gt;
+        - Beneath the Iron Heel of Pagan Rome
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://magnatune.com/artists/williamson'&gt;Williamson&lt;/a&gt;
+        - a please goodbye from whore
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/a-origem-da-natureza-urbana/id364641300'&gt;Urban Response&lt;/a&gt;
+        - Hunter Gatherer
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/electromelange/id267136559'&gt;DJ Cary&lt;/a&gt;
+        -Termoli
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/entertainment/id354557016'&gt;Fischerspooner&lt;/a&gt;
+        - Danse en France
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://www.maxtannone.com/projects/jaydiohead/'&gt;Jaydiohead&lt;/a&gt;
+        - December Backdrifts
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://www.amazon.com/10-000-Days-Tool/dp/B000EULJLU'&gt;Tool&lt;/a&gt;
+        - Rosetta Stoned
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/general-fuzz/id359064275'&gt;General Fuzz&lt;/a&gt;
+        - Beatdown
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://ghosts.nin.com/main/home'&gt;Nine Inch Nails&lt;/a&gt;
+        - Ghosts
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://www.maxtannone.com/projects/jaydiohead/'&gt;Jaydiohead&lt;/a&gt;
+        - Life There
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/09-Management.mp3'&gt;Dowload Here&lt;/a&gt;&lt;/p&gt;
+      </description>
+      <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/bhedOboHGrU/09-Management.mp3" fileSize="82828695" type="audio/mpeg" />
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle> In this episode Scott and I talk to technical folks who have moved on up to Management - and what it means to them. Mark Freedman shares his story about clawing his way out of a successful career as a manager at a rather large, growing company. A good jo</itunes:subtitle>
+      <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+      <itunes:summary> In this episode Scott and I talk to technical folks who have moved on up to Management - and what it means to them. Mark Freedman shares his story about clawing his way out of a successful career as a manager at a rather large, growing company. A good job, lots of respect, and he hates it. Bertrand LeRoy talks about charting his own path right at Microsoft after graduating with a PhD in Physics and how he maintains a career right down in the middle of manager and coder. Todd Baesen talks about moving from Chemical Engineer to Nuclear Engineer on the USS Enterprise (literally), and then to senior management at a big engineering firm in the SF Bay Area. Music The tracks for this week are used under Creative Commons from Magnatunes: Daniel Estrem- Asturias (Leyenda) no. 1 from Cantos de Espana Harlan Williams - Beneath the Iron Heel of Pagan Rome Williamson - a please goodbye from whore Urban Response - Hunter Gatherer DJ Cary -Termoli Fischerspooner - Danse en France Jaydiohead - December Backdrifts Tool - Rosetta Stoned General Fuzz - Beatdown Nine Inch Nails - Ghosts Jaydiohead - Life There Dowload Here</itunes:summary>
+      <itunes:keywords>technology,stories</itunes:keywords>
+      <feedburner:origLink>http://thisdeveloperslife.com/post/2089407008/1-0-9-management</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/bhedOboHGrU/09-Management.mp3" length="82828695" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/09-Management.mp3</feedburner:origEnclosureLink>
+    </item>
+    <item>
+      <title>1.0.8 Motivation</title>
+      <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/KcBX2ffGf10/1-0-8-motivation</link>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+      <pubDate>Thu, 18 Nov 2010 16:00:00 PST</pubDate>
+      <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-11-19:/post/1620026288/1-0-8-motivation</guid>
+      <description>
+        &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/motives.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;In this episode Scott and I talk to 2 people with fairly different stories, about what motivates them.&lt;/p&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;
+        Scott talks to
+        &lt;a href='http://bradwilson.typepad.com' target='_blank'&gt;Brad Wilson&lt;/a&gt;,
+        Senior Developer on the Microsoft ASP.NET MVC team about what motivates him to get out of bed and come to work every day at a high-intensity company, surrounded by brilliant people.
+        &lt;/p&gt;
+        &lt;p&gt;
+        Rob talks to
+        &lt;a href='http://datachomp.com/' target='_blank'&gt;Rob Sullivan&lt;/a&gt;,
+        a database administrator at a large company, about what motivates him to make developer’s lives miserable in order to keep his job.
+        &lt;/p&gt;
+        &lt;p&gt;
+        &lt;script src='http://player.wizzard.tv/player/o/j/x/129019107773/config/k-27721e9f4e6ff19c/uuid/root/height/325/width/325/episode/k-3acfce1d6a63bed3.m4v' type='text/javascript'&gt;&lt;/script&gt;
+        &lt;/p&gt;
+        &lt;h2&gt;Music&lt;/h2&gt;
+        &lt;p&gt;The tracks for this week are used under Creative Commons from Magnatunes:&lt;/p&gt;
+        &lt;ul&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/a-origem-da-natureza-urbana/id364641300' target='_blank'&gt;Urban Response&lt;/a&gt;
+        - Hip Hop Nai Hai de Morrer
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/soulful-filling/id336046371' target='_blank'&gt;General Fuzz&lt;/a&gt;
+        - Lay it Down
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/a-origem-da-natureza-urbana/id364641300' target='_blank'&gt;Urban Response&lt;/a&gt;
+        - Resistencia Nunca Morre
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/ideology/id257905422' target='_blank'&gt;iNTROSPEKT&lt;/a&gt;
+        - Government Road
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/the-glass-desert/id319950002' target='_blank'&gt;Harlan Williams&lt;/a&gt;
+        - Gregory IX
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/sonic-chill/id336070757' target='_blank'&gt;DJ Cary&lt;/a&gt;
+        - Overflight
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://www.bradsucks.net/' target='_blank'&gt;Brad Sucks&lt;/a&gt;
+        - Dirtbag
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;The following tracks are commercial tracks, used sparingly (30 seconds or so) under Fair Use:&lt;/p&gt;
+        &lt;p&gt;
+        &lt;a href='http://itunes.apple.com/us/album/old-world-underground-where/id312119046' target='_blank'&gt;Metric&lt;/a&gt;
+        - Love is a Place
+        &lt;/p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/08-Motivation.mp3'&gt;Dowload Here&lt;/a&gt;&lt;/p&gt;
+      </description>
+      <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/q75A_9C6ACE/08-Motivation.mp3" fileSize="80744751" type="audio/mpeg" />
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle> In this episode Scott and I talk to 2 people with fairly different stories, about what motivates them. Scott talks to Brad Wilson, Senior Developer on the Microsoft ASP.NET MVC team about what motivates him to get out of bed and come to work every day at</itunes:subtitle>
+      <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+      <itunes:summary> In this episode Scott and I talk to 2 people with fairly different stories, about what motivates them. Scott talks to Brad Wilson, Senior Developer on the Microsoft ASP.NET MVC team about what motivates him to get out of bed and come to work every day at a high-intensity company, surrounded by brilliant people. Rob talks to Rob Sullivan, a database administrator at a large company, about what motivates him to make developer’s lives miserable in order to keep his job. Music The tracks for this week are used under Creative Commons from Magnatunes: Urban Response - Hip Hop Nai Hai de Morrer General Fuzz - Lay it Down Urban Response - Resistencia Nunca Morre iNTROSPEKT - Government Road Harlan Williams - Gregory IX DJ Cary - Overflight Brad Sucks - Dirtbag The following tracks are commercial tracks, used sparingly (30 seconds or so) under Fair Use: Metric - Love is a Place Dowload Here</itunes:summary>
+      <itunes:keywords>technology,stories</itunes:keywords>
+      <feedburner:origLink>http://thisdeveloperslife.com/post/1620026288/1-0-8-motivation</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/q75A_9C6ACE/08-Motivation.mp3" length="80744751" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/08-Motivation.mp3</feedburner:origEnclosureLink>
+    </item>
+    <item>
+      <title>1.0.7 Audacity</title>
+      <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/pHBwElrz3M8/1-0-7-audacity</link>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+      <pubDate>Tue, 02 Nov 2010 17:00:00 PDT</pubDate>
+      <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-11-03:/post/1475231255/1-0-7-audacity</guid>
+      <description>
+        &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/07-lead.png' /&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;In this episode Scott and I talk to 3 developers who have pulled off some pretty audacious maneuvers.&lt;/p&gt;&lt;/p&gt;&lt;p&gt;&lt;ul&gt;
+        &lt;li&gt;&lt;a href='http://ejohn.org' target='_blank'&gt;John Resig&lt;/a&gt;, Creator of jQuery, decided to write yet another javascript framework when there were already quite a few to choose from. Not only did he succeed, he changed web development forever.
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href='http://al3x.net' target='_blank'&gt;Alex Payne&lt;/a&gt;, former API Developer Lead at Twitter, talks about the (somewhat insane) move to leave Twitter, and (somewhat more insane) choice to “reinvent banking” with
+        &lt;a href='http://banksimple.com' target='_blank'&gt;BankSimple&lt;/a&gt;.
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href='http://tirania.org/blog/' target='_blank'&gt;Miguel de Icaza&lt;/a&gt;, founder of the GNOME project and creator of Mono talks about creating a clone of the .NET framework - all because he didn’t like what else was out there at the time for Linux.
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;
+        &lt;script src='http://player.wizzard.tv/player/o/j/x/128883238150/config/k-27721e9f4e6ff19c/uuid/root/height/325/width/325/episode/k-93b283a37b160fe6.m4v' type='text/javascript'&gt;&lt;/script&gt;
+        &lt;/p&gt;
+        &lt;h2&gt;Music&lt;/h2&gt;
+        &lt;p&gt;There are a number of tracks in this episode, many of which are “mashups” or “boots”. These tracks aren’t … “appreciated” by the recording industry, yet they realize that they sell many of the songs they feature.&lt;/p&gt;
+        &lt;p&gt;I won’t link my sources here - however I will say all of them are found on Youtube if you want to search for them. Some are also found on the DJ’s websites:&lt;/p&gt;
+        &lt;ul&gt;
+        &lt;li&gt;
+        &lt;a href='http://www.partyben.com/' target='_blank'&gt;Party Ben&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://www.gohomeproductions.co.uk/' target='_blank'&gt;Mark Vidler (Go Home Productions)&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://www.maxtannone.com/projects/jaydiohead/' target='_blank'&gt;Max Tannone (Jaydiohead)&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;The following music is used under Creative Commons:&lt;/p&gt;
+        &lt;ul&gt;
+        &lt;li&gt;
+        Tell Me Slow -
+        &lt;a href='http://itunes.apple.com/us/album/underground/id327277125'&gt;Crystal Kovach&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        Plastique Toxique -
+        &lt;a href='http://www.magnatune.com/artists/soleil_vert'&gt;Soleil Vert&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        Something Unquiet -
+        &lt;a href='http://itunes.apple.com/us/album/ritual-fiction/id280716814'&gt;Twilight Archive&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        2 Percent er -
+        &lt;a href='http://www.magnatune.com/artists/williamson'&gt;Williamson&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        Between Two Worlds -
+        &lt;a href='http://itunes.apple.com/us/album/across-the-night/id399882981'&gt;Rildrim&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://ghosts.nin.com/main/home'&gt;Ghosts (surprise!) - NIN&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/07-Audacity.mp3'&gt;Dowload Here&lt;/a&gt;&lt;/p&gt;
+      </description>
+      <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/bZ_ubQhMl-4/07-Audacity.mp3" fileSize="78687733" type="audio/mpeg" />
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle> In this episode Scott and I talk to 3 developers who have pulled off some pretty audacious maneuvers. John Resig, Creator of jQuery, decided to write yet another javascript framework when there were already quite a few to choose from. Not only did he suc</itunes:subtitle>
+      <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+      <itunes:summary> In this episode Scott and I talk to 3 developers who have pulled off some pretty audacious maneuvers. John Resig, Creator of jQuery, decided to write yet another javascript framework when there were already quite a few to choose from. Not only did he succeed, he changed web development forever. Alex Payne, former API Developer Lead at Twitter, talks about the (somewhat insane) move to leave Twitter, and (somewhat more insane) choice to “reinvent banking” with BankSimple. Miguel de Icaza, founder of the GNOME project and creator of Mono talks about creating a clone of the .NET framework - all because he didn’t like what else was out there at the time for Linux. Music There are a number of tracks in this episode, many of which are “mashups” or “boots”. These tracks aren’t … “appreciated” by the recording industry, yet they realize that they sell many of the songs they feature. I won’t link my sources here - however I will say all of them are found on Youtube if you want to search for them. Some are also found on the DJ’s websites: Party Ben Mark Vidler (Go Home Productions) Max Tannone (Jaydiohead) The following music is used under Creative Commons: Tell Me Slow - Crystal Kovach Plastique Toxique - Soleil Vert Something Unquiet - Twilight Archive 2 Percent er - Williamson Between Two Worlds - Rildrim Ghosts (surprise!) - NIN Dowload Here</itunes:summary>
+      <itunes:keywords>technology,stories</itunes:keywords>
+      <feedburner:origLink>http://thisdeveloperslife.com/post/1475231255/1-0-7-audacity</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/bZ_ubQhMl-4/07-Audacity.mp3" length="78687733" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/07-Audacity.mp3</feedburner:origEnclosureLink>
+    </item>
+    <item>
+      <title>1.0.6 Abstraction</title>
+      <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/vOPnaRfyNxg/1-0-6-abstraction</link>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+      <pubDate>Tue, 19 Oct 2010 17:00:00 PDT</pubDate>
+      <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-10-20:/post/1361199493/1-0-6-abstraction</guid>
+      <description>
+        &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/blue-circuit-board.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;In this episode Scott and I discuss &amp;#8220;what you need to know as a software developer&amp;#8221;. How many layers of abstraction do you need to understand? How many geek trading cards should you have in your collection? To find out more, we talked to 3 prominent, living-history developers.&lt;/p&gt;&lt;/p&gt;&lt;p&gt;&lt;ul&gt;
+        &lt;li&gt;
+        &lt;a href='http://en.wikipedia.org/wiki/Ward_Cunningham'&gt;Ward Cunningham&lt;/a&gt;
+        - creator of the Wiki and major figure in Agile/XP programming
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://www.charlespetzold.com/'&gt;Charles Petzold&lt;/a&gt;
+        - author of many books about Windows and prominent speaker
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://danbricklin.com/history/saimiddle.htm'&gt;Dan Bricklin&lt;/a&gt;
+        - “Superman” according to Scott. Creator of the spreadsheet and all around amazing guy.
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;
+        &lt;script src='http://player.wizzard.tv/player/o/j/x/128760956871/config/k-27721e9f4e6ff19c/uuid/root/height/325/width/325/episode/k-5bf1339487e17022.m4v' type='text/javascript'&gt;&lt;/script&gt;
+        &lt;/p&gt;
+        &lt;p&gt;Most of the music in this podcast is released under Creative Commons, including:&lt;/p&gt;
+        &lt;ul&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/sonic-chill/id336070757'&gt;DJ Cary - Sonic Chiil&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://ghosts.nin.com/main/home'&gt;Nine Inch Nails - Ghosts&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/dusty-porch/id257797507'&gt;John Williams - Dusty Porch&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;In addition - super short clips of the following songs were used under Fair Use:&lt;/p&gt;
+        &lt;ul&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/computer-world/id40555789'&gt;Kraftwerk - Pocket Calculator&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/big-science/id261604943'&gt;Laurie Anderson - O Superman&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/06-Abstraction.mp3'&gt;Dowload Here&lt;/a&gt;&lt;/p&gt;
+      </description>
+      <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/a9T_IARbwOo/06-Abstraction.mp3" fileSize="73131227" type="audio/mpeg" />
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle> In this episode Scott and I discuss &amp;#8220;what you need to know as a software developer&amp;#8221;. How many layers of abstraction do you need to understand? How many geek trading cards should you have in your collection? To find out more, we talked to 3 pr</itunes:subtitle>
+      <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+      <itunes:summary> In this episode Scott and I discuss &amp;#8220;what you need to know as a software developer&amp;#8221;. How many layers of abstraction do you need to understand? How many geek trading cards should you have in your collection? To find out more, we talked to 3 prominent, living-history developers. Ward Cunningham - creator of the Wiki and major figure in Agile/XP programming Charles Petzold - author of many books about Windows and prominent speaker Dan Bricklin - “Superman” according to Scott. Creator of the spreadsheet and all around amazing guy. Most of the music in this podcast is released under Creative Commons, including: DJ Cary - Sonic Chiil Nine Inch Nails - Ghosts John Williams - Dusty Porch In addition - super short clips of the following songs were used under Fair Use: Kraftwerk - Pocket Calculator Laurie Anderson - O Superman Dowload Here</itunes:summary>
+      <itunes:keywords>technology,stories</itunes:keywords>
+      <feedburner:origLink>http://thisdeveloperslife.com/post/1361199493/1-0-6-abstraction</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/a9T_IARbwOo/06-Abstraction.mp3" length="73131227" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/06-Abstraction.mp3</feedburner:origEnclosureLink>
+    </item>
+    <item>
+      <title>1.0.5 Homerun</title>
+      <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/RSMmzkj3T8I/1-0-5-homerun</link>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+      <pubDate>Sun, 10 Oct 2010 17:00:00 PDT</pubDate>
+      <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-10-11:/post/1270441885/1-0-5-homerun</guid>
+      <description>
+        &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/05-lead.jpg' /&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;In this episode Scott and I talk to two developers who created something phenomenal: they hit a Homerun if you will.&lt;/p&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;
+        In the first story, I talk to
+        &lt;a href='http://loudthinking.com/'&gt;David Heinemeier Hansson&lt;/a&gt;
+        creator of
+        &lt;a href='http://rubyonrails.org'&gt;Ruby on Rails,&lt;/a&gt;
+        partner at
+        &lt;a href='http://37signals.com'&gt;37Signals&lt;/a&gt;
+        and author of Rework about the inspiration and shepherding of Ruby on Rails.
+        &lt;/p&gt;
+        &lt;p&gt;
+        In the second story, Scott talks to
+        &lt;a href='http://danbricklin.com/history/saimiddle.htm'&gt;Dan Bricklin&lt;/a&gt;
+        who in the late 70s and early 80s helped to usher in the computer age, as well as a new industry. Dan is the creator of Visicalc - the first spreadsheet program.
+        &lt;/p&gt;
+        &lt;p&gt;
+        &lt;script src='http://player.wizzard.tv/player/o/j/x/128683071135/config/k-27721e9f4e6ff19c/uuid/root/height/325/width/325/episode/k-dd9e39ae779f6709.m4v' type='text/javascript'&gt;&lt;/script&gt;
+        &lt;/p&gt;
+        &lt;h2&gt;Music&lt;/h2&gt;
+        &lt;ul&gt;
+        &lt;li&gt;
+        &lt;a href='http://www.bradsucks.net/'&gt;Making me Nervous: Brad Sucks&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://ghosts.nin.com/main/home'&gt;Nine Inch Nails: Ghosts&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/a-few-things-to-hear-before/id4476329'&gt;Willamson&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/acoustic-country-blues-guitar/id16684873'&gt;John Williams: Acoustic Country Blues Guitar&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;Please support these artists.&lt;/p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/05-Homerun.mp3'&gt;Dowload Here&lt;/a&gt;&lt;/p&gt;
+      </description>
+      <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/EpuSa9S-pMc/05-Homerun.mp3" fileSize="65159921" type="audio/mpeg" />
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle> In this episode Scott and I talk to two developers who created something phenomenal: they hit a Homerun if you will. In the first story, I talk to David Heinemeier Hansson creator of Ruby on Rails, partner at 37Signals and author of Rework about the insp</itunes:subtitle>
+      <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+      <itunes:summary> In this episode Scott and I talk to two developers who created something phenomenal: they hit a Homerun if you will. In the first story, I talk to David Heinemeier Hansson creator of Ruby on Rails, partner at 37Signals and author of Rework about the inspiration and shepherding of Ruby on Rails. In the second story, Scott talks to Dan Bricklin who in the late 70s and early 80s helped to usher in the computer age, as well as a new industry. Dan is the creator of Visicalc - the first spreadsheet program. Music Making me Nervous: Brad Sucks Nine Inch Nails: Ghosts Willamson John Williams: Acoustic Country Blues Guitar Please support these artists. Dowload Here</itunes:summary>
+      <itunes:keywords>technology,stories</itunes:keywords>
+      <feedburner:origLink>http://thisdeveloperslife.com/post/1270441885/1-0-5-homerun</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/EpuSa9S-pMc/05-Homerun.mp3" length="65159921" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/05-Homerun.mp3</feedburner:origEnclosureLink>
+    </item>
+    <item>
+      <title>1.0.4 Being Mean</title>
+      <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/JrixwqZndtU/1-0-4-being-mean</link>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+      <pubDate>Fri, 01 Oct 2010 17:00:00 PDT</pubDate>
+      <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-10-02:/post/1197337846/1-0-4-being-mean</guid>
+      <description>
+        &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/04-lead.png' /&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;In this episode I’m joined once again by Scott Hanselman and we explore the idea of “being mean” - and what makes people mean in our industry.&lt;/p&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;In the first story Scott shares his experience on being “outted” at a former company, where his name sat beside 7 of the 10 top entries on a list of “what not to do to code”.&lt;/p&gt;
+        &lt;p&gt;Scott then interviews Cyra Richardson - a program manager at Microsoft with a rather strong opinion about the changes she’s seen in the company over the last 20 years.&lt;/p&gt;
+        &lt;p&gt;Finally, I spend some time talking to Giles Bowkett and his various … “interesting” interactions with the Ruby community.&lt;/p&gt;
+        &lt;p&gt;
+        &lt;script src='http://player.wizzard.tv/player/o/j/x/128683095993/config/k-27721e9f4e6ff19c/uuid/root/height/325/width/325/episode/k-cab9e8261c2ee84f.m4v' type='text/javascript'&gt;&lt;/script&gt;
+        &lt;/p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/04-Being-Mean.mp3'&gt;Dowload Here&lt;/a&gt;&lt;/p&gt;
+      </description>
+      <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/oPHvINZSyLc/04-Being-Mean.mp3" fileSize="61045804" type="audio/mpeg" />
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle> In this episode I’m joined once again by Scott Hanselman and we explore the idea of “being mean” - and what makes people mean in our industry. In the first story Scott shares his experience on being “outted” at a former company, where his name sat beside</itunes:subtitle>
+      <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+      <itunes:summary> In this episode I’m joined once again by Scott Hanselman and we explore the idea of “being mean” - and what makes people mean in our industry. In the first story Scott shares his experience on being “outted” at a former company, where his name sat beside 7 of the 10 top entries on a list of “what not to do to code”. Scott then interviews Cyra Richardson - a program manager at Microsoft with a rather strong opinion about the changes she’s seen in the company over the last 20 years. Finally, I spend some time talking to Giles Bowkett and his various … “interesting” interactions with the Ruby community. Dowload Here</itunes:summary>
+      <itunes:keywords>technology,stories</itunes:keywords>
+      <feedburner:origLink>http://thisdeveloperslife.com/post/1197337846/1-0-4-being-mean</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/oPHvINZSyLc/04-Being-Mean.mp3" length="61045804" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/04-Being-Mean.mp3</feedburner:origEnclosureLink>
+    </item>
+    <item>
+      <title>1.0.3 Problems</title>
+      <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/PSfSYwU48YA/1-0-3-problems</link>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+      <pubDate>Fri, 17 Sep 2010 17:00:00 PDT</pubDate>
+      <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-09-18:/post/1106029175/1-0-3-problems</guid>
+      <description>
+        &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/03-lead.png' /&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;How do you solve problems as a developer? How do you tackle issues that seem completely unsolvable - as an individual or on a team?&lt;/p&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;
+        &lt;i&gt;
+        &lt;a href='http://xkcd.com/399/'&gt;image from XKCD&lt;/a&gt;
+        &lt;/i&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+        In this week’s This Developer’s Life that’s what I take a look at, from 3 perspectives:
+        &lt;/p&gt;
+        &lt;ol&gt;
+        &lt;li&gt;
+        &lt;a href='http://blowmage.com/' target='_blank'&gt;Mike Moore&lt;/a&gt;
+        (Ruby developer) talks about personal skills for solving problems, including the ability to ask a different question.
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://lozanotek.com/blog' target='_blank'&gt;Javier Lozano&lt;/a&gt;
+        (Microsoft developer) talks about teams coming together as a “band of brothers”, solving problems that may, or may not, exist.
+        &lt;/li&gt;
+        &lt;li&gt;Tamar Cohen (Java developer) shares her story of the unsolvable bug - something she *had to solve* as the exploration of other planets depends on it. She works at NASA, programming planetary rovers.&lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;p&gt;
+        &lt;script src='http://player.wizzard.tv/player/o/j/x/128683100911/config/k-27721e9f4e6ff19c/uuid/root/height/325/width/325/episode/k-96fb6286bcc69763.m4v' type='text/javascript'&gt;&lt;/script&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+        &lt;a href='http://hanselman.com' target='_blank'&gt;Scott Hanselman&lt;/a&gt;
+        finishes things off with a story about what happens when trouble finds you…
+        &lt;/p&gt;
+        &lt;h2&gt;Some Notes:&lt;/h2&gt;
+        &lt;p&gt;
+        I’ve been asked by the producers of This American Life
+        to kindly change my logo as well as podcast title. In retrospect it seems rather obvious that I should have thought about this - but the short answer is that I didn’t know if anyone would really care about this podcast. I also didn’t expect the attention it’s getting.
+        &lt;/p&gt;
+        &lt;p&gt;Oops.&lt;/p&gt;
+        &lt;p&gt;I changed the logo - a name change will come soon. Worry not - the RSS will stay intact, as will the iTunes link.&lt;/p&gt;
+        &lt;p&gt;
+        &lt;strong&gt;UPDATE&lt;/strong&gt;
+        - I’ve remastered the episode and removed some of the music.
+        &lt;/p&gt;
+        &lt;h2&gt;Soundtrack:&lt;/h2&gt;
+        &lt;p&gt;If you like any of the songs - please support my efforts to stay within “Fair Use” by buying them… I’d very much appreciate it.&lt;/p&gt;
+        &lt;ul&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/exile-in-guyville-bonus-tracks/id283033231'&gt;Mezmerize - Liz Phair&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/fight-for-your-mind/id17478904' target='_blank'&gt;Please Me Like You Want To - Ben Harper&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/human-after-all/id388195039' target='_blank'&gt;Human After All - Daft Punk&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/live-it-out/id81067976'&gt;Too Little Too Late - Metric&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://remix.nin.com/'&gt;NIN Remixes (under Creative Commons)&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/03-problems.mp3'&gt;Dowload Here&lt;/a&gt;&lt;/p&gt;
+      </description>
+      <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/Fg0ERPjrsyI/03-problems.mp3" fileSize="63302136" type="audio/mpeg" />
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle> How do you solve problems as a developer? How do you tackle issues that seem completely unsolvable - as an individual or on a team? image from XKCD In this week’s This Developer’s Life that’s what I take a look at, from 3 perspectives: Mike Moore (Ruby d</itunes:subtitle>
+      <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+      <itunes:summary> How do you solve problems as a developer? How do you tackle issues that seem completely unsolvable - as an individual or on a team? image from XKCD In this week’s This Developer’s Life that’s what I take a look at, from 3 perspectives: Mike Moore (Ruby developer) talks about personal skills for solving problems, including the ability to ask a different question. Javier Lozano (Microsoft developer) talks about teams coming together as a “band of brothers”, solving problems that may, or may not, exist. Tamar Cohen (Java developer) shares her story of the unsolvable bug - something she *had to solve* as the exploration of other planets depends on it. She works at NASA, programming planetary rovers. Scott Hanselman finishes things off with a story about what happens when trouble finds you… Some Notes: I’ve been asked by the producers of This American Life to kindly change my logo as well as podcast title. In retrospect it seems rather obvious that I should have thought about this - but the short answer is that I didn’t know if anyone would really care about this podcast. I also didn’t expect the attention it’s getting. Oops. I changed the logo - a name change will come soon. Worry not - the RSS will stay intact, as will the iTunes link. UPDATE - I’ve remastered the episode and removed some of the music. Soundtrack: If you like any of the songs - please support my efforts to stay within “Fair Use” by buying them… I’d very much appreciate it. Mezmerize - Liz Phair Please Me Like You Want To - Ben Harper Human After All - Daft Punk Too Little Too Late - Metric NIN Remixes (under Creative Commons) Dowload Here</itunes:summary>
+      <itunes:keywords>technology,stories</itunes:keywords>
+      <feedburner:origLink>http://thisdeveloperslife.com/post/1106029175/1-0-3-problems</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/Fg0ERPjrsyI/03-problems.mp3" length="63302136" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/03-problems.mp3</feedburner:origEnclosureLink>
+    </item>
+    <item>
+      <title>1.0.2 Fame</title>
+      <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/KwlBrikTxGg/1-0-2-fame-and-notoriety</link>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+      <pubDate>Wed, 01 Sep 2010 17:00:00 PDT</pubDate>
+      <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-09-02:/post/1055964765/1-0-2-fame-and-notoriety</guid>
+      <description>
+        &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/02-lead.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;In this episode I talk to 2 developers about the fame and how it relates to their career as developers&lt;/p&gt;&lt;/p&gt;&lt;p&gt;In the first story I talk to
+        &lt;a href='http://john-sheehan.com/blog/'&gt;John Sheehan&lt;/a&gt;,
+        a developer who’s active on Twitter and is establishing himself in the Open Source community.
+        &lt;p&gt;
+        The second story comes from
+        &lt;a href='http://www.hanselman.com/blog/'&gt;Scott Hanselman&lt;/a&gt;
+        - one of the biggest names (if not *the* biggest) in the Microsoft community.
+        &lt;/p&gt;
+        &lt;p&gt;
+        &lt;script src='http://player.wizzard.tv/player/o/j/x/128683105922/config/k-27721e9f4e6ff19c/uuid/root/height/325/width/325/episode/k-2d4b75632299d225.m4v' type='text/javascript'&gt;&lt;/script&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+        &lt;strong&gt;Technical Note:&lt;/strong&gt;
+        You’ll notice that the first story’s audio isn’t ideal. John was using an analog mic that picked up some EM hum that I needed to filter out. I’m committed to spotless audio - but I have to work with what my guests have…
+        &lt;/p&gt;
+        &lt;h2&gt;Music&lt;/h2&gt;
+        &lt;ul&gt;
+        &lt;li&gt;
+        &lt;a href='http://ghosts.nin.com/main/home' target='_blank'&gt;Nine Inch Nails - Ghosts 18&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/elephant/id275230921' target='_blank'&gt;White Stripes - Seven Nation Army&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://ghosts.nin.com/main/home' target='_blank'&gt;Nine Inch Nails - Ghosts 12&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/wowee-zowee-sordid-sentinels/id203674837' target='_blank'&gt;Pavement - Grave Architecture&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/20-all-time-greatest-hits/id117181' target='_blank'&gt;James Brown - Super Bad&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href='http://itunes.apple.com/us/album/my-fair-lady/id158862806' target='_blank'&gt;My Fair Lady - You Did It&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/02-Fame.mp3'&gt;Dowload Here&lt;/a&gt;&lt;/p&gt;
+      </description>
+      <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/6oJWmrx3tvU/02-Fame.mp3" fileSize="56462130" type="audio/mpeg" />
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle> In this episode I talk to 2 developers about the fame and how it relates to their career as developers In the first story I talk to John Sheehan, a developer who’s active on Twitter and is establishing himself in the Open Source community. The second sto</itunes:subtitle>
+      <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+      <itunes:summary> In this episode I talk to 2 developers about the fame and how it relates to their career as developers In the first story I talk to John Sheehan, a developer who’s active on Twitter and is establishing himself in the Open Source community. The second story comes from Scott Hanselman - one of the biggest names (if not *the* biggest) in the Microsoft community. Technical Note: You’ll notice that the first story’s audio isn’t ideal. John was using an analog mic that picked up some EM hum that I needed to filter out. I’m committed to spotless audio - but I have to work with what my guests have… Music Nine Inch Nails - Ghosts 18 White Stripes - Seven Nation Army Nine Inch Nails - Ghosts 12 Pavement - Grave Architecture James Brown - Super Bad My Fair Lady - You Did It Dowload Here</itunes:summary>
+      <itunes:keywords>technology,stories</itunes:keywords>
+      <feedburner:origLink>http://thisdeveloperslife.com/post/1055964765/1-0-2-fame-and-notoriety</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/6oJWmrx3tvU/02-Fame.mp3" length="56462130" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/02-Fame.mp3</feedburner:origEnclosureLink>
+    </item>
+    <item>
+      <title>1.0.1 Getting Fired</title>
+      <link>http://feedproxy.google.com/~r/ThisDevelopersLife/~3/FCT71Wmr_Kw/1-0-1-getting-fired</link>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rob Conery and Scott Hanselman</dc:creator>
+      <pubDate>Tue, 17 Aug 2010 17:00:00 PDT</pubDate>
+      <guid isPermaLink="false">tag:thisdeveloperslife.com,2010-08-18:/post/1203177584/1-0-1-getting-fired</guid>
+      <description>
+        &lt;p&gt;&lt;img src='http://thisdeveloperslife.com/images/01-lead.jpeg' /&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;This is the very first episode of a little experiment of mine - telling stories about development following in the footsteps (perhaps a little too closely) of my favorite podcast: This American Life.&lt;/p&gt;&lt;/p&gt;&lt;p&gt;&lt;p&gt;
+        &lt;i&gt;
+        &lt;a href='http://outtahereonline.com' target='blank'&gt;Image from Outta Here&lt;/a&gt;
+        &lt;/i&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+        I talk to 2 developers in this episode, and toss in a story from myself at the end:
+        &lt;ul&gt;
+        &lt;li&gt;
+        The first story comes from
+        &lt;a href='http://girldeveloper.com'&gt;Sara J Chipps&lt;/a&gt;
+        a Microsoft developer who lives on the East Coast.
+        &lt;/li&gt;
+        &lt;li&gt;
+        The second story comes from
+        &lt;a href='http://ayende.com'&gt;Oren Eine (Ayende Rahien)&lt;/a&gt;
+        about what life as a prison commander in Israel taught him about his career.
+        &lt;/li&gt;
+        &lt;li&gt;And finally there's me (Rob) - talking about the "Coyote Contract" that was doomed to fail. So I gnawed off my own reputation to get out of it.&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+        &lt;script src='http://player.wizzard.tv/player/o/j/x/128683090260/config/k-27721e9f4e6ff19c/uuid/root/height/325/width/325/episode/k-3f1e5f46f319f207.m4v' type='text/javascript'&gt;&lt;/script&gt;
+        &lt;/p&gt;
+        &lt;h2&gt;Music&lt;/h2&gt;
+        &lt;ul&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/moon-safari/id381850260' target='_blank'&gt;Air - Sexxy  Boy&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://ghosts.nin.com/main/home' target='_blank'&gt;Nine Inch Nails - #6 (Ghosts)&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/the-power-out/id7059396' target='_blank'&gt;Electralane - On Parade&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/the-beta-band/id324897122' target='_blank'&gt;Beta Band - Broken Up a Ding Dong&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/the-black-light/id25515335' target='_blank'&gt;Calexico - Minas de Cobre&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+        &lt;a href='http://itunes.apple.com/us/album/id57085863' target='_blank'&gt;Fischerspooner - mega c (bonus track)&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;a href='http://traffic.libsyn.com/devlife/01-Getting-Fired.mp3'&gt;Dowload Here&lt;/a&gt;&lt;/p&gt;
+      </description>
+      <media:content url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/3d_AAidWzXs/01-Getting-Fired.mp3" fileSize="58747576" type="audio/mpeg" />
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle> This is the very first episode of a little experiment of mine - telling stories about development following in the footsteps (perhaps a little too closely) of my favorite podcast: This American Life. Image from Outta Here I talk to 2 developers in this e</itunes:subtitle>
+      <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+      <itunes:summary> This is the very first episode of a little experiment of mine - telling stories about development following in the footsteps (perhaps a little too closely) of my favorite podcast: This American Life. Image from Outta Here I talk to 2 developers in this episode, and toss in a story from myself at the end: The first story comes from Sara J Chipps a Microsoft developer who lives on the East Coast. The second story comes from Oren Eine (Ayende Rahien) about what life as a prison commander in Israel taught him about his career. And finally there's me (Rob) - talking about the "Coyote Contract" that was doomed to fail. So I gnawed off my own reputation to get out of it. Music Air - Sexxy Boy Nine Inch Nails - #6 (Ghosts) Electralane - On Parade Beta Band - Broken Up a Ding Dong Calexico - Minas de Cobre Fischerspooner - mega c (bonus track) Dowload Here</itunes:summary>
+      <itunes:keywords>technology,stories</itunes:keywords>
+      <feedburner:origLink>http://thisdeveloperslife.com/post/1203177584/1-0-1-getting-fired</feedburner:origLink>
+      <enclosure url="http://feedproxy.google.com/~r/ThisDevelopersLife/~5/3d_AAidWzXs/01-Getting-Fired.mp3" length="58747576" type="audio/mpeg" />
+      <feedburner:origEnclosureLink>http://traffic.libsyn.com/devlife/01-Getting-Fired.mp3</feedburner:origEnclosureLink>
+    </item>
+    <copyright>Copyright 2010, Rob Conery</copyright>
+    <media:credit role="author">Rob Conery and Scott Hanselman</media:credit>
+    <media:rating>nonadult</media:rating>
+    <media:description type="plain">Stories about developers and their lives</media:description>
+  </channel>
+</rss>
