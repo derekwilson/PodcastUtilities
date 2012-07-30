@@ -1,3 +1,4 @@
+using System.Windows;
 using PodcastUtilities.Presentation.Services;
 using PodcastUtilities.Presentation.ViewModels;
 
@@ -10,9 +11,12 @@ namespace PodcastUtilities.App.Services
 
 		public bool ShowEditPodcastDialog(PodcastViewModel viewModel)
 		{
-			var editDialog = new EditPodcastWindow(viewModel);
+			var editDialog = new EditPodcastWindow(viewModel)
+			                     {
+			                         Owner = Application.Current.MainWindow
+			                     };
 
-			return editDialog.ShowDialog().GetValueOrDefault(false);
+		    return editDialog.ShowDialog().GetValueOrDefault(false);
 		}
 
 		#endregion

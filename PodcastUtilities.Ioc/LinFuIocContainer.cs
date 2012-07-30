@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using LinFu.IoC;
 using PodcastUtilities.Common;
 
@@ -18,6 +19,11 @@ namespace PodcastUtilities.Ioc
 		{
 			_container.AddService(typeof(TService), typeof(TImplementor));
 		}
+
+        public void Register(Type serviceTypeToRegisterAsSelf)
+        {
+            _container.AddService(serviceTypeToRegisterAsSelf);
+        }
 
         public TService Resolve<TService>()
 		{

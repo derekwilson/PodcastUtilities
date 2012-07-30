@@ -1,5 +1,3 @@
-using System;
-using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Tests;
 using PodcastUtilities.Presentation.Services;
@@ -24,6 +22,8 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 
 		protected IClipboardService ClipboardService { get; set; }
 
+		protected IDataObjectUriExtractor DataObjectUriExtractor { get; set; }
+
         protected IReadWriteControlFile ControlFile { get; set; }
 
 		protected override void GivenThat()
@@ -38,6 +38,7 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 			ControlFileFactory = GenerateMock<IControlFileFactory>();
 			PodcastFactory = GenerateMock<IPodcastFactory>();
             ClipboardService = GenerateMock<IClipboardService>();
+		    DataObjectUriExtractor = GenerateMock<IDataObjectUriExtractor>();
 
 			ViewModel = new ConfigurePodcastsViewModel(
 				ApplicationService,
@@ -45,7 +46,8 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 				DialogService,
 				ControlFileFactory,
                 PodcastFactory,
-                ClipboardService);
+                ClipboardService,
+                DataObjectUriExtractor);
 		}
 
 	}

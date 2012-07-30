@@ -85,6 +85,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behaviours\MouseDoubleClickBehaviour.cs" />
+    <Compile Include="Behaviours\MouseDropBehaviour.cs" />
     <Compile Include="EditPodcastWindow.xaml.cs">
       <DependentUpon>EditPodcastWindow.xaml</DependentUpon>
     </Compile>

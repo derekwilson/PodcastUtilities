@@ -1,8 +1,8 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
-using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Presentation.Services;
 
@@ -17,6 +17,7 @@ namespace PodcastUtilities.Presentation.ViewModels
     	private readonly IControlFileFactory _controlFileFactory;
         private readonly IPodcastFactory _podcastFactory;
         private readonly IClipboardService _clipboardService;
+        private readonly IDataObjectUriExtractor _dataObjectUriExtractor;
         private IReadWriteControlFile _controlFile;
 		private PodcastViewModel _selectedPodcast;
         private readonly DelegateCommand _editPodcastCommand;
@@ -29,7 +30,8 @@ namespace PodcastUtilities.Presentation.ViewModels
 			IDialogService dialogService,
 			IControlFileFactory controlFileFactory,
             IPodcastFactory podcastFactory,
-            IClipboardService clipboardService)
+            IClipboardService clipboardService,
+            IDataObjectUriExtractor dataObjectUriExtractor)
         {
         	_applicationService = applicationService;
         	_browseForFileService = browseForFileService;
@@ -37,11 +39,12 @@ namespace PodcastUtilities.Presentation.ViewModels
         	_controlFileFactory = controlFileFactory;
             _podcastFactory = podcastFactory;
             _clipboardService = clipboardService;
+            _dataObjectUriExtractor = dataObjectUriExtractor;
 
             OpenFileCommand = new DelegateCommand(ExecuteOpenFileCommand, CanExecuteOpenFileCommand);
             SaveFileCommand = new DelegateCommand(ExecuteSaveFileCommand, CanExecuteSaveFileCommand);
 			ExitCommand = new DelegateCommand(ExecuteExitCommand);
-			AddPodcastCommand = new DelegateCommand(ExecuteAddPodcastCommand);
+            AddPodcastCommand = new DelegateCommand(ExecuteAddPodcastCommand, CanExecuteAddPodcastCommand);
             _editPodcastCommand = new DelegateCommand(ExecuteEditPodcastCommand, CanExecuteEditPodcastCommand);
 
 			_podcasts = new ObservableCollection<PodcastViewModel>();
@@ -128,7 +131,11 @@ namespace PodcastUtilities.Presentation.ViewModels
 
         private void ExecuteAddPodcastCommand(object parameter)
         {
-            var newPodcast = CreateNewPodcast(_clipboardService.GetText());
+            var dataObject = parameter as IDataObject;
+
+            var newPodcast = (dataObject != null)
+                                 ? CreateNewPodcast(_dataObjectUriExtractor.GetUri(dataObject))
+                                 : CreateNewPodcast(_clipboardService.GetText());
 
             var newPodcastViewModel = new PodcastViewModel(newPodcast);
 
@@ -136,6 +143,16 @@ namespace PodcastUtilities.Presentation.ViewModels
             {
                 Podcasts.Add(newPodcastViewModel);
             }
+        }
+
+        private bool CanExecuteAddPodcastCommand(object parameter)
+        {
+            var dataObject = parameter as IDataObject;
+            if (dataObject == null)
+            {
+                return true;
+            }
+            return _dataObjectUriExtractor.ContainsUri(dataObject);
         }
 
 		#endregion
@@ -162,12 +179,17 @@ namespace PodcastUtilities.Presentation.ViewModels
         {
             var newPodcast = _podcastFactory.CreatePodcast(_controlFile);
 
-            if ((possiblePodcastAddress != null) && Uri.IsWellFormedUriString(possiblePodcastAddress, UriKind.Absolute))
+            if (IsValidUri(possiblePodcastAddress))
             {
                 newPodcast.Feed.Address = new Uri(possiblePodcastAddress);
             }
 
             return newPodcast;
+        }
+
+        private static bool IsValidUri(string address)
+        {
+            return ((address != null) && Uri.IsWellFormedUriString(address, UriKind.Absolute));
         }
     }
 }
