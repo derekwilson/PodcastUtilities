@@ -118,6 +118,14 @@ namespace PodcastUtilities.Common.Configuration
         }
 
         /// <summary>
+        /// the global default for post download command
+        /// </summary>
+        public void SetDefaultPostDownloadCommand(string command)
+        {
+            DefaultPostDownloadCommand = command;
+        }
+
+        /// <summary>
         /// level of diagnostic output
         /// </summary>
         public void SetDiagnosticOutput(DiagnosticOutputLevel level)
@@ -283,6 +291,7 @@ namespace PodcastUtilities.Common.Configuration
             writer.WriteElementString("pattern", DefaultFilePattern);
             writer.WriteElementString("sortfield", PodcastInfo.WriteSortField(DefaultSortField));
             writer.WriteElementString("sortdirection", PodcastInfo.WriteSortDirection(DefaultAscendingSort));
+            writer.WriteElementString("postdownloadcommand",DefaultPostDownloadCommand);
 
             writer.WriteStartElement("feed");
             writer.WriteElementString("maximumDaysOld", DefaultFeedMaximumDaysOld.ToString(CultureInfo.InvariantCulture));

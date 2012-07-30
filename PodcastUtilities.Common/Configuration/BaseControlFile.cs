@@ -26,6 +26,11 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal string DefaultFilePattern { get; set; }
         /// <summary>
+        /// the command to be run after the download
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal string DefaultPostDownloadCommand { get; set; }
+        /// <summary>
         /// the field we are using to sort the podcasts on
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
@@ -93,6 +98,7 @@ namespace PodcastUtilities.Common.Configuration
             DefaultFeedEpisodeDownloadStrategy = PodcastEpisodeDownloadStrategy.All;
             DefaultFeedMaximumDaysOld = int.MaxValue;
             DefaultFeedDeleteDownloadsDaysOld = int.MaxValue;
+            DefaultPostDownloadCommand = "";
 
             FreeSpaceToLeaveOnDestination = 0;
             FreeSpaceToLeaveOnDownload = 0;
@@ -183,6 +189,15 @@ namespace PodcastUtilities.Common.Configuration
         public PodcastFileSortField GetDefaultSortField()
         {
             return DefaultSortField;
+        }
+
+        /// <summary>
+        /// the global default for post download command
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public string GetDefaultPostDownloadCommand()
+        {
+            return DefaultPostDownloadCommand;
         }
 
         /// <summary>
@@ -402,7 +417,10 @@ namespace PodcastUtilities.Common.Configuration
                 return result;
             }
             
-            reader.Read();
+            if (!reader.IsEmptyElement)
+            {
+                reader.Read();
+            }
             var content = reader.Value.Trim();
 
             long longValue;
@@ -457,6 +475,12 @@ namespace PodcastUtilities.Common.Configuration
                         DefaultFilePattern = content;
                     }
                     break;
+                case "postdownloadcommand":
+                    if (!string.IsNullOrEmpty(content))
+                    {
+                        DefaultPostDownloadCommand = content;
+                    }
+                    break;
                 case "sortfield":
                     DefaultSortField = PodcastInfo.ReadSortField(content);
                     break;
@@ -475,7 +499,10 @@ namespace PodcastUtilities.Common.Configuration
             var result = ProcessorResult.Processed;
 
             var elementName = reader.LocalName;
-            reader.Read();
+            if (!reader.IsEmptyElement)
+            {
+                reader.Read();
+            }
             var content = reader.Value.Trim();
 
             switch (elementName)
@@ -498,7 +525,10 @@ namespace PodcastUtilities.Common.Configuration
             var result = ProcessorResult.Processed;
 
             var elementName = reader.LocalName;
-            reader.Read();
+            if (!reader.IsEmptyElement)
+            {
+                reader.Read();
+            }
             var content = reader.Value.Trim();
 
             int intValue;

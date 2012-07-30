@@ -49,5 +49,11 @@
         /// the global default for podcasts
         /// </summary>
         void SetDefaultSortField(PodcastFileSortField sortField);
+
+        /// <summary>
+        /// the global default for post download command
+        /// </summary>
+        void SetDefaultPostDownloadCommand(string command);
+
     }
 }

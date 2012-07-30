@@ -59,5 +59,11 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         PodcastFileSortField GetDefaultSortField();
+
+        /// <summary>
+        /// the global default for post download command
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        string GetDefaultPostDownloadCommand();
     }
 }

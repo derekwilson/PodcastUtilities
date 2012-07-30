@@ -24,6 +24,7 @@ namespace PodcastUtilities.Common.Configuration
             AscendingSort = new DefaultableValueTypeItem<bool>(_controlFileGlobalDefaults.GetDefaultAscendingSort);
             SortField = new DefaultableValueTypeItem<PodcastFileSortField>(_controlFileGlobalDefaults.GetDefaultSortField);
             MaximumNumberOfFiles = new DefaultableValueTypeItem<int>(_controlFileGlobalDefaults.GetDefaultNumberOfFiles);
+            PostDownloadCommand = new DefaultableReferenceTypeItem<string>(_controlFileGlobalDefaults.GetDefaultPostDownloadCommand);
         }
 
 	    /// <summary>
@@ -50,6 +51,10 @@ namespace PodcastUtilities.Common.Configuration
         /// the configuration info for the feed
         /// </summary>
         public IFeedInfo Feed { get; set; }
+        /// <summary>
+        /// command line to be executed after the podcast has been downloaded
+        /// </summary>
+        public IDefaultableItem<string> PostDownloadCommand { get; set; }
 
 	    /// <summary>
 	    /// create a feed in the podcast
@@ -106,8 +111,11 @@ namespace PodcastUtilities.Common.Configuration
                 Feed.ReadXml(reader);
                 return result;
             }
-            
-            reader.Read();
+
+            if (!reader.IsEmptyElement)
+            {
+                reader.Read();
+            }
             var content = reader.Value.Trim();
 
             switch (elementName)
@@ -117,6 +125,9 @@ namespace PodcastUtilities.Common.Configuration
                     break;
                 case "pattern":
                     Pattern.Value = content;
+                    break;
+                case "postdownloadcommand":
+                    PostDownloadCommand.Value = content;
                     break;
                 case "number":
                     MaximumNumberOfFiles.Value = Convert.ToInt32(content, CultureInfo.InvariantCulture);
@@ -157,6 +168,10 @@ namespace PodcastUtilities.Common.Configuration
             if (AscendingSort.IsSet)
             {
                 writer.WriteElementString("sortdirection", WriteSortDirection(AscendingSort.Value));
+            }
+            if (PostDownloadCommand.IsSet)
+            {
+                writer.WriteElementString("postdownloadcommand",PostDownloadCommand.Value);
             }
             if (Feed != null)
             {

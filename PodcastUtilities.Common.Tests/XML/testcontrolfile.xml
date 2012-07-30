@@ -13,6 +13,7 @@
         <sortdirection>asc</sortdirection>
         <maximumNumberOfConcurrentDownloads>10</maximumNumberOfConcurrentDownloads>
         <retryWaitInSeconds>77</retryWaitInSeconds>
+        <postdownloadcommand>command</postdownloadcommand>
         <feed>
             <format>atom</format>
             <namingStyle>pubdate_url</namingStyle>
@@ -37,6 +38,7 @@
         <number>34</number>
         <sortfield>fred</sortfield>
         <sortdirection>desc</sortdirection>
+        <postdownloadcommand>different command</postdownloadcommand>
     </podcast>
     <podcast>
         <feed>

@@ -14,6 +14,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
             _pocastInfo.MaximumNumberOfFiles.Value = 123;
             _pocastInfo.Pattern.Value = "PATTERN";
             _pocastInfo.SortField.Value = PodcastFileSortField.FileName;
+            _pocastInfo.PostDownloadCommand.Value = "COMMAND";
 
             _pocastInfo.Feed = new FeedInfo(_controlFile)
                                    {
@@ -53,6 +54,12 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         public void ItShouldCloneThePodcastSortField()
         {
             Assert.That(_clonedPodcast.SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
+        }
+
+        [Test]
+        public void ItShouldCloneThePostDownloadCommand()
+        {
+            Assert.That(_clonedPodcast.PostDownloadCommand.Value, Is.EqualTo("COMMAND"));
         }
 
         [Test]

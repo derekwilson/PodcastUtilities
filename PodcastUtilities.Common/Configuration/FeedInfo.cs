@@ -99,7 +99,10 @@ namespace PodcastUtilities.Common.Configuration
             var result = ProcessorResult.Processed;
 
             var elementName = reader.LocalName;
-            reader.Read();
+            if (!reader.IsEmptyElement)
+            {
+                reader.Read();
+            }
             var content = reader.Value.Trim();
             switch (elementName)
             {
