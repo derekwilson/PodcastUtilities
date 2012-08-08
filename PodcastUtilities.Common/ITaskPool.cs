@@ -14,7 +14,7 @@ namespace PodcastUtilities.Common
         void RunAllTasks(int numberOfThreads, ITask[] tasks);
 
         /// <summary>
-        /// abandon all the incomplete and instarted tasks in the pool
+        /// abandon all the incomplete and unstarted tasks in the pool
         /// </summary>
         void CancelAllTasks();
     }

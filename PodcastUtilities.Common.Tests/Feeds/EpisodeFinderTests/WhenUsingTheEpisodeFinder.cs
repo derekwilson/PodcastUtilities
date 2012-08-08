@@ -24,6 +24,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
         protected IState _state;
         protected IDirectoryInfoProvider _directoryInfoProvider;
         protected IDirectoryInfo _directoryInfo;
+        protected ICommandGenerator _commandGenerator;
 
         protected string _rootFolder;
         protected int _retryWaitTime;
@@ -34,6 +35,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
         protected MemoryStream _stream;
         protected IPodcastFeed _podcastFeed;
         protected IList<IPodcastFeedItem> _podcastFeedItems;
+        protected IExternalCommand _externalCommand;
 
         protected DateTime _now;
 
@@ -57,11 +59,12 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
             _podcastFeed = GenerateMock<IPodcastFeed>();
             _directoryInfoProvider = GenerateMock<IDirectoryInfoProvider>();
             _directoryInfo = GenerateMock<IDirectoryInfo>();
+            _commandGenerator = GenerateMock<ICommandGenerator>();
 
             SetupData();
             SetupStubs();
 
-            _episodeFinder = new EpisodeFinder(_fileUtilities,_feedFactory,_webClientFactory,_timeProvider,_stateProvider,_directoryInfoProvider);
+            _episodeFinder = new EpisodeFinder(_fileUtilities, _feedFactory, _webClientFactory, _timeProvider, _stateProvider, _directoryInfoProvider, _commandGenerator);
             _episodeFinder.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(EpisodeFinderStatusUpdate);
             _latestUpdate = null;
         }
@@ -90,9 +93,12 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
             _rootFolder = "c:\\TestRoot";
             _podcastInfo = new PodcastInfo(_controlFile);
             _podcastInfo.Folder = "TestFolder";
+            _podcastInfo.PostDownloadCommand.Value = "DownloadCommand";
             _podcastInfo.Feed = _feedInfo;
 
             _podcastFeedItems = new List<IPodcastFeedItem>(10);
+
+            _externalCommand = new ExternalCommand();
         }
 
         protected virtual void SetupStubs()
@@ -116,6 +122,8 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
             }
             _stateProvider.Stub(provider => provider.GetState(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_state);
             _directoryInfoProvider.Stub(dir => dir.GetDirectoryInfo(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_directoryInfo);
+
+            _commandGenerator.Stub(cmd => cmd.ReplaceTokensInCommandline(_podcastInfo.PostDownloadCommand.Value, _rootFolder, null, _podcastInfo)).IgnoreArguments().Return(_externalCommand);
         }
     }
 }
