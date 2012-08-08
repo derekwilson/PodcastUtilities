@@ -96,6 +96,10 @@
     <Compile Include="Exceptions\FeedStructureException.cs" />
     <Compile Include="Exceptions\XmlStructureException.cs" />
     <Compile Include="Configuration\IControlFileFactory.cs" />
+    <Compile Include="Feeds\CommandGenerator.cs" />
+    <Compile Include="Feeds\ExternalCommand.cs" />
+    <Compile Include="Feeds\ICommandGenerator.cs" />
+    <Compile Include="Feeds\IExternalCommand.cs" />
     <Compile Include="Files\IEpisodePurger.cs" />
     <Compile Include="Configuration\IPodcastFactory.cs" />
     <Compile Include="IState.cs" />
@@ -108,6 +112,7 @@
     <Compile Include="Perfmon\AverageCounter.cs" />
     <Compile Include="Perfmon\CategoryInstaller.cs" />
     <Compile Include="Perfmon\ICounterFactory.cs" />
+    <Compile Include="Platform\ICommandExecuter.cs" />
     <Compile Include="Platform\SystemPerfmonCounter.cs" />
     <Compile Include="Perfmon\CounterFactory.cs" />
     <Compile Include="Perfmon\IAverageCounter.cs" />
@@ -120,6 +125,7 @@
     <Compile Include="Perfmon\CategoryInstallerRefeshResult.cs" />
     <Compile Include="Platform\IPerfmonCounterUtilities.cs" />
     <Compile Include="Platform\SystemPerfmonCounterUtilities.cs" />
+    <Compile Include="Platform\WindowsCommandExecuter.cs" />
     <Compile Include="ProgressEventArgs.cs" />
     <Compile Include="IProgressUpdate.cs" />
     <Compile Include="Feeds\ISyncItem.cs" />

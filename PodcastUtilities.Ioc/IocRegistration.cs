@@ -50,6 +50,7 @@ namespace PodcastUtilities.Ioc
         [CLSCompliant(false)]
         public static void RegisterFeedServices(IIocContainer container)
         {
+            container.Register<ICommandGenerator, CommandGenerator>();
             container.Register<IPodcastFeedFactory, PodcastFeedFactory>();
             container.Register<IWebClientFactory, WebClientFactory>();
             container.Register<IEpisodeFinder, EpisodeFinder>();

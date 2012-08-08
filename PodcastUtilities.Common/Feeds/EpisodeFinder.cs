@@ -21,13 +21,15 @@ namespace PodcastUtilities.Common.Feeds
         private readonly IWebClientFactory _webClientFactory;
         private readonly ITimeProvider _timeProvider;
         private readonly IStateProvider _stateProvider;
+        private readonly ICommandGenerator _commandGenerator;
 
         /// <summary>
         /// discover items to be downloaded from a feed
         /// </summary>
-        public EpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider, IStateProvider stateProvider, IDirectoryInfoProvider directoryInfoProvider)
+        public EpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider, IStateProvider stateProvider, IDirectoryInfoProvider directoryInfoProvider, ICommandGenerator commandGenerator)
         {
             _fileUtilities = fileFinder;
+            _commandGenerator = commandGenerator;
             _directoryInfoProvider = directoryInfoProvider;
             _stateProvider = stateProvider;
             _timeProvider = timeProvider;
@@ -174,7 +176,8 @@ namespace PodcastUtilities.Common.Feeds
                                                            Published = podcastFeedItem.Published,
                                                            EpisodeUrl = podcastFeedItem.Address,
                                                            DestinationPath = destinationPath,
-                                                           EpisodeTitle = string.Format(CultureInfo.InvariantCulture, "{0} {1}", podcastInfo.Folder, podcastFeedItem.EpisodeTitle)
+                                                           EpisodeTitle = string.Format(CultureInfo.InvariantCulture, "{0} {1}", podcastInfo.Folder, podcastFeedItem.EpisodeTitle),
+                                                           PostDownloadCommand = _commandGenerator.ReplaceTokensInCommandline(podcastInfo.PostDownloadCommand.Value,rootFolder,destinationPath,podcastInfo),
                                                        };
                                 episodesToDownload.Add(downloadItem);
                             }

@@ -36,5 +36,10 @@ namespace PodcastUtilities.Common.Feeds
         /// time to wait if there is a file lock on state
         /// </summary>
         public int RetryWaitTimeInSeconds { get; set; }
+
+        /// <summary>
+        /// command to execute after the download
+        /// </summary>
+        public IExternalCommand PostDownloadCommand { get; set; }
     }
 }

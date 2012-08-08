@@ -38,11 +38,13 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests.DownloadStrateg
             Assert.That(_episodesToSync[0].DestinationPath, Is.EqualTo(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "podcast.mp3")));
             Assert.That(_episodesToSync[0].StateKey, Is.EqualTo(Path.Combine(_rootFolder, _podcastInfo.Folder)));
             Assert.That(_episodesToSync[0].Published, Is.EqualTo(_now.AddMonths(-1)));
+            Assert.That(_episodesToSync[0].PostDownloadCommand, Is.SameAs(_externalCommand));
 
             Assert.That(_episodesToSync[1].EpisodeUrl.ToString(), Is.EqualTo("http://test/podcast2.mp3"));
             Assert.That(_episodesToSync[1].DestinationPath, Is.EqualTo(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "podcast2.mp3")));
             Assert.That(_episodesToSync[1].StateKey, Is.EqualTo(Path.Combine(_rootFolder, _podcastInfo.Folder)));
             Assert.That(_episodesToSync[1].Published, Is.EqualTo(_now.AddMonths(-1)));
+            Assert.That(_episodesToSync[1].PostDownloadCommand, Is.SameAs(_externalCommand));
         }
 
         [Test]
