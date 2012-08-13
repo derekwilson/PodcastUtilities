@@ -33,7 +33,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             Assert.That(ControlFile.GetPodcasts().ElementAt(0).Pattern.Value, Is.EqualTo("*.xyz"));
             Assert.That(ControlFile.GetPodcasts().ElementAt(0).SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
             Assert.That(ControlFile.GetPodcasts().ElementAt(0).AscendingSort.Value, Is.True);
-            Assert.That(ControlFile.GetPodcasts().ElementAt(0).PostDownloadCommand.Value, Is.EqualTo("command"));
+            Assert.That(ControlFile.GetPodcasts().ElementAt(0).PostDownloadCommand, Is.Null);
         }
 
         [Test]
@@ -45,7 +45,13 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             Assert.That(ControlFile.GetPodcasts().ElementAt(1).Pattern.Value, Is.EqualTo("*.mp3"));
             Assert.That(ControlFile.GetPodcasts().ElementAt(1).SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
             Assert.That(ControlFile.GetPodcasts().ElementAt(1).AscendingSort.Value, Is.False);
-            Assert.That(ControlFile.GetPodcasts().ElementAt(1).PostDownloadCommand.Value, Is.EqualTo("different command"));
+            Assert.That(ControlFile.GetPodcasts().ElementAt(1).PostDownloadCommand.Command.Value, Is.EqualTo("different command"));
+        }
+
+        [Test]
+        public void ItShouldReadPodcast3()
+        {
+            Assert.That(ControlFile.GetPodcasts().ElementAt(2).PostDownloadCommand.Command.Value, Is.EqualTo("command"));
         }
 
         [Test]

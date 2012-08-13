@@ -13,7 +13,6 @@
         <sortdirection>asc</sortdirection>
         <maximumNumberOfConcurrentDownloads>10</maximumNumberOfConcurrentDownloads>
         <retryWaitInSeconds>77</retryWaitInSeconds>
-        <postdownloadcommand>command</postdownloadcommand>
         <feed>
             <format>atom</format>
             <namingStyle>pubdate_url</namingStyle>
@@ -21,6 +20,11 @@
             <downloadStrategy>latest</downloadStrategy>
             <deleteDownloadsDaysOld>88</deleteDownloadsDaysOld>
         </feed>
+        <postdownloadcommand>
+            <command>command</command>
+            <arguments>arg</arguments>
+            <workingdirectory>cwd</workingdirectory>
+        </postdownloadcommand>
         <diagnostics>
             <outputLevel>verbose</outputLevel>
             <retainTempFiles>true</retainTempFiles>
@@ -38,7 +42,11 @@
         <number>34</number>
         <sortfield>fred</sortfield>
         <sortdirection>desc</sortdirection>
-        <postdownloadcommand>different command</postdownloadcommand>
+        <postdownloadcommand>
+            <command>different command</command>
+            <arguments>arg</arguments>
+            <workingdirectory>cwd</workingdirectory>
+        </postdownloadcommand>
     </podcast>
     <podcast>
         <feed>
@@ -54,5 +62,7 @@
         <number>34</number>
         <sortfield>fred</sortfield>
         <sortdirection>desc</sortdirection>
+        <postdownloadcommand>
+        </postdownloadcommand>
     </podcast>
 </podcasts>

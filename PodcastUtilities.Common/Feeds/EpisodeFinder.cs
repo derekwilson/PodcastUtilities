@@ -177,7 +177,7 @@ namespace PodcastUtilities.Common.Feeds
                                                            EpisodeUrl = podcastFeedItem.Address,
                                                            DestinationPath = destinationPath,
                                                            EpisodeTitle = string.Format(CultureInfo.InvariantCulture, "{0} {1}", podcastInfo.Folder, podcastFeedItem.EpisodeTitle),
-                                                           PostDownloadCommand = _commandGenerator.ReplaceTokensInCommandline(podcastInfo.PostDownloadCommand.Value,rootFolder,destinationPath,podcastInfo),
+                                                           PostDownloadCommand = _commandGenerator.ReplaceTokensInCommand(podcastInfo.PostDownloadCommand,rootFolder,destinationPath,podcastInfo),
                                                        };
                                 episodesToDownload.Add(downloadItem);
                             }

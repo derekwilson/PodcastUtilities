@@ -97,8 +97,10 @@
     <Compile Include="Exceptions\XmlStructureException.cs" />
     <Compile Include="Configuration\IControlFileFactory.cs" />
     <Compile Include="Feeds\CommandGenerator.cs" />
+    <Compile Include="Configuration\TokenisedCommand.cs" />
     <Compile Include="Feeds\ExternalCommand.cs" />
     <Compile Include="Feeds\ICommandGenerator.cs" />
+    <Compile Include="Configuration\ITokenisedCommand.cs" />
     <Compile Include="Feeds\IExternalCommand.cs" />
     <Compile Include="Files\IEpisodePurger.cs" />
     <Compile Include="Configuration\IPodcastFactory.cs" />

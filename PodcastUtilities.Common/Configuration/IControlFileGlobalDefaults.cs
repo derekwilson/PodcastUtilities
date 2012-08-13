@@ -65,5 +65,17 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         string GetDefaultPostDownloadCommand();
+
+        /// <summary>
+        /// the global default for post download command args
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        string GetDefaultPostDownloadArguments();
+
+        /// <summary>
+        /// the global default for post download command cwd
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        string GetDefaultPostDownloadWorkingDirectory();
     }
 }
