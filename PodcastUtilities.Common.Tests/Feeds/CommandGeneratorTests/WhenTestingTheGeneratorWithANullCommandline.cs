@@ -10,13 +10,13 @@ namespace PodcastUtilities.Common.Tests.Feeds.CommandGeneratorTests
         /// </summary>
         protected override void When()
         {
-            GeneratedCommand = Generator.ReplaceTokensInCommandline(null, null, null, null);
+            _generatedCommand = _generator.ReplaceTokensInCommand(null, null, null, null);
         }
 
         [Test]
         public void ItShouldReturnNull()
         {
-            Assert.That(GeneratedCommand, Is.Null);
+            Assert.That(_generatedCommand, Is.Null);
         }
     }
 }

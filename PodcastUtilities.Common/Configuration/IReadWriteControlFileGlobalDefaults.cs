@@ -55,5 +55,15 @@
         /// </summary>
         void SetDefaultPostDownloadCommand(string command);
 
+        /// <summary>
+        /// the global default for post download command args
+        /// </summary>
+        void SetDefaultPostDownloadArguments(string command);
+
+        /// <summary>
+        /// the global default for post download command cwd
+        /// </summary>
+        void SetDefaultPostDownloadWorkingDirectory(string command);
+
     }
 }

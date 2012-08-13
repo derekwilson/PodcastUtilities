@@ -1,4 +1,5 @@
 ﻿using System;
+using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.Common.Feeds
 {

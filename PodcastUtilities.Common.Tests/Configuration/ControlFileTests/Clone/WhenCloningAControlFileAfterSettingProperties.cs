@@ -31,6 +31,8 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
             _controlFile.SetDefaultNumberOfFiles(680);
             _controlFile.SetDefaultSortField(PodcastFileSortField.CreationTime);
             _controlFile.SetDefaultPostDownloadCommand("COMMAND");
+            _controlFile.SetDefaultPostDownloadArguments("ARGS");
+            _controlFile.SetDefaultPostDownloadWorkingDirectory("CWD");
         }
 
         protected override void When()
@@ -140,6 +142,18 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
         public void ItShouldCloneTheDefaultPostDownloadCommand()
         {
             Assert.That(_clonedControlFile.GetDefaultPostDownloadCommand(), Is.EqualTo("COMMAND"));
+        }
+
+        [Test]
+        public void ItShouldCloneTheDefaultPostDownloadArguments()
+        {
+            Assert.That(_clonedControlFile.GetDefaultPostDownloadArguments(), Is.EqualTo("ARGS"));
+        }
+
+        [Test]
+        public void ItShouldCloneTheDefaultPostDownloadWorkingDirectory()
+        {
+            Assert.That(_clonedControlFile.GetDefaultPostDownloadWorkingDirectory(), Is.EqualTo("CWD"));
         }
 
     }

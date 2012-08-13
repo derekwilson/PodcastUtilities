@@ -31,6 +31,16 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal string DefaultPostDownloadCommand { get; set; }
         /// <summary>
+        /// the args for the post download command
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal string DefaultPostDownloadArguments { get; set; }
+        /// <summary>
+        /// the cwd for the post download command
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal string DefaultPostDownloadWorkingDirectory { get; set; }
+        /// <summary>
         /// the field we are using to sort the podcasts on
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
@@ -99,6 +109,8 @@ namespace PodcastUtilities.Common.Configuration
             DefaultFeedMaximumDaysOld = int.MaxValue;
             DefaultFeedDeleteDownloadsDaysOld = int.MaxValue;
             DefaultPostDownloadCommand = "";
+            DefaultPostDownloadArguments = "";
+            DefaultPostDownloadWorkingDirectory = "";
 
             FreeSpaceToLeaveOnDestination = 0;
             FreeSpaceToLeaveOnDownload = 0;
@@ -198,6 +210,24 @@ namespace PodcastUtilities.Common.Configuration
         public string GetDefaultPostDownloadCommand()
         {
             return DefaultPostDownloadCommand;
+        }
+
+        /// <summary>
+        /// the global default for post download command args
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public string GetDefaultPostDownloadArguments()
+        {
+            return DefaultPostDownloadArguments;
+        }
+
+        /// <summary>
+        /// the global default for post download command cwd
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public string GetDefaultPostDownloadWorkingDirectory()
+        {
+            return DefaultPostDownloadWorkingDirectory;
         }
 
         /// <summary>
@@ -411,6 +441,11 @@ namespace PodcastUtilities.Common.Configuration
                 XmlSerializationHelper.ProcessElement(reader, "feed", ProcessGlobalFeedElements);
                 return result;
             }
+            if (elementName == "postdownloadcommand")
+            {
+                XmlSerializationHelper.ProcessElement(reader, "postdownloadcommand", ProcessGlobalPostDownloadCommandElements);
+                return result;
+            }
             if (elementName == "diagnostics")
             {
                 XmlSerializationHelper.ProcessElement(reader, "diagnostics", ProcessGlobalDiagnosticsElements);
@@ -475,12 +510,6 @@ namespace PodcastUtilities.Common.Configuration
                         DefaultFilePattern = content;
                     }
                     break;
-                case "postdownloadcommand":
-                    if (!string.IsNullOrEmpty(content))
-                    {
-                        DefaultPostDownloadCommand = content;
-                    }
-                    break;
                 case "sortfield":
                     DefaultSortField = PodcastInfo.ReadSortField(content);
                     break;
@@ -512,6 +541,44 @@ namespace PodcastUtilities.Common.Configuration
                     break;
                 case "retainTempFiles":
                     DiagnosticRetainTemporaryFiles = ReadDiagnosticRetainTemporaryFiles(content);
+                    break;
+                default:
+                    result = ProcessorResult.Ignored;
+                    break;
+            }
+            return result;
+        }
+
+        private ProcessorResult ProcessGlobalPostDownloadCommandElements(XmlReader reader)
+        {
+            var result = ProcessorResult.Processed;
+
+            var elementName = reader.LocalName;
+            if (!reader.IsEmptyElement)
+            {
+                reader.Read();
+            }
+            var content = reader.Value.Trim();
+
+            switch (elementName)
+            {
+                case "command":
+                    if (!string.IsNullOrEmpty(content))
+                    {
+                        DefaultPostDownloadCommand = content;
+                    }
+                    break;
+                case "arguments":
+                    if (!string.IsNullOrEmpty(content))
+                    {
+                        DefaultPostDownloadArguments = content;
+                    }
+                    break;
+                case "workingdirectory":
+                    if (!string.IsNullOrEmpty(content))
+                    {
+                        DefaultPostDownloadWorkingDirectory = content;
+                    }
                     break;
                 default:
                     result = ProcessorResult.Ignored;

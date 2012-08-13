@@ -93,7 +93,6 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
             _rootFolder = "c:\\TestRoot";
             _podcastInfo = new PodcastInfo(_controlFile);
             _podcastInfo.Folder = "TestFolder";
-            _podcastInfo.PostDownloadCommand.Value = "DownloadCommand";
             _podcastInfo.Feed = _feedInfo;
 
             _podcastFeedItems = new List<IPodcastFeedItem>(10);
@@ -123,7 +122,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
             _stateProvider.Stub(provider => provider.GetState(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_state);
             _directoryInfoProvider.Stub(dir => dir.GetDirectoryInfo(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_directoryInfo);
 
-            _commandGenerator.Stub(cmd => cmd.ReplaceTokensInCommandline(_podcastInfo.PostDownloadCommand.Value, _rootFolder, null, _podcastInfo)).IgnoreArguments().Return(_externalCommand);
+            _commandGenerator.Stub(cmd => cmd.ReplaceTokensInCommand(null, _rootFolder, null, _podcastInfo)).IgnoreArguments().Return(_externalCommand);
         }
     }
 }

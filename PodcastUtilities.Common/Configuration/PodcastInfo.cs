@@ -24,7 +24,6 @@ namespace PodcastUtilities.Common.Configuration
             AscendingSort = new DefaultableValueTypeItem<bool>(_controlFileGlobalDefaults.GetDefaultAscendingSort);
             SortField = new DefaultableValueTypeItem<PodcastFileSortField>(_controlFileGlobalDefaults.GetDefaultSortField);
             MaximumNumberOfFiles = new DefaultableValueTypeItem<int>(_controlFileGlobalDefaults.GetDefaultNumberOfFiles);
-            PostDownloadCommand = new DefaultableReferenceTypeItem<string>(_controlFileGlobalDefaults.GetDefaultPostDownloadCommand);
         }
 
 	    /// <summary>
@@ -52,19 +51,27 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         public IFeedInfo Feed { get; set; }
         /// <summary>
-        /// command line to be executed after the podcast has been downloaded
+        /// command to be executed after the podcast has been downloaded
         /// </summary>
-        public IDefaultableItem<string> PostDownloadCommand { get; set; }
+        public ITokenisedCommand PostDownloadCommand { get; set; }
 
-	    /// <summary>
-	    /// create a feed in the podcast
-	    /// </summary>
-	    public void CreateFeed()
-	    {
+        /// <summary>
+        /// create a feed in the podcast
+        /// </summary>
+        public void CreateFeed()
+        {
             Feed = new FeedInfo(_controlFileGlobalDefaults);
         }
 
-	    /// <summary>
+        /// <summary>
+        /// create a post download command in the podcast
+        /// </summary>
+        public void CreatePostDownloadCommand()
+        {
+            PostDownloadCommand = new TokenisedCommand(_controlFileGlobalDefaults);
+        }
+
+        /// <summary>
 	    /// Creates a new object that is a copy of the current instance.
 	    /// </summary>
 	    /// <returns>
@@ -111,6 +118,12 @@ namespace PodcastUtilities.Common.Configuration
                 Feed.ReadXml(reader);
                 return result;
             }
+            if (elementName == "postdownloadcommand")
+            {
+                PostDownloadCommand = new TokenisedCommand(_controlFileGlobalDefaults);
+                PostDownloadCommand.ReadXml(reader);
+                return result;
+            }
 
             if (!reader.IsEmptyElement)
             {
@@ -125,9 +138,6 @@ namespace PodcastUtilities.Common.Configuration
                     break;
                 case "pattern":
                     Pattern.Value = content;
-                    break;
-                case "postdownloadcommand":
-                    PostDownloadCommand.Value = content;
                     break;
                 case "number":
                     MaximumNumberOfFiles.Value = Convert.ToInt32(content, CultureInfo.InvariantCulture);
@@ -169,14 +179,16 @@ namespace PodcastUtilities.Common.Configuration
             {
                 writer.WriteElementString("sortdirection", WriteSortDirection(AscendingSort.Value));
             }
-            if (PostDownloadCommand.IsSet)
-            {
-                writer.WriteElementString("postdownloadcommand",PostDownloadCommand.Value);
-            }
             if (Feed != null)
             {
                 writer.WriteStartElement("feed");
                 Feed.WriteXml(writer);
+                writer.WriteEndElement();
+            }
+            if (PostDownloadCommand != null)
+            {
+                writer.WriteStartElement("postdownloadcommand");
+                PostDownloadCommand.WriteXml(writer);
                 writer.WriteEndElement();
             }
         }

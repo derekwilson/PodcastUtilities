@@ -126,6 +126,22 @@ namespace PodcastUtilities.Common.Configuration
         }
 
         /// <summary>
+        /// the global default for post download command args
+        /// </summary>
+        public void SetDefaultPostDownloadArguments(string command)
+        {
+            DefaultPostDownloadArguments = command;
+        }
+
+        /// <summary>
+        /// the global default for post download command cwd
+        /// </summary>
+        public void SetDefaultPostDownloadWorkingDirectory(string command)
+        {
+            DefaultPostDownloadWorkingDirectory = command;
+        }
+
+        /// <summary>
         /// level of diagnostic output
         /// </summary>
         public void SetDiagnosticOutput(DiagnosticOutputLevel level)
@@ -304,6 +320,12 @@ namespace PodcastUtilities.Common.Configuration
             writer.WriteStartElement("diagnostics");
             writer.WriteElementString("retainTempFiles", WriteDiagnosticRetainTemporaryFiles(DiagnosticRetainTemporaryFiles));
             writer.WriteElementString("outputLevel", WriteDiagnosticOutputLevel(DiagnosticOutput));
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("postdownloadcommand");
+            writer.WriteElementString("command", DefaultPostDownloadCommand);
+            writer.WriteElementString("arguments", DefaultPostDownloadArguments);
+            writer.WriteElementString("workingdirectory", DefaultPostDownloadWorkingDirectory);
             writer.WriteEndElement();
 
             writer.WriteEndElement();
