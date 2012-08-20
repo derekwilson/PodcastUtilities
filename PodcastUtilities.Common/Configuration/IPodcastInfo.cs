@@ -42,5 +42,20 @@ namespace PodcastUtilities.Common.Configuration
         /// create a feed in the podcast
         /// </summary>
         void CreateFeed();
+
+        /// <summary>
+        /// remove a feed from the podcast
+        /// </summary>
+        void RemoveFeed();
+
+        /// <summary>
+        /// create a post download command in the podcast
+        /// </summary>
+        void CreatePostDownloadCommand();
+
+        /// <summary>
+        /// remove a post download command from the podcast
+        /// </summary>
+        void RemovePostDownloadCommand();
     }
 }

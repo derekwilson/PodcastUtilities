@@ -1,9 +1,13 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using NUnit.Framework;
 using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
 {
-    public class WhenCloningAPodcastInfoWithoutAFeed : WhenCloningAPodcastInfo
+    public class WhenCloningAPodcastInfoWithAPostDownloadCommand : WhenCloningAPodcastInfo
     {
         protected override void GivenThat()
         {
@@ -13,6 +17,11 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
             _pocastInfo.MaximumNumberOfFiles.Value = 123;
             _pocastInfo.Pattern.Value = "PATTERN";
             _pocastInfo.SortField.Value = PodcastFileSortField.FileName;
+
+            _pocastInfo.CreatePostDownloadCommand();
+            _pocastInfo.PostDownloadCommand.Command.Value = "CMD";
+            _pocastInfo.PostDownloadCommand.Arguments.Value = "ARGS";
+            _pocastInfo.PostDownloadCommand.WorkingDirectory.Value = "CWD";
         }
 
         protected override void When()
@@ -21,7 +30,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         }
 
         [Test]
-        public void ItShouldCloneThePodcastSortDirection()
+        public void ItShouldCloneThePodcastAscendingSort()
         {
             Assert.That(_clonedPodcast.AscendingSort.Value, Is.EqualTo(true));
         }
@@ -39,12 +48,6 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         }
 
         [Test]
-        public void ItShouldCloneThePodcastPattern()
-        {
-            Assert.That(_clonedPodcast.Pattern.Value, Is.EqualTo("PATTERN"));
-        }
-
-        [Test]
         public void ItShouldCloneThePodcastSortField()
         {
             Assert.That(_clonedPodcast.SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
@@ -53,7 +56,19 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         [Test]
         public void ItShouldCloneThePostDownloadCommand()
         {
-            Assert.That(_clonedPodcast.PostDownloadCommand, Is.Null);
+            Assert.That(_clonedPodcast.PostDownloadCommand.Command.Value, Is.EqualTo("CMD"));
+        }
+
+        [Test]
+        public void ItShouldCloneThePostDownloadCommandArgs()
+        {
+            Assert.That(_clonedPodcast.PostDownloadCommand.Arguments.Value, Is.EqualTo("ARGS"));
+        }
+
+        [Test]
+        public void ItShouldCloneThePostDownloadCommandWorkingDir()
+        {
+            Assert.That(_clonedPodcast.PostDownloadCommand.WorkingDirectory.Value, Is.EqualTo("CWD"));
         }
 
     }
