@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using NUnit.Framework;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Playlists;
 
@@ -108,6 +109,13 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
         {
             Assert.That(_clonedControlFile.GetDiagnosticRetainTemporaryFiles(), Is.EqualTo(true));
         }
+
+        [Test]
+        public void ItShouldCloneThePodcasts()
+        {
+            Assert.That(_clonedControlFile.GetPodcasts().Count(), Is.EqualTo(3));
+        }
+
     }
 }
 
