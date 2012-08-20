@@ -63,6 +63,12 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Serialisa
         }
 
         [Test]
+        public void ItShouldReadPodcast1PostDownloadCommand()
+        {
+            Assert.That(_controlFile.GetPodcasts().ElementAt(0).PostDownloadCommand, Is.Null);
+        }
+
+        [Test]
         public void ItShouldReadPodcast2()
         {
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Folder, Is.EqualTo("Hanselminutes"));
@@ -85,6 +91,18 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Serialisa
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.MaximumDaysOld.IsSet, Is.EqualTo(false));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DeleteDownloadsDaysOld.IsSet, Is.EqualTo(false));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DownloadStrategy.IsSet, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void ItShouldReadPodcast2PostDownloadCommand()
+        {
+            Assert.That(_controlFile.GetPodcasts().ElementAt(1).PostDownloadCommand.Command.Value, Is.EqualTo("different command"));
+        }
+
+        [Test]
+        public void ItShouldReadPodcast3PostDownloadCommand()
+        {
+            Assert.That(_controlFile.GetPodcasts().ElementAt(2).PostDownloadCommand.Command.Value, Is.EqualTo("command"));
         }
 
         [Test]

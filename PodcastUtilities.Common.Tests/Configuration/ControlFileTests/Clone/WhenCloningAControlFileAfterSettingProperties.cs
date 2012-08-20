@@ -1,6 +1,11 @@
-﻿using NUnit.Framework;
+﻿using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Xml;
+using NUnit.Framework;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Playlists;
+
 
 namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
 {
@@ -154,6 +159,12 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
         public void ItShouldCloneTheDefaultPostDownloadWorkingDirectory()
         {
             Assert.That(_clonedControlFile.GetDefaultPostDownloadWorkingDirectory(), Is.EqualTo("CWD"));
+        }
+
+        [Test]
+        public void ItShouldCloneThePodcasts()
+        {
+            Assert.That(_clonedControlFile.GetPodcasts().Count(), Is.EqualTo(3));
         }
 
     }

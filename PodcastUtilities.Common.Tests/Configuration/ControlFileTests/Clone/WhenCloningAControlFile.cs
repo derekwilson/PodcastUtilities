@@ -24,5 +24,6 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
         {
             Assert.That(_controlFile.GetSchema(), Is.Null);
         }
+
     }
 }
