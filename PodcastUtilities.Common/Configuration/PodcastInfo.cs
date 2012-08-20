@@ -64,11 +64,27 @@ namespace PodcastUtilities.Common.Configuration
         }
 
         /// <summary>
+        /// remove a feed from the podcast
+        /// </summary>
+        public void RemoveFeed()
+        {
+            Feed = new FeedInfo(_controlFileGlobalDefaults);
+        }
+
+        /// <summary>
         /// create a post download command in the podcast
         /// </summary>
         public void CreatePostDownloadCommand()
         {
             PostDownloadCommand = new TokenisedCommand(_controlFileGlobalDefaults);
+        }
+
+        /// <summary>
+        /// remove a post download command from the podcast
+        /// </summary>
+        public void RemovePostDownloadCommand()
+        {
+            PostDownloadCommand = null;
         }
 
         /// <summary>
@@ -120,7 +136,7 @@ namespace PodcastUtilities.Common.Configuration
             }
             if (elementName == "postdownloadcommand")
             {
-                PostDownloadCommand = new TokenisedCommand(_controlFileGlobalDefaults);
+                CreatePostDownloadCommand();
                 PostDownloadCommand.ReadXml(reader);
                 return result;
             }

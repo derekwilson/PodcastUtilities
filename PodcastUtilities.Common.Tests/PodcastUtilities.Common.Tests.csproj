@@ -115,7 +115,9 @@
     <Compile Include="Configuration\FeedInfoTests\Serialisation\Write\WhenWritingAnUnpopulatedFeedInfo.cs" />
     <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfo.cs" />
     <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfoWithAFeed.cs" />
-    <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfoWithoutAFeed.cs" />
+    <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfoWithAnEmptyPostDownloadCommand.cs" />
+    <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfoWithAPostDownloadCommand.cs" />
+    <Compile Include="Configuration\PodcastInfoTests\Clone\WhenCloningAPodcastInfoWithoutOptionalElements.cs" />
     <Compile Include="Configuration\PodcastInfoTests\Serialisation\Write\WhenWritingAnUnpopulatedPodcastInfo.cs" />
     <Compile Include="Configuration\PodcastInfoTests\Serialisation\Write\WhenWritingAPodcastInfo.cs" />
     <Compile Include="Configuration\PodcastInfoTests\Serialisation\Write\WhenWritingAPopulatedPodcastInfo.cs" />
