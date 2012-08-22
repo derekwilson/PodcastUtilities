@@ -20,6 +20,7 @@ namespace PodcastUtilities.Common.Feeds
         private readonly IFileUtilities _fileUtilities;
         private readonly IStateProvider _stateProvider;
         private readonly ICounterFactory _counterFactory;
+        private readonly ICommandExecuter _commandExecuter;
 
         private readonly object _lock = new object();
         private IWebClient _client;
@@ -87,9 +88,10 @@ namespace PodcastUtilities.Common.Feeds
         /// <summary>
         /// create a task
         /// </summary>
-        public EpisodeDownloader(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities, IStateProvider stateProvider, ICounterFactory counterFactory)
+        public EpisodeDownloader(IWebClientFactory webClientFactory, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities, IStateProvider stateProvider, ICounterFactory counterFactory, ICommandExecuter commandExecuter)
         {
             _webClientFactory = webClientFactory;
+            _commandExecuter = commandExecuter;
             _counterFactory = counterFactory;
             _stateProvider = stateProvider;
             _fileUtilities = fileUtilities;
@@ -237,6 +239,11 @@ namespace PodcastUtilities.Common.Feeds
                             }
                         }
                     } while (retry > 0);
+
+                    if (_syncItem.PostDownloadCommand != null)
+                    {
+                        OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, string.Format(CultureInfo.InvariantCulture, "Executing: {0} {1}", _syncItem.PostDownloadCommand.Command,_syncItem.PostDownloadCommand.Arguments), null));
+                    }
                 }
 
                 OnStatusUpdate(args);

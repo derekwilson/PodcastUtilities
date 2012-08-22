@@ -33,6 +33,7 @@ namespace PodcastUtilities.Ioc
             container.Register<IPerfmonCounterCreationDataProvider, SystemPerfmonCounterCreationDataProvider>();
             container.Register<ICategoryInstaller, CategoryInstaller>();
             container.Register<ICounterFactory, CounterFactory>();
+            container.Register<ICommandExecuter, WindowsCommandExecuter>();
         }
 
         [CLSCompliant(false)]

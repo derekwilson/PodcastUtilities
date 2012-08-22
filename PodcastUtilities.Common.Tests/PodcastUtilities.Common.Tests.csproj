@@ -124,6 +124,10 @@
     <Compile Include="DisplayFormatterTests\WhenTestingTheRenderFileSizeDisplayFormatter.cs" />
     <Compile Include="Exceptions\DownloaderExceptionTests\WhenCreatingAnException.cs" />
     <Compile Include="Exceptions\DownloaderExceptionTests\WhenCreatingAnExceptionWithAnInnerException.cs" />
+    <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithADestinationPathToken.cs" />
+    <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithADownloadFolderToken.cs" />
+    <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithADownloadRootToken.cs" />
+    <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithALiteralCommandline.cs" />
     <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithANullCommandline.cs" />
     <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGenerator.cs" />
     <Compile Include="Feeds\DownloaderTests\WhenTestingTheDownloaderInRssRetainingTheFile.cs" />
