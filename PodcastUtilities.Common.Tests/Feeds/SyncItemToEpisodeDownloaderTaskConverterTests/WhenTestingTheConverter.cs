@@ -14,6 +14,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.SyncItemToEpisodeDownloaderTaskCon
         protected IFileUtilities _fileUtilities;
         protected IStateProvider _stateProvider;
         protected ICounterFactory _counterFactory;
+        protected ICommandExecuter _commandExecuter;
 
         protected IEpisodeDownloaderFactory _downloaderFactory;
 
@@ -27,7 +28,8 @@ namespace PodcastUtilities.Common.Tests.Feeds.SyncItemToEpisodeDownloaderTaskCon
             _counterFactory = GenerateMock<ICounterFactory>();
             _stateProvider = GenerateMock<IStateProvider>();
             _webClientFactory = GenerateMock<IWebClientFactory>();
-            _downloaderFactory = new EpisodeDownloaderFactory(_webClientFactory,_directoryInfoProvider,_fileUtilities,_stateProvider,_counterFactory);
+            _commandExecuter = GenerateMock<ICommandExecuter>();
+            _downloaderFactory = new EpisodeDownloaderFactory(_webClientFactory, _directoryInfoProvider, _fileUtilities, _stateProvider, _counterFactory, _commandExecuter);
             _downloadItems = new List<ISyncItem>(10);
 
             SetupData();

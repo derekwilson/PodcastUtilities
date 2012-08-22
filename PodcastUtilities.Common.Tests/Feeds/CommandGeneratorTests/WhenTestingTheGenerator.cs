@@ -41,7 +41,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.CommandGeneratorTests
             _command.WorkingDirectory.Value = "CWD";
 
             _rootFolder = @"c:\root";
-            _destinationPathname = @"c:\root\destination";
+            _destinationPathname = @"c:\root\TestFolder\destination.xyz";
             _podcastInfo = new PodcastInfo(_controlFile);
 
             _feedAddress = "http://test";

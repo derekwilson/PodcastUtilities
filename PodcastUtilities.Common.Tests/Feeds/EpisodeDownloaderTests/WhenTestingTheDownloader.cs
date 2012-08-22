@@ -29,6 +29,8 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests
         protected IAverageCounter _averageCounterTime;
         protected IAverageCounter _averageCounterSize;
 
+        protected ICommandExecuter _commandExecuter;
+
         protected IDirectoryInfoProvider _directoryInfoProvider;
         protected IFileUtilities _fileUtilities;
         protected IDirectoryInfo _directoryInfo;
@@ -50,6 +52,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests
             _averageCounterTime = GenerateMock<IAverageCounter>();
             _averageCounterSize = GenerateMock<IAverageCounter>();
             _state = GenerateMock<IState>();
+            _commandExecuter = GenerateMock<ICommandExecuter>();
 
             _syncItem = new SyncItem();
             _exception = null;
@@ -57,7 +60,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests
             SetupData();
             SetupStubs();
 
-            _downloader = new EpisodeDownloader(_webClientFactory, _directoryInfoProvider,_fileUtilities,_stateProvider,_counterFactory);
+            _downloader = new EpisodeDownloader(_webClientFactory, _directoryInfoProvider,_fileUtilities,_stateProvider,_counterFactory,_commandExecuter);
             _downloader.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(DownloaderStatusUpdate);
             _downloader.ProgressUpdate += new EventHandler<ProgressEventArgs>(DownloaderProgressUpdate);
         }

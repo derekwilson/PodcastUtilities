@@ -7,7 +7,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests
     {
         protected override void When()
         {
-            _downloader = new EpisodeDownloader(_webClientFactory,_directoryInfoProvider,_fileUtilities,_stateProvider,_counterFactory);
+            _downloader = new EpisodeDownloader(_webClientFactory,_directoryInfoProvider,_fileUtilities,_stateProvider,_counterFactory,_commandExecuter);
         }
 
         [Test]

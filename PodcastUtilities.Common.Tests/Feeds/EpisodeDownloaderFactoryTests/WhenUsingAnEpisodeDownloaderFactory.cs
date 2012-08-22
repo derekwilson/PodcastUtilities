@@ -14,6 +14,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderFactoryTests
         private IEpisodeDownloader _downloader;
         private IStateProvider _stateProvider;
         protected ICounterFactory _counterFactory;
+        private ICommandExecuter _commandExecuter;
 
         protected override void GivenThat()
         {
@@ -23,7 +24,8 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderFactoryTests
             _webClientFactory = new WebClientFactory();
             _directoryInfoProvider = GenerateMock<IDirectoryInfoProvider>();
             _fileUtilities = GenerateMock<IFileUtilities>();
-            _factory = new EpisodeDownloaderFactory(_webClientFactory, _directoryInfoProvider,_fileUtilities,_stateProvider,_counterFactory);
+            _commandExecuter = GenerateMock<ICommandExecuter>();
+            _factory = new EpisodeDownloaderFactory(_webClientFactory, _directoryInfoProvider, _fileUtilities, _stateProvider, _counterFactory, _commandExecuter);
         }
 
         protected override void When()
