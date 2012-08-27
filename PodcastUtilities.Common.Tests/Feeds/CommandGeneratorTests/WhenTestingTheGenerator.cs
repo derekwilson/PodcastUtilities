@@ -2,6 +2,8 @@
 using NUnit.Framework;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
+using PodcastUtilities.Common.Platform;
+using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.Feeds.CommandGeneratorTests
 {
@@ -21,16 +23,22 @@ namespace PodcastUtilities.Common.Tests.Feeds.CommandGeneratorTests
         protected PodcastInfo _podcastInfo;
         protected IReadOnlyControlFile _controlFile;
 
+        protected IEnvironmentInformationProvider _environmentInformationProvider;
+        protected IDirectoryInfo _directoryInfo;
+
         protected override void GivenThat()
         {
             base.GivenThat();
 
             _controlFile = TestControlFileFactory.CreateControlFile();
 
+            _environmentInformationProvider = GenerateMock<IEnvironmentInformationProvider>();
+            _directoryInfo = GenerateMock<IDirectoryInfo>();
+
             SetupData();
             SetupStubs();
 
-            _generator = new CommandGenerator();
+            _generator = new CommandGenerator(_environmentInformationProvider);
         }
 
         protected virtual void SetupData()
@@ -60,6 +68,8 @@ namespace PodcastUtilities.Common.Tests.Feeds.CommandGeneratorTests
 
         protected virtual void SetupStubs()
         {
+            _directoryInfo.Stub(di => di.FullName).Return(@"c:\test");
+            _environmentInformationProvider.Stub(ei => ei.GetCurrentApplicationDirectory()).Return(_directoryInfo);
         }
     }
 
