@@ -115,6 +115,7 @@
     <Compile Include="Perfmon\CategoryInstaller.cs" />
     <Compile Include="Perfmon\ICounterFactory.cs" />
     <Compile Include="Platform\ICommandExecuter.cs" />
+    <Compile Include="Platform\IEnvironmentInformationProvider.cs" />
     <Compile Include="Platform\SystemPerfmonCounter.cs" />
     <Compile Include="Perfmon\CounterFactory.cs" />
     <Compile Include="Perfmon\IAverageCounter.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Platform\IPerfmonCounterUtilities.cs" />
     <Compile Include="Platform\SystemPerfmonCounterUtilities.cs" />
     <Compile Include="Platform\WindowsCommandExecuter.cs" />
+    <Compile Include="Platform\WindowsEnvironmentInformationProvider.cs" />
     <Compile Include="ProgressEventArgs.cs" />
     <Compile Include="IProgressUpdate.cs" />
     <Compile Include="Feeds\ISyncItem.cs" />

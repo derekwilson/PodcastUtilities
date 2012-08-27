@@ -34,6 +34,7 @@ namespace PodcastUtilities.Ioc
             container.Register<ICategoryInstaller, CategoryInstaller>();
             container.Register<ICounterFactory, CounterFactory>();
             container.Register<ICommandExecuter, WindowsCommandExecuter>();
+            container.Register<IEnvironmentInformationProvider, WindowsEnvironmentInformationProvider>();
         }
 
         [CLSCompliant(false)]
