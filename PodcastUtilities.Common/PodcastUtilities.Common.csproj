@@ -104,6 +104,7 @@
     <Compile Include="Feeds\IExternalCommand.cs" />
     <Compile Include="Files\IEpisodePurger.cs" />
     <Compile Include="Configuration\IPodcastFactory.cs" />
+    <Compile Include="IocLifecycle.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="IStateProvider.cs" />
     <Compile Include="Configuration\PodcastEpisodeDownloadStrategy.cs" />
@@ -114,8 +115,13 @@
     <Compile Include="Perfmon\AverageCounter.cs" />
     <Compile Include="Perfmon\CategoryInstaller.cs" />
     <Compile Include="Perfmon\ICounterFactory.cs" />
+    <Compile Include="Platform\FileSystemAwareDirectoryInfoProvider.cs" />
     <Compile Include="Platform\ICommandExecuter.cs" />
     <Compile Include="Platform\IEnvironmentInformationProvider.cs" />
+    <Compile Include="Platform\Mtp\DirectoryInfo.cs" />
+    <Compile Include="Platform\Mtp\FileInfo.cs" />
+    <Compile Include="Platform\Mtp\MtpDirectoryInfoProvider.cs" />
+    <Compile Include="Platform\Mtp\MtpPath.cs" />
     <Compile Include="Platform\SystemPerfmonCounter.cs" />
     <Compile Include="Perfmon\CounterFactory.cs" />
     <Compile Include="Perfmon\IAverageCounter.cs" />
@@ -227,7 +233,12 @@
   <ItemGroup>
     <EmbeddedResource Include="XML\state.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PodcastUtilities.PortableDevices\PodcastUtilities.PortableDevices.csproj">
+      <Project>{A3FE8B09-71F1-4D97-8109-F946F90FEFB9}</Project>
+      <Name>PodcastUtilities.PortableDevices</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

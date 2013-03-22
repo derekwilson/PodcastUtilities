@@ -6,11 +6,6 @@ namespace PodcastUtilities.Common.Platform
     public interface IDirectoryInfo
 	{
 		/// <summary>
-		/// gets the abstract root of the filing system
-		/// </summary>
-        IDirectoryInfo Root { get; }
-
-		/// <summary>
 		/// the full pathname of the directory
 		/// </summary>
         string FullName { get; }

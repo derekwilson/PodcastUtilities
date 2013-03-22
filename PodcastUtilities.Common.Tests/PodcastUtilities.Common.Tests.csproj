@@ -148,6 +148,11 @@
     <Compile Include="Files\SorterTests\WhenSortingByNameAscending.cs" />
     <Compile Include="Files\SorterTests\WhenSortingByNameDescending.cs" />
     <Compile Include="Files\SorterTests\WhenTestingTheSorter.cs" />
+    <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenGettingDirectoryInfoAndDeviceIsFound.cs" />
+    <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenGettingDirectoryInfoAndDeviceIsNotFound.cs" />
+    <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenTestingMtpDirectoryInfoProvider.cs" />
+    <Compile Include="Platform\Mtp\MtpPathTests\WhenPathDoesNotHaveMtpPrefix.cs" />
+    <Compile Include="Platform\Mtp\MtpPathTests\WhenPathHasMtpPrefix.cs" />
     <Compile Include="Playlists\PlaylistAsxTests\WhenAddinATrackToAnInvalidPlaylist.cs" />
     <Compile Include="Playlists\PlaylistAsxTests\WhenAddingTrackContainingAmpersands.cs" />
     <Compile Include="Playlists\PlaylistAsxTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
@@ -251,6 +256,10 @@
     <ProjectReference Include="..\PodcastUtilities.Common\PodcastUtilities.Common.csproj">
       <Project>{37562F85-B1BD-4AB8-B74B-685B05F9CF41}</Project>
       <Name>PodcastUtilities.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PodcastUtilities.PortableDevices\PodcastUtilities.PortableDevices.csproj">
+      <Project>{A3FE8B09-71F1-4D97-8109-F946F90FEFB9}</Project>
+      <Name>PodcastUtilities.PortableDevices</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

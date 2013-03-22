@@ -29,14 +29,6 @@ namespace PodcastUtilities.Common.Platform
 		}
 
         /// <summary>
-        /// gets the abstract root of the filing system
-        /// </summary>
-        public IDirectoryInfo Root
-		{
-			get { return new SystemDirectoryInfo(_directoryInfo.Root); }
-		}
-
-        /// <summary>
         /// true if it exists
         /// </summary>
         public bool Exists
