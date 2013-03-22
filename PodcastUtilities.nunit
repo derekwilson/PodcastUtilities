@@ -1,0 +1,11 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Debug" />
+  <Config name="Release" binpathtype="Auto">
+    <assembly path="PodcastUtilities.Common.Tests\bin\Release\PodcastUtilities.Common.Tests.dll" />
+    <assembly path="PodcastUtilities.Presentation.Tests\bin\Release\PodcastUtilities.Presentation.Tests.dll" />
+  </Config>
+  <Config name="Debug" binpathtype="Auto">
+    <assembly path="PodcastUtilities.Common.Tests\bin\Debug\PodcastUtilities.Common.Tests.dll" />
+    <assembly path="PodcastUtilities.Presentation.Tests\bin\Debug\PodcastUtilities.Presentation.Tests.dll" />
+  </Config>
+</NUnitProject>

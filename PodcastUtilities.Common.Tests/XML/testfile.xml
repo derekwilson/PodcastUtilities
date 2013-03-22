@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xmlfile>
+    <element>
+        <subelement attr="attrvalue1">subelementvalue1</subelement>
+        <subelement attr="attrvalue2">subelementvalue2</subelement>
+    </element>
+</xmlfile>

@@ -1,0 +1,31 @@
+<Project DefaultTargets="CopyToCurrentBuild" InitialTargets="ValidateParameters" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+
+	<PropertyGroup Condition=" '$(Configuration)' == '' ">
+		<Configuration>Release</Configuration>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Files Include="$(MSBuildProjectDirectory)\..\Documents\User\*"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\Documents\Developer\Help\*.chm"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts\bin\$(Configuration)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts\bin\$(Configuration)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist\bin\$(Configuration)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist\bin\$(Configuration)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts\bin\$(Configuration)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts\bin\$(Configuration)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts\bin\$(Configuration)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts\bin\$(Configuration)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.exe"/>
+	</ItemGroup>
+
+	<Target Name="CopyToCurrentBuild" DependsOnTargets="">
+		<Copy SourceFiles="@(Files)" DestinationFolder="$(BuildOutputRoot)"></Copy>
+	</Target>
+
+	<Target Name="ValidateParameters">
+		<Error Text="Missing parameter 'BuildOutputRoot'" Condition="'$(BuildOutputRoot)' == ''" />
+	</Target>
+</Project>
