@@ -1,8 +1,10 @@
+using System;
 using PortableDeviceApiLib;
 
 namespace PodcastUtilities.PortableDevices
 {
-    internal interface IPortableDeviceFactory
+    [CLSCompliant(false)]
+    public interface IPortableDeviceFactory
     {
         IPortableDevice Create(string deviceId);
     }

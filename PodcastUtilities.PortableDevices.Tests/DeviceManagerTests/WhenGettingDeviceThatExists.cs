@@ -7,18 +7,9 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceManagerTests
     {
         protected IDevice Device { get; set; }
 
-        protected override void GivenThat()
-        {
-            base.GivenThat();
-
-            PortableDeviceFactory.Stub(factory => factory.Create("Device_Id_2"))
-                .Return(PortableDevice);
-
-        }
-
         protected override void When()
         {
-            Device = DeviceManager.GetDevice("D_2");
+            Device = DeviceManager.GetDevice("Device 2");
         }
 
         [Test]
@@ -26,7 +17,7 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceManagerTests
         {
             Assert.That(Device, Is.Not.Null);
             Assert.That(Device.Id, Is.EqualTo("Device_Id_2"));
-            Assert.That(Device.Name, Is.EqualTo("D_2"));
+            Assert.That(Device.Name, Is.EqualTo("Device 2"));
         }
     }
 }

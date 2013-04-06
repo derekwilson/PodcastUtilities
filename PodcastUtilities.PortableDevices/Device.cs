@@ -8,6 +8,7 @@ namespace PodcastUtilities.PortableDevices
         private readonly IPortableDeviceManager _portableDeviceManager;
         private readonly IPortableDeviceFactory _portableDeviceFactory;
         private IPortableDevice _portableDevice;
+//        private IPortableDeviceContent _portableDeviceContent;
         private string _name;
 
         internal Device(
@@ -35,7 +36,7 @@ namespace PodcastUtilities.PortableDevices
 
         private IPortableDevice OpenDevice(string id)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         private string GetDeviceName()
