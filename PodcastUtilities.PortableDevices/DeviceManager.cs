@@ -7,29 +7,35 @@ namespace PodcastUtilities.PortableDevices
     public class DeviceManager : IDeviceManager
     {
         private readonly IPortableDeviceManager _portableDeviceManager;
-        private readonly IPortableDeviceFactory _portableDeviceFactory;
+        private readonly IDeviceFactory _deviceFactory;
 
-        private Dictionary<string, Device> _deviceNameCache;
-        private Dictionary<string, Device> _deviceIdCache;
+        private Dictionary<string, IDevice> _deviceNameCache;
+        private Dictionary<string, IDevice> _deviceIdCache;
 
         public DeviceManager()
-            : this(new PortableDeviceManagerClass(), new PortableDeviceFactory())
+            : this(new PortableDeviceManagerClass())
+        {
+        }
+
+        internal DeviceManager(
+            IPortableDeviceManager portableDeviceManager)
+            : this(portableDeviceManager, new DeviceFactory(portableDeviceManager))
         {
         }
 
         internal DeviceManager(
             IPortableDeviceManager portableDeviceManager,
-            IPortableDeviceFactory portableDeviceFactory)
+            IDeviceFactory deviceFactory)
         {
             _portableDeviceManager = portableDeviceManager;
-            _portableDeviceFactory = portableDeviceFactory;
+            _deviceFactory = deviceFactory;
         }
 
         public IDevice GetDevice(string deviceName)
         {
             EnumerateDevices();
 
-            Device device;
+            IDevice device;
             _deviceNameCache.TryGetValue(deviceName, out device);
 
             return device;
@@ -54,9 +60,9 @@ namespace PodcastUtilities.PortableDevices
             _deviceIdCache = devices.ToDictionary(device => device.Id);
         }
 
-        private Device CreateDevice(string id)
+        private IDevice CreateDevice(string id)
         {
-            return new Device(_portableDeviceManager, _portableDeviceFactory, id);
+            return _deviceFactory.CreateDevice(id);
         }
     }
 }
