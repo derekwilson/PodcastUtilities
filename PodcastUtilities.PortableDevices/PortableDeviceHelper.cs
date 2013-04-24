@@ -20,6 +20,24 @@ namespace PodcastUtilities.PortableDevices
                 });
         }
 
+        public string GetObjectFileName(IPortableDeviceContent deviceContent, string objectId)
+        {
+            // Tries to get the original filename property if it exists (ie. for real files/directories), falls
+            // back to object name for non-file objects (eg. device, Internal Storage, etc.)
+
+            try
+            {
+                return GetStringProperty(
+                    deviceContent,
+                    objectId,
+                    PortableDevicePropertyKeys.WPD_OBJECT_ORIGINAL_FILE_NAME);
+            }
+            catch (Exception)
+            {
+                return GetObjectName(deviceContent, objectId);
+            }
+        }
+
         public string GetObjectName(IPortableDeviceContent deviceContent, string objectId)
         {
             return GetStringProperty(
@@ -34,6 +52,25 @@ namespace PodcastUtilities.PortableDevices
                 deviceContent, 
                 objectId,
                 PortableDevicePropertyKeys.WPD_OBJECT_CONTENT_TYPE);
+        }
+
+        public DateTime GetObjectCreationTime(IPortableDeviceContent deviceContent, string objectId)
+        {
+            // Try the creation date, fall back to modified date
+            try
+            {
+                return GetDateProperty(
+                    deviceContent,
+                    objectId,
+                    PortableDevicePropertyKeys.WPD_OBJECT_DATE_CREATED);
+            }
+            catch (Exception)
+            {
+                return GetDateProperty(
+                    deviceContent,
+                    objectId,
+                    PortableDevicePropertyKeys.WPD_OBJECT_DATE_MODIFIED);
+            }
         }
 
         public string GetStringProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key)
@@ -54,6 +91,16 @@ namespace PodcastUtilities.PortableDevices
             deviceValues.GetGuidValue(ref key, out value);
 
             return value;
+        }
+
+        public DateTime GetDateProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key)
+        {
+            var deviceValues = GetDeviceValues(deviceContent, key, objectId);
+
+            tag_inner_PROPVARIANT value;
+            deviceValues.GetValue(ref key, out value);
+
+            return PropVariant.FromValue(value).ToDate();
         }
 
         public IEnumerable<string> GetChildObjectIds(IPortableDeviceContent deviceContent, string parentId)

@@ -8,6 +8,11 @@ namespace PodcastUtilities.PortableDevices
         public const string WPD_DEVICE_OBJECT_ID = "DEVICE";
 
         public const int VT_LPWSTR = 31;
+        public const int VT_CLSID = 72;
+        public const int VT_DATE = 7;
+        public const int VT_BOOL = 11;
+        public const int VT_UI4 = 19;
+        public const int VT_UI8 = 21;
 
         public static Guid WPD_CONTENT_TYPE_FOLDER;
         public static Guid WPD_CONTENT_TYPE_FUNCTIONAL_OBJECT;

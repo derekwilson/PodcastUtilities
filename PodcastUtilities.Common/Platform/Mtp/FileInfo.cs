@@ -12,6 +12,7 @@ namespace PodcastUtilities.Common.Platform.Mtp
         private readonly IDevice _device;
         private IDeviceObject _deviceObject;
         private readonly string _path;
+        private DateTime _creationTime;
 
         internal FileInfo(IDevice device, string path)
             : this(device, null, path)
@@ -23,6 +24,7 @@ namespace PodcastUtilities.Common.Platform.Mtp
             _device = device;
             _deviceObject = deviceObject;
             _path = path;
+            _creationTime = DateTime.MinValue;
         }
 
         /// <summary>
@@ -46,7 +48,11 @@ namespace PodcastUtilities.Common.Platform.Mtp
         /// </summary>
         public DateTime CreationTime
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                // TODO
+                return _creationTime;
+            }
         }
 
         private IDeviceObject DeviceObject

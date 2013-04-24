@@ -62,7 +62,7 @@ namespace PodcastUtilities.PortableDevices
 
         private IDeviceObject CreateDeviceObject(string objectId)
         {
-            var objectName = _portableDeviceHelper.GetObjectName(_portableDeviceContent, objectId);
+            var objectName = _portableDeviceHelper.GetObjectFileName(_portableDeviceContent, objectId);
 
             return new DeviceObject(_portableDeviceHelper, _portableDeviceContent, objectId, objectName);
         }
