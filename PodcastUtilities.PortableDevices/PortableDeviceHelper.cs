@@ -1,0 +1,140 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using PortableDeviceApiLib;
+
+namespace PodcastUtilities.PortableDevices
+{
+    internal class PortableDeviceHelper : IPortableDeviceHelper
+    {
+        public string GetDeviceFriendlyName(IPortableDeviceManager portableDeviceManager, string deviceId)
+        {
+            return GetDeviceStringProperty(
+                portableDeviceManager,
+                deviceId,
+                (dm, id, value, count) =>
+                {
+                    dm.GetDeviceFriendlyName(id, value, ref count);
+                    return count;
+                });
+        }
+
+        public string GetObjectName(IPortableDeviceContent deviceContent, string objectId)
+        {
+            return GetStringProperty(
+                deviceContent, 
+                objectId,
+                PortableDevicePropertyKeys.WPD_OBJECT_NAME);
+        }
+
+        public Guid GetObjectContentType(IPortableDeviceContent deviceContent, string objectId)
+        {
+            return GetGuidProperty(
+                deviceContent, 
+                objectId,
+                PortableDevicePropertyKeys.WPD_OBJECT_CONTENT_TYPE);
+        }
+
+        public string GetStringProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key)
+        {
+            var deviceValues = GetDeviceValues(deviceContent, key, objectId);
+
+            string value;
+            deviceValues.GetStringValue(ref key, out value);
+
+            return value;
+        }
+
+        public Guid GetGuidProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key)
+        {
+            var deviceValues = GetDeviceValues(deviceContent, key, objectId);
+
+            Guid value;
+            deviceValues.GetGuidValue(ref key, out value);
+
+            return value;
+        }
+
+        public IEnumerable<string> GetChildObjectIds(IPortableDeviceContent deviceContent, string parentId)
+        {
+            var childObjectIds = new List<string>();
+
+            IEnumPortableDeviceObjectIDs objectIdEnumerator;
+            deviceContent.EnumObjects(0, parentId, null, out objectIdEnumerator);
+
+            const int numberOfObjects = 1;
+            uint numberReturned;
+
+            do
+            {
+                numberReturned = 0;
+                string childObjectId;
+                objectIdEnumerator.Next(numberOfObjects, out childObjectId, ref numberReturned);
+
+                if (numberReturned != 0)
+                {
+                    childObjectIds.Add(childObjectId);
+                }
+
+            } while (numberReturned != 0);
+
+            return childObjectIds;
+        }
+
+        private static IPortableDeviceValues GetDeviceValues(IPortableDeviceContent deviceContent, _tagpropertykey key, string objectId)
+        {
+            IPortableDeviceProperties deviceProperties;
+            deviceContent.Properties(out deviceProperties);
+
+            var keyCollection = (IPortableDeviceKeyCollection)new PortableDeviceTypesLib.PortableDeviceKeyCollectionClass();
+            keyCollection.Add(key);
+
+            IPortableDeviceValues deviceValues;
+            deviceProperties.GetValues(objectId, keyCollection, out deviceValues);
+            return deviceValues;
+        }
+
+        private static string GetDeviceStringProperty(
+            IPortableDeviceManager deviceManager,
+            string deviceId,
+            Func<IPortableDeviceManager, string, ushort[], uint, uint> propertyGetter)
+        {
+            uint propertyValueCount = 0;
+
+            try
+            {
+                // First, pass NULL to get the total number of characters to allocate for the string value.
+                propertyValueCount = propertyGetter(deviceManager, deviceId, null, 0);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("-- Exception reading property for device {0}", deviceId);
+                Console.WriteLine(exception);
+                Console.WriteLine();
+            }
+
+            if (propertyValueCount == 0)
+            {
+                return null;
+            }
+
+            var propertyValue = new ushort[propertyValueCount];
+
+            propertyGetter(deviceManager, deviceId, propertyValue, propertyValueCount);
+
+            return ConvertToString(propertyValue);
+        }
+
+        private static string ConvertToString(ushort[] characters)
+        {
+            var builder = new StringBuilder();
+
+            builder.Append(characters.Select(c => (char)c).ToArray());
+
+            builder.Replace("\0", "");
+
+            return builder.ToString();
+        }
+    }
+}

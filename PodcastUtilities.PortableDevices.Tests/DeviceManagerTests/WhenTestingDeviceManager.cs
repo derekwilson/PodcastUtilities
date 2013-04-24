@@ -18,8 +18,6 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceManagerTests
         {
             base.GivenThat();
 
-            // Using a generated stub doesn't work as the stub seems to get confused with
-            // all the Marshalling gubbins on the interface.
             PortableDeviceManager = new MockPortableDeviceManager();
 
             PortableDevice = GenerateMock<IPortableDevice>();

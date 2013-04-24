@@ -6,6 +6,7 @@ using PodcastUtilities.Common.Files;
 using PodcastUtilities.Common.Perfmon;
 using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Common.Playlists;
+using PodcastUtilities.PortableDevices;
 
 namespace PodcastUtilities.Ioc
 {
@@ -15,7 +16,7 @@ namespace PodcastUtilities.Ioc
         public static void RegisterFileServices(IIocContainer container)
 		{
 			container.Register<IDriveInfoProvider, SystemDriveInfoProvider>();
-			container.Register<IDirectoryInfoProvider, SystemDirectoryInfoProvider>();
+			container.Register<IDirectoryInfoProvider, FileSystemAwareDirectoryInfoProvider>();
 			container.Register<IFileUtilities, FileUtilities>();
 			container.Register<ICopier, Copier>();
 			container.Register<IFinder, Finder>();
@@ -23,6 +24,7 @@ namespace PodcastUtilities.Ioc
             container.Register<IUnwantedFileRemover, UnwantedFileRemover>();
             container.Register<IEpisodePurger, EpisodePurger>();
             container.Register<IControlFileFactory, ControlFileFactory>();
+            container.Register<IDeviceManager, DeviceManager>();
         }
 
         [CLSCompliant(false)]
