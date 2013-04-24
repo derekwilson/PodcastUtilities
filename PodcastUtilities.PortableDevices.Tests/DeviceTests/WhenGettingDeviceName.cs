@@ -12,7 +12,7 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceTests
             base.GivenThat();
 
             PortableDeviceHelper
-                .Stub(propertyHelper => propertyHelper.GetObjectName(
+                .Stub(propertyHelper => propertyHelper.GetObjectFileName(
                     PortableDeviceContent,
                     PortableDeviceConstants.WPD_DEVICE_OBJECT_ID))
                 .Return("The device name");

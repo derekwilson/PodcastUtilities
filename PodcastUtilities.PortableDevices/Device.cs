@@ -71,7 +71,7 @@ namespace PodcastUtilities.PortableDevices
                 return name;
             }
             
-            return _portableDeviceHelper.GetObjectName(
+            return _portableDeviceHelper.GetObjectFileName(
                 _portableDeviceContent,
                 PortableDeviceConstants.WPD_DEVICE_OBJECT_ID);
         }
@@ -82,7 +82,7 @@ namespace PodcastUtilities.PortableDevices
 
             foreach (var id in childObjectIds)
             {
-                var childObjectName = _portableDeviceHelper.GetObjectName(
+                var childObjectName = _portableDeviceHelper.GetObjectFileName(
                     _portableDeviceContent, 
                     id);
                 if (string.Compare(childObjectName, name, true) == 0)

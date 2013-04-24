@@ -9,8 +9,10 @@ namespace PodcastUtilities.PortableDevices
     {
         string GetDeviceFriendlyName(IPortableDeviceManager portableDeviceManager, string deviceId);
 
+        string GetObjectFileName(IPortableDeviceContent deviceContent, string objectId);
         string GetObjectName(IPortableDeviceContent deviceContent, string objectId);
         Guid GetObjectContentType(IPortableDeviceContent deviceContent, string objectId);
+        DateTime GetObjectCreationTime(IPortableDeviceContent deviceContent, string objectId);
 
         string GetStringProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key);
         Guid GetGuidProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key);

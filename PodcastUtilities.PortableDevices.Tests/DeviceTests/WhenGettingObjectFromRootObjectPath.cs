@@ -16,7 +16,7 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceTests
                 .Return(new[] {"Dummy1", "InternalStorageID", "Dummy2"});
 
             PortableDeviceHelper
-                .Stub(propertyHelper => propertyHelper.GetObjectName(
+                .Stub(propertyHelper => propertyHelper.GetObjectFileName(
                     PortableDeviceContent,
                     "InternalStorageID"))
                 .Return("Internal Storage");

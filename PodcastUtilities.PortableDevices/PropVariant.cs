@@ -14,7 +14,13 @@ namespace PodcastUtilities.PortableDevices
         [FieldOffset(8)]
         public byte byteValue;
         [FieldOffset(8)]
+        public long intValue;
+        [FieldOffset(8)]
         public long longValue;
+        [FieldOffset(8)]
+        public double dateValue;
+        [FieldOffset(8)]
+        public short boolValue;
 
         public static PropVariant FromValue(tag_inner_PROPVARIANT value)
         {
@@ -29,12 +35,43 @@ namespace PodcastUtilities.PortableDevices
 
         public string AsString()
         {
-            if (variantType != PortableDeviceConstants.VT_LPWSTR)
+            switch (variantType)
             {
-                return variantType.ToString();
+                case PortableDeviceConstants.VT_LPWSTR:
+                    return Marshal.PtrToStringUni(pointerValue);
+
+                case PortableDeviceConstants.VT_CLSID:
+                    return ToGuid().ToString();
+
+                case PortableDeviceConstants.VT_DATE:
+                    return ToDate().ToString();
+
+                case PortableDeviceConstants.VT_BOOL:
+                    return ToBool().ToString();
+
+                case PortableDeviceConstants.VT_UI4:
+                    return intValue.ToString();
+
+                case PortableDeviceConstants.VT_UI8:
+                    return longValue.ToString();
             }
 
-            return Marshal.PtrToStringUni(pointerValue);
+            return variantType.ToString();
+        }
+
+        public Guid ToGuid()
+        {
+            return (Guid)Marshal.PtrToStructure(pointerValue, typeof(Guid));
+        }
+
+        public DateTime ToDate()
+        {
+            return DateTime.FromOADate(dateValue);
+        }
+
+        public bool ToBool()
+        {
+            return Convert.ToBoolean(boolValue);
         }
     }
 }
