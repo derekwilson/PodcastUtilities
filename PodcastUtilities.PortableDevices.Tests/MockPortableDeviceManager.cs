@@ -1,8 +1,10 @@
 using System;
 using PortableDeviceApiLib;
 
-namespace PodcastUtilities.PortableDevices.Tests.DeviceManagerTests
+namespace PodcastUtilities.PortableDevices.Tests
 {
+    // Using a generated stub doesn't work as the stub seems to get confused with
+    // all the Marshalling gubbins on the interface.
     public class MockPortableDeviceManager : IPortableDeviceManager
     {
         public void GetDevices(string[] pPnPDeviceIDs, ref uint pcPnPDeviceIDs)

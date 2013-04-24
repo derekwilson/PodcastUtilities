@@ -30,7 +30,7 @@ namespace PodcastUtilities.Common.Platform.Mtp
         /// </summary>
         public string Name
         {
-            get { throw new NotImplementedException(); }
+            get { return _deviceObject.Name; }
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace PodcastUtilities.Common.Platform.Mtp
         /// </summary>
         public string FullName
         {
-            get { throw new NotImplementedException(); }
+            get { return MtpPath.MakeFullPath(MtpPath.Combine(_device.Name, _path)); }
         }
 
         /// <summary>

@@ -58,13 +58,11 @@ namespace PodcastUtilities.Common.Platform.Mtp
         /// <returns>a collection of abstracted files</returns>
         public IFileInfo[] GetFiles(string pattern)
         {
-            ThrowIfObjectNotFound();
+            CheckObjectExists();
 
-//            var childFileObjects = DeviceObject.GetFiles(pattern);
-//
-//            return childFileObjects.Select(folder => new FileInfo(_device, folder, "")).ToArray();
+            var childFileObjects = DeviceObject.GetFiles(pattern);
 
-            return new IFileInfo[0];
+            return childFileObjects.Select(file => new FileInfo(_device, file, MtpPath.Combine(_path, file.Name))).ToArray();
         }
 
         /// <summary>
@@ -74,11 +72,11 @@ namespace PodcastUtilities.Common.Platform.Mtp
         /// <returns>a collection of abstracted files</returns>
         public IDirectoryInfo[] GetDirectories(string pattern)
         {
-            ThrowIfObjectNotFound();
+            CheckObjectExists();
 
             var childFolderObjects = DeviceObject.GetFolders(pattern);
 
-            return childFolderObjects.Select(folder => new DirectoryInfo(_device, folder, "")).ToArray();
+            return childFolderObjects.Select(folder => new DirectoryInfo(_device, folder, MtpPath.Combine(_path, folder.Name))).ToArray();
         }
 
         /// <summary>
@@ -92,9 +90,9 @@ namespace PodcastUtilities.Common.Platform.Mtp
             }
         }
 
-        private void ThrowIfObjectNotFound()
+        private void CheckObjectExists()
         {
-            if (DeviceObject == null)
+            if (!Exists)
             {
                 throw new DirectoryNotFoundException(String.Format("Path [{0}] not found on device [{1}]", _path, _device.Name));
             }

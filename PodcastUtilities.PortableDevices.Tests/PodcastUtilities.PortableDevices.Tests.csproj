@@ -50,10 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeviceManagerTests\MockPortableDeviceManager.cs" />
+    <Compile Include="DeviceTests\WhenGettingDeviceName.cs" />
+    <Compile Include="DeviceTests\WhenGettingObjectFromFullPath.cs" />
+    <Compile Include="DeviceTests\WhenGettingObjectFromRootObjectPath.cs" />
+    <Compile Include="MockPortableDeviceManager.cs" />
     <Compile Include="DeviceManagerTests\WhenGettingDeviceThatExists.cs" />
     <Compile Include="DeviceManagerTests\WhenGettingDeviceThatDoesNotExist.cs" />
     <Compile Include="DeviceManagerTests\WhenTestingDeviceManager.cs" />
+    <Compile Include="DeviceTests\WhenTestingDevice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
