@@ -53,6 +53,10 @@
     <Compile Include="DeviceTests\WhenGettingDeviceName.cs" />
     <Compile Include="DeviceTests\WhenGettingObjectFromFullPath.cs" />
     <Compile Include="DeviceTests\WhenGettingObjectFromRootObjectPath.cs" />
+    <Compile Include="FilenameMatcherTests\WhenPatternContainsMultiCharacterWildcards.cs" />
+    <Compile Include="FilenameMatcherTests\WhenPatternContainsSingleCharacterWildcards.cs" />
+    <Compile Include="FilenameMatcherTests\WhenPatternDoesNotContainWildcards.cs" />
+    <Compile Include="FilenameMatcherTests\WhenTestingFilenameMatcher.cs" />
     <Compile Include="MockPortableDeviceManager.cs" />
     <Compile Include="DeviceManagerTests\WhenGettingDeviceThatExists.cs" />
     <Compile Include="DeviceManagerTests\WhenGettingDeviceThatDoesNotExist.cs" />

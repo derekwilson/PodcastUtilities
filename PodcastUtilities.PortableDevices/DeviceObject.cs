@@ -9,15 +9,27 @@ namespace PodcastUtilities.PortableDevices
     {
         private readonly IPortableDeviceHelper _portableDeviceHelper;
         private readonly IPortableDeviceContent _portableDeviceContent;
+        private readonly IFilenameMatcher _filenameMatcher;
 
         public DeviceObject(
             IPortableDeviceHelper portableDeviceHelper, 
             IPortableDeviceContent portableDeviceContent, 
             string id, 
             string name)
+            : this(portableDeviceHelper, portableDeviceContent, new FilenameMatcher(), id, name)
+        {
+        }
+
+        public DeviceObject(
+            IPortableDeviceHelper portableDeviceHelper, 
+            IPortableDeviceContent portableDeviceContent, 
+            IFilenameMatcher filenameMatcher,
+            string id, 
+            string name)
         {
             _portableDeviceHelper = portableDeviceHelper;
             _portableDeviceContent = portableDeviceContent;
+            _filenameMatcher = filenameMatcher;
             Id = id;
             Name = name;
         }
@@ -29,7 +41,7 @@ namespace PodcastUtilities.PortableDevices
         {
             // TODO: caching
 
-            var childObjectIds = GetFilteredChildObjectIds(IsFolder);
+            var childObjectIds = GetFilteredChildObjectIds(id => IsFolder(id) && IsObjectFilenameMatch(id, pattern));
 
             return childObjectIds.Select(CreateDeviceObject);
         }
@@ -38,7 +50,7 @@ namespace PodcastUtilities.PortableDevices
         {
             // TODO: caching
 
-            var childObjectIds = GetFilteredChildObjectIds(IsFile);
+            var childObjectIds = GetFilteredChildObjectIds(id => IsFile(id) && IsObjectFilenameMatch(id, pattern));
 
             return childObjectIds.Select(CreateDeviceObject);
         }
@@ -58,6 +70,13 @@ namespace PodcastUtilities.PortableDevices
         private bool IsFile(string objectId)
         {
             return !IsFolder(objectId);
+        }
+
+        private bool IsObjectFilenameMatch(string id, string pattern)
+        {
+            var filename = _portableDeviceHelper.GetObjectFileName(_portableDeviceContent, id);
+
+            return _filenameMatcher.IsMatch(filename, pattern);
         }
 
         private IDeviceObject CreateDeviceObject(string objectId)

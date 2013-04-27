@@ -52,10 +52,12 @@
     <Compile Include="DeviceFactory.cs" />
     <Compile Include="DeviceManager.cs" />
     <Compile Include="DeviceObject.cs" />
+    <Compile Include="FilenameMatcher.cs" />
     <Compile Include="IDevice.cs" />
     <Compile Include="IDeviceFactory.cs" />
     <Compile Include="IDeviceManager.cs" />
     <Compile Include="IDeviceObject.cs" />
+    <Compile Include="IFilenameMatcher.cs" />
     <Compile Include="IPortableDeviceFactory.cs" />
     <Compile Include="IPortableDeviceHelper.cs" />
     <Compile Include="PortableDeviceConstants.cs" />
