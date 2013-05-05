@@ -18,6 +18,7 @@ namespace PodcastUtilities.Ioc
 			container.Register<IDriveInfoProvider, SystemDriveInfoProvider>();
 			container.Register<IDirectoryInfoProvider, FileSystemAwareDirectoryInfoProvider>();
 			container.Register<IFileUtilities, FileUtilities>();
+			container.Register<IPathUtilities, FileSystemAwarePathUtilities>();
 			container.Register<ICopier, Copier>();
 			container.Register<IFinder, Finder>();
 			container.Register<ISorter, Sorter>();

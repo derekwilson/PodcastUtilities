@@ -11,17 +11,20 @@ namespace PodcastUtilities.Common.Files
     /// </summary>
     public class Copier : ICopier
     {
-    	///<summary>
-    	/// construct the copier
-    	///</summary>
-    	///<param name="driveInfoProvider">abstract access to the file system drive</param>
-    	///<param name="fileUtilities">abstract file utilities</param>
-    	public Copier(
+        ///<summary>
+        /// construct the copier
+        ///</summary>
+        ///<param name="driveInfoProvider">abstract access to the file system drive</param>
+        ///<param name="fileUtilities">abstract file utilities</param>
+        ///<param name="pathUtilities">abstract path utilities</param>
+        public Copier(
 			IDriveInfoProvider driveInfoProvider,
-			IFileUtilities fileUtilities)
+			IFileUtilities fileUtilities,
+            IPathUtilities pathUtilities)
     	{
     		DriveInfoProvider = driveInfoProvider;
     		FileUtilities = fileUtilities;
+            PathUtilities = pathUtilities;
     	}
 
         /// <summary>
@@ -31,6 +34,7 @@ namespace PodcastUtilities.Common.Files
 
     	private IDriveInfoProvider DriveInfoProvider { get; set; }
     	private IFileUtilities FileUtilities { get; set; }
+        private IPathUtilities PathUtilities { get; set; }
 
         /// <summary>
         /// perform the copy operation
@@ -50,13 +54,13 @@ namespace PodcastUtilities.Common.Files
             foreach (FileSyncItem thisItem in sourceFiles)
             {
                 string sourceRelativePath = thisItem.Source.FullName;
-                string absRoot = Path.GetFullPath(sourceRootPath);
+                string absRoot = PathUtilities.GetFullPath(sourceRootPath);
                 if (sourceRelativePath.StartsWith(absRoot,StringComparison.Ordinal))
                 {
                     sourceRelativePath = sourceRelativePath.Substring(absRoot.Length);
                 }
 
-                string destFilename = Path.GetFullPath(destinationRootPath) + sourceRelativePath;
+                string destFilename = PathUtilities.GetFullPath(destinationRootPath) + sourceRelativePath;
                 if (!FileUtilities.FileExists(destFilename))
                 {
                     OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Copying to: {0}", destFilename));
