@@ -148,6 +148,12 @@
     <Compile Include="Files\SorterTests\WhenSortingByNameAscending.cs" />
     <Compile Include="Files\SorterTests\WhenSortingByNameDescending.cs" />
     <Compile Include="Files\SorterTests\WhenTestingTheSorter.cs" />
+    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileDelete\WhenPathIsMtpAndDeviceDoesNotExist.cs" />
+    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileDelete\WhenPathIsMtpAndDeviceExists.cs" />
+    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileDelete\WhenPathIsNotMtp.cs" />
+    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileExists\WhenPathIsMtp.cs" />
+    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileExists\WhenPathIsNotMtp.cs" />
+    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\WhenTestingFileUtilities.cs" />
     <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenGettingDirectoryInfoAndDeviceIsFound.cs" />
     <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenGettingDirectoryInfoAndDeviceIsNotFound.cs" />
     <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenTestingMtpDirectoryInfoProvider.cs" />

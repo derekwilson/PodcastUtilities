@@ -36,5 +36,23 @@ namespace PodcastUtilities.Common.Tests.Platform.Mtp.MtpPathTests
         {
             Assert.That(MtpPath.MakeFullPath(_pathToTest), Is.EqualTo(@"mtp:\my device\path"));
         }
+
+        [Test]
+        public void GetMtpPathInfoShouldSetIsMtpPathToTrue()
+        {
+            Assert.That(MtpPath.GetPathInfo(_pathToTest).IsMtpPath, Is.True);
+        }
+
+        [Test]
+        public void GetMtpPathInfoShouldCorrectlySetDeviceName()
+        {
+            Assert.That(MtpPath.GetPathInfo(_pathToTest).DeviceName, Is.EqualTo("my device"));
+        }
+
+        [Test]
+        public void GetMtpPathInfoShouldCorrectlySetPath()
+        {
+            Assert.That(MtpPath.GetPathInfo(_pathToTest).RelativePathOnDevice, Is.EqualTo("path"));
+        }
     }
 }

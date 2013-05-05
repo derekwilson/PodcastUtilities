@@ -46,6 +46,23 @@ namespace PodcastUtilities.Common.Platform.Mtp
             return ((separator < 0) ? "" : path.Substring(separator + 1, path.Length - (separator + 1)));
         }
 
+        public static MtpPathInfo GetPathInfo(string path)
+        {
+            var pathInfo = new MtpPathInfo
+                               {
+                                   IsMtpPath = IsMtpPath(path)
+                               };
+            if (pathInfo.IsMtpPath)
+            {
+                var strippedPath = StripMtpPrefix(path);
+
+                pathInfo.DeviceName = GetDeviceName(strippedPath);
+                pathInfo.RelativePathOnDevice = GetPathWithoutDeviceName(strippedPath);
+            }
+
+            return pathInfo;
+        }
+
         public static string Combine(string path1, string path2)
         {
             return String.Format("{0}{1}{2}", path1, Path.DirectorySeparatorChar, path2);
