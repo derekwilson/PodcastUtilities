@@ -52,8 +52,13 @@ namespace PodcastUtilities.PortableDevices
                 parentId = childObjectId;
             }
 
-
             return new DeviceObject(_portableDeviceHelper, _portableDeviceContent, childObjectId, childObjectName);
+        }
+
+        public void Delete(string path)
+        {
+            // TODO
+            throw new NotImplementedException();
         }
 
         private void OpenDevice(string id)

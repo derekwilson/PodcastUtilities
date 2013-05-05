@@ -28,19 +28,16 @@ namespace PodcastUtilities.Common.Platform.Mtp
         /// <returns>an abstrcat object</returns>
         public IDirectoryInfo GetDirectoryInfo(string path)
         {
-            var fullDevicePath = MtpPath.StripMtpPrefix(path);
+            var pathInfo = MtpPath.GetPathInfo(path);
 
-            var deviceName = MtpPath.GetDeviceName(fullDevicePath);
-            var pathToObject = MtpPath.GetPathWithoutDeviceName(fullDevicePath);
-
-            var device = _deviceManager.GetDevice(deviceName);
+            var device = _deviceManager.GetDevice(pathInfo.DeviceName);
 
             if (device == null)
             {
-                throw new DirectoryNotFoundException(String.Format("Device [{0}] not found", deviceName));
+                throw new DirectoryNotFoundException(String.Format("Device [{0}] not found", pathInfo.DeviceName));
             }
 
-            return new DirectoryInfo(device, pathToObject);
+            return new DirectoryInfo(device, pathInfo.RelativePathOnDevice);
         }
     }
 }

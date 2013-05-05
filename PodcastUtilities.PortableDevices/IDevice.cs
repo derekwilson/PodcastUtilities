@@ -6,5 +6,6 @@ namespace PodcastUtilities.PortableDevices
         string Name { get; }
 
         IDeviceObject GetObjectFromPath(string path);
+        void Delete(string path);
     }
 }

@@ -17,7 +17,7 @@ namespace PodcastUtilities.Ioc
 		{
 			container.Register<IDriveInfoProvider, SystemDriveInfoProvider>();
 			container.Register<IDirectoryInfoProvider, FileSystemAwareDirectoryInfoProvider>();
-			container.Register<IFileUtilities, FileUtilities>();
+			container.Register<IFileUtilities, FileSystemAwareFileUtilities>();
 			container.Register<IPathUtilities, FileSystemAwarePathUtilities>();
 			container.Register<ICopier, Copier>();
 			container.Register<IFinder, Finder>();
@@ -25,6 +25,11 @@ namespace PodcastUtilities.Ioc
             container.Register<IUnwantedFileRemover, UnwantedFileRemover>();
             container.Register<IEpisodePurger, EpisodePurger>();
             container.Register<IControlFileFactory, ControlFileFactory>();
+        }
+
+        [CLSCompliant(false)]
+        public static void RegisterPortableDeviceServices(IIocContainer container)
+        {
             container.Register<IDeviceManager, DeviceManager>();
         }
 

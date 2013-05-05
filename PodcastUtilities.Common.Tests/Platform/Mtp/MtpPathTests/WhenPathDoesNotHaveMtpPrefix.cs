@@ -36,5 +36,11 @@ namespace PodcastUtilities.Common.Tests.Platform.Mtp.MtpPathTests
         {
             Assert.That(MtpPath.MakeFullPath(_pathToTest), Is.EqualTo(@"MTP:\abc\def\ghi"));
         }
+
+        [Test]
+        public void GetMtpPathInfoShouldSetIsMtpPathToFalse()
+        {
+            Assert.That(MtpPath.GetPathInfo(_pathToTest).IsMtpPath, Is.False);
+        }
     }
 }

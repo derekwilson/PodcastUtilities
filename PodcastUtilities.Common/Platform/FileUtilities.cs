@@ -6,7 +6,7 @@ namespace PodcastUtilities.Common.Platform
 	/// utility methods to manipulate files in the physical file system
 	/// this class abstracts away the file system from the main body of code
 	/// </summary>
-    public class FileUtilities : IFileUtilities
+	internal class FileUtilities : IFileUtilities
 	{
 		/// <summary>
 		/// check if a file exists
