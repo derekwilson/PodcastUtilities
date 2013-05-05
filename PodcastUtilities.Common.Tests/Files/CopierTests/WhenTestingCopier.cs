@@ -13,6 +13,7 @@ namespace PodcastUtilities.Common.Tests.Files.CopierTests
 		protected IDriveInfo DestinationDriveInfo { get; set; }
 		protected IDriveInfoProvider DriveInfoProvider { get; set; }
 		protected IFileUtilities FileUtilities { get; set; }
+		protected IPathUtilities PathUtilities { get; set; }
 
 		protected List<FileSyncItem> SourceFiles { get; set; }
 		protected List<StatusUpdateEventArgs> StatusUpdates { get; set; }
@@ -29,6 +30,12 @@ namespace PodcastUtilities.Common.Tests.Files.CopierTests
 				.Return(DestinationDriveInfo);
 
 			FileUtilities = GenerateMock<IFileUtilities>();
+			PathUtilities = GenerateMock<IPathUtilities>();
+
+		    PathUtilities.Stub(pathUtilities => pathUtilities.GetFullPath(null))
+		        .IgnoreArguments()
+		        .WhenCalled(invocation => invocation.ReturnValue = invocation.Arguments[0])
+                .Return(null);
 
 			SourceFiles = new List<FileSyncItem>
 			              	{
@@ -40,7 +47,7 @@ namespace PodcastUtilities.Common.Tests.Files.CopierTests
 
 			StatusUpdates = new List<StatusUpdateEventArgs>();
 
-			FileCopier = new Copier(DriveInfoProvider, FileUtilities);
+			FileCopier = new Copier(DriveInfoProvider, FileUtilities, PathUtilities);
 			FileCopier.StatusUpdate += (sender, e) => StatusUpdates.Add(e);
 		}
 
