@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8A814E5A-815D-4F85-B96B-6B83E48DF38B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PodcastUtilities.PortableDevices.Tests</RootNamespace>
+    <AssemblyName>PodcastUtilities.PortableDevices.Tests</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.PortableDeviceApiLib">
+      <HintPath>..\References\Interop\Interop.PortableDeviceApiLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\References\Rhino\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DeviceTests\WhenGettingDeviceName.cs" />
+    <Compile Include="DeviceTests\WhenGettingObjectFromFullPath.cs" />
+    <Compile Include="DeviceTests\WhenGettingObjectFromRootObjectPath.cs" />
+    <Compile Include="FilenameMatcherTests\WhenPatternContainsMultiCharacterWildcards.cs" />
+    <Compile Include="FilenameMatcherTests\WhenPatternContainsSingleCharacterWildcards.cs" />
+    <Compile Include="FilenameMatcherTests\WhenPatternDoesNotContainWildcards.cs" />
+    <Compile Include="FilenameMatcherTests\WhenTestingFilenameMatcher.cs" />
+    <Compile Include="MockPortableDeviceManager.cs" />
+    <Compile Include="DeviceManagerTests\WhenGettingDeviceThatExists.cs" />
+    <Compile Include="DeviceManagerTests\WhenGettingDeviceThatDoesNotExist.cs" />
+    <Compile Include="DeviceManagerTests\WhenTestingDeviceManager.cs" />
+    <Compile Include="DeviceTests\WhenTestingDevice.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PodcastUtilities.Common.Tests\PodcastUtilities.Common.Tests.csproj">
+      <Project>{03BAF930-2492-4792-9EBC-4FFAA9D3D60B}</Project>
+      <Name>PodcastUtilities.Common.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PodcastUtilities.Common\PodcastUtilities.Common.csproj">
+      <Project>{37562F85-B1BD-4AB8-B74B-685B05F9CF41}</Project>
+      <Name>PodcastUtilities.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PodcastUtilities.PortableDevices\PodcastUtilities.PortableDevices.csproj">
+      <Project>{A3FE8B09-71F1-4D97-8109-F946F90FEFB9}</Project>
+      <Name>PodcastUtilities.PortableDevices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

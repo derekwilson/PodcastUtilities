@@ -1,0 +1,75 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+  <UsingTask AssemblyName="AssemblyInfoTask, Version=1.0.51130.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" TaskName="AssemblyInfo"/>
+
+  <PropertyGroup Condition=" '$(Configuration)' == '' ">
+    <Configuration>Release</Configuration>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Environment)' == '' ">
+    <Environment>All</Environment>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <SolutionRoot>$(MSBuildProjectDirectory)\..</SolutionRoot>
+    <SolutionName>PodcastUtilities</SolutionName>
+    <BuildOutputRoot>$(MSBuildProjectDirectory)\..\CurrentBuild</BuildOutputRoot>
+    <ReleasesRoot>$(MSBuildProjectDirectory)\..\Releases</ReleasesRoot>
+    <NUnitPath>"C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0\nunit-console.exe"</NUnitPath>
+  </PropertyGroup>
+
+	<!-- Code to get the name of the project directory which should be the same as the name of the solution file -->
+	<PropertyGroup>
+		<ZipSuffixCode>
+			<![CDATA[
+			public static string ScriptMain()
+			{
+				return System.DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
+			}
+			]]>
+		</ZipSuffixCode>
+	</PropertyGroup>
+
+	<Target Name="Build" DependsOnTargets="Zip">
+		<Message Importance="high" Text="-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"/>
+		<Message Importance="high" Text="If you are happy with the build please remember to check it in "/>
+		<Message Importance="high" Text="-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"/>
+	</Target>
+
+	<Target Name="BuildAndUnitTest" DependsOnTargets="Build">
+    <Exec Command="$(NUnitPath) &quot;$(SolutionRoot)\PodcastUtilities.nunit&quot; /nologo /config=$(Configuration) /xml=&quot;$(BuildOutputRoot)\TestOutput.xml&quot;" />
+	</Target>
+
+  <!-- Clean and rebuild the solution -->
+  <Target Name="Rebuild">
+    <MSBuild
+      Projects="$(SolutionRoot)\$(SolutionName).sln"
+      Targets="Clean;Rebuild"
+      Properties="Configuration=$(Configuration)"
+    />
+  </Target>
+
+  <!-- Remove the output folder and copy the new build -->
+  <Target Name="Copy" DependsOnTargets="Rebuild">
+    <RemoveDir Directories="$(BuildOutputRoot)"/>
+	<MSBuild
+		Projects="CopyFiles.xml"
+		Targets="CopyToCurrentBuild"
+		Properties="Configuration=$(Configuration);BuildOutputRoot=$(BuildOutputRoot)"
+	/>
+  </Target>
+
+  <!-- Zip up the builds -->
+  <Target Name="Zip" DependsOnTargets="Copy">
+	<Script Language="C#" Code="$(ZipSuffixCode)">
+		<Output TaskParameter="ReturnValue" PropertyName="ZipSuffix" />
+	</Script>
+    <MSBuild
+		Projects="ZipFiles.xml"
+		Targets="MakeZip"
+		Properties="ZipName=$(SolutionName) $(ZipSuffix);ZipFolderr=$(ReleasesRoot);FilesFolder=$(BuildOutputRoot)"
+    />
+  </Target>
+
+</Project>

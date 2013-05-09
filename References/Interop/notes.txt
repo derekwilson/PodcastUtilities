@@ -1,0 +1,38 @@
+
+Info gleaned from:
+http://blogs.msdn.com/b/dimeby8/archive/2006/12/05/enumerating-wpd-devices-in-c.aspx
+http://stackoverflow.com/questions/6162046/enumerating-windows-portable-devices-in-c-sharp
+
+To generate the PortableDeviceApi interop assemblies:
+- Add a reference to the PortableDeviceTypes type library
+- Add a reference to the PortableDeviceApi type library
+
+However the PortableDeviceApi interop needs modifying as follows:
+- Copy the generated Interop.PortableDeviceApiLib.dll (from obj)
+- Disassemble it using: ildasm Interop.PortableDeviceApiLib.dll /out:pdapi.il
+- Edit pdapi.il, changing the following:
+GetDevices([in][out] string& marshal( lpwstr) pPnPDeviceIDs
+  to
+GetDevices([in][out] string[]  marshal( lpwstr[]) pPnPDeviceIDs
+
+          instance void  GetDeviceFriendlyName([in] string  marshal( lpwstr) pszPnPDeviceID,
+                                               [in][out] uint16& pDeviceFriendlyName,
+  to
+          instance void  GetDeviceFriendlyName([in] string  marshal( lpwstr) pszPnPDeviceID,
+                                               [in][out] uint16[] marshal([]) pDeviceFriendlyName,
+
+          instance void  GetDeviceDescription([in] string  marshal( lpwstr) pszPnPDeviceID,
+                                              [in][out] uint16& pDeviceDescription,
+  to
+          instance void  GetDeviceDescription([in] string  marshal( lpwstr) pszPnPDeviceID,
+                                              [in][out] uint16[] marshal([]) pDeviceDescription,
+
+          instance void  GetDeviceManufacturer([in] string  marshal( lpwstr) pszPnPDeviceID,
+                                               [in][out] uint16& pDeviceManufacturer,
+  to
+          instance void  GetDeviceManufacturer([in] string  marshal( lpwstr) pszPnPDeviceID,
+                                               [in][out] uint16[] marshal([]) pDeviceManufacturer,
+
+- Reassemble the interop using: ilasm pdapi.il /dll /output=Interop.PortableDeviceApiLib.dll
+  Note: make sure you use the correct framework version of ilasm
+- Remove the original reference to PortableDeviceApiLib and add a reference to the new Interop.PortableDeviceApiLib.dll assembly.

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2enclosuresfull.xsl"?>
+<?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?>
+<rss xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+    <channel>
+        <title>This Developer's Life</title>
+        <link>http://thisdeveloperslife.com</link>
+        <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/ThisDevelopersLife" />
+        <description>Stories About Developers and Their Lives</description>
+        <language>en</language>
+        <lastBuildDate>Tue, 17 Aug 2010 17:00:00 PDT</lastBuildDate>
+        <generator>Web Matrix http://asp.net/webmatrix</generator>
+        <feedburner:info uri="thisdeveloperslife" />
+        <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" />
+        <media:copyright>Copyright 2010, Rob Conery</media:copyright>
+        <media:thumbnail url="http://media.wekeroad.com/tdl2.png" />
+        <media:keywords>technology,stories</media:keywords>
+        <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Tech News</media:category>
+        <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Software How-To</media:category>
+        <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology</media:category>
+        <itunes:author>Rob Conery and Scott Hanselman</itunes:author>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="http://media.wekeroad.com/tdl2.png" />
+        <itunes:keywords>technology,stories</itunes:keywords>
+        <itunes:subtitle>Stories about developers and their lives</itunes:subtitle>
+        <itunes:summary>Bringing a human slant to the tech industry</itunes:summary>
+        <itunes:category text="Technology">
+            <itunes:category text="Tech News" />
+        </itunes:category>
+        <itunes:category text="Technology">
+            <itunes:category text="Software How-To" />
+        </itunes:category>
+        <itunes:category text="Technology" />
+        <creativeCommons:license>http://creativecommons.org/licenses/by-nc-nd/3.0/</creativeCommons:license>
+        <feedburner:feedFlare href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.newsgator.com/images/ngsub1.gif">Subscribe with NewsGator</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.netvibes.com/subscribe.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.netvibes.com/img/add2netvibes.gif">Subscribe with Netvibes</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://us.i1.yimg.com/us.yimg.com/i/us/my/addtomyyahoo4.gif">Subscribe with My Yahoo!</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://fusion.google.com/add?feedurl=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://buttons.googlesyndication.com/fusion/add.gif">Subscribe with Google</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.plusmo.com/add?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://plusmo.com/res/graphics/fbplusmo.gif">Subscribe with Plusmo</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.thefreedictionary.com/_/hp/AddRSS.aspx?http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://img.tfd.com/hp/addToTheFreeDictionary.gif">Subscribe with The Free Dictionary</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.bitty.com/manual/?contenttype=rssfeed&amp;contentvalue=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.bitty.com/img/bittychicklet_91x17.gif">Subscribe with Bitty Browser</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.live.com/?add=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://tkfiles.storage.msn.com/x1piYkpqHC_35nIp1gLE68-wvzLZO8iXl_JMledmJQXP-XTBOLfmQv4zhj4MhcWEJh_GtoBIiAl1Mjh-ndp9k47If7hTaFno0mxW9_i3p_5qQw">Subscribe with Live.com</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://mix.excite.eu/add?feedurl=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://image.excite.co.uk/mix/addtomix.gif">Subscribe with Excite MIX</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.webwag.com/wwgthis.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.webwag.com/images/wwgthis.gif">Subscribe with Webwag</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.podcastready.com/oneclick_bookmark.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.podcastready.com/images/podcastready_button.gif">Subscribe with Podcast Ready</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.wikio.com/subscribe?url=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.wikio.com/shared/img/add2wikio.gif">Subscribe with Wikio</feedburner:feedFlare>
+        <feedburner:feedFlare href="http://www.dailyrotation.com/index.php?feed=http%3A%2F%2Ffeeds.feedburner.com%2FThisDevelopersLife" src="http://www.dailyrotation.com/rss-dr2.gif">Subscribe with Daily Rotation</feedburner:feedFlare>
+        <copyright>Copyright 2010, Rob Conery</copyright>
+        <media:credit role="author">Rob Conery and Scott Hanselman</media:credit>
+        <media:rating>nonadult</media:rating>
+        <media:description type="plain">Stories about developers and their lives</media:description>
+    </channel>
+</rss>
