@@ -30,7 +30,7 @@ namespace PodcastUtilities.Ioc
         [CLSCompliant(false)]
         public static void RegisterPortableDeviceServices(IIocContainer container)
         {
-            container.Register<IDeviceManager, DeviceManager>();
+            container.Register<IDeviceManager, DeviceManager>(IocLifecycle.Singleton);
         }
 
         [CLSCompliant(false)]

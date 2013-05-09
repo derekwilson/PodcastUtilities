@@ -121,11 +121,13 @@
     <Compile Include="Platform\ICommandExecuter.cs" />
     <Compile Include="Platform\IEnvironmentInformationProvider.cs" />
     <Compile Include="Platform\IPathUtilities.cs" />
+    <Compile Include="Platform\IStreamHelper.cs" />
     <Compile Include="Platform\Mtp\DirectoryInfo.cs" />
     <Compile Include="Platform\Mtp\FileInfo.cs" />
     <Compile Include="Platform\Mtp\MtpDirectoryInfoProvider.cs" />
     <Compile Include="Platform\Mtp\MtpPath.cs" />
     <Compile Include="Platform\Mtp\MtpPathInfo.cs" />
+    <Compile Include="Platform\StreamHelper.cs" />
     <Compile Include="Platform\SystemPerfmonCounter.cs" />
     <Compile Include="Perfmon\CounterFactory.cs" />
     <Compile Include="Perfmon\IAverageCounter.cs" />

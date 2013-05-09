@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace PodcastUtilities.PortableDevices
 {
     public interface IDevice
@@ -7,5 +9,7 @@ namespace PodcastUtilities.PortableDevices
 
         IDeviceObject GetObjectFromPath(string path);
         void Delete(string path);
+        Stream OpenRead(string path);
+        Stream OpenWrite(string path, bool allowOverwrite);
     }
 }

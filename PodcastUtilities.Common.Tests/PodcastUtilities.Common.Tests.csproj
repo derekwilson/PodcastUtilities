@@ -148,6 +148,9 @@
     <Compile Include="Files\SorterTests\WhenSortingByNameAscending.cs" />
     <Compile Include="Files\SorterTests\WhenSortingByNameDescending.cs" />
     <Compile Include="Files\SorterTests\WhenTestingTheSorter.cs" />
+    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileCopy\WhenBothPathsAreNotMtp.cs" />
+    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileCopy\WhenDestinationFileIsMtp.cs" />
+    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileCopy\WhenSourceFileIsMtp.cs" />
     <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileDelete\WhenPathIsMtpAndDeviceDoesNotExist.cs" />
     <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileDelete\WhenPathIsMtpAndDeviceExists.cs" />
     <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileDelete\WhenPathIsNotMtp.cs" />

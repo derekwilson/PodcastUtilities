@@ -7,14 +7,11 @@ namespace PodcastUtilities.Common.Tests.Platform.FileSystemAwareFileUtilitiesTes
     public abstract class WhenPathIsMtp
         : WhenTestingFileUtilities
     {
-        protected IDevice Device { get; set; }
         protected bool FileExists { get; set; }
 
         protected override void GivenThat()
         {
             base.GivenThat();
-
-            Device = GenerateMock<IDevice>();
 
             DeviceManager.Stub(manager => manager.GetDevice("my device"))
                 .Return(Device);

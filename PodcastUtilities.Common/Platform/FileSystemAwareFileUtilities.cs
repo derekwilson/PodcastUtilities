@@ -14,22 +14,25 @@ namespace PodcastUtilities.Common.Platform
     {
         private readonly IFileUtilities _fileUtilities;
         private readonly IDeviceManager _deviceManager;
+        private readonly IStreamHelper _streamHelper;
 
         ///<summary>
         /// Construct the object
         ///</summary>
-        public FileSystemAwareFileUtilities(IDeviceManager deviceManager)
-            : this(new FileUtilities(), deviceManager)
+        public FileSystemAwareFileUtilities(IDeviceManager deviceManager, IStreamHelper streamHelper)
+            : this(new FileUtilities(), deviceManager, streamHelper)
         {
             
         }
 
         internal FileSystemAwareFileUtilities(
             IFileUtilities fileUtilities,
-            IDeviceManager deviceManager)
+            IDeviceManager deviceManager,
+            IStreamHelper streamHelper)
         {
             _fileUtilities = fileUtilities;
             _deviceManager = deviceManager;
+            _streamHelper = streamHelper;
         }
 
         /// <summary>
@@ -100,12 +103,21 @@ namespace PodcastUtilities.Common.Platform
         /// <param name="allowOverwrite">set to true to overwrite an existing file</param>
         public void FileCopy(string sourceFileName, string destinationFileName, bool allowOverwrite)
         {
-            if (MtpPath.IsMtpPath(sourceFileName) || MtpPath.IsMtpPath(destinationFileName))
+            if (!MtpPath.IsMtpPath(sourceFileName) && !MtpPath.IsMtpPath(destinationFileName))
             {
-                throw new NotImplementedException();
+                _fileUtilities.FileCopy(sourceFileName, destinationFileName, allowOverwrite);
             }
-
-            _fileUtilities.FileCopy(sourceFileName, destinationFileName, allowOverwrite);
+            else
+            {
+                using (var sourceStream = OpenReadStream(sourceFileName))
+                {
+                    using (var destinationStream = OpenWriteStream(destinationFileName, allowOverwrite))
+                    {
+                        _streamHelper.Copy(sourceStream, destinationStream);
+                    }
+                }
+                
+            }
         }
 
         /// <summary>
@@ -122,13 +134,43 @@ namespace PodcastUtilities.Common.Platform
                 return;
             }
 
+            var device = GetDevice(pathInfo);
+
+            device.Delete(pathInfo.RelativePathOnDevice);
+        }
+
+        private IDevice GetDevice(MtpPathInfo pathInfo)
+        {
             var device = _deviceManager.GetDevice(pathInfo.DeviceName);
             if (device == null)
             {
                 throw new DirectoryNotFoundException(String.Format("Device [{0}] not found", pathInfo.DeviceName));
             }
+            return device;
+        }
 
-            device.Delete(pathInfo.RelativePathOnDevice);
+        private Stream OpenReadStream(string filename)
+        {
+            var pathInfo = MtpPath.GetPathInfo(filename);
+
+            if (pathInfo.IsMtpPath)
+            {
+                return GetDevice(pathInfo).OpenRead(pathInfo.RelativePathOnDevice);
+            }
+
+            return _streamHelper.OpenRead(filename);
+        }
+
+        private Stream OpenWriteStream(string filename, bool allowOverwrite)
+        {
+            var pathInfo = MtpPath.GetPathInfo(filename);
+
+            if (pathInfo.IsMtpPath)
+            {
+                return GetDevice(pathInfo).OpenWrite(pathInfo.RelativePathOnDevice, allowOverwrite);
+            }
+
+            return _streamHelper.OpenWrite(filename, allowOverwrite);
         }
     }
 }

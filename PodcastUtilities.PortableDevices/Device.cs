@@ -61,6 +61,16 @@ namespace PodcastUtilities.PortableDevices
             throw new NotImplementedException();
         }
 
+        public Stream OpenRead(string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Stream OpenWrite(string path, bool allowOverwrite)
+        {
+            throw new NotImplementedException();
+        }
+
         private void OpenDevice(string id)
         {
             _portableDevice = _portableDeviceFactory.Create(id);
