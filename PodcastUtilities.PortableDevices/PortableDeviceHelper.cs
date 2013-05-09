@@ -129,6 +129,18 @@ namespace PodcastUtilities.PortableDevices
             return childObjectIds;
         }
 
+        public void DeleteObject(IPortableDeviceContent deviceContent, string objectId)
+        {
+            var objectIdCollection =
+                (IPortableDevicePropVariantCollection)new PortableDeviceTypesLib.PortableDevicePropVariantCollectionClass();
+
+            var propVariantValue = PropVariant.StringToPropVariant(objectId);
+            objectIdCollection.Add(ref propVariantValue);
+
+            // TODO: get the results back and handle failures correctly
+            deviceContent.Delete(PortableDeviceConstants.PORTABLE_DEVICE_DELETE_NO_RECURSION, objectIdCollection, null);
+        }
+
         private static IPortableDeviceValues GetDeviceValues(IPortableDeviceContent deviceContent, _tagpropertykey key, string objectId)
         {
             IPortableDeviceProperties deviceProperties;

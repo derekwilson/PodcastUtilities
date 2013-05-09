@@ -18,5 +18,7 @@ namespace PodcastUtilities.PortableDevices
         Guid GetGuidProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key);
 
         IEnumerable<string> GetChildObjectIds(IPortableDeviceContent deviceContent, string parentId);
+
+        void DeleteObject(IPortableDeviceContent deviceContent, string objectId);
     }
 }

@@ -57,8 +57,14 @@ namespace PodcastUtilities.PortableDevices
 
         public void Delete(string path)
         {
-            // TODO
-            throw new NotImplementedException();
+            var deviceObject = GetObjectFromPath(path);
+            if (deviceObject == null)
+            {
+                // As File.Delete(), do not throw an exception if the file doesn't exist
+                return;
+            }
+
+            _portableDeviceHelper.DeleteObject(_portableDeviceContent, deviceObject.Id);
         }
 
         public Stream OpenRead(string path)

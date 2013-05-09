@@ -73,5 +73,23 @@ namespace PodcastUtilities.PortableDevices
         {
             return Convert.ToBoolean(boolValue);
         }
+
+        public static tag_inner_PROPVARIANT StringToPropVariant(string value)
+        {
+            // We'll use an IPortableDeviceValues object to transform the
+            // string into a PROPVARIANT
+            var pValues = (PortableDeviceApiLib.IPortableDeviceValues)new PortableDeviceTypesLib.PortableDeviceValuesClass();
+
+            // We insert the string value into the IPortableDeviceValues object
+            // using the SetStringValue method
+            pValues.SetStringValue(ref PortableDevicePropertyKeys.WPD_OBJECT_ID, value);
+
+            // We then extract the string into a PROPVARIANT by using the 
+            // GetValue method
+            tag_inner_PROPVARIANT propVariantValue;
+            pValues.GetValue(ref PortableDevicePropertyKeys.WPD_OBJECT_ID, out propVariantValue);
+
+            return propVariantValue;
+        }
     }
 }

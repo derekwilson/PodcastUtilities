@@ -2,7 +2,7 @@ using System;
 
 namespace PodcastUtilities.PortableDevices
 {
-    public static class PortableDeviceConstants
+    internal static class PortableDeviceConstants
     {
         // From PortableDevice.h in the windows SDK
         public const string WPD_DEVICE_OBJECT_ID = "DEVICE";
@@ -13,6 +13,9 @@ namespace PodcastUtilities.PortableDevices
         public const int VT_BOOL = 11;
         public const int VT_UI4 = 19;
         public const int VT_UI8 = 21;
+
+        public const uint PORTABLE_DEVICE_DELETE_NO_RECURSION = 0;
+        public const uint PORTABLE_DEVICE_DELETE_WITH_RECURSION = 1;
 
         public static Guid WPD_CONTENT_TYPE_FOLDER;
         public static Guid WPD_CONTENT_TYPE_FUNCTIONAL_OBJECT;
