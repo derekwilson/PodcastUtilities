@@ -23,6 +23,8 @@ namespace PodcastUtilities.Integration.Tests
         protected bool _verbose = false;
         protected readonly ReadOnlyControlFile _controlFile;
 
+        public abstract void RunAllTests();
+
         private static LinFuIocContainer InitializeIocContainer()
         {
             var container = new LinFuIocContainer();
@@ -89,6 +91,21 @@ namespace PodcastUtilities.Integration.Tests
             }
         }
 
-        public abstract void RunAllTests();
+        protected virtual void TestPreamble()
+        {
+            // nothing
+        }
+
+        protected virtual void TestPostamble()
+        {
+            // nothing
+        }
+
+        public void RunOneTest(Test theTest)
+        {
+            TestPreamble();
+            theTest();
+            TestPostamble();
+        }
     }
 }
