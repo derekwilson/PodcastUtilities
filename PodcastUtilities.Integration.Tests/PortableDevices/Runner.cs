@@ -19,6 +19,16 @@ namespace PodcastUtilities.Integration.Tests.PortableDevices
             DisplayMessage("PortableDevices Tests:",DisplayLevel.Title);
             
             _devices = EnumerateAllDevices();
+
+            if (_devices.Count() > 0)
+            {
+                RunOneTest(CreateFolder);
+            }
+        }
+
+        private void CreateFolder()
+        {
+            throw new NotImplementedException();
         }
 
         private IEnumerable<IDevice> EnumerateAllDevices()
