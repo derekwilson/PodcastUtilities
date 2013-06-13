@@ -17,26 +17,29 @@ namespace PodcastUtilities.Integration.Tests
         {
             Console.WriteLine("Usage: PodcastUtilities.Integration.Tests <controlfile>");
             Console.WriteLine("Where");
-            Console.WriteLine("  <controlfile> = (optional) XML control file eg. podcasts.xml");
+            Console.WriteLine("  <tests> = all: run all tests");
+            Console.WriteLine("          = mtp: run portable device tests");
+            Console.WriteLine("          = config: run config file tests");
         }
 
         static void Main(string[] args)
         {
             DisplayBanner();
-            string controlFilename = null;
+            string testToRun = null;
             if (args.Length < 1)
             {
                 DisplayHelp();
+                return;
             }
             else
             {
-                controlFilename = args[0];
+                testToRun = args[0];
             }
 
-            var controlFileTests = new ControlFile.Runner(controlFilename);
+            var controlFileTests = new ControlFile.Runner(testToRun);
             controlFileTests.RunAllTests();
 
-            var portableDevicesTests = new PortableDevices.Runner(controlFilename);
+            var portableDevicesTests = new PortableDevices.Runner(testToRun);
             portableDevicesTests.RunAllTests();
 
             Console.WriteLine("Done");

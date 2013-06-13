@@ -21,7 +21,7 @@ namespace PodcastUtilities.Integration.Tests
         static private object _synclock = new object();
         protected static LinFuIocContainer _iocContainer;
         protected bool _verbose = false;
-        protected readonly ReadOnlyControlFile _controlFile;
+        protected string _testsToRun = null;
 
         public abstract void RunAllTests();
 
@@ -36,7 +36,7 @@ namespace PodcastUtilities.Integration.Tests
             return container;
         }
 
-        public RunnerBase(string controlFilename)
+        public RunnerBase(string testsToRun)
         {
             lock (_synclock)
             {
@@ -45,11 +45,20 @@ namespace PodcastUtilities.Integration.Tests
                     _iocContainer = InitializeIocContainer();
                 }
             }
-            if (!string.IsNullOrEmpty(controlFilename))
+            _testsToRun = testsToRun;
+        }
+
+        protected bool ShouldRunTests(string testName)
+        {
+            if (string.Compare(_testsToRun, "all", true) == 0)
             {
-                _controlFile = new ReadOnlyControlFile(controlFilename);
-                _verbose = _controlFile.GetDiagnosticOutput() == DiagnosticOutputLevel.Verbose;
+                return true;
             }
+            if (string.Compare(_testsToRun, testName, true) == 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         protected void DisplayMessage(string message, DisplayLevel level = DisplayLevel.Message, Exception e = null)

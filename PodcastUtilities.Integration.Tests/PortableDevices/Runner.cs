@@ -10,14 +10,20 @@ namespace PodcastUtilities.Integration.Tests.PortableDevices
     {
         private IEnumerable<IDevice> _devices = null;
 
-        public Runner(string controlFilename) : base(controlFilename)
+        public Runner(string testToRun)
+            : base(testToRun)
         {
         }
 
         public override void RunAllTests()
         {
             DisplayMessage("PortableDevices Tests:",DisplayLevel.Title);
-            
+            if (!ShouldRunTests("mtp"))
+            {
+                DisplayMessage(" tests skipped");
+                return;
+            }
+
             _devices = EnumerateAllDevices();
 
             if (_devices.Count() > 0)

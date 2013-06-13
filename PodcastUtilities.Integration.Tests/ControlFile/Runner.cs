@@ -2,22 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.Integration.Tests.ControlFile
 {
     class Runner : RunnerBase
     {
-        public Runner(string controlFilename) : base(controlFilename)
+        private const string _filename = "podcastutilities.integrationtest.contolfile.xml";
+
+        public Runner(string testToRun)
+            : base(testToRun)
         {
         }
 
         public override void RunAllTests()
         {
             DisplayMessage("ControlFile Tests:", DisplayLevel.Title);
-            if (_controlFile == null)
+            if (!ShouldRunTests("control"))
             {
-                DisplayMessage("No control file specified, tests skipped");
+                DisplayMessage(" tests skipped");
+                return;
             }
+
+            RunOneTest(CreateControlFile);
+        }
+
+        private void CreateControlFile()
+        {
+            DisplayMessage(string.Format("Creating a blank control file: {0}",_filename));
+            ReadWriteControlFile controlFile = new ReadWriteControlFile();
+            controlFile.SaveToFile(_filename);
         }
     }
 }
