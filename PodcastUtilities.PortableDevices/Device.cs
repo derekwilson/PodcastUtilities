@@ -75,7 +75,7 @@ namespace PodcastUtilities.PortableDevices
             var deviceObject = GetObjectFromPath(path);
             if (deviceObject == null)
             {
-                throw new FileNotFoundException();
+                throw new FileNotFoundException(String.Format("Device: [{0}]; path [{1}] not found", Name, path));
             }
 
             var resourceStream = _portableDeviceHelper.OpenResourceStream(
