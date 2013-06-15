@@ -17,7 +17,7 @@ namespace PodcastUtilities.Common.Configuration
     /// </summary>
     public class ReadWriteControlFile : BaseControlFile, IReadWriteControlFile, IReadWriteControlFileGlobalDefaults
     {
-        		/// <summary>
+        /// <summary>
 		/// create the object and read the control file from the specified filename
 		/// </summary>
 		/// <param name="fileName">pathname to the control file xml</param>
@@ -33,7 +33,8 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// used for cloning
         /// </summary>
-        protected ReadWriteControlFile() : base()
+        public ReadWriteControlFile()
+            : base()
         {
         }
 

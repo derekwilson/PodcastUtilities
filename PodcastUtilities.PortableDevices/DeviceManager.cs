@@ -41,6 +41,12 @@ namespace PodcastUtilities.PortableDevices
             return device;
         }
 
+        public IEnumerable<IDevice> GetAllDevices()
+        {
+            EnumerateDevices();
+            return _deviceNameCache.Values.AsEnumerable();
+        }
+
         private void EnumerateDevices()
         {
             if ((_deviceNameCache != null) && (_deviceIdCache != null))
