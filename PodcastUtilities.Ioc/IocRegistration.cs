@@ -25,6 +25,7 @@ namespace PodcastUtilities.Ioc
             container.Register<IUnwantedFileRemover, UnwantedFileRemover>();
             container.Register<IEpisodePurger, EpisodePurger>();
             container.Register<IControlFileFactory, ControlFileFactory>();
+            container.Register<IStreamHelper, StreamHelper>();
         }
 
         [CLSCompliant(false)]

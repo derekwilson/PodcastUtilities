@@ -8,7 +8,7 @@ namespace PodcastUtilities.Common.Platform
     /// </summary>
     public class StreamHelper : IStreamHelper
     {
-        private const int CopyBufferSize = 1000;
+        private const int CopyBufferSize = 10000;
 
         ///<summary>
         /// Open a readable stream on a file
