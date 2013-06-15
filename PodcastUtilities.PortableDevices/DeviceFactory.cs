@@ -7,6 +7,7 @@ namespace PodcastUtilities.PortableDevices
         private readonly IPortableDeviceManager _portableDeviceManager;
         private readonly IPortableDeviceFactory _portableDeviceFactory;
         private readonly IPortableDeviceHelper _portableDeviceHelper;
+        private readonly IDeviceStreamFactory _deviceStreamFactory;
 
         internal DeviceFactory(
             IPortableDeviceManager portableDeviceManager)
@@ -14,12 +15,16 @@ namespace PodcastUtilities.PortableDevices
             _portableDeviceManager = portableDeviceManager;
             _portableDeviceFactory = new PortableDeviceFactory();
             _portableDeviceHelper = new PortableDeviceHelper();
+            _deviceStreamFactory = new DeviceStreamFactory();
         }
 
         public IDevice CreateDevice(string id)
         {
-            return new Device(_portableDeviceManager, _portableDeviceFactory, 
+            return new Device(
+                _portableDeviceManager, 
+                _portableDeviceFactory, 
                 _portableDeviceHelper,
+                _deviceStreamFactory, 
                 id);
         }
     }

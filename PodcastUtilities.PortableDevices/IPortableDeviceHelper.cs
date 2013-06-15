@@ -20,5 +20,7 @@ namespace PodcastUtilities.PortableDevices
         IEnumerable<string> GetChildObjectIds(IPortableDeviceContent deviceContent, string parentId);
 
         void DeleteObject(IPortableDeviceContent deviceContent, string objectId);
+
+        IStream OpenResourceStream(IPortableDeviceContent deviceContent, string objectId, uint mode);
     }
 }

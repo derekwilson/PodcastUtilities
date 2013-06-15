@@ -37,6 +37,9 @@ namespace PodcastUtilities.PortableDevices
 
             WPD_CLIENT_REVISION.fmtid = new Guid(0x204D9F0C, 0x2292, 0x4080, 0x9F, 0x42, 0x40, 0x66, 0x4E, 0x70, 0xF8, 0x59);
             WPD_CLIENT_REVISION.pid = 5;
+
+            WPD_RESOURCE_DEFAULT.fmtid = new Guid(0xE81E79BE, 0x34F0, 0x41BF, 0xB5, 0x3F, 0xF1, 0xA0, 0x6A, 0xE8, 0x78, 0x42);
+            WPD_RESOURCE_DEFAULT.pid = 0;
         }
 
         public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_ID;
@@ -49,5 +52,6 @@ namespace PodcastUtilities.PortableDevices
         public static PortableDeviceApiLib._tagpropertykey WPD_CLIENT_MAJOR_VERSION;
         public static PortableDeviceApiLib._tagpropertykey WPD_CLIENT_MINOR_VERSION;
         public static PortableDeviceApiLib._tagpropertykey WPD_CLIENT_REVISION;
+        public static PortableDeviceApiLib._tagpropertykey WPD_RESOURCE_DEFAULT;
     }
 }

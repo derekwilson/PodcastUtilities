@@ -1,4 +1,3 @@
-using System;
 using PodcastUtilities.Common.Tests;
 using PortableDeviceApiLib;
 using Rhino.Mocks;
@@ -11,6 +10,7 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceTests
         protected IPortableDeviceManager PortableDeviceManager { get; set; }
         protected IPortableDeviceFactory PortableDeviceFactory { get; set; }
         protected IPortableDeviceHelper PortableDeviceHelper { get; set; }
+        protected IDeviceStreamFactory DeviceStreamFactory { get; set; }
         protected IPortableDevice PortableDevice { get; set; }
         protected IPortableDeviceContent PortableDeviceContent { get; set; }
 
@@ -24,6 +24,7 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceTests
 
             PortableDeviceFactory = GenerateMock<IPortableDeviceFactory>();
             PortableDeviceHelper = GenerateMock<IPortableDeviceHelper>();
+            DeviceStreamFactory = GenerateMock<IDeviceStreamFactory>();
 
             PortableDevice = GenerateMock<IPortableDevice>();
             PortableDeviceContent = GenerateMock<IPortableDeviceContent>();
@@ -33,7 +34,7 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceTests
 
             PortableDevice.Stub(device => device.Content(out Arg<IPortableDeviceContent>.Out(PortableDeviceContent).Dummy));
 
-            Device = new Device(PortableDeviceManager, PortableDeviceFactory, PortableDeviceHelper, "ABC123");
+            Device = new Device(PortableDeviceManager, PortableDeviceFactory, PortableDeviceHelper, DeviceStreamFactory, "ABC123");
         }
     }
 }

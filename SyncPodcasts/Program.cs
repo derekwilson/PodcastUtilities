@@ -60,6 +60,7 @@ namespace SyncPodcasts
 		{
 			var container =  new LinFuIocContainer();
 
+            IocRegistration.RegisterPortableDeviceServices(container);
             IocRegistration.RegisterFileServices(container);
             IocRegistration.RegisterPlaylistServices(container);
 

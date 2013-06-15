@@ -50,9 +50,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeviceStreamTests\WhenFlushingDeviceStream.cs" />
+    <Compile Include="DeviceStreamTests\WhenGettingCurrentPosition.cs" />
+    <Compile Include="DeviceStreamTests\WhenGettingLength.cs" />
+    <Compile Include="DeviceStreamTests\WhenReadingFromStream.cs" />
+    <Compile Include="DeviceStreamTests\WhenReadingFromStreamOffsetIntoBuffer.cs" />
+    <Compile Include="DeviceStreamTests\WhenReadingFromStreamToStartOfBuffer.cs" />
+    <Compile Include="DeviceStreamTests\WhenSeekingFromBeginning.cs" />
+    <Compile Include="DeviceStreamTests\WhenSeekingFromCurrentPosition.cs" />
+    <Compile Include="DeviceStreamTests\WhenSeekingFromEnd.cs" />
+    <Compile Include="DeviceStreamTests\WhenSettingCurrentPosition.cs" />
+    <Compile Include="DeviceStreamTests\WhenSettingLength.cs" />
+    <Compile Include="DeviceStreamTests\WhenTestingDeviceStream.cs" />
+    <Compile Include="DeviceStreamTests\WhenWritingToStream.cs" />
+    <Compile Include="DeviceStreamTests\WhenWritingToStreamFromStartOfBuffer.cs" />
+    <Compile Include="DeviceStreamTests\WhenWritingToStreamOffsetIntoBuffer.cs" />
     <Compile Include="DeviceTests\WhenGettingDeviceName.cs" />
     <Compile Include="DeviceTests\WhenGettingObjectFromFullPath.cs" />
     <Compile Include="DeviceTests\WhenGettingObjectFromRootObjectPath.cs" />
+    <Compile Include="DeviceTests\WhenOpeningReadStreamForNonexistentObject.cs" />
+    <Compile Include="DeviceTests\WhenOpeningReadStreamForValidObject.cs" />
+    <Compile Include="DeviceTests\WhenOpeningStream.cs" />
     <Compile Include="FilenameMatcherTests\WhenPatternContainsMultiCharacterWildcards.cs" />
     <Compile Include="FilenameMatcherTests\WhenPatternContainsSingleCharacterWildcards.cs" />
     <Compile Include="FilenameMatcherTests\WhenPatternDoesNotContainWildcards.cs" />

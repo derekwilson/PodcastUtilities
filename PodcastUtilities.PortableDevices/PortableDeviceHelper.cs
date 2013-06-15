@@ -141,6 +141,18 @@ namespace PodcastUtilities.PortableDevices
             deviceContent.Delete(PortableDeviceConstants.PORTABLE_DEVICE_DELETE_NO_RECURSION, objectIdCollection, null);
         }
 
+        public IStream OpenResourceStream(IPortableDeviceContent deviceContent, string objectId, uint mode)
+        {
+            IPortableDeviceResources resources;
+            deviceContent.Transfer(out resources);
+
+            IStream stream;
+            uint optimalBufferSize = 0;
+            resources.GetStream(objectId, PortableDevicePropertyKeys.WPD_RESOURCE_DEFAULT, mode, ref optimalBufferSize, out stream);
+
+            return stream;
+        }
+
         private static IPortableDeviceValues GetDeviceValues(IPortableDeviceContent deviceContent, _tagpropertykey key, string objectId)
         {
             IPortableDeviceProperties deviceProperties;

@@ -9,6 +9,7 @@ namespace PodcastUtilities.PortableDevices
         private readonly IPortableDeviceManager _portableDeviceManager;
         private readonly IPortableDeviceFactory _portableDeviceFactory;
         private readonly IPortableDeviceHelper _portableDeviceHelper;
+        private readonly IDeviceStreamFactory _deviceStreamFactory;
         private IPortableDevice _portableDevice;
         private IPortableDeviceContent _portableDeviceContent;
         private string _name;
@@ -17,11 +18,13 @@ namespace PodcastUtilities.PortableDevices
             IPortableDeviceManager portableDeviceManager,
             IPortableDeviceFactory portableDeviceFactory, 
             IPortableDeviceHelper portableDeviceHelper,
+            IDeviceStreamFactory deviceStreamFactory,
             string id)
         {
             _portableDeviceManager = portableDeviceManager;
             _portableDeviceFactory = portableDeviceFactory;
             _portableDeviceHelper = portableDeviceHelper;
+            _deviceStreamFactory = deviceStreamFactory;
             Id = id;
             OpenDevice(id);
         }
@@ -69,7 +72,18 @@ namespace PodcastUtilities.PortableDevices
 
         public Stream OpenRead(string path)
         {
-            throw new NotImplementedException();
+            var deviceObject = GetObjectFromPath(path);
+            if (deviceObject == null)
+            {
+                throw new FileNotFoundException();
+            }
+
+            var resourceStream = _portableDeviceHelper.OpenResourceStream(
+                _portableDeviceContent, 
+                deviceObject.Id, 
+                StreamConstants.STGM_READ);
+
+            return _deviceStreamFactory.CreateStream(resourceStream);
         }
 
         public Stream OpenWrite(string path, bool allowOverwrite)
