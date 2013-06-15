@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilities.PortableDe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilities.PortableDevices.Tests", "PodcastUtilities.PortableDevices.Tests\PodcastUtilities.PortableDevices.Tests.csproj", "{8A814E5A-815D-4F85-B96B-6B83E48DF38B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilities.Integration.Tests", "PodcastUtilities.Integration.Tests\PodcastUtilities.Integration.Tests.csproj", "{CF81BDB3-EF95-450B-A33E-810FFC593B44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -184,6 +186,16 @@ Global
 		{8A814E5A-815D-4F85-B96B-6B83E48DF38B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8A814E5A-815D-4F85-B96B-6B83E48DF38B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8A814E5A-815D-4F85-B96B-6B83E48DF38B}.Release|x86.ActiveCfg = Release|Any CPU
+		{CF81BDB3-EF95-450B-A33E-810FFC593B44}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{CF81BDB3-EF95-450B-A33E-810FFC593B44}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{CF81BDB3-EF95-450B-A33E-810FFC593B44}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{CF81BDB3-EF95-450B-A33E-810FFC593B44}.Debug|x86.ActiveCfg = Debug|x86
+		{CF81BDB3-EF95-450B-A33E-810FFC593B44}.Debug|x86.Build.0 = Debug|x86
+		{CF81BDB3-EF95-450B-A33E-810FFC593B44}.Release|Any CPU.ActiveCfg = Release|x86
+		{CF81BDB3-EF95-450B-A33E-810FFC593B44}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{CF81BDB3-EF95-450B-A33E-810FFC593B44}.Release|Mixed Platforms.Build.0 = Release|x86
+		{CF81BDB3-EF95-450B-A33E-810FFC593B44}.Release|x86.ActiveCfg = Release|x86
+		{CF81BDB3-EF95-450B-A33E-810FFC593B44}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -202,5 +214,6 @@ Global
 		{F1A13B4F-1748-4237-A87D-02E1729A3190} = {0ED0BB5D-F800-4A87-A65D-78C666C388F2}
 		{03BAF930-2492-4792-9EBC-4FFAA9D3D60B} = {0ED0BB5D-F800-4A87-A65D-78C666C388F2}
 		{8A814E5A-815D-4F85-B96B-6B83E48DF38B} = {0ED0BB5D-F800-4A87-A65D-78C666C388F2}
+		{CF81BDB3-EF95-450B-A33E-810FFC593B44} = {0ED0BB5D-F800-4A87-A65D-78C666C388F2}
 	EndGlobalSection
 EndGlobal
