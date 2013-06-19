@@ -1,9 +1,10 @@
 ﻿using NUnit.Framework;
+using PortableDeviceApiLib;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.PortableDevices.Tests.DeviceTests
 {
-    public class WhenGettingObjectFromFullPath : WhenTestingDevice
+    public class WhenCreatingAFolderObjectFromFullPath : WhenTestingDevice
     {
         private IDeviceObject DeviceObject { get; set; }
 
@@ -44,15 +45,27 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceTests
 
         protected override void When()
         {
-            DeviceObject = Device.GetObjectFromPath(@"Internal Storage\Foo\Bar");
+            Device.CreateFolderObjectFromPath(@"Internal Storage\Foo\NewFolder");
         }
 
         [Test]
-        public void ItShouldReturnTheCorrectObject()
+        public void ItShouldCreateTheCorrectFolder()
         {
-            Assert.That(DeviceObject.Id, Is.EqualTo("barId"));
-            Assert.That(DeviceObject.Name, Is.EqualTo("bar"));
+            PortableDeviceHelper.AssertWasCalled(
+                helper => helper.CreateFolderObject(
+                                    Arg<IPortableDeviceContent>.Is.Equal(PortableDeviceContent), 
+                                    Arg<string>.Is.Equal("fooId"), 
+                                    Arg<string>.Is.Anything));
+        }
+
+        [Test]
+        public void ItShouldGetTheNewFolder()
+        {
+            PortableDeviceHelper.AssertWasCalled(
+                helper => helper.GetChildObjectIds(
+                                    Arg<IPortableDeviceContent>.Is.Equal(PortableDeviceContent),
+                                    Arg<string>.Is.Equal("fooId")
+                                    ), o => o.Repeat.Times(2));
         }
     }
 }
-

@@ -72,8 +72,16 @@ namespace PodcastUtilities.Common.Platform
         /// create the directory in the file system
         /// </summary>
         public void Create()
-		{
-			_directoryInfo.Create();
-		}
-	}
+        {
+            _directoryInfo.Create();
+        }
+
+        /// <summary>
+        /// delete the directory in the file system
+        /// </summary>
+        public void Delete()
+        {
+            _directoryInfo.Delete();
+        }
+    }
 }

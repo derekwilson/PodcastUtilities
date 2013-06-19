@@ -58,6 +58,28 @@ namespace PodcastUtilities.PortableDevices
             return new DeviceObject(_portableDeviceHelper, _portableDeviceContent, childObjectId, childObjectName);
         }
 
+        public void CreateFolderObjectFromPath(string path)
+        {
+            var pathParts = path.Split(Path.DirectorySeparatorChar);
+
+            var parentId = PortableDeviceConstants.WPD_DEVICE_OBJECT_ID;
+            string childObjectId = null;
+            string childObjectName = null;
+            foreach (var part in pathParts)
+            {
+                childObjectId = GetChildObjectIdByName(parentId, part, out childObjectName);
+                if (childObjectId == null)
+                {
+                    // we have reached the end of folders that exist - so we need to start creating from here
+                    _portableDeviceHelper.CreateFolderObject(_portableDeviceContent, parentId, part);
+                    // get the newly created object and carry on
+                    childObjectId = GetChildObjectIdByName(parentId, part, out childObjectName);
+                }
+
+                parentId = childObjectId;
+            }
+        }
+
         public void Delete(string path)
         {
             var deviceObject = GetObjectFromPath(path);

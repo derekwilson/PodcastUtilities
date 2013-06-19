@@ -65,6 +65,7 @@
     <Compile Include="DeviceStreamTests\WhenWritingToStream.cs" />
     <Compile Include="DeviceStreamTests\WhenWritingToStreamFromStartOfBuffer.cs" />
     <Compile Include="DeviceStreamTests\WhenWritingToStreamOffsetIntoBuffer.cs" />
+    <Compile Include="DeviceTests\WhenCreatingAFolderObjectFromFullPath.cs" />
     <Compile Include="DeviceTests\WhenGettingDeviceName.cs" />
     <Compile Include="DeviceTests\WhenGettingObjectFromFullPath.cs" />
     <Compile Include="DeviceTests\WhenGettingObjectFromRootObjectPath.cs" />

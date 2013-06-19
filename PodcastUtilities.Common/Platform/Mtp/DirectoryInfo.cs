@@ -86,7 +86,21 @@ namespace PodcastUtilities.Common.Platform.Mtp
         {
             if (Exists)
             {
+                // nothing to do
                 return;
+            }
+            _device.CreateFolderObjectFromPath(_path);
+        }
+
+        /// <summary>
+        /// delete the directory in the file system
+        /// </summary>
+        public void Delete()
+        {
+            if (Exists)
+            {
+                _device.Delete(_path);
+                _deviceObject = null;   // force it to be refreshed
             }
         }
 
