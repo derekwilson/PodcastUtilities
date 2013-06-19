@@ -129,6 +129,28 @@ namespace PodcastUtilities.PortableDevices
             return childObjectIds;
         }
 
+        private void GetRequiredPropertiesForFolder(string parentObjectId, string folderName, ref  IPortableDeviceValues ppObjectProperties)
+        {
+            ppObjectProperties.SetStringValue(ref PortableDevicePropertyKeys.WPD_OBJECT_PARENT_ID, parentObjectId);
+            ppObjectProperties.SetStringValue(ref PortableDevicePropertyKeys.WPD_OBJECT_NAME, folderName);
+            ppObjectProperties.SetStringValue(ref PortableDevicePropertyKeys.WPD_OBJECT_ORIGINAL_FILE_NAME, folderName);
+
+            ppObjectProperties.SetGuidValue(ref PortableDevicePropertyKeys.WPD_OBJECT_CONTENT_TYPE, ref PortableDeviceConstants.WPD_CONTENT_TYPE_FOLDER);
+        }
+
+        public string CreateFolderObject(IPortableDeviceContent deviceContent, string parentObjectId, string newFolder)
+        {
+            IPortableDeviceProperties deviceProperties;
+            deviceContent.Properties(out deviceProperties);
+            
+            IPortableDeviceValues deviceValues = (IPortableDeviceValues)new PortableDeviceTypesLib.PortableDeviceValues();
+            GetRequiredPropertiesForFolder(parentObjectId, newFolder, ref deviceValues);
+
+            string objectId = string.Empty;
+            deviceContent.CreateObjectWithPropertiesOnly(deviceValues,ref objectId);
+            return objectId;
+        }
+
         public void DeleteObject(IPortableDeviceContent deviceContent, string objectId)
         {
             var objectIdCollection =

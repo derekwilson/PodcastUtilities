@@ -29,9 +29,14 @@ namespace PodcastUtilities.Common.Platform
         /// <returns>a collection of abstracted files</returns>
         IDirectoryInfo[] GetDirectories(string pattern);
 
-		/// <summary>
-		/// create the directory in the file system
-		/// </summary>
+        /// <summary>
+        /// create the directory in the file system
+        /// </summary>
         void Create();
-	}
+
+        /// <summary>
+        /// delete the directory in the file system
+        /// </summary>
+        void Delete();
+    }
 }
