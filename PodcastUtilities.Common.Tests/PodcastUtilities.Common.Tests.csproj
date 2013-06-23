@@ -160,6 +160,11 @@
     <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenGettingDirectoryInfoAndDeviceIsFound.cs" />
     <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenGettingDirectoryInfoAndDeviceIsNotFound.cs" />
     <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenTestingMtpDirectoryInfoProvider.cs" />
+    <Compile Include="Platform\Mtp\MtpDriveInfoProviderTests\WhenGettingDriveInfoAndDeviceIsFound.cs" />
+    <Compile Include="Platform\Mtp\MtpDriveInfoProviderTests\WhenGettingDriveInfoAndDeviceIsFoundAndHasStorageObject.cs" />
+    <Compile Include="Platform\Mtp\MtpDriveInfoProviderTests\WhenGettingDriveInfoAndDeviceIsFoundButNoStorageObject.cs" />
+    <Compile Include="Platform\Mtp\MtpDriveInfoProviderTests\WhenGettingDriveInfoAndDeviceIsNotFound.cs" />
+    <Compile Include="Platform\Mtp\MtpDriveInfoProviderTests\WhenTestingMtpDriveInfoProvider.cs" />
     <Compile Include="Platform\Mtp\MtpPathTests\WhenPathDoesNotHaveMtpPrefix.cs" />
     <Compile Include="Platform\Mtp\MtpPathTests\WhenPathHasMtpPrefix.cs" />
     <Compile Include="Playlists\PlaylistAsxTests\WhenAddinATrackToAnInvalidPlaylist.cs" />

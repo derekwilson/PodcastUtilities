@@ -8,8 +8,8 @@
         /// <summary>
         /// create an abstract drive info object
         /// </summary>
-        /// <param name="driveName">name of the drive</param>
+        /// <param name="path">name of the drive</param>
         /// <returns>an abstrcat object</returns>
-        IDriveInfo GetDriveInfo(string driveName);
+        IDriveInfo GetDriveInfoForPath(string path);
 	}
 }

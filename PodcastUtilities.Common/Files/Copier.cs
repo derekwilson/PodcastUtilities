@@ -92,7 +92,7 @@ namespace PodcastUtilities.Common.Files
 
         private bool IsDestinationDriveFull(string destinationRootPath, long freeSpaceToLeaveOnDestination)
         {
-        	var driveInfo = DriveInfoProvider.GetDriveInfo(destinationRootPath);
+        	var driveInfo = DriveInfoProvider.GetDriveInfoForPath(destinationRootPath);
         	long availableFreeSpace = driveInfo.AvailableFreeSpace;
 
 			long freeKb = 0;

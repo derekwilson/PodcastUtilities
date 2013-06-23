@@ -15,7 +15,7 @@ namespace PodcastUtilities.Ioc
         [CLSCompliant(false)]
         public static void RegisterFileServices(IIocContainer container)
 		{
-			container.Register<IDriveInfoProvider, SystemDriveInfoProvider>();
+			container.Register<IDriveInfoProvider, FileSystemAwareDriveInfoProvider>();
 			container.Register<IDirectoryInfoProvider, FileSystemAwareDirectoryInfoProvider>();
 			container.Register<IFileUtilities, FileSystemAwareFileUtilities>();
 			container.Register<IPathUtilities, FileSystemAwarePathUtilities>();

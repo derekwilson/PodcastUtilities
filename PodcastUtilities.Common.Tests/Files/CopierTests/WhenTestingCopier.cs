@@ -26,7 +26,7 @@ namespace PodcastUtilities.Common.Tests.Files.CopierTests
 			DestinationDriveInfo.Stub(i => i.Name).Return("D");
 
 			DriveInfoProvider = GenerateMock<IDriveInfoProvider>();
-			DriveInfoProvider.Stub(p => p.GetDriveInfo(@"d:\Dest"))
+			DriveInfoProvider.Stub(p => p.GetDriveInfoForPath(@"d:\Dest"))
 				.Return(DestinationDriveInfo);
 
 			FileUtilities = GenerateMock<IFileUtilities>();

@@ -58,6 +58,33 @@ namespace PodcastUtilities.PortableDevices
             return new DeviceObject(_portableDeviceHelper, _portableDeviceContent, childObjectId, childObjectName);
         }
 
+        public IDeviceObject GetRootStorageObjectFromPath(string path)
+        {
+            var pathParts = path.Split(Path.DirectorySeparatorChar);
+
+            var parentId = PortableDeviceConstants.WPD_DEVICE_OBJECT_ID;
+            string childObjectId = null;
+            string childObjectName = null;
+
+            foreach (var part in pathParts)
+            {
+                childObjectId = GetChildObjectIdByName(parentId, part, out childObjectName);
+                if (childObjectId == null)
+                {
+                    return null;
+                }
+
+                if (IsStorageObject(childObjectId))
+                {
+                    return new DeviceObject(_portableDeviceHelper, _portableDeviceContent, childObjectId, childObjectName);
+                }
+
+                parentId = childObjectId;
+            }
+
+            return null;
+        }
+
         public void CreateFolderObjectFromPath(string path)
         {
             var pathParts = path.Split(Path.DirectorySeparatorChar);
@@ -151,6 +178,24 @@ namespace PodcastUtilities.PortableDevices
 
             actualObjectName = null;
             return null;
+        }
+
+        private bool IsStorageObject(string objectId)
+        {
+            var contentType = _portableDeviceHelper.GetObjectContentType(_portableDeviceContent, objectId);
+            if (contentType == PortableDeviceConstants.WPD_CONTENT_TYPE_FUNCTIONAL_OBJECT)
+            {
+                var functionalCategory = _portableDeviceHelper.GetGuidProperty(
+                    _portableDeviceContent, 
+                    objectId,
+                    PortableDevicePropertyKeys.WPD_FUNCTIONAL_OBJECT_CATEGORY);
+                if (functionalCategory == PortableDeviceConstants.WPD_FUNCTIONAL_CATEGORY_STORAGE)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

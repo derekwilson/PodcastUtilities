@@ -8,6 +8,7 @@ namespace PodcastUtilities.PortableDevices
         string Name { get; }
 
         IDeviceObject GetObjectFromPath(string path);
+        IDeviceObject GetRootStorageObjectFromPath(string path);
         void Delete(string path);
         Stream OpenRead(string path);
         Stream OpenWrite(string path, bool allowOverwrite);

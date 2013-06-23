@@ -16,6 +16,7 @@ namespace PodcastUtilities.PortableDevices
 
         string GetStringProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key);
         Guid GetGuidProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key);
+        ulong GetUnsignedLargeIntegerProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key);
 
         IEnumerable<string> GetChildObjectIds(IPortableDeviceContent deviceContent, string parentId);
 

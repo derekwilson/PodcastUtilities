@@ -69,6 +69,7 @@
     <Compile Include="DeviceTests\WhenGettingDeviceName.cs" />
     <Compile Include="DeviceTests\WhenGettingObjectFromFullPath.cs" />
     <Compile Include="DeviceTests\WhenGettingObjectFromRootObjectPath.cs" />
+    <Compile Include="DeviceTests\WhenGettingRootStorageObjectFromFullPath.cs" />
     <Compile Include="DeviceTests\WhenOpeningReadStreamForNonexistentObject.cs" />
     <Compile Include="DeviceTests\WhenOpeningReadStreamForValidObject.cs" />
     <Compile Include="DeviceTests\WhenOpeningStream.cs" />

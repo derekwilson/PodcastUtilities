@@ -37,6 +37,17 @@ namespace PodcastUtilities.PortableDevices
         public string Id { get; private set; }
         public string Name { get; private set; }
 
+        public long AvailableFreeSpace
+        {
+            get
+            {
+                return (long) _portableDeviceHelper.GetUnsignedLargeIntegerProperty(
+                    _portableDeviceContent,
+                    Id,
+                    PortableDevicePropertyKeys.WPD_STORAGE_FREE_SPACE_IN_BYTES);
+            }
+        }
+
         public IEnumerable<IDeviceObject> GetFolders(string pattern)
         {
             // TODO: caching
