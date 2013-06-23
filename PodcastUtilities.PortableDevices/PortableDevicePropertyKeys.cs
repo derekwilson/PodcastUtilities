@@ -29,6 +29,9 @@ namespace PodcastUtilities.PortableDevices
             WPD_OBJECT_DATE_MODIFIED.fmtid = new Guid(0xEF6B490D, 0x5CD8, 0x437A, 0xAF, 0xFC, 0xDA, 0x8B, 0x60, 0xEE, 0x4A, 0x3C);
             WPD_OBJECT_DATE_MODIFIED.pid = 19;
 
+            WPD_FUNCTIONAL_OBJECT_CATEGORY.fmtid = new Guid(0x8F052D93, 0xABCA, 0x4FC5, 0xA5, 0xAC, 0xB0, 0x1D, 0xF4, 0xDB, 0xE5, 0x98);
+            WPD_FUNCTIONAL_OBJECT_CATEGORY.pid = 2;
+
             WPD_CLIENT_NAME.fmtid = new Guid(0x204D9F0C, 0x2292, 0x4080, 0x9F, 0x42, 0x40, 0x66, 0x4E, 0x70, 0xF8, 0x59);
             WPD_CLIENT_NAME.pid = 2;
 
@@ -43,6 +46,9 @@ namespace PodcastUtilities.PortableDevices
 
             WPD_RESOURCE_DEFAULT.fmtid = new Guid(0xE81E79BE, 0x34F0, 0x41BF, 0xB5, 0x3F, 0xF1, 0xA0, 0x6A, 0xE8, 0x78, 0x42);
             WPD_RESOURCE_DEFAULT.pid = 0;
+
+            WPD_STORAGE_FREE_SPACE_IN_BYTES.fmtid = new Guid(0x01A3057A, 0x74D6, 0x4E80, 0xBE, 0xA7, 0xDC, 0x4C, 0x21, 0x2C, 0xE5, 0x0A);
+            WPD_STORAGE_FREE_SPACE_IN_BYTES.pid = 5;
         }
 
         public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_ID;
@@ -52,10 +58,12 @@ namespace PodcastUtilities.PortableDevices
         public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_ORIGINAL_FILE_NAME;
         public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_DATE_CREATED;
         public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_DATE_MODIFIED;
+        public static PortableDeviceApiLib._tagpropertykey WPD_FUNCTIONAL_OBJECT_CATEGORY;
         public static PortableDeviceApiLib._tagpropertykey WPD_CLIENT_NAME;
         public static PortableDeviceApiLib._tagpropertykey WPD_CLIENT_MAJOR_VERSION;
         public static PortableDeviceApiLib._tagpropertykey WPD_CLIENT_MINOR_VERSION;
         public static PortableDeviceApiLib._tagpropertykey WPD_CLIENT_REVISION;
         public static PortableDeviceApiLib._tagpropertykey WPD_RESOURCE_DEFAULT;
+        public static PortableDeviceApiLib._tagpropertykey WPD_STORAGE_FREE_SPACE_IN_BYTES;
     }
 }

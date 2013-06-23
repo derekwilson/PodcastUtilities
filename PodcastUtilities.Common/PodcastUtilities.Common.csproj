@@ -116,6 +116,7 @@
     <Compile Include="Perfmon\CategoryInstaller.cs" />
     <Compile Include="Perfmon\ICounterFactory.cs" />
     <Compile Include="Platform\FileSystemAwareDirectoryInfoProvider.cs" />
+    <Compile Include="Platform\FileSystemAwareDriveInfoProvider.cs" />
     <Compile Include="Platform\FileSystemAwareFileUtilities.cs" />
     <Compile Include="Platform\FileSystemAwarePathUtilities.cs" />
     <Compile Include="Platform\ICommandExecuter.cs" />
@@ -125,6 +126,8 @@
     <Compile Include="Platform\Mtp\DirectoryInfo.cs" />
     <Compile Include="Platform\Mtp\FileInfo.cs" />
     <Compile Include="Platform\Mtp\MtpDirectoryInfoProvider.cs" />
+    <Compile Include="Platform\Mtp\DriveInfo.cs" />
+    <Compile Include="Platform\Mtp\MtpDriveInfoProvider.cs" />
     <Compile Include="Platform\Mtp\MtpPath.cs" />
     <Compile Include="Platform\Mtp\MtpPathInfo.cs" />
     <Compile Include="Platform\StreamHelper.cs" />

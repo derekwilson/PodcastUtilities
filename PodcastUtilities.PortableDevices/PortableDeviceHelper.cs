@@ -93,6 +93,16 @@ namespace PodcastUtilities.PortableDevices
             return value;
         }
 
+        public ulong GetUnsignedLargeIntegerProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key)
+        {
+            var deviceValues = GetDeviceValues(deviceContent, key, objectId);
+
+            ulong value;
+            deviceValues.GetUnsignedLargeIntegerValue(ref key, out value);
+
+            return value;
+        }
+
         public DateTime GetDateProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key)
         {
             var deviceValues = GetDeviceValues(deviceContent, key, objectId);

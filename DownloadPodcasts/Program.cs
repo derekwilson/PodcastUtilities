@@ -173,7 +173,7 @@ namespace DownloadPodcasts
             long availableFreeSpace = 0;
             try
             {
-                var driveInfo = _driveInfoProvider.GetDriveInfo(Path.GetPathRoot(Path.GetFullPath(destinationRootPath)));
+                var driveInfo = _driveInfoProvider.GetDriveInfoForPath(Path.GetPathRoot(Path.GetFullPath(destinationRootPath)));
                 availableFreeSpace = driveInfo.AvailableFreeSpace;
             }
             catch (Exception ex)
