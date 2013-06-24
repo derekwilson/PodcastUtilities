@@ -15,12 +15,16 @@ namespace PodcastUtilities.Common.Platform
         private readonly IFileUtilities _fileUtilities;
         private readonly IDeviceManager _deviceManager;
         private readonly IStreamHelper _streamHelper;
+        private readonly IFileInfoProvider _fileInfoProvider;
 
         ///<summary>
         /// Construct the object
         ///</summary>
-        public FileSystemAwareFileUtilities(IDeviceManager deviceManager, IStreamHelper streamHelper)
-            : this(new FileUtilities(), deviceManager, streamHelper)
+        public FileSystemAwareFileUtilities(
+            IDeviceManager deviceManager, 
+            IStreamHelper streamHelper,
+            IFileInfoProvider fileInfoProvider)
+            : this(new FileUtilities(), deviceManager, streamHelper, fileInfoProvider)
         {
             
         }
@@ -28,11 +32,13 @@ namespace PodcastUtilities.Common.Platform
         internal FileSystemAwareFileUtilities(
             IFileUtilities fileUtilities,
             IDeviceManager deviceManager,
-            IStreamHelper streamHelper)
+            IStreamHelper streamHelper,
+            IFileInfoProvider fileInfoProvider)
         {
             _fileUtilities = fileUtilities;
             _deviceManager = deviceManager;
             _streamHelper = streamHelper;
+            _fileInfoProvider = fileInfoProvider;
         }
 
         /// <summary>
@@ -109,9 +115,11 @@ namespace PodcastUtilities.Common.Platform
             }
             else
             {
+                var sourceFileInfo = _fileInfoProvider.GetFileInfo(sourceFileName);
+
                 using (var sourceStream = OpenReadStream(sourceFileName))
                 {
-                    using (var destinationStream = OpenWriteStream(destinationFileName, allowOverwrite))
+                    using (var destinationStream = OpenWriteStream(destinationFileName, sourceFileInfo.Length, allowOverwrite))
                     {
                         _streamHelper.Copy(sourceStream, destinationStream);
                     }
@@ -161,13 +169,13 @@ namespace PodcastUtilities.Common.Platform
             return _streamHelper.OpenRead(filename);
         }
 
-        private Stream OpenWriteStream(string filename, bool allowOverwrite)
+        private Stream OpenWriteStream(string filename, long length, bool allowOverwrite)
         {
             var pathInfo = MtpPath.GetPathInfo(filename);
 
             if (pathInfo.IsMtpPath)
             {
-                return GetDevice(pathInfo).OpenWrite(pathInfo.RelativePathOnDevice, allowOverwrite);
+                return GetDevice(pathInfo).OpenWrite(pathInfo.RelativePathOnDevice, length, allowOverwrite);
             }
 
             return _streamHelper.OpenWrite(filename, allowOverwrite);

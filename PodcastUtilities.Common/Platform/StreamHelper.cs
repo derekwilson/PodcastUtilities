@@ -62,6 +62,8 @@ namespace PodcastUtilities.Common.Platform
 
                 destination.Write(buffer, 0, readSize);
             }
+
+            destination.Flush();
         }
     }
 }

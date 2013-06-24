@@ -45,6 +45,14 @@ namespace PodcastUtilities.Common.Platform
 			get { return _fileInfo.CreationTime; }
 		}
 
-		#endregion
+        ///<summary>
+        /// Length of the file in bytes
+        ///</summary>
+        public long Length
+        {
+            get { return _fileInfo.Length; }
+        }
+
+        #endregion
 	}
 }

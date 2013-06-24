@@ -23,13 +23,19 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceTests
 
             PortableDeviceHelper.Stub(
                 helper => helper.GetChildObjectIds(PortableDeviceContent, "InternalStorageID"))
-                .Return(new[] { "fooId" });
+                .Return(new[] { "fooId", "xId" });
 
             PortableDeviceHelper
                 .Stub(propertyHelper => propertyHelper.GetObjectFileName(
                     PortableDeviceContent,
                     "InternalStorageID"))
                 .Return("Internal Storage");
+
+            PortableDeviceHelper
+                .Stub(propertyHelper => propertyHelper.GetObjectFileName(
+                    PortableDeviceContent,
+                    "xId"))
+                .Return("x");
 
             PortableDeviceHelper
                 .Stub(propertyHelper => propertyHelper.GetObjectFileName(

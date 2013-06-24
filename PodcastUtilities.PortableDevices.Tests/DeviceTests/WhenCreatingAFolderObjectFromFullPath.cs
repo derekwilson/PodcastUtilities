@@ -57,15 +57,5 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceTests
                                     Arg<string>.Is.Equal("fooId"), 
                                     Arg<string>.Is.Anything));
         }
-
-        [Test]
-        public void ItShouldGetTheNewFolder()
-        {
-            PortableDeviceHelper.AssertWasCalled(
-                helper => helper.GetChildObjectIds(
-                                    Arg<IPortableDeviceContent>.Is.Equal(PortableDeviceContent),
-                                    Arg<string>.Is.Equal("fooId")
-                                    ), o => o.Repeat.Times(2));
-        }
     }
 }

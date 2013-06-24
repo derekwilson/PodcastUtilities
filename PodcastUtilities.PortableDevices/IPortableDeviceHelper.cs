@@ -24,5 +24,6 @@ namespace PodcastUtilities.PortableDevices
         void DeleteObject(IPortableDeviceContent deviceContent, string objectId);
 
         IStream OpenResourceStream(IPortableDeviceContent deviceContent, string objectId, uint mode);
+        IStream CreateResourceStream(IPortableDeviceContent deviceContent, string parentObjectId, string fileName, long length);
     }
 }

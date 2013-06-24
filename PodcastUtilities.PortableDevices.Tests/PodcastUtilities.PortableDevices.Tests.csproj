@@ -73,6 +73,10 @@
     <Compile Include="DeviceTests\WhenOpeningReadStreamForNonexistentObject.cs" />
     <Compile Include="DeviceTests\WhenOpeningReadStreamForValidObject.cs" />
     <Compile Include="DeviceTests\WhenOpeningStream.cs" />
+    <Compile Include="DeviceTests\WhenOpeningWriteStreamAndObjectDoesNotAlreadyExist.cs" />
+    <Compile Include="DeviceTests\WhenOpeningWriteStreamAndObjectExistsAndAllowOverwriteIsFalse.cs" />
+    <Compile Include="DeviceTests\WhenOpeningWriteStreamAndObjectExistsAndAllowOverwriteIsTrue.cs" />
+    <Compile Include="DeviceTests\WhenOpeningWriteStreamAndPathIsAtRootLevel.cs" />
     <Compile Include="FilenameMatcherTests\WhenPatternContainsMultiCharacterWildcards.cs" />
     <Compile Include="FilenameMatcherTests\WhenPatternContainsSingleCharacterWildcards.cs" />
     <Compile Include="FilenameMatcherTests\WhenPatternDoesNotContainWildcards.cs" />

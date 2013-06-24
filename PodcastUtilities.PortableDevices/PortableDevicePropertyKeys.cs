@@ -20,6 +20,9 @@ namespace PodcastUtilities.PortableDevices
             WPD_OBJECT_CONTENT_TYPE.fmtid = new Guid(0xEF6B490D, 0x5CD8, 0x437A, 0xAF, 0xFC, 0xDA, 0x8B, 0x60, 0xEE, 0x4A, 0x3C);
             WPD_OBJECT_CONTENT_TYPE.pid = 7;
 
+            WPD_OBJECT_SIZE.fmtid = new Guid(0xEF6B490D, 0x5CD8, 0x437A, 0xAF, 0xFC, 0xDA, 0x8B, 0x60, 0xEE, 0x4A, 0x3C);
+            WPD_OBJECT_SIZE.pid = 11;
+
             WPD_OBJECT_ORIGINAL_FILE_NAME.fmtid = new Guid(0xEF6B490D, 0x5CD8, 0x437A, 0xAF, 0xFC, 0xDA, 0x8B, 0x60, 0xEE, 0x4A, 0x3C);
             WPD_OBJECT_ORIGINAL_FILE_NAME.pid = 12;
 
@@ -55,6 +58,7 @@ namespace PodcastUtilities.PortableDevices
         public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_PARENT_ID;
         public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_NAME;
         public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_CONTENT_TYPE;
+        public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_SIZE;
         public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_ORIGINAL_FILE_NAME;
         public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_DATE_CREATED;
         public static PortableDeviceApiLib._tagpropertykey WPD_OBJECT_DATE_MODIFIED;

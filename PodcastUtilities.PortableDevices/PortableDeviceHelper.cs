@@ -185,6 +185,34 @@ namespace PodcastUtilities.PortableDevices
             return stream;
         }
 
+        public IStream CreateResourceStream(IPortableDeviceContent deviceContent, string parentObjectId, string fileName, long length)
+        {
+            IPortableDeviceProperties deviceProperties;
+            deviceContent.Properties(out deviceProperties);
+
+            var deviceValues = GetRequiredPropertiesForFile(parentObjectId, fileName, length);
+
+            IStream stream;
+            uint optimalBufferSize = 0;
+            deviceContent.CreateObjectWithPropertiesAndData(deviceValues, out stream, ref optimalBufferSize, null);
+
+            return stream;
+        }
+
+        private static IPortableDeviceValues GetRequiredPropertiesForFile(string parentObjectId, string fileName, long length)
+        {
+            var objectProperties = (IPortableDeviceValues)new PortableDeviceTypesLib.PortableDeviceValues();
+
+            objectProperties.SetStringValue(ref PortableDevicePropertyKeys.WPD_OBJECT_PARENT_ID, parentObjectId);
+            objectProperties.SetStringValue(ref PortableDevicePropertyKeys.WPD_OBJECT_NAME, fileName);
+            objectProperties.SetStringValue(ref PortableDevicePropertyKeys.WPD_OBJECT_ORIGINAL_FILE_NAME, fileName);
+            objectProperties.SetUnsignedLargeIntegerValue(ref PortableDevicePropertyKeys.WPD_OBJECT_SIZE, (ulong)length);
+
+            objectProperties.SetGuidValue(ref PortableDevicePropertyKeys.WPD_OBJECT_CONTENT_TYPE, ref PortableDeviceConstants.WPD_CONTENT_TYPE_GENERIC_FILE);
+
+            return objectProperties;
+        }
+
         private static IPortableDeviceValues GetDeviceValues(IPortableDeviceContent deviceContent, _tagpropertykey key, string objectId)
         {
             IPortableDeviceProperties deviceProperties;
