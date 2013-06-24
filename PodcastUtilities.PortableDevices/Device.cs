@@ -87,24 +87,7 @@ namespace PodcastUtilities.PortableDevices
 
         public void CreateFolderObjectFromPath(string path)
         {
-            var pathParts = path.Split(Path.DirectorySeparatorChar);
-
-            var parentId = PortableDeviceConstants.WPD_DEVICE_OBJECT_ID;
-            string childObjectId = null;
-            string childObjectName = null;
-            foreach (var part in pathParts)
-            {
-                childObjectId = GetChildObjectIdByName(parentId, part, out childObjectName);
-                if (childObjectId == null)
-                {
-                    // we have reached the end of folders that exist - so we need to start creating from here
-                    _portableDeviceHelper.CreateFolderObject(_portableDeviceContent, parentId, part);
-                    // get the newly created object and carry on
-                    childObjectId = GetChildObjectIdByName(parentId, part, out childObjectName);
-                }
-
-                parentId = childObjectId;
-            }
+            CreateFolderObject(path);
         }
 
         public void Delete(string path)
@@ -135,9 +118,36 @@ namespace PodcastUtilities.PortableDevices
             return _deviceStreamFactory.CreateStream(resourceStream);
         }
 
-        public Stream OpenWrite(string path, bool allowOverwrite)
+        public Stream OpenWrite(string path, long length, bool allowOverwrite)
         {
-            throw new NotImplementedException();
+            var deviceObject = GetObjectFromPath(path);
+            if (deviceObject != null)
+            {
+                if (!allowOverwrite)
+                {
+                    throw new IOException(String.Format("Device: [{0}]; path [{1}] already exists and allowOverwrite is false", Name, path));
+                }
+
+                _portableDeviceHelper.DeleteObject(_portableDeviceContent, deviceObject.Id);
+            }
+
+            var separatorPosition = path.LastIndexOf(Path.DirectorySeparatorChar);
+            var fileName = path.Substring(separatorPosition + 1);
+
+            var folderObjectId = PortableDeviceConstants.WPD_DEVICE_OBJECT_ID;
+            if (separatorPosition >= 0)
+            {
+                var parentFolderPath = path.Substring(0, separatorPosition);
+                folderObjectId = CreateFolderObject(parentFolderPath);
+            }
+
+            var resourceStream = _portableDeviceHelper.CreateResourceStream(
+                _portableDeviceContent, 
+                folderObjectId, 
+                fileName,
+                length);
+
+            return _deviceStreamFactory.CreateStream(resourceStream);
         }
 
         private void OpenDevice(string id)
@@ -178,6 +188,28 @@ namespace PodcastUtilities.PortableDevices
 
             actualObjectName = null;
             return null;
+        }
+
+        private string CreateFolderObject(string path)
+        {
+            var pathParts = path.Split(Path.DirectorySeparatorChar);
+
+            var parentId = PortableDeviceConstants.WPD_DEVICE_OBJECT_ID;
+            string childObjectId = null;
+            string childObjectName = null;
+            foreach (var part in pathParts)
+            {
+                childObjectId = GetChildObjectIdByName(parentId, part, out childObjectName);
+                if (childObjectId == null)
+                {
+                    // we have reached the end of folders that exist - so we need to start creating from here
+                    childObjectId = _portableDeviceHelper.CreateFolderObject(_portableDeviceContent, parentId, part);
+                }
+
+                parentId = childObjectId;
+            }
+
+            return parentId;
         }
 
         private bool IsStorageObject(string objectId)

@@ -19,5 +19,9 @@ namespace PodcastUtilities.Common.Platform
         /// date time the file was created
         /// </summary>
         DateTime CreationTime { get; }
+        ///<summary>
+        /// Length of the file in bytes
+        ///</summary>
+        long Length { get; }
 	}
 }

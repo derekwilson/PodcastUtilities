@@ -11,7 +11,7 @@ namespace PodcastUtilities.PortableDevices
         IDeviceObject GetRootStorageObjectFromPath(string path);
         void Delete(string path);
         Stream OpenRead(string path);
-        Stream OpenWrite(string path, bool allowOverwrite);
+        Stream OpenWrite(string path, long length, bool allowOverwrite);
         void CreateFolderObjectFromPath(string path);
     }
 }

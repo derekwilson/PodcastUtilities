@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using PodcastUtilities.Common.Platform;
 using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.Platform.FileSystemAwareFileUtilitiesTests.FileCopy
@@ -16,7 +17,13 @@ namespace PodcastUtilities.Common.Tests.Platform.FileSystemAwareFileUtilitiesTes
             StreamHelper.Stub(helper => helper.OpenRead(@"D:\foo2\bar.abc"))
                 .Return(SourceStream);
 
-            Device.Stub(device => device.OpenWrite(@"path\file.xyz", true))
+            var fileInfo = GenerateMock<IFileInfo>();
+            fileInfo.Stub(info => info.Length)
+                .Return(1234);
+            FileInfoProvider.Stub(provider => provider.GetFileInfo(@"D:\foo2\bar.abc"))
+                .Return(fileInfo);
+
+            Device.Stub(device => device.OpenWrite(@"path\file.xyz", 1234, true))
                 .Return(DestinationStream);
         }
 

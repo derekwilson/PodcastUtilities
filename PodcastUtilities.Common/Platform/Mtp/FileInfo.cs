@@ -55,6 +55,18 @@ namespace PodcastUtilities.Common.Platform.Mtp
             }
         }
 
+        ///<summary>
+        /// Length of the file in bytes
+        ///</summary>
+        public long Length
+        {
+            get
+            {
+                // TODO
+                return 0;
+            }
+        }
+
         private IDeviceObject DeviceObject
         {
             get

@@ -117,10 +117,12 @@
     <Compile Include="Perfmon\ICounterFactory.cs" />
     <Compile Include="Platform\FileSystemAwareDirectoryInfoProvider.cs" />
     <Compile Include="Platform\FileSystemAwareDriveInfoProvider.cs" />
+    <Compile Include="Platform\FileSystemAwareFileInfoProvider.cs" />
     <Compile Include="Platform\FileSystemAwareFileUtilities.cs" />
     <Compile Include="Platform\FileSystemAwarePathUtilities.cs" />
     <Compile Include="Platform\ICommandExecuter.cs" />
     <Compile Include="Platform\IEnvironmentInformationProvider.cs" />
+    <Compile Include="Platform\IFileInfoProvider.cs" />
     <Compile Include="Platform\IPathUtilities.cs" />
     <Compile Include="Platform\IStreamHelper.cs" />
     <Compile Include="Platform\Mtp\DirectoryInfo.cs" />
