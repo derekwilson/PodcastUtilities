@@ -38,7 +38,10 @@ namespace PodcastUtilities.Integration.Tests.PortableDevices
 
         private string GetRootFolder()
         {
-            return string.Format("MTP:\\{0}\\Internal Memory\\podcastutilities.integration.test", _devices.First().Name);
+            IDevice device = _devices.First();
+            var objects = device.GetDeviceRootStorageObjects();
+
+            return string.Format("MTP:\\{0}\\{1}\\podcastutilities.integration.test", _devices.First().Name, objects.First().Name);
         }
 
         private void CreateFolderWithSubfolders()
