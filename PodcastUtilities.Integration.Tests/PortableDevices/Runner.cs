@@ -33,6 +33,7 @@ namespace PodcastUtilities.Integration.Tests.PortableDevices
                 RunOneTest(DeleteFolderInRoot);
                 RunOneTest(CreateFolderWithSubfolders);
                 RunOneTest(DeleteFolderWithSubfolders);
+                RunOneTest(CopyFile);
             }
         }
 
@@ -42,6 +43,16 @@ namespace PodcastUtilities.Integration.Tests.PortableDevices
             var objects = device.GetDeviceRootStorageObjects();
 
             return string.Format("MTP:\\{0}\\{1}\\podcastutilities.integration.test", _devices.First().Name, objects.First().Name);
+        }
+
+        private string GetDestinationPath()
+        {
+            return string.Format("{0}\\{1}", GetRootFolder(), GetSourcePath());
+        }
+
+        private string GetSourcePath()
+        {
+            return "srcfile.txt";
         }
 
         private void CreateFolderWithSubfolders()
@@ -127,6 +138,65 @@ namespace PodcastUtilities.Integration.Tests.PortableDevices
             {
                 DisplayMessage(string.Format("{0} Failed to delete", info2.FullName), DisplayLevel.Error);
             }
+        }
+
+        private void CopyFile()
+        {
+            FileSystemAwareFileUtilities fileUtils = new FileSystemAwareFileUtilities(new DeviceManager(), new StreamHelper(), new FileSystemAwareFileInfoProvider(new DeviceManager()));
+
+            if (!fileUtils.FileExists(GetSourcePath()))
+            {
+                DisplayMessage(string.Format("Cannot find source file {0}",GetSourcePath()),DisplayLevel.Error);
+            }
+
+            if (fileUtils.FileExists(GetDestinationPath()))
+            {
+                fileUtils.FileDelete(GetDestinationPath());
+            }
+
+            // put this section in the test preable
+            string folder = GetRootFolder();
+            FileSystemAwareDirectoryInfoProvider dirInfoProvider = new FileSystemAwareDirectoryInfoProvider(new DeviceManager());
+            IDirectoryInfo info = dirInfoProvider.GetDirectoryInfo(folder);
+            info.Create();
+
+            fileUtils.FileCopy(GetSourcePath(),GetDestinationPath());
+
+            if (fileUtils.FileExists(GetDestinationPath()))
+            {
+                DisplayMessage(string.Format("File copied to {0} OK", GetDestinationPath()));
+            }
+            else
+            {
+                DisplayMessage(string.Format("Cannot find destination file {0}", GetDestinationPath()), DisplayLevel.Error);
+            }
+        }
+
+        private void ScrubOutAllTestData()
+        {
+            // note you may want to comment this out to see what the hell is going on
+
+            // get rid of any file that we created
+            FileSystemAwareFileUtilities fileUtils = new FileSystemAwareFileUtilities(new DeviceManager(), new StreamHelper(), new FileSystemAwareFileInfoProvider(new DeviceManager()));
+            if (fileUtils.FileExists(GetDestinationPath()))
+            {
+                fileUtils.FileDelete(GetDestinationPath());
+            }
+
+            // get rid of any folders we created
+            FileSystemAwareDirectoryInfoProvider dirInfoProvider = new FileSystemAwareDirectoryInfoProvider(new DeviceManager());
+            IDirectoryInfo info = dirInfoProvider.GetDirectoryInfo(GetRootFolder());
+            info.Delete();
+        }
+
+        protected override void TestPreamble()
+        {
+            ScrubOutAllTestData();
+        }
+
+        protected override void TestPostamble()
+        {
+            ScrubOutAllTestData();
         }
 
         private IEnumerable<IDevice> EnumerateAllDevices()
