@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using PortableDeviceApiLib;
 
@@ -34,6 +35,25 @@ namespace PodcastUtilities.PortableDevices
         public string Name
         {
             get { return _name ?? (_name = GetDeviceName()); }
+        }
+
+        public IEnumerable<IDeviceObject> GetDeviceRootStorageObjects()
+        {
+            IList<IDeviceObject> returnValue = new List<IDeviceObject>(10);
+            var parentId = PortableDeviceConstants.WPD_DEVICE_OBJECT_ID;
+
+            var childObjectIds = _portableDeviceHelper.GetChildObjectIds(_portableDeviceContent, parentId);
+
+            foreach (var id in childObjectIds)
+            {
+                if (IsStorageObject(id))
+                {
+                    var childObjectName = _portableDeviceHelper.GetObjectFileName(_portableDeviceContent, id);
+                    returnValue.Add(new DeviceObject(_portableDeviceHelper, _portableDeviceContent, id, childObjectName));
+                }
+            }
+
+            return returnValue;
         }
 
         public IDeviceObject GetObjectFromPath(string path)

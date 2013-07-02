@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 
 namespace PodcastUtilities.PortableDevices
@@ -7,6 +8,7 @@ namespace PodcastUtilities.PortableDevices
         string Id { get; }
         string Name { get; }
 
+        IEnumerable<IDeviceObject> GetDeviceRootStorageObjects();
         IDeviceObject GetObjectFromPath(string path);
         IDeviceObject GetRootStorageObjectFromPath(string path);
         void Delete(string path);
