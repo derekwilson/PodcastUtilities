@@ -13,6 +13,7 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
         protected Generator PlaylistGenerator { get; set; }
 
         protected IFileUtilities FileUtilities { get; set; }
+        protected IPathUtilities PathUtilities { get; set; }
         protected IFinder Finder { get; set; }
         protected IPlaylistFactory Factory { get; set; }
         protected IPlaylist Playlist { get; set; }
@@ -33,12 +34,19 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
 
             Finder = GenerateMock<IFinder>();
             FileUtilities = GenerateMock<IFileUtilities>();
+            PathUtilities = GenerateMock<IPathUtilities>();
+
+            PathUtilities.Stub(utilities => utilities.GetFullPath("c:\\destination"))
+                .Return("c:\\destination");
+
+            PathUtilities.Stub(utilities => utilities.GetTempFileName())
+                .Return("c:\\file.tmp");
 
             Playlist = GenerateMock<IPlaylist>();
             Factory = GenerateMock<IPlaylistFactory>();
             Factory.Stub(factory => factory.CreatePlaylist(PlaylistFormat.WPL, null)).IgnoreArguments().Return(Playlist);
 
-            PlaylistGenerator = new Generator(Finder, FileUtilities, Factory);
+            PlaylistGenerator = new Generator(Finder, FileUtilities, PathUtilities, Factory);
         }
     }
 

@@ -42,9 +42,10 @@ namespace SyncPodcasts
 			var copier = iocContainer.Resolve<ICopier>();
 			var remover = iocContainer.Resolve<IUnwantedFileRemover>();
 			var fileUtilities = iocContainer.Resolve<IFileUtilities>();
+			var pathUtilities = iocContainer.Resolve<IPathUtilities>();
 			var playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
 
-            var generator = new Generator(finder, fileUtilities, playlistFactory);
+            var generator = new Generator(finder, fileUtilities, pathUtilities, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
 			var synchronizer = new Synchronizer(finder, copier, remover);

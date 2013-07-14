@@ -11,15 +11,21 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
         }
 
         [Test]
-        public void ItShouldSaveTheFile()
+        public void ItShouldSaveTheTemporaryFile()
         {
-            Playlist.AssertWasCalled(p => p.SaveFile());
+            Playlist.AssertWasCalled(p => p.SaveFile(@"c:\file.tmp"));
         }
 
         [Test]
         public void ItShouldNotAddTracks()
         {
             Playlist.AssertWasNotCalled(p => p.AddTrack(null), o => o.IgnoreArguments());
+        }
+
+        [Test]
+        public void ItShouldCopyThePlaylistToTheCorrectLocation()
+        {
+            FileUtilities.AssertWasCalled(utilities => utilities.FileCopy(@"c:\file.tmp", "MyPodcasts.wpl", true));
         }
     }
 }

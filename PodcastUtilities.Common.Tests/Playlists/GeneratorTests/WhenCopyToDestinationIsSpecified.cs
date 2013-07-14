@@ -10,10 +10,16 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
 			PlaylistGenerator.GeneratePlaylist(ControlFile, true);
 		}
 
-		[Test]
-		public void ItShouldCopyTheFileToTheDestination()
-		{
-            Playlist.AssertWasCalled(p => p.SaveFile(@"c:\destination\MyPodcasts.wpl"));
-		}
+        [Test]
+        public void ItShouldSaveTheTemporaryFile()
+        {
+            Playlist.AssertWasCalled(p => p.SaveFile(@"c:\file.tmp"));
+        }
+
+        [Test]
+        public void ItShouldCopyThePlaylistToTheCorrectLocation()
+        {
+            FileUtilities.AssertWasCalled(utilities => utilities.FileCopy(@"c:\file.tmp", @"c:\destination\MyPodcasts.wpl", true));
+        }
 	}
 }

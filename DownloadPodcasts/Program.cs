@@ -48,6 +48,7 @@ namespace DownloadPodcasts
             var container = new LinFuIocContainer();
 
             IocRegistration.RegisterSystemServices(container);
+            IocRegistration.RegisterPortableDeviceServices(container);
             IocRegistration.RegisterFileServices(container);
             IocRegistration.RegisterFeedServices(container);
 
