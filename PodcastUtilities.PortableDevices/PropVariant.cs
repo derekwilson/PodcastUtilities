@@ -76,20 +76,23 @@ namespace PodcastUtilities.PortableDevices
 
         public static tag_inner_PROPVARIANT StringToPropVariant(string value)
         {
-            // We'll use an IPortableDeviceValues object to transform the
-            // string into a PROPVARIANT
-            var pValues = (PortableDeviceApiLib.IPortableDeviceValues)new PortableDeviceTypesLib.PortableDeviceValuesClass();
+            // Tried using the method suggested here:
+            // http://blogs.msdn.com/b/dimeby8/archive/2007/01/08/creating-wpd-propvariants-in-c-without-using-interop.aspx
+            // However, the GetValue fails (Element Not Found) even though we've just added it.
+            // So, I use the alternative (and I think more "correct") approach below.
 
-            // We insert the string value into the IPortableDeviceValues object
-            // using the SetStringValue method
-            pValues.SetStringValue(ref PortableDevicePropertyKeys.WPD_OBJECT_ID, value);
+            var pvSet = new PropVariant
+                            {
+                                variantType = PortableDeviceConstants.VT_LPWSTR, 
+                                pointerValue = Marshal.StringToCoTaskMemUni(value)
+                            };
 
-            // We then extract the string into a PROPVARIANT by using the 
-            // GetValue method
-            tag_inner_PROPVARIANT propVariantValue;
-            pValues.GetValue(ref PortableDevicePropertyKeys.WPD_OBJECT_ID, out propVariantValue);
+            // Marshal our definition into a pointer
+            var ptrValue = Marshal.AllocHGlobal(Marshal.SizeOf(pvSet));
+            Marshal.StructureToPtr(pvSet, ptrValue, false);
 
-            return propVariantValue;
+            // Marshal pointer into the interop PROPVARIANT 
+            return (tag_inner_PROPVARIANT)Marshal.PtrToStructure(ptrValue, typeof(tag_inner_PROPVARIANT));
         }
     }
 }
