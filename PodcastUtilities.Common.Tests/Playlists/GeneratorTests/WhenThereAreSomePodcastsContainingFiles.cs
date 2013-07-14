@@ -40,9 +40,9 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
 		}
 
 		[Test]
-		public void ItShouldSaveTheFile()
+        public void ItShouldSaveTheTemporaryFile()
 		{
-			Playlist.AssertWasCalled(p => p.SaveFile());
+            Playlist.AssertWasCalled(p => p.SaveFile(@"c:\file.tmp"));
 		}
 
 		[Test]
@@ -54,5 +54,11 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
 			Playlist.AssertWasCalled(p => p.AddTrack(@".\This Developers Life\998.wma"));
 			Playlist.AssertWasCalled(p => p.AddTrack(@".\This Developers Life\999.wma"));
 		}
-	}
+
+        [Test]
+        public void ItShouldCopyThePlaylistToTheCorrectLocation()
+        {
+            FileUtilities.AssertWasCalled(utilities => utilities.FileCopy(@"c:\file.tmp", "MyPodcasts.wpl", true));
+        }
+    }
 }

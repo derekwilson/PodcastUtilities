@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using PodcastUtilities.Common.Platform.Mtp;
 
 namespace PodcastUtilities.Common.Platform
@@ -18,6 +19,16 @@ namespace PodcastUtilities.Common.Platform
             //If the path is an MTP path it is by definition already an absolute path
 
             return (MtpPath.IsMtpPath(path) ? path : Path.GetFullPath(path));
+        }
+
+        ///<summary>
+        /// Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
+        /// (The same as <see cref="Path.GetTempFileName"/>)
+        ///</summary>
+        ///<returns>The full path of the temporary file.</returns>
+        public string GetTempFileName()
+        {
+            return Path.GetTempFileName();
         }
     }
 }

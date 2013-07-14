@@ -46,9 +46,10 @@ namespace GeneratePlaylist
             var control = new ReadOnlyControlFile(args[0]);
             var finder = iocContainer.Resolve<IFinder>();
             var fileUtilities = iocContainer.Resolve<IFileUtilities>();
+            var pathUtilities = iocContainer.Resolve<IPathUtilities>();
             var playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
 
-			var generator = new Generator(finder, fileUtilities, playlistFactory);
+			var generator = new Generator(finder, fileUtilities, pathUtilities, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(GeneratorStatusUpdate);
 
             if (!string.IsNullOrEmpty(control.GetPlaylistFileName()))
