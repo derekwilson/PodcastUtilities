@@ -22,6 +22,9 @@ using PortableDeviceApiLib;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// factory to create a device
+    /// </summary>
     public class DeviceFactory : IDeviceFactory
     {
         private readonly IPortableDeviceManager _portableDeviceManager;
@@ -38,6 +41,11 @@ namespace PodcastUtilities.PortableDevices
             _deviceStreamFactory = new DeviceStreamFactory();
         }
 
+        /// <summary>
+        /// create a device
+        /// </summary>
+        /// <param name="id">id of device</param>
+        /// <returns>the device object</returns>
         public IDevice CreateDevice(string id)
         {
             return new Device(

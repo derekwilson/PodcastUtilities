@@ -26,8 +26,17 @@ using PortableDeviceApiLib;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// wrapper functions to call into unmanaged wrapper
+    /// </summary>
     internal class PortableDeviceHelper : IPortableDeviceHelper
     {
+        /// <summary>
+        /// turns a manufacturers id into a friendly name
+        /// </summary>
+        /// <param name="portableDeviceManager">device manager</param>
+        /// <param name="deviceId">the id</param>
+        /// <returns>name</returns>
         public string GetDeviceFriendlyName(IPortableDeviceManager portableDeviceManager, string deviceId)
         {
             return GetDeviceStringProperty(
@@ -40,11 +49,15 @@ namespace PodcastUtilities.PortableDevices
                 });
         }
 
+        /// <summary>
+        /// Tries to get the original filename property if it exists (ie. for real files/directories), falls
+        /// back to object name for non-file objects (eg. device, Internal Storage, etc.)
+        /// </summary>
+        /// <param name="deviceContent">unmanaged device</param>
+        /// <param name="objectId">the object id</param>
+        /// <returns></returns>
         public string GetObjectFileName(IPortableDeviceContent deviceContent, string objectId)
         {
-            // Tries to get the original filename property if it exists (ie. for real files/directories), falls
-            // back to object name for non-file objects (eg. device, Internal Storage, etc.)
-
             try
             {
                 return GetStringProperty(
@@ -58,6 +71,12 @@ namespace PodcastUtilities.PortableDevices
             }
         }
 
+        /// <summary>
+        /// gets the name of an object
+        /// </summary>
+        /// <param name="deviceContent">unmanged device</param>
+        /// <param name="objectId">object id</param>
+        /// <returns>name</returns>
         public string GetObjectName(IPortableDeviceContent deviceContent, string objectId)
         {
             return GetStringProperty(
@@ -66,6 +85,12 @@ namespace PodcastUtilities.PortableDevices
                 PortableDevicePropertyKeys.WPD_OBJECT_NAME);
         }
 
+        /// <summary>
+        /// identify the object type
+        /// </summary>
+        /// <param name="deviceContent">unmanged device</param>
+        /// <param name="objectId">the object id</param>
+        /// <returns>content type guid</returns>
         public Guid GetObjectContentType(IPortableDeviceContent deviceContent, string objectId)
         {
             return GetGuidProperty(
@@ -74,6 +99,12 @@ namespace PodcastUtilities.PortableDevices
                 PortableDevicePropertyKeys.WPD_OBJECT_CONTENT_TYPE);
         }
 
+        /// <summary>
+        /// gets the create date time for the object
+        /// </summary>
+        /// <param name="deviceContent">unmanged device</param>
+        /// <param name="objectId">object id</param>
+        /// <returns>Try the creation date, fall back to modified date</returns>
         public DateTime GetObjectCreationTime(IPortableDeviceContent deviceContent, string objectId)
         {
             // Try the creation date, fall back to modified date
@@ -93,6 +124,13 @@ namespace PodcastUtilities.PortableDevices
             }
         }
 
+        /// <summary>
+        /// lookup the given key and return the string property associated with the object
+        /// </summary>
+        /// <param name="deviceContent">unmanged device</param>
+        /// <param name="objectId">object id</param>
+        /// <param name="key">name of the property key</param>
+        /// <returns>string value</returns>
         public string GetStringProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key)
         {
             var deviceValues = GetDeviceValues(deviceContent, key, objectId);
@@ -103,6 +141,13 @@ namespace PodcastUtilities.PortableDevices
             return value;
         }
 
+        /// <summary>
+        /// lookup the given key and return the guid property associated with the object
+        /// </summary>
+        /// <param name="deviceContent">unmanged device</param>
+        /// <param name="objectId">object id</param>
+        /// <param name="key">name of the property key</param>
+        /// <returns>guid value</returns>
         public Guid GetGuidProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key)
         {
             var deviceValues = GetDeviceValues(deviceContent, key, objectId);
@@ -113,6 +158,13 @@ namespace PodcastUtilities.PortableDevices
             return value;
         }
 
+        /// <summary>
+        /// lookup the given key and return the long property associated with the object
+        /// </summary>
+        /// <param name="deviceContent">unmanged device</param>
+        /// <param name="objectId">object id</param>
+        /// <param name="key">name of the property key</param>
+        /// <returns>long value</returns>
         public ulong GetUnsignedLargeIntegerProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key)
         {
             var deviceValues = GetDeviceValues(deviceContent, key, objectId);
@@ -123,6 +175,13 @@ namespace PodcastUtilities.PortableDevices
             return value;
         }
 
+        /// <summary>
+        /// lookup the given key and return the date property associated with the object
+        /// </summary>
+        /// <param name="deviceContent">unmanged device</param>
+        /// <param name="objectId">object id</param>
+        /// <param name="key">name of the property key</param>
+        /// <returns>date value</returns>
         public DateTime GetDateProperty(IPortableDeviceContent deviceContent, string objectId, _tagpropertykey key)
         {
             var deviceValues = GetDeviceValues(deviceContent, key, objectId);
@@ -133,6 +192,12 @@ namespace PodcastUtilities.PortableDevices
             return PropVariant.FromValue(value).ToDate();
         }
 
+        /// <summary>
+        /// get all the child object ids from a given parent
+        /// </summary>
+        /// <param name="deviceContent">unmanged device</param>
+        /// <param name="parentId">parent object id</param>
+        /// <returns>all child ids</returns>
         public IEnumerable<string> GetChildObjectIds(IPortableDeviceContent deviceContent, string parentId)
         {
             var childObjectIds = new List<string>();
@@ -168,6 +233,13 @@ namespace PodcastUtilities.PortableDevices
             ppObjectProperties.SetGuidValue(ref PortableDevicePropertyKeys.WPD_OBJECT_CONTENT_TYPE, ref PortableDeviceConstants.WPD_CONTENT_TYPE_FOLDER);
         }
 
+        /// <summary>
+        /// create a folder storage object withing the specified parent
+        /// </summary>
+        /// <param name="deviceContent">unmanaged device</param>
+        /// <param name="parentObjectId">parent object id</param>
+        /// <param name="newFolder">name of the new folder</param>
+        /// <returns>created object id</returns>
         public string CreateFolderObject(IPortableDeviceContent deviceContent, string parentObjectId, string newFolder)
         {
             IPortableDeviceProperties deviceProperties;
@@ -181,6 +253,11 @@ namespace PodcastUtilities.PortableDevices
             return objectId;
         }
 
+        /// <summary>
+        /// delete the specified object
+        /// </summary>
+        /// <param name="deviceContent">unmanged device</param>
+        /// <param name="objectId">object to delete</param>
         public void DeleteObject(IPortableDeviceContent deviceContent, string objectId)
         {
             var objectIdCollection =
@@ -193,6 +270,13 @@ namespace PodcastUtilities.PortableDevices
             deviceContent.Delete(PortableDeviceConstants.PORTABLE_DEVICE_DELETE_NO_RECURSION, objectIdCollection, null);
         }
 
+        /// <summary>
+        /// open a stream on the device for reading
+        /// </summary>
+        /// <param name="deviceContent">unmanged device</param>
+        /// <param name="objectId">object to open</param>
+        /// <param name="mode">mode to open the stream in</param>
+        /// <returns></returns>
         public IStream OpenResourceStream(IPortableDeviceContent deviceContent, string objectId, uint mode)
         {
             IPortableDeviceResources resources;
@@ -205,6 +289,14 @@ namespace PodcastUtilities.PortableDevices
             return stream;
         }
 
+        /// <summary>
+        /// create a new resource stream in a parent object
+        /// </summary>
+        /// <param name="deviceContent">unmanged device</param>
+        /// <param name="parentObjectId">the parent object</param>
+        /// <param name="fileName">file to create</param>
+        /// <param name="length">length of the file in bytes</param>
+        /// <returns></returns>
         public IStream CreateResourceStream(IPortableDeviceContent deviceContent, string parentObjectId, string fileName, long length)
         {
             IPortableDeviceProperties deviceProperties;

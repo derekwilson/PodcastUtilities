@@ -22,9 +22,21 @@ using System.Collections.Generic;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// represents the mechanism for manipulating all MTP devices currently attached
+    /// </summary>
     public interface IDeviceManager
     {
+        /// <summary>
+        /// Gets all the attached devices
+        /// </summary>
+        /// <returns>all the currently attached devices</returns>
         IEnumerable<IDevice> GetAllDevices();
+        /// <summary>
+        /// gets a specific device
+        /// </summary>
+        /// <param name="deviceName">the name of the device</param>
+        /// <returns>the device</returns>
         IDevice GetDevice(string deviceName);
     }
 }

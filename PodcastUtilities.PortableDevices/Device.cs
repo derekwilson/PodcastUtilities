@@ -25,6 +25,9 @@ using PortableDeviceApiLib;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// represents an individual attached MTP device
+    /// </summary>
     public class Device : IDevice
     {
         private readonly IPortableDeviceManager _portableDeviceManager;
@@ -50,13 +53,23 @@ namespace PodcastUtilities.PortableDevices
             OpenDevice(id);
         }
 
+        /// <summary>
+        /// device ID set by the manufacturer
+        /// </summary>
         public string Id { get; private set; }
 
+        /// <summary>
+        /// name of the device
+        /// </summary>
         public string Name
         {
             get { return _name ?? (_name = GetDeviceName()); }
         }
 
+        /// <summary>
+        /// MTP device have named root objects
+        /// </summary>
+        /// <returns>all the root objects that support storage</returns>
         public IEnumerable<IDeviceObject> GetDeviceRootStorageObjects()
         {
             IList<IDeviceObject> returnValue = new List<IDeviceObject>(10);
@@ -76,6 +89,11 @@ namespace PodcastUtilities.PortableDevices
             return returnValue;
         }
 
+        /// <summary>
+        /// get the object that coresponds to the path or NULL if it doesnt exist
+        /// </summary>
+        /// <param name="path">the path</param>
+        /// <returns>the object or NULL</returns>
         public IDeviceObject GetObjectFromPath(string path)
         {
             var pathParts = path.Split(Path.DirectorySeparatorChar);
@@ -98,6 +116,11 @@ namespace PodcastUtilities.PortableDevices
             return new DeviceObject(_portableDeviceHelper, _portableDeviceContent, childObjectId, childObjectName);
         }
 
+        /// <summary>
+        /// get the storage object that contains the leaf element of the path
+        /// </summary>
+        /// <param name="path">path to storage object</param>
+        /// <returns></returns>
         public IDeviceObject GetRootStorageObjectFromPath(string path)
         {
             var pathParts = path.Split(Path.DirectorySeparatorChar);
@@ -125,11 +148,19 @@ namespace PodcastUtilities.PortableDevices
             return null;
         }
 
+        /// <summary>
+        /// creates all the rewuired folders in the specified path
+        /// </summary>
+        /// <param name="path"></param>
         public void CreateFolderObjectFromPath(string path)
         {
             CreateFolderObject(path);
         }
 
+        /// <summary>
+        /// delete the object
+        /// </summary>
+        /// <param name="path"></param>
         public void Delete(string path)
         {
             var deviceObject = GetObjectFromPath(path);
@@ -142,6 +173,11 @@ namespace PodcastUtilities.PortableDevices
             _portableDeviceHelper.DeleteObject(_portableDeviceContent, deviceObject.Id);
         }
 
+        /// <summary>
+        /// open an object for reading
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public Stream OpenRead(string path)
         {
             var deviceObject = GetObjectFromPath(path);
@@ -158,6 +194,13 @@ namespace PodcastUtilities.PortableDevices
             return _deviceStreamFactory.CreateStream(resourceStream);
         }
 
+        /// <summary>
+        /// open an object for writing
+        /// </summary>
+        /// <param name="path">path to object</param>
+        /// <param name="length">number of bytes to store</param>
+        /// <param name="allowOverwrite">true to overwrite</param>
+        /// <returns></returns>
         public Stream OpenWrite(string path, long length, bool allowOverwrite)
         {
             var deviceObject = GetObjectFromPath(path);

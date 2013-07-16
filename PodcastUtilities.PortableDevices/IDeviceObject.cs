@@ -22,15 +22,38 @@ using System.Collections.Generic;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// an object on a device
+    /// </summary>
     public interface IDeviceObject
     {
+        /// <summary>
+        /// unique id
+        /// </summary>
         string Id { get; }
+        /// <summary>
+        /// readable name
+        /// </summary>
         string Name { get; }
 
-        // Only relevant for storage objects - so maybe shouldn't be here...
+        /// <summary>
+        /// free space
+        /// Only relevant for storage objects - so maybe shouldn't be here...
+        /// </summary>
         long AvailableFreeSpace { get; }
 
+        /// <summary>
+        /// gets all the folder objects
+        /// </summary>
+        /// <param name="pattern">pattern to match</param>
+        /// <returns>folder objects</returns>
         IEnumerable<IDeviceObject> GetFolders(string pattern);
+        
+        /// <summary>
+        /// gets all the file objects
+        /// </summary>
+        /// <param name="pattern">pattern to match</param>
+        /// <returns>file objects</returns>
         IEnumerable<IDeviceObject> GetFiles(string pattern);
     }
 }

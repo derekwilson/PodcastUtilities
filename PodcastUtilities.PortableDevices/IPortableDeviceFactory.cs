@@ -23,9 +23,17 @@ using PortableDeviceApiLib;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// attach to an MTP device
+    /// </summary>
     [CLSCompliant(false)]
     public interface IPortableDeviceFactory
     {
+        /// <summary>
+        /// create from unique ID, this will attach PodcastUtilities as a client to the specified device
+        /// </summary>
+        /// <param name="deviceId">ID</param>
+        /// <returns>the device</returns>
         IPortableDevice Create(string deviceId);
     }
 }

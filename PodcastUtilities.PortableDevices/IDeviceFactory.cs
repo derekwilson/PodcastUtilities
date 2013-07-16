@@ -20,8 +20,16 @@
 #endregion
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// factory to create a device
+    /// </summary>
     public interface IDeviceFactory
     {
+        /// <summary>
+        /// create a device
+        /// </summary>
+        /// <param name="id">id of device</param>
+        /// <returns>the device object</returns>
         IDevice CreateDevice(string id);
     }
 }

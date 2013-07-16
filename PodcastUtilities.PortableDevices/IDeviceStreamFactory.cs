@@ -24,9 +24,17 @@ using PortableDeviceApiLib;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// factory to create a stream
+    /// </summary>
     [CLSCompliant(false)]
     public interface IDeviceStreamFactory
     {
+        /// <summary>
+        /// create a system stream from a device stream
+        /// </summary>
+        /// <param name="deviceStream">device stream</param>
+        /// <returns>system stream</returns>
         Stream CreateStream(IStream deviceStream);
     }
 }
