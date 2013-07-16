@@ -7,6 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Files Include="$(MSBuildProjectDirectory)\..\LICENCE.txt"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\Documents\User\*"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\Documents\Developer\Help\*.chm"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts\bin\$(Configuration)\*.dll"/>
@@ -19,6 +20,8 @@
 		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts\bin\$(Configuration)\*.exe"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests\bin\$(Configuration)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests\bin\$(Configuration)\*.exe"/>
 	</ItemGroup>
 
 	<Target Name="CopyToCurrentBuild" DependsOnTargets="">
