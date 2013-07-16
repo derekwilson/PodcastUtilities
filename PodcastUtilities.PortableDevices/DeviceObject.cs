@@ -25,6 +25,9 @@ using PortableDeviceApiLib;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// an object on a device
+    /// </summary>
     internal class DeviceObject : IDeviceObject
     {
         private readonly IPortableDeviceHelper _portableDeviceHelper;
@@ -54,9 +57,20 @@ namespace PodcastUtilities.PortableDevices
             Name = name;
         }
 
+        /// <summary>
+        /// unique id
+        /// </summary>
         public string Id { get; private set; }
+
+        /// <summary>
+        /// readable name
+        /// </summary>
         public string Name { get; private set; }
 
+        /// <summary>
+        /// free space
+        /// Only relevant for storage objects - so maybe shouldn't be here...
+        /// </summary>
         public long AvailableFreeSpace
         {
             get
@@ -68,6 +82,11 @@ namespace PodcastUtilities.PortableDevices
             }
         }
 
+        /// <summary>
+        /// gets all the folder objects
+        /// </summary>
+        /// <param name="pattern">pattern to match</param>
+        /// <returns>folder objects</returns>
         public IEnumerable<IDeviceObject> GetFolders(string pattern)
         {
             // TODO: caching
@@ -77,6 +96,11 @@ namespace PodcastUtilities.PortableDevices
             return childObjectIds.Select(CreateDeviceObject);
         }
 
+        /// <summary>
+        /// gets all the file objects
+        /// </summary>
+        /// <param name="pattern">pattern to match</param>
+        /// <returns>file objects</returns>
         public IEnumerable<IDeviceObject> GetFiles(string pattern)
         {
             // TODO: caching

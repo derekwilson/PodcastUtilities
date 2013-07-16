@@ -22,8 +22,16 @@ using PortableDeviceApiLib;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// create a portable MTP device
+    /// </summary>
     internal class PortableDeviceFactory : IPortableDeviceFactory
     {
+        /// <summary>
+        /// create from unique ID, this will attach PodcastUtilities as a client to the specified device
+        /// </summary>
+        /// <param name="deviceId">ID</param>
+        /// <returns>the device</returns>
         public IPortableDevice Create(string deviceId)
         {
             var deviceValues = (IPortableDeviceValues)new PortableDeviceTypesLib.PortableDeviceValuesClass();

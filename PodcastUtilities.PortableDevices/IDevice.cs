@@ -23,17 +23,66 @@ using System.IO;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// represents an individual attached MTP device
+    /// </summary>
     public interface IDevice
     {
+        /// <summary>
+        /// device ID set by the manufacturer
+        /// </summary>
         string Id { get; }
+        /// <summary>
+        /// name of the device
+        /// </summary>
         string Name { get; }
 
+        /// <summary>
+        /// MTP device have named root objects
+        /// </summary>
+        /// <returns>all the root objects that support storage</returns>
         IEnumerable<IDeviceObject> GetDeviceRootStorageObjects();
+
+        /// <summary>
+        /// get the object that coresponds to the path or NULL if it doesnt exist
+        /// </summary>
+        /// <param name="path">the path</param>
+        /// <returns>the object or NULL</returns>
         IDeviceObject GetObjectFromPath(string path);
+        
+        /// <summary>
+        /// get the storage object that contains the leaf element of the path
+        /// </summary>
+        /// <param name="path">path to storage object</param>
+        /// <returns></returns>
         IDeviceObject GetRootStorageObjectFromPath(string path);
+        
+        /// <summary>
+        /// delete the object
+        /// </summary>
+        /// <param name="path"></param>
         void Delete(string path);
+        
+        /// <summary>
+        /// open an object for reading
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         Stream OpenRead(string path);
+        
+        /// <summary>
+        /// open an object for writing
+        /// </summary>
+        /// <param name="path">path to object</param>
+        /// <param name="length">number of bytes to store</param>
+        /// <param name="allowOverwrite">true to overwrite</param>
+        /// <returns></returns>
         Stream OpenWrite(string path, long length, bool allowOverwrite);
+        
+        /// <summary>
+        /// creates all the rewuired folders in the specified path
+        /// </summary>
+        /// <param name="path"></param>
         void CreateFolderObjectFromPath(string path);
     }
 }

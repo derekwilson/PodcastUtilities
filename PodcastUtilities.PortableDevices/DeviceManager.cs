@@ -24,6 +24,9 @@ using PortableDeviceApiLib;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// represents the mechanism for manipulating all MTP devices currently attached
+    /// </summary>
     public class DeviceManager : IDeviceManager
     {
         private readonly IPortableDeviceManager _portableDeviceManager;
@@ -51,6 +54,11 @@ namespace PodcastUtilities.PortableDevices
             _deviceFactory = deviceFactory;
         }
 
+        /// <summary>
+        /// gets a specific device
+        /// </summary>
+        /// <param name="deviceName">the name of the device</param>
+        /// <returns>the device</returns>
         public IDevice GetDevice(string deviceName)
         {
             EnumerateDevices();
@@ -61,6 +69,10 @@ namespace PodcastUtilities.PortableDevices
             return device;
         }
 
+        /// <summary>
+        /// Gets all the attached devices
+        /// </summary>
+        /// <returns>all the currently attached devices</returns>
         public IEnumerable<IDevice> GetAllDevices()
         {
             EnumerateDevices();
