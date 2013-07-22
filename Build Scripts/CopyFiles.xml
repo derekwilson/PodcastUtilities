@@ -20,6 +20,7 @@
 		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts\bin\$(Configuration)\*.exe"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests\bin\$(Configuration)\*.txt"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests\bin\$(Configuration)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests\bin\$(Configuration)\*.exe"/>
 	</ItemGroup>
