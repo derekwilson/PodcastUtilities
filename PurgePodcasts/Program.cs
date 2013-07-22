@@ -56,6 +56,7 @@ namespace PurgePodcasts
         {
             var container = new LinFuIocContainer();
 
+            IocRegistration.RegisterPortableDeviceServices(container);
             IocRegistration.RegisterSystemServices(container);
             IocRegistration.RegisterFileServices(container);
 
