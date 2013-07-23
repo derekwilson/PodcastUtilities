@@ -19,10 +19,10 @@
     <HtmlHelpName>PodcastUtilities.Common</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\PodcastUtilities.Common\PodcastUtilities.Common.csproj" xmlns="" />
-    </DocumentationSources>
+      <DocumentationSource sourceFile="..\..\PodcastUtilities.Common\PodcastUtilities.Common.csproj" />
+<DocumentationSource sourceFile="..\..\PodcastUtilities.PortableDevices\PodcastUtilities.PortableDevices.csproj" /></DocumentationSources>
     <ProjectSummary>PodcastUtilities are a set of utilities designed to help manage digital media on removable drives. Including utilities to sync podcasts and generate playlists.</ProjectSummary>
-    <CopyrightText>%28c%29 2011 Andrew Trevarrow and Derek Wilson</CopyrightText>
+    <CopyrightText>%28c%29 2010-2013 Andrew Trevarrow and Derek Wilson</CopyrightText>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="PodcastUtilities.Common" isDocumented="True">The Common namespace contains objects that are common to all processes such as the task pool and date parsers</NamespaceSummaryItem>
 <NamespaceSummaryItem name="PodcastUtilities.Common.Platform" isDocumented="True">The Platform namespace is used to isolate the main code from its environment to enable more effective unit tests to be written, developers should not normally need to directly use these objects</NamespaceSummaryItem>
@@ -30,7 +30,11 @@
 <NamespaceSummaryItem name="PodcastUtilities.Common.Exceptions" isDocumented="True">Exceptions specifically for PodcastUtilities</NamespaceSummaryItem>
 <NamespaceSummaryItem name="PodcastUtilities.Common.Feeds" isDocumented="True">The Feeds namespace contains all the objects needed to programatically download feeds, explore them for episodes and download media</NamespaceSummaryItem>
 <NamespaceSummaryItem name="PodcastUtilities.Common.Files" isDocumented="True">The Files namespace contains objects that relate to files in the file system, copying, finding and synchronisation</NamespaceSummaryItem>
-<NamespaceSummaryItem name="PodcastUtilities.Common.Playlists" isDocumented="True">The Playlist namespace contains objects that relate to media playlists</NamespaceSummaryItem></NamespaceSummaries>
+<NamespaceSummaryItem name="PodcastUtilities.Common.Playlists" isDocumented="True">The Playlist namespace contains objects that relate to media playlists</NamespaceSummaryItem>
+<NamespaceSummaryItem name="(global)" isDocumented="False" />
+<NamespaceSummaryItem name="PodcastUtilities.Common.Perfmon" isDocumented="True">Objects for use by Perfmon</NamespaceSummaryItem>
+<NamespaceSummaryItem name="PodcastUtilities.Common.Platform.Mtp" isDocumented="True">MTP (portable device) environment objects</NamespaceSummaryItem>
+<NamespaceSummaryItem name="PodcastUtilities.PortableDevices" isDocumented="True">Wrapper classes to access MTP protocol portable devices</NamespaceSummaryItem></NamespaceSummaries>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

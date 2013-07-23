@@ -26,6 +26,9 @@ using STATSTG = System.Runtime.InteropServices.ComTypes.STATSTG;
 
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// An IO stream for an object on an MTP device
+    /// </summary>
     public class DeviceStream : Stream
     {
         private readonly IStream _deviceStream;
@@ -35,6 +38,9 @@ namespace PodcastUtilities.PortableDevices
         {
         }
 
+        /// <summary>
+        /// create a device stream from the supplied stream
+        /// </summary>
         public DeviceStream(IStream deviceStream)
         {
             _deviceStream = deviceStream;
@@ -45,6 +51,9 @@ namespace PodcastUtilities.PortableDevices
             get { return _deviceStream; }
         }
 
+        /// <summary>
+        /// releases the underlying IO stream
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

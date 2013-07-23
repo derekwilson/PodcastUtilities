@@ -35,6 +35,9 @@ namespace PodcastUtilities.PortableDevices
         private Dictionary<string, IDevice> _deviceNameCache;
         private Dictionary<string, IDevice> _deviceIdCache;
 
+        /// <summary>
+        /// create a device manager
+        /// </summary>
         public DeviceManager()
             : this(new PortableDeviceManagerClass())
         {

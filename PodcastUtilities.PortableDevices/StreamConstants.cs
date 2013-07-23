@@ -20,14 +20,35 @@
 #endregion
 namespace PodcastUtilities.PortableDevices
 {
+    /// <summary>
+    /// constants for use with device streams
+    /// </summary>
     public static class StreamConstants
     {
+        /// <summary>
+        /// set the position
+        /// </summary>
         public const int STREAM_SEEK_SET = 0;
+        /// <summary>
+        /// get the position
+        /// </summary>
         public const int STREAM_SEEK_CUR = 1;
+        /// <summary>
+        /// goto end
+        /// </summary>
         public const int STREAM_SEEK_END = 2;
 
+        /// <summary>
+        /// readable stream
+        /// </summary>
         public const int STGM_READ = 0;
+        /// <summary>
+        /// writable stream
+        /// </summary>
         public const int STGM_WRITE = 1;
+        /// <summary>
+        /// read write stream
+        /// </summary>
         public const int STGM_READWRITE = 2;
     }
 }
