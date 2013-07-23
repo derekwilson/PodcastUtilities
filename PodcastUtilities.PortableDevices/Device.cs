@@ -149,7 +149,7 @@ namespace PodcastUtilities.PortableDevices
         }
 
         /// <summary>
-        /// creates all the rewuired folders in the specified path
+        /// creates all the required folders in the specified path
         /// </summary>
         /// <param name="path"></param>
         public void CreateFolderObjectFromPath(string path)

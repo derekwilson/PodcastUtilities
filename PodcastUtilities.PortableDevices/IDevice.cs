@@ -80,7 +80,7 @@ namespace PodcastUtilities.PortableDevices
         Stream OpenWrite(string path, long length, bool allowOverwrite);
         
         /// <summary>
-        /// creates all the rewuired folders in the specified path
+        /// creates all the required folders in the specified path
         /// </summary>
         /// <param name="path"></param>
         void CreateFolderObjectFromPath(string path);
