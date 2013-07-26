@@ -39,6 +39,10 @@
       <HintPath>..\References\Interop\Interop.PortableDeviceApiLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Interop.PortableDeviceTypesLib">
+      <HintPath>..\References\Interop\Interop.PortableDeviceTypesLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -72,17 +76,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropVariant.cs" />
     <Compile Include="StreamConstants.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="PortableDeviceTypesLib">
-      <Guid>{2B00BA2F-E750-4BEB-9235-97142EDE1D3E}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
