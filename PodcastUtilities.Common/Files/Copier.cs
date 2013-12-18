@@ -71,6 +71,8 @@ namespace PodcastUtilities.Common.Files
 			long freeSpaceToLeaveOnDestination,
 			bool whatif)
         {
+	        bool reportedDriveinfoError = false;
+
             foreach (FileSyncItem thisItem in sourceFiles)
             {
                 string sourceRelativePath = thisItem.Source.FullName;
@@ -88,8 +90,33 @@ namespace PodcastUtilities.Common.Files
                     {
                         try
                         {
-                            if (IsDestinationDriveFull(destinationRootPath, freeSpaceToLeaveOnDestination))
-                                return;
+	                        try
+	                        {
+								if (!reportedDriveinfoError)		// stop trying to get the free space after the first error
+								{
+									if (IsDestinationDriveFull(destinationRootPath, freeSpaceToLeaveOnDestination))
+									{
+										return;
+									}
+								}
+							}
+	                        catch (Exception ex)
+	                        {
+		                        // do not let an error in getting the free space on a drive stop us from actually doing the copying
+								// mamy drives (such as MTP or UNC paths do not allow us to find the free space
+								if (!reportedDriveinfoError)
+								{
+									OnStatusUpdate(
+										new StatusUpdateEventArgs(
+											StatusUpdateLevel.Warning,
+											string.Format(CultureInfo.InvariantCulture,
+												"Cannot find available free space on drive, will continue to copy. Error: {0}", ex.Message)
+										)
+									);
+								}
+								// only report the error once
+								reportedDriveinfoError = true;
+	                        }
 
                             FileUtilities.FileCopy(thisItem.Source.FullName, destFilename);
                             thisItem.DestinationPath = destFilename;
@@ -112,8 +139,8 @@ namespace PodcastUtilities.Common.Files
 
         private bool IsDestinationDriveFull(string destinationRootPath, long freeSpaceToLeaveOnDestination)
         {
-        	var driveInfo = DriveInfoProvider.GetDriveInfoForPath(destinationRootPath);
-        	long availableFreeSpace = driveInfo.AvailableFreeSpace;
+			var driveInfo = DriveInfoProvider.GetDriveInfoForPath(destinationRootPath);
+			long availableFreeSpace = driveInfo.AvailableFreeSpace;
 
 			long freeKb = 0;
             double freeMb = 0;
