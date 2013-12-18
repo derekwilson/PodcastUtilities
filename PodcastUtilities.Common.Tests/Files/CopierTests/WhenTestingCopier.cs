@@ -38,9 +38,15 @@ namespace PodcastUtilities.Common.Tests.Files.CopierTests
 		protected List<FileSyncItem> SourceFiles { get; set; }
 		protected List<StatusUpdateEventArgs> StatusUpdates { get; set; }
 
+		protected string SourcePath { get; set; }
+		protected string DestinationePath { get; set; }
+
 		protected override void GivenThat()
 		{
 			base.GivenThat();
+
+			SourcePath = @"c:\Source";
+			DestinationePath = @"d:\Dest";
 
 			DestinationDriveInfo = GenerateMock<IDriveInfo>();
 			DestinationDriveInfo.Stub(i => i.Name).Return("D");
@@ -48,6 +54,8 @@ namespace PodcastUtilities.Common.Tests.Files.CopierTests
 			DriveInfoProvider = GenerateMock<IDriveInfoProvider>();
 			DriveInfoProvider.Stub(p => p.GetDriveInfoForPath(@"d:\Dest"))
 				.Return(DestinationDriveInfo);
+			DriveInfoProvider.Stub(p => p.GetDriveInfoForPath(@"e:\error"))
+				.Throw(new System.ArgumentException(@"Object must be a root directory ('C:\') or a drive letter ('C')."));
 
 			FileUtilities = GenerateMock<IFileUtilities>();
 			PathUtilities = GenerateMock<IPathUtilities>();
@@ -73,7 +81,7 @@ namespace PodcastUtilities.Common.Tests.Files.CopierTests
 
 		protected override void When()
 		{
-			FileCopier.CopyFilesToTarget(SourceFiles, @"c:\Source", @"d:\Dest", 1000, false);
+			FileCopier.CopyFilesToTarget(SourceFiles, SourcePath, DestinationePath, 1000, false);
 		}
 	}
 }
