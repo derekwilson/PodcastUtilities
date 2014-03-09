@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Files Include="$(MSBuildProjectDirectory)\..\LICENCE.txt"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\LICENSE.txt"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\Documents\User\*"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\Documents\Developer\Help\*.chm"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts\bin\$(Configuration)\*.dll"/>
