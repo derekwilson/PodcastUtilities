@@ -29,26 +29,26 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         protected override void GivenThat()
         {
             base.GivenThat();
-            _pocastInfo.AscendingSort.Value = true;
-            _pocastInfo.Folder = "FOLDER";
-            _pocastInfo.MaximumNumberOfFiles.Value = 123;
-            _pocastInfo.Pattern.Value = "PATTERN";
-            _pocastInfo.SortField.Value = PodcastFileSortField.FileName;
+            _podcastInfo.AscendingSort.Value = true;
+            _podcastInfo.Folder = "FOLDER";
+            _podcastInfo.MaximumNumberOfFiles.Value = 123;
+            _podcastInfo.Pattern.Value = "PATTERN";
+            _podcastInfo.SortField.Value = PodcastFileSortField.FileName;
 
-            _pocastInfo.Feed = new FeedInfo(_controlFile)
+            _podcastInfo.Feed = new FeedInfo(_controlFile)
                                    {
                                        Address = new Uri("http://test.com"),
                                    };
-            _pocastInfo.Feed.DeleteDownloadsDaysOld.Value = 456;
-            _pocastInfo.Feed.DownloadStrategy.Value = PodcastEpisodeDownloadStrategy.HighTide;
-            _pocastInfo.Feed.Format.Value = PodcastFeedFormat.RSS;
-            _pocastInfo.Feed.MaximumDaysOld.Value = 789;
-            _pocastInfo.Feed.NamingStyle.Value = PodcastEpisodeNamingStyle.UrlFileName;
+            _podcastInfo.Feed.DeleteDownloadsDaysOld.Value = 456;
+            _podcastInfo.Feed.DownloadStrategy.Value = PodcastEpisodeDownloadStrategy.HighTide;
+            _podcastInfo.Feed.Format.Value = PodcastFeedFormat.RSS;
+            _podcastInfo.Feed.MaximumDaysOld.Value = 789;
+            _podcastInfo.Feed.NamingStyle.Value = PodcastEpisodeNamingStyle.UrlFileName;
         }
 
         protected override void When()
         {
-            _clonedPodcast = _pocastInfo.Clone() as PodcastInfo;
+            _clonedPodcast = _podcastInfo.Clone() as PodcastInfo;
         }
 
         [Test]

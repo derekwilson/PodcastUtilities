@@ -54,6 +54,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             Assert.That(ControlFile.GetPodcasts().ElementAt(0).SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
             Assert.That(ControlFile.GetPodcasts().ElementAt(0).AscendingSort.Value, Is.True);
             Assert.That(ControlFile.GetPodcasts().ElementAt(0).PostDownloadCommand, Is.Null);
+            Assert.That(ControlFile.GetPodcasts().ElementAt(0).DeleteEmptyFolder.Value, Is.False);
         }
 
         [Test]
@@ -66,6 +67,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             Assert.That(ControlFile.GetPodcasts().ElementAt(1).SortField.Value, Is.EqualTo(PodcastFileSortField.FileName));
             Assert.That(ControlFile.GetPodcasts().ElementAt(1).AscendingSort.Value, Is.False);
             Assert.That(ControlFile.GetPodcasts().ElementAt(1).PostDownloadCommand.Command.Value, Is.EqualTo("different command"));
+            Assert.That(ControlFile.GetPodcasts().ElementAt(1).DeleteEmptyFolder.Value, Is.True);
         }
 
         [Test]

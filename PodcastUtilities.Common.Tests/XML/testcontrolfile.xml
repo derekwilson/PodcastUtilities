@@ -9,6 +9,7 @@
         <freeSpaceToLeaveOnDownloadMB>3000</freeSpaceToLeaveOnDownloadMB>
         <number>987</number>
         <pattern>*.xyz</pattern>
+        <deleteEmptyFolder>false</deleteEmptyFolder>
         <sortfield>name</sortfield>
         <sortdirection>asc</sortdirection>
         <maximumNumberOfConcurrentDownloads>10</maximumNumberOfConcurrentDownloads>
@@ -39,6 +40,7 @@
         </feed>
         <folder>Hanselminutes</folder>
         <pattern>*.mp3</pattern>
+        <deleteEmptyFolder>true</deleteEmptyFolder>
         <number>34</number>
         <sortfield>fred</sortfield>
         <sortdirection>desc</sortdirection>
