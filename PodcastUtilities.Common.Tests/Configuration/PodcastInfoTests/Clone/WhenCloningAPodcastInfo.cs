@@ -27,7 +27,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
     {
         protected IReadOnlyControlFile _controlFile;
 
-        protected PodcastInfo _pocastInfo;
+        protected PodcastInfo _podcastInfo;
         protected PodcastInfo _clonedPodcast;
 
         protected override void GivenThat()
@@ -35,7 +35,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
             base.GivenThat();
 
             _controlFile = TestControlFileFactory.CreateControlFile();
-            _pocastInfo = new PodcastInfo(_controlFile);
+            _podcastInfo = new PodcastInfo(_controlFile);
         }
     }
 }

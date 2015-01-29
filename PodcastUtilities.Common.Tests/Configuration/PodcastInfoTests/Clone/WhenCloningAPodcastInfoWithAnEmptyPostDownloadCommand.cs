@@ -28,18 +28,18 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         protected override void GivenThat()
         {
             base.GivenThat();
-            _pocastInfo.AscendingSort.Value = true;
-            _pocastInfo.Folder = "FOLDER";
-            _pocastInfo.MaximumNumberOfFiles.Value = 123;
-            _pocastInfo.Pattern.Value = "PATTERN";
-            _pocastInfo.SortField.Value = PodcastFileSortField.FileName;
+            _podcastInfo.AscendingSort.Value = true;
+            _podcastInfo.Folder = "FOLDER";
+            _podcastInfo.MaximumNumberOfFiles.Value = 123;
+            _podcastInfo.Pattern.Value = "PATTERN";
+            _podcastInfo.SortField.Value = PodcastFileSortField.FileName;
 
-            _pocastInfo.CreatePostDownloadCommand();
+            _podcastInfo.CreatePostDownloadCommand();
         }
 
         protected override void When()
         {
-            _clonedPodcast = _pocastInfo.Clone() as PodcastInfo;
+            _clonedPodcast = _podcastInfo.Clone() as PodcastInfo;
         }
 
         [Test]

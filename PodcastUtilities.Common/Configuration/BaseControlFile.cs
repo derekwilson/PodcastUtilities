@@ -46,6 +46,11 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal string DefaultFilePattern { get; set; }
         /// <summary>
+        /// global default for option to delete folder that become empty
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal bool DefaultDeleteEmptyFolder { get; set; }
+        /// <summary>
         /// the command to be run after the download
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
@@ -121,6 +126,7 @@ namespace PodcastUtilities.Common.Configuration
         {
             DefaultNumberOfFiles = -1;
             DefaultFilePattern = "*.mp3";
+            DefaultDeleteEmptyFolder = false;
             DefaultAscendingSort = true;
             DefaultSortField = PodcastFileSortField.FileName;
             DefaultFeedFormat = PodcastFeedFormat.RSS;
@@ -203,6 +209,15 @@ namespace PodcastUtilities.Common.Configuration
         public string GetDefaultFilePattern()
         {
             return DefaultFilePattern;
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public bool GetDefaultDeleteEmptyFolder()
+        {
+            return DefaultDeleteEmptyFolder;
         }
 
         /// <summary>
@@ -480,6 +495,7 @@ namespace PodcastUtilities.Common.Configuration
 
             long longValue;
             int intValue;
+            bool boolValue;
             switch (elementName)
             {
                 case "sourceRoot":
@@ -528,6 +544,12 @@ namespace PodcastUtilities.Common.Configuration
                     if (!string.IsNullOrEmpty(content))
                     {
                         DefaultFilePattern = content;
+                    }
+                    break;
+                case "deleteEmptyFolder":
+                    if (bool.TryParse(content, out boolValue))
+                    {
+                        DefaultDeleteEmptyFolder = boolValue;
                     }
                     break;
                 case "sortfield":

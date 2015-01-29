@@ -72,6 +72,12 @@ namespace PodcastUtilities.Common.Configuration
         /// the global default for podcasts
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        bool GetDefaultDeleteEmptyFolder();
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         bool GetDefaultAscendingSort();
 
         /// <summary>

@@ -41,6 +41,7 @@ namespace PodcastUtilities.Common.Configuration
         {
             _controlFileGlobalDefaults = controlFileGlobalDefaults;
             Pattern = new DefaultableReferenceTypeItem<string>(_controlFileGlobalDefaults.GetDefaultFilePattern);
+            DeleteEmptyFolder = new DefaultableValueTypeItem<bool>(_controlFileGlobalDefaults.GetDefaultDeleteEmptyFolder);
             AscendingSort = new DefaultableValueTypeItem<bool>(_controlFileGlobalDefaults.GetDefaultAscendingSort);
             SortField = new DefaultableValueTypeItem<PodcastFileSortField>(_controlFileGlobalDefaults.GetDefaultSortField);
             MaximumNumberOfFiles = new DefaultableValueTypeItem<int>(_controlFileGlobalDefaults.GetDefaultNumberOfFiles);
@@ -54,6 +55,10 @@ namespace PodcastUtilities.Common.Configuration
 		/// file pattern for the media files eg. *.mp3
 		/// </summary>
         public IDefaultableItem<string> Pattern { get; set; }
+        /// <summary>
+        /// true if we should delete a folder when all the podcasts have been removed
+        /// </summary>
+        public IDefaultableItem<bool> DeleteEmptyFolder { get; set; }
         /// <summary>
         /// field to sort on "creationtime" to use the file created time anything else to use the file name
         /// </summary>
@@ -175,6 +180,9 @@ namespace PodcastUtilities.Common.Configuration
                 case "pattern":
                     Pattern.Value = content;
                     break;
+                case "deleteEmptyFolder":
+                    DeleteEmptyFolder.Value = Convert.ToBoolean(content, CultureInfo.InvariantCulture);
+                    break;
                 case "number":
                     MaximumNumberOfFiles.Value = Convert.ToInt32(content, CultureInfo.InvariantCulture);
                     break;
@@ -203,6 +211,10 @@ namespace PodcastUtilities.Common.Configuration
             {
                 writer.WriteElementString("pattern", Pattern.Value);
             }
+	        if (DeleteEmptyFolder.IsSet)
+	        {
+                writer.WriteElementString("deleteEmptyFolder", DeleteEmptyFolder.Value.ToString(CultureInfo.InvariantCulture));
+	        }
             if (MaximumNumberOfFiles.IsSet)
             {
                 writer.WriteElementString("number", MaximumNumberOfFiles.Value.ToString(CultureInfo.InvariantCulture));

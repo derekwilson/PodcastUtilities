@@ -39,6 +39,11 @@ namespace PodcastUtilities.Common.Configuration
         IDefaultableItem<string> Pattern { get; set; }
 
         /// <summary>
+        /// true if we should delete a folder when all the podcasts have been removed
+        /// </summary>
+        IDefaultableItem<bool> DeleteEmptyFolder { get; set; }
+        
+        /// <summary>
         /// field to sort on "creationtime" to use the file created time anything else to use the file name
         /// </summary>
         IDefaultableItem<PodcastFileSortField> SortField { get; set; }

@@ -125,6 +125,14 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// the global default for podcasts
         /// </summary>
+        public void SetDefaultDeleteEmptyFolder(bool delete)
+        {
+            DefaultDeleteEmptyFolder = delete;
+        }
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
         public void SetDefaultAscendingSort(bool ascendingSort)
         {
             DefaultAscendingSort = ascendingSort;
@@ -326,6 +334,7 @@ namespace PodcastUtilities.Common.Configuration
 
             writer.WriteElementString("number", DefaultNumberOfFiles.ToString(CultureInfo.InvariantCulture));
             writer.WriteElementString("pattern", DefaultFilePattern);
+            writer.WriteElementString("deleteEmptyFolder", DefaultDeleteEmptyFolder.ToString(CultureInfo.InvariantCulture));
             writer.WriteElementString("sortfield", PodcastInfo.WriteSortField(DefaultSortField));
             writer.WriteElementString("sortdirection", PodcastInfo.WriteSortDirection(DefaultAscendingSort));
             writer.WriteElementString("postdownloadcommand",DefaultPostDownloadCommand);
