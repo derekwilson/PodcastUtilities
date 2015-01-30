@@ -1,4 +1,4 @@
-﻿#region License
+#region License
 // FreeBSD License
 // Copyright (c) 2010 - 2013, Andrew Trevarrow and Derek Wilson
 // All rights reserved.
@@ -19,19 +19,28 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
+using System.IO;
 using NUnit.Framework;
-using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
 {
-    public class WhenUsingTheEpisodePurgerToPurgeFilesWithAPublishedDate : WhenUsingTheEpisodePurger
+    public class WhenUsingTheEpisodePurgerToPurgeFoldersWhenTheFolderWillBeEmpty : WhenUsingTheEpisodePurger
     {
         protected override void SetupData()
         {
             base.SetupData();
+            _episodesToDelete = new IFileInfo[4];
+            _episodesToDelete[0] = TestFileInfo.GenerateFile(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_30_1611_title_.mp3");
+            _episodesToDelete[1] = TestFileInfo.GenerateFile(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_26_1611_title_.mp3");
+            _episodesToDelete[2] = TestFileInfo.GenerateFile(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_26_1609_title_.mp3");
+            _episodesToDelete[3] = TestFileInfo.GenerateFile(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_20_1611_title_.mp3");
+            // note - we do not mark the state.xml file as being one to delete
+        }
 
-            _feedInfo.DeleteDownloadsDaysOld.Value = 5;
-            _feedInfo.NamingStyle.Value = PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime;
+        protected override void When()
+        {
+            _foldersToDelete = _episodePurger.FindEmptyFoldersToDelete(_rootFolder, _podcastInfo, _episodesToDelete);
         }
 
         protected override void SetupStubs()
@@ -41,17 +50,10 @@ namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
             base.SetupStubs();
         }
 
-        protected override void When()
-        {
-            _episodesToDelete = _episodePurger.FindEpisodesToPurge(_rootFolder, _podcastInfo);
-        }
-
         [Test]
-        public void ItShouldReturnTheCorrectFiles()
+        public void ItShouldReturnTheCorrectFolders()
         {
-            Assert.AreEqual(2, _episodesToDelete.Count);
-            Assert.AreEqual(_downloadedFiles[2], _episodesToDelete[0], "incorrect file selected");
-            Assert.AreEqual(_downloadedFiles[3], _episodesToDelete[1], "incorrect file selected");
+            Assert.AreEqual(1, _foldersToDelete.Count);
         }
     }
 }

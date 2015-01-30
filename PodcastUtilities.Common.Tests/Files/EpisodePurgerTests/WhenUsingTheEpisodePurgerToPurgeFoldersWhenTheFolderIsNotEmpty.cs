@@ -19,19 +19,17 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
+using System.IO;
 using NUnit.Framework;
-using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Platform.Mtp;
 
 namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
 {
-    public class WhenUsingTheEpisodePurgerToPurgeFilesWithAPublishedDate : WhenUsingTheEpisodePurger
+    public class WhenUsingTheEpisodePurgerToPurgeFoldersWhenTheFolderIsNotEmpty : WhenUsingTheEpisodePurger
     {
-        protected override void SetupData()
+        protected override void When()
         {
-            base.SetupData();
-
-            _feedInfo.DeleteDownloadsDaysOld.Value = 5;
-            _feedInfo.NamingStyle.Value = PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime;
+            _foldersToDelete = _episodePurger.FindEmptyFoldersToDelete(_rootFolder, _podcastInfo, _episodesToDelete);
         }
 
         protected override void SetupStubs()
@@ -41,17 +39,10 @@ namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
             base.SetupStubs();
         }
 
-        protected override void When()
-        {
-            _episodesToDelete = _episodePurger.FindEpisodesToPurge(_rootFolder, _podcastInfo);
-        }
-
         [Test]
-        public void ItShouldReturnTheCorrectFiles()
+        public void ItShouldReturnTheCorrectFolders()
         {
-            Assert.AreEqual(2, _episodesToDelete.Count);
-            Assert.AreEqual(_downloadedFiles[2], _episodesToDelete[0], "incorrect file selected");
-            Assert.AreEqual(_downloadedFiles[3], _episodesToDelete[1], "incorrect file selected");
+            Assert.AreEqual(0,_foldersToDelete.Count);
         }
     }
 }

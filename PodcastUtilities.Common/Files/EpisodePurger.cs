@@ -280,7 +280,7 @@ namespace PodcastUtilities.Common.Files
                     // this file can be ignored as it is an auto generated file
                     continue;
                 }
-                if (filesToBeDeleted.Any(
+                if (filesToBeDeleted != null && filesToBeDeleted.Any(
                             alreadyGone =>
                                 alreadyGone.Name.ToLower(CultureInfo.InvariantCulture) == file.Name.ToLower(CultureInfo.InvariantCulture)))
                 {
