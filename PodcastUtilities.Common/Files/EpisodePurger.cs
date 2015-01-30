@@ -23,9 +23,11 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Exceptions;
 using PodcastUtilities.Common.Platform;
+using PodcastUtilities.Common.Platform.Mtp;
 
 namespace PodcastUtilities.Common.Files
 {
@@ -34,15 +36,25 @@ namespace PodcastUtilities.Common.Files
     /// </summary>
     public class EpisodePurger : IEpisodePurger
     {
+        private string[] _filesThatCanBeAutomaticallyDeleted = new string[]
+        {
+            "state.xml", 
+            "albumartsmall.jpg", 
+            "folder.jpg", 
+            "thumbs.db"
+        };
+
         private IDirectoryInfoProvider _directoryInfoProvider;
         private readonly ITimeProvider _timeProvider;
+        private IFileUtilities _fileUtilities;
 
         /// <summary>
         /// create the purger
         /// </summary>
-        public EpisodePurger(ITimeProvider timeProvider, IDirectoryInfoProvider directoryInfoProvider)
+        public EpisodePurger(ITimeProvider timeProvider, IDirectoryInfoProvider directoryInfoProvider, IFileUtilities fileUtilities)
         {
             _directoryInfoProvider = directoryInfoProvider;
+            _fileUtilities = fileUtilities;
             _timeProvider = timeProvider;
         }
 
@@ -82,7 +94,6 @@ namespace PodcastUtilities.Common.Files
                     0
                 );
         }
-
 
         /// <summary>
         /// find old downloads that can be deleted
@@ -125,7 +136,7 @@ namespace PodcastUtilities.Common.Files
 
         private void ScanSubFoldersForOldFiles(string folderToScan, DateTime oldestEpisodeToKeep, List<IFileInfo> episodesToDelete, PodcastInfo podcastInfo)
         {
-            var directoryInfo = _directoryInfoProvider.GetDirectoryInfo(folderToScan);
+            IDirectoryInfo directoryInfo = _directoryInfoProvider.GetDirectoryInfo(folderToScan);
 
             IDirectoryInfo[] subFolders;
             try
@@ -138,7 +149,7 @@ namespace PodcastUtilities.Common.Files
                 return;
             }
 
-            foreach (var subFolder in subFolders)
+            foreach (IDirectoryInfo subFolder in subFolders)
             {
                 ScanFolderForOldFiles(subFolder.FullName,oldestEpisodeToKeep,episodesToDelete,podcastInfo);
             }
@@ -146,7 +157,7 @@ namespace PodcastUtilities.Common.Files
 
         private void ScanFolderForOldFiles(string folderToScan, DateTime oldestEpisodeToKeep, List<IFileInfo> episodesToDelete, PodcastInfo podcastInfo)
         {
-            var directoryInfo = _directoryInfoProvider.GetDirectoryInfo(folderToScan);
+            IDirectoryInfo directoryInfo = _directoryInfoProvider.GetDirectoryInfo(folderToScan);
 
             IFileInfo[] files;
             try
@@ -159,7 +170,7 @@ namespace PodcastUtilities.Common.Files
                 return;
             }
 
-            foreach (var file in files)
+            foreach (IFileInfo file in files)
             {
                 var extension = Path.GetExtension(file.FullName);
                 if (extension != null && extension.ToUpperInvariant() == ".XML")
@@ -171,5 +182,146 @@ namespace PodcastUtilities.Common.Files
                     episodesToDelete.Add(file);
             }
         }
+
+        /// <summary>
+        /// Find folders that will be empty and that can be purged
+        /// </summary>
+        /// <param name="rootFolder">the root folder for all downloads</param>
+        /// <param name="podcastInfo">info on the podcast to download</param>
+        /// <param name="filesThatWillBeDeleted">files that will be removed and do not count when considering an empty folder</param>
+        /// <returns></returns>
+        public IList<IDirectoryInfo> FindEmptyFoldersToDelete(string rootFolder, PodcastInfo podcastInfo, IList<IFileInfo> filesThatWillBeDeleted)
+        {
+            List<IDirectoryInfo> foldersToDelete = new List<IDirectoryInfo>(10);
+            if (!podcastInfo.DeleteEmptyFolder.Value)
+            {
+                return foldersToDelete;
+            }
+
+            var feedDownloadsFolder = Path.Combine(rootFolder, podcastInfo.Folder);
+            IDirectoryInfo directoryInfo = _directoryInfoProvider.GetDirectoryInfo(feedDownloadsFolder);
+
+            if (podcastInfo.Feed != null && IsSubFolderBasedNaming(podcastInfo.Feed.NamingStyle.Value))
+            {
+                CheckIfSubFoldersCanBeDeleted(directoryInfo, filesThatWillBeDeleted, foldersToDelete);
+            }
+            else
+            {
+                if (FolderCanBeDeleted(directoryInfo, filesThatWillBeDeleted))
+                {
+                    foldersToDelete.Add(directoryInfo);
+                }
+            }
+            return foldersToDelete;
+        }
+
+        private void CheckIfSubFoldersCanBeDeleted(IDirectoryInfo rootFolder, IList<IFileInfo> filesToBeDeleted, List<IDirectoryInfo> foldersToDelete)
+        {
+            IDirectoryInfo[] subFolders;
+            try
+            {
+                subFolders = rootFolder.GetDirectories("*.*");
+            }
+            catch (DirectoryNotFoundException)
+            {
+                // lets see if we can get rid of the root folder
+                if (FolderCanBeDeleted(rootFolder, filesToBeDeleted))
+                {
+                    foldersToDelete.Add(rootFolder);
+                }
+                return;
+            }
+
+            bool thereIsASubFolderToKeep = false;
+            foreach (IDirectoryInfo subFolder in subFolders)
+            {
+                if (FolderCanBeDeleted(subFolder, filesToBeDeleted))
+                {
+                    foldersToDelete.Add(subFolder);
+                }
+                else
+                {
+                    thereIsASubFolderToKeep = true;
+                }
+            }
+            if (thereIsASubFolderToKeep)
+            {
+                // the root cannot be deleted
+                return;
+            }
+            if (FolderCanBeDeleted(rootFolder, filesToBeDeleted))
+            {
+                foldersToDelete.Add(rootFolder);
+            }
+        }
+
+        private bool FolderCanBeDeleted(IDirectoryInfo folderToScan, IList<IFileInfo> filesToBeDeleted)
+        {
+            IFileInfo[] files;
+            try
+            {
+                files = folderToScan.GetFiles("*.*");
+            }
+            catch (DirectoryNotFoundException)
+            {
+                // if the folder is not there then there is nothing to do
+                return false;
+            }
+
+            if (files.Length < 1)
+            {
+                return true;
+            }
+
+            foreach (IFileInfo file in files)
+            {
+                if (_filesThatCanBeAutomaticallyDeleted.Contains(file.Name.ToLower(CultureInfo.InvariantCulture)))
+                {
+                    // this file can be ignored as it is an auto generated file
+                    continue;
+                }
+                if (filesToBeDeleted.Any(
+                            alreadyGone =>
+                                alreadyGone.Name.ToLower(CultureInfo.InvariantCulture) == file.Name.ToLower(CultureInfo.InvariantCulture)))
+                {
+                    // this file is going to be deleted we can ignore it
+                    continue;
+                }
+
+                // there is a file here that we cannot ignore
+                return false;
+            }
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// purge a folder, removing any files that were automatically generated first
+        /// </summary>
+        /// <param name="folder">folder to delete</param>
+        public void PurgeFolder(IDirectoryInfo folder)
+        {
+            IFileInfo[] files;
+            try
+            {
+                files = folder.GetFiles("*.*");
+            }
+            catch (DirectoryNotFoundException)
+            {
+                // if the folder is not there then there is nothing to do
+                return;
+            }
+
+            foreach (IFileInfo file in files)
+            {
+                if (_filesThatCanBeAutomaticallyDeleted.Contains(file.Name.ToLower(CultureInfo.InvariantCulture)))
+                {
+                    _fileUtilities.FileDelete(file.FullName);
+                }
+            }
+            folder.Delete();
+        }
+
     }
 }
