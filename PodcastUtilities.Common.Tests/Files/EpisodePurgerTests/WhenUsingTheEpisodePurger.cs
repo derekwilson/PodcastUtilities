@@ -35,6 +35,7 @@ namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
 
         protected IDirectoryInfoProvider _directoryInfoProvider;
         protected ITimeProvider _timeProvider;
+        protected IFileUtilities _fileUtilities;
 
         protected string _rootFolder;
         protected PodcastInfo _podcastInfo;
@@ -58,11 +59,12 @@ namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
             _timeProvider = GenerateMock<ITimeProvider>();
             _directoryInfoProvider = GenerateMock<IDirectoryInfoProvider>();
             _directoryInfo = GenerateMock<IDirectoryInfo>();
+            _fileUtilities = GenerateMock<IFileUtilities>();
 
             SetupData();
             SetupStubs();
 
-            _episodePurger = new EpisodePurger(_timeProvider, _directoryInfoProvider);
+            _episodePurger = new EpisodePurger(_timeProvider, _directoryInfoProvider, _fileUtilities);
         }
 
         protected virtual void SetupData()

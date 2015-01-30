@@ -20,6 +20,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Data.Odbc;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -54,7 +55,7 @@ namespace PurgePodcasts
 
         private static LinFuIocContainer InitializeIocContainer()
         {
-            var container = new LinFuIocContainer();
+            LinFuIocContainer container = new LinFuIocContainer();
 
             IocRegistration.RegisterPortableDeviceServices(container);
             IocRegistration.RegisterSystemServices(container);
@@ -80,36 +81,50 @@ namespace PurgePodcasts
             }
 
             // find the episodes to delete
-            var allFilesToDelete = new List<IFileInfo>(20);
-            var podcastEpisodePurger = _iocContainer.Resolve<IEpisodePurger>();
-            foreach (var podcastInfo in _control.GetPodcasts())
+            List<IFileInfo> allFilesToDelete = new List<IFileInfo>(20);
+            IEpisodePurger podcastEpisodePurger = _iocContainer.Resolve<IEpisodePurger>();
+            foreach (PodcastInfo podcastInfo in _control.GetPodcasts())
             {
-                var filesToDeleteFromThisFeed = podcastEpisodePurger.FindEpisodesToPurge(_control.GetSourceRoot(), podcastInfo);
+                IList<IFileInfo> filesToDeleteFromThisFeed = podcastEpisodePurger.FindEpisodesToPurge(_control.GetSourceRoot(), podcastInfo);
                 allFilesToDelete.AddRange(filesToDeleteFromThisFeed);
             }
-
-            if (allFilesToDelete.Count == 0)
+            // find folders that can now be deleted
+            List<IDirectoryInfo> allFoldersToDelete = new List<IDirectoryInfo>(10);
+            foreach (PodcastInfo podcastInfo in _control.GetPodcasts())
             {
-                Console.WriteLine("There are no files to delete");
+                IList<IDirectoryInfo> foldersToDeleteInThisFeed = podcastEpisodePurger.FindEmptyFoldersToDelete(_control.GetSourceRoot(), podcastInfo, allFilesToDelete);
+                allFoldersToDelete.AddRange(foldersToDeleteInThisFeed);
+            }
+
+            if (allFilesToDelete.Count == 0 && allFoldersToDelete.Count == 0)
+            {
+                Console.WriteLine("There is nothing to delete");
                 return;
             }
 
-            var fileUtilities = _iocContainer.Resolve<IFileUtilities>();
             if (_quiet)
             {
-                foreach (var fileInfo in allFilesToDelete)
-                {
-                    Console.WriteLine("Deleted: {0}", fileInfo.FullName);
-                    fileUtilities.FileDelete(fileInfo.FullName);
-                }
+                DoDelete(allFilesToDelete,allFoldersToDelete);
             }
             else
             {
-                foreach (var fileInfo in allFilesToDelete)
+                if (allFilesToDelete.Count > 0)
                 {
-                    Console.WriteLine("{0}", fileInfo.FullName);
+                    Console.WriteLine("Files:");
+                    foreach (IFileInfo fileInfo in allFilesToDelete)
+                    {
+                        Console.WriteLine("{0}", fileInfo.FullName);
+                    }
                 }
-                Console.WriteLine("OK to delete ALL the above files? (y/n) ");
+                if (allFoldersToDelete.Count > 0)
+                {
+                    Console.WriteLine("Folders:");
+                    foreach (IDirectoryInfo folder in allFoldersToDelete)
+                    {
+                        Console.WriteLine("{0}", folder.FullName);
+                    }
+                }
+                Console.WriteLine("OK to delete {0} files and {1} folders? (y/n) ", allFilesToDelete.Count, allFoldersToDelete.Count);
                 string answer;
                 do
                 {
@@ -118,11 +133,8 @@ namespace PurgePodcasts
                 } while (answer != "y" && answer != "n");
                 if (answer == "y")
                 {
-                    Console.WriteLine("Deleting {0} files",allFilesToDelete.Count);
-                    foreach (var fileInfo in allFilesToDelete)
-                    {
-                        fileUtilities.FileDelete(fileInfo.FullName);
-                    }
+                    Console.WriteLine("Deleting {0} files and {1} folders", allFilesToDelete.Count, allFoldersToDelete.Count);
+                    DoDelete(allFilesToDelete, allFoldersToDelete);
                 }
                 else
                 {
@@ -131,6 +143,32 @@ namespace PurgePodcasts
             }
 
             Console.WriteLine("Done");
+        }
+
+        private static void DoDelete(IList<IFileInfo> files, IList<IDirectoryInfo> folders)
+        {
+            IFileUtilities fileUtilities = _iocContainer.Resolve<IFileUtilities>();
+            IEpisodePurger podcastEpisodePurger = _iocContainer.Resolve<IEpisodePurger>();
+
+            foreach (IFileInfo fileInfo in files)
+            {
+                fileUtilities.FileDelete(fileInfo.FullName);
+            }
+            foreach (IDirectoryInfo folder in folders)
+            {
+                try
+                {
+                    podcastEpisodePurger.PurgeFolder(folder);
+
+                }
+                catch (Exception exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Cannot delete folder: {0}", folder.FullName);
+                    Console.WriteLine(exception.ToString());
+                    Console.ResetColor();
+                }
+            }
         }
     }
 }

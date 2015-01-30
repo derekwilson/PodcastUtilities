@@ -36,5 +36,20 @@ namespace PodcastUtilities.Common.Files
         /// <param name="podcastInfo">info on the podcast to download</param>
         /// <returns>list of episodes to be deleted for the supplied podcastInfo</returns>
         IList<IFileInfo> FindEpisodesToPurge(string rootFolder, PodcastInfo podcastInfo);
+
+        /// <summary>
+        /// Find folders that will be empty and that can be purged
+        /// </summary>
+        /// <param name="rootFolder">the root folder for all downloads</param>
+        /// <param name="podcastInfo">info on the podcast to download</param>
+        /// <param name="filesThatWillBeDeleted">files that will be removed and do not count when considering an empty folder</param>
+        /// <returns></returns>
+        IList<IDirectoryInfo> FindEmptyFoldersToDelete(string rootFolder, PodcastInfo podcastInfo, IList<IFileInfo> filesThatWillBeDeleted);
+
+        /// <summary>
+        /// purge a folder, removing any files that were automatically generated first
+        /// </summary>
+        /// <param name="folder">folder to delete</param>
+        void PurgeFolder(IDirectoryInfo folder);
     }
 }
