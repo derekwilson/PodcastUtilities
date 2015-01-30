@@ -8,6 +8,7 @@
     <freeSpaceToLeaveOnDownloadMB>3000</freeSpaceToLeaveOnDownloadMB>
 		<sortfield>name</sortfield>
 		<sortdirection>asc</sortdirection>
+		<deleteEmptyFolder>true</deleteEmptyFolder>
     <maximumNumberOfConcurrentDownloads>20</maximumNumberOfConcurrentDownloads>
     <retryWaitInSeconds>10</retryWaitInSeconds>
     <feed>

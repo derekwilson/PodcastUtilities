@@ -18,6 +18,7 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,7 +27,7 @@ using PodcastUtilities.Common.Files;
 using PodcastUtilities.Common.Platform;
 using Rhino.Mocks;
 
-namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
+namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
 {
     public abstract class WhenUsingTheEpisodePurger
         : WhenTestingBehaviour
@@ -41,6 +42,7 @@ namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
         protected PodcastInfo _podcastInfo;
         protected FeedInfo _feedInfo;
         protected IList<IFileInfo> _episodesToDelete;
+        protected IList<IDirectoryInfo> _foldersToDelete; 
 
         protected IDirectoryInfo _directoryInfo;
         protected IFileInfo[] _downloadedFiles;
@@ -85,6 +87,7 @@ namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
             _podcastInfo = new PodcastInfo(_controlFile);
             _podcastInfo.Folder = "TestFolder";
             _podcastInfo.Pattern.Value = "*.mp3";
+            _podcastInfo.DeleteEmptyFolder.Value = true;
             _podcastInfo.Feed = _feedInfo;
         }
 
@@ -92,6 +95,7 @@ namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
         {
             _timeProvider.Stub(time => time.UtcNow).Return(_now);
             _directoryInfo.Stub(dir => dir.GetFiles(_podcastInfo.Pattern.Value)).Return(_downloadedFiles);
+            _directoryInfo.Stub(dir => dir.GetFiles("*.*")).Return(_downloadedFiles);
             _directoryInfo.Stub(dir => dir.GetDirectories("*.*")).Return(_subFolders);
             _directoryInfoProvider.Stub(prov => prov.GetDirectoryInfo(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_directoryInfo);
 
@@ -137,6 +141,12 @@ namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
             _downloadedFiles[2].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_26_1609_title_.mp3"));
             _downloadedFiles[3].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_20_1611_title_.mp3"));
             _downloadedFiles[4].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "state.xml"));
+
+            _downloadedFiles[0].Stub(file => file.Name).Return("2010_04_30_1611_title_.mp3");
+            _downloadedFiles[1].Stub(file => file.Name).Return("2010_04_26_1611_title_.mp3");
+            _downloadedFiles[2].Stub(file => file.Name).Return("2010_04_26_1609_title_.mp3");
+            _downloadedFiles[3].Stub(file => file.Name).Return("2010_04_20_1611_title_.mp3");
+            _downloadedFiles[4].Stub(file => file.Name).Return("state.xml");
         }
     }
 }

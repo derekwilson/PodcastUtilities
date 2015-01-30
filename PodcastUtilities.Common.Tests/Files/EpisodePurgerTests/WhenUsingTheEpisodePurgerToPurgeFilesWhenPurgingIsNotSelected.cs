@@ -18,9 +18,10 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
+
 using NUnit.Framework;
 
-namespace PodcastUtilities.Common.Tests.Files.PodcastEpisodePurgerTests
+namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
 {
     public class WhenUsingTheEpisodePurgerToPurgeFilesWhenPurgingIsNotSelected : WhenUsingTheEpisodePurger
     {

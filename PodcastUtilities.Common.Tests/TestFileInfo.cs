@@ -1,4 +1,4 @@
-﻿#region License
+#region License
 // FreeBSD License
 // Copyright (c) 2010 - 2013, Andrew Trevarrow and Derek Wilson
 // All rights reserved.
@@ -19,39 +19,26 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
-using NUnit.Framework;
-using PodcastUtilities.Common.Configuration;
+using System;
+using System.IO;
+using PodcastUtilities.Common.Platform;
 
-namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
+namespace PodcastUtilities.Common.Tests
 {
-    public class WhenUsingTheEpisodePurgerToPurgeFilesWithAPublishedDate : WhenUsingTheEpisodePurger
+    public class TestFileInfo : IFileInfo
     {
-        protected override void SetupData()
+        public string Name { get; set; }
+        public string FullName { get; set; }
+        public DateTime CreationTime { get; set; }
+        public long Length { get; set; }
+
+        public static IFileInfo GenerateFile(string folder, string name)
         {
-            base.SetupData();
-
-            _feedInfo.DeleteDownloadsDaysOld.Value = 5;
-            _feedInfo.NamingStyle.Value = PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime;
-        }
-
-        protected override void SetupStubs()
-        {
-            StubFiles();
-
-            base.SetupStubs();
-        }
-
-        protected override void When()
-        {
-            _episodesToDelete = _episodePurger.FindEpisodesToPurge(_rootFolder, _podcastInfo);
-        }
-
-        [Test]
-        public void ItShouldReturnTheCorrectFiles()
-        {
-            Assert.AreEqual(2, _episodesToDelete.Count);
-            Assert.AreEqual(_downloadedFiles[2], _episodesToDelete[0], "incorrect file selected");
-            Assert.AreEqual(_downloadedFiles[3], _episodesToDelete[1], "incorrect file selected");
+            return new TestFileInfo()
+            {
+                FullName = Path.Combine(folder, name),
+                Name = name
+            };
         }
     }
 }

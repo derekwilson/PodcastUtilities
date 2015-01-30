@@ -140,6 +140,9 @@
     <Compile Include="Files\CopierTests\WhenDestinationFileAlreadyExists.cs" />
     <Compile Include="Files\CopierTests\WhenDriveInfoThrowsAnError.cs" />
     <Compile Include="Files\CopierTests\WhenTestingCopier.cs" />
+    <Compile Include="TestFileInfo.cs" />
+    <Compile Include="Files\EpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFoldersWhenTheFolderIsNotEmpty.cs" />
+    <Compile Include="Files\EpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFoldersWhenTheFolderWillBeEmpty.cs" />
     <Compile Include="Files\FinderTests\WhenGettingAllFilesInAFolder.cs" />
     <Compile Include="Files\FinderTests\WhenGettingLessThanAllFilesInAFolder.cs" />
     <Compile Include="Files\FinderTests\WhenGettingUnlimitedSortedFilesInAFolder.cs" />
