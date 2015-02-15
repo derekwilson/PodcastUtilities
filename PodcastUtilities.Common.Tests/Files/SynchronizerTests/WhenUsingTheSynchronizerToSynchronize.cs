@@ -47,6 +47,7 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
             podcast1.Pattern.Value = "*.mp3";
 		    podcast1.MaximumNumberOfFiles.Value = 2;
 		    podcast1.AscendingSort.Value = true;
+		    podcast1.DeleteEmptyFolder.Value = true;
 		    podcast1.SortField.Value = PodcastFileSortField.FileName;
 
 			var podcast2 = new PodcastInfo(ControlFile)
@@ -56,6 +57,7 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
             podcast2.Pattern.Value = "*.wma";
             podcast2.MaximumNumberOfFiles.Value = 3;
             podcast2.AscendingSort.Value = false;
+            podcast2.DeleteEmptyFolder.Value = false;
             podcast2.SortField.Value = PodcastFileSortField.CreationTime;
 
 			PodcastFiles1 = new List<IFileInfo> {GenerateMock<IFileInfo>(), GenerateMock<IFileInfo>()};
@@ -121,5 +123,12 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 			Assert.AreEqual(PodcastFiles2[1], FilesToCopy[3].Source);
 			Assert.AreEqual(PodcastFiles2[2], FilesToCopy[4].Source);
 		}
+
+	    [Test]
+	    public void ItShouldRemoveUnwantedFoldersFromEachPodcast()
+	    {
+            FolderRemover.AssertWasCalled(r => r.RemoveFolderIfEmpty(@"k:\podcasts\pod1", false));
+            FolderRemover.AssertWasNotCalled(r => r.RemoveFolderIfEmpty(@"k:\podcasts\AnotherPodcast", false));
+        }
 	}
 }

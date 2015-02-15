@@ -18,24 +18,35 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using NUnit.Framework;
+using PodcastUtilities.Common.Platform;
+using Rhino.Mocks;
 
-[assembly: AssemblyCompany("AAD")]
-[assembly: AssemblyProduct("PodcastUtilities")]
-[assembly: AssemblyCopyright("Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2015")]
+namespace PodcastUtilities.Common.Tests.Files.UnwantedFolderRemoverTests
+{
+    public class WhenTheFolderContainsFiles : WhenTestingUnwantedFolderRemover
+    {
+        protected override void GivenThat()
+        {
+            base.GivenThat();
+            DirectoryInfo.Stub(d => d.GetFiles(null))
+                .IgnoreArguments()
+                .Return(FilesInDirectory);
 
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.1.0.5")]
-[assembly: AssemblyFileVersion("2.1.0.5")]
+            DirectoryInfo.Stub(d => d.GetDirectories(null))
+                .IgnoreArguments()
+                .Return(new IDirectoryInfo[0]);
+        }
 
+        protected override void When()
+        {
+            FolderRemover.RemoveFolderIfEmpty(@"c:\blah", false);
+        }
+
+        [Test]
+        public void ItShouldNotRemoveTheFolder()
+        {
+            DirectoryInfo.AssertWasNotCalled(di => di.Delete());
+        }
+    }
+}

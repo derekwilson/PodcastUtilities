@@ -31,7 +31,8 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 		protected IReadOnlyControlFile ControlFile { get; set; }
 		protected IFinder FileFinder { get; set; }
 		protected ICopier FileCopier { get; set; }
-		protected IUnwantedFileRemover FileRemover { get; set; }
+        protected IUnwantedFileRemover FileRemover { get; set; }
+        protected IUnwantedFolderRemover FolderRemover { get; set; }
 
 
 		protected override void GivenThat()
@@ -42,8 +43,9 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 			FileFinder = GenerateMock<IFinder>();
 			FileCopier = GenerateMock<ICopier>();
 			FileRemover = GenerateMock<IUnwantedFileRemover>();
+            FolderRemover = GenerateMock<IUnwantedFolderRemover>();
 
-			PodcastSynchronizer = new Synchronizer(FileFinder, FileCopier, FileRemover);
+			PodcastSynchronizer = new Synchronizer(FileFinder, FileCopier, FileRemover, FolderRemover);
 		}
 	}
 }
