@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common.Files
 {
@@ -31,20 +32,23 @@ namespace PodcastUtilities.Common.Files
 	/// </summary>
     public class Synchronizer
 	{
-		/// <summary>
-		/// construct a podcast synchroniser
-		/// </summary>
-		/// <param name="fileFinder">abstract interface to the file system to find media files</param>
-		/// <param name="fileCopier">abstract file copier</param>
-		/// <param name="fileRemover">abstract file remover, to synchronise deleted files in the source to the destination</param>
-        public Synchronizer(
+	    /// <summary>
+	    /// construct a podcast synchroniser
+	    /// </summary>
+	    /// <param name="fileFinder">abstract interface to the file system to find media files</param>
+	    /// <param name="fileCopier">abstract file copier</param>
+	    /// <param name="fileRemover">abstract file remover, to synchronise deleted files in the source to the destination</param>
+	    /// <param name="folderRemover">abstract folder remover, to remove folder that have gone empty during sync</param>
+	    public Synchronizer(
 			IFinder fileFinder,
 			ICopier fileCopier,
-			IUnwantedFileRemover fileRemover)
+			IUnwantedFileRemover fileRemover,
+            IUnwantedFolderRemover folderRemover)
 		{
 			FileFinder = fileFinder;
 			FileCopier = fileCopier;
 			FileRemover = fileRemover;
+		    FolderRemover = folderRemover;
 		}
 
         /// <summary>
@@ -56,17 +60,20 @@ namespace PodcastUtilities.Common.Files
 			{
 				FileCopier.StatusUpdate += value;
 				FileRemover.StatusUpdate += value;
+			    FolderRemover.StatusUpdate += value;
 			}
 			remove
 			{
 				FileCopier.StatusUpdate -= value;
 				FileRemover.StatusUpdate -= value;
+			    FolderRemover.StatusUpdate -= value;
 			}
 		}
 
 		private IFinder FileFinder { get; set; }
 		private ICopier FileCopier { get; set; }
 		private IUnwantedFileRemover FileRemover { get; set; }
+        private IUnwantedFolderRemover FolderRemover { get; set; }
 
 		/// <summary>
 		/// synchronise podcast media files
@@ -77,12 +84,12 @@ namespace PodcastUtilities.Common.Files
 		{
 			var filesToCopy = new List<FileSyncItem>();
 
-			foreach (var podcast in controlFile.GetPodcasts())
+			foreach (PodcastInfo podcast in controlFile.GetPodcasts())
 			{
-				var podcastSourcePath = Path.Combine(controlFile.GetSourceRoot(), podcast.Folder);
-				var podcastDestinationPath = Path.Combine(controlFile.GetDestinationRoot(), podcast.Folder);
+				string podcastSourcePath = Path.Combine(controlFile.GetSourceRoot(), podcast.Folder);
+				string podcastDestinationPath = Path.Combine(controlFile.GetDestinationRoot(), podcast.Folder);
 
-				var podcastSourceFiles = FileFinder.GetFiles(
+				IList<IFileInfo> podcastSourceFiles = FileFinder.GetFiles(
 						podcastSourcePath,
 						podcast.Pattern.Value,
 						podcast.MaximumNumberOfFiles.Value,
@@ -91,7 +98,7 @@ namespace PodcastUtilities.Common.Files
 
 				FileRemover.RemoveUnwantedFiles(podcastSourceFiles, podcastDestinationPath, podcast.Pattern.Value, whatIf);
 
-				var podcastSyncItems = podcastSourceFiles.Select(p => new FileSyncItem {Source = p});
+				IEnumerable<FileSyncItem> podcastSyncItems = podcastSourceFiles.Select(p => new FileSyncItem {Source = p});
 
 				filesToCopy.AddRange(podcastSyncItems);
 			}
@@ -102,6 +109,15 @@ namespace PodcastUtilities.Common.Files
 				controlFile.GetDestinationRoot(),
 				controlFile.GetFreeSpaceToLeaveOnDestination(),
 				whatIf);
+
+		    foreach (PodcastInfo podcast in controlFile.GetPodcasts())
+		    {
+		        if (podcast.DeleteEmptyFolder.Value)
+		        {
+                    string podcastDestinationPath = Path.Combine(controlFile.GetDestinationRoot(), podcast.Folder);
+                    FolderRemover.RemoveFolderIfEmpty(podcastDestinationPath, whatIf);
+		        }
+		    }
 		}
 	}
 }

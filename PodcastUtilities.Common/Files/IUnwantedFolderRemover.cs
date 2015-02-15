@@ -18,24 +18,18 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-
-[assembly: AssemblyCompany("AAD")]
-[assembly: AssemblyProduct("PodcastUtilities")]
-[assembly: AssemblyCopyright("Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2015")]
-
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.1.0.5")]
-[assembly: AssemblyFileVersion("2.1.0.5")]
-
+namespace PodcastUtilities.Common.Files
+{
+    /// <summary>
+    /// support the ability to remove unwanted empty folders
+    /// </summary>
+    public interface IUnwantedFolderRemover : IStatusUpdate
+    {
+        /// <summary>
+        /// remove a folder if there are no files in it, used by the synchroniser
+        /// </summary>
+        /// <param name="folder">folder to delete</param>
+        /// <param name="whatIf">true to emit all the status updates but not actually perform the deletes, false to do the delete</param>
+        void RemoveFolderIfEmpty(string folder, bool whatIf);
+    }
+}

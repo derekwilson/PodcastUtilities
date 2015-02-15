@@ -44,9 +44,9 @@ namespace PodcastUtilities.Common.Files
             "thumbs.db"
         };
 
-        private IDirectoryInfoProvider _directoryInfoProvider;
+        private readonly IDirectoryInfoProvider _directoryInfoProvider;
         private readonly ITimeProvider _timeProvider;
-        private IFileUtilities _fileUtilities;
+        private readonly IFileUtilities _fileUtilities;
 
         /// <summary>
         /// create the purger

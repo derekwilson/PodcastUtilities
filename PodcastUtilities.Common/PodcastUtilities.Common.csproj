@@ -104,6 +104,8 @@
     <Compile Include="Feeds\IExternalCommand.cs" />
     <Compile Include="Files\IEpisodePurger.cs" />
     <Compile Include="Configuration\IPodcastFactory.cs" />
+    <Compile Include="Files\IUnwantedFolderRemover.cs" />
+    <Compile Include="Files\UnwantedFolderRemover.cs" />
     <Compile Include="IocLifecycle.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="IStateProvider.cs" />

@@ -57,18 +57,19 @@ namespace SyncPodcasts
 
 			LinFuIocContainer iocContainer = InitializeIocContainer();
 
-			var control = new ReadOnlyControlFile(args[0]);
-			var finder = iocContainer.Resolve<IFinder>();
-			var copier = iocContainer.Resolve<ICopier>();
-			var remover = iocContainer.Resolve<IUnwantedFileRemover>();
-			var fileUtilities = iocContainer.Resolve<IFileUtilities>();
-			var pathUtilities = iocContainer.Resolve<IPathUtilities>();
-			var playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
+			ReadOnlyControlFile control = new ReadOnlyControlFile(args[0]);
+			IFinder finder = iocContainer.Resolve<IFinder>();
+			ICopier copier = iocContainer.Resolve<ICopier>();
+			IUnwantedFileRemover remover = iocContainer.Resolve<IUnwantedFileRemover>();
+		    IUnwantedFolderRemover folderRemover = iocContainer.Resolve<IUnwantedFolderRemover>();
+			IFileUtilities fileUtilities = iocContainer.Resolve<IFileUtilities>();
+			IPathUtilities pathUtilities = iocContainer.Resolve<IPathUtilities>();
+			IPlaylistFactory playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
 
-            var generator = new Generator(finder, fileUtilities, pathUtilities, playlistFactory);
+            Generator generator = new Generator(finder, fileUtilities, pathUtilities, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
-			var synchronizer = new Synchronizer(finder, copier, remover);
+			Synchronizer synchronizer = new Synchronizer(finder, copier, remover, folderRemover);
 			synchronizer.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
 			synchronizer.Synchronize(control, false);
@@ -79,7 +80,7 @@ namespace SyncPodcasts
 
 		private static LinFuIocContainer InitializeIocContainer()
 		{
-			var container =  new LinFuIocContainer();
+			LinFuIocContainer container =  new LinFuIocContainer();
 
             IocRegistration.RegisterPortableDeviceServices(container);
             IocRegistration.RegisterFileServices(container);
