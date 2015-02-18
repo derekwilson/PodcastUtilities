@@ -49,9 +49,9 @@ namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
         [Test]
         public void ItShouldReturnTheCorrectFiles()
         {
-            Assert.AreEqual(2, _episodesToDelete.Count);
             Assert.AreEqual(_downloadedFiles[2], _episodesToDelete[0], "incorrect file selected");
             Assert.AreEqual(_downloadedFiles[3], _episodesToDelete[1], "incorrect file selected");
+            Assert.AreEqual(2, _episodesToDelete.Count);
         }
     }
 }

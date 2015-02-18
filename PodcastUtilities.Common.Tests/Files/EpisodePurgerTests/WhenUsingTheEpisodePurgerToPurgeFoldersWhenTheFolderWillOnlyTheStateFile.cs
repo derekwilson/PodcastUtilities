@@ -25,17 +25,16 @@ using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
 {
-    public class WhenUsingTheEpisodePurgerToPurgeFoldersWhenTheFolderWillBeEmpty : WhenUsingTheEpisodePurger
+    public class WhenUsingTheEpisodePurgerToPurgeFoldersWhenTheFolderWillOnlyTheStateFile : WhenUsingTheEpisodePurger
     {
         protected override void SetupData()
         {
             base.SetupData();
-            _episodesToDelete = new IFileInfo[5];
+            _episodesToDelete = new IFileInfo[4];
             _episodesToDelete[0] = TestFileInfo.GenerateFile(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_30_1611_title_.mp3");
             _episodesToDelete[1] = TestFileInfo.GenerateFile(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_26_1611_title_.mp3");
             _episodesToDelete[2] = TestFileInfo.GenerateFile(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_26_1609_title_.mp3");
             _episodesToDelete[3] = TestFileInfo.GenerateFile(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_20_1611_title_.mp3");
-            _episodesToDelete[4] = TestFileInfo.GenerateFile(Path.Combine(_rootFolder, _podcastInfo.Folder), "state.xml");
             // note - we do not mark the state.xml or thumbs.db file as being one to delete
         }
 
@@ -54,7 +53,7 @@ namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
         [Test]
         public void ItShouldReturnTheCorrectFolders()
         {
-            Assert.AreEqual(1, _foldersToDelete.Count);
+            Assert.AreEqual(0, _foldersToDelete.Count);
         }
     }
 }

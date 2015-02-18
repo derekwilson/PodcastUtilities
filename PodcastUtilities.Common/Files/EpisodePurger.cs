@@ -38,7 +38,6 @@ namespace PodcastUtilities.Common.Files
     {
         private string[] _filesThatCanBeAutomaticallyDeleted = new string[]
         {
-            "state.xml", 
             "albumartsmall.jpg", 
             "folder.jpg", 
             "thumbs.db"
