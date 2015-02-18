@@ -46,6 +46,7 @@ namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
 
         protected IDirectoryInfo _directoryInfo;
         protected IFileInfo[] _downloadedFiles;
+        protected IFileInfo[] _allFiles;
         protected IDirectoryInfo[] _subFolders;
 
         protected DateTime _now;
@@ -95,7 +96,7 @@ namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
         {
             _timeProvider.Stub(time => time.UtcNow).Return(_now);
             _directoryInfo.Stub(dir => dir.GetFiles(_podcastInfo.Pattern.Value)).Return(_downloadedFiles);
-            _directoryInfo.Stub(dir => dir.GetFiles("*.*")).Return(_downloadedFiles);
+            _directoryInfo.Stub(dir => dir.GetFiles("*.*")).Return(_allFiles);
             _directoryInfo.Stub(dir => dir.GetDirectories("*.*")).Return(_subFolders);
             _directoryInfoProvider.Stub(prov => prov.GetDirectoryInfo(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_directoryInfo);
 
@@ -123,30 +124,47 @@ namespace PodcastUtilities.Common.Tests.Files.EpisodePurgerTests
         {
             _downloadedFiles = new IFileInfo[]
             {
-			    GenerateMock<IFileInfo>(),
 				GenerateMock<IFileInfo>(),
 				GenerateMock<IFileInfo>(),
 				GenerateMock<IFileInfo>(),
 				GenerateMock<IFileInfo>()
 			};
 
-            _downloadedFiles[0].Stub(file => file.CreationTime).Return(new DateTime(2010, 4, 30, 16, 11, 12));
-            _downloadedFiles[1].Stub(file => file.CreationTime).Return(new DateTime(2010, 4, 26, 16, 11, 12));
-            _downloadedFiles[2].Stub(file => file.CreationTime).Return(new DateTime(2010, 4, 26, 16, 09, 12));
-            _downloadedFiles[3].Stub(file => file.CreationTime).Return(new DateTime(2010, 4, 20, 16, 11, 12));
-            _downloadedFiles[4].Stub(file => file.CreationTime).Return(new DateTime(2000, 4, 20, 16, 11, 12));
+            _allFiles = new IFileInfo[]
+            {
+			    GenerateMock<IFileInfo>(),
+				GenerateMock<IFileInfo>(),
+				GenerateMock<IFileInfo>(),
+				GenerateMock<IFileInfo>(),
+				GenerateMock<IFileInfo>(),
+				GenerateMock<IFileInfo>()
+			};
 
-            _downloadedFiles[0].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_30_1611_title_.mp3"));
-            _downloadedFiles[1].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_26_1611_title_.mp3"));
-            _downloadedFiles[2].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_26_1609_title_.mp3"));
-            _downloadedFiles[3].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_20_1611_title_.mp3"));
-            _downloadedFiles[4].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "state.xml"));
+            _allFiles[0].Stub(file => file.CreationTime).Return(new DateTime(2010, 4, 30, 16, 11, 12));
+            _allFiles[1].Stub(file => file.CreationTime).Return(new DateTime(2010, 4, 26, 16, 11, 12));
+            _allFiles[2].Stub(file => file.CreationTime).Return(new DateTime(2010, 4, 26, 16, 09, 12));
+            _allFiles[3].Stub(file => file.CreationTime).Return(new DateTime(2010, 4, 20, 16, 11, 12));
+            _allFiles[4].Stub(file => file.CreationTime).Return(new DateTime(2000, 4, 20, 16, 11, 12));
+            _allFiles[5].Stub(file => file.CreationTime).Return(new DateTime(2000, 4, 20, 16, 11, 12));
 
-            _downloadedFiles[0].Stub(file => file.Name).Return("2010_04_30_1611_title_.mp3");
-            _downloadedFiles[1].Stub(file => file.Name).Return("2010_04_26_1611_title_.mp3");
-            _downloadedFiles[2].Stub(file => file.Name).Return("2010_04_26_1609_title_.mp3");
-            _downloadedFiles[3].Stub(file => file.Name).Return("2010_04_20_1611_title_.mp3");
-            _downloadedFiles[4].Stub(file => file.Name).Return("state.xml");
+            _allFiles[0].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_30_1611_title_.mp3"));
+            _allFiles[1].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_26_1611_title_.mp3"));
+            _allFiles[2].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_26_1609_title_.mp3"));
+            _allFiles[3].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "2010_04_20_1611_title_.mp3"));
+            _allFiles[4].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "thumbs.db"));
+            _allFiles[5].Stub(file => file.FullName).Return(Path.Combine(Path.Combine(_rootFolder, _podcastInfo.Folder), "state.xml"));
+
+            _allFiles[0].Stub(file => file.Name).Return("2010_04_30_1611_title_.mp3");
+            _allFiles[1].Stub(file => file.Name).Return("2010_04_26_1611_title_.mp3");
+            _allFiles[2].Stub(file => file.Name).Return("2010_04_26_1609_title_.mp3");
+            _allFiles[3].Stub(file => file.Name).Return("2010_04_20_1611_title_.mp3");
+            _allFiles[4].Stub(file => file.Name).Return("thumbs.db");
+            _allFiles[5].Stub(file => file.Name).Return("state.xml");
+
+            _downloadedFiles[0] = _allFiles[0];
+            _downloadedFiles[1] = _allFiles[1];
+            _downloadedFiles[2] = _allFiles[2];
+            _downloadedFiles[3] = _allFiles[3];
         }
     }
 }

@@ -159,10 +159,10 @@ namespace PodcastUtilities.Common.Feeds
             }
 
             var stateKey = Path.Combine(rootFolder, podcastInfo.Folder);
-            CreateFolderIfNeeded(stateKey);
             string feedSaveFile = null;
             if (retainFeedStream)
             {
+                CreateFolderIfNeeded(stateKey);
                 feedSaveFile = Path.Combine(Path.Combine(rootFolder, podcastInfo.Folder), "last_download_feed.xml");
             }
 

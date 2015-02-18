@@ -140,6 +140,7 @@
     <Compile Include="Files\CopierTests\WhenDestinationFileAlreadyExists.cs" />
     <Compile Include="Files\CopierTests\WhenDriveInfoThrowsAnError.cs" />
     <Compile Include="Files\CopierTests\WhenTestingCopier.cs" />
+    <Compile Include="Files\EpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFoldersWhenTheFolderWillOnlyTheStateFile.cs" />
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTestingUnwantedFolderRemover.cs" />
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderContainsFiles.cs" />
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderContainsSubfolders.cs" />
