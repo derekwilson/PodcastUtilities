@@ -6,6 +6,7 @@ PodcastUtilities are a set of utilities designed to help manage digital media on
 
 * The downloads section has a compiled ZIP file for use on Windows XP, Vista, 7, 8, 10 and .NET framework v3.5 if you just want to run the app
 * Tools section contains installers for the open source tools used to build the app
+* The rest of the repository contains the C# code, scripts and documentation to build the app
 
 ### Requirements ###
 
