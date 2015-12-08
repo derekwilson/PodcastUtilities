@@ -262,6 +262,12 @@ namespace PodcastUtilities.Common
             {
                 zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" UT",StringComparison.CurrentCultureIgnoreCase) + 1)), "+00:00");
             }
+            // UTC suffix is not legal in RFC 822 however some people use it anyway so I guess we need to accept it
+            // http://www.w3.org/Protocols/rfc822/
+            else if (dateTime.EndsWith(" UTC", StringComparison.OrdinalIgnoreCase))
+            {
+                zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" UTC", StringComparison.CurrentCultureIgnoreCase) + 1)), "+00:00");
+            }
             else if (dateTime.EndsWith(" GMT", StringComparison.OrdinalIgnoreCase))
             {
                 zoneRepresentedAsLocalDifferential = String.Concat(dateTime.Substring(0, (dateTime.LastIndexOf(" GMT", StringComparison.CurrentCultureIgnoreCase) + 1)), "+00:00");

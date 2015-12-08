@@ -109,7 +109,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("21 03 2011 12 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("21 03 2011 12 01 02"));
         }
     }
 
@@ -123,7 +123,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("21 03 2011 12 01 00"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("21 03 2011 12 01 00"));
         }
     }
 
@@ -137,7 +137,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("21 03 2011 07 31 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("21 03 2011 07 31 02"));
         }
     }
 
@@ -153,7 +153,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
     //    [Test]
     //    public void ItShouldParseTheDate()
     //    {
-    //        Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 12 01 02"));
+    //        Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 12 01 02"));
     //    }
     //}
 
@@ -167,7 +167,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 12 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 12 01 02"));
         }
     }
 
@@ -181,7 +181,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 12 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 12 01 02"));
         }
     }
 
@@ -195,7 +195,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 05 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 17 01 02"));
         }
     }
 
@@ -209,7 +209,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 04 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 16 01 02"));
         }
     }
 
@@ -223,7 +223,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 06 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 18 01 02"));
         }
     }
 
@@ -237,7 +237,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 05 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 17 01 02"));
         }
     }
 
@@ -251,7 +251,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 07 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 19 01 02"));
         }
     }
 
@@ -265,7 +265,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 06 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 18 01 02"));
         }
     }
 
@@ -279,7 +279,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 12 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 12 01 02"));
         }
     }
 
@@ -293,7 +293,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 01 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 13 01 02"));
         }
     }
 
@@ -307,7 +307,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("23 03 2011 12 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("23 03 2011 00 01 02"));
         }
     }
 
@@ -321,7 +321,7 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 11 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 11 01 02"));
         }
     }
 
@@ -335,7 +335,24 @@ namespace PodcastUtilities.Common.Tests.Rfc822DateTimeTests
         [Test]
         public void ItShouldParseTheDate()
         {
-            Assert.That(_date.ToString("dd MM yyyy hh mm ss"), Is.EqualTo("22 03 2011 12 01 02"));
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("22 03 2011 00 01 02"));
         }
     }
+
+    // UTC suffix is not legal in RFC 822 however some people use it anyway so I guess we need to accept it
+    // http://www.w3.org/Protocols/rfc822/
+    public class WhenConvertingInvalidUtcDateTime : WhenConvertingToDateDime
+    {
+        protected override void When()
+        {
+            _date = Rfc822DateTime.Parse("Fri, 04 Dec 2015 17:00:17 UTC");
+        }
+
+        [Test]
+        public void ItShouldParseTheDate()
+        {
+            Assert.That(_date.ToString("dd MM yyyy HH mm ss"), Is.EqualTo("04 12 2015 17 00 17"));
+        }
+    }
+
 }
