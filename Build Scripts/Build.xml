@@ -15,7 +15,7 @@
     <SolutionRoot>$(MSBuildProjectDirectory)\..</SolutionRoot>
     <SolutionName>PodcastUtilities</SolutionName>
     <BuildOutputRoot>$(MSBuildProjectDirectory)\..\CurrentBuild</BuildOutputRoot>
-    <ReleasesRoot>$(MSBuildProjectDirectory)\..\Releases</ReleasesRoot>
+    <ReleasesRoot>$(MSBuildProjectDirectory)\..\_PreBuiltPackages</ReleasesRoot>
     <NUnitPath>"C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0\nunit-console.exe"</NUnitPath>
   </PropertyGroup>
 
