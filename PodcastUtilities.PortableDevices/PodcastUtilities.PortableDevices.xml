@@ -1,0 +1,732 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PodcastUtilities.PortableDevices</name>
+    </assembly>
+    <members>
+        <member name="T:PodcastUtilities.PortableDevices.Device">
+            <summary>
+            represents an individual attached MTP device
+            </summary>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.IDevice">
+            <summary>
+            represents an individual attached MTP device
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDevice.GetDeviceRootStorageObjects">
+            <summary>
+            MTP device have named root objects
+            </summary>
+            <returns>all the root objects that support storage</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDevice.GetObjectFromPath(System.String)">
+            <summary>
+            get the object that coresponds to the path or NULL if it doesnt exist
+            </summary>
+            <param name="path">the path</param>
+            <returns>the object or NULL</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDevice.GetRootStorageObjectFromPath(System.String)">
+            <summary>
+            get the storage object that contains the leaf element of the path
+            </summary>
+            <param name="path">path to storage object</param>
+            <returns></returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDevice.Delete(System.String)">
+            <summary>
+            delete the object
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDevice.OpenRead(System.String)">
+            <summary>
+            open an object for reading
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDevice.OpenWrite(System.String,System.Int64,System.Boolean)">
+            <summary>
+            open an object for writing
+            </summary>
+            <param name="path">path to object</param>
+            <param name="length">number of bytes to store</param>
+            <param name="allowOverwrite">true to overwrite</param>
+            <returns></returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDevice.CreateFolderObjectFromPath(System.String)">
+            <summary>
+            creates all the required folders in the specified path
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.IDevice.Id">
+            <summary>
+            device ID set by the manufacturer
+            </summary>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.IDevice.Name">
+            <summary>
+            name of the device
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.Device.GetDeviceRootStorageObjects">
+            <summary>
+            MTP device have named root objects
+            </summary>
+            <returns>all the root objects that support storage</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.Device.GetObjectFromPath(System.String)">
+            <summary>
+            get the object that coresponds to the path or NULL if it doesnt exist
+            </summary>
+            <param name="path">the path</param>
+            <returns>the object or NULL</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.Device.GetRootStorageObjectFromPath(System.String)">
+            <summary>
+            get the storage object that contains the leaf element of the path
+            </summary>
+            <param name="path">path to storage object</param>
+            <returns></returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.Device.CreateFolderObjectFromPath(System.String)">
+            <summary>
+            creates all the required folders in the specified path
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.Device.Delete(System.String)">
+            <summary>
+            delete the object
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.Device.OpenRead(System.String)">
+            <summary>
+            open an object for reading
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.Device.OpenWrite(System.String,System.Int64,System.Boolean)">
+            <summary>
+            open an object for writing
+            </summary>
+            <param name="path">path to object</param>
+            <param name="length">number of bytes to store</param>
+            <param name="allowOverwrite">true to overwrite</param>
+            <returns></returns>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.Device.Id">
+            <summary>
+            device ID set by the manufacturer
+            </summary>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.Device.Name">
+            <summary>
+            name of the device
+            </summary>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.DeviceFactory">
+            <summary>
+            factory to create a device
+            </summary>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.IDeviceFactory">
+            <summary>
+            factory to create a device
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDeviceFactory.CreateDevice(System.String)">
+            <summary>
+            create a device
+            </summary>
+            <param name="id">id of device</param>
+            <returns>the device object</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceFactory.CreateDevice(System.String)">
+            <summary>
+            create a device
+            </summary>
+            <param name="id">id of device</param>
+            <returns>the device object</returns>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.DeviceManager">
+            <summary>
+            represents the mechanism for manipulating all MTP devices currently attached
+            </summary>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.IDeviceManager">
+            <summary>
+            represents the mechanism for manipulating all MTP devices currently attached
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDeviceManager.GetAllDevices">
+            <summary>
+            Gets all the attached devices
+            </summary>
+            <returns>all the currently attached devices</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDeviceManager.GetDevice(System.String)">
+            <summary>
+            gets a specific device
+            </summary>
+            <param name="deviceName">the name of the device</param>
+            <returns>the device</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceManager.#ctor">
+            <summary>
+            create a device manager
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceManager.GetDevice(System.String)">
+            <summary>
+            gets a specific device
+            </summary>
+            <param name="deviceName">the name of the device</param>
+            <returns>the device</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceManager.GetAllDevices">
+            <summary>
+            Gets all the attached devices
+            </summary>
+            <returns>all the currently attached devices</returns>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.DeviceObject">
+            <summary>
+            an object on a device
+            </summary>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.IDeviceObject">
+            <summary>
+            an object on a device
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDeviceObject.GetFolders(System.String)">
+            <summary>
+            gets all the folder objects
+            </summary>
+            <param name="pattern">pattern to match</param>
+            <returns>folder objects</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDeviceObject.GetFiles(System.String)">
+            <summary>
+            gets all the file objects
+            </summary>
+            <param name="pattern">pattern to match</param>
+            <returns>file objects</returns>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.IDeviceObject.Id">
+            <summary>
+            unique id
+            </summary>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.IDeviceObject.Name">
+            <summary>
+            readable name
+            </summary>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.IDeviceObject.AvailableFreeSpace">
+            <summary>
+            free space
+            Only relevant for storage objects - so maybe shouldn't be here...
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceObject.GetFolders(System.String)">
+            <summary>
+            gets all the folder objects
+            </summary>
+            <param name="pattern">pattern to match</param>
+            <returns>folder objects</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceObject.GetFiles(System.String)">
+            <summary>
+            gets all the file objects
+            </summary>
+            <param name="pattern">pattern to match</param>
+            <returns>file objects</returns>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.DeviceObject.Id">
+            <summary>
+            unique id
+            </summary>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.DeviceObject.Name">
+            <summary>
+            readable name
+            </summary>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.DeviceObject.AvailableFreeSpace">
+            <summary>
+            free space
+            Only relevant for storage objects - so maybe shouldn't be here...
+            </summary>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.DeviceStream">
+            <summary>
+            An IO stream for an object on an MTP device
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceStream.#ctor(System.Runtime.InteropServices.ComTypes.IStream)">
+            <summary>
+            create a device stream from the supplied stream
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceStream.Dispose(System.Boolean)">
+            <summary>
+            releases the underlying IO stream
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceStream.Flush">
+            <summary>
+            When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device.
+            </summary>
+            <exception cref="T:System.IO.IOException">An I/O error occurs. </exception><filterpriority>2</filterpriority>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <summary>
+            When overridden in a derived class, sets the position within the current stream.
+            </summary>
+            <returns>
+            The new position within the current stream.
+            </returns>
+            <param name="offset">A byte offset relative to the <paramref name="origin"/> parameter. </param><param name="origin">A value of type <see cref="T:System.IO.SeekOrigin"/> indicating the reference point used to obtain the new position. </param><exception cref="T:System.IO.IOException">An I/O error occurs. </exception><exception cref="T:System.NotSupportedException">The stream does not support seeking, such as if the stream is constructed from a pipe or console output. </exception><exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception><filterpriority>1</filterpriority>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceStream.SetLength(System.Int64)">
+            <summary>
+            When overridden in a derived class, sets the length of the current stream.
+            </summary>
+            <param name="value">The desired length of the current stream in bytes. </param><exception cref="T:System.IO.IOException">An I/O error occurs. </exception><exception cref="T:System.NotSupportedException">The stream does not support both writing and seeking, such as if the stream is constructed from a pipe or console output. </exception><exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception><filterpriority>2</filterpriority>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.
+            </summary>
+            <returns>
+            The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached. 
+            </returns>
+            <param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte array with the values between <paramref name="offset"/> and (<paramref name="offset"/> + <paramref name="count"/> - 1) replaced by the bytes read from the current source. </param><param name="offset">The zero-based byte offset in <paramref name="buffer"/> at which to begin storing the data read from the current stream. </param><param name="count">The maximum number of bytes to be read from the current stream. </param><exception cref="T:System.ArgumentException">The sum of <paramref name="offset"/> and <paramref name="count"/> is larger than the buffer length. </exception><exception cref="T:System.ArgumentNullException"><paramref name="buffer"/> is null. </exception><exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset"/> or <paramref name="count"/> is negative. </exception><exception cref="T:System.IO.IOException">An I/O error occurs. </exception><exception cref="T:System.NotSupportedException">The stream does not support reading. </exception><exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception><filterpriority>1</filterpriority>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.
+            </summary>
+            <param name="buffer">An array of bytes. This method copies <paramref name="count"/> bytes from <paramref name="buffer"/> to the current stream. </param><param name="offset">The zero-based byte offset in <paramref name="buffer"/> at which to begin copying bytes to the current stream. </param><param name="count">The number of bytes to be written to the current stream. </param><filterpriority>1</filterpriority>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.DeviceStream.CanRead">
+            <summary>
+            When overridden in a derived class, gets a value indicating whether the current stream supports reading.
+            </summary>
+            <returns>
+            true if the stream supports reading; otherwise, false.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.DeviceStream.CanSeek">
+            <summary>
+            When overridden in a derived class, gets a value indicating whether the current stream supports seeking.
+            </summary>
+            <returns>
+            true if the stream supports seeking; otherwise, false.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.DeviceStream.CanWrite">
+            <summary>
+            When overridden in a derived class, gets a value indicating whether the current stream supports writing.
+            </summary>
+            <returns>
+            true if the stream supports writing; otherwise, false.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.DeviceStream.Length">
+            <summary>
+            When overridden in a derived class, gets the length in bytes of the stream.
+            </summary>
+            <returns>
+            A long value representing the length of the stream in bytes.
+            </returns>
+            <exception cref="T:System.NotSupportedException">A class derived from Stream does not support seeking. </exception><exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception><filterpriority>1</filterpriority>
+        </member>
+        <member name="P:PodcastUtilities.PortableDevices.DeviceStream.Position">
+            <summary>
+            When overridden in a derived class, gets or sets the position within the current stream.
+            </summary>
+            <returns>
+            The current position within the stream.
+            </returns>
+            <exception cref="T:System.IO.IOException">An I/O error occurs. </exception><exception cref="T:System.NotSupportedException">The stream does not support seeking. </exception><exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception><filterpriority>1</filterpriority>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.DeviceStreamFactory">
+            <summary>
+            factory to create a stream
+            </summary>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.IDeviceStreamFactory">
+            <summary>
+            factory to create a stream
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IDeviceStreamFactory.CreateStream(PortableDeviceApiLib.IStream)">
+            <summary>
+            create a system stream from a device stream
+            </summary>
+            <param name="deviceStream">device stream</param>
+            <returns>system stream</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.DeviceStreamFactory.CreateStream(PortableDeviceApiLib.IStream)">
+            <summary>
+            create a system stream from a device stream
+            </summary>
+            <param name="deviceStream">device stream</param>
+            <returns>system stream</returns>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.FilenameMatcher">
+            <summary>
+             Filename matching, primarily for file/directory-like MTP classes that can't just 
+             delegate to appropriate built-in .Net versions.
+            </summary>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.IFilenameMatcher">
+            <summary>
+             Interface for filename matching, primarily for file/directory-like MTP classes that can't just 
+             delegate to appropriate built-in .Net versions.
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IFilenameMatcher.IsMatch(System.String,System.String)">
+            <summary>
+             Tests a filename to see if it matches the specified pattern.
+             This is similar, but not identical, to the semantics of DirectoryInfo.GetFiles - specifically,
+             it does not do the wacky stuff with file extensions and 8.3/long filenames: see
+             http://msdn.microsoft.com/en-us/library/8he88b63.aspx
+            </summary>
+            <param name="filename">The filename to test</param>
+            <param name="pattern">The pattern to test against</param>
+            <returns></returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.FilenameMatcher.IsMatch(System.String,System.String)">
+            <summary>
+             Tests a filename to see if it matches the specified pattern.
+             This is similar, but not identical, to the semantics of DirectoryInfo.GetFiles - specifically,
+             it does not do the wacky stuff with file extensions and 8.3/long filenames: see
+             http://msdn.microsoft.com/en-us/library/8he88b63.aspx
+            </summary>
+            <param name="filename">The filename to test</param>
+            <param name="pattern">The pattern to test against</param>
+            <returns></returns>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.IPortableDeviceFactory">
+            <summary>
+            attach to an MTP device
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceFactory.Create(System.String)">
+            <summary>
+            create from unique ID, this will attach PodcastUtilities as a client to the specified device
+            </summary>
+            <param name="deviceId">ID</param>
+            <returns>the device</returns>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.IPortableDeviceHelper">
+            <summary>
+            wrapper functions to call into unmanaged wrapper
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.GetDeviceFriendlyName(PortableDeviceApiLib.IPortableDeviceManager,System.String)">
+            <summary>
+            turns a manufacturers id into a friendly name
+            </summary>
+            <param name="portableDeviceManager">device manager</param>
+            <param name="deviceId">the id</param>
+            <returns>name</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.GetObjectFileName(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            Tries to get the original filename property if it exists (ie. for real files/directories), falls
+            back to object name for non-file objects (eg. device, Internal Storage, etc.)
+            </summary>
+            <param name="deviceContent">unmanaged device</param>
+            <param name="objectId">the object id</param>
+            <returns>name</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.GetObjectName(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            gets the name of an object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <returns>name</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.GetObjectContentType(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            identify the object type
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">the object id</param>
+            <returns>content type guid</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.GetObjectCreationTime(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            gets the create date time for the object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <returns>Try the creation date, fall back to modified date</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.GetStringProperty(PortableDeviceApiLib.IPortableDeviceContent,System.String,PortableDeviceApiLib._tagpropertykey)">
+            <summary>
+            lookup the given key and return the string property associated with the object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <param name="key">name of the property key</param>
+            <returns>string value</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.GetGuidProperty(PortableDeviceApiLib.IPortableDeviceContent,System.String,PortableDeviceApiLib._tagpropertykey)">
+            <summary>
+            lookup the given key and return the guid property associated with the object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <param name="key">name of the property key</param>
+            <returns>guid value</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.GetUnsignedLargeIntegerProperty(PortableDeviceApiLib.IPortableDeviceContent,System.String,PortableDeviceApiLib._tagpropertykey)">
+            <summary>
+            lookup the given key and return the long property associated with the object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <param name="key">name of the property key</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.GetDateProperty(PortableDeviceApiLib.IPortableDeviceContent,System.String,PortableDeviceApiLib._tagpropertykey)">
+            <summary>
+            lookup the given key and return the date property associated with the object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <param name="key">name of the property key</param>
+            <returns>date value</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.GetChildObjectIds(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            get all the child object ids from a given parent
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="parentId">parent object id</param>
+            <returns>all child ids</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.CreateFolderObject(PortableDeviceApiLib.IPortableDeviceContent,System.String,System.String)">
+            <summary>
+            create a folder storage object withing the specified parent
+            </summary>
+            <param name="deviceContent">unmanaged device</param>
+            <param name="parentObjectId">parent object id</param>
+            <param name="newFolder">name of the new folder</param>
+            <returns>created object id</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.DeleteObject(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            delete the specified object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object to delete</param>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.OpenResourceStream(PortableDeviceApiLib.IPortableDeviceContent,System.String,System.UInt32)">
+            <summary>
+            open a stream on the device for reading
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object to open</param>
+            <param name="mode">mode to open the stream in</param>
+            <returns></returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.IPortableDeviceHelper.CreateResourceStream(PortableDeviceApiLib.IPortableDeviceContent,System.String,System.String,System.Int64)">
+            <summary>
+            create a new resource stream in a parent object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="parentObjectId">the parent object</param>
+            <param name="fileName">file to create</param>
+            <param name="length">length of the file in bytes</param>
+            <returns></returns>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.PortableDeviceFactory">
+            <summary>
+            create a portable MTP device
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceFactory.Create(System.String)">
+            <summary>
+            create from unique ID, this will attach PodcastUtilities as a client to the specified device
+            </summary>
+            <param name="deviceId">ID</param>
+            <returns>the device</returns>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.PortableDeviceHelper">
+            <summary>
+            wrapper functions to call into unmanaged wrapper
+            </summary>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.GetDeviceFriendlyName(PortableDeviceApiLib.IPortableDeviceManager,System.String)">
+            <summary>
+            turns a manufacturers id into a friendly name
+            </summary>
+            <param name="portableDeviceManager">device manager</param>
+            <param name="deviceId">the id</param>
+            <returns>name</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.GetObjectFileName(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            Tries to get the original filename property if it exists (ie. for real files/directories), falls
+            back to object name for non-file objects (eg. device, Internal Storage, etc.)
+            </summary>
+            <param name="deviceContent">unmanaged device</param>
+            <param name="objectId">the object id</param>
+            <returns></returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.GetObjectName(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            gets the name of an object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <returns>name</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.GetObjectContentType(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            identify the object type
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">the object id</param>
+            <returns>content type guid</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.GetObjectCreationTime(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            gets the create date time for the object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <returns>Try the creation date, fall back to modified date</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.GetStringProperty(PortableDeviceApiLib.IPortableDeviceContent,System.String,PortableDeviceApiLib._tagpropertykey)">
+            <summary>
+            lookup the given key and return the string property associated with the object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <param name="key">name of the property key</param>
+            <returns>string value</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.GetGuidProperty(PortableDeviceApiLib.IPortableDeviceContent,System.String,PortableDeviceApiLib._tagpropertykey)">
+            <summary>
+            lookup the given key and return the guid property associated with the object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <param name="key">name of the property key</param>
+            <returns>guid value</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.GetUnsignedLargeIntegerProperty(PortableDeviceApiLib.IPortableDeviceContent,System.String,PortableDeviceApiLib._tagpropertykey)">
+            <summary>
+            lookup the given key and return the long property associated with the object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <param name="key">name of the property key</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.GetDateProperty(PortableDeviceApiLib.IPortableDeviceContent,System.String,PortableDeviceApiLib._tagpropertykey)">
+            <summary>
+            lookup the given key and return the date property associated with the object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object id</param>
+            <param name="key">name of the property key</param>
+            <returns>date value</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.GetChildObjectIds(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            get all the child object ids from a given parent
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="parentId">parent object id</param>
+            <returns>all child ids</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.CreateFolderObject(PortableDeviceApiLib.IPortableDeviceContent,System.String,System.String)">
+            <summary>
+            create a folder storage object withing the specified parent
+            </summary>
+            <param name="deviceContent">unmanaged device</param>
+            <param name="parentObjectId">parent object id</param>
+            <param name="newFolder">name of the new folder</param>
+            <returns>created object id</returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.DeleteObject(PortableDeviceApiLib.IPortableDeviceContent,System.String)">
+            <summary>
+            delete the specified object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object to delete</param>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.OpenResourceStream(PortableDeviceApiLib.IPortableDeviceContent,System.String,System.UInt32)">
+            <summary>
+            open a stream on the device for reading
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="objectId">object to open</param>
+            <param name="mode">mode to open the stream in</param>
+            <returns></returns>
+        </member>
+        <member name="M:PodcastUtilities.PortableDevices.PortableDeviceHelper.CreateResourceStream(PortableDeviceApiLib.IPortableDeviceContent,System.String,System.String,System.Int64)">
+            <summary>
+            create a new resource stream in a parent object
+            </summary>
+            <param name="deviceContent">unmanged device</param>
+            <param name="parentObjectId">the parent object</param>
+            <param name="fileName">file to create</param>
+            <param name="length">length of the file in bytes</param>
+            <returns></returns>
+        </member>
+        <member name="T:PodcastUtilities.PortableDevices.StreamConstants">
+            <summary>
+            constants for use with device streams
+            </summary>
+        </member>
+        <member name="F:PodcastUtilities.PortableDevices.StreamConstants.STREAM_SEEK_SET">
+            <summary>
+            set the position
+            </summary>
+        </member>
+        <member name="F:PodcastUtilities.PortableDevices.StreamConstants.STREAM_SEEK_CUR">
+            <summary>
+            get the position
+            </summary>
+        </member>
+        <member name="F:PodcastUtilities.PortableDevices.StreamConstants.STREAM_SEEK_END">
+            <summary>
+            goto end
+            </summary>
+        </member>
+        <member name="F:PodcastUtilities.PortableDevices.StreamConstants.STGM_READ">
+            <summary>
+            readable stream
+            </summary>
+        </member>
+        <member name="F:PodcastUtilities.PortableDevices.StreamConstants.STGM_WRITE">
+            <summary>
+            writable stream
+            </summary>
+        </member>
+        <member name="F:PodcastUtilities.PortableDevices.StreamConstants.STGM_READWRITE">
+            <summary>
+            read write stream
+            </summary>
+        </member>
+    </members>
+</doc>
