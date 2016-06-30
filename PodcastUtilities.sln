@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratePlaylist", "GeneratePlaylist\GeneratePlaylist.csproj", "{3550DE2A-F52B-4D65-987B-47ADC3BCB0BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncPodcasts", "SyncPodcasts\SyncPodcasts.csproj", "{4457040C-41F9-4B33-85D4-8B096E5957C9}"
