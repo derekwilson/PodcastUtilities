@@ -112,7 +112,7 @@ namespace PodcastUtilities.Integration.Tests.PortableDevices
         {
             string folder = GetRootFolder();
 
-            DisplayMessage(string.Format("Deleteing {0}", folder));
+            DisplayMessage(string.Format("Deleting {0}", folder));
 
             FileSystemAwareDirectoryInfoProvider dirInfoProvider = new FileSystemAwareDirectoryInfoProvider(new DeviceManager());
 
@@ -135,7 +135,7 @@ namespace PodcastUtilities.Integration.Tests.PortableDevices
 
             FileSystemAwareDirectoryInfoProvider dirInfoProvider = new FileSystemAwareDirectoryInfoProvider(new DeviceManager());
 
-            DisplayMessage(string.Format("Deleteing {0}", folder));
+            DisplayMessage(string.Format("Deleting {0}", folder));
 
             IDirectoryInfo info1 = dirInfoProvider.GetDirectoryInfo(folder);
             info1.Delete();

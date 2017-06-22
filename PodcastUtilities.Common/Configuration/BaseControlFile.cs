@@ -81,7 +81,7 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal int DefaultFeedMaximumDaysOld { get; set; }
         /// <summary>
-        /// global default number of days before deleteing a download
+        /// global default number of days before Deleting a download
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal int DefaultFeedDeleteDownloadsDaysOld { get; set; }
