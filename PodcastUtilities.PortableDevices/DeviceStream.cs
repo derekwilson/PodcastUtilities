@@ -151,7 +151,19 @@ namespace PodcastUtilities.PortableDevices
                 Array.Copy(buffer, offset, localBuffer, 0, count);
             }
 
-            _deviceStream.Write(localBuffer, count, IntPtr.Zero);
+            // Although we're not interested in the number of bytes written (maybe we should be?), since the 
+            // Windows 10 Creators update 1703 you cannot pass NULL (IntPtr.Zero) as that now
+            // generates an AccessViolationException
+            var countPointer = Marshal.AllocCoTaskMem(sizeof(int));
+
+            try
+            {
+                _deviceStream.Write(localBuffer, count, countPointer);
+            }
+            finally
+            {
+                Marshal.FreeCoTaskMem(countPointer);
+            }
         }
 
         /// <summary>
