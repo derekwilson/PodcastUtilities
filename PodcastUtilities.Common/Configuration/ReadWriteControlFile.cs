@@ -19,8 +19,6 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
@@ -218,10 +216,18 @@ namespace PodcastUtilities.Common.Configuration
             PlaylistFormat = value;
         }
 
-        /// <summary>
-        /// free space in MB to leave on the destination device when syncing
-        /// </summary>
-        public void SetFreeSpaceToLeaveOnDestination(long value)
+		/// <summary>
+		/// path separator to use in the generated playlists
+		/// </summary>
+		public void SetPlaylistPathSeparator(string value)
+		{
+			PlaylistPathSeparator = value;
+		}
+
+		/// <summary>
+		/// free space in MB to leave on the destination device when syncing
+		/// </summary>
+		public void SetFreeSpaceToLeaveOnDestination(long value)
         {
             FreeSpaceToLeaveOnDestination = value;
         }
@@ -327,6 +333,7 @@ namespace PodcastUtilities.Common.Configuration
                 writer.WriteElementString("playlistFilename", PlaylistFileName);
             }
             writer.WriteElementString("playlistFormat", WritePlaylistFormat(PlaylistFormat));
+			writer.WriteElementString("playlistPathSeparator", PlaylistPathSeparator);
             writer.WriteElementString("freeSpaceToLeaveOnDestinationMB", FreeSpaceToLeaveOnDestination.ToString(CultureInfo.InvariantCulture));
             writer.WriteElementString("freeSpaceToLeaveOnDownloadMB", FreeSpaceToLeaveOnDownload.ToString(CultureInfo.InvariantCulture));
             writer.WriteElementString("maximumNumberOfConcurrentDownloads", MaximumNumberOfConcurrentDownloads.ToString(CultureInfo.InvariantCulture));
@@ -403,5 +410,5 @@ namespace PodcastUtilities.Common.Configuration
                     throw new ArgumentOutOfRangeException("playlistFormat");
             }
         }
-    }
+	}
 }

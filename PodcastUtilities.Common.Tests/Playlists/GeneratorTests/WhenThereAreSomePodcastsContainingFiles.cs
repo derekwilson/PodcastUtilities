@@ -68,11 +68,11 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
 		[Test]
 		public void ItShouldAddAllTheTracksForEachPodcast()
 		{
-			Playlist.AssertWasCalled(p => p.AddTrack(@".\Hanselminutes\001.mp3"));
-			Playlist.AssertWasCalled(p => p.AddTrack(@".\Hanselminutes\002.mp3"));
-			Playlist.AssertWasCalled(p => p.AddTrack(@".\This Developers Life\997.wma"));
-			Playlist.AssertWasCalled(p => p.AddTrack(@".\This Developers Life\998.wma"));
-			Playlist.AssertWasCalled(p => p.AddTrack(@".\This Developers Life\999.wma"));
+			Playlist.AssertWasCalled(p => p.AddTrack(@".||Hanselminutes||001.mp3"));
+			Playlist.AssertWasCalled(p => p.AddTrack(@".||Hanselminutes||002.mp3"));
+			Playlist.AssertWasCalled(p => p.AddTrack(@".||This Developers Life||997.wma"));
+			Playlist.AssertWasCalled(p => p.AddTrack(@".||This Developers Life||998.wma"));
+			Playlist.AssertWasCalled(p => p.AddTrack(@".||This Developers Life||999.wma"));
 		}
 
         [Test]

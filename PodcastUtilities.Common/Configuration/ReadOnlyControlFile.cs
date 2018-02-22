@@ -18,23 +18,16 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.IO;
 using System.Xml;
-using System.Xml.XPath;
-using PodcastUtilities.Common.Exceptions;
-using PodcastUtilities.Common.Playlists;
 
 namespace PodcastUtilities.Common.Configuration
 {
-    /// <summary>
+	/// <summary>
 	/// this object represents the xml control file
 	/// </summary>
-    public class ReadOnlyControlFile : BaseControlFile, IReadOnlyControlFile, IControlFileGlobalDefaults
+	public class ReadOnlyControlFile : BaseControlFile, IReadOnlyControlFile, IControlFileGlobalDefaults
 	{
         /// <summary>
         /// create an empty control file

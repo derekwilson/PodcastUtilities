@@ -1,0 +1,9 @@
+<ASX VERSION="3.0">
+  <TITLE>test2</TITLE>
+  <ENTRY>
+    <REF HREF="./aaa/bbb.mp3" />
+  </ENTRY>
+<ENTRY>
+    <REF HREF="./Mark Kermode and Simon Mayos Film Reviews/2018_02_02_1706_with Helen Mirren.mp3" />
+  </ENTRY>
+</ASX>

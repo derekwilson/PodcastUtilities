@@ -174,10 +174,16 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Serialisa
         }
 
         [Test]
-        public void ItShouldReadTheGlobalPlaylistFormat()
-        {
-            Assert.That(_controlFile.GetPlaylistFormat(), Is.EqualTo(PlaylistFormat.WPL));
-        }
+		public void ItShouldReadTheGlobalPlaylistFormat()
+		{
+			Assert.That(_controlFile.GetPlaylistFormat(), Is.EqualTo(PlaylistFormat.WPL));
+		}
 
-    }
+		[Test]
+		public void ItShouldReadTheGlobalPlaylistSeparator()
+		{
+			Assert.That(_controlFile.GetPlaylistPathSeparator(), Is.EqualTo("SEP"));
+		}
+
+	}
 }

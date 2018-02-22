@@ -85,6 +85,7 @@ namespace PodcastUtilities.Common.Playlists
 
 			IPlaylist p = PlaylistFactory.CreatePlaylist(control.GetPlaylistFormat(), control.GetPlaylistFileName());
 
+			string pathSeparator = PathUtilities.GetPathSeparator().ToString();
             foreach (IFileInfo thisFile in allDestFiles)
             {
                 string thisRelativeFile = thisFile.FullName;
@@ -93,6 +94,7 @@ namespace PodcastUtilities.Common.Playlists
                 {
                     thisRelativeFile = thisRelativeFile.Substring(absRoot.Length);
                 }
+				thisRelativeFile = thisRelativeFile.Replace(pathSeparator, control.GetPlaylistPathSeparator());
                 p.AddTrack("." + thisRelativeFile);
             }
 

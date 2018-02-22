@@ -24,7 +24,7 @@ using System.Xml.Schema;
 namespace PodcastUtilities.Common.Configuration
 {
     /// <summary>
-    /// an tokenised command
+    /// a tokenised command
     /// </summary>
     public class TokenisedCommand : ITokenisedCommand
     {

@@ -40,5 +40,11 @@ namespace PodcastUtilities.Common.Platform
         ///</summary>
         ///<returns>The full path of the temporary file.</returns>
         string GetTempFileName();
+
+		/// <summary>
+		/// get the char used by the current file system to seperate elements in the path
+		/// </summary>
+		/// <returns>path seperator char</returns>
+		char GetPathSeparator();
     }
 }

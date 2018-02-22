@@ -89,6 +89,7 @@
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentFeedEpisodeExpiry.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentPlaylistFormats.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingAnInvalidControlFile.cs" />
+    <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentPlaylistSeparator.cs" />
     <Compile Include="Configuration\ControlFileTests\Serialisation\Read\WhenReadingAControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\WhenTestingAControlFile.cs" />
     <Compile Include="Configuration\DefaultableReferenceTypeItemTests\WhenCopyingADefaultedItem.cs" />
@@ -325,7 +326,9 @@
   <ItemGroup>
     <EmbeddedResource Include="XML\teststateinvalid.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

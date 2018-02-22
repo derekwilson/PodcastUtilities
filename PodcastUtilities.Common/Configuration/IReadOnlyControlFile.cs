@@ -54,10 +54,16 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         PlaylistFormat GetPlaylistFormat();
 
-        /// <summary>
-        /// free space in MB to leave on the destination device - when syncing
-        /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+		/// <summary>
+		/// path separator to use in the generated playlists
+		/// </summary>
+		[SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+		string GetPlaylistPathSeparator();
+
+		/// <summary>
+		/// free space in MB to leave on the destination device - when syncing
+		/// </summary>
+		[SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         long GetFreeSpaceToLeaveOnDestination();
 
         /// <summary>

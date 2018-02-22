@@ -50,11 +50,14 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
             ControlFile.Stub(ctrl => ctrl.GetSourceRoot()).Return("c:\\source");
             ControlFile.Stub(ctrl => ctrl.GetDestinationRoot()).Return("c:\\destination");
             ControlFile.Stub(ctrl => ctrl.GetPodcasts()).Return(Podcasts);
-            ControlFile.Stub(ctrl => ctrl.GetPlaylistFileName()).Return("MyPodcasts.wpl");
+			ControlFile.Stub(ctrl => ctrl.GetPlaylistFileName()).Return("MyPodcasts.wpl");
+			ControlFile.Stub(ctrl => ctrl.GetPlaylistPathSeparator()).Return("||");
 
-            Finder = GenerateMock<IFinder>();
+			Finder = GenerateMock<IFinder>();
             FileUtilities = GenerateMock<IFileUtilities>();
             PathUtilities = GenerateMock<IPathUtilities>();
+
+			PathUtilities.Stub(utilities => utilities.GetPathSeparator()).Return('\\');
 
             PathUtilities.Stub(utilities => utilities.GetFullPath("c:\\destination"))
                 .Return("c:\\destination");

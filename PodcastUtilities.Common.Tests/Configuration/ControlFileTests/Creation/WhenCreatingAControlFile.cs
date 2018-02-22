@@ -86,7 +86,8 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
             Assert.That(ControlFile.GetPlaylistFileName(),Is.EqualTo("podcasts.wpl"));
             Assert.That(ControlFile.GetFreeSpaceToLeaveOnDestination(), Is.EqualTo(2000));
             Assert.That(ControlFile.GetFreeSpaceToLeaveOnDownload(), Is.EqualTo(3000));
-            Assert.That(ControlFile.GetPlaylistFormat(), Is.EqualTo(PlaylistFormat.WPL));
-        }
-    }
+			Assert.That(ControlFile.GetPlaylistFormat(), Is.EqualTo(PlaylistFormat.WPL));
+			Assert.That(ControlFile.GetPlaylistPathSeparator(), Is.EqualTo("SEP"));
+		}
+	}
 }

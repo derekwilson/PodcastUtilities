@@ -138,6 +138,7 @@ namespace PodcastUtilities.Common.Configuration
             DefaultPostDownloadArguments = "";
             DefaultPostDownloadWorkingDirectory = "";
 
+			PlaylistPathSeparator = @"\";
             FreeSpaceToLeaveOnDestination = 0;
             FreeSpaceToLeaveOnDownload = 0;
             MaximumNumberOfConcurrentDownloads = 5;
@@ -301,10 +302,16 @@ namespace PodcastUtilities.Common.Configuration
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal PlaylistFormat PlaylistFormat { get; set; }
 
-        /// <summary>
-        /// free space in MB to leave on the destination device when syncing
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+		/// <summary>
+		/// the seperator to use when generating a playlist item
+		/// </summary>
+		[SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+		protected internal string PlaylistPathSeparator { get; set; }
+
+		/// <summary>
+		/// free space in MB to leave on the destination device when syncing
+		/// </summary>
+		[SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal long FreeSpaceToLeaveOnDestination { get; set; }
 
         /// <summary>
@@ -385,10 +392,19 @@ namespace PodcastUtilities.Common.Configuration
             return PlaylistFormat;
         }
 
-        /// <summary>
-        /// free space in MB to leave on the destination device when syncing
-        /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+		/// <summary>
+		/// path separator to use in the generated playlists
+		/// </summary>
+		[SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+		public string GetPlaylistPathSeparator()
+		{
+			return PlaylistPathSeparator;
+		}
+
+		/// <summary>
+		/// free space in MB to leave on the destination device when syncing
+		/// </summary>
+		[SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public long GetFreeSpaceToLeaveOnDestination()
         {
             return FreeSpaceToLeaveOnDestination;
@@ -510,7 +526,10 @@ namespace PodcastUtilities.Common.Configuration
                 case "playlistFormat":
                     PlaylistFormat = ReadPlaylistFormat(content);
                     break;
-                case "freeSpaceToLeaveOnDestinationMB":
+				case "playlistPathSeparator":
+					PlaylistPathSeparator = content;
+					break;
+				case "freeSpaceToLeaveOnDestinationMB":
                     if (long.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture,out longValue))
                     {
                         FreeSpaceToLeaveOnDestination = longValue;

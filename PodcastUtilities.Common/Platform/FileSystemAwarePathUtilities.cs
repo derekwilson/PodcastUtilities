@@ -41,14 +41,25 @@ namespace PodcastUtilities.Common.Platform
             return (MtpPath.IsMtpPath(path) ? path : Path.GetFullPath(path));
         }
 
-        ///<summary>
-        /// Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
-        /// (The same as <see cref="Path.GetTempFileName"/>)
-        ///</summary>
-        ///<returns>The full path of the temporary file.</returns>
-        public string GetTempFileName()
+		/// <summary>
+		/// get the char used by the current file system to seperate elements in the path
+		/// </summary>
+		/// <returns>path seperator char</returns>
+		public char GetPathSeparator()
+		{
+			return Path.DirectorySeparatorChar;
+		}
+
+		///<summary>
+		/// Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
+		/// (The same as <see cref="Path.GetTempFileName"/>)
+		///</summary>
+		///<returns>The full path of the temporary file.</returns>
+		public string GetTempFileName()
         {
             return Path.GetTempFileName();
         }
+
+
     }
 }

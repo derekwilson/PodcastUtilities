@@ -22,7 +22,6 @@ using System;
 using System.Xml;
 using NUnit.Framework;
 using PodcastUtilities.Common.Configuration;
-using PodcastUtilities.Common.Exceptions;
 using PodcastUtilities.Common.Playlists;
 
 namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation

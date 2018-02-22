@@ -52,13 +52,19 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
             Assert.That(_clonedControlFile.GetPlaylistFileName(), Is.EqualTo(@"podcasts.wpl"));
         }
 
-        [Test]
-        public void ItShouldCloneThePlaylistFormat()
-        {
-            Assert.That(_clonedControlFile.GetPlaylistFormat(), Is.EqualTo(PlaylistFormat.WPL));
-        }
+		[Test]
+		public void ItShouldCloneThePlaylistFormat()
+		{
+			Assert.That(_clonedControlFile.GetPlaylistFormat(), Is.EqualTo(PlaylistFormat.WPL));
+		}
 
-        [Test]
+		[Test]
+		public void ItShouldCloneThePlaylistSeparator()
+		{
+			Assert.That(_clonedControlFile.GetPlaylistPathSeparator(), Is.EqualTo("SEP"));
+		}
+
+		[Test]
         public void ItShouldCloneTheFreeSpaceOnDest()
         {
             Assert.That(_clonedControlFile.GetFreeSpaceToLeaveOnDestination(), Is.EqualTo(2000));

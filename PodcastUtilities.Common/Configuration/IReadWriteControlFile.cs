@@ -60,10 +60,15 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         void SetPlaylistFormat(PlaylistFormat value);
 
-        /// <summary>
-        /// free space in MB to leave on the destination device when syncing
-        /// </summary>
-        void SetFreeSpaceToLeaveOnDestination(long value);
+		/// <summary>
+		/// path separator to use in the generated playlists
+		/// </summary>
+		void SetPlaylistPathSeparator(string value);
+
+		/// <summary>
+		/// free space in MB to leave on the destination device when syncing
+		/// </summary>
+		void SetFreeSpaceToLeaveOnDestination(long value);
 
         /// <summary>
         /// free space in MB to leave on the download device - when downloading
