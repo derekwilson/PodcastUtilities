@@ -4,6 +4,7 @@
 		<destinationRoot>W:\Podcasts</destinationRoot>
 		<playlistFilename>podcasts.wpl</playlistFilename>
 		<playlistFormat>wpl</playlistFormat>
+		<playlistPathSeparator>/</playlistPathSeparator>
 		<freeSpaceToLeaveOnDestinationMB>2000</freeSpaceToLeaveOnDestinationMB>
     <freeSpaceToLeaveOnDownloadMB>3000</freeSpaceToLeaveOnDownloadMB>
 		<sortfield>name</sortfield>
