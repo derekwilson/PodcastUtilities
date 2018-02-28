@@ -149,6 +149,7 @@
     <Compile Include="Platform\SystemPerfmonCounterUtilities.cs" />
     <Compile Include="Platform\WindowsCommandExecuter.cs" />
     <Compile Include="Platform\WindowsEnvironmentInformationProvider.cs" />
+    <Compile Include="Playlists\PlaylistM3u.cs" />
     <Compile Include="ProgressEventArgs.cs" />
     <Compile Include="IProgressUpdate.cs" />
     <Compile Include="Feeds\ISyncItem.cs" />

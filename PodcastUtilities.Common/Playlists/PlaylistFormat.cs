@@ -33,6 +33,10 @@ namespace PodcastUtilities.Common.Playlists
         /// WPL playlist
         /// </summary>
         WPL,
+		/// <summary>
+		/// M3U playlist
+		/// </summary>
+		M3U,
         /// <summary>
         /// Unknown playlist format
         /// </summary>

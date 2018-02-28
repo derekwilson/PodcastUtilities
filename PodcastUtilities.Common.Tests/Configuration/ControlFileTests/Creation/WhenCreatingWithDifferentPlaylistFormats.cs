@@ -77,28 +77,49 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Creation
         }
     }
 
-    class WhenCreatingAControlFileWithAsxPlaylistFormat : WhenCreatingAControlFileWithDifferentPlaylistFormats
-    {
-        protected override void GivenThat()
-        {
-            ControlFileFormatText = "ASX";
-            base.GivenThat();
-        }
+	class WhenCreatingAControlFileWithAsxPlaylistFormat : WhenCreatingAControlFileWithDifferentPlaylistFormats
+	{
+		protected override void GivenThat()
+		{
+			ControlFileFormatText = "ASX";
+			base.GivenThat();
+		}
 
-        [Test]
-        public void ItShouldNotThorw()
-        {
-            Assert.That(ThrownException, Is.Null);
-        }
+		[Test]
+		public void ItShouldNotThorw()
+		{
+			Assert.That(ThrownException, Is.Null);
+		}
 
-        [Test]
-        public void ItShouldReadPlaylistFormat()
-        {
-            Assert.That(Format, Is.EqualTo(PlaylistFormat.ASX));
-        }
-    }
+		[Test]
+		public void ItShouldReadPlaylistFormat()
+		{
+			Assert.That(Format, Is.EqualTo(PlaylistFormat.ASX));
+		}
+	}
 
-    class WhenCreatingAControlFileWithAnUnknownPlaylistFormat : WhenCreatingAControlFileWithDifferentPlaylistFormats
+	class WhenCreatingAControlFileWithM3uPlaylistFormat : WhenCreatingAControlFileWithDifferentPlaylistFormats
+	{
+		protected override void GivenThat()
+		{
+			ControlFileFormatText = "M3U";
+			base.GivenThat();
+		}
+
+		[Test]
+		public void ItShouldNotThorw()
+		{
+			Assert.That(ThrownException, Is.Null);
+		}
+
+		[Test]
+		public void ItShouldReadPlaylistFormat()
+		{
+			Assert.That(Format, Is.EqualTo(PlaylistFormat.M3U));
+		}
+	}
+
+	class WhenCreatingAControlFileWithAnUnknownPlaylistFormat : WhenCreatingAControlFileWithDifferentPlaylistFormats
     {
         protected override void GivenThat()
         {

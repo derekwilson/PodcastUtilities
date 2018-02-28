@@ -698,6 +698,8 @@ namespace PodcastUtilities.Common.Configuration
                     return PlaylistFormat.WPL;
                 case "ASX":
                     return PlaylistFormat.ASX;
+				case "M3U":
+					return PlaylistFormat.M3U;
                 case "UNKNOWN":
                     return PlaylistFormat.Unknown;
                 default:

@@ -44,6 +44,8 @@ namespace PodcastUtilities.Common.Playlists
 					return new PlaylistAsx(fileName, true);
 				case PlaylistFormat.WPL:
 					return new PlaylistWpl(fileName, true);
+				case PlaylistFormat.M3U:
+					return new PlaylistM3u(fileName, true);
 			}
             throw new EnumOutOfRangeException("playlistFormat");
 		}
