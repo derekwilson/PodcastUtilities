@@ -22,6 +22,8 @@
 using System.Net;
 using PodcastUtilities.Common.Platform;
 
+using System.Security.Authentication;
+
 namespace PodcastUtilities.Common
 {
     /// <summary>
@@ -45,14 +47,29 @@ namespace PodcastUtilities.Common
 
         private static void FixSecurityProtocol()
         {
-            // Our version of .net only has protocol types defined for SSL3 and TLS1.0
-            // However, some of the servers are no longer supporting 1.0 so we need to tell .Net to also use
-            // TLS1.1 and 1.2 - these are the equivalent values from later .net versions
-            const int ssl3 = (int) SecurityProtocolType.Ssl3;
-            const int tls10 = (int) SecurityProtocolType.Tls;
-            const int tls11 = 768;
-            const int tls12 = 3072;
-            ServicePointManager.SecurityProtocol = (SecurityProtocolType)(ssl3 + tls10 + tls11 + tls12);
-        }
-    }
+			try
+			{
+				// Our version of .net only has protocol types defined for SSL3 and TLS1.0
+				// However, some of the servers are no longer supporting 1.0 so we need to tell .Net to also use
+				// TLS1.1 and 1.2 - these are the equivalent values from later .net versions
+				const int ssl3 = (int)SecurityProtocolType.Ssl3;
+				const int tls10 = (int)SecurityProtocolType.Tls;
+				const int tls11 = 768;
+				const int tls12 = 3072;
+				ServicePointManager.SecurityProtocol = (SecurityProtocolType)(ssl3 + tls10 + tls11 + tls12);
+			}
+			catch
+			{
+				// we need to swallow this if the OS does not supprt the protocols
+
+				// for example on Windows7 you will get this error
+				// Unhandled Exception: System.TypeInitializationException: The type initializer for 'PodcastUtilities.Common.WebClientFactory' threw an exception.
+				// ---> System.NotSupportedException: The requested security protocol is not supported.
+
+				// unless you install the following 
+				// Support for TLS System Default Versions included in the .NET Framework 3.5.1 on Windows 7 SP1 and Server 2008 R2 SP1
+				// https://support.microsoft.com/en-us/help/3154518/support-for-tls-system-default-versions-included-in-the-net-framework
+			}
+		}
+	}
 }
