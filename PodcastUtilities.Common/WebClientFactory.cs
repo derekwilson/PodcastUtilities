@@ -18,10 +18,8 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
+using System.Net;
 using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common
@@ -31,6 +29,11 @@ namespace PodcastUtilities.Common
     /// </summary>
     public class WebClientFactory : IWebClientFactory
     {
+        static WebClientFactory()
+        {
+            FixSecurityProtocol();
+        }
+
         /// <summary>
         /// generate a new web client - do not forget to dispose it
         /// </summary>
@@ -38,6 +41,18 @@ namespace PodcastUtilities.Common
         public IWebClient CreateWebClient()
         {
             return new SystemNetWebClient();
+        }
+
+        private static void FixSecurityProtocol()
+        {
+            // Our version of .net only has protocol types defined for SSL3 and TLS1.0
+            // However, some of the servers are no longer supporting 1.0 so we need to tell .Net to also use
+            // TLS1.1 and 1.2 - these are the equivalent values from later .net versions
+            const int ssl3 = (int) SecurityProtocolType.Ssl3;
+            const int tls10 = (int) SecurityProtocolType.Tls;
+            const int tls11 = 768;
+            const int tls12 = 3072;
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)(ssl3 + tls10 + tls11 + tls12);
         }
     }
 }
