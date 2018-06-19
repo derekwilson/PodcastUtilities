@@ -224,11 +224,11 @@ namespace PodcastUtilities.Common.Feeds
                 }
                 else if (e.Error != null && e.Error.InnerException != null) 
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Error, string.Format(CultureInfo.InvariantCulture, "{0} {1}", syncItem.EpisodeTitle, e.Error.InnerException.Message), e.Error.InnerException);
+                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Error, string.Format(CultureInfo.InvariantCulture, "Error in: {0}", syncItem.EpisodeTitle), e.Error.InnerException);
                 }
                 else if (e.Error != null)
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Error, string.Format(CultureInfo.InvariantCulture, "{0} {1}", syncItem.EpisodeTitle, e.Error.Message), e.Error);
+                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Error, string.Format(CultureInfo.InvariantCulture, "Error in: {0}", syncItem.EpisodeTitle), e.Error);
                 }
                 else
                 {

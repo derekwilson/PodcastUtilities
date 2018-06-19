@@ -235,9 +235,10 @@ namespace DownloadPodcasts
                 // keep all the message together
                 if (e.Exception != null)
                 {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine(e.Exception.ToString());
-                        Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(String.Concat(" ", e.Exception.ToString()));
+                    Console.ResetColor();
                 }
                 else
                 {
