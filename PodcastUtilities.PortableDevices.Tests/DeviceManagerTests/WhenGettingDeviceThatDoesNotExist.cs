@@ -28,7 +28,7 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceManagerTests
 
         protected override void When()
         {
-            Device = DeviceManager.GetDevice("Nonexistent");
+			Device = DeviceManager.GetDevice("Nonexistent");
         }
 
         [Test]

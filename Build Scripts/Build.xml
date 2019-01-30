@@ -13,7 +13,7 @@
   
   <PropertyGroup>
     <SolutionRoot>$(MSBuildProjectDirectory)\..</SolutionRoot>
-    <SolutionName>PodcastUtilities</SolutionName>
+    <SolutionName>PodcastUtilities.Multiplatform</SolutionName>
     <BuildOutputRoot>$(MSBuildProjectDirectory)\..\CurrentBuild</BuildOutputRoot>
     <ReleasesRoot>$(MSBuildProjectDirectory)\..\_PreBuiltPackages</ReleasesRoot>
     <NUnitPath>"C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0\nunit-console.exe"</NUnitPath>
@@ -42,17 +42,26 @@
 	</Target>
 
   <!-- Clean and rebuild the solution -->
+  <!-- 
+  We cannot get this to work in the mutiplatform projects
+  Instead we should 
+   - use VS 2017 select Build -> Batch Build and select all the Release targets and rebuild
+   - run PublishAll.bat
+   -->
   <Target Name="Rebuild">
+<!--
     <MSBuild
       Projects="$(SolutionRoot)\$(SolutionName).sln"
       Targets="Clean;Rebuild"
       Properties="Configuration=$(Configuration)"
     />
+	-->
   </Target>
 
   <!-- Remove the output folder and copy the new build -->
   <Target Name="Copy" DependsOnTargets="Rebuild">
     <RemoveDir Directories="$(BuildOutputRoot)"/>
+    <MakeDir Directories="$(BuildOutputRoot)"/>
 	<MSBuild
 		Projects="CopyFiles.xml"
 		Targets="CopyToCurrentBuild"

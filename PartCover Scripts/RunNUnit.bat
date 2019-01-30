@@ -5,11 +5,11 @@ pause
 goto end
 
 :win32
-set nunitcmd="%ProgramFiles%\NUnit 2.5.7\bin\net-2.0\nunit-console-x86.exe"
+set nunitcmd="%ProgramFiles%\NUnit 2.6\bin\nunit-console-x86.exe"
 goto nunit
 
 :win64
-set nunitcmd="%PROGRAMFILES(x86)%\NUnit 2.5.7\bin\net-2.0\nunit-console-x86.exe" 
+set nunitcmd="%PROGRAMFILES(x86)%\NUnit 2.6\bin\nunit-console-x86.exe" 
 
 :nunit
 %nunitcmd% /noshadow PodcastUtilities.Common.Tests.dll

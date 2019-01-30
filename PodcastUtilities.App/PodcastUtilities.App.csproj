@@ -138,13 +138,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PodcastUtilities.Common\PodcastUtilities.Common.csproj">
-      <Project>{37562F85-B1BD-4AB8-B74B-685B05F9CF41}</Project>
-      <Name>PodcastUtilities.Common</Name>
+    <ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj">
+      <Project>{0a6a99b1-6764-40d6-a892-487e6dee34bd}</Project>
+      <Name>PodcastUtilities.Common.Multiplatform</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PodcastUtilities.Ioc\PodcastUtilities.Ioc.csproj">
-      <Project>{F3DA4F48-7AB2-4D45-9C44-6F7AA9019DF1}</Project>
-      <Name>PodcastUtilities.Ioc</Name>
+    <ProjectReference Include="..\PodcastUtilities.Ioc.Multiplatform\PodcastUtilities.Ioc.Multiplatform.csproj">
+      <Project>{4fd0a148-48dc-42bb-9b14-ba4ec8344412}</Project>
+      <Name>PodcastUtilities.Ioc.Multiplatform</Name>
     </ProjectReference>
     <ProjectReference Include="..\PodcastUtilities.Presentation\PodcastUtilities.Presentation.csproj">
       <Project>{60F4F65D-0C43-4F74-A9E7-3375C2BAA2B8}</Project>

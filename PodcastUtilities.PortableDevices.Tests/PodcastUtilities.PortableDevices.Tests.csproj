@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PodcastUtilities.PortableDevices.Tests</RootNamespace>
     <AssemblyName>PodcastUtilities.PortableDevices.Tests</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,11 +31,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.PortableDeviceApiLib">
       <HintPath>..\References\Interop\Interop.PortableDeviceApiLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.PortableDeviceTypesLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\References\Interop\Interop.PortableDeviceTypesLib.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -89,13 +97,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PodcastUtilities.Common.Tests\PodcastUtilities.Common.Tests.csproj">
-      <Project>{03BAF930-2492-4792-9EBC-4FFAA9D3D60B}</Project>
-      <Name>PodcastUtilities.Common.Tests</Name>
+    <ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj">
+      <Project>{0a6a99b1-6764-40d6-a892-487e6dee34bd}</Project>
+      <Name>PodcastUtilities.Common.Multiplatform</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PodcastUtilities.Common\PodcastUtilities.Common.csproj">
-      <Project>{37562F85-B1BD-4AB8-B74B-685B05F9CF41}</Project>
-      <Name>PodcastUtilities.Common</Name>
+    <ProjectReference Include="..\PodcastUtilities.Common.Tests\PodcastUtilities.Common.Tests.csproj">
+      <Project>{03baf930-2492-4792-9ebc-4ffaa9d3d60b}</Project>
+      <Name>PodcastUtilities.Common.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\PodcastUtilities.PortableDevices\PodcastUtilities.PortableDevices.csproj">
       <Project>{A3FE8B09-71F1-4D97-8109-F946F90FEFB9}</Project>

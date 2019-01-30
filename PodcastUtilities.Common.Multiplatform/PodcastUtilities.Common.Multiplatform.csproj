@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net35;netstandard2.0</TargetFrameworks>
+    <RootNamespace>PodcastUtilities.Common</RootNamespace>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <FileVersion>3.0.0.0</FileVersion>
+    <Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
+    <Product>PodcastUtilities</Product>
+    <Company>AAD</Company>
+    <Authors>Andrew Trevarrow and Derek Wilson</Authors>
+    <Version>3.0.0</Version>
+    <Description>Common utilities and API</Description>
+    <AssemblyName>PodcastUtilities.Common</AssemblyName>
+  </PropertyGroup>
+
+	<!-- .NET Standard 2.0 references, compilation flags and build options -->
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+		<DefineConstants>NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+		<Compile Remove=".\Platform\FileSystemAwareDirectoryInfoProvider.cs" Label="NO_MTP" />
+		<Compile Remove=".\Platform\FileSystemAwareDriveInfoProvider.cs" Label="NO_MTP" />
+		<Compile Remove=".\Platform\FileSystemAwareFileInfoProvider.cs" Label="NO_MTP" />
+		<Compile Remove=".\Platform\FileSystemAwareFileUtilities.cs" Label="NO_MTP" />
+		<Compile Remove=".\Platform\FileSystemAwarePathUtilities.cs" Label="NO_MTP" />
+		<Compile Remove=".\Platform\Mtp\**\*.cs" Label="NO_MTP" />
+		<Compile Remove=".\Platform\IPerfmonCounterCreationDataProvider.cs" Label="NO_PERF" />
+		<Compile Remove=".\Platform\IPerfmonCounterUtilities.cs" Label="NO_PERF" />
+		<Compile Remove=".\Platform\SystemPerfmonCounter.cs" Label="NO_PERF" />
+		<Compile Remove=".\Platform\SystemPerfmonCounterCreationDataProvider.cs" Label="NO_PERF" />
+		<Compile Remove=".\Platform\SystemPerfmonCounterUtilities.cs" Label="NO_PERF" />
+		<Compile Remove=".\Perfmon\AverageCounter.cs" Label="NO_PERF" />
+		<Compile Remove=".\Perfmon\CategoryInstaller.cs" Label="NO_PERF" />
+		<Compile Remove=".\Perfmon\ICategoryInstaller.cs" Label="NO_PERF" />
+		<Compile Remove=".\Properties\AssemblyInfo.cs" Label="NO_ASSEMBLYINFO" />
+	</ItemGroup>
+
+		<!-- .NET references, compilation flags and build options -->
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net35'">
+		<DefineConstants>NET35;NETFULL</DefineConstants>
+	</PropertyGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net35' ">		
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Xml" />
+		<Reference Include="System.Xml.Linq" />
+		<Reference Include="System.Data" />
+		<Reference Include="System.Data.DataSetExtensions" />
+    <ProjectReference Include="..\PodcastUtilities.PortableDevices\PodcastUtilities.PortableDevices.csproj">
+      <Project>{A3FE8B09-71F1-4D97-8109-F946F90FEFB9}</Project>
+      <Name>PodcastUtilities.PortableDevices</Name>
+    </ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="XML\asxPlaylist.xml" />
+	  <None Remove="XML\state.xml" />
+	  <None Remove="XML\wplPlaylist.xml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="XML\asxPlaylist.xml" />
+	  <EmbeddedResource Include="XML\state.xml" />
+	  <EmbeddedResource Include="XML\wplPlaylist.xml" />
+	</ItemGroup>
+
+</Project>

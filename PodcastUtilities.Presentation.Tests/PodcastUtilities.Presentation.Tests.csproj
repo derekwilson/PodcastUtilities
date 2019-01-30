@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PodcastUtilities.Presentation.Tests</RootNamespace>
     <AssemblyName>PodcastUtilities.Presentation.Tests</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
@@ -95,13 +97,13 @@
     <Compile Include="ViewModels\PodcastViewModelTests\WhenTestingPodcastViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PodcastUtilities.Common.Tests\PodcastUtilities.Common.Tests.csproj">
-      <Project>{03BAF930-2492-4792-9EBC-4FFAA9D3D60B}</Project>
-      <Name>PodcastUtilities.Common.Tests</Name>
+    <ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj">
+      <Project>{0a6a99b1-6764-40d6-a892-487e6dee34bd}</Project>
+      <Name>PodcastUtilities.Common.Multiplatform</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PodcastUtilities.Common\PodcastUtilities.Common.csproj">
-      <Project>{37562F85-B1BD-4AB8-B74B-685B05F9CF41}</Project>
-      <Name>PodcastUtilities.Common</Name>
+    <ProjectReference Include="..\PodcastUtilities.Common.Tests\PodcastUtilities.Common.Tests.csproj">
+      <Project>{03baf930-2492-4792-9ebc-4ffaa9d3d60b}</Project>
+      <Name>PodcastUtilities.Common.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\PodcastUtilities.Presentation\PodcastUtilities.Presentation.csproj">
       <Project>{60F4F65D-0C43-4F74-A9E7-3375C2BAA2B8}</Project>

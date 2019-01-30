@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<podcasts version="1.0">
+	<global>
+		<sourceRoot>./media/source</sourceRoot>
+		<destinationRoot>./media/destination</destinationRoot>
+		<playlistFilename>podcasts.m3u</playlistFilename>
+		<playlistFormat>m3u</playlistFormat>
+		<playlistPathSeparator>/</playlistPathSeparator>
+		<freeSpaceToLeaveOnDestinationMB>300</freeSpaceToLeaveOnDestinationMB>
+		<freeSpaceToLeaveOnDownloadMB>500</freeSpaceToLeaveOnDownloadMB>
+		<sortfield>name</sortfield>
+		<sortdirection>asc</sortdirection>
+		<maximumNumberOfConcurrentDownloads>20</maximumNumberOfConcurrentDownloads>
+		<retryWaitInSeconds>10</retryWaitInSeconds>
+		<feed>
+			<maximumDaysOld>31</maximumDaysOld>
+			<format>rss</format>
+			<namingStyle>pubdate_etitle</namingStyle>
+			<downloadStrategy>high_tide</downloadStrategy>
+		</feed>
+		<diagnostics>
+			<retainTempFiles>true</retainTempFiles>
+		</diagnostics>
+	</global>
+	<podcast>
+		<feed>
+			<url>http://feeds.feedburner.com/HanselminutesCompleteMP3</url>
+			<maximumDaysOld>30</maximumDaysOld>
+		</feed>
+		<folder>Hanselminutes</folder>
+		<pattern>*.mp3</pattern>
+		<number>-1</number>
+	</podcast>
+	<podcast>
+		<feed>
+			<url>http://www.bbc.co.uk/programmes/b006qpgr/episodes/downloads.rss</url>
+			<maximumDaysOld>10</maximumDaysOld>
+		</feed>
+		<folder>The Archers</folder>
+		<pattern>*.mp3</pattern>
+		<number>5</number>
+	</podcast>
+</podcasts>
