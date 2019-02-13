@@ -29,70 +29,70 @@ using PodcastUtilities.Ioc;
 
 namespace SyncPodcasts
 {
-	class Program
-	{
-		static private void DisplayBanner()
-		{
-			// do not move the GetExecutingAssembly call from here into a supporting DLL
-			Assembly me = System.Reflection.Assembly.GetExecutingAssembly();
-			AssemblyName name = me.GetName();
-			Console.WriteLine("SyncPodcasts v{0}", name.Version);
-		}
+    class Program
+    {
+        static private void DisplayBanner()
+        {
+            // do not move the GetExecutingAssembly call from here into a supporting DLL
+            Assembly me = System.Reflection.Assembly.GetExecutingAssembly();
+            AssemblyName name = me.GetName();
+            Console.WriteLine("SyncPodcasts v{0}", name.Version);
+        }
 
-		static private void DisplayHelp()
-		{
-			Console.WriteLine("Usage: SyncPodcasts <controlfile>");
-			Console.WriteLine("Where");
-			Console.WriteLine("  <controlfile> = XML control file eg. podcasts.xml");
-		}
+        static private void DisplayHelp()
+        {
+            Console.WriteLine("Usage: SyncPodcasts <controlfile>");
+            Console.WriteLine("Where");
+            Console.WriteLine("  <controlfile> = XML control file eg. podcasts.xml");
+        }
 
-		static void Main(string[] args)
-		{
-			DisplayBanner();
-			if (args.Length < 1)
-			{
-				DisplayHelp();
-				return;
-			}
+        static void Main(string[] args)
+        {
+            DisplayBanner();
+            if (args.Length < 1)
+            {
+                DisplayHelp();
+                return;
+            }
 
-			IIocContainer iocContainer = InitializeIocContainer();
+            IIocContainer iocContainer = InitializeIocContainer();
 
-			ReadOnlyControlFile control = new ReadOnlyControlFile(args[0]);
-			IFinder finder = iocContainer.Resolve<IFinder>();
-			ICopier copier = iocContainer.Resolve<ICopier>();
-			IUnwantedFileRemover remover = iocContainer.Resolve<IUnwantedFileRemover>();
-		    IUnwantedFolderRemover folderRemover = iocContainer.Resolve<IUnwantedFolderRemover>();
-			IFileUtilities fileUtilities = iocContainer.Resolve<IFileUtilities>();
-			IPathUtilities pathUtilities = iocContainer.Resolve<IPathUtilities>();
-			IPlaylistFactory playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
+            ReadOnlyControlFile control = new ReadOnlyControlFile(args[0]);
+            IFinder finder = iocContainer.Resolve<IFinder>();
+            ICopier copier = iocContainer.Resolve<ICopier>();
+            IUnwantedFileRemover remover = iocContainer.Resolve<IUnwantedFileRemover>();
+            IUnwantedFolderRemover folderRemover = iocContainer.Resolve<IUnwantedFolderRemover>();
+            IFileUtilities fileUtilities = iocContainer.Resolve<IFileUtilities>();
+            IPathUtilities pathUtilities = iocContainer.Resolve<IPathUtilities>();
+            IPlaylistFactory playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
 
             Generator generator = new Generator(finder, fileUtilities, pathUtilities, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
-			Synchronizer synchronizer = new Synchronizer(finder, copier, remover, folderRemover);
-			synchronizer.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
+            Synchronizer synchronizer = new Synchronizer(finder, copier, remover, folderRemover);
+            synchronizer.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(StatusUpdate);
 
-			synchronizer.Synchronize(control, false);
+            synchronizer.Synchronize(control, false);
 
-			if (!string.IsNullOrEmpty(control.GetPlaylistFileName()))
-				generator.GeneratePlaylist(control, true);
-		}
+            if (!string.IsNullOrEmpty(control.GetPlaylistFileName()))
+                generator.GeneratePlaylist(control, true);
+        }
 
-		private static IIocContainer InitializeIocContainer()
-		{
-			var container = IocRegistration.GetEmptyContainer();
+        private static IIocContainer InitializeIocContainer()
+        {
+            var container = IocRegistration.GetEmptyContainer();
 
-			IocRegistration.RegisterPortableDeviceServices(container);
+            IocRegistration.RegisterPortableDeviceServices(container);
             IocRegistration.RegisterFileServices(container);
             IocRegistration.RegisterPlaylistServices(container);
 
-			return container;
-		}
+            return container;
+        }
 
-		static void StatusUpdate(object sender, StatusUpdateEventArgs e)
+        static void StatusUpdate(object sender, StatusUpdateEventArgs e)
         {
             // maybe we want to optionally filter verbose message
             Console.WriteLine(e.Message);
         }
-	}
+    }
 }

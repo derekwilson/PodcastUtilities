@@ -54,7 +54,7 @@ namespace PodcastUtilities.Common.Platform
         {
             IAverageCounter returnValue = null;
 #if NETFULL
-			if (_enableCounters)
+            if (_enableCounters)
             {
                 returnValue = new AverageCounter(catagory, name, totalName);
             }
@@ -78,7 +78,7 @@ namespace PodcastUtilities.Common.Platform
                 returnValue = new SystemPerfmonCounter(catagory, name);
             }
 #endif
-			if (returnValue == null)
+            if (returnValue == null)
             {
                 return new NullCounter();
             }

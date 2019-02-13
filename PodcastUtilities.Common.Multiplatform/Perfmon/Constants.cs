@@ -25,29 +25,30 @@ using System.Text;
 
 namespace PodcastUtilities.Common.Perfmon
 {
-	public class Constants
-	{
-		/// <summary>
-		/// the category we will create the common counters in
-		/// </summary>
-		public const string PodcastUtilitiesCommonCounterCategory = "PodcastUtilties:Common";
+    public class Constants
+    {
+        /// <summary>
+        /// the category we will create the common counters in
+        /// </summary>
+        public const string PodcastUtilitiesCommonCounterCategory = "PodcastUtilties:Common";
 
-		/// <summary>
-		/// counter name
-		/// </summary>
-		public const string AverageTimeToDownload = "AverageTimeToDownloadInMs";
-		/// <summary>
-		/// counter name
-		/// </summary>
-		public const string NumberOfDownloads = "TotalNumberOfDownloads";
+        /// <summary>
+        /// counter name
+        /// </summary>
+        public const string AverageTimeToDownload = "AverageTimeToDownloadInMs";
+        /// <summary>
+        /// counter name
+        /// </summary>
+        public const string NumberOfDownloads = "TotalNumberOfDownloads";
 
-		/// <summary>
-		/// counter name
-		/// </summary>
-		public const string AverageMBDownload = "AverageSizeOfADownloadInMB";
-		/// <summary>
-		/// counter name
-		/// </summary>
-		public const string SizeOfDownloads = "TotalSizeOfDownloads";
-	}
+        /// <summary>
+        /// counter name
+        /// </summary>
+        public const string AverageMBDownload = "AverageSizeOfADownloadInMB";
+
+        /// <summary>
+        /// counter name
+        /// </summary>
+        public const string SizeOfDownloads = "TotalSizeOfDownloads";
+    }
 }

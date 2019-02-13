@@ -49,15 +49,15 @@ namespace PodcastUtilities.Integration.Tests
 
         private static IIocContainer InitializeIocContainer()
         {
-			var container = IocRegistration.GetEmptyContainer();
+            var container = IocRegistration.GetEmptyContainer();
 
             IocRegistration.RegisterSystemServices(container);
-			IocRegistration.RegisterPortableDeviceServices(container);
-			IocRegistration.RegisterFileServices(container);
+            IocRegistration.RegisterPortableDeviceServices(container);
+            IocRegistration.RegisterFileServices(container);
             IocRegistration.RegisterFeedServices(container);
-			IocRegistration.RegisterPlaylistServices(container);
+            IocRegistration.RegisterPlaylistServices(container);
 
-			return container;
+            return container;
         }
 
         public RunnerBase(string testsToRun)
@@ -124,51 +124,51 @@ namespace PodcastUtilities.Integration.Tests
             }
         }
 
-		protected void ProgressUpdate(object sender, ProgressEventArgs e)
-		{
-			lock (this)
-			{
-				// keep all the message together
-				ISyncItem syncItem = e.UserState as ISyncItem;
-				if (e.ProgressPercentage % 10 == 0)
-				{
-					Console.WriteLine(string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
-													DisplayFormatter.RenderFileSize(e.ItemsProcessed),
-													DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
-													e.ProgressPercentage));
-				}
-			}
-		}
+        protected void ProgressUpdate(object sender, ProgressEventArgs e)
+        {
+            lock (this)
+            {
+                // keep all the message together
+                ISyncItem syncItem = e.UserState as ISyncItem;
+                if (e.ProgressPercentage % 10 == 0)
+                {
+                    Console.WriteLine(string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
+                                                    DisplayFormatter.RenderFileSize(e.ItemsProcessed),
+                                                    DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
+                                                    e.ProgressPercentage));
+                }
+            }
+        }
 
-		protected void StatusUpdate(object sender, StatusUpdateEventArgs e)
-		{
-			lock (this)
-			{
-				// keep all the message together
-				if (e.Exception != null)
-				{
-					Console.ForegroundColor = ConsoleColor.Red;
-					Console.WriteLine(e.Message);
-					Console.WriteLine(String.Concat(" ", e.Exception.ToString()));
-					Console.ResetColor();
-				}
-				else
-				{
-					if (e.MessageLevel == StatusUpdateLevel.Error)
-					{
-						Console.ForegroundColor = ConsoleColor.Red;
-					}
-					else if (e.MessageLevel == StatusUpdateLevel.Warning)
-					{
-						Console.ForegroundColor = ConsoleColor.Blue;
-					}
-					Console.WriteLine(e.Message);
-					Console.ResetColor();
-				}
-			}
-		}
+        protected void StatusUpdate(object sender, StatusUpdateEventArgs e)
+        {
+            lock (this)
+            {
+                // keep all the message together
+                if (e.Exception != null)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(String.Concat(" ", e.Exception.ToString()));
+                    Console.ResetColor();
+                }
+                else
+                {
+                    if (e.MessageLevel == StatusUpdateLevel.Error)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+                    else if (e.MessageLevel == StatusUpdateLevel.Warning)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                    }
+                    Console.WriteLine(e.Message);
+                    Console.ResetColor();
+                }
+            }
+        }
 
-		protected virtual void TestPreamble()
+        protected virtual void TestPreamble()
         {
             // nothing
         }

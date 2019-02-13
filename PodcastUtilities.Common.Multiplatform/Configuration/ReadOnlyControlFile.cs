@@ -24,11 +24,11 @@ using System.Xml;
 
 namespace PodcastUtilities.Common.Configuration
 {
-	/// <summary>
-	/// this object represents the xml control file
-	/// </summary>
-	public class ReadOnlyControlFile : BaseControlFile, IReadOnlyControlFile, IControlFileGlobalDefaults
-	{
+    /// <summary>
+    /// this object represents the xml control file
+    /// </summary>
+    public class ReadOnlyControlFile : BaseControlFile, IReadOnlyControlFile, IControlFileGlobalDefaults
+    {
         /// <summary>
         /// create an empty control file
         /// </summary>
@@ -36,18 +36,18 @@ namespace PodcastUtilities.Common.Configuration
         {
         }
 
-		/// <summary>
-		/// create the object and read the control file from the specified filename
-		/// </summary>
-		/// <param name="fileName">pathname to the control file xml</param>
+        /// <summary>
+        /// create the object and read the control file from the specified filename
+        /// </summary>
+        /// <param name="fileName">pathname to the control file xml</param>
         public ReadOnlyControlFile(string fileName)
-		{
+        {
             XmlReaderSettings readSettings = new XmlReaderSettings { ConformanceLevel = ConformanceLevel.Fragment };
 
-			using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
-			{
-				ReadXml(XmlReader.Create(fileStream, readSettings));
-			};
+            using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
+            {
+                ReadXml(XmlReader.Create(fileStream, readSettings));
+            };
         }
 
         /// <summary>

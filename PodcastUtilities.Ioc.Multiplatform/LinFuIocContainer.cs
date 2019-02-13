@@ -26,26 +26,29 @@ using PodcastUtilities.Common;
 
 namespace PodcastUtilities.Ioc
 {
+    /// <summary>
+    /// this container is only available in .NET Full framework
+    /// </summary>
     public class LinFuIocContainer : IIocContainer
-	{
-		private readonly ServiceContainer _container;
+    {
+        private readonly ServiceContainer _container;
 
-		public LinFuIocContainer()
-		{
-			_container = new ServiceContainer();
-		}
+        public LinFuIocContainer()
+        {
+            _container = new ServiceContainer();
+        }
 
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
         public void Register<TService, TImplementor>() 
-			where TService : class
-			where TImplementor : class, TService
-		{
-			_container.AddService(typeof(TService), typeof(TImplementor));
-		}
+            where TService : class
+            where TImplementor : class, TService
+        {
+            _container.AddService(typeof(TService), typeof(TImplementor));
+        }
 
         public void Register<TService, TImplementor>(IocLifecycle lifecycle) 
-			where TService : class
-			where TImplementor : class, TService
+            where TService : class
+            where TImplementor : class, TService
         {
             var mappedLifecycle = MapLifecycle(lifecycle);
 
@@ -72,8 +75,8 @@ namespace PodcastUtilities.Ioc
         }
 
         public TService Resolve<TService>()
-		{
-			return (TService)_container.GetService(typeof (TService));
-		}
-	}
+        {
+            return (TService)_container.GetService(typeof (TService));
+        }
+    }
 }

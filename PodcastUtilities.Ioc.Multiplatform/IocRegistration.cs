@@ -32,35 +32,35 @@ using PodcastUtilities.PortableDevices;
 
 namespace PodcastUtilities.Ioc
 {
-	public static class IocRegistration
-	{
-		public static IIocContainer GetEmptyContainer()
-		{
+    public static class IocRegistration
+    {
+        public static IIocContainer GetEmptyContainer()
+        {
 #if NETFULL
-			return new LinFuIocContainer();
+            return new LinFuIocContainer();
 #else
-			return new MicrosoftExtensionsIocContainer();
+            return new MicrosoftExtensionsIocContainer();
 #endif
-		}
+        }
 
-		public static void RegisterFileServices(IIocContainer container)
-		{
+        public static void RegisterFileServices(IIocContainer container)
+        {
 #if NETFULL
-			container.Register<IDriveInfoProvider, FileSystemAwareDriveInfoProvider>();
-			container.Register<IDirectoryInfoProvider, FileSystemAwareDirectoryInfoProvider>();
-			container.Register<IFileInfoProvider, FileSystemAwareFileInfoProvider>();
-			container.Register<IFileUtilities, FileSystemAwareFileUtilities>();
-			container.Register<IPathUtilities, FileSystemAwarePathUtilities>();
+            container.Register<IDriveInfoProvider, FileSystemAwareDriveInfoProvider>();
+            container.Register<IDirectoryInfoProvider, FileSystemAwareDirectoryInfoProvider>();
+            container.Register<IFileInfoProvider, FileSystemAwareFileInfoProvider>();
+            container.Register<IFileUtilities, FileSystemAwareFileUtilities>();
+            container.Register<IPathUtilities, FileSystemAwarePathUtilities>();
 #else
-			container.Register<IDriveInfoProvider, SystemDriveInfoProvider>();
-			container.Register<IDirectoryInfoProvider, SystemDirectoryInfoProvider>();
-			container.Register<IFileInfoProvider, SystemFileInfoProvider>();
-			container.Register<IFileUtilities, FileUtilities>();
-			container.Register<IPathUtilities, PathUtilities>();
+            container.Register<IDriveInfoProvider, SystemDriveInfoProvider>();
+            container.Register<IDirectoryInfoProvider, SystemDirectoryInfoProvider>();
+            container.Register<IFileInfoProvider, SystemFileInfoProvider>();
+            container.Register<IFileUtilities, FileUtilities>();
+            container.Register<IPathUtilities, PathUtilities>();
 #endif
-			container.Register<ICopier, Copier>();
-			container.Register<IFinder, Finder>();
-			container.Register<ISorter, Sorter>();
+            container.Register<ICopier, Copier>();
+            container.Register<IFinder, Finder>();
+            container.Register<ISorter, Sorter>();
             container.Register<IUnwantedFileRemover, UnwantedFileRemover>();
             container.Register<IUnwantedFolderRemover, UnwantedFolderRemover>();
             container.Register<IEpisodePurger, EpisodePurger>();
@@ -71,19 +71,19 @@ namespace PodcastUtilities.Ioc
         public static void RegisterPortableDeviceServices(IIocContainer container)
         {
 #if NETFULL
-			container.Register<IDeviceManager, DeviceManager>(IocLifecycle.Singleton);
+            container.Register<IDeviceManager, DeviceManager>(IocLifecycle.Singleton);
 #endif
-		}
+        }
 
-		public static void RegisterSystemServices(IIocContainer container)
+        public static void RegisterSystemServices(IIocContainer container)
         {
             container.Register<ITimeProvider, SystemDateTimeProvider>();
 #if NETFULL
-			container.Register<IPerfmonCounterUtilities, SystemPerfmonCounterUtilities>();
+            container.Register<IPerfmonCounterUtilities, SystemPerfmonCounterUtilities>();
             container.Register<IPerfmonCounterCreationDataProvider, SystemPerfmonCounterCreationDataProvider>();
             container.Register<ICategoryInstaller, CategoryInstaller>();
 #endif
-			container.Register<ICounterFactory, CounterFactory>();
+            container.Register<ICounterFactory, CounterFactory>();
             container.Register<ICommandExecuter, WindowsCommandExecuter>();
             container.Register<IEnvironmentInformationProvider, WindowsEnvironmentInformationProvider>();
         }

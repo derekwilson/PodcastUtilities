@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
 		<TargetFrameworks>net35;netcoreapp2.1</TargetFrameworks>
-    <AssemblyName>DownloadPodcasts</AssemblyName>
-    <RootNamespace>DownloadPodcasts</RootNamespace>
-    <PackageId>DownloadPodcasts</PackageId>
-    <Version>3.0.0</Version>
-    <Authors>Andrew Trevarrow and Derek Wilson</Authors>
-    <Company>AAD</Company>
-    <Product>PodcastUtilities</Product>
-    <Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
-    <Description>Podcast Downloader</Description>
-  </PropertyGroup>
+		<AssemblyName>DownloadPodcasts</AssemblyName>
+		<RootNamespace>DownloadPodcasts</RootNamespace>
+		<PackageId>DownloadPodcasts</PackageId>
+		<Version>3.0.0</Version>
+		<Authors>Andrew Trevarrow and Derek Wilson</Authors>
+		<Company>AAD</Company>
+		<Product>PodcastUtilities</Product>
+		<Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
+		<Description>Podcast Downloader</Description>
+	</PropertyGroup>
 
 	<!-- .NET Standard 2.0 references, compilation flags and build options -->
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1'">

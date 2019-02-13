@@ -25,37 +25,38 @@ namespace PodcastUtilities.Integration.Tests
 {
     class Program
     {
-		static string GetOSDescription()
-		{
+        static string GetOSDescription()
+        {
+            // its a bit pants but it has taken a long time for System.Runtime.InteropServices to be available in NET FULL
 #if NETFULL
-			return ".NET Framework " + Environment.OSVersion;
+            return ".NET Framework " + Environment.OSVersion;
 #else
-			return System.Runtime.InteropServices.RuntimeInformation.OSDescription;
+            return System.Runtime.InteropServices.RuntimeInformation.OSDescription;
 #endif
-		}
+        }
 
-		static private void DisplayBanner()
+        static private void DisplayBanner()
         {
             // do not move the GetExecutingAssembly call from here into a supporting DLL
             Assembly me = System.Reflection.Assembly.GetExecutingAssembly();
             AssemblyName name = me.GetName();
             Console.WriteLine("PodcastUtilities.Integration.Tests v{0}", name.Version);
-			Console.WriteLine($"OS = {GetOSDescription()}");
-		}
+            Console.WriteLine($"OS = {GetOSDescription()}");
+        }
 
-		static private void DisplayHelp()
+        static private void DisplayHelp()
         {
             Console.WriteLine("Usage: PodcastUtilities.Integration.Tests <tests>");
             Console.WriteLine("Where");
             Console.WriteLine("  <tests> = all: run all tests");
 #if NETFULL
-			Console.WriteLine("          = mtp: run portable device tests");
+            Console.WriteLine("          = mtp: run portable device tests");
 #endif
-			Console.WriteLine("          = control: run control file tests");
-			Console.WriteLine("          = download: run download tests");
-		}
+            Console.WriteLine("          = control: run control file tests");
+            Console.WriteLine("          = download: run download tests");
+        }
 
-		static void Main(string[] args)
+        static void Main(string[] args)
         {
             DisplayBanner();
             string testToRun = null;
@@ -72,15 +73,15 @@ namespace PodcastUtilities.Integration.Tests
             var controlFileTests = new ControlFile.Runner(testToRun);
             controlFileTests.RunAllTests();
 
-			var downloadTests = new Download.Runner(testToRun);
-			downloadTests.RunAllTests();
+            var downloadTests = new Download.Runner(testToRun);
+            downloadTests.RunAllTests();
 
 #if NETFULL
-			var portableDevicesTests = new PortableDevices.Runner(testToRun);
+            var portableDevicesTests = new PortableDevices.Runner(testToRun);
             portableDevicesTests.RunAllTests();
 #endif
 
-			Console.WriteLine("Done");
+            Console.WriteLine("Done");
         }
     }
 }

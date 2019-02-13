@@ -29,13 +29,13 @@ namespace PodcastUtilities.Integration.Tests.ControlFile
     class Runner : RunnerBase
     {
 #if NETFULL
-		private const string _inputfilename = "test.windows.controlfile.xml";
+        private const string _inputfilename = "test.windows.controlfile.xml";
 #else
-		private const string _inputfilename = "test.standard.controlfile.xml";
+        private const string _inputfilename = "test.standard.controlfile.xml";
 #endif
-		private const string _outputfilename = "test.output.controlfile.xml";
+        private const string _outputfilename = "test.output.controlfile.xml";
 
-		public Runner(string testToRun)
+        public Runner(string testToRun)
             : base(testToRun)
         {
         }
@@ -49,28 +49,28 @@ namespace PodcastUtilities.Integration.Tests.ControlFile
                 return;
             }
 
-			RunOneTest(CreateControlFile);
-			RunOneTest(ReadControlFile);
-		}
+            RunOneTest(CreateControlFile);
+            RunOneTest(ReadControlFile);
+        }
 
-		private void CreateControlFile()
+        private void CreateControlFile()
         {
             DisplayMessage(string.Format("Creating a blank control file: {0}",_outputfilename));
             ReadWriteControlFile controlFile = new ReadWriteControlFile();
             controlFile.SaveToFile(_outputfilename);
         }
 
-		private void ReadControlFile()
-		{
-			DisplayMessage(string.Format("Reading a control file: {0}", _inputfilename));
-			ReadOnlyControlFile controlFile = new ReadOnlyControlFile(_inputfilename);
-			IEnumerable<PodcastInfo> podcasts = controlFile.GetPodcasts();
-			PodcastInfo[] podcastArray = podcasts.ToArray();
-			DisplayMessage(string.Format("Number of podcasts in test file: {0}", podcastArray.Length));
-			foreach (IPodcastInfo info in podcasts)
-			{
-				DisplayMessage(string.Format("Podcast: {0} {1}", info.Folder, info.Feed.Address));
-			}
-		}
-	}
+        private void ReadControlFile()
+        {
+            DisplayMessage(string.Format("Reading a control file: {0}", _inputfilename));
+            ReadOnlyControlFile controlFile = new ReadOnlyControlFile(_inputfilename);
+            IEnumerable<PodcastInfo> podcasts = controlFile.GetPodcasts();
+            PodcastInfo[] podcastArray = podcasts.ToArray();
+            DisplayMessage(string.Format("Number of podcasts in test file: {0}", podcastArray.Length));
+            foreach (IPodcastInfo info in podcasts)
+            {
+                DisplayMessage(string.Format("Podcast: {0} {1}", info.Folder, info.Feed.Address));
+            }
+        }
+    }
 }

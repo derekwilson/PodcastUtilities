@@ -49,8 +49,8 @@ namespace PodcastUtilities.Common.Platform
             
         }
 
-		// dont make this one public or you will get a recursive error in the IoC container for .NET FULL
-		internal FileSystemAwareFileUtilities(
+        // dont make this one public or you will get a recursive error in the IoC container for .NET FULL
+        internal FileSystemAwareFileUtilities(
             IFileUtilities fileUtilities,
             IDeviceManager deviceManager,
             IStreamHelper streamHelper,

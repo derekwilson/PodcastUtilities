@@ -41,7 +41,7 @@ namespace DownloadPodcasts
         private static ITaskPool _taskPool;
         static object _synclock = new object();
         private static bool _verbose = false;
-		static IIocContainer _iocContainer;
+        static IIocContainer _iocContainer;
         static IDriveInfoProvider _driveInfoProvider;
         static ReadOnlyControlFile _control;
         private static int _number_of_files_to_download;
@@ -65,7 +65,7 @@ namespace DownloadPodcasts
 
         private static IIocContainer InitializeIocContainer()
         {
-			var container = IocRegistration.GetEmptyContainer();
+            var container = IocRegistration.GetEmptyContainer();
 
             IocRegistration.RegisterSystemServices(container);
             IocRegistration.RegisterPortableDeviceServices(container);
@@ -78,7 +78,7 @@ namespace DownloadPodcasts
         private static void ResetCounters()
         {
 #if NETFULL
-			var factory = _iocContainer.Resolve<ICounterFactory>();
+            var factory = _iocContainer.Resolve<ICounterFactory>();
 
             var aveCounter1 = factory.CreateAverageCounter(CategoryInstaller.PodcastUtilitiesCommonCounterCategory,
                                                            CategoryInstaller.AverageTimeToDownload,
@@ -89,7 +89,7 @@ namespace DownloadPodcasts
                                                            CategoryInstaller.SizeOfDownloads);
             aveCounter2.Reset();
 #endif
-		}
+        }
 
         static void Main(string[] args)
         {

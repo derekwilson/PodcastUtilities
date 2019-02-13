@@ -53,9 +53,9 @@ namespace PurgePodcasts
             Console.WriteLine("  <controlfile> = XML control file eg. podcasts.xml");
         }
 
-		private static IIocContainer InitializeIocContainer()
-		{
-			var container = IocRegistration.GetEmptyContainer();
+        private static IIocContainer InitializeIocContainer()
+        {
+            var container = IocRegistration.GetEmptyContainer();
 
             IocRegistration.RegisterPortableDeviceServices(container);
             IocRegistration.RegisterSystemServices(container);

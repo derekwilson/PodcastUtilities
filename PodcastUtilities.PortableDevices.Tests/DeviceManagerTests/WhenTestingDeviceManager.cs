@@ -38,12 +38,12 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceManagerTests
         protected override void GivenThat()
         {
             base.GivenThat();
-			// genius: .NET4 doesnt work properly with Rhino
-			// the fix is in
-			// https://stackoverflow.com/questions/3444581/mocking-com-interfaces-using-rhino-mocks
-			Castle.DynamicProxy.Generators.AttributesToAvoidReplicating.Add(typeof(TypeIdentifierAttribute));
+            // genius: .NET4 doesnt work properly with Rhino
+            // the fix is in
+            // https://stackoverflow.com/questions/3444581/mocking-com-interfaces-using-rhino-mocks
+            Castle.DynamicProxy.Generators.AttributesToAvoidReplicating.Add(typeof(TypeIdentifierAttribute));
 
-			PortableDeviceManager = new MockPortableDeviceManager();
+            PortableDeviceManager = new MockPortableDeviceManager();
 
             PortableDevice = GenerateMock<IPortableDevice>();
 

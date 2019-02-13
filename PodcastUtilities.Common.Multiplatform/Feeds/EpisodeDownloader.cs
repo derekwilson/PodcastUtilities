@@ -246,11 +246,11 @@ namespace PodcastUtilities.Common.Feeds
 
                 _complete = true;
                 _counterFactory.CreateAverageCounter(Constants.PodcastUtilitiesCommonCounterCategory,
-													 Constants.AverageTimeToDownload,
-													 Constants.NumberOfDownloads).RegisterTime(_stopWatch);
+                                                    Constants.AverageTimeToDownload,
+                                                    Constants.NumberOfDownloads).RegisterTime(_stopWatch);
                 _counterFactory.CreateAverageCounter(Constants.PodcastUtilitiesCommonCounterCategory,
-													 Constants.AverageMBDownload,
-													 Constants.SizeOfDownloads).RegisterValue(ConvertBytesToMB(_bytesDownloaded));
+                                                    Constants.AverageMBDownload,
+                                                    Constants.SizeOfDownloads).RegisterValue(ConvertBytesToMB(_bytesDownloaded));
                 TaskComplete.Set();
             }
         }

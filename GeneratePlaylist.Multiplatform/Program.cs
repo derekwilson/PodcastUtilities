@@ -35,15 +35,15 @@ using PodcastUtilities.Ioc;
 
 namespace GeneratePlaylist
 {
-	class Program
-	{
-		static private void DisplayBanner()
-		{
-			// do not move the GetExecutingAssembly call from here into a supporting DLL
-			Assembly me = System.Reflection.Assembly.GetExecutingAssembly();
-			AssemblyName name = me.GetName();
-			Console.WriteLine("GeneratePlaylist v{0}", name.Version);
-		}
+    class Program
+    {
+        static private void DisplayBanner()
+        {
+            // do not move the GetExecutingAssembly call from here into a supporting DLL
+            Assembly me = System.Reflection.Assembly.GetExecutingAssembly();
+            AssemblyName name = me.GetName();
+            Console.WriteLine("GeneratePlaylist v{0}", name.Version);
+        }
 
         static private void DisplayHelp()
         {
@@ -61,7 +61,7 @@ namespace GeneratePlaylist
                 return;
             }
 
-			IIocContainer iocContainer = InitializeIocContainer();
+            IIocContainer iocContainer = InitializeIocContainer();
 
             var control = new ReadOnlyControlFile(args[0]);
             var finder = iocContainer.Resolve<IFinder>();
@@ -69,16 +69,16 @@ namespace GeneratePlaylist
             var pathUtilities = iocContainer.Resolve<IPathUtilities>();
             var playlistFactory = iocContainer.Resolve<IPlaylistFactory>();
 
-			var generator = new Generator(finder, fileUtilities, pathUtilities, playlistFactory);
+            var generator = new Generator(finder, fileUtilities, pathUtilities, playlistFactory);
             generator.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(GeneratorStatusUpdate);
 
             if (!string.IsNullOrEmpty(control.GetPlaylistFileName()))
                 generator.GeneratePlaylist(control, false);
         }
 
-		private static IIocContainer InitializeIocContainer()
-		{
-			var container = IocRegistration.GetEmptyContainer();
+        private static IIocContainer InitializeIocContainer()
+        {
+            var container = IocRegistration.GetEmptyContainer();
 
             IocRegistration.RegisterFileServices(container);
             IocRegistration.RegisterPlaylistServices(container);

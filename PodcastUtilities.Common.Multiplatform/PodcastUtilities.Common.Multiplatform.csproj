@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net35;netstandard2.0</TargetFrameworks>
-    <RootNamespace>PodcastUtilities.Common</RootNamespace>
-    <AssemblyVersion>3.0.0.0</AssemblyVersion>
-    <FileVersion>3.0.0.0</FileVersion>
-    <Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
-    <Product>PodcastUtilities</Product>
-    <Company>AAD</Company>
-    <Authors>Andrew Trevarrow and Derek Wilson</Authors>
-    <Version>3.0.0</Version>
-    <Description>Common utilities and API</Description>
-    <AssemblyName>PodcastUtilities.Common</AssemblyName>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net35;netstandard2.0</TargetFrameworks>
+		<RootNamespace>PodcastUtilities.Common</RootNamespace>
+		<AssemblyVersion>3.0.0.0</AssemblyVersion>
+		<FileVersion>3.0.0.0</FileVersion>
+		<Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
+		<Product>PodcastUtilities</Product>
+		<Company>AAD</Company>
+		<Authors>Andrew Trevarrow and Derek Wilson</Authors>
+		<Version>3.0.0</Version>
+		<Description>Common utilities and API</Description>
+		<AssemblyName>PodcastUtilities.Common</AssemblyName>
+	</PropertyGroup>
 
 	<!-- .NET Standard 2.0 references, compilation flags and build options -->
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
@@ -48,20 +48,20 @@
 		<Reference Include="System.Xml.Linq" />
 		<Reference Include="System.Data" />
 		<Reference Include="System.Data.DataSetExtensions" />
-    <ProjectReference Include="..\PodcastUtilities.PortableDevices\PodcastUtilities.PortableDevices.csproj">
-      <Project>{A3FE8B09-71F1-4D97-8109-F946F90FEFB9}</Project>
-      <Name>PodcastUtilities.PortableDevices</Name>
-    </ProjectReference>
+		<ProjectReference Include="..\PodcastUtilities.PortableDevices\PodcastUtilities.PortableDevices.csproj">
+			<Project>{A3FE8B09-71F1-4D97-8109-F946F90FEFB9}</Project>
+			<Name>PodcastUtilities.PortableDevices</Name>
+		</ProjectReference>
 	</ItemGroup>
 	<ItemGroup>
-	  <None Remove="XML\asxPlaylist.xml" />
-	  <None Remove="XML\state.xml" />
-	  <None Remove="XML\wplPlaylist.xml" />
+		<None Remove="XML\asxPlaylist.xml" />
+		<None Remove="XML\state.xml" />
+		<None Remove="XML\wplPlaylist.xml" />
 	</ItemGroup>
 	<ItemGroup>
-	  <EmbeddedResource Include="XML\asxPlaylist.xml" />
-	  <EmbeddedResource Include="XML\state.xml" />
-	  <EmbeddedResource Include="XML\wplPlaylist.xml" />
+		<EmbeddedResource Include="XML\asxPlaylist.xml" />
+		<EmbeddedResource Include="XML\state.xml" />
+		<EmbeddedResource Include="XML\wplPlaylist.xml" />
 	</ItemGroup>
 
 </Project>
