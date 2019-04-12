@@ -7,5 +7,6 @@
   <Config name="Debug" binpathtype="Auto">
     <assembly path="PodcastUtilities.Common.Tests\bin\Debug\PodcastUtilities.Common.Tests.dll" />
     <assembly path="PodcastUtilities.Presentation.Tests\bin\Debug\PodcastUtilities.Presentation.Tests.dll" />
+    <assembly path="PodcastUtilities.PortableDevices.Tests\bin\Debug\PodcastUtilities.PortableDevices.Tests.dll" />
   </Config>
 </NUnitProject>

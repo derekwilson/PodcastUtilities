@@ -39,9 +39,9 @@ namespace PodcastUtilities.PortableDevices.Tests.DeviceManagerTests
         {
             base.GivenThat();
             // genius: .NET4 doesnt work properly with Rhino
-            // the fix is in
             // https://stackoverflow.com/questions/3444581/mocking-com-interfaces-using-rhino-mocks
-            Castle.DynamicProxy.Generators.AttributesToAvoidReplicating.Add(typeof(TypeIdentifierAttribute));
+            // if we need to use .NET4 then uncomment this line
+            //Castle.DynamicProxy.Generators.AttributesToAvoidReplicating.Add(typeof(TypeIdentifierAttribute));
 
             PortableDeviceManager = new MockPortableDeviceManager();
 
