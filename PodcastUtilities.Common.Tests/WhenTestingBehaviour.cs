@@ -18,8 +18,8 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
+using Moq;
 using NUnit.Framework;
-using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests
 {
@@ -58,21 +58,27 @@ namespace PodcastUtilities.Common.Tests
 		/// </summary>
 		protected abstract void When();
 
-		protected TM GenerateMock<TM>()
-			where TM : class
+		protected Mock<MOCKTYPE> GenerateMoq<MOCKTYPE>()
+			where MOCKTYPE : class
 		{
-			return MockRepository.GenerateMock<TM>();
-		}
+			return new Mock<MOCKTYPE>(MockBehavior.Loose);
+        }
 
-		protected TS GenerateStub<TS>()
-			where TS : class
-		{
-			return MockRepository.GenerateStub<TS>();
-		}
+        protected TS GenerateMock<TS>()
+            where TS : class
+        {
+            return Rhino.Mocks.MockRepository.GenerateMock<TS>();
+        }
 
-		protected TP GeneratePartialMock<TP>(params object[] args) where TP : class
+        protected TS GenerateStub<TS>()
+            where TS : class
+        {
+            return Rhino.Mocks.MockRepository.GenerateStub<TS>();
+        }
+
+        protected TP GeneratePartialMock<TP>(params object[] args) where TP : class
 		{
-			var mockRepository = new MockRepository();
+			var mockRepository = new Rhino.Mocks.MockRepository();
 			var mock = mockRepository.PartialMock<TP>(args);
 			mockRepository.Replay(mock);
 

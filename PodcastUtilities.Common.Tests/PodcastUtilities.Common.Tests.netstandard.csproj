@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0</TargetFrameworks>
+		<RootNamespace>PodcastUtilities.Common</RootNamespace>
+		<AssemblyVersion>3.0.0.0</AssemblyVersion>
+		<FileVersion>3.0.0.0</FileVersion>
+		<Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
+		<Product>PodcastUtilities</Product>
+		<Company>AAD</Company>
+		<Authors>Andrew Trevarrow and Derek Wilson</Authors>
+		<Version>3.0.0</Version>
+		<Description>Core unit tests</Description>
+		<AssemblyName>PodcastUtilities.Common.Tests</AssemblyName>
+	</PropertyGroup>
+
+	<!-- .NET Standard 2.0 references, compilation flags and build options -->
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+		<DefineConstants>NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+		<Compile Remove=".\Feeds\**\*.cs" />
+		<Compile Remove=".\Files\**\*.cs" />
+		<Compile Remove=".\Platform\**\*.cs" />
+		<Compile Remove=".\Playlists\**\*.cs" />
+		<Compile Remove=".\Rfc822DateTimeTests\**\*.cs" />
+		<Compile Remove=".\TaskPoolTests\**\*.cs" />
+		<Compile Remove=".\WebClientFactoryTests\**\*.cs" />
+		<Compile Remove=".\XmlEncoderTests\**\*.cs" />
+		<Compile Remove=".\XmlStateTests\**\*.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="XML\testbigrssfeed.xml" />
+	  <None Remove="XML\testcontrolfile.xml" />
+	  <None Remove="XML\testemptyrssfeed.xml" />
+	  <None Remove="XML\testfile.xml" />
+	  <None Remove="XML\testrssfeed.xml" />
+	  <None Remove="XML\teststate.xml" />
+	  <None Remove="XML\teststateinvalid.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="XML\testbigrssfeed.xml" />
+	  <EmbeddedResource Include="XML\testcontrolfile.xml" />
+	  <EmbeddedResource Include="XML\testemptyrssfeed.xml" />
+	  <EmbeddedResource Include="XML\testfile.xml" />
+	  <EmbeddedResource Include="XML\testrssfeed.xml" />
+	  <EmbeddedResource Include="XML\teststate.xml" />
+	  <EmbeddedResource Include="XML\teststateinvalid.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Moq" Version="4.10.1" />
+	  <PackageReference Include="NUnit" Version="3.11.0" />
+	  <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj" />
+	</ItemGroup>
+
+</Project>

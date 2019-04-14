@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PodcastUtilities.Common.Tests</RootNamespace>
     <AssemblyName>PodcastUtilities.Common.Tests</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -58,8 +58,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.3.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.10.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.10.1\lib\net45\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
       <HintPath>..\References\NUnit\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
@@ -67,8 +72,15 @@
       <HintPath>..\References\Rhino\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.1\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -128,138 +140,13 @@
     <Compile Include="DisplayFormatterTests\WhenTestingTheRenderFileSizeDisplayFormatter.cs" />
     <Compile Include="Exceptions\DownloaderExceptionTests\WhenCreatingAnException.cs" />
     <Compile Include="Exceptions\DownloaderExceptionTests\WhenCreatingAnExceptionWithAnInnerException.cs" />
-    <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithADestinationPathToken.cs" />
-    <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithADownloadFolderToken.cs" />
-    <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithADownloadRootToken.cs" />
-    <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithALiteralCommandline.cs" />
-    <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithAnExePathToken.cs" />
-    <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithANullCommandline.cs" />
-    <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGenerator.cs" />
-    <Compile Include="Feeds\DownloaderTests\WhenTestingTheDownloaderInRssRetainingTheFile.cs" />
-    <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverter.cs" />
-    <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsItems.cs" />
-    <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsNoItems.cs" />
-    <Compile Include="Files\CopierTests\WhenCopyingThrowsAnException.cs" />
-    <Compile Include="Files\CopierTests\WhenDestinationDriveIsAlreadyFull.cs" />
-    <Compile Include="Files\CopierTests\WhenDestinationFileAlreadyExists.cs" />
-    <Compile Include="Files\CopierTests\WhenDriveInfoThrowsAnError.cs" />
-    <Compile Include="Files\CopierTests\WhenTestingCopier.cs" />
-    <Compile Include="Files\EpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFoldersWhenTheFolderWillOnlyTheStateFile.cs" />
-    <Compile Include="Files\UnwantedFolderRemoverTests\WhenTestingUnwantedFolderRemover.cs" />
-    <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderContainsFiles.cs" />
-    <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderContainsSubfolders.cs" />
-    <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderIsEmpty.cs" />
-    <Compile Include="Playlists\PlaylistFactoryTests\WhenCreatingANewM3uPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistM3uTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistM3uTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistM3uTests\WhenCreatingANewPlaylist.cs" />
+    <Compile Include="StateProviderTests\WhenTestingTheStateProviderMoq.cs" />
+    <Compile Include="StateProviderTests\WhenTestingTheStateProviderMoqError.cs" />
+    <Compile Include="StateProviderTests\WhenTestingTheStateProviderRhino.cs" />
     <Compile Include="TestFileInfo.cs" />
-    <Compile Include="Files\EpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFoldersWhenTheFolderIsNotEmpty.cs" />
-    <Compile Include="Files\EpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFoldersWhenTheFolderWillBeEmpty.cs" />
-    <Compile Include="Files\FinderTests\WhenGettingAllFilesInAFolder.cs" />
-    <Compile Include="Files\FinderTests\WhenGettingLessThanAllFilesInAFolder.cs" />
-    <Compile Include="Files\FinderTests\WhenGettingUnlimitedSortedFilesInAFolder.cs" />
-    <Compile Include="Files\FinderTests\WhenTestingTheFinder.cs" />
-    <Compile Include="Files\SorterTests\WhenSortingByCreationTimeAscending.cs" />
-    <Compile Include="Files\SorterTests\WhenSortingByCreationTimeDescending.cs" />
-    <Compile Include="Files\SorterTests\WhenSortingByNameAscending.cs" />
-    <Compile Include="Files\SorterTests\WhenSortingByNameDescending.cs" />
-    <Compile Include="Files\SorterTests\WhenTestingTheSorter.cs" />
-    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileCopy\WhenBothPathsAreNotMtp.cs" />
-    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileCopy\WhenDestinationFileIsMtp.cs" />
-    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileCopy\WhenSourceFileIsMtp.cs" />
-    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileDelete\WhenPathIsMtpAndDeviceDoesNotExist.cs" />
-    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileDelete\WhenPathIsMtpAndDeviceExists.cs" />
-    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileDelete\WhenPathIsNotMtp.cs" />
-    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileExists\WhenPathIsMtp.cs" />
-    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\FileExists\WhenPathIsNotMtp.cs" />
-    <Compile Include="Platform\FileSystemAwareFileUtilitiesTests\WhenTestingFileUtilities.cs" />
-    <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenGettingDirectoryInfoAndDeviceIsFound.cs" />
-    <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenGettingDirectoryInfoAndDeviceIsNotFound.cs" />
-    <Compile Include="Platform\Mtp\MtpDirectoryInfoProviderTests\WhenTestingMtpDirectoryInfoProvider.cs" />
-    <Compile Include="Platform\Mtp\MtpDriveInfoProviderTests\WhenGettingDriveInfoAndDeviceIsFound.cs" />
-    <Compile Include="Platform\Mtp\MtpDriveInfoProviderTests\WhenGettingDriveInfoAndDeviceIsFoundAndHasStorageObject.cs" />
-    <Compile Include="Platform\Mtp\MtpDriveInfoProviderTests\WhenGettingDriveInfoAndDeviceIsFoundButNoStorageObject.cs" />
-    <Compile Include="Platform\Mtp\MtpDriveInfoProviderTests\WhenGettingDriveInfoAndDeviceIsNotFound.cs" />
-    <Compile Include="Platform\Mtp\MtpDriveInfoProviderTests\WhenTestingMtpDriveInfoProvider.cs" />
-    <Compile Include="Platform\Mtp\MtpPathTests\WhenPathDoesNotHaveMtpPrefix.cs" />
-    <Compile Include="Platform\Mtp\MtpPathTests\WhenPathHasMtpPrefix.cs" />
-    <Compile Include="Playlists\PlaylistAsxTests\WhenAddinATrackToAnInvalidPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistAsxTests\WhenAddingTrackContainingAmpersands.cs" />
-    <Compile Include="Playlists\PlaylistAsxTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistAsxTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistAsxTests\WhenCreatingNewPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistFactoryTests\WhenCreatingANewAsxPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistFactoryTests\WhenCreatingANewPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistFactoryTests\WhenCreatingANewUnknownPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistFactoryTests\WhenCreatingANewWplPlaylist.cs" />
-    <Compile Include="Playlists\GeneratorTests\WhenCopyToDestinationIsSpecified.cs" />
-    <Compile Include="Playlists\GeneratorTests\WhenTestingThePlaylistGenerator.cs" />
-    <Compile Include="Playlists\GeneratorTests\WhenThereAreNoSourcePodcasts.cs" />
-    <Compile Include="Playlists\GeneratorTests\WhenThereAreSomePodcastsContainingFiles.cs" />
-    <Compile Include="Playlists\PlaylistWplTests\WhenAddinATrackToAnInvalidPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistWplTests\WhenAddingTrackContainingAmpersands.cs" />
-    <Compile Include="Playlists\PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
-    <Compile Include="Playlists\PlaylistWplTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderFactoryTests\WhenUsingAnEpisodeDownloaderFactory.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\Cancel\WhenCancellingADownloadThatHasNotBeenStarted.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\Cancel\WhenCancellingAStartedDownload.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\Start\WhenStartingTheDownloaderAfterItHasCompleted.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\Start\WhenStartingTheDownloaderWhenFolderDoesNotExist.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCancellingTheDownloader.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCompletingTheDownloader.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\Start\WhenStartingTheDownloader.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\Start\WhenStartingTheDownloaderTwice.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\Start\WhenStartingTheDownloaderWithoutASyncItem.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCompletingTheDownloaderWithTheStateFileLocked.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenCompletingTheDownloaderWithTheStateFileLockedForever.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTestingTheDownloaderProgressChangedMechanism.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTheProgressChanges.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WebClientEvent\DownloadProgressChanged\WhenTheProgressHasNotChanged.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WhenTestingTheDownloader.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderCompleteWithMissingToken.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderReportsAnError.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTheDownloaderReportsANestedError.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WebClientEvent\DownloadFileCompleted\WhenTestingTheDownloaderCompletedMechanism.cs" />
-    <Compile Include="Feeds\EpisodeDownloaderTests\WhenTestingTheInitialState.cs" />
-    <Compile Include="Files\EpisodePurgerTests\WhenUsingTheEpisodePurger.cs" />
-    <Compile Include="Files\EpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWithAFolderNamingStyle.cs" />
-    <Compile Include="Files\EpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWithAPublishedDate.cs" />
-    <Compile Include="Files\EpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWithoutAPublishedDate.cs" />
-    <Compile Include="Files\EpisodePurgerTests\WhenUsingTheEpisodePurgerToPurgeFilesWhenPurgingIsNotSelected.cs" />
     <Compile Include="Configuration\PodcastFactoryTests\WhenCreatingAPodcast.cs" />
-    <Compile Include="Feeds\DownloaderTests\WhenTestingTheDownloader.cs" />
-    <Compile Include="Feeds\DownloaderTests\WhenTestingTheDownloaderInRss.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\DownloadStrategy\WhenFindingAllEpisodesInAFeed.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\DownloadStrategy\WhenFindingLatestEpisodesInAFeed.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\DownloadStrategy\WhenFindingNewEpisodesInAFeed.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByEpisodeTitle.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByEpisodeTitleAndPublishedDate.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByPubDate.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByPubDateAndFolder.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\NamingStyle\WhenFindingEpisodesInAFeedNamedByPubDateAndFolderInFolders.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\WhenFindingEpisodesInAFeedThatIsAlreadyDownloaded.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\WhenFindingEpisodesInAFeedThatThrowsAnError.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\WhenFindingEpisodesInAFeedWithOutOfDateEpisodes.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\WhenFindingEpisodesInAnEmptyFeed.cs" />
-    <Compile Include="Feeds\EpisodeFinderTests\WhenUsingTheEpisodeFinder.cs" />
-    <Compile Include="Feeds\PodcastFeedFactoryTests\WhenCreatingANewAtomPodcastFeed.cs" />
-    <Compile Include="Feeds\PodcastFeedFactoryTests\WhenCreatingANewPodcastFeed.cs" />
-    <Compile Include="Feeds\PodcastFeedFactoryTests\WhenCreatingANewRssPodcastFeed.cs" />
-    <Compile Include="Feeds\PodcastFeedInRssFormatTests\WhenConstructingAFeedFromExampleXml.cs" />
-    <Compile Include="Feeds\PodcastFeedInRssFormatTests\WhenLoadingAFileWithEpisodes.cs" />
-    <Compile Include="Feeds\PodcastFeedInRssFormatTests\WhenLoadingALargeExmapleFile.cs" />
-    <Compile Include="Feeds\PodcastFeedInRssFormatTests\WhenLoadingTheEpisodesFromExampleXml.cs" />
-    <Compile Include="Feeds\PodcastFeedInRssFormatTests\WhenTestingAnEmptyExampleRssXml.cs" />
-    <Compile Include="Feeds\PodcastFeedInRssFormatTests\WhenTestingTheFeed.cs" />
-    <Compile Include="Feeds\PodcastFeedItemTests\WhenTitleContainsInvalidCharacters.cs" />
-    <Compile Include="Files\SynchronizerTests\WhenSubscribingToStatusUpdateEvent.cs" />
-    <Compile Include="Playlists\PlaylistWplTests\WhenCreatingNewPlaylist.cs" />
-    <Compile Include="Files\SynchronizerTests\WhenTestingTheSynchronizer.cs" />
-    <Compile Include="Files\SynchronizerTests\WhenUsingTheSynchronizerToSynchronize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rfc822DateTimeTests\WhenConvertingToDateDime.cs" />
-    <Compile Include="StateProviderTests\WhenTestingTheStateProvider.cs" />
     <Compile Include="TestControlFileFactory.cs" />
     <Compile Include="XmlEncoderTests\WhenEncodingXml.cs" />
     <Compile Include="XmlStateTests\WhenLoadingTheTestState.cs" />
@@ -273,15 +160,8 @@
     <Compile Include="TaskPoolTests\WhenRunningTasks.cs" />
     <Compile Include="TaskPoolTests\WhenTestingTheTaskPool.cs" />
     <Compile Include="TaskPoolTests\WhenTheLastTaskCompletes.cs" />
-    <Compile Include="Files\UnwantedFileRemoverTests\WhenDestinationDirectoryDoesNotExist.cs" />
-    <Compile Include="Files\UnwantedFileRemoverTests\WhenTestingUnwantedFileRemover.cs" />
-    <Compile Include="Files\UnwantedFileRemoverTests\WhenThereAreFilesToKeep.cs" />
-    <Compile Include="Files\UnwantedFileRemoverTests\WhenThereAreNoFilesToKeep.cs" />
     <Compile Include="WebClientFactoryTests\WhenUsingAWebClientFactory.cs" />
     <Compile Include="WhenTestingBehaviour.cs" />
-    <Compile Include="Playlists\XmlFileBaseTests\WhenSettingTextNodes.cs" />
-    <Compile Include="Playlists\XmlFileBaseTests\WhenTestingAnXmlFile.cs" />
-    <Compile Include="Playlists\XmlFileBaseTests\WhenGettingTextNodes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj">
