@@ -45,7 +45,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests.WebClientEv
         {
             Assert.That(_statusUpdateArgs.Exception, Is.SameAs(_reportedError));
             Assert.That(_statusUpdateArgs.MessageLevel, Is.EqualTo(StatusUpdateLevel.Error));
-            Assert.That(_statusUpdateArgs.Message, Is.StringContaining("TEST ERROR"));
+            Assert.That(_statusUpdateArgs.Message, Is.StringContaining("Error in: title"));		// error should show the episode title
         }
 
         [Test]

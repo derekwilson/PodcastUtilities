@@ -59,9 +59,9 @@
     <Compile Include="ViewModels\ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PodcastUtilities.Common\PodcastUtilities.Common.csproj">
-      <Project>{37562F85-B1BD-4AB8-B74B-685B05F9CF41}</Project>
-      <Name>PodcastUtilities.Common</Name>
+    <ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj">
+      <Project>{0a6a99b1-6764-40d6-a892-487e6dee34bd}</Project>
+      <Name>PodcastUtilities.Common.Multiplatform</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

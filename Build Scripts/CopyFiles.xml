@@ -6,27 +6,55 @@
 		<Configuration>Release</Configuration>
 	</PropertyGroup>
 
+	<PropertyGroup Condition=" '$(FrameworkPlatform)' == '' ">
+		<FrameworkPlatform>net35</FrameworkPlatform>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(CorePlatform)' == '' ">
+		<CorePlatform>netcoreapp2.1</CorePlatform>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<Files Include="$(MSBuildProjectDirectory)\..\LICENSE.txt"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\Documents\User\*"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\Documents\Developer\Help\*.chm"/>
-		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts\bin\$(Configuration)\*.dll"/>
-		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts\bin\$(Configuration)\*.exe"/>
-		<Files Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist\bin\$(Configuration)\*.dll"/>
-		<Files Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist\bin\$(Configuration)\*.exe"/>
-		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts\bin\$(Configuration)\*.dll"/>
-		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts\bin\$(Configuration)\*.exe"/>
-		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts\bin\$(Configuration)\*.dll"/>
-		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts\bin\$(Configuration)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.exe"/>
-		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests\bin\$(Configuration)\*.txt"/>
-		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests\bin\$(Configuration)\*.dll"/>
-		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests\bin\$(Configuration)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.txt"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*controlfile.xml"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.dll"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\LICENSE.txt"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\Documents\User\*"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\Documents\Developer\Help\*.chm"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\SyncPodcasts.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*.dll"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\SyncPodcasts.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*.json"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*.dll"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*.json"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*.dll"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*.json"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\PurgePodcasts.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*.dll"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\PurgePodcasts.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*.json"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*.txt"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*controlfile.xml"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*.dll"/>
+		<FilesCore Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(CorePlatform)\publish\*.json"/>
 	</ItemGroup>
 
 	<Target Name="CopyToCurrentBuild" DependsOnTargets="">
-		<Copy SourceFiles="@(Files)" DestinationFolder="$(BuildOutputRoot)"></Copy>
+		<Copy SourceFiles="@(Files)" DestinationFolder="$(BuildOutputRoot)\$(FrameworkPlatform)"></Copy>
+		<Copy SourceFiles="@(FilesCore)" DestinationFolder="$(BuildOutputRoot)\$(CorePlatform)"></Copy>
 	</Target>
 
 	<Target Name="ValidateParameters">

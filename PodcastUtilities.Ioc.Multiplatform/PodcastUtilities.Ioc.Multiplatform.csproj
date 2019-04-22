@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+		<TargetFrameworks>net35;netstandard2.0</TargetFrameworks>
+		<RootNamespace>PodcastUtilities.Ioc</RootNamespace>
+		<AssemblyName>PodcastUtilities.Ioc</AssemblyName>
+		<Version>3.0.0</Version>
+		<Authors>Andrew Trevarrow and Derek Wilson</Authors>
+		<Company>AAD</Company>
+		<Product>PodcastUtilities</Product>
+		<Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
+		<Description>Ioc containers for PodcastUtilities</Description>
+  </PropertyGroup>
+
+	<!-- .NET Standard 2.0 references, compilation flags and build options -->
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+		<DefineConstants>NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+		<ProjectReference>
+			<Name>PodcastUtilities.Common</Name>
+		</ProjectReference>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+		<Compile Remove=".\LinFuIocContainer.cs" Label="NO_LINFU" />
+	</ItemGroup>
+
+	<!-- .NET references, compilation flags and build options -->
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net35'">
+		<DefineConstants>NET35;NETFULL</DefineConstants>
+	</PropertyGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net35' ">
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Xml.Linq" />
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="System.Data" />
+		<Reference Include="System.Xml" />
+		<Reference Include="LinFu.Core">
+			<HintPath>..\References\LinFu\LinFu.Core.dll</HintPath>
+		</Reference>
+		<ProjectReference Include="..\PodcastUtilities.PortableDevices\PodcastUtilities.PortableDevices.csproj">
+			<Name>PodcastUtilities.PortableDevices</Name>
+		</ProjectReference>
+		<Compile Remove=".\MicrosoftExtensionsIocContainer.cs" Label="NO_MSEXTENSIONS" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection">
+			<Version>2.2.0</Version>
+		</PackageReference>
+	</ItemGroup>
+
+</Project>
