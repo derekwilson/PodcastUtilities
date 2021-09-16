@@ -12,6 +12,7 @@
 		<Product>PodcastUtilities</Product>
 		<Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
 		<Description>Podcast Downloader</Description>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
 	<!-- .NET Standard 2.0 references, compilation flags and build options -->
@@ -28,13 +29,17 @@
 		<Reference Include="System.Core" />
 		<Reference Include="System.Xml.Linq" />
 		<Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Runtime" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
     <Reference Include="System.Data" />
 		<Reference Include="System.Xml" />
 	</ItemGroup>
 
-	<ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
 		<ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj" />
 		<ProjectReference Include="..\PodcastUtilities.Ioc.Multiplatform\PodcastUtilities.Ioc.Multiplatform.csproj" />
 	</ItemGroup>

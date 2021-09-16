@@ -11,7 +11,8 @@
 		<Product>PodcastUtilities</Product>
 		<Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
 		<Description>Full stack integration tests for Podcast Utilities</Description>
-	</PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
 
 	<!-- .NET Standard 2.0 references, compilation flags and build options -->
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1'">
@@ -58,6 +59,12 @@
 		</Content>
 	</ItemGroup>
 
+    <ItemGroup>
+    <Compile Include="..\Shared\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  
 	<ItemGroup>
 		<ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj" />
 		<ProjectReference Include="..\PodcastUtilities.Ioc.Multiplatform\PodcastUtilities.Ioc.Multiplatform.csproj" />
