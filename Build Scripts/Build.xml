@@ -15,6 +15,8 @@
     <SolutionRoot>$(MSBuildProjectDirectory)\..</SolutionRoot>
     <SolutionName>PodcastUtilities.Multiplatform</SolutionName>
     <BuildOutputRoot>$(MSBuildProjectDirectory)\..\CurrentBuild</BuildOutputRoot>
+    <BuildOutput35>$(MSBuildProjectDirectory)\..\CurrentBuild\net35</BuildOutput35>
+    <BuildOutputNetCore>$(MSBuildProjectDirectory)\..\CurrentBuild\netcoreapp2.1</BuildOutputNetCore>
     <ReleasesRoot>$(MSBuildProjectDirectory)\..\_PreBuiltPackages</ReleasesRoot>
     <NUnitPath>"C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0\nunit-console.exe"</NUnitPath>
   </PropertyGroup>
@@ -25,13 +27,13 @@
 			<![CDATA[
 			public static string ScriptMain()
 			{
-				return System.DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
+				return System.DateTime.Now.ToString("yyyy-MM-dd HH-mm");
 			}
 			]]>
 		</ZipSuffixCode>
 	</PropertyGroup>
 
-	<Target Name="Build" DependsOnTargets="Zip">
+	<Target Name="Build" DependsOnTargets="Zip;Zip35;ZipCore">
 		<Message Importance="high" Text="-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"/>
 		<Message Importance="high" Text="If you are happy with the build please remember to check it in "/>
 		<Message Importance="high" Text="-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"/>
@@ -69,7 +71,7 @@
 	/>
   </Target>
 
-  <!-- Zip up the builds -->
+  <!-- Zip up the multiplatform builds -->
   <Target Name="Zip" DependsOnTargets="Copy">
 	<Script Language="C#" Code="$(ZipSuffixCode)">
 		<Output TaskParameter="ReturnValue" PropertyName="ZipSuffix" />
@@ -78,6 +80,30 @@
 		Projects="ZipFiles.xml"
 		Targets="MakeZip"
 		Properties="ZipName=$(SolutionName) $(ZipSuffix);ZipFolderr=$(ReleasesRoot);FilesFolder=$(BuildOutputRoot)"
+    />
+  </Target>
+
+  <!-- Zip up the net 3.5 builds -->
+  <Target Name="Zip35" DependsOnTargets="Copy">
+	<Script Language="C#" Code="$(ZipSuffixCode)">
+		<Output TaskParameter="ReturnValue" PropertyName="ZipSuffix" />
+	</Script>
+    <MSBuild
+		Projects="ZipFiles.xml"
+		Targets="MakeZip"
+		Properties="ZipName=$(SolutionName).Net35 $(ZipSuffix);ZipFolderr=$(ReleasesRoot);FilesFolder=$(BuildOutput35)"
+    />
+  </Target>
+
+  <!-- Zip up the .net core builds -->
+  <Target Name="ZipCore" DependsOnTargets="Copy">
+	<Script Language="C#" Code="$(ZipSuffixCode)">
+		<Output TaskParameter="ReturnValue" PropertyName="ZipSuffix" />
+	</Script>
+    <MSBuild
+		Projects="ZipFiles.xml"
+		Targets="MakeZip"
+		Properties="ZipName=$(SolutionName).Core $(ZipSuffix);ZipFolderr=$(ReleasesRoot);FilesFolder=$(BuildOutputNetCore)"
     />
   </Target>
 

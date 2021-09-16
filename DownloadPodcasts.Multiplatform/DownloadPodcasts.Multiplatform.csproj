@@ -28,7 +28,9 @@
 		<Reference Include="System.Core" />
 		<Reference Include="System.Xml.Linq" />
 		<Reference Include="System.Data.DataSetExtensions" />
-		<Reference Include="System.Data" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+    <Reference Include="System.Data" />
 		<Reference Include="System.Xml" />
 	</ItemGroup>
 

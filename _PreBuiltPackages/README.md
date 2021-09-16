@@ -4,6 +4,12 @@ PodcastUtilities are a set of utilities designed to help manage digital media on
 
 This folder contains prebuild packages for Windows, the file name has the date the package was built, if in doubt take the latest dated package. Download, unzip, read the documentation and away you go 
 
+### Zip Files ###
+
+PodcastUtilities.Multiplatform.Net35 YYYY-MM-DD hh-mm is the files for .NET Framework
+PodcastUtilities.Multiplatform.Core YYYY-MM-DD hh-mm is the files for .NET Core
+PodcastUtilities.Multiplatform YYYY-MM-DD hh-mm is both the above in one zip
+
 ### Benifits ###
 
 * Portable

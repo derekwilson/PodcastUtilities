@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>podcastutilities-core</id>
+    <version>3.0.0.0</version>
+    <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
+    <owners>Andrew Trvarrow and Derek Wilson</owners>
+
+    <!-- == SOFTWARE SPECIFIC SECTION == -->
+    <!-- This section is about the software itself -->
+    <title>PodcastUtilities Core Install</title>
+    <authors>Andrew Trvarrow,Derek Wilson</authors>
+    <projectUrl>https://github.com/derekwilson/PodcastUtilities</projectUrl>
+    <copyright>2010-2013 Andrew Trvarrow and Derek Wilson</copyright>
+    <licenseUrl>https://github.com/derekwilson/PodcastUtilities/blob/master/LICENSE.txt</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://github.com/derekwilson/PodcastUtilities/tree/master/Documents</docsUrl>
+    <tags>PodcastUtilities podcast dowload sync</tags>
+    <summary>PodcastUtilities are a set of utilities designed to help manage digital media on removable drives. Utilities are provided to Download Podcasts, Sync Podcasts and Generate Playlists</summary>
+    <description>There are many sophisticated media management programs available for organising digital media however the key differences that Podcast Utilities has are
+
+*Portable* Podcast Utilities is a “portable” application, in that it does not need to be installed and can be run from any drive type, local network or removable flash drive
+
+*Cross Platform* Podcast Utilities can be run on Windows, Linus or Mac machines by using the .NET Core cross platform version of the utilities.
+
+*Configurable* Almost any synchronisation solution can be configured, for example copy 3 of this podcast, all of these podcasts, in this order, and leave a certain amount of space on the device. The number of concurrent downloads can easily be configured.
+
+*Lightweight* The application does not use large amounts of memory in a system tray icon all the time its not being used, it only uses system resources when its being run.
+
+*Support for UMS* PodcastUtilities supports USB Mass Storage (UMS) devices, where the device appears as a drive letter in Explorer like a flash drive
+
+*Scriptable* Podcast Utilities lends itself to being run as a scheduled task or from a script. The API is “headless” and can easily be called and used from other applications
+
+*Open Source* The source is open and available
+
+*Free* There is no cost to using Podcast Utilities for any use.
+
+*No need for an iTunes account* Podcasts promoted on iTunes can be downloaded however there is no need to have an iTunes account.
+
+    </description>
+    <releaseNotes>https://github.com/derekwilson/PodcastUtilities/tags</releaseNotes>
+  </metadata>
+  <files>
+    <!-- this section controls what actually gets packaged into the Chocolatey package -->
+    <file src="tools\**" target="tools" />
+    <!--Building from Linux? You may need this instead: <file src="tools/**" target="tools" />-->
+  </files>
+</package>
