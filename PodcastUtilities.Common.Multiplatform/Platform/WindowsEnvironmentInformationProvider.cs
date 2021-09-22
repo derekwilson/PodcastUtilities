@@ -18,7 +18,10 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
+using System;
+using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace PodcastUtilities.Common.Platform
 {
@@ -34,6 +37,17 @@ namespace PodcastUtilities.Common.Platform
         public IDirectoryInfo GetCurrentApplicationDirectory()
         {
             return new SystemDirectoryInfo(System.IO.Directory.GetParent(Assembly.GetEntryAssembly().Location));
+        }
+
+        public static List<string> GetEnvironmentRuntimeDisplayInformation()
+        {
+            List<string> result = new List<string>();
+            result.Add($".NET CLR: {Environment.Version.ToString()}");
+#if NETSTANDARD
+            // RuntimeInformation was only added in .net 4
+            result.Add($"{RuntimeInformation.OSDescription}, Framework: {RuntimeInformation.FrameworkDescription}, OS: {RuntimeInformation.OSArchitecture}, Processor: {RuntimeInformation.ProcessArchitecture}");
+#endif
+            return result;
         }
     }
 }

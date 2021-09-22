@@ -45,6 +45,12 @@ namespace PerfmonCountersInstaller
 
         static private void DisplayHelp()
         {
+            Console.Write("Running on ");
+            List<string> envirnment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
+            foreach (string line in envirnment)
+            {
+                Console.WriteLine(line);
+            }
             Console.WriteLine("Usage: PerfmonCountersInstaller <option>");
             Console.WriteLine("Where");
             Console.WriteLine("  <option> = del to delete the counters and nothing to install them");

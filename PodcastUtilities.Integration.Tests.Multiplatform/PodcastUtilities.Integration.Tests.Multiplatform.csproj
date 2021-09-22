@@ -76,4 +76,9 @@
 		</PackageReference>
 	</ItemGroup>
 
+  <!-- app config file for .NET35 -->
+  <Target Name="CopyCustomContent" AfterTargets="AfterBuild" Condition=" '$(TargetFramework)' == 'net35' ">
+    <Copy SourceFiles="AppNet35.config" DestinationFiles="$(OutDir)\$(AssemblyName).exe.config" />
+  </Target>
+
 </Project>

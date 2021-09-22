@@ -47,6 +47,12 @@ namespace GeneratePlaylist
 
         static private void DisplayHelp()
         {
+            Console.Write("Running on ");
+            List<string> envirnment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
+            foreach (string line in envirnment)
+            {
+                Console.WriteLine(line);
+            }
             Console.WriteLine("Usage: GeneratePlaylist <controlfile>");
             Console.WriteLine("Where");
             Console.WriteLine("  <controlfile> = XML control file eg. podcasts.xml");

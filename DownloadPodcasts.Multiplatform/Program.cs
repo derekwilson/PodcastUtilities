@@ -54,11 +54,11 @@ namespace DownloadPodcasts
 
         static private void DisplayHelp()
         {
-            Console.WriteLine($"Running on: CLR: {Environment.Version.ToString()}");
-#if NETSTANDARD
-            // RuntimeInformation was only added in .net 4
-            Console.WriteLine($"{RuntimeInformation.OSDescription}, Framework: {RuntimeInformation.FrameworkDescription}, OS: {RuntimeInformation.OSArchitecture}, Processor: {RuntimeInformation.ProcessArchitecture}");
-#endif
+            Console.Write("Running on ");
+            List<string> envirnment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
+            foreach (string line in envirnment) {
+                Console.WriteLine(line);
+            }
             Console.WriteLine("Usage: DownloadPodcasts <controlfile>");
             Console.WriteLine("Where");
             Console.WriteLine("  <controlfile> = XML control file eg. podcasts.xml");

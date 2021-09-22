@@ -6,13 +6,11 @@ $PrgmData = [System.Environment]::GetFolderPath("CommonApplicationData");
 $UserPrgmData = [System.Environment]::GetFolderPath("LocalApplicationData");
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 $filePath = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)\\podcastitilities-core.zip"
-$installDir = Join-Path $PrgmData "podcastitilities-core"
 $defaultDotnetRuntimePath = "C:\Program Files\dotnet\dotnet.exe"
 
 $ErrorActionPreference = 'Stop'; # stop on all errors
 
-# unzip the files to a foler that dies not require admin access
-Get-ChocolateyUnzip -FileFullPath "$filePath" -Destination $installDir
+Get-ChocolateyUnzip -FileFullPath "$filePath" -Destination $toolsDir
 # we could remove the zip for total neatness
 #remove-item "$filePath"
 
@@ -24,5 +22,12 @@ if (!(Test-Path $defaultDotnetRuntimePath))
     exit 1
 }
 
-# manually shim as we are not in the default folder
-Install-Binfile -Name downloadpodcasts-core -Path "$defaultDotnetRuntimePath" -Command Join-Path $installDir "DownloadPodcasts.dll"
+# manually shim as these are .NET Core DLLs
+Install-Binfile -Name downloadpodcasts-core -Path "$defaultDotnetRuntimePath" -Command Join-Path $toolsDir "DownloadPodcasts.dll"
+
+$target = Join-Path $toolsDir "Podcast Utilities User Guide.docx"
+# create a desktop shortcut
+Install-ChocolateyShortcut -shortcutFilePath "$Desktop\PodcastUtilities.lnk" -targetPath "$target" -workDirectory "$toolsDir" -arguments "" -description "PodcastUtilities"
+# create a start menu shortcut
+Install-ChocolateyShortcut -shortcutFilePath "$StartMenu\PodcastUtilities.lnk" -targetPath "$target" -workDirectory "$toolsDir" -arguments "" -description "PodcastUtilities"
+

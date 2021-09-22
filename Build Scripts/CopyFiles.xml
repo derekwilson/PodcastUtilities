@@ -20,18 +20,24 @@
 		<Files Include="$(MSBuildProjectDirectory)\..\Documents\Developer\Help\*.chm"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\SyncPodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe.config"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\GeneratePlaylist.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe.config"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\DownloadPodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe.config"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PurgePodcasts.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe.config"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PerfmonCountersInstaller\bin\$(Configuration)\*.exe.config"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.txt"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*controlfile.xml"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.dll"/>
 		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe"/>
+		<Files Include="$(MSBuildProjectDirectory)\..\PodcastUtilities.Integration.Tests.Multiplatform\bin\$(Configuration)\$(FrameworkPlatform)\*.exe.config"/>
 	</ItemGroup>
 
 	<ItemGroup>

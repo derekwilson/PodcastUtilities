@@ -48,6 +48,12 @@ namespace PurgePodcasts
 
         static private void DisplayHelp()
         {
+            Console.Write("Running on ");
+            List<string> envirnment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
+            foreach (string line in envirnment)
+            {
+                Console.WriteLine(line);
+            }
             Console.WriteLine("Usage: PurgePodcasts <controlfile>");
             Console.WriteLine("Where");
             Console.WriteLine("  <controlfile> = XML control file eg. podcasts.xml");

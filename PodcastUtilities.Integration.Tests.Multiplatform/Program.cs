@@ -18,7 +18,9 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
+using PodcastUtilities.Common.Platform;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace PodcastUtilities.Integration.Tests
@@ -46,6 +48,12 @@ namespace PodcastUtilities.Integration.Tests
 
         static private void DisplayHelp()
         {
+            Console.Write("Running on ");
+            List<string> envirnment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
+            foreach (string line in envirnment)
+            {
+                Console.WriteLine(line);
+            }
             Console.WriteLine("Usage: PodcastUtilities.Integration.Tests <tests>");
             Console.WriteLine("Where");
             Console.WriteLine("  <tests> = all: run all tests");
