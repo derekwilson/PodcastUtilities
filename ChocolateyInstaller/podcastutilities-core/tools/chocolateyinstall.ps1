@@ -5,7 +5,7 @@ $PrgmFiles = [System.Environment]::GetFolderPath("ProgramFiles");
 $PrgmData = [System.Environment]::GetFolderPath("CommonApplicationData");
 $UserPrgmData = [System.Environment]::GetFolderPath("LocalApplicationData");
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$filePath = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)\\podcastitilities-core.zip"
+$filePath = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)\podcastutilities-core3.0.0.2.zip"
 $defaultDotnetRuntimePath = "C:\Program Files\dotnet\dotnet.exe"
 
 $ErrorActionPreference = 'Stop'; # stop on all errors
@@ -23,7 +23,10 @@ if (!(Test-Path $defaultDotnetRuntimePath))
 }
 
 # manually shim as these are .NET Core DLLs
-Install-Binfile -Name downloadpodcasts-core -Path "$defaultDotnetRuntimePath" -Command Join-Path $toolsDir "DownloadPodcasts.dll"
+Install-Binfile -Name downloadpodcasts-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir DownloadPodcasts.dll)"
+Install-Binfile -Name generateplaylist-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir GeneratePlaylist.dll)"
+Install-Binfile -Name purgepodcasts-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir PurgePodcasts.dll)"
+Install-Binfile -Name syncpodcasts-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir SyncPodcasts.dll)"
 
 $target = Join-Path $toolsDir "Podcast Utilities User Guide.docx"
 # create a desktop shortcut

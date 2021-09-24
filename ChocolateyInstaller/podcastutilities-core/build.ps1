@@ -47,7 +47,7 @@ Remove-Item *.nupkg
 # Create .nupkg from .nuspec    
 choco pack
 
-#choco uninstall "podcastutilitie-core"
+choco uninstall "podcastutilities-core"
 
-#choco install ""podcastutilitie-core" -fd -y  -s ".\" 
-#choco install "podcastutilitie-core" -y -s ".\" 
+#choco install ""podcastutilities-core" -fd -y  -s ".\" 
+choco install "podcastutilities-core" -y -s ".\" 
