@@ -12,6 +12,7 @@
 		<Product>PodcastUtilities</Product>
 		<Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
 		<Description>Podcast synchroniser</Description>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
 	<!-- .NET Standard 2.0 references, compilation flags and build options -->
@@ -32,7 +33,13 @@
 		<Reference Include="System.Xml" />
 	</ItemGroup>
 
-	<ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
 		<ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj" />
 		<ProjectReference Include="..\PodcastUtilities.Ioc.Multiplatform\PodcastUtilities.Ioc.Multiplatform.csproj" />
 	</ItemGroup>
@@ -42,5 +49,10 @@
 			<Version>2.2.0</Version>
 		</PackageReference>
 	</ItemGroup>
+
+  <!-- app config file for .NET35 -->
+  <Target Name="CopyCustomContent" AfterTargets="AfterBuild" Condition=" '$(TargetFramework)' == 'net35' ">
+    <Copy SourceFiles="AppNet35.config" DestinationFiles="$(OutDir)\$(AssemblyName).exe.config" />
+  </Target>
 
 </Project>

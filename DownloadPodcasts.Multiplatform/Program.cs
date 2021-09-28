@@ -20,13 +20,9 @@
 #endregion
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Reflection;
-using System.Text;
-using System.Xml;
+using System.Runtime.InteropServices;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
@@ -58,6 +54,11 @@ namespace DownloadPodcasts
 
         static private void DisplayHelp()
         {
+            Console.Write("Running on ");
+            List<string> envirnment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
+            foreach (string line in envirnment) {
+                Console.WriteLine(line);
+            }
             Console.WriteLine("Usage: DownloadPodcasts <controlfile>");
             Console.WriteLine("Where");
             Console.WriteLine("  <controlfile> = XML control file eg. podcasts.xml");

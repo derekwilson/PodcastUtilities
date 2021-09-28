@@ -19,6 +19,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
@@ -41,6 +42,12 @@ namespace SyncPodcasts
 
         static private void DisplayHelp()
         {
+            Console.Write("Running on ");
+            List<string> envirnment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
+            foreach (string line in envirnment)
+            {
+                Console.WriteLine(line);
+            }
             Console.WriteLine("Usage: SyncPodcasts <controlfile>");
             Console.WriteLine("Where");
             Console.WriteLine("  <controlfile> = XML control file eg. podcasts.xml");

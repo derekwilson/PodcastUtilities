@@ -12,7 +12,8 @@
 		<Version>3.0.0</Version>
 		<Description>Common utilities and API</Description>
 		<AssemblyName>PodcastUtilities.Common</AssemblyName>
-	</PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
 
 	<!-- .NET Standard 2.0 references, compilation flags and build options -->
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
@@ -34,10 +35,15 @@
 		<Compile Remove=".\Perfmon\AverageCounter.cs" Label="NO_PERF" />
 		<Compile Remove=".\Perfmon\CategoryInstaller.cs" Label="NO_PERF" />
 		<Compile Remove=".\Perfmon\ICategoryInstaller.cs" Label="NO_PERF" />
-		<Compile Remove=".\Properties\AssemblyInfo.cs" Label="NO_ASSEMBLYINFO" />
 	</ItemGroup>
 
-		<!-- .NET references, compilation flags and build options -->
+  <ItemGroup>
+    <Compile Include="..\Shared\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <!-- .NET references, compilation flags and build options -->
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'net35'">
 		<DefineConstants>NET35;NETFULL</DefineConstants>
 	</PropertyGroup>

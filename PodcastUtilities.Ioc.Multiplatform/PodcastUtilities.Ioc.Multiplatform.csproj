@@ -10,6 +10,7 @@
 		<Product>PodcastUtilities</Product>
 		<Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
 		<Description>Ioc containers for PodcastUtilities</Description>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
 	<!-- .NET Standard 2.0 references, compilation flags and build options -->
@@ -44,7 +45,13 @@
 		<Compile Remove=".\MicrosoftExtensionsIocContainer.cs" Label="NO_MSEXTENSIONS" />
 	</ItemGroup>
 
-	<ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
 		<ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj" />
 	</ItemGroup>
 

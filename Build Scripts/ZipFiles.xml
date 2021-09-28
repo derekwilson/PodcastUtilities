@@ -1,21 +1,27 @@
-<Project DefaultTargets="MakeZip" InitialTargets="ValidateParameters" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project 
+  DefaultTargets="MakeZip" 
+  InitialTargets="ValidateParameters" 
+  ToolsVersion="3.5"
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
 
   <ItemGroup>
     <ZipFiles Include="$(FilesFolder)\**\*.*"/>
   </ItemGroup>
-  
+
   <Target Name="MakeZip" DependsOnTargets="">
+    <Message Text='Working directory "$(FilesFolder)"' />
+    <Message Text='Files "$(ZipFiles)"' />
     <Zip
       Files="@(ZipFiles)"
-      ZipFileName="$(ZipFolderr)\$(ZipName).zip"
+      ZipFileName="$(ZipFolder)\$(ZipName).zip"
       WorkingDirectory="$(FilesFolder)"/>
   </Target>
 
   <Target Name="ValidateParameters">
-	<Error Text="Missing parameter 'FilesFolder'" Condition="'$(FilesFolder)' == ''" />
-	<Error Text="Missing parameter 'ZipFolderr'" Condition="'$(ZipFolderr)' == ''" />
+    <Error Text="Missing parameter 'FilesFolder'" Condition="'$(FilesFolder)' == ''" />
+    <Error Text="Missing parameter 'ZipFolder'" Condition="'$(ZipFolder)' == ''" />
     <Error Text="Missing parameter 'ZipName'" Condition="'$(ZipName)' == ''" />
   </Target>
 </Project>

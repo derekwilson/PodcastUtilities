@@ -31,7 +31,7 @@ namespace PodcastUtilities.Common.Platform
     public interface IEnvironmentInformationProvider
     {
         /// <summary>
-        /// gett the directory that the currently executing application was loaded from
+        /// get the directory that the currently executing application was loaded from
         /// </summary>
         /// <returns></returns>
         IDirectoryInfo GetCurrentApplicationDirectory();

@@ -14,6 +14,7 @@
   <PropertyGroup>
     <SolutionRoot>$(MSBuildProjectDirectory)\..</SolutionRoot>
     <SolutionName>PodcastUtilities.Multiplatform</SolutionName>
+
     <BuildOutputRoot>$(MSBuildProjectDirectory)\..\CurrentBuild</BuildOutputRoot>
     <ReleasesRoot>$(MSBuildProjectDirectory)\..\_PreBuiltPackages</ReleasesRoot>
     <NUnitPath>"C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0\nunit-console.exe"</NUnitPath>
@@ -25,7 +26,7 @@
 			<![CDATA[
 			public static string ScriptMain()
 			{
-				return System.DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
+				return System.DateTime.Now.ToString("yyyy-MM-dd HH-mm");
 			}
 			]]>
 		</ZipSuffixCode>
@@ -69,7 +70,7 @@
 	/>
   </Target>
 
-  <!-- Zip up the builds -->
+  <!-- Zip up the multiplatform builds -->
   <Target Name="Zip" DependsOnTargets="Copy">
 	<Script Language="C#" Code="$(ZipSuffixCode)">
 		<Output TaskParameter="ReturnValue" PropertyName="ZipSuffix" />
@@ -77,7 +78,7 @@
     <MSBuild
 		Projects="ZipFiles.xml"
 		Targets="MakeZip"
-		Properties="ZipName=$(SolutionName) $(ZipSuffix);ZipFolderr=$(ReleasesRoot);FilesFolder=$(BuildOutputRoot)"
+		Properties="ZipName=$(SolutionName) $(ZipSuffix);ZipFolder=$(ReleasesRoot);FilesFolder=$(BuildOutputRoot)"
     />
   </Target>
 
