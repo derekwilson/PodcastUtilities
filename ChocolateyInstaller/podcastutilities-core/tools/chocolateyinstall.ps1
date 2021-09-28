@@ -14,19 +14,21 @@ Get-ChocolateyUnzip -FileFullPath "$filePath" -Destination $toolsDir
 # we could remove the zip for total neatness
 #remove-item "$filePath"
 
-if (!(Test-Path $defaultDotnetRuntimePath))
+if ((Test-Path $defaultDotnetRuntimePath))
+{
+    # manually shim as these are .NET Core DLLs
+    Install-Binfile -Name downloadpodcasts-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir DownloadPodcasts.dll)"
+    Install-Binfile -Name generateplaylist-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir GeneratePlaylist.dll)"
+    Install-Binfile -Name purgepodcasts-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir PurgePodcasts.dll)"
+    Install-Binfile -Name syncpodcasts-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir SyncPodcasts.dll)"
+}
+else 
 {
     Write-Host -ForegroundColor Red "File not found: $defaultDotnetRuntimePath"
-    Write-Host "The package depends on the .NET Core Runtime (dotnet.exe) which was not found."
-    Write-Host "Please install the latest version of the .NET Core Runtime to use this package."
-    exit 1
+    Write-Host "The DLL shims depend on the .NET Core Runtime (dotnet.exe) which was not found."
+    Write-Host "The package files have been installed, if you want to shims to be created then"
+    Write-Host "please install the latest version of the .NET Core Runtime and reinstall this package."
 }
-
-# manually shim as these are .NET Core DLLs
-Install-Binfile -Name downloadpodcasts-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir DownloadPodcasts.dll)"
-Install-Binfile -Name generateplaylist-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir GeneratePlaylist.dll)"
-Install-Binfile -Name purgepodcasts-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir PurgePodcasts.dll)"
-Install-Binfile -Name syncpodcasts-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir SyncPodcasts.dll)"
 
 $target = Join-Path $toolsDir "Podcast Utilities User Guide.docx"
 # create a desktop shortcut
