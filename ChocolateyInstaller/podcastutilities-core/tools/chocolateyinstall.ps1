@@ -30,7 +30,7 @@ Install-Binfile -Name syncpodcasts-core -Path "$defaultDotnetRuntimePath" -Comma
 
 $target = Join-Path $toolsDir "Podcast Utilities User Guide.docx"
 # create a desktop shortcut
-Install-ChocolateyShortcut -shortcutFilePath "$Desktop\PodcastUtilities.lnk" -targetPath "$target" -workDirectory "$toolsDir" -arguments "" -description "PodcastUtilities"
+Install-ChocolateyShortcut -shortcutFilePath "$Desktop\PodcastUtilitiesCore.lnk" -targetPath "$target" -workDirectory "$toolsDir" -arguments "" -description "PodcastUtilitiesCore"
 # create a start menu shortcut
-Install-ChocolateyShortcut -shortcutFilePath "$StartMenu\PodcastUtilities.lnk" -targetPath "$target" -workDirectory "$toolsDir" -arguments "" -description "PodcastUtilities"
+Install-ChocolateyShortcut -shortcutFilePath "$StartMenu\PodcastUtilitiesCore.lnk" -targetPath "$target" -workDirectory "$toolsDir" -arguments "" -description "PodcastUtilitiesCore"
 

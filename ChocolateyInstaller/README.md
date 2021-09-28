@@ -46,26 +46,36 @@ choco upgrade chocolatey -y
 
 Build all the assemblies and create a current build ZIP in  `_PreBuiltPackages`
 
-Goto folder `ChocolateyInstaller\podcastutilities-core` or `ChocolateyInstaller\podcastutilities` and run `build.ps1` in powershell
+Goto folder `ChocolateyInstaller\podcastutilities-core` or `ChocolateyInstaller\podcastutilities` edit the `podcastutilities.nuspec` to have the correct version number, also alter the version number in `build.ps1` and `chocolateyinstall.ps1`
+
+Run `build.ps1` in powershell
 
 Running `.\build.ps1` it will create a zip file from the `CurrentBuild` folder and then copy it to the correct place and generate the verification hash
 
-The package `podcastutilities-core.3.x.y.z.nupkg` will be created
+The package `podcastutilities-core.3.x.y.z.nupkg` or `podcastutilities.3.x.y.z.nupkg` will be created
 
 ### Install package
 
 #### Locally
 
-Get the package `podcastutilities-core.3.x.y.z.nupkg` in the current folder
+Get the package `podcastutilities-core.3.x.y.z.nupkg` or `podcastutilities.3.x.y.z.nupkg` in the current folder
 
 ```
 choco install "podcastutilities-core" -s ".\" 
+```
+or
+```
+choco install "podcastutilities" -s ".\" 
 ```
 
 ### Uninstall package
 
 ```
 choco uninstall "podcastutilities-core"
+```
+or
+```
+choco uninstall "podcastutilities"
 ```
 
 ### Publish package

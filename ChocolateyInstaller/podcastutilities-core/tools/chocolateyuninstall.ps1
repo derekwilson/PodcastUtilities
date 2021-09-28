@@ -10,5 +10,5 @@ Uninstall-BinFile -Name generateplaylist-core
 Uninstall-BinFile -Name purgepodcasts-core
 Uninstall-BinFile -Name syncpodcasts-core
 
-Remove-Item "$Desktop\PodcastUtilities.lnk" -ErrorAction SilentlyContinue -Force | Out-Null
-Remove-Item "$StartMenu\PodcastUtilities.lnk" -ErrorAction SilentlyContinue -Force | Out-Null
+Remove-Item "$Desktop\PodcastUtilitiesCore.lnk" -ErrorAction SilentlyContinue -Force | Out-Null
+Remove-Item "$StartMenu\PodcastUtilitiesCore.lnk" -ErrorAction SilentlyContinue -Force | Out-Null

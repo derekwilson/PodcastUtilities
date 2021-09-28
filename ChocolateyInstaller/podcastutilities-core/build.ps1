@@ -8,7 +8,6 @@ Set-Location "$PSScriptRoot"
 $Version = "3.0.0.2"
 $ZipFile = "podcastutilities-core$Version.zip"
 $SrcZipPath = Join-Path ".\files\" $ZipFile
-$ZipFile = "podcastutilities-core$Version.zip"
 $ZipPath = Join-Path ".\tools\" $ZipFile
 
 If(!(test-path ".\files\"))
@@ -17,6 +16,7 @@ If(!(test-path ".\files\"))
 }
 remove-item $SrcZipPath -ErrorAction SilentlyContinue
 compress-archive ..\..\CurrentBuild\netcoreapp2.1\*.* $SrcZipPath
+remove-item ".\tools\*.zip" -ErrorAction SilentlyContinue
 Copy-Item $SrcZipPath -Destination  $ZipPath
 
 $sha = get-filehash -path $ZipPath -Algorithm SHA256  | select -ExpandProperty "Hash"
@@ -28,7 +28,7 @@ $filetext = @"
 `in verifying that this package's contents are trustworthy.
 `
 `The software is installed from the archive embedded in this nuppkg: $ZipFile
-`It can also be obtained from <https://github.com/derekwilson/PodcastUtilities/tree/master/ChocolateyInstaller/files>
+`It can also be obtained from <https://github.com/derekwilson/PodcastUtilities/tree/master/ChocolateyInstaller/podcastutilities-core/files>
 `
 `You can use one of the following methods to obtain the checksum
 `  - Use powershell function 'Get-Filehash'
