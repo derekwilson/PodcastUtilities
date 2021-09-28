@@ -17,6 +17,7 @@ Get-ChocolateyUnzip -FileFullPath "$filePath" -Destination $toolsDir
 if ((Test-Path $defaultDotnetRuntimePath))
 {
     # manually shim as these are .NET Core DLLs
+    Write-Host "Shimming PodcastUtilities .NET Core DLLs."
     Install-Binfile -Name downloadpodcasts-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir DownloadPodcasts.dll)"
     Install-Binfile -Name generateplaylist-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir GeneratePlaylist.dll)"
     Install-Binfile -Name purgepodcasts-core -Path "$defaultDotnetRuntimePath" -Command "$(Join-Path $toolsDir PurgePodcasts.dll)"
