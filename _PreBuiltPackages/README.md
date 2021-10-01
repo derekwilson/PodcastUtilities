@@ -6,11 +6,9 @@ This folder contains prebuild packages for Windows, the file name has the date t
 
 ### Zip Files ###
 
-PodcastUtilities.Multiplatform.Net35 YYYY-MM-DD hh-mm is the files for .NET Framework
-PodcastUtilities.Multiplatform.Core YYYY-MM-DD hh-mm is the files for .NET Core
-PodcastUtilities.Multiplatform YYYY-MM-DD hh-mm is both the above in one zip
+PodcastUtilities.Multiplatform YYYY-MM-DD hh-mm contains the files for .NET Framework and .NET Core
 
-### Benifits ###
+### Benefits ###
 
 * Portable
 PodcastUtilities is a “portable” application, in that it does not need to be installed and can be run from any drive type, local network or removable flash drive
@@ -35,7 +33,7 @@ Podcasts promoted on iTunes can be downloaded however there is no need to have a
 ### Supported Platforms ###
 
 * .NET Framework v3.5
-The files are in a folder called `net35`. It will run on Windows XP, Vista, Windows 7, 8, 10. The framework is not part of the operating system for later versions of Windows 10 and will need to be installed seperatly.
+The files are in a folder called `net35`. It will run on Windows XP, Vista, Windows 7, 8, 10. The framework is not part of the operating system for later versions of Windows 10 and will need to be installed separately.
 
 See https://docs.microsoft.com/en-us/dotnet/framework/install/dotnet-35-windows-10
 
