@@ -43,11 +43,14 @@ namespace PodcastUtilities.Common.Platform
         {
             List<string> result = new List<string>();
             result.Add($".NET CLR: {Environment.Version.ToString()}");
+			Assembly me = System.Reflection.Assembly.GetExecutingAssembly();
+			AssemblyName name = me.GetName();
+			result.Add($"PodcastUtilities.Common v{name.Version}");
 #if NETSTANDARD
             // RuntimeInformation was only added in .net 4
             result.Add($"{RuntimeInformation.OSDescription}, Framework: {RuntimeInformation.FrameworkDescription}, OS: {RuntimeInformation.OSArchitecture}, Processor: {RuntimeInformation.ProcessArchitecture}");
 #endif
-            return result;
+			return result;
         }
     }
 }
