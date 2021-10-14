@@ -9,7 +9,7 @@ namespace PodcastUtilitiesPOC
     [Application]
     public class AndroidApplication : Application
     {
-        public const string APP_NAME = "PodcastUtilities-Tag";
+        public const string LOGCAT_TAG = "PodcastUtilities-Tag";
 
         protected AndroidApplication(System.IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
@@ -32,12 +32,12 @@ namespace PodcastUtilitiesPOC
 
         public override void OnCreate()
         {
-            Log.Debug(APP_NAME, "AndroidApplication:OnCreate");
+            Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int) Android.OS.Build.VERSION.SdkInt}");
             base.OnCreate();
 
             // initialise the IoC container
             IocContainer = InitializeIocContainer();
-            Log.Debug(APP_NAME, "AndroidApplication:IoC Init");
+            Log.Debug(LOGCAT_TAG, "AndroidApplication:IoC Init");
         }
     }
 }
