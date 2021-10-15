@@ -1,0 +1,98 @@
+2021-10-15 03:22:43.2915	1	DEBUG	PodcastUtilitiesPOC.NLogLogger.Debug	MainActivity:OnCreate	PodcastUtilitiesPOC.NLogLogger.Debug	
+2021-10-15 03:22:43.8339	1	DEBUG	PodcastUtilitiesPOC.NLogLogger.Debug	MainActivity:OnCreate False	PodcastUtilitiesPOC.NLogLogger.Debug	
+2021-10-15 03:22:43.8527	1	DEBUG	PodcastUtilitiesPOC.NLogLogger.Debug	MainActivity:OnCreate True	PodcastUtilitiesPOC.NLogLogger.Debug	
+2021-10-15 03:22:54.3390	1	ERROR	PodcastUtilitiesPOC.NLogLogger.LogException	CurrentDomainOnUnhandledException	PodcastUtilitiesPOC.NLogLogger.LogException	Java.Lang.NoSuchMethodError: no non-static method "Landroidx/appcompat/app/AppCompatActivity;.checkSelfPermission(Ljava/lang/String;)I"
+  at Java.Interop.JniEnvironment+InstanceMethods.GetMethodID (Java.Interop.JniObjectReference type, System.String name, System.String signature) [0x0005b] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Java.Interop.JniType.GetInstanceMethod (System.String name, System.String signature) [0x0000c] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Java.Interop.JniPeerMembers+JniInstanceMethods.GetMethodInfo (System.String encodedMember) [0x00031] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Java.Interop.JniPeerMembers+JniInstanceMethods.InvokeVirtualInt32Method (System.String encodedMember, Java.Interop.IJavaPeerable self, Java.Interop.JniArgumentValue* parameters) [0x0004b] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Android.Content.ContextWrapper.CheckSelfPermission (System.String permission) [0x00029] in <db0280fb1b254cf889f3a750ac3ea0bb>:0 
+  at PodcastUtilitiesPOC.PermissionChecker.HasPermissionBeenGranted (Android.Content.Context context, System.String permission) [0x00001] in <67ba4105a89d4350b2c42c6d180dd753>:0 
+  at PodcastUtilitiesPOC.PermissionChecker.HasReadStoragePermission (Android.Content.Context context) [0x00001] in <67ba4105a89d4350b2c42c6d180dd753>:0 
+  at PodcastUtilitiesPOC.MainActivity.LoadConfig () [0x00001] in <67ba4105a89d4350b2c42c6d180dd753>:0 
+  at PodcastUtilitiesPOC.MainActivity+<>c__DisplayClass2_0.<OnCreate>b__1 (System.Object sender, System.EventArgs e) [0x00000] in <67ba4105a89d4350b2c42c6d180dd753>:0 
+  at Android.Views.View+IOnClickListenerImplementor.OnClick (Android.Views.View v) [0x00011] in <db0280fb1b254cf889f3a750ac3ea0bb>:0 
+  at Android.Views.View+IOnClickListenerInvoker.n_OnClick_Landroid_view_View_ (System.IntPtr jnienv, System.IntPtr native__this, System.IntPtr native_v) [0x0000f] in <db0280fb1b254cf889f3a750ac3ea0bb>:0 
+  at (wrapper dynamic-method) Android.Runtime.DynamicMethodNameCounter.29(intptr,intptr,intptr)
+  --- End of managed Java.Lang.NoSuchMethodError stack trace ---
+java.lang.NoSuchMethodError: no non-static method "Landroidx/appcompat/app/AppCompatActivity;.checkSelfPermission(Ljava/lang/String;)I"
+	at mono.android.view.View_OnClickListenerImplementor.n_onClick(Native Method)
+	at mono.android.view.View_OnClickListenerImplementor.onClick(View_OnClickListenerImplementor.java:30)
+	at android.view.View.performClick(View.java:4780)
+	at com.google.android.material.button.MaterialButton.performClick(MaterialButton.java:1119)
+	at android.view.View$PerformClick.run(View.java:19866)
+	at android.os.Handler.handleCallback(Handler.java:739)
+	at android.os.Handler.dispatchMessage(Handler.java:95)
+	at android.os.Looper.loop(Looper.java:135)
+	at android.app.ActivityThread.main(ActivityThread.java:5254)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at java.lang.reflect.Method.invoke(Method.java:372)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698)
+
+2021-10-15 03:30:29.5378	1	DEBUG	PodcastUtilitiesPOC.NLogLogger.Debug	AndroidApplication:IoC Init	PodcastUtilitiesPOC.NLogLogger.Debug	
+2021-10-15 03:30:29.9352	1	DEBUG	PodcastUtilitiesPOC.NLogLogger.Debug	MainActivity:OnCreate	PodcastUtilitiesPOC.NLogLogger.Debug	
+2021-10-15 03:30:30.4061	1	DEBUG	PodcastUtilitiesPOC.NLogLogger.Debug	MainActivity:OnCreate False	PodcastUtilitiesPOC.NLogLogger.Debug	
+2021-10-15 03:30:30.4237	1	DEBUG	PodcastUtilitiesPOC.NLogLogger.Debug	MainActivity:OnCreate True	PodcastUtilitiesPOC.NLogLogger.Debug	
+2021-10-15 03:30:37.1427	1	ERROR	PodcastUtilitiesPOC.NLogLogger.LogException	CurrentDomainOnUnhandledException=> no non-static method "Landroidx/appcompat/app/AppCompatActivity;.checkSelfPermission(Ljava/lang/String;)I"	PodcastUtilitiesPOC.NLogLogger.LogException	Java.Lang.NoSuchMethodError: no non-static method "Landroidx/appcompat/app/AppCompatActivity;.checkSelfPermission(Ljava/lang/String;)I"
+  at Java.Interop.JniEnvironment+InstanceMethods.GetMethodID (Java.Interop.JniObjectReference type, System.String name, System.String signature) [0x0005b] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Java.Interop.JniType.GetInstanceMethod (System.String name, System.String signature) [0x0000c] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Java.Interop.JniPeerMembers+JniInstanceMethods.GetMethodInfo (System.String encodedMember) [0x00031] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Java.Interop.JniPeerMembers+JniInstanceMethods.InvokeVirtualInt32Method (System.String encodedMember, Java.Interop.IJavaPeerable self, Java.Interop.JniArgumentValue* parameters) [0x0004b] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Android.Content.ContextWrapper.CheckSelfPermission (System.String permission) [0x00029] in <db0280fb1b254cf889f3a750ac3ea0bb>:0 
+  at PodcastUtilitiesPOC.PermissionChecker.HasPermissionBeenGranted (Android.Content.Context context, System.String permission) [0x00001] in <e2294ccc622440a18a4102499ce53f90>:0 
+  at PodcastUtilitiesPOC.PermissionChecker.HasReadStoragePermission (Android.Content.Context context) [0x00001] in <e2294ccc622440a18a4102499ce53f90>:0 
+  at PodcastUtilitiesPOC.MainActivity.LoadConfig () [0x00001] in <e2294ccc622440a18a4102499ce53f90>:0 
+  at PodcastUtilitiesPOC.MainActivity+<>c__DisplayClass2_0.<OnCreate>b__1 (System.Object sender, System.EventArgs e) [0x00000] in <e2294ccc622440a18a4102499ce53f90>:0 
+  at Android.Views.View+IOnClickListenerImplementor.OnClick (Android.Views.View v) [0x00011] in <db0280fb1b254cf889f3a750ac3ea0bb>:0 
+  at Android.Views.View+IOnClickListenerInvoker.n_OnClick_Landroid_view_View_ (System.IntPtr jnienv, System.IntPtr native__this, System.IntPtr native_v) [0x0000f] in <db0280fb1b254cf889f3a750ac3ea0bb>:0 
+  at (wrapper dynamic-method) Android.Runtime.DynamicMethodNameCounter.29(intptr,intptr,intptr)
+  --- End of managed Java.Lang.NoSuchMethodError stack trace ---
+java.lang.NoSuchMethodError: no non-static method "Landroidx/appcompat/app/AppCompatActivity;.checkSelfPermission(Ljava/lang/String;)I"
+	at mono.android.view.View_OnClickListenerImplementor.n_onClick(Native Method)
+	at mono.android.view.View_OnClickListenerImplementor.onClick(View_OnClickListenerImplementor.java:30)
+	at android.view.View.performClick(View.java:4780)
+	at com.google.android.material.button.MaterialButton.performClick(MaterialButton.java:1119)
+	at android.view.View$PerformClick.run(View.java:19866)
+	at android.os.Handler.handleCallback(Handler.java:739)
+	at android.os.Handler.dispatchMessage(Handler.java:95)
+	at android.os.Looper.loop(Looper.java:135)
+	at android.app.ActivityThread.main(ActivityThread.java:5254)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at java.lang.reflect.Method.invoke(Method.java:372)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698)
+
+2021-10-15 03:38:23.4972	1	DEBUG	PodcastUtilitiesPOC.NLogLogger.Debug	AndroidApplication:IoC Init	PodcastUtilitiesPOC.NLogLogger.Debug	
+2021-10-15 03:38:23.9008	1	DEBUG	PodcastUtilitiesPOC.NLogLogger.Debug	MainActivity:OnCreate	PodcastUtilitiesPOC.NLogLogger.Debug	
+2021-10-15 03:38:24.3777	1	DEBUG	PodcastUtilitiesPOC.NLogLogger.Debug	MainActivity:OnCreate False	PodcastUtilitiesPOC.NLogLogger.Debug	
+2021-10-15 03:38:24.4015	1	DEBUG	PodcastUtilitiesPOC.NLogLogger.Debug	MainActivity:OnCreate True	PodcastUtilitiesPOC.NLogLogger.Debug	
+2021-10-15 03:38:25.9088	1	ERROR	PodcastUtilitiesPOC.NLogLogger.LogException	CurrentDomainOnUnhandledException => no non-static method "Landroidx/appcompat/app/AppCompatActivity;.checkSelfPermission(Ljava/lang/String;)I"	PodcastUtilitiesPOC.NLogLogger.LogException	Java.Lang.NoSuchMethodError: no non-static method "Landroidx/appcompat/app/AppCompatActivity;.checkSelfPermission(Ljava/lang/String;)I"
+  at Java.Interop.JniEnvironment+InstanceMethods.GetMethodID (Java.Interop.JniObjectReference type, System.String name, System.String signature) [0x0005b] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Java.Interop.JniType.GetInstanceMethod (System.String name, System.String signature) [0x0000c] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Java.Interop.JniPeerMembers+JniInstanceMethods.GetMethodInfo (System.String encodedMember) [0x00031] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Java.Interop.JniPeerMembers+JniInstanceMethods.InvokeVirtualInt32Method (System.String encodedMember, Java.Interop.IJavaPeerable self, Java.Interop.JniArgumentValue* parameters) [0x0004b] in <bd6bd528a8784b7caf03e9f25c9f0d7b>:0 
+  at Android.Content.ContextWrapper.CheckSelfPermission (System.String permission) [0x00029] in <db0280fb1b254cf889f3a750ac3ea0bb>:0 
+  at PodcastUtilitiesPOC.PermissionChecker.HasPermissionBeenGranted (Android.Content.Context context, System.String permission) [0x00001] in <7fcee67e3868405bb56ae2f7c6144ab2>:0 
+  at PodcastUtilitiesPOC.PermissionChecker.HasReadStoragePermission (Android.Content.Context context) [0x00001] in <7fcee67e3868405bb56ae2f7c6144ab2>:0 
+  at PodcastUtilitiesPOC.MainActivity.LoadConfig () [0x00001] in <7fcee67e3868405bb56ae2f7c6144ab2>:0 
+  at PodcastUtilitiesPOC.MainActivity+<>c__DisplayClass2_0.<OnCreate>b__1 (System.Object sender, System.EventArgs e) [0x00000] in <7fcee67e3868405bb56ae2f7c6144ab2>:0 
+  at Android.Views.View+IOnClickListenerImplementor.OnClick (Android.Views.View v) [0x00011] in <db0280fb1b254cf889f3a750ac3ea0bb>:0 
+  at Android.Views.View+IOnClickListenerInvoker.n_OnClick_Landroid_view_View_ (System.IntPtr jnienv, System.IntPtr native__this, System.IntPtr native_v) [0x0000f] in <db0280fb1b254cf889f3a750ac3ea0bb>:0 
+  at (wrapper dynamic-method) Android.Runtime.DynamicMethodNameCounter.29(intptr,intptr,intptr)
+  --- End of managed Java.Lang.NoSuchMethodError stack trace ---
+java.lang.NoSuchMethodError: no non-static method "Landroidx/appcompat/app/AppCompatActivity;.checkSelfPermission(Ljava/lang/String;)I"
+	at mono.android.view.View_OnClickListenerImplementor.n_onClick(Native Method)
+	at mono.android.view.View_OnClickListenerImplementor.onClick(View_OnClickListenerImplementor.java:30)
+	at android.view.View.performClick(View.java:4780)
+	at com.google.android.material.button.MaterialButton.performClick(MaterialButton.java:1119)
+	at android.view.View$PerformClick.run(View.java:19866)
+	at android.os.Handler.handleCallback(Handler.java:739)
+	at android.os.Handler.dispatchMessage(Handler.java:95)
+	at android.os.Looper.loop(Looper.java:135)
+	at android.app.ActivityThread.main(ActivityThread.java:5254)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at java.lang.reflect.Method.invoke(Method.java:372)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698)
+

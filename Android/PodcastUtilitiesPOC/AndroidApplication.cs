@@ -3,6 +3,8 @@ using Android.Runtime;
 using Android.Util;
 using PodcastUtilities.Common;
 using PodcastUtilities.Ioc;
+using System;
+using System.Threading.Tasks;
 
 namespace PodcastUtilitiesPOC
 {
@@ -38,9 +40,26 @@ namespace PodcastUtilitiesPOC
             return container;
         }
 
+        private void SetupExceptionHandler()
+        {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
+        }
+
+        private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+        {
+            Logger.LogException(() => "TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
+        }
+
+        private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            Logger.LogException(() => "CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
+        }
+
         public override void OnCreate()
         {
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int) Android.OS.Build.VERSION.SdkInt}");
+            SetupExceptionHandler();
             base.OnCreate();
 
             // initialise the IoC container

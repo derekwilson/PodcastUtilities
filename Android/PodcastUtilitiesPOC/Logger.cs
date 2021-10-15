@@ -17,6 +17,7 @@ namespace PodcastUtilitiesPOC
         public delegate string MessageGenerator();
 
         void Debug(MessageGenerator message);
+        void LogException(ILogger.MessageGenerator message, Exception ex);
     }
     class NLogLogger : ILogger
     {
@@ -34,6 +35,11 @@ namespace PodcastUtilitiesPOC
                 // only call the message delegate if we are logging
                 nlogLogger.Debug(message());
             }
+        }
+
+        public void LogException(ILogger.MessageGenerator message, Exception ex)
+        {
+            nlogLogger.Error(ex, message() + $" => {ex.Message}");
         }
     }
 
