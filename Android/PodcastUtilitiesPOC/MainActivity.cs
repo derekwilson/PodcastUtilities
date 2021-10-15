@@ -48,11 +48,6 @@ namespace PodcastUtilitiesPOC
 
             bool isReadonly = Android.OS.Environment.MediaMountedReadOnly.Equals(Android.OS.Environment.ExternalStorageState);
             bool isWriteable = Android.OS.Environment.MediaMounted.Equals(Android.OS.Environment.ExternalStorageState);
-
-            IEpisodeFinder podcastEpisodeFinder = null;
-            AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate {podcastEpisodeFinder != null}");
-            podcastEpisodeFinder = (Application as AndroidApplication).IocContainer.Resolve<IEpisodeFinder>();
-            AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate {podcastEpisodeFinder != null}");
         }
 
         private void LoadConfig()
@@ -85,7 +80,7 @@ namespace PodcastUtilitiesPOC
             StartActivityForResult(intent, REQUEST_SELECT_FILE);
         }
 
-        private void OpenConfigFile(Android.Net.Uri uri)
+        private ReadOnlyControlFile OpenConfigFile(Android.Net.Uri uri)
         {
             ContentResolver resolver = Application.ContentResolver;
             var stream = resolver.OpenInputStream(uri);
@@ -104,6 +99,30 @@ namespace PodcastUtilitiesPOC
 
             SetTextViewText(Resource.Id.txtConfigFilePath, $"{uri.ToString()}");
             SetTextViewText(Resource.Id.txtOutput, $"{count}, {control.GetSourceRoot()}");
+            return control;
+        }
+
+        private void FindEpisodesToDownload(ReadOnlyControlFile config)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity:FindEpisodesToDownload");
+            IEpisodeFinder podcastEpisodeFinder = null;
+            podcastEpisodeFinder = AndroidApplication.IocContainer.Resolve<IEpisodeFinder>();
+
+            // find the episodes to download
+            StringBuilder builder = new StringBuilder();
+            var allEpisodes = new List<ISyncItem>(20);
+            foreach (var podcastInfo in config.GetPodcasts())
+            {
+                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(config.GetSourceRoot(), config.GetRetryWaitInSeconds(), podcastInfo, config.GetDiagnosticRetainTemporaryFiles());
+                allEpisodes.AddRange(episodesInThisFeed);
+                foreach (var episode in episodesInThisFeed)
+                {
+                    AndroidApplication.Logger.Debug(() => $"MainActivity:FindEpisodesToDownload {episode.EpisodeTitle}");
+                    builder.AppendLine(episode.EpisodeTitle);
+                }
+            }
+
+            SetTextViewText(Resource.Id.txtOutput, $"{builder.ToString()}");
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
@@ -115,7 +134,8 @@ namespace PodcastUtilitiesPOC
                 {
                     Toast.MakeText(Application.Context, "OK ", ToastLength.Short).Show();
                     AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {data.Data.ToString()}");
-                    OpenConfigFile(data.Data);
+                    var config = OpenConfigFile(data.Data);
+                    FindEpisodesToDownload(config);
                 }
             }
             base.OnActivityResult(requestCode, resultCode, data);
