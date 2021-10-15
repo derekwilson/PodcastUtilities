@@ -15,6 +15,15 @@
         android:singleLine="false"
         />
 
+    <TextView
+        android:id="@+id/txtAppStorage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="placeholder"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        />
+
     <Button
         android:id="@+id/btnLoad"
         android:text="Load Config"
@@ -23,7 +32,16 @@
         />
 
     <TextView
-        android:id="@+id/txtAppStorage"
+        android:id="@+id/txtConfigFilePath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="placeholder"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        />
+
+    <TextView
+        android:id="@+id/txtOutput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="placeholder"

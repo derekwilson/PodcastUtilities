@@ -16,6 +16,8 @@ namespace PodcastUtilitiesPOC
         }
 
         public IIocContainer IocContainer { get; private set; }
+        public ILoggerFactory LoggerFactory { get; private set; }
+        public ILogger Logger { get; private set; }
 
         private static IIocContainer InitializeIocContainer()
         {
@@ -30,6 +32,12 @@ namespace PodcastUtilitiesPOC
             return container;
         }
 
+        private static IIocContainer AddExtrasToIocContainer(IIocContainer container)
+        {
+            container.Register<ILoggerFactory, NLoggerLoggerFactory>(IocLifecycle.Singleton);
+            return container;
+        }
+
         public override void OnCreate()
         {
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int) Android.OS.Build.VERSION.SdkInt}");
@@ -37,7 +45,10 @@ namespace PodcastUtilitiesPOC
 
             // initialise the IoC container
             IocContainer = InitializeIocContainer();
-            Log.Debug(LOGCAT_TAG, "AndroidApplication:IoC Init");
+            AddExtrasToIocContainer(IocContainer);
+            LoggerFactory = IocContainer.Resolve<ILoggerFactory>();
+            Logger = LoggerFactory.Logger;
+            Logger.Debug(() => "AndroidApplication:IoC Init");
         }
     }
 }

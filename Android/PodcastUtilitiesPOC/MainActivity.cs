@@ -21,28 +21,27 @@ namespace PodcastUtilitiesPOC
     public class MainActivity : AppCompatActivity
     {
         private const int REQUEST_SELECT_FILE = 3000;
+        private AndroidApplication AndroidApplication;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            Log.Debug(AndroidApplication.LOGCAT_TAG, "MainActivity:OnCreate");
+            AndroidApplication = (Application as AndroidApplication);
+            AndroidApplication.Logger.Debug(() => "MainActivity:OnCreate");
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
             // Get our UI controls from the loaded layout
-            TextView txtView1 = FindViewById<TextView>(Resource.Id.txtVersions);
             List<string> envirnment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
             StringBuilder builder = new StringBuilder();
             foreach (string line in envirnment)
             {
                 builder.AppendLine(line);
             }
-            txtView1.Text = builder.ToString();
-
-            TextView txtView2 = FindViewById<TextView>(Resource.Id.txtAppStorage);
-            txtView2.Text = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            SetTextViewText(Resource.Id.txtVersions, builder.ToString());
+            SetTextViewText(Resource.Id.txtAppStorage, System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal));
 
             Button btnLoad = FindViewById<Button>(Resource.Id.btnLoad);
             btnLoad.Click += (sender, e) => LoadConfig();
@@ -51,9 +50,9 @@ namespace PodcastUtilitiesPOC
             bool isWriteable = Android.OS.Environment.MediaMounted.Equals(Android.OS.Environment.ExternalStorageState);
 
             IEpisodeFinder podcastEpisodeFinder = null;
-            Log.Debug(AndroidApplication.LOGCAT_TAG, $"MainActivity:OnCreate {podcastEpisodeFinder != null}");
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate {podcastEpisodeFinder != null}");
             podcastEpisodeFinder = (Application as AndroidApplication).IocContainer.Resolve<IEpisodeFinder>();
-            Log.Debug(AndroidApplication.LOGCAT_TAG, $"MainActivity:OnCreate {podcastEpisodeFinder != null}");
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate {podcastEpisodeFinder != null}");
         }
 
         private void LoadConfig()
@@ -69,7 +68,7 @@ namespace PodcastUtilitiesPOC
 
         private void SelectFile()
         {
-            Log.Debug(AndroidApplication.LOGCAT_TAG, $"MainActivity:SelectFile");
+            AndroidApplication.Logger.Debug(() => $"MainActivity:SelectFile");
             // ACTION_OPEN_DOCUMENT is the intent to choose a file via the system's file browser.
             var intent = new Intent(Intent.ActionOpenDocument);
 
@@ -99,22 +98,23 @@ namespace PodcastUtilitiesPOC
             {
                 count++;
             }
-            
-            Log.Debug(AndroidApplication.LOGCAT_TAG, $"MainActivity:Control Podcasts {control.GetSourceRoot()}");
-            Log.Debug(AndroidApplication.LOGCAT_TAG, $"MainActivity:Control Podcasts {count}");
-            TextView txtView2 = FindViewById<TextView>(Resource.Id.txtAppStorage);
-            txtView2.Text = $"{count}, {control.GetSourceRoot()}";
+
+            AndroidApplication.Logger.Debug(() => $"MainActivity:Control Podcasts {control.GetSourceRoot()}");
+            AndroidApplication.Logger.Debug(() => $"MainActivity:Control Podcasts {count}");
+
+            SetTextViewText(Resource.Id.txtConfigFilePath, $"{uri.ToString()}");
+            SetTextViewText(Resource.Id.txtOutput, $"{count}, {control.GetSourceRoot()}");
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
-            Log.Debug(AndroidApplication.LOGCAT_TAG, $"MainActivity:OnActivityResult {requestCode}, {resultCode}");
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {requestCode}, {resultCode}");
             if (requestCode == REQUEST_SELECT_FILE)
             {
                 if (resultCode.Equals(Result.Ok))
                 {
                     Toast.MakeText(Application.Context, "OK ", ToastLength.Short).Show();
-                    Log.Debug(AndroidApplication.LOGCAT_TAG, $"MainActivity:OnActivityResult {data.Data.ToString()}");
+                    AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {data.Data.ToString()}");
                     OpenConfigFile(data.Data);
                 }
             }
@@ -139,6 +139,12 @@ namespace PodcastUtilitiesPOC
                     base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
                     break;
             }
+        }
+
+        private void SetTextViewText(int id, string txt)
+        {
+            TextView txtView = FindViewById<TextView>(id);
+            txtView.Text = txt;
         }
     }
 }
