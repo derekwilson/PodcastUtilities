@@ -13,6 +13,7 @@ using PodcastUtilities.Common.Platform;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace PodcastUtilitiesPOC
@@ -22,7 +23,9 @@ namespace PodcastUtilitiesPOC
     {
         private const int REQUEST_SELECT_FILE = 3000;
         private AndroidApplication AndroidApplication;
-
+        private ReadOnlyControlFile ControlFile;
+        StringBuilder OutputBuffer = new StringBuilder(1000);
+        static object SyncLock = new object();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -43,8 +46,16 @@ namespace PodcastUtilitiesPOC
             SetTextViewText(Resource.Id.txtVersions, builder.ToString());
             SetTextViewText(Resource.Id.txtAppStorage, System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal));
 
-            Button btnLoad = FindViewById<Button>(Resource.Id.btnLoad);
+            Button btnLoad = FindViewById<Button>(Resource.Id.btnLoadConfig);
             btnLoad.Click += (sender, e) => LoadConfig();
+
+            Button btnFind = FindViewById<Button>(Resource.Id.btnFindPodcasts);
+            // works
+            btnFind.Click += (sender, e) => Task.Run(() => FindEpisodesToDownload());
+            // crash - java.lang.RuntimeException: Can't create handler inside thread that has not called Looper.prepare()
+            //btnFind.Click += async (sender, e) => await Task.Run(() => FindEpisodesToDownload());
+            // blocks UI thread
+            //btnFind.Click += async (sender, e) => FindEpisodesToDownload();
 
             bool isReadonly = Android.OS.Environment.MediaMountedReadOnly.Equals(Android.OS.Environment.ExternalStorageState);
             bool isWriteable = Android.OS.Environment.MediaMounted.Equals(Android.OS.Environment.ExternalStorageState);
@@ -102,27 +113,40 @@ namespace PodcastUtilitiesPOC
             return control;
         }
 
-        private void FindEpisodesToDownload(ReadOnlyControlFile config)
+        private void FindEpisodesToDownload()
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity:FindEpisodesToDownload");
+            OutputBuffer.Clear();
+            AddLineToOutput("Started");
+            if (ControlFile == null)
+            {
+                AndroidApplication.Logger.Warning(() => $"MainActivity:FindEpisodesToDownload - no control file");
+                AddLineToOutput("No control file");
+                return;
+            }
+
+            ToastMessage("Started");
             IEpisodeFinder podcastEpisodeFinder = null;
             podcastEpisodeFinder = AndroidApplication.IocContainer.Resolve<IEpisodeFinder>();
 
             // find the episodes to download
-            StringBuilder builder = new StringBuilder();
             var allEpisodes = new List<ISyncItem>(20);
-            foreach (var podcastInfo in config.GetPodcasts())
+            foreach (var podcastInfo in ControlFile.GetPodcasts())
             {
-                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(config.GetSourceRoot(), config.GetRetryWaitInSeconds(), podcastInfo, config.GetDiagnosticRetainTemporaryFiles());
+                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(
+                    ControlFile.GetSourceRoot(), 
+                    ControlFile.GetRetryWaitInSeconds(), 
+                    podcastInfo, 
+                    ControlFile.GetDiagnosticRetainTemporaryFiles());
                 allEpisodes.AddRange(episodesInThisFeed);
                 foreach (var episode in episodesInThisFeed)
                 {
                     AndroidApplication.Logger.Debug(() => $"MainActivity:FindEpisodesToDownload {episode.EpisodeTitle}");
-                    builder.AppendLine(episode.EpisodeTitle);
+                    AddLineToOutput(episode.EpisodeTitle);
                 }
             }
-
-            SetTextViewText(Resource.Id.txtOutput, $"{builder.ToString()}");
+            AddLineToOutput("Done.");
+            ToastMessage("Done");
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
@@ -132,10 +156,10 @@ namespace PodcastUtilitiesPOC
             {
                 if (resultCode.Equals(Result.Ok))
                 {
+                    ToastMessage("OK");
                     Toast.MakeText(Application.Context, "OK ", ToastLength.Short).Show();
                     AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {data.Data.ToString()}");
-                    var config = OpenConfigFile(data.Data);
-                    FindEpisodesToDownload(config);
+                    ControlFile = OpenConfigFile(data.Data);
                 }
             }
             base.OnActivityResult(requestCode, resultCode, data);
@@ -151,7 +175,7 @@ namespace PodcastUtilitiesPOC
                         SelectFile();
                     } else
                     {
-                        Toast.MakeText(Application.Context, "Denied ", ToastLength.Short).Show();
+                        ToastMessage("Denied");
                     }
                     break;
                 default:
@@ -159,6 +183,30 @@ namespace PodcastUtilitiesPOC
                     base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
                     break;
             }
+        }
+
+        private void AddLineToOutput(string line)
+        {
+                OutputBuffer.AppendLine(line);
+                RunOnUiThread(() =>
+                {
+                    try
+                    {
+                        SetTextViewText(Resource.Id.txtOutput, $"{OutputBuffer.ToString()}");
+                    }
+                    catch (ArgumentOutOfRangeException ex)
+                    {
+                        AndroidApplication.Logger.LogException(() => $"MainActivity:AddLineToOutput - ignoring render error", ex);
+                    }
+                });
+        }
+
+        private void ToastMessage(string message)
+        {
+            RunOnUiThread(() =>
+            {
+                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+            });
         }
 
         private void SetTextViewText(int id, string txt)

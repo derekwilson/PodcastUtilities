@@ -6,47 +6,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtVersions"
+    <ScrollView
+        android:id="@+id/scrollContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="placeholder\nline2\nline3"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtAppStorage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="placeholder"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnLoad"
-        android:text="Load Config"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        <TextView
+            android:id="@+id/txtVersions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="placeholder\nline2\nline3"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            />
 
-    <TextView
-        android:id="@+id/txtConfigFilePath"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="placeholder"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        />
+        <TextView
+            android:id="@+id/txtAppStorage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="placeholder"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            />
 
-    <TextView
-        android:id="@+id/txtOutput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="placeholder"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        />
+        <Button
+            android:id="@+id/btnLoadConfig"
+            android:text="Load Config"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/txtConfigFilePath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="placeholder"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            />
+
+        <Button
+            android:id="@+id/btnFindPodcasts"
+            android:text="Find Podcasts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/txtOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="placeholder"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            />
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
