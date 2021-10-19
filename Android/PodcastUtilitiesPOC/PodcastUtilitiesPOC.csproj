@@ -72,10 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidApplication.cs" />
-    <Compile Include="Logger.cs" />
+    <Compile Include="Logging\Logger.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="PermissionChecker.cs" />
-    <Compile Include="PermissionRequester.cs" />
+    <Compile Include="Utilities\PermissionChecker.cs" />
+    <Compile Include="Utilities\PermissionRequester.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

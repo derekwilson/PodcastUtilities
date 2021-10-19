@@ -10,6 +10,7 @@ using AndroidX.AppCompat.App;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.Common.Platform;
+using PodcastUtilitiesPOC.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,17 +1,9 @@
 ﻿using Android;
 using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using Google.Android.Material.Snackbar;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace PodcastUtilitiesPOC
+namespace PodcastUtilitiesPOC.Utilities
 {
     class PermissionRequester
     {
@@ -37,10 +29,11 @@ namespace PodcastUtilitiesPOC
         {
             if (activity.ShouldShowRequestPermissionRationale(permission))
             {
-                Snackbar.Make(view, rationaleId, Snackbar.LengthIndefinite)
+                Snackbar.Make(view, rationaleId, BaseTransientBottomBar.LengthIndefinite)
                         .SetAction(Resource.String.ok, delegate { RequestAPermission(activity, permission, code); });
 
-            } else
+            }
+            else
             {
                 RequestAPermission(activity, permission, code);
             }
@@ -48,7 +41,7 @@ namespace PodcastUtilitiesPOC
 
         private static void RequestAPermission(Activity activity, string permission, int code)
         {
-            string[] permissionArray = {permission};
+            string[] permissionArray = { permission };
             activity.RequestPermissions(permissionArray, code);
         }
     }

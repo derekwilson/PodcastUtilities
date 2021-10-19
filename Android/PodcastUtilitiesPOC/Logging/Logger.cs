@@ -1,16 +1,7 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using NLog;
+﻿using NLog;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace PodcastUtilitiesPOC
+namespace PodcastUtilitiesPOC.Logging
 {
     public interface ILogger
     {
@@ -18,7 +9,7 @@ namespace PodcastUtilitiesPOC
 
         void Debug(MessageGenerator message);
         void Warning(MessageGenerator message);
-        void LogException(ILogger.MessageGenerator message, Exception ex);
+        void LogException(MessageGenerator message, Exception ex);
     }
     class NLogLogger : ILogger
     {
@@ -60,13 +51,13 @@ namespace PodcastUtilitiesPOC
 
     class NLoggerLoggerFactory : ILoggerFactory
     {
-        public ILogger Logger 
-        { 
+        public ILogger Logger
+        {
             get
             {
                 var logger = LogManager.GetCurrentClassLogger();
                 return new NLogLogger(logger);
-            }  
+            }
         }
     }
 }

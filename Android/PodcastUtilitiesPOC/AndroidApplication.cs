@@ -3,6 +3,7 @@ using Android.Runtime;
 using Android.Util;
 using PodcastUtilities.Common;
 using PodcastUtilities.Ioc;
+using PodcastUtilitiesPOC.Logging;
 using System;
 using System.Threading.Tasks;
 
