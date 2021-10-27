@@ -6,6 +6,9 @@ using Android.Views.Animations;
 
 namespace PodcastUtilitiesPOC.CustomViews
 {
+    /// <summary>
+    /// A progress bar with animations
+    /// </summary>
     class ProgressSpinnerView : LinearLayout
     {
         private TextView messageView;

@@ -30,7 +30,7 @@ namespace PodcastUtilitiesPOC.Utilities
         }
 
         // use the message specified in the layout XML and use a stepped progress
-        public static void StartProgress(ProgressSpinnerView progressBar, Window window, Context context, int max)
+        public static void StartProgress(ProgressSpinnerView progressBar, Window window, int max)
         {
             progressBar.Max = max;
             StartProgress(progressBar, window, false);

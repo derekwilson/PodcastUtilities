@@ -26,6 +26,7 @@ namespace PodcastUtilitiesPOC
         private const int REQUEST_SELECT_FILE = 3000;
         private AndroidApplication AndroidApplication;
         private ReadOnlyControlFile ControlFile;
+        private int NoOfFeeds = 0;
         private readonly StringBuilder OutputBuffer = new StringBuilder(1000);
         static object SyncLock = new object();
 
@@ -110,6 +111,7 @@ namespace PodcastUtilitiesPOC
             {
                 count++;
             }
+            NoOfFeeds = count;
 
             AndroidApplication.Logger.Debug(() => $"MainActivity:Control Podcasts {control.GetSourceRoot()}");
             AndroidApplication.Logger.Debug(() => $"MainActivity:Control Podcasts {count}");
@@ -124,10 +126,12 @@ namespace PodcastUtilitiesPOC
             AndroidApplication.Logger.Debug(() => $"MainActivity:FindEpisodesToDownload");
             OutputBuffer.Clear();
             AddLineToOutput("Started");
+            DisplayOutput();
             if (ControlFile == null)
             {
                 AndroidApplication.Logger.Warning(() => $"MainActivity:FindEpisodesToDownload - no control file");
                 AddLineToOutput("No control file");
+                DisplayOutput();
                 return;
             }
 
@@ -138,6 +142,7 @@ namespace PodcastUtilitiesPOC
 
             // find the episodes to download
             var allEpisodes = new List<ISyncItem>(20);
+            int count = 0;
             foreach (var podcastInfo in ControlFile.GetPodcasts())
             {
                 var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(
@@ -151,10 +156,13 @@ namespace PodcastUtilitiesPOC
                     AndroidApplication.Logger.Debug(() => $"MainActivity:FindEpisodesToDownload {episode.EpisodeTitle}");
                     AddLineToOutput(episode.EpisodeTitle);
                 }
+                count++;
+                UpdateProgress(count);
             }
             AddLineToOutput("Done.");
             ToastMessage("Done");
             EndProgress();
+            DisplayOutput();
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
@@ -195,25 +203,37 @@ namespace PodcastUtilitiesPOC
 
         private void AddLineToOutput(string line)
         {
-                OutputBuffer.AppendLine(line);
-                RunOnUiThread(() =>
+            OutputBuffer.AppendLine(line);
+        }
+
+        private void DisplayOutput()
+        {
+            RunOnUiThread(() =>
+            {
+                try
                 {
-                    try
-                    {
-                        SetTextViewText(Resource.Id.txtOutput, $"{OutputBuffer.ToString()}");
-                    }
-                    catch (ArgumentOutOfRangeException ex)
-                    {
-                        AndroidApplication.Logger.LogException(() => $"MainActivity:AddLineToOutput - ignoring render error", ex);
-                    }
-                });
+                    SetTextViewText(Resource.Id.txtOutput, $"{OutputBuffer.ToString()}");
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    AndroidApplication.Logger.LogException(() => $"MainActivity:AddLineToOutput - ignoring render error", ex);
+                }
+            });
         }
 
         private void StartProgress()
         {
             RunOnUiThread(() =>
             {
-                ProgressViewHelper.StartProgress(ProgressSpinner, this.Window);
+                ProgressViewHelper.StartProgress(ProgressSpinner, this.Window, NoOfFeeds);
+            });
+        }
+
+        private void UpdateProgress(int position)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressSpinner.Progress = position;
             });
         }
 
