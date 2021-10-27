@@ -59,7 +59,8 @@ namespace PodcastUtilitiesPOC
 
         public override void OnCreate()
         {
-            Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int) Android.OS.Build.VERSION.SdkInt}");
+            Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int)Android.OS.Build.VERSION.SdkInt}");
+            Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate PackageName == {this.PackageName}");
             SetupExceptionHandler();
             base.OnCreate();
 

@@ -2,7 +2,9 @@
     <string name="app_name">PodcastUtilitiesPOC</string>
 	<string name="action_settings">Settings</string>
 
+	<string name="placeholder">placeholder</string>
 	<string name="ok">OK</string>
 	<string name="read_external_permissions_rationale">PodcastUtilities needs read access to storage</string>
 	<string name="write_external_permissions_rationale">PodcastUtilities needs write access to storage</string>
+	<string name="finding_podcasts_progress">Finding podcasts...</string>
 </resources>

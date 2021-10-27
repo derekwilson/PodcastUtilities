@@ -78,6 +78,8 @@
     <Compile Include="Utilities\PermissionRequester.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomViews\ProgressSpinnerView.cs" />
+    <Compile Include="Utilities\ProgressViewHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\NLog.config" />
@@ -125,7 +127,20 @@
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.4.0.4" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\view_progress_spinner.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\attrs_progress_spinner_view.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>PowerShell -File "$(SolutionDir)Update-PackageName.ps1" $(ProjectDir) $(ConfigurationName)</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">

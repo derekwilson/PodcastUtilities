@@ -10,6 +10,7 @@ using AndroidX.AppCompat.App;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.Common.Platform;
+using PodcastUtilitiesPOC.CustomViews;
 using PodcastUtilitiesPOC.Utilities;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,10 @@ namespace PodcastUtilitiesPOC
         private const int REQUEST_SELECT_FILE = 3000;
         private AndroidApplication AndroidApplication;
         private ReadOnlyControlFile ControlFile;
-        StringBuilder OutputBuffer = new StringBuilder(1000);
+        private readonly StringBuilder OutputBuffer = new StringBuilder(1000);
         static object SyncLock = new object();
+
+        private ProgressSpinnerView ProgressSpinner;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -46,6 +49,8 @@ namespace PodcastUtilitiesPOC
             }
             SetTextViewText(Resource.Id.txtVersions, builder.ToString());
             SetTextViewText(Resource.Id.txtAppStorage, System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal));
+
+            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
 
             Button btnLoad = FindViewById<Button>(Resource.Id.btnLoadConfig);
             btnLoad.Click += (sender, e) => LoadConfig();
@@ -126,6 +131,7 @@ namespace PodcastUtilitiesPOC
                 return;
             }
 
+            StartProgress();
             ToastMessage("Started");
             IEpisodeFinder podcastEpisodeFinder = null;
             podcastEpisodeFinder = AndroidApplication.IocContainer.Resolve<IEpisodeFinder>();
@@ -148,6 +154,7 @@ namespace PodcastUtilitiesPOC
             }
             AddLineToOutput("Done.");
             ToastMessage("Done");
+            EndProgress();
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
@@ -200,6 +207,22 @@ namespace PodcastUtilitiesPOC
                         AndroidApplication.Logger.LogException(() => $"MainActivity:AddLineToOutput - ignoring render error", ex);
                     }
                 });
+        }
+
+        private void StartProgress()
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.StartProgress(ProgressSpinner, this.Window);
+            });
+        }
+
+        private void EndProgress()
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.CompleteProgress(ProgressSpinner, this.Window);
+            });
         }
 
         private void ToastMessage(string message)
