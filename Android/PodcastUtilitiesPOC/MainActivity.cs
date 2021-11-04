@@ -3,10 +3,13 @@ using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Provider;
 using Android.Runtime;
 using Android.Util;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using AndroidX.DocumentFile.Provider;
+using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.Common.Platform;
@@ -14,6 +17,7 @@ using PodcastUtilitiesPOC.CustomViews;
 using PodcastUtilitiesPOC.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -24,9 +28,15 @@ namespace PodcastUtilitiesPOC
     public class MainActivity : AppCompatActivity
     {
         private const int REQUEST_SELECT_FILE = 3000;
+        private const int REQUEST_SELECT_FOLDER = 3001;
         private AndroidApplication AndroidApplication;
+        private string PodcastsRoot;
         private ReadOnlyControlFile ControlFile;
         private int NoOfFeeds = 0;
+        List<ISyncItem> AllEpisodes = new List<ISyncItem>(20);
+        private int number_of_files_to_download = 0;
+        private int number_of_files_downloaded = 0;
+
         private readonly StringBuilder OutputBuffer = new StringBuilder(1000);
         static object SyncLock = new object();
 
@@ -44,12 +54,21 @@ namespace PodcastUtilitiesPOC
             // Get our UI controls from the loaded layout
             List<string> envirnment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
             StringBuilder builder = new StringBuilder();
+            builder.AppendLine(AndroidApplication.DisplayVersion);
             foreach (string line in envirnment)
             {
                 builder.AppendLine(line);
             }
             SetTextViewText(Resource.Id.txtVersions, builder.ToString());
-            SetTextViewText(Resource.Id.txtAppStorage, System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal));
+
+            builder.Clear();
+
+            PodcastsRoot = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPodcasts).AbsolutePath;
+            builder.AppendLine($"Personal Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal)}");
+            builder.AppendLine($"AppData Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData)}");
+            builder.AppendLine($"CommonAppData Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonApplicationData)}");
+            builder.AppendLine($"Podcasts Folder = {PodcastsRoot}");
+            SetTextViewText(Resource.Id.txtAppStorage, builder.ToString());
 
             ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
 
@@ -64,19 +83,38 @@ namespace PodcastUtilitiesPOC
             // blocks UI thread
             //btnFind.Click += async (sender, e) => FindEpisodesToDownload();
 
+            Button btnSetRoot = FindViewById<Button>(Resource.Id.btnSetRoot);
+            btnSetRoot.Click += (sender, e) => SetRoot();
+
+            Button btnDownload = FindViewById<Button>(Resource.Id.btnDownload);
+            btnDownload.Click += (sender, e) => Task.Run(() => Download());
+
             bool isReadonly = Android.OS.Environment.MediaMountedReadOnly.Equals(Android.OS.Environment.ExternalStorageState);
             bool isWriteable = Android.OS.Environment.MediaMounted.Equals(Android.OS.Environment.ExternalStorageState);
         }
 
         private void LoadConfig()
         {
-            if (PermissionChecker.HasReadStoragePermission(this))
+            if (PermissionChecker.HasWriteStoragePermission(this))
             {
                 SelectFile();
-            } else
-            {
-                PermissionRequester.RequestReadStoragePermission(this, FindViewById(Android.Resource.Id.Content));
             }
+            else
+            {
+                PermissionRequester.RequestWriteStoragePermission(this, FindViewById(Android.Resource.Id.Content), PermissionRequester.RC_WRITE_EXTERNAL_STORAGE_PERMISSION);
+            }
+        }
+
+        private void SetRoot()
+        {
+            if (ControlFile == null)
+            {
+                AndroidApplication.Logger.Warning(() => $"MainActivity:SetRoot - no control file");
+                AddLineToOutput("No control file");
+                DisplayOutput();
+                return;
+            }
+            SelectFolder();
         }
 
         private void SelectFile()
@@ -96,6 +134,13 @@ namespace PodcastUtilitiesPOC
             intent.SetType("*/*");
 
             StartActivityForResult(intent, REQUEST_SELECT_FILE);
+        }
+
+        public void SelectFolder()
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity:SelectFolder");
+            Intent intent = new Intent(Intent.ActionOpenDocumentTree);
+            StartActivityForResult(intent, REQUEST_SELECT_FOLDER);
         }
 
         private ReadOnlyControlFile OpenConfigFile(Android.Net.Uri uri)
@@ -121,6 +166,75 @@ namespace PodcastUtilitiesPOC
             return control;
         }
 
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {requestCode}, {resultCode}");
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (!resultCode.Equals(Result.Ok))
+            {
+                return;
+            }
+
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {data.Data.ToString()}");
+            switch (requestCode)
+            {
+                case REQUEST_SELECT_FILE:
+                    ToastMessage("OK");
+                    ControlFile = OpenConfigFile(data.Data);
+                    break;
+                case REQUEST_SELECT_FOLDER:
+                    ToastMessage("OK");
+                    SetTextViewText(Resource.Id.txtRoot, $"{data.Data.ToString()}");
+
+                    //Android.Net.Uri uri = data.Data;
+                    //Android.Net.Uri docUri = DocumentsContract.BuildDocumentUriUsingTree(uri,DocumentsContract.GetTreeDocumentId(uri));
+                    //String path = GetRealPathFromURI(uri);
+
+                    DocumentFile file = DocumentFile.FromTreeUri(this.ApplicationContext, data.Data);
+                    AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {file.Uri.Path}");
+                    SetTextViewText(Resource.Id.txtRoot, $"{file.Uri.Path}");
+                    break;
+            }
+        }
+
+        private String GetRealPathFromURI(Android.Net.Uri contentURI)
+        {
+            String result;
+            var cursor = Application.ContentResolver.Query(contentURI, null, null, null, null);
+            if (cursor == null)
+            { // Source is Dropbox or other similar local file path
+                result = contentURI.Path;
+            }
+            else
+            {
+                cursor.MoveToFirst();
+                int idx = cursor.GetColumnIndex(MediaStore.Images.ImageColumns.Data);
+                result = cursor.GetString(idx);
+                cursor.Close();
+            }
+            return result;
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            switch (requestCode)
+            {
+                case PermissionRequester.RC_WRITE_EXTERNAL_STORAGE_PERMISSION:
+                    if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
+                    {
+                        SelectFile();
+                    } else
+                    {
+                        ToastMessage("Denied");
+                    }
+                    break;
+                default:
+                    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    break;
+            }
+        }
+
         private void FindEpisodesToDownload()
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity:FindEpisodesToDownload");
@@ -141,16 +255,19 @@ namespace PodcastUtilitiesPOC
             podcastEpisodeFinder = AndroidApplication.IocContainer.Resolve<IEpisodeFinder>();
 
             // find the episodes to download
-            var allEpisodes = new List<ISyncItem>(20);
             int count = 0;
             foreach (var podcastInfo in ControlFile.GetPodcasts())
             {
                 var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(
-                    ControlFile.GetSourceRoot(), 
-                    ControlFile.GetRetryWaitInSeconds(), 
-                    podcastInfo, 
+                    // works on all OS's with just WRITE_EXTERNAL
+                    //"/sdcard/Android/data/com.andrewandderek.podcastutilitiespoc.debug/files/PodcastEpisodes",
+                    // works on OS4 with just WRITE_EXTERNAL, hangs on OS10 and fails with exception on OS11
+                    //"/sdcard/PodcastUtilities/PodcastEpisodes",
+                    ControlFile.GetSourceRoot(),
+                    ControlFile.GetRetryWaitInSeconds(),
+                    podcastInfo,
                     ControlFile.GetDiagnosticRetainTemporaryFiles());
-                allEpisodes.AddRange(episodesInThisFeed);
+                AllEpisodes.AddRange(episodesInThisFeed);
                 foreach (var episode in episodesInThisFeed)
                 {
                     AndroidApplication.Logger.Debug(() => $"MainActivity:FindEpisodesToDownload {episode.EpisodeTitle}");
@@ -165,39 +282,147 @@ namespace PodcastUtilitiesPOC
             DisplayOutput();
         }
 
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        private void Download()
         {
-            AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {requestCode}, {resultCode}");
-            if (requestCode == REQUEST_SELECT_FILE)
+            AndroidApplication.Logger.Debug(() => $"MainActivity:Download");
+            OutputBuffer.Clear();
+            AddLineToOutput("Started");
+            DisplayOutput();
+            if (ControlFile == null || AllEpisodes.Count <1)
             {
-                if (resultCode.Equals(Result.Ok))
-                {
-                    ToastMessage("OK");
-                    Toast.MakeText(Application.Context, "OK ", ToastLength.Short).Show();
-                    AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {data.Data.ToString()}");
-                    ControlFile = OpenConfigFile(data.Data);
-                }
+                AndroidApplication.Logger.Warning(() => $"MainActivity:Download - no control file or nothing to download");
+                AddLineToOutput("No control file or nothing to download");
+                DisplayOutput();
+                return;
             }
-            base.OnActivityResult(requestCode, resultCode, data);
+
+            //StartProgress();
+            ToastMessage("Started");
+
+            IEpisodeFinder podcastEpisodeFinder = null;
+            podcastEpisodeFinder = AndroidApplication.IocContainer.Resolve<IEpisodeFinder>();
+
+            number_of_files_to_download = AllEpisodes.Count;
+            number_of_files_downloaded = 0;
+            if (number_of_files_to_download > 0)
+            {
+                // convert them to tasks
+                var converter = AndroidApplication.IocContainer.Resolve<ISyncItemToEpisodeDownloaderTaskConverter>();
+                IEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(AllEpisodes, StatusUpdate, ProgressUpdate);
+
+                foreach (var task in downloadTasks)
+                {
+                    task.SyncItem.DestinationPath = task.SyncItem.DestinationPath.Replace("?", "");
+                    AndroidApplication.Logger.Warning(() => $"MainActivity:Download to: {task.SyncItem.DestinationPath}");
+                }
+
+
+                // run them in a task pool
+                var taskPool = AndroidApplication.IocContainer.Resolve<ITaskPool>();
+                taskPool.RunAllTasks(ControlFile.GetMaximumNumberOfConcurrentDownloads(), downloadTasks);
+            }
+
+            AddLineToOutput("Done.");
+            ToastMessage("Done");
+            //EndProgress();
+            DisplayOutput();
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        void ProgressUpdate(object sender, ProgressEventArgs e)
         {
-            switch (requestCode)
+            lock (SyncLock)
             {
-                case PermissionRequester.RC_READ_EXTERNAL_STORAGE_PERMISSION:
-                    if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
+                // keep all the message together
+
+                ISyncItem syncItem = e.UserState as ISyncItem;
+                if (e.ProgressPercentage % 10 == 0)
+                {
+                    var line = string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
+                                                    DisplayFormatter.RenderFileSize(e.ItemsProcessed),
+                                                    DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
+                                                    e.ProgressPercentage);
+                    AddLineToOutput(line);
+                    AndroidApplication.Logger.Debug(() => line);
+                }
+
+                if (e.ProgressPercentage == 100)
+                {
+                    number_of_files_downloaded++;
+                    AddLineToOutput($"Completed {number_of_files_downloaded} of {number_of_files_to_download} downloads");
+                }
+
+                /*
+                if (IsDestinationDriveFull(_control.GetSourceRoot(), _control.GetFreeSpaceToLeaveOnDownload()))
+                {
+                    if (_taskPool != null)
                     {
-                        SelectFile();
-                    } else
-                    {
-                        ToastMessage("Denied");
+                        _taskPool.CancelAllTasks();
                     }
-                    break;
-                default:
-                    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-                    base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-                    break;
+                }
+                */
+
+                DisplayOutput();
+            }
+        }
+
+        /*
+        static bool IsDestinationDriveFull(string destinationRootPath, long freeSpaceToLeaveOnDestination)
+        {
+            long availableFreeSpace = 0;
+            try
+            {
+                var driveInfo = _driveInfoProvider.GetDriveInfoForPath(Path.GetPathRoot(Path.GetFullPath(destinationRootPath)));
+                availableFreeSpace = driveInfo.AvailableFreeSpace;
+            }
+            catch (Exception ex)
+            {
+                if (!_reported_driveinfo_error)
+                {
+                    Console.WriteLine(string.Format("Cannot find available free space on drive, will continue to download. Error: {0}", ex.Message));
+                }
+                _reported_driveinfo_error = true;
+                return false;
+            }
+
+            long freeKb = 0;
+            double freeMb = 0;
+            if (availableFreeSpace > 0)
+                freeKb = (availableFreeSpace / 1024);
+            if (freeKb > 0)
+                freeMb = (freeKb / 1024);
+
+            if (freeMb < freeSpaceToLeaveOnDestination)
+            {
+                Console.WriteLine(string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeMb));
+                return true;
+            }
+            return false;
+        }
+        */
+
+        void StatusUpdate(object sender, StatusUpdateEventArgs e)
+        {
+            bool _verbose = false;
+            if (e.MessageLevel == StatusUpdateLevel.Verbose && !_verbose)
+            {
+                return;
+            }
+
+            lock (SyncLock)
+            {
+                // keep all the message together
+                if (e.Exception != null)
+                {
+                    AndroidApplication.Logger.LogException(() => $"MainActivity:StatusUpdate -> ", e.Exception);
+                    AddLineToOutput(e.Message);
+                    AddLineToOutput(String.Concat(" ", e.Exception.ToString()));
+                }
+                else
+                {
+                    AndroidApplication.Logger.Debug(() => $"MainActivity:StatusUpdate {e.Message}");
+                    AddLineToOutput(e.Message);
+                }
+                DisplayOutput();
             }
         }
 

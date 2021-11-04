@@ -22,6 +22,8 @@ namespace PodcastUtilitiesPOC
         public ILoggerFactory LoggerFactory { get; private set; }
         public ILogger Logger { get; private set; }
 
+        public String DisplayVersion { get; private set; }
+
         private static IIocContainer InitializeIocContainer()
         {
             var container = IocRegistration.GetEmptyContainer();
@@ -62,6 +64,10 @@ namespace PodcastUtilitiesPOC
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int)Android.OS.Build.VERSION.SdkInt}");
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate PackageName == {this.PackageName}");
             SetupExceptionHandler();
+            var package = PackageManager.GetPackageInfo(PackageName, 0);
+            DisplayVersion = $"v{package.VersionName}, ({package.VersionCode})";
+            Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Version == {DisplayVersion}");
+
             base.OnCreate();
 
             // initialise the IoC container
@@ -69,7 +75,7 @@ namespace PodcastUtilitiesPOC
             AddExtrasToIocContainer(IocContainer);
             LoggerFactory = IocContainer.Resolve<ILoggerFactory>();
             Logger = LoggerFactory.Logger;
-            Logger.Debug(() => "AndroidApplication:IoC Init");
+            Logger.Debug(() => $"AndroidApplication:IoC Init, {DisplayVersion}, {Android.OS.Build.VERSION.SdkInt}, {(int)Android.OS.Build.VERSION.SdkInt}, {this.PackageName}");
         }
     }
 }

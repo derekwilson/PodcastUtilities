@@ -67,6 +67,29 @@
             android:singleLine="false"
             />
 
+        <Button
+            android:id="@+id/btnSetRoot"
+            android:text="Set Root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/txtRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            />
+
+        <Button
+            android:id="@+id/btnDownload"
+            android:text="Download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
         </LinearLayout>
     </ScrollView>
 
