@@ -8164,16 +8164,22 @@ namespace PodcastUtilitiesPOC
 			public const int placeholder = 2131624048;
 			
 			// aapt resource value: 0x7F0E0071
-			public const int read_external_permissions_rationale = 2131624049;
+			public const int prefs_control_uri_key = 2131624049;
 			
 			// aapt resource value: 0x7F0E0072
-			public const int search_menu_title = 2131624050;
+			public const int prefs_file_key = 2131624050;
 			
 			// aapt resource value: 0x7F0E0073
-			public const int status_bar_notification_info_overflow = 2131624051;
+			public const int read_external_permissions_rationale = 2131624051;
 			
 			// aapt resource value: 0x7F0E0074
-			public const int write_external_permissions_rationale = 2131624052;
+			public const int search_menu_title = 2131624052;
+			
+			// aapt resource value: 0x7F0E0075
+			public const int status_bar_notification_info_overflow = 2131624053;
+			
+			// aapt resource value: 0x7F0E0076
+			public const int write_external_permissions_rationale = 2131624054;
 			
 			static String()
 			{

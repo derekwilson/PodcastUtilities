@@ -4,6 +4,7 @@ using Android.Util;
 using PodcastUtilities.Common;
 using PodcastUtilities.Ioc;
 using PodcastUtilitiesPOC.Logging;
+using PodcastUtilitiesPOC.Utilities;
 using System;
 using System.Threading.Tasks;
 
@@ -39,6 +40,7 @@ namespace PodcastUtilitiesPOC
 
         private static IIocContainer AddExtrasToIocContainer(IIocContainer container)
         {
+            // TODO - how do we register the app context ?
             container.Register<ILoggerFactory, NLoggerLoggerFactory>(IocLifecycle.Singleton);
             return container;
         }

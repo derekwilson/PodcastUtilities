@@ -30,7 +30,9 @@ namespace PodcastUtilitiesPOC
         private const int REQUEST_SELECT_FILE = 3000;
         private const int REQUEST_SELECT_FOLDER = 3001;
         private AndroidApplication AndroidApplication;
-        private string PodcastsRoot;
+        private IPreferencesProvider PreferencesProvider;
+        private string OverrideRoot;
+        private string ControlFileUri;
         private ReadOnlyControlFile ControlFile;
         private int NoOfFeeds = 0;
         List<ISyncItem> AllEpisodes = new List<ISyncItem>(20);
@@ -48,6 +50,11 @@ namespace PodcastUtilitiesPOC
             AndroidApplication.Logger.Debug(() => "MainActivity:OnCreate");
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            // TODO - IoC when we know how to injext the context
+            PreferencesProvider = new AndroidApplicationSharedPreferencesProvider(ApplicationContext);
+            ControlFileUri = PreferencesProvider.GetPreferenceString(ApplicationContext.GetString(Resource.String.prefs_control_uri_key), "");
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate Conrol Uri = {ControlFileUri}");
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
@@ -63,7 +70,6 @@ namespace PodcastUtilitiesPOC
 
             builder.Clear();
 
-            PodcastsRoot = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPodcasts).AbsolutePath;
             builder.AppendLine($"Personal Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal)}");
             builder.AppendLine($"AppData Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData)}");
             builder.AppendLine($"CommonAppData Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonApplicationData)}");
@@ -71,8 +77,9 @@ namespace PodcastUtilitiesPOC
             foreach (Java.IO.File file in files)
             {
                 builder.AppendLine($"ExternalFile = {file.AbsolutePath}");
+                OverrideRoot = file.AbsolutePath;
             }
-            builder.AppendLine($"Podcasts Folder = {PodcastsRoot}");
+            builder.AppendLine($"Podcasts Folder = {Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPodcasts).AbsolutePath}");
             SetTextViewText(Resource.Id.txtAppStorage, builder.ToString());
 
             ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
@@ -96,6 +103,19 @@ namespace PodcastUtilitiesPOC
 
             bool isReadonly = Android.OS.Environment.MediaMountedReadOnly.Equals(Android.OS.Environment.ExternalStorageState);
             bool isWriteable = Android.OS.Environment.MediaMounted.Equals(Android.OS.Environment.ExternalStorageState);
+
+            if (!String.IsNullOrEmpty(ControlFileUri))
+            {
+                try
+                {
+                    Android.Net.Uri uri = Android.Net.Uri.Parse(ControlFileUri);
+                    ControlFile = OpenConfigFile(uri);
+                } catch (Exception ex)
+                {
+                    AndroidApplication.Logger.LogException(() => $"MainActivity: OnCreate", ex);
+                    SetTextViewText(Resource.Id.txtConfigFilePath, $"Error {ex.Message}");
+                }
+            }
         }
 
         private void LoadConfig()
@@ -150,25 +170,33 @@ namespace PodcastUtilitiesPOC
 
         private ReadOnlyControlFile OpenConfigFile(Android.Net.Uri uri)
         {
-            ContentResolver resolver = Application.ContentResolver;
-            var stream = resolver.OpenInputStream(uri);
-            var xml = new XmlDocument();
-            xml.Load(stream);
-            var control = new ReadOnlyControlFile(xml);
-            var podcasts = control.GetPodcasts();
-            int count = 0;
-            foreach (var item in podcasts)
+            try
             {
-                count++;
+                ContentResolver resolver = Application.ContentResolver;
+                var stream = resolver.OpenInputStream(uri);
+                var xml = new XmlDocument();
+                xml.Load(stream);
+                var control = new ReadOnlyControlFile(xml);
+                var podcasts = control.GetPodcasts();
+                int count = 0;
+                foreach (var item in podcasts)
+                {
+                    count++;
+                }
+                NoOfFeeds = count;
+
+                AndroidApplication.Logger.Debug(() => $"MainActivity:Control Podcasts {control.GetSourceRoot()}");
+                AndroidApplication.Logger.Debug(() => $"MainActivity:Control Podcasts {count}");
+
+                SetTextViewText(Resource.Id.txtConfigFilePath, $"{uri.ToString()}");
+                SetTextViewText(Resource.Id.txtOutput, $"{count}, {control.GetSourceRoot()}");
+                return control;
+            } catch (Exception ex)
+            {
+                AndroidApplication.Logger.LogException(() => $"MainActivity: OpenConfigFile", ex);
+                SetTextViewText(Resource.Id.txtConfigFilePath, $"Error {ex.Message}");
+                return null;
             }
-            NoOfFeeds = count;
-
-            AndroidApplication.Logger.Debug(() => $"MainActivity:Control Podcasts {control.GetSourceRoot()}");
-            AndroidApplication.Logger.Debug(() => $"MainActivity:Control Podcasts {count}");
-
-            SetTextViewText(Resource.Id.txtConfigFilePath, $"{uri.ToString()}");
-            SetTextViewText(Resource.Id.txtOutput, $"{count}, {control.GetSourceRoot()}");
-            return control;
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
@@ -186,6 +214,10 @@ namespace PodcastUtilitiesPOC
                 case REQUEST_SELECT_FILE:
                     ToastMessage("OK");
                     ControlFile = OpenConfigFile(data.Data);
+                    if (ControlFile != null)
+                    {
+                        PreferencesProvider.SetPreferenceString(ApplicationContext.GetString(Resource.String.prefs_control_uri_key), data.Data.ToString());
+                    }
                     break;
                 case REQUEST_SELECT_FOLDER:
                     ToastMessage("OK");
@@ -193,6 +225,7 @@ namespace PodcastUtilitiesPOC
 
                     //Android.Net.Uri uri = data.Data;
                     //Android.Net.Uri docUri = DocumentsContract.BuildDocumentUriUsingTree(uri,DocumentsContract.GetTreeDocumentId(uri));
+                    // TODO - write GetRealPathFromUri()
                     //String path = GetRealPathFromURI(uri);
 
                     DocumentFile file = DocumentFile.FromTreeUri(this.ApplicationContext, data.Data);
@@ -268,8 +301,13 @@ namespace PodcastUtilitiesPOC
                     // works on all OS's with just WRITE_EXTERNAL
                     //"/sdcard/Android/data/com.andrewandderek.podcastutilitiespoc.debug/files/PodcastEpisodes",
                     // works on OS4 with just WRITE_EXTERNAL, hangs on OS10 and fails with exception on OS11
+                    // OS10 hangs unless <application android:requestLegacyExternalStorage="true" is in the manifest
                     //"/sdcard/PodcastUtilities/PodcastEpisodes",
-                    ControlFile.GetSourceRoot(),
+                    // ApplicationContext.GetExternalFilesDirs(null); last folder in the array
+                    //"/storage/82E7-140A/Android/data/com.andrewandderek.podcastutilitiespoc.debug/files"
+                    // TODO - store path to config file in sharedprefs
+                    //ControlFile.GetSourceRoot(),
+                    OverrideRoot,
                     ControlFile.GetRetryWaitInSeconds(),
                     podcastInfo,
                     ControlFile.GetDiagnosticRetainTemporaryFiles());
@@ -321,6 +359,7 @@ namespace PodcastUtilitiesPOC
                     // thanks google - this rule only seems to apply if we used scoped storage on OS 11 eg:  /sdcard/PodcastUtilities/PodcastEpisodes
                     // it works to /sdcard/Android/data/com.andrewandderek.podcastutilitiespoc.debug/files/PodcastEpisodes on all OS's
                     // it works to /sdcard/PodcastUtilities/PodcastEpisodes on OS4
+                    // TODO - move this into the common DLL
                     task.SyncItem.DestinationPath = task.SyncItem.DestinationPath.Replace("?", "");
                     AndroidApplication.Logger.Warning(() => $"MainActivity:Download to: {task.SyncItem.DestinationPath}");
                 }
@@ -360,6 +399,7 @@ namespace PodcastUtilitiesPOC
                     AddLineToOutput($"Completed {number_of_files_downloaded} of {number_of_files_to_download} downloads");
                 }
 
+                // TODO - test IsDestinationDriveFull
                 /*
                 if (IsDestinationDriveFull(_control.GetSourceRoot(), _control.GetFreeSpaceToLeaveOnDownload()))
                 {
@@ -400,6 +440,7 @@ namespace PodcastUtilitiesPOC
             if (freeKb > 0)
                 freeMb = (freeKb / 1024);
 
+            AndroidApplication.Logger.Debug(() => $"MainActivity:IsDestinationDriveFull {freeMb}");
             if (freeMb < freeSpaceToLeaveOnDestination)
             {
                 Console.WriteLine(string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeMb));

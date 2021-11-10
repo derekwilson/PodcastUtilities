@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">PodcastUtilitiesPOC</string>
+	<string name="app_name">PodcastUtilitiesPOC</string>
+
+	<string name="prefs_file_key">com.andrewandderek.podcastutilitiespoc</string>
+	<string name="prefs_control_uri_key">key_control_uri</string>
+
 	<string name="action_settings">Settings</string>
 
 	<string name="placeholder">placeholder</string>
