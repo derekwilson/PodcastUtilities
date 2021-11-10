@@ -108,6 +108,7 @@ namespace PodcastUtilitiesPOC
             {
                 try
                 {
+                    // TODO - we need to ask permission if the file has been edited by another app
                     Android.Net.Uri uri = Android.Net.Uri.Parse(ControlFileUri);
                     ControlFile = OpenConfigFile(uri);
                 } catch (Exception ex)
@@ -305,9 +306,8 @@ namespace PodcastUtilitiesPOC
                     //"/sdcard/PodcastUtilities/PodcastEpisodes",
                     // ApplicationContext.GetExternalFilesDirs(null); last folder in the array
                     //"/storage/82E7-140A/Android/data/com.andrewandderek.podcastutilitiespoc.debug/files"
-                    // TODO - store path to config file in sharedprefs
-                    //ControlFile.GetSourceRoot(),
-                    OverrideRoot,
+                    //OverrideRoot,
+                    ControlFile.GetSourceRoot(),
                     ControlFile.GetRetryWaitInSeconds(),
                     podcastInfo,
                     ControlFile.GetDiagnosticRetainTemporaryFiles());
