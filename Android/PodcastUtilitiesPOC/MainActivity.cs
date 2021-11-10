@@ -67,6 +67,11 @@ namespace PodcastUtilitiesPOC
             builder.AppendLine($"Personal Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal)}");
             builder.AppendLine($"AppData Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData)}");
             builder.AppendLine($"CommonAppData Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonApplicationData)}");
+            Java.IO.File[] files = this.ApplicationContext.GetExternalFilesDirs(null);
+            foreach (Java.IO.File file in files)
+            {
+                builder.AppendLine($"ExternalFile = {file.AbsolutePath}");
+            }
             builder.AppendLine($"Podcasts Folder = {PodcastsRoot}");
             SetTextViewText(Resource.Id.txtAppStorage, builder.ToString());
 
@@ -255,6 +260,7 @@ namespace PodcastUtilitiesPOC
             podcastEpisodeFinder = AndroidApplication.IocContainer.Resolve<IEpisodeFinder>();
 
             // find the episodes to download
+            AllEpisodes.Clear();
             int count = 0;
             foreach (var podcastInfo in ControlFile.GetPodcasts())
             {
@@ -312,6 +318,9 @@ namespace PodcastUtilitiesPOC
 
                 foreach (var task in downloadTasks)
                 {
+                    // thanks google - this rule only seems to apply if we used scoped storage on OS 11 eg:  /sdcard/PodcastUtilities/PodcastEpisodes
+                    // it works to /sdcard/Android/data/com.andrewandderek.podcastutilitiespoc.debug/files/PodcastEpisodes on all OS's
+                    // it works to /sdcard/PodcastUtilities/PodcastEpisodes on OS4
                     task.SyncItem.DestinationPath = task.SyncItem.DestinationPath.Replace("?", "");
                     AndroidApplication.Logger.Warning(() => $"MainActivity:Download to: {task.SyncItem.DestinationPath}");
                 }
