@@ -29,12 +29,18 @@ namespace PodcastUtilities.Common.Feeds
     public class SyncItem : ISyncItem
     {
         /// <summary>
+        /// unique id of the download
+        /// </summary>
+        public Guid Id { get; set; }
+
+        /// <summary>
         /// date time the episode was published
         /// </summary>
         public DateTime Published { get; set; }
 
         /// <summary>
-        /// state key
+        /// state key - used to find the state of the podcast feed
+        /// at the moment its the folder conatining the feed items and in that folder we can find the state XML file
         /// </summary>
         public string StateKey { get; set; }
 

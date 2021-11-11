@@ -136,6 +136,7 @@
     <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithANullCommandline.cs" />
     <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGenerator.cs" />
     <Compile Include="Feeds\DownloaderTests\WhenTestingTheDownloaderInRssRetainingTheFile.cs" />
+    <Compile Include="Feeds\EpisodeFinderTests\WhenFindingMultipleEpisodesInAFeedTheyHaveUniqueIds.cs" />
     <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverter.cs" />
     <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsItems.cs" />
     <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsNoItems.cs" />

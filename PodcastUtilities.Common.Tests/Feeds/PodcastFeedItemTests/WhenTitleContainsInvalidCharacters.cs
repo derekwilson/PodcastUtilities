@@ -38,7 +38,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedItemTests
 			FeedItem = new PodcastFeedItem
 			                  	{
 									Address = new Uri("http://www.blah.com/path/filename.mp3"),
-			                  		EpisodeTitle = "This is \\\"invalid\\\""
+			                  		EpisodeTitle = "This is \\\"invalid\\\" - isnt it?"
 			                  	};
 		}
 
@@ -50,7 +50,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedItemTests
 		[Test]
 		public void ItShouldReplaceTheInvalidCharactersWhenGettingFilenameFromTitle()
 		{
-			Assert.That(Filename, Is.EqualTo("This is __invalid__.mp3"));
+			Assert.That(Filename, Is.EqualTo("This is __invalid__ - isnt it_.mp3"));
 		}
 	}
 }

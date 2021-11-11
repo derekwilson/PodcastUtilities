@@ -191,6 +191,7 @@ namespace PodcastUtilities.Common.Feeds
                             {
                                 var downloadItem = new SyncItem()
                                                        {
+                                                           Id = Guid.NewGuid(), 
                                                            StateKey = stateKey,
                                                            RetryWaitTimeInSeconds = retryWaitTimeInSeconds,
                                                            Published = podcastFeedItem.Published,

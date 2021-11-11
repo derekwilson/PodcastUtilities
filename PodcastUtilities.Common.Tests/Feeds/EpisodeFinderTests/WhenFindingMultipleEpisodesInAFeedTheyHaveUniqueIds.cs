@@ -1,4 +1,4 @@
-#region License
+﻿#region License
 // FreeBSD License
 // Copyright (c) 2010 - 2013, Andrew Trevarrow and Derek Wilson
 // All rights reserved.
@@ -19,54 +19,49 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 using System;
-using PodcastUtilities.Common.Configuration;
+using System.IO;
+using NUnit.Framework;
+using PodcastUtilities.Common.Feeds;
 
-namespace PodcastUtilities.Common.Feeds
+namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
 {
-    /// <summary>
-    /// an item to be downloaded
-    /// </summary>
-    public interface ISyncItem
+    public class WhenFindingMultipleEpisodesInAFeedTheyHaveUniqueIds : WhenUsingTheEpisodeFinder
     {
-        /// <summary>
-        /// unique id of the download
-        /// </summary>
-        Guid Id { get; set; }
+        protected override void SetupData()
+        {
+            base.SetupData();
 
-        /// <summary>
-        /// date time the episode was published
-        /// </summary>
-        DateTime Published { get; set; }
+            _feedInfo.MaximumDaysOld.Value = 35;
 
-        /// <summary>
-        /// state key - used to find the state of the podcast feed
-        /// at the moment its the folder conatining the feed items and in that folder we can find the state XML file
-        /// </summary>
-        string StateKey { get; set; }
+            _podcastFeedItems.Add(new PodcastFeedItem()
+            {
+                Address = new Uri("http://test/podcast.mp3"),
+                EpisodeTitle = "TestEpisode",
+                Published = _now.AddMonths(-1)
+            });
+            _podcastFeedItems.Add(new PodcastFeedItem()
+            {
+                Address = new Uri("http://test/podcast2.mp3"),
+                EpisodeTitle = "TestEpisode2",
+                Published = _now.AddMonths(-1)
+            });
+        }
 
-        /// <summary>
-        /// the url to download from
-        /// </summary>
-        Uri EpisodeUrl { get; set; }
+        protected override void When()
+        {
+            _episodesToSync = _episodeFinder.FindEpisodesToDownload(_rootFolder, _retryWaitTime, _podcastInfo, _retainFeedXml);
+        }
 
-        /// <summary>
-        /// pathname to be downloaded to
-        /// </summary>
-        string DestinationPath { get; set; }
+        [Test]
+        public void ItShouldReturnTheList()
+        {
+            Assert.That(_episodesToSync.Count, Is.EqualTo(2));
+        }
 
-        /// <summary>
-        /// the title of the eposide
-        /// </summary>
-        string EpisodeTitle { get; set; }
-
-        /// <summary>
-        /// time to wait if there is a file lock on state
-        /// </summary>
-        int RetryWaitTimeInSeconds { get; set; }
-
-        /// <summary>
-        /// command to execute after the download
-        /// </summary>
-        IExternalCommand PostDownloadCommand { get; set; }
+        [Test]
+        public void ItShouldReturnUniqueIds()
+        {
+            Assert.That(_episodesToSync[0].Id.ToString(), Is.Not.EqualTo(_episodesToSync[1].Id.ToString()));
+        }
     }
 }

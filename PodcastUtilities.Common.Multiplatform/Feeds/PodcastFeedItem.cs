@@ -28,7 +28,11 @@ namespace PodcastUtilities.Common.Feeds
     /// </summary>
     public class PodcastFeedItem : IPodcastFeedItem
     {
-        private static char[] xml_invalid_chars = {'\'','"'};
+        // not invalid in file system filenames - however they cannot be put into XML so make playlists difficult
+        private static char[] xml_invalid_chars = { '\'', '"' };
+        // these are chars that are invalid in the file system but not in Path.GetInvalidFileNameChars()
+        // for example the ? on Android scoped file storage
+        private static char[] additional_invalid_chars = { '?' };
 
         /// <summary>
         /// title of the item
@@ -79,10 +83,13 @@ namespace PodcastUtilities.Common.Feeds
             {
                 filename = RemoveInvalidChars(filename, Path.GetInvalidFileNameChars());
             }
-
             if (filename.IndexOfAny(xml_invalid_chars) != -1)
             {
                 filename = RemoveInvalidChars(filename, xml_invalid_chars);
+            }
+            if (filename.IndexOfAny(additional_invalid_chars) != -1)
+            {
+                filename = RemoveInvalidChars(filename, additional_invalid_chars);
             }
             return filename;
         }
