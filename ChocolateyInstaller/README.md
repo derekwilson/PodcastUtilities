@@ -87,3 +87,7 @@ then
 ```
 choco push podcastutilities-core.3.0.0.2.nupkg -s https://push.chocolatey.org/
 ```
+or
+```
+choco push podcastutilities.3.0.0.2.nupkg -s https://push.chocolatey.org/
+```

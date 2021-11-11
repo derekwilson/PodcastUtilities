@@ -36,7 +36,7 @@
 
 *No need for an iTunes account* Podcasts promoted on iTunes can be downloaded however there is no need to have an iTunes account.
 
-This version runs on Windows only as it needs the .NET Framework, if you want a cross platform version then try podcastutilities-core.
+This version runs on Windows only as it needs the .NET Framework, if you want a cross platform (Windows,Linux,Mac) version then try the [podcastutilities-core package](https://community.chocolatey.org/packages/podcastutilities-core). You probably dont need to install both.
 
     </description>
     <releaseNotes>https://github.com/derekwilson/PodcastUtilities/tags</releaseNotes>
