@@ -144,6 +144,7 @@ namespace PodcastUtilitiesPOC
             switch (requestCode)
             {
                 // for manage storage on SDK30+ it will go to activity result - thanks google
+                // also we get CANCELLED as the result code so its difficult to know if it worked
                 case PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
                     if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
                     {
