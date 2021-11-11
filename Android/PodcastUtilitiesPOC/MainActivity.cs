@@ -329,7 +329,7 @@ namespace PodcastUtilitiesPOC
                 AllEpisodes.AddRange(episodesInThisFeed);
                 foreach (var episode in episodesInThisFeed)
                 {
-                    AndroidApplication.Logger.Debug(() => $"MainActivity:FindEpisodesToDownload {episode.EpisodeTitle}");
+                    AndroidApplication.Logger.Debug(() => $"MainActivity:FindEpisodesToDownload {episode.Id}, {episode.EpisodeTitle}");
                     AddLineToOutput(episode.EpisodeTitle);
                 }
                 count++;
@@ -371,14 +371,8 @@ namespace PodcastUtilitiesPOC
 
                 foreach (var task in downloadTasks)
                 {
-                    // thanks google - this rule only seems to apply if we used scoped storage on OS 11 eg:  /sdcard/PodcastUtilities/PodcastEpisodes
-                    // it works to /sdcard/Android/data/com.andrewandderek.podcastutilitiespoc.debug/files/PodcastEpisodes on all OS's
-                    // it works to /sdcard/PodcastUtilities/PodcastEpisodes on OS4
-                    // TODO - move this into the common DLL
-                    //task.SyncItem.DestinationPath = task.SyncItem.DestinationPath.Replace("?", "");
                     AndroidApplication.Logger.Warning(() => $"MainActivity:Download to: {task.SyncItem.DestinationPath}");
                 }
-
 
                 // run them in a task pool
                 TaskPool = AndroidApplication.IocContainer.Resolve<ITaskPool>();
