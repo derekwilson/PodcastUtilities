@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidApplication.cs" />
+    <Compile Include="DownloadActivity.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Utilities\PermissionChecker.cs" />
@@ -135,6 +136,14 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\attrs_progress_spinner_view.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_main.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_download.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

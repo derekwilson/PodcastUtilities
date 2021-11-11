@@ -6,6 +6,7 @@ using Android.OS;
 using Android.Provider;
 using Android.Runtime;
 using Android.Util;
+using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.DocumentFile.Provider;
@@ -123,6 +124,27 @@ namespace PodcastUtilitiesPOC
                     SetTextViewText(Resource.Id.txtConfigFilePath, $"Error {ex.Message}");
                 }
             }
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            //change main_compat_menu
+            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnOptionsItemSelected {item.ItemId}");
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_download_podcasts:
+                    var intent = new Intent(this, typeof(DownloadActivity));
+                    StartActivity(intent);
+                    break;
+            }
+            return base.OnOptionsItemSelected(item);
         }
 
         private void LoadConfig()
