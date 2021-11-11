@@ -29,15 +29,20 @@ namespace PodcastUtilitiesPOC
     {
         private const int REQUEST_SELECT_FILE = 3000;
         private const int REQUEST_SELECT_FOLDER = 3001;
+
         private AndroidApplication AndroidApplication;
         private IPreferencesProvider PreferencesProvider;
+        private IDriveInfoProvider DriveInfoProvider;
+
         private string OverrideRoot;
         private string ControlFileUri;
         private ReadOnlyControlFile ControlFile;
         private int NoOfFeeds = 0;
         List<ISyncItem> AllEpisodes = new List<ISyncItem>(20);
+        private ITaskPool TaskPool;
         private int number_of_files_to_download = 0;
         private int number_of_files_downloaded = 0;
+        private bool reported_driveinfo_error = false;
 
         private readonly StringBuilder OutputBuffer = new StringBuilder(1000);
         static object SyncLock = new object();
@@ -50,6 +55,7 @@ namespace PodcastUtilitiesPOC
             AndroidApplication.Logger.Debug(() => "MainActivity:OnCreate");
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            DriveInfoProvider = AndroidApplication.IocContainer.Resolve<IDriveInfoProvider>();
             // TODO - IoC when we know how to injext the context
             PreferencesProvider = new AndroidApplicationSharedPreferencesProvider(ApplicationContext);
             ControlFileUri = PreferencesProvider.GetPreferenceString(ApplicationContext.GetString(Resource.String.prefs_control_uri_key), "");
@@ -121,13 +127,37 @@ namespace PodcastUtilitiesPOC
 
         private void LoadConfig()
         {
-            if (PermissionChecker.HasWriteStoragePermission(this))
+            if (PermissionChecker.HasManageStoragePermission(this))
             {
                 SelectFile();
             }
             else
             {
-                PermissionRequester.RequestWriteStoragePermission(this, FindViewById(Android.Resource.Id.Content), PermissionRequester.RC_WRITE_EXTERNAL_STORAGE_PERMISSION);
+                AndroidApplication.Logger.Debug(() => $"MainActivity:LoadConfig - permission not granted - requesting");
+                PermissionRequester.RequestManageStoragePermission(this, PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION, AndroidApplication.PackageName);
+            }
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
+            switch (requestCode)
+            {
+                // for manage storage on SDK30+ it will go to activity result - thanks google
+                case PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
+                    if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
+                    {
+                        SelectFile();
+                    }
+                    else
+                    {
+                        ToastMessage("Permission Denied");
+                    }
+                    break;
+                default:
+                    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    break;
             }
         }
 
@@ -212,6 +242,10 @@ namespace PodcastUtilitiesPOC
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {data.Data.ToString()}");
             switch (requestCode)
             {
+                // we asked for manage storage access in SDK30+
+                case PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
+                    SelectFile();
+                    break;
                 case REQUEST_SELECT_FILE:
                     ToastMessage("OK");
                     ControlFile = OpenConfigFile(data.Data);
@@ -252,26 +286,6 @@ namespace PodcastUtilitiesPOC
                 cursor.Close();
             }
             return result;
-        }
-
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
-        {
-            switch (requestCode)
-            {
-                case PermissionRequester.RC_WRITE_EXTERNAL_STORAGE_PERMISSION:
-                    if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
-                    {
-                        SelectFile();
-                    } else
-                    {
-                        ToastMessage("Denied");
-                    }
-                    break;
-                default:
-                    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-                    base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-                    break;
-            }
         }
 
         private void FindEpisodesToDownload()
@@ -360,14 +374,14 @@ namespace PodcastUtilitiesPOC
                     // it works to /sdcard/Android/data/com.andrewandderek.podcastutilitiespoc.debug/files/PodcastEpisodes on all OS's
                     // it works to /sdcard/PodcastUtilities/PodcastEpisodes on OS4
                     // TODO - move this into the common DLL
-                    task.SyncItem.DestinationPath = task.SyncItem.DestinationPath.Replace("?", "");
+                    //task.SyncItem.DestinationPath = task.SyncItem.DestinationPath.Replace("?", "");
                     AndroidApplication.Logger.Warning(() => $"MainActivity:Download to: {task.SyncItem.DestinationPath}");
                 }
 
 
                 // run them in a task pool
-                var taskPool = AndroidApplication.IocContainer.Resolve<ITaskPool>();
-                taskPool.RunAllTasks(ControlFile.GetMaximumNumberOfConcurrentDownloads(), downloadTasks);
+                TaskPool = AndroidApplication.IocContainer.Resolve<ITaskPool>();
+                TaskPool.RunAllTasks(ControlFile.GetMaximumNumberOfConcurrentDownloads(), downloadTasks);
             }
 
             AddLineToOutput("Done.");
@@ -399,37 +413,35 @@ namespace PodcastUtilitiesPOC
                     AddLineToOutput($"Completed {number_of_files_downloaded} of {number_of_files_to_download} downloads");
                 }
 
-                // TODO - test IsDestinationDriveFull
+                // TODO - fix IsDestinationDriveFull
                 /*
-                if (IsDestinationDriveFull(_control.GetSourceRoot(), _control.GetFreeSpaceToLeaveOnDownload()))
+                if (IsDestinationDriveFull(ControlFile.GetSourceRoot(), ControlFile.GetFreeSpaceToLeaveOnDownload()))
                 {
-                    if (_taskPool != null)
+                    if (TaskPool != null)
                     {
-                        _taskPool.CancelAllTasks();
+                        TaskPool.CancelAllTasks();
                     }
                 }
                 */
-
                 DisplayOutput();
             }
         }
 
-        /*
-        static bool IsDestinationDriveFull(string destinationRootPath, long freeSpaceToLeaveOnDestination)
+        bool IsDestinationDriveFull(string destinationRootPath, long freeSpaceToLeaveOnDestination)
         {
             long availableFreeSpace = 0;
             try
             {
-                var driveInfo = _driveInfoProvider.GetDriveInfoForPath(Path.GetPathRoot(Path.GetFullPath(destinationRootPath)));
+                var driveInfo = DriveInfoProvider.GetDriveInfoForPath(Path.GetPathRoot(Path.GetFullPath(destinationRootPath)));
                 availableFreeSpace = driveInfo.AvailableFreeSpace;
             }
             catch (Exception ex)
             {
-                if (!_reported_driveinfo_error)
+                if (!reported_driveinfo_error)
                 {
-                    Console.WriteLine(string.Format("Cannot find available free space on drive, will continue to download. Error: {0}", ex.Message));
+                    AddLineToOutput($"Cannot find available free space on drive, will continue to download. Error: {ex.Message}");
                 }
-                _reported_driveinfo_error = true;
+                reported_driveinfo_error = true;
                 return false;
             }
 
@@ -443,12 +455,11 @@ namespace PodcastUtilitiesPOC
             AndroidApplication.Logger.Debug(() => $"MainActivity:IsDestinationDriveFull {freeMb}");
             if (freeMb < freeSpaceToLeaveOnDestination)
             {
-                Console.WriteLine(string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeMb));
+                AddLineToOutput(string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeMb));
                 return true;
             }
             return false;
         }
-        */
 
         void StatusUpdate(object sender, StatusUpdateEventArgs e)
         {

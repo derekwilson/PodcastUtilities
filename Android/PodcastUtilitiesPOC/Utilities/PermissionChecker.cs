@@ -17,6 +17,18 @@ namespace PodcastUtilitiesPOC.Utilities
             return HasPermissionBeenGranted(context, Manifest.Permission.WriteExternalStorage);
         }
 
+        public static bool HasManageStoragePermission(Context context)
+        {
+            // storage manager only happened in SDK30 / R
+            // before that you only need write storage
+            if (Build.VERSION.SdkInt < BuildVersionCodes.R)
+            {
+                return HasPermissionBeenGranted(context, Manifest.Permission.WriteExternalStorage);
+            }
+
+            return Environment.IsExternalStorageManager;
+        }
+
         private static bool HasPermissionBeenGranted(Context context, string permission)
         {
             // dynamic permission requests were added in API 23 (Marshmellow)
