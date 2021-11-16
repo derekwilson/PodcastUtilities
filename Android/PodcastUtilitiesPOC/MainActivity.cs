@@ -284,6 +284,7 @@ namespace PodcastUtilitiesPOC
                     //Android.Net.Uri uri = data.Data;
                     //Android.Net.Uri docUri = DocumentsContract.BuildDocumentUriUsingTree(uri,DocumentsContract.GetTreeDocumentId(uri));
                     // TODO - write GetRealPathFromUri()
+                    // see https://stackoverflow.com/questions/29713587/how-to-get-the-real-path-with-action-open-document-tree-intent
                     //String path = GetRealPathFromURI(uri);
 
                     DocumentFile file = DocumentFile.FromTreeUri(this.ApplicationContext, data.Data);

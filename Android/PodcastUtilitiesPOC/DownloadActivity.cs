@@ -5,6 +5,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using AndroidX.RecyclerView.Widget;
+using PodcastUtilitiesPOC.CustomViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,9 @@ namespace PodcastUtilitiesPOC
     public class DownloadActivity : AppCompatActivity
     {
         private AndroidApplication AndroidApplication;
+        private EmptyRecyclerView RvDownloads;
+        private ProgressSpinnerView ProgressSpinner;
+        private LinearLayout NoDataView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -26,6 +31,15 @@ namespace PodcastUtilitiesPOC
 
             // Set our view from the layout resource
             SetContentView(Resource.Layout.activity_download);
+
+            RvDownloads = FindViewById<EmptyRecyclerView>(Resource.Id.rvDownloads);
+            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
+            NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoData);
+
+            RvDownloads.SetLayoutManager(new LinearLayoutManager(this));
+            RvDownloads.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
+            RvDownloads.SetEmptyView(NoDataView);
+            // TODO - add the adapter
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
