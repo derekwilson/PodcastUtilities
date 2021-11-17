@@ -37,7 +37,6 @@ namespace PodcastUtilitiesPOC
 
         private string OverrideRoot;
         private string ControlFileUri;
-        private ReadOnlyControlFile ControlFile;
         private int NoOfFeeds = 0;
         List<ISyncItem> AllEpisodes = new List<ISyncItem>(20);
         private ITaskPool TaskPool;
@@ -117,7 +116,7 @@ namespace PodcastUtilitiesPOC
                 {
                     // TODO - we need to ask permission if the file has been edited by another app
                     Android.Net.Uri uri = Android.Net.Uri.Parse(ControlFileUri);
-                    ControlFile = OpenConfigFile(uri);
+                    AndroidApplication.ControlFile = OpenControlFile(uri);
                 } catch (Exception ex)
                 {
                     AndroidApplication.Logger.LogException(() => $"MainActivity: OnCreate", ex);
@@ -140,6 +139,12 @@ namespace PodcastUtilitiesPOC
             switch (item.ItemId)
             {
                 case Resource.Id.action_download_podcasts:
+                    if (AndroidApplication.ControlFile == null)
+                    {
+                        AndroidApplication.Logger.Warning(() => $"MainActivity:OnOptionsItemSelected - no control file");
+                        ToastMessage("No control file selected");
+                        return base.OnOptionsItemSelected(item);
+                    }
                     var intent = new Intent(this, typeof(DownloadActivity));
                     StartActivity(intent);
                     break;
@@ -186,7 +191,7 @@ namespace PodcastUtilitiesPOC
 
         private void SetRoot()
         {
-            if (ControlFile == null)
+            if (AndroidApplication.ControlFile == null)
             {
                 AndroidApplication.Logger.Warning(() => $"MainActivity:SetRoot - no control file");
                 AddLineToOutput("No control file");
@@ -222,7 +227,7 @@ namespace PodcastUtilitiesPOC
             StartActivityForResult(intent, REQUEST_SELECT_FOLDER);
         }
 
-        private ReadOnlyControlFile OpenConfigFile(Android.Net.Uri uri)
+        private ReadOnlyControlFile OpenControlFile(Android.Net.Uri uri)
         {
             try
             {
@@ -271,8 +276,8 @@ namespace PodcastUtilitiesPOC
                     break;
                 case REQUEST_SELECT_FILE:
                     ToastMessage("OK");
-                    ControlFile = OpenConfigFile(data.Data);
-                    if (ControlFile != null)
+                    AndroidApplication.ControlFile = OpenControlFile(data.Data);
+                    if (AndroidApplication.ControlFile != null)
                     {
                         PreferencesProvider.SetPreferenceString(ApplicationContext.GetString(Resource.String.prefs_control_uri_key), data.Data.ToString());
                     }
@@ -318,7 +323,7 @@ namespace PodcastUtilitiesPOC
             OutputBuffer.Clear();
             AddLineToOutput("Started");
             DisplayOutput();
-            if (ControlFile == null)
+            if (AndroidApplication.ControlFile == null)
             {
                 AndroidApplication.Logger.Warning(() => $"MainActivity:FindEpisodesToDownload - no control file");
                 AddLineToOutput("No control file");
@@ -334,7 +339,7 @@ namespace PodcastUtilitiesPOC
             // find the episodes to download
             AllEpisodes.Clear();
             int count = 0;
-            foreach (var podcastInfo in ControlFile.GetPodcasts())
+            foreach (var podcastInfo in AndroidApplication.ControlFile.GetPodcasts())
             {
                 var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(
                     // works on all OS's with just WRITE_EXTERNAL
@@ -345,10 +350,10 @@ namespace PodcastUtilitiesPOC
                     // ApplicationContext.GetExternalFilesDirs(null); last folder in the array
                     //"/storage/82E7-140A/Android/data/com.andrewandderek.podcastutilitiespoc.debug/files"
                     //OverrideRoot,
-                    ControlFile.GetSourceRoot(),
-                    ControlFile.GetRetryWaitInSeconds(),
+                    AndroidApplication.ControlFile.GetSourceRoot(),
+                    AndroidApplication.ControlFile.GetRetryWaitInSeconds(),
                     podcastInfo,
-                    ControlFile.GetDiagnosticRetainTemporaryFiles());
+                    AndroidApplication.ControlFile.GetDiagnosticRetainTemporaryFiles());
                 AllEpisodes.AddRange(episodesInThisFeed);
                 foreach (var episode in episodesInThisFeed)
                 {
@@ -370,7 +375,7 @@ namespace PodcastUtilitiesPOC
             OutputBuffer.Clear();
             AddLineToOutput("Started");
             DisplayOutput();
-            if (ControlFile == null || AllEpisodes.Count <1)
+            if (AndroidApplication.ControlFile == null || AllEpisodes.Count <1)
             {
                 AndroidApplication.Logger.Warning(() => $"MainActivity:Download - no control file or nothing to download");
                 AddLineToOutput("No control file or nothing to download");
@@ -399,7 +404,7 @@ namespace PodcastUtilitiesPOC
 
                 // run them in a task pool
                 TaskPool = AndroidApplication.IocContainer.Resolve<ITaskPool>();
-                TaskPool.RunAllTasks(ControlFile.GetMaximumNumberOfConcurrentDownloads(), downloadTasks);
+                TaskPool.RunAllTasks(AndroidApplication.ControlFile.GetMaximumNumberOfConcurrentDownloads(), downloadTasks);
             }
 
             AddLineToOutput("Done.");

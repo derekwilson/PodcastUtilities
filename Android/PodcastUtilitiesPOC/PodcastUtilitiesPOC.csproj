@@ -76,6 +76,7 @@
     <Compile Include="DownloadActivity.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="SyncItemRecyclerAdapter.cs" />
     <Compile Include="Utilities\PermissionChecker.cs" />
     <Compile Include="Utilities\PermissionRequester.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -150,6 +151,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\dimens.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\list_item_syncitem.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <PropertyGroup>

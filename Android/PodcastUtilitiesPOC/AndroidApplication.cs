@@ -2,6 +2,7 @@
 using Android.Runtime;
 using Android.Util;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Ioc;
 using PodcastUtilitiesPOC.Logging;
 using PodcastUtilitiesPOC.Utilities;
@@ -22,8 +23,8 @@ namespace PodcastUtilitiesPOC
         public IIocContainer IocContainer { get; private set; }
         public ILoggerFactory LoggerFactory { get; private set; }
         public ILogger Logger { get; private set; }
-
         public String DisplayVersion { get; private set; }
+        public ReadOnlyControlFile ControlFile { get; set; }
 
         private static IIocContainer InitializeIocContainer()
         {

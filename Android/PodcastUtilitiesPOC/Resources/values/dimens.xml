@@ -1,4 +1,6 @@
 ﻿<resources>
+	<dimen name="overflow_menu_dots_textview_padding">32dp</dimen>
+
 	<dimen name="listview_top_bottom_padding">16dp</dimen>
 	<dimen name="listview_empty_message_padding">8dp</dimen>
 	<dimen name="listview_item_horizontal_padding">16dp</dimen>
