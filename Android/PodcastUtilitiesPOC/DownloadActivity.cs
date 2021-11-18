@@ -96,6 +96,13 @@ namespace PodcastUtilitiesPOC
             });
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            //change main_compat_menu
+            MenuInflater.Inflate(Resource.Menu.menu_download, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnOptionsItemSelected {item.ItemId}");

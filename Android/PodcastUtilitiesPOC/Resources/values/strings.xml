@@ -7,6 +7,8 @@
 	<string name="action_download">Download</string>
 	<string name="no_downloads_text">No podcasts to download</string>
 
+	<string name="action_download_all">Download All</string>
+
 	<string name="placeholder">placeholder</string>
 	<string name="ok">OK</string>
 	<string name="permissions_title">PodcastUtilities Permissions</string>

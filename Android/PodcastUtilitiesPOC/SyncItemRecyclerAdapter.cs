@@ -47,11 +47,13 @@ namespace PodcastUtilitiesPOC
         {
             public TextView Label { get; private set; }
             public TextView SubLabel { get; private set; }
+            public ProgressBar Progress { get; private set; }
 
             public RecyclerViewHolder(View itemView) : base(itemView)
             {
                 Label = itemView.FindViewById<TextView>(Resource.Id.item_row_label);
                 SubLabel = itemView.FindViewById<TextView>(Resource.Id.item_row_sub_label);
+                Progress = itemView.FindViewById<ProgressBar>(Resource.Id.item_row_progress);
             }
         }
     }

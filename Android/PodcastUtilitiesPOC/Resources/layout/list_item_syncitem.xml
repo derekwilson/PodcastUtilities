@@ -28,6 +28,8 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/placeholder"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
 			style="@style/ItemListTitle"
 			/>
 
@@ -38,6 +40,17 @@
 			android:text="@string/placeholder"
 			style="@style/ItemListSubTitle"
 			/>
+
+		<ProgressBar
+			android:id="@+id/item_row_progress"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:max="100"
+			android:progress="5"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:indeterminate="false"
+		/>
+
 	</androidx.appcompat.widget.LinearLayoutCompat>
 	
 
