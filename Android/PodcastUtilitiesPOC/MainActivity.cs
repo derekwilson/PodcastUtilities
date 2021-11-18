@@ -386,9 +386,6 @@ namespace PodcastUtilitiesPOC
             //StartProgress();
             ToastMessage("Started");
 
-            IEpisodeFinder podcastEpisodeFinder = null;
-            podcastEpisodeFinder = AndroidApplication.IocContainer.Resolve<IEpisodeFinder>();
-
             number_of_files_to_download = AllEpisodes.Count;
             number_of_files_downloaded = 0;
             if (number_of_files_to_download > 0)

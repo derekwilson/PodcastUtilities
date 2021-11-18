@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using System;
 using System.Collections.Generic;
@@ -13,19 +14,43 @@ using System.Text;
 
 namespace PodcastUtilitiesPOC
 {
+    class RecyclerSyncItem
+    {
+        public ISyncItem SyncItem { get; set; }
+        public int ProgressPercentage { get; set; }
+        public PodcastInfo Podcast { get; set; }
+    }
+
     class SyncItemRecyclerAdapter : RecyclerView.Adapter
     {
         private Context Context;
-        private List<ISyncItem> Items = new List<ISyncItem>(20);
+        private List<RecyclerSyncItem> Items = new List<RecyclerSyncItem>(20);
 
         public SyncItemRecyclerAdapter(Context context)
         {
             this.Context = context;
         }
 
-        public void SetItems(List<ISyncItem> items)
+        public void SetItems(List<RecyclerSyncItem> items)
         {
             this.Items = items;
+        }
+
+        public RecyclerSyncItem GetItemById(Guid id)
+        {
+            return this.Items.Find(item => item.SyncItem.Id == id);
+        }
+
+        public int GetItemPositionById(Guid id)
+        {
+             return this.Items.IndexOf(GetItemById(id));
+        }
+
+        public int SetItemProgress(Guid id, int progress)
+        {
+            var item = GetItemById(id);
+            item.ProgressPercentage = progress;
+            return this.Items.IndexOf(item);
         }
 
         public override int ItemCount => Items.Count;
@@ -33,8 +58,9 @@ namespace PodcastUtilitiesPOC
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RecyclerViewHolder vh = holder as RecyclerViewHolder;
-            vh.Label.Text = Items[position].EpisodeTitle;
-            vh.SubLabel.Text = Items[position].Published.ToShortDateString();
+            vh.Label.Text = Items[position].SyncItem.EpisodeTitle;
+            vh.SubLabel.Text = Items[position].SyncItem.Published.ToShortDateString();
+            vh.Progress.Progress = Items[position].ProgressPercentage;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

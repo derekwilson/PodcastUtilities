@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.RecyclerView.Widget;
+using PodcastUtilities.Common;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilitiesPOC.CustomViews;
 using PodcastUtilitiesPOC.Utilities;
@@ -25,7 +26,9 @@ namespace PodcastUtilitiesPOC
         private ProgressSpinnerView ProgressSpinner;
         private LinearLayout NoDataView;
         private SyncItemRecyclerAdapter Adapter;
-        List<ISyncItem> AllSyncItems = new List<ISyncItem>(20);
+        private List<RecyclerSyncItem> AllSyncItems = new List<RecyclerSyncItem>(20);
+        private ITaskPool TaskPool;
+        static object SyncLock = new object();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -80,10 +83,16 @@ namespace PodcastUtilitiesPOC
                     AndroidApplication.ControlFile.GetRetryWaitInSeconds(),
                     podcastInfo,
                     AndroidApplication.ControlFile.GetDiagnosticRetainTemporaryFiles());
-                AllSyncItems.AddRange(episodesInThisFeed);
                 foreach (var episode in episodesInThisFeed)
                 {
                     AndroidApplication.Logger.Debug(() => $"DownloadActivity:FindEpisodesToDownload {episode.Id}, {episode.EpisodeTitle}");
+                    var item = new RecyclerSyncItem()
+                    {
+                        SyncItem = episode,
+                        ProgressPercentage = 0,
+                        Podcast = podcastInfo
+                    };
+                    AllSyncItems.Add(item);
                 }
                 count++;
                 UpdateProgress(count);
@@ -94,6 +103,72 @@ namespace PodcastUtilitiesPOC
                 Adapter.SetItems(AllSyncItems);
                 Adapter.NotifyDataSetChanged();
             });
+        }
+
+        private void DownloadAllPodcasts()
+        {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:DownloadAllPodcasts");
+
+            List<ISyncItem> AllEpisodes = new List<ISyncItem>(Adapter.ItemCount);
+            AllSyncItems.ForEach(item => AllEpisodes.Add(item.SyncItem));
+
+            var converter = AndroidApplication.IocContainer.Resolve<ISyncItemToEpisodeDownloaderTaskConverter>();
+            IEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(AllEpisodes, StatusUpdate, ProgressUpdate);
+
+            foreach (var task in downloadTasks)
+            {
+                AndroidApplication.Logger.Debug(() => $"DownloadActivity:Download to: {task.SyncItem.DestinationPath}");
+            }
+
+            // run them in a task pool
+            TaskPool = AndroidApplication.IocContainer.Resolve<ITaskPool>();
+            TaskPool.RunAllTasks(AndroidApplication.ControlFile.GetMaximumNumberOfConcurrentDownloads(), downloadTasks);
+
+            ToastMessage("Done");
+        }
+
+        void ProgressUpdate(object sender, ProgressEventArgs e)
+        {
+            lock (SyncLock)
+            {
+                ISyncItem syncItem = e.UserState as ISyncItem;
+                if (e.ProgressPercentage % 10 == 0)
+                {
+                    // only do every 10%
+                    var line = string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
+                                                    DisplayFormatter.RenderFileSize(e.ItemsProcessed),
+                                                    DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
+                                                    e.ProgressPercentage);
+                    AndroidApplication.Logger.Debug(() => line);
+                    RunOnUiThread(() =>
+                    {
+                        var position = Adapter.SetItemProgress(syncItem.Id, e.ProgressPercentage);
+                        Adapter.NotifyItemChanged(position);
+                    });
+                }
+            }
+        }
+
+        void StatusUpdate(object sender, StatusUpdateEventArgs e)
+        {
+            bool _verbose = false;
+            if (e.MessageLevel == StatusUpdateLevel.Verbose && !_verbose)
+            {
+                return;
+            }
+
+            lock (SyncLock)
+            {
+                // keep all the message together
+                if (e.Exception != null)
+                {
+                    AndroidApplication.Logger.LogException(() => $"MainActivity:StatusUpdate -> ", e.Exception);
+                }
+                else
+                {
+                    AndroidApplication.Logger.Debug(() => $"MainActivity:StatusUpdate {e.Message}");
+                }
+            }
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -111,10 +186,25 @@ namespace PodcastUtilitiesPOC
                 case Resource.Id.home:
                     OnBackPressed();
                     return true;
+                case Resource.Id.action_download_all_podcasts:
+                    if (Adapter.ItemCount < 1)
+                    {
+                        ToastMessage("Nothing to download");
+                        return true;
+                    }
+                    Task.Run(() => DownloadAllPodcasts());
+                    return true;
             }
             return base.OnOptionsItemSelected(item);
         }
 
+        private void ToastMessage(string message)
+        {
+            RunOnUiThread(() =>
+            {
+                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+            });
+        }
 
         private void StartProgress(int max)
         {
