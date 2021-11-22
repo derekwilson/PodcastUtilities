@@ -280,6 +280,7 @@ namespace PodcastUtilitiesPOC
                     if (AndroidApplication.ControlFile != null)
                     {
                         PreferencesProvider.SetPreferenceString(ApplicationContext.GetString(Resource.String.prefs_control_uri_key), data.Data.ToString());
+                        ApplicationContext.ContentResolver.TakePersistableUriPermission(data.Data, ActivityFlags.GrantReadUriPermission);
                     }
                     break;
                 case REQUEST_SELECT_FOLDER:
