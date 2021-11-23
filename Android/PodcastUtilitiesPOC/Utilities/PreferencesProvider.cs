@@ -20,9 +20,9 @@ namespace PodcastUtilitiesPOC.Utilities
         /// interact with the app shared prefs
         /// </summary>
         /// <param name="context">application context</param>
-        public AndroidApplicationSharedPreferencesProvider(Context context)
+        public AndroidApplicationSharedPreferencesProvider(Context applicationContext)
         {
-            this.context = context;
+            this.context = applicationContext;
         }
 
         public float GetPreferenceFloat(string key, float defaultValue)

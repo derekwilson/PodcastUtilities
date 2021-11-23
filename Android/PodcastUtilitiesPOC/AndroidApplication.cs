@@ -39,10 +39,11 @@ namespace PodcastUtilitiesPOC
             return container;
         }
 
-        private static IIocContainer AddExtrasToIocContainer(IIocContainer container)
+        private static IIocContainer AddExtrasToIocContainer(IIocContainer container, Android.Content.Context applicationContext)
         {
-            // TODO - how do we register the app context ?
+            container.Register<Android.Content.Context>(applicationContext);
             container.Register<ILoggerFactory, NLoggerLoggerFactory>(IocLifecycle.Singleton);
+            container.Register<IPreferencesProvider,AndroidApplicationSharedPreferencesProvider>(IocLifecycle.Singleton);
             return container;
         }
 
@@ -75,7 +76,7 @@ namespace PodcastUtilitiesPOC
 
             // initialise the IoC container
             IocContainer = InitializeIocContainer();
-            AddExtrasToIocContainer(IocContainer);
+            AddExtrasToIocContainer(IocContainer, this.ApplicationContext);
             LoggerFactory = IocContainer.Resolve<ILoggerFactory>();
             Logger = LoggerFactory.Logger;
             Logger.Debug(() => $"AndroidApplication:IoC Init, {DisplayVersion}, {Android.OS.Build.VERSION.SdkInt}, {(int)Android.OS.Build.VERSION.SdkInt}, {this.PackageName}");

@@ -56,8 +56,7 @@ namespace PodcastUtilitiesPOC
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             DriveInfoProvider = AndroidApplication.IocContainer.Resolve<IDriveInfoProvider>();
-            // TODO - IoC when we know how to injext the context
-            PreferencesProvider = new AndroidApplicationSharedPreferencesProvider(ApplicationContext);
+            PreferencesProvider = AndroidApplication.IocContainer.Resolve<IPreferencesProvider>();
             ControlFileUri = PreferencesProvider.GetPreferenceString(ApplicationContext.GetString(Resource.String.prefs_control_uri_key), "");
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate Conrol Uri = {ControlFileUri}");
 
