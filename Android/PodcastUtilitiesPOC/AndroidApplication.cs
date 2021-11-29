@@ -1,10 +1,13 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Runtime;
 using Android.Util;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Ioc;
 using PodcastUtilitiesPOC.Logging;
+using PodcastUtilitiesPOC.UI;
+using PodcastUtilitiesPOC.UI.Download;
 using PodcastUtilitiesPOC.Utilities;
 using System;
 using System.Threading.Tasks;
@@ -39,11 +42,22 @@ namespace PodcastUtilitiesPOC
             return container;
         }
 
-        private static IIocContainer AddExtrasToIocContainer(IIocContainer container, Android.Content.Context applicationContext)
+        private IIocContainer AddExtrasToIocContainer(IIocContainer container)
         {
-            container.Register<Android.Content.Context>(applicationContext);
-            container.Register<ILoggerFactory, NLoggerLoggerFactory>(IocLifecycle.Singleton);
-            container.Register<IPreferencesProvider,AndroidApplicationSharedPreferencesProvider>(IocLifecycle.Singleton);
+            // the container for factories
+            container.Register<IIocContainer>(container);
+            // android things
+            container.Register<Context>(ApplicationContext);
+            container.Register<Application>(this);
+            // helpers
+            container.Register<IPreferencesProvider, AndroidApplicationSharedPreferencesProvider>(IocLifecycle.Singleton);
+            container.Register<ILogger>(Logger);
+            // view models
+            container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);
+            container.Register<DownloadViewModel, DownloadViewModel>();
+
+            var factory = container.Resolve<ViewModelFactory>();
+            factory.AddMap(typeof(DownloadViewModel));
             return container;
         }
 
@@ -73,12 +87,13 @@ namespace PodcastUtilitiesPOC
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Version == {DisplayVersion}");
 
             base.OnCreate();
+            LoggerFactory = new NLoggerLoggerFactory();
+            Logger = LoggerFactory.Logger;
+            Logger.Debug(() => $"AndroidApplication:Logging init");
 
             // initialise the IoC container
             IocContainer = InitializeIocContainer();
-            AddExtrasToIocContainer(IocContainer, this.ApplicationContext);
-            LoggerFactory = IocContainer.Resolve<ILoggerFactory>();
-            Logger = LoggerFactory.Logger;
+            AddExtrasToIocContainer(IocContainer);
             Logger.Debug(() => $"AndroidApplication:IoC Init, {DisplayVersion}, {Android.OS.Build.VERSION.SdkInt}, {(int)Android.OS.Build.VERSION.SdkInt}, {this.PackageName}");
         }
     }

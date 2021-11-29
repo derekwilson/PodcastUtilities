@@ -5,13 +5,13 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilitiesPOC.CustomViews;
 using PodcastUtilitiesPOC.UI.Main;
 using PodcastUtilitiesPOC.Utilities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +22,8 @@ namespace PodcastUtilitiesPOC.UI.Download
     [Activity(Label = "Download Podcasts", ParentActivity = typeof(MainActivity))]
     public class DownloadActivity : AppCompatActivity
     {
+        private DownloadViewModel ViewModel;
+
         private AndroidApplication AndroidApplication;
         private EmptyRecyclerView RvDownloads;
         private ProgressSpinnerView ProgressSpinner;
@@ -50,6 +52,11 @@ namespace PodcastUtilitiesPOC.UI.Download
             RvDownloads.SetEmptyView(NoDataView);
             Adapter = new SyncItemRecyclerAdapter(this);
             RvDownloads.SetAdapter(Adapter);
+
+            var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
+            ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(DownloadViewModel))) as DownloadViewModel;
+            Lifecycle.AddObserver(ViewModel);
+            ViewModel.Initialise();
 
             Task.Run(() => FindEpisodesToDownload());
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate - end");
