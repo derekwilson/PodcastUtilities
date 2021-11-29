@@ -15,6 +15,7 @@ using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.Common.Platform;
 using PodcastUtilitiesPOC.CustomViews;
+using PodcastUtilitiesPOC.UI.Download;
 using PodcastUtilitiesPOC.Utilities;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace PodcastUtilitiesPOC
+namespace PodcastUtilitiesPOC.UI.Main
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
@@ -51,7 +52,7 @@ namespace PodcastUtilitiesPOC
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            AndroidApplication = (Application as AndroidApplication);
+            AndroidApplication = Application as AndroidApplication;
             AndroidApplication.Logger.Debug(() => "MainActivity:OnCreate");
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
@@ -78,7 +79,7 @@ namespace PodcastUtilitiesPOC
             builder.AppendLine($"Personal Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal)}");
             builder.AppendLine($"AppData Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData)}");
             builder.AppendLine($"CommonAppData Folder = {System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonApplicationData)}");
-            Java.IO.File[] files = this.ApplicationContext.GetExternalFilesDirs(null);
+            Java.IO.File[] files = ApplicationContext.GetExternalFilesDirs(null);
             foreach (Java.IO.File file in files)
             {
                 builder.AppendLine($"ExternalFile = {file.AbsolutePath}");
@@ -109,14 +110,15 @@ namespace PodcastUtilitiesPOC
             bool isReadonly = Android.OS.Environment.MediaMountedReadOnly.Equals(Android.OS.Environment.ExternalStorageState);
             bool isWriteable = Android.OS.Environment.MediaMounted.Equals(Android.OS.Environment.ExternalStorageState);
 
-            if (!String.IsNullOrEmpty(ControlFileUri))
+            if (!string.IsNullOrEmpty(ControlFileUri))
             {
                 try
                 {
                     // TODO - we need to ask permission if the file has been edited by another app
                     Android.Net.Uri uri = Android.Net.Uri.Parse(ControlFileUri);
                     AndroidApplication.ControlFile = OpenControlFile(uri);
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     AndroidApplication.Logger.LogException(() => $"MainActivity: OnCreate", ex);
                     SetTextViewText(Resource.Id.txtConfigFilePath, $"Error {ex.Message}");
@@ -164,7 +166,7 @@ namespace PodcastUtilitiesPOC
             }
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
             switch (requestCode)
@@ -249,7 +251,8 @@ namespace PodcastUtilitiesPOC
                 SetTextViewText(Resource.Id.txtConfigFilePath, $"{uri.ToString()}");
                 SetTextViewText(Resource.Id.txtOutput, $"{count}, {control.GetSourceRoot()}");
                 return control;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 AndroidApplication.Logger.LogException(() => $"MainActivity: OpenConfigFile", ex);
                 SetTextViewText(Resource.Id.txtConfigFilePath, $"Error {ex.Message}");
@@ -292,16 +295,16 @@ namespace PodcastUtilitiesPOC
                     // see https://stackoverflow.com/questions/29713587/how-to-get-the-real-path-with-action-open-document-tree-intent
                     //String path = GetRealPathFromURI(uri);
 
-                    DocumentFile file = DocumentFile.FromTreeUri(this.ApplicationContext, data.Data);
+                    DocumentFile file = DocumentFile.FromTreeUri(ApplicationContext, data.Data);
                     AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {file.Uri.Path}");
                     SetTextViewText(Resource.Id.txtRoot, $"{file.Uri.Path}");
                     break;
             }
         }
 
-        private String GetRealPathFromURI(Android.Net.Uri contentURI)
+        private string GetRealPathFromURI(Android.Net.Uri contentURI)
         {
-            String result;
+            string result;
             var cursor = Application.ContentResolver.Query(contentURI, null, null, null, null);
             if (cursor == null)
             { // Source is Dropbox or other similar local file path
@@ -375,7 +378,7 @@ namespace PodcastUtilitiesPOC
             OutputBuffer.Clear();
             AddLineToOutput("Started");
             DisplayOutput();
-            if (AndroidApplication.ControlFile == null || AllEpisodes.Count <1)
+            if (AndroidApplication.ControlFile == null || AllEpisodes.Count < 1)
             {
                 AndroidApplication.Logger.Warning(() => $"MainActivity:Download - no control file or nothing to download");
                 AddLineToOutput("No control file or nothing to download");
@@ -468,9 +471,9 @@ namespace PodcastUtilitiesPOC
             long freeKb = 0;
             double freeMb = 0;
             if (availableFreeSpace > 0)
-                freeKb = (availableFreeSpace / 1024);
+                freeKb = availableFreeSpace / 1024;
             if (freeKb > 0)
-                freeMb = (freeKb / 1024);
+                freeMb = freeKb / 1024;
 
             AndroidApplication.Logger.Debug(() => $"MainActivity:IsDestinationDriveFull {freeMb}");
             if (freeMb < freeSpaceToLeaveOnDestination)
@@ -496,7 +499,7 @@ namespace PodcastUtilitiesPOC
                 {
                     AndroidApplication.Logger.LogException(() => $"MainActivity:StatusUpdate -> ", e.Exception);
                     AddLineToOutput(e.Message);
-                    AddLineToOutput(String.Concat(" ", e.Exception.ToString()));
+                    AddLineToOutput(string.Concat(" ", e.Exception.ToString()));
                 }
                 else
                 {
@@ -531,7 +534,7 @@ namespace PodcastUtilitiesPOC
         {
             RunOnUiThread(() =>
             {
-                ProgressViewHelper.StartProgress(ProgressSpinner, this.Window, NoOfFeeds);
+                ProgressViewHelper.StartProgress(ProgressSpinner, Window, NoOfFeeds);
             });
         }
 
@@ -547,7 +550,7 @@ namespace PodcastUtilitiesPOC
         {
             RunOnUiThread(() =>
             {
-                ProgressViewHelper.CompleteProgress(ProgressSpinner, this.Window);
+                ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
             });
         }
 

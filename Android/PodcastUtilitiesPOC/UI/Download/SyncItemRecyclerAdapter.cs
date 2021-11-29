@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PodcastUtilitiesPOC
+namespace PodcastUtilitiesPOC.UI.Download
 {
     class RecyclerSyncItem
     {
@@ -28,29 +28,29 @@ namespace PodcastUtilitiesPOC
 
         public SyncItemRecyclerAdapter(Context context)
         {
-            this.Context = context;
+            Context = context;
         }
 
         public void SetItems(List<RecyclerSyncItem> items)
         {
-            this.Items = items;
+            Items = items;
         }
 
         public RecyclerSyncItem GetItemById(Guid id)
         {
-            return this.Items.Find(item => item.SyncItem.Id == id);
+            return Items.Find(item => item.SyncItem.Id == id);
         }
 
         public int GetItemPositionById(Guid id)
         {
-             return this.Items.IndexOf(GetItemById(id));
+            return Items.IndexOf(GetItemById(id));
         }
 
         public int SetItemProgress(Guid id, int progress)
         {
             var item = GetItemById(id);
             item.ProgressPercentage = progress;
-            return this.Items.IndexOf(item);
+            return Items.IndexOf(item);
         }
 
         public override int ItemCount => Items.Count;

@@ -9,6 +9,7 @@ using AndroidX.RecyclerView.Widget;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilitiesPOC.CustomViews;
+using PodcastUtilitiesPOC.UI.Main;
 using PodcastUtilitiesPOC.Utilities;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PodcastUtilitiesPOC
+namespace PodcastUtilitiesPOC.UI.Download
 {
     [Activity(Label = "Download Podcasts", ParentActivity = typeof(MainActivity))]
     public class DownloadActivity : AppCompatActivity
@@ -32,7 +33,7 @@ namespace PodcastUtilitiesPOC
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            AndroidApplication = (Application as AndroidApplication);
+            AndroidApplication = Application as AndroidApplication;
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate");
 
             base.OnCreate(savedInstanceState);
@@ -210,7 +211,7 @@ namespace PodcastUtilitiesPOC
         {
             RunOnUiThread(() =>
             {
-                ProgressViewHelper.StartProgress(ProgressSpinner, this.Window, max);
+                ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
             });
         }
 
@@ -226,7 +227,7 @@ namespace PodcastUtilitiesPOC
         {
             RunOnUiThread(() =>
             {
-                ProgressViewHelper.CompleteProgress(ProgressSpinner, this.Window);
+                ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
             });
         }
     }
