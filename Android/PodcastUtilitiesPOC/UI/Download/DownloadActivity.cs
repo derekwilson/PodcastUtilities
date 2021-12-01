@@ -72,6 +72,7 @@ namespace PodcastUtilitiesPOC.UI.Download
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(DownloadViewModel))) as DownloadViewModel;
             Lifecycle.AddObserver(ViewModel);
+            SetupLiveDataViewModelObservers();
             SetupViewModelObservers();
 
             ViewModel.Initialise();
@@ -80,9 +81,31 @@ namespace PodcastUtilitiesPOC.UI.Download
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate - end");
         }
 
+        protected override void OnStop()
+        {
+            base.OnStop();
+            KillObservers();
+            // the LiveData observers are automatically removed at this point because of the androidx lifecycle
+        }
+
         private void SetupViewModelObservers()
         {
-            ViewModel.Observables.Title.Observe(this, new TitleObserver(this));
+            ViewModel.Observables.Title += SetTitle;
+        }
+
+        private void KillObservers()
+        {
+            ViewModel.Observables.Title -= SetTitle;
+        }
+
+        private void SetTitle(object sender, string title)
+        {
+            Title = title;
+        }
+
+        private void SetupLiveDataViewModelObservers()
+        {
+            ViewModel.LiveDataObservables.Title.Observe(this, new TitleObserver(this));
         }
 
         private void FindEpisodesToDownload()
