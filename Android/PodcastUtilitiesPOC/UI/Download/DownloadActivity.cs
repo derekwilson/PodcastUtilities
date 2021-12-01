@@ -33,6 +33,22 @@ namespace PodcastUtilitiesPOC.UI.Download
         private ITaskPool TaskPool;
         static object SyncLock = new object();
 
+        private class TitleObserver : Java.Lang.Object, IObserver
+        {
+            DownloadActivity Activity;
+
+            public TitleObserver(DownloadActivity downloadActivity)
+            {
+                Activity = downloadActivity;
+            }
+
+            public void OnChanged(Java.Lang.Object o)
+            {
+                string value = (string) o;
+                Activity.Title = value;
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             AndroidApplication = Application as AndroidApplication;
@@ -56,10 +72,17 @@ namespace PodcastUtilitiesPOC.UI.Download
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(DownloadViewModel))) as DownloadViewModel;
             Lifecycle.AddObserver(ViewModel);
+            SetupViewModelObservers();
+
             ViewModel.Initialise();
 
             Task.Run(() => FindEpisodesToDownload());
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate - end");
+        }
+
+        private void SetupViewModelObservers()
+        {
+            ViewModel.Observables.Title.Observe(this, new TitleObserver(this));
         }
 
         private void FindEpisodesToDownload()

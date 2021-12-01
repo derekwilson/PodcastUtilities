@@ -15,6 +15,12 @@ namespace PodcastUtilitiesPOC.UI.Download
 {
     class DownloadViewModel : AndroidViewModel, ILifecycleObserver
     {
+        public class ObservableGroup
+        {
+            public MutableLiveData Title = new MutableLiveData();
+        }
+        public ObservableGroup Observables = new ObservableGroup();
+
         private ILogger Logger;
 
         public DownloadViewModel(
@@ -24,6 +30,7 @@ namespace PodcastUtilitiesPOC.UI.Download
         {
             Logger = logger;
             Logger.Debug(() => $"DownloadViewModel:ctor");
+            Observables.Title.SetValue("Observed LiveData Title");
         }
 
         public void Initialise()
