@@ -57,6 +57,7 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mono.Android.Export" />
     <Reference Include="PodcastUtilities.Common">
       <HintPath>..\Reference\PodcastUtilities\PodcastUtilities.Common.dll</HintPath>
     </Reference>

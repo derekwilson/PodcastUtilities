@@ -30,5 +30,48 @@ namespace PodcastUtilitiesPOC.UI.Download
         {
             Logger.Debug(() => $"DownloadViewModel:Initialise");
         }
+
+        [Lifecycle.Event.OnCreate]
+        [Java.Interop.Export]
+        public void OnCreate()
+        {
+            Logger.Debug(() => $"DownloadViewModel:OnCreate");
+        }
+
+        [Lifecycle.Event.OnStart]
+        [Java.Interop.Export]
+        public void OnStart()
+        {
+            Logger.Debug(() => $"DownloadViewModel:OnStart");
+        }
+
+        [Lifecycle.Event.OnResume]
+        [Java.Interop.Export]
+        public void OnResume()
+        {
+            Logger.Debug(() => $"DownloadViewModel:OnResume");
+        }
+
+        [Lifecycle.Event.OnPause]
+        [Java.Interop.Export]
+        public void OnPause()
+        {
+            Logger.Debug(() => $"DownloadViewModel:OnPause");
+        }
+
+        [Lifecycle.Event.OnStop]
+        [Java.Interop.Export]
+        public void OnStop()
+        {
+            Logger.Debug(() => $"DownloadViewModel:OnStop");
+        }
+
+        [Lifecycle.Event.OnDestroy]
+        [Java.Interop.Export]
+        public void OnDestroy()
+        {
+            Logger.Debug(() => $"DownloadViewModel:OnDestroy");
+        }
+
     }
 }
