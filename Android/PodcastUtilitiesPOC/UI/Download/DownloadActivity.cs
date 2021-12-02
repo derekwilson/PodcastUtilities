@@ -88,6 +88,11 @@ namespace PodcastUtilitiesPOC.UI.Download
             // the LiveData observers are automatically removed at this point because of the androidx lifecycle
         }
 
+        private void SetupLiveDataViewModelObservers()
+        {
+            ViewModel.LiveDataObservables.Title.Observe(this, new TitleObserver(this));
+        }
+
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.Title += SetTitle;
@@ -101,11 +106,6 @@ namespace PodcastUtilitiesPOC.UI.Download
         private void SetTitle(object sender, string title)
         {
             Title = title;
-        }
-
-        private void SetupLiveDataViewModelObservers()
-        {
-            ViewModel.LiveDataObservables.Title.Observe(this, new TitleObserver(this));
         }
 
         private void FindEpisodesToDownload()
