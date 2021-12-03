@@ -5,15 +5,16 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.Lifecycle;
-using PodcastUtilitiesPOC.Logging;
+using PodcastUtilitiesPOC.AndroidLogic.Logging;
+using PodcastUtilitiesPOC.AndroidLogic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PodcastUtilitiesPOC.UI.Download
+namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
 {
-    class DownloadViewModel : AndroidViewModel, ILifecycleObserver
+    public class DownloadViewModel : AndroidViewModel, ILifecycleObserver
     {
         public class LiveDataObservableGroup
         {
@@ -28,22 +29,28 @@ namespace PodcastUtilitiesPOC.UI.Download
         }
         public ObservableGroup Observables = new ObservableGroup();
 
+        private Application App;
         private ILogger Logger;
+        private IResourceProvider ResourceProvider;
 
         public DownloadViewModel(
             Application app,
-            ILogger logger
+            ILogger logger,
+            IResourceProvider resProvider
             ) : base(app)
         {
+            App = app;
             Logger = logger;
+            ResourceProvider = resProvider;
             Logger.Debug(() => $"DownloadViewModel:ctor");
         }
 
         public void Initialise()
         {
-            Logger.Debug(() => $"DownloadViewModel:Initialise");
+            Logger.Debug(() => $"DownloadViewModel:Initialise - tested");
+            var title = ResourceProvider.GetString(Resource.String.download_activity_title);
             //LiveDataObservables.Title.SetValue("Observed LiveData Title");
-            Observables.Title?.Invoke(this, "Observed Title");
+            Observables.Title?.Invoke(this, title);
         }
 
         [Lifecycle.Event.OnCreate]

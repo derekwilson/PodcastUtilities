@@ -9,6 +9,7 @@ using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Feeds;
+using PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download;
 using PodcastUtilitiesPOC.CustomViews;
 using PodcastUtilitiesPOC.UI.Main;
 using PodcastUtilitiesPOC.Utilities;

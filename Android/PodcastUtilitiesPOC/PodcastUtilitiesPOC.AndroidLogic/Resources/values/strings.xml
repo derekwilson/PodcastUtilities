@@ -1,0 +1,4 @@
+<resources>
+    <string name="download_activity_title">Title Provided From Resources</string>
+	<string name="download_activity_after_load_title">%s Podcasts</string>
+</resources>

@@ -25,6 +25,5188 @@ namespace PodcastUtilitiesPOC
 		
 		public static void UpdateIdValues()
 		{
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_fade_in = global::PodcastUtilitiesPOC.Resource.Animation.abc_fade_in;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_fade_out = global::PodcastUtilitiesPOC.Resource.Animation.abc_fade_out;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_grow_fade_in_from_bottom = global::PodcastUtilitiesPOC.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_popup_enter = global::PodcastUtilitiesPOC.Resource.Animation.abc_popup_enter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_popup_exit = global::PodcastUtilitiesPOC.Resource.Animation.abc_popup_exit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_shrink_fade_out_from_bottom = global::PodcastUtilitiesPOC.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_slide_in_bottom = global::PodcastUtilitiesPOC.Resource.Animation.abc_slide_in_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_slide_in_top = global::PodcastUtilitiesPOC.Resource.Animation.abc_slide_in_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_slide_out_bottom = global::PodcastUtilitiesPOC.Resource.Animation.abc_slide_out_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_slide_out_top = global::PodcastUtilitiesPOC.Resource.Animation.abc_slide_out_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_tooltip_enter = global::PodcastUtilitiesPOC.Resource.Animation.abc_tooltip_enter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.abc_tooltip_exit = global::PodcastUtilitiesPOC.Resource.Animation.abc_tooltip_exit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_checkbox_to_checked_box_inner_merged_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_checkbox_to_checked_box_inner_merged_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_checkbox_to_checked_box_outer_merged_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_checkbox_to_checked_box_outer_merged_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_checkbox_to_checked_icon_null_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_checkbox_to_checked_icon_null_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_checkbox_to_unchecked_box_inner_merged_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_checkbox_to_unchecked_box_inner_merged_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_checkbox_to_unchecked_check_path_merged_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_checkbox_to_unchecked_check_path_merged_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_checkbox_to_unchecked_icon_null_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_checkbox_to_unchecked_icon_null_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_radio_to_off_mtrl_dot_group_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_radio_to_off_mtrl_dot_group_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_path_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_path_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_radio_to_on_mtrl_dot_group_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_radio_to_on_mtrl_dot_group_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_path_animation = global::PodcastUtilitiesPOC.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_path_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.design_bottom_sheet_slide_in = global::PodcastUtilitiesPOC.Resource.Animation.design_bottom_sheet_slide_in;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.design_bottom_sheet_slide_out = global::PodcastUtilitiesPOC.Resource.Animation.design_bottom_sheet_slide_out;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.design_snackbar_in = global::PodcastUtilitiesPOC.Resource.Animation.design_snackbar_in;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.design_snackbar_out = global::PodcastUtilitiesPOC.Resource.Animation.design_snackbar_out;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.fragment_fast_out_extra_slow_in = global::PodcastUtilitiesPOC.Resource.Animation.fragment_fast_out_extra_slow_in;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.mtrl_bottom_sheet_slide_in = global::PodcastUtilitiesPOC.Resource.Animation.mtrl_bottom_sheet_slide_in;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.mtrl_bottom_sheet_slide_out = global::PodcastUtilitiesPOC.Resource.Animation.mtrl_bottom_sheet_slide_out;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animation.mtrl_card_lowers_interpolator = global::PodcastUtilitiesPOC.Resource.Animation.mtrl_card_lowers_interpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.design_appbar_state_list_animator = global::PodcastUtilitiesPOC.Resource.Animator.design_appbar_state_list_animator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.design_fab_hide_motion_spec = global::PodcastUtilitiesPOC.Resource.Animator.design_fab_hide_motion_spec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.design_fab_show_motion_spec = global::PodcastUtilitiesPOC.Resource.Animator.design_fab_show_motion_spec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.fragment_close_enter = global::PodcastUtilitiesPOC.Resource.Animator.fragment_close_enter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.fragment_close_exit = global::PodcastUtilitiesPOC.Resource.Animator.fragment_close_exit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.fragment_fade_enter = global::PodcastUtilitiesPOC.Resource.Animator.fragment_fade_enter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.fragment_fade_exit = global::PodcastUtilitiesPOC.Resource.Animator.fragment_fade_exit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.fragment_open_enter = global::PodcastUtilitiesPOC.Resource.Animator.fragment_open_enter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.fragment_open_exit = global::PodcastUtilitiesPOC.Resource.Animator.fragment_open_exit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.linear_indeterminate_line1_head_interpolator = global::PodcastUtilitiesPOC.Resource.Animator.linear_indeterminate_line1_head_interpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.linear_indeterminate_line1_tail_interpolator = global::PodcastUtilitiesPOC.Resource.Animator.linear_indeterminate_line1_tail_interpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.linear_indeterminate_line2_head_interpolator = global::PodcastUtilitiesPOC.Resource.Animator.linear_indeterminate_line2_head_interpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.linear_indeterminate_line2_tail_interpolator = global::PodcastUtilitiesPOC.Resource.Animator.linear_indeterminate_line2_tail_interpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_btn_state_list_anim = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_btn_state_list_anim;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_btn_unelevated_state_list_anim = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_btn_unelevated_state_list_anim;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_card_state_list_anim = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_card_state_list_anim;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_chip_state_list_anim = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_chip_state_list_anim;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_extended_fab_change_size_collapse_motion_spec = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_extended_fab_change_size_collapse_motion_spec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_extended_fab_change_size_expand_motion_spec = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_extended_fab_change_size_expand_motion_spec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_extended_fab_hide_motion_spec = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_extended_fab_hide_motion_spec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_extended_fab_show_motion_spec = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_extended_fab_show_motion_spec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_extended_fab_state_list_animator = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_extended_fab_state_list_animator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_fab_hide_motion_spec = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_fab_hide_motion_spec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_fab_show_motion_spec = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_fab_show_motion_spec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_fab_transformation_sheet_collapse_spec = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_fab_transformation_sheet_collapse_spec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Animator.mtrl_fab_transformation_sheet_expand_spec = global::PodcastUtilitiesPOC.Resource.Animator.mtrl_fab_transformation_sheet_expand_spec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionBarDivider = global::PodcastUtilitiesPOC.Resource.Attribute.actionBarDivider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionBarItemBackground = global::PodcastUtilitiesPOC.Resource.Attribute.actionBarItemBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionBarPopupTheme = global::PodcastUtilitiesPOC.Resource.Attribute.actionBarPopupTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionBarSize = global::PodcastUtilitiesPOC.Resource.Attribute.actionBarSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionBarSplitStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionBarSplitStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionBarStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionBarTabBarStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionBarTabBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionBarTabStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionBarTabStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionBarTabTextStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionBarTabTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionBarTheme = global::PodcastUtilitiesPOC.Resource.Attribute.actionBarTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionBarWidgetTheme = global::PodcastUtilitiesPOC.Resource.Attribute.actionBarWidgetTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionDropDownStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionDropDownStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionLayout = global::PodcastUtilitiesPOC.Resource.Attribute.actionLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionMenuTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.actionMenuTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionMenuTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.actionMenuTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeBackground = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeCloseButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeCloseButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeCloseContentDescription = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeCloseContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeCloseDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeCloseDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeCopyDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeCopyDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeCutDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeCutDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeFindDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeFindDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModePasteDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.actionModePasteDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModePopupWindowStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionModePopupWindowStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeSelectAllDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeSelectAllDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeShareDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeShareDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeSplitBackground = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeSplitBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeTheme = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionModeWebSearchDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.actionModeWebSearchDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionOverflowButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionOverflowButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionOverflowMenuStyle = global::PodcastUtilitiesPOC.Resource.Attribute.actionOverflowMenuStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionProviderClass = global::PodcastUtilitiesPOC.Resource.Attribute.actionProviderClass;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionTextColorAlpha = global::PodcastUtilitiesPOC.Resource.Attribute.actionTextColorAlpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.actionViewClass = global::PodcastUtilitiesPOC.Resource.Attribute.actionViewClass;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.activityChooserViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.activityChooserViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.alertDialogButtonGroupStyle = global::PodcastUtilitiesPOC.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.alertDialogCenterButtons = global::PodcastUtilitiesPOC.Resource.Attribute.alertDialogCenterButtons;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.alertDialogStyle = global::PodcastUtilitiesPOC.Resource.Attribute.alertDialogStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.alertDialogTheme = global::PodcastUtilitiesPOC.Resource.Attribute.alertDialogTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.allowStacking = global::PodcastUtilitiesPOC.Resource.Attribute.allowStacking;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.alpha = global::PodcastUtilitiesPOC.Resource.Attribute.alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.alphabeticModifiers = global::PodcastUtilitiesPOC.Resource.Attribute.alphabeticModifiers;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.altSrc = global::PodcastUtilitiesPOC.Resource.Attribute.altSrc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.animateCircleAngleTo = global::PodcastUtilitiesPOC.Resource.Attribute.animateCircleAngleTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.animateRelativeTo = global::PodcastUtilitiesPOC.Resource.Attribute.animateRelativeTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.animationMode = global::PodcastUtilitiesPOC.Resource.Attribute.animationMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.appBarLayoutStyle = global::PodcastUtilitiesPOC.Resource.Attribute.appBarLayoutStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.applyMotionScene = global::PodcastUtilitiesPOC.Resource.Attribute.applyMotionScene;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.arcMode = global::PodcastUtilitiesPOC.Resource.Attribute.arcMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.arrowHeadLength = global::PodcastUtilitiesPOC.Resource.Attribute.arrowHeadLength;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.arrowShaftLength = global::PodcastUtilitiesPOC.Resource.Attribute.arrowShaftLength;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.attributeName = global::PodcastUtilitiesPOC.Resource.Attribute.attributeName;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.autoCompleteMode = global::PodcastUtilitiesPOC.Resource.Attribute.autoCompleteMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.autoCompleteTextViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.autoCompleteTextViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.autoSizeMaxTextSize = global::PodcastUtilitiesPOC.Resource.Attribute.autoSizeMaxTextSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.autoSizeMinTextSize = global::PodcastUtilitiesPOC.Resource.Attribute.autoSizeMinTextSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.autoSizePresetSizes = global::PodcastUtilitiesPOC.Resource.Attribute.autoSizePresetSizes;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.autoSizeStepGranularity = global::PodcastUtilitiesPOC.Resource.Attribute.autoSizeStepGranularity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.autoSizeTextType = global::PodcastUtilitiesPOC.Resource.Attribute.autoSizeTextType;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.autoTransition = global::PodcastUtilitiesPOC.Resource.Attribute.autoTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.background = global::PodcastUtilitiesPOC.Resource.Attribute.background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.backgroundColor = global::PodcastUtilitiesPOC.Resource.Attribute.backgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.backgroundInsetBottom = global::PodcastUtilitiesPOC.Resource.Attribute.backgroundInsetBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.backgroundInsetEnd = global::PodcastUtilitiesPOC.Resource.Attribute.backgroundInsetEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.backgroundInsetStart = global::PodcastUtilitiesPOC.Resource.Attribute.backgroundInsetStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.backgroundInsetTop = global::PodcastUtilitiesPOC.Resource.Attribute.backgroundInsetTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.backgroundOverlayColorAlpha = global::PodcastUtilitiesPOC.Resource.Attribute.backgroundOverlayColorAlpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.backgroundSplit = global::PodcastUtilitiesPOC.Resource.Attribute.backgroundSplit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.backgroundStacked = global::PodcastUtilitiesPOC.Resource.Attribute.backgroundStacked;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.backgroundTint = global::PodcastUtilitiesPOC.Resource.Attribute.backgroundTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.backgroundTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.backgroundTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.badgeGravity = global::PodcastUtilitiesPOC.Resource.Attribute.badgeGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.badgeStyle = global::PodcastUtilitiesPOC.Resource.Attribute.badgeStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.badgeTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.badgeTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.barLength = global::PodcastUtilitiesPOC.Resource.Attribute.barLength;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.barrierAllowsGoneWidgets = global::PodcastUtilitiesPOC.Resource.Attribute.barrierAllowsGoneWidgets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.barrierDirection = global::PodcastUtilitiesPOC.Resource.Attribute.barrierDirection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.barrierMargin = global::PodcastUtilitiesPOC.Resource.Attribute.barrierMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.behavior_autoHide = global::PodcastUtilitiesPOC.Resource.Attribute.behavior_autoHide;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.behavior_autoShrink = global::PodcastUtilitiesPOC.Resource.Attribute.behavior_autoShrink;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.behavior_draggable = global::PodcastUtilitiesPOC.Resource.Attribute.behavior_draggable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.behavior_expandedOffset = global::PodcastUtilitiesPOC.Resource.Attribute.behavior_expandedOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.behavior_fitToContents = global::PodcastUtilitiesPOC.Resource.Attribute.behavior_fitToContents;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.behavior_halfExpandedRatio = global::PodcastUtilitiesPOC.Resource.Attribute.behavior_halfExpandedRatio;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.behavior_hideable = global::PodcastUtilitiesPOC.Resource.Attribute.behavior_hideable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.behavior_overlapTop = global::PodcastUtilitiesPOC.Resource.Attribute.behavior_overlapTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.behavior_peekHeight = global::PodcastUtilitiesPOC.Resource.Attribute.behavior_peekHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.behavior_saveFlags = global::PodcastUtilitiesPOC.Resource.Attribute.behavior_saveFlags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.behavior_skipCollapsed = global::PodcastUtilitiesPOC.Resource.Attribute.behavior_skipCollapsed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.blendSrc = global::PodcastUtilitiesPOC.Resource.Attribute.blendSrc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.borderlessButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.borderlessButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.borderRound = global::PodcastUtilitiesPOC.Resource.Attribute.borderRound;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.borderRoundPercent = global::PodcastUtilitiesPOC.Resource.Attribute.borderRoundPercent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.borderWidth = global::PodcastUtilitiesPOC.Resource.Attribute.borderWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.bottomAppBarStyle = global::PodcastUtilitiesPOC.Resource.Attribute.bottomAppBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.bottomNavigationStyle = global::PodcastUtilitiesPOC.Resource.Attribute.bottomNavigationStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.bottomSheetDialogTheme = global::PodcastUtilitiesPOC.Resource.Attribute.bottomSheetDialogTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.bottomSheetStyle = global::PodcastUtilitiesPOC.Resource.Attribute.bottomSheetStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.boxBackgroundColor = global::PodcastUtilitiesPOC.Resource.Attribute.boxBackgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.boxBackgroundMode = global::PodcastUtilitiesPOC.Resource.Attribute.boxBackgroundMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.boxCollapsedPaddingTop = global::PodcastUtilitiesPOC.Resource.Attribute.boxCollapsedPaddingTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.boxCornerRadiusBottomEnd = global::PodcastUtilitiesPOC.Resource.Attribute.boxCornerRadiusBottomEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.boxCornerRadiusBottomStart = global::PodcastUtilitiesPOC.Resource.Attribute.boxCornerRadiusBottomStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.boxCornerRadiusTopEnd = global::PodcastUtilitiesPOC.Resource.Attribute.boxCornerRadiusTopEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.boxCornerRadiusTopStart = global::PodcastUtilitiesPOC.Resource.Attribute.boxCornerRadiusTopStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.boxStrokeColor = global::PodcastUtilitiesPOC.Resource.Attribute.boxStrokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.boxStrokeErrorColor = global::PodcastUtilitiesPOC.Resource.Attribute.boxStrokeErrorColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.boxStrokeWidth = global::PodcastUtilitiesPOC.Resource.Attribute.boxStrokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.boxStrokeWidthFocused = global::PodcastUtilitiesPOC.Resource.Attribute.boxStrokeWidthFocused;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.brightness = global::PodcastUtilitiesPOC.Resource.Attribute.brightness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonBarButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.buttonBarButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonBarNegativeButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonBarNeutralButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonBarPositiveButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonBarStyle = global::PodcastUtilitiesPOC.Resource.Attribute.buttonBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonCompat = global::PodcastUtilitiesPOC.Resource.Attribute.buttonCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonGravity = global::PodcastUtilitiesPOC.Resource.Attribute.buttonGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonIconDimen = global::PodcastUtilitiesPOC.Resource.Attribute.buttonIconDimen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonPanelSideLayout = global::PodcastUtilitiesPOC.Resource.Attribute.buttonPanelSideLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.buttonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonStyleSmall = global::PodcastUtilitiesPOC.Resource.Attribute.buttonStyleSmall;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonTint = global::PodcastUtilitiesPOC.Resource.Attribute.buttonTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.buttonTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.buttonTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cardBackgroundColor = global::PodcastUtilitiesPOC.Resource.Attribute.cardBackgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cardCornerRadius = global::PodcastUtilitiesPOC.Resource.Attribute.cardCornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cardElevation = global::PodcastUtilitiesPOC.Resource.Attribute.cardElevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cardForegroundColor = global::PodcastUtilitiesPOC.Resource.Attribute.cardForegroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cardMaxElevation = global::PodcastUtilitiesPOC.Resource.Attribute.cardMaxElevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cardPreventCornerOverlap = global::PodcastUtilitiesPOC.Resource.Attribute.cardPreventCornerOverlap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cardUseCompatPadding = global::PodcastUtilitiesPOC.Resource.Attribute.cardUseCompatPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cardViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.cardViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.carousel_backwardTransition = global::PodcastUtilitiesPOC.Resource.Attribute.carousel_backwardTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.carousel_emptyViewsBehavior = global::PodcastUtilitiesPOC.Resource.Attribute.carousel_emptyViewsBehavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.carousel_firstView = global::PodcastUtilitiesPOC.Resource.Attribute.carousel_firstView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.carousel_forwardTransition = global::PodcastUtilitiesPOC.Resource.Attribute.carousel_forwardTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.carousel_infinite = global::PodcastUtilitiesPOC.Resource.Attribute.carousel_infinite;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.carousel_nextState = global::PodcastUtilitiesPOC.Resource.Attribute.carousel_nextState;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.carousel_previousState = global::PodcastUtilitiesPOC.Resource.Attribute.carousel_previousState;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.carousel_touchUpMode = global::PodcastUtilitiesPOC.Resource.Attribute.carousel_touchUpMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.carousel_touchUp_dampeningFactor = global::PodcastUtilitiesPOC.Resource.Attribute.carousel_touchUp_dampeningFactor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.carousel_touchUp_velocityThreshold = global::PodcastUtilitiesPOC.Resource.Attribute.carousel_touchUp_velocityThreshold;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chainUseRtl = global::PodcastUtilitiesPOC.Resource.Attribute.chainUseRtl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.checkboxStyle = global::PodcastUtilitiesPOC.Resource.Attribute.checkboxStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.checkedButton = global::PodcastUtilitiesPOC.Resource.Attribute.checkedButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.checkedChip = global::PodcastUtilitiesPOC.Resource.Attribute.checkedChip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.checkedIcon = global::PodcastUtilitiesPOC.Resource.Attribute.checkedIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.checkedIconEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.checkedIconEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.checkedIconMargin = global::PodcastUtilitiesPOC.Resource.Attribute.checkedIconMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.checkedIconSize = global::PodcastUtilitiesPOC.Resource.Attribute.checkedIconSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.checkedIconTint = global::PodcastUtilitiesPOC.Resource.Attribute.checkedIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.checkedIconVisible = global::PodcastUtilitiesPOC.Resource.Attribute.checkedIconVisible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.checkedTextViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.checkedTextViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipBackgroundColor = global::PodcastUtilitiesPOC.Resource.Attribute.chipBackgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipCornerRadius = global::PodcastUtilitiesPOC.Resource.Attribute.chipCornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipEndPadding = global::PodcastUtilitiesPOC.Resource.Attribute.chipEndPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipGroupStyle = global::PodcastUtilitiesPOC.Resource.Attribute.chipGroupStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipIcon = global::PodcastUtilitiesPOC.Resource.Attribute.chipIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipIconEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.chipIconEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipIconSize = global::PodcastUtilitiesPOC.Resource.Attribute.chipIconSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipIconTint = global::PodcastUtilitiesPOC.Resource.Attribute.chipIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipIconVisible = global::PodcastUtilitiesPOC.Resource.Attribute.chipIconVisible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipMinHeight = global::PodcastUtilitiesPOC.Resource.Attribute.chipMinHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipMinTouchTargetSize = global::PodcastUtilitiesPOC.Resource.Attribute.chipMinTouchTargetSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipSpacing = global::PodcastUtilitiesPOC.Resource.Attribute.chipSpacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipSpacingHorizontal = global::PodcastUtilitiesPOC.Resource.Attribute.chipSpacingHorizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipSpacingVertical = global::PodcastUtilitiesPOC.Resource.Attribute.chipSpacingVertical;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipStandaloneStyle = global::PodcastUtilitiesPOC.Resource.Attribute.chipStandaloneStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipStartPadding = global::PodcastUtilitiesPOC.Resource.Attribute.chipStartPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipStrokeColor = global::PodcastUtilitiesPOC.Resource.Attribute.chipStrokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipStrokeWidth = global::PodcastUtilitiesPOC.Resource.Attribute.chipStrokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipStyle = global::PodcastUtilitiesPOC.Resource.Attribute.chipStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.chipSurfaceColor = global::PodcastUtilitiesPOC.Resource.Attribute.chipSurfaceColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.circleRadius = global::PodcastUtilitiesPOC.Resource.Attribute.circleRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.circularflow_angles = global::PodcastUtilitiesPOC.Resource.Attribute.circularflow_angles;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.circularflow_defaultAngle = global::PodcastUtilitiesPOC.Resource.Attribute.circularflow_defaultAngle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.circularflow_defaultRadius = global::PodcastUtilitiesPOC.Resource.Attribute.circularflow_defaultRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.circularflow_radiusInDP = global::PodcastUtilitiesPOC.Resource.Attribute.circularflow_radiusInDP;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.circularflow_viewCenter = global::PodcastUtilitiesPOC.Resource.Attribute.circularflow_viewCenter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.circularProgressIndicatorStyle = global::PodcastUtilitiesPOC.Resource.Attribute.circularProgressIndicatorStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.clearsTag = global::PodcastUtilitiesPOC.Resource.Attribute.clearsTag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.clickAction = global::PodcastUtilitiesPOC.Resource.Attribute.clickAction;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.clockFaceBackgroundColor = global::PodcastUtilitiesPOC.Resource.Attribute.clockFaceBackgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.clockHandColor = global::PodcastUtilitiesPOC.Resource.Attribute.clockHandColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.clockIcon = global::PodcastUtilitiesPOC.Resource.Attribute.clockIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.clockNumberTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.clockNumberTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.closeIcon = global::PodcastUtilitiesPOC.Resource.Attribute.closeIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.closeIconEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.closeIconEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.closeIconEndPadding = global::PodcastUtilitiesPOC.Resource.Attribute.closeIconEndPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.closeIconSize = global::PodcastUtilitiesPOC.Resource.Attribute.closeIconSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.closeIconStartPadding = global::PodcastUtilitiesPOC.Resource.Attribute.closeIconStartPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.closeIconTint = global::PodcastUtilitiesPOC.Resource.Attribute.closeIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.closeIconVisible = global::PodcastUtilitiesPOC.Resource.Attribute.closeIconVisible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.closeItemLayout = global::PodcastUtilitiesPOC.Resource.Attribute.closeItemLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.collapseContentDescription = global::PodcastUtilitiesPOC.Resource.Attribute.collapseContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.collapsedSize = global::PodcastUtilitiesPOC.Resource.Attribute.collapsedSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.collapsedTitleGravity = global::PodcastUtilitiesPOC.Resource.Attribute.collapsedTitleGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.collapsedTitleTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.collapsedTitleTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.collapseIcon = global::PodcastUtilitiesPOC.Resource.Attribute.collapseIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.collapsingToolbarLayoutStyle = global::PodcastUtilitiesPOC.Resource.Attribute.collapsingToolbarLayoutStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.color = global::PodcastUtilitiesPOC.Resource.Attribute.color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorAccent = global::PodcastUtilitiesPOC.Resource.Attribute.colorAccent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorBackgroundFloating = global::PodcastUtilitiesPOC.Resource.Attribute.colorBackgroundFloating;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorButtonNormal = global::PodcastUtilitiesPOC.Resource.Attribute.colorButtonNormal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorControlActivated = global::PodcastUtilitiesPOC.Resource.Attribute.colorControlActivated;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorControlHighlight = global::PodcastUtilitiesPOC.Resource.Attribute.colorControlHighlight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorControlNormal = global::PodcastUtilitiesPOC.Resource.Attribute.colorControlNormal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorError = global::PodcastUtilitiesPOC.Resource.Attribute.colorError;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorOnBackground = global::PodcastUtilitiesPOC.Resource.Attribute.colorOnBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorOnError = global::PodcastUtilitiesPOC.Resource.Attribute.colorOnError;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorOnPrimary = global::PodcastUtilitiesPOC.Resource.Attribute.colorOnPrimary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorOnPrimarySurface = global::PodcastUtilitiesPOC.Resource.Attribute.colorOnPrimarySurface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorOnSecondary = global::PodcastUtilitiesPOC.Resource.Attribute.colorOnSecondary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorOnSurface = global::PodcastUtilitiesPOC.Resource.Attribute.colorOnSurface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorPrimary = global::PodcastUtilitiesPOC.Resource.Attribute.colorPrimary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorPrimaryDark = global::PodcastUtilitiesPOC.Resource.Attribute.colorPrimaryDark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorPrimarySurface = global::PodcastUtilitiesPOC.Resource.Attribute.colorPrimarySurface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorPrimaryVariant = global::PodcastUtilitiesPOC.Resource.Attribute.colorPrimaryVariant;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorSecondary = global::PodcastUtilitiesPOC.Resource.Attribute.colorSecondary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorSecondaryVariant = global::PodcastUtilitiesPOC.Resource.Attribute.colorSecondaryVariant;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorSurface = global::PodcastUtilitiesPOC.Resource.Attribute.colorSurface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.colorSwitchThumbNormal = global::PodcastUtilitiesPOC.Resource.Attribute.colorSwitchThumbNormal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.commitIcon = global::PodcastUtilitiesPOC.Resource.Attribute.commitIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.constraintRotate = global::PodcastUtilitiesPOC.Resource.Attribute.constraintRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.constraints = global::PodcastUtilitiesPOC.Resource.Attribute.constraints;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.constraintSet = global::PodcastUtilitiesPOC.Resource.Attribute.constraintSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.constraintSetEnd = global::PodcastUtilitiesPOC.Resource.Attribute.constraintSetEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.constraintSetStart = global::PodcastUtilitiesPOC.Resource.Attribute.constraintSetStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.constraint_referenced_ids = global::PodcastUtilitiesPOC.Resource.Attribute.constraint_referenced_ids;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.constraint_referenced_tags = global::PodcastUtilitiesPOC.Resource.Attribute.constraint_referenced_tags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.content = global::PodcastUtilitiesPOC.Resource.Attribute.content;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentDescription = global::PodcastUtilitiesPOC.Resource.Attribute.contentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentInsetEnd = global::PodcastUtilitiesPOC.Resource.Attribute.contentInsetEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentInsetEndWithActions = global::PodcastUtilitiesPOC.Resource.Attribute.contentInsetEndWithActions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentInsetLeft = global::PodcastUtilitiesPOC.Resource.Attribute.contentInsetLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentInsetRight = global::PodcastUtilitiesPOC.Resource.Attribute.contentInsetRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentInsetStart = global::PodcastUtilitiesPOC.Resource.Attribute.contentInsetStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentInsetStartWithNavigation = global::PodcastUtilitiesPOC.Resource.Attribute.contentInsetStartWithNavigation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentPadding = global::PodcastUtilitiesPOC.Resource.Attribute.contentPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentPaddingBottom = global::PodcastUtilitiesPOC.Resource.Attribute.contentPaddingBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentPaddingEnd = global::PodcastUtilitiesPOC.Resource.Attribute.contentPaddingEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentPaddingLeft = global::PodcastUtilitiesPOC.Resource.Attribute.contentPaddingLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentPaddingRight = global::PodcastUtilitiesPOC.Resource.Attribute.contentPaddingRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentPaddingStart = global::PodcastUtilitiesPOC.Resource.Attribute.contentPaddingStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentPaddingTop = global::PodcastUtilitiesPOC.Resource.Attribute.contentPaddingTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contentScrim = global::PodcastUtilitiesPOC.Resource.Attribute.contentScrim;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.contrast = global::PodcastUtilitiesPOC.Resource.Attribute.contrast;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.controlBackground = global::PodcastUtilitiesPOC.Resource.Attribute.controlBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.coordinatorLayoutStyle = global::PodcastUtilitiesPOC.Resource.Attribute.coordinatorLayoutStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cornerFamily = global::PodcastUtilitiesPOC.Resource.Attribute.cornerFamily;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cornerFamilyBottomLeft = global::PodcastUtilitiesPOC.Resource.Attribute.cornerFamilyBottomLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cornerFamilyBottomRight = global::PodcastUtilitiesPOC.Resource.Attribute.cornerFamilyBottomRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cornerFamilyTopLeft = global::PodcastUtilitiesPOC.Resource.Attribute.cornerFamilyTopLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cornerFamilyTopRight = global::PodcastUtilitiesPOC.Resource.Attribute.cornerFamilyTopRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cornerRadius = global::PodcastUtilitiesPOC.Resource.Attribute.cornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cornerSize = global::PodcastUtilitiesPOC.Resource.Attribute.cornerSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cornerSizeBottomLeft = global::PodcastUtilitiesPOC.Resource.Attribute.cornerSizeBottomLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cornerSizeBottomRight = global::PodcastUtilitiesPOC.Resource.Attribute.cornerSizeBottomRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cornerSizeTopLeft = global::PodcastUtilitiesPOC.Resource.Attribute.cornerSizeTopLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.cornerSizeTopRight = global::PodcastUtilitiesPOC.Resource.Attribute.cornerSizeTopRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.counterEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.counterEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.counterMaxLength = global::PodcastUtilitiesPOC.Resource.Attribute.counterMaxLength;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.counterOverflowTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.counterOverflowTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.counterOverflowTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.counterOverflowTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.counterTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.counterTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.counterTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.counterTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.crossfade = global::PodcastUtilitiesPOC.Resource.Attribute.crossfade;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.currentState = global::PodcastUtilitiesPOC.Resource.Attribute.currentState;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.curveFit = global::PodcastUtilitiesPOC.Resource.Attribute.curveFit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.customBoolean = global::PodcastUtilitiesPOC.Resource.Attribute.customBoolean;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.customColorDrawableValue = global::PodcastUtilitiesPOC.Resource.Attribute.customColorDrawableValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.customColorValue = global::PodcastUtilitiesPOC.Resource.Attribute.customColorValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.customDimension = global::PodcastUtilitiesPOC.Resource.Attribute.customDimension;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.customFloatValue = global::PodcastUtilitiesPOC.Resource.Attribute.customFloatValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.customIntegerValue = global::PodcastUtilitiesPOC.Resource.Attribute.customIntegerValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.customNavigationLayout = global::PodcastUtilitiesPOC.Resource.Attribute.customNavigationLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.customPixelDimension = global::PodcastUtilitiesPOC.Resource.Attribute.customPixelDimension;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.customReference = global::PodcastUtilitiesPOC.Resource.Attribute.customReference;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.customStringValue = global::PodcastUtilitiesPOC.Resource.Attribute.customStringValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dayInvalidStyle = global::PodcastUtilitiesPOC.Resource.Attribute.dayInvalidStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.daySelectedStyle = global::PodcastUtilitiesPOC.Resource.Attribute.daySelectedStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dayStyle = global::PodcastUtilitiesPOC.Resource.Attribute.dayStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dayTodayStyle = global::PodcastUtilitiesPOC.Resource.Attribute.dayTodayStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.defaultDuration = global::PodcastUtilitiesPOC.Resource.Attribute.defaultDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.defaultQueryHint = global::PodcastUtilitiesPOC.Resource.Attribute.defaultQueryHint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.defaultState = global::PodcastUtilitiesPOC.Resource.Attribute.defaultState;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.deltaPolarAngle = global::PodcastUtilitiesPOC.Resource.Attribute.deltaPolarAngle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.deltaPolarRadius = global::PodcastUtilitiesPOC.Resource.Attribute.deltaPolarRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.deriveConstraintsFrom = global::PodcastUtilitiesPOC.Resource.Attribute.deriveConstraintsFrom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dialogCornerRadius = global::PodcastUtilitiesPOC.Resource.Attribute.dialogCornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dialogPreferredPadding = global::PodcastUtilitiesPOC.Resource.Attribute.dialogPreferredPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dialogTheme = global::PodcastUtilitiesPOC.Resource.Attribute.dialogTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.displayOptions = global::PodcastUtilitiesPOC.Resource.Attribute.displayOptions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.divider = global::PodcastUtilitiesPOC.Resource.Attribute.divider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dividerHorizontal = global::PodcastUtilitiesPOC.Resource.Attribute.dividerHorizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dividerPadding = global::PodcastUtilitiesPOC.Resource.Attribute.dividerPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dividerVertical = global::PodcastUtilitiesPOC.Resource.Attribute.dividerVertical;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dragDirection = global::PodcastUtilitiesPOC.Resource.Attribute.dragDirection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dragScale = global::PodcastUtilitiesPOC.Resource.Attribute.dragScale;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dragThreshold = global::PodcastUtilitiesPOC.Resource.Attribute.dragThreshold;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawableBottomCompat = global::PodcastUtilitiesPOC.Resource.Attribute.drawableBottomCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawableEndCompat = global::PodcastUtilitiesPOC.Resource.Attribute.drawableEndCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawableLeftCompat = global::PodcastUtilitiesPOC.Resource.Attribute.drawableLeftCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawableRightCompat = global::PodcastUtilitiesPOC.Resource.Attribute.drawableRightCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawableSize = global::PodcastUtilitiesPOC.Resource.Attribute.drawableSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawableStartCompat = global::PodcastUtilitiesPOC.Resource.Attribute.drawableStartCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawableTint = global::PodcastUtilitiesPOC.Resource.Attribute.drawableTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawableTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.drawableTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawableTopCompat = global::PodcastUtilitiesPOC.Resource.Attribute.drawableTopCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawerArrowStyle = global::PodcastUtilitiesPOC.Resource.Attribute.drawerArrowStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawerLayoutStyle = global::PodcastUtilitiesPOC.Resource.Attribute.drawerLayoutStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.drawPath = global::PodcastUtilitiesPOC.Resource.Attribute.drawPath;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dropdownListPreferredItemHeight = global::PodcastUtilitiesPOC.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.dropDownListViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.dropDownListViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.duration = global::PodcastUtilitiesPOC.Resource.Attribute.duration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.editTextBackground = global::PodcastUtilitiesPOC.Resource.Attribute.editTextBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.editTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.editTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.editTextStyle = global::PodcastUtilitiesPOC.Resource.Attribute.editTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.elevation = global::PodcastUtilitiesPOC.Resource.Attribute.elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.elevationOverlayColor = global::PodcastUtilitiesPOC.Resource.Attribute.elevationOverlayColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.elevationOverlayEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.elevationOverlayEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.enableEdgeToEdge = global::PodcastUtilitiesPOC.Resource.Attribute.enableEdgeToEdge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.endIconCheckable = global::PodcastUtilitiesPOC.Resource.Attribute.endIconCheckable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.endIconContentDescription = global::PodcastUtilitiesPOC.Resource.Attribute.endIconContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.endIconDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.endIconDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.endIconMode = global::PodcastUtilitiesPOC.Resource.Attribute.endIconMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.endIconTint = global::PodcastUtilitiesPOC.Resource.Attribute.endIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.endIconTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.endIconTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.enforceMaterialTheme = global::PodcastUtilitiesPOC.Resource.Attribute.enforceMaterialTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.enforceTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.enforceTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.ensureMinTouchTargetSize = global::PodcastUtilitiesPOC.Resource.Attribute.ensureMinTouchTargetSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.errorContentDescription = global::PodcastUtilitiesPOC.Resource.Attribute.errorContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.errorEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.errorEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.errorIconDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.errorIconDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.errorIconTint = global::PodcastUtilitiesPOC.Resource.Attribute.errorIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.errorIconTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.errorIconTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.errorTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.errorTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.errorTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.errorTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.expandActivityOverflowButtonDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.expanded = global::PodcastUtilitiesPOC.Resource.Attribute.expanded;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.expandedHintEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.expandedHintEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.expandedTitleGravity = global::PodcastUtilitiesPOC.Resource.Attribute.expandedTitleGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.expandedTitleMargin = global::PodcastUtilitiesPOC.Resource.Attribute.expandedTitleMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.expandedTitleMarginBottom = global::PodcastUtilitiesPOC.Resource.Attribute.expandedTitleMarginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.expandedTitleMarginEnd = global::PodcastUtilitiesPOC.Resource.Attribute.expandedTitleMarginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.expandedTitleMarginStart = global::PodcastUtilitiesPOC.Resource.Attribute.expandedTitleMarginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.expandedTitleMarginTop = global::PodcastUtilitiesPOC.Resource.Attribute.expandedTitleMarginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.expandedTitleTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.expandedTitleTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.extendedFloatingActionButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.extendedFloatingActionButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.extendMotionSpec = global::PodcastUtilitiesPOC.Resource.Attribute.extendMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.extraMultilineHeightEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.extraMultilineHeightEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fabAlignmentMode = global::PodcastUtilitiesPOC.Resource.Attribute.fabAlignmentMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fabAnimationMode = global::PodcastUtilitiesPOC.Resource.Attribute.fabAnimationMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fabCradleMargin = global::PodcastUtilitiesPOC.Resource.Attribute.fabCradleMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fabCradleRoundedCornerRadius = global::PodcastUtilitiesPOC.Resource.Attribute.fabCradleRoundedCornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fabCradleVerticalOffset = global::PodcastUtilitiesPOC.Resource.Attribute.fabCradleVerticalOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fabCustomSize = global::PodcastUtilitiesPOC.Resource.Attribute.fabCustomSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fabSize = global::PodcastUtilitiesPOC.Resource.Attribute.fabSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fastScrollEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.fastScrollEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fastScrollHorizontalThumbDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.fastScrollHorizontalThumbDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fastScrollHorizontalTrackDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.fastScrollHorizontalTrackDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fastScrollVerticalThumbDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.fastScrollVerticalThumbDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fastScrollVerticalTrackDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.fastScrollVerticalTrackDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.firstBaselineToTopHeight = global::PodcastUtilitiesPOC.Resource.Attribute.firstBaselineToTopHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.floatingActionButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.floatingActionButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_firstHorizontalBias = global::PodcastUtilitiesPOC.Resource.Attribute.flow_firstHorizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_firstHorizontalStyle = global::PodcastUtilitiesPOC.Resource.Attribute.flow_firstHorizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_firstVerticalBias = global::PodcastUtilitiesPOC.Resource.Attribute.flow_firstVerticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_firstVerticalStyle = global::PodcastUtilitiesPOC.Resource.Attribute.flow_firstVerticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_horizontalAlign = global::PodcastUtilitiesPOC.Resource.Attribute.flow_horizontalAlign;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_horizontalBias = global::PodcastUtilitiesPOC.Resource.Attribute.flow_horizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_horizontalGap = global::PodcastUtilitiesPOC.Resource.Attribute.flow_horizontalGap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_horizontalStyle = global::PodcastUtilitiesPOC.Resource.Attribute.flow_horizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_lastHorizontalBias = global::PodcastUtilitiesPOC.Resource.Attribute.flow_lastHorizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_lastHorizontalStyle = global::PodcastUtilitiesPOC.Resource.Attribute.flow_lastHorizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_lastVerticalBias = global::PodcastUtilitiesPOC.Resource.Attribute.flow_lastVerticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_lastVerticalStyle = global::PodcastUtilitiesPOC.Resource.Attribute.flow_lastVerticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_maxElementsWrap = global::PodcastUtilitiesPOC.Resource.Attribute.flow_maxElementsWrap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_padding = global::PodcastUtilitiesPOC.Resource.Attribute.flow_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_verticalAlign = global::PodcastUtilitiesPOC.Resource.Attribute.flow_verticalAlign;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_verticalBias = global::PodcastUtilitiesPOC.Resource.Attribute.flow_verticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_verticalGap = global::PodcastUtilitiesPOC.Resource.Attribute.flow_verticalGap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_verticalStyle = global::PodcastUtilitiesPOC.Resource.Attribute.flow_verticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.flow_wrapMode = global::PodcastUtilitiesPOC.Resource.Attribute.flow_wrapMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.font = global::PodcastUtilitiesPOC.Resource.Attribute.font;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fontFamily = global::PodcastUtilitiesPOC.Resource.Attribute.fontFamily;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fontProviderAuthority = global::PodcastUtilitiesPOC.Resource.Attribute.fontProviderAuthority;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fontProviderCerts = global::PodcastUtilitiesPOC.Resource.Attribute.fontProviderCerts;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fontProviderFetchStrategy = global::PodcastUtilitiesPOC.Resource.Attribute.fontProviderFetchStrategy;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fontProviderFetchTimeout = global::PodcastUtilitiesPOC.Resource.Attribute.fontProviderFetchTimeout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fontProviderPackage = global::PodcastUtilitiesPOC.Resource.Attribute.fontProviderPackage;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fontProviderQuery = global::PodcastUtilitiesPOC.Resource.Attribute.fontProviderQuery;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fontProviderSystemFontFamily = global::PodcastUtilitiesPOC.Resource.Attribute.fontProviderSystemFontFamily;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fontStyle = global::PodcastUtilitiesPOC.Resource.Attribute.fontStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fontVariationSettings = global::PodcastUtilitiesPOC.Resource.Attribute.fontVariationSettings;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.fontWeight = global::PodcastUtilitiesPOC.Resource.Attribute.fontWeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.forceApplySystemWindowInsetTop = global::PodcastUtilitiesPOC.Resource.Attribute.forceApplySystemWindowInsetTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.foregroundInsidePadding = global::PodcastUtilitiesPOC.Resource.Attribute.foregroundInsidePadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.framePosition = global::PodcastUtilitiesPOC.Resource.Attribute.framePosition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.gapBetweenBars = global::PodcastUtilitiesPOC.Resource.Attribute.gapBetweenBars;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.gestureInsetBottomIgnored = global::PodcastUtilitiesPOC.Resource.Attribute.gestureInsetBottomIgnored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.goIcon = global::PodcastUtilitiesPOC.Resource.Attribute.goIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.haloColor = global::PodcastUtilitiesPOC.Resource.Attribute.haloColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.haloRadius = global::PodcastUtilitiesPOC.Resource.Attribute.haloRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.headerLayout = global::PodcastUtilitiesPOC.Resource.Attribute.headerLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.height = global::PodcastUtilitiesPOC.Resource.Attribute.height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.helperText = global::PodcastUtilitiesPOC.Resource.Attribute.helperText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.helperTextEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.helperTextEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.helperTextTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.helperTextTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.helperTextTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.helperTextTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.hideAnimationBehavior = global::PodcastUtilitiesPOC.Resource.Attribute.hideAnimationBehavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.hideMotionSpec = global::PodcastUtilitiesPOC.Resource.Attribute.hideMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.hideOnContentScroll = global::PodcastUtilitiesPOC.Resource.Attribute.hideOnContentScroll;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.hideOnScroll = global::PodcastUtilitiesPOC.Resource.Attribute.hideOnScroll;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.hintAnimationEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.hintAnimationEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.hintEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.hintEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.hintTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.hintTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.hintTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.hintTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.homeAsUpIndicator = global::PodcastUtilitiesPOC.Resource.Attribute.homeAsUpIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.homeLayout = global::PodcastUtilitiesPOC.Resource.Attribute.homeLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.horizontalOffset = global::PodcastUtilitiesPOC.Resource.Attribute.horizontalOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.hoveredFocusedTranslationZ = global::PodcastUtilitiesPOC.Resource.Attribute.hoveredFocusedTranslationZ;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.icon = global::PodcastUtilitiesPOC.Resource.Attribute.icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.iconEndPadding = global::PodcastUtilitiesPOC.Resource.Attribute.iconEndPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.iconGravity = global::PodcastUtilitiesPOC.Resource.Attribute.iconGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.iconifiedByDefault = global::PodcastUtilitiesPOC.Resource.Attribute.iconifiedByDefault;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.iconPadding = global::PodcastUtilitiesPOC.Resource.Attribute.iconPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.iconSize = global::PodcastUtilitiesPOC.Resource.Attribute.iconSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.iconStartPadding = global::PodcastUtilitiesPOC.Resource.Attribute.iconStartPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.iconTint = global::PodcastUtilitiesPOC.Resource.Attribute.iconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.iconTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.iconTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.ifTagNotSet = global::PodcastUtilitiesPOC.Resource.Attribute.ifTagNotSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.ifTagSet = global::PodcastUtilitiesPOC.Resource.Attribute.ifTagSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.imageButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.imageButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.imagePanX = global::PodcastUtilitiesPOC.Resource.Attribute.imagePanX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.imagePanY = global::PodcastUtilitiesPOC.Resource.Attribute.imagePanY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.imageRotate = global::PodcastUtilitiesPOC.Resource.Attribute.imageRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.imageZoom = global::PodcastUtilitiesPOC.Resource.Attribute.imageZoom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.indeterminateAnimationType = global::PodcastUtilitiesPOC.Resource.Attribute.indeterminateAnimationType;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.indeterminateProgressStyle = global::PodcastUtilitiesPOC.Resource.Attribute.indeterminateProgressStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.indicatorColor = global::PodcastUtilitiesPOC.Resource.Attribute.indicatorColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.indicatorDirectionCircular = global::PodcastUtilitiesPOC.Resource.Attribute.indicatorDirectionCircular;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.indicatorDirectionLinear = global::PodcastUtilitiesPOC.Resource.Attribute.indicatorDirectionLinear;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.indicatorInset = global::PodcastUtilitiesPOC.Resource.Attribute.indicatorInset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.indicatorSize = global::PodcastUtilitiesPOC.Resource.Attribute.indicatorSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.initialActivityCount = global::PodcastUtilitiesPOC.Resource.Attribute.initialActivityCount;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.insetForeground = global::PodcastUtilitiesPOC.Resource.Attribute.insetForeground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.isLightTheme = global::PodcastUtilitiesPOC.Resource.Attribute.isLightTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.isMaterialTheme = global::PodcastUtilitiesPOC.Resource.Attribute.isMaterialTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemBackground = global::PodcastUtilitiesPOC.Resource.Attribute.itemBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemFillColor = global::PodcastUtilitiesPOC.Resource.Attribute.itemFillColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemHorizontalPadding = global::PodcastUtilitiesPOC.Resource.Attribute.itemHorizontalPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemHorizontalTranslationEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.itemHorizontalTranslationEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemIconPadding = global::PodcastUtilitiesPOC.Resource.Attribute.itemIconPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemIconSize = global::PodcastUtilitiesPOC.Resource.Attribute.itemIconSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemIconTint = global::PodcastUtilitiesPOC.Resource.Attribute.itemIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemMaxLines = global::PodcastUtilitiesPOC.Resource.Attribute.itemMaxLines;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemPadding = global::PodcastUtilitiesPOC.Resource.Attribute.itemPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemRippleColor = global::PodcastUtilitiesPOC.Resource.Attribute.itemRippleColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemShapeAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.itemShapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemShapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Attribute.itemShapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemShapeFillColor = global::PodcastUtilitiesPOC.Resource.Attribute.itemShapeFillColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemShapeInsetBottom = global::PodcastUtilitiesPOC.Resource.Attribute.itemShapeInsetBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemShapeInsetEnd = global::PodcastUtilitiesPOC.Resource.Attribute.itemShapeInsetEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemShapeInsetStart = global::PodcastUtilitiesPOC.Resource.Attribute.itemShapeInsetStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemShapeInsetTop = global::PodcastUtilitiesPOC.Resource.Attribute.itemShapeInsetTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemSpacing = global::PodcastUtilitiesPOC.Resource.Attribute.itemSpacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemStrokeColor = global::PodcastUtilitiesPOC.Resource.Attribute.itemStrokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemStrokeWidth = global::PodcastUtilitiesPOC.Resource.Attribute.itemStrokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.itemTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemTextAppearanceActive = global::PodcastUtilitiesPOC.Resource.Attribute.itemTextAppearanceActive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemTextAppearanceInactive = global::PodcastUtilitiesPOC.Resource.Attribute.itemTextAppearanceInactive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.itemTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.itemTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.keyboardIcon = global::PodcastUtilitiesPOC.Resource.Attribute.keyboardIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.keylines = global::PodcastUtilitiesPOC.Resource.Attribute.keylines;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.keyPositionType = global::PodcastUtilitiesPOC.Resource.Attribute.keyPositionType;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.labelBehavior = global::PodcastUtilitiesPOC.Resource.Attribute.labelBehavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.labelStyle = global::PodcastUtilitiesPOC.Resource.Attribute.labelStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.labelVisibilityMode = global::PodcastUtilitiesPOC.Resource.Attribute.labelVisibilityMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.lastBaselineToBottomHeight = global::PodcastUtilitiesPOC.Resource.Attribute.lastBaselineToBottomHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout = global::PodcastUtilitiesPOC.Resource.Attribute.layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layoutDescription = global::PodcastUtilitiesPOC.Resource.Attribute.layoutDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layoutDuringTransition = global::PodcastUtilitiesPOC.Resource.Attribute.layoutDuringTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layoutManager = global::PodcastUtilitiesPOC.Resource.Attribute.layoutManager;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_anchor = global::PodcastUtilitiesPOC.Resource.Attribute.layout_anchor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_anchorGravity = global::PodcastUtilitiesPOC.Resource.Attribute.layout_anchorGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_behavior = global::PodcastUtilitiesPOC.Resource.Attribute.layout_behavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_collapseMode = global::PodcastUtilitiesPOC.Resource.Attribute.layout_collapseMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_collapseParallaxMultiplier = global::PodcastUtilitiesPOC.Resource.Attribute.layout_collapseParallaxMultiplier;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constrainedHeight = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constrainedHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constrainedWidth = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constrainedWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintBaseline_creator = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintBaseline_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintBaseline_toBaselineOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintBaseline_toBaselineOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintBaseline_toBottomOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintBaseline_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintBaseline_toTopOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintBaseline_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintBottom_creator = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintBottom_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintBottom_toBottomOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintBottom_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintBottom_toTopOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintBottom_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintCircle = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintCircle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintCircleAngle = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintCircleAngle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintCircleRadius = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintCircleRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintDimensionRatio = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintDimensionRatio;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintEnd_toEndOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintEnd_toEndOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintEnd_toStartOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintEnd_toStartOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintGuide_begin = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintGuide_begin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintGuide_end = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintGuide_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintGuide_percent = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintGuide_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintHeight = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintHeight_default = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintHeight_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintHeight_max = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintHeight_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintHeight_min = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintHeight_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintHeight_percent = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintHeight_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintHorizontal_bias = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintHorizontal_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintHorizontal_chainStyle = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintHorizontal_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintHorizontal_weight = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintHorizontal_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintLeft_creator = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintLeft_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintLeft_toLeftOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintLeft_toLeftOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintLeft_toRightOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintLeft_toRightOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintRight_creator = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintRight_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintRight_toLeftOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintRight_toLeftOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintRight_toRightOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintRight_toRightOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintStart_toEndOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintStart_toEndOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintStart_toStartOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintStart_toStartOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintTag = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintTag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintTop_creator = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintTop_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintTop_toBottomOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintTop_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintTop_toTopOf = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintTop_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintVertical_bias = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintVertical_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintVertical_chainStyle = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintVertical_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintVertical_weight = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintVertical_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintWidth = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintWidth_default = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintWidth_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintWidth_max = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintWidth_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintWidth_min = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintWidth_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_constraintWidth_percent = global::PodcastUtilitiesPOC.Resource.Attribute.layout_constraintWidth_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_dodgeInsetEdges = global::PodcastUtilitiesPOC.Resource.Attribute.layout_dodgeInsetEdges;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_editor_absoluteX = global::PodcastUtilitiesPOC.Resource.Attribute.layout_editor_absoluteX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_editor_absoluteY = global::PodcastUtilitiesPOC.Resource.Attribute.layout_editor_absoluteY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_goneMarginBaseline = global::PodcastUtilitiesPOC.Resource.Attribute.layout_goneMarginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_goneMarginBottom = global::PodcastUtilitiesPOC.Resource.Attribute.layout_goneMarginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_goneMarginEnd = global::PodcastUtilitiesPOC.Resource.Attribute.layout_goneMarginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_goneMarginLeft = global::PodcastUtilitiesPOC.Resource.Attribute.layout_goneMarginLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_goneMarginRight = global::PodcastUtilitiesPOC.Resource.Attribute.layout_goneMarginRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_goneMarginStart = global::PodcastUtilitiesPOC.Resource.Attribute.layout_goneMarginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_goneMarginTop = global::PodcastUtilitiesPOC.Resource.Attribute.layout_goneMarginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_insetEdge = global::PodcastUtilitiesPOC.Resource.Attribute.layout_insetEdge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_keyline = global::PodcastUtilitiesPOC.Resource.Attribute.layout_keyline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_marginBaseline = global::PodcastUtilitiesPOC.Resource.Attribute.layout_marginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_optimizationLevel = global::PodcastUtilitiesPOC.Resource.Attribute.layout_optimizationLevel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_scrollFlags = global::PodcastUtilitiesPOC.Resource.Attribute.layout_scrollFlags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_scrollInterpolator = global::PodcastUtilitiesPOC.Resource.Attribute.layout_scrollInterpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.layout_wrapBehaviorInParent = global::PodcastUtilitiesPOC.Resource.Attribute.layout_wrapBehaviorInParent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.liftOnScroll = global::PodcastUtilitiesPOC.Resource.Attribute.liftOnScroll;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.liftOnScrollTargetViewId = global::PodcastUtilitiesPOC.Resource.Attribute.liftOnScrollTargetViewId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.limitBoundsTo = global::PodcastUtilitiesPOC.Resource.Attribute.limitBoundsTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.linearProgressIndicatorStyle = global::PodcastUtilitiesPOC.Resource.Attribute.linearProgressIndicatorStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.lineHeight = global::PodcastUtilitiesPOC.Resource.Attribute.lineHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.lineSpacing = global::PodcastUtilitiesPOC.Resource.Attribute.lineSpacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listChoiceBackgroundIndicator = global::PodcastUtilitiesPOC.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listChoiceIndicatorMultipleAnimated = global::PodcastUtilitiesPOC.Resource.Attribute.listChoiceIndicatorMultipleAnimated;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listChoiceIndicatorSingleAnimated = global::PodcastUtilitiesPOC.Resource.Attribute.listChoiceIndicatorSingleAnimated;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listDividerAlertDialog = global::PodcastUtilitiesPOC.Resource.Attribute.listDividerAlertDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listItemLayout = global::PodcastUtilitiesPOC.Resource.Attribute.listItemLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listLayout = global::PodcastUtilitiesPOC.Resource.Attribute.listLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listMenuViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.listMenuViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listPopupWindowStyle = global::PodcastUtilitiesPOC.Resource.Attribute.listPopupWindowStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listPreferredItemHeight = global::PodcastUtilitiesPOC.Resource.Attribute.listPreferredItemHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listPreferredItemHeightLarge = global::PodcastUtilitiesPOC.Resource.Attribute.listPreferredItemHeightLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listPreferredItemHeightSmall = global::PodcastUtilitiesPOC.Resource.Attribute.listPreferredItemHeightSmall;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listPreferredItemPaddingEnd = global::PodcastUtilitiesPOC.Resource.Attribute.listPreferredItemPaddingEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listPreferredItemPaddingLeft = global::PodcastUtilitiesPOC.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listPreferredItemPaddingRight = global::PodcastUtilitiesPOC.Resource.Attribute.listPreferredItemPaddingRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.listPreferredItemPaddingStart = global::PodcastUtilitiesPOC.Resource.Attribute.listPreferredItemPaddingStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.logo = global::PodcastUtilitiesPOC.Resource.Attribute.logo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.logoDescription = global::PodcastUtilitiesPOC.Resource.Attribute.logoDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialAlertDialogBodyTextStyle = global::PodcastUtilitiesPOC.Resource.Attribute.materialAlertDialogBodyTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialAlertDialogTheme = global::PodcastUtilitiesPOC.Resource.Attribute.materialAlertDialogTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialAlertDialogTitleIconStyle = global::PodcastUtilitiesPOC.Resource.Attribute.materialAlertDialogTitleIconStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialAlertDialogTitlePanelStyle = global::PodcastUtilitiesPOC.Resource.Attribute.materialAlertDialogTitlePanelStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialAlertDialogTitleTextStyle = global::PodcastUtilitiesPOC.Resource.Attribute.materialAlertDialogTitleTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialButtonOutlinedStyle = global::PodcastUtilitiesPOC.Resource.Attribute.materialButtonOutlinedStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.materialButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialButtonToggleGroupStyle = global::PodcastUtilitiesPOC.Resource.Attribute.materialButtonToggleGroupStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarDay = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarDay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarFullscreenTheme = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarFullscreenTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarHeaderCancelButton = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarHeaderCancelButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarHeaderConfirmButton = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarHeaderConfirmButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarHeaderDivider = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarHeaderDivider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarHeaderLayout = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarHeaderLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarHeaderSelection = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarHeaderSelection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarHeaderTitle = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarHeaderTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarHeaderToggleButton = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarHeaderToggleButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarMonth = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarMonth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarMonthNavigationButton = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarMonthNavigationButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarStyle = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarTheme = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCalendarYearNavigationButton = global::PodcastUtilitiesPOC.Resource.Attribute.materialCalendarYearNavigationButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCardViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.materialCardViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialCircleRadius = global::PodcastUtilitiesPOC.Resource.Attribute.materialCircleRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialClockStyle = global::PodcastUtilitiesPOC.Resource.Attribute.materialClockStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialThemeOverlay = global::PodcastUtilitiesPOC.Resource.Attribute.materialThemeOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialTimePickerStyle = global::PodcastUtilitiesPOC.Resource.Attribute.materialTimePickerStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.materialTimePickerTheme = global::PodcastUtilitiesPOC.Resource.Attribute.materialTimePickerTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.maxAcceleration = global::PodcastUtilitiesPOC.Resource.Attribute.maxAcceleration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.maxActionInlineWidth = global::PodcastUtilitiesPOC.Resource.Attribute.maxActionInlineWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.maxButtonHeight = global::PodcastUtilitiesPOC.Resource.Attribute.maxButtonHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.maxCharacterCount = global::PodcastUtilitiesPOC.Resource.Attribute.maxCharacterCount;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.maxHeight = global::PodcastUtilitiesPOC.Resource.Attribute.maxHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.maxImageSize = global::PodcastUtilitiesPOC.Resource.Attribute.maxImageSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.maxLines = global::PodcastUtilitiesPOC.Resource.Attribute.maxLines;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.maxVelocity = global::PodcastUtilitiesPOC.Resource.Attribute.maxVelocity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.maxWidth = global::PodcastUtilitiesPOC.Resource.Attribute.maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.measureWithLargestChild = global::PodcastUtilitiesPOC.Resource.Attribute.measureWithLargestChild;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.menu = global::PodcastUtilitiesPOC.Resource.Attribute.menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.menuGravity = global::PodcastUtilitiesPOC.Resource.Attribute.menuGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.methodName = global::PodcastUtilitiesPOC.Resource.Attribute.methodName;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.minHeight = global::PodcastUtilitiesPOC.Resource.Attribute.minHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.minHideDelay = global::PodcastUtilitiesPOC.Resource.Attribute.minHideDelay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.minSeparation = global::PodcastUtilitiesPOC.Resource.Attribute.minSeparation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.minTouchTargetSize = global::PodcastUtilitiesPOC.Resource.Attribute.minTouchTargetSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.minWidth = global::PodcastUtilitiesPOC.Resource.Attribute.minWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.mock_diagonalsColor = global::PodcastUtilitiesPOC.Resource.Attribute.mock_diagonalsColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.mock_label = global::PodcastUtilitiesPOC.Resource.Attribute.mock_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.mock_labelBackgroundColor = global::PodcastUtilitiesPOC.Resource.Attribute.mock_labelBackgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.mock_labelColor = global::PodcastUtilitiesPOC.Resource.Attribute.mock_labelColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.mock_showDiagonals = global::PodcastUtilitiesPOC.Resource.Attribute.mock_showDiagonals;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.mock_showLabel = global::PodcastUtilitiesPOC.Resource.Attribute.mock_showLabel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionDebug = global::PodcastUtilitiesPOC.Resource.Attribute.motionDebug;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionDurationLong1 = global::PodcastUtilitiesPOC.Resource.Attribute.motionDurationLong1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionDurationLong2 = global::PodcastUtilitiesPOC.Resource.Attribute.motionDurationLong2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionDurationMedium1 = global::PodcastUtilitiesPOC.Resource.Attribute.motionDurationMedium1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionDurationMedium2 = global::PodcastUtilitiesPOC.Resource.Attribute.motionDurationMedium2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionDurationShort1 = global::PodcastUtilitiesPOC.Resource.Attribute.motionDurationShort1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionDurationShort2 = global::PodcastUtilitiesPOC.Resource.Attribute.motionDurationShort2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEasingAccelerated = global::PodcastUtilitiesPOC.Resource.Attribute.motionEasingAccelerated;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEasingDecelerated = global::PodcastUtilitiesPOC.Resource.Attribute.motionEasingDecelerated;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEasingEmphasized = global::PodcastUtilitiesPOC.Resource.Attribute.motionEasingEmphasized;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEasingLinear = global::PodcastUtilitiesPOC.Resource.Attribute.motionEasingLinear;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEasingStandard = global::PodcastUtilitiesPOC.Resource.Attribute.motionEasingStandard;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEffect_alpha = global::PodcastUtilitiesPOC.Resource.Attribute.motionEffect_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEffect_end = global::PodcastUtilitiesPOC.Resource.Attribute.motionEffect_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEffect_move = global::PodcastUtilitiesPOC.Resource.Attribute.motionEffect_move;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEffect_start = global::PodcastUtilitiesPOC.Resource.Attribute.motionEffect_start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEffect_strict = global::PodcastUtilitiesPOC.Resource.Attribute.motionEffect_strict;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEffect_translationX = global::PodcastUtilitiesPOC.Resource.Attribute.motionEffect_translationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEffect_translationY = global::PodcastUtilitiesPOC.Resource.Attribute.motionEffect_translationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionEffect_viewTransition = global::PodcastUtilitiesPOC.Resource.Attribute.motionEffect_viewTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionInterpolator = global::PodcastUtilitiesPOC.Resource.Attribute.motionInterpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionPath = global::PodcastUtilitiesPOC.Resource.Attribute.motionPath;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionPathRotate = global::PodcastUtilitiesPOC.Resource.Attribute.motionPathRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionProgress = global::PodcastUtilitiesPOC.Resource.Attribute.motionProgress;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionStagger = global::PodcastUtilitiesPOC.Resource.Attribute.motionStagger;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motionTarget = global::PodcastUtilitiesPOC.Resource.Attribute.motionTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motion_postLayoutCollision = global::PodcastUtilitiesPOC.Resource.Attribute.motion_postLayoutCollision;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.motion_triggerOnCollision = global::PodcastUtilitiesPOC.Resource.Attribute.motion_triggerOnCollision;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.moveWhenScrollAtTop = global::PodcastUtilitiesPOC.Resource.Attribute.moveWhenScrollAtTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.multiChoiceItemLayout = global::PodcastUtilitiesPOC.Resource.Attribute.multiChoiceItemLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.navigationContentDescription = global::PodcastUtilitiesPOC.Resource.Attribute.navigationContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.navigationIcon = global::PodcastUtilitiesPOC.Resource.Attribute.navigationIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.navigationIconTint = global::PodcastUtilitiesPOC.Resource.Attribute.navigationIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.navigationMode = global::PodcastUtilitiesPOC.Resource.Attribute.navigationMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.navigationRailStyle = global::PodcastUtilitiesPOC.Resource.Attribute.navigationRailStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.navigationViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.navigationViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.nestedScrollable = global::PodcastUtilitiesPOC.Resource.Attribute.nestedScrollable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.nestedScrollFlags = global::PodcastUtilitiesPOC.Resource.Attribute.nestedScrollFlags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.nestedScrollViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.nestedScrollViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.number = global::PodcastUtilitiesPOC.Resource.Attribute.number;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.numericModifiers = global::PodcastUtilitiesPOC.Resource.Attribute.numericModifiers;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.onCross = global::PodcastUtilitiesPOC.Resource.Attribute.onCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.onHide = global::PodcastUtilitiesPOC.Resource.Attribute.onHide;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.onNegativeCross = global::PodcastUtilitiesPOC.Resource.Attribute.onNegativeCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.onPositiveCross = global::PodcastUtilitiesPOC.Resource.Attribute.onPositiveCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.onShow = global::PodcastUtilitiesPOC.Resource.Attribute.onShow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.onStateTransition = global::PodcastUtilitiesPOC.Resource.Attribute.onStateTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.onTouchUp = global::PodcastUtilitiesPOC.Resource.Attribute.onTouchUp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.overlapAnchor = global::PodcastUtilitiesPOC.Resource.Attribute.overlapAnchor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.overlay = global::PodcastUtilitiesPOC.Resource.Attribute.overlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.paddingBottomNoButtons = global::PodcastUtilitiesPOC.Resource.Attribute.paddingBottomNoButtons;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.paddingBottomSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Attribute.paddingBottomSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.paddingEnd = global::PodcastUtilitiesPOC.Resource.Attribute.paddingEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.paddingLeftSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Attribute.paddingLeftSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.paddingRightSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Attribute.paddingRightSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.paddingStart = global::PodcastUtilitiesPOC.Resource.Attribute.paddingStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.paddingTopNoTitle = global::PodcastUtilitiesPOC.Resource.Attribute.paddingTopNoTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.paddingTopSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Attribute.paddingTopSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.panelBackground = global::PodcastUtilitiesPOC.Resource.Attribute.panelBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.panelMenuListTheme = global::PodcastUtilitiesPOC.Resource.Attribute.panelMenuListTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.panelMenuListWidth = global::PodcastUtilitiesPOC.Resource.Attribute.panelMenuListWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.passwordToggleContentDescription = global::PodcastUtilitiesPOC.Resource.Attribute.passwordToggleContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.passwordToggleDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.passwordToggleDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.passwordToggleEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.passwordToggleEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.passwordToggleTint = global::PodcastUtilitiesPOC.Resource.Attribute.passwordToggleTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.passwordToggleTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.passwordToggleTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.pathMotionArc = global::PodcastUtilitiesPOC.Resource.Attribute.pathMotionArc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.path_percent = global::PodcastUtilitiesPOC.Resource.Attribute.path_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.percentHeight = global::PodcastUtilitiesPOC.Resource.Attribute.percentHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.percentWidth = global::PodcastUtilitiesPOC.Resource.Attribute.percentWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.percentX = global::PodcastUtilitiesPOC.Resource.Attribute.percentX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.percentY = global::PodcastUtilitiesPOC.Resource.Attribute.percentY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.perpendicularPath_percent = global::PodcastUtilitiesPOC.Resource.Attribute.perpendicularPath_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.pivotAnchor = global::PodcastUtilitiesPOC.Resource.Attribute.pivotAnchor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.placeholderText = global::PodcastUtilitiesPOC.Resource.Attribute.placeholderText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.placeholderTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.placeholderTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.placeholderTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.placeholderTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.placeholder_emptyVisibility = global::PodcastUtilitiesPOC.Resource.Attribute.placeholder_emptyVisibility;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.polarRelativeTo = global::PodcastUtilitiesPOC.Resource.Attribute.polarRelativeTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.popupMenuBackground = global::PodcastUtilitiesPOC.Resource.Attribute.popupMenuBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.popupMenuStyle = global::PodcastUtilitiesPOC.Resource.Attribute.popupMenuStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.popupTheme = global::PodcastUtilitiesPOC.Resource.Attribute.popupTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.popupWindowStyle = global::PodcastUtilitiesPOC.Resource.Attribute.popupWindowStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.prefixText = global::PodcastUtilitiesPOC.Resource.Attribute.prefixText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.prefixTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.prefixTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.prefixTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.prefixTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.preserveIconSpacing = global::PodcastUtilitiesPOC.Resource.Attribute.preserveIconSpacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.pressedTranslationZ = global::PodcastUtilitiesPOC.Resource.Attribute.pressedTranslationZ;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.progressBarPadding = global::PodcastUtilitiesPOC.Resource.Attribute.progressBarPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.progressBarStyle = global::PodcastUtilitiesPOC.Resource.Attribute.progressBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.quantizeMotionInterpolator = global::PodcastUtilitiesPOC.Resource.Attribute.quantizeMotionInterpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.quantizeMotionPhase = global::PodcastUtilitiesPOC.Resource.Attribute.quantizeMotionPhase;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.quantizeMotionSteps = global::PodcastUtilitiesPOC.Resource.Attribute.quantizeMotionSteps;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.queryBackground = global::PodcastUtilitiesPOC.Resource.Attribute.queryBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.queryHint = global::PodcastUtilitiesPOC.Resource.Attribute.queryHint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.queryPatterns = global::PodcastUtilitiesPOC.Resource.Attribute.queryPatterns;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.radioButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.radioButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.rangeFillColor = global::PodcastUtilitiesPOC.Resource.Attribute.rangeFillColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.ratingBarStyle = global::PodcastUtilitiesPOC.Resource.Attribute.ratingBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.ratingBarStyleIndicator = global::PodcastUtilitiesPOC.Resource.Attribute.ratingBarStyleIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.ratingBarStyleSmall = global::PodcastUtilitiesPOC.Resource.Attribute.ratingBarStyleSmall;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.reactiveGuide_animateChange = global::PodcastUtilitiesPOC.Resource.Attribute.reactiveGuide_animateChange;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.reactiveGuide_applyToAllConstraintSets = global::PodcastUtilitiesPOC.Resource.Attribute.reactiveGuide_applyToAllConstraintSets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.reactiveGuide_applyToConstraintSet = global::PodcastUtilitiesPOC.Resource.Attribute.reactiveGuide_applyToConstraintSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.reactiveGuide_valueId = global::PodcastUtilitiesPOC.Resource.Attribute.reactiveGuide_valueId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.recyclerViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.recyclerViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.region_heightLessThan = global::PodcastUtilitiesPOC.Resource.Attribute.region_heightLessThan;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.region_heightMoreThan = global::PodcastUtilitiesPOC.Resource.Attribute.region_heightMoreThan;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.region_widthLessThan = global::PodcastUtilitiesPOC.Resource.Attribute.region_widthLessThan;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.region_widthMoreThan = global::PodcastUtilitiesPOC.Resource.Attribute.region_widthMoreThan;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.reverseLayout = global::PodcastUtilitiesPOC.Resource.Attribute.reverseLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.rippleColor = global::PodcastUtilitiesPOC.Resource.Attribute.rippleColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.rotationCenterId = global::PodcastUtilitiesPOC.Resource.Attribute.rotationCenterId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.round = global::PodcastUtilitiesPOC.Resource.Attribute.round;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.roundPercent = global::PodcastUtilitiesPOC.Resource.Attribute.roundPercent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.saturation = global::PodcastUtilitiesPOC.Resource.Attribute.saturation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.scaleFromTextSize = global::PodcastUtilitiesPOC.Resource.Attribute.scaleFromTextSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.scrimAnimationDuration = global::PodcastUtilitiesPOC.Resource.Attribute.scrimAnimationDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.scrimBackground = global::PodcastUtilitiesPOC.Resource.Attribute.scrimBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.scrimVisibleHeightTrigger = global::PodcastUtilitiesPOC.Resource.Attribute.scrimVisibleHeightTrigger;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.searchHintIcon = global::PodcastUtilitiesPOC.Resource.Attribute.searchHintIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.searchIcon = global::PodcastUtilitiesPOC.Resource.Attribute.searchIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.searchViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.searchViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.seekBarStyle = global::PodcastUtilitiesPOC.Resource.Attribute.seekBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.selectableItemBackground = global::PodcastUtilitiesPOC.Resource.Attribute.selectableItemBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.selectableItemBackgroundBorderless = global::PodcastUtilitiesPOC.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.selectionRequired = global::PodcastUtilitiesPOC.Resource.Attribute.selectionRequired;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.selectorSize = global::PodcastUtilitiesPOC.Resource.Attribute.selectorSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.setsTag = global::PodcastUtilitiesPOC.Resource.Attribute.setsTag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.shapeAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.shapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.shapeAppearanceLargeComponent = global::PodcastUtilitiesPOC.Resource.Attribute.shapeAppearanceLargeComponent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.shapeAppearanceMediumComponent = global::PodcastUtilitiesPOC.Resource.Attribute.shapeAppearanceMediumComponent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.shapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Attribute.shapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.shapeAppearanceSmallComponent = global::PodcastUtilitiesPOC.Resource.Attribute.shapeAppearanceSmallComponent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.SharedValue = global::PodcastUtilitiesPOC.Resource.Attribute.SharedValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.SharedValueId = global::PodcastUtilitiesPOC.Resource.Attribute.SharedValueId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.shortcutMatchRequired = global::PodcastUtilitiesPOC.Resource.Attribute.shortcutMatchRequired;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.showAnimationBehavior = global::PodcastUtilitiesPOC.Resource.Attribute.showAnimationBehavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.showAsAction = global::PodcastUtilitiesPOC.Resource.Attribute.showAsAction;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.showDelay = global::PodcastUtilitiesPOC.Resource.Attribute.showDelay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.showDividers = global::PodcastUtilitiesPOC.Resource.Attribute.showDividers;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.showMotionSpec = global::PodcastUtilitiesPOC.Resource.Attribute.showMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.showPaths = global::PodcastUtilitiesPOC.Resource.Attribute.showPaths;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.showText = global::PodcastUtilitiesPOC.Resource.Attribute.showText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.showTitle = global::PodcastUtilitiesPOC.Resource.Attribute.showTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.shrinkMotionSpec = global::PodcastUtilitiesPOC.Resource.Attribute.shrinkMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.singleChoiceItemLayout = global::PodcastUtilitiesPOC.Resource.Attribute.singleChoiceItemLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.singleLine = global::PodcastUtilitiesPOC.Resource.Attribute.singleLine;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.singleSelection = global::PodcastUtilitiesPOC.Resource.Attribute.singleSelection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.sizePercent = global::PodcastUtilitiesPOC.Resource.Attribute.sizePercent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.sliderStyle = global::PodcastUtilitiesPOC.Resource.Attribute.sliderStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.snackbarButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.snackbarButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.snackbarStyle = global::PodcastUtilitiesPOC.Resource.Attribute.snackbarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.snackbarTextViewStyle = global::PodcastUtilitiesPOC.Resource.Attribute.snackbarTextViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.spanCount = global::PodcastUtilitiesPOC.Resource.Attribute.spanCount;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.spinBars = global::PodcastUtilitiesPOC.Resource.Attribute.spinBars;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.spinnerDropDownItemStyle = global::PodcastUtilitiesPOC.Resource.Attribute.spinnerDropDownItemStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.spinnerStyle = global::PodcastUtilitiesPOC.Resource.Attribute.spinnerStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.splitTrack = global::PodcastUtilitiesPOC.Resource.Attribute.splitTrack;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.springBoundary = global::PodcastUtilitiesPOC.Resource.Attribute.springBoundary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.springDamping = global::PodcastUtilitiesPOC.Resource.Attribute.springDamping;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.springMass = global::PodcastUtilitiesPOC.Resource.Attribute.springMass;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.springStiffness = global::PodcastUtilitiesPOC.Resource.Attribute.springStiffness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.springStopThreshold = global::PodcastUtilitiesPOC.Resource.Attribute.springStopThreshold;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.srcCompat = global::PodcastUtilitiesPOC.Resource.Attribute.srcCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.stackFromEnd = global::PodcastUtilitiesPOC.Resource.Attribute.stackFromEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.staggered = global::PodcastUtilitiesPOC.Resource.Attribute.staggered;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.startIconCheckable = global::PodcastUtilitiesPOC.Resource.Attribute.startIconCheckable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.startIconContentDescription = global::PodcastUtilitiesPOC.Resource.Attribute.startIconContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.startIconDrawable = global::PodcastUtilitiesPOC.Resource.Attribute.startIconDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.startIconTint = global::PodcastUtilitiesPOC.Resource.Attribute.startIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.startIconTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.startIconTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.state_above_anchor = global::PodcastUtilitiesPOC.Resource.Attribute.state_above_anchor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.state_collapsed = global::PodcastUtilitiesPOC.Resource.Attribute.state_collapsed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.state_collapsible = global::PodcastUtilitiesPOC.Resource.Attribute.state_collapsible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.state_dragged = global::PodcastUtilitiesPOC.Resource.Attribute.state_dragged;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.state_liftable = global::PodcastUtilitiesPOC.Resource.Attribute.state_liftable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.state_lifted = global::PodcastUtilitiesPOC.Resource.Attribute.state_lifted;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.statusBarBackground = global::PodcastUtilitiesPOC.Resource.Attribute.statusBarBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.statusBarForeground = global::PodcastUtilitiesPOC.Resource.Attribute.statusBarForeground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.statusBarScrim = global::PodcastUtilitiesPOC.Resource.Attribute.statusBarScrim;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.strokeColor = global::PodcastUtilitiesPOC.Resource.Attribute.strokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.strokeWidth = global::PodcastUtilitiesPOC.Resource.Attribute.strokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.subMenuArrow = global::PodcastUtilitiesPOC.Resource.Attribute.subMenuArrow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.submitBackground = global::PodcastUtilitiesPOC.Resource.Attribute.submitBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.subtitle = global::PodcastUtilitiesPOC.Resource.Attribute.subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.subtitleCentered = global::PodcastUtilitiesPOC.Resource.Attribute.subtitleCentered;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.subtitleTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.subtitleTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.subtitleTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.subtitleTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.subtitleTextStyle = global::PodcastUtilitiesPOC.Resource.Attribute.subtitleTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.suffixText = global::PodcastUtilitiesPOC.Resource.Attribute.suffixText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.suffixTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.suffixTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.suffixTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.suffixTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.suggestionRowLayout = global::PodcastUtilitiesPOC.Resource.Attribute.suggestionRowLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.switchMinWidth = global::PodcastUtilitiesPOC.Resource.Attribute.switchMinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.switchPadding = global::PodcastUtilitiesPOC.Resource.Attribute.switchPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.switchStyle = global::PodcastUtilitiesPOC.Resource.Attribute.switchStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.switchTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.switchTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabBackground = global::PodcastUtilitiesPOC.Resource.Attribute.tabBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabContentStart = global::PodcastUtilitiesPOC.Resource.Attribute.tabContentStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabGravity = global::PodcastUtilitiesPOC.Resource.Attribute.tabGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabIconTint = global::PodcastUtilitiesPOC.Resource.Attribute.tabIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabIconTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.tabIconTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabIndicator = global::PodcastUtilitiesPOC.Resource.Attribute.tabIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabIndicatorAnimationDuration = global::PodcastUtilitiesPOC.Resource.Attribute.tabIndicatorAnimationDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabIndicatorAnimationMode = global::PodcastUtilitiesPOC.Resource.Attribute.tabIndicatorAnimationMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabIndicatorColor = global::PodcastUtilitiesPOC.Resource.Attribute.tabIndicatorColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabIndicatorFullWidth = global::PodcastUtilitiesPOC.Resource.Attribute.tabIndicatorFullWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabIndicatorGravity = global::PodcastUtilitiesPOC.Resource.Attribute.tabIndicatorGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabIndicatorHeight = global::PodcastUtilitiesPOC.Resource.Attribute.tabIndicatorHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabInlineLabel = global::PodcastUtilitiesPOC.Resource.Attribute.tabInlineLabel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabMaxWidth = global::PodcastUtilitiesPOC.Resource.Attribute.tabMaxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabMinWidth = global::PodcastUtilitiesPOC.Resource.Attribute.tabMinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabMode = global::PodcastUtilitiesPOC.Resource.Attribute.tabMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabPadding = global::PodcastUtilitiesPOC.Resource.Attribute.tabPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabPaddingBottom = global::PodcastUtilitiesPOC.Resource.Attribute.tabPaddingBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabPaddingEnd = global::PodcastUtilitiesPOC.Resource.Attribute.tabPaddingEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabPaddingStart = global::PodcastUtilitiesPOC.Resource.Attribute.tabPaddingStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabPaddingTop = global::PodcastUtilitiesPOC.Resource.Attribute.tabPaddingTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabRippleColor = global::PodcastUtilitiesPOC.Resource.Attribute.tabRippleColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabSelectedTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.tabSelectedTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabStyle = global::PodcastUtilitiesPOC.Resource.Attribute.tabStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.tabTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.tabTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tabUnboundedRipple = global::PodcastUtilitiesPOC.Resource.Attribute.tabUnboundedRipple;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.targetId = global::PodcastUtilitiesPOC.Resource.Attribute.targetId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.telltales_tailColor = global::PodcastUtilitiesPOC.Resource.Attribute.telltales_tailColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.telltales_tailScale = global::PodcastUtilitiesPOC.Resource.Attribute.telltales_tailScale;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.telltales_velocityMode = global::PodcastUtilitiesPOC.Resource.Attribute.telltales_velocityMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAllCaps = global::PodcastUtilitiesPOC.Resource.Attribute.textAllCaps;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceBody1 = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceBody1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceBody2 = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceBody2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceButton = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceCaption = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceCaption;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceHeadline1 = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceHeadline1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceHeadline2 = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceHeadline2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceHeadline3 = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceHeadline3;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceHeadline4 = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceHeadline4;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceHeadline5 = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceHeadline5;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceHeadline6 = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceHeadline6;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceLargePopupMenu = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceLineHeightEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceLineHeightEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceListItem = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceListItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceListItemSecondary = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceListItemSecondary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceListItemSmall = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceListItemSmall;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceOverline = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceOverline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearancePopupMenuHeader = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearancePopupMenuHeader;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceSearchResultSubtitle = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceSearchResultTitle = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceSmallPopupMenu = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceSubtitle1 = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceSubtitle1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textAppearanceSubtitle2 = global::PodcastUtilitiesPOC.Resource.Attribute.textAppearanceSubtitle2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textBackground = global::PodcastUtilitiesPOC.Resource.Attribute.textBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textBackgroundPanX = global::PodcastUtilitiesPOC.Resource.Attribute.textBackgroundPanX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textBackgroundPanY = global::PodcastUtilitiesPOC.Resource.Attribute.textBackgroundPanY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textBackgroundRotate = global::PodcastUtilitiesPOC.Resource.Attribute.textBackgroundRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textBackgroundZoom = global::PodcastUtilitiesPOC.Resource.Attribute.textBackgroundZoom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textColorAlertDialogListItem = global::PodcastUtilitiesPOC.Resource.Attribute.textColorAlertDialogListItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textColorSearchUrl = global::PodcastUtilitiesPOC.Resource.Attribute.textColorSearchUrl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textEndPadding = global::PodcastUtilitiesPOC.Resource.Attribute.textEndPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textFillColor = global::PodcastUtilitiesPOC.Resource.Attribute.textFillColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textInputLayoutFocusedRectEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.textInputLayoutFocusedRectEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textInputStyle = global::PodcastUtilitiesPOC.Resource.Attribute.textInputStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textLocale = global::PodcastUtilitiesPOC.Resource.Attribute.textLocale;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textOutlineColor = global::PodcastUtilitiesPOC.Resource.Attribute.textOutlineColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textOutlineThickness = global::PodcastUtilitiesPOC.Resource.Attribute.textOutlineThickness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textPanX = global::PodcastUtilitiesPOC.Resource.Attribute.textPanX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textPanY = global::PodcastUtilitiesPOC.Resource.Attribute.textPanY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textStartPadding = global::PodcastUtilitiesPOC.Resource.Attribute.textStartPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textureBlurFactor = global::PodcastUtilitiesPOC.Resource.Attribute.textureBlurFactor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textureEffect = global::PodcastUtilitiesPOC.Resource.Attribute.textureEffect;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textureHeight = global::PodcastUtilitiesPOC.Resource.Attribute.textureHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.textureWidth = global::PodcastUtilitiesPOC.Resource.Attribute.textureWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.theme = global::PodcastUtilitiesPOC.Resource.Attribute.theme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.themeLineHeight = global::PodcastUtilitiesPOC.Resource.Attribute.themeLineHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.thickness = global::PodcastUtilitiesPOC.Resource.Attribute.thickness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.thumbColor = global::PodcastUtilitiesPOC.Resource.Attribute.thumbColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.thumbElevation = global::PodcastUtilitiesPOC.Resource.Attribute.thumbElevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.thumbRadius = global::PodcastUtilitiesPOC.Resource.Attribute.thumbRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.thumbStrokeColor = global::PodcastUtilitiesPOC.Resource.Attribute.thumbStrokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.thumbStrokeWidth = global::PodcastUtilitiesPOC.Resource.Attribute.thumbStrokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.thumbTextPadding = global::PodcastUtilitiesPOC.Resource.Attribute.thumbTextPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.thumbTint = global::PodcastUtilitiesPOC.Resource.Attribute.thumbTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.thumbTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.thumbTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tickColor = global::PodcastUtilitiesPOC.Resource.Attribute.tickColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tickColorActive = global::PodcastUtilitiesPOC.Resource.Attribute.tickColorActive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tickColorInactive = global::PodcastUtilitiesPOC.Resource.Attribute.tickColorInactive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tickMark = global::PodcastUtilitiesPOC.Resource.Attribute.tickMark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tickMarkTint = global::PodcastUtilitiesPOC.Resource.Attribute.tickMarkTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tickMarkTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.tickMarkTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tickVisible = global::PodcastUtilitiesPOC.Resource.Attribute.tickVisible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tint = global::PodcastUtilitiesPOC.Resource.Attribute.tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tintMode = global::PodcastUtilitiesPOC.Resource.Attribute.tintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.title = global::PodcastUtilitiesPOC.Resource.Attribute.title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleCentered = global::PodcastUtilitiesPOC.Resource.Attribute.titleCentered;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleCollapseMode = global::PodcastUtilitiesPOC.Resource.Attribute.titleCollapseMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleEnabled = global::PodcastUtilitiesPOC.Resource.Attribute.titleEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleMargin = global::PodcastUtilitiesPOC.Resource.Attribute.titleMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleMarginBottom = global::PodcastUtilitiesPOC.Resource.Attribute.titleMarginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleMarginEnd = global::PodcastUtilitiesPOC.Resource.Attribute.titleMarginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleMargins = global::PodcastUtilitiesPOC.Resource.Attribute.titleMargins;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleMarginStart = global::PodcastUtilitiesPOC.Resource.Attribute.titleMarginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleMarginTop = global::PodcastUtilitiesPOC.Resource.Attribute.titleMarginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleTextAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.titleTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleTextColor = global::PodcastUtilitiesPOC.Resource.Attribute.titleTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.titleTextStyle = global::PodcastUtilitiesPOC.Resource.Attribute.titleTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.toolbarId = global::PodcastUtilitiesPOC.Resource.Attribute.toolbarId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.toolbarNavigationButtonStyle = global::PodcastUtilitiesPOC.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.toolbarStyle = global::PodcastUtilitiesPOC.Resource.Attribute.toolbarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tooltipForegroundColor = global::PodcastUtilitiesPOC.Resource.Attribute.tooltipForegroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tooltipFrameBackground = global::PodcastUtilitiesPOC.Resource.Attribute.tooltipFrameBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tooltipStyle = global::PodcastUtilitiesPOC.Resource.Attribute.tooltipStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.tooltipText = global::PodcastUtilitiesPOC.Resource.Attribute.tooltipText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.touchAnchorId = global::PodcastUtilitiesPOC.Resource.Attribute.touchAnchorId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.touchAnchorSide = global::PodcastUtilitiesPOC.Resource.Attribute.touchAnchorSide;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.touchRegionId = global::PodcastUtilitiesPOC.Resource.Attribute.touchRegionId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.track = global::PodcastUtilitiesPOC.Resource.Attribute.track;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.trackColor = global::PodcastUtilitiesPOC.Resource.Attribute.trackColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.trackColorActive = global::PodcastUtilitiesPOC.Resource.Attribute.trackColorActive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.trackColorInactive = global::PodcastUtilitiesPOC.Resource.Attribute.trackColorInactive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.trackCornerRadius = global::PodcastUtilitiesPOC.Resource.Attribute.trackCornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.trackHeight = global::PodcastUtilitiesPOC.Resource.Attribute.trackHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.trackThickness = global::PodcastUtilitiesPOC.Resource.Attribute.trackThickness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.trackTint = global::PodcastUtilitiesPOC.Resource.Attribute.trackTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.trackTintMode = global::PodcastUtilitiesPOC.Resource.Attribute.trackTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.transformPivotTarget = global::PodcastUtilitiesPOC.Resource.Attribute.transformPivotTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.transitionDisable = global::PodcastUtilitiesPOC.Resource.Attribute.transitionDisable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.transitionEasing = global::PodcastUtilitiesPOC.Resource.Attribute.transitionEasing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.transitionFlags = global::PodcastUtilitiesPOC.Resource.Attribute.transitionFlags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.transitionPathRotate = global::PodcastUtilitiesPOC.Resource.Attribute.transitionPathRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.transitionShapeAppearance = global::PodcastUtilitiesPOC.Resource.Attribute.transitionShapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.triggerId = global::PodcastUtilitiesPOC.Resource.Attribute.triggerId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.triggerReceiver = global::PodcastUtilitiesPOC.Resource.Attribute.triggerReceiver;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.triggerSlack = global::PodcastUtilitiesPOC.Resource.Attribute.triggerSlack;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.ttcIndex = global::PodcastUtilitiesPOC.Resource.Attribute.ttcIndex;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.upDuration = global::PodcastUtilitiesPOC.Resource.Attribute.upDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.useCompatPadding = global::PodcastUtilitiesPOC.Resource.Attribute.useCompatPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.useMaterialThemeColors = global::PodcastUtilitiesPOC.Resource.Attribute.useMaterialThemeColors;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.values = global::PodcastUtilitiesPOC.Resource.Attribute.values;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.verticalOffset = global::PodcastUtilitiesPOC.Resource.Attribute.verticalOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.viewInflaterClass = global::PodcastUtilitiesPOC.Resource.Attribute.viewInflaterClass;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.viewTransitionMode = global::PodcastUtilitiesPOC.Resource.Attribute.viewTransitionMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.viewTransitionOnCross = global::PodcastUtilitiesPOC.Resource.Attribute.viewTransitionOnCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.viewTransitionOnNegativeCross = global::PodcastUtilitiesPOC.Resource.Attribute.viewTransitionOnNegativeCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.viewTransitionOnPositiveCross = global::PodcastUtilitiesPOC.Resource.Attribute.viewTransitionOnPositiveCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.visibilityMode = global::PodcastUtilitiesPOC.Resource.Attribute.visibilityMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.voiceIcon = global::PodcastUtilitiesPOC.Resource.Attribute.voiceIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.warmth = global::PodcastUtilitiesPOC.Resource.Attribute.warmth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.waveDecay = global::PodcastUtilitiesPOC.Resource.Attribute.waveDecay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.waveOffset = global::PodcastUtilitiesPOC.Resource.Attribute.waveOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.wavePeriod = global::PodcastUtilitiesPOC.Resource.Attribute.wavePeriod;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.wavePhase = global::PodcastUtilitiesPOC.Resource.Attribute.wavePhase;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.waveShape = global::PodcastUtilitiesPOC.Resource.Attribute.waveShape;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.waveVariesBy = global::PodcastUtilitiesPOC.Resource.Attribute.waveVariesBy;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.windowActionBar = global::PodcastUtilitiesPOC.Resource.Attribute.windowActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.windowActionBarOverlay = global::PodcastUtilitiesPOC.Resource.Attribute.windowActionBarOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.windowActionModeOverlay = global::PodcastUtilitiesPOC.Resource.Attribute.windowActionModeOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.windowFixedHeightMajor = global::PodcastUtilitiesPOC.Resource.Attribute.windowFixedHeightMajor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.windowFixedHeightMinor = global::PodcastUtilitiesPOC.Resource.Attribute.windowFixedHeightMinor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.windowFixedWidthMajor = global::PodcastUtilitiesPOC.Resource.Attribute.windowFixedWidthMajor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.windowFixedWidthMinor = global::PodcastUtilitiesPOC.Resource.Attribute.windowFixedWidthMinor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.windowMinWidthMajor = global::PodcastUtilitiesPOC.Resource.Attribute.windowMinWidthMajor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.windowMinWidthMinor = global::PodcastUtilitiesPOC.Resource.Attribute.windowMinWidthMinor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.windowNoTitle = global::PodcastUtilitiesPOC.Resource.Attribute.windowNoTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.yearSelectedStyle = global::PodcastUtilitiesPOC.Resource.Attribute.yearSelectedStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.yearStyle = global::PodcastUtilitiesPOC.Resource.Attribute.yearStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Attribute.yearTodayStyle = global::PodcastUtilitiesPOC.Resource.Attribute.yearTodayStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Boolean.abc_action_bar_embed_tabs = global::PodcastUtilitiesPOC.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::PodcastUtilitiesPOC.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Boolean.mtrl_btn_textappearance_all_caps = global::PodcastUtilitiesPOC.Resource.Boolean.mtrl_btn_textappearance_all_caps;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_background_cache_hint_selector_material_dark = global::PodcastUtilitiesPOC.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_background_cache_hint_selector_material_light = global::PodcastUtilitiesPOC.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_btn_colored_borderless_text_material = global::PodcastUtilitiesPOC.Resource.Color.abc_btn_colored_borderless_text_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_btn_colored_text_material = global::PodcastUtilitiesPOC.Resource.Color.abc_btn_colored_text_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_color_highlight_material = global::PodcastUtilitiesPOC.Resource.Color.abc_color_highlight_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_decor_view_status_guard = global::PodcastUtilitiesPOC.Resource.Color.abc_decor_view_status_guard;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_decor_view_status_guard_light = global::PodcastUtilitiesPOC.Resource.Color.abc_decor_view_status_guard_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_hint_foreground_material_dark = global::PodcastUtilitiesPOC.Resource.Color.abc_hint_foreground_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_hint_foreground_material_light = global::PodcastUtilitiesPOC.Resource.Color.abc_hint_foreground_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_primary_text_disable_only_material_dark = global::PodcastUtilitiesPOC.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_primary_text_disable_only_material_light = global::PodcastUtilitiesPOC.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_primary_text_material_dark = global::PodcastUtilitiesPOC.Resource.Color.abc_primary_text_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_primary_text_material_light = global::PodcastUtilitiesPOC.Resource.Color.abc_primary_text_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_search_url_text = global::PodcastUtilitiesPOC.Resource.Color.abc_search_url_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_search_url_text_normal = global::PodcastUtilitiesPOC.Resource.Color.abc_search_url_text_normal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_search_url_text_pressed = global::PodcastUtilitiesPOC.Resource.Color.abc_search_url_text_pressed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_search_url_text_selected = global::PodcastUtilitiesPOC.Resource.Color.abc_search_url_text_selected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_secondary_text_material_dark = global::PodcastUtilitiesPOC.Resource.Color.abc_secondary_text_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_secondary_text_material_light = global::PodcastUtilitiesPOC.Resource.Color.abc_secondary_text_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_tint_btn_checkable = global::PodcastUtilitiesPOC.Resource.Color.abc_tint_btn_checkable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_tint_default = global::PodcastUtilitiesPOC.Resource.Color.abc_tint_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_tint_edittext = global::PodcastUtilitiesPOC.Resource.Color.abc_tint_edittext;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_tint_seek_thumb = global::PodcastUtilitiesPOC.Resource.Color.abc_tint_seek_thumb;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_tint_spinner = global::PodcastUtilitiesPOC.Resource.Color.abc_tint_spinner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.abc_tint_switch_track = global::PodcastUtilitiesPOC.Resource.Color.abc_tint_switch_track;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.accent_material_dark = global::PodcastUtilitiesPOC.Resource.Color.accent_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.accent_material_light = global::PodcastUtilitiesPOC.Resource.Color.accent_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.androidx_core_ripple_material_light = global::PodcastUtilitiesPOC.Resource.Color.androidx_core_ripple_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.androidx_core_secondary_text_default_material_light = global::PodcastUtilitiesPOC.Resource.Color.androidx_core_secondary_text_default_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.background_floating_material_dark = global::PodcastUtilitiesPOC.Resource.Color.background_floating_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.background_floating_material_light = global::PodcastUtilitiesPOC.Resource.Color.background_floating_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.background_material_dark = global::PodcastUtilitiesPOC.Resource.Color.background_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.background_material_light = global::PodcastUtilitiesPOC.Resource.Color.background_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.bright_foreground_disabled_material_dark = global::PodcastUtilitiesPOC.Resource.Color.bright_foreground_disabled_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.bright_foreground_disabled_material_light = global::PodcastUtilitiesPOC.Resource.Color.bright_foreground_disabled_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.bright_foreground_inverse_material_dark = global::PodcastUtilitiesPOC.Resource.Color.bright_foreground_inverse_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.bright_foreground_inverse_material_light = global::PodcastUtilitiesPOC.Resource.Color.bright_foreground_inverse_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.bright_foreground_material_dark = global::PodcastUtilitiesPOC.Resource.Color.bright_foreground_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.bright_foreground_material_light = global::PodcastUtilitiesPOC.Resource.Color.bright_foreground_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.browser_actions_bg_grey = global::PodcastUtilitiesPOC.Resource.Color.browser_actions_bg_grey;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.browser_actions_divider_color = global::PodcastUtilitiesPOC.Resource.Color.browser_actions_divider_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.browser_actions_text_color = global::PodcastUtilitiesPOC.Resource.Color.browser_actions_text_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.browser_actions_title_color = global::PodcastUtilitiesPOC.Resource.Color.browser_actions_title_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.button_material_dark = global::PodcastUtilitiesPOC.Resource.Color.button_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.button_material_light = global::PodcastUtilitiesPOC.Resource.Color.button_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.cardview_dark_background = global::PodcastUtilitiesPOC.Resource.Color.cardview_dark_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.cardview_light_background = global::PodcastUtilitiesPOC.Resource.Color.cardview_light_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.cardview_shadow_end_color = global::PodcastUtilitiesPOC.Resource.Color.cardview_shadow_end_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.cardview_shadow_start_color = global::PodcastUtilitiesPOC.Resource.Color.cardview_shadow_start_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.checkbox_themeable_attribute_color = global::PodcastUtilitiesPOC.Resource.Color.checkbox_themeable_attribute_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_bottom_navigation_shadow_color = global::PodcastUtilitiesPOC.Resource.Color.design_bottom_navigation_shadow_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_box_stroke_color = global::PodcastUtilitiesPOC.Resource.Color.design_box_stroke_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_background = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_error = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_error;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_on_background = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_on_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_on_error = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_on_error;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_on_primary = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_on_primary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_on_secondary = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_on_secondary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_on_surface = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_on_surface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_primary = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_primary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_primary_dark = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_primary_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_primary_variant = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_primary_variant;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_secondary = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_secondary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_secondary_variant = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_secondary_variant;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_dark_default_color_surface = global::PodcastUtilitiesPOC.Resource.Color.design_dark_default_color_surface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_background = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_error = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_error;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_on_background = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_on_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_on_error = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_on_error;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_on_primary = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_on_primary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_on_secondary = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_on_secondary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_on_surface = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_on_surface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_primary = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_primary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_primary_dark = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_primary_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_primary_variant = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_primary_variant;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_secondary = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_secondary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_secondary_variant = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_secondary_variant;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_default_color_surface = global::PodcastUtilitiesPOC.Resource.Color.design_default_color_surface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_error = global::PodcastUtilitiesPOC.Resource.Color.design_error;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_fab_shadow_end_color = global::PodcastUtilitiesPOC.Resource.Color.design_fab_shadow_end_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_fab_shadow_mid_color = global::PodcastUtilitiesPOC.Resource.Color.design_fab_shadow_mid_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_fab_shadow_start_color = global::PodcastUtilitiesPOC.Resource.Color.design_fab_shadow_start_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_fab_stroke_end_inner_color = global::PodcastUtilitiesPOC.Resource.Color.design_fab_stroke_end_inner_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_fab_stroke_end_outer_color = global::PodcastUtilitiesPOC.Resource.Color.design_fab_stroke_end_outer_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_fab_stroke_top_inner_color = global::PodcastUtilitiesPOC.Resource.Color.design_fab_stroke_top_inner_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_fab_stroke_top_outer_color = global::PodcastUtilitiesPOC.Resource.Color.design_fab_stroke_top_outer_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_icon_tint = global::PodcastUtilitiesPOC.Resource.Color.design_icon_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.design_snackbar_background_color = global::PodcastUtilitiesPOC.Resource.Color.design_snackbar_background_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.dim_foreground_disabled_material_dark = global::PodcastUtilitiesPOC.Resource.Color.dim_foreground_disabled_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.dim_foreground_disabled_material_light = global::PodcastUtilitiesPOC.Resource.Color.dim_foreground_disabled_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.dim_foreground_material_dark = global::PodcastUtilitiesPOC.Resource.Color.dim_foreground_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.dim_foreground_material_light = global::PodcastUtilitiesPOC.Resource.Color.dim_foreground_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.error_color_material_dark = global::PodcastUtilitiesPOC.Resource.Color.error_color_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.error_color_material_light = global::PodcastUtilitiesPOC.Resource.Color.error_color_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.foreground_material_dark = global::PodcastUtilitiesPOC.Resource.Color.foreground_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.foreground_material_light = global::PodcastUtilitiesPOC.Resource.Color.foreground_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.highlighted_text_material_dark = global::PodcastUtilitiesPOC.Resource.Color.highlighted_text_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.highlighted_text_material_light = global::PodcastUtilitiesPOC.Resource.Color.highlighted_text_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_blue_grey_800 = global::PodcastUtilitiesPOC.Resource.Color.material_blue_grey_800;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_blue_grey_900 = global::PodcastUtilitiesPOC.Resource.Color.material_blue_grey_900;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_blue_grey_950 = global::PodcastUtilitiesPOC.Resource.Color.material_blue_grey_950;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_cursor_color = global::PodcastUtilitiesPOC.Resource.Color.material_cursor_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_deep_teal_200 = global::PodcastUtilitiesPOC.Resource.Color.material_deep_teal_200;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_deep_teal_500 = global::PodcastUtilitiesPOC.Resource.Color.material_deep_teal_500;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_grey_100 = global::PodcastUtilitiesPOC.Resource.Color.material_grey_100;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_grey_300 = global::PodcastUtilitiesPOC.Resource.Color.material_grey_300;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_grey_50 = global::PodcastUtilitiesPOC.Resource.Color.material_grey_50;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_grey_600 = global::PodcastUtilitiesPOC.Resource.Color.material_grey_600;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_grey_800 = global::PodcastUtilitiesPOC.Resource.Color.material_grey_800;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_grey_850 = global::PodcastUtilitiesPOC.Resource.Color.material_grey_850;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_grey_900 = global::PodcastUtilitiesPOC.Resource.Color.material_grey_900;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_on_background_disabled = global::PodcastUtilitiesPOC.Resource.Color.material_on_background_disabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_on_background_emphasis_high_type = global::PodcastUtilitiesPOC.Resource.Color.material_on_background_emphasis_high_type;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_on_background_emphasis_medium = global::PodcastUtilitiesPOC.Resource.Color.material_on_background_emphasis_medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_on_primary_disabled = global::PodcastUtilitiesPOC.Resource.Color.material_on_primary_disabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_on_primary_emphasis_high_type = global::PodcastUtilitiesPOC.Resource.Color.material_on_primary_emphasis_high_type;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_on_primary_emphasis_medium = global::PodcastUtilitiesPOC.Resource.Color.material_on_primary_emphasis_medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_on_surface_disabled = global::PodcastUtilitiesPOC.Resource.Color.material_on_surface_disabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_on_surface_emphasis_high_type = global::PodcastUtilitiesPOC.Resource.Color.material_on_surface_emphasis_high_type;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_on_surface_emphasis_medium = global::PodcastUtilitiesPOC.Resource.Color.material_on_surface_emphasis_medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_on_surface_stroke = global::PodcastUtilitiesPOC.Resource.Color.material_on_surface_stroke;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_slider_active_tick_marks_color = global::PodcastUtilitiesPOC.Resource.Color.material_slider_active_tick_marks_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_slider_active_track_color = global::PodcastUtilitiesPOC.Resource.Color.material_slider_active_track_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_slider_halo_color = global::PodcastUtilitiesPOC.Resource.Color.material_slider_halo_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_slider_inactive_tick_marks_color = global::PodcastUtilitiesPOC.Resource.Color.material_slider_inactive_tick_marks_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_slider_inactive_track_color = global::PodcastUtilitiesPOC.Resource.Color.material_slider_inactive_track_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_slider_thumb_color = global::PodcastUtilitiesPOC.Resource.Color.material_slider_thumb_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_timepicker_button_background = global::PodcastUtilitiesPOC.Resource.Color.material_timepicker_button_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_timepicker_button_stroke = global::PodcastUtilitiesPOC.Resource.Color.material_timepicker_button_stroke;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_timepicker_clockface = global::PodcastUtilitiesPOC.Resource.Color.material_timepicker_clockface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_timepicker_clock_text_color = global::PodcastUtilitiesPOC.Resource.Color.material_timepicker_clock_text_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.material_timepicker_modebutton_tint = global::PodcastUtilitiesPOC.Resource.Color.material_timepicker_modebutton_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_btn_bg_color_selector = global::PodcastUtilitiesPOC.Resource.Color.mtrl_btn_bg_color_selector;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_btn_ripple_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_btn_ripple_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_btn_stroke_color_selector = global::PodcastUtilitiesPOC.Resource.Color.mtrl_btn_stroke_color_selector;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_btn_text_btn_bg_color_selector = global::PodcastUtilitiesPOC.Resource.Color.mtrl_btn_text_btn_bg_color_selector;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_btn_text_btn_ripple_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_btn_text_btn_ripple_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_btn_text_color_disabled = global::PodcastUtilitiesPOC.Resource.Color.mtrl_btn_text_color_disabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_btn_text_color_selector = global::PodcastUtilitiesPOC.Resource.Color.mtrl_btn_text_color_selector;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_btn_transparent_bg_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_btn_transparent_bg_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_calendar_item_stroke_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_calendar_item_stroke_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_calendar_selected_range = global::PodcastUtilitiesPOC.Resource.Color.mtrl_calendar_selected_range;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_card_view_foreground = global::PodcastUtilitiesPOC.Resource.Color.mtrl_card_view_foreground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_card_view_ripple = global::PodcastUtilitiesPOC.Resource.Color.mtrl_card_view_ripple;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_chip_background_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_chip_background_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_chip_close_icon_tint = global::PodcastUtilitiesPOC.Resource.Color.mtrl_chip_close_icon_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_chip_surface_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_chip_surface_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_chip_text_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_chip_text_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_choice_chip_background_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_choice_chip_background_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_choice_chip_ripple_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_choice_chip_ripple_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_choice_chip_text_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_choice_chip_text_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_error = global::PodcastUtilitiesPOC.Resource.Color.mtrl_error;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_fab_bg_color_selector = global::PodcastUtilitiesPOC.Resource.Color.mtrl_fab_bg_color_selector;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_fab_icon_text_color_selector = global::PodcastUtilitiesPOC.Resource.Color.mtrl_fab_icon_text_color_selector;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_fab_ripple_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_fab_ripple_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_filled_background_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_filled_background_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_filled_icon_tint = global::PodcastUtilitiesPOC.Resource.Color.mtrl_filled_icon_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_filled_stroke_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_filled_stroke_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_indicator_text_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_indicator_text_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_navigation_bar_colored_item_tint = global::PodcastUtilitiesPOC.Resource.Color.mtrl_navigation_bar_colored_item_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_navigation_bar_colored_ripple_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_navigation_bar_colored_ripple_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_navigation_bar_item_tint = global::PodcastUtilitiesPOC.Resource.Color.mtrl_navigation_bar_item_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_navigation_bar_ripple_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_navigation_bar_ripple_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_navigation_item_background_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_navigation_item_background_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_navigation_item_icon_tint = global::PodcastUtilitiesPOC.Resource.Color.mtrl_navigation_item_icon_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_navigation_item_text_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_navigation_item_text_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_on_primary_text_btn_text_color_selector = global::PodcastUtilitiesPOC.Resource.Color.mtrl_on_primary_text_btn_text_color_selector;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_on_surface_ripple_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_on_surface_ripple_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_outlined_icon_tint = global::PodcastUtilitiesPOC.Resource.Color.mtrl_outlined_icon_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_outlined_stroke_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_outlined_stroke_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_popupmenu_overlay_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_popupmenu_overlay_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_scrim_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_scrim_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_tabs_colored_ripple_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_tabs_colored_ripple_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_tabs_icon_color_selector = global::PodcastUtilitiesPOC.Resource.Color.mtrl_tabs_icon_color_selector;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_tabs_icon_color_selector_colored = global::PodcastUtilitiesPOC.Resource.Color.mtrl_tabs_icon_color_selector_colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_tabs_legacy_text_color_selector = global::PodcastUtilitiesPOC.Resource.Color.mtrl_tabs_legacy_text_color_selector;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_tabs_ripple_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_tabs_ripple_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_textinput_default_box_stroke_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_textinput_default_box_stroke_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_textinput_disabled_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_textinput_disabled_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_textinput_filled_box_default_background_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_textinput_filled_box_default_background_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_textinput_focused_box_stroke_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_textinput_focused_box_stroke_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_textinput_hovered_box_stroke_color = global::PodcastUtilitiesPOC.Resource.Color.mtrl_textinput_hovered_box_stroke_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.mtrl_text_btn_text_color_selector = global::PodcastUtilitiesPOC.Resource.Color.mtrl_text_btn_text_color_selector;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.notification_action_color_filter = global::PodcastUtilitiesPOC.Resource.Color.notification_action_color_filter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.notification_icon_bg_color = global::PodcastUtilitiesPOC.Resource.Color.notification_icon_bg_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.primary_dark_material_dark = global::PodcastUtilitiesPOC.Resource.Color.primary_dark_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.primary_dark_material_light = global::PodcastUtilitiesPOC.Resource.Color.primary_dark_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.primary_material_dark = global::PodcastUtilitiesPOC.Resource.Color.primary_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.primary_material_light = global::PodcastUtilitiesPOC.Resource.Color.primary_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.primary_text_default_material_dark = global::PodcastUtilitiesPOC.Resource.Color.primary_text_default_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.primary_text_default_material_light = global::PodcastUtilitiesPOC.Resource.Color.primary_text_default_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.primary_text_disabled_material_dark = global::PodcastUtilitiesPOC.Resource.Color.primary_text_disabled_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.primary_text_disabled_material_light = global::PodcastUtilitiesPOC.Resource.Color.primary_text_disabled_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.radiobutton_themeable_attribute_color = global::PodcastUtilitiesPOC.Resource.Color.radiobutton_themeable_attribute_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.ripple_material_dark = global::PodcastUtilitiesPOC.Resource.Color.ripple_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.ripple_material_light = global::PodcastUtilitiesPOC.Resource.Color.ripple_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.secondary_text_default_material_dark = global::PodcastUtilitiesPOC.Resource.Color.secondary_text_default_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.secondary_text_default_material_light = global::PodcastUtilitiesPOC.Resource.Color.secondary_text_default_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.secondary_text_disabled_material_dark = global::PodcastUtilitiesPOC.Resource.Color.secondary_text_disabled_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.secondary_text_disabled_material_light = global::PodcastUtilitiesPOC.Resource.Color.secondary_text_disabled_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.switch_thumb_disabled_material_dark = global::PodcastUtilitiesPOC.Resource.Color.switch_thumb_disabled_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.switch_thumb_disabled_material_light = global::PodcastUtilitiesPOC.Resource.Color.switch_thumb_disabled_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.switch_thumb_material_dark = global::PodcastUtilitiesPOC.Resource.Color.switch_thumb_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.switch_thumb_material_light = global::PodcastUtilitiesPOC.Resource.Color.switch_thumb_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.switch_thumb_normal_material_dark = global::PodcastUtilitiesPOC.Resource.Color.switch_thumb_normal_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.switch_thumb_normal_material_light = global::PodcastUtilitiesPOC.Resource.Color.switch_thumb_normal_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.test_mtrl_calendar_day = global::PodcastUtilitiesPOC.Resource.Color.test_mtrl_calendar_day;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.test_mtrl_calendar_day_selected = global::PodcastUtilitiesPOC.Resource.Color.test_mtrl_calendar_day_selected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.tooltip_background_dark = global::PodcastUtilitiesPOC.Resource.Color.tooltip_background_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Color.tooltip_background_light = global::PodcastUtilitiesPOC.Resource.Color.tooltip_background_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_content_inset_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_content_inset_with_nav = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_content_inset_with_nav;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_default_height_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_default_height_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_default_padding_end_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_default_padding_start_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_elevation_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_elevation_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_stacked_max_height = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_button_min_height_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_button_min_height_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_button_min_width_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_button_min_width_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_action_button_min_width_overflow_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_alert_dialog_button_bar_height = global::PodcastUtilitiesPOC.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_alert_dialog_button_dimen = global::PodcastUtilitiesPOC.Resource.Dimension.abc_alert_dialog_button_dimen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_button_inset_horizontal_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_button_inset_vertical_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_button_inset_vertical_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_button_padding_horizontal_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_button_padding_vertical_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_button_padding_vertical_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_cascading_menus_min_smallest_width = global::PodcastUtilitiesPOC.Resource.Dimension.abc_cascading_menus_min_smallest_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_config_prefDialogWidth = global::PodcastUtilitiesPOC.Resource.Dimension.abc_config_prefDialogWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_control_corner_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_control_corner_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_control_inset_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_control_inset_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_control_padding_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_control_padding_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_corner_radius_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_corner_radius_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_fixed_height_major = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_fixed_height_major;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_fixed_height_minor = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_fixed_height_minor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_fixed_width_major = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_fixed_width_major;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_fixed_width_minor = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_fixed_width_minor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_list_padding_top_no_title = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_list_padding_top_no_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_min_width_major = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_min_width_major;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_min_width_minor = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_min_width_minor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_padding_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_padding_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_padding_top_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_padding_top_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dialog_title_divider_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dialog_title_divider_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_disabled_alpha_material_dark = global::PodcastUtilitiesPOC.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_disabled_alpha_material_light = global::PodcastUtilitiesPOC.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dropdownitem_icon_width = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dropdownitem_text_padding_left = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_dropdownitem_text_padding_right = global::PodcastUtilitiesPOC.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_edit_text_inset_bottom_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_edit_text_inset_top_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_floating_window_z = global::PodcastUtilitiesPOC.Resource.Dimension.abc_floating_window_z;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_list_item_height_large_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_list_item_height_large_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_list_item_height_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_list_item_height_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_list_item_height_small_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_list_item_height_small_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_list_item_padding_horizontal_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_panel_menu_list_width = global::PodcastUtilitiesPOC.Resource.Dimension.abc_panel_menu_list_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_progress_bar_height_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_progress_bar_height_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_search_view_preferred_height = global::PodcastUtilitiesPOC.Resource.Dimension.abc_search_view_preferred_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_search_view_preferred_width = global::PodcastUtilitiesPOC.Resource.Dimension.abc_search_view_preferred_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_seekbar_track_background_height_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_seekbar_track_background_height_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_seekbar_track_progress_height_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_seekbar_track_progress_height_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_select_dialog_padding_start_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_select_dialog_padding_start_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_star_big = global::PodcastUtilitiesPOC.Resource.Dimension.abc_star_big;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_star_medium = global::PodcastUtilitiesPOC.Resource.Dimension.abc_star_medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_star_small = global::PodcastUtilitiesPOC.Resource.Dimension.abc_star_small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_switch_padding = global::PodcastUtilitiesPOC.Resource.Dimension.abc_switch_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_body_1_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_body_1_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_body_2_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_body_2_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_button_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_button_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_caption_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_caption_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_display_1_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_display_1_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_display_2_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_display_2_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_display_3_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_display_3_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_display_4_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_display_4_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_headline_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_headline_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_large_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_large_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_medium_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_medium_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_menu_header_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_menu_header_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_menu_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_menu_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_small_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_small_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_subhead_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_subhead_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_title_material = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_title_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.abc_text_size_title_material_toolbar = global::PodcastUtilitiesPOC.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.action_bar_size = global::PodcastUtilitiesPOC.Resource.Dimension.action_bar_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.appcompat_dialog_background_inset = global::PodcastUtilitiesPOC.Resource.Dimension.appcompat_dialog_background_inset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.browser_actions_context_menu_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.browser_actions_context_menu_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.browser_actions_context_menu_min_padding = global::PodcastUtilitiesPOC.Resource.Dimension.browser_actions_context_menu_min_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.cardview_compat_inset_shadow = global::PodcastUtilitiesPOC.Resource.Dimension.cardview_compat_inset_shadow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.cardview_default_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.cardview_default_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.cardview_default_radius = global::PodcastUtilitiesPOC.Resource.Dimension.cardview_default_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.clock_face_margin_start = global::PodcastUtilitiesPOC.Resource.Dimension.clock_face_margin_start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.compat_button_inset_horizontal_material = global::PodcastUtilitiesPOC.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.compat_button_inset_vertical_material = global::PodcastUtilitiesPOC.Resource.Dimension.compat_button_inset_vertical_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.compat_button_padding_horizontal_material = global::PodcastUtilitiesPOC.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.compat_button_padding_vertical_material = global::PodcastUtilitiesPOC.Resource.Dimension.compat_button_padding_vertical_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.compat_control_corner_material = global::PodcastUtilitiesPOC.Resource.Dimension.compat_control_corner_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.compat_notification_large_icon_max_height = global::PodcastUtilitiesPOC.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.compat_notification_large_icon_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.default_dimension = global::PodcastUtilitiesPOC.Resource.Dimension.default_dimension;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.def_drawer_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.def_drawer_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_appbar_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.design_appbar_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_active_item_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_active_item_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_active_item_min_width = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_active_item_min_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_active_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_active_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_height = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_icon_size = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_icon_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_item_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_item_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_item_min_width = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_item_min_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_label_padding = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_label_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_margin = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_shadow_height = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_shadow_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_navigation_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_navigation_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_sheet_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_sheet_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_sheet_modal_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_sheet_modal_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_bottom_sheet_peek_height_min = global::PodcastUtilitiesPOC.Resource.Dimension.design_bottom_sheet_peek_height_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_fab_border_width = global::PodcastUtilitiesPOC.Resource.Dimension.design_fab_border_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_fab_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.design_fab_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_fab_image_size = global::PodcastUtilitiesPOC.Resource.Dimension.design_fab_image_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_fab_size_mini = global::PodcastUtilitiesPOC.Resource.Dimension.design_fab_size_mini;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_fab_size_normal = global::PodcastUtilitiesPOC.Resource.Dimension.design_fab_size_normal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_fab_translation_z_hovered_focused = global::PodcastUtilitiesPOC.Resource.Dimension.design_fab_translation_z_hovered_focused;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_fab_translation_z_pressed = global::PodcastUtilitiesPOC.Resource.Dimension.design_fab_translation_z_pressed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_navigation_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.design_navigation_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_navigation_icon_padding = global::PodcastUtilitiesPOC.Resource.Dimension.design_navigation_icon_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_navigation_icon_size = global::PodcastUtilitiesPOC.Resource.Dimension.design_navigation_icon_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_navigation_item_horizontal_padding = global::PodcastUtilitiesPOC.Resource.Dimension.design_navigation_item_horizontal_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_navigation_item_icon_padding = global::PodcastUtilitiesPOC.Resource.Dimension.design_navigation_item_icon_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_navigation_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.design_navigation_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_navigation_padding_bottom = global::PodcastUtilitiesPOC.Resource.Dimension.design_navigation_padding_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_navigation_separator_vertical_padding = global::PodcastUtilitiesPOC.Resource.Dimension.design_navigation_separator_vertical_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_snackbar_action_inline_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.design_snackbar_action_inline_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_snackbar_action_text_color_alpha = global::PodcastUtilitiesPOC.Resource.Dimension.design_snackbar_action_text_color_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_snackbar_background_corner_radius = global::PodcastUtilitiesPOC.Resource.Dimension.design_snackbar_background_corner_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_snackbar_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.design_snackbar_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::PodcastUtilitiesPOC.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_snackbar_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.design_snackbar_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_snackbar_min_width = global::PodcastUtilitiesPOC.Resource.Dimension.design_snackbar_min_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_snackbar_padding_horizontal = global::PodcastUtilitiesPOC.Resource.Dimension.design_snackbar_padding_horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_snackbar_padding_vertical = global::PodcastUtilitiesPOC.Resource.Dimension.design_snackbar_padding_vertical;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::PodcastUtilitiesPOC.Resource.Dimension.design_snackbar_padding_vertical_2lines;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_snackbar_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.design_snackbar_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_tab_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.design_tab_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_tab_scrollable_min_width = global::PodcastUtilitiesPOC.Resource.Dimension.design_tab_scrollable_min_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_tab_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.design_tab_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_tab_text_size_2line = global::PodcastUtilitiesPOC.Resource.Dimension.design_tab_text_size_2line;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.design_textinput_caption_translate_y = global::PodcastUtilitiesPOC.Resource.Dimension.design_textinput_caption_translate_y;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.disabled_alpha_material_dark = global::PodcastUtilitiesPOC.Resource.Dimension.disabled_alpha_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.disabled_alpha_material_light = global::PodcastUtilitiesPOC.Resource.Dimension.disabled_alpha_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.fastscroll_default_thickness = global::PodcastUtilitiesPOC.Resource.Dimension.fastscroll_default_thickness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.fastscroll_margin = global::PodcastUtilitiesPOC.Resource.Dimension.fastscroll_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.fastscroll_minimum_range = global::PodcastUtilitiesPOC.Resource.Dimension.fastscroll_minimum_range;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.highlight_alpha_material_colored = global::PodcastUtilitiesPOC.Resource.Dimension.highlight_alpha_material_colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.highlight_alpha_material_dark = global::PodcastUtilitiesPOC.Resource.Dimension.highlight_alpha_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.highlight_alpha_material_light = global::PodcastUtilitiesPOC.Resource.Dimension.highlight_alpha_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.hint_alpha_material_dark = global::PodcastUtilitiesPOC.Resource.Dimension.hint_alpha_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.hint_alpha_material_light = global::PodcastUtilitiesPOC.Resource.Dimension.hint_alpha_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.hint_pressed_alpha_material_dark = global::PodcastUtilitiesPOC.Resource.Dimension.hint_pressed_alpha_material_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.hint_pressed_alpha_material_light = global::PodcastUtilitiesPOC.Resource.Dimension.hint_pressed_alpha_material_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::PodcastUtilitiesPOC.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::PodcastUtilitiesPOC.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::PodcastUtilitiesPOC.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_bottom_sheet_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.material_bottom_sheet_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_clock_display_padding = global::PodcastUtilitiesPOC.Resource.Dimension.material_clock_display_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_clock_face_margin_top = global::PodcastUtilitiesPOC.Resource.Dimension.material_clock_face_margin_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_clock_hand_center_dot_radius = global::PodcastUtilitiesPOC.Resource.Dimension.material_clock_hand_center_dot_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_clock_hand_padding = global::PodcastUtilitiesPOC.Resource.Dimension.material_clock_hand_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_clock_hand_stroke_width = global::PodcastUtilitiesPOC.Resource.Dimension.material_clock_hand_stroke_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_clock_number_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.material_clock_number_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_clock_period_toggle_height = global::PodcastUtilitiesPOC.Resource.Dimension.material_clock_period_toggle_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_clock_period_toggle_margin_left = global::PodcastUtilitiesPOC.Resource.Dimension.material_clock_period_toggle_margin_left;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_clock_period_toggle_width = global::PodcastUtilitiesPOC.Resource.Dimension.material_clock_period_toggle_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_clock_size = global::PodcastUtilitiesPOC.Resource.Dimension.material_clock_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_cursor_inset_bottom = global::PodcastUtilitiesPOC.Resource.Dimension.material_cursor_inset_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_cursor_inset_top = global::PodcastUtilitiesPOC.Resource.Dimension.material_cursor_inset_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_cursor_width = global::PodcastUtilitiesPOC.Resource.Dimension.material_cursor_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_emphasis_disabled = global::PodcastUtilitiesPOC.Resource.Dimension.material_emphasis_disabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_emphasis_high_type = global::PodcastUtilitiesPOC.Resource.Dimension.material_emphasis_high_type;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_emphasis_medium = global::PodcastUtilitiesPOC.Resource.Dimension.material_emphasis_medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_filled_edittext_font_1_3_padding_bottom = global::PodcastUtilitiesPOC.Resource.Dimension.material_filled_edittext_font_1_3_padding_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_filled_edittext_font_1_3_padding_top = global::PodcastUtilitiesPOC.Resource.Dimension.material_filled_edittext_font_1_3_padding_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_filled_edittext_font_2_0_padding_bottom = global::PodcastUtilitiesPOC.Resource.Dimension.material_filled_edittext_font_2_0_padding_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_filled_edittext_font_2_0_padding_top = global::PodcastUtilitiesPOC.Resource.Dimension.material_filled_edittext_font_2_0_padding_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_font_1_3_box_collapsed_padding_top = global::PodcastUtilitiesPOC.Resource.Dimension.material_font_1_3_box_collapsed_padding_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_font_2_0_box_collapsed_padding_top = global::PodcastUtilitiesPOC.Resource.Dimension.material_font_2_0_box_collapsed_padding_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_helper_text_default_padding_top = global::PodcastUtilitiesPOC.Resource.Dimension.material_helper_text_default_padding_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_helper_text_font_1_3_padding_horizontal = global::PodcastUtilitiesPOC.Resource.Dimension.material_helper_text_font_1_3_padding_horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_helper_text_font_1_3_padding_top = global::PodcastUtilitiesPOC.Resource.Dimension.material_helper_text_font_1_3_padding_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_input_text_to_prefix_suffix_padding = global::PodcastUtilitiesPOC.Resource.Dimension.material_input_text_to_prefix_suffix_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_textinput_default_width = global::PodcastUtilitiesPOC.Resource.Dimension.material_textinput_default_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_textinput_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.material_textinput_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_textinput_min_width = global::PodcastUtilitiesPOC.Resource.Dimension.material_textinput_min_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_text_view_test_line_height = global::PodcastUtilitiesPOC.Resource.Dimension.material_text_view_test_line_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_text_view_test_line_height_override = global::PodcastUtilitiesPOC.Resource.Dimension.material_text_view_test_line_height_override;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_timepicker_dialog_buttons_margin_top = global::PodcastUtilitiesPOC.Resource.Dimension.material_timepicker_dialog_buttons_margin_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_time_picker_minimum_screen_height = global::PodcastUtilitiesPOC.Resource.Dimension.material_time_picker_minimum_screen_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.material_time_picker_minimum_screen_width = global::PodcastUtilitiesPOC.Resource.Dimension.material_time_picker_minimum_screen_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_alert_dialog_background_inset_bottom = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_alert_dialog_background_inset_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_alert_dialog_background_inset_end = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_alert_dialog_background_inset_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_alert_dialog_background_inset_start = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_alert_dialog_background_inset_start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_alert_dialog_background_inset_top = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_alert_dialog_background_inset_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_alert_dialog_picker_background_inset = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_alert_dialog_picker_background_inset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_badge_horizontal_edge_offset = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_badge_horizontal_edge_offset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_badge_long_text_horizontal_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_badge_long_text_horizontal_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_badge_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_badge_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_badge_text_horizontal_edge_offset = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_badge_text_horizontal_edge_offset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_badge_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_badge_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_badge_toolbar_action_menu_item_horizontal_offset = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_badge_toolbar_action_menu_item_horizontal_offset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_badge_toolbar_action_menu_item_vertical_offset = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_badge_toolbar_action_menu_item_vertical_offset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_badge_with_text_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_badge_with_text_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_bottomappbar_fabOffsetEndMode = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_bottomappbar_fabOffsetEndMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_bottomappbar_fab_bottom_margin = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_bottomappbar_fab_bottom_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_bottomappbar_fab_cradle_margin = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_bottomappbar_fab_cradle_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_bottomappbar_fab_cradle_rounded_corner_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_bottomappbar_fab_cradle_rounded_corner_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_bottomappbar_fab_cradle_vertical_offset = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_bottomappbar_fab_cradle_vertical_offset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_bottomappbar_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_bottomappbar_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_corner_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_corner_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_dialog_btn_min_width = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_dialog_btn_min_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_disabled_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_disabled_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_disabled_z = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_disabled_z;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_focused_z = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_focused_z;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_hovered_z = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_hovered_z;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_icon_btn_padding_left = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_icon_btn_padding_left;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_icon_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_icon_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_inset = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_inset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_letter_spacing = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_letter_spacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_padding_bottom = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_padding_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_padding_left = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_padding_left;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_padding_right = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_padding_right;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_padding_top = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_padding_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_pressed_z = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_pressed_z;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_snackbar_margin_horizontal = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_snackbar_margin_horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_stroke_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_stroke_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_text_btn_icon_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_text_btn_icon_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_text_btn_padding_left = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_text_btn_padding_left;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_text_btn_padding_right = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_text_btn_padding_right;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_btn_z = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_btn_z;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_action_confirm_button_min_width = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_action_confirm_button_min_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_action_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_action_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_action_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_action_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_bottom_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_bottom_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_content_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_content_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_days_of_week_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_days_of_week_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_day_corner = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_day_corner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_day_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_day_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_day_horizontal_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_day_horizontal_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_day_today_stroke = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_day_today_stroke;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_day_vertical_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_day_vertical_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_day_width = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_day_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_dialog_background_inset = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_dialog_background_inset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_header_content_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_header_content_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_header_content_padding_fullscreen = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_header_content_padding_fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_header_divider_thickness = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_header_divider_thickness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_header_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_header_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_header_height_fullscreen = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_header_height_fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_header_selection_line_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_header_selection_line_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_header_text_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_header_text_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_header_toggle_margin_bottom = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_header_toggle_margin_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_header_toggle_margin_top = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_header_toggle_margin_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_landscape_header_width = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_landscape_header_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_maximum_default_fullscreen_minor_axis = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_maximum_default_fullscreen_minor_axis;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_month_horizontal_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_month_horizontal_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_month_vertical_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_month_vertical_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_navigation_bottom_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_navigation_bottom_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_navigation_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_navigation_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_navigation_top_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_navigation_top_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_pre_l_text_clip_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_pre_l_text_clip_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_selection_baseline_to_top_fullscreen = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_selection_baseline_to_top_fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_selection_text_baseline_to_bottom = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_selection_text_baseline_to_bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_selection_text_baseline_to_bottom_fullscreen = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_selection_text_baseline_to_bottom_fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_selection_text_baseline_to_top = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_selection_text_baseline_to_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_text_input_padding_top = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_text_input_padding_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_title_baseline_to_top = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_title_baseline_to_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_title_baseline_to_top_fullscreen = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_title_baseline_to_top_fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_year_corner = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_year_corner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_year_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_year_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_year_horizontal_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_year_horizontal_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_year_vertical_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_year_vertical_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_calendar_year_width = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_calendar_year_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_card_checked_icon_margin = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_card_checked_icon_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_card_checked_icon_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_card_checked_icon_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_card_corner_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_card_corner_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_card_dragged_z = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_card_dragged_z;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_card_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_card_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_card_spacing = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_card_spacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_chip_pressed_translation_z = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_chip_pressed_translation_z;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_chip_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_chip_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_edittext_rectangle_top_offset = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_edittext_rectangle_top_offset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_offset = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_offset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_bottom_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_bottom_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_corner_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_corner_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_disabled_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_disabled_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_disabled_translation_z = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_disabled_translation_z;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_end_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_end_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_end_padding_icon = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_end_padding_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_icon_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_icon_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_icon_text_spacing = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_icon_text_spacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_min_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_min_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_min_width = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_min_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_start_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_start_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_start_padding_icon = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_start_padding_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_top_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_top_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_translation_z_base = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_translation_z_base;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_translation_z_hovered_focused = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_translation_z_hovered_focused;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_extended_fab_translation_z_pressed = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_extended_fab_translation_z_pressed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_fab_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_fab_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_fab_min_touch_target = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_fab_min_touch_target;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_fab_translation_z_hovered_focused = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_fab_translation_z_hovered_focused;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_fab_translation_z_pressed = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_fab_translation_z_pressed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_high_ripple_default_alpha = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_high_ripple_default_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_high_ripple_focused_alpha = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_high_ripple_focused_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_high_ripple_hovered_alpha = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_high_ripple_hovered_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_high_ripple_pressed_alpha = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_high_ripple_pressed_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_large_touch_target = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_large_touch_target;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_low_ripple_default_alpha = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_low_ripple_default_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_low_ripple_focused_alpha = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_low_ripple_focused_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_low_ripple_hovered_alpha = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_low_ripple_hovered_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_low_ripple_pressed_alpha = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_low_ripple_pressed_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_min_touch_target_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_min_touch_target_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_bar_item_default_icon_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_bar_item_default_icon_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_bar_item_default_margin = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_bar_item_default_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_item_horizontal_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_item_horizontal_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_item_icon_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_item_icon_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_item_icon_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_item_icon_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_item_shape_horizontal_margin = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_item_shape_horizontal_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_item_shape_vertical_margin = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_item_shape_vertical_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_rail_active_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_rail_active_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_rail_compact_width = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_rail_compact_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_rail_default_width = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_rail_default_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_rail_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_rail_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_rail_icon_margin = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_rail_icon_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_rail_icon_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_rail_icon_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_rail_margin = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_rail_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_rail_text_bottom_margin = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_rail_text_bottom_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_navigation_rail_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_navigation_rail_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_inset = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_inset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_inset_extra_small = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_inset_extra_small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_inset_medium = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_inset_medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_inset_small = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_inset_small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_size = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_size_extra_small = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_size_extra_small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_size_medium = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_size_medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_size_small = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_size_small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_track_thickness_extra_small = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_track_thickness_extra_small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_track_thickness_medium = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_track_thickness_medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_circular_track_thickness_small = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_circular_track_thickness_small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_indicator_full_rounded_corner_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_indicator_full_rounded_corner_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_progress_track_thickness = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_progress_track_thickness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_shape_corner_size_large_component = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_shape_corner_size_large_component;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_shape_corner_size_medium_component = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_shape_corner_size_medium_component;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_shape_corner_size_small_component = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_shape_corner_size_small_component;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_slider_halo_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_slider_halo_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_slider_label_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_slider_label_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_slider_label_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_slider_label_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_slider_label_square_side = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_slider_label_square_side;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_slider_thumb_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_slider_thumb_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_slider_thumb_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_slider_thumb_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_slider_track_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_slider_track_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_slider_track_side_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_slider_track_side_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_slider_track_top = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_slider_track_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_slider_widget_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_slider_widget_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_snackbar_action_text_color_alpha = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_snackbar_action_text_color_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_snackbar_background_corner_radius = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_snackbar_background_corner_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_snackbar_background_overlay_color_alpha = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_snackbar_background_overlay_color_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_snackbar_margin = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_snackbar_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_snackbar_message_margin_horizontal = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_snackbar_message_margin_horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_snackbar_padding_horizontal = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_snackbar_padding_horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_switch_thumb_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_switch_thumb_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_textinput_box_corner_radius_medium = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_textinput_box_corner_radius_medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_textinput_box_corner_radius_small = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_textinput_box_corner_radius_small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_textinput_box_label_cutout_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_textinput_box_label_cutout_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_textinput_box_stroke_width_default = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_textinput_box_stroke_width_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_textinput_box_stroke_width_focused = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_textinput_box_stroke_width_focused;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_textinput_counter_margin_start = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_textinput_counter_margin_start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_textinput_end_icon_margin_start = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_textinput_end_icon_margin_start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_textinput_start_icon_margin_end = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_textinput_start_icon_margin_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_toolbar_default_height = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_toolbar_default_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_tooltip_arrowSize = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_tooltip_arrowSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_tooltip_cornerSize = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_tooltip_cornerSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_tooltip_minHeight = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_tooltip_minHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_tooltip_minWidth = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_tooltip_minWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_tooltip_padding = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_tooltip_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.mtrl_transition_shared_axis_slide_distance = global::PodcastUtilitiesPOC.Resource.Dimension.mtrl_transition_shared_axis_slide_distance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_action_icon_size = global::PodcastUtilitiesPOC.Resource.Dimension.notification_action_icon_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_action_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.notification_action_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_big_circle_margin = global::PodcastUtilitiesPOC.Resource.Dimension.notification_big_circle_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_content_margin_start = global::PodcastUtilitiesPOC.Resource.Dimension.notification_content_margin_start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_large_icon_height = global::PodcastUtilitiesPOC.Resource.Dimension.notification_large_icon_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_large_icon_width = global::PodcastUtilitiesPOC.Resource.Dimension.notification_large_icon_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_main_column_padding_top = global::PodcastUtilitiesPOC.Resource.Dimension.notification_main_column_padding_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_media_narrow_margin = global::PodcastUtilitiesPOC.Resource.Dimension.notification_media_narrow_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_right_icon_size = global::PodcastUtilitiesPOC.Resource.Dimension.notification_right_icon_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_right_side_padding_top = global::PodcastUtilitiesPOC.Resource.Dimension.notification_right_side_padding_top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_small_icon_background_padding = global::PodcastUtilitiesPOC.Resource.Dimension.notification_small_icon_background_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_small_icon_size_as_large = global::PodcastUtilitiesPOC.Resource.Dimension.notification_small_icon_size_as_large;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_subtext_size = global::PodcastUtilitiesPOC.Resource.Dimension.notification_subtext_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_top_pad = global::PodcastUtilitiesPOC.Resource.Dimension.notification_top_pad;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.notification_top_pad_large_text = global::PodcastUtilitiesPOC.Resource.Dimension.notification_top_pad_large_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_mtrl_calendar_day_cornerSize = global::PodcastUtilitiesPOC.Resource.Dimension.test_mtrl_calendar_day_cornerSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_navigation_bar_active_item_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.test_navigation_bar_active_item_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_navigation_bar_active_item_min_width = global::PodcastUtilitiesPOC.Resource.Dimension.test_navigation_bar_active_item_min_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_navigation_bar_active_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.test_navigation_bar_active_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_navigation_bar_elevation = global::PodcastUtilitiesPOC.Resource.Dimension.test_navigation_bar_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_navigation_bar_height = global::PodcastUtilitiesPOC.Resource.Dimension.test_navigation_bar_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_navigation_bar_icon_size = global::PodcastUtilitiesPOC.Resource.Dimension.test_navigation_bar_icon_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_navigation_bar_item_max_width = global::PodcastUtilitiesPOC.Resource.Dimension.test_navigation_bar_item_max_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_navigation_bar_item_min_width = global::PodcastUtilitiesPOC.Resource.Dimension.test_navigation_bar_item_min_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_navigation_bar_label_padding = global::PodcastUtilitiesPOC.Resource.Dimension.test_navigation_bar_label_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_navigation_bar_shadow_height = global::PodcastUtilitiesPOC.Resource.Dimension.test_navigation_bar_shadow_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.test_navigation_bar_text_size = global::PodcastUtilitiesPOC.Resource.Dimension.test_navigation_bar_text_size;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.tooltip_corner_radius = global::PodcastUtilitiesPOC.Resource.Dimension.tooltip_corner_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.tooltip_horizontal_padding = global::PodcastUtilitiesPOC.Resource.Dimension.tooltip_horizontal_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.tooltip_margin = global::PodcastUtilitiesPOC.Resource.Dimension.tooltip_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.tooltip_precise_anchor_extra_offset = global::PodcastUtilitiesPOC.Resource.Dimension.tooltip_precise_anchor_extra_offset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.tooltip_precise_anchor_threshold = global::PodcastUtilitiesPOC.Resource.Dimension.tooltip_precise_anchor_threshold;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.tooltip_vertical_padding = global::PodcastUtilitiesPOC.Resource.Dimension.tooltip_vertical_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.tooltip_y_offset_non_touch = global::PodcastUtilitiesPOC.Resource.Dimension.tooltip_y_offset_non_touch;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Dimension.tooltip_y_offset_touch = global::PodcastUtilitiesPOC.Resource.Dimension.tooltip_y_offset_touch;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_action_bar_item_background_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_action_bar_item_background_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_borderless_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_borderless_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_check_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_check_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_check_material_anim = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_check_material_anim;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_colored_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_colored_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_default_mtrl_shape = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_radio_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_radio_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_radio_material_anim = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_radio_material_anim;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::PodcastUtilitiesPOC.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_cab_background_internal_bg = global::PodcastUtilitiesPOC.Resource.Drawable.abc_cab_background_internal_bg;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_cab_background_top_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_cab_background_top_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_control_background_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_control_background_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_dialog_material_background = global::PodcastUtilitiesPOC.Resource.Drawable.abc_dialog_material_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_edit_text_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_edit_text_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_ab_back_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_ab_back_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_clear_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_clear_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_go_search_api_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_go_search_api_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_menu_overflow_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_menu_overflow_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_search_api_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_search_api_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ic_voice_search_api_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ic_voice_search_api_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_item_background_holo_dark = global::PodcastUtilitiesPOC.Resource.Drawable.abc_item_background_holo_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_item_background_holo_light = global::PodcastUtilitiesPOC.Resource.Drawable.abc_item_background_holo_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_divider_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_divider_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_divider_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_focused_holo = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_focused_holo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_longpressed_holo = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_longpressed_holo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_pressed_holo_dark = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_pressed_holo_light = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_pressed_holo_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_selector_disabled_holo_light = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_selector_holo_dark = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_selector_holo_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_list_selector_holo_light = global::PodcastUtilitiesPOC.Resource.Drawable.abc_list_selector_holo_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::PodcastUtilitiesPOC.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_popup_background_mtrl_mult = global::PodcastUtilitiesPOC.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ratingbar_indicator_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ratingbar_indicator_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ratingbar_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ratingbar_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_ratingbar_small_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_ratingbar_small_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::PodcastUtilitiesPOC.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::PodcastUtilitiesPOC.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_seekbar_thumb_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_seekbar_thumb_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_seekbar_tick_mark_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_seekbar_tick_mark_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_seekbar_track_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_seekbar_track_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_spinner_textfield_background_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_star_black_48dp = global::PodcastUtilitiesPOC.Resource.Drawable.abc_star_black_48dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_star_half_black_48dp = global::PodcastUtilitiesPOC.Resource.Drawable.abc_star_half_black_48dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_switch_thumb_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_switch_thumb_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_switch_track_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_tab_indicator_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_tab_indicator_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::PodcastUtilitiesPOC.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_textfield_search_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_textfield_search_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_text_cursor_material = global::PodcastUtilitiesPOC.Resource.Drawable.abc_text_cursor_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_text_select_handle_left_mtrl = global::PodcastUtilitiesPOC.Resource.Drawable.abc_text_select_handle_left_mtrl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_text_select_handle_middle_mtrl = global::PodcastUtilitiesPOC.Resource.Drawable.abc_text_select_handle_middle_mtrl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_text_select_handle_right_mtrl = global::PodcastUtilitiesPOC.Resource.Drawable.abc_text_select_handle_right_mtrl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.abc_vector_test = global::PodcastUtilitiesPOC.Resource.Drawable.abc_vector_test;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.avd_hide_password = global::PodcastUtilitiesPOC.Resource.Drawable.avd_hide_password;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.avd_show_password = global::PodcastUtilitiesPOC.Resource.Drawable.avd_show_password;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.btn_checkbox_checked_mtrl = global::PodcastUtilitiesPOC.Resource.Drawable.btn_checkbox_checked_mtrl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.btn_checkbox_checked_to_unchecked_mtrl_animation = global::PodcastUtilitiesPOC.Resource.Drawable.btn_checkbox_checked_to_unchecked_mtrl_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.btn_checkbox_unchecked_mtrl = global::PodcastUtilitiesPOC.Resource.Drawable.btn_checkbox_unchecked_mtrl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.btn_checkbox_unchecked_to_checked_mtrl_animation = global::PodcastUtilitiesPOC.Resource.Drawable.btn_checkbox_unchecked_to_checked_mtrl_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.btn_radio_off_mtrl = global::PodcastUtilitiesPOC.Resource.Drawable.btn_radio_off_mtrl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.btn_radio_off_to_on_mtrl_animation = global::PodcastUtilitiesPOC.Resource.Drawable.btn_radio_off_to_on_mtrl_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.btn_radio_on_mtrl = global::PodcastUtilitiesPOC.Resource.Drawable.btn_radio_on_mtrl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.btn_radio_on_to_off_mtrl_animation = global::PodcastUtilitiesPOC.Resource.Drawable.btn_radio_on_to_off_mtrl_animation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.design_fab_background = global::PodcastUtilitiesPOC.Resource.Drawable.design_fab_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.design_ic_visibility = global::PodcastUtilitiesPOC.Resource.Drawable.design_ic_visibility;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.design_ic_visibility_off = global::PodcastUtilitiesPOC.Resource.Drawable.design_ic_visibility_off;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.design_password_eye = global::PodcastUtilitiesPOC.Resource.Drawable.design_password_eye;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.design_snackbar_background = global::PodcastUtilitiesPOC.Resource.Drawable.design_snackbar_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.ic_clock_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.ic_clock_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.ic_keyboard_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.ic_keyboard_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.ic_mtrl_checked_circle = global::PodcastUtilitiesPOC.Resource.Drawable.ic_mtrl_checked_circle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.ic_mtrl_chip_checked_black = global::PodcastUtilitiesPOC.Resource.Drawable.ic_mtrl_chip_checked_black;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.ic_mtrl_chip_checked_circle = global::PodcastUtilitiesPOC.Resource.Drawable.ic_mtrl_chip_checked_circle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.ic_mtrl_chip_close_circle = global::PodcastUtilitiesPOC.Resource.Drawable.ic_mtrl_chip_close_circle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.material_cursor_drawable = global::PodcastUtilitiesPOC.Resource.Drawable.material_cursor_drawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.material_ic_calendar_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.material_ic_calendar_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.material_ic_clear_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.material_ic_clear_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.material_ic_edit_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.material_ic_edit_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.material_ic_keyboard_arrow_left_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.material_ic_keyboard_arrow_left_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.material_ic_keyboard_arrow_next_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.material_ic_keyboard_arrow_next_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.material_ic_keyboard_arrow_previous_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.material_ic_keyboard_arrow_previous_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.material_ic_keyboard_arrow_right_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.material_ic_keyboard_arrow_right_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.material_ic_menu_arrow_down_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.material_ic_menu_arrow_down_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.material_ic_menu_arrow_up_black_24dp = global::PodcastUtilitiesPOC.Resource.Drawable.material_ic_menu_arrow_up_black_24dp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.mtrl_dialog_background = global::PodcastUtilitiesPOC.Resource.Drawable.mtrl_dialog_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.mtrl_dropdown_arrow = global::PodcastUtilitiesPOC.Resource.Drawable.mtrl_dropdown_arrow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.mtrl_ic_arrow_drop_down = global::PodcastUtilitiesPOC.Resource.Drawable.mtrl_ic_arrow_drop_down;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.mtrl_ic_arrow_drop_up = global::PodcastUtilitiesPOC.Resource.Drawable.mtrl_ic_arrow_drop_up;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.mtrl_ic_cancel = global::PodcastUtilitiesPOC.Resource.Drawable.mtrl_ic_cancel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.mtrl_ic_error = global::PodcastUtilitiesPOC.Resource.Drawable.mtrl_ic_error;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.mtrl_navigation_bar_item_background = global::PodcastUtilitiesPOC.Resource.Drawable.mtrl_navigation_bar_item_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.mtrl_popupmenu_background = global::PodcastUtilitiesPOC.Resource.Drawable.mtrl_popupmenu_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.mtrl_popupmenu_background_dark = global::PodcastUtilitiesPOC.Resource.Drawable.mtrl_popupmenu_background_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.mtrl_tabs_default_indicator = global::PodcastUtilitiesPOC.Resource.Drawable.mtrl_tabs_default_indicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.navigation_empty_icon = global::PodcastUtilitiesPOC.Resource.Drawable.navigation_empty_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notification_action_background = global::PodcastUtilitiesPOC.Resource.Drawable.notification_action_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notification_bg = global::PodcastUtilitiesPOC.Resource.Drawable.notification_bg;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notification_bg_low = global::PodcastUtilitiesPOC.Resource.Drawable.notification_bg_low;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notification_bg_low_normal = global::PodcastUtilitiesPOC.Resource.Drawable.notification_bg_low_normal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notification_bg_low_pressed = global::PodcastUtilitiesPOC.Resource.Drawable.notification_bg_low_pressed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notification_bg_normal = global::PodcastUtilitiesPOC.Resource.Drawable.notification_bg_normal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notification_bg_normal_pressed = global::PodcastUtilitiesPOC.Resource.Drawable.notification_bg_normal_pressed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notification_icon_background = global::PodcastUtilitiesPOC.Resource.Drawable.notification_icon_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notification_template_icon_bg = global::PodcastUtilitiesPOC.Resource.Drawable.notification_template_icon_bg;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notification_template_icon_low_bg = global::PodcastUtilitiesPOC.Resource.Drawable.notification_template_icon_low_bg;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notification_tile_bg = global::PodcastUtilitiesPOC.Resource.Drawable.notification_tile_bg;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.notify_panel_notification_icon_bg = global::PodcastUtilitiesPOC.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.test_custom_background = global::PodcastUtilitiesPOC.Resource.Drawable.test_custom_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.tooltip_frame_dark = global::PodcastUtilitiesPOC.Resource.Drawable.tooltip_frame_dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Drawable.tooltip_frame_light = global::PodcastUtilitiesPOC.Resource.Drawable.tooltip_frame_light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accelerate = global::PodcastUtilitiesPOC.Resource.Id.accelerate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_action_clickable_span = global::PodcastUtilitiesPOC.Resource.Id.accessibility_action_clickable_span;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_0 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_0;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_1 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_10 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_10;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_11 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_11;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_12 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_12;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_13 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_13;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_14 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_14;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_15 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_15;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_16 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_16;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_17 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_17;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_18 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_18;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_19 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_19;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_2 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_20 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_20;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_21 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_21;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_22 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_22;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_23 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_23;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_24 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_24;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_25 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_25;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_26 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_26;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_27 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_27;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_28 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_28;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_29 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_29;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_3 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_3;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_30 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_30;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_31 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_31;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_4 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_4;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_5 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_5;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_6 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_6;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_7 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_7;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_8 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_8;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.accessibility_custom_action_9 = global::PodcastUtilitiesPOC.Resource.Id.accessibility_custom_action_9;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.actionDown = global::PodcastUtilitiesPOC.Resource.Id.actionDown;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.actionDownUp = global::PodcastUtilitiesPOC.Resource.Id.actionDownUp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.actions = global::PodcastUtilitiesPOC.Resource.Id.actions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.actionUp = global::PodcastUtilitiesPOC.Resource.Id.actionUp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_bar = global::PodcastUtilitiesPOC.Resource.Id.action_bar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_bar_activity_content = global::PodcastUtilitiesPOC.Resource.Id.action_bar_activity_content;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_bar_container = global::PodcastUtilitiesPOC.Resource.Id.action_bar_container;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_bar_root = global::PodcastUtilitiesPOC.Resource.Id.action_bar_root;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_bar_spinner = global::PodcastUtilitiesPOC.Resource.Id.action_bar_spinner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_bar_subtitle = global::PodcastUtilitiesPOC.Resource.Id.action_bar_subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_bar_title = global::PodcastUtilitiesPOC.Resource.Id.action_bar_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_container = global::PodcastUtilitiesPOC.Resource.Id.action_container;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_context_bar = global::PodcastUtilitiesPOC.Resource.Id.action_context_bar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_divider = global::PodcastUtilitiesPOC.Resource.Id.action_divider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_image = global::PodcastUtilitiesPOC.Resource.Id.action_image;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_menu_divider = global::PodcastUtilitiesPOC.Resource.Id.action_menu_divider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_menu_presenter = global::PodcastUtilitiesPOC.Resource.Id.action_menu_presenter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_mode_bar = global::PodcastUtilitiesPOC.Resource.Id.action_mode_bar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_mode_bar_stub = global::PodcastUtilitiesPOC.Resource.Id.action_mode_bar_stub;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_mode_close_button = global::PodcastUtilitiesPOC.Resource.Id.action_mode_close_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.action_text = global::PodcastUtilitiesPOC.Resource.Id.action_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.activity_chooser_view_content = global::PodcastUtilitiesPOC.Resource.Id.activity_chooser_view_content;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.add = global::PodcastUtilitiesPOC.Resource.Id.add;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.alertTitle = global::PodcastUtilitiesPOC.Resource.Id.alertTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.aligned = global::PodcastUtilitiesPOC.Resource.Id.aligned;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.all = global::PodcastUtilitiesPOC.Resource.Id.all;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.allStates = global::PodcastUtilitiesPOC.Resource.Id.allStates;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.ALT = global::PodcastUtilitiesPOC.Resource.Id.ALT;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.always = global::PodcastUtilitiesPOC.Resource.Id.always;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.animateToEnd = global::PodcastUtilitiesPOC.Resource.Id.animateToEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.animateToStart = global::PodcastUtilitiesPOC.Resource.Id.animateToStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.anticipate = global::PodcastUtilitiesPOC.Resource.Id.anticipate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.antiClockwise = global::PodcastUtilitiesPOC.Resource.Id.antiClockwise;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.arc = global::PodcastUtilitiesPOC.Resource.Id.arc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.asConfigured = global::PodcastUtilitiesPOC.Resource.Id.asConfigured;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.async = global::PodcastUtilitiesPOC.Resource.Id.async;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.auto = global::PodcastUtilitiesPOC.Resource.Id.auto;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.autoComplete = global::PodcastUtilitiesPOC.Resource.Id.autoComplete;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.autoCompleteToEnd = global::PodcastUtilitiesPOC.Resource.Id.autoCompleteToEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.autoCompleteToStart = global::PodcastUtilitiesPOC.Resource.Id.autoCompleteToStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.barrier = global::PodcastUtilitiesPOC.Resource.Id.barrier;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.baseline = global::PodcastUtilitiesPOC.Resource.Id.baseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.beginning = global::PodcastUtilitiesPOC.Resource.Id.beginning;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.beginOnFirstDraw = global::PodcastUtilitiesPOC.Resource.Id.beginOnFirstDraw;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.bestChoice = global::PodcastUtilitiesPOC.Resource.Id.bestChoice;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.blocking = global::PodcastUtilitiesPOC.Resource.Id.blocking;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.bottom = global::PodcastUtilitiesPOC.Resource.Id.bottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.BOTTOM_END = global::PodcastUtilitiesPOC.Resource.Id.BOTTOM_END;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.BOTTOM_START = global::PodcastUtilitiesPOC.Resource.Id.BOTTOM_START;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.bounce = global::PodcastUtilitiesPOC.Resource.Id.bounce;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.bounceBoth = global::PodcastUtilitiesPOC.Resource.Id.bounceBoth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.bounceEnd = global::PodcastUtilitiesPOC.Resource.Id.bounceEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.bounceStart = global::PodcastUtilitiesPOC.Resource.Id.bounceStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.browser_actions_header_text = global::PodcastUtilitiesPOC.Resource.Id.browser_actions_header_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.browser_actions_menu_items = global::PodcastUtilitiesPOC.Resource.Id.browser_actions_menu_items;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.browser_actions_menu_item_icon = global::PodcastUtilitiesPOC.Resource.Id.browser_actions_menu_item_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.browser_actions_menu_item_text = global::PodcastUtilitiesPOC.Resource.Id.browser_actions_menu_item_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.browser_actions_menu_view = global::PodcastUtilitiesPOC.Resource.Id.browser_actions_menu_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.buttonPanel = global::PodcastUtilitiesPOC.Resource.Id.buttonPanel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.cache_measures = global::PodcastUtilitiesPOC.Resource.Id.cache_measures;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.cancel_button = global::PodcastUtilitiesPOC.Resource.Id.cancel_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.carryVelocity = global::PodcastUtilitiesPOC.Resource.Id.carryVelocity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.center = global::PodcastUtilitiesPOC.Resource.Id.center;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.center_horizontal = global::PodcastUtilitiesPOC.Resource.Id.center_horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.center_vertical = global::PodcastUtilitiesPOC.Resource.Id.center_vertical;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.chain = global::PodcastUtilitiesPOC.Resource.Id.chain;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.chains = global::PodcastUtilitiesPOC.Resource.Id.chains;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.checkbox = global::PodcastUtilitiesPOC.Resource.Id.checkbox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.@checked = global::PodcastUtilitiesPOC.Resource.Id.@checked;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.chip = global::PodcastUtilitiesPOC.Resource.Id.chip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.chip1 = global::PodcastUtilitiesPOC.Resource.Id.chip1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.chip2 = global::PodcastUtilitiesPOC.Resource.Id.chip2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.chip3 = global::PodcastUtilitiesPOC.Resource.Id.chip3;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.chip_group = global::PodcastUtilitiesPOC.Resource.Id.chip_group;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.chronometer = global::PodcastUtilitiesPOC.Resource.Id.chronometer;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.circle_center = global::PodcastUtilitiesPOC.Resource.Id.circle_center;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.clear_text = global::PodcastUtilitiesPOC.Resource.Id.clear_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.clip_horizontal = global::PodcastUtilitiesPOC.Resource.Id.clip_horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.clip_vertical = global::PodcastUtilitiesPOC.Resource.Id.clip_vertical;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.clockwise = global::PodcastUtilitiesPOC.Resource.Id.clockwise;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.closest = global::PodcastUtilitiesPOC.Resource.Id.closest;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.collapseActionView = global::PodcastUtilitiesPOC.Resource.Id.collapseActionView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.confirm_button = global::PodcastUtilitiesPOC.Resource.Id.confirm_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.constraint = global::PodcastUtilitiesPOC.Resource.Id.constraint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.container = global::PodcastUtilitiesPOC.Resource.Id.container;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.content = global::PodcastUtilitiesPOC.Resource.Id.content;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.contentPanel = global::PodcastUtilitiesPOC.Resource.Id.contentPanel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.contiguous = global::PodcastUtilitiesPOC.Resource.Id.contiguous;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.continuousVelocity = global::PodcastUtilitiesPOC.Resource.Id.continuousVelocity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.coordinator = global::PodcastUtilitiesPOC.Resource.Id.coordinator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.cos = global::PodcastUtilitiesPOC.Resource.Id.cos;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.counterclockwise = global::PodcastUtilitiesPOC.Resource.Id.counterclockwise;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.CTRL = global::PodcastUtilitiesPOC.Resource.Id.CTRL;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.currentState = global::PodcastUtilitiesPOC.Resource.Id.currentState;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.custom = global::PodcastUtilitiesPOC.Resource.Id.custom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.customPanel = global::PodcastUtilitiesPOC.Resource.Id.customPanel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.cut = global::PodcastUtilitiesPOC.Resource.Id.cut;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.date_picker_actions = global::PodcastUtilitiesPOC.Resource.Id.date_picker_actions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.decelerate = global::PodcastUtilitiesPOC.Resource.Id.decelerate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.decelerateAndComplete = global::PodcastUtilitiesPOC.Resource.Id.decelerateAndComplete;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.decor_content_parent = global::PodcastUtilitiesPOC.Resource.Id.decor_content_parent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.default_activity_button = global::PodcastUtilitiesPOC.Resource.Id.default_activity_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.deltaRelative = global::PodcastUtilitiesPOC.Resource.Id.deltaRelative;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dependency_ordering = global::PodcastUtilitiesPOC.Resource.Id.dependency_ordering;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.design_bottom_sheet = global::PodcastUtilitiesPOC.Resource.Id.design_bottom_sheet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.design_menu_item_action_area = global::PodcastUtilitiesPOC.Resource.Id.design_menu_item_action_area;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.design_menu_item_action_area_stub = global::PodcastUtilitiesPOC.Resource.Id.design_menu_item_action_area_stub;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.design_menu_item_text = global::PodcastUtilitiesPOC.Resource.Id.design_menu_item_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.design_navigation_view = global::PodcastUtilitiesPOC.Resource.Id.design_navigation_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dialog_button = global::PodcastUtilitiesPOC.Resource.Id.dialog_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dimensions = global::PodcastUtilitiesPOC.Resource.Id.dimensions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.direct = global::PodcastUtilitiesPOC.Resource.Id.direct;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.disableHome = global::PodcastUtilitiesPOC.Resource.Id.disableHome;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.disableIntraAutoTransition = global::PodcastUtilitiesPOC.Resource.Id.disableIntraAutoTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.disablePostScroll = global::PodcastUtilitiesPOC.Resource.Id.disablePostScroll;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.disableScroll = global::PodcastUtilitiesPOC.Resource.Id.disableScroll;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.disjoint = global::PodcastUtilitiesPOC.Resource.Id.disjoint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dragAnticlockwise = global::PodcastUtilitiesPOC.Resource.Id.dragAnticlockwise;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dragClockwise = global::PodcastUtilitiesPOC.Resource.Id.dragClockwise;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dragDown = global::PodcastUtilitiesPOC.Resource.Id.dragDown;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dragEnd = global::PodcastUtilitiesPOC.Resource.Id.dragEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dragLeft = global::PodcastUtilitiesPOC.Resource.Id.dragLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dragRight = global::PodcastUtilitiesPOC.Resource.Id.dragRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dragStart = global::PodcastUtilitiesPOC.Resource.Id.dragStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dragUp = global::PodcastUtilitiesPOC.Resource.Id.dragUp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.dropdown_menu = global::PodcastUtilitiesPOC.Resource.Id.dropdown_menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.easeIn = global::PodcastUtilitiesPOC.Resource.Id.easeIn;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.easeInOut = global::PodcastUtilitiesPOC.Resource.Id.easeInOut;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.easeOut = global::PodcastUtilitiesPOC.Resource.Id.easeOut;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.east = global::PodcastUtilitiesPOC.Resource.Id.east;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.edit_query = global::PodcastUtilitiesPOC.Resource.Id.edit_query;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.elastic = global::PodcastUtilitiesPOC.Resource.Id.elastic;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.end = global::PodcastUtilitiesPOC.Resource.Id.end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.endToStart = global::PodcastUtilitiesPOC.Resource.Id.endToStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.enterAlways = global::PodcastUtilitiesPOC.Resource.Id.enterAlways;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.enterAlwaysCollapsed = global::PodcastUtilitiesPOC.Resource.Id.enterAlwaysCollapsed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.exitUntilCollapsed = global::PodcastUtilitiesPOC.Resource.Id.exitUntilCollapsed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.expanded_menu = global::PodcastUtilitiesPOC.Resource.Id.expanded_menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.expand_activities_button = global::PodcastUtilitiesPOC.Resource.Id.expand_activities_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.fade = global::PodcastUtilitiesPOC.Resource.Id.fade;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.fill = global::PodcastUtilitiesPOC.Resource.Id.fill;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.filled = global::PodcastUtilitiesPOC.Resource.Id.filled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.fill_horizontal = global::PodcastUtilitiesPOC.Resource.Id.fill_horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.fill_vertical = global::PodcastUtilitiesPOC.Resource.Id.fill_vertical;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.fitToContents = global::PodcastUtilitiesPOC.Resource.Id.fitToContents;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.@fixed = global::PodcastUtilitiesPOC.Resource.Id.@fixed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.flip = global::PodcastUtilitiesPOC.Resource.Id.flip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.floating = global::PodcastUtilitiesPOC.Resource.Id.floating;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.forever = global::PodcastUtilitiesPOC.Resource.Id.forever;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.fragment_container_view_tag = global::PodcastUtilitiesPOC.Resource.Id.fragment_container_view_tag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.frost = global::PodcastUtilitiesPOC.Resource.Id.frost;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.FUNCTION = global::PodcastUtilitiesPOC.Resource.Id.FUNCTION;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.ghost_view = global::PodcastUtilitiesPOC.Resource.Id.ghost_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.ghost_view_holder = global::PodcastUtilitiesPOC.Resource.Id.ghost_view_holder;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.gone = global::PodcastUtilitiesPOC.Resource.Id.gone;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.graph = global::PodcastUtilitiesPOC.Resource.Id.graph;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.graph_wrap = global::PodcastUtilitiesPOC.Resource.Id.graph_wrap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.grouping = global::PodcastUtilitiesPOC.Resource.Id.grouping;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.groups = global::PodcastUtilitiesPOC.Resource.Id.groups;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.group_divider = global::PodcastUtilitiesPOC.Resource.Id.group_divider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.guideline = global::PodcastUtilitiesPOC.Resource.Id.guideline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.header_title = global::PodcastUtilitiesPOC.Resource.Id.header_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.hideable = global::PodcastUtilitiesPOC.Resource.Id.hideable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.home = global::PodcastUtilitiesPOC.Resource.Id.home;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.homeAsUp = global::PodcastUtilitiesPOC.Resource.Id.homeAsUp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.honorRequest = global::PodcastUtilitiesPOC.Resource.Id.honorRequest;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.horizontal_only = global::PodcastUtilitiesPOC.Resource.Id.horizontal_only;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.icon = global::PodcastUtilitiesPOC.Resource.Id.icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.icon_group = global::PodcastUtilitiesPOC.Resource.Id.icon_group;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.ifRoom = global::PodcastUtilitiesPOC.Resource.Id.ifRoom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.ignore = global::PodcastUtilitiesPOC.Resource.Id.ignore;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.ignoreRequest = global::PodcastUtilitiesPOC.Resource.Id.ignoreRequest;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.image = global::PodcastUtilitiesPOC.Resource.Id.image;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.immediateStop = global::PodcastUtilitiesPOC.Resource.Id.immediateStop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.included = global::PodcastUtilitiesPOC.Resource.Id.included;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.info = global::PodcastUtilitiesPOC.Resource.Id.info;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.invisible = global::PodcastUtilitiesPOC.Resource.Id.invisible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.inward = global::PodcastUtilitiesPOC.Resource.Id.inward;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.italic = global::PodcastUtilitiesPOC.Resource.Id.italic;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.item_touch_helper_previous_elevation = global::PodcastUtilitiesPOC.Resource.Id.item_touch_helper_previous_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.jumpToEnd = global::PodcastUtilitiesPOC.Resource.Id.jumpToEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.jumpToStart = global::PodcastUtilitiesPOC.Resource.Id.jumpToStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.labeled = global::PodcastUtilitiesPOC.Resource.Id.labeled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.layout = global::PodcastUtilitiesPOC.Resource.Id.layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.left = global::PodcastUtilitiesPOC.Resource.Id.left;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.leftToRight = global::PodcastUtilitiesPOC.Resource.Id.leftToRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.legacy = global::PodcastUtilitiesPOC.Resource.Id.legacy;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.line1 = global::PodcastUtilitiesPOC.Resource.Id.line1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.line3 = global::PodcastUtilitiesPOC.Resource.Id.line3;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.linear = global::PodcastUtilitiesPOC.Resource.Id.linear;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.listMode = global::PodcastUtilitiesPOC.Resource.Id.listMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.list_item = global::PodcastUtilitiesPOC.Resource.Id.list_item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.masked = global::PodcastUtilitiesPOC.Resource.Id.masked;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.match_constraint = global::PodcastUtilitiesPOC.Resource.Id.match_constraint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.match_parent = global::PodcastUtilitiesPOC.Resource.Id.match_parent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_clock_display = global::PodcastUtilitiesPOC.Resource.Id.material_clock_display;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_clock_face = global::PodcastUtilitiesPOC.Resource.Id.material_clock_face;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_clock_hand = global::PodcastUtilitiesPOC.Resource.Id.material_clock_hand;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_clock_period_am_button = global::PodcastUtilitiesPOC.Resource.Id.material_clock_period_am_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_clock_period_pm_button = global::PodcastUtilitiesPOC.Resource.Id.material_clock_period_pm_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_clock_period_toggle = global::PodcastUtilitiesPOC.Resource.Id.material_clock_period_toggle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_hour_text_input = global::PodcastUtilitiesPOC.Resource.Id.material_hour_text_input;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_hour_tv = global::PodcastUtilitiesPOC.Resource.Id.material_hour_tv;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_label = global::PodcastUtilitiesPOC.Resource.Id.material_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_minute_text_input = global::PodcastUtilitiesPOC.Resource.Id.material_minute_text_input;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_minute_tv = global::PodcastUtilitiesPOC.Resource.Id.material_minute_tv;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_textinput_timepicker = global::PodcastUtilitiesPOC.Resource.Id.material_textinput_timepicker;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_timepicker_cancel_button = global::PodcastUtilitiesPOC.Resource.Id.material_timepicker_cancel_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_timepicker_container = global::PodcastUtilitiesPOC.Resource.Id.material_timepicker_container;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_timepicker_edit_text = global::PodcastUtilitiesPOC.Resource.Id.material_timepicker_edit_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_timepicker_mode_button = global::PodcastUtilitiesPOC.Resource.Id.material_timepicker_mode_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_timepicker_ok_button = global::PodcastUtilitiesPOC.Resource.Id.material_timepicker_ok_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_timepicker_view = global::PodcastUtilitiesPOC.Resource.Id.material_timepicker_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.material_value_index = global::PodcastUtilitiesPOC.Resource.Id.material_value_index;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.message = global::PodcastUtilitiesPOC.Resource.Id.message;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.META = global::PodcastUtilitiesPOC.Resource.Id.META;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.middle = global::PodcastUtilitiesPOC.Resource.Id.middle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mini = global::PodcastUtilitiesPOC.Resource.Id.mini;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.month_grid = global::PodcastUtilitiesPOC.Resource.Id.month_grid;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.month_navigation_bar = global::PodcastUtilitiesPOC.Resource.Id.month_navigation_bar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.month_navigation_fragment_toggle = global::PodcastUtilitiesPOC.Resource.Id.month_navigation_fragment_toggle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.month_navigation_next = global::PodcastUtilitiesPOC.Resource.Id.month_navigation_next;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.month_navigation_previous = global::PodcastUtilitiesPOC.Resource.Id.month_navigation_previous;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.month_title = global::PodcastUtilitiesPOC.Resource.Id.month_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.motion_base = global::PodcastUtilitiesPOC.Resource.Id.motion_base;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_anchor_parent = global::PodcastUtilitiesPOC.Resource.Id.mtrl_anchor_parent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_calendar_days_of_week = global::PodcastUtilitiesPOC.Resource.Id.mtrl_calendar_days_of_week;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_calendar_day_selector_frame = global::PodcastUtilitiesPOC.Resource.Id.mtrl_calendar_day_selector_frame;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_calendar_frame = global::PodcastUtilitiesPOC.Resource.Id.mtrl_calendar_frame;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_calendar_main_pane = global::PodcastUtilitiesPOC.Resource.Id.mtrl_calendar_main_pane;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_calendar_months = global::PodcastUtilitiesPOC.Resource.Id.mtrl_calendar_months;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_calendar_selection_frame = global::PodcastUtilitiesPOC.Resource.Id.mtrl_calendar_selection_frame;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_calendar_text_input_frame = global::PodcastUtilitiesPOC.Resource.Id.mtrl_calendar_text_input_frame;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_calendar_year_selector_frame = global::PodcastUtilitiesPOC.Resource.Id.mtrl_calendar_year_selector_frame;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_card_checked_layer_id = global::PodcastUtilitiesPOC.Resource.Id.mtrl_card_checked_layer_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_child_content_container = global::PodcastUtilitiesPOC.Resource.Id.mtrl_child_content_container;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_internal_children_alpha_tag = global::PodcastUtilitiesPOC.Resource.Id.mtrl_internal_children_alpha_tag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_motion_snapshot_view = global::PodcastUtilitiesPOC.Resource.Id.mtrl_motion_snapshot_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_picker_fullscreen = global::PodcastUtilitiesPOC.Resource.Id.mtrl_picker_fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_picker_header = global::PodcastUtilitiesPOC.Resource.Id.mtrl_picker_header;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_picker_header_selection_text = global::PodcastUtilitiesPOC.Resource.Id.mtrl_picker_header_selection_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_picker_header_title_and_selection = global::PodcastUtilitiesPOC.Resource.Id.mtrl_picker_header_title_and_selection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_picker_header_toggle = global::PodcastUtilitiesPOC.Resource.Id.mtrl_picker_header_toggle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_picker_text_input_date = global::PodcastUtilitiesPOC.Resource.Id.mtrl_picker_text_input_date;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_picker_text_input_range_end = global::PodcastUtilitiesPOC.Resource.Id.mtrl_picker_text_input_range_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_picker_text_input_range_start = global::PodcastUtilitiesPOC.Resource.Id.mtrl_picker_text_input_range_start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_picker_title_text = global::PodcastUtilitiesPOC.Resource.Id.mtrl_picker_title_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.mtrl_view_tag_bottom_padding = global::PodcastUtilitiesPOC.Resource.Id.mtrl_view_tag_bottom_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.multiply = global::PodcastUtilitiesPOC.Resource.Id.multiply;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.navigation_bar_item_icon_view = global::PodcastUtilitiesPOC.Resource.Id.navigation_bar_item_icon_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.navigation_bar_item_labels_group = global::PodcastUtilitiesPOC.Resource.Id.navigation_bar_item_labels_group;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.navigation_bar_item_large_label_view = global::PodcastUtilitiesPOC.Resource.Id.navigation_bar_item_large_label_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.navigation_bar_item_small_label_view = global::PodcastUtilitiesPOC.Resource.Id.navigation_bar_item_small_label_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.navigation_header_container = global::PodcastUtilitiesPOC.Resource.Id.navigation_header_container;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.never = global::PodcastUtilitiesPOC.Resource.Id.never;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.neverCompleteToEnd = global::PodcastUtilitiesPOC.Resource.Id.neverCompleteToEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.neverCompleteToStart = global::PodcastUtilitiesPOC.Resource.Id.neverCompleteToStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.none = global::PodcastUtilitiesPOC.Resource.Id.none;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.normal = global::PodcastUtilitiesPOC.Resource.Id.normal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.north = global::PodcastUtilitiesPOC.Resource.Id.north;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.noScroll = global::PodcastUtilitiesPOC.Resource.Id.noScroll;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.noState = global::PodcastUtilitiesPOC.Resource.Id.noState;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.notification_background = global::PodcastUtilitiesPOC.Resource.Id.notification_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.notification_main_column = global::PodcastUtilitiesPOC.Resource.Id.notification_main_column;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.notification_main_column_container = global::PodcastUtilitiesPOC.Resource.Id.notification_main_column_container;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.NO_DEBUG = global::PodcastUtilitiesPOC.Resource.Id.NO_DEBUG;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.off = global::PodcastUtilitiesPOC.Resource.Id.off;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.on = global::PodcastUtilitiesPOC.Resource.Id.on;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.outline = global::PodcastUtilitiesPOC.Resource.Id.outline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.outward = global::PodcastUtilitiesPOC.Resource.Id.outward;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.overshoot = global::PodcastUtilitiesPOC.Resource.Id.overshoot;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.packed = global::PodcastUtilitiesPOC.Resource.Id.packed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.parallax = global::PodcastUtilitiesPOC.Resource.Id.parallax;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.parent = global::PodcastUtilitiesPOC.Resource.Id.parent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.parentPanel = global::PodcastUtilitiesPOC.Resource.Id.parentPanel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.parentRelative = global::PodcastUtilitiesPOC.Resource.Id.parentRelative;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.parent_matrix = global::PodcastUtilitiesPOC.Resource.Id.parent_matrix;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.password_toggle = global::PodcastUtilitiesPOC.Resource.Id.password_toggle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.path = global::PodcastUtilitiesPOC.Resource.Id.path;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.pathRelative = global::PodcastUtilitiesPOC.Resource.Id.pathRelative;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.peekHeight = global::PodcastUtilitiesPOC.Resource.Id.peekHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.percent = global::PodcastUtilitiesPOC.Resource.Id.percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.pin = global::PodcastUtilitiesPOC.Resource.Id.pin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.position = global::PodcastUtilitiesPOC.Resource.Id.position;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.postLayout = global::PodcastUtilitiesPOC.Resource.Id.postLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.progress_circular = global::PodcastUtilitiesPOC.Resource.Id.progress_circular;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.progress_horizontal = global::PodcastUtilitiesPOC.Resource.Id.progress_horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.radio = global::PodcastUtilitiesPOC.Resource.Id.radio;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.ratio = global::PodcastUtilitiesPOC.Resource.Id.ratio;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.rectangles = global::PodcastUtilitiesPOC.Resource.Id.rectangles;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.reverseSawtooth = global::PodcastUtilitiesPOC.Resource.Id.reverseSawtooth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.right = global::PodcastUtilitiesPOC.Resource.Id.right;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.rightToLeft = global::PodcastUtilitiesPOC.Resource.Id.rightToLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.right_icon = global::PodcastUtilitiesPOC.Resource.Id.right_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.right_side = global::PodcastUtilitiesPOC.Resource.Id.right_side;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.rounded = global::PodcastUtilitiesPOC.Resource.Id.rounded;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.row_index_key = global::PodcastUtilitiesPOC.Resource.Id.row_index_key;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.save_non_transition_alpha = global::PodcastUtilitiesPOC.Resource.Id.save_non_transition_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.save_overlay_view = global::PodcastUtilitiesPOC.Resource.Id.save_overlay_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.sawtooth = global::PodcastUtilitiesPOC.Resource.Id.sawtooth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.scale = global::PodcastUtilitiesPOC.Resource.Id.scale;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.screen = global::PodcastUtilitiesPOC.Resource.Id.screen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.scroll = global::PodcastUtilitiesPOC.Resource.Id.scroll;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.scrollable = global::PodcastUtilitiesPOC.Resource.Id.scrollable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.scrollIndicatorDown = global::PodcastUtilitiesPOC.Resource.Id.scrollIndicatorDown;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.scrollIndicatorUp = global::PodcastUtilitiesPOC.Resource.Id.scrollIndicatorUp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.scrollView = global::PodcastUtilitiesPOC.Resource.Id.scrollView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.search_badge = global::PodcastUtilitiesPOC.Resource.Id.search_badge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.search_bar = global::PodcastUtilitiesPOC.Resource.Id.search_bar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.search_button = global::PodcastUtilitiesPOC.Resource.Id.search_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.search_close_btn = global::PodcastUtilitiesPOC.Resource.Id.search_close_btn;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.search_edit_frame = global::PodcastUtilitiesPOC.Resource.Id.search_edit_frame;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.search_go_btn = global::PodcastUtilitiesPOC.Resource.Id.search_go_btn;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.search_mag_icon = global::PodcastUtilitiesPOC.Resource.Id.search_mag_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.search_plate = global::PodcastUtilitiesPOC.Resource.Id.search_plate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.search_src_text = global::PodcastUtilitiesPOC.Resource.Id.search_src_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.search_voice_btn = global::PodcastUtilitiesPOC.Resource.Id.search_voice_btn;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.selected = global::PodcastUtilitiesPOC.Resource.Id.selected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.selection_type = global::PodcastUtilitiesPOC.Resource.Id.selection_type;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.select_dialog_listview = global::PodcastUtilitiesPOC.Resource.Id.select_dialog_listview;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.sharedValueSet = global::PodcastUtilitiesPOC.Resource.Id.sharedValueSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.sharedValueUnset = global::PodcastUtilitiesPOC.Resource.Id.sharedValueUnset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.SHIFT = global::PodcastUtilitiesPOC.Resource.Id.SHIFT;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.shortcut = global::PodcastUtilitiesPOC.Resource.Id.shortcut;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.showCustom = global::PodcastUtilitiesPOC.Resource.Id.showCustom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.showHome = global::PodcastUtilitiesPOC.Resource.Id.showHome;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.showTitle = global::PodcastUtilitiesPOC.Resource.Id.showTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.SHOW_ALL = global::PodcastUtilitiesPOC.Resource.Id.SHOW_ALL;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.SHOW_PATH = global::PodcastUtilitiesPOC.Resource.Id.SHOW_PATH;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.SHOW_PROGRESS = global::PodcastUtilitiesPOC.Resource.Id.SHOW_PROGRESS;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.sin = global::PodcastUtilitiesPOC.Resource.Id.sin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.skipCollapsed = global::PodcastUtilitiesPOC.Resource.Id.skipCollapsed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.skipped = global::PodcastUtilitiesPOC.Resource.Id.skipped;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.slide = global::PodcastUtilitiesPOC.Resource.Id.slide;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.snackbar_action = global::PodcastUtilitiesPOC.Resource.Id.snackbar_action;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.snackbar_text = global::PodcastUtilitiesPOC.Resource.Id.snackbar_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.snap = global::PodcastUtilitiesPOC.Resource.Id.snap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.snapMargins = global::PodcastUtilitiesPOC.Resource.Id.snapMargins;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.south = global::PodcastUtilitiesPOC.Resource.Id.south;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.spacer = global::PodcastUtilitiesPOC.Resource.Id.spacer;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.special_effects_controller_view_tag = global::PodcastUtilitiesPOC.Resource.Id.special_effects_controller_view_tag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.spline = global::PodcastUtilitiesPOC.Resource.Id.spline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.split_action_bar = global::PodcastUtilitiesPOC.Resource.Id.split_action_bar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.spread = global::PodcastUtilitiesPOC.Resource.Id.spread;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.spread_inside = global::PodcastUtilitiesPOC.Resource.Id.spread_inside;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.spring = global::PodcastUtilitiesPOC.Resource.Id.spring;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.square = global::PodcastUtilitiesPOC.Resource.Id.square;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.src_atop = global::PodcastUtilitiesPOC.Resource.Id.src_atop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.src_in = global::PodcastUtilitiesPOC.Resource.Id.src_in;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.src_over = global::PodcastUtilitiesPOC.Resource.Id.src_over;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.standard = global::PodcastUtilitiesPOC.Resource.Id.standard;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.start = global::PodcastUtilitiesPOC.Resource.Id.start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.startHorizontal = global::PodcastUtilitiesPOC.Resource.Id.startHorizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.startToEnd = global::PodcastUtilitiesPOC.Resource.Id.startToEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.startVertical = global::PodcastUtilitiesPOC.Resource.Id.startVertical;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.staticLayout = global::PodcastUtilitiesPOC.Resource.Id.staticLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.staticPostLayout = global::PodcastUtilitiesPOC.Resource.Id.staticPostLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.stop = global::PodcastUtilitiesPOC.Resource.Id.stop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.stretch = global::PodcastUtilitiesPOC.Resource.Id.stretch;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.submenuarrow = global::PodcastUtilitiesPOC.Resource.Id.submenuarrow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.submit_area = global::PodcastUtilitiesPOC.Resource.Id.submit_area;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.supportScrollUp = global::PodcastUtilitiesPOC.Resource.Id.supportScrollUp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.SYM = global::PodcastUtilitiesPOC.Resource.Id.SYM;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tabMode = global::PodcastUtilitiesPOC.Resource.Id.tabMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_accessibility_actions = global::PodcastUtilitiesPOC.Resource.Id.tag_accessibility_actions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_accessibility_clickable_spans = global::PodcastUtilitiesPOC.Resource.Id.tag_accessibility_clickable_spans;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_accessibility_heading = global::PodcastUtilitiesPOC.Resource.Id.tag_accessibility_heading;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_accessibility_pane_title = global::PodcastUtilitiesPOC.Resource.Id.tag_accessibility_pane_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_on_apply_window_listener = global::PodcastUtilitiesPOC.Resource.Id.tag_on_apply_window_listener;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_on_receive_content_listener = global::PodcastUtilitiesPOC.Resource.Id.tag_on_receive_content_listener;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_on_receive_content_mime_types = global::PodcastUtilitiesPOC.Resource.Id.tag_on_receive_content_mime_types;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_screen_reader_focusable = global::PodcastUtilitiesPOC.Resource.Id.tag_screen_reader_focusable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_state_description = global::PodcastUtilitiesPOC.Resource.Id.tag_state_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_transition_group = global::PodcastUtilitiesPOC.Resource.Id.tag_transition_group;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_unhandled_key_event_manager = global::PodcastUtilitiesPOC.Resource.Id.tag_unhandled_key_event_manager;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_unhandled_key_listeners = global::PodcastUtilitiesPOC.Resource.Id.tag_unhandled_key_listeners;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.tag_window_insets_animation_callback = global::PodcastUtilitiesPOC.Resource.Id.tag_window_insets_animation_callback;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.test_checkbox_android_button_tint = global::PodcastUtilitiesPOC.Resource.Id.test_checkbox_android_button_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.test_checkbox_app_button_tint = global::PodcastUtilitiesPOC.Resource.Id.test_checkbox_app_button_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.test_radiobutton_android_button_tint = global::PodcastUtilitiesPOC.Resource.Id.test_radiobutton_android_button_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.test_radiobutton_app_button_tint = global::PodcastUtilitiesPOC.Resource.Id.test_radiobutton_app_button_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.text = global::PodcastUtilitiesPOC.Resource.Id.text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.text2 = global::PodcastUtilitiesPOC.Resource.Id.text2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.textEnd = global::PodcastUtilitiesPOC.Resource.Id.textEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.textinput_counter = global::PodcastUtilitiesPOC.Resource.Id.textinput_counter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.textinput_error = global::PodcastUtilitiesPOC.Resource.Id.textinput_error;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.textinput_helper_text = global::PodcastUtilitiesPOC.Resource.Id.textinput_helper_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.textinput_placeholder = global::PodcastUtilitiesPOC.Resource.Id.textinput_placeholder;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.textinput_prefix_text = global::PodcastUtilitiesPOC.Resource.Id.textinput_prefix_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.textinput_suffix_text = global::PodcastUtilitiesPOC.Resource.Id.textinput_suffix_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.textSpacerNoButtons = global::PodcastUtilitiesPOC.Resource.Id.textSpacerNoButtons;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.textSpacerNoTitle = global::PodcastUtilitiesPOC.Resource.Id.textSpacerNoTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.textStart = global::PodcastUtilitiesPOC.Resource.Id.textStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.textTop = global::PodcastUtilitiesPOC.Resource.Id.textTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.text_input_end_icon = global::PodcastUtilitiesPOC.Resource.Id.text_input_end_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.text_input_error_icon = global::PodcastUtilitiesPOC.Resource.Id.text_input_error_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.text_input_start_icon = global::PodcastUtilitiesPOC.Resource.Id.text_input_start_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.time = global::PodcastUtilitiesPOC.Resource.Id.time;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.title = global::PodcastUtilitiesPOC.Resource.Id.title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.titleDividerNoCustom = global::PodcastUtilitiesPOC.Resource.Id.titleDividerNoCustom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.title_template = global::PodcastUtilitiesPOC.Resource.Id.title_template;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.toggle = global::PodcastUtilitiesPOC.Resource.Id.toggle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.top = global::PodcastUtilitiesPOC.Resource.Id.top;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.topPanel = global::PodcastUtilitiesPOC.Resource.Id.topPanel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.TOP_END = global::PodcastUtilitiesPOC.Resource.Id.TOP_END;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.TOP_START = global::PodcastUtilitiesPOC.Resource.Id.TOP_START;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.touch_outside = global::PodcastUtilitiesPOC.Resource.Id.touch_outside;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.transitionToEnd = global::PodcastUtilitiesPOC.Resource.Id.transitionToEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.transitionToStart = global::PodcastUtilitiesPOC.Resource.Id.transitionToStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.transition_current_scene = global::PodcastUtilitiesPOC.Resource.Id.transition_current_scene;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.transition_layout_save = global::PodcastUtilitiesPOC.Resource.Id.transition_layout_save;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.transition_position = global::PodcastUtilitiesPOC.Resource.Id.transition_position;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.transition_scene_layoutid_cache = global::PodcastUtilitiesPOC.Resource.Id.transition_scene_layoutid_cache;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.transition_transform = global::PodcastUtilitiesPOC.Resource.Id.transition_transform;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.triangle = global::PodcastUtilitiesPOC.Resource.Id.triangle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.@unchecked = global::PodcastUtilitiesPOC.Resource.Id.@unchecked;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.uniform = global::PodcastUtilitiesPOC.Resource.Id.uniform;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.unlabeled = global::PodcastUtilitiesPOC.Resource.Id.unlabeled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.up = global::PodcastUtilitiesPOC.Resource.Id.up;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.useLogo = global::PodcastUtilitiesPOC.Resource.Id.useLogo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.vertical_only = global::PodcastUtilitiesPOC.Resource.Id.vertical_only;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.view_offset_helper = global::PodcastUtilitiesPOC.Resource.Id.view_offset_helper;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.view_transition = global::PodcastUtilitiesPOC.Resource.Id.view_transition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.view_tree_lifecycle_owner = global::PodcastUtilitiesPOC.Resource.Id.view_tree_lifecycle_owner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.view_tree_saved_state_registry_owner = global::PodcastUtilitiesPOC.Resource.Id.view_tree_saved_state_registry_owner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.view_tree_view_model_store_owner = global::PodcastUtilitiesPOC.Resource.Id.view_tree_view_model_store_owner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.visible = global::PodcastUtilitiesPOC.Resource.Id.visible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.visible_removing_fragment_view_tag = global::PodcastUtilitiesPOC.Resource.Id.visible_removing_fragment_view_tag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.west = global::PodcastUtilitiesPOC.Resource.Id.west;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.withinBounds = global::PodcastUtilitiesPOC.Resource.Id.withinBounds;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.withText = global::PodcastUtilitiesPOC.Resource.Id.withText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.wrap = global::PodcastUtilitiesPOC.Resource.Id.wrap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.wrap_content = global::PodcastUtilitiesPOC.Resource.Id.wrap_content;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.wrap_content_constrained = global::PodcastUtilitiesPOC.Resource.Id.wrap_content_constrained;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.x_left = global::PodcastUtilitiesPOC.Resource.Id.x_left;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.x_right = global::PodcastUtilitiesPOC.Resource.Id.x_right;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Id.zero_corner_chip = global::PodcastUtilitiesPOC.Resource.Id.zero_corner_chip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.abc_config_activityDefaultDur = global::PodcastUtilitiesPOC.Resource.Integer.abc_config_activityDefaultDur;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.abc_config_activityShortDur = global::PodcastUtilitiesPOC.Resource.Integer.abc_config_activityShortDur;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.app_bar_elevation_anim_duration = global::PodcastUtilitiesPOC.Resource.Integer.app_bar_elevation_anim_duration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.bottom_sheet_slide_duration = global::PodcastUtilitiesPOC.Resource.Integer.bottom_sheet_slide_duration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.cancel_button_image_alpha = global::PodcastUtilitiesPOC.Resource.Integer.cancel_button_image_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.config_tooltipAnimTime = global::PodcastUtilitiesPOC.Resource.Integer.config_tooltipAnimTime;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.design_snackbar_text_max_lines = global::PodcastUtilitiesPOC.Resource.Integer.design_snackbar_text_max_lines;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.design_tab_indicator_anim_duration_ms = global::PodcastUtilitiesPOC.Resource.Integer.design_tab_indicator_anim_duration_ms;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.hide_password_duration = global::PodcastUtilitiesPOC.Resource.Integer.hide_password_duration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.material_motion_duration_long_1 = global::PodcastUtilitiesPOC.Resource.Integer.material_motion_duration_long_1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.material_motion_duration_long_2 = global::PodcastUtilitiesPOC.Resource.Integer.material_motion_duration_long_2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.material_motion_duration_medium_1 = global::PodcastUtilitiesPOC.Resource.Integer.material_motion_duration_medium_1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.material_motion_duration_medium_2 = global::PodcastUtilitiesPOC.Resource.Integer.material_motion_duration_medium_2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.material_motion_duration_short_1 = global::PodcastUtilitiesPOC.Resource.Integer.material_motion_duration_short_1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.material_motion_duration_short_2 = global::PodcastUtilitiesPOC.Resource.Integer.material_motion_duration_short_2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.material_motion_path = global::PodcastUtilitiesPOC.Resource.Integer.material_motion_path;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.mtrl_badge_max_character_count = global::PodcastUtilitiesPOC.Resource.Integer.mtrl_badge_max_character_count;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.mtrl_btn_anim_delay_ms = global::PodcastUtilitiesPOC.Resource.Integer.mtrl_btn_anim_delay_ms;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.mtrl_btn_anim_duration_ms = global::PodcastUtilitiesPOC.Resource.Integer.mtrl_btn_anim_duration_ms;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.mtrl_calendar_header_orientation = global::PodcastUtilitiesPOC.Resource.Integer.mtrl_calendar_header_orientation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.mtrl_calendar_selection_text_lines = global::PodcastUtilitiesPOC.Resource.Integer.mtrl_calendar_selection_text_lines;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.mtrl_calendar_year_selector_span = global::PodcastUtilitiesPOC.Resource.Integer.mtrl_calendar_year_selector_span;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.mtrl_card_anim_delay_ms = global::PodcastUtilitiesPOC.Resource.Integer.mtrl_card_anim_delay_ms;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.mtrl_card_anim_duration_ms = global::PodcastUtilitiesPOC.Resource.Integer.mtrl_card_anim_duration_ms;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.mtrl_chip_anim_duration = global::PodcastUtilitiesPOC.Resource.Integer.mtrl_chip_anim_duration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.mtrl_tab_indicator_anim_duration_ms = global::PodcastUtilitiesPOC.Resource.Integer.mtrl_tab_indicator_anim_duration_ms;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.show_password_duration = global::PodcastUtilitiesPOC.Resource.Integer.show_password_duration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Integer.status_bar_notification_info_maxnum = global::PodcastUtilitiesPOC.Resource.Integer.status_bar_notification_info_maxnum;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_0 = global::PodcastUtilitiesPOC.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_0;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_1 = global::PodcastUtilitiesPOC.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_0 = global::PodcastUtilitiesPOC.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_0;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_1 = global::PodcastUtilitiesPOC.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Interpolator.btn_radio_to_off_mtrl_animation_interpolator_0 = global::PodcastUtilitiesPOC.Resource.Interpolator.btn_radio_to_off_mtrl_animation_interpolator_0;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Interpolator.btn_radio_to_on_mtrl_animation_interpolator_0 = global::PodcastUtilitiesPOC.Resource.Interpolator.btn_radio_to_on_mtrl_animation_interpolator_0;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Interpolator.fast_out_slow_in = global::PodcastUtilitiesPOC.Resource.Interpolator.fast_out_slow_in;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Interpolator.mtrl_fast_out_linear_in = global::PodcastUtilitiesPOC.Resource.Interpolator.mtrl_fast_out_linear_in;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Interpolator.mtrl_fast_out_slow_in = global::PodcastUtilitiesPOC.Resource.Interpolator.mtrl_fast_out_slow_in;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Interpolator.mtrl_linear = global::PodcastUtilitiesPOC.Resource.Interpolator.mtrl_linear;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Interpolator.mtrl_linear_out_slow_in = global::PodcastUtilitiesPOC.Resource.Interpolator.mtrl_linear_out_slow_in;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_action_bar_title_item = global::PodcastUtilitiesPOC.Resource.Layout.abc_action_bar_title_item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_action_bar_up_container = global::PodcastUtilitiesPOC.Resource.Layout.abc_action_bar_up_container;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_action_menu_item_layout = global::PodcastUtilitiesPOC.Resource.Layout.abc_action_menu_item_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_action_menu_layout = global::PodcastUtilitiesPOC.Resource.Layout.abc_action_menu_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_action_mode_bar = global::PodcastUtilitiesPOC.Resource.Layout.abc_action_mode_bar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_action_mode_close_item_material = global::PodcastUtilitiesPOC.Resource.Layout.abc_action_mode_close_item_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_activity_chooser_view = global::PodcastUtilitiesPOC.Resource.Layout.abc_activity_chooser_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_activity_chooser_view_list_item = global::PodcastUtilitiesPOC.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_alert_dialog_button_bar_material = global::PodcastUtilitiesPOC.Resource.Layout.abc_alert_dialog_button_bar_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_alert_dialog_material = global::PodcastUtilitiesPOC.Resource.Layout.abc_alert_dialog_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_alert_dialog_title_material = global::PodcastUtilitiesPOC.Resource.Layout.abc_alert_dialog_title_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_cascading_menu_item_layout = global::PodcastUtilitiesPOC.Resource.Layout.abc_cascading_menu_item_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_dialog_title_material = global::PodcastUtilitiesPOC.Resource.Layout.abc_dialog_title_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_expanded_menu_layout = global::PodcastUtilitiesPOC.Resource.Layout.abc_expanded_menu_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_list_menu_item_checkbox = global::PodcastUtilitiesPOC.Resource.Layout.abc_list_menu_item_checkbox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_list_menu_item_icon = global::PodcastUtilitiesPOC.Resource.Layout.abc_list_menu_item_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_list_menu_item_layout = global::PodcastUtilitiesPOC.Resource.Layout.abc_list_menu_item_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_list_menu_item_radio = global::PodcastUtilitiesPOC.Resource.Layout.abc_list_menu_item_radio;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_popup_menu_header_item_layout = global::PodcastUtilitiesPOC.Resource.Layout.abc_popup_menu_header_item_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_popup_menu_item_layout = global::PodcastUtilitiesPOC.Resource.Layout.abc_popup_menu_item_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_screen_content_include = global::PodcastUtilitiesPOC.Resource.Layout.abc_screen_content_include;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_screen_simple = global::PodcastUtilitiesPOC.Resource.Layout.abc_screen_simple;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_screen_simple_overlay_action_mode = global::PodcastUtilitiesPOC.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_screen_toolbar = global::PodcastUtilitiesPOC.Resource.Layout.abc_screen_toolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_search_dropdown_item_icons_2line = global::PodcastUtilitiesPOC.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_search_view = global::PodcastUtilitiesPOC.Resource.Layout.abc_search_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_select_dialog_material = global::PodcastUtilitiesPOC.Resource.Layout.abc_select_dialog_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.abc_tooltip = global::PodcastUtilitiesPOC.Resource.Layout.abc_tooltip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.browser_actions_context_menu_page = global::PodcastUtilitiesPOC.Resource.Layout.browser_actions_context_menu_page;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.browser_actions_context_menu_row = global::PodcastUtilitiesPOC.Resource.Layout.browser_actions_context_menu_row;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.custom_dialog = global::PodcastUtilitiesPOC.Resource.Layout.custom_dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_bottom_navigation_item = global::PodcastUtilitiesPOC.Resource.Layout.design_bottom_navigation_item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_bottom_sheet_dialog = global::PodcastUtilitiesPOC.Resource.Layout.design_bottom_sheet_dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_layout_snackbar = global::PodcastUtilitiesPOC.Resource.Layout.design_layout_snackbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_layout_snackbar_include = global::PodcastUtilitiesPOC.Resource.Layout.design_layout_snackbar_include;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_layout_tab_icon = global::PodcastUtilitiesPOC.Resource.Layout.design_layout_tab_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_layout_tab_text = global::PodcastUtilitiesPOC.Resource.Layout.design_layout_tab_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_menu_item_action_area = global::PodcastUtilitiesPOC.Resource.Layout.design_menu_item_action_area;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_navigation_item = global::PodcastUtilitiesPOC.Resource.Layout.design_navigation_item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_navigation_item_header = global::PodcastUtilitiesPOC.Resource.Layout.design_navigation_item_header;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_navigation_item_separator = global::PodcastUtilitiesPOC.Resource.Layout.design_navigation_item_separator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_navigation_item_subheader = global::PodcastUtilitiesPOC.Resource.Layout.design_navigation_item_subheader;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_navigation_menu = global::PodcastUtilitiesPOC.Resource.Layout.design_navigation_menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_navigation_menu_item = global::PodcastUtilitiesPOC.Resource.Layout.design_navigation_menu_item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_text_input_end_icon = global::PodcastUtilitiesPOC.Resource.Layout.design_text_input_end_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.design_text_input_start_icon = global::PodcastUtilitiesPOC.Resource.Layout.design_text_input_start_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_chip_input_combo = global::PodcastUtilitiesPOC.Resource.Layout.material_chip_input_combo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_clockface_textview = global::PodcastUtilitiesPOC.Resource.Layout.material_clockface_textview;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_clockface_view = global::PodcastUtilitiesPOC.Resource.Layout.material_clockface_view;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_clock_display = global::PodcastUtilitiesPOC.Resource.Layout.material_clock_display;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_clock_display_divider = global::PodcastUtilitiesPOC.Resource.Layout.material_clock_display_divider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_clock_period_toggle = global::PodcastUtilitiesPOC.Resource.Layout.material_clock_period_toggle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_clock_period_toggle_land = global::PodcastUtilitiesPOC.Resource.Layout.material_clock_period_toggle_land;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_radial_view_group = global::PodcastUtilitiesPOC.Resource.Layout.material_radial_view_group;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_textinput_timepicker = global::PodcastUtilitiesPOC.Resource.Layout.material_textinput_timepicker;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_timepicker = global::PodcastUtilitiesPOC.Resource.Layout.material_timepicker;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_timepicker_dialog = global::PodcastUtilitiesPOC.Resource.Layout.material_timepicker_dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_timepicker_textinput_display = global::PodcastUtilitiesPOC.Resource.Layout.material_timepicker_textinput_display;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_time_chip = global::PodcastUtilitiesPOC.Resource.Layout.material_time_chip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.material_time_input = global::PodcastUtilitiesPOC.Resource.Layout.material_time_input;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_alert_dialog = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_alert_dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_alert_dialog_actions = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_alert_dialog_actions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_alert_dialog_title = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_alert_dialog_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_alert_select_dialog_item = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_alert_select_dialog_item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_alert_select_dialog_multichoice = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_alert_select_dialog_multichoice;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_alert_select_dialog_singlechoice = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_alert_select_dialog_singlechoice;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_calendar_day = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_calendar_day;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_calendar_days_of_week = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_calendar_days_of_week;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_calendar_day_of_week = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_calendar_day_of_week;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_calendar_horizontal = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_calendar_horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_calendar_month = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_calendar_month;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_calendar_months = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_calendar_months;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_calendar_month_labeled = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_calendar_month_labeled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_calendar_month_navigation = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_calendar_month_navigation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_calendar_vertical = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_calendar_vertical;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_calendar_year = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_calendar_year;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_layout_snackbar = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_layout_snackbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_layout_snackbar_include = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_layout_snackbar_include;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_navigation_rail_item = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_navigation_rail_item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_picker_actions = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_picker_actions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_picker_dialog = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_picker_dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_picker_fullscreen = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_picker_fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_picker_header_dialog = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_picker_header_dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_picker_header_fullscreen = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_picker_header_fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_picker_header_selection_text = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_picker_header_selection_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_picker_header_title_text = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_picker_header_title_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_picker_header_toggle = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_picker_header_toggle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_picker_text_input_date = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_picker_text_input_date;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.mtrl_picker_text_input_date_range = global::PodcastUtilitiesPOC.Resource.Layout.mtrl_picker_text_input_date_range;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.notification_action = global::PodcastUtilitiesPOC.Resource.Layout.notification_action;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.notification_action_tombstone = global::PodcastUtilitiesPOC.Resource.Layout.notification_action_tombstone;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.notification_template_custom_big = global::PodcastUtilitiesPOC.Resource.Layout.notification_template_custom_big;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.notification_template_icon_group = global::PodcastUtilitiesPOC.Resource.Layout.notification_template_icon_group;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.notification_template_part_chronometer = global::PodcastUtilitiesPOC.Resource.Layout.notification_template_part_chronometer;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.notification_template_part_time = global::PodcastUtilitiesPOC.Resource.Layout.notification_template_part_time;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.select_dialog_item_material = global::PodcastUtilitiesPOC.Resource.Layout.select_dialog_item_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.select_dialog_multichoice_material = global::PodcastUtilitiesPOC.Resource.Layout.select_dialog_multichoice_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.select_dialog_singlechoice_material = global::PodcastUtilitiesPOC.Resource.Layout.select_dialog_singlechoice_material;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.support_simple_spinner_dropdown_item = global::PodcastUtilitiesPOC.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.test_action_chip = global::PodcastUtilitiesPOC.Resource.Layout.test_action_chip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.test_chip_zero_corner_radius = global::PodcastUtilitiesPOC.Resource.Layout.test_chip_zero_corner_radius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.test_design_checkbox = global::PodcastUtilitiesPOC.Resource.Layout.test_design_checkbox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.test_design_radiobutton = global::PodcastUtilitiesPOC.Resource.Layout.test_design_radiobutton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.test_navigation_bar_item_layout = global::PodcastUtilitiesPOC.Resource.Layout.test_navigation_bar_item_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.test_reflow_chipgroup = global::PodcastUtilitiesPOC.Resource.Layout.test_reflow_chipgroup;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.test_toolbar = global::PodcastUtilitiesPOC.Resource.Layout.test_toolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.test_toolbar_custom_background = global::PodcastUtilitiesPOC.Resource.Layout.test_toolbar_custom_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.test_toolbar_elevation = global::PodcastUtilitiesPOC.Resource.Layout.test_toolbar_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.test_toolbar_surface = global::PodcastUtilitiesPOC.Resource.Layout.test_toolbar_surface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.text_view_without_line_height = global::PodcastUtilitiesPOC.Resource.Layout.text_view_without_line_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.text_view_with_line_height_from_appearance = global::PodcastUtilitiesPOC.Resource.Layout.text_view_with_line_height_from_appearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.text_view_with_line_height_from_layout = global::PodcastUtilitiesPOC.Resource.Layout.text_view_with_line_height_from_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.text_view_with_line_height_from_style = global::PodcastUtilitiesPOC.Resource.Layout.text_view_with_line_height_from_style;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Layout.text_view_with_theme_line_height = global::PodcastUtilitiesPOC.Resource.Layout.text_view_with_theme_line_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Plurals.mtrl_badge_content_description = global::PodcastUtilitiesPOC.Resource.Plurals.mtrl_badge_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_action_bar_home_description = global::PodcastUtilitiesPOC.Resource.String.abc_action_bar_home_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_action_bar_up_description = global::PodcastUtilitiesPOC.Resource.String.abc_action_bar_up_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_action_menu_overflow_description = global::PodcastUtilitiesPOC.Resource.String.abc_action_menu_overflow_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_action_mode_done = global::PodcastUtilitiesPOC.Resource.String.abc_action_mode_done;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_activitychooserview_choose_application = global::PodcastUtilitiesPOC.Resource.String.abc_activitychooserview_choose_application;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_activity_chooser_view_see_all = global::PodcastUtilitiesPOC.Resource.String.abc_activity_chooser_view_see_all;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_capital_off = global::PodcastUtilitiesPOC.Resource.String.abc_capital_off;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_capital_on = global::PodcastUtilitiesPOC.Resource.String.abc_capital_on;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_menu_alt_shortcut_label = global::PodcastUtilitiesPOC.Resource.String.abc_menu_alt_shortcut_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_menu_ctrl_shortcut_label = global::PodcastUtilitiesPOC.Resource.String.abc_menu_ctrl_shortcut_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_menu_delete_shortcut_label = global::PodcastUtilitiesPOC.Resource.String.abc_menu_delete_shortcut_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_menu_enter_shortcut_label = global::PodcastUtilitiesPOC.Resource.String.abc_menu_enter_shortcut_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_menu_function_shortcut_label = global::PodcastUtilitiesPOC.Resource.String.abc_menu_function_shortcut_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_menu_meta_shortcut_label = global::PodcastUtilitiesPOC.Resource.String.abc_menu_meta_shortcut_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_menu_shift_shortcut_label = global::PodcastUtilitiesPOC.Resource.String.abc_menu_shift_shortcut_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_menu_space_shortcut_label = global::PodcastUtilitiesPOC.Resource.String.abc_menu_space_shortcut_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_menu_sym_shortcut_label = global::PodcastUtilitiesPOC.Resource.String.abc_menu_sym_shortcut_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_prepend_shortcut_label = global::PodcastUtilitiesPOC.Resource.String.abc_prepend_shortcut_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_searchview_description_clear = global::PodcastUtilitiesPOC.Resource.String.abc_searchview_description_clear;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_searchview_description_query = global::PodcastUtilitiesPOC.Resource.String.abc_searchview_description_query;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_searchview_description_search = global::PodcastUtilitiesPOC.Resource.String.abc_searchview_description_search;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_searchview_description_submit = global::PodcastUtilitiesPOC.Resource.String.abc_searchview_description_submit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_searchview_description_voice = global::PodcastUtilitiesPOC.Resource.String.abc_searchview_description_voice;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_search_hint = global::PodcastUtilitiesPOC.Resource.String.abc_search_hint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_shareactionprovider_share_with = global::PodcastUtilitiesPOC.Resource.String.abc_shareactionprovider_share_with;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_shareactionprovider_share_with_application = global::PodcastUtilitiesPOC.Resource.String.abc_shareactionprovider_share_with_application;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.abc_toolbar_collapse_description = global::PodcastUtilitiesPOC.Resource.String.abc_toolbar_collapse_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.appbar_scrolling_view_behavior = global::PodcastUtilitiesPOC.Resource.String.appbar_scrolling_view_behavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.bottomsheet_action_expand_halfway = global::PodcastUtilitiesPOC.Resource.String.bottomsheet_action_expand_halfway;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.bottom_sheet_behavior = global::PodcastUtilitiesPOC.Resource.String.bottom_sheet_behavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.character_counter_content_description = global::PodcastUtilitiesPOC.Resource.String.character_counter_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.character_counter_overflowed_content_description = global::PodcastUtilitiesPOC.Resource.String.character_counter_overflowed_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.character_counter_pattern = global::PodcastUtilitiesPOC.Resource.String.character_counter_pattern;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.chip_text = global::PodcastUtilitiesPOC.Resource.String.chip_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.clear_text_end_icon_content_description = global::PodcastUtilitiesPOC.Resource.String.clear_text_end_icon_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.copy_toast_msg = global::PodcastUtilitiesPOC.Resource.String.copy_toast_msg;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.download_activity_after_load_title = global::PodcastUtilitiesPOC.Resource.String.download_activity_after_load_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.download_activity_title = global::PodcastUtilitiesPOC.Resource.String.download_activity_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.error_icon_content_description = global::PodcastUtilitiesPOC.Resource.String.error_icon_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.exposed_dropdown_menu_content_description = global::PodcastUtilitiesPOC.Resource.String.exposed_dropdown_menu_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.fab_transformation_scrim_behavior = global::PodcastUtilitiesPOC.Resource.String.fab_transformation_scrim_behavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.fab_transformation_sheet_behavior = global::PodcastUtilitiesPOC.Resource.String.fab_transformation_sheet_behavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.fallback_menu_item_copy_link = global::PodcastUtilitiesPOC.Resource.String.fallback_menu_item_copy_link;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.fallback_menu_item_open_in_browser = global::PodcastUtilitiesPOC.Resource.String.fallback_menu_item_open_in_browser;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.fallback_menu_item_share_link = global::PodcastUtilitiesPOC.Resource.String.fallback_menu_item_share_link;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.hide_bottom_view_on_scroll_behavior = global::PodcastUtilitiesPOC.Resource.String.hide_bottom_view_on_scroll_behavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.icon_content_description = global::PodcastUtilitiesPOC.Resource.String.icon_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.item_view_role_description = global::PodcastUtilitiesPOC.Resource.String.item_view_role_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_clock_display_divider = global::PodcastUtilitiesPOC.Resource.String.material_clock_display_divider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_clock_toggle_content_description = global::PodcastUtilitiesPOC.Resource.String.material_clock_toggle_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_hour_selection = global::PodcastUtilitiesPOC.Resource.String.material_hour_selection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_hour_suffix = global::PodcastUtilitiesPOC.Resource.String.material_hour_suffix;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_minute_selection = global::PodcastUtilitiesPOC.Resource.String.material_minute_selection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_minute_suffix = global::PodcastUtilitiesPOC.Resource.String.material_minute_suffix;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_motion_easing_accelerated = global::PodcastUtilitiesPOC.Resource.String.material_motion_easing_accelerated;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_motion_easing_decelerated = global::PodcastUtilitiesPOC.Resource.String.material_motion_easing_decelerated;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_motion_easing_emphasized = global::PodcastUtilitiesPOC.Resource.String.material_motion_easing_emphasized;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_motion_easing_linear = global::PodcastUtilitiesPOC.Resource.String.material_motion_easing_linear;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_motion_easing_standard = global::PodcastUtilitiesPOC.Resource.String.material_motion_easing_standard;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_slider_range_end = global::PodcastUtilitiesPOC.Resource.String.material_slider_range_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_slider_range_start = global::PodcastUtilitiesPOC.Resource.String.material_slider_range_start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_timepicker_am = global::PodcastUtilitiesPOC.Resource.String.material_timepicker_am;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_timepicker_clock_mode_description = global::PodcastUtilitiesPOC.Resource.String.material_timepicker_clock_mode_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_timepicker_hour = global::PodcastUtilitiesPOC.Resource.String.material_timepicker_hour;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_timepicker_minute = global::PodcastUtilitiesPOC.Resource.String.material_timepicker_minute;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_timepicker_pm = global::PodcastUtilitiesPOC.Resource.String.material_timepicker_pm;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_timepicker_select_time = global::PodcastUtilitiesPOC.Resource.String.material_timepicker_select_time;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.material_timepicker_text_input_mode_description = global::PodcastUtilitiesPOC.Resource.String.material_timepicker_text_input_mode_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_badge_numberless_content_description = global::PodcastUtilitiesPOC.Resource.String.mtrl_badge_numberless_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_chip_close_icon_content_description = global::PodcastUtilitiesPOC.Resource.String.mtrl_chip_close_icon_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_exceed_max_badge_number_content_description = global::PodcastUtilitiesPOC.Resource.String.mtrl_exceed_max_badge_number_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_exceed_max_badge_number_suffix = global::PodcastUtilitiesPOC.Resource.String.mtrl_exceed_max_badge_number_suffix;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_a11y_next_month = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_a11y_next_month;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_a11y_prev_month = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_a11y_prev_month;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_announce_current_selection = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_announce_current_selection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_cancel = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_cancel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_confirm = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_confirm;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_date_header_selected = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_date_header_selected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_date_header_title = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_date_header_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_date_header_unselected = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_date_header_unselected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_day_of_week_column_header = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_day_of_week_column_header;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_invalid_format = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_invalid_format;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_invalid_format_example = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_invalid_format_example;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_invalid_format_use = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_invalid_format_use;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_invalid_range = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_invalid_range;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_navigate_to_year_description = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_navigate_to_year_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_out_of_range = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_out_of_range;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_range_header_only_end_selected = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_range_header_only_end_selected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_range_header_only_start_selected = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_range_header_only_start_selected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_range_header_selected = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_range_header_selected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_range_header_title = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_range_header_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_range_header_unselected = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_range_header_unselected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_save = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_save;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_text_input_date_hint = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_text_input_date_hint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_text_input_date_range_end_hint = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_text_input_date_range_end_hint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_text_input_date_range_start_hint = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_text_input_date_range_start_hint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_text_input_day_abbr = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_text_input_day_abbr;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_text_input_month_abbr = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_text_input_month_abbr;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_text_input_year_abbr = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_text_input_year_abbr;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_toggle_to_calendar_input_mode = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_toggle_to_calendar_input_mode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_toggle_to_day_selection = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_toggle_to_day_selection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_toggle_to_text_input_mode = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_toggle_to_text_input_mode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.mtrl_picker_toggle_to_year_selection = global::PodcastUtilitiesPOC.Resource.String.mtrl_picker_toggle_to_year_selection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.password_toggle_content_description = global::PodcastUtilitiesPOC.Resource.String.password_toggle_content_description;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.path_password_eye = global::PodcastUtilitiesPOC.Resource.String.path_password_eye;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.path_password_eye_mask_strike_through = global::PodcastUtilitiesPOC.Resource.String.path_password_eye_mask_strike_through;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.path_password_eye_mask_visible = global::PodcastUtilitiesPOC.Resource.String.path_password_eye_mask_visible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.path_password_strike_through = global::PodcastUtilitiesPOC.Resource.String.path_password_strike_through;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.search_menu_title = global::PodcastUtilitiesPOC.Resource.String.search_menu_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.String.status_bar_notification_info_overflow = global::PodcastUtilitiesPOC.Resource.String.status_bar_notification_info_overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.AlertDialog_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.AlertDialog_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.AlertDialog_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.AlertDialog_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.AndroidThemeColorAccentYellow = global::PodcastUtilitiesPOC.Resource.Style.AndroidThemeColorAccentYellow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Animation_AppCompat_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Animation_AppCompat_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Animation_AppCompat_DropDownUp = global::PodcastUtilitiesPOC.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Animation_AppCompat_Tooltip = global::PodcastUtilitiesPOC.Resource.Style.Animation_AppCompat_Tooltip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Animation_Design_BottomSheetDialog = global::PodcastUtilitiesPOC.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Animation_MaterialComponents_BottomSheetDialog = global::PodcastUtilitiesPOC.Resource.Style.Animation_MaterialComponents_BottomSheetDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_AlertDialog_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_AlertDialog_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_AlertDialog_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Animation_AppCompat_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::PodcastUtilitiesPOC.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Animation_AppCompat_Tooltip = global::PodcastUtilitiesPOC.Resource.Style.Base_Animation_AppCompat_Tooltip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_CardView = global::PodcastUtilitiesPOC.Resource.Style.Base_CardView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_DialogWindowTitle_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_MaterialAlertDialog_MaterialComponents_Title_Icon = global::PodcastUtilitiesPOC.Resource.Style.Base_MaterialAlertDialog_MaterialComponents_Title_Icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_MaterialAlertDialog_MaterialComponents_Title_Panel = global::PodcastUtilitiesPOC.Resource.Style.Base_MaterialAlertDialog_MaterialComponents_Title_Panel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_MaterialAlertDialog_MaterialComponents_Title_Text = global::PodcastUtilitiesPOC.Resource.Style.Base_MaterialAlertDialog_MaterialComponents_Title_Text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Button = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Large = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Small = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Title = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Tooltip = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Tooltip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_MaterialComponents_Badge = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_MaterialComponents_Badge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_MaterialComponents_Button = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_MaterialComponents_Button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_MaterialComponents_Headline6 = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_MaterialComponents_Headline6;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_MaterialComponents_Subtitle2 = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_MaterialComponents_Subtitle2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::PodcastUtilitiesPOC.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert_Framework = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert_Framework;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_ThemeOverlay_MaterialComponents_MaterialAlertDialog = global::PodcastUtilitiesPOC.Resource.Style.Base_ThemeOverlay_MaterialComponents_MaterialAlertDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_CompactMenu = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_CompactMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Dialog_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Dialog_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth = global::PodcastUtilitiesPOC.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_BottomSheetDialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_BottomSheetDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_MaterialAlertDialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_MaterialAlertDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_Theme_MaterialComponents = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_Theme_MaterialComponents;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_Theme_MaterialComponents_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_Theme_MaterialComponents_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V21_ThemeOverlay_MaterialComponents_BottomSheetDialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V21_ThemeOverlay_MaterialComponents_BottomSheetDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V21_Theme_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_V21_Theme_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V21_Theme_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V21_Theme_MaterialComponents = global::PodcastUtilitiesPOC.Resource.Style.Base_V21_Theme_MaterialComponents;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V21_Theme_MaterialComponents_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V21_Theme_MaterialComponents_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V21_Theme_MaterialComponents_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_V21_Theme_MaterialComponents_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V21_Theme_MaterialComponents_Light_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V21_Theme_MaterialComponents_Light_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V22_Theme_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_V22_Theme_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V22_Theme_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V23_Theme_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_V23_Theme_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V23_Theme_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V26_Theme_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_V26_Theme_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V26_Theme_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_V26_Theme_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::PodcastUtilitiesPOC.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V28_Theme_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_V28_Theme_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V28_Theme_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_V28_Theme_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V7_Theme_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Base_V7_Theme_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V7_Theme_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::PodcastUtilitiesPOC.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::PodcastUtilitiesPOC.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::PodcastUtilitiesPOC.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ActionButton = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ActionMode = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Button = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Button_Small = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_EditText = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ImageButton = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ImageButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ListMenuView = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ListMenuView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ListView = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_RatingBar = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_SearchView = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_SeekBar = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_SeekBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Spinner = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_TextView = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_TextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Toolbar = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_Design_TabLayout = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_Design_TabLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_AutoCompleteTextView = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_AutoCompleteTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_CheckedTextView = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_CheckedTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_Chip = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_Chip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_MaterialCalendar_NavigationButton = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_MaterialCalendar_NavigationButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_PopupMenu = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_PopupMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ContextMenu = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ContextMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ListPopupWindow = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ListPopupWindow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_Overflow = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_Overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_Slider = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_Slider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_Snackbar = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_Snackbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Base_Widget_MaterialComponents_TextView = global::PodcastUtilitiesPOC.Resource.Style.Base_Widget_MaterialComponents_TextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.CardView = global::PodcastUtilitiesPOC.Resource.Style.CardView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.CardView_Dark = global::PodcastUtilitiesPOC.Resource.Style.CardView_Dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.CardView_Light = global::PodcastUtilitiesPOC.Resource.Style.CardView_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.EmptyTheme = global::PodcastUtilitiesPOC.Resource.Style.EmptyTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.MaterialAlertDialog_MaterialComponents = global::PodcastUtilitiesPOC.Resource.Style.MaterialAlertDialog_MaterialComponents;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.MaterialAlertDialog_MaterialComponents_Body_Text = global::PodcastUtilitiesPOC.Resource.Style.MaterialAlertDialog_MaterialComponents_Body_Text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.MaterialAlertDialog_MaterialComponents_Picker_Date_Calendar = global::PodcastUtilitiesPOC.Resource.Style.MaterialAlertDialog_MaterialComponents_Picker_Date_Calendar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.MaterialAlertDialog_MaterialComponents_Picker_Date_Spinner = global::PodcastUtilitiesPOC.Resource.Style.MaterialAlertDialog_MaterialComponents_Picker_Date_Spinner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Icon = global::PodcastUtilitiesPOC.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Icon_CenterStacked = global::PodcastUtilitiesPOC.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Icon_CenterStacked;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Panel = global::PodcastUtilitiesPOC.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Panel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked = global::PodcastUtilitiesPOC.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Text = global::PodcastUtilitiesPOC.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked = global::PodcastUtilitiesPOC.Resource.Style.MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Platform_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Platform_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_MaterialComponents = global::PodcastUtilitiesPOC.Resource.Style.Platform_MaterialComponents;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_MaterialComponents_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Platform_MaterialComponents_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_MaterialComponents_Light = global::PodcastUtilitiesPOC.Resource.Style.Platform_MaterialComponents_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_MaterialComponents_Light_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Platform_MaterialComponents_Light_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_ThemeOverlay_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::PodcastUtilitiesPOC.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_V21_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Platform_V21_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_V21_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Platform_V21_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_V25_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Platform_V25_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_V25_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Platform_V25_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Platform_Widget_AppCompat_Spinner = global::PodcastUtilitiesPOC.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::PodcastUtilitiesPOC.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::PodcastUtilitiesPOC.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::PodcastUtilitiesPOC.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_BottomLeftDifferentCornerSize = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_BottomLeftDifferentCornerSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_BottomRightCut = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_BottomRightCut;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_Cut = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_Cut;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_DifferentCornerSize = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_DifferentCornerSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_BottomSheet = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_BottomSheet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_Chip = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_Chip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_ExtendedFloatingActionButton = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_ExtendedFloatingActionButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_FloatingActionButton = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_FloatingActionButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Day = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Day;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Window_Fullscreen = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Window_Fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Year = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Year;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_TextInputLayout_FilledBox = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_MaterialComponents_TextInputLayout_FilledBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_TopLeftCut = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_TopLeftCut;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearanceOverlay_TopRightDifferentCornerSize = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearanceOverlay_TopRightDifferentCornerSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearance_MaterialComponents = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearance_MaterialComponents;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearance_MaterialComponents_LargeComponent = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearance_MaterialComponents_LargeComponent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearance_MaterialComponents_MediumComponent = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearance_MaterialComponents_MediumComponent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearance_MaterialComponents_SmallComponent = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearance_MaterialComponents_SmallComponent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearance_MaterialComponents_Test = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearance_MaterialComponents_Test;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ShapeAppearance_MaterialComponents_Tooltip = global::PodcastUtilitiesPOC.Resource.Style.ShapeAppearance_MaterialComponents_Tooltip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TestStyleWithLineHeight = global::PodcastUtilitiesPOC.Resource.Style.TestStyleWithLineHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TestStyleWithLineHeightAppearance = global::PodcastUtilitiesPOC.Resource.Style.TestStyleWithLineHeightAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TestStyleWithoutLineHeight = global::PodcastUtilitiesPOC.Resource.Style.TestStyleWithoutLineHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TestStyleWithThemeLineHeightAttribute = global::PodcastUtilitiesPOC.Resource.Style.TestStyleWithThemeLineHeightAttribute;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TestThemeWithLineHeight = global::PodcastUtilitiesPOC.Resource.Style.TestThemeWithLineHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TestThemeWithLineHeightDisabled = global::PodcastUtilitiesPOC.Resource.Style.TestThemeWithLineHeightDisabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Test_ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Day = global::PodcastUtilitiesPOC.Resource.Style.Test_ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Day;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Test_Theme_MaterialComponents_MaterialCalendar = global::PodcastUtilitiesPOC.Resource.Style.Test_Theme_MaterialComponents_MaterialCalendar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Test_Widget_MaterialComponents_MaterialCalendar = global::PodcastUtilitiesPOC.Resource.Style.Test_Widget_MaterialComponents_MaterialCalendar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Test_Widget_MaterialComponents_MaterialCalendar_Day = global::PodcastUtilitiesPOC.Resource.Style.Test_Widget_MaterialComponents_MaterialCalendar_Day;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Test_Widget_MaterialComponents_MaterialCalendar_Day_Selected = global::PodcastUtilitiesPOC.Resource.Style.Test_Widget_MaterialComponents_MaterialCalendar_Day_Selected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Body1 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Body2 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Button = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Caption = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Display1 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Display2 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Display3 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Display4 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Headline = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Inverse = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Large = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Large;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Medium = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Menu = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Small = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Subhead = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Title = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Tooltip = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Tooltip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Compat_Notification = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Compat_Notification;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Compat_Notification_Info = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Compat_Notification_Time = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Compat_Notification_Title = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Design_Counter = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Design_Counter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Design_Counter_Overflow = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Design_Counter_Overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Design_Error = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Design_Error;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Design_HelperText = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Design_HelperText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Design_Hint = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Design_Hint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Design_Placeholder = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Design_Placeholder;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Design_Prefix = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Design_Prefix;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Design_Snackbar_Message = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Design_Snackbar_Message;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Design_Suffix = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Design_Suffix;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Design_Tab = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Design_Tab;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Badge = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Badge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Body1 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Body1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Body2 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Body2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Button = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Caption = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Caption;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Chip = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Chip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Headline1 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Headline1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Headline2 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Headline2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Headline3 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Headline3;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Headline4 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Headline4;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Headline5 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Headline5;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Headline6 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Headline6;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Overline = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Overline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Subtitle1 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Subtitle1;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Subtitle2 = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Subtitle2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_TimePicker_Title = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_TimePicker_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_MaterialComponents_Tooltip = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_MaterialComponents_Tooltip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::PodcastUtilitiesPOC.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlayColorAccentRed = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlayColorAccentRed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_AppCompat_Dark = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_AppCompat_DayNight = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_AppCompat_DayNight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_AppCompat_DayNight_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_AppCompat_DayNight_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_AppCompat_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_Design_TextInputEditText = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_Design_TextInputEditText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar_Primary = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar_Primary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar_Surface = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar_Surface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_AutoCompleteTextView = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_AutoCompleteTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_AutoCompleteTextView_FilledBox = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_AutoCompleteTextView_FilledBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_AutoCompleteTextView_FilledBox_Dense = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_AutoCompleteTextView_FilledBox_Dense;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_AutoCompleteTextView_OutlinedBox = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_AutoCompleteTextView_OutlinedBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_AutoCompleteTextView_OutlinedBox_Dense = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_AutoCompleteTextView_OutlinedBox_Dense;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_BottomAppBar_Primary = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_BottomAppBar_Primary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_BottomAppBar_Surface = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_BottomAppBar_Surface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_BottomSheetDialog = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_BottomSheetDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_Dark = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_Dark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_Dark_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_Dark_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_DayNight_BottomSheetDialog = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_DayNight_BottomSheetDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_Dialog = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert_Framework = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert_Framework;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_Light = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Centered = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Centered;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date_Calendar = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date_Calendar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date_Header_Text = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date_Header_Text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date_Header_Text_Day = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date_Header_Text_Day;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date_Spinner = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date_Spinner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_MaterialCalendar = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_MaterialCalendar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_MaterialCalendar_Fullscreen = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_MaterialCalendar_Fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_TimePicker = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_TimePicker;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_TimePicker_Display = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_TimePicker_Display;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_Toolbar_Primary = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_Toolbar_Primary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.ThemeOverlay_MaterialComponents_Toolbar_Surface = global::PodcastUtilitiesPOC.Resource.Style.ThemeOverlay_MaterialComponents_Toolbar_Surface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_CompactMenu = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_DayNight = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_DayNight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_Empty = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_Empty;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_Light = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_Light_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_AppCompat_NoActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_Design = global::PodcastUtilitiesPOC.Resource.Style.Theme_Design;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_Design_BottomSheetDialog = global::PodcastUtilitiesPOC.Resource.Style.Theme_Design_BottomSheetDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_Design_Light = global::PodcastUtilitiesPOC.Resource.Style.Theme_Design_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::PodcastUtilitiesPOC.Resource.Style.Theme_Design_Light_BottomSheetDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_Design_Light_NoActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_Design_Light_NoActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_Design_NoActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_Design_NoActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_BottomSheetDialog = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_BottomSheetDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_CompactMenu = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_CompactMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_BottomSheetDialog = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_BottomSheetDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_DarkActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_DarkActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_DarkActionBar_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_DarkActionBar_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_DialogWhenLarge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_DialogWhenLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_Alert_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_Alert_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_FixedSize = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_FixedSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_FixedSize_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_FixedSize_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_MinWidth = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_MinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_MinWidth_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_Dialog_MinWidth_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_NoActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_NoActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DayNight_NoActionBar_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DayNight_NoActionBar_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_DialogWhenLarge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_DialogWhenLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Dialog_Alert_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Dialog_Alert_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Dialog_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Dialog_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Dialog_FixedSize = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Dialog_FixedSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Dialog_FixedSize_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Dialog_FixedSize_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_BarSize = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_BarSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_Dialog_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_Dialog_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_Dialog_FixedSize = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_Dialog_FixedSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_Dialog_FixedSize_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_Dialog_FixedSize_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_LargeTouch = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_LargeTouch;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_NoActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_NoActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_NoActionBar = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_NoActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge = global::PodcastUtilitiesPOC.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ActionButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ActionButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ActionMode = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ActionMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ActivityChooserView = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Button = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ButtonBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Button_Borderless = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Button_Colored = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Button_Small = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Button_Small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_EditText = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_EditText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ImageButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ImageButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_SearchView = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ListMenuView = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ListMenuView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ListPopupWindow = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ListView = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ListView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ListView_DropDown = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ListView_Menu = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_PopupMenu = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_PopupWindow = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ProgressBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_RatingBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_RatingBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_RatingBar_Small = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_RatingBar_Small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_SearchView = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_SearchView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_SeekBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_SeekBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_SeekBar_Discrete = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_SeekBar_Discrete;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Spinner = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Spinner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_TextView = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_TextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Toolbar = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Toolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::PodcastUtilitiesPOC.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Compat_NotificationActionContainer = global::PodcastUtilitiesPOC.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Compat_NotificationActionText = global::PodcastUtilitiesPOC.Resource.Style.Widget_Compat_NotificationActionText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Design_AppBarLayout = global::PodcastUtilitiesPOC.Resource.Style.Widget_Design_AppBarLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Design_BottomNavigationView = global::PodcastUtilitiesPOC.Resource.Style.Widget_Design_BottomNavigationView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Design_BottomSheet_Modal = global::PodcastUtilitiesPOC.Resource.Style.Widget_Design_BottomSheet_Modal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Design_CollapsingToolbar = global::PodcastUtilitiesPOC.Resource.Style.Widget_Design_CollapsingToolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Design_FloatingActionButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_Design_FloatingActionButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Design_NavigationView = global::PodcastUtilitiesPOC.Resource.Style.Widget_Design_NavigationView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::PodcastUtilitiesPOC.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Design_Snackbar = global::PodcastUtilitiesPOC.Resource.Style.Widget_Design_Snackbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Design_TabLayout = global::PodcastUtilitiesPOC.Resource.Style.Widget_Design_TabLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Design_TextInputEditText = global::PodcastUtilitiesPOC.Resource.Style.Widget_Design_TextInputEditText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Design_TextInputLayout = global::PodcastUtilitiesPOC.Resource.Style.Widget_Design_TextInputLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_ActionBar_Primary = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_ActionBar_Primary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_ActionBar_PrimarySurface = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_ActionBar_PrimarySurface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_ActionBar_Solid = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_ActionBar_Solid;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_ActionBar_Surface = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_ActionBar_Surface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_AppBarLayout_Primary = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_AppBarLayout_Primary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_AppBarLayout_PrimarySurface = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_AppBarLayout_PrimarySurface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_AppBarLayout_Surface = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_AppBarLayout_Surface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_AutoCompleteTextView_FilledBox = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_AutoCompleteTextView_FilledBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_AutoCompleteTextView_FilledBox_Dense = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_AutoCompleteTextView_FilledBox_Dense;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_AutoCompleteTextView_OutlinedBox = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_AutoCompleteTextView_OutlinedBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_AutoCompleteTextView_OutlinedBox_Dense = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_AutoCompleteTextView_OutlinedBox_Dense;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Badge = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Badge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_BottomAppBar = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_BottomAppBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_BottomAppBar_Colored = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_BottomAppBar_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_BottomAppBar_PrimarySurface = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_BottomAppBar_PrimarySurface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_BottomNavigationView = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_BottomNavigationView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_BottomNavigationView_Colored = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_BottomNavigationView_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_BottomNavigationView_PrimarySurface = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_BottomNavigationView_PrimarySurface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_BottomSheet = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_BottomSheet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_BottomSheet_Modal = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_BottomSheet_Modal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button_Icon = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button_Icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton_Icon = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton_Icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button_TextButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button_TextButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog_Flush = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog_Flush;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog_Icon = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog_Icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button_TextButton_Icon = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button_TextButton_Icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button_TextButton_Snackbar = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button_TextButton_Snackbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_CardView = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_CardView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_CheckedTextView = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_CheckedTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_ChipGroup = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_ChipGroup;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Chip_Action = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Chip_Action;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Chip_Choice = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Chip_Choice;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Chip_Entry = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Chip_Entry;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Chip_Filter = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Chip_Filter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_CircularProgressIndicator = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_CircularProgressIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_CircularProgressIndicator_ExtraSmall = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_CircularProgressIndicator_ExtraSmall;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_CircularProgressIndicator_Medium = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_CircularProgressIndicator_Medium;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_CircularProgressIndicator_Small = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_CircularProgressIndicator_Small;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_CollapsingToolbar = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_CollapsingToolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_CompoundButton_CheckBox = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_CompoundButton_CheckBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_CompoundButton_RadioButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_CompoundButton_RadioButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_CompoundButton_Switch = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_CompoundButton_Switch;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_ExtendedFloatingActionButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_ExtendedFloatingActionButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_ExtendedFloatingActionButton_Icon = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_ExtendedFloatingActionButton_Icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_FloatingActionButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_FloatingActionButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Light_ActionBar_Solid = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Light_ActionBar_Solid;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_LinearProgressIndicator = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_LinearProgressIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialButtonToggleGroup = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialButtonToggleGroup;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Day = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Day;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_DayTextView = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_DayTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Day_Invalid = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Day_Invalid;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Day_Selected = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Day_Selected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Day_Today = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Day_Today;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Fullscreen = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderCancelButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderCancelButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderConfirmButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderConfirmButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderDivider = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderDivider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderLayout = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderSelection = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderSelection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderSelection_Fullscreen = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderSelection_Fullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderTitle = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderToggleButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_HeaderToggleButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Item = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Item;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_MonthNavigationButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_MonthNavigationButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_MonthTextView = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_MonthTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Year = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Year;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_YearNavigationButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_YearNavigationButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Year_Selected = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Year_Selected;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Year_Today = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_MaterialCalendar_Year_Today;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_NavigationRailView = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_NavigationRailView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_NavigationRailView_Colored = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_NavigationRailView_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_NavigationRailView_Colored_Compact = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_NavigationRailView_Colored_Compact;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_NavigationRailView_Compact = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_NavigationRailView_Compact;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_NavigationRailView_PrimarySurface = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_NavigationRailView_PrimarySurface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_NavigationView = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_NavigationView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_PopupMenu = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_PopupMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_PopupMenu_ContextMenu = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_PopupMenu_ContextMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_PopupMenu_ListPopupWindow = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_PopupMenu_ListPopupWindow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_PopupMenu_Overflow = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_PopupMenu_Overflow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_ProgressIndicator = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_ProgressIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_ShapeableImageView = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_ShapeableImageView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Slider = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Slider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Snackbar = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Snackbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Snackbar_TextView = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Snackbar_TextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TabLayout = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TabLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TabLayout_Colored = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TabLayout_Colored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TabLayout_PrimarySurface = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TabLayout_PrimarySurface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox_Dense = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox_Dense;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox_Dense = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox_Dense;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_Dense = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_Dense;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_Dense_ExposedDropdownMenu = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_Dense_ExposedDropdownMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_ExposedDropdownMenu = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_ExposedDropdownMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense_ExposedDropdownMenu = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense_ExposedDropdownMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_ExposedDropdownMenu = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_ExposedDropdownMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TextView = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TimePicker = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TimePicker;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TimePicker_Button = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TimePicker_Button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TimePicker_Clock = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TimePicker_Clock;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TimePicker_Display = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TimePicker_Display;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TimePicker_Display_TextInputEditText = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TimePicker_Display_TextInputEditText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TimePicker_ImageButton = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TimePicker_ImageButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_TimePicker_ImageButton_ShapeAppearance = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_TimePicker_ImageButton_ShapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Toolbar = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Toolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Toolbar_Primary = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Toolbar_Primary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Toolbar_PrimarySurface = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Toolbar_PrimarySurface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Toolbar_Surface = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Toolbar_Surface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_MaterialComponents_Tooltip = global::PodcastUtilitiesPOC.Resource.Style.Widget_MaterialComponents_Tooltip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Style.Widget_Support_CoordinatorLayout = global::PodcastUtilitiesPOC.Resource.Style.Widget_Support_CoordinatorLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBarLayout = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBarLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_background = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_backgroundSplit = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_backgroundSplit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_backgroundStacked = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_backgroundStacked;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_contentInsetEnd = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_contentInsetEndWithActions = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_contentInsetEndWithActions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_contentInsetLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_contentInsetRight = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_contentInsetRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_contentInsetStart = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_contentInsetStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_contentInsetStartWithNavigation = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_contentInsetStartWithNavigation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_customNavigationLayout = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_displayOptions = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_displayOptions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_divider = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_divider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_height = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_hideOnContentScroll = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_homeAsUpIndicator = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_homeLayout = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_homeLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_icon = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_itemPadding = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_itemPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_logo = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_logo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_navigationMode = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_navigationMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_popupTheme = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_popupTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_progressBarPadding = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_progressBarPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_progressBarStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_progressBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_subtitle = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_subtitleTextStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_title = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionBar_titleTextStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ActionBar_titleTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionMenuItemView = global::PodcastUtilitiesPOC.Resource.Styleable.ActionMenuItemView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionMenuItemView_android_minWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionMenuView = global::PodcastUtilitiesPOC.Resource.Styleable.ActionMenuView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionMode = global::PodcastUtilitiesPOC.Resource.Styleable.ActionMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionMode_background = global::PodcastUtilitiesPOC.Resource.Styleable.ActionMode_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionMode_backgroundSplit = global::PodcastUtilitiesPOC.Resource.Styleable.ActionMode_backgroundSplit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionMode_closeItemLayout = global::PodcastUtilitiesPOC.Resource.Styleable.ActionMode_closeItemLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionMode_height = global::PodcastUtilitiesPOC.Resource.Styleable.ActionMode_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionMode_subtitleTextStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActionMode_titleTextStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ActionMode_titleTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActivityChooserView = global::PodcastUtilitiesPOC.Resource.Styleable.ActivityChooserView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ActivityChooserView_initialActivityCount = global::PodcastUtilitiesPOC.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AlertDialog = global::PodcastUtilitiesPOC.Resource.Styleable.AlertDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AlertDialog_android_layout = global::PodcastUtilitiesPOC.Resource.Styleable.AlertDialog_android_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AlertDialog_buttonIconDimen = global::PodcastUtilitiesPOC.Resource.Styleable.AlertDialog_buttonIconDimen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::PodcastUtilitiesPOC.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AlertDialog_listItemLayout = global::PodcastUtilitiesPOC.Resource.Styleable.AlertDialog_listItemLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AlertDialog_listLayout = global::PodcastUtilitiesPOC.Resource.Styleable.AlertDialog_listLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::PodcastUtilitiesPOC.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AlertDialog_showTitle = global::PodcastUtilitiesPOC.Resource.Styleable.AlertDialog_showTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::PodcastUtilitiesPOC.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableCompat = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableItem = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableItem_android_id = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableItem_android_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableTransition = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId = global::PodcastUtilitiesPOC.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayoutStates = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayoutStates;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayoutStates_state_collapsed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayoutStates_state_collapsible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayoutStates_state_liftable = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayoutStates_state_liftable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayoutStates_state_lifted = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayoutStates_state_lifted;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout_android_background = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout_android_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout_expanded = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout_expanded;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout_Layout = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout_Layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout_liftOnScroll = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout_liftOnScroll;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout_liftOnScrollTargetViewId = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout_liftOnScrollTargetViewId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppBarLayout_statusBarForeground = global::PodcastUtilitiesPOC.Resource.Styleable.AppBarLayout_statusBarForeground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatImageView = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatImageView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatImageView_android_src = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatImageView_android_src;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatImageView_srcCompat = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatImageView_srcCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatImageView_tint = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatImageView_tint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatImageView_tintMode = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatImageView_tintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatSeekBar = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatSeekBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatSeekBar_android_thumb = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatSeekBar_android_thumb;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatSeekBar_tickMark = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatSeekBar_tickMark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatSeekBar_tickMarkTint = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatSeekBar_tickMarkTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextHelper = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextHelper;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextHelper_android_drawableBottom = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextHelper_android_drawableBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextHelper_android_drawableEnd = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextHelper_android_drawableEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextHelper_android_drawableLeft = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextHelper_android_drawableLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextHelper_android_drawableRight = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextHelper_android_drawableRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextHelper_android_drawableStart = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextHelper_android_drawableStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextHelper_android_drawableTop = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextHelper_android_drawableTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextHelper_android_textAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextHelper_android_textAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_android_textAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_autoSizeTextType;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_drawableBottomCompat = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_drawableBottomCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_drawableEndCompat = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_drawableEndCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_drawableLeftCompat = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_drawableLeftCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_drawableRightCompat = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_drawableRightCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_drawableStartCompat = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_drawableStartCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_drawableTint = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_drawableTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_drawableTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_drawableTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_drawableTopCompat = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_drawableTopCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_fontFamily = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_fontFamily;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_fontVariationSettings = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_fontVariationSettings;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_lineHeight = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_lineHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_textAllCaps = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTextView_textLocale = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTextView_textLocale;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionBarDivider = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionBarDivider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionBarSize = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionBarSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionBarStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionBarTheme = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionBarTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeBackground = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeCloseContentDescription = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeCloseContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeTheme = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_alertDialogStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_alertDialogTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_buttonBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_buttonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_buttonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_checkboxStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_checkboxStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_colorAccent = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_colorAccent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_colorBackgroundFloating = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_colorBackgroundFloating;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_colorButtonNormal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_colorControlActivated = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_colorControlActivated;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_colorControlHighlight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_colorControlNormal = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_colorError = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_colorError;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_colorPrimary = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_colorPrimary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_controlBackground = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_controlBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_dialogCornerRadius = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_dialogCornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_dialogTheme = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_dialogTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_dividerHorizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_dividerVertical = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_dividerVertical;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_editTextBackground = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_editTextBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_editTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_editTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_editTextStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_editTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_imageButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listChoiceIndicatorMultipleAnimated = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listChoiceIndicatorMultipleAnimated;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listChoiceIndicatorSingleAnimated = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listChoiceIndicatorSingleAnimated;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingEnd = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingStart = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_panelBackground = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_panelBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_popupMenuStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_popupWindowStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_radioButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_ratingBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_searchViewStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_searchViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_seekBarStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_seekBarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_selectableItemBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_spinnerStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_spinnerStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_switchStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_switchStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_toolbarStyle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_tooltipForegroundColor = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_tooltipForegroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_tooltipFrameBackground = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_tooltipFrameBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_viewInflaterClass = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_viewInflaterClass;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_windowActionBar = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_windowActionBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.AppCompatTheme_windowNoTitle = global::PodcastUtilitiesPOC.Resource.Styleable.AppCompatTheme_windowNoTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Badge = global::PodcastUtilitiesPOC.Resource.Styleable.Badge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Badge_backgroundColor = global::PodcastUtilitiesPOC.Resource.Styleable.Badge_backgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Badge_badgeGravity = global::PodcastUtilitiesPOC.Resource.Styleable.Badge_badgeGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Badge_badgeTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.Badge_badgeTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Badge_horizontalOffset = global::PodcastUtilitiesPOC.Resource.Styleable.Badge_horizontalOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Badge_maxCharacterCount = global::PodcastUtilitiesPOC.Resource.Styleable.Badge_maxCharacterCount;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Badge_number = global::PodcastUtilitiesPOC.Resource.Styleable.Badge_number;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Badge_verticalOffset = global::PodcastUtilitiesPOC.Resource.Styleable.Badge_verticalOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BaseProgressIndicator = global::PodcastUtilitiesPOC.Resource.Styleable.BaseProgressIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BaseProgressIndicator_android_indeterminate = global::PodcastUtilitiesPOC.Resource.Styleable.BaseProgressIndicator_android_indeterminate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BaseProgressIndicator_hideAnimationBehavior = global::PodcastUtilitiesPOC.Resource.Styleable.BaseProgressIndicator_hideAnimationBehavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BaseProgressIndicator_indicatorColor = global::PodcastUtilitiesPOC.Resource.Styleable.BaseProgressIndicator_indicatorColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BaseProgressIndicator_minHideDelay = global::PodcastUtilitiesPOC.Resource.Styleable.BaseProgressIndicator_minHideDelay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BaseProgressIndicator_showAnimationBehavior = global::PodcastUtilitiesPOC.Resource.Styleable.BaseProgressIndicator_showAnimationBehavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BaseProgressIndicator_showDelay = global::PodcastUtilitiesPOC.Resource.Styleable.BaseProgressIndicator_showDelay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BaseProgressIndicator_trackColor = global::PodcastUtilitiesPOC.Resource.Styleable.BaseProgressIndicator_trackColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BaseProgressIndicator_trackCornerRadius = global::PodcastUtilitiesPOC.Resource.Styleable.BaseProgressIndicator_trackCornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BaseProgressIndicator_trackThickness = global::PodcastUtilitiesPOC.Resource.Styleable.BaseProgressIndicator_trackThickness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar_backgroundTint = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar_backgroundTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar_fabAlignmentMode = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar_fabAlignmentMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar_fabAnimationMode = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar_fabAnimationMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar_fabCradleMargin = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar_fabCradleMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar_hideOnScroll = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar_hideOnScroll;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar_paddingBottomSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar_paddingBottomSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar_paddingLeftSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar_paddingLeftSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomAppBar_paddingRightSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Styleable.BottomAppBar_paddingRightSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomNavigationView = global::PodcastUtilitiesPOC.Resource.Styleable.BottomNavigationView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomNavigationView_itemHorizontalTranslationEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.BottomNavigationView_itemHorizontalTranslationEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_android_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_android_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_android_maxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_android_maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_backgroundTint = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_backgroundTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_behavior_draggable = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_behavior_draggable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_behavior_expandedOffset = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_behavior_expandedOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_behavior_halfExpandedRatio = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_behavior_halfExpandedRatio;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_behavior_saveFlags = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_behavior_saveFlags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_gestureInsetBottomIgnored = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_gestureInsetBottomIgnored;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_paddingBottomSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_paddingBottomSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_paddingLeftSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_paddingLeftSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_paddingRightSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_paddingRightSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_paddingTopSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_paddingTopSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ButtonBarLayout = global::PodcastUtilitiesPOC.Resource.Styleable.ButtonBarLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ButtonBarLayout_allowStacking = global::PodcastUtilitiesPOC.Resource.Styleable.ButtonBarLayout_allowStacking;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Capability = global::PodcastUtilitiesPOC.Resource.Styleable.Capability;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Capability_queryPatterns = global::PodcastUtilitiesPOC.Resource.Styleable.Capability_queryPatterns;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Capability_shortcutMatchRequired = global::PodcastUtilitiesPOC.Resource.Styleable.Capability_shortcutMatchRequired;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView = global::PodcastUtilitiesPOC.Resource.Styleable.CardView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_android_minHeight = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_android_minHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_android_minWidth = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_android_minWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_cardBackgroundColor = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_cardBackgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_cardCornerRadius = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_cardCornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_cardElevation = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_cardElevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_cardMaxElevation = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_cardMaxElevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_cardPreventCornerOverlap = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_cardPreventCornerOverlap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_cardUseCompatPadding = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_cardUseCompatPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_contentPadding = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_contentPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_contentPaddingBottom = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_contentPaddingBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_contentPaddingLeft = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_contentPaddingLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_contentPaddingRight = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_contentPaddingRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CardView_contentPaddingTop = global::PodcastUtilitiesPOC.Resource.Styleable.CardView_contentPaddingTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Carousel = global::PodcastUtilitiesPOC.Resource.Styleable.Carousel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Carousel_carousel_backwardTransition = global::PodcastUtilitiesPOC.Resource.Styleable.Carousel_carousel_backwardTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Carousel_carousel_emptyViewsBehavior = global::PodcastUtilitiesPOC.Resource.Styleable.Carousel_carousel_emptyViewsBehavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Carousel_carousel_firstView = global::PodcastUtilitiesPOC.Resource.Styleable.Carousel_carousel_firstView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Carousel_carousel_forwardTransition = global::PodcastUtilitiesPOC.Resource.Styleable.Carousel_carousel_forwardTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Carousel_carousel_infinite = global::PodcastUtilitiesPOC.Resource.Styleable.Carousel_carousel_infinite;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Carousel_carousel_nextState = global::PodcastUtilitiesPOC.Resource.Styleable.Carousel_carousel_nextState;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Carousel_carousel_previousState = global::PodcastUtilitiesPOC.Resource.Styleable.Carousel_carousel_previousState;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Carousel_carousel_touchUpMode = global::PodcastUtilitiesPOC.Resource.Styleable.Carousel_carousel_touchUpMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Carousel_carousel_touchUp_dampeningFactor = global::PodcastUtilitiesPOC.Resource.Styleable.Carousel_carousel_touchUp_dampeningFactor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Carousel_carousel_touchUp_velocityThreshold = global::PodcastUtilitiesPOC.Resource.Styleable.Carousel_carousel_touchUp_velocityThreshold;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip = global::PodcastUtilitiesPOC.Resource.Styleable.Chip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ChipGroup = global::PodcastUtilitiesPOC.Resource.Styleable.ChipGroup;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ChipGroup_checkedChip = global::PodcastUtilitiesPOC.Resource.Styleable.ChipGroup_checkedChip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ChipGroup_chipSpacing = global::PodcastUtilitiesPOC.Resource.Styleable.ChipGroup_chipSpacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ChipGroup_chipSpacingHorizontal = global::PodcastUtilitiesPOC.Resource.Styleable.ChipGroup_chipSpacingHorizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ChipGroup_chipSpacingVertical = global::PodcastUtilitiesPOC.Resource.Styleable.ChipGroup_chipSpacingVertical;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ChipGroup_selectionRequired = global::PodcastUtilitiesPOC.Resource.Styleable.ChipGroup_selectionRequired;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ChipGroup_singleLine = global::PodcastUtilitiesPOC.Resource.Styleable.ChipGroup_singleLine;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ChipGroup_singleSelection = global::PodcastUtilitiesPOC.Resource.Styleable.ChipGroup_singleSelection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_android_checkable = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_android_checkable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_android_ellipsize = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_android_ellipsize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_android_maxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_android_maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_android_text = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_android_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_android_textAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_android_textAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_android_textColor = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_android_textColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_android_textSize = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_android_textSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_checkedIcon = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_checkedIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_checkedIconEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_checkedIconEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_checkedIconTint = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_checkedIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_checkedIconVisible = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_checkedIconVisible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipBackgroundColor = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipBackgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipCornerRadius = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipCornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipEndPadding = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipEndPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipIcon = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipIconEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipIconEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipIconSize = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipIconSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipIconTint = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipIconVisible = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipIconVisible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipMinHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipMinHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipMinTouchTargetSize = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipMinTouchTargetSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipStartPadding = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipStartPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipStrokeColor = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipStrokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipStrokeWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipStrokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_chipSurfaceColor = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_chipSurfaceColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_closeIcon = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_closeIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_closeIconEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_closeIconEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_closeIconEndPadding = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_closeIconEndPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_closeIconSize = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_closeIconSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_closeIconStartPadding = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_closeIconStartPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_closeIconTint = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_closeIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_closeIconVisible = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_closeIconVisible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_ensureMinTouchTargetSize = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_ensureMinTouchTargetSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_hideMotionSpec = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_hideMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_iconEndPadding = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_iconEndPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_iconStartPadding = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_iconStartPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_rippleColor = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_rippleColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_shapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_shapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_shapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_shapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_showMotionSpec = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_showMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_textEndPadding = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_textEndPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Chip_textStartPadding = global::PodcastUtilitiesPOC.Resource.Styleable.Chip_textStartPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CircularProgressIndicator = global::PodcastUtilitiesPOC.Resource.Styleable.CircularProgressIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CircularProgressIndicator_indicatorDirectionCircular = global::PodcastUtilitiesPOC.Resource.Styleable.CircularProgressIndicator_indicatorDirectionCircular;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CircularProgressIndicator_indicatorInset = global::PodcastUtilitiesPOC.Resource.Styleable.CircularProgressIndicator_indicatorInset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CircularProgressIndicator_indicatorSize = global::PodcastUtilitiesPOC.Resource.Styleable.CircularProgressIndicator_indicatorSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ClockFaceView = global::PodcastUtilitiesPOC.Resource.Styleable.ClockFaceView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ClockFaceView_clockFaceBackgroundColor = global::PodcastUtilitiesPOC.Resource.Styleable.ClockFaceView_clockFaceBackgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ClockFaceView_clockNumberTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.ClockFaceView_clockNumberTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ClockHandView = global::PodcastUtilitiesPOC.Resource.Styleable.ClockHandView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ClockHandView_clockHandColor = global::PodcastUtilitiesPOC.Resource.Styleable.ClockHandView_clockHandColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ClockHandView_materialCircleRadius = global::PodcastUtilitiesPOC.Resource.Styleable.ClockHandView_materialCircleRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ClockHandView_selectorSize = global::PodcastUtilitiesPOC.Resource.Styleable.ClockHandView_selectorSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_extraMultilineHeightEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_extraMultilineHeightEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_forceApplySystemWindowInsetTop = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_forceApplySystemWindowInsetTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_Layout = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_Layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_maxLines = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_maxLines;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_title = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_titleCollapseMode = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_titleCollapseMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::PodcastUtilitiesPOC.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ColorStateListItem = global::PodcastUtilitiesPOC.Resource.Styleable.ColorStateListItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ColorStateListItem_alpha = global::PodcastUtilitiesPOC.Resource.Styleable.ColorStateListItem_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ColorStateListItem_android_alpha = global::PodcastUtilitiesPOC.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ColorStateListItem_android_color = global::PodcastUtilitiesPOC.Resource.Styleable.ColorStateListItem_android_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CompoundButton = global::PodcastUtilitiesPOC.Resource.Styleable.CompoundButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CompoundButton_android_button = global::PodcastUtilitiesPOC.Resource.Styleable.CompoundButton_android_button;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CompoundButton_buttonCompat = global::PodcastUtilitiesPOC.Resource.Styleable.CompoundButton_buttonCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CompoundButton_buttonTint = global::PodcastUtilitiesPOC.Resource.Styleable.CompoundButton_buttonTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CompoundButton_buttonTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_layout_height = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_layout_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_layout_margin = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_layout_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginHorizontal = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginHorizontal;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginRight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginStart = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginTop = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginVertical = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_layout_marginVertical;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_layout_width = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_layout_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_maxHeight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_maxHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_maxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_minHeight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_minHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_minWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_minWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_orientation = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_orientation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_padding = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_paddingBottom = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_paddingBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_paddingEnd = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_paddingEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_paddingLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_paddingLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_paddingRight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_paddingRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_paddingStart = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_paddingStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_paddingTop = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_paddingTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_android_visibility = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_android_visibility;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_barrierAllowsGoneWidgets = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_barrierAllowsGoneWidgets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_barrierDirection = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_barrierDirection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_barrierMargin = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_barrierMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_chainUseRtl = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_chainUseRtl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_circularflow_angles = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_circularflow_angles;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_circularflow_defaultAngle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_circularflow_defaultAngle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_circularflow_defaultRadius = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_circularflow_defaultRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_circularflow_radiusInDP = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_circularflow_radiusInDP;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_circularflow_viewCenter = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_circularflow_viewCenter;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_constraintSet = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_constraintSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_constraint_referenced_ids = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_constraint_referenced_ids;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_constraint_referenced_tags = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_constraint_referenced_tags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_firstHorizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_firstHorizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_firstHorizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_firstHorizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_firstVerticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_firstVerticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_firstVerticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_firstVerticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_horizontalAlign = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_horizontalAlign;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_horizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_horizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_horizontalGap = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_horizontalGap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_horizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_horizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_lastHorizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_lastHorizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_lastHorizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_lastHorizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_lastVerticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_lastVerticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_lastVerticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_lastVerticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_maxElementsWrap = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_maxElementsWrap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_verticalAlign = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_verticalAlign;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_verticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_verticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_verticalGap = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_verticalGap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_verticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_verticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_flow_wrapMode = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_flow_wrapMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layoutDescription = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layoutDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constrainedHeight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constrainedHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constrainedWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constrainedWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBaseline_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBaseline_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBaseline_toBaselineOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBaseline_toBaselineOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBaseline_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBaseline_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBaseline_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBaseline_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBottom_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBottom_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBottom_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBottom_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBottom_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintBottom_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintCircle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintCircle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintCircleAngle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintCircleAngle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintCircleRadius = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintCircleRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintDimensionRatio = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintDimensionRatio;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintEnd_toEndOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintEnd_toEndOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintEnd_toStartOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintEnd_toStartOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintGuide_begin = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintGuide_begin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintGuide_end = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintGuide_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintGuide_percent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintGuide_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHeight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHeight_default = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHeight_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHeight_max = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHeight_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHeight_min = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHeight_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHeight_percent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHeight_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHorizontal_bias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHorizontal_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHorizontal_chainStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHorizontal_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHorizontal_weight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintHorizontal_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintLeft_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintLeft_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintLeft_toLeftOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintLeft_toLeftOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintLeft_toRightOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintLeft_toRightOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintRight_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintRight_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintRight_toLeftOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintRight_toLeftOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintRight_toRightOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintRight_toRightOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintStart_toEndOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintStart_toEndOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintStart_toStartOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintStart_toStartOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintTag = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintTag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintTop_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintTop_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintTop_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintTop_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintTop_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintTop_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintVertical_bias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintVertical_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintVertical_chainStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintVertical_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintVertical_weight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintVertical_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintWidth_default = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintWidth_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintWidth_max = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintWidth_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintWidth_min = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintWidth_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_constraintWidth_percent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_constraintWidth_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_editor_absoluteX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_editor_absoluteX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_editor_absoluteY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_editor_absoluteY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginBaseline = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginRight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginStart = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginTop = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_goneMarginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_marginBaseline = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_marginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_optimizationLevel = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_optimizationLevel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_Layout_layout_wrapBehaviorInParent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_Layout_layout_wrapBehaviorInParent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_placeholder = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_placeholder;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_placeholder_content = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_placeholder_content;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_placeholder_placeholder_emptyVisibility = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_placeholder_placeholder_emptyVisibility;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_ReactiveGuide = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_ReactiveGuide;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_animateChange = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_animateChange;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_applyToAllConstraintSets = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_applyToAllConstraintSets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_applyToConstraintSet = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_applyToConstraintSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_valueId = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_valueId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_alpha = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_id = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_layout_height = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_layout_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_layout_marginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_layout_marginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_layout_marginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_layout_marginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_layout_marginLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_layout_marginLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_layout_marginRight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_layout_marginRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_layout_marginStart = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_layout_marginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_layout_marginTop = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_layout_marginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_layout_width = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_layout_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_maxHeight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_maxHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_maxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_minHeight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_minHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_minWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_minWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_orientation = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_orientation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_rotation = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_rotation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_rotationX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_rotationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_rotationY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_rotationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_scaleX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_scaleX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_scaleY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_scaleY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_transformPivotX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_transformPivotX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_transformPivotY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_transformPivotY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_translationX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_translationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_translationY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_translationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_translationZ = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_translationZ;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_android_visibility = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_android_visibility;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_animateCircleAngleTo = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_animateCircleAngleTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_animateRelativeTo = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_animateRelativeTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_barrierAllowsGoneWidgets = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_barrierAllowsGoneWidgets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_barrierDirection = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_barrierDirection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_barrierMargin = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_barrierMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_chainUseRtl = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_chainUseRtl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_constraint_referenced_ids = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_constraint_referenced_ids;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_drawPath = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_drawPath;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_firstHorizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_firstHorizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_firstHorizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_firstHorizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_firstVerticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_firstVerticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_firstVerticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_firstVerticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_horizontalAlign = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_horizontalAlign;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_horizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_horizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_horizontalGap = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_horizontalGap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_horizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_horizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_lastHorizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_lastHorizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_lastHorizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_lastHorizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_lastVerticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_lastVerticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_lastVerticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_lastVerticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_maxElementsWrap = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_maxElementsWrap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_verticalAlign = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_verticalAlign;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_verticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_verticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_verticalGap = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_verticalGap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_verticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_verticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_flow_wrapMode = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_flow_wrapMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constrainedHeight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constrainedHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constrainedWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constrainedWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintBaseline_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintBaseline_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintBottom_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintBottom_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintCircleAngle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintCircleAngle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintCircleRadius = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintCircleRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintDimensionRatio = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintDimensionRatio;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintGuide_begin = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintGuide_begin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintGuide_end = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintGuide_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintGuide_percent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintGuide_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintHeight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintHeight_default = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintHeight_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintHeight_max = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintHeight_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintHeight_min = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintHeight_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintHeight_percent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintHeight_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintHorizontal_bias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintHorizontal_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintHorizontal_chainStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintHorizontal_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintHorizontal_weight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintHorizontal_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintLeft_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintLeft_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintRight_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintRight_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintTag = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintTag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintTop_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintTop_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintVertical_bias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintVertical_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintVertical_chainStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintVertical_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintVertical_weight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintVertical_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintWidth_default = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintWidth_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintWidth_max = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintWidth_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintWidth_min = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintWidth_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_constraintWidth_percent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_constraintWidth_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_editor_absoluteX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_editor_absoluteX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_editor_absoluteY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_editor_absoluteY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_goneMarginBaseline = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_goneMarginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_goneMarginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_goneMarginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_goneMarginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_goneMarginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_goneMarginLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_goneMarginLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_goneMarginRight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_goneMarginRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_goneMarginStart = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_goneMarginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_goneMarginTop = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_goneMarginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_marginBaseline = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_marginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_layout_wrapBehaviorInParent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_layout_wrapBehaviorInParent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_motionProgress = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_motionProgress;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_motionStagger = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_motionStagger;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_motionTarget = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_motionTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_pathMotionArc = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_pathMotionArc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_pivotAnchor = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_pivotAnchor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_polarRelativeTo = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_polarRelativeTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_quantizeMotionInterpolator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_quantizeMotionInterpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_quantizeMotionPhase = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_quantizeMotionPhase;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_quantizeMotionSteps = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_quantizeMotionSteps;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_transformPivotTarget = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_transformPivotTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_transitionEasing = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_transitionEasing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_transitionPathRotate = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_transitionPathRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintOverride_visibilityMode = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintOverride_visibilityMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_alpha = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_id = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_layout_height = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_layout_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_layout_marginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_layout_marginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_layout_marginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_layout_marginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_layout_marginLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_layout_marginLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_layout_marginRight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_layout_marginRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_layout_marginStart = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_layout_marginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_layout_marginTop = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_layout_marginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_layout_width = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_layout_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_maxHeight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_maxHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_maxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_minHeight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_minHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_minWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_minWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_orientation = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_orientation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_pivotX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_pivotX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_pivotY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_pivotY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_rotation = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_rotation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_rotationX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_rotationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_rotationY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_rotationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_scaleX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_scaleX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_scaleY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_scaleY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_transformPivotX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_transformPivotX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_transformPivotY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_transformPivotY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_translationX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_translationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_translationY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_translationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_translationZ = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_translationZ;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_android_visibility = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_android_visibility;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_animateCircleAngleTo = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_animateCircleAngleTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_animateRelativeTo = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_animateRelativeTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_barrierAllowsGoneWidgets = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_barrierAllowsGoneWidgets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_barrierDirection = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_barrierDirection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_barrierMargin = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_barrierMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_chainUseRtl = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_chainUseRtl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_constraintRotate = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_constraintRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_constraint_referenced_ids = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_constraint_referenced_ids;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_constraint_referenced_tags = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_constraint_referenced_tags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_deriveConstraintsFrom = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_deriveConstraintsFrom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_drawPath = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_drawPath;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_firstHorizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_firstHorizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_firstHorizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_firstHorizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_firstVerticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_firstVerticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_firstVerticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_firstVerticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_horizontalAlign = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_horizontalAlign;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_horizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_horizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_horizontalGap = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_horizontalGap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_horizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_horizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_lastHorizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_lastHorizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_lastHorizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_lastHorizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_lastVerticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_lastVerticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_lastVerticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_lastVerticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_maxElementsWrap = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_maxElementsWrap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_verticalAlign = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_verticalAlign;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_verticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_verticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_verticalGap = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_verticalGap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_verticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_verticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_flow_wrapMode = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_flow_wrapMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constrainedHeight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constrainedHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constrainedWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constrainedWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintBaseline_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintBaseline_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintBaseline_toBaselineOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintBaseline_toBaselineOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintBaseline_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintBaseline_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintBaseline_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintBaseline_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintBottom_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintBottom_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintBottom_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintBottom_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintBottom_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintBottom_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintCircle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintCircle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintCircleAngle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintCircleAngle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintCircleRadius = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintCircleRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintDimensionRatio = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintDimensionRatio;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintEnd_toEndOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintEnd_toEndOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintEnd_toStartOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintEnd_toStartOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintGuide_begin = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintGuide_begin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintGuide_end = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintGuide_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintGuide_percent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintGuide_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintHeight_default = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintHeight_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintHeight_max = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintHeight_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintHeight_min = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintHeight_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintHeight_percent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintHeight_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintHorizontal_bias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintHorizontal_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintHorizontal_chainStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintHorizontal_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintHorizontal_weight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintHorizontal_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintLeft_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintLeft_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintLeft_toLeftOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintLeft_toLeftOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintLeft_toRightOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintLeft_toRightOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintRight_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintRight_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintRight_toLeftOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintRight_toLeftOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintRight_toRightOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintRight_toRightOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintStart_toEndOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintStart_toEndOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintStart_toStartOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintStart_toStartOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintTag = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintTag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintTop_creator = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintTop_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintTop_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintTop_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintTop_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintTop_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintVertical_bias = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintVertical_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintVertical_chainStyle = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintVertical_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintVertical_weight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintVertical_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintWidth_default = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintWidth_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintWidth_max = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintWidth_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintWidth_min = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintWidth_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_constraintWidth_percent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_constraintWidth_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_editor_absoluteX = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_editor_absoluteX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_editor_absoluteY = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_editor_absoluteY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_goneMarginBaseline = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_goneMarginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_goneMarginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_goneMarginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_goneMarginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_goneMarginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_goneMarginLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_goneMarginLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_goneMarginRight = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_goneMarginRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_goneMarginStart = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_goneMarginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_goneMarginTop = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_goneMarginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_marginBaseline = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_marginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_layout_wrapBehaviorInParent = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_layout_wrapBehaviorInParent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_motionProgress = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_motionProgress;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_motionStagger = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_motionStagger;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_pathMotionArc = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_pathMotionArc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_pivotAnchor = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_pivotAnchor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_polarRelativeTo = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_polarRelativeTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_quantizeMotionSteps = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_quantizeMotionSteps;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_transitionEasing = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_transitionEasing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ConstraintSet_transitionPathRotate = global::PodcastUtilitiesPOC.Resource.Styleable.ConstraintSet_transitionPathRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_alpha = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_id = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_layout_height = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_layout_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_layout_marginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_layout_marginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_layout_marginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_layout_marginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_layout_marginLeft = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_layout_marginLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_layout_marginRight = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_layout_marginRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_layout_marginStart = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_layout_marginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_layout_marginTop = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_layout_marginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_layout_width = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_layout_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_maxHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_maxHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_maxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_minHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_minHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_minWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_minWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_orientation = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_orientation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_rotation = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_rotation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_rotationX = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_rotationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_rotationY = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_rotationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_scaleX = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_scaleX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_scaleY = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_scaleY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_transformPivotX = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_transformPivotX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_transformPivotY = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_transformPivotY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_translationX = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_translationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_translationY = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_translationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_translationZ = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_translationZ;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_android_visibility = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_android_visibility;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_animateCircleAngleTo = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_animateCircleAngleTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_animateRelativeTo = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_animateRelativeTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_barrierAllowsGoneWidgets = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_barrierAllowsGoneWidgets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_barrierDirection = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_barrierDirection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_barrierMargin = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_barrierMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_chainUseRtl = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_chainUseRtl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_constraint_referenced_ids = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_constraint_referenced_ids;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_constraint_referenced_tags = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_constraint_referenced_tags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_drawPath = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_drawPath;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_firstHorizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_firstHorizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_firstHorizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_firstHorizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_firstVerticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_firstVerticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_firstVerticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_firstVerticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_horizontalAlign = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_horizontalAlign;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_horizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_horizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_horizontalGap = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_horizontalGap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_horizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_horizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_lastHorizontalBias = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_lastHorizontalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_lastHorizontalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_lastHorizontalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_lastVerticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_lastVerticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_lastVerticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_lastVerticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_maxElementsWrap = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_maxElementsWrap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_verticalAlign = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_verticalAlign;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_verticalBias = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_verticalBias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_verticalGap = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_verticalGap;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_verticalStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_verticalStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_flow_wrapMode = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_flow_wrapMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constrainedHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constrainedHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constrainedWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constrainedWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintBaseline_creator = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintBaseline_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintBaseline_toBaselineOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintBaseline_toBaselineOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintBaseline_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintBaseline_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintBaseline_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintBaseline_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintBottom_creator = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintBottom_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintBottom_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintBottom_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintBottom_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintBottom_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintCircle = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintCircle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintCircleAngle = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintCircleAngle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintCircleRadius = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintCircleRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintDimensionRatio = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintDimensionRatio;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintEnd_toEndOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintEnd_toEndOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintEnd_toStartOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintEnd_toStartOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintGuide_begin = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintGuide_begin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintGuide_end = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintGuide_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintGuide_percent = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintGuide_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintHeight_default = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintHeight_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintHeight_max = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintHeight_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintHeight_min = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintHeight_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintHeight_percent = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintHeight_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintHorizontal_bias = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintHorizontal_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintHorizontal_chainStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintHorizontal_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintHorizontal_weight = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintHorizontal_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintLeft_creator = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintLeft_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintLeft_toLeftOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintLeft_toLeftOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintLeft_toRightOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintLeft_toRightOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintRight_creator = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintRight_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintRight_toLeftOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintRight_toLeftOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintRight_toRightOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintRight_toRightOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintStart_toEndOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintStart_toEndOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintStart_toStartOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintStart_toStartOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintTag = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintTag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintTop_creator = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintTop_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintTop_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintTop_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintTop_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintTop_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintVertical_bias = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintVertical_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintVertical_chainStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintVertical_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintVertical_weight = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintVertical_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintWidth_default = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintWidth_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintWidth_max = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintWidth_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintWidth_min = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintWidth_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_constraintWidth_percent = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_constraintWidth_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_editor_absoluteX = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_editor_absoluteX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_editor_absoluteY = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_editor_absoluteY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_goneMarginBaseline = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_goneMarginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_goneMarginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_goneMarginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_goneMarginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_goneMarginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_goneMarginLeft = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_goneMarginLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_goneMarginRight = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_goneMarginRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_goneMarginStart = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_goneMarginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_goneMarginTop = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_goneMarginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_marginBaseline = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_marginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_layout_wrapBehaviorInParent = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_layout_wrapBehaviorInParent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_motionProgress = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_motionProgress;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_motionStagger = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_motionStagger;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_pathMotionArc = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_pathMotionArc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_pivotAnchor = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_pivotAnchor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_polarRelativeTo = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_polarRelativeTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_quantizeMotionInterpolator = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_quantizeMotionInterpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_quantizeMotionPhase = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_quantizeMotionPhase;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_quantizeMotionSteps = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_quantizeMotionSteps;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_transformPivotTarget = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_transformPivotTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_transitionEasing = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_transitionEasing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_transitionPathRotate = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_transitionPathRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Constraint_visibilityMode = global::PodcastUtilitiesPOC.Resource.Styleable.Constraint_visibilityMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CoordinatorLayout = global::PodcastUtilitiesPOC.Resource.Styleable.CoordinatorLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CoordinatorLayout_keylines = global::PodcastUtilitiesPOC.Resource.Styleable.CoordinatorLayout_keylines;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CoordinatorLayout_Layout = global::PodcastUtilitiesPOC.Resource.Styleable.CoordinatorLayout_Layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::PodcastUtilitiesPOC.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::PodcastUtilitiesPOC.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::PodcastUtilitiesPOC.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::PodcastUtilitiesPOC.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::PodcastUtilitiesPOC.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::PodcastUtilitiesPOC.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::PodcastUtilitiesPOC.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::PodcastUtilitiesPOC.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute_attributeName = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute_attributeName;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute_customBoolean = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute_customBoolean;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute_customColorDrawableValue = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute_customColorDrawableValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute_customColorValue = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute_customColorValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute_customDimension = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute_customDimension;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute_customFloatValue = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute_customFloatValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute_customIntegerValue = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute_customIntegerValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute_customPixelDimension = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute_customPixelDimension;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute_customReference = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute_customReference;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute_customStringValue = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute_customStringValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.CustomAttribute_methodName = global::PodcastUtilitiesPOC.Resource.Styleable.CustomAttribute_methodName;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.DrawerArrowToggle = global::PodcastUtilitiesPOC.Resource.Styleable.DrawerArrowToggle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::PodcastUtilitiesPOC.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::PodcastUtilitiesPOC.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.DrawerArrowToggle_barLength = global::PodcastUtilitiesPOC.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.DrawerArrowToggle_color = global::PodcastUtilitiesPOC.Resource.Styleable.DrawerArrowToggle_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.DrawerArrowToggle_drawableSize = global::PodcastUtilitiesPOC.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::PodcastUtilitiesPOC.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.DrawerArrowToggle_spinBars = global::PodcastUtilitiesPOC.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.DrawerArrowToggle_thickness = global::PodcastUtilitiesPOC.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.DrawerLayout = global::PodcastUtilitiesPOC.Resource.Styleable.DrawerLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.DrawerLayout_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.DrawerLayout_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ExtendedFloatingActionButton = global::PodcastUtilitiesPOC.Resource.Styleable.ExtendedFloatingActionButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ExtendedFloatingActionButton_Behavior_Layout = global::PodcastUtilitiesPOC.Resource.Styleable.ExtendedFloatingActionButton_Behavior_Layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ExtendedFloatingActionButton_Behavior_Layout_behavior_autoHide = global::PodcastUtilitiesPOC.Resource.Styleable.ExtendedFloatingActionButton_Behavior_Layout_behavior_autoHide;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ExtendedFloatingActionButton_Behavior_Layout_behavior_autoShrink = global::PodcastUtilitiesPOC.Resource.Styleable.ExtendedFloatingActionButton_Behavior_Layout_behavior_autoShrink;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ExtendedFloatingActionButton_collapsedSize = global::PodcastUtilitiesPOC.Resource.Styleable.ExtendedFloatingActionButton_collapsedSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ExtendedFloatingActionButton_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.ExtendedFloatingActionButton_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ExtendedFloatingActionButton_extendMotionSpec = global::PodcastUtilitiesPOC.Resource.Styleable.ExtendedFloatingActionButton_extendMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ExtendedFloatingActionButton_hideMotionSpec = global::PodcastUtilitiesPOC.Resource.Styleable.ExtendedFloatingActionButton_hideMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ExtendedFloatingActionButton_showMotionSpec = global::PodcastUtilitiesPOC.Resource.Styleable.ExtendedFloatingActionButton_showMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ExtendedFloatingActionButton_shrinkMotionSpec = global::PodcastUtilitiesPOC.Resource.Styleable.ExtendedFloatingActionButton_shrinkMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_android_enabled = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_android_enabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_backgroundTint = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_backgroundTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_backgroundTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_Behavior_Layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_borderWidth = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_borderWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_ensureMinTouchTargetSize = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_ensureMinTouchTargetSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_fabCustomSize = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_fabCustomSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_fabSize = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_fabSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_hideMotionSpec = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_hideMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_hoveredFocusedTranslationZ = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_hoveredFocusedTranslationZ;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_maxImageSize = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_maxImageSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_rippleColor = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_rippleColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_shapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_shapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_shapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_shapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_showMotionSpec = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_showMotionSpec;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FloatingActionButton_useCompatPadding = global::PodcastUtilitiesPOC.Resource.Styleable.FloatingActionButton_useCompatPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FlowLayout = global::PodcastUtilitiesPOC.Resource.Styleable.FlowLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FlowLayout_itemSpacing = global::PodcastUtilitiesPOC.Resource.Styleable.FlowLayout_itemSpacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FlowLayout_lineSpacing = global::PodcastUtilitiesPOC.Resource.Styleable.FlowLayout_lineSpacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamily = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamily;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamilyFont = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamilyFont;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamilyFont_android_font = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamilyFont_android_font;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamilyFont_android_fontStyle = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamilyFont_android_fontWeight = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamilyFont_font = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamilyFont_font;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamilyFont_fontStyle = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamilyFont_fontWeight = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamilyFont_ttcIndex = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamily_fontProviderAuthority = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamily_fontProviderCerts = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamily_fontProviderPackage = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamily_fontProviderQuery = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FontFamily_fontProviderSystemFontFamily = global::PodcastUtilitiesPOC.Resource.Styleable.FontFamily_fontProviderSystemFontFamily;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ForegroundLinearLayout = global::PodcastUtilitiesPOC.Resource.Styleable.ForegroundLinearLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::PodcastUtilitiesPOC.Resource.Styleable.ForegroundLinearLayout_android_foreground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::PodcastUtilitiesPOC.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::PodcastUtilitiesPOC.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Fragment = global::PodcastUtilitiesPOC.Resource.Styleable.Fragment;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FragmentContainerView = global::PodcastUtilitiesPOC.Resource.Styleable.FragmentContainerView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FragmentContainerView_android_name = global::PodcastUtilitiesPOC.Resource.Styleable.FragmentContainerView_android_name;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.FragmentContainerView_android_tag = global::PodcastUtilitiesPOC.Resource.Styleable.FragmentContainerView_android_tag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Fragment_android_id = global::PodcastUtilitiesPOC.Resource.Styleable.Fragment_android_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Fragment_android_name = global::PodcastUtilitiesPOC.Resource.Styleable.Fragment_android_name;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Fragment_android_tag = global::PodcastUtilitiesPOC.Resource.Styleable.Fragment_android_tag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColorItem = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColorItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColorItem_android_color = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColorItem_android_color;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColorItem_android_offset = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColorItem_android_offset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_centerColor = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_centerColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_centerX = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_centerX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_centerY = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_centerY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_endColor = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_endColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_endX = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_endX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_endY = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_endY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_gradientRadius = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_startColor = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_startColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_startX = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_startX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_startY = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_startY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_tileMode = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_tileMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.GradientColor_android_type = global::PodcastUtilitiesPOC.Resource.Styleable.GradientColor_android_type;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_altSrc = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_altSrc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_blendSrc = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_blendSrc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_brightness = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_brightness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_contrast = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_contrast;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_crossfade = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_crossfade;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_imagePanX = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_imagePanX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_imagePanY = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_imagePanY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_imageRotate = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_imageRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_imageZoom = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_imageZoom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_overlay = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_overlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_round = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_round;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_roundPercent = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_roundPercent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_saturation = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_saturation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ImageFilterView_warmth = global::PodcastUtilitiesPOC.Resource.Styleable.ImageFilterView_warmth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.include = global::PodcastUtilitiesPOC.Resource.Styleable.include;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.include_constraintSet = global::PodcastUtilitiesPOC.Resource.Styleable.include_constraintSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Insets = global::PodcastUtilitiesPOC.Resource.Styleable.Insets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Insets_paddingBottomSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Styleable.Insets_paddingBottomSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Insets_paddingLeftSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Styleable.Insets_paddingLeftSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Insets_paddingRightSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Styleable.Insets_paddingRightSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Insets_paddingTopSystemWindowInsets = global::PodcastUtilitiesPOC.Resource.Styleable.Insets_paddingTopSystemWindowInsets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_alpha = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_rotation = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_rotation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_rotationX = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_rotationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_rotationY = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_rotationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_scaleX = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_scaleX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_scaleY = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_scaleY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_transformPivotX = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_transformPivotX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_transformPivotY = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_transformPivotY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_translationX = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_translationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_translationY = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_translationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_android_translationZ = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_android_translationZ;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_curveFit = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_curveFit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_framePosition = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_framePosition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_motionProgress = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_motionProgress;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_motionTarget = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_motionTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_transformPivotTarget = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_transformPivotTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_transitionEasing = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_transitionEasing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyAttribute_transitionPathRotate = global::PodcastUtilitiesPOC.Resource.Styleable.KeyAttribute_transitionPathRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_android_alpha = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_android_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_android_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_android_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_android_rotation = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_android_rotation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_android_rotationX = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_android_rotationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_android_rotationY = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_android_rotationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_android_scaleX = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_android_scaleX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_android_scaleY = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_android_scaleY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_android_translationX = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_android_translationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_android_translationY = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_android_translationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_android_translationZ = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_android_translationZ;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_curveFit = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_curveFit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_framePosition = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_framePosition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_motionProgress = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_motionProgress;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_motionTarget = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_motionTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_transitionEasing = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_transitionEasing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_transitionPathRotate = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_transitionPathRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_waveOffset = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_waveOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_wavePeriod = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_wavePeriod;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_wavePhase = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_wavePhase;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_waveShape = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_waveShape;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyCycle_waveVariesBy = global::PodcastUtilitiesPOC.Resource.Styleable.KeyCycle_waveVariesBy;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyFrame = global::PodcastUtilitiesPOC.Resource.Styleable.KeyFrame;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyFramesAcceleration = global::PodcastUtilitiesPOC.Resource.Styleable.KeyFramesAcceleration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyFramesVelocity = global::PodcastUtilitiesPOC.Resource.Styleable.KeyFramesVelocity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_curveFit = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_curveFit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_drawPath = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_drawPath;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_framePosition = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_framePosition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_keyPositionType = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_keyPositionType;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_motionTarget = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_motionTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_pathMotionArc = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_pathMotionArc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_percentHeight = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_percentHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_percentWidth = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_percentWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_percentX = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_percentX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_percentY = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_percentY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_sizePercent = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_sizePercent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyPosition_transitionEasing = global::PodcastUtilitiesPOC.Resource.Styleable.KeyPosition_transitionEasing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_android_alpha = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_android_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_android_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_android_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_android_rotation = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_android_rotation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_android_rotationX = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_android_rotationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_android_rotationY = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_android_rotationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_android_scaleX = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_android_scaleX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_android_scaleY = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_android_scaleY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_android_translationX = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_android_translationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_android_translationY = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_android_translationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_android_translationZ = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_android_translationZ;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_curveFit = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_curveFit;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_framePosition = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_framePosition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_motionProgress = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_motionProgress;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_motionTarget = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_motionTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_transitionEasing = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_transitionEasing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_transitionPathRotate = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_transitionPathRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_waveDecay = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_waveDecay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_waveOffset = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_waveOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_wavePeriod = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_wavePeriod;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_wavePhase = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_wavePhase;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTimeCycle_waveShape = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTimeCycle_waveShape;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_framePosition = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_framePosition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_motionTarget = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_motionTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_motion_postLayoutCollision = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_motion_postLayoutCollision;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_motion_triggerOnCollision = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_motion_triggerOnCollision;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_onCross = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_onCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_onNegativeCross = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_onNegativeCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_onPositiveCross = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_onPositiveCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_triggerId = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_triggerId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_triggerReceiver = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_triggerReceiver;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_triggerSlack = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_triggerSlack;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_viewTransitionOnCross = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_viewTransitionOnCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_viewTransitionOnNegativeCross = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_viewTransitionOnNegativeCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.KeyTrigger_viewTransitionOnPositiveCross = global::PodcastUtilitiesPOC.Resource.Styleable.KeyTrigger_viewTransitionOnPositiveCross;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout = global::PodcastUtilitiesPOC.Resource.Styleable.Layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_android_layout_height = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_android_layout_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_android_layout_marginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_android_layout_marginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_android_layout_marginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_android_layout_marginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_android_layout_marginLeft = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_android_layout_marginLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_android_layout_marginRight = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_android_layout_marginRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_android_layout_marginStart = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_android_layout_marginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_android_layout_marginTop = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_android_layout_marginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_android_layout_width = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_android_layout_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_android_orientation = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_android_orientation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_barrierAllowsGoneWidgets = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_barrierAllowsGoneWidgets;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_barrierDirection = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_barrierDirection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_barrierMargin = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_barrierMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_chainUseRtl = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_chainUseRtl;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_constraint_referenced_ids = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_constraint_referenced_ids;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_constraint_referenced_tags = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_constraint_referenced_tags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constrainedHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constrainedHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constrainedWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constrainedWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintBaseline_creator = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintBaseline_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintBaseline_toBaselineOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintBaseline_toBaselineOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintBaseline_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintBaseline_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintBaseline_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintBaseline_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintBottom_creator = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintBottom_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintBottom_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintBottom_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintBottom_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintBottom_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintCircle = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintCircle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintCircleAngle = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintCircleAngle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintCircleRadius = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintCircleRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintDimensionRatio = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintDimensionRatio;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintEnd_toEndOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintEnd_toEndOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintEnd_toStartOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintEnd_toStartOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintGuide_begin = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintGuide_begin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintGuide_end = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintGuide_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintGuide_percent = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintGuide_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintHeight_default = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintHeight_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintHeight_max = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintHeight_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintHeight_min = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintHeight_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintHeight_percent = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintHeight_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintHorizontal_bias = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintHorizontal_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintHorizontal_chainStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintHorizontal_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintHorizontal_weight = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintHorizontal_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintLeft_creator = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintLeft_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintLeft_toLeftOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintLeft_toLeftOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintLeft_toRightOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintLeft_toRightOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintRight_creator = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintRight_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintRight_toLeftOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintRight_toLeftOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintRight_toRightOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintRight_toRightOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintStart_toEndOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintStart_toEndOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintStart_toStartOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintStart_toStartOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintTop_creator = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintTop_creator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintTop_toBottomOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintTop_toBottomOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintTop_toTopOf = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintTop_toTopOf;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintVertical_bias = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintVertical_bias;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintVertical_chainStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintVertical_chainStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintVertical_weight = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintVertical_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintWidth_default = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintWidth_default;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintWidth_max = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintWidth_max;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintWidth_min = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintWidth_min;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_constraintWidth_percent = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_constraintWidth_percent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_editor_absoluteX = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_editor_absoluteX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_editor_absoluteY = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_editor_absoluteY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_goneMarginBaseline = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_goneMarginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_goneMarginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_goneMarginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_goneMarginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_goneMarginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_goneMarginLeft = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_goneMarginLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_goneMarginRight = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_goneMarginRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_goneMarginStart = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_goneMarginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_goneMarginTop = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_goneMarginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_marginBaseline = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_marginBaseline;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_layout_wrapBehaviorInParent = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_layout_wrapBehaviorInParent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_maxHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_maxHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_maxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_minHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_minHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Layout_minWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Layout_minWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_android_gravity = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_android_orientation = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_divider = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_divider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_Layout = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearLayoutCompat_showDividers = global::PodcastUtilitiesPOC.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearProgressIndicator = global::PodcastUtilitiesPOC.Resource.Styleable.LinearProgressIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearProgressIndicator_indeterminateAnimationType = global::PodcastUtilitiesPOC.Resource.Styleable.LinearProgressIndicator_indeterminateAnimationType;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.LinearProgressIndicator_indicatorDirectionLinear = global::PodcastUtilitiesPOC.Resource.Styleable.LinearProgressIndicator_indicatorDirectionLinear;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ListPopupWindow = global::PodcastUtilitiesPOC.Resource.Styleable.ListPopupWindow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::PodcastUtilitiesPOC.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::PodcastUtilitiesPOC.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAlertDialog = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAlertDialog;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAlertDialogTheme = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAlertDialogTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAlertDialogTheme_materialAlertDialogBodyTextStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAlertDialogTheme_materialAlertDialogBodyTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAlertDialogTheme_materialAlertDialogTheme = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAlertDialogTheme_materialAlertDialogTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAlertDialogTheme_materialAlertDialogTitleIconStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAlertDialogTheme_materialAlertDialogTitleIconStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAlertDialogTheme_materialAlertDialogTitlePanelStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAlertDialogTheme_materialAlertDialogTitlePanelStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAlertDialogTheme_materialAlertDialogTitleTextStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAlertDialogTheme_materialAlertDialogTitleTextStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAlertDialog_backgroundInsetBottom = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAlertDialog_backgroundInsetBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAlertDialog_backgroundInsetEnd = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAlertDialog_backgroundInsetEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAlertDialog_backgroundInsetStart = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAlertDialog_backgroundInsetStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAlertDialog_backgroundInsetTop = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAlertDialog_backgroundInsetTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAutoCompleteTextView = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAutoCompleteTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialAutoCompleteTextView_android_inputType = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialAutoCompleteTextView_android_inputType;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButtonToggleGroup = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButtonToggleGroup;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButtonToggleGroup_checkedButton = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButtonToggleGroup_checkedButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButtonToggleGroup_selectionRequired = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButtonToggleGroup_selectionRequired;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButtonToggleGroup_singleSelection = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButtonToggleGroup_singleSelection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_android_background = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_android_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_android_checkable = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_android_checkable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_android_insetBottom = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_android_insetBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_android_insetLeft = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_android_insetLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_android_insetRight = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_android_insetRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_android_insetTop = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_android_insetTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_backgroundTint = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_backgroundTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_backgroundTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_backgroundTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_cornerRadius = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_cornerRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_icon = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_iconGravity = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_iconGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_iconPadding = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_iconPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_iconSize = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_iconSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_iconTint = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_iconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_iconTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_iconTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_rippleColor = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_rippleColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_shapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_shapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_shapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_shapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_strokeColor = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_strokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialButton_strokeWidth = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialButton_strokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendar = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendarItem = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendarItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendarItem_android_insetBottom = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendarItem_android_insetBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendarItem_android_insetLeft = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendarItem_android_insetLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendarItem_android_insetRight = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendarItem_android_insetRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendarItem_android_insetTop = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendarItem_android_insetTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendarItem_itemFillColor = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendarItem_itemFillColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendarItem_itemShapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendarItem_itemShapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendarItem_itemShapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendarItem_itemShapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendarItem_itemStrokeColor = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendarItem_itemStrokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendarItem_itemStrokeWidth = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendarItem_itemStrokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendarItem_itemTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendarItem_itemTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendar_android_windowFullscreen = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendar_android_windowFullscreen;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendar_dayInvalidStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendar_dayInvalidStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendar_daySelectedStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendar_daySelectedStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendar_dayStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendar_dayStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendar_dayTodayStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendar_dayTodayStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendar_nestedScrollable = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendar_nestedScrollable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendar_rangeFillColor = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendar_rangeFillColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendar_yearSelectedStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendar_yearSelectedStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendar_yearStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendar_yearStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCalendar_yearTodayStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCalendar_yearTodayStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_android_checkable = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_android_checkable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_cardForegroundColor = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_cardForegroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_checkedIcon = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_checkedIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_checkedIconMargin = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_checkedIconMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_checkedIconSize = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_checkedIconSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_checkedIconTint = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_checkedIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_rippleColor = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_rippleColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_shapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_shapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_shapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_shapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_state_dragged = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_state_dragged;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_strokeColor = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_strokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCardView_strokeWidth = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCardView_strokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCheckBox = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCheckBox;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCheckBox_buttonTint = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCheckBox_buttonTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialCheckBox_useMaterialThemeColors = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialCheckBox_useMaterialThemeColors;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialRadioButton = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialRadioButton;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialRadioButton_buttonTint = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialRadioButton_buttonTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialRadioButton_useMaterialThemeColors = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialRadioButton_useMaterialThemeColors;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialShape = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialShape;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialShape_shapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialShape_shapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialShape_shapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialShape_shapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialTextAppearance_android_letterSpacing = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialTextAppearance_android_letterSpacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialTextAppearance_android_lineHeight = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialTextAppearance_android_lineHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialTextAppearance_lineHeight = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialTextAppearance_lineHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialTextView = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialTextView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialTextView_android_lineHeight = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialTextView_android_lineHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialTextView_android_textAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialTextView_android_textAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialTextView_lineHeight = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialTextView_lineHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialTimePicker = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialTimePicker;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialTimePicker_clockIcon = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialTimePicker_clockIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialTimePicker_keyboardIcon = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialTimePicker_keyboardIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialToolbar = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialToolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialToolbar_navigationIconTint = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialToolbar_navigationIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialToolbar_subtitleCentered = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialToolbar_subtitleCentered;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MaterialToolbar_titleCentered = global::PodcastUtilitiesPOC.Resource.Styleable.MaterialToolbar_titleCentered;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuGroup = global::PodcastUtilitiesPOC.Resource.Styleable.MenuGroup;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuGroup_android_checkableBehavior = global::PodcastUtilitiesPOC.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuGroup_android_enabled = global::PodcastUtilitiesPOC.Resource.Styleable.MenuGroup_android_enabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuGroup_android_id = global::PodcastUtilitiesPOC.Resource.Styleable.MenuGroup_android_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuGroup_android_menuCategory = global::PodcastUtilitiesPOC.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuGroup_android_orderInCategory = global::PodcastUtilitiesPOC.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuGroup_android_visible = global::PodcastUtilitiesPOC.Resource.Styleable.MenuGroup_android_visible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_actionLayout = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_actionLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_actionProviderClass = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_actionProviderClass;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_actionViewClass = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_actionViewClass;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_alphabeticModifiers = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_alphabeticModifiers;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_checkable = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_checkable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_checked = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_checked;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_enabled = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_enabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_icon = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_id = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_menuCategory = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_menuCategory;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_numericShortcut = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_onClick = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_onClick;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_orderInCategory = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_title = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_titleCondensed = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_android_visible = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_android_visible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_contentDescription = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_contentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_iconTint = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_iconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_iconTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_iconTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_numericModifiers = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_numericModifiers;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_showAsAction = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_showAsAction;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuItem_tooltipText = global::PodcastUtilitiesPOC.Resource.Styleable.MenuItem_tooltipText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuView = global::PodcastUtilitiesPOC.Resource.Styleable.MenuView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuView_android_headerBackground = global::PodcastUtilitiesPOC.Resource.Styleable.MenuView_android_headerBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuView_android_horizontalDivider = global::PodcastUtilitiesPOC.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuView_android_itemBackground = global::PodcastUtilitiesPOC.Resource.Styleable.MenuView_android_itemBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::PodcastUtilitiesPOC.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuView_android_itemTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuView_android_verticalDivider = global::PodcastUtilitiesPOC.Resource.Styleable.MenuView_android_verticalDivider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuView_android_windowAnimationStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuView_preserveIconSpacing = global::PodcastUtilitiesPOC.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MenuView_subMenuArrow = global::PodcastUtilitiesPOC.Resource.Styleable.MenuView_subMenuArrow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MockView = global::PodcastUtilitiesPOC.Resource.Styleable.MockView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MockView_mock_diagonalsColor = global::PodcastUtilitiesPOC.Resource.Styleable.MockView_mock_diagonalsColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MockView_mock_label = global::PodcastUtilitiesPOC.Resource.Styleable.MockView_mock_label;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MockView_mock_labelBackgroundColor = global::PodcastUtilitiesPOC.Resource.Styleable.MockView_mock_labelBackgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MockView_mock_labelColor = global::PodcastUtilitiesPOC.Resource.Styleable.MockView_mock_labelColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MockView_mock_showDiagonals = global::PodcastUtilitiesPOC.Resource.Styleable.MockView_mock_showDiagonals;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MockView_mock_showLabel = global::PodcastUtilitiesPOC.Resource.Styleable.MockView_mock_showLabel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Motion = global::PodcastUtilitiesPOC.Resource.Styleable.Motion;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionEffect = global::PodcastUtilitiesPOC.Resource.Styleable.MotionEffect;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionEffect_motionEffect_alpha = global::PodcastUtilitiesPOC.Resource.Styleable.MotionEffect_motionEffect_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionEffect_motionEffect_end = global::PodcastUtilitiesPOC.Resource.Styleable.MotionEffect_motionEffect_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionEffect_motionEffect_move = global::PodcastUtilitiesPOC.Resource.Styleable.MotionEffect_motionEffect_move;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionEffect_motionEffect_start = global::PodcastUtilitiesPOC.Resource.Styleable.MotionEffect_motionEffect_start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionEffect_motionEffect_strict = global::PodcastUtilitiesPOC.Resource.Styleable.MotionEffect_motionEffect_strict;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionEffect_motionEffect_translationX = global::PodcastUtilitiesPOC.Resource.Styleable.MotionEffect_motionEffect_translationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionEffect_motionEffect_translationY = global::PodcastUtilitiesPOC.Resource.Styleable.MotionEffect_motionEffect_translationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionEffect_motionEffect_viewTransition = global::PodcastUtilitiesPOC.Resource.Styleable.MotionEffect_motionEffect_viewTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionHelper = global::PodcastUtilitiesPOC.Resource.Styleable.MotionHelper;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionHelper_onHide = global::PodcastUtilitiesPOC.Resource.Styleable.MotionHelper_onHide;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionHelper_onShow = global::PodcastUtilitiesPOC.Resource.Styleable.MotionHelper_onShow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_android_autoSizeTextType = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_android_autoSizeTextType;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_android_fontFamily = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_android_fontFamily;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_android_gravity = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_android_gravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_android_shadowRadius = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_android_shadowRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_android_text = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_android_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_android_textColor = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_android_textColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_android_textSize = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_android_textSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_android_textStyle = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_android_textStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_android_typeface = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_android_typeface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_borderRound = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_borderRound;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_borderRoundPercent = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_borderRoundPercent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_scaleFromTextSize = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_scaleFromTextSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textBackground = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textBackgroundPanX = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textBackgroundPanX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textBackgroundPanY = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textBackgroundPanY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textBackgroundRotate = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textBackgroundRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textBackgroundZoom = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textBackgroundZoom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textOutlineColor = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textOutlineColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textOutlineThickness = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textOutlineThickness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textPanX = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textPanX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textPanY = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textPanY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textureBlurFactor = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textureBlurFactor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textureEffect = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textureEffect;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textureHeight = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textureHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLabel_textureWidth = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLabel_textureWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLayout = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLayout_applyMotionScene = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLayout_applyMotionScene;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLayout_currentState = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLayout_currentState;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLayout_layoutDescription = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLayout_layoutDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLayout_motionDebug = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLayout_motionDebug;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLayout_motionProgress = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLayout_motionProgress;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionLayout_showPaths = global::PodcastUtilitiesPOC.Resource.Styleable.MotionLayout_showPaths;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionScene = global::PodcastUtilitiesPOC.Resource.Styleable.MotionScene;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionScene_defaultDuration = global::PodcastUtilitiesPOC.Resource.Styleable.MotionScene_defaultDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionScene_layoutDuringTransition = global::PodcastUtilitiesPOC.Resource.Styleable.MotionScene_layoutDuringTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionTelltales = global::PodcastUtilitiesPOC.Resource.Styleable.MotionTelltales;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionTelltales_telltales_tailColor = global::PodcastUtilitiesPOC.Resource.Styleable.MotionTelltales_telltales_tailColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionTelltales_telltales_tailScale = global::PodcastUtilitiesPOC.Resource.Styleable.MotionTelltales_telltales_tailScale;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.MotionTelltales_telltales_velocityMode = global::PodcastUtilitiesPOC.Resource.Styleable.MotionTelltales_telltales_velocityMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Motion_animateCircleAngleTo = global::PodcastUtilitiesPOC.Resource.Styleable.Motion_animateCircleAngleTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Motion_animateRelativeTo = global::PodcastUtilitiesPOC.Resource.Styleable.Motion_animateRelativeTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Motion_drawPath = global::PodcastUtilitiesPOC.Resource.Styleable.Motion_drawPath;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Motion_motionPathRotate = global::PodcastUtilitiesPOC.Resource.Styleable.Motion_motionPathRotate;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Motion_motionStagger = global::PodcastUtilitiesPOC.Resource.Styleable.Motion_motionStagger;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Motion_pathMotionArc = global::PodcastUtilitiesPOC.Resource.Styleable.Motion_pathMotionArc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Motion_quantizeMotionInterpolator = global::PodcastUtilitiesPOC.Resource.Styleable.Motion_quantizeMotionInterpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Motion_quantizeMotionPhase = global::PodcastUtilitiesPOC.Resource.Styleable.Motion_quantizeMotionPhase;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Motion_quantizeMotionSteps = global::PodcastUtilitiesPOC.Resource.Styleable.Motion_quantizeMotionSteps;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Motion_transitionEasing = global::PodcastUtilitiesPOC.Resource.Styleable.Motion_transitionEasing;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView_backgroundTint = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView_backgroundTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView_itemBackground = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView_itemBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView_itemIconSize = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView_itemIconSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView_itemIconTint = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView_itemIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView_itemRippleColor = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView_itemRippleColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView_itemTextAppearanceActive = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView_itemTextAppearanceActive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView_itemTextAppearanceInactive = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView_itemTextAppearanceInactive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView_itemTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView_itemTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView_labelVisibilityMode = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView_labelVisibilityMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationBarView_menu = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationBarView_menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationRailView = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationRailView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationRailView_headerLayout = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationRailView_headerLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationRailView_menuGravity = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationRailView_menuGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_android_background = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_android_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_android_fitsSystemWindows;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_android_maxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_android_maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_headerLayout = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_headerLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemBackground = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemHorizontalPadding = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemHorizontalPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemIconPadding = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemIconPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemIconSize = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemIconSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemIconTint = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemMaxLines = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemMaxLines;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemShapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemShapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemShapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemShapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemShapeFillColor = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemShapeFillColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemShapeInsetBottom = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemShapeInsetBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemShapeInsetEnd = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemShapeInsetEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemShapeInsetStart = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemShapeInsetStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemShapeInsetTop = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemShapeInsetTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_itemTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_itemTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_menu = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_shapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_shapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.NavigationView_shapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.NavigationView_shapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnClick = global::PodcastUtilitiesPOC.Resource.Styleable.OnClick;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnClick_clickAction = global::PodcastUtilitiesPOC.Resource.Styleable.OnClick_clickAction;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnClick_targetId = global::PodcastUtilitiesPOC.Resource.Styleable.OnClick_targetId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_autoCompleteMode = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_autoCompleteMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_dragDirection = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_dragDirection;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_dragScale = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_dragScale;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_dragThreshold = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_dragThreshold;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_limitBoundsTo = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_limitBoundsTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_maxAcceleration = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_maxAcceleration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_maxVelocity = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_maxVelocity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_moveWhenScrollAtTop = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_moveWhenScrollAtTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_nestedScrollFlags = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_nestedScrollFlags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_onTouchUp = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_onTouchUp;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_rotationCenterId = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_rotationCenterId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_springBoundary = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_springBoundary;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_springDamping = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_springDamping;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_springMass = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_springMass;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_springStiffness = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_springStiffness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_springStopThreshold = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_springStopThreshold;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_touchAnchorId = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_touchAnchorId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_touchAnchorSide = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_touchAnchorSide;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.OnSwipe_touchRegionId = global::PodcastUtilitiesPOC.Resource.Styleable.OnSwipe_touchRegionId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PopupWindow = global::PodcastUtilitiesPOC.Resource.Styleable.PopupWindow;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PopupWindowBackgroundState = global::PodcastUtilitiesPOC.Resource.Styleable.PopupWindowBackgroundState;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::PodcastUtilitiesPOC.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::PodcastUtilitiesPOC.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PopupWindow_android_popupBackground = global::PodcastUtilitiesPOC.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PopupWindow_overlapAnchor = global::PodcastUtilitiesPOC.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PropertySet = global::PodcastUtilitiesPOC.Resource.Styleable.PropertySet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PropertySet_android_alpha = global::PodcastUtilitiesPOC.Resource.Styleable.PropertySet_android_alpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PropertySet_android_visibility = global::PodcastUtilitiesPOC.Resource.Styleable.PropertySet_android_visibility;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PropertySet_layout_constraintTag = global::PodcastUtilitiesPOC.Resource.Styleable.PropertySet_layout_constraintTag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PropertySet_motionProgress = global::PodcastUtilitiesPOC.Resource.Styleable.PropertySet_motionProgress;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.PropertySet_visibilityMode = global::PodcastUtilitiesPOC.Resource.Styleable.PropertySet_visibilityMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RadialViewGroup = global::PodcastUtilitiesPOC.Resource.Styleable.RadialViewGroup;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RadialViewGroup_materialCircleRadius = global::PodcastUtilitiesPOC.Resource.Styleable.RadialViewGroup_materialCircleRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RangeSlider = global::PodcastUtilitiesPOC.Resource.Styleable.RangeSlider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RangeSlider_minSeparation = global::PodcastUtilitiesPOC.Resource.Styleable.RangeSlider_minSeparation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RangeSlider_values = global::PodcastUtilitiesPOC.Resource.Styleable.RangeSlider_values;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecycleListView = global::PodcastUtilitiesPOC.Resource.Styleable.RecycleListView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::PodcastUtilitiesPOC.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::PodcastUtilitiesPOC.Resource.Styleable.RecycleListView_paddingTopNoTitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_android_clipToPadding = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_android_clipToPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_android_descendantFocusability = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_android_descendantFocusability;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_android_orientation = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_android_orientation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_fastScrollEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_fastScrollEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_layoutManager = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_layoutManager;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_reverseLayout = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_reverseLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_spanCount = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_spanCount;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.RecyclerView_stackFromEnd = global::PodcastUtilitiesPOC.Resource.Styleable.RecyclerView_stackFromEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ScrimInsetsFrameLayout = global::PodcastUtilitiesPOC.Resource.Styleable.ScrimInsetsFrameLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::PodcastUtilitiesPOC.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ScrollingViewBehavior_Layout = global::PodcastUtilitiesPOC.Resource.Styleable.ScrollingViewBehavior_Layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop = global::PodcastUtilitiesPOC.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_android_focusable = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_android_focusable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_android_imeOptions = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_android_imeOptions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_android_inputType = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_android_inputType;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_android_maxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_android_maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_closeIcon = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_closeIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_commitIcon = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_commitIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_defaultQueryHint = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_defaultQueryHint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_goIcon = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_goIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_iconifiedByDefault = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_layout = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_queryBackground = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_queryBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_queryHint = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_queryHint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_searchHintIcon = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_searchHintIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_searchIcon = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_searchIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_submitBackground = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_submitBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_suggestionRowLayout = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SearchView_voiceIcon = global::PodcastUtilitiesPOC.Resource.Styleable.SearchView_voiceIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView_contentPadding = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView_contentPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView_contentPaddingBottom = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView_contentPaddingBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView_contentPaddingEnd = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView_contentPaddingEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView_contentPaddingLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView_contentPaddingLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView_contentPaddingRight = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView_contentPaddingRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView_contentPaddingStart = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView_contentPaddingStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView_contentPaddingTop = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView_contentPaddingTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView_shapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView_shapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView_shapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView_shapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView_strokeColor = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView_strokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeableImageView_strokeWidth = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeableImageView_strokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeAppearance_cornerFamily = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeAppearance_cornerFamily;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeAppearance_cornerFamilyBottomLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeAppearance_cornerFamilyBottomLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeAppearance_cornerFamilyBottomRight = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeAppearance_cornerFamilyBottomRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeAppearance_cornerFamilyTopLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeAppearance_cornerFamilyTopLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeAppearance_cornerFamilyTopRight = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeAppearance_cornerFamilyTopRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeAppearance_cornerSize = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeAppearance_cornerSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeAppearance_cornerSizeBottomLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeAppearance_cornerSizeBottomLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeAppearance_cornerSizeBottomRight = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeAppearance_cornerSizeBottomRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeAppearance_cornerSizeTopLeft = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeAppearance_cornerSizeTopLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ShapeAppearance_cornerSizeTopRight = global::PodcastUtilitiesPOC.Resource.Styleable.ShapeAppearance_cornerSizeTopRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider = global::PodcastUtilitiesPOC.Resource.Styleable.Slider;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_android_enabled = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_android_enabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_android_stepSize = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_android_stepSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_android_value = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_android_value;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_android_valueFrom = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_android_valueFrom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_android_valueTo = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_android_valueTo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_haloColor = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_haloColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_haloRadius = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_haloRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_labelBehavior = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_labelBehavior;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_labelStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_labelStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_thumbColor = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_thumbColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_thumbElevation = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_thumbElevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_thumbRadius = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_thumbRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_thumbStrokeColor = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_thumbStrokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_thumbStrokeWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_thumbStrokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_tickColor = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_tickColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_tickColorActive = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_tickColorActive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_tickColorInactive = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_tickColorInactive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_tickVisible = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_tickVisible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_trackColor = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_trackColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_trackColorActive = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_trackColorActive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_trackColorInactive = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_trackColorInactive;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Slider_trackHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Slider_trackHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Snackbar = global::PodcastUtilitiesPOC.Resource.Styleable.Snackbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SnackbarLayout = global::PodcastUtilitiesPOC.Resource.Styleable.SnackbarLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SnackbarLayout_actionTextColorAlpha = global::PodcastUtilitiesPOC.Resource.Styleable.SnackbarLayout_actionTextColorAlpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SnackbarLayout_android_maxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.SnackbarLayout_android_maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SnackbarLayout_animationMode = global::PodcastUtilitiesPOC.Resource.Styleable.SnackbarLayout_animationMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SnackbarLayout_backgroundOverlayColorAlpha = global::PodcastUtilitiesPOC.Resource.Styleable.SnackbarLayout_backgroundOverlayColorAlpha;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SnackbarLayout_backgroundTint = global::PodcastUtilitiesPOC.Resource.Styleable.SnackbarLayout_backgroundTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SnackbarLayout_backgroundTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.SnackbarLayout_backgroundTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SnackbarLayout_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.SnackbarLayout_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::PodcastUtilitiesPOC.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Snackbar_snackbarButtonStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Snackbar_snackbarButtonStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Snackbar_snackbarStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Snackbar_snackbarStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Snackbar_snackbarTextViewStyle = global::PodcastUtilitiesPOC.Resource.Styleable.Snackbar_snackbarTextViewStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Spinner = global::PodcastUtilitiesPOC.Resource.Styleable.Spinner;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Spinner_android_dropDownWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Spinner_android_entries = global::PodcastUtilitiesPOC.Resource.Styleable.Spinner_android_entries;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Spinner_android_popupBackground = global::PodcastUtilitiesPOC.Resource.Styleable.Spinner_android_popupBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Spinner_android_prompt = global::PodcastUtilitiesPOC.Resource.Styleable.Spinner_android_prompt;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Spinner_popupTheme = global::PodcastUtilitiesPOC.Resource.Styleable.Spinner_popupTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.State = global::PodcastUtilitiesPOC.Resource.Styleable.State;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.StateListDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.StateListDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.StateListDrawableItem = global::PodcastUtilitiesPOC.Resource.Styleable.StateListDrawableItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.StateListDrawableItem_android_drawable = global::PodcastUtilitiesPOC.Resource.Styleable.StateListDrawableItem_android_drawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.StateListDrawable_android_constantSize = global::PodcastUtilitiesPOC.Resource.Styleable.StateListDrawable_android_constantSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.StateListDrawable_android_dither = global::PodcastUtilitiesPOC.Resource.Styleable.StateListDrawable_android_dither;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.StateListDrawable_android_enterFadeDuration = global::PodcastUtilitiesPOC.Resource.Styleable.StateListDrawable_android_enterFadeDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.StateListDrawable_android_exitFadeDuration = global::PodcastUtilitiesPOC.Resource.Styleable.StateListDrawable_android_exitFadeDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.StateListDrawable_android_variablePadding = global::PodcastUtilitiesPOC.Resource.Styleable.StateListDrawable_android_variablePadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.StateListDrawable_android_visible = global::PodcastUtilitiesPOC.Resource.Styleable.StateListDrawable_android_visible;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.StateSet = global::PodcastUtilitiesPOC.Resource.Styleable.StateSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.StateSet_defaultState = global::PodcastUtilitiesPOC.Resource.Styleable.StateSet_defaultState;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.State_android_id = global::PodcastUtilitiesPOC.Resource.Styleable.State_android_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.State_constraints = global::PodcastUtilitiesPOC.Resource.Styleable.State_constraints;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_android_textOff = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_android_textOff;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_android_textOn = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_android_textOn;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_android_thumb = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_android_thumb;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_showText = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_showText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_splitTrack = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_splitTrack;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_switchMinWidth = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_switchPadding = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_switchPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_switchTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_thumbTextPadding = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_thumbTint = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_thumbTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_thumbTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_thumbTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_track = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_track;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_trackTint = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_trackTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchCompat_trackTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchCompat_trackTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchMaterial = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchMaterial;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.SwitchMaterial_useMaterialThemeColors = global::PodcastUtilitiesPOC.Resource.Styleable.SwitchMaterial_useMaterialThemeColors;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabItem = global::PodcastUtilitiesPOC.Resource.Styleable.TabItem;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabItem_android_icon = global::PodcastUtilitiesPOC.Resource.Styleable.TabItem_android_icon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabItem_android_layout = global::PodcastUtilitiesPOC.Resource.Styleable.TabItem_android_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabItem_android_text = global::PodcastUtilitiesPOC.Resource.Styleable.TabItem_android_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabBackground = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabBackground;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabContentStart = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabContentStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabGravity = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabIconTint = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabIconTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabIconTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabIndicator = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabIndicator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabIndicatorAnimationDuration = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabIndicatorAnimationDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabIndicatorAnimationMode = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabIndicatorAnimationMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabIndicatorColor = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabIndicatorColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabIndicatorFullWidth = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabIndicatorFullWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabIndicatorGravity = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabIndicatorGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabIndicatorHeight = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabIndicatorHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabInlineLabel = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabInlineLabel;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabMaxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabMaxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabMinWidth = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabMinWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabMode = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabPadding = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabPadding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabPaddingBottom = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabPaddingBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabPaddingEnd = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabPaddingEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabPaddingStart = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabPaddingStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabPaddingTop = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabPaddingTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabRippleColor = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabRippleColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabSelectedTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabSelectedTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TabLayout_tabUnboundedRipple = global::PodcastUtilitiesPOC.Resource.Styleable.TabLayout_tabUnboundedRipple;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_fontFamily = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_fontFamily;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_shadowColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_shadowColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_shadowDx = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_shadowDx;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_shadowDy = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_shadowDy;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_shadowRadius = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_shadowRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_textColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_textColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_textColorHint = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_textColorHint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_textColorLink = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_textColorLink;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_textFontWeight = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_textFontWeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_textSize = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_textSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_textStyle = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_textStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_android_typeface = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_android_typeface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_fontFamily = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_fontFamily;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_fontVariationSettings = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_fontVariationSettings;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_textAllCaps = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_textAllCaps;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextAppearance_textLocale = global::PodcastUtilitiesPOC.Resource.Styleable.TextAppearance_textLocale;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_android_fontFamily = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_android_fontFamily;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_android_shadowColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_android_shadowColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_android_shadowDx = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_android_shadowDx;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_android_shadowDy = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_android_shadowDy;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_android_shadowRadius = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_android_shadowRadius;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_android_text = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_android_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_android_textSize = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_android_textSize;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_android_textStyle = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_android_textStyle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_android_typeface = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_android_typeface;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_borderRound = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_borderRound;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_borderRoundPercent = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_borderRoundPercent;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_textFillColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_textFillColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_textOutlineColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_textOutlineColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextEffects_textOutlineThickness = global::PodcastUtilitiesPOC.Resource.Styleable.TextEffects_textOutlineThickness;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputEditText = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputEditText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputEditText_textInputLayoutFocusedRectEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputEditText_textInputLayoutFocusedRectEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_android_enabled = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_android_enabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_android_hint = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_android_hint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_android_maxWidth = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_android_maxWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_android_minWidth = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_android_minWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_android_textColorHint = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_android_textColorHint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_boxBackgroundColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_boxBackgroundColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_boxBackgroundMode = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_boxBackgroundMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_boxCollapsedPaddingTop = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_boxCollapsedPaddingTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomEnd = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomStart = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_boxStrokeColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_boxStrokeColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_boxStrokeErrorColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_boxStrokeErrorColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_boxStrokeWidth = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_boxStrokeWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_boxStrokeWidthFocused = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_boxStrokeWidthFocused;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_counterEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_counterEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_counterMaxLength = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_counterMaxLength;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_counterOverflowTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_counterOverflowTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_counterTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_counterTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_counterTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_counterTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_endIconCheckable = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_endIconCheckable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_endIconContentDescription = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_endIconContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_endIconDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_endIconDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_endIconMode = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_endIconMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_endIconTint = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_endIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_endIconTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_endIconTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_errorContentDescription = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_errorContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_errorEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_errorEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_errorIconDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_errorIconDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_errorIconTint = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_errorIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_errorIconTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_errorIconTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_errorTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_errorTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_errorTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_errorTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_expandedHintEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_expandedHintEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_helperText = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_helperText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_helperTextEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_helperTextEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_helperTextTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_helperTextTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_helperTextTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_helperTextTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_hintEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_hintEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_hintTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_hintTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_hintTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_hintTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_passwordToggleContentDescription = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_passwordToggleContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_passwordToggleDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_passwordToggleDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_passwordToggleEnabled = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_passwordToggleEnabled;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_passwordToggleTint = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_passwordToggleTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_passwordToggleTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_passwordToggleTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_placeholderText = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_placeholderText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_placeholderTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_placeholderTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_placeholderTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_placeholderTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_prefixText = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_prefixText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_prefixTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_prefixTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_prefixTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_prefixTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_shapeAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_shapeAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_shapeAppearanceOverlay = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_shapeAppearanceOverlay;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_startIconCheckable = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_startIconCheckable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_startIconContentDescription = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_startIconContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_startIconDrawable = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_startIconDrawable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_startIconTint = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_startIconTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_startIconTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_startIconTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_suffixText = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_suffixText;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_suffixTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_suffixTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.TextInputLayout_suffixTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.TextInputLayout_suffixTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ThemeEnforcement = global::PodcastUtilitiesPOC.Resource.Styleable.ThemeEnforcement;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ThemeEnforcement_android_textAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.ThemeEnforcement_android_textAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme = global::PodcastUtilitiesPOC.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ThemeEnforcement_enforceTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.ThemeEnforcement_enforceTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_android_gravity = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_android_gravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_android_minHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_android_minHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_buttonGravity = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_buttonGravity;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_collapseContentDescription = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_collapseIcon = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_collapseIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_contentInsetEnd = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_contentInsetEndWithActions = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_contentInsetEndWithActions;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_contentInsetLeft = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_contentInsetRight = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_contentInsetRight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_contentInsetStart = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_contentInsetStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_contentInsetStartWithNavigation = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_contentInsetStartWithNavigation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_logo = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_logo;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_logoDescription = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_logoDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_maxButtonHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_menu = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_menu;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_navigationContentDescription = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_navigationIcon = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_navigationIcon;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_popupTheme = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_popupTheme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_subtitle = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_subtitle;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_subtitleTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_subtitleTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_title = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_title;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_titleMargin = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_titleMargin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_titleMarginBottom = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_titleMarginEnd = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_titleMargins = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_titleMargins;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_titleMarginStart = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_titleMarginStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_titleMarginTop = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_titleMarginTop;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_titleTextAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Toolbar_titleTextColor = global::PodcastUtilitiesPOC.Resource.Styleable.Toolbar_titleTextColor;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Tooltip = global::PodcastUtilitiesPOC.Resource.Styleable.Tooltip;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Tooltip_android_layout_margin = global::PodcastUtilitiesPOC.Resource.Styleable.Tooltip_android_layout_margin;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Tooltip_android_minHeight = global::PodcastUtilitiesPOC.Resource.Styleable.Tooltip_android_minHeight;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Tooltip_android_minWidth = global::PodcastUtilitiesPOC.Resource.Styleable.Tooltip_android_minWidth;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Tooltip_android_padding = global::PodcastUtilitiesPOC.Resource.Styleable.Tooltip_android_padding;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Tooltip_android_text = global::PodcastUtilitiesPOC.Resource.Styleable.Tooltip_android_text;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Tooltip_android_textAppearance = global::PodcastUtilitiesPOC.Resource.Styleable.Tooltip_android_textAppearance;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Tooltip_backgroundTint = global::PodcastUtilitiesPOC.Resource.Styleable.Tooltip_backgroundTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform = global::PodcastUtilitiesPOC.Resource.Styleable.Transform;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_android_elevation = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_android_elevation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_android_rotation = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_android_rotation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_android_rotationX = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_android_rotationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_android_rotationY = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_android_rotationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_android_scaleX = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_android_scaleX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_android_scaleY = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_android_scaleY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_android_transformPivotX = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_android_transformPivotX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_android_transformPivotY = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_android_transformPivotY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_android_translationX = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_android_translationX;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_android_translationY = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_android_translationY;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_android_translationZ = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_android_translationZ;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transform_transformPivotTarget = global::PodcastUtilitiesPOC.Resource.Styleable.Transform_transformPivotTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition = global::PodcastUtilitiesPOC.Resource.Styleable.Transition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition_android_id = global::PodcastUtilitiesPOC.Resource.Styleable.Transition_android_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition_autoTransition = global::PodcastUtilitiesPOC.Resource.Styleable.Transition_autoTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition_constraintSetEnd = global::PodcastUtilitiesPOC.Resource.Styleable.Transition_constraintSetEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition_constraintSetStart = global::PodcastUtilitiesPOC.Resource.Styleable.Transition_constraintSetStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition_duration = global::PodcastUtilitiesPOC.Resource.Styleable.Transition_duration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition_layoutDuringTransition = global::PodcastUtilitiesPOC.Resource.Styleable.Transition_layoutDuringTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition_motionInterpolator = global::PodcastUtilitiesPOC.Resource.Styleable.Transition_motionInterpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition_pathMotionArc = global::PodcastUtilitiesPOC.Resource.Styleable.Transition_pathMotionArc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition_staggered = global::PodcastUtilitiesPOC.Resource.Styleable.Transition_staggered;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition_transitionDisable = global::PodcastUtilitiesPOC.Resource.Styleable.Transition_transitionDisable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Transition_transitionFlags = global::PodcastUtilitiesPOC.Resource.Styleable.Transition_transitionFlags;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Variant = global::PodcastUtilitiesPOC.Resource.Styleable.Variant;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Variant_constraints = global::PodcastUtilitiesPOC.Resource.Styleable.Variant_constraints;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Variant_region_heightLessThan = global::PodcastUtilitiesPOC.Resource.Styleable.Variant_region_heightLessThan;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Variant_region_heightMoreThan = global::PodcastUtilitiesPOC.Resource.Styleable.Variant_region_heightMoreThan;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Variant_region_widthLessThan = global::PodcastUtilitiesPOC.Resource.Styleable.Variant_region_widthLessThan;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.Variant_region_widthMoreThan = global::PodcastUtilitiesPOC.Resource.Styleable.Variant_region_widthMoreThan;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.View = global::PodcastUtilitiesPOC.Resource.Styleable.View;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewBackgroundHelper = global::PodcastUtilitiesPOC.Resource.Styleable.ViewBackgroundHelper;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewBackgroundHelper_android_background = global::PodcastUtilitiesPOC.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::PodcastUtilitiesPOC.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::PodcastUtilitiesPOC.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewPager2 = global::PodcastUtilitiesPOC.Resource.Styleable.ViewPager2;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewPager2_android_orientation = global::PodcastUtilitiesPOC.Resource.Styleable.ViewPager2_android_orientation;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewStubCompat = global::PodcastUtilitiesPOC.Resource.Styleable.ViewStubCompat;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewStubCompat_android_id = global::PodcastUtilitiesPOC.Resource.Styleable.ViewStubCompat_android_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewStubCompat_android_inflatedId = global::PodcastUtilitiesPOC.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewStubCompat_android_layout = global::PodcastUtilitiesPOC.Resource.Styleable.ViewStubCompat_android_layout;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_android_id = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_android_id;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_clearsTag = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_clearsTag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_duration = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_duration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_ifTagNotSet = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_ifTagNotSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_ifTagSet = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_ifTagSet;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_motionInterpolator = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_motionInterpolator;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_motionTarget = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_motionTarget;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_onStateTransition = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_onStateTransition;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_pathMotionArc = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_pathMotionArc;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_setsTag = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_setsTag;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_SharedValue = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_SharedValue;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_SharedValueId = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_SharedValueId;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_transitionDisable = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_transitionDisable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_upDuration = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_upDuration;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.ViewTransition_viewTransitionMode = global::PodcastUtilitiesPOC.Resource.Styleable.ViewTransition_viewTransitionMode;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.View_android_focusable = global::PodcastUtilitiesPOC.Resource.Styleable.View_android_focusable;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.View_android_theme = global::PodcastUtilitiesPOC.Resource.Styleable.View_android_theme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.View_paddingEnd = global::PodcastUtilitiesPOC.Resource.Styleable.View_paddingEnd;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.View_paddingStart = global::PodcastUtilitiesPOC.Resource.Styleable.View_paddingStart;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Styleable.View_theme = global::PodcastUtilitiesPOC.Resource.Styleable.View_theme;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Xml.image_share_filepaths = global::PodcastUtilitiesPOC.Resource.Xml.image_share_filepaths;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Xml.standalone_badge = global::PodcastUtilitiesPOC.Resource.Xml.standalone_badge;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Xml.standalone_badge_gravity_bottom_end = global::PodcastUtilitiesPOC.Resource.Xml.standalone_badge_gravity_bottom_end;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Xml.standalone_badge_gravity_bottom_start = global::PodcastUtilitiesPOC.Resource.Xml.standalone_badge_gravity_bottom_start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Xml.standalone_badge_gravity_top_start = global::PodcastUtilitiesPOC.Resource.Xml.standalone_badge_gravity_top_start;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Xml.standalone_badge_offset = global::PodcastUtilitiesPOC.Resource.Xml.standalone_badge_offset;
+			global::PodcastUtilitiesPOC.AndroidLogic.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::PodcastUtilitiesPOC.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::PodcastUtilitiesPOC.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::PodcastUtilitiesPOC.Resource.Attribute.font;
 			global::Xamarin.Essentials.Resource.Attribute.fontProviderAuthority = global::PodcastUtilitiesPOC.Resource.Attribute.fontProviderAuthority;
@@ -5940,8 +11122,8 @@ namespace PodcastUtilitiesPOC
 			// aapt resource value: 0x7F080031
 			public const int actionDownUp = 2131230769;
 			
-			// aapt resource value: 0x7F080046
-			public const int actions = 2131230790;
+			// aapt resource value: 0x7F080047
+			public const int actions = 2131230791;
 			
 			// aapt resource value: 0x7F080032
 			public const int actionUp = 2131230770;
@@ -5983,103 +11165,106 @@ namespace PodcastUtilitiesPOC
 			public const int action_download_podcasts = 2131230782;
 			
 			// aapt resource value: 0x7F08003F
-			public const int action_image = 2131230783;
+			public const int action_example = 2131230783;
 			
 			// aapt resource value: 0x7F080040
-			public const int action_menu_divider = 2131230784;
+			public const int action_image = 2131230784;
 			
 			// aapt resource value: 0x7F080041
-			public const int action_menu_presenter = 2131230785;
+			public const int action_menu_divider = 2131230785;
 			
 			// aapt resource value: 0x7F080042
-			public const int action_mode_bar = 2131230786;
+			public const int action_menu_presenter = 2131230786;
 			
 			// aapt resource value: 0x7F080043
-			public const int action_mode_bar_stub = 2131230787;
+			public const int action_mode_bar = 2131230787;
 			
 			// aapt resource value: 0x7F080044
-			public const int action_mode_close_button = 2131230788;
+			public const int action_mode_bar_stub = 2131230788;
 			
 			// aapt resource value: 0x7F080045
-			public const int action_text = 2131230789;
+			public const int action_mode_close_button = 2131230789;
 			
-			// aapt resource value: 0x7F080047
-			public const int activity_chooser_view_content = 2131230791;
+			// aapt resource value: 0x7F080046
+			public const int action_text = 2131230790;
 			
 			// aapt resource value: 0x7F080048
-			public const int add = 2131230792;
+			public const int activity_chooser_view_content = 2131230792;
 			
 			// aapt resource value: 0x7F080049
-			public const int alertTitle = 2131230793;
+			public const int add = 2131230793;
 			
 			// aapt resource value: 0x7F08004A
-			public const int aligned = 2131230794;
+			public const int alertTitle = 2131230794;
 			
 			// aapt resource value: 0x7F08004B
-			public const int all = 2131230795;
+			public const int aligned = 2131230795;
 			
 			// aapt resource value: 0x7F08004C
-			public const int allStates = 2131230796;
+			public const int all = 2131230796;
+			
+			// aapt resource value: 0x7F08004D
+			public const int allStates = 2131230797;
 			
 			// aapt resource value: 0x7F080000
 			public const int ALT = 2131230720;
 			
-			// aapt resource value: 0x7F08004D
-			public const int always = 2131230797;
-			
 			// aapt resource value: 0x7F08004E
-			public const int animateToEnd = 2131230798;
+			public const int always = 2131230798;
 			
 			// aapt resource value: 0x7F08004F
-			public const int animateToStart = 2131230799;
-			
-			// aapt resource value: 0x7F080051
-			public const int anticipate = 2131230801;
+			public const int animateToEnd = 2131230799;
 			
 			// aapt resource value: 0x7F080050
-			public const int antiClockwise = 2131230800;
+			public const int animateToStart = 2131230800;
 			
 			// aapt resource value: 0x7F080052
-			public const int arc = 2131230802;
+			public const int anticipate = 2131230802;
+			
+			// aapt resource value: 0x7F080051
+			public const int antiClockwise = 2131230801;
 			
 			// aapt resource value: 0x7F080053
-			public const int asConfigured = 2131230803;
+			public const int arc = 2131230803;
 			
 			// aapt resource value: 0x7F080054
-			public const int async = 2131230804;
+			public const int asConfigured = 2131230804;
 			
 			// aapt resource value: 0x7F080055
-			public const int auto = 2131230805;
+			public const int async = 2131230805;
 			
 			// aapt resource value: 0x7F080056
-			public const int autoComplete = 2131230806;
+			public const int auto = 2131230806;
 			
 			// aapt resource value: 0x7F080057
-			public const int autoCompleteToEnd = 2131230807;
+			public const int autoComplete = 2131230807;
 			
 			// aapt resource value: 0x7F080058
-			public const int autoCompleteToStart = 2131230808;
+			public const int autoCompleteToEnd = 2131230808;
 			
 			// aapt resource value: 0x7F080059
-			public const int barrier = 2131230809;
+			public const int autoCompleteToStart = 2131230809;
 			
 			// aapt resource value: 0x7F08005A
-			public const int baseline = 2131230810;
-			
-			// aapt resource value: 0x7F08005C
-			public const int beginning = 2131230812;
+			public const int barrier = 2131230810;
 			
 			// aapt resource value: 0x7F08005B
-			public const int beginOnFirstDraw = 2131230811;
+			public const int baseline = 2131230811;
 			
 			// aapt resource value: 0x7F08005D
-			public const int bestChoice = 2131230813;
+			public const int beginning = 2131230813;
+			
+			// aapt resource value: 0x7F08005C
+			public const int beginOnFirstDraw = 2131230812;
 			
 			// aapt resource value: 0x7F08005E
-			public const int blocking = 2131230814;
+			public const int bestChoice = 2131230814;
 			
 			// aapt resource value: 0x7F08005F
-			public const int bottom = 2131230815;
+			public const int blocking = 2131230815;
+			
+			// aapt resource value: 0x7F080060
+			public const int bottom = 2131230816;
 			
 			// aapt resource value: 0x7F080001
 			public const int BOTTOM_END = 2131230721;
@@ -6087,887 +11272,887 @@ namespace PodcastUtilitiesPOC
 			// aapt resource value: 0x7F080002
 			public const int BOTTOM_START = 2131230722;
 			
-			// aapt resource value: 0x7F080060
-			public const int bounce = 2131230816;
-			
 			// aapt resource value: 0x7F080061
-			public const int bounceBoth = 2131230817;
+			public const int bounce = 2131230817;
 			
 			// aapt resource value: 0x7F080062
-			public const int bounceEnd = 2131230818;
+			public const int bounceBoth = 2131230818;
 			
 			// aapt resource value: 0x7F080063
-			public const int bounceStart = 2131230819;
+			public const int bounceEnd = 2131230819;
 			
 			// aapt resource value: 0x7F080064
-			public const int browser_actions_header_text = 2131230820;
-			
-			// aapt resource value: 0x7F080067
-			public const int browser_actions_menu_items = 2131230823;
+			public const int bounceStart = 2131230820;
 			
 			// aapt resource value: 0x7F080065
-			public const int browser_actions_menu_item_icon = 2131230821;
-			
-			// aapt resource value: 0x7F080066
-			public const int browser_actions_menu_item_text = 2131230822;
+			public const int browser_actions_header_text = 2131230821;
 			
 			// aapt resource value: 0x7F080068
-			public const int browser_actions_menu_view = 2131230824;
+			public const int browser_actions_menu_items = 2131230824;
+			
+			// aapt resource value: 0x7F080066
+			public const int browser_actions_menu_item_icon = 2131230822;
+			
+			// aapt resource value: 0x7F080067
+			public const int browser_actions_menu_item_text = 2131230823;
 			
 			// aapt resource value: 0x7F080069
-			public const int btnDownload = 2131230825;
+			public const int browser_actions_menu_view = 2131230825;
 			
 			// aapt resource value: 0x7F08006A
-			public const int btnFindPodcasts = 2131230826;
+			public const int btnDownload = 2131230826;
 			
 			// aapt resource value: 0x7F08006B
-			public const int btnLoadConfig = 2131230827;
+			public const int btnFindPodcasts = 2131230827;
 			
 			// aapt resource value: 0x7F08006C
-			public const int btnSetRoot = 2131230828;
+			public const int btnLoadConfig = 2131230828;
 			
 			// aapt resource value: 0x7F08006D
-			public const int buttonPanel = 2131230829;
+			public const int btnSetRoot = 2131230829;
 			
 			// aapt resource value: 0x7F08006E
-			public const int cache_measures = 2131230830;
+			public const int buttonPanel = 2131230830;
 			
 			// aapt resource value: 0x7F08006F
-			public const int cancel_button = 2131230831;
+			public const int cache_measures = 2131230831;
 			
 			// aapt resource value: 0x7F080070
-			public const int carryVelocity = 2131230832;
+			public const int cancel_button = 2131230832;
 			
 			// aapt resource value: 0x7F080071
-			public const int center = 2131230833;
+			public const int carryVelocity = 2131230833;
 			
 			// aapt resource value: 0x7F080072
-			public const int center_horizontal = 2131230834;
+			public const int center = 2131230834;
 			
 			// aapt resource value: 0x7F080073
-			public const int center_vertical = 2131230835;
+			public const int center_horizontal = 2131230835;
 			
 			// aapt resource value: 0x7F080074
-			public const int chain = 2131230836;
+			public const int center_vertical = 2131230836;
 			
 			// aapt resource value: 0x7F080075
-			public const int chains = 2131230837;
+			public const int chain = 2131230837;
 			
 			// aapt resource value: 0x7F080076
-			public const int checkbox = 2131230838;
+			public const int chains = 2131230838;
 			
 			// aapt resource value: 0x7F080077
-			public const int @checked = 2131230839;
+			public const int checkbox = 2131230839;
 			
 			// aapt resource value: 0x7F080078
-			public const int chip = 2131230840;
+			public const int @checked = 2131230840;
 			
 			// aapt resource value: 0x7F080079
-			public const int chip1 = 2131230841;
+			public const int chip = 2131230841;
 			
 			// aapt resource value: 0x7F08007A
-			public const int chip2 = 2131230842;
+			public const int chip1 = 2131230842;
 			
 			// aapt resource value: 0x7F08007B
-			public const int chip3 = 2131230843;
+			public const int chip2 = 2131230843;
 			
 			// aapt resource value: 0x7F08007C
-			public const int chip_group = 2131230844;
+			public const int chip3 = 2131230844;
 			
 			// aapt resource value: 0x7F08007D
-			public const int chronometer = 2131230845;
+			public const int chip_group = 2131230845;
 			
 			// aapt resource value: 0x7F08007E
-			public const int circle_center = 2131230846;
+			public const int chronometer = 2131230846;
 			
 			// aapt resource value: 0x7F08007F
-			public const int clear_text = 2131230847;
+			public const int circle_center = 2131230847;
 			
 			// aapt resource value: 0x7F080080
-			public const int clip_horizontal = 2131230848;
+			public const int clear_text = 2131230848;
 			
 			// aapt resource value: 0x7F080081
-			public const int clip_vertical = 2131230849;
+			public const int clip_horizontal = 2131230849;
 			
 			// aapt resource value: 0x7F080082
-			public const int clockwise = 2131230850;
+			public const int clip_vertical = 2131230850;
 			
 			// aapt resource value: 0x7F080083
-			public const int closest = 2131230851;
+			public const int clockwise = 2131230851;
 			
 			// aapt resource value: 0x7F080084
-			public const int collapseActionView = 2131230852;
+			public const int closest = 2131230852;
 			
 			// aapt resource value: 0x7F080085
-			public const int confirm_button = 2131230853;
+			public const int collapseActionView = 2131230853;
 			
 			// aapt resource value: 0x7F080086
-			public const int constraint = 2131230854;
+			public const int confirm_button = 2131230854;
 			
 			// aapt resource value: 0x7F080087
-			public const int container = 2131230855;
+			public const int constraint = 2131230855;
 			
 			// aapt resource value: 0x7F080088
-			public const int content = 2131230856;
+			public const int container = 2131230856;
 			
 			// aapt resource value: 0x7F080089
-			public const int contentPanel = 2131230857;
+			public const int content = 2131230857;
 			
 			// aapt resource value: 0x7F08008A
-			public const int contiguous = 2131230858;
+			public const int contentPanel = 2131230858;
 			
 			// aapt resource value: 0x7F08008B
-			public const int continuousVelocity = 2131230859;
+			public const int contiguous = 2131230859;
 			
 			// aapt resource value: 0x7F08008C
-			public const int coordinator = 2131230860;
+			public const int continuousVelocity = 2131230860;
 			
 			// aapt resource value: 0x7F08008D
-			public const int cos = 2131230861;
+			public const int coordinator = 2131230861;
 			
 			// aapt resource value: 0x7F08008E
-			public const int counterclockwise = 2131230862;
+			public const int cos = 2131230862;
+			
+			// aapt resource value: 0x7F08008F
+			public const int counterclockwise = 2131230863;
 			
 			// aapt resource value: 0x7F080003
 			public const int CTRL = 2131230723;
 			
-			// aapt resource value: 0x7F08008F
-			public const int currentState = 2131230863;
-			
 			// aapt resource value: 0x7F080090
-			public const int custom = 2131230864;
+			public const int currentState = 2131230864;
 			
 			// aapt resource value: 0x7F080091
-			public const int customPanel = 2131230865;
+			public const int custom = 2131230865;
 			
 			// aapt resource value: 0x7F080092
-			public const int cut = 2131230866;
+			public const int customPanel = 2131230866;
 			
 			// aapt resource value: 0x7F080093
-			public const int date_picker_actions = 2131230867;
+			public const int cut = 2131230867;
 			
 			// aapt resource value: 0x7F080094
-			public const int decelerate = 2131230868;
+			public const int date_picker_actions = 2131230868;
 			
 			// aapt resource value: 0x7F080095
-			public const int decelerateAndComplete = 2131230869;
+			public const int decelerate = 2131230869;
 			
 			// aapt resource value: 0x7F080096
-			public const int decor_content_parent = 2131230870;
+			public const int decelerateAndComplete = 2131230870;
 			
 			// aapt resource value: 0x7F080097
-			public const int default_activity_button = 2131230871;
+			public const int decor_content_parent = 2131230871;
 			
 			// aapt resource value: 0x7F080098
-			public const int deltaRelative = 2131230872;
+			public const int default_activity_button = 2131230872;
 			
 			// aapt resource value: 0x7F080099
-			public const int dependency_ordering = 2131230873;
+			public const int deltaRelative = 2131230873;
 			
 			// aapt resource value: 0x7F08009A
-			public const int design_bottom_sheet = 2131230874;
+			public const int dependency_ordering = 2131230874;
 			
 			// aapt resource value: 0x7F08009B
-			public const int design_menu_item_action_area = 2131230875;
+			public const int design_bottom_sheet = 2131230875;
 			
 			// aapt resource value: 0x7F08009C
-			public const int design_menu_item_action_area_stub = 2131230876;
+			public const int design_menu_item_action_area = 2131230876;
 			
 			// aapt resource value: 0x7F08009D
-			public const int design_menu_item_text = 2131230877;
+			public const int design_menu_item_action_area_stub = 2131230877;
 			
 			// aapt resource value: 0x7F08009E
-			public const int design_navigation_view = 2131230878;
+			public const int design_menu_item_text = 2131230878;
 			
 			// aapt resource value: 0x7F08009F
-			public const int dialog_button = 2131230879;
+			public const int design_navigation_view = 2131230879;
 			
 			// aapt resource value: 0x7F0800A0
-			public const int dimensions = 2131230880;
+			public const int dialog_button = 2131230880;
 			
 			// aapt resource value: 0x7F0800A1
-			public const int direct = 2131230881;
+			public const int dimensions = 2131230881;
 			
 			// aapt resource value: 0x7F0800A2
-			public const int disableHome = 2131230882;
+			public const int direct = 2131230882;
 			
 			// aapt resource value: 0x7F0800A3
-			public const int disableIntraAutoTransition = 2131230883;
+			public const int disableHome = 2131230883;
 			
 			// aapt resource value: 0x7F0800A4
-			public const int disablePostScroll = 2131230884;
+			public const int disableIntraAutoTransition = 2131230884;
 			
 			// aapt resource value: 0x7F0800A5
-			public const int disableScroll = 2131230885;
+			public const int disablePostScroll = 2131230885;
 			
 			// aapt resource value: 0x7F0800A6
-			public const int disjoint = 2131230886;
+			public const int disableScroll = 2131230886;
 			
 			// aapt resource value: 0x7F0800A7
-			public const int dragAnticlockwise = 2131230887;
+			public const int disjoint = 2131230887;
 			
 			// aapt resource value: 0x7F0800A8
-			public const int dragClockwise = 2131230888;
+			public const int dragAnticlockwise = 2131230888;
 			
 			// aapt resource value: 0x7F0800A9
-			public const int dragDown = 2131230889;
+			public const int dragClockwise = 2131230889;
 			
 			// aapt resource value: 0x7F0800AA
-			public const int dragEnd = 2131230890;
+			public const int dragDown = 2131230890;
 			
 			// aapt resource value: 0x7F0800AB
-			public const int dragLeft = 2131230891;
+			public const int dragEnd = 2131230891;
 			
 			// aapt resource value: 0x7F0800AC
-			public const int dragRight = 2131230892;
+			public const int dragLeft = 2131230892;
 			
 			// aapt resource value: 0x7F0800AD
-			public const int dragStart = 2131230893;
+			public const int dragRight = 2131230893;
 			
 			// aapt resource value: 0x7F0800AE
-			public const int dragUp = 2131230894;
+			public const int dragStart = 2131230894;
 			
 			// aapt resource value: 0x7F0800AF
-			public const int dropdown_menu = 2131230895;
+			public const int dragUp = 2131230895;
 			
 			// aapt resource value: 0x7F0800B0
-			public const int easeIn = 2131230896;
+			public const int dropdown_menu = 2131230896;
 			
 			// aapt resource value: 0x7F0800B1
-			public const int easeInOut = 2131230897;
+			public const int easeIn = 2131230897;
 			
 			// aapt resource value: 0x7F0800B2
-			public const int easeOut = 2131230898;
+			public const int easeInOut = 2131230898;
 			
 			// aapt resource value: 0x7F0800B3
-			public const int east = 2131230899;
+			public const int easeOut = 2131230899;
 			
 			// aapt resource value: 0x7F0800B4
-			public const int edit_query = 2131230900;
+			public const int east = 2131230900;
 			
 			// aapt resource value: 0x7F0800B5
-			public const int elastic = 2131230901;
+			public const int edit_query = 2131230901;
 			
 			// aapt resource value: 0x7F0800B6
-			public const int end = 2131230902;
+			public const int elastic = 2131230902;
 			
 			// aapt resource value: 0x7F0800B7
-			public const int endToStart = 2131230903;
+			public const int end = 2131230903;
 			
 			// aapt resource value: 0x7F0800B8
-			public const int enterAlways = 2131230904;
+			public const int endToStart = 2131230904;
 			
 			// aapt resource value: 0x7F0800B9
-			public const int enterAlwaysCollapsed = 2131230905;
+			public const int enterAlways = 2131230905;
 			
 			// aapt resource value: 0x7F0800BA
-			public const int exitUntilCollapsed = 2131230906;
-			
-			// aapt resource value: 0x7F0800BC
-			public const int expanded_menu = 2131230908;
+			public const int enterAlwaysCollapsed = 2131230906;
 			
 			// aapt resource value: 0x7F0800BB
-			public const int expand_activities_button = 2131230907;
+			public const int exitUntilCollapsed = 2131230907;
 			
 			// aapt resource value: 0x7F0800BD
-			public const int fade = 2131230909;
+			public const int expanded_menu = 2131230909;
+			
+			// aapt resource value: 0x7F0800BC
+			public const int expand_activities_button = 2131230908;
 			
 			// aapt resource value: 0x7F0800BE
-			public const int fill = 2131230910;
-			
-			// aapt resource value: 0x7F0800C1
-			public const int filled = 2131230913;
+			public const int fade = 2131230910;
 			
 			// aapt resource value: 0x7F0800BF
-			public const int fill_horizontal = 2131230911;
-			
-			// aapt resource value: 0x7F0800C0
-			public const int fill_vertical = 2131230912;
+			public const int fill = 2131230911;
 			
 			// aapt resource value: 0x7F0800C2
-			public const int fitToContents = 2131230914;
+			public const int filled = 2131230914;
+			
+			// aapt resource value: 0x7F0800C0
+			public const int fill_horizontal = 2131230912;
+			
+			// aapt resource value: 0x7F0800C1
+			public const int fill_vertical = 2131230913;
 			
 			// aapt resource value: 0x7F0800C3
-			public const int @fixed = 2131230915;
+			public const int fitToContents = 2131230915;
 			
 			// aapt resource value: 0x7F0800C4
-			public const int flip = 2131230916;
+			public const int @fixed = 2131230916;
 			
 			// aapt resource value: 0x7F0800C5
-			public const int floating = 2131230917;
+			public const int flip = 2131230917;
 			
 			// aapt resource value: 0x7F0800C6
-			public const int forever = 2131230918;
+			public const int floating = 2131230918;
 			
 			// aapt resource value: 0x7F0800C7
-			public const int fragment_container_view_tag = 2131230919;
+			public const int forever = 2131230919;
 			
 			// aapt resource value: 0x7F0800C8
-			public const int frost = 2131230920;
+			public const int fragment_container_view_tag = 2131230920;
+			
+			// aapt resource value: 0x7F0800C9
+			public const int frost = 2131230921;
 			
 			// aapt resource value: 0x7F080004
 			public const int FUNCTION = 2131230724;
 			
-			// aapt resource value: 0x7F0800C9
-			public const int ghost_view = 2131230921;
-			
 			// aapt resource value: 0x7F0800CA
-			public const int ghost_view_holder = 2131230922;
+			public const int ghost_view = 2131230922;
 			
 			// aapt resource value: 0x7F0800CB
-			public const int gone = 2131230923;
+			public const int ghost_view_holder = 2131230923;
 			
 			// aapt resource value: 0x7F0800CC
-			public const int graph = 2131230924;
+			public const int gone = 2131230924;
 			
 			// aapt resource value: 0x7F0800CD
-			public const int graph_wrap = 2131230925;
-			
-			// aapt resource value: 0x7F0800CF
-			public const int grouping = 2131230927;
-			
-			// aapt resource value: 0x7F0800D0
-			public const int groups = 2131230928;
+			public const int graph = 2131230925;
 			
 			// aapt resource value: 0x7F0800CE
-			public const int group_divider = 2131230926;
+			public const int graph_wrap = 2131230926;
+			
+			// aapt resource value: 0x7F0800D0
+			public const int grouping = 2131230928;
 			
 			// aapt resource value: 0x7F0800D1
-			public const int guideline = 2131230929;
+			public const int groups = 2131230929;
+			
+			// aapt resource value: 0x7F0800CF
+			public const int group_divider = 2131230927;
 			
 			// aapt resource value: 0x7F0800D2
-			public const int header_title = 2131230930;
+			public const int guideline = 2131230930;
 			
 			// aapt resource value: 0x7F0800D3
-			public const int hideable = 2131230931;
+			public const int header_title = 2131230931;
 			
 			// aapt resource value: 0x7F0800D4
-			public const int home = 2131230932;
+			public const int hideable = 2131230932;
 			
 			// aapt resource value: 0x7F0800D5
-			public const int homeAsUp = 2131230933;
+			public const int home = 2131230933;
 			
 			// aapt resource value: 0x7F0800D6
-			public const int honorRequest = 2131230934;
+			public const int homeAsUp = 2131230934;
 			
 			// aapt resource value: 0x7F0800D7
-			public const int horizontal_only = 2131230935;
+			public const int honorRequest = 2131230935;
 			
 			// aapt resource value: 0x7F0800D8
-			public const int icon = 2131230936;
+			public const int horizontal_only = 2131230936;
 			
 			// aapt resource value: 0x7F0800D9
-			public const int icon_group = 2131230937;
+			public const int icon = 2131230937;
 			
 			// aapt resource value: 0x7F0800DA
-			public const int ifRoom = 2131230938;
+			public const int icon_group = 2131230938;
 			
 			// aapt resource value: 0x7F0800DB
-			public const int ignore = 2131230939;
+			public const int ifRoom = 2131230939;
 			
 			// aapt resource value: 0x7F0800DC
-			public const int ignoreRequest = 2131230940;
+			public const int ignore = 2131230940;
 			
 			// aapt resource value: 0x7F0800DD
-			public const int image = 2131230941;
+			public const int ignoreRequest = 2131230941;
 			
 			// aapt resource value: 0x7F0800DE
-			public const int immediateStop = 2131230942;
+			public const int image = 2131230942;
 			
 			// aapt resource value: 0x7F0800DF
-			public const int included = 2131230943;
+			public const int immediateStop = 2131230943;
 			
 			// aapt resource value: 0x7F0800E0
-			public const int indeterminateBar = 2131230944;
+			public const int included = 2131230944;
 			
 			// aapt resource value: 0x7F0800E1
-			public const int info = 2131230945;
+			public const int indeterminateBar = 2131230945;
 			
 			// aapt resource value: 0x7F0800E2
-			public const int invisible = 2131230946;
+			public const int info = 2131230946;
 			
 			// aapt resource value: 0x7F0800E3
-			public const int inward = 2131230947;
+			public const int invisible = 2131230947;
 			
 			// aapt resource value: 0x7F0800E4
-			public const int italic = 2131230948;
+			public const int inward = 2131230948;
 			
 			// aapt resource value: 0x7F0800E5
-			public const int item_row_label = 2131230949;
+			public const int italic = 2131230949;
 			
 			// aapt resource value: 0x7F0800E6
-			public const int item_row_label_container = 2131230950;
+			public const int item_row_label = 2131230950;
 			
 			// aapt resource value: 0x7F0800E7
-			public const int item_row_options = 2131230951;
+			public const int item_row_label_container = 2131230951;
 			
 			// aapt resource value: 0x7F0800E8
-			public const int item_row_progress = 2131230952;
+			public const int item_row_options = 2131230952;
 			
 			// aapt resource value: 0x7F0800E9
-			public const int item_row_sub_label = 2131230953;
+			public const int item_row_progress = 2131230953;
 			
 			// aapt resource value: 0x7F0800EA
-			public const int item_touch_helper_previous_elevation = 2131230954;
+			public const int item_row_sub_label = 2131230954;
 			
 			// aapt resource value: 0x7F0800EB
-			public const int jumpToEnd = 2131230955;
+			public const int item_touch_helper_previous_elevation = 2131230955;
 			
 			// aapt resource value: 0x7F0800EC
-			public const int jumpToStart = 2131230956;
+			public const int jumpToEnd = 2131230956;
 			
 			// aapt resource value: 0x7F0800ED
-			public const int labeled = 2131230957;
+			public const int jumpToStart = 2131230957;
 			
 			// aapt resource value: 0x7F0800EE
-			public const int layNoData = 2131230958;
+			public const int labeled = 2131230958;
 			
 			// aapt resource value: 0x7F0800EF
-			public const int layout = 2131230959;
+			public const int layNoData = 2131230959;
 			
 			// aapt resource value: 0x7F0800F0
-			public const int left = 2131230960;
+			public const int layout = 2131230960;
 			
 			// aapt resource value: 0x7F0800F1
-			public const int leftToRight = 2131230961;
+			public const int left = 2131230961;
 			
 			// aapt resource value: 0x7F0800F2
-			public const int legacy = 2131230962;
+			public const int leftToRight = 2131230962;
 			
 			// aapt resource value: 0x7F0800F3
-			public const int line1 = 2131230963;
+			public const int legacy = 2131230963;
 			
 			// aapt resource value: 0x7F0800F4
-			public const int line3 = 2131230964;
+			public const int line1 = 2131230964;
 			
 			// aapt resource value: 0x7F0800F5
-			public const int linear = 2131230965;
+			public const int line3 = 2131230965;
 			
 			// aapt resource value: 0x7F0800F6
-			public const int listMode = 2131230966;
+			public const int linear = 2131230966;
 			
 			// aapt resource value: 0x7F0800F7
-			public const int list_item = 2131230967;
+			public const int listMode = 2131230967;
 			
 			// aapt resource value: 0x7F0800F8
-			public const int masked = 2131230968;
+			public const int list_item = 2131230968;
 			
 			// aapt resource value: 0x7F0800F9
-			public const int match_constraint = 2131230969;
+			public const int masked = 2131230969;
 			
 			// aapt resource value: 0x7F0800FA
-			public const int match_parent = 2131230970;
+			public const int match_constraint = 2131230970;
 			
 			// aapt resource value: 0x7F0800FB
-			public const int material_clock_display = 2131230971;
+			public const int match_parent = 2131230971;
 			
 			// aapt resource value: 0x7F0800FC
-			public const int material_clock_face = 2131230972;
+			public const int material_clock_display = 2131230972;
 			
 			// aapt resource value: 0x7F0800FD
-			public const int material_clock_hand = 2131230973;
+			public const int material_clock_face = 2131230973;
 			
 			// aapt resource value: 0x7F0800FE
-			public const int material_clock_period_am_button = 2131230974;
+			public const int material_clock_hand = 2131230974;
 			
 			// aapt resource value: 0x7F0800FF
-			public const int material_clock_period_pm_button = 2131230975;
+			public const int material_clock_period_am_button = 2131230975;
 			
 			// aapt resource value: 0x7F080100
-			public const int material_clock_period_toggle = 2131230976;
+			public const int material_clock_period_pm_button = 2131230976;
 			
 			// aapt resource value: 0x7F080101
-			public const int material_hour_text_input = 2131230977;
+			public const int material_clock_period_toggle = 2131230977;
 			
 			// aapt resource value: 0x7F080102
-			public const int material_hour_tv = 2131230978;
+			public const int material_hour_text_input = 2131230978;
 			
 			// aapt resource value: 0x7F080103
-			public const int material_label = 2131230979;
+			public const int material_hour_tv = 2131230979;
 			
 			// aapt resource value: 0x7F080104
-			public const int material_minute_text_input = 2131230980;
+			public const int material_label = 2131230980;
 			
 			// aapt resource value: 0x7F080105
-			public const int material_minute_tv = 2131230981;
+			public const int material_minute_text_input = 2131230981;
 			
 			// aapt resource value: 0x7F080106
-			public const int material_textinput_timepicker = 2131230982;
+			public const int material_minute_tv = 2131230982;
 			
 			// aapt resource value: 0x7F080107
-			public const int material_timepicker_cancel_button = 2131230983;
+			public const int material_textinput_timepicker = 2131230983;
 			
 			// aapt resource value: 0x7F080108
-			public const int material_timepicker_container = 2131230984;
+			public const int material_timepicker_cancel_button = 2131230984;
 			
 			// aapt resource value: 0x7F080109
-			public const int material_timepicker_edit_text = 2131230985;
+			public const int material_timepicker_container = 2131230985;
 			
 			// aapt resource value: 0x7F08010A
-			public const int material_timepicker_mode_button = 2131230986;
+			public const int material_timepicker_edit_text = 2131230986;
 			
 			// aapt resource value: 0x7F08010B
-			public const int material_timepicker_ok_button = 2131230987;
+			public const int material_timepicker_mode_button = 2131230987;
 			
 			// aapt resource value: 0x7F08010C
-			public const int material_timepicker_view = 2131230988;
+			public const int material_timepicker_ok_button = 2131230988;
 			
 			// aapt resource value: 0x7F08010D
-			public const int material_value_index = 2131230989;
+			public const int material_timepicker_view = 2131230989;
 			
 			// aapt resource value: 0x7F08010E
-			public const int message = 2131230990;
+			public const int material_value_index = 2131230990;
+			
+			// aapt resource value: 0x7F08010F
+			public const int message = 2131230991;
 			
 			// aapt resource value: 0x7F080005
 			public const int META = 2131230725;
 			
-			// aapt resource value: 0x7F08010F
-			public const int middle = 2131230991;
-			
 			// aapt resource value: 0x7F080110
-			public const int mini = 2131230992;
+			public const int middle = 2131230992;
 			
 			// aapt resource value: 0x7F080111
-			public const int month_grid = 2131230993;
+			public const int mini = 2131230993;
 			
 			// aapt resource value: 0x7F080112
-			public const int month_navigation_bar = 2131230994;
+			public const int month_grid = 2131230994;
 			
 			// aapt resource value: 0x7F080113
-			public const int month_navigation_fragment_toggle = 2131230995;
+			public const int month_navigation_bar = 2131230995;
 			
 			// aapt resource value: 0x7F080114
-			public const int month_navigation_next = 2131230996;
+			public const int month_navigation_fragment_toggle = 2131230996;
 			
 			// aapt resource value: 0x7F080115
-			public const int month_navigation_previous = 2131230997;
+			public const int month_navigation_next = 2131230997;
 			
 			// aapt resource value: 0x7F080116
-			public const int month_title = 2131230998;
+			public const int month_navigation_previous = 2131230998;
 			
 			// aapt resource value: 0x7F080117
-			public const int motion_base = 2131230999;
+			public const int month_title = 2131230999;
 			
 			// aapt resource value: 0x7F080118
-			public const int mtrl_anchor_parent = 2131231000;
-			
-			// aapt resource value: 0x7F08011A
-			public const int mtrl_calendar_days_of_week = 2131231002;
+			public const int motion_base = 2131231000;
 			
 			// aapt resource value: 0x7F080119
-			public const int mtrl_calendar_day_selector_frame = 2131231001;
+			public const int mtrl_anchor_parent = 2131231001;
 			
 			// aapt resource value: 0x7F08011B
-			public const int mtrl_calendar_frame = 2131231003;
+			public const int mtrl_calendar_days_of_week = 2131231003;
+			
+			// aapt resource value: 0x7F08011A
+			public const int mtrl_calendar_day_selector_frame = 2131231002;
 			
 			// aapt resource value: 0x7F08011C
-			public const int mtrl_calendar_main_pane = 2131231004;
+			public const int mtrl_calendar_frame = 2131231004;
 			
 			// aapt resource value: 0x7F08011D
-			public const int mtrl_calendar_months = 2131231005;
+			public const int mtrl_calendar_main_pane = 2131231005;
 			
 			// aapt resource value: 0x7F08011E
-			public const int mtrl_calendar_selection_frame = 2131231006;
+			public const int mtrl_calendar_months = 2131231006;
 			
 			// aapt resource value: 0x7F08011F
-			public const int mtrl_calendar_text_input_frame = 2131231007;
+			public const int mtrl_calendar_selection_frame = 2131231007;
 			
 			// aapt resource value: 0x7F080120
-			public const int mtrl_calendar_year_selector_frame = 2131231008;
+			public const int mtrl_calendar_text_input_frame = 2131231008;
 			
 			// aapt resource value: 0x7F080121
-			public const int mtrl_card_checked_layer_id = 2131231009;
+			public const int mtrl_calendar_year_selector_frame = 2131231009;
 			
 			// aapt resource value: 0x7F080122
-			public const int mtrl_child_content_container = 2131231010;
+			public const int mtrl_card_checked_layer_id = 2131231010;
 			
 			// aapt resource value: 0x7F080123
-			public const int mtrl_internal_children_alpha_tag = 2131231011;
+			public const int mtrl_child_content_container = 2131231011;
 			
 			// aapt resource value: 0x7F080124
-			public const int mtrl_motion_snapshot_view = 2131231012;
+			public const int mtrl_internal_children_alpha_tag = 2131231012;
 			
 			// aapt resource value: 0x7F080125
-			public const int mtrl_picker_fullscreen = 2131231013;
+			public const int mtrl_motion_snapshot_view = 2131231013;
 			
 			// aapt resource value: 0x7F080126
-			public const int mtrl_picker_header = 2131231014;
+			public const int mtrl_picker_fullscreen = 2131231014;
 			
 			// aapt resource value: 0x7F080127
-			public const int mtrl_picker_header_selection_text = 2131231015;
+			public const int mtrl_picker_header = 2131231015;
 			
 			// aapt resource value: 0x7F080128
-			public const int mtrl_picker_header_title_and_selection = 2131231016;
+			public const int mtrl_picker_header_selection_text = 2131231016;
 			
 			// aapt resource value: 0x7F080129
-			public const int mtrl_picker_header_toggle = 2131231017;
+			public const int mtrl_picker_header_title_and_selection = 2131231017;
 			
 			// aapt resource value: 0x7F08012A
-			public const int mtrl_picker_text_input_date = 2131231018;
+			public const int mtrl_picker_header_toggle = 2131231018;
 			
 			// aapt resource value: 0x7F08012B
-			public const int mtrl_picker_text_input_range_end = 2131231019;
+			public const int mtrl_picker_text_input_date = 2131231019;
 			
 			// aapt resource value: 0x7F08012C
-			public const int mtrl_picker_text_input_range_start = 2131231020;
+			public const int mtrl_picker_text_input_range_end = 2131231020;
 			
 			// aapt resource value: 0x7F08012D
-			public const int mtrl_picker_title_text = 2131231021;
+			public const int mtrl_picker_text_input_range_start = 2131231021;
 			
 			// aapt resource value: 0x7F08012E
-			public const int mtrl_view_tag_bottom_padding = 2131231022;
+			public const int mtrl_picker_title_text = 2131231022;
 			
 			// aapt resource value: 0x7F08012F
-			public const int multiply = 2131231023;
+			public const int mtrl_view_tag_bottom_padding = 2131231023;
 			
 			// aapt resource value: 0x7F080130
-			public const int navigation_bar_item_icon_view = 2131231024;
+			public const int multiply = 2131231024;
 			
 			// aapt resource value: 0x7F080131
-			public const int navigation_bar_item_labels_group = 2131231025;
+			public const int navigation_bar_item_icon_view = 2131231025;
 			
 			// aapt resource value: 0x7F080132
-			public const int navigation_bar_item_large_label_view = 2131231026;
+			public const int navigation_bar_item_labels_group = 2131231026;
 			
 			// aapt resource value: 0x7F080133
-			public const int navigation_bar_item_small_label_view = 2131231027;
+			public const int navigation_bar_item_large_label_view = 2131231027;
 			
 			// aapt resource value: 0x7F080134
-			public const int navigation_header_container = 2131231028;
+			public const int navigation_bar_item_small_label_view = 2131231028;
 			
 			// aapt resource value: 0x7F080135
-			public const int never = 2131231029;
+			public const int navigation_header_container = 2131231029;
 			
 			// aapt resource value: 0x7F080136
-			public const int neverCompleteToEnd = 2131231030;
+			public const int never = 2131231030;
 			
 			// aapt resource value: 0x7F080137
-			public const int neverCompleteToStart = 2131231031;
-			
-			// aapt resource value: 0x7F08013A
-			public const int none = 2131231034;
-			
-			// aapt resource value: 0x7F08013B
-			public const int normal = 2131231035;
-			
-			// aapt resource value: 0x7F08013C
-			public const int north = 2131231036;
+			public const int neverCompleteToEnd = 2131231031;
 			
 			// aapt resource value: 0x7F080138
-			public const int noScroll = 2131231032;
+			public const int neverCompleteToStart = 2131231032;
 			
-			// aapt resource value: 0x7F080139
-			public const int noState = 2131231033;
+			// aapt resource value: 0x7F08013B
+			public const int none = 2131231035;
+			
+			// aapt resource value: 0x7F08013C
+			public const int normal = 2131231036;
 			
 			// aapt resource value: 0x7F08013D
-			public const int notification_background = 2131231037;
+			public const int north = 2131231037;
+			
+			// aapt resource value: 0x7F080139
+			public const int noScroll = 2131231033;
+			
+			// aapt resource value: 0x7F08013A
+			public const int noState = 2131231034;
 			
 			// aapt resource value: 0x7F08013E
-			public const int notification_main_column = 2131231038;
+			public const int notification_background = 2131231038;
 			
 			// aapt resource value: 0x7F08013F
-			public const int notification_main_column_container = 2131231039;
+			public const int notification_main_column = 2131231039;
+			
+			// aapt resource value: 0x7F080140
+			public const int notification_main_column_container = 2131231040;
 			
 			// aapt resource value: 0x7F080006
 			public const int NO_DEBUG = 2131230726;
 			
-			// aapt resource value: 0x7F080140
-			public const int off = 2131231040;
-			
 			// aapt resource value: 0x7F080141
-			public const int on = 2131231041;
+			public const int off = 2131231041;
 			
 			// aapt resource value: 0x7F080142
-			public const int outline = 2131231042;
+			public const int on = 2131231042;
 			
 			// aapt resource value: 0x7F080143
-			public const int outward = 2131231043;
+			public const int outline = 2131231043;
 			
 			// aapt resource value: 0x7F080144
-			public const int overshoot = 2131231044;
+			public const int outward = 2131231044;
 			
 			// aapt resource value: 0x7F080145
-			public const int packed = 2131231045;
+			public const int overshoot = 2131231045;
 			
 			// aapt resource value: 0x7F080146
-			public const int parallax = 2131231046;
+			public const int packed = 2131231046;
 			
 			// aapt resource value: 0x7F080147
-			public const int parent = 2131231047;
+			public const int parallax = 2131231047;
 			
 			// aapt resource value: 0x7F080148
-			public const int parentPanel = 2131231048;
+			public const int parent = 2131231048;
 			
 			// aapt resource value: 0x7F080149
-			public const int parentRelative = 2131231049;
+			public const int parentPanel = 2131231049;
 			
 			// aapt resource value: 0x7F08014A
-			public const int parent_matrix = 2131231050;
+			public const int parentRelative = 2131231050;
 			
 			// aapt resource value: 0x7F08014B
-			public const int password_toggle = 2131231051;
+			public const int parent_matrix = 2131231051;
 			
 			// aapt resource value: 0x7F08014C
-			public const int path = 2131231052;
+			public const int password_toggle = 2131231052;
 			
 			// aapt resource value: 0x7F08014D
-			public const int pathRelative = 2131231053;
+			public const int path = 2131231053;
 			
 			// aapt resource value: 0x7F08014E
-			public const int peekHeight = 2131231054;
+			public const int pathRelative = 2131231054;
 			
 			// aapt resource value: 0x7F08014F
-			public const int percent = 2131231055;
+			public const int peekHeight = 2131231055;
 			
 			// aapt resource value: 0x7F080150
-			public const int pin = 2131231056;
+			public const int percent = 2131231056;
 			
 			// aapt resource value: 0x7F080151
-			public const int position = 2131231057;
+			public const int pin = 2131231057;
 			
 			// aapt resource value: 0x7F080152
-			public const int postLayout = 2131231058;
+			public const int position = 2131231058;
 			
 			// aapt resource value: 0x7F080153
-			public const int progressBar = 2131231059;
+			public const int postLayout = 2131231059;
 			
 			// aapt resource value: 0x7F080154
-			public const int progress_bar_message = 2131231060;
+			public const int progressBar = 2131231060;
 			
 			// aapt resource value: 0x7F080155
-			public const int progress_circular = 2131231061;
+			public const int progress_bar_message = 2131231061;
 			
 			// aapt resource value: 0x7F080156
-			public const int progress_horizontal = 2131231062;
+			public const int progress_circular = 2131231062;
 			
 			// aapt resource value: 0x7F080157
-			public const int radio = 2131231063;
+			public const int progress_horizontal = 2131231063;
 			
 			// aapt resource value: 0x7F080158
-			public const int ratio = 2131231064;
+			public const int radio = 2131231064;
 			
 			// aapt resource value: 0x7F080159
-			public const int rectangles = 2131231065;
+			public const int ratio = 2131231065;
 			
 			// aapt resource value: 0x7F08015A
-			public const int reverseSawtooth = 2131231066;
+			public const int rectangles = 2131231066;
 			
 			// aapt resource value: 0x7F08015B
-			public const int right = 2131231067;
+			public const int reverseSawtooth = 2131231067;
 			
 			// aapt resource value: 0x7F08015C
-			public const int rightToLeft = 2131231068;
+			public const int right = 2131231068;
 			
 			// aapt resource value: 0x7F08015D
-			public const int right_icon = 2131231069;
+			public const int rightToLeft = 2131231069;
 			
 			// aapt resource value: 0x7F08015E
-			public const int right_side = 2131231070;
+			public const int right_icon = 2131231070;
 			
 			// aapt resource value: 0x7F08015F
-			public const int rounded = 2131231071;
+			public const int right_side = 2131231071;
 			
 			// aapt resource value: 0x7F080160
-			public const int row_index_key = 2131231072;
+			public const int rounded = 2131231072;
 			
 			// aapt resource value: 0x7F080161
-			public const int rvDownloads = 2131231073;
+			public const int row_index_key = 2131231073;
 			
 			// aapt resource value: 0x7F080162
-			public const int rvHolder = 2131231074;
+			public const int rvDownloads = 2131231074;
 			
 			// aapt resource value: 0x7F080163
-			public const int save_non_transition_alpha = 2131231075;
+			public const int rvHolder = 2131231075;
 			
 			// aapt resource value: 0x7F080164
-			public const int save_overlay_view = 2131231076;
+			public const int save_non_transition_alpha = 2131231076;
 			
 			// aapt resource value: 0x7F080165
-			public const int sawtooth = 2131231077;
+			public const int save_overlay_view = 2131231077;
 			
 			// aapt resource value: 0x7F080166
-			public const int scale = 2131231078;
+			public const int sawtooth = 2131231078;
 			
 			// aapt resource value: 0x7F080167
-			public const int screen = 2131231079;
+			public const int scale = 2131231079;
 			
 			// aapt resource value: 0x7F080168
-			public const int scroll = 2131231080;
-			
-			// aapt resource value: 0x7F08016D
-			public const int scrollable = 2131231085;
+			public const int screen = 2131231080;
 			
 			// aapt resource value: 0x7F080169
-			public const int scrollContainer = 2131231081;
-			
-			// aapt resource value: 0x7F08016A
-			public const int scrollIndicatorDown = 2131231082;
-			
-			// aapt resource value: 0x7F08016B
-			public const int scrollIndicatorUp = 2131231083;
-			
-			// aapt resource value: 0x7F08016C
-			public const int scrollView = 2131231084;
+			public const int scroll = 2131231081;
 			
 			// aapt resource value: 0x7F08016E
-			public const int search_badge = 2131231086;
+			public const int scrollable = 2131231086;
+			
+			// aapt resource value: 0x7F08016A
+			public const int scrollContainer = 2131231082;
+			
+			// aapt resource value: 0x7F08016B
+			public const int scrollIndicatorDown = 2131231083;
+			
+			// aapt resource value: 0x7F08016C
+			public const int scrollIndicatorUp = 2131231084;
+			
+			// aapt resource value: 0x7F08016D
+			public const int scrollView = 2131231085;
 			
 			// aapt resource value: 0x7F08016F
-			public const int search_bar = 2131231087;
+			public const int search_badge = 2131231087;
 			
 			// aapt resource value: 0x7F080170
-			public const int search_button = 2131231088;
+			public const int search_bar = 2131231088;
 			
 			// aapt resource value: 0x7F080171
-			public const int search_close_btn = 2131231089;
+			public const int search_button = 2131231089;
 			
 			// aapt resource value: 0x7F080172
-			public const int search_edit_frame = 2131231090;
+			public const int search_close_btn = 2131231090;
 			
 			// aapt resource value: 0x7F080173
-			public const int search_go_btn = 2131231091;
+			public const int search_edit_frame = 2131231091;
 			
 			// aapt resource value: 0x7F080174
-			public const int search_mag_icon = 2131231092;
+			public const int search_go_btn = 2131231092;
 			
 			// aapt resource value: 0x7F080175
-			public const int search_plate = 2131231093;
+			public const int search_mag_icon = 2131231093;
 			
 			// aapt resource value: 0x7F080176
-			public const int search_src_text = 2131231094;
+			public const int search_plate = 2131231094;
 			
 			// aapt resource value: 0x7F080177
-			public const int search_voice_btn = 2131231095;
-			
-			// aapt resource value: 0x7F080179
-			public const int selected = 2131231097;
-			
-			// aapt resource value: 0x7F08017A
-			public const int selection_type = 2131231098;
+			public const int search_src_text = 2131231095;
 			
 			// aapt resource value: 0x7F080178
-			public const int select_dialog_listview = 2131231096;
+			public const int search_voice_btn = 2131231096;
+			
+			// aapt resource value: 0x7F08017A
+			public const int selected = 2131231098;
 			
 			// aapt resource value: 0x7F08017B
-			public const int sharedValueSet = 2131231099;
+			public const int selection_type = 2131231099;
+			
+			// aapt resource value: 0x7F080179
+			public const int select_dialog_listview = 2131231097;
 			
 			// aapt resource value: 0x7F08017C
-			public const int sharedValueUnset = 2131231100;
+			public const int sharedValueSet = 2131231100;
+			
+			// aapt resource value: 0x7F08017D
+			public const int sharedValueUnset = 2131231101;
 			
 			// aapt resource value: 0x7F080007
 			public const int SHIFT = 2131230727;
 			
-			// aapt resource value: 0x7F08017D
-			public const int shortcut = 2131231101;
-			
 			// aapt resource value: 0x7F08017E
-			public const int showCustom = 2131231102;
+			public const int shortcut = 2131231102;
 			
 			// aapt resource value: 0x7F08017F
-			public const int showHome = 2131231103;
+			public const int showCustom = 2131231103;
 			
 			// aapt resource value: 0x7F080180
-			public const int showTitle = 2131231104;
+			public const int showHome = 2131231104;
+			
+			// aapt resource value: 0x7F080181
+			public const int showTitle = 2131231105;
 			
 			// aapt resource value: 0x7F080008
 			public const int SHOW_ALL = 2131230728;
@@ -6978,230 +12163,230 @@ namespace PodcastUtilitiesPOC
 			// aapt resource value: 0x7F08000A
 			public const int SHOW_PROGRESS = 2131230730;
 			
-			// aapt resource value: 0x7F080181
-			public const int sin = 2131231105;
-			
 			// aapt resource value: 0x7F080182
-			public const int skipCollapsed = 2131231106;
+			public const int sin = 2131231106;
 			
 			// aapt resource value: 0x7F080183
-			public const int skipped = 2131231107;
+			public const int skipCollapsed = 2131231107;
 			
 			// aapt resource value: 0x7F080184
-			public const int slide = 2131231108;
+			public const int skipped = 2131231108;
 			
 			// aapt resource value: 0x7F080185
-			public const int snackbar_action = 2131231109;
+			public const int slide = 2131231109;
 			
 			// aapt resource value: 0x7F080186
-			public const int snackbar_text = 2131231110;
+			public const int snackbar_action = 2131231110;
 			
 			// aapt resource value: 0x7F080187
-			public const int snap = 2131231111;
+			public const int snackbar_text = 2131231111;
 			
 			// aapt resource value: 0x7F080188
-			public const int snapMargins = 2131231112;
+			public const int snap = 2131231112;
 			
 			// aapt resource value: 0x7F080189
-			public const int south = 2131231113;
+			public const int snapMargins = 2131231113;
 			
 			// aapt resource value: 0x7F08018A
-			public const int spacer = 2131231114;
+			public const int south = 2131231114;
 			
 			// aapt resource value: 0x7F08018B
-			public const int special_effects_controller_view_tag = 2131231115;
+			public const int spacer = 2131231115;
 			
 			// aapt resource value: 0x7F08018C
-			public const int spline = 2131231116;
+			public const int special_effects_controller_view_tag = 2131231116;
 			
 			// aapt resource value: 0x7F08018D
-			public const int split_action_bar = 2131231117;
+			public const int spline = 2131231117;
 			
 			// aapt resource value: 0x7F08018E
-			public const int spread = 2131231118;
+			public const int split_action_bar = 2131231118;
 			
 			// aapt resource value: 0x7F08018F
-			public const int spread_inside = 2131231119;
+			public const int spread = 2131231119;
 			
 			// aapt resource value: 0x7F080190
-			public const int spring = 2131231120;
+			public const int spread_inside = 2131231120;
 			
 			// aapt resource value: 0x7F080191
-			public const int square = 2131231121;
+			public const int spring = 2131231121;
 			
 			// aapt resource value: 0x7F080192
-			public const int src_atop = 2131231122;
+			public const int square = 2131231122;
 			
 			// aapt resource value: 0x7F080193
-			public const int src_in = 2131231123;
+			public const int src_atop = 2131231123;
 			
 			// aapt resource value: 0x7F080194
-			public const int src_over = 2131231124;
+			public const int src_in = 2131231124;
 			
 			// aapt resource value: 0x7F080195
-			public const int standard = 2131231125;
+			public const int src_over = 2131231125;
 			
 			// aapt resource value: 0x7F080196
-			public const int start = 2131231126;
+			public const int standard = 2131231126;
 			
 			// aapt resource value: 0x7F080197
-			public const int startHorizontal = 2131231127;
+			public const int start = 2131231127;
 			
 			// aapt resource value: 0x7F080198
-			public const int startToEnd = 2131231128;
+			public const int startHorizontal = 2131231128;
 			
 			// aapt resource value: 0x7F080199
-			public const int startVertical = 2131231129;
+			public const int startToEnd = 2131231129;
 			
 			// aapt resource value: 0x7F08019A
-			public const int staticLayout = 2131231130;
+			public const int startVertical = 2131231130;
 			
 			// aapt resource value: 0x7F08019B
-			public const int staticPostLayout = 2131231131;
+			public const int staticLayout = 2131231131;
 			
 			// aapt resource value: 0x7F08019C
-			public const int steppedBar = 2131231132;
+			public const int staticPostLayout = 2131231132;
 			
 			// aapt resource value: 0x7F08019D
-			public const int stop = 2131231133;
+			public const int steppedBar = 2131231133;
 			
 			// aapt resource value: 0x7F08019E
-			public const int stretch = 2131231134;
+			public const int stop = 2131231134;
 			
 			// aapt resource value: 0x7F08019F
-			public const int submenuarrow = 2131231135;
+			public const int stretch = 2131231135;
 			
 			// aapt resource value: 0x7F0801A0
-			public const int submit_area = 2131231136;
+			public const int submenuarrow = 2131231136;
 			
 			// aapt resource value: 0x7F0801A1
-			public const int supportScrollUp = 2131231137;
+			public const int submit_area = 2131231137;
+			
+			// aapt resource value: 0x7F0801A2
+			public const int supportScrollUp = 2131231138;
 			
 			// aapt resource value: 0x7F08000B
 			public const int SYM = 2131230731;
 			
-			// aapt resource value: 0x7F0801A2
-			public const int tabMode = 2131231138;
-			
 			// aapt resource value: 0x7F0801A3
-			public const int tag_accessibility_actions = 2131231139;
+			public const int tabMode = 2131231139;
 			
 			// aapt resource value: 0x7F0801A4
-			public const int tag_accessibility_clickable_spans = 2131231140;
+			public const int tag_accessibility_actions = 2131231140;
 			
 			// aapt resource value: 0x7F0801A5
-			public const int tag_accessibility_heading = 2131231141;
+			public const int tag_accessibility_clickable_spans = 2131231141;
 			
 			// aapt resource value: 0x7F0801A6
-			public const int tag_accessibility_pane_title = 2131231142;
+			public const int tag_accessibility_heading = 2131231142;
 			
 			// aapt resource value: 0x7F0801A7
-			public const int tag_on_apply_window_listener = 2131231143;
+			public const int tag_accessibility_pane_title = 2131231143;
 			
 			// aapt resource value: 0x7F0801A8
-			public const int tag_on_receive_content_listener = 2131231144;
+			public const int tag_on_apply_window_listener = 2131231144;
 			
 			// aapt resource value: 0x7F0801A9
-			public const int tag_on_receive_content_mime_types = 2131231145;
+			public const int tag_on_receive_content_listener = 2131231145;
 			
 			// aapt resource value: 0x7F0801AA
-			public const int tag_screen_reader_focusable = 2131231146;
+			public const int tag_on_receive_content_mime_types = 2131231146;
 			
 			// aapt resource value: 0x7F0801AB
-			public const int tag_state_description = 2131231147;
+			public const int tag_screen_reader_focusable = 2131231147;
 			
 			// aapt resource value: 0x7F0801AC
-			public const int tag_transition_group = 2131231148;
+			public const int tag_state_description = 2131231148;
 			
 			// aapt resource value: 0x7F0801AD
-			public const int tag_unhandled_key_event_manager = 2131231149;
+			public const int tag_transition_group = 2131231149;
 			
 			// aapt resource value: 0x7F0801AE
-			public const int tag_unhandled_key_listeners = 2131231150;
+			public const int tag_unhandled_key_event_manager = 2131231150;
 			
 			// aapt resource value: 0x7F0801AF
-			public const int tag_window_insets_animation_callback = 2131231151;
+			public const int tag_unhandled_key_listeners = 2131231151;
 			
 			// aapt resource value: 0x7F0801B0
-			public const int test_checkbox_android_button_tint = 2131231152;
+			public const int tag_window_insets_animation_callback = 2131231152;
 			
 			// aapt resource value: 0x7F0801B1
-			public const int test_checkbox_app_button_tint = 2131231153;
+			public const int test_checkbox_android_button_tint = 2131231153;
 			
 			// aapt resource value: 0x7F0801B2
-			public const int test_radiobutton_android_button_tint = 2131231154;
+			public const int test_checkbox_app_button_tint = 2131231154;
 			
 			// aapt resource value: 0x7F0801B3
-			public const int test_radiobutton_app_button_tint = 2131231155;
+			public const int test_radiobutton_android_button_tint = 2131231155;
 			
 			// aapt resource value: 0x7F0801B4
-			public const int text = 2131231156;
+			public const int test_radiobutton_app_button_tint = 2131231156;
 			
 			// aapt resource value: 0x7F0801B5
-			public const int text2 = 2131231157;
+			public const int text = 2131231157;
 			
 			// aapt resource value: 0x7F0801B6
-			public const int textEnd = 2131231158;
-			
-			// aapt resource value: 0x7F0801BE
-			public const int textinput_counter = 2131231166;
-			
-			// aapt resource value: 0x7F0801BF
-			public const int textinput_error = 2131231167;
-			
-			// aapt resource value: 0x7F0801C0
-			public const int textinput_helper_text = 2131231168;
-			
-			// aapt resource value: 0x7F0801C1
-			public const int textinput_placeholder = 2131231169;
-			
-			// aapt resource value: 0x7F0801C2
-			public const int textinput_prefix_text = 2131231170;
-			
-			// aapt resource value: 0x7F0801C3
-			public const int textinput_suffix_text = 2131231171;
+			public const int text2 = 2131231158;
 			
 			// aapt resource value: 0x7F0801B7
-			public const int textSpacerNoButtons = 2131231159;
+			public const int textEnd = 2131231159;
 			
-			// aapt resource value: 0x7F0801B8
-			public const int textSpacerNoTitle = 2131231160;
+			// aapt resource value: 0x7F0801BF
+			public const int textinput_counter = 2131231167;
 			
-			// aapt resource value: 0x7F0801B9
-			public const int textStart = 2131231161;
+			// aapt resource value: 0x7F0801C0
+			public const int textinput_error = 2131231168;
 			
-			// aapt resource value: 0x7F0801BA
-			public const int textTop = 2131231162;
+			// aapt resource value: 0x7F0801C1
+			public const int textinput_helper_text = 2131231169;
 			
-			// aapt resource value: 0x7F0801BB
-			public const int text_input_end_icon = 2131231163;
+			// aapt resource value: 0x7F0801C2
+			public const int textinput_placeholder = 2131231170;
 			
-			// aapt resource value: 0x7F0801BC
-			public const int text_input_error_icon = 2131231164;
-			
-			// aapt resource value: 0x7F0801BD
-			public const int text_input_start_icon = 2131231165;
+			// aapt resource value: 0x7F0801C3
+			public const int textinput_prefix_text = 2131231171;
 			
 			// aapt resource value: 0x7F0801C4
-			public const int time = 2131231172;
+			public const int textinput_suffix_text = 2131231172;
+			
+			// aapt resource value: 0x7F0801B8
+			public const int textSpacerNoButtons = 2131231160;
+			
+			// aapt resource value: 0x7F0801B9
+			public const int textSpacerNoTitle = 2131231161;
+			
+			// aapt resource value: 0x7F0801BA
+			public const int textStart = 2131231162;
+			
+			// aapt resource value: 0x7F0801BB
+			public const int textTop = 2131231163;
+			
+			// aapt resource value: 0x7F0801BC
+			public const int text_input_end_icon = 2131231164;
+			
+			// aapt resource value: 0x7F0801BD
+			public const int text_input_error_icon = 2131231165;
+			
+			// aapt resource value: 0x7F0801BE
+			public const int text_input_start_icon = 2131231166;
 			
 			// aapt resource value: 0x7F0801C5
-			public const int title = 2131231173;
+			public const int time = 2131231173;
 			
 			// aapt resource value: 0x7F0801C6
-			public const int titleDividerNoCustom = 2131231174;
+			public const int title = 2131231174;
 			
 			// aapt resource value: 0x7F0801C7
-			public const int title_template = 2131231175;
+			public const int titleDividerNoCustom = 2131231175;
 			
 			// aapt resource value: 0x7F0801C8
-			public const int toggle = 2131231176;
+			public const int title_template = 2131231176;
 			
 			// aapt resource value: 0x7F0801C9
-			public const int top = 2131231177;
+			public const int toggle = 2131231177;
 			
 			// aapt resource value: 0x7F0801CA
-			public const int topPanel = 2131231178;
+			public const int top = 2131231178;
+			
+			// aapt resource value: 0x7F0801CB
+			public const int topPanel = 2131231179;
 			
 			// aapt resource value: 0x7F08000C
 			public const int TOP_END = 2131230732;
@@ -7209,116 +12394,119 @@ namespace PodcastUtilitiesPOC
 			// aapt resource value: 0x7F08000D
 			public const int TOP_START = 2131230733;
 			
-			// aapt resource value: 0x7F0801CB
-			public const int touch_outside = 2131231179;
-			
 			// aapt resource value: 0x7F0801CC
-			public const int transitionToEnd = 2131231180;
+			public const int touch_outside = 2131231180;
 			
 			// aapt resource value: 0x7F0801CD
-			public const int transitionToStart = 2131231181;
+			public const int transitionToEnd = 2131231181;
 			
 			// aapt resource value: 0x7F0801CE
-			public const int transition_current_scene = 2131231182;
+			public const int transitionToStart = 2131231182;
 			
 			// aapt resource value: 0x7F0801CF
-			public const int transition_layout_save = 2131231183;
+			public const int transition_current_scene = 2131231183;
 			
 			// aapt resource value: 0x7F0801D0
-			public const int transition_position = 2131231184;
+			public const int transition_layout_save = 2131231184;
 			
 			// aapt resource value: 0x7F0801D1
-			public const int transition_scene_layoutid_cache = 2131231185;
+			public const int transition_position = 2131231185;
 			
 			// aapt resource value: 0x7F0801D2
-			public const int transition_transform = 2131231186;
+			public const int transition_scene_layoutid_cache = 2131231186;
 			
 			// aapt resource value: 0x7F0801D3
-			public const int triangle = 2131231187;
+			public const int transition_transform = 2131231187;
 			
 			// aapt resource value: 0x7F0801D4
-			public const int txtAppStorage = 2131231188;
+			public const int triangle = 2131231188;
 			
 			// aapt resource value: 0x7F0801D5
-			public const int txtConfigFilePath = 2131231189;
+			public const int txtAppStorage = 2131231189;
 			
 			// aapt resource value: 0x7F0801D6
-			public const int txtNoData = 2131231190;
+			public const int txtConfigFilePath = 2131231190;
 			
 			// aapt resource value: 0x7F0801D7
-			public const int txtOutput = 2131231191;
+			public const int txtNoData = 2131231191;
 			
 			// aapt resource value: 0x7F0801D8
-			public const int txtRoot = 2131231192;
+			public const int txtOutput = 2131231192;
 			
 			// aapt resource value: 0x7F0801D9
-			public const int txtVersions = 2131231193;
+			public const int txtRoot = 2131231193;
 			
 			// aapt resource value: 0x7F0801DA
-			public const int @unchecked = 2131231194;
+			public const int txtVersions = 2131231194;
 			
 			// aapt resource value: 0x7F0801DB
-			public const int uniform = 2131231195;
+			public const int txtView = 2131231195;
 			
 			// aapt resource value: 0x7F0801DC
-			public const int unlabeled = 2131231196;
+			public const int @unchecked = 2131231196;
 			
 			// aapt resource value: 0x7F0801DD
-			public const int up = 2131231197;
+			public const int uniform = 2131231197;
 			
 			// aapt resource value: 0x7F0801DE
-			public const int useLogo = 2131231198;
+			public const int unlabeled = 2131231198;
 			
 			// aapt resource value: 0x7F0801DF
-			public const int vertical_only = 2131231199;
+			public const int up = 2131231199;
 			
 			// aapt resource value: 0x7F0801E0
-			public const int view_offset_helper = 2131231200;
+			public const int useLogo = 2131231200;
 			
 			// aapt resource value: 0x7F0801E1
-			public const int view_transition = 2131231201;
+			public const int vertical_only = 2131231201;
 			
 			// aapt resource value: 0x7F0801E2
-			public const int view_tree_lifecycle_owner = 2131231202;
+			public const int view_offset_helper = 2131231202;
 			
 			// aapt resource value: 0x7F0801E3
-			public const int view_tree_saved_state_registry_owner = 2131231203;
+			public const int view_transition = 2131231203;
 			
 			// aapt resource value: 0x7F0801E4
-			public const int view_tree_view_model_store_owner = 2131231204;
+			public const int view_tree_lifecycle_owner = 2131231204;
 			
 			// aapt resource value: 0x7F0801E5
-			public const int visible = 2131231205;
+			public const int view_tree_saved_state_registry_owner = 2131231205;
 			
 			// aapt resource value: 0x7F0801E6
-			public const int visible_removing_fragment_view_tag = 2131231206;
+			public const int view_tree_view_model_store_owner = 2131231206;
 			
 			// aapt resource value: 0x7F0801E7
-			public const int west = 2131231207;
-			
-			// aapt resource value: 0x7F0801E9
-			public const int withinBounds = 2131231209;
+			public const int visible = 2131231207;
 			
 			// aapt resource value: 0x7F0801E8
-			public const int withText = 2131231208;
+			public const int visible_removing_fragment_view_tag = 2131231208;
 			
-			// aapt resource value: 0x7F0801EA
-			public const int wrap = 2131231210;
+			// aapt resource value: 0x7F0801E9
+			public const int west = 2131231209;
 			
 			// aapt resource value: 0x7F0801EB
-			public const int wrap_content = 2131231211;
+			public const int withinBounds = 2131231211;
+			
+			// aapt resource value: 0x7F0801EA
+			public const int withText = 2131231210;
 			
 			// aapt resource value: 0x7F0801EC
-			public const int wrap_content_constrained = 2131231212;
+			public const int wrap = 2131231212;
 			
 			// aapt resource value: 0x7F0801ED
-			public const int x_left = 2131231213;
+			public const int wrap_content = 2131231213;
 			
 			// aapt resource value: 0x7F0801EE
-			public const int x_right = 2131231214;
+			public const int wrap_content_constrained = 2131231214;
 			
 			// aapt resource value: 0x7F0801EF
-			public const int zero_corner_chip = 2131231215;
+			public const int x_left = 2131231215;
+			
+			// aapt resource value: 0x7F0801F0
+			public const int x_right = 2131231216;
+			
+			// aapt resource value: 0x7F0801F1
+			public const int zero_corner_chip = 2131231217;
 			
 			static Id()
 			{
@@ -7564,271 +12752,274 @@ namespace PodcastUtilitiesPOC
 			public const int activity_download = 2131427356;
 			
 			// aapt resource value: 0x7F0B001D
-			public const int activity_main = 2131427357;
+			public const int activity_example = 2131427357;
 			
 			// aapt resource value: 0x7F0B001E
-			public const int browser_actions_context_menu_page = 2131427358;
+			public const int activity_main = 2131427358;
 			
 			// aapt resource value: 0x7F0B001F
-			public const int browser_actions_context_menu_row = 2131427359;
+			public const int browser_actions_context_menu_page = 2131427359;
 			
 			// aapt resource value: 0x7F0B0020
-			public const int custom_dialog = 2131427360;
+			public const int browser_actions_context_menu_row = 2131427360;
 			
 			// aapt resource value: 0x7F0B0021
-			public const int design_bottom_navigation_item = 2131427361;
+			public const int custom_dialog = 2131427361;
 			
 			// aapt resource value: 0x7F0B0022
-			public const int design_bottom_sheet_dialog = 2131427362;
+			public const int design_bottom_navigation_item = 2131427362;
 			
 			// aapt resource value: 0x7F0B0023
-			public const int design_layout_snackbar = 2131427363;
+			public const int design_bottom_sheet_dialog = 2131427363;
 			
 			// aapt resource value: 0x7F0B0024
-			public const int design_layout_snackbar_include = 2131427364;
+			public const int design_layout_snackbar = 2131427364;
 			
 			// aapt resource value: 0x7F0B0025
-			public const int design_layout_tab_icon = 2131427365;
+			public const int design_layout_snackbar_include = 2131427365;
 			
 			// aapt resource value: 0x7F0B0026
-			public const int design_layout_tab_text = 2131427366;
+			public const int design_layout_tab_icon = 2131427366;
 			
 			// aapt resource value: 0x7F0B0027
-			public const int design_menu_item_action_area = 2131427367;
+			public const int design_layout_tab_text = 2131427367;
 			
 			// aapt resource value: 0x7F0B0028
-			public const int design_navigation_item = 2131427368;
+			public const int design_menu_item_action_area = 2131427368;
 			
 			// aapt resource value: 0x7F0B0029
-			public const int design_navigation_item_header = 2131427369;
+			public const int design_navigation_item = 2131427369;
 			
 			// aapt resource value: 0x7F0B002A
-			public const int design_navigation_item_separator = 2131427370;
+			public const int design_navigation_item_header = 2131427370;
 			
 			// aapt resource value: 0x7F0B002B
-			public const int design_navigation_item_subheader = 2131427371;
+			public const int design_navigation_item_separator = 2131427371;
 			
 			// aapt resource value: 0x7F0B002C
-			public const int design_navigation_menu = 2131427372;
+			public const int design_navigation_item_subheader = 2131427372;
 			
 			// aapt resource value: 0x7F0B002D
-			public const int design_navigation_menu_item = 2131427373;
+			public const int design_navigation_menu = 2131427373;
 			
 			// aapt resource value: 0x7F0B002E
-			public const int design_text_input_end_icon = 2131427374;
+			public const int design_navigation_menu_item = 2131427374;
 			
 			// aapt resource value: 0x7F0B002F
-			public const int design_text_input_start_icon = 2131427375;
+			public const int design_text_input_end_icon = 2131427375;
 			
 			// aapt resource value: 0x7F0B0030
-			public const int list_item_syncitem = 2131427376;
+			public const int design_text_input_start_icon = 2131427376;
 			
 			// aapt resource value: 0x7F0B0031
-			public const int material_chip_input_combo = 2131427377;
-			
-			// aapt resource value: 0x7F0B0036
-			public const int material_clockface_textview = 2131427382;
-			
-			// aapt resource value: 0x7F0B0037
-			public const int material_clockface_view = 2131427383;
+			public const int list_item_syncitem = 2131427377;
 			
 			// aapt resource value: 0x7F0B0032
-			public const int material_clock_display = 2131427378;
+			public const int material_chip_input_combo = 2131427378;
 			
-			// aapt resource value: 0x7F0B0033
-			public const int material_clock_display_divider = 2131427379;
-			
-			// aapt resource value: 0x7F0B0034
-			public const int material_clock_period_toggle = 2131427380;
-			
-			// aapt resource value: 0x7F0B0035
-			public const int material_clock_period_toggle_land = 2131427381;
+			// aapt resource value: 0x7F0B0037
+			public const int material_clockface_textview = 2131427383;
 			
 			// aapt resource value: 0x7F0B0038
-			public const int material_radial_view_group = 2131427384;
+			public const int material_clockface_view = 2131427384;
+			
+			// aapt resource value: 0x7F0B0033
+			public const int material_clock_display = 2131427379;
+			
+			// aapt resource value: 0x7F0B0034
+			public const int material_clock_display_divider = 2131427380;
+			
+			// aapt resource value: 0x7F0B0035
+			public const int material_clock_period_toggle = 2131427381;
+			
+			// aapt resource value: 0x7F0B0036
+			public const int material_clock_period_toggle_land = 2131427382;
 			
 			// aapt resource value: 0x7F0B0039
-			public const int material_textinput_timepicker = 2131427385;
-			
-			// aapt resource value: 0x7F0B003C
-			public const int material_timepicker = 2131427388;
-			
-			// aapt resource value: 0x7F0B003D
-			public const int material_timepicker_dialog = 2131427389;
-			
-			// aapt resource value: 0x7F0B003E
-			public const int material_timepicker_textinput_display = 2131427390;
+			public const int material_radial_view_group = 2131427385;
 			
 			// aapt resource value: 0x7F0B003A
-			public const int material_time_chip = 2131427386;
+			public const int material_textinput_timepicker = 2131427386;
 			
-			// aapt resource value: 0x7F0B003B
-			public const int material_time_input = 2131427387;
+			// aapt resource value: 0x7F0B003D
+			public const int material_timepicker = 2131427389;
+			
+			// aapt resource value: 0x7F0B003E
+			public const int material_timepicker_dialog = 2131427390;
 			
 			// aapt resource value: 0x7F0B003F
-			public const int mtrl_alert_dialog = 2131427391;
+			public const int material_timepicker_textinput_display = 2131427391;
+			
+			// aapt resource value: 0x7F0B003B
+			public const int material_time_chip = 2131427387;
+			
+			// aapt resource value: 0x7F0B003C
+			public const int material_time_input = 2131427388;
 			
 			// aapt resource value: 0x7F0B0040
-			public const int mtrl_alert_dialog_actions = 2131427392;
+			public const int mtrl_alert_dialog = 2131427392;
 			
 			// aapt resource value: 0x7F0B0041
-			public const int mtrl_alert_dialog_title = 2131427393;
+			public const int mtrl_alert_dialog_actions = 2131427393;
 			
 			// aapt resource value: 0x7F0B0042
-			public const int mtrl_alert_select_dialog_item = 2131427394;
+			public const int mtrl_alert_dialog_title = 2131427394;
 			
 			// aapt resource value: 0x7F0B0043
-			public const int mtrl_alert_select_dialog_multichoice = 2131427395;
+			public const int mtrl_alert_select_dialog_item = 2131427395;
 			
 			// aapt resource value: 0x7F0B0044
-			public const int mtrl_alert_select_dialog_singlechoice = 2131427396;
+			public const int mtrl_alert_select_dialog_multichoice = 2131427396;
 			
 			// aapt resource value: 0x7F0B0045
-			public const int mtrl_calendar_day = 2131427397;
-			
-			// aapt resource value: 0x7F0B0047
-			public const int mtrl_calendar_days_of_week = 2131427399;
+			public const int mtrl_alert_select_dialog_singlechoice = 2131427397;
 			
 			// aapt resource value: 0x7F0B0046
-			public const int mtrl_calendar_day_of_week = 2131427398;
+			public const int mtrl_calendar_day = 2131427398;
 			
 			// aapt resource value: 0x7F0B0048
-			public const int mtrl_calendar_horizontal = 2131427400;
+			public const int mtrl_calendar_days_of_week = 2131427400;
+			
+			// aapt resource value: 0x7F0B0047
+			public const int mtrl_calendar_day_of_week = 2131427399;
 			
 			// aapt resource value: 0x7F0B0049
-			public const int mtrl_calendar_month = 2131427401;
-			
-			// aapt resource value: 0x7F0B004C
-			public const int mtrl_calendar_months = 2131427404;
+			public const int mtrl_calendar_horizontal = 2131427401;
 			
 			// aapt resource value: 0x7F0B004A
-			public const int mtrl_calendar_month_labeled = 2131427402;
-			
-			// aapt resource value: 0x7F0B004B
-			public const int mtrl_calendar_month_navigation = 2131427403;
+			public const int mtrl_calendar_month = 2131427402;
 			
 			// aapt resource value: 0x7F0B004D
-			public const int mtrl_calendar_vertical = 2131427405;
+			public const int mtrl_calendar_months = 2131427405;
+			
+			// aapt resource value: 0x7F0B004B
+			public const int mtrl_calendar_month_labeled = 2131427403;
+			
+			// aapt resource value: 0x7F0B004C
+			public const int mtrl_calendar_month_navigation = 2131427404;
 			
 			// aapt resource value: 0x7F0B004E
-			public const int mtrl_calendar_year = 2131427406;
+			public const int mtrl_calendar_vertical = 2131427406;
 			
 			// aapt resource value: 0x7F0B004F
-			public const int mtrl_layout_snackbar = 2131427407;
+			public const int mtrl_calendar_year = 2131427407;
 			
 			// aapt resource value: 0x7F0B0050
-			public const int mtrl_layout_snackbar_include = 2131427408;
+			public const int mtrl_layout_snackbar = 2131427408;
 			
 			// aapt resource value: 0x7F0B0051
-			public const int mtrl_navigation_rail_item = 2131427409;
+			public const int mtrl_layout_snackbar_include = 2131427409;
 			
 			// aapt resource value: 0x7F0B0052
-			public const int mtrl_picker_actions = 2131427410;
+			public const int mtrl_navigation_rail_item = 2131427410;
 			
 			// aapt resource value: 0x7F0B0053
-			public const int mtrl_picker_dialog = 2131427411;
+			public const int mtrl_picker_actions = 2131427411;
 			
 			// aapt resource value: 0x7F0B0054
-			public const int mtrl_picker_fullscreen = 2131427412;
+			public const int mtrl_picker_dialog = 2131427412;
 			
 			// aapt resource value: 0x7F0B0055
-			public const int mtrl_picker_header_dialog = 2131427413;
+			public const int mtrl_picker_fullscreen = 2131427413;
 			
 			// aapt resource value: 0x7F0B0056
-			public const int mtrl_picker_header_fullscreen = 2131427414;
+			public const int mtrl_picker_header_dialog = 2131427414;
 			
 			// aapt resource value: 0x7F0B0057
-			public const int mtrl_picker_header_selection_text = 2131427415;
+			public const int mtrl_picker_header_fullscreen = 2131427415;
 			
 			// aapt resource value: 0x7F0B0058
-			public const int mtrl_picker_header_title_text = 2131427416;
+			public const int mtrl_picker_header_selection_text = 2131427416;
 			
 			// aapt resource value: 0x7F0B0059
-			public const int mtrl_picker_header_toggle = 2131427417;
+			public const int mtrl_picker_header_title_text = 2131427417;
 			
 			// aapt resource value: 0x7F0B005A
-			public const int mtrl_picker_text_input_date = 2131427418;
+			public const int mtrl_picker_header_toggle = 2131427418;
 			
 			// aapt resource value: 0x7F0B005B
-			public const int mtrl_picker_text_input_date_range = 2131427419;
+			public const int mtrl_picker_text_input_date = 2131427419;
 			
 			// aapt resource value: 0x7F0B005C
-			public const int notification_action = 2131427420;
+			public const int mtrl_picker_text_input_date_range = 2131427420;
 			
 			// aapt resource value: 0x7F0B005D
-			public const int notification_action_tombstone = 2131427421;
+			public const int notification_action = 2131427421;
 			
 			// aapt resource value: 0x7F0B005E
-			public const int notification_template_custom_big = 2131427422;
+			public const int notification_action_tombstone = 2131427422;
 			
 			// aapt resource value: 0x7F0B005F
-			public const int notification_template_icon_group = 2131427423;
+			public const int notification_template_custom_big = 2131427423;
 			
 			// aapt resource value: 0x7F0B0060
-			public const int notification_template_part_chronometer = 2131427424;
+			public const int notification_template_icon_group = 2131427424;
 			
 			// aapt resource value: 0x7F0B0061
-			public const int notification_template_part_time = 2131427425;
+			public const int notification_template_part_chronometer = 2131427425;
 			
 			// aapt resource value: 0x7F0B0062
-			public const int select_dialog_item_material = 2131427426;
+			public const int notification_template_part_time = 2131427426;
 			
 			// aapt resource value: 0x7F0B0063
-			public const int select_dialog_multichoice_material = 2131427427;
+			public const int select_dialog_item_material = 2131427427;
 			
 			// aapt resource value: 0x7F0B0064
-			public const int select_dialog_singlechoice_material = 2131427428;
+			public const int select_dialog_multichoice_material = 2131427428;
 			
 			// aapt resource value: 0x7F0B0065
-			public const int support_simple_spinner_dropdown_item = 2131427429;
+			public const int select_dialog_singlechoice_material = 2131427429;
 			
 			// aapt resource value: 0x7F0B0066
-			public const int test_action_chip = 2131427430;
+			public const int support_simple_spinner_dropdown_item = 2131427430;
 			
 			// aapt resource value: 0x7F0B0067
-			public const int test_chip_zero_corner_radius = 2131427431;
+			public const int test_action_chip = 2131427431;
 			
 			// aapt resource value: 0x7F0B0068
-			public const int test_design_checkbox = 2131427432;
+			public const int test_chip_zero_corner_radius = 2131427432;
 			
 			// aapt resource value: 0x7F0B0069
-			public const int test_design_radiobutton = 2131427433;
+			public const int test_design_checkbox = 2131427433;
 			
 			// aapt resource value: 0x7F0B006A
-			public const int test_navigation_bar_item_layout = 2131427434;
+			public const int test_design_radiobutton = 2131427434;
 			
 			// aapt resource value: 0x7F0B006B
-			public const int test_reflow_chipgroup = 2131427435;
+			public const int test_navigation_bar_item_layout = 2131427435;
 			
 			// aapt resource value: 0x7F0B006C
-			public const int test_toolbar = 2131427436;
+			public const int test_reflow_chipgroup = 2131427436;
 			
 			// aapt resource value: 0x7F0B006D
-			public const int test_toolbar_custom_background = 2131427437;
+			public const int test_toolbar = 2131427437;
 			
 			// aapt resource value: 0x7F0B006E
-			public const int test_toolbar_elevation = 2131427438;
+			public const int test_toolbar_custom_background = 2131427438;
 			
 			// aapt resource value: 0x7F0B006F
-			public const int test_toolbar_surface = 2131427439;
-			
-			// aapt resource value: 0x7F0B0074
-			public const int text_view_without_line_height = 2131427444;
+			public const int test_toolbar_elevation = 2131427439;
 			
 			// aapt resource value: 0x7F0B0070
-			public const int text_view_with_line_height_from_appearance = 2131427440;
-			
-			// aapt resource value: 0x7F0B0071
-			public const int text_view_with_line_height_from_layout = 2131427441;
-			
-			// aapt resource value: 0x7F0B0072
-			public const int text_view_with_line_height_from_style = 2131427442;
-			
-			// aapt resource value: 0x7F0B0073
-			public const int text_view_with_theme_line_height = 2131427443;
+			public const int test_toolbar_surface = 2131427440;
 			
 			// aapt resource value: 0x7F0B0075
-			public const int view_progress_spinner = 2131427445;
+			public const int text_view_without_line_height = 2131427445;
+			
+			// aapt resource value: 0x7F0B0071
+			public const int text_view_with_line_height_from_appearance = 2131427441;
+			
+			// aapt resource value: 0x7F0B0072
+			public const int text_view_with_line_height_from_layout = 2131427442;
+			
+			// aapt resource value: 0x7F0B0073
+			public const int text_view_with_line_height_from_style = 2131427443;
+			
+			// aapt resource value: 0x7F0B0074
+			public const int text_view_with_theme_line_height = 2131427444;
+			
+			// aapt resource value: 0x7F0B0076
+			public const int view_progress_spinner = 2131427446;
 			
 			static Layout()
 			{
@@ -7987,281 +13178,290 @@ namespace PodcastUtilitiesPOC
 			// aapt resource value: 0x7F0F001C
 			public const int action_download_all = 2131689500;
 			
-			// aapt resource value: 0x7F0F001E
-			public const int appbar_scrolling_view_behavior = 2131689502;
-			
 			// aapt resource value: 0x7F0F001D
-			public const int app_name = 2131689501;
-			
-			// aapt resource value: 0x7F0F0020
-			public const int bottomsheet_action_expand_halfway = 2131689504;
+			public const int action_example = 2131689501;
 			
 			// aapt resource value: 0x7F0F001F
-			public const int bottom_sheet_behavior = 2131689503;
+			public const int appbar_scrolling_view_behavior = 2131689503;
+			
+			// aapt resource value: 0x7F0F001E
+			public const int app_name = 2131689502;
 			
 			// aapt resource value: 0x7F0F0021
-			public const int character_counter_content_description = 2131689505;
+			public const int bottomsheet_action_expand_halfway = 2131689505;
+			
+			// aapt resource value: 0x7F0F0020
+			public const int bottom_sheet_behavior = 2131689504;
 			
 			// aapt resource value: 0x7F0F0022
-			public const int character_counter_overflowed_content_description = 2131689506;
+			public const int character_counter_content_description = 2131689506;
 			
 			// aapt resource value: 0x7F0F0023
-			public const int character_counter_pattern = 2131689507;
+			public const int character_counter_overflowed_content_description = 2131689507;
 			
 			// aapt resource value: 0x7F0F0024
-			public const int chip_text = 2131689508;
+			public const int character_counter_pattern = 2131689508;
 			
 			// aapt resource value: 0x7F0F0025
-			public const int clear_text_end_icon_content_description = 2131689509;
+			public const int chip_text = 2131689509;
 			
 			// aapt resource value: 0x7F0F0026
-			public const int copy_toast_msg = 2131689510;
+			public const int clear_text_end_icon_content_description = 2131689510;
 			
 			// aapt resource value: 0x7F0F0027
-			public const int error_icon_content_description = 2131689511;
+			public const int copy_toast_msg = 2131689511;
 			
 			// aapt resource value: 0x7F0F0028
-			public const int exposed_dropdown_menu_content_description = 2131689512;
+			public const int download_activity_after_load_title = 2131689512;
 			
 			// aapt resource value: 0x7F0F0029
-			public const int fab_transformation_scrim_behavior = 2131689513;
+			public const int download_activity_title = 2131689513;
 			
 			// aapt resource value: 0x7F0F002A
-			public const int fab_transformation_sheet_behavior = 2131689514;
+			public const int error_icon_content_description = 2131689514;
 			
 			// aapt resource value: 0x7F0F002B
-			public const int fallback_menu_item_copy_link = 2131689515;
+			public const int exposed_dropdown_menu_content_description = 2131689515;
 			
 			// aapt resource value: 0x7F0F002C
-			public const int fallback_menu_item_open_in_browser = 2131689516;
+			public const int fab_transformation_scrim_behavior = 2131689516;
 			
 			// aapt resource value: 0x7F0F002D
-			public const int fallback_menu_item_share_link = 2131689517;
+			public const int fab_transformation_sheet_behavior = 2131689517;
 			
 			// aapt resource value: 0x7F0F002E
-			public const int finding_podcasts_progress = 2131689518;
+			public const int fallback_menu_item_copy_link = 2131689518;
 			
 			// aapt resource value: 0x7F0F002F
-			public const int hide_bottom_view_on_scroll_behavior = 2131689519;
+			public const int fallback_menu_item_open_in_browser = 2131689519;
 			
 			// aapt resource value: 0x7F0F0030
-			public const int icon_content_description = 2131689520;
+			public const int fallback_menu_item_share_link = 2131689520;
 			
 			// aapt resource value: 0x7F0F0031
-			public const int item_view_role_description = 2131689521;
+			public const int finding_podcasts_progress = 2131689521;
 			
 			// aapt resource value: 0x7F0F0032
-			public const int manage_external_permissions_rationale = 2131689522;
+			public const int hide_bottom_view_on_scroll_behavior = 2131689522;
 			
 			// aapt resource value: 0x7F0F0033
-			public const int material_clock_display_divider = 2131689523;
+			public const int icon_content_description = 2131689523;
 			
 			// aapt resource value: 0x7F0F0034
-			public const int material_clock_toggle_content_description = 2131689524;
+			public const int item_view_role_description = 2131689524;
 			
 			// aapt resource value: 0x7F0F0035
-			public const int material_hour_selection = 2131689525;
+			public const int manage_external_permissions_rationale = 2131689525;
 			
 			// aapt resource value: 0x7F0F0036
-			public const int material_hour_suffix = 2131689526;
+			public const int material_clock_display_divider = 2131689526;
 			
 			// aapt resource value: 0x7F0F0037
-			public const int material_minute_selection = 2131689527;
+			public const int material_clock_toggle_content_description = 2131689527;
 			
 			// aapt resource value: 0x7F0F0038
-			public const int material_minute_suffix = 2131689528;
+			public const int material_hour_selection = 2131689528;
 			
 			// aapt resource value: 0x7F0F0039
-			public const int material_motion_easing_accelerated = 2131689529;
+			public const int material_hour_suffix = 2131689529;
 			
 			// aapt resource value: 0x7F0F003A
-			public const int material_motion_easing_decelerated = 2131689530;
+			public const int material_minute_selection = 2131689530;
 			
 			// aapt resource value: 0x7F0F003B
-			public const int material_motion_easing_emphasized = 2131689531;
+			public const int material_minute_suffix = 2131689531;
 			
 			// aapt resource value: 0x7F0F003C
-			public const int material_motion_easing_linear = 2131689532;
+			public const int material_motion_easing_accelerated = 2131689532;
 			
 			// aapt resource value: 0x7F0F003D
-			public const int material_motion_easing_standard = 2131689533;
+			public const int material_motion_easing_decelerated = 2131689533;
 			
 			// aapt resource value: 0x7F0F003E
-			public const int material_slider_range_end = 2131689534;
+			public const int material_motion_easing_emphasized = 2131689534;
 			
 			// aapt resource value: 0x7F0F003F
-			public const int material_slider_range_start = 2131689535;
+			public const int material_motion_easing_linear = 2131689535;
 			
 			// aapt resource value: 0x7F0F0040
-			public const int material_timepicker_am = 2131689536;
+			public const int material_motion_easing_standard = 2131689536;
 			
 			// aapt resource value: 0x7F0F0041
-			public const int material_timepicker_clock_mode_description = 2131689537;
+			public const int material_slider_range_end = 2131689537;
 			
 			// aapt resource value: 0x7F0F0042
-			public const int material_timepicker_hour = 2131689538;
+			public const int material_slider_range_start = 2131689538;
 			
 			// aapt resource value: 0x7F0F0043
-			public const int material_timepicker_minute = 2131689539;
+			public const int material_timepicker_am = 2131689539;
 			
 			// aapt resource value: 0x7F0F0044
-			public const int material_timepicker_pm = 2131689540;
+			public const int material_timepicker_clock_mode_description = 2131689540;
 			
 			// aapt resource value: 0x7F0F0045
-			public const int material_timepicker_select_time = 2131689541;
+			public const int material_timepicker_hour = 2131689541;
 			
 			// aapt resource value: 0x7F0F0046
-			public const int material_timepicker_text_input_mode_description = 2131689542;
+			public const int material_timepicker_minute = 2131689542;
 			
 			// aapt resource value: 0x7F0F0047
-			public const int mtrl_badge_numberless_content_description = 2131689543;
+			public const int material_timepicker_pm = 2131689543;
 			
 			// aapt resource value: 0x7F0F0048
-			public const int mtrl_chip_close_icon_content_description = 2131689544;
+			public const int material_timepicker_select_time = 2131689544;
 			
 			// aapt resource value: 0x7F0F0049
-			public const int mtrl_exceed_max_badge_number_content_description = 2131689545;
+			public const int material_timepicker_text_input_mode_description = 2131689545;
 			
 			// aapt resource value: 0x7F0F004A
-			public const int mtrl_exceed_max_badge_number_suffix = 2131689546;
+			public const int mtrl_badge_numberless_content_description = 2131689546;
 			
 			// aapt resource value: 0x7F0F004B
-			public const int mtrl_picker_a11y_next_month = 2131689547;
+			public const int mtrl_chip_close_icon_content_description = 2131689547;
 			
 			// aapt resource value: 0x7F0F004C
-			public const int mtrl_picker_a11y_prev_month = 2131689548;
+			public const int mtrl_exceed_max_badge_number_content_description = 2131689548;
 			
 			// aapt resource value: 0x7F0F004D
-			public const int mtrl_picker_announce_current_selection = 2131689549;
+			public const int mtrl_exceed_max_badge_number_suffix = 2131689549;
 			
 			// aapt resource value: 0x7F0F004E
-			public const int mtrl_picker_cancel = 2131689550;
+			public const int mtrl_picker_a11y_next_month = 2131689550;
 			
 			// aapt resource value: 0x7F0F004F
-			public const int mtrl_picker_confirm = 2131689551;
+			public const int mtrl_picker_a11y_prev_month = 2131689551;
 			
 			// aapt resource value: 0x7F0F0050
-			public const int mtrl_picker_date_header_selected = 2131689552;
+			public const int mtrl_picker_announce_current_selection = 2131689552;
 			
 			// aapt resource value: 0x7F0F0051
-			public const int mtrl_picker_date_header_title = 2131689553;
+			public const int mtrl_picker_cancel = 2131689553;
 			
 			// aapt resource value: 0x7F0F0052
-			public const int mtrl_picker_date_header_unselected = 2131689554;
+			public const int mtrl_picker_confirm = 2131689554;
 			
 			// aapt resource value: 0x7F0F0053
-			public const int mtrl_picker_day_of_week_column_header = 2131689555;
+			public const int mtrl_picker_date_header_selected = 2131689555;
 			
 			// aapt resource value: 0x7F0F0054
-			public const int mtrl_picker_invalid_format = 2131689556;
+			public const int mtrl_picker_date_header_title = 2131689556;
 			
 			// aapt resource value: 0x7F0F0055
-			public const int mtrl_picker_invalid_format_example = 2131689557;
+			public const int mtrl_picker_date_header_unselected = 2131689557;
 			
 			// aapt resource value: 0x7F0F0056
-			public const int mtrl_picker_invalid_format_use = 2131689558;
+			public const int mtrl_picker_day_of_week_column_header = 2131689558;
 			
 			// aapt resource value: 0x7F0F0057
-			public const int mtrl_picker_invalid_range = 2131689559;
+			public const int mtrl_picker_invalid_format = 2131689559;
 			
 			// aapt resource value: 0x7F0F0058
-			public const int mtrl_picker_navigate_to_year_description = 2131689560;
+			public const int mtrl_picker_invalid_format_example = 2131689560;
 			
 			// aapt resource value: 0x7F0F0059
-			public const int mtrl_picker_out_of_range = 2131689561;
+			public const int mtrl_picker_invalid_format_use = 2131689561;
 			
 			// aapt resource value: 0x7F0F005A
-			public const int mtrl_picker_range_header_only_end_selected = 2131689562;
+			public const int mtrl_picker_invalid_range = 2131689562;
 			
 			// aapt resource value: 0x7F0F005B
-			public const int mtrl_picker_range_header_only_start_selected = 2131689563;
+			public const int mtrl_picker_navigate_to_year_description = 2131689563;
 			
 			// aapt resource value: 0x7F0F005C
-			public const int mtrl_picker_range_header_selected = 2131689564;
+			public const int mtrl_picker_out_of_range = 2131689564;
 			
 			// aapt resource value: 0x7F0F005D
-			public const int mtrl_picker_range_header_title = 2131689565;
+			public const int mtrl_picker_range_header_only_end_selected = 2131689565;
 			
 			// aapt resource value: 0x7F0F005E
-			public const int mtrl_picker_range_header_unselected = 2131689566;
+			public const int mtrl_picker_range_header_only_start_selected = 2131689566;
 			
 			// aapt resource value: 0x7F0F005F
-			public const int mtrl_picker_save = 2131689567;
+			public const int mtrl_picker_range_header_selected = 2131689567;
 			
 			// aapt resource value: 0x7F0F0060
-			public const int mtrl_picker_text_input_date_hint = 2131689568;
+			public const int mtrl_picker_range_header_title = 2131689568;
 			
 			// aapt resource value: 0x7F0F0061
-			public const int mtrl_picker_text_input_date_range_end_hint = 2131689569;
+			public const int mtrl_picker_range_header_unselected = 2131689569;
 			
 			// aapt resource value: 0x7F0F0062
-			public const int mtrl_picker_text_input_date_range_start_hint = 2131689570;
+			public const int mtrl_picker_save = 2131689570;
 			
 			// aapt resource value: 0x7F0F0063
-			public const int mtrl_picker_text_input_day_abbr = 2131689571;
+			public const int mtrl_picker_text_input_date_hint = 2131689571;
 			
 			// aapt resource value: 0x7F0F0064
-			public const int mtrl_picker_text_input_month_abbr = 2131689572;
+			public const int mtrl_picker_text_input_date_range_end_hint = 2131689572;
 			
 			// aapt resource value: 0x7F0F0065
-			public const int mtrl_picker_text_input_year_abbr = 2131689573;
+			public const int mtrl_picker_text_input_date_range_start_hint = 2131689573;
 			
 			// aapt resource value: 0x7F0F0066
-			public const int mtrl_picker_toggle_to_calendar_input_mode = 2131689574;
+			public const int mtrl_picker_text_input_day_abbr = 2131689574;
 			
 			// aapt resource value: 0x7F0F0067
-			public const int mtrl_picker_toggle_to_day_selection = 2131689575;
+			public const int mtrl_picker_text_input_month_abbr = 2131689575;
 			
 			// aapt resource value: 0x7F0F0068
-			public const int mtrl_picker_toggle_to_text_input_mode = 2131689576;
+			public const int mtrl_picker_text_input_year_abbr = 2131689576;
 			
 			// aapt resource value: 0x7F0F0069
-			public const int mtrl_picker_toggle_to_year_selection = 2131689577;
+			public const int mtrl_picker_toggle_to_calendar_input_mode = 2131689577;
 			
 			// aapt resource value: 0x7F0F006A
-			public const int no_downloads_text = 2131689578;
+			public const int mtrl_picker_toggle_to_day_selection = 2131689578;
 			
 			// aapt resource value: 0x7F0F006B
-			public const int ok = 2131689579;
+			public const int mtrl_picker_toggle_to_text_input_mode = 2131689579;
 			
 			// aapt resource value: 0x7F0F006C
-			public const int password_toggle_content_description = 2131689580;
+			public const int mtrl_picker_toggle_to_year_selection = 2131689580;
 			
 			// aapt resource value: 0x7F0F006D
-			public const int path_password_eye = 2131689581;
+			public const int no_downloads_text = 2131689581;
 			
 			// aapt resource value: 0x7F0F006E
-			public const int path_password_eye_mask_strike_through = 2131689582;
+			public const int ok = 2131689582;
 			
 			// aapt resource value: 0x7F0F006F
-			public const int path_password_eye_mask_visible = 2131689583;
+			public const int password_toggle_content_description = 2131689583;
 			
 			// aapt resource value: 0x7F0F0070
-			public const int path_password_strike_through = 2131689584;
+			public const int path_password_eye = 2131689584;
 			
 			// aapt resource value: 0x7F0F0071
-			public const int permissions_title = 2131689585;
+			public const int path_password_eye_mask_strike_through = 2131689585;
 			
 			// aapt resource value: 0x7F0F0072
-			public const int placeholder = 2131689586;
+			public const int path_password_eye_mask_visible = 2131689586;
 			
 			// aapt resource value: 0x7F0F0073
-			public const int prefs_control_uri_key = 2131689587;
+			public const int path_password_strike_through = 2131689587;
 			
 			// aapt resource value: 0x7F0F0074
-			public const int prefs_file_key = 2131689588;
+			public const int permissions_title = 2131689588;
 			
 			// aapt resource value: 0x7F0F0075
-			public const int read_external_permissions_rationale = 2131689589;
+			public const int placeholder = 2131689589;
 			
 			// aapt resource value: 0x7F0F0076
-			public const int search_menu_title = 2131689590;
+			public const int prefs_control_uri_key = 2131689590;
 			
 			// aapt resource value: 0x7F0F0077
-			public const int status_bar_notification_info_overflow = 2131689591;
+			public const int prefs_file_key = 2131689591;
 			
 			// aapt resource value: 0x7F0F0078
-			public const int write_external_permissions_rationale = 2131689592;
+			public const int read_external_permissions_rationale = 2131689592;
+			
+			// aapt resource value: 0x7F0F0079
+			public const int search_menu_title = 2131689593;
+			
+			// aapt resource value: 0x7F0F007A
+			public const int status_bar_notification_info_overflow = 2131689594;
+			
+			// aapt resource value: 0x7F0F007B
+			public const int write_external_permissions_rationale = 2131689595;
 			
 			static String()
 			{

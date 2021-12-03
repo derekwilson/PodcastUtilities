@@ -1,6 +1,6 @@
 ﻿using AndroidX.Lifecycle;
 using PodcastUtilities.Common;
-using PodcastUtilitiesPOC.Logging;
+using PodcastUtilitiesPOC.AndroidLogic.Logging;
 using System;
 using System.Collections.Generic;
 using System.Reflection;

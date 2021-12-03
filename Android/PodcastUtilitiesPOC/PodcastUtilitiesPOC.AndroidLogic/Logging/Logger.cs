@@ -1,7 +1,7 @@
 ﻿using NLog;
 using System;
 
-namespace PodcastUtilitiesPOC.Logging
+namespace PodcastUtilitiesPOC.AndroidLogic.Logging
 {
     public interface ILogger
     {
@@ -11,7 +11,7 @@ namespace PodcastUtilitiesPOC.Logging
         void Warning(MessageGenerator message);
         void LogException(MessageGenerator message, Exception ex);
     }
-    class NLogLogger : ILogger
+    public class NLogLogger : ILogger
     {
         private Logger nlogLogger;
 
@@ -49,7 +49,7 @@ namespace PodcastUtilitiesPOC.Logging
         ILogger Logger { get; }
     }
 
-    class NLoggerLoggerFactory : ILoggerFactory
+    public class NLoggerLoggerFactory : ILoggerFactory
     {
         public ILogger Logger
         {

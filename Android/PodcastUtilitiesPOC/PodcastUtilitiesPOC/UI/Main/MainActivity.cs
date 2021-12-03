@@ -16,6 +16,7 @@ using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.Common.Platform;
 using PodcastUtilitiesPOC.CustomViews;
 using PodcastUtilitiesPOC.UI.Download;
+using PodcastUtilitiesPOC.UI.Example;
 using PodcastUtilitiesPOC.Utilities;
 using System;
 using System.Collections.Generic;
@@ -149,6 +150,9 @@ namespace PodcastUtilitiesPOC.UI.Main
                     var intent = new Intent(this, typeof(DownloadActivity));
                     StartActivity(intent);
                     break;
+            case Resource.Id.action_example:
+                StartActivity(new Intent(this, typeof(ExampleActivity)));
+                break;
             }
             return base.OnOptionsItemSelected(item);
         }

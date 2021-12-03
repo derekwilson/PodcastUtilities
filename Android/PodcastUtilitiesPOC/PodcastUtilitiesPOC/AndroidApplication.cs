@@ -5,9 +5,11 @@ using Android.Util;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Ioc;
-using PodcastUtilitiesPOC.Logging;
+using PodcastUtilitiesPOC.AndroidLogic.Logging;
+using PodcastUtilitiesPOC.AndroidLogic.Utilities;
+using PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download;
+using PodcastUtilitiesPOC.AndroidLogic.ViewModel.Example;
 using PodcastUtilitiesPOC.UI;
-using PodcastUtilitiesPOC.UI.Download;
 using PodcastUtilitiesPOC.Utilities;
 using System;
 using System.Threading.Tasks;
@@ -51,13 +53,16 @@ namespace PodcastUtilitiesPOC
             container.Register<Application>(this);
             // helpers
             container.Register<IPreferencesProvider, AndroidApplicationSharedPreferencesProvider>(IocLifecycle.Singleton);
+            container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
             container.Register<ILogger>(Logger);
             // view models
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);
             container.Register<DownloadViewModel, DownloadViewModel>();
+            container.Register<ExampleViewModel, ExampleViewModel>();
 
             var factory = container.Resolve<ViewModelFactory>();
             factory.AddMap(typeof(DownloadViewModel));
+            factory.AddMap(typeof(ExampleViewModel));
             return container;
         }
 

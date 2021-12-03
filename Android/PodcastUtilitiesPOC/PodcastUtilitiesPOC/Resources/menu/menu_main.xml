@@ -4,8 +4,12 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
   <!--Update strings and icons-->
-  <item android:id="@+id/action_download_podcasts"
-	      android:title="@string/action_download"
-	      app:showAsAction="never"/>
+	<item android:id="@+id/action_download_podcasts"
+			android:title="@string/action_download"
+			app:showAsAction="never"/>
+
+	<item android:id="@+id/action_example"
+			android:title="@string/action_example"
+			app:showAsAction="never"/>
 
 </menu>
