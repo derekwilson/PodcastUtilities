@@ -1,0 +1,6 @@
+{
+"diagnosticMessages": true,
+"methodDisplay": "method",
+"parallelizeAssembly": true,
+"longRunningTestSeconds": 3
+}

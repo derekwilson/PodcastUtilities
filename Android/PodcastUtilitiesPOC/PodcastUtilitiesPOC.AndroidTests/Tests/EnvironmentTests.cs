@@ -1,15 +1,10 @@
-﻿using Android.App;
-using Android.Content;
-using Android.Content.PM;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using Android.Content.Res;
 using PodcastUtilities.Common.Platform;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -28,7 +23,10 @@ namespace PodcastUtilitiesPOC.AndroidTests.Tests
         public void Assertion_Succeeds()
         {
             Output.WriteLine($"Step 10");
-            Output.WriteLine($"Running environment test on ");
+
+            var writeTime = File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location);
+            Output.WriteLine($"Write Time (Local): {writeTime.ToLocalTime().ToString()}");
+
             List<string> environment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
             foreach (var line in environment)
             {
