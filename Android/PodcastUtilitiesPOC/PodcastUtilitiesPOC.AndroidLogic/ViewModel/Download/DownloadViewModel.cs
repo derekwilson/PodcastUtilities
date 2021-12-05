@@ -16,12 +16,6 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
 {
     public class DownloadViewModel : AndroidViewModel, ILifecycleObserver
     {
-        public class LiveDataObservableGroup
-        {
-            public MutableLiveData Title = new MutableLiveData();
-        }
-        public LiveDataObservableGroup LiveDataObservables = new LiveDataObservableGroup();
-
         public class ObservableGroup
         {
             public EventHandler<string> Title;
@@ -49,7 +43,6 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
         {
             Logger.Debug(() => $"DownloadViewModel:Initialise - tested");
             var title = ResourceProvider.GetString(Resource.String.download_activity_title);
-            //LiveDataObservables.Title.SetValue("Observed LiveData Title");
             Observables.Title?.Invoke(this, title);
         }
 

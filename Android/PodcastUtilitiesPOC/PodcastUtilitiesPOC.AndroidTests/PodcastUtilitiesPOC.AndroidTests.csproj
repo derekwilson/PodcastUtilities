@@ -73,6 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\EnvironmentTests.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModelTests.cs" />
+    <Compile Include="Tests\ViewModel\Example\ExampleViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

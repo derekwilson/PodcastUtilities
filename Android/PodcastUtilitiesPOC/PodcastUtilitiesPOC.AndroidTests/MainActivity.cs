@@ -6,6 +6,7 @@ using Xunit.Sdk;
 using Xunit.Runners.UI;
 using System.Reflection;
 using System;
+using Xunit.Runners.ResultChannels;
 
 namespace PodcastUtilitiesPOC.AndroidTests
 {
@@ -16,6 +17,10 @@ namespace PodcastUtilitiesPOC.AndroidTests
 
         protected override void OnCreate(Bundle bundle)
         {
+            var package = PackageManager.GetPackageInfo(PackageName, 0);
+            DisplayVersion = $"v{package.VersionName}, ({package.VersionCode})";
+            Writer?.WriteLine($"Test App Version: {DisplayVersion}");
+
             // tests can be inside the main assembly
             AddTestAssembly(Assembly.GetExecutingAssembly());
 
@@ -35,10 +40,6 @@ namespace PodcastUtilitiesPOC.AndroidTests
 #endif
             // you cannot add more assemblies once calling base
             base.OnCreate(bundle);
-
-            var package = PackageManager.GetPackageInfo(PackageName, 0);
-            DisplayVersion = $"v{package.VersionName}, ({package.VersionCode})";
-            Writer?.WriteLine($"Test App Version: {DisplayVersion}");
         }
     }
 

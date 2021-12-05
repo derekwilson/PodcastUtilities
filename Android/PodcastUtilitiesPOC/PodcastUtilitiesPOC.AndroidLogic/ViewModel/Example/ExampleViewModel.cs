@@ -46,7 +46,7 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Example
         public void Initialise()
         {
             Logger.Debug(() => $"ExampleViewModel:Initialise");
-            LiveDataObservables.Title.SetValue("Example Observed LiveData Title");
+            LiveDataObservables.Title.PostValue("Example Observed LiveData Title");
             Observables.Title?.Invoke(this, "Example Observed Title");
             Observables.Body?.Invoke(this, ResourceProvider.GetString(Resource.String.example_activity_body_text));
         }
