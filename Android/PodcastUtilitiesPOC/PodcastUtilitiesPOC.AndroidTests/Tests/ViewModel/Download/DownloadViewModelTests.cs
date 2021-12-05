@@ -15,6 +15,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 using Xunit.Abstractions;
+using Times = FakeItEasy.Times;
 
 namespace PodcastUtilitiesPOC.AndroidTests.Tests.ViewModel.Download
 {
@@ -45,6 +46,14 @@ namespace PodcastUtilitiesPOC.AndroidTests.Tests.ViewModel.Download
             ViewModel.Initialise();
 
             Assert.Equal("Observed Mocked Title", LastSetTitle);
+        }
+
+        [Fact]
+        public void Initialise_Loggs()
+        {
+            ViewModel.Initialise();
+
+            A.CallTo(() => MockLogger.Debug(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(2, Times.Exactly);
         }
     }
 }

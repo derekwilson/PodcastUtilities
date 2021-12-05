@@ -73,16 +73,23 @@ namespace PodcastUtilitiesPOC.UI.Example
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.Title += SetTitle;
+            ViewModel.Observables.Body += SetBody;
         }
 
         private void KillObservers()
         {
             ViewModel.Observables.Title -= SetTitle;
+            ViewModel.Observables.Body -= SetBody;
         }
 
         private void SetTitle(object sender, string title)
         {
             Title = title;
+        }
+        private void SetBody(object sender, string body)
+        {
+            TextView txtView = FindViewById<TextView>(Resource.Id.txtView);
+            txtView.Text = body;
         }
     }
 }

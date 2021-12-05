@@ -7656,217 +7656,220 @@ namespace PodcastUtilitiesPOC.AndroidLogic
 			public static int error_icon_content_description = 2131558438;
 			
 			// aapt resource value: 0x7F0D0027
-			public static int exposed_dropdown_menu_content_description = 2131558439;
+			public static int example_activity_body_text = 2131558439;
 			
 			// aapt resource value: 0x7F0D0028
-			public static int fab_transformation_scrim_behavior = 2131558440;
+			public static int exposed_dropdown_menu_content_description = 2131558440;
 			
 			// aapt resource value: 0x7F0D0029
-			public static int fab_transformation_sheet_behavior = 2131558441;
+			public static int fab_transformation_scrim_behavior = 2131558441;
 			
 			// aapt resource value: 0x7F0D002A
-			public static int fallback_menu_item_copy_link = 2131558442;
+			public static int fab_transformation_sheet_behavior = 2131558442;
 			
 			// aapt resource value: 0x7F0D002B
-			public static int fallback_menu_item_open_in_browser = 2131558443;
+			public static int fallback_menu_item_copy_link = 2131558443;
 			
 			// aapt resource value: 0x7F0D002C
-			public static int fallback_menu_item_share_link = 2131558444;
+			public static int fallback_menu_item_open_in_browser = 2131558444;
 			
 			// aapt resource value: 0x7F0D002D
-			public static int hide_bottom_view_on_scroll_behavior = 2131558445;
+			public static int fallback_menu_item_share_link = 2131558445;
 			
 			// aapt resource value: 0x7F0D002E
-			public static int icon_content_description = 2131558446;
+			public static int hide_bottom_view_on_scroll_behavior = 2131558446;
 			
 			// aapt resource value: 0x7F0D002F
-			public static int item_view_role_description = 2131558447;
+			public static int icon_content_description = 2131558447;
 			
 			// aapt resource value: 0x7F0D0030
-			public static int material_clock_display_divider = 2131558448;
+			public static int item_view_role_description = 2131558448;
 			
 			// aapt resource value: 0x7F0D0031
-			public static int material_clock_toggle_content_description = 2131558449;
+			public static int material_clock_display_divider = 2131558449;
 			
 			// aapt resource value: 0x7F0D0032
-			public static int material_hour_selection = 2131558450;
+			public static int material_clock_toggle_content_description = 2131558450;
 			
 			// aapt resource value: 0x7F0D0033
-			public static int material_hour_suffix = 2131558451;
+			public static int material_hour_selection = 2131558451;
 			
 			// aapt resource value: 0x7F0D0034
-			public static int material_minute_selection = 2131558452;
+			public static int material_hour_suffix = 2131558452;
 			
 			// aapt resource value: 0x7F0D0035
-			public static int material_minute_suffix = 2131558453;
+			public static int material_minute_selection = 2131558453;
 			
 			// aapt resource value: 0x7F0D0036
-			public static int material_motion_easing_accelerated = 2131558454;
+			public static int material_minute_suffix = 2131558454;
 			
 			// aapt resource value: 0x7F0D0037
-			public static int material_motion_easing_decelerated = 2131558455;
+			public static int material_motion_easing_accelerated = 2131558455;
 			
 			// aapt resource value: 0x7F0D0038
-			public static int material_motion_easing_emphasized = 2131558456;
+			public static int material_motion_easing_decelerated = 2131558456;
 			
 			// aapt resource value: 0x7F0D0039
-			public static int material_motion_easing_linear = 2131558457;
+			public static int material_motion_easing_emphasized = 2131558457;
 			
 			// aapt resource value: 0x7F0D003A
-			public static int material_motion_easing_standard = 2131558458;
+			public static int material_motion_easing_linear = 2131558458;
 			
 			// aapt resource value: 0x7F0D003B
-			public static int material_slider_range_end = 2131558459;
+			public static int material_motion_easing_standard = 2131558459;
 			
 			// aapt resource value: 0x7F0D003C
-			public static int material_slider_range_start = 2131558460;
+			public static int material_slider_range_end = 2131558460;
 			
 			// aapt resource value: 0x7F0D003D
-			public static int material_timepicker_am = 2131558461;
+			public static int material_slider_range_start = 2131558461;
 			
 			// aapt resource value: 0x7F0D003E
-			public static int material_timepicker_clock_mode_description = 2131558462;
+			public static int material_timepicker_am = 2131558462;
 			
 			// aapt resource value: 0x7F0D003F
-			public static int material_timepicker_hour = 2131558463;
+			public static int material_timepicker_clock_mode_description = 2131558463;
 			
 			// aapt resource value: 0x7F0D0040
-			public static int material_timepicker_minute = 2131558464;
+			public static int material_timepicker_hour = 2131558464;
 			
 			// aapt resource value: 0x7F0D0041
-			public static int material_timepicker_pm = 2131558465;
+			public static int material_timepicker_minute = 2131558465;
 			
 			// aapt resource value: 0x7F0D0042
-			public static int material_timepicker_select_time = 2131558466;
+			public static int material_timepicker_pm = 2131558466;
 			
 			// aapt resource value: 0x7F0D0043
-			public static int material_timepicker_text_input_mode_description = 2131558467;
+			public static int material_timepicker_select_time = 2131558467;
 			
 			// aapt resource value: 0x7F0D0044
-			public static int mtrl_badge_numberless_content_description = 2131558468;
+			public static int material_timepicker_text_input_mode_description = 2131558468;
 			
 			// aapt resource value: 0x7F0D0045
-			public static int mtrl_chip_close_icon_content_description = 2131558469;
+			public static int mtrl_badge_numberless_content_description = 2131558469;
 			
 			// aapt resource value: 0x7F0D0046
-			public static int mtrl_exceed_max_badge_number_content_description = 2131558470;
+			public static int mtrl_chip_close_icon_content_description = 2131558470;
 			
 			// aapt resource value: 0x7F0D0047
-			public static int mtrl_exceed_max_badge_number_suffix = 2131558471;
+			public static int mtrl_exceed_max_badge_number_content_description = 2131558471;
 			
 			// aapt resource value: 0x7F0D0048
-			public static int mtrl_picker_a11y_next_month = 2131558472;
+			public static int mtrl_exceed_max_badge_number_suffix = 2131558472;
 			
 			// aapt resource value: 0x7F0D0049
-			public static int mtrl_picker_a11y_prev_month = 2131558473;
+			public static int mtrl_picker_a11y_next_month = 2131558473;
 			
 			// aapt resource value: 0x7F0D004A
-			public static int mtrl_picker_announce_current_selection = 2131558474;
+			public static int mtrl_picker_a11y_prev_month = 2131558474;
 			
 			// aapt resource value: 0x7F0D004B
-			public static int mtrl_picker_cancel = 2131558475;
+			public static int mtrl_picker_announce_current_selection = 2131558475;
 			
 			// aapt resource value: 0x7F0D004C
-			public static int mtrl_picker_confirm = 2131558476;
+			public static int mtrl_picker_cancel = 2131558476;
 			
 			// aapt resource value: 0x7F0D004D
-			public static int mtrl_picker_date_header_selected = 2131558477;
+			public static int mtrl_picker_confirm = 2131558477;
 			
 			// aapt resource value: 0x7F0D004E
-			public static int mtrl_picker_date_header_title = 2131558478;
+			public static int mtrl_picker_date_header_selected = 2131558478;
 			
 			// aapt resource value: 0x7F0D004F
-			public static int mtrl_picker_date_header_unselected = 2131558479;
+			public static int mtrl_picker_date_header_title = 2131558479;
 			
 			// aapt resource value: 0x7F0D0050
-			public static int mtrl_picker_day_of_week_column_header = 2131558480;
+			public static int mtrl_picker_date_header_unselected = 2131558480;
 			
 			// aapt resource value: 0x7F0D0051
-			public static int mtrl_picker_invalid_format = 2131558481;
+			public static int mtrl_picker_day_of_week_column_header = 2131558481;
 			
 			// aapt resource value: 0x7F0D0052
-			public static int mtrl_picker_invalid_format_example = 2131558482;
+			public static int mtrl_picker_invalid_format = 2131558482;
 			
 			// aapt resource value: 0x7F0D0053
-			public static int mtrl_picker_invalid_format_use = 2131558483;
+			public static int mtrl_picker_invalid_format_example = 2131558483;
 			
 			// aapt resource value: 0x7F0D0054
-			public static int mtrl_picker_invalid_range = 2131558484;
+			public static int mtrl_picker_invalid_format_use = 2131558484;
 			
 			// aapt resource value: 0x7F0D0055
-			public static int mtrl_picker_navigate_to_year_description = 2131558485;
+			public static int mtrl_picker_invalid_range = 2131558485;
 			
 			// aapt resource value: 0x7F0D0056
-			public static int mtrl_picker_out_of_range = 2131558486;
+			public static int mtrl_picker_navigate_to_year_description = 2131558486;
 			
 			// aapt resource value: 0x7F0D0057
-			public static int mtrl_picker_range_header_only_end_selected = 2131558487;
+			public static int mtrl_picker_out_of_range = 2131558487;
 			
 			// aapt resource value: 0x7F0D0058
-			public static int mtrl_picker_range_header_only_start_selected = 2131558488;
+			public static int mtrl_picker_range_header_only_end_selected = 2131558488;
 			
 			// aapt resource value: 0x7F0D0059
-			public static int mtrl_picker_range_header_selected = 2131558489;
+			public static int mtrl_picker_range_header_only_start_selected = 2131558489;
 			
 			// aapt resource value: 0x7F0D005A
-			public static int mtrl_picker_range_header_title = 2131558490;
+			public static int mtrl_picker_range_header_selected = 2131558490;
 			
 			// aapt resource value: 0x7F0D005B
-			public static int mtrl_picker_range_header_unselected = 2131558491;
+			public static int mtrl_picker_range_header_title = 2131558491;
 			
 			// aapt resource value: 0x7F0D005C
-			public static int mtrl_picker_save = 2131558492;
+			public static int mtrl_picker_range_header_unselected = 2131558492;
 			
 			// aapt resource value: 0x7F0D005D
-			public static int mtrl_picker_text_input_date_hint = 2131558493;
+			public static int mtrl_picker_save = 2131558493;
 			
 			// aapt resource value: 0x7F0D005E
-			public static int mtrl_picker_text_input_date_range_end_hint = 2131558494;
+			public static int mtrl_picker_text_input_date_hint = 2131558494;
 			
 			// aapt resource value: 0x7F0D005F
-			public static int mtrl_picker_text_input_date_range_start_hint = 2131558495;
+			public static int mtrl_picker_text_input_date_range_end_hint = 2131558495;
 			
 			// aapt resource value: 0x7F0D0060
-			public static int mtrl_picker_text_input_day_abbr = 2131558496;
+			public static int mtrl_picker_text_input_date_range_start_hint = 2131558496;
 			
 			// aapt resource value: 0x7F0D0061
-			public static int mtrl_picker_text_input_month_abbr = 2131558497;
+			public static int mtrl_picker_text_input_day_abbr = 2131558497;
 			
 			// aapt resource value: 0x7F0D0062
-			public static int mtrl_picker_text_input_year_abbr = 2131558498;
+			public static int mtrl_picker_text_input_month_abbr = 2131558498;
 			
 			// aapt resource value: 0x7F0D0063
-			public static int mtrl_picker_toggle_to_calendar_input_mode = 2131558499;
+			public static int mtrl_picker_text_input_year_abbr = 2131558499;
 			
 			// aapt resource value: 0x7F0D0064
-			public static int mtrl_picker_toggle_to_day_selection = 2131558500;
+			public static int mtrl_picker_toggle_to_calendar_input_mode = 2131558500;
 			
 			// aapt resource value: 0x7F0D0065
-			public static int mtrl_picker_toggle_to_text_input_mode = 2131558501;
+			public static int mtrl_picker_toggle_to_day_selection = 2131558501;
 			
 			// aapt resource value: 0x7F0D0066
-			public static int mtrl_picker_toggle_to_year_selection = 2131558502;
+			public static int mtrl_picker_toggle_to_text_input_mode = 2131558502;
 			
 			// aapt resource value: 0x7F0D0067
-			public static int password_toggle_content_description = 2131558503;
+			public static int mtrl_picker_toggle_to_year_selection = 2131558503;
 			
 			// aapt resource value: 0x7F0D0068
-			public static int path_password_eye = 2131558504;
+			public static int password_toggle_content_description = 2131558504;
 			
 			// aapt resource value: 0x7F0D0069
-			public static int path_password_eye_mask_strike_through = 2131558505;
+			public static int path_password_eye = 2131558505;
 			
 			// aapt resource value: 0x7F0D006A
-			public static int path_password_eye_mask_visible = 2131558506;
+			public static int path_password_eye_mask_strike_through = 2131558506;
 			
 			// aapt resource value: 0x7F0D006B
-			public static int path_password_strike_through = 2131558507;
+			public static int path_password_eye_mask_visible = 2131558507;
 			
 			// aapt resource value: 0x7F0D006C
-			public static int search_menu_title = 2131558508;
+			public static int path_password_strike_through = 2131558508;
 			
 			// aapt resource value: 0x7F0D006D
-			public static int status_bar_notification_info_overflow = 2131558509;
+			public static int search_menu_title = 2131558509;
+			
+			// aapt resource value: 0x7F0D006E
+			public static int status_bar_notification_info_overflow = 2131558510;
 			
 			static String()
 			{
