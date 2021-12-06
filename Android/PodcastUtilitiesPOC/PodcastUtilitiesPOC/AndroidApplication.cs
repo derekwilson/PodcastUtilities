@@ -88,7 +88,12 @@ namespace PodcastUtilitiesPOC
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate PackageName == {this.PackageName}");
             SetupExceptionHandler();
             var package = PackageManager.GetPackageInfo(PackageName, 0);
-            DisplayVersion = $"v{package.VersionName}, ({package.VersionCode})";
+#if DEBUG
+            var config = "(Debug)";
+#else
+            var config = "(Release)";
+#endif
+            DisplayVersion = $"v{package.VersionName}, ({package.VersionCode}), {config}";
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Version == {DisplayVersion}");
 
             base.OnCreate();

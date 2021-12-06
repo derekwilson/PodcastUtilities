@@ -40,6 +40,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Export" />
     <Reference Include="mscorlib" />
     <Reference Include="PodcastUtilities.Common">
       <HintPath>..\..\Reference\PodcastUtilities\PodcastUtilities.Common.dll</HintPath>
