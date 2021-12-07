@@ -56,6 +56,7 @@ namespace PodcastUtilitiesPOC
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
             container.Register<ILogger>(Logger);
             // view models
+            container.Register<ILiveDataFactory, LiveDataFactory>(IocLifecycle.Singleton);
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);
             container.Register<DownloadViewModel, DownloadViewModel>();
             container.Register<ExampleViewModel, ExampleViewModel>();

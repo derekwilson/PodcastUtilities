@@ -18,9 +18,14 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Example
     {
         public class LiveDataObservableGroup
         {
-            public MutableLiveData Title = new MutableLiveData();
+            public LiveDataObservableGroup(ILiveDataFactory livedateFactory)
+            {
+                Title = livedateFactory.CreateMutableLiveData();
+            }
+
+            public MutableLiveData Title { get; private set; }
         }
-        public LiveDataObservableGroup LiveDataObservables = new LiveDataObservableGroup();
+        public LiveDataObservableGroup LiveDataObservables;
 
         public class ObservableGroup
         {
@@ -35,19 +40,23 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Example
         public ExampleViewModel(
             Application app,
             ILogger logger,
-            IResourceProvider resourceProvider
+            IResourceProvider resourceProvider,
+            ILiveDataFactory livedateFactory
             ) : base(app)
         {
             Logger = logger;
             ResourceProvider = resourceProvider;
+
             Logger.Debug(() => $"ExampleViewModel:ctor");
+
+            LiveDataObservables = new LiveDataObservableGroup(livedateFactory);
         }
 
         public void Initialise()
         {
             Logger.Debug(() => $"ExampleViewModel:Initialise");
-            LiveDataObservables.Title.PostValue("Example Observed LiveData Title");
-            Observables.Title?.Invoke(this, "Example Observed Title");
+            LiveDataObservables.Title.PostValue("Observed LiveData Title");
+            Observables.Title?.Invoke(this, "Observed Title");
             Observables.Body?.Invoke(this, ResourceProvider.GetString(Resource.String.example_activity_body_text));
         }
 
