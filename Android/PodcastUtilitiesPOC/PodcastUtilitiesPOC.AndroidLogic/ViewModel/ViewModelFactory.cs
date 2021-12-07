@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace PodcastUtilitiesPOC.UI
+namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel
 {
     public class ViewModelFactory : Java.Lang.Object, ViewModelProvider.IFactory
     {

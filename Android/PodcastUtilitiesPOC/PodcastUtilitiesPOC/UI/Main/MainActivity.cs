@@ -27,7 +27,11 @@ using System.Xml;
 
 namespace PodcastUtilitiesPOC.UI.Main
 {
+#if DEBUG
+    [Activity(Label = "@string/app_name_debug", Theme = "@style/AppTheme", MainLauncher = true)]
+#else
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+#endif
     public class MainActivity : AppCompatActivity
     {
         private const int REQUEST_SELECT_FILE = 3000;

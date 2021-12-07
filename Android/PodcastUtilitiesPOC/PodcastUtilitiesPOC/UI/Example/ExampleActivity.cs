@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
+using PodcastUtilitiesPOC.AndroidLogic.ViewModel;
 using PodcastUtilitiesPOC.AndroidLogic.ViewModel.Example;
 using PodcastUtilitiesPOC.UI.Main;
 using System;

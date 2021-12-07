@@ -60,6 +60,7 @@
     <Compile Include="Utilities\ResourceProvider.cs" />
     <Compile Include="ViewModel\Download\DownloadViewModel.cs" />
     <Compile Include="ViewModel\Example\ExampleViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -61,7 +61,7 @@
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
-  <Import Project="$(SolutionDir)\LocalOnly\keystoreproperties.xml"/>
+  <Import Project="$(SolutionDir)\LocalOnly\keystoreproperties.xml" />
   <ItemGroup>
     <Reference Include="Mono.Android.Export" />
     <Reference Include="PodcastUtilities.Common">
@@ -82,7 +82,6 @@
     <Compile Include="CustomViews\EmptyRecyclerView.cs" />
     <Compile Include="UI\Download\DownloadActivity.cs" />
     <Compile Include="UI\Example\ExampleActivity.cs" />
-    <Compile Include="UI\ViewModelFactory.cs" />
     <Compile Include="UI\Main\MainActivity.cs" />
     <Compile Include="UI\Download\SyncItemRecyclerAdapter.cs" />
     <Compile Include="Utilities\PermissionChecker.cs" />
