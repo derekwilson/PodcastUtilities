@@ -31,8 +31,6 @@ namespace PodcastUtilitiesPOC.UI.Download
         private ProgressSpinnerView ProgressSpinner;
         private LinearLayout NoDataView;
         private SyncItemRecyclerAdapter Adapter;
-        private List<RecyclerSyncItem> AllSyncItems = new List<RecyclerSyncItem>(20);
-        private ITaskPool TaskPool;
         static object SyncLock = new object();
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -60,107 +58,82 @@ namespace PodcastUtilitiesPOC.UI.Download
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
-            ViewModel.Initialise();
+            ViewModel.Initialise(AndroidApplication.ControlFile);
+            Task.Run(() => ViewModel.FindEpisodesToDownload());
 
-            Task.Run(() => FindEpisodesToDownload());
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate - end");
         }
 
         protected override void OnStop()
         {
             base.OnStop();
-            KillObservers();
+            KillViewModelObservers();
         }
 
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.Title += SetTitle;
+            ViewModel.Observables.StartProgress += StartProgress;
+            ViewModel.Observables.UpdateProgress += UpdateProgress;
+            ViewModel.Observables.EndPorgress += EndProgress;
+            ViewModel.Observables.SetSynItems += SetSynItems;
+            ViewModel.Observables.DownloadProgressUpdate += DownloadProgressUpdate;
+            ViewModel.Observables.DownloadStatusUpdate += DownloadStatusUpdate;
         }
 
-        private void KillObservers()
+        private void KillViewModelObservers()
         {
             ViewModel.Observables.Title -= SetTitle;
+            ViewModel.Observables.StartProgress -= StartProgress;
+            ViewModel.Observables.UpdateProgress -= UpdateProgress;
+            ViewModel.Observables.EndPorgress -= EndProgress;
+            ViewModel.Observables.SetSynItems -= SetSynItems;
+            ViewModel.Observables.DownloadProgressUpdate -= DownloadProgressUpdate;
+            ViewModel.Observables.DownloadStatusUpdate -= DownloadStatusUpdate;
         }
 
         private void SetTitle(object sender, string title)
         {
-            Title = title;
-        }
-
-        private void FindEpisodesToDownload()
-        {
-            AndroidApplication.Logger.Debug(() => $"DownloadActivity:FindEpisodesToDownload");
-            if (AndroidApplication.ControlFile == null)
-            {
-                AndroidApplication.Logger.Warning(() => $"DownloadActivity:FindEpisodesToDownload - no control file");
-                return;
-            }
-
-            int feedCount = 0;
-            foreach (var item in AndroidApplication.ControlFile.GetPodcasts())
-            {
-                feedCount++;
-            }
-
-            StartProgress(feedCount);
-            IEpisodeFinder podcastEpisodeFinder = null;
-            podcastEpisodeFinder = AndroidApplication.IocContainer.Resolve<IEpisodeFinder>();
-
-            // find the episodes to download
-            AllSyncItems.Clear();
-            int count = 0;
-            foreach (var podcastInfo in AndroidApplication.ControlFile.GetPodcasts())
-            {
-                var episodesInThisFeed = podcastEpisodeFinder.FindEpisodesToDownload(
-                    AndroidApplication.ControlFile.GetSourceRoot(),
-                    AndroidApplication.ControlFile.GetRetryWaitInSeconds(),
-                    podcastInfo,
-                    AndroidApplication.ControlFile.GetDiagnosticRetainTemporaryFiles());
-                foreach (var episode in episodesInThisFeed)
-                {
-                    AndroidApplication.Logger.Debug(() => $"DownloadActivity:FindEpisodesToDownload {episode.Id}, {episode.EpisodeTitle}");
-                    var item = new RecyclerSyncItem()
-                    {
-                        SyncItem = episode,
-                        ProgressPercentage = 0,
-                        Podcast = podcastInfo
-                    };
-                    AllSyncItems.Add(item);
-                }
-                count++;
-                UpdateProgress(count);
-            }
-            EndProgress();
             RunOnUiThread(() =>
             {
-                Adapter.SetItems(AllSyncItems);
+                Title = title;
+            });
+        }
+
+        private void SetSynItems(object sender, List<RecyclerSyncItem> items)
+        {
+            RunOnUiThread(() =>
+            {
+                Adapter.SetItems(items);
                 Adapter.NotifyDataSetChanged();
             });
         }
 
-        private void DownloadAllPodcasts()
+        private void EndProgress(object sender, System.EventArgs e)
         {
-            AndroidApplication.Logger.Debug(() => $"DownloadActivity:DownloadAllPodcasts");
-
-            List<ISyncItem> AllEpisodes = new List<ISyncItem>(Adapter.ItemCount);
-            AllSyncItems.ForEach(item => AllEpisodes.Add(item.SyncItem));
-
-            var converter = AndroidApplication.IocContainer.Resolve<ISyncItemToEpisodeDownloaderTaskConverter>();
-            IEpisodeDownloader[] downloadTasks = converter.ConvertItemsToTasks(AllEpisodes, StatusUpdate, ProgressUpdate);
-
-            foreach (var task in downloadTasks)
+            RunOnUiThread(() =>
             {
-                AndroidApplication.Logger.Debug(() => $"DownloadActivity:Download to: {task.SyncItem.DestinationPath}");
-            }
-
-            // run them in a task pool
-            TaskPool = AndroidApplication.IocContainer.Resolve<ITaskPool>();
-            TaskPool.RunAllTasks(AndroidApplication.ControlFile.GetMaximumNumberOfConcurrentDownloads(), downloadTasks);
-
-            ToastMessage("Done");
+                ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
+            });
         }
 
-        void ProgressUpdate(object sender, ProgressEventArgs e)
+        private void UpdateProgress(object sender, int position)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressSpinner.Progress = position;
+            });
+        }
+
+        private void StartProgress(object sender, int max)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
+            });
+        }
+
+        void DownloadProgressUpdate(object sender, ProgressEventArgs e)
         {
             lock (SyncLock)
             {
@@ -182,7 +155,7 @@ namespace PodcastUtilitiesPOC.UI.Download
             }
         }
 
-        void StatusUpdate(object sender, StatusUpdateEventArgs e)
+        void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
         {
             bool _verbose = false;
             if (e.MessageLevel == StatusUpdateLevel.Verbose && !_verbose)
@@ -225,7 +198,7 @@ namespace PodcastUtilitiesPOC.UI.Download
                         ToastMessage("Nothing to download");
                         return true;
                     }
-                    Task.Run(() => DownloadAllPodcasts());
+                    Task.Run(() => ViewModel.DownloadAllPodcasts());
                     return true;
             }
             return base.OnOptionsItemSelected(item);
@@ -236,30 +209,6 @@ namespace PodcastUtilitiesPOC.UI.Download
             RunOnUiThread(() =>
             {
                 Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
-            });
-        }
-
-        private void StartProgress(int max)
-        {
-            RunOnUiThread(() =>
-            {
-                ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
-            });
-        }
-
-        private void UpdateProgress(int position)
-        {
-            RunOnUiThread(() =>
-            {
-                ProgressSpinner.Progress = position;
-            });
-        }
-
-        private void EndProgress()
-        {
-            RunOnUiThread(() =>
-            {
-                ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
             });
         }
     }

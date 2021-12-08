@@ -59,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ResourceProvider.cs" />
     <Compile Include="ViewModel\Download\DownloadViewModel.cs" />
+    <Compile Include="ViewModel\Download\RecyclerSyncItem.cs" />
     <Compile Include="ViewModel\Example\ExampleViewModel.cs" />
     <Compile Include="ViewModel\LiveDataFactory.cs" />
     <Compile Include="ViewModel\ViewModelFactory.cs" />

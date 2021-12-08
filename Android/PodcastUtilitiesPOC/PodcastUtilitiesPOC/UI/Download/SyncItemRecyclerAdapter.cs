@@ -7,6 +7,7 @@ using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
+using PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,6 @@ using System.Text;
 
 namespace PodcastUtilitiesPOC.UI.Download
 {
-    class RecyclerSyncItem
-    {
-        public ISyncItem SyncItem { get; set; }
-        public int ProgressPercentage { get; set; }
-        public PodcastInfo Podcast { get; set; }
-    }
-
     class SyncItemRecyclerAdapter : RecyclerView.Adapter
     {
         private Context Context;
