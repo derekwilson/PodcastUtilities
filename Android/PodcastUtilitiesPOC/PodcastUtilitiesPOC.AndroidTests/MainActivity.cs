@@ -10,7 +10,7 @@ using Xunit.Runners.ResultChannels;
 
 namespace PodcastUtilitiesPOC.AndroidTests
 {
-    [Activity(Label = "xUnit Android Runner", MainLauncher = true, Theme = "@android:style/Theme.Material.Light")]
+    [Activity(Label = "xUnit PodcastUtilities", MainLauncher = true, Theme = "@android:style/Theme.Material.Light")]
     public class MainActivity : RunnerActivity
     {
         public string DisplayVersion { get; private set; }
