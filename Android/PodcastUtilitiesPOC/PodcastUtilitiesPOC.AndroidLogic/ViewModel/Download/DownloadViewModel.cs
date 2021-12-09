@@ -41,7 +41,11 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
         private List<RecyclerSyncItem> AllSyncItems = new List<RecyclerSyncItem>(20);
         private ITaskPool TaskPool;
 
-        private bool initialised = false;
+        // do not make this anything other than private
+        private object SyncLock = new object();
+        private bool StartedFindingPodcasts = false;
+        private bool CompletedFindingPodcasts = false;
+        private int FeedCount = 0;
 
         public DownloadViewModel(
             Application app,
@@ -71,30 +75,42 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
         [Java.Interop.Export]
         public void OnResume()
         {
-            Logger.Debug(() => $"DownloadViewModel:OnResume");
+            Logger.Debug(() => $"DownloadViewModel:OnResume - finding {StartedFindingPodcasts}");
         }
 
         public void FindEpisodesToDownload()
         {
             Logger.Debug(() => $"DownloadViewModel:FindEpisodesToDownload");
-            if (initialised)
-            {
-                Logger.Warning(() => $"DownloadViewModel:FindEpisodesToDownload - already initialised");
-                return;
-            }
             if (ControlFile == null)
             {
                 Logger.Warning(() => $"DownloadViewModel:FindEpisodesToDownload - no control file");
                 return;
             }
 
-            int feedCount = 0;
-            foreach (var item in ControlFile.GetPodcasts())
+            lock (SyncLock)
             {
-                feedCount++;
+                if (StartedFindingPodcasts)
+                {
+                    Logger.Warning(() => $"DownloadViewModel:FindEpisodesToDownload - ignoring, already initialised");
+                    if (CompletedFindingPodcasts)
+                    {
+                        Observables.SetSynItems?.Invoke(this, AllSyncItems);
+                    }
+                    else
+                    {
+                        Observables.StartProgress?.Invoke(this, FeedCount);
+                    }
+                    return;
+                }
+                StartedFindingPodcasts = true;
             }
 
-            Observables.StartProgress?.Invoke(this, feedCount);
+            foreach (var item in ControlFile.GetPodcasts())
+            {
+                FeedCount++;
+            }
+
+            Observables.StartProgress?.Invoke(this, FeedCount);
 
             // find the episodes to download
             AllSyncItems.Clear();
@@ -120,12 +136,12 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
                 count++;
                 Observables.UpdateProgress?.Invoke(this, count);
             }
+            CompletedFindingPodcasts = true;
             Observables.EndPorgress?.Invoke(this, null);
             Observables.SetSynItems?.Invoke(this, AllSyncItems);
             var title = string.Format(ResourceProvider.GetString(Resource.String.download_activity_after_load_title), AllSyncItems.Count);
             Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts done - {title}");
             Observables.Title?.Invoke(this, title);
-            initialised = true;
         }
 
         public void DownloadAllPodcasts()

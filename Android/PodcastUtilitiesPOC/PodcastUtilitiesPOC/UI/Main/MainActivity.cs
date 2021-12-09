@@ -51,8 +51,9 @@ namespace PodcastUtilitiesPOC.UI.Main
         private bool reported_driveinfo_error = false;
 
         private readonly StringBuilder OutputBuffer = new StringBuilder(1000);
-        static object SyncLock = new object();
 
+        // do not make this anything other than private
+        private object SyncLock = new object();
         private ProgressSpinnerView ProgressSpinner;
 
         protected override void OnCreate(Bundle savedInstanceState)

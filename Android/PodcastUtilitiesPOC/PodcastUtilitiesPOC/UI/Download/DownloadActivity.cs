@@ -31,7 +31,8 @@ namespace PodcastUtilitiesPOC.UI.Download
         private ProgressSpinnerView ProgressSpinner;
         private LinearLayout NoDataView;
         private SyncItemRecyclerAdapter Adapter;
-        static object SyncLock = new object();
+        // do not make this anything other than private
+        private object SyncLock = new object();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
