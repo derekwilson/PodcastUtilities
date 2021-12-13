@@ -14,6 +14,7 @@ using PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download;
 using PodcastUtilitiesPOC.CustomViews;
 using PodcastUtilitiesPOC.UI.Main;
 using PodcastUtilitiesPOC.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,8 @@ using System.Threading.Tasks;
 
 namespace PodcastUtilitiesPOC.UI.Download
 {
-    [Activity(Label = "Download Podcasts", ParentActivity = typeof(MainActivity))]
+    // Title is set dynamically
+    [Activity(ParentActivity = typeof(MainActivity))]
     public class DownloadActivity : AppCompatActivity
     {
         private DownloadViewModel ViewModel;
@@ -78,8 +80,8 @@ namespace PodcastUtilitiesPOC.UI.Download
             ViewModel.Observables.UpdateProgress += UpdateProgress;
             ViewModel.Observables.EndPorgress += EndProgress;
             ViewModel.Observables.SetSynItems += SetSynItems;
-            ViewModel.Observables.DownloadProgressUpdate += DownloadProgressUpdate;
-            ViewModel.Observables.DownloadStatusUpdate += DownloadStatusUpdate;
+            ViewModel.Observables.UpdateItemProgress += UpdateItemProgress;
+            ViewModel.Observables.DisplayMessage += ToastMessage;
         }
 
         private void KillViewModelObservers()
@@ -89,8 +91,16 @@ namespace PodcastUtilitiesPOC.UI.Download
             ViewModel.Observables.UpdateProgress -= UpdateProgress;
             ViewModel.Observables.EndPorgress -= EndProgress;
             ViewModel.Observables.SetSynItems -= SetSynItems;
-            ViewModel.Observables.DownloadProgressUpdate -= DownloadProgressUpdate;
-            ViewModel.Observables.DownloadStatusUpdate -= DownloadStatusUpdate;
+            ViewModel.Observables.UpdateItemProgress -= UpdateItemProgress;
+            ViewModel.Observables.DisplayMessage -= ToastMessage;
+        }
+
+        private void ToastMessage(object sender, string message)
+        {
+            RunOnUiThread(() =>
+            {
+                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+            });
         }
 
         private void SetTitle(object sender, string title)
@@ -110,11 +120,11 @@ namespace PodcastUtilitiesPOC.UI.Download
             });
         }
 
-        private void EndProgress(object sender, System.EventArgs e)
+        private void StartProgress(object sender, int max)
         {
             RunOnUiThread(() =>
             {
-                ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
+                ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
             });
         }
 
@@ -126,61 +136,27 @@ namespace PodcastUtilitiesPOC.UI.Download
             });
         }
 
-        private void StartProgress(object sender, int max)
+        private void EndProgress(object sender, System.EventArgs e)
         {
             RunOnUiThread(() =>
             {
-                ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
+                ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
             });
         }
 
-        void DownloadProgressUpdate(object sender, ProgressEventArgs e)
-        {
-            lock (SyncLock)
-            {
-                ISyncItem syncItem = e.UserState as ISyncItem;
-                if (e.ProgressPercentage % 10 == 0)
-                {
-                    // only do every 10%
-                    var line = string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
-                                                    DisplayFormatter.RenderFileSize(e.ItemsProcessed),
-                                                    DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
-                                                    e.ProgressPercentage);
-                    AndroidApplication.Logger.Debug(() => line);
-                    RunOnUiThread(() =>
-                    {
-                        var position = Adapter.SetItemProgress(syncItem.Id, e.ProgressPercentage);
-                        Adapter.NotifyItemChanged(position);
-                    });
-                }
-            }
-        }
 
-        void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
+        private void UpdateItemProgress(object sender, Tuple<ISyncItem, int> updateItem)
         {
-            bool _verbose = false;
-            if (e.MessageLevel == StatusUpdateLevel.Verbose && !_verbose)
+            RunOnUiThread(() =>
             {
-                return;
-            }
-
-            lock (SyncLock)
-            {
-                // keep all the message together
-                if (e.Exception != null)
-                {
-                    AndroidApplication.Logger.LogException(() => $"MainActivity:StatusUpdate -> ", e.Exception);
-                }
-                else
-                {
-                    AndroidApplication.Logger.Debug(() => $"MainActivity:StatusUpdate {e.Message}");
-                }
-            }
+                (ISyncItem item, int progress) = updateItem;
+                var position = Adapter.SetItemProgress(item.Id, progress);
+                Adapter.NotifyItemChanged(position);
+            });
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            //change main_compat_menu
             MenuInflater.Inflate(Resource.Menu.menu_download, menu);
             return base.OnCreateOptionsMenu(menu);
         }
@@ -194,23 +170,10 @@ namespace PodcastUtilitiesPOC.UI.Download
                     OnBackPressed();
                     return true;
                 case Resource.Id.action_download_all_podcasts:
-                    if (Adapter.ItemCount < 1)
-                    {
-                        ToastMessage("Nothing to download");
-                        return true;
-                    }
                     Task.Run(() => ViewModel.DownloadAllPodcasts());
                     return true;
             }
             return base.OnOptionsItemSelected(item);
-        }
-
-        private void ToastMessage(string message)
-        {
-            RunOnUiThread(() =>
-            {
-                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
-            });
         }
     }
 }

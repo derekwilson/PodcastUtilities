@@ -27,8 +27,8 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
             public EventHandler<int> UpdateProgress;
             public EventHandler EndPorgress;
             public EventHandler<List<RecyclerSyncItem>> SetSynItems;
-            public EventHandler<StatusUpdateEventArgs> DownloadStatusUpdate;
-            public EventHandler<ProgressEventArgs> DownloadProgressUpdate;
+            public EventHandler<Tuple<ISyncItem, int>> UpdateItemProgress;
+            public EventHandler<string> DisplayMessage;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -46,6 +46,9 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
         private bool StartedFindingPodcasts = false;
         private bool CompletedFindingPodcasts = false;
         private int FeedCount = 0;
+
+        // do not make this anything other than private
+        private object MessageSyncLock = new object();
 
         public DownloadViewModel(
             Application app,
@@ -95,6 +98,7 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
                     if (CompletedFindingPodcasts)
                     {
                         Observables.SetSynItems?.Invoke(this, AllSyncItems);
+                        SetTitle();
                     }
                     else
                     {
@@ -139,6 +143,11 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
             CompletedFindingPodcasts = true;
             Observables.EndPorgress?.Invoke(this, null);
             Observables.SetSynItems?.Invoke(this, AllSyncItems);
+            SetTitle();
+        }
+
+        private void SetTitle()
+        {
             var title = string.Format(ResourceProvider.GetString(Resource.String.download_activity_after_load_title), AllSyncItems.Count);
             Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts done - {title}");
             Observables.Title?.Invoke(this, title);
@@ -148,10 +157,16 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
         {
             Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts");
 
+            if (AllSyncItems.Count < 1)
+            {
+                Observables.DisplayMessage?.Invoke(this, "Nothing to download");
+                return;
+            }
+
             List<ISyncItem> AllEpisodes = new List<ISyncItem>(AllSyncItems.Count);
             AllSyncItems.ForEach(item => AllEpisodes.Add(item.SyncItem));
 
-            IEpisodeDownloader[] downloadTasks = Converter.ConvertItemsToTasks(AllEpisodes, Observables.DownloadStatusUpdate, Observables.DownloadProgressUpdate);
+            IEpisodeDownloader[] downloadTasks = Converter.ConvertItemsToTasks(AllEpisodes, DownloadStatusUpdate, DownloadProgressUpdate);
             foreach (var task in downloadTasks)
             {
                 Logger.Debug(() => $"DownloadViewModel:Download to: {task.SyncItem.DestinationPath}");
@@ -159,6 +174,46 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
 
             // run them in a task pool
             TaskPool.RunAllTasks(ControlFile.GetMaximumNumberOfConcurrentDownloads(), downloadTasks);
+        }
+
+        void DownloadProgressUpdate(object sender, ProgressEventArgs e)
+        {
+            lock (MessageSyncLock)
+            {
+                ISyncItem syncItem = e.UserState as ISyncItem;
+                if (e.ProgressPercentage % 10 == 0)
+                {
+                    // only do every 10%
+                    var line = string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
+                                                    DisplayFormatter.RenderFileSize(e.ItemsProcessed),
+                                                    DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
+                                                    e.ProgressPercentage);
+                    Logger.Debug(() => line);
+                    Observables.UpdateItemProgress?.Invoke(this, Tuple.Create(syncItem, e.ProgressPercentage));
+                }
+            }
+        }
+
+        void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
+        {
+            bool _verbose = false;
+            if (e.MessageLevel == StatusUpdateLevel.Verbose && !_verbose)
+            {
+                return;
+            }
+
+            lock (MessageSyncLock)
+            {
+                // keep all the message together
+                if (e.Exception != null)
+                {
+                    Logger.LogException(() => $"MainActivity:StatusUpdate -> ", e.Exception);
+                }
+                else
+                {
+                    Logger.Debug(() => $"MainActivity:StatusUpdate {e.Message}");
+                }
+            }
         }
     }
 }
