@@ -18,7 +18,7 @@
 		android:paddingTop="@dimen/listview_item_vertical_padding"
 		android:paddingBottom="@dimen/listview_item_vertical_padding"
 		android:background="?attr/selectableItemBackground"
-		app:layout_constraintEnd_toStartOf="@+id/item_row_options"
+		app:layout_constraintEnd_toStartOf="@+id/item_row_check"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
 		>
@@ -27,7 +27,7 @@
 			android:id="@+id/item_row_label"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/placeholder"
+			android:text="@string/lorem_ipsum_short"
             android:inputType="textMultiLine"
             android:singleLine="false"
 			style="@style/ItemListTitle"
@@ -53,23 +53,20 @@
 
 	</androidx.appcompat.widget.LinearLayoutCompat>
 	
-
-	<TextView
-		android:id="@+id/item_row_options"
-		android:layout_width="wrap_content"
-		android:layout_height="0dp"
-		android:text="&#8942;"
+	<androidx.appcompat.widget.AppCompatCheckBox
+		android:id="@+id/item_row_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 		android:gravity="center_vertical"
-		android:textAppearance="?android:textAppearanceLarge"
+		android:minWidth="0dp"
+		android:minHeight="0dp"
 		android:background="?attr/selectableItemBackground"
-		android:paddingTop="@dimen/listview_item_vertical_padding"
-		android:paddingBottom="@dimen/listview_item_vertical_padding"
-		android:paddingLeft="@dimen/overflow_menu_dots_textview_padding"
-		android:paddingRight="@dimen/overflow_menu_dots_textview_padding"
+		android:paddingTop="@dimen/listview_item_check_vertical_padding"
+		android:paddingBottom="@dimen/listview_item_check_vertical_padding"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toEndOf="@+id/item_row_label_container"
 		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintBottom_toBottomOf="parent"
-	/>
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -133,7 +133,8 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
                     {
                         SyncItem = episode,
                         ProgressPercentage = 0,
-                        Podcast = podcastInfo
+                        Podcast = podcastInfo,
+                        Selected = true
                     };
                     AllSyncItems.Add(item);
                 }

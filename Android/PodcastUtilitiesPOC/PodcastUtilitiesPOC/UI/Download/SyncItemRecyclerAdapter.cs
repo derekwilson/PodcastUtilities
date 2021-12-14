@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using AndroidX.AppCompat.Widget;
 using AndroidX.RecyclerView.Widget;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
@@ -55,6 +56,8 @@ namespace PodcastUtilitiesPOC.UI.Download
             vh.Label.Text = Items[position].SyncItem.EpisodeTitle;
             vh.SubLabel.Text = Items[position].SyncItem.Published.ToShortDateString();
             vh.Progress.Progress = Items[position].ProgressPercentage;
+            vh.CheckBox.Checked = Items[position].Selected;
+            vh.CheckBox.Enabled = false;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -68,12 +71,14 @@ namespace PodcastUtilitiesPOC.UI.Download
             public TextView Label { get; private set; }
             public TextView SubLabel { get; private set; }
             public ProgressBar Progress { get; private set; }
+            public AppCompatCheckBox CheckBox { get; private set; }
 
             public RecyclerViewHolder(View itemView) : base(itemView)
             {
                 Label = itemView.FindViewById<TextView>(Resource.Id.item_row_label);
                 SubLabel = itemView.FindViewById<TextView>(Resource.Id.item_row_sub_label);
                 Progress = itemView.FindViewById<ProgressBar>(Resource.Id.item_row_progress);
+                CheckBox = itemView.FindViewById<AppCompatCheckBox>(Resource.Id.item_row_check);
             }
         }
     }
