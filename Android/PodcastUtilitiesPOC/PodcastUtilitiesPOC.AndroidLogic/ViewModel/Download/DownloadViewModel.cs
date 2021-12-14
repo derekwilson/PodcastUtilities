@@ -26,7 +26,7 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
             public EventHandler<int> StartProgress;
             public EventHandler<int> UpdateProgress;
             public EventHandler EndPorgress;
-            public EventHandler<List<RecyclerSyncItem>> SetSynItems;
+            public EventHandler<List<RecyclerSyncItem>> SetSyncItems;
             public EventHandler<Tuple<ISyncItem, int>> UpdateItemProgress;
             public EventHandler<string> DisplayMessage;
         }
@@ -97,7 +97,7 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
                     Logger.Warning(() => $"DownloadViewModel:FindEpisodesToDownload - ignoring, already initialised");
                     if (CompletedFindingPodcasts)
                     {
-                        Observables.SetSynItems?.Invoke(this, AllSyncItems);
+                        Observables.SetSyncItems?.Invoke(this, AllSyncItems);
                         SetTitle();
                     }
                     else
@@ -142,7 +142,7 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
             }
             CompletedFindingPodcasts = true;
             Observables.EndPorgress?.Invoke(this, null);
-            Observables.SetSynItems?.Invoke(this, AllSyncItems);
+            Observables.SetSyncItems?.Invoke(this, AllSyncItems);
             SetTitle();
         }
 

@@ -33,8 +33,6 @@ namespace PodcastUtilitiesPOC.UI.Download
         private ProgressSpinnerView ProgressSpinner;
         private LinearLayout NoDataView;
         private SyncItemRecyclerAdapter Adapter;
-        // do not make this anything other than private
-        private object SyncLock = new object();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -79,7 +77,7 @@ namespace PodcastUtilitiesPOC.UI.Download
             ViewModel.Observables.StartProgress += StartProgress;
             ViewModel.Observables.UpdateProgress += UpdateProgress;
             ViewModel.Observables.EndPorgress += EndProgress;
-            ViewModel.Observables.SetSynItems += SetSynItems;
+            ViewModel.Observables.SetSyncItems += SetSyncItems;
             ViewModel.Observables.UpdateItemProgress += UpdateItemProgress;
             ViewModel.Observables.DisplayMessage += ToastMessage;
         }
@@ -90,7 +88,7 @@ namespace PodcastUtilitiesPOC.UI.Download
             ViewModel.Observables.StartProgress -= StartProgress;
             ViewModel.Observables.UpdateProgress -= UpdateProgress;
             ViewModel.Observables.EndPorgress -= EndProgress;
-            ViewModel.Observables.SetSynItems -= SetSynItems;
+            ViewModel.Observables.SetSyncItems -= SetSyncItems;
             ViewModel.Observables.UpdateItemProgress -= UpdateItemProgress;
             ViewModel.Observables.DisplayMessage -= ToastMessage;
         }
@@ -111,7 +109,7 @@ namespace PodcastUtilitiesPOC.UI.Download
             });
         }
 
-        private void SetSynItems(object sender, List<RecyclerSyncItem> items)
+        private void SetSyncItems(object sender, List<RecyclerSyncItem> items)
         {
             RunOnUiThread(() =>
             {
