@@ -61,7 +61,7 @@
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
-  <Import Project="$(SolutionDir)\LocalOnly\keystoreproperties.xml" />
+  <Import Project="$(SolutionDir)\LocalOnly\keystoreproperties.xml" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "/>
   <ItemGroup>
     <Reference Include="Mono.Android.Export" />
     <Reference Include="PodcastUtilities.Common">
