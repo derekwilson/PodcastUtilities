@@ -20,6 +20,7 @@ namespace PodcastUtilitiesPOC.UI.Download
     {
         private Context Context;
         private List<RecyclerSyncItem> Items = new List<RecyclerSyncItem>(20);
+        private bool ReadOnly = false;
 
         public SyncItemRecyclerAdapter(Context context)
         {
@@ -53,11 +54,34 @@ namespace PodcastUtilitiesPOC.UI.Download
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RecyclerViewHolder vh = holder as RecyclerViewHolder;
+            // unsubscribe if it was subscribed before
+            vh.Container.Click -= Container_Click;
+
             vh.Label.Text = Items[position].SyncItem.EpisodeTitle;
             vh.SubLabel.Text = Items[position].SyncItem.Published.ToShortDateString();
+
             vh.Progress.Progress = Items[position].ProgressPercentage;
+
+            vh.CheckBox.Tag = position.ToString();
             vh.CheckBox.Checked = Items[position].Selected;
-            vh.CheckBox.Enabled = false;
+            vh.CheckBox.Enabled = !ReadOnly;
+            vh.CheckBox.Click += CheckBox_Click;
+
+            vh.Container.Tag = position.ToString();
+            vh.Container.Click += Container_Click;
+        }
+
+        private void CheckBox_Click(object sender, EventArgs e)
+        {
+            int position = Convert.ToInt32(((View)sender).Tag.ToString());
+            Items[position].Selected = ((AppCompatCheckBox)sender).Checked;
+        }
+
+        private void Container_Click(object sender, EventArgs e)
+        {
+            int position = Convert.ToInt32(((View)sender).Tag.ToString());
+            Items[position].Selected = !Items[position].Selected;
+            NotifyItemChanged(position);
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -68,6 +92,7 @@ namespace PodcastUtilitiesPOC.UI.Download
 
         class RecyclerViewHolder : RecyclerView.ViewHolder
         {
+            public View Container { get; private set; }
             public TextView Label { get; private set; }
             public TextView SubLabel { get; private set; }
             public ProgressBar Progress { get; private set; }
@@ -75,6 +100,7 @@ namespace PodcastUtilitiesPOC.UI.Download
 
             public RecyclerViewHolder(View itemView) : base(itemView)
             {
+                Container = itemView.FindViewById<View>(Resource.Id.item_row_label_container);
                 Label = itemView.FindViewById<TextView>(Resource.Id.item_row_label);
                 SubLabel = itemView.FindViewById<TextView>(Resource.Id.item_row_sub_label);
                 Progress = itemView.FindViewById<ProgressBar>(Resource.Id.item_row_progress);

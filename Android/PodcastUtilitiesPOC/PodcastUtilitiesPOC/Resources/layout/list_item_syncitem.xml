@@ -28,8 +28,9 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/lorem_ipsum_short"
-            android:inputType="textMultiLine"
             android:singleLine="false"
+			android:clickable="false"
+            android:focusable="false"
 			style="@style/ItemListTitle"
 			/>
 
@@ -37,6 +38,8 @@
 			android:id="@+id/item_row_sub_label"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:clickable="false"
+            android:focusable="false"
 			android:text="@string/placeholder"
 			style="@style/ItemListSubTitle"
 			/>
@@ -56,7 +59,7 @@
 	<androidx.appcompat.widget.AppCompatCheckBox
 		android:id="@+id/item_row_check"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
 		android:gravity="center_vertical"
 		android:minWidth="0dp"
 		android:minHeight="0dp"
