@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+	android:id="@+id/item_row_label_container"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	>
+	android:paddingTop="@dimen/listview_item_vertical_padding"
+	android:paddingBottom="@dimen/listview_item_vertical_padding"
+	android:paddingLeft="@dimen/listview_item_horizontal_padding"
+	android:paddingRight="@dimen/listview_item_horizontal_padding"
+	android:paddingStart="@dimen/listview_item_horizontal_padding"
+	android:paddingEnd="@dimen/listview_item_horizontal_padding"
+>
 
 	<androidx.appcompat.widget.LinearLayoutCompat
-		android:id="@+id/item_row_label_container"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:orientation="vertical"
-		android:paddingLeft="@dimen/listview_item_horizontal_padding"
-		android:paddingRight="0dp"
-		android:paddingStart="@dimen/listview_item_horizontal_padding"
-		android:paddingEnd="0dp"
-		android:paddingTop="@dimen/listview_item_vertical_padding"
-		android:paddingBottom="@dimen/listview_item_vertical_padding"
 		android:background="?attr/selectableItemBackground"
 		app:layout_constraintEnd_toStartOf="@+id/item_row_check"
 		app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +66,10 @@
 		android:background="?attr/selectableItemBackground"
 		android:paddingTop="@dimen/listview_item_check_vertical_padding"
 		android:paddingBottom="@dimen/listview_item_check_vertical_padding"
+		android:paddingLeft="@dimen/listview_item_check_horizontal_padding"
+		android:paddingRight="@dimen/listview_item_check_horizontal_padding"
+		android:clickable="false"
+        android:focusable="false"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toEndOf="@+id/item_row_label_container"
 		app:layout_constraintTop_toTopOf="parent"

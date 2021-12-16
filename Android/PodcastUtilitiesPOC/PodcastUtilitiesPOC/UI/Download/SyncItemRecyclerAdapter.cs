@@ -62,19 +62,11 @@ namespace PodcastUtilitiesPOC.UI.Download
 
             vh.Progress.Progress = Items[position].ProgressPercentage;
 
-            vh.CheckBox.Tag = position.ToString();
             vh.CheckBox.Checked = Items[position].Selected;
             vh.CheckBox.Enabled = !ReadOnly;
-            vh.CheckBox.Click += CheckBox_Click;
 
             vh.Container.Tag = position.ToString();
             vh.Container.Click += Container_Click;
-        }
-
-        private void CheckBox_Click(object sender, EventArgs e)
-        {
-            int position = Convert.ToInt32(((View)sender).Tag.ToString());
-            Items[position].Selected = ((AppCompatCheckBox)sender).Checked;
         }
 
         private void Container_Click(object sender, EventArgs e)
