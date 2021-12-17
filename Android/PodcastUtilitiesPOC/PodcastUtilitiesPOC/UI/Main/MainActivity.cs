@@ -472,17 +472,6 @@ namespace PodcastUtilitiesPOC.UI.Main
                     number_of_files_downloaded++;
                     AddLineToOutput($"Completed {number_of_files_downloaded} of {number_of_files_to_download} downloads");
                 }
-
-                // TODO - fix IsDestinationDriveFull
-                /*
-                if (IsDestinationDriveFull(ControlFile.GetSourceRoot(), ControlFile.GetFreeSpaceToLeaveOnDownload()))
-                {
-                    if (TaskPool != null)
-                    {
-                        TaskPool.CancelAllTasks();
-                    }
-                }
-                */
                 DisplayOutput();
             }
         }
