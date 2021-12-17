@@ -19,6 +19,12 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
         public int ProgressPercentage { get; set; }
         public PodcastInfo Podcast { get; set; }
         public bool Selected { get; set; }
+        public Status DownloadStatus { get; set; }
     }
 
+    public enum Status
+    {
+        OK,
+        Error,
+    }
 }

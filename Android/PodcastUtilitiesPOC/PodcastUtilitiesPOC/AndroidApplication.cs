@@ -54,6 +54,7 @@ namespace PodcastUtilitiesPOC
             // helpers
             container.Register<IPreferencesProvider, AndroidApplicationSharedPreferencesProvider>(IocLifecycle.Singleton);
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
+            container.Register<IFileSystemHelper, FileSystemHelper>(IocLifecycle.Singleton);
             container.Register<ILogger>(Logger);
             // view models
             container.Register<ILiveDataFactory, LiveDataFactory>(IocLifecycle.Singleton);

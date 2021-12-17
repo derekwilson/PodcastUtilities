@@ -49,6 +49,8 @@ namespace PodcastUtilitiesPOC.UI.Main
         private int number_of_files_to_download = 0;
         private int number_of_files_downloaded = 0;
         private bool reported_driveinfo_error = false;
+        private long freeBytesNet = 0;
+        private long freeBytesAndroid = 0;
 
         private readonly StringBuilder OutputBuffer = new StringBuilder(1000);
 
@@ -258,7 +260,11 @@ namespace PodcastUtilitiesPOC.UI.Main
                 AndroidApplication.Logger.Debug(() => $"MainActivity:Control Podcasts {count}");
 
                 SetTextViewText(Resource.Id.txtConfigFilePath, $"{uri.ToString()}");
-                SetTextViewText(Resource.Id.txtOutput, $"{count}, {control.GetSourceRoot()}");
+
+                freeBytesNet = GetFreeBytes(control.GetSourceRoot());
+                freeBytesAndroid = GetAvailableMemorySize(control.GetSourceRoot());
+                var output = $"{count}, {control.GetSourceRoot()}\nFree space (Net): {DisplayFormatter.RenderFileSize(freeBytesNet)}\nFree space (Android): {DisplayFormatter.RenderFileSize(freeBytesAndroid)}";
+                SetTextViewText(Resource.Id.txtOutput, output);
                 return control;
             }
             catch (Exception ex)
@@ -267,6 +273,28 @@ namespace PodcastUtilitiesPOC.UI.Main
                 SetTextViewText(Resource.Id.txtConfigFilePath, $"Error {ex.Message}");
                 return null;
             }
+        }
+
+        private long GetFreeBytes(string rootPath)
+        {
+            try
+            {
+                var driveInfo = DriveInfoProvider.GetDriveInfoForPath(Path.GetPathRoot(Path.GetFullPath(rootPath)));
+                return driveInfo.AvailableFreeSpace;
+            }
+            catch (Exception ex)
+            {
+                AndroidApplication.Logger.LogException(() => $"MainActivity: GetFreeBytes", ex);
+            }
+            return 0;
+        }
+
+        public long GetAvailableMemorySize(string rootPath)
+        {
+            StatFs stat = new StatFs(rootPath);
+            long blockSize = stat.BlockSizeLong;
+            long availableBlocks = stat.AvailableBlocksLong;
+            return availableBlocks * blockSize;
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)

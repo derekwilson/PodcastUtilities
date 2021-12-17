@@ -80,6 +80,9 @@ namespace PodcastUtilitiesPOC.UI.Download
             ViewModel.Observables.SetSyncItems += SetSyncItems;
             ViewModel.Observables.UpdateItemProgress += UpdateItemProgress;
             ViewModel.Observables.DisplayMessage += ToastMessage;
+            ViewModel.Observables.StartDownloading += StartDownloading;
+            ViewModel.Observables.EndDownloading += EndDownloading;
+            ViewModel.Observables.Exit += Exit;
         }
 
         private void KillViewModelObservers()
@@ -91,6 +94,9 @@ namespace PodcastUtilitiesPOC.UI.Download
             ViewModel.Observables.SetSyncItems -= SetSyncItems;
             ViewModel.Observables.UpdateItemProgress -= UpdateItemProgress;
             ViewModel.Observables.DisplayMessage -= ToastMessage;
+            ViewModel.Observables.StartDownloading -= StartDownloading;
+            ViewModel.Observables.EndDownloading -= EndDownloading;
+            ViewModel.Observables.Exit -= Exit;
         }
 
         private void ToastMessage(object sender, string message)
@@ -142,7 +148,6 @@ namespace PodcastUtilitiesPOC.UI.Download
             });
         }
 
-
         private void UpdateItemProgress(object sender, Tuple<ISyncItem, int> updateItem)
         {
             RunOnUiThread(() =>
@@ -150,6 +155,31 @@ namespace PodcastUtilitiesPOC.UI.Download
                 (ISyncItem item, int progress) = updateItem;
                 var position = Adapter.SetItemProgress(item.Id, progress);
                 Adapter.NotifyItemChanged(position);
+            });
+        }
+
+        private void StartDownloading(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                Adapter.SetReadOnly(true);
+            });
+        }
+
+        private void EndDownloading(object sender, string message)
+        {
+            RunOnUiThread(() =>
+            {
+                Adapter.SetReadOnly(false);
+                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+            });
+        }
+
+        private void Exit(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                Finish();
             });
         }
 
@@ -168,7 +198,8 @@ namespace PodcastUtilitiesPOC.UI.Download
                     OnBackPressed();
                     return true;
                 case Resource.Id.action_download_all_podcasts:
-                    Task.Run(() => ViewModel.DownloadAllPodcasts());
+                    Task.Run(() => ViewModel.DownloadAllPodcasts())
+                        .ContinueWith(t => ViewModel.DownloadComplete());
                     return true;
             }
             return base.OnOptionsItemSelected(item);

@@ -48,6 +48,12 @@ namespace PodcastUtilitiesPOC.UI.Download
             item.ProgressPercentage = progress;
             return Items.IndexOf(item);
         }
+        internal void SetReadOnly(bool readOnly)
+        {
+            this.ReadOnly = readOnly;
+            // everything needs to be redrawn
+            NotifyDataSetChanged();
+        }
 
         public override int ItemCount => Items.Count;
 
@@ -71,9 +77,12 @@ namespace PodcastUtilitiesPOC.UI.Download
 
         private void Container_Click(object sender, EventArgs e)
         {
-            int position = Convert.ToInt32(((View)sender).Tag.ToString());
-            Items[position].Selected = !Items[position].Selected;
-            NotifyItemChanged(position);
+            if (!ReadOnly)
+            {
+                int position = Convert.ToInt32(((View)sender).Tag.ToString());
+                Items[position].Selected = !Items[position].Selected;
+                NotifyItemChanged(position);
+            }
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

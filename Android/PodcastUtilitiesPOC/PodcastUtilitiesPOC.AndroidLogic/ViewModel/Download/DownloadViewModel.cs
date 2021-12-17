@@ -29,17 +29,21 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
             public EventHandler<List<RecyclerSyncItem>> SetSyncItems;
             public EventHandler<Tuple<ISyncItem, int>> UpdateItemProgress;
             public EventHandler<string> DisplayMessage;
+            public EventHandler StartDownloading;
+            public EventHandler<string> EndDownloading;
+            public EventHandler Exit;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
+        private IFileSystemHelper FileSystemHelper;
         private IEpisodeFinder PodcastEpisodeFinder;
         private ISyncItemToEpisodeDownloaderTaskConverter Converter;
+        private ITaskPool TaskPool;
 
         private ReadOnlyControlFile ControlFile;
         private List<RecyclerSyncItem> AllSyncItems = new List<RecyclerSyncItem>(20);
-        private ITaskPool TaskPool;
 
         // do not make this anything other than private
         private object SyncLock = new object();
@@ -55,14 +59,17 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
             ILogger logger,
             IResourceProvider resProvider,
             IEpisodeFinder podcastEpisodeFinder,
-            ISyncItemToEpisodeDownloaderTaskConverter converter, 
-            ITaskPool taskPool) : base(app)
+            ISyncItemToEpisodeDownloaderTaskConverter converter,
+            ITaskPool taskPool, 
+            IFileSystemHelper fileSystemHelper) : base(app)
         {
             Logger = logger;
             ResourceProvider = resProvider;
             PodcastEpisodeFinder = podcastEpisodeFinder;
             Converter = converter;
             TaskPool = taskPool;
+            FileSystemHelper = fileSystemHelper;
+
             Logger.Debug(() => $"DownloadViewModel:ctor");
         }
 
@@ -70,8 +77,7 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
         {
             Logger.Debug(() => $"DownloadViewModel:Initialise");
             ControlFile = controlFile;
-            var title = ResourceProvider.GetString(Resource.String.download_activity_title);
-            Observables.Title?.Invoke(this, title);
+            Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_title));
         }
 
         [Lifecycle.Event.OnResume]
@@ -164,6 +170,8 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
                 return;
             }
 
+            Observables.StartDownloading?.Invoke(this, null);
+
             List<ISyncItem> AllEpisodes = new List<ISyncItem>(AllSyncItems.Count);
             AllSyncItems.ForEach(item => AllEpisodes.Add(item.SyncItem));
 
@@ -175,6 +183,11 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
 
             // run them in a task pool
             TaskPool.RunAllTasks(ControlFile.GetMaximumNumberOfConcurrentDownloads(), downloadTasks);
+        }
+
+        public void DownloadComplete()
+        {
+            Observables.EndDownloading?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_complete));
         }
 
         void DownloadProgressUpdate(object sender, ProgressEventArgs e)
@@ -192,7 +205,22 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
                     Logger.Debug(() => line);
                     Observables.UpdateItemProgress?.Invoke(this, Tuple.Create(syncItem, e.ProgressPercentage));
                 }
+                if (IsDestinationDriveFull(ControlFile.GetSourceRoot(), ControlFile.GetFreeSpaceToLeaveOnDownload()))
+                {
+                    TaskPool?.CancelAllTasks();
+                }
             }
+        }
+
+        private bool IsDestinationDriveFull(string root, long freeSpaceToLeaveInMb)
+        {
+            var freeMb = FileSystemHelper.GetAvailableMemorySizeInMb(root);
+            if (freeMb < freeSpaceToLeaveInMb)
+            {
+                Logger.Debug(() => string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeMb));
+                return true;
+            }
+            return false;
         }
 
         void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)

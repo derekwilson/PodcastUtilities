@@ -47,7 +47,7 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel
 
             // instead of a generic call like this
             // var obj = IocContainer.Resolve<DownloadViewModel>();
-            // we do this - because we do not know the type at compile time
+            // we do this - because we do not know the type (DownloadViewModel in this example) at compile time
             MethodInfo method = typeof(IIocContainer).GetMethod(nameof(IIocContainer.Resolve));
             MethodInfo generic = method.MakeGenericMethod(ModelMap[classType.CanonicalName].netType);
             var obj = generic.Invoke(IocContainer, null);
