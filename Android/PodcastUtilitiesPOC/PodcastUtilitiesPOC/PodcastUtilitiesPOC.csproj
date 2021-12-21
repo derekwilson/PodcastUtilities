@@ -220,7 +220,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>PowerShell -File "$(SolutionDir)Update-PackageName.ps1" $(ProjectDir) $(ConfigurationName)</PreBuildEvent>
+    <PreBuildEvent>PowerShell -File "$(ProjectDir)..\Update-PackageName.ps1" $(ProjectDir) $(ConfigurationName)</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.
