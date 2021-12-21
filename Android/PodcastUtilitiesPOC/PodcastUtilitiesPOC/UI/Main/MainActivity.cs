@@ -14,6 +14,7 @@ using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.Common.Platform;
+using PodcastUtilitiesPOC.AndroidLogic.Utilities;
 using PodcastUtilitiesPOC.CustomViews;
 using PodcastUtilitiesPOC.UI.Download;
 using PodcastUtilitiesPOC.UI.Example;
@@ -40,6 +41,7 @@ namespace PodcastUtilitiesPOC.UI.Main
         private AndroidApplication AndroidApplication;
         private IPreferencesProvider PreferencesProvider;
         private IDriveInfoProvider DriveInfoProvider;
+        private IFileSystemHelper FileSystemHelper;
 
         private string OverrideRoot;
         private string ControlFileUri;
@@ -51,6 +53,7 @@ namespace PodcastUtilitiesPOC.UI.Main
         private bool reported_driveinfo_error = false;
         private long freeBytesNet = 0;
         private long freeBytesAndroid = 0;
+        private long totalBytesAndroid = 0;
 
         private readonly StringBuilder OutputBuffer = new StringBuilder(1000);
 
@@ -65,6 +68,7 @@ namespace PodcastUtilitiesPOC.UI.Main
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             DriveInfoProvider = AndroidApplication.IocContainer.Resolve<IDriveInfoProvider>();
+            FileSystemHelper = AndroidApplication.IocContainer.Resolve<IFileSystemHelper>();
             PreferencesProvider = AndroidApplication.IocContainer.Resolve<IPreferencesProvider>();
             ControlFileUri = PreferencesProvider.GetPreferenceString(ApplicationContext.GetString(Resource.String.prefs_control_uri_key), "");
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate Conrol Uri = {ControlFileUri}");
@@ -262,8 +266,9 @@ namespace PodcastUtilitiesPOC.UI.Main
                 SetTextViewText(Resource.Id.txtConfigFilePath, $"{uri.ToString()}");
 
                 freeBytesNet = GetFreeBytes(control.GetSourceRoot());
-                freeBytesAndroid = GetAvailableMemorySize(control.GetSourceRoot());
-                var output = $"{count}, {control.GetSourceRoot()}\nFree space (Net): {DisplayFormatter.RenderFileSize(freeBytesNet)}\nFree space (Android): {DisplayFormatter.RenderFileSize(freeBytesAndroid)}";
+                freeBytesAndroid = FileSystemHelper.GetAvailableFileSystemSizeInBytes(control.GetSourceRoot());
+                totalBytesAndroid = FileSystemHelper.GetTotalFileSystemSizeInBytes(control.GetSourceRoot());
+                var output = $"{count}, {control.GetSourceRoot()}\nFree space (Net): {DisplayFormatter.RenderFileSize(freeBytesNet)}\nFree/total space (Android): {DisplayFormatter.RenderFileSize(freeBytesAndroid)}/{DisplayFormatter.RenderFileSize(totalBytesAndroid)}";
                 SetTextViewText(Resource.Id.txtOutput, output);
                 return control;
             }
@@ -287,14 +292,6 @@ namespace PodcastUtilitiesPOC.UI.Main
                 AndroidApplication.Logger.LogException(() => $"MainActivity: GetFreeBytes", ex);
             }
             return 0;
-        }
-
-        public long GetAvailableMemorySize(string rootPath)
-        {
-            StatFs stat = new StatFs(rootPath);
-            long blockSize = stat.BlockSizeLong;
-            long availableBlocks = stat.AvailableBlocksLong;
-            return availableBlocks * blockSize;
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)

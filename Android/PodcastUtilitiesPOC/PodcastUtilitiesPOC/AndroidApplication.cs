@@ -5,6 +5,7 @@ using Android.Util;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Ioc;
+using PodcastUtilitiesPOC.AndroidLogic.Converter;
 using PodcastUtilitiesPOC.AndroidLogic.Logging;
 using PodcastUtilitiesPOC.AndroidLogic.Utilities;
 using PodcastUtilitiesPOC.AndroidLogic.ViewModel;
@@ -55,6 +56,7 @@ namespace PodcastUtilitiesPOC
             container.Register<IPreferencesProvider, AndroidApplicationSharedPreferencesProvider>(IocLifecycle.Singleton);
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
             container.Register<IFileSystemHelper, FileSystemHelper>(IocLifecycle.Singleton);
+            container.Register<IByteConverter, ByteConverter>(IocLifecycle.Singleton);
             container.Register<ILogger>(Logger);
             // view models
             container.Register<ILiveDataFactory, LiveDataFactory>(IocLifecycle.Singleton);

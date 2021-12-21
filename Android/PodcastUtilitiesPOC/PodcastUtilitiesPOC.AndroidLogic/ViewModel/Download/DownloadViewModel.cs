@@ -8,6 +8,7 @@ using AndroidX.Lifecycle;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
+using PodcastUtilitiesPOC.AndroidLogic.Converter;
 using PodcastUtilitiesPOC.AndroidLogic.Logging;
 using PodcastUtilitiesPOC.AndroidLogic.Utilities;
 using System;
@@ -38,6 +39,7 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
         private IFileSystemHelper FileSystemHelper;
+        private IByteConverter ByteConverter;
         private IEpisodeFinder PodcastEpisodeFinder;
         private ISyncItemToEpisodeDownloaderTaskConverter Converter;
         private ITaskPool TaskPool;
@@ -60,17 +62,19 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
             IResourceProvider resProvider,
             IEpisodeFinder podcastEpisodeFinder,
             ISyncItemToEpisodeDownloaderTaskConverter converter,
-            ITaskPool taskPool, 
-            IFileSystemHelper fileSystemHelper) : base(app)
+            ITaskPool taskPool,
+            IFileSystemHelper fileSystemHelper, 
+            IByteConverter byteConverter) : base(app)
         {
             Logger = logger;
+            Logger.Debug(() => $"DownloadViewModel:ctor");
+
             ResourceProvider = resProvider;
             PodcastEpisodeFinder = podcastEpisodeFinder;
             Converter = converter;
             TaskPool = taskPool;
             FileSystemHelper = fileSystemHelper;
-
-            Logger.Debug(() => $"DownloadViewModel:ctor");
+            ByteConverter = byteConverter;
         }
 
         public void Initialise(ReadOnlyControlFile controlFile)
@@ -156,7 +160,7 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
         private void SetTitle()
         {
             var title = string.Format(ResourceProvider.GetString(Resource.String.download_activity_after_load_title), AllSyncItems.Count);
-            Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts done - {title}");
+            Logger.Debug(() => $"DownloadViewModel:SetTitle - {title}");
             Observables.Title?.Invoke(this, title);
         }
 
@@ -172,10 +176,10 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
 
             Observables.StartDownloading?.Invoke(this, null);
 
-            List<ISyncItem> AllEpisodes = new List<ISyncItem>(AllSyncItems.Count);
-            AllSyncItems.ForEach(item => AllEpisodes.Add(item.SyncItem));
+            List<ISyncItem> AllEpisodesToDownload = new List<ISyncItem>(AllSyncItems.Count);
+            AllSyncItems.Where(recyclerItem => recyclerItem.Selected).ToList().ForEach(item => AllEpisodesToDownload.Add(item.SyncItem));
 
-            IEpisodeDownloader[] downloadTasks = Converter.ConvertItemsToTasks(AllEpisodes, DownloadStatusUpdate, DownloadProgressUpdate);
+            IEpisodeDownloader[] downloadTasks = Converter.ConvertItemsToTasks(AllEpisodesToDownload, DownloadStatusUpdate, DownloadProgressUpdate);
             foreach (var task in downloadTasks)
             {
                 Logger.Debug(() => $"DownloadViewModel:Download to: {task.SyncItem.DestinationPath}");
@@ -214,10 +218,12 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
 
         private bool IsDestinationDriveFull(string root, long freeSpaceToLeaveInMb)
         {
-            var freeMb = FileSystemHelper.GetAvailableMemorySizeInMb(root);
+            var freeMb = ByteConverter.BytesToMegabytes(FileSystemHelper.GetAvailableFileSystemSizeInBytes(root));
             if (freeMb < freeSpaceToLeaveInMb)
             {
-                Logger.Debug(() => string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeMb));
+                var message = string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeMb);
+                Observables.DisplayMessage?.Invoke(this, message);
+                Logger.Debug(() => message);
                 return true;
             }
             return false;

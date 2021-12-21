@@ -13,13 +13,13 @@ namespace PodcastUtilitiesPOC.AndroidLogic.Utilities
 {
     public interface IFileSystemHelper
     {
-        long GetAvailableMemorySizeInBytes(string rootPath);
-        long GetAvailableMemorySizeInMb(string rootPath);
+        long GetAvailableFileSystemSizeInBytes(string rootPath);
+        long GetTotalFileSystemSizeInBytes(string rootPath);
     }
 
     public class FileSystemHelper : IFileSystemHelper
     {
-        public long GetAvailableMemorySizeInBytes(string rootPath)
+        public long GetAvailableFileSystemSizeInBytes(string rootPath)
         {
             StatFs stat = new StatFs(rootPath);
             long blockSize = stat.BlockSizeLong;
@@ -27,17 +27,12 @@ namespace PodcastUtilitiesPOC.AndroidLogic.Utilities
             return availableBlocks * blockSize;
         }
 
-        public long GetAvailableMemorySizeInMb(string rootPath)
+        public long GetTotalFileSystemSizeInBytes(string rootPath)
         {
-            long freeBytes = GetAvailableMemorySizeInBytes(rootPath);
-            long freeKb = 0;
-            long freeMb = 0;
-            if (freeBytes > 0)
-                freeKb = (freeBytes / 1024);
-            if (freeKb > 0)
-                freeMb = (freeKb / 1024);
-
-            return freeMb;
+            StatFs stat = new StatFs(rootPath);
+            long blockSize = stat.BlockSizeLong;
+            long blocks = stat.BlockCountLong;
+            return blocks * blockSize;
         }
     }
 }
