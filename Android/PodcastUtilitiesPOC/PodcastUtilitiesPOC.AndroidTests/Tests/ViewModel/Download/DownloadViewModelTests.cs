@@ -9,6 +9,7 @@ using Moq;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
+using PodcastUtilitiesPOC.AndroidLogic.Converter;
 using PodcastUtilitiesPOC.AndroidLogic.Logging;
 using PodcastUtilitiesPOC.AndroidLogic.Utilities;
 using PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download;
@@ -33,13 +34,15 @@ namespace PodcastUtilitiesPOC.AndroidTests.Tests.ViewModel.Download
         protected IEpisodeFinder MockFinder = A.Fake<IEpisodeFinder>();
         protected ISyncItemToEpisodeDownloaderTaskConverter MockConverter = A.Fake<ISyncItemToEpisodeDownloaderTaskConverter>();
         protected ITaskPool MockTaskPool = A.Fake<ITaskPool>();
+        protected IFileSystemHelper MockFilesystemHelper = A.Fake<IFileSystemHelper>();
+        protected IByteConverter ByteConverter = new ByteConverter();
 
         protected ReadOnlyControlFile MockControlFile = A.Fake<ReadOnlyControlFile>();
 
         public DownloadViewModelTests()
         {
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_title)).Returns("Observed Mocked Title");
-            ViewModel = new DownloadViewModel(MockApplication, MockLogger, MockResourceProvider, MockFinder, MockConverter, MockTaskPool);
+            ViewModel = new DownloadViewModel(MockApplication, MockLogger, MockResourceProvider, MockFinder, MockConverter, MockTaskPool, MockFilesystemHelper, ByteConverter);
             ViewModel.Observables.Title += SetTitle;
         }
 

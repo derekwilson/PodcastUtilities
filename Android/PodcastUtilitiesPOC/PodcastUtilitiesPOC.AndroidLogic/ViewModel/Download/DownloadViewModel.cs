@@ -176,6 +176,9 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
 
             Observables.StartDownloading?.Invoke(this, null);
 
+            int numberOfConnections = ControlFile.GetMaximumNumberOfConcurrentDownloads();
+            System.Net.ServicePointManager.DefaultConnectionLimit = numberOfConnections;
+
             List<ISyncItem> AllEpisodesToDownload = new List<ISyncItem>(AllSyncItems.Count);
             AllSyncItems.Where(recyclerItem => recyclerItem.Selected).ToList().ForEach(item => AllEpisodesToDownload.Add(item.SyncItem));
 
@@ -186,7 +189,7 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
             }
 
             // run them in a task pool
-            TaskPool.RunAllTasks(ControlFile.GetMaximumNumberOfConcurrentDownloads(), downloadTasks);
+            TaskPool.RunAllTasks(numberOfConnections, downloadTasks);
         }
 
         public void DownloadComplete()
