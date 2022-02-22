@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace PodcastUtilities
 {
@@ -59,7 +60,18 @@ namespace PodcastUtilities
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Version == {DisplayVersion}");
 
             base.OnCreate();
-            LoggerFactory = new NLoggerLoggerFactory();
+            var dirs = Context.GetExternalFilesDirs(null);
+            if (dirs != null && dirs[0] != null)
+            {
+                // use our external folder - dependes on package name
+                Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Logs == {dirs[0].AbsolutePath}");
+                LoggerFactory = new NLoggerLoggerFactory(dirs[0].AbsolutePath);
+            }
+            else
+            {
+                // hard code and hope for the best
+                LoggerFactory = new NLoggerLoggerFactory($"/sdcard/Android/data/{this.PackageName}/files/");
+            }
             Logger = LoggerFactory.Logger;
             Logger.Debug(() => $"AndroidApplication:Logging init");
 

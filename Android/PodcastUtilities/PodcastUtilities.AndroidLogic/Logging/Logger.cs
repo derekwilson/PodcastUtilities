@@ -1,5 +1,9 @@
 ﻿using NLog;
+using NLog.Config;
+using NLog.Targets;
 using System;
+using System.IO;
+using System.Xml;
 
 namespace PodcastUtilities.AndroidLogic.Logging
 {
@@ -51,6 +55,27 @@ namespace PodcastUtilities.AndroidLogic.Logging
 
     public class NLoggerLoggerFactory : ILoggerFactory
     {
+        /// <summary>
+        /// Use whatever is in the config file
+        /// </summary>
+        public NLoggerLoggerFactory()
+        {
+        }
+
+        /// <summary>
+        /// setup the file target with the supplied folder
+        /// </summary>
+        /// <param name="folder">folder for log files</param>
+        public NLoggerLoggerFactory(String folder)
+        {
+            var config = LogManager.Configuration;
+            var target = config.FindTargetByName("externalFileTarget");
+            var fileTarget = target as FileTarget;
+            fileTarget.FileName = Path.Combine(folder, "logs/${shortdate}.log.csv");
+            fileTarget.ArchiveFileName = Path.Combine(folder, "logs/archive.{#}.log.csv");
+            LogManager.ReconfigExistingLoggers();
+        }
+
         public ILogger Logger
         {
             get
