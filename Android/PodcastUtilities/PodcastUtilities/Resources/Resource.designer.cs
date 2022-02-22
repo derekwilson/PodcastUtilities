@@ -2507,7 +2507,6 @@ namespace PodcastUtilities
 			global::PodcastUtilities.AndroidLogic.Resource.String.abc_shareactionprovider_share_with_application = global::PodcastUtilities.Resource.String.abc_shareactionprovider_share_with_application;
 			global::PodcastUtilities.AndroidLogic.Resource.String.abc_toolbar_collapse_description = global::PodcastUtilities.Resource.String.abc_toolbar_collapse_description;
 			global::PodcastUtilities.AndroidLogic.Resource.String.appbar_scrolling_view_behavior = global::PodcastUtilities.Resource.String.appbar_scrolling_view_behavior;
-			global::PodcastUtilities.AndroidLogic.Resource.String.app_name = global::PodcastUtilities.Resource.String.app_name;
 			global::PodcastUtilities.AndroidLogic.Resource.String.bottomsheet_action_expand_halfway = global::PodcastUtilities.Resource.String.bottomsheet_action_expand_halfway;
 			global::PodcastUtilities.AndroidLogic.Resource.String.bottom_sheet_behavior = global::PodcastUtilities.Resource.String.bottom_sheet_behavior;
 			global::PodcastUtilities.AndroidLogic.Resource.String.character_counter_content_description = global::PodcastUtilities.Resource.String.character_counter_content_description;
@@ -2523,10 +2522,10 @@ namespace PodcastUtilities
 			global::PodcastUtilities.AndroidLogic.Resource.String.fallback_menu_item_copy_link = global::PodcastUtilities.Resource.String.fallback_menu_item_copy_link;
 			global::PodcastUtilities.AndroidLogic.Resource.String.fallback_menu_item_open_in_browser = global::PodcastUtilities.Resource.String.fallback_menu_item_open_in_browser;
 			global::PodcastUtilities.AndroidLogic.Resource.String.fallback_menu_item_share_link = global::PodcastUtilities.Resource.String.fallback_menu_item_share_link;
-			global::PodcastUtilities.AndroidLogic.Resource.String.hello = global::PodcastUtilities.Resource.String.hello;
 			global::PodcastUtilities.AndroidLogic.Resource.String.hide_bottom_view_on_scroll_behavior = global::PodcastUtilities.Resource.String.hide_bottom_view_on_scroll_behavior;
 			global::PodcastUtilities.AndroidLogic.Resource.String.icon_content_description = global::PodcastUtilities.Resource.String.icon_content_description;
 			global::PodcastUtilities.AndroidLogic.Resource.String.item_view_role_description = global::PodcastUtilities.Resource.String.item_view_role_description;
+			global::PodcastUtilities.AndroidLogic.Resource.String.main_activity_title = global::PodcastUtilities.Resource.String.main_activity_title;
 			global::PodcastUtilities.AndroidLogic.Resource.String.material_clock_display_divider = global::PodcastUtilities.Resource.String.material_clock_display_divider;
 			global::PodcastUtilities.AndroidLogic.Resource.String.material_clock_toggle_content_description = global::PodcastUtilities.Resource.String.material_clock_toggle_content_description;
 			global::PodcastUtilities.AndroidLogic.Resource.String.material_hour_selection = global::PodcastUtilities.Resource.String.material_hour_selection;
@@ -13120,16 +13119,16 @@ namespace PodcastUtilities
 			public const int fallback_menu_item_share_link = 2131623981;
 			
 			// aapt resource value: 0x7F0E002E
-			public const int hello = 2131623982;
+			public const int hide_bottom_view_on_scroll_behavior = 2131623982;
 			
 			// aapt resource value: 0x7F0E002F
-			public const int hide_bottom_view_on_scroll_behavior = 2131623983;
+			public const int icon_content_description = 2131623983;
 			
 			// aapt resource value: 0x7F0E0030
-			public const int icon_content_description = 2131623984;
+			public const int item_view_role_description = 2131623984;
 			
 			// aapt resource value: 0x7F0E0031
-			public const int item_view_role_description = 2131623985;
+			public const int main_activity_title = 2131623985;
 			
 			// aapt resource value: 0x7F0E0032
 			public const int material_clock_display_divider = 2131623986;
