@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilities", "Podcast
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilities.AndroidLogic", "PodcastUtilities.AndroidLogic\PodcastUtilities.AndroidLogic.csproj", "{C7573883-6FE6-430D-9879-10CF2C0607DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilities.AndroidTests", "PodcastUtilities.AndroidTests\PodcastUtilities.AndroidTests.csproj", "{E6776782-4D4F-4234-827F-218779948C8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,12 @@ Global
 		{C7573883-6FE6-430D-9879-10CF2C0607DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7573883-6FE6-430D-9879-10CF2C0607DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7573883-6FE6-430D-9879-10CF2C0607DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6776782-4D4F-4234-827F-218779948C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6776782-4D4F-4234-827F-218779948C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6776782-4D4F-4234-827F-218779948C8B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E6776782-4D4F-4234-827F-218779948C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6776782-4D4F-4234-827F-218779948C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6776782-4D4F-4234-827F-218779948C8B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
