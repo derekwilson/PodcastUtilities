@@ -4,5 +4,7 @@
 
 	<string name="placeholder">placeholder</string>
 
+	<string name="no_sdcard">No storage found.</string>
+
 	<string name="action_settings">Settings</string>
 </resources>

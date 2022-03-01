@@ -1,0 +1,6 @@
+﻿<resources>
+
+	<dimen name="activity_padding">8dp</dimen>
+	<dimen name="info_divider_height">16dp</dimen>
+
+</resources>

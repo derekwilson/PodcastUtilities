@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.Runtime;
 using Android.Util;
+using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
@@ -79,6 +80,8 @@ namespace PodcastUtilities
             // helpers
             container.Register<ILogger>(Logger);
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
+            container.Register<IFileSystemHelper, FileSystemHelper>(IocLifecycle.Singleton);
+            container.Register<IByteConverter, ByteConverter>(IocLifecycle.Singleton);
             // view models
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);
             container.Register<MainViewModel, MainViewModel>();

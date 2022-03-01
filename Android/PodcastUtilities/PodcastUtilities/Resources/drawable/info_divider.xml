@@ -1,0 +1,7 @@
+﻿<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<size
+        android:height="@dimen/info_divider_height"
+        android:width="0dp"/>
+
+</shape>
