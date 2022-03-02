@@ -1,10 +1,4 @@
 <resources>
     <string name="app_name">PodcastUtilities</string>
 	<string name="app_name_debug">Dbg PodcastUtilities</string>
-
-	<string name="placeholder">placeholder</string>
-
-	<string name="no_sdcard">No storage found.</string>
-
-	<string name="action_settings">Settings</string>
 </resources>

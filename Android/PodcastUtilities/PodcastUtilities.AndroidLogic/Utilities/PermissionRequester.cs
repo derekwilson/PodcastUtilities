@@ -89,7 +89,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                             intent.SetData(Android.Net.Uri.Parse($"package:{packageName}"));
                             activity.StartActivityForResult(intent, code);
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             Intent intent = new Intent();
                             intent.SetAction(Android.Provider.Settings.ActionManageAllFilesAccessPermission);

@@ -1,7 +1,8 @@
-﻿<shape xmlns:android="http://schemas.android.com/apk/res/android">
-
-	<size
+﻿<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+	<size 
         android:height="@dimen/info_divider_height"
-        android:width="0dp"/>
-
+        android:width="@dimen/info_divider_width"
+		  />
+	<solid android:color="@color/divider" />
 </shape>

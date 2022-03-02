@@ -60,6 +60,12 @@ namespace PodcastUtilities
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate - end");
         }
 
+        protected override void OnStop()
+        {
+            base.OnStop();
+            KillViewModelObservers();
+        }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
@@ -99,10 +105,23 @@ namespace PodcastUtilities
             }
         }
 
-        protected override void OnStop()
+        public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            base.OnStop();
-            KillViewModelObservers();
+            //change main_compat_menu
+            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnPrepareOptionsMenu(IMenu menu)
+        {
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_load_config);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_settings);
+            return true;
+        }
+
+        private void EnableMenuItemIfAvailable(IMenu menu, int itemId)
+        {
+            menu.FindItem(itemId)?.SetEnabled(ViewModel.isActionAvailable(itemId));
         }
 
         private void SetupViewModelObservers()
@@ -132,6 +151,8 @@ namespace PodcastUtilities
             RunOnUiThread(() =>
             {
                 NoDriveDataView.Visibility = ViewStates.Visible;
+                DriveInfoContainerView.Visibility = ViewStates.Gone;
+                DriveInfoContainerView.RemoveAllViews();
             });
         }
 
@@ -139,8 +160,9 @@ namespace PodcastUtilities
         {
             RunOnUiThread(() =>
             {
-                DriveInfoContainerView?.AddView(view);
                 NoDriveDataView.Visibility = ViewStates.Gone;
+                DriveInfoContainerView.Visibility = ViewStates.Visible;
+                DriveInfoContainerView?.AddView(view);
             });
         }
 

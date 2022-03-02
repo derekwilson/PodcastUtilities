@@ -1,5 +1,5 @@
 <resources>
-	<string name="main_activity_title">PodcastUtilities Cache Manager</string>
+	<string name="placeholder">placeholder</string>
 
 	<string name="ok">OK</string>
 	<string name="permissions_title">PodcastUtilities Permissions</string>
@@ -7,6 +7,13 @@
 	<string name="write_external_permissions_rationale">PodcastUtilities needs write access to storage to be able to manage the podcast cache.</string>
 	<string name="manage_external_permissions_rationale">PodcastUtilities needs to manage external storage to be able to manage the podcast cache.</string>
 
+	<string name="main_activity_title">PodcastUtilities Cache Manager</string>
+
 	<string name="drive_volume_free_label">Free Space</string>
 	<string name="drive_volume_total_label">Total Space</string>
+	<string name="no_sdcard">No storage found.</string>
+
+	<string name="action_settings">Settings</string>
+	<string name="action_load_config">Load Configuration</string>
+
 </resources>

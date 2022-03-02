@@ -110,5 +110,19 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 
             return retval;
         }
+
+        public bool isActionAvailable(int itemId)
+        {
+            Logger.Debug(() => $"isActionAvailable = {itemId}");
+            if (itemId == Resource.Id.action_settings)
+            {
+                return true;
+            }
+            if (itemId == Resource.Id.action_load_config)
+            {
+                return false;
+            }
+            return false;
+        }
     }
 }

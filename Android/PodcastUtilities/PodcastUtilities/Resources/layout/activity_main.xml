@@ -11,25 +11,30 @@
         >
 
         <LinearLayout
-            android:id="@+id/drive_info_container"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background"
-            android:gravity="center_horizontal"
-            android:padding="@dimen/activity_padding"
-            android:showDividers="middle"
-            android:divider="@drawable/info_divider">
+            android:layout_height="wrap_content">
 
-            	<TextView
-				    android:id="@+id/txtNoData"
-				    android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:text="@string/no_sdcard"
-				    android:textAlignment="center"
-				    android:textAppearance="?android:attr/textAppearanceMedium"
-				    android:gravity="center_horizontal" />
+            <TextView
+			    android:id="@+id/txtNoData"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:text="@string/no_sdcard"
+			    android:textAlignment="center"
+			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:gravity="center_horizontal" />
 
+            <LinearLayout
+                android:id="@+id/drive_info_container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/activity_padding"
+                android:showDividers="middle"
+                android:divider="@drawable/info_divider">
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
