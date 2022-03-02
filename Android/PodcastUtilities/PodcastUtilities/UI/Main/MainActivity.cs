@@ -49,7 +49,7 @@ namespace PodcastUtilities
 
             if (PermissionChecker.HasManageStoragePermission(this))
             {
-                ViewModel?.InitFileSystemInfo();
+                ViewModel?.RefreshFileSystemInfo();
             }
             else
             {
@@ -70,7 +70,7 @@ namespace PodcastUtilities
                 case PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
                     if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
                     {
-                        ViewModel?.InitFileSystemInfo();
+                        ViewModel?.RefreshFileSystemInfo();
                     }
                     else
                     {
@@ -94,7 +94,7 @@ namespace PodcastUtilities
             {
                 // we asked for manage storage access in SDK30+
                 case PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
-                    ViewModel?.InitFileSystemInfo();
+                    ViewModel?.RefreshFileSystemInfo();
                     break;
             }
         }
@@ -109,12 +109,14 @@ namespace PodcastUtilities
         {
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.AddInfoView += AddInfoView;
+            ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
         }
 
         private void KillViewModelObservers()
         {
             ViewModel.Observables.Title -= SetTitle;
             ViewModel.Observables.AddInfoView -= AddInfoView;
+            ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
         }
 
         private void SetTitle(object sender, string title)
@@ -122,6 +124,14 @@ namespace PodcastUtilities
             RunOnUiThread(() =>
             {
                 Title = title;
+            });
+        }
+
+        private void ShowNoDriveMessage(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                NoDriveDataView.Visibility = ViewStates.Visible;
             });
         }
 

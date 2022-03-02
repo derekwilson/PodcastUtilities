@@ -4,6 +4,7 @@ using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
+using PodcastUtilities.AndroidLogic.Converter;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 {
@@ -14,15 +15,20 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 
         private string LastSetTitle;
 
+        // mocks
         protected Application MockApplication = A.Fake<Application>();
         protected ILogger MockLogger = A.Fake<ILogger>();
         protected IResourceProvider MockResourceProvider = A.Fake<IResourceProvider>();
+        protected IFileSystemHelper MockFileSystemHelper = A.Fake<IFileSystemHelper>();
+
+        // reals
+        protected IByteConverter ByteConverter = new ByteConverter();
 
         [SetUp]
         public void Setup()
         {
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.main_activity_title)).Returns("Mocked Title");
-            ViewModel = new MainViewModel(MockApplication, MockLogger, MockResourceProvider);
+            ViewModel = new MainViewModel(MockApplication, MockLogger, MockResourceProvider, MockFileSystemHelper, ByteConverter);
             ViewModel.Observables.Title += SetTitle;
         }
         [TearDown]

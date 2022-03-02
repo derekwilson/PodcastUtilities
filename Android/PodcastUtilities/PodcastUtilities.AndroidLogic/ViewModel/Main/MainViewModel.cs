@@ -15,6 +15,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         {
             public EventHandler<string> Title;
             public EventHandler<DriveVolumeInfoView> AddInfoView;
+            public EventHandler ShowNoDriveMessage;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -53,13 +54,22 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             Logger.Debug(() => $"MainViewModel:OnResume");
         }
 
-        public void InitFileSystemInfo()
+        public void RefreshFileSystemInfo()
         {
-            Java.IO.File[] files = ApplicationContext.GetExternalFilesDirs(null);
-            foreach (Java.IO.File file in files)
+            try
             {
-                Logger.Debug(() => $"ExternalFile = {file.AbsolutePath}");
-                AddFileSystem(file.AbsolutePath);
+                Observables.ShowNoDriveMessage?.Invoke(this, null);
+
+                Java.IO.File[] files = ApplicationContext.GetExternalFilesDirs(null);
+                foreach (Java.IO.File file in files)
+                {
+                    Logger.Debug(() => $"ExternalFile = {file.AbsolutePath}");
+                    AddFileSystem(file.AbsolutePath);
+                }
+            } catch (Exception ex)
+            {
+                Logger.LogException(() => $"MainViewModel:InitFileSystemInfo", ex);
+                // if we didnt add any drive info views then the default message will remain
             }
         }
 
@@ -72,7 +82,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             string[] totalSize = DisplayFormatter.RenderFileSize(totalBytes).Split(' ');
 
             var view = new DriveVolumeInfoView(ApplicationContext);
-            view.Title = absolutePath;
+            view.Title = ConvertPathToTitle(absolutePath);
             view.SetSpace(
                 Convert.ToInt32(ByteConverter.BytesToMegabytes(usedBytes)), 
                 Convert.ToInt32(ByteConverter.BytesToMegabytes(totalBytes)), 
@@ -82,5 +92,23 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             Observables?.AddInfoView.Invoke(this, view);
         }
 
+        private string ConvertPathToTitle(string absolutePath)
+        {
+            var retval = absolutePath; 
+            // strip off our package name
+            var pos = retval.IndexOf(ApplicationContext.PackageName);
+            if (pos > 0)
+            {
+                retval = retval.Substring(0, pos);
+            }
+            // strip off the standard prefix
+            pos = retval.IndexOf("/Android/data", StringComparison.InvariantCultureIgnoreCase);
+            if (pos > 0)
+            {
+                retval = retval.Substring(0, pos);
+            }
+
+            return retval;
+        }
     }
 }
