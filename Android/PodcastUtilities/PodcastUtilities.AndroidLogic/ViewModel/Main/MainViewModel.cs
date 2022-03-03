@@ -16,6 +16,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler<string> Title;
             public EventHandler<DriveVolumeInfoView> AddInfoView;
             public EventHandler ShowNoDriveMessage;
+            public EventHandler NavigateToSettings;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -56,6 +57,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 
         public void RefreshFileSystemInfo()
         {
+            Logger.Debug(() => $"MainViewModel:RefreshFileSystemInfo");
             try
             {
                 Observables.ShowNoDriveMessage?.Invoke(this, null);
@@ -121,6 +123,21 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             if (itemId == Resource.Id.action_load_config)
             {
                 return false;
+            }
+            return false;
+        }
+
+        public bool ActionSelected(int itemId)
+        {
+            Logger.Debug(() => $"ActionSelected = {itemId}");
+            if (itemId == Resource.Id.action_settings)
+            {
+                Observables.NavigateToSettings?.Invoke(this, null);
+                return true;
+            }
+            if (itemId == Resource.Id.action_load_config)
+            {
+                return true;
             }
             return false;
         }

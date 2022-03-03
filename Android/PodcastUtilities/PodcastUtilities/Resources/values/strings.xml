@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">PodcastUtilities</string>
 	<string name="app_name_debug">Dbg PodcastUtilities</string>
+
+
+	<!-- Settings -->
+	<string name="settings_activity">Settings</string>
+
+	<string name="settings_about_category">About</string>
+
+	<string name="settings_privacy_key">appPrivacy</string>
+	<string name="settings_privacy_title">Privacy statement</string>
+	<string name="settings_privacy_url">https://bitbucket.org/andrewandderek/trailblazer/src/master/PRIVACY.md</string>
+
+	<string name="settings_osl_key">appOsl</string>
+	<string name="settings_osl_title">Open-source licenses</string>
+
+	<string name="settings_version_key">appVersion</string>
+	<string name="settings_version_title">Version</string>
+	<string name="settings_version_summary_fmt">%1$s - %2$s</string>
+	
 </resources>

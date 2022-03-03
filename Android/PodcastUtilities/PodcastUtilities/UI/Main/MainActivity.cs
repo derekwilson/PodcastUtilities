@@ -11,6 +11,7 @@ using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
+using PodcastUtilities.UI.Settings;
 using System;
 
 namespace PodcastUtilities
@@ -47,22 +48,72 @@ namespace PodcastUtilities
 
             ViewModel.Initialise();
 
-            if (PermissionChecker.HasManageStoragePermission(this))
-            {
-                ViewModel?.RefreshFileSystemInfo();
-            }
-            else
+            if (!PermissionChecker.HasManageStoragePermission(this))
             {
                 AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate - permission not granted - requesting");
                 PermissionRequester.RequestManageStoragePermission(this, PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION, AndroidApplication.PackageName);
             }
 
-            AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate - end");
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate - end - observers {GetObserverCount()}");
+        }
+
+        private string GetObserverCount()
+        {
+            if (ViewModel == null)
+            {
+                return "null viewmodel";
+            }
+            if (ViewModel.Observables == null)
+            {
+                return "null viewmodel observables";
+            }
+            if (ViewModel.Observables.NavigateToSettings == null)
+            {
+                return "null viewmodel observable navigate";
+            }
+
+            var list = ViewModel.Observables.NavigateToSettings.GetInvocationList();
+            if (list == null)
+            {
+                return "null invoke list";
+            }
+            try
+            {
+                return list.Length.ToString();
+            } 
+            catch 
+            {
+                return "error counting list";
+            }
+        }
+
+        protected override void OnResume()
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnResume - observers {GetObserverCount()}");
+            
+            base.OnResume();
+            if (PermissionChecker.HasManageStoragePermission(this))
+            {
+                ViewModel?.RefreshFileSystemInfo();
+            }
+        }
+
+        protected override void OnPause()
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnPause - observers {GetObserverCount()}");
+            base.OnPause();
         }
 
         protected override void OnStop()
         {
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnStop - observers {GetObserverCount()}");
             base.OnStop();
+        }
+
+        protected override void OnDestroy()
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnDestroy - observers {GetObserverCount()}");
+            base.OnDestroy();
             KillViewModelObservers();
         }
 
@@ -107,7 +158,6 @@ namespace PodcastUtilities
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            //change main_compat_menu
             MenuInflater.Inflate(Resource.Menu.menu_main, menu);
             return base.OnCreateOptionsMenu(menu);
         }
@@ -124,18 +174,29 @@ namespace PodcastUtilities
             menu.FindItem(itemId)?.SetEnabled(ViewModel.isActionAvailable(itemId));
         }
 
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (ViewModel.ActionSelected(item.ItemId))
+            {
+                return true;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.AddInfoView += AddInfoView;
             ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
+            ViewModel.Observables.NavigateToSettings += NavigateToSettings;
         }
 
         private void KillViewModelObservers()
         {
             ViewModel.Observables.Title -= SetTitle;
             ViewModel.Observables.AddInfoView -= AddInfoView;
-            ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
+            ViewModel.Observables.ShowNoDriveMessage -= ShowNoDriveMessage;
+            ViewModel.Observables.NavigateToSettings -= NavigateToSettings;
         }
 
         private void SetTitle(object sender, string title)
@@ -148,6 +209,7 @@ namespace PodcastUtilities
 
         private void ShowNoDriveMessage(object sender, EventArgs e)
         {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: ShowNoDriveMessage");
             RunOnUiThread(() =>
             {
                 NoDriveDataView.Visibility = ViewStates.Visible;
@@ -158,6 +220,7 @@ namespace PodcastUtilities
 
         private void AddInfoView(object sender, DriveVolumeInfoView view)
         {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: AddInfoView");
             RunOnUiThread(() =>
             {
                 NoDriveDataView.Visibility = ViewStates.Gone;
@@ -168,9 +231,20 @@ namespace PodcastUtilities
 
         private void ToastMessage(string message)
         {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: ToastMessage {message}");
             RunOnUiThread(() =>
             {
                 Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+            });
+        }
+
+        private void NavigateToSettings(object sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToSettings");
+            RunOnUiThread(() =>
+            {
+                var intent = new Intent(this, typeof(SettingsActivity));
+                StartActivity(intent);
             });
         }
     }
