@@ -2,14 +2,19 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<PreferenceCategory
-        android:title="@string/settings_about_category">
+    	android:title="@string/settings_download_category">
 
-		<Preference
-            android:key="@string/settings_version_key"
-            android:title="@string/settings_version_title"
-            android:summary="@string/placeholder"
-            >
-		</Preference>
+		<ListPreference
+            android:title="@string/settings_download_network_title"
+            android:key="@string/settings_download_network_key"
+            android:defaultValue="@string/settings_default_download_network"
+            android:entries="@array/download_networks_names"
+            android:entryValues="@array/download_networks_values" />
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
+        android:title="@string/settings_about_category">
 
 		<Preference
             android:key="@string/settings_osl_key"
@@ -20,6 +25,13 @@
             android:key="@string/settings_privacy_key"
             android:title="@string/settings_privacy_title">
 			/>
+		</Preference>
+
+		<Preference
+            android:key="@string/settings_version_key"
+            android:title="@string/settings_version_title"
+            android:summary="@string/placeholder"
+            >
 		</Preference>
 
 	</PreferenceCategory>

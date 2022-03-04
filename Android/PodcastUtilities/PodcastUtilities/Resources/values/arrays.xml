@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<resources>
+	<!-- These must match the DownloadNetwork enum values -->
+	<string-array name="download_networks_values">
+		<item>WIFI</item>
+		<item>ALL</item>
+	</string-array>
+
+	<!-- These are the corresponding display names for the above values -->
+	<string-array name="download_networks_names">
+		<item>WiFi Only</item>
+		<item>WiFi and Mobile Data</item>
+	</string-array>
+
+</resources>

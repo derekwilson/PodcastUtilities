@@ -57,40 +57,10 @@ namespace PodcastUtilities
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate - end - observers {GetObserverCount()}");
         }
 
-        private string GetObserverCount()
-        {
-            if (ViewModel == null)
-            {
-                return "null viewmodel";
-            }
-            if (ViewModel.Observables == null)
-            {
-                return "null viewmodel observables";
-            }
-            if (ViewModel.Observables.NavigateToSettings == null)
-            {
-                return "null viewmodel observable navigate";
-            }
-
-            var list = ViewModel.Observables.NavigateToSettings.GetInvocationList();
-            if (list == null)
-            {
-                return "null invoke list";
-            }
-            try
-            {
-                return list.Length.ToString();
-            } 
-            catch 
-            {
-                return "error counting list";
-            }
-        }
-
         protected override void OnResume()
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnResume - observers {GetObserverCount()}");
-            
+
             base.OnResume();
             if (PermissionChecker.HasManageStoragePermission(this))
             {
@@ -247,5 +217,36 @@ namespace PodcastUtilities
                 StartActivity(intent);
             });
         }
+
+        private string GetObserverCount()
+        {
+            if (ViewModel == null)
+            {
+                return "null viewmodel";
+            }
+            if (ViewModel.Observables == null)
+            {
+                return "null viewmodel observables";
+            }
+            if (ViewModel.Observables.NavigateToSettings == null)
+            {
+                return "null viewmodel observable navigate";
+            }
+
+            var list = ViewModel.Observables.NavigateToSettings.GetInvocationList();
+            if (list == null)
+            {
+                return "null invoke list";
+            }
+            try
+            {
+                return list.Length.ToString();
+            }
+            catch
+            {
+                return "error counting list";
+            }
+        }
     }
 }
+

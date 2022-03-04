@@ -6,6 +6,14 @@
 	<!-- Settings -->
 	<string name="settings_activity">Settings</string>
 
+	<string name="settings_download_category">Downloads</string>
+	<string name="settings_download_network_key">appDownloadNetwork</string>
+	<string name="settings_download_network_title">Network</string>
+	<!--
+   Must be one of the DownloadNetwork enum values.
+    -->
+	<string name="settings_default_download_network">WIFI</string>
+
 	<string name="settings_about_category">About</string>
 
 	<string name="settings_privacy_key">appPrivacy</string>
@@ -17,6 +25,5 @@
 
 	<string name="settings_version_key">appVersion</string>
 	<string name="settings_version_title">Version</string>
-	<string name="settings_version_summary_fmt">%1$s - %2$s</string>
 	
 </resources>

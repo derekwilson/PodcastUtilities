@@ -7,6 +7,7 @@ using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
+using PodcastUtilities.AndroidLogic.ViewModel.Settings;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Ioc;
@@ -17,7 +18,7 @@ using System.Threading.Tasks;
 namespace PodcastUtilities
 {
     [Application]
-    public class AndroidApplication : Application
+    public class AndroidApplication : Application, IAndroidApplication
     {
         // tag used in LogCat, only used until NLog starts running
         public const string LOGCAT_TAG = "PodcastUtilities-Tag";
@@ -78,6 +79,7 @@ namespace PodcastUtilities
             container.Register<Context>(ApplicationContext);
             container.Register<Application>(this);
             // helpers
+            container.Register<IAndroidApplication>(this);
             container.Register<ILogger>(Logger);
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
             container.Register<IFileSystemHelper, FileSystemHelper>(IocLifecycle.Singleton);
@@ -85,9 +87,11 @@ namespace PodcastUtilities
             // view models
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);
             container.Register<MainViewModel, MainViewModel>();
+            container.Register<SettingsViewModel, SettingsViewModel>();
 
             var factory = container.Resolve<ViewModelFactory>();
             factory.AddMap(typeof(MainViewModel));
+            factory.AddMap(typeof(SettingsViewModel));
             return container;
         }
 
