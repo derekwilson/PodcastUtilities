@@ -65,6 +65,7 @@
     <Compile Include="Utilities\PermissionRequester.cs" />
     <Compile Include="Utilities\ResourceProvider.cs" />
     <Compile Include="ViewModel\Main\MainViewModel.cs" />
+    <Compile Include="ViewModel\Settings\OpenSourceLicensesViewModel.cs" />
     <Compile Include="ViewModel\Settings\SettingsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelFactory.cs" />
   </ItemGroup>

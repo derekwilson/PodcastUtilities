@@ -25,5 +25,8 @@
 
 	<string name="settings_version_key">appVersion</string>
 	<string name="settings_version_title">Version</string>
-	
+
+	<!-- open source licenses -->
+	<string name="osl_title">Open-source licenses</string>
+
 </resources>

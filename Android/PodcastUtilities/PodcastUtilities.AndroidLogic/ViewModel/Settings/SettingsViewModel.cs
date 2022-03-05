@@ -20,8 +20,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
         public class ObservableGroup
         {
             public EventHandler<string> Version;
-            public EventHandler NavigateToOsl;
-            public EventHandler NavigateToPrivacy;
         }
         public ObservableGroup Observables = new ObservableGroup();
 

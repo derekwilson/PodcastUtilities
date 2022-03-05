@@ -4,4 +4,6 @@
 	<dimen name="info_divider_height">1dp</dimen>
 	<dimen name="info_divider_width">1dp</dimen>
 
+	<dimen name="listview_item_horizontal_padding">16dp</dimen>
+
 </resources>

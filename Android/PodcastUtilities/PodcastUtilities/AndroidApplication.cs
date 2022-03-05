@@ -88,10 +88,12 @@ namespace PodcastUtilities
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);
             container.Register<MainViewModel, MainViewModel>();
             container.Register<SettingsViewModel, SettingsViewModel>();
+            container.Register<OpenSourceLicensesViewModel, OpenSourceLicensesViewModel>();
 
             var factory = container.Resolve<ViewModelFactory>();
             factory.AddMap(typeof(MainViewModel));
             factory.AddMap(typeof(SettingsViewModel));
+            factory.AddMap(typeof(OpenSourceLicensesViewModel));
             return container;
         }
 

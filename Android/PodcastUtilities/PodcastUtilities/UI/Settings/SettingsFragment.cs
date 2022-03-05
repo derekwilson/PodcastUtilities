@@ -86,6 +86,8 @@ namespace PodcastUtilities.UI.Settings
 
         private void OslClick()
         {
+            var intent = new Intent(Activity, typeof(OpenSourceLicensesActivity));
+            StartActivity(intent);
         }
 
         private void UpdateVersion()
