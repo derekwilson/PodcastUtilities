@@ -18,7 +18,7 @@
 
 	<string name="settings_privacy_key">appPrivacy</string>
 	<string name="settings_privacy_title">Privacy statement</string>
-	<string name="settings_privacy_url">https://bitbucket.org/andrewandderek/trailblazer/src/master/PRIVACY.md</string>
+	<string name="settings_privacy_url">https://github.com/derekwilson/PodcastUtilities/blob/master/PRIVACY.md</string>
 
 	<string name="settings_osl_key">appOsl</string>
 	<string name="settings_osl_title">Open-source licenses</string>
