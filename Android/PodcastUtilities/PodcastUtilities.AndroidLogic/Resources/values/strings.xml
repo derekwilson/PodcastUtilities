@@ -8,6 +8,8 @@
 	<string name="manage_external_permissions_rationale">PodcastUtilities needs to manage external storage to be able to manage the podcast cache.</string>
 
 	<string name="main_activity_title">PodcastUtilities Cache Manager</string>
+	<string name="control_file_loaded">Control file loaded</string>
+	<string name="error_reading_control_file">Cannot load control file</string>
 
 	<string name="drive_volume_free_label">Free Space</string>
 	<string name="drive_volume_total_label">Total Space</string>

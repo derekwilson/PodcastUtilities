@@ -20,6 +20,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         protected ILogger MockLogger = A.Fake<ILogger>();
         protected IResourceProvider MockResourceProvider = A.Fake<IResourceProvider>();
         protected IFileSystemHelper MockFileSystemHelper = A.Fake<IFileSystemHelper>();
+        protected IApplicationControlFileProvider MockApplicationControlFileProvider = A.Fake<IApplicationControlFileProvider>();
 
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
@@ -28,7 +29,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         public void Setup()
         {
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.main_activity_title)).Returns("Mocked Title");
-            ViewModel = new MainViewModel(MockApplication, MockLogger, MockResourceProvider, MockFileSystemHelper, ByteConverter);
+            ViewModel = new MainViewModel(MockApplication, MockLogger, MockResourceProvider, MockApplicationControlFileProvider, MockFileSystemHelper, ByteConverter);
             ViewModel.Observables.Title += SetTitle;
         }
         [TearDown]

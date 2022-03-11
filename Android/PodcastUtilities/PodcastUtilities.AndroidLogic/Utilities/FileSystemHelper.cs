@@ -10,6 +10,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 {
     public interface IFileSystemHelper
     {
+        string GetApplicationFolderOnSdCard(string subFolder, bool ensureExists);
         long GetAvailableFileSystemSizeInBytes(string path);
         long GetTotalFileSystemSizeInBytes(string path);
         string GetApplicationFolderOnSdCard();
@@ -31,12 +32,30 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             Logger = logger;
         }
 
-        public string GetApplicationFolderOnSdCard()
+        public string GetApplicationFolderOnSdCard(string subFolder, bool ensureExists)
         {
             // we are limited where we can write unless we ask for extra permissions in android 11+
             var dir = ApplicationContext.GetExternalFilesDir(null);
             // throw if we cannot get the path
-            return dir.AbsolutePath;
+            var path = dir.AbsolutePath;
+            if (!String.IsNullOrEmpty(subFolder))
+            {
+                path = Path.Combine(path, subFolder);
+            }
+            if (ensureExists)
+            {
+                var targetFolder = new DirectoryInfo(path);
+                if (!targetFolder.Exists)
+                {
+                    targetFolder.Create();
+                }
+            }
+            return path;
+        }
+
+        public string GetApplicationFolderOnSdCard()
+        {
+            return GetApplicationFolderOnSdCard(null, false);
         }
 
         public long GetAvailableFileSystemSizeInBytes(string path)

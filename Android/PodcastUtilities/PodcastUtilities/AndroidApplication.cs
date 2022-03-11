@@ -83,6 +83,7 @@ namespace PodcastUtilities
             container.Register<ILogger>(Logger);
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
             container.Register<IFileSystemHelper, FileSystemHelper>(IocLifecycle.Singleton);
+            container.Register<IApplicationControlFileProvider, ApplicationControlFileProvider>(IocLifecycle.Singleton);
             container.Register<IByteConverter, ByteConverter>(IocLifecycle.Singleton);
             // view models
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);

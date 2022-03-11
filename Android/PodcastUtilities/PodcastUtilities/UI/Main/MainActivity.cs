@@ -26,8 +26,10 @@ namespace PodcastUtilities
         private AndroidApplication AndroidApplication;
         private MainViewModel ViewModel;
 
-        LinearLayout DriveInfoContainerView = null;
-        TextView NoDriveDataView = null;
+        private LinearLayout DriveInfoContainerView = null;
+        private TextView NoDriveDataView = null;
+
+        private const int REQUEST_SELECT_FILE = 3000;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -123,6 +125,12 @@ namespace PodcastUtilities
                 case PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
                     ViewModel?.RefreshFileSystemInfo();
                     break;
+                case REQUEST_SELECT_FILE:
+                    if (resultCode.Equals(Result.Ok))
+                    {
+                        ViewModel?.LoadContolFile(data.Data);
+                    }
+                    break;
             }
         }
 
@@ -146,6 +154,11 @@ namespace PodcastUtilities
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
+            if (!PermissionChecker.HasManageStoragePermission(this))
+            {
+                ToastMessage(GetString(Resource.String.manage_external_permissions_rationale));
+                return base.OnOptionsItemSelected(item);
+            }
             if (ViewModel.ActionSelected(item.ItemId))
             {
                 return true;
@@ -159,6 +172,7 @@ namespace PodcastUtilities
             ViewModel.Observables.AddInfoView += AddInfoView;
             ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings += NavigateToSettings;
+            ViewModel.Observables.SelectControlFile += SelectControlFile;
         }
 
         private void KillViewModelObservers()
@@ -167,6 +181,7 @@ namespace PodcastUtilities
             ViewModel.Observables.AddInfoView -= AddInfoView;
             ViewModel.Observables.ShowNoDriveMessage -= ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings -= NavigateToSettings;
+            ViewModel.Observables.SelectControlFile -= SelectControlFile;
         }
 
         private void SetTitle(object sender, string title)
@@ -215,6 +230,28 @@ namespace PodcastUtilities
             {
                 var intent = new Intent(this, typeof(SettingsActivity));
                 StartActivity(intent);
+            });
+        }
+
+        private void SelectControlFile(object sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: SelectControlFile");
+            // ACTION_OPEN_DOCUMENT is the intent to choose a file via the system's file browser.
+            var intent = new Intent(Intent.ActionOpenDocument);
+
+            // Filter to only show results that can be "opened", such as a
+            // file (as opposed to a list of contacts or timezones)
+            intent.AddCategory(Intent.CategoryOpenable);
+
+            // Filter using the MIME type.
+            // If one wanted to search for ogg vorbis files, the type would be "audio/ogg".
+            // To search for all documents available via installed storage providers, it would be "*/*".
+            // as we know that other apps do not always report GPX MIME type correctly lets try for everything
+            intent.SetType("*/*");
+
+            RunOnUiThread(() =>
+            {
+                StartActivityForResult(intent, REQUEST_SELECT_FILE);
             });
         }
 

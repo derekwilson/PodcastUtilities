@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utilities\ApplicationControlFileProvider.cs" />
     <Compile Include="Utilities\IAndroidApplication.cs" />
     <Compile Include="Converter\ByteConverter.cs" />
     <Compile Include="CustomViews\DriveVolumeInfoView.cs" />

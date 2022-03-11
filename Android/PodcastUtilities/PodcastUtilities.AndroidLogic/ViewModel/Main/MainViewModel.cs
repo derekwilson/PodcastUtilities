@@ -1,11 +1,14 @@
 ﻿using Android.App;
+using Android.Content;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
 using System;
+using System.Xml;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 {
@@ -17,12 +20,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler<DriveVolumeInfoView> AddInfoView;
             public EventHandler ShowNoDriveMessage;
             public EventHandler NavigateToSettings;
+            public EventHandler SelectControlFile;
+            public EventHandler<string> ToastMessage;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
         private Application ApplicationContext;
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
+        private IApplicationControlFileProvider ApplicationControlFileProvider;
         private IFileSystemHelper FileSystemHelper;
         private IByteConverter ByteConverter;
 
@@ -30,6 +36,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             Application app,
             ILogger logger,
             IResourceProvider resProvider,
+            IApplicationControlFileProvider appControlFileProvider,
             IFileSystemHelper fsHelper,
             IByteConverter byteConverter) : base(app)
         {
@@ -38,6 +45,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 
             ApplicationContext = app;
             ResourceProvider = resProvider;
+            ApplicationControlFileProvider = appControlFileProvider;
             FileSystemHelper = fsHelper;
             ByteConverter = byteConverter;
         }
@@ -115,21 +123,21 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 
         public bool isActionAvailable(int itemId)
         {
-            Logger.Debug(() => $"isActionAvailable = {itemId}");
+            Logger.Debug(() => $"MainViewModel:isActionAvailable = {itemId}");
             if (itemId == Resource.Id.action_settings)
             {
                 return true;
             }
             if (itemId == Resource.Id.action_load_config)
             {
-                return false;
+                return true;
             }
             return false;
         }
 
         public bool ActionSelected(int itemId)
         {
-            Logger.Debug(() => $"ActionSelected = {itemId}");
+            Logger.Debug(() => $"MainViewModel:ActionSelected = {itemId}");
             if (itemId == Resource.Id.action_settings)
             {
                 Observables.NavigateToSettings?.Invoke(this, null);
@@ -137,9 +145,40 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
             if (itemId == Resource.Id.action_load_config)
             {
+                Observables.SelectControlFile?.Invoke(this, null);
                 return true;
             }
             return false;
         }
+
+        public void LoadContolFile(Android.Net.Uri data)
+        {
+            var controlFile = OpenControlFile(data);
+            if (controlFile != null)
+            {
+                controlFile.SaveToFile(ApplicationControlFileProvider.GetApplicationControlFilePath());
+                Observables.ToastMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.control_file_loaded));
+            }
+        }
+
+        private ReadWriteControlFile OpenControlFile(Android.Net.Uri uri)
+        {
+            try
+            {
+                Logger.Debug(() => $"MainViewModel:OpenControlFile = {uri.ToString()}");
+                ContentResolver resolver = ApplicationContext.ContentResolver;
+                var stream = resolver.OpenInputStream(uri);
+                var xml = new XmlDocument();
+                xml.Load(stream);
+                return new ReadWriteControlFile(xml);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogException(() => $"MainViewModel:OpenControlFile", ex);
+                Observables.ToastMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.error_reading_control_file));
+                return null;
+            }
+        }
+
     }
 }
