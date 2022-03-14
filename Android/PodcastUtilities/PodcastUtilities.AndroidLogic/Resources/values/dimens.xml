@@ -3,4 +3,7 @@
 
 	<dimen name="info_padding">8dp</dimen>
 
+	<dimen name="listview_item_horizontal_padding">16dp</dimen>
+	<dimen name="listview_item_vertical_padding">8dp</dimen>
+
 </resources>

@@ -8,6 +8,7 @@ using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Xml;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Main
@@ -22,6 +23,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler NavigateToSettings;
             public EventHandler SelectControlFile;
             public EventHandler<string> ToastMessage;
+            public EventHandler<List<PodcastFeedRecyclerItem>> SetFeedItems;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -31,6 +33,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         private IApplicationControlFileProvider ApplicationControlFileProvider;
         private IFileSystemHelper FileSystemHelper;
         private IByteConverter ByteConverter;
+
+        private List<PodcastFeedRecyclerItem> AllFeedItems = new List<PodcastFeedRecyclerItem>(20);
 
         public MainViewModel(
             Application app,
@@ -54,6 +58,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         {
             Logger.Debug(() => $"MainViewModel:Initialise");
             Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.main_activity_title));
+            RefreshFeedList();
         }
 
         [Lifecycle.Event.OnResume]
@@ -81,6 +86,28 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                 Logger.LogException(() => $"MainViewModel:InitFileSystemInfo", ex);
                 // if we didnt add any drive info views then the default message will remain
             }
+        }
+
+        private void RefreshFeedList()
+        {
+            AllFeedItems.Clear();
+            int count = 0;
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            if (controlFile != null)
+            {
+                foreach (var podcastInfo in controlFile.GetPodcasts())
+                {
+                    Logger.Debug(() => $"MainViewModel:RefreshFeedList {podcastInfo.Folder}");
+                    var item = new PodcastFeedRecyclerItem()
+                    {
+                        PodcastFeed = podcastInfo,
+                        Selected = true
+                    };
+                    AllFeedItems.Add(item);
+                }
+                count++;
+            }
+            Observables.SetFeedItems?.Invoke(this, AllFeedItems);
         }
 
         private void AddFileSystem(string absolutePath)
@@ -156,7 +183,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             var controlFile = OpenControlFile(data);
             if (controlFile != null)
             {
-                controlFile.SaveToFile(ApplicationControlFileProvider.GetApplicationControlFilePath());
+                ApplicationControlFileProvider.ReplaceApplicationConfiguration(controlFile);
+                RefreshFeedList();
                 Observables.ToastMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.control_file_loaded));
             }
         }

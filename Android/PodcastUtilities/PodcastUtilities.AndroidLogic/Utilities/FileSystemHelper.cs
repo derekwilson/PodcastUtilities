@@ -16,6 +16,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         string GetApplicationFolderOnSdCard();
         List<string> GetFolderFiles(string foldername);
         string GetFileContents(string filename, bool addLineEndings);
+        bool Exists(string pathname);
     }
 
     public class FileSystemHelper : IFileSystemHelper
@@ -30,6 +31,16 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         {
             ApplicationContext = context;
             Logger = logger;
+        }
+
+        public bool Exists(string pathname)
+        {
+            var targetFile = new FileInfo(pathname);
+            if (targetFile != null)
+            {
+                return targetFile.Exists;
+            }
+            return false;
         }
 
         public string GetApplicationFolderOnSdCard(string subFolder, bool ensureExists)

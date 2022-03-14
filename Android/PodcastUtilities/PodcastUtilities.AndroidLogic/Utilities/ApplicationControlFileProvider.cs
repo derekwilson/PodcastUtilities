@@ -17,24 +17,29 @@ namespace PodcastUtilities.AndroidLogic.Utilities
     public interface IApplicationControlFileProvider
     {
         string GetApplicationControlFilePath();
-        ReadWriteControlFile LoadApplicationConfiguration();
+        IReadWriteControlFile GetApplicationConfiguration();
+        void ReplaceApplicationConfiguration(IReadWriteControlFile file);
     }
 
     public class ApplicationControlFileProvider : IApplicationControlFileProvider
     {
-        private Context ApplicationContext;
+        private IReadWriteControlFile ControlFile = null;
+        // do not make this anything other than private
+        private object SyncLock = new object();
+
         private ILogger Logger;
         private IFileSystemHelper FileSystemHelper;
+        private IControlFileFactory ControlFileFactory;
 
         public ApplicationControlFileProvider(
-            Context context,
             ILogger logger,
-            IFileSystemHelper fileSystemHelper
+            IFileSystemHelper fileSystemHelper,
+            IControlFileFactory factory
         )
         {
-            ApplicationContext = context;
             Logger = logger;
             FileSystemHelper = fileSystemHelper;
+            ControlFileFactory = factory;
         }
 
 
@@ -45,9 +50,38 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return fileName;
         }
 
-        public ReadWriteControlFile LoadApplicationConfiguration()
+        public IReadWriteControlFile GetApplicationConfiguration()
         {
-            return null;
+            lock (SyncLock)
+            {
+                if (ControlFile != null)
+                {
+                    return ControlFile;
+                }
+                try
+                {
+                    var filename = GetApplicationControlFilePath();
+                    Logger.Debug(() => $"ApplicationControlFileProvider:GetApplicationConfiguration loading {filename}");
+                    if (FileSystemHelper.Exists(filename))
+                    {
+                        Logger.Debug(() => $"ApplicationControlFileProvider:GetApplicationConfiguration exists {filename}");
+                        ControlFile = ControlFileFactory.OpenControlFile(filename);
+                    }
+                } catch (Exception ex) 
+                {
+                    Logger.LogException(() => $"ApplicationControlFileProvider:GetApplicationConfiguration", ex);
+                }
+            }
+            return ControlFile;
+        }
+
+        public void ReplaceApplicationConfiguration(IReadWriteControlFile file)
+        {
+            lock (SyncLock)
+            {
+                file.SaveToFile(GetApplicationControlFilePath());
+                ControlFile = file;
+            }
         }
     }
 }

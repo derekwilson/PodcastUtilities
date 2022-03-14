@@ -7,12 +7,15 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
+using AndroidX.RecyclerView.Widget;
+using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.UI.Settings;
 using System;
+using System.Collections.Generic;
 
 namespace PodcastUtilities
 {
@@ -28,6 +31,9 @@ namespace PodcastUtilities
 
         private LinearLayout DriveInfoContainerView = null;
         private TextView NoDriveDataView = null;
+        private EmptyRecyclerView RvFeeds;
+        private LinearLayout NoFeedView;
+        private PodcastFeedRecyclerItemAdapter FeedAdapter;
 
         private const int REQUEST_SELECT_FILE = 3000;
 
@@ -42,6 +48,14 @@ namespace PodcastUtilities
 
             DriveInfoContainerView = FindViewById<LinearLayout>(Resource.Id.drive_info_container);
             NoDriveDataView = FindViewById<TextView>(Resource.Id.txtNoData);
+            RvFeeds = FindViewById<EmptyRecyclerView>(Resource.Id.feed_list);
+            NoFeedView = FindViewById<LinearLayout>(Resource.Id.layNoFeed);
+
+            RvFeeds.SetLayoutManager(new LinearLayoutManager(this));
+            RvFeeds.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
+            RvFeeds.SetEmptyView(NoFeedView);
+            FeedAdapter = new PodcastFeedRecyclerItemAdapter(this);
+            RvFeeds.SetAdapter(FeedAdapter);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(MainViewModel))) as MainViewModel;
@@ -173,6 +187,7 @@ namespace PodcastUtilities
             ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings += NavigateToSettings;
             ViewModel.Observables.SelectControlFile += SelectControlFile;
+            ViewModel.Observables.SetFeedItems += SetFeedItems;
         }
 
         private void KillViewModelObservers()
@@ -182,6 +197,7 @@ namespace PodcastUtilities
             ViewModel.Observables.ShowNoDriveMessage -= ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings -= NavigateToSettings;
             ViewModel.Observables.SelectControlFile -= SelectControlFile;
+            ViewModel.Observables.SetFeedItems -= SetFeedItems;
         }
 
         private void SetTitle(object sender, string title)
@@ -252,6 +268,15 @@ namespace PodcastUtilities
             RunOnUiThread(() =>
             {
                 StartActivityForResult(intent, REQUEST_SELECT_FILE);
+            });
+        }
+
+        private void SetFeedItems(object sender, List<PodcastFeedRecyclerItem> items)
+        {
+            RunOnUiThread(() =>
+            {
+                FeedAdapter.SetItems(items);
+                FeedAdapter.NotifyDataSetChanged();
             });
         }
 
