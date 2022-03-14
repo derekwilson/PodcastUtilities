@@ -24,8 +24,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Xml;
-using System.Xml.XPath;
-using PodcastUtilities.Common.Exceptions;
 using PodcastUtilities.Common.Playlists;
 
 namespace PodcastUtilities.Common.Configuration
@@ -108,10 +106,15 @@ namespace PodcastUtilities.Common.Configuration
         public BaseControlFile(XmlDocument document)
         {
             SetHardcodedDefaults();
-            MemoryStream stream = new MemoryStream();
-            document.Save(stream);
-            stream.Position = 0;
-            ReadXml(XmlReader.Create(stream));
+            using (MemoryStream stream = new MemoryStream())
+            {
+                document.Save(stream);
+                stream.Position = 0;
+                using (XmlReader reader = XmlReader.Create(stream))
+                {
+                    ReadXml(reader);
+                }
+            }
         }
 
         /// <summary>

@@ -43,9 +43,13 @@ namespace PodcastUtilities.Common.Configuration
 		{
             XmlReaderSettings readSettings = new XmlReaderSettings { ConformanceLevel = ConformanceLevel.Fragment };
 
-            FileStream fileStream = new FileStream(fileName, FileMode.Open);
-
-            ReadXml(XmlReader.Create(fileStream, readSettings));
+            using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
+            {
+                using (XmlReader reader = XmlReader.Create(fileStream, readSettings))
+                {
+                    ReadXml(reader);
+                }
+            }
         }
 
         /// <summary>
@@ -271,16 +275,19 @@ namespace PodcastUtilities.Common.Configuration
                 Encoding = Encoding.UTF8
             };
 
-            FileStream fileStream = new FileStream(fileName,FileMode.Create);
-            var xmlWriter = XmlWriter.Create(fileStream, writeSettings);
+            using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
+            {
+                using (var xmlWriter = XmlWriter.Create(fileStream, writeSettings))
+                {
+                    // simulate the behaviour of XmlSerialisation
+                    xmlWriter.WriteStartElement("podcasts");
+                    WriteXml(xmlWriter);
+                    xmlWriter.WriteEndElement();
 
-            // simulate the behaviour of XmlSerialisation
-            xmlWriter.WriteStartElement("podcasts");
-            WriteXml(xmlWriter);
-            xmlWriter.WriteEndElement();
-
-            xmlWriter.Flush();
-            xmlWriter.Close();
+                    xmlWriter.Flush();
+                    xmlWriter.Close();
+                }
+            }
         }
 
         /// <summary>

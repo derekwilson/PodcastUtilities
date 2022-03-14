@@ -46,7 +46,10 @@ namespace PodcastUtilities.Common.Configuration
 
             using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
             {
-                ReadXml(XmlReader.Create(fileStream, readSettings));
+                using (XmlReader reader = XmlReader.Create(fileStream, readSettings))
+                {
+                    ReadXml(reader);
+                }
             };
         }
 

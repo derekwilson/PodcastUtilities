@@ -16,7 +16,6 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 {
     public interface IApplicationControlFileProvider
     {
-        string GetApplicationControlFilePath();
         IReadWriteControlFile GetApplicationConfiguration();
         void ReplaceApplicationConfiguration(IReadWriteControlFile file);
     }
@@ -43,7 +42,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         }
 
 
-        public string GetApplicationControlFilePath()
+        private string GetApplicationControlFilePath()
         {
             var folder = FileSystemHelper.GetApplicationFolderOnSdCard("config", true);
             var fileName = Path.Combine(folder, "PodcastUtilities.xml");
@@ -77,8 +76,10 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         public void ReplaceApplicationConfiguration(IReadWriteControlFile file)
         {
+            Logger.Debug(() => $"ApplicationControlFileProvider:ReplaceApplicationConfiguration");
             lock (SyncLock)
             {
+                ControlFile = null;
                 file.SaveToFile(GetApplicationControlFilePath());
                 ControlFile = file;
             }
