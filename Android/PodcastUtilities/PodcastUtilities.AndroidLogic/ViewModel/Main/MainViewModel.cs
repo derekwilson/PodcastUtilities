@@ -23,7 +23,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler NavigateToSettings;
             public EventHandler SelectControlFile;
             public EventHandler<string> ToastMessage;
-            public EventHandler<List<PodcastFeedRecyclerItem>> SetFeedItems;
+            public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>> SetFeedItems;
+            public EventHandler<string> SetCacheRoot;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -91,10 +92,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         private void RefreshFeedList()
         {
             AllFeedItems.Clear();
-            int count = 0;
+            var cacheRoot = "";
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             if (controlFile != null)
             {
+                cacheRoot = controlFile.GetSourceRoot();
                 foreach (var podcastInfo in controlFile.GetPodcasts())
                 {
                     Logger.Debug(() => $"MainViewModel:RefreshFeedList {podcastInfo.Folder}");
@@ -105,9 +107,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                     };
                     AllFeedItems.Add(item);
                 }
-                count++;
             }
-            Observables.SetFeedItems?.Invoke(this, AllFeedItems);
+            var heading = ResourceProvider.GetQuantityString(Resource.Plurals.feed_list_heading, AllFeedItems.Count);
+            Observables.SetCacheRoot?.Invoke(this, cacheRoot);
+            Observables.SetFeedItems?.Invoke(this, Tuple.Create(heading, AllFeedItems));
         }
 
         private void AddFileSystem(string absolutePath)

@@ -34,6 +34,8 @@ namespace PodcastUtilities
         private EmptyRecyclerView RvFeeds;
         private LinearLayout NoFeedView;
         private PodcastFeedRecyclerItemAdapter FeedAdapter;
+        private TextView CacheRoot = null;
+        private TextView FeedsTitle = null;
 
         private const int REQUEST_SELECT_FILE = 3000;
 
@@ -50,6 +52,8 @@ namespace PodcastUtilities
             NoDriveDataView = FindViewById<TextView>(Resource.Id.txtNoData);
             RvFeeds = FindViewById<EmptyRecyclerView>(Resource.Id.feed_list);
             NoFeedView = FindViewById<LinearLayout>(Resource.Id.layNoFeed);
+            CacheRoot = FindViewById<TextView>(Resource.Id.cache_root_value);
+            FeedsTitle = FindViewById<TextView>(Resource.Id.feed_list_label);
 
             RvFeeds.SetLayoutManager(new LinearLayoutManager(this));
             RvFeeds.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
@@ -188,6 +192,7 @@ namespace PodcastUtilities
             ViewModel.Observables.NavigateToSettings += NavigateToSettings;
             ViewModel.Observables.SelectControlFile += SelectControlFile;
             ViewModel.Observables.SetFeedItems += SetFeedItems;
+            ViewModel.Observables.SetCacheRoot += SetCacheRoot;
         }
 
         private void KillViewModelObservers()
@@ -198,6 +203,7 @@ namespace PodcastUtilities
             ViewModel.Observables.NavigateToSettings -= NavigateToSettings;
             ViewModel.Observables.SelectControlFile -= SelectControlFile;
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
+            ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
         }
 
         private void SetTitle(object sender, string title)
@@ -271,12 +277,22 @@ namespace PodcastUtilities
             });
         }
 
-        private void SetFeedItems(object sender, List<PodcastFeedRecyclerItem> items)
+        private void SetFeedItems(object sender, Tuple<string, List<PodcastFeedRecyclerItem>> feeditems)
+        {
+            (string heading, List<PodcastFeedRecyclerItem> items) = feeditems;
+            RunOnUiThread(() =>
+            {
+                FeedsTitle.Text = heading;
+                FeedAdapter.SetItems(items);
+                FeedAdapter.NotifyDataSetChanged();
+            });
+        }
+
+        private void SetCacheRoot(object sender, string root)
         {
             RunOnUiThread(() =>
             {
-                FeedAdapter.SetItems(items);
-                FeedAdapter.NotifyDataSetChanged();
+                CacheRoot.Text = root;
             });
         }
 

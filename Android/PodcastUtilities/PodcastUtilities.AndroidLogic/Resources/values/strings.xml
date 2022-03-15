@@ -18,7 +18,13 @@
 	<string name="drive_volume_total_label">Total Space</string>
 	<string name="no_sdcard">No storage found.</string>
 
-	<string name="feed_list_heading">Feeds</string>
+	<string name="cache_root_label">Cache root</string>
+
+	<plurals name="feed_list_heading">
+		<item quantity="one">%d feed</item>
+		<item quantity="other">%d feeds</item>
+	</plurals>
 	<string name="no_feeds_text">No Feeds.</string>
-	
+
+
 </resources>

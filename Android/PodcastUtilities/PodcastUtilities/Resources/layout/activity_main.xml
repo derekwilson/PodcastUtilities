@@ -37,11 +37,30 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/cache_root_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/cache_root_label"
+                android:layout_marginRight="4dp"
+                android:layout_marginEnd="4dp"
+                style="@style/ItemLabel" />
+
+            <TextView
+                android:id="@+id/cache_root_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/placeholder"
+                style="@style/ItemValueSmall"
+                />
+
+            <TextView
                 android:id="@+id/feed_list_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/feed_list_heading"
+                android:text="@string/placeholder"
                 android:layout_marginRight="4dp"
                 android:layout_marginEnd="4dp"
                 style="@style/ItemLabel" />
@@ -54,6 +73,7 @@
                 android:nestedScrollingEnabled="false"
                 android:overScrollMode="never">
         	</PodcastUtilities.AndroidLogic.CustomViews.EmptyRecyclerView>
+
 		    <LinearLayout
 			    android:id="@+id/layNoFeed"
 			    android:layout_width="match_parent"

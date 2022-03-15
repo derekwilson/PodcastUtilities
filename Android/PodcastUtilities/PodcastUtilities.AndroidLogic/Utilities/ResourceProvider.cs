@@ -14,6 +14,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
     public interface IResourceProvider
     {
         string GetString(int id);
+        string GetQuantityString(int id, int quantity);
     };
 
     public class AndroidResourceProvider : IResourceProvider
@@ -25,9 +26,15 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             ResourceContext = context;
         }
 
+        public string GetQuantityString(int id, int quantity)
+        {
+            return ResourceContext.Resources.GetQuantityString(id, quantity, quantity);
+        }
+
         public string GetString(int id)
         {
             return ResourceContext.GetString(id);
         }
+
     }
 }
