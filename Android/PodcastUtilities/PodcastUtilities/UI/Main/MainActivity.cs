@@ -132,7 +132,7 @@ namespace PodcastUtilities
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {requestCode}, {resultCode}");
             base.OnActivityResult(requestCode, resultCode, data);
 
-            AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {data.Data.ToString()}");
+            AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult data = {data?.Data?.ToString()}");
             switch (requestCode)
             {
                 // we asked for manage storage access in SDK30+
