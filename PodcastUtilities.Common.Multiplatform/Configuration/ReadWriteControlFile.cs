@@ -351,7 +351,6 @@ namespace PodcastUtilities.Common.Configuration
             writer.WriteElementString("deleteEmptyFolder", DefaultDeleteEmptyFolder.ToString(CultureInfo.InvariantCulture));
             writer.WriteElementString("sortfield", PodcastInfo.WriteSortField(DefaultSortField));
             writer.WriteElementString("sortdirection", PodcastInfo.WriteSortDirection(DefaultAscendingSort));
-            writer.WriteElementString("postdownloadcommand",DefaultPostDownloadCommand);
 
             writer.WriteStartElement("feed");
             writer.WriteElementString("maximumDaysOld", DefaultFeedMaximumDaysOld.ToString(CultureInfo.InvariantCulture));

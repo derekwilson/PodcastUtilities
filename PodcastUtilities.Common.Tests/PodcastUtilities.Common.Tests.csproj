@@ -94,6 +94,7 @@
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentPlaylistSeparator.cs" />
     <Compile Include="Configuration\ControlFileTests\Serialisation\Read\WhenReadingAControlFile.cs" />
+    <Compile Include="Configuration\ControlFileTests\Serialisation\Read\WhenReadingAControlFileWrittenByPodcastUtilities.cs" />
     <Compile Include="Configuration\ControlFileTests\WhenTestingAControlFile.cs" />
     <Compile Include="Configuration\DefaultableReferenceTypeItemTests\WhenCopyingADefaultedItem.cs" />
     <Compile Include="Configuration\DefaultableReferenceTypeItemTests\WhenCopyingANonDefaultedItem.cs" />
@@ -339,6 +340,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testcontrolfilewrittenbypodcastutilities.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
