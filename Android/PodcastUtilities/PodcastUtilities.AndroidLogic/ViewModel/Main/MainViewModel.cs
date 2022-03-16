@@ -25,6 +25,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler<string> ToastMessage;
             public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>> SetFeedItems;
             public EventHandler<string> SetCacheRoot;
+            public EventHandler NavigateToDownload;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -158,9 +159,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             {
                 return true;
             }
-            if (itemId == Resource.Id.action_load_config)
+            if (itemId == Resource.Id.action_load_control)
             {
                 return true;
+            }
+            if (itemId == Resource.Id.action_download)
+            {
+                return AllFeedItems.Count > 0;
             }
             return false;
         }
@@ -173,9 +178,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                 Observables.NavigateToSettings?.Invoke(this, null);
                 return true;
             }
-            if (itemId == Resource.Id.action_load_config)
+            if (itemId == Resource.Id.action_load_control)
             {
                 Observables.SelectControlFile?.Invoke(this, null);
+                return true;
+            }
+            if (itemId == Resource.Id.action_download)
+            {
+                Observables.NavigateToDownload?.Invoke(this, null);
                 return true;
             }
             return false;

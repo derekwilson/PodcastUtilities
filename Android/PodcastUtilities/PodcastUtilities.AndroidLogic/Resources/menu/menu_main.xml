@@ -2,14 +2,33 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
-	<item 
-		android:id="@+id/action_load_config"
-		android:title="@string/action_load_config"
-		app:showAsAction="never"/>
+	<group android:id="@+id/control" >
+		<item 
+			android:id="@+id/action_load_control"
+			android:title="@string/action_load_control"
+			app:showAsAction="never"/>
+	</group>
 
-	<item 
-		android:id="@+id/action_settings"
-		android:title="@string/action_settings"
-		app:showAsAction="never"/>
+	<group android:id="@+id/actions" >
+		<item
+			android:id="@+id/action_purge"
+			android:title="@string/action_purge"
+			app:showAsAction="never"/>
+		<item
+			android:id="@+id/action_download"
+			android:title="@string/action_download"
+			app:showAsAction="never"/>
+		<item
+			android:id="@+id/action_playlist"
+			android:title="@string/action_playlist"
+			app:showAsAction="never"/>
+	</group>
+
+	<group android:id="@+id/settings" >
+		<item
+			android:id="@+id/action_settings"
+			android:title="@string/action_settings"
+			app:showAsAction="never"/>
+	</group>
 
 </menu>

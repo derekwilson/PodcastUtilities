@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using AndroidX.Core.View;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
 using PodcastUtilities.AndroidLogic.Adapters;
@@ -13,6 +14,7 @@ using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
+using PodcastUtilities.UI.Download;
 using PodcastUtilities.UI.Settings;
 using System;
 using System.Collections.Generic;
@@ -155,12 +157,17 @@ namespace PodcastUtilities
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+            // we want a separator on the menu
+            MenuCompat.SetGroupDividerEnabled(menu, true);
             return base.OnCreateOptionsMenu(menu);
         }
 
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
-            EnableMenuItemIfAvailable(menu, Resource.Id.action_load_config);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_load_control);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_purge);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_download);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_playlist);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_settings);
             return true;
         }
@@ -193,6 +200,7 @@ namespace PodcastUtilities
             ViewModel.Observables.SelectControlFile += SelectControlFile;
             ViewModel.Observables.SetFeedItems += SetFeedItems;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
+            ViewModel.Observables.NavigateToDownload += NavigateToDownload;
         }
 
         private void KillViewModelObservers()
@@ -204,6 +212,7 @@ namespace PodcastUtilities
             ViewModel.Observables.SelectControlFile -= SelectControlFile;
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
+            ViewModel.Observables.NavigateToDownload -= NavigateToDownload;
         }
 
         private void SetTitle(object sender, string title)
@@ -251,6 +260,16 @@ namespace PodcastUtilities
             RunOnUiThread(() =>
             {
                 var intent = new Intent(this, typeof(SettingsActivity));
+                StartActivity(intent);
+            });
+        }
+
+        private void NavigateToDownload(object sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToDownload");
+            RunOnUiThread(() =>
+            {
+                var intent = new Intent(this, typeof(DownloadActivity));
                 StartActivity(intent);
             });
         }

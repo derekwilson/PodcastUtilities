@@ -6,6 +6,7 @@ using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
+using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.AndroidLogic.ViewModel.Settings;
 using PodcastUtilities.Common;
@@ -90,11 +91,13 @@ namespace PodcastUtilities
             container.Register<MainViewModel, MainViewModel>();
             container.Register<SettingsViewModel, SettingsViewModel>();
             container.Register<OpenSourceLicensesViewModel, OpenSourceLicensesViewModel>();
+            container.Register<DownloadViewModel, DownloadViewModel>();
 
             var factory = container.Resolve<ViewModelFactory>();
             factory.AddMap(typeof(MainViewModel));
             factory.AddMap(typeof(SettingsViewModel));
             factory.AddMap(typeof(OpenSourceLicensesViewModel));
+            factory.AddMap(typeof(DownloadViewModel));
             return container;
         }
 

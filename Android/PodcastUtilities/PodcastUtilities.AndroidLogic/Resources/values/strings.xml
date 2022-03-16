@@ -1,16 +1,22 @@
 <resources>
 	<string name="placeholder">placeholder</string>
 
+	<!-- permissions -->
 	<string name="ok">OK</string>
 	<string name="permissions_title">PodcastUtilities Permissions</string>
 	<string name="read_external_permissions_rationale">PodcastUtilities needs read access to storage</string>
 	<string name="write_external_permissions_rationale">PodcastUtilities needs write access to storage to be able to manage the podcast cache.</string>
 	<string name="manage_external_permissions_rationale">PodcastUtilities needs to manage external storage to be able to manage the podcast cache.</string>
 
-	<string name="action_settings">Settings</string>
-	<string name="action_load_config">Load Control File</string>
-
+	<!-- main activity -->
 	<string name="main_activity_title">PodcastUtilities Cache Manager</string>
+
+	<string name="action_load_control">Load Control File</string>
+	<string name="action_purge">Purge Podcasts</string>
+	<string name="action_download">Download Podcasts</string>
+	<string name="action_playlist">Generate Playlist</string>
+	<string name="action_settings">Settings</string>
+
 	<string name="control_file_loaded">Control file loaded</string>
 	<string name="error_reading_control_file">Cannot load control file</string>
 
@@ -26,5 +32,9 @@
 	</plurals>
 	<string name="no_feeds_text">No Feeds.</string>
 
+	<!-- download activity -->
+	<string name="download_activity_title">Download Podcasts</string>
+	<string name="no_downloads_text">No podcasts to download</string>
+	<string name="finding_podcasts_progress">Finding podcasts...</string>
 
 </resources>
