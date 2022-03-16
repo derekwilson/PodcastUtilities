@@ -31,10 +31,20 @@
 		<item quantity="other">%d feeds</item>
 	</plurals>
 	<string name="no_feeds_text">No Feeds.</string>
-
+	<string name="feed_sublabel_fmt">Max Days Old: {0}, Delete Days Old: {1}</string>
+	<string name="max_int">Max</string>
+	
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
 	<string name="no_downloads_text">No podcasts to download</string>
 	<string name="finding_podcasts_progress">Finding podcasts...</string>
+
+	<plurals name="download_activity_title_after_load">
+		<item quantity="one">%d Podcast Selected</item>
+		<item quantity="other">%d Podcasts Selected</item>
+	</plurals>
+
+	<string name="button_text_download">Download Selected</string>
+	<string name="download_activity_complete">Download Complete</string>
 
 </resources>

@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\DownloadRecyclerItemAdapter.cs" />
     <Compile Include="Adapters\PodcastFeedRecyclerItemAdapter.cs" />
     <Compile Include="CustomViews\EmptyRecyclerView.cs" />
     <Compile Include="CustomViews\ProgressSpinnerView.cs" />
@@ -67,7 +68,9 @@
     <Compile Include="Utilities\FileSystemHelper.cs" />
     <Compile Include="Utilities\PermissionChecker.cs" />
     <Compile Include="Utilities\PermissionRequester.cs" />
+    <Compile Include="Utilities\ProgressViewHelper.cs" />
     <Compile Include="Utilities\ResourceProvider.cs" />
+    <Compile Include="ViewModel\Download\DownloadRecyclerItem.cs" />
     <Compile Include="ViewModel\Download\DownloadViewModel.cs" />
     <Compile Include="ViewModel\Main\MainViewModel.cs" />
     <Compile Include="ViewModel\Main\PodcastFeedRecyclerItem.cs" />
@@ -134,6 +137,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\attrs_progress_spinner_view.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\list_item_downloaditem.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

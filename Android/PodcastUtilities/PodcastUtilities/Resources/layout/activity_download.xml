@@ -13,8 +13,8 @@
 		android:layout_height="0dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintBottom_toTopOf="@id/btnDownload"
 		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintBottom_toBottomOf="parent"
 		>
 
 		<podcastutilities.androidlogic.customviews.EmptyRecyclerView
@@ -44,6 +44,16 @@
 		</LinearLayout>
 
 	</FrameLayout>
+
+	<Button
+        android:id="@+id/btnDownload"
+        android:text="@string/button_text_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+	/>
 
     <!-- the order of the Spinner and the ScrollView is important
     in pre lollipop devices as elevation does not work -->
