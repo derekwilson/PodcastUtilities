@@ -254,7 +254,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 }
                 else
                 {
-                    Logger.Debug(() => $"DownloadViewModel:StatusUpdate {e.Message}");
+                    string id = "NONE";
+                    if (e.UserState != null && e.UserState is ISyncItem)
+                    {
+                        var item = e.UserState as ISyncItem;
+                        id = item.Id.ToString();
+                    }
+                    Logger.Debug(() => $"DownloadViewModel:StatusUpdate ID {id}, {e.Message}, Complete {e.IsTaskCompletedSuccessfully}");
                 }
             }
         }

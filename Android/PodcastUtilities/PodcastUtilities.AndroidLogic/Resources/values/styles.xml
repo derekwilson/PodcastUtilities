@@ -24,6 +24,10 @@
 		<item name="android:textColor">@color/data_value</item>
 	</style>
 
+	<style name="ItemListSubTitle2">
+		<item name="android:textSize">16sp</item>
+	</style>
+
 	<style name="ItemListSubTitle">
 		<item name="android:layout_centerHorizontal">true</item>
 		<item name="android:ellipsize">marquee</item>

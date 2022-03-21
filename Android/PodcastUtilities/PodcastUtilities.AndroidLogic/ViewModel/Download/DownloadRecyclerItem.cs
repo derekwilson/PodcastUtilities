@@ -15,6 +15,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
     public enum Status
     {
         OK,
+        Complete,
         Error,
         Warning,
         Information

@@ -1,5 +1,6 @@
 <resources>
 	<string name="placeholder">placeholder</string>
+	<string name="unknown">Unknown</string>
 
 	<!-- permissions -->
 	<string name="ok">OK</string>
@@ -31,9 +32,33 @@
 		<item quantity="other">%d feeds</item>
 	</plurals>
 	<string name="no_feeds_text">No Feeds.</string>
-	<string name="feed_sublabel_fmt">Max Days Old: {0}, Delete Days Old: {1}</string>
-	<string name="max_int">Max</string>
-	
+
+	<plurals name="feed_sublabel_download">
+		<item quantity="one">Get up to %d day ago</item>
+		<item quantity="other">Get up to %d days ago</item>
+	</plurals>
+	<string name="feed_sublabel_download_all">Get all episodes</string>
+
+	<plurals name="feed_sublabel_delete">
+		<item quantity="one">Delete after %d day old</item>
+		<item quantity="other">Delete after %d days old</item>
+	</plurals>
+	<string name="feed_sublabel_delete_never">Never delete</string>
+	<string name="feed_sublabel_fmt">{0}, {1}</string>
+
+	<string name="feed_naming_style_urlfilename">url</string>
+	<string name="feed_naming_style_urlfilenameandpublishdatetime">yyyy_mm_dd_HHMM_url</string>
+	<string name="feed_naming_style_urlfilenamefeedtitleandpublishdatetime">yyyy_mm_dd_HHMM_title_url</string>
+	<string name="feed_naming_style_urlfilenamefeedtitleandpublishdatetimeinfolder">yyyy_mm/yyyy_mm_dd_HHMM_title_url</string>
+	<string name="feed_naming_style_episodetitle">title</string>
+	<string name="feed_naming_style_episodetitleandpublishdatetime">yyyy_mm_dd_HHMM_title</string>
+
+	<string name="feed_download_stratagy_all">All</string>
+	<string name="feed_download_stratagy_hightide">High Tide</string>
+	<string name="feed_download_stratagy_latest">Latest</string>
+
+	<string name="feed_sublabel_fmt2">Name: {0}, Stratagy: {1}</string>
+
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
 	<string name="no_downloads_text">No podcasts to download</string>

@@ -103,8 +103,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                     Logger.Debug(() => $"MainViewModel:RefreshFeedList {podcastInfo.Folder}");
                     var item = new PodcastFeedRecyclerItem()
                     {
-                        PodcastFeed = podcastInfo,
-                        Selected = true
+                        PodcastFeed = podcastInfo
                     };
                     AllFeedItems.Add(item);
                 }
