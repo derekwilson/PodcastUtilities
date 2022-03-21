@@ -204,42 +204,42 @@ namespace PodcastUtilities.Common.Feeds
                             }
                             else
                             {
-                                OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Episode already downloaded: {0}", podcastFeedItem.EpisodeTitle));
+                                OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Episode already downloaded: {0}", podcastFeedItem.EpisodeTitle), podcastInfo);
                             }
                         }
                         else
                         {
-                            OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Episode too old: {0}", podcastFeedItem.EpisodeTitle));
+                            OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Episode too old: {0}", podcastFeedItem.EpisodeTitle), podcastInfo);
                         }
                     }
                 }
                 catch (Exception e)
                 {
-                    OnStatusError(string.Format(CultureInfo.InvariantCulture, "Error processing feed {0}: {1}", podcastInfo.Feed.Address, e.Message));
+                    OnStatusError(string.Format(CultureInfo.InvariantCulture, "Error processing feed {0}: {1}", podcastInfo.Feed.Address, e.Message), podcastInfo);
                 }
             }
 
             var filteredEpisodes = ApplyDownloadStrategy(stateKey, podcastInfo, episodesToDownload);
             foreach (var filteredEpisode in filteredEpisodes)
             {
-                OnStatusMessageUpdate(string.Format(CultureInfo.InvariantCulture, "Queued: {0}", filteredEpisode.EpisodeTitle));
+                OnStatusMessageUpdate(string.Format(CultureInfo.InvariantCulture, "Queued: {0}", filteredEpisode.EpisodeTitle), podcastInfo);
             }
             return filteredEpisodes;
         }
 
-        private void OnStatusVerbose(string message)
+        private void OnStatusVerbose(string message, PodcastInfo podcastInfo)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Verbose, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Verbose, message, false, podcastInfo));
         }
 
-        private void OnStatusMessageUpdate(string message)
+        private void OnStatusMessageUpdate(string message, PodcastInfo podcastInfo)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message, false, podcastInfo));
         }
 
-        private void OnStatusError(string message)
+        private void OnStatusError(string message, PodcastInfo podcastInfo)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Error, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Error, message, false, podcastInfo));
         }
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)

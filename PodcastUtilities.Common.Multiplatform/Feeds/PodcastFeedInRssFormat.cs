@@ -166,12 +166,12 @@ namespace PodcastUtilities.Common.Feeds
 
         private void OnStatusUpdate(string message)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Verbose, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Verbose, message, false, null));
         }
 
         private void OnWarningUpdate(string message)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Warning, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Warning, message, false, null));
         }
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)

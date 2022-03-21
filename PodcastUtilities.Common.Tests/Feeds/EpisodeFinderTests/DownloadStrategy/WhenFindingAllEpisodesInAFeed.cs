@@ -75,5 +75,13 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests.DownloadStrateg
                 Assert.That(episode.RetryWaitTimeInSeconds, Is.EqualTo(_retryWaitTime));
             }
         }
+
+        [Test]
+        public void ItShouldUpdateTheStatus()
+        {
+            Assert.That(_latestUpdate.MessageLevel, Is.EqualTo(StatusUpdateLevel.Status));
+            Assert.That(_latestUpdate.UserState, Is.SameAs(_podcastInfo));
+            Assert.That(_latestUpdate.IsTaskCompletedSuccessfully, Is.False);
+        }
     }
 }
