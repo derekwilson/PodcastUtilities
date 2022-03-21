@@ -43,6 +43,20 @@ namespace PodcastUtilities.AndroidLogic.Adapters
             item.ProgressPercentage = progress;
             return Items.IndexOf(item);
         }
+
+        public int SetItemStatus(Guid id, Status status, string message)
+        {
+            var item = GetItemById(id);
+            item.DownloadStatus = status;
+            var position = Items.IndexOf(item);
+            if (status == Status.Complete)
+            {
+                item.Selected = false;
+                ViewModel.SelectionChanged(position);
+            }
+            return position;
+        }
+
         public void SetReadOnly(bool readOnly)
         {
             this.ReadOnly = readOnly;
@@ -60,14 +74,37 @@ namespace PodcastUtilities.AndroidLogic.Adapters
 
             vh.Label.Text = Items[position].SyncItem.EpisodeTitle;
             vh.SubLabel.Text = Items[position].SyncItem.Published.ToShortDateString();
+            var fmt = Context.GetString(Resource.String.download_sublabel_fmt);
+            vh.SubLabel.Text = string.Format(fmt,
+                Items[position].SyncItem.Published.ToShortDateString(),
+                GetStatusText(Items[position].DownloadStatus)
+            );
 
             vh.Progress.Progress = Items[position].ProgressPercentage;
 
             vh.CheckBox.Checked = Items[position].Selected;
-            vh.CheckBox.Enabled = !ReadOnly;
+            vh.CheckBox.Enabled = !ReadOnly && Items[position].DownloadStatus != Status.Complete;
 
             vh.Container.Tag = position.ToString();
             vh.Container.Click += Container_Click;
+        }
+
+        private object GetStatusText(Status downloadStatus)
+        {
+            switch (downloadStatus)
+            {
+                case Status.OK:
+                    return "";
+                case Status.Complete:
+                    return Context.GetString(Resource.String.download_status_complete);
+                case Status.Error:
+                    return Context.GetString(Resource.String.download_status_error);
+                case Status.Warning:
+                    return Context.GetString(Resource.String.download_status_warning);
+                case Status.Information:
+                    return "";
+            }
+            return "";
         }
 
         private void Container_Click(object sender, EventArgs e)

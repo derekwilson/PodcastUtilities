@@ -81,6 +81,7 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.EndProgress += EndProgress;
             ViewModel.Observables.SetSyncItems += SetSyncItems;
             ViewModel.Observables.UpdateItemProgress += UpdateItemProgress;
+            ViewModel.Observables.UpdateItemStatus += UpdateItemStatus;
             ViewModel.Observables.DisplayMessage += ToastMessage;
             ViewModel.Observables.StartDownloading += StartDownloading;
             ViewModel.Observables.EndDownloading += EndDownloading;
@@ -95,6 +96,7 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.EndProgress -= EndProgress;
             ViewModel.Observables.SetSyncItems -= SetSyncItems;
             ViewModel.Observables.UpdateItemProgress -= UpdateItemProgress;
+            ViewModel.Observables.UpdateItemStatus += UpdateItemStatus;
             ViewModel.Observables.DisplayMessage -= ToastMessage;
             ViewModel.Observables.StartDownloading -= StartDownloading;
             ViewModel.Observables.EndDownloading -= EndDownloading;
@@ -115,6 +117,7 @@ namespace PodcastUtilities.UI.Download
             RunOnUiThread(() =>
             {
                 ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
+                DownloadButton.Enabled = true;
             });
         }
 
@@ -131,6 +134,7 @@ namespace PodcastUtilities.UI.Download
             RunOnUiThread(() =>
             {
                 ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
+                DownloadButton.Enabled = false;
             });
         }
 
@@ -152,6 +156,16 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
+        private void UpdateItemStatus(object sender, Tuple<ISyncItem, Status, string> updateItem)
+        {
+            RunOnUiThread(() =>
+            {
+                (ISyncItem item, Status status, string message) = updateItem;
+                var position = Adapter.SetItemStatus(item.Id, status, message);
+                Adapter.NotifyItemChanged(position);
+            });
+        }
+
         private void ToastMessage(object sender, string e)
         {
             throw new NotImplementedException();
@@ -162,6 +176,7 @@ namespace PodcastUtilities.UI.Download
             RunOnUiThread(() =>
             {
                 Adapter.SetReadOnly(true);
+                DownloadButton.Enabled = false;
             });
         }
 
@@ -170,6 +185,7 @@ namespace PodcastUtilities.UI.Download
             RunOnUiThread(() =>
             {
                 Adapter.SetReadOnly(false);
+                DownloadButton.Enabled = true;
                 Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
             });
         }

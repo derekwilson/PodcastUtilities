@@ -21,6 +21,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             public EventHandler EndProgress;
             public EventHandler<List<DownloadRecyclerItem>> SetSyncItems;
             public EventHandler<Tuple<ISyncItem, int>> UpdateItemProgress;
+            public EventHandler<Tuple<ISyncItem, Status, string>> UpdateItemStatus;
             public EventHandler<string> DisplayMessage;
             public EventHandler StartDownloading;
             public EventHandler<string> EndDownloading;
@@ -248,19 +249,29 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             lock (MessageSyncLock)
             {
                 // keep all the message together
+                ISyncItem item = null;
+                string id = "NONE";
+                if (e.UserState != null && e.UserState is ISyncItem)
+                {
+                    item = e.UserState as ISyncItem;
+                    id = item.Id.ToString();
+                }
                 if (e.Exception != null)
                 {
-                    Logger.LogException(() => $"DownloadViewModel:StatusUpdate -> ", e.Exception);
+                    Logger.LogException(() => $"DownloadViewModel:StatusUpdate ID {id} -> ", e.Exception);
+                    if (item != null)
+                    {
+                        Observables.UpdateItemStatus?.Invoke(this, Tuple.Create(item, Status.Error, e.Message));
+                    }
                 }
                 else
                 {
-                    string id = "NONE";
-                    if (e.UserState != null && e.UserState is ISyncItem)
-                    {
-                        var item = e.UserState as ISyncItem;
-                        id = item.Id.ToString();
-                    }
                     Logger.Debug(() => $"DownloadViewModel:StatusUpdate ID {id}, {e.Message}, Complete {e.IsTaskCompletedSuccessfully}");
+                    Status status = (e.IsTaskCompletedSuccessfully ? Status.Complete : Status.Information);
+                    if (item != null)
+                    {
+                        Observables.UpdateItemStatus?.Invoke(this, Tuple.Create(item, status, e.Message));
+                    }
                 }
             }
         }

@@ -69,6 +69,11 @@
 		<item quantity="other">%d Podcasts Selected</item>
 	</plurals>
 
+	<string name="download_status_complete">Complete</string>
+	<string name="download_status_error">Error</string>
+	<string name="download_status_warning">Warning</string>
+	<string name="download_sublabel_fmt">{0} {1}</string>
+
 	<string name="button_text_download">Download Selected</string>
 	<string name="download_activity_complete">Download Complete</string>
 
