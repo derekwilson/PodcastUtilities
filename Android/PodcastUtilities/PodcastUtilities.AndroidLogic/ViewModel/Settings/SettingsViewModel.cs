@@ -1,16 +1,10 @@
 ﻿using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Platform;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
@@ -27,12 +21,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
         private IAndroidApplication AndroidApplication;
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
+        private ICrashReporter CrashReporter;
 
         public SettingsViewModel(
             Application app,
             ILogger logger,
             IResourceProvider resProvider,
-            IAndroidApplication androidApplication) : base(app)
+            IAndroidApplication androidApplication, 
+            ICrashReporter crashReporter) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"SettingsViewModel:ctor");
@@ -40,6 +36,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             ApplicationContext = app;
             ResourceProvider = resProvider;
             AndroidApplication = androidApplication;
+            CrashReporter = crashReporter;
         }
 
         public void Initialise()
@@ -53,6 +50,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
                 builder.AppendLine(line);
             }
             Observables.Version?.Invoke(this, builder.ToString());
+        }
+
+        public void TestCrashReporting()
+        {
+            CrashReporter.testReporting();
         }
     }
 }

@@ -2,6 +2,12 @@
     <string name="app_name">PodcastUtilities</string>
 	<string name="app_name_debug">Dbg PodcastUtilities</string>
 
+	<!-- 
+	Bonkers - but see
+	https://github.com/a-imai/XamarinCrashlyticsUpgradeSample
+	https://docs.microsoft.com/en-us/answers/questions/450181/android-firebase-crashlytics-build-id-is-missing.html
+	-->
+	<string name="com.google.firebase.crashlytics.mapping_file_id">none</string>
 
 	<!-- Settings -->
 	<string name="settings_activity">Settings</string>

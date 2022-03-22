@@ -82,6 +82,7 @@ namespace PodcastUtilities
             // helpers
             container.Register<IAndroidApplication>(this);
             container.Register<ILogger>(Logger);
+            container.Register<ICrashReporter, CrashReporter>(IocLifecycle.Singleton);
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
             container.Register<IFileSystemHelper, FileSystemHelper>(IocLifecycle.Singleton);
             container.Register<IApplicationControlFileProvider, ApplicationControlFileProvider>(IocLifecycle.Singleton);

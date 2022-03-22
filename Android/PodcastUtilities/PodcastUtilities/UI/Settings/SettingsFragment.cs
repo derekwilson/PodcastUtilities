@@ -102,6 +102,9 @@ namespace PodcastUtilities.UI.Settings
 
         private void VersionClick()
         {
+#if DEBUG
+            ViewModel.TestCrashReporting();
+#endif
         }
 
         public void OnSharedPreferenceChanged(ISharedPreferences sharedPreferences, string key)
