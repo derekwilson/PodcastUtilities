@@ -1,16 +1,7 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using PodcastUtilities.AndroidLogic.Logging;
+﻿using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.Common.Configuration;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {

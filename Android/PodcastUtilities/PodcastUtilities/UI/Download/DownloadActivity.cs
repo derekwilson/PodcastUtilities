@@ -1,5 +1,7 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
@@ -10,6 +12,7 @@ using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.Common.Feeds;
+using PodcastUtilities.UI.Messages;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -73,6 +76,32 @@ namespace PodcastUtilities.UI.Download
             KillViewModelObservers();
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_download, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnPrepareOptionsMenu(IMenu menu)
+        {
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_display_logs);
+            return true;
+        }
+
+        private void EnableMenuItemIfAvailable(IMenu menu, int itemId)
+        {
+            menu.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (ViewModel.ActionSelected(item.ItemId))
+            {
+                return true;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.Title += SetTitle;
@@ -86,6 +115,7 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.StartDownloading += StartDownloading;
             ViewModel.Observables.EndDownloading += EndDownloading;
             ViewModel.Observables.Exit += Exit;
+            ViewModel.Observables.NavigateToDisplayLogs += NavigateToDisplayLogs;
         }
 
         private void KillViewModelObservers()
@@ -101,6 +131,7 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.StartDownloading -= StartDownloading;
             ViewModel.Observables.EndDownloading -= EndDownloading;
             ViewModel.Observables.Exit -= Exit;
+            ViewModel.Observables.NavigateToDisplayLogs -= NavigateToDisplayLogs;
         }
 
         private void SetSyncItems(object sender, List<DownloadRecyclerItem> items)
@@ -195,6 +226,16 @@ namespace PodcastUtilities.UI.Download
             RunOnUiThread(() =>
             {
                 Finish();
+            });
+        }
+
+        private void NavigateToDisplayLogs(object sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity: NavigateToDisplayLogs");
+            RunOnUiThread(() =>
+            {
+                var intent = new Intent(this, typeof(MessagesActivity));
+                StartActivity(intent);
             });
         }
     }

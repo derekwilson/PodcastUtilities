@@ -26,7 +26,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             public EventHandler StartDownloading;
             public EventHandler<string> EndDownloading;
             public EventHandler Exit;
-
+            public EventHandler NavigateToDisplayLogs;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -39,7 +39,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         private IEpisodeFinder PodcastEpisodeFinder;
         private ISyncItemToEpisodeDownloaderTaskConverter Converter;
         private ITaskPool TaskPool;
-
+        private ICrashReporter CrashReporter;
+        private IAnalyticsEngine AnalyticsEngine;
+        private IStatusAndProgressMessageStore MessageStore;
 
         private List<DownloadRecyclerItem> AllItems = new List<DownloadRecyclerItem>(20);
         private bool StartedFindingPodcasts = false;
@@ -60,8 +62,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             IByteConverter byteConverter,
             IEpisodeFinder podcastEpisodeFinder,
             ISyncItemToEpisodeDownloaderTaskConverter converter,
-            ITaskPool taskPool
-            ) : base(app)
+            ITaskPool taskPool,
+            ICrashReporter crashReporter,
+            IAnalyticsEngine analyticsEngine, 
+            IStatusAndProgressMessageStore messageStore) : base(app)
         {
             ApplicationContext = app;
             Logger = logger;
@@ -72,12 +76,36 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             PodcastEpisodeFinder = podcastEpisodeFinder;
             Converter = converter;
             TaskPool = taskPool;
+            CrashReporter = crashReporter;
+            AnalyticsEngine = analyticsEngine;
+            MessageStore = messageStore;
         }
 
         public void Initialise()
         {
             Logger.Debug(() => $"DownloadViewModel:Initialise");
             Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_title));
+        }
+
+        public bool ActionSelected(int itemId)
+        {
+            Logger.Debug(() => $"DownloadViewModel:ActionSelected = {itemId}");
+            if (itemId == Resource.Id.action_display_logs)
+            {
+                Observables.NavigateToDisplayLogs?.Invoke(this, null);
+                return true;
+            }
+            return false;
+        }
+
+        public bool IsActionAvailable(int itemId)
+        {
+            Logger.Debug(() => $"DownloadViewModel:isActionAvailable = {itemId}");
+            if (itemId == Resource.Id.action_display_logs)
+            {
+                return true;
+            }
+            return false;
         }
 
         public void FindEpisodesToDownload()
@@ -107,6 +135,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                     return;
                 }
                 StartedFindingPodcasts = true;
+                MessageStore.Reset();
             }
 
             foreach (var item in controlFile.GetPodcasts())
@@ -128,7 +157,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                     controlFile.GetDiagnosticRetainTemporaryFiles());
                 foreach (var episode in episodesInThisFeed)
                 {
-                    Logger.Debug(() => $"DownloadViewModel:FindEpisodesToDownload {episode.Id}, {episode.EpisodeTitle}");
+                    var line = $"{episode.Id}, {episode.EpisodeTitle}";
+                    Logger.Debug(() => $"DownloadViewModel:FindEpisodesToDownload {line}");
+                    MessageStore.StoreMessage(episode.Id, line);
                     var item = new DownloadRecyclerItem()
                     {
                         SyncItem = episode,
@@ -139,6 +170,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                     AllItems.Add(item);
                 }
                 count++;
+                AnalyticsEngine.DownloadFeedEvent(episodesInThisFeed.Count);
                 Observables.UpdateProgress?.Invoke(this, count);
             }
             CompletedFindingPodcasts = true;
@@ -215,6 +247,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                                                     DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
                                                     e.ProgressPercentage);
                     Logger.Debug(() => line);
+                    MessageStore.StoreMessage(syncItem.Id, line);
+                    if (e.ProgressPercentage == 100)
+                    {
+                        AnalyticsEngine.DownloadEpisodeEvent(ByteConverter.BytesToMegabytes(e.TotalItemsToProcess));
+                    }
                     Observables.UpdateItemProgress?.Invoke(this, Tuple.Create(syncItem, e.ProgressPercentage));
                 }
                 var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
@@ -259,8 +296,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 if (e.Exception != null)
                 {
                     Logger.LogException(() => $"DownloadViewModel:StatusUpdate ID {id} -> ", e.Exception);
+                    CrashReporter.LogNonFatalException(e.Exception);
                     if (item != null)
                     {
+                        MessageStore.StoreMessage(item.Id, e.Message);
+                        MessageStore.StoreMessage(item.Id, e.Exception.ToString());
                         Observables.UpdateItemStatus?.Invoke(this, Tuple.Create(item, Status.Error, e.Message));
                     }
                 }
@@ -268,8 +308,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 {
                     Logger.Debug(() => $"DownloadViewModel:StatusUpdate ID {id}, {e.Message}, Complete {e.IsTaskCompletedSuccessfully}");
                     Status status = (e.IsTaskCompletedSuccessfully ? Status.Complete : Status.Information);
+                    if (status == Status.Complete)
+                    {
+                        AnalyticsEngine.DownloadEpisodeCompleteEvent();
+                    }
                     if (item != null)
                     {
+                        MessageStore.StoreMessage(item.Id, e.Message);
                         Observables.UpdateItemStatus?.Invoke(this, Tuple.Create(item, status, e.Message));
                     }
                 }

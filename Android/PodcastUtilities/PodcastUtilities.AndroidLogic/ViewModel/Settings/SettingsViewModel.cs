@@ -54,7 +54,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
 
         public void TestCrashReporting()
         {
-            CrashReporter.testReporting();
+            CrashReporter.TestReporting();
         }
     }
 }

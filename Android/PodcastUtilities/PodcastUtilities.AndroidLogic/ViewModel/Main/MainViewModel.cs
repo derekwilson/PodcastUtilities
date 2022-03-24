@@ -151,7 +151,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             return retval;
         }
 
-        public bool isActionAvailable(int itemId)
+        public bool IsActionAvailable(int itemId)
         {
             Logger.Debug(() => $"MainViewModel:isActionAvailable = {itemId}");
             if (itemId == Resource.Id.action_settings)

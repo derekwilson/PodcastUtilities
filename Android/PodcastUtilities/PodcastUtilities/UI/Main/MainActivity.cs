@@ -174,7 +174,7 @@ namespace PodcastUtilities
 
         private void EnableMenuItemIfAvailable(IMenu menu, int itemId)
         {
-            menu.FindItem(itemId)?.SetEnabled(ViewModel.isActionAvailable(itemId));
+            menu.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

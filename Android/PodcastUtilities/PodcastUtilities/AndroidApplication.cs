@@ -8,6 +8,7 @@ using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
+using PodcastUtilities.AndroidLogic.ViewModel.Messages;
 using PodcastUtilities.AndroidLogic.ViewModel.Settings;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Platform;
@@ -82,23 +83,27 @@ namespace PodcastUtilities
             // helpers
             container.Register<IAndroidApplication>(this);
             container.Register<ILogger>(Logger);
-            container.Register<ICrashReporter, CrashReporter>(IocLifecycle.Singleton);
+            container.Register<ICrashReporter, CrashlyticsReporter>(IocLifecycle.Singleton);
+            container.Register<IAnalyticsEngine, FirebaseAnalyticsEngine>(IocLifecycle.Singleton);
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
             container.Register<IFileSystemHelper, FileSystemHelper>(IocLifecycle.Singleton);
             container.Register<IApplicationControlFileProvider, ApplicationControlFileProvider>(IocLifecycle.Singleton);
             container.Register<IByteConverter, ByteConverter>(IocLifecycle.Singleton);
+            container.Register<IStatusAndProgressMessageStore, StatusAndProgressMessageStore>(IocLifecycle.Singleton);
             // view models
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);
             container.Register<MainViewModel, MainViewModel>();
             container.Register<SettingsViewModel, SettingsViewModel>();
             container.Register<OpenSourceLicensesViewModel, OpenSourceLicensesViewModel>();
             container.Register<DownloadViewModel, DownloadViewModel>();
+            container.Register<MessagesViewModel, MessagesViewModel>();
 
             var factory = container.Resolve<ViewModelFactory>();
             factory.AddMap(typeof(MainViewModel));
             factory.AddMap(typeof(SettingsViewModel));
             factory.AddMap(typeof(OpenSourceLicensesViewModel));
             factory.AddMap(typeof(DownloadViewModel));
+            factory.AddMap(typeof(MessagesViewModel));
             return container;
         }
 
