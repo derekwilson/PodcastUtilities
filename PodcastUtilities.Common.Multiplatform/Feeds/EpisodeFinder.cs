@@ -244,8 +244,7 @@ namespace PodcastUtilities.Common.Feeds
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)
         {
-            if (StatusUpdate != null)
-                StatusUpdate(this, e);
+            StatusUpdate?.Invoke(this, e);
         }
     }
 }

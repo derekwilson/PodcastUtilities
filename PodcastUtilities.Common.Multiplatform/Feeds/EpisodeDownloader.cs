@@ -188,8 +188,7 @@ namespace PodcastUtilities.Common.Feeds
 
         private void OnProgressUpdate(ProgressEventArgs e)
         {
-            if (ProgressUpdate != null)
-                ProgressUpdate(this, e);
+            ProgressUpdate?.Invoke(this, e);
         }
 
         private int ConvertBytesToMB(long bytes)
@@ -302,8 +301,7 @@ namespace PodcastUtilities.Common.Feeds
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)
         {
-            if (StatusUpdate != null)
-                StatusUpdate(this, e);
+            StatusUpdate?.Invoke(this, e);
         }
 
         /// <summary>

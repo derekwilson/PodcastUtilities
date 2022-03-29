@@ -40,8 +40,7 @@ namespace PodcastUtilities.Common.Platform
 
         private void OnProgressUpdate(ProgressEventArgs e)
         {
-            if (ProgressUpdate != null)
-                ProgressUpdate(this, e);
+            ProgressUpdate?.Invoke(this, e);
         }
 
         /// <summary>

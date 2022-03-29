@@ -69,8 +69,7 @@ namespace PodcastUtilities.Common.Playlists
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)
         {
-            if (StatusUpdate != null)
-                StatusUpdate(this, e);
+            StatusUpdate?.Invoke(this, e);
         }
 
         /// <summary>
