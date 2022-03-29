@@ -30,6 +30,8 @@ namespace PodcastUtilities
         public String DisplayVersion { get; private set; }
         public IIocContainer IocContainer { get; private set; }
 
+        private IAnalyticsEngine Analytics;
+
         // we must have a ctor or the app will not start
         protected AndroidApplication(System.IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
@@ -43,12 +45,14 @@ namespace PodcastUtilities
 
         private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
         {
-            Logger.LogException(() => "TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
+            Logger?.LogException(() => "TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
+            Analytics?.LifecycleErrorFatalEvent();
         }
 
         private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
         {
-            Logger.LogException(() => "CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
+            Logger?.LogException(() => "CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
+            Analytics?.LifecycleErrorFatalEvent();
         }
 
         /// <summary>
@@ -149,6 +153,8 @@ namespace PodcastUtilities
                 Logger.Debug(() => $"AndroidApplication:{line}");
             }
 
+            Analytics = IocContainer.Resolve<IAnalyticsEngine>();
+            Analytics?.LifecycleLaunchEvent();
         }
     }
 }

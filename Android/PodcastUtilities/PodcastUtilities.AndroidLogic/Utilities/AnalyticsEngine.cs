@@ -9,15 +9,22 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void DownloadFeedEvent(int numberOfItems);
         void DownloadEpisodeEvent(long sizeInMB);
         void DownloadEpisodeCompleteEvent();
+        public void LoadControlFileEvent();
+        public void LifecycleLaunchEvent();
+        public void LifecycleErrorEvent();
+        public void LifecycleErrorFatalEvent();
+
     }
 
     public class FirebaseAnalyticsEngine : IAnalyticsEngine
     {
         private Context ApplicationContext;
+        private IAndroidApplication Application;
 
-        public FirebaseAnalyticsEngine(Context applicationContext)
+        public FirebaseAnalyticsEngine(Context applicationContext, IAndroidApplication application)
         {
             ApplicationContext = applicationContext;
+            Application = application;
         }
 
         private void SendEvent(string eventName, string eventCategory, string eventAction, string eventLabel, string eventValue)
@@ -45,6 +52,12 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Action_Download_Feed = "Download_Feed";
         private const string Action_Download_Episode = "Download_Episode";
         private const string Action_Download_Episode_Complete = "Download_Episode_Complete";
+        private const string Category_Load = "Load";
+        private const string Action_Load_ControlFile = "Load_ControlFile";
+        private const string Category_Lifecycle = "Lifecycle";
+        private const string Action_Lifecycle_Launch = "Lifecycle_Launch";
+        private const string Action_Lifecycle_Error = "Lifecycle_Error";
+        private const string Action_Lifecycle_ErrorFatal = "Lifecycle_ErrorFatal";
 
         public void DownloadFeedEvent(int numberOfItems)
         {
@@ -75,6 +88,50 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 Category_Download,
                 Action_Download_Episode_Complete,
                 null,
+                null
+                );
+        }
+
+        public void LoadControlFileEvent()
+        {
+            SendEvent(
+                FirebaseAnalytics.Event.SelectContent,
+                Category_Load,
+                Action_Load_ControlFile,
+                null,
+                null
+                );
+        }
+
+        public void LifecycleLaunchEvent()
+        {
+            SendEvent(
+                FirebaseAnalytics.Event.SelectContent,
+                Category_Lifecycle,
+                Action_Lifecycle_Launch,
+                Action_Lifecycle_Launch + Seperator + Application.DisplayVersion,
+                null
+                );
+        }
+
+        public void LifecycleErrorEvent()
+        {
+            SendEvent(
+                FirebaseAnalytics.Event.SelectContent,
+                Category_Lifecycle,
+                Action_Lifecycle_Error,
+                Action_Lifecycle_Error + Seperator + Application.DisplayVersion,
+                null
+                );
+        }
+
+        public void LifecycleErrorFatalEvent()
+        {
+            SendEvent(
+                FirebaseAnalytics.Event.SelectContent,
+                Category_Lifecycle,
+                Action_Lifecycle_ErrorFatal,
+                Action_Lifecycle_ErrorFatal + Seperator + Application.DisplayVersion,
                 null
                 );
         }
