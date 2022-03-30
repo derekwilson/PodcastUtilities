@@ -46,6 +46,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         private List<DownloadRecyclerItem> AllItems = new List<DownloadRecyclerItem>(20);
         private bool StartedFindingPodcasts = false;
         private bool CompletedFindingPodcasts = false;
+        private bool DownloadingInProgress = false;
+        private bool ExitRequested = false;
         private int FeedCount = 0;
 
         // do not make this anything other than private
@@ -85,6 +87,20 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         {
             Logger.Debug(() => $"DownloadViewModel:Initialise");
             Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_title));
+        }
+
+        public bool RequestExit()
+        {
+            Logger.Debug(() => $"DownloadViewModel:RequestExit");
+            if (DownloadingInProgress)
+            {
+                Logger.Debug(() => $"DownloadViewModel:RequestExit - download in progress");
+                TaskPool.CancelAllTasks();
+                ExitRequested = true;
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_cancelling));
+                return false;
+            }
+            return true;
         }
 
         public bool ActionSelected(int itemId)
@@ -210,6 +226,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 return;
             }
 
+            lock (SyncLock)
+            {
+                if (DownloadingInProgress)
+                {
+                    Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts - already in progress - ignored");
+                    return;
+                }
+                DownloadingInProgress = true;
+            }
+
             Observables.StartDownloading?.Invoke(this, null);
 
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
@@ -227,11 +253,17 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
             // run them in a task pool
             TaskPool.RunAllTasks(numberOfConnections, downloadTasks);
+            Logger.Debug(() => $"DownloadViewModel:Download tasks complete");
+            DownloadingInProgress = false;
         }
 
         public void DownloadComplete()
         {
             Observables.EndDownloading?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_complete));
+            if (ExitRequested)
+            {
+                Observables.Exit?.Invoke(this, null);
+            }
         }
 
         void DownloadProgressUpdate(object sender, ProgressEventArgs e)

@@ -76,6 +76,17 @@ namespace PodcastUtilities.UI.Download
             KillViewModelObservers();
         }
 
+        public override void OnBackPressed()
+        {
+            if (ViewModel.RequestExit())
+            {
+                AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnBackPressed - exit");
+                base.OnBackPressed();
+                return;
+            }
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnBackPressed - exit not allowed");
+        }
+
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_download, menu);
@@ -95,6 +106,11 @@ namespace PodcastUtilities.UI.Download
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                OnBackPressed();
+                return true;
+            }
             if (ViewModel.ActionSelected(item.ItemId))
             {
                 return true;
@@ -197,9 +213,12 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void ToastMessage(object sender, string e)
+        private void ToastMessage(object sender, string message)
         {
-            throw new NotImplementedException();
+            RunOnUiThread(() =>
+            {
+                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+            });
         }
 
         private void StartDownloading(object sender, EventArgs e)
@@ -223,6 +242,7 @@ namespace PodcastUtilities.UI.Download
 
         private void Exit(object sender, EventArgs e)
         {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity: Exit");
             RunOnUiThread(() =>
             {
                 Finish();

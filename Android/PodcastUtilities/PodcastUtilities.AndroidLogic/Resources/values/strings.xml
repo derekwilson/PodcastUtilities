@@ -77,6 +77,8 @@
 	<string name="button_text_download">Download Selected</string>
 	<string name="download_activity_complete">Download Complete</string>
 
+	<string name="download_activity_cancelling">Cancelling downloads</string>
+
 	<!-- display logs activity -->
 	<string name="action_display_logs">Display Logs</string>
 	
