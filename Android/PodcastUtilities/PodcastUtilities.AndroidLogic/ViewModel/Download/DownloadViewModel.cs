@@ -27,6 +27,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             public EventHandler<string> EndDownloading;
             public EventHandler Exit;
             public EventHandler NavigateToDisplayLogs;
+            public EventHandler<Tuple<string, string, string>> ExitPrompt;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -95,12 +96,24 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             if (DownloadingInProgress)
             {
                 Logger.Debug(() => $"DownloadViewModel:RequestExit - download in progress");
-                TaskPool.CancelAllTasks();
-                ExitRequested = true;
-                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_cancelling));
+                Observables.ExitPrompt?.Invoke(this, 
+                    Tuple.Create(
+                        ResourceProvider.GetString(Resource.String.download_activity_exit_prompt),
+                        ResourceProvider.GetString(Resource.String.download_activity_exit_ok),
+                        ResourceProvider.GetString(Resource.String.download_activity_exit_cancel)
+                    )
+                    );
                 return false;
             }
             return true;
+        }
+
+        public void CancelAllJobsAndExit()
+        {
+            Logger.Debug(() => $"DownloadViewModel:CancelAllJobsAndExit");
+            TaskPool.CancelAllTasks();
+            ExitRequested = true;
+            Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_cancelling));
         }
 
         public bool ActionSelected(int itemId)

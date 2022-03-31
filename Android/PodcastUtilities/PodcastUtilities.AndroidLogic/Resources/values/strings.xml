@@ -77,6 +77,10 @@
 	<string name="button_text_download">Download Selected</string>
 	<string name="download_activity_complete">Download Complete</string>
 
+	<string name="download_activity_exit_prompt">OK to cancel all downloads?</string>
+	<string name="download_activity_exit_ok">Cancel Downloads</string>
+	<string name="download_activity_exit_cancel">Continue</string>
+
 	<string name="download_activity_cancelling">Cancelling downloads</string>
 
 	<!-- display logs activity -->

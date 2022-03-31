@@ -23,6 +23,8 @@ namespace PodcastUtilities.UI.Download
     [Activity(ParentActivity = typeof(MainActivity))]
     public class DownloadActivity : AppCompatActivity
     {
+        private const string EXIT_PROMPT_TAG = "exit_prompt_tag";
+
         private DownloadViewModel ViewModel;
 
         private AndroidApplication AndroidApplication;
@@ -31,6 +33,7 @@ namespace PodcastUtilities.UI.Download
         private ProgressSpinnerView ProgressSpinner;
         private DownloadRecyclerItemAdapter Adapter;
         private Button DownloadButton;
+        private OkCancelDialogFragment ExitPromptDialogFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -67,13 +70,18 @@ namespace PodcastUtilities.UI.Download
             Task.Run(() => ViewModel.DownloadAllPodcasts())
                     .ContinueWith(t => ViewModel.DownloadComplete());
 
+            ExitPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(EXIT_PROMPT_TAG) as OkCancelDialogFragment;
+            SetupFragmentObservers(ExitPromptDialogFragment);
+
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate - end");
         }
 
         protected override void OnDestroy()
         {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnDestroy");
             base.OnDestroy();
             KillViewModelObservers();
+            KillFragmentObservers(ExitPromptDialogFragment);
         }
 
         public override void OnBackPressed()
@@ -132,6 +140,7 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.EndDownloading += EndDownloading;
             ViewModel.Observables.Exit += Exit;
             ViewModel.Observables.NavigateToDisplayLogs += NavigateToDisplayLogs;
+            ViewModel.Observables.ExitPrompt += ExitPrompt;
         }
 
         private void KillViewModelObservers()
@@ -148,7 +157,57 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.EndDownloading -= EndDownloading;
             ViewModel.Observables.Exit -= Exit;
             ViewModel.Observables.NavigateToDisplayLogs -= NavigateToDisplayLogs;
+            ViewModel.Observables.ExitPrompt -= ExitPrompt;
         }
+
+        private void SetupFragmentObservers(OkCancelDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"DownloadActivity: SetupFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected += OkSelected;
+                fragment.CancelSelected += CancelSelected;
+            }
+        }
+
+        private void KillFragmentObservers(OkCancelDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"DownloadActivity: KillFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected -= OkSelected;
+                fragment.CancelSelected -= CancelSelected;
+            }
+        }
+
+        private void CancelSelected(object sender, Tuple<string, string> parameters)
+        {
+            (string tag, string data) = parameters;
+            AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
+            switch (tag)
+            {
+                case EXIT_PROMPT_TAG:
+                    KillFragmentObservers(ExitPromptDialogFragment);
+                    break;
+            }
+        }
+
+        private void OkSelected(object sender, Tuple<string, string> parameters)
+        {
+            (string tag, string data) = parameters;
+            AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
+            RunOnUiThread(() =>
+            {
+                switch (tag)
+                {
+                    case EXIT_PROMPT_TAG:
+                        KillFragmentObservers(ExitPromptDialogFragment);
+                        ViewModel.CancelAllJobsAndExit();
+                        break;
+                }
+            });
+        }
+
 
         private void SetSyncItems(object sender, List<DownloadRecyclerItem> items)
         {
@@ -236,6 +295,7 @@ namespace PodcastUtilities.UI.Download
             {
                 Adapter.SetReadOnly(false);
                 DownloadButton.Enabled = true;
+                ExitPromptDialogFragment?.Dismiss();
                 Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
             });
         }
@@ -246,6 +306,17 @@ namespace PodcastUtilities.UI.Download
             RunOnUiThread(() =>
             {
                 Finish();
+            });
+        }
+
+        private void ExitPrompt(object sender, Tuple<string, string, string> parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                (string message, string ok, string cancel) = parameters;
+                ExitPromptDialogFragment = OkCancelDialogFragment.NewInstance(message, ok, cancel, null);
+                SetupFragmentObservers(ExitPromptDialogFragment);
+                ExitPromptDialogFragment.Show(SupportFragmentManager, EXIT_PROMPT_TAG);
             });
         }
 

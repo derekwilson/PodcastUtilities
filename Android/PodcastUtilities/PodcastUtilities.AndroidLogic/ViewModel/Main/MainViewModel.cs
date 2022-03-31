@@ -35,6 +35,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         private IApplicationControlFileProvider ApplicationControlFileProvider;
         private IFileSystemHelper FileSystemHelper;
         private IByteConverter ByteConverter;
+        private ICrashReporter CrashReporter;
+        private IAnalyticsEngine AnalyticsEngine;
 
         private List<PodcastFeedRecyclerItem> AllFeedItems = new List<PodcastFeedRecyclerItem>(20);
 
@@ -44,7 +46,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             IResourceProvider resProvider,
             IApplicationControlFileProvider appControlFileProvider,
             IFileSystemHelper fsHelper,
-            IByteConverter byteConverter) : base(app)
+            IByteConverter byteConverter, 
+            ICrashReporter crashReporter, 
+            IAnalyticsEngine analyticsEngine) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"MainViewModel:ctor");
@@ -54,6 +58,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             ApplicationControlFileProvider = appControlFileProvider;
             FileSystemHelper = fsHelper;
             ByteConverter = byteConverter;
+            CrashReporter = crashReporter;
+            AnalyticsEngine = analyticsEngine;
         }
 
         public void Initialise()
@@ -86,6 +92,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             } catch (Exception ex)
             {
                 Logger.LogException(() => $"MainViewModel:InitFileSystemInfo", ex);
+                CrashReporter.LogNonFatalException(ex);
                 // if we didnt add any drive info views then the default message will remain
             }
         }
@@ -196,6 +203,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             if (controlFile != null)
             {
                 ApplicationControlFileProvider.ReplaceApplicationConfiguration(controlFile);
+                AnalyticsEngine.LoadControlFileEvent();
                 RefreshFeedList();
                 Observables.ToastMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.control_file_loaded));
             }
@@ -215,6 +223,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             catch (Exception ex)
             {
                 Logger.LogException(() => $"MainViewModel:OpenControlFile", ex);
+                CrashReporter.LogNonFatalException(ex);
                 Observables.ToastMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.error_reading_control_file));
                 return null;
             }

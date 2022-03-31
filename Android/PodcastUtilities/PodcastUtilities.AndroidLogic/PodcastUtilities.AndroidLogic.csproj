@@ -57,6 +57,7 @@
     <Compile Include="Adapters\DownloadRecyclerItemAdapter.cs" />
     <Compile Include="Adapters\PodcastFeedRecyclerItemAdapter.cs" />
     <Compile Include="CustomViews\EmptyRecyclerView.cs" />
+    <Compile Include="CustomViews\OkCancelDialogFragment.cs" />
     <Compile Include="CustomViews\ProgressSpinnerView.cs" />
     <Compile Include="Utilities\AnalyticsEngine.cs" />
     <Compile Include="Utilities\ApplicationControlFileProvider.cs" />
