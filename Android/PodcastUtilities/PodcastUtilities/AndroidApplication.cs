@@ -9,6 +9,7 @@ using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.AndroidLogic.ViewModel.Messages;
+using PodcastUtilities.AndroidLogic.ViewModel.Purge;
 using PodcastUtilities.AndroidLogic.ViewModel.Settings;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Platform;
@@ -101,6 +102,7 @@ namespace PodcastUtilities
             container.Register<OpenSourceLicensesViewModel, OpenSourceLicensesViewModel>();
             container.Register<DownloadViewModel, DownloadViewModel>();
             container.Register<MessagesViewModel, MessagesViewModel>();
+            container.Register<PurgeViewModel, PurgeViewModel>();
 
             var factory = container.Resolve<ViewModelFactory>();
             factory.AddMap(typeof(MainViewModel));
@@ -108,6 +110,7 @@ namespace PodcastUtilities
             factory.AddMap(typeof(OpenSourceLicensesViewModel));
             factory.AddMap(typeof(DownloadViewModel));
             factory.AddMap(typeof(MessagesViewModel));
+            factory.AddMap(typeof(PurgeViewModel));
             return container;
         }
 

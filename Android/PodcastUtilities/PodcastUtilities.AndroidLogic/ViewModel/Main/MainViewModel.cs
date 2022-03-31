@@ -28,6 +28,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>> SetFeedItems;
             public EventHandler<string> SetCacheRoot;
             public EventHandler NavigateToDownload;
+            public EventHandler NavigateToPurge;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -174,6 +175,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             {
                 return true;
             }
+            if (itemId == Resource.Id.action_purge)
+            {
+                return AllFeedItems.Count > 0;
+            }
             if (itemId == Resource.Id.action_download)
             {
                 return AllFeedItems.Count > 0;
@@ -196,6 +201,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             if (itemId == Resource.Id.action_load_control)
             {
                 Observables.SelectControlFile?.Invoke(this, null);
+                return true;
+            }
+            if (itemId == Resource.Id.action_purge)
+            {
+                Observables.NavigateToPurge?.Invoke(this, null);
                 return true;
             }
             if (itemId == Resource.Id.action_download)
@@ -247,7 +257,17 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             try
             {
                 Logger.Debug(() => $"MainViewModel: GeneratePlaylist");
-                PlaylistGenerator.GeneratePlaylist(ApplicationControlFileProvider.GetApplicationConfiguration(), true, GenerateStatusUpdate);
+                var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+                if (controlFile != null)
+                {
+                    PlaylistGenerator.GeneratePlaylist(controlFile, controlFile.GetSourceRoot(), true, GenerateStatusUpdate);
+                    AnalyticsEngine.GeneratePlaylistEvent(controlFile.GetPlaylistFormat());
+                }
+                else
+                {
+                    Logger.Debug(() => $"MainViewModel: GeneratePlaylist - no control file");
+                    return;
+                }
                 Logger.Debug(() => $"MainViewModel: GeneratePlaylist - done");
             }
             catch (Exception ex)

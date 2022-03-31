@@ -86,5 +86,12 @@
 
 	<!-- display logs activity -->
 	<string name="action_display_logs">Display Logs</string>
-	
+
+	<!-- purge activity -->
+	<string name="purge_activity_title">Purge Podcasts</string>
+	<string name="finding_purge_progress">Finding things to delete...</string>
+
+	<string name="button_text_purge">Delete Selected</string>
+	<string name="no_purge_text">No podcasts to download</string>
+
 </resources>

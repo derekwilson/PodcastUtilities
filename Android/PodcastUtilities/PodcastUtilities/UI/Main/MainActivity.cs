@@ -15,6 +15,7 @@ using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.UI.Download;
+using PodcastUtilities.UI.Purge;
 using PodcastUtilities.UI.Settings;
 using System;
 using System.Collections.Generic;
@@ -202,6 +203,7 @@ namespace PodcastUtilities
             ViewModel.Observables.SetFeedItems += SetFeedItems;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
             ViewModel.Observables.NavigateToDownload += NavigateToDownload;
+            ViewModel.Observables.NavigateToPurge += NavigateToPurge;
         }
 
         private void KillViewModelObservers()
@@ -215,6 +217,7 @@ namespace PodcastUtilities
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
             ViewModel.Observables.NavigateToDownload -= NavigateToDownload;
+            ViewModel.Observables.NavigateToPurge -= NavigateToPurge;
         }
 
         private void SetTitle(object sender, string title)
@@ -277,6 +280,16 @@ namespace PodcastUtilities
             RunOnUiThread(() =>
             {
                 var intent = new Intent(this, typeof(DownloadActivity));
+                StartActivity(intent);
+            });
+        }
+
+        private void NavigateToPurge(object sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToPurge");
+            RunOnUiThread(() =>
+            {
+                var intent = new Intent(this, typeof(PurgeActivity));
                 StartActivity(intent);
             });
         }

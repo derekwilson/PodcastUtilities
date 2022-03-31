@@ -79,6 +79,7 @@
     <Compile Include="ViewModel\Main\MainViewModel.cs" />
     <Compile Include="ViewModel\Main\PodcastFeedRecyclerItem.cs" />
     <Compile Include="ViewModel\Messages\MessagesViewModel.cs" />
+    <Compile Include="ViewModel\Purge\PurgeViewModel.cs" />
     <Compile Include="ViewModel\Settings\OpenSourceLicensesViewModel.cs" />
     <Compile Include="ViewModel\Settings\SettingsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelFactory.cs" />

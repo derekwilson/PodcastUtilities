@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+	<FrameLayout
+		android:id="@+id/rvHolderPurge"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintBottom_toTopOf="@id/layButtonContainer"
+		app:layout_constraintTop_toTopOf="parent"
+		>
+
+		<!-- list of items to download -->
+		<podcastutilities.androidlogic.customviews.EmptyRecyclerView
+			android:id="@+id/rvPurge"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+		</podcastutilities.androidlogic.customviews.EmptyRecyclerView>
+
+		<LinearLayout
+			android:id="@+id/layNoDataPurge"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginTop="18dp"
+			android:gravity="center_horizontal|center"
+			android:orientation="vertical"
+			android:visibility="gone"
+			android:padding="@dimen/listview_empty_message_padding">
+
+			<TextView
+				android:id="@+id/txtNoDataPurge"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/no_purge_text"
+				android:textAlignment="center"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:gravity="center_horizontal" />
+		</LinearLayout>
+
+	</FrameLayout>
+
+	<LinearLayout
+		android:id="@+id/layPurgeButtonContainer"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:gravity="center_horizontal|center"
+		android:background="@color/primary_light"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		>
+
+		<Button
+			android:id="@+id/btnPurge"
+			android:text="@string/button_text_purge"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:backgroundTint="@color/accent"
+		/>
+
+	</LinearLayout>
+
+    <!-- the order of the Spinner and the ScrollView is important
+    in pre lollipop devices as elevation does not work -->
+
+    <PodcastUtilities.AndroidLogic.CustomViews.ProgressSpinnerView
+        android:id="@+id/progressBarPurge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="2dp"
+        android:visibility="gone"
+        app:message="@string/finding_purge_progress"
+        >
+    </PodcastUtilities.AndroidLogic.CustomViews.ProgressSpinnerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

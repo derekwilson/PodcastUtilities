@@ -6,7 +6,7 @@ SELECT_CONTENT == PodcastUtilities_EVENT
 
 Category = ID
     Action = NAME
-        Label
+        Label = ContentType
 
 Download
     Feed
@@ -27,11 +27,13 @@ Error
         <Code>
         
 Lifecycle
-    Start
+    Launch
         <Version>
     Exit
         <Version>
-    Error
+    ErrorFatal
+        <Version>
+    ErrorNonFatal
         <Version>
 
 UISelect

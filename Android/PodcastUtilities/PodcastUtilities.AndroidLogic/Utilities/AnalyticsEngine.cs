@@ -1,6 +1,7 @@
 ﻿using Android.Content;
 using Android.OS;
 using Firebase.Analytics;
+using PodcastUtilities.Common.Playlists;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
@@ -9,11 +10,11 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void DownloadFeedEvent(int numberOfItems);
         void DownloadEpisodeEvent(long sizeInMB);
         void DownloadEpisodeCompleteEvent();
-        public void LoadControlFileEvent();
-        public void LifecycleLaunchEvent();
-        public void LifecycleErrorEvent();
-        public void LifecycleErrorFatalEvent();
-
+        void LoadControlFileEvent();
+        void LifecycleLaunchEvent();
+        void LifecycleErrorEvent();
+        void LifecycleErrorFatalEvent();
+        void GeneratePlaylistEvent(PlaylistFormat format);
     }
 
     public class FirebaseAnalyticsEngine : IAnalyticsEngine
@@ -58,6 +59,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Action_Lifecycle_Launch = "Lifecycle_Launch";
         private const string Action_Lifecycle_Error = "Lifecycle_Error";
         private const string Action_Lifecycle_ErrorFatal = "Lifecycle_ErrorFatal";
+        private const string Category_Generate = "Generate";
+        private const string Action_Generate_Playlist = "Generate_Playlist";
 
         public void DownloadFeedEvent(int numberOfItems)
         {
@@ -132,6 +135,17 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 Category_Lifecycle,
                 Action_Lifecycle_ErrorFatal,
                 Action_Lifecycle_ErrorFatal + Seperator + Application.DisplayVersion,
+                null
+                );
+        }
+
+        public void GeneratePlaylistEvent(PlaylistFormat format)
+        {
+            SendEvent(
+                FirebaseAnalytics.Event.SelectContent,
+                Category_Generate,
+                Action_Generate_Playlist,
+                Action_Generate_Playlist + Seperator + format.ToString(),
                 null
                 );
         }
