@@ -76,12 +76,13 @@ namespace PodcastUtilities.Common.Playlists
         /// <summary>
         /// generate a playlist
         /// </summary>
-        /// <param name="control">control file to use to find the destinationRoot, and playlist format</param>
-        /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
-        public void GeneratePlaylist(IReadOnlyControlFile control, bool copyToDestination)
+        /// <param name="control">control file to use to find the podcasts and playlist format</param>
+        /// <param name="rootFolder">root folder to find episodes</param>
+        /// <param name="copyToDestination">true to copy the playlist to the root folder, false to write it with the control file</param>
+        private void GeneratePlaylist(IReadOnlyControlFile control, string rootFolder, bool copyToDestination)
         {
 			var allDestFiles = control.GetPodcasts().SelectMany(
-        		podcast => FileFinder.GetFiles(Path.Combine(control.GetDestinationRoot(), podcast.Folder), podcast.Pattern.Value));
+        		podcast => FileFinder.GetFiles(Path.Combine(rootFolder, podcast.Folder), podcast.Pattern.Value));
 
 			IPlaylist p = PlaylistFactory.CreatePlaylist(control.GetPlaylistFormat(), control.GetPlaylistFileName());
 
@@ -89,7 +90,7 @@ namespace PodcastUtilities.Common.Playlists
             foreach (IFileInfo thisFile in allDestFiles)
             {
                 string thisRelativeFile = thisFile.FullName;
-                string absRoot = PathUtilities.GetFullPath(control.GetDestinationRoot());
+                string absRoot = PathUtilities.GetFullPath(rootFolder);
                 if (thisRelativeFile.StartsWith(absRoot,StringComparison.Ordinal))
                 {
                     thisRelativeFile = thisRelativeFile.Substring(absRoot.Length);
@@ -104,7 +105,7 @@ namespace PodcastUtilities.Common.Playlists
             p.SaveFile(tempFile);
 
             var destPlaylist = copyToDestination
-                                   ? Path.Combine(control.GetDestinationRoot(), control.GetPlaylistFileName())
+                                   ? Path.Combine(rootFolder, control.GetPlaylistFileName())
                                    : control.GetPlaylistFileName();
 
             OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Writing playlist to {0}", destPlaylist), true);
@@ -112,13 +113,30 @@ namespace PodcastUtilities.Common.Playlists
             FileUtilities.FileCopy(tempFile, destPlaylist, true);
         }
 
-        public void GeneratePlaylist(IReadOnlyControlFile control, bool copyToDestination, EventHandler<StatusUpdateEventArgs> statusUpdate)
+        /// <summary>
+        /// generate a playlist for the files in the destination folder
+        /// </summary>
+        /// <param name="control">control file to use to find the destinationRoot, and playlist format</param>
+        /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
+        public void GeneratePlaylist(IReadOnlyControlFile control, bool copyToDestination)
+        {
+            GeneratePlaylist(control, control.GetDestinationRoot(), copyToDestination);
+        }
+
+        /// <summary>
+        /// generate a playlist for the files in the destination folder
+        /// </summary>
+        /// <param name="control">control file to use to find the destinationRoot, and playlist format</param>
+        /// <param name="rootFolder">root folder to find episodes</param>
+        /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
+        /// <param name="statusUpdate">the update mechanism for the generation - can be null</param>
+        public void GeneratePlaylist(IReadOnlyControlFile control, string rootFolder, bool copyToDestination, EventHandler<StatusUpdateEventArgs> statusUpdate)
         {
             if (statusUpdate != null)
             {
                 StatusUpdate += statusUpdate;
             }
-            GeneratePlaylist(control, copyToDestination);
+            GeneratePlaylist(control, rootFolder, copyToDestination);
         }
     }
 }

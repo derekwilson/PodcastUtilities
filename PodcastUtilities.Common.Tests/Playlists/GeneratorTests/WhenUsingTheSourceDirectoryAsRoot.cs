@@ -18,31 +18,28 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using PodcastUtilities.Common.Configuration;
-using System;
+using NUnit.Framework;
+using Rhino.Mocks;
 
-namespace PodcastUtilities.Common.Playlists
+namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
 {
-    /// <summary>
-    /// generate a playlist
-    /// </summary>
-    public interface IGenerator
+    public class WhenUsingTheSourceDirectoryAsRoot : WhenTestingThePlaylistGenerator
     {
-        /// <summary>
-        /// generate a playlist for the files in the destination folder
-        /// </summary>
-        /// <param name="control">control file to use to find the destinationRoot, and playlist format</param>
-        /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
-        void GeneratePlaylist(IReadOnlyControlFile control, bool copyToDestination);
+        protected override void When()
+        {
+            PlaylistGenerator.GeneratePlaylist(ControlFile, ControlFile.GetSourceRoot(), true, null);
+        }
 
-        /// <summary>
-        /// generate a playlist for the files in the destination folder
-        /// </summary>
-        /// <param name="control">control file to use to find the destinationRoot, and playlist format</param>
-        /// <param name="rootFolder">root folder to find episodes</param>
-        /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
-        /// <param name="statusUpdate">the update mechanism for the generation - can be null</param>
-        void GeneratePlaylist(IReadOnlyControlFile control, string rootFolder, bool copyToDestination, EventHandler<StatusUpdateEventArgs> statusUpdate);
-        
+        [Test]
+        public void ItShouldSaveTheTemporaryFile()
+        {
+            Playlist.AssertWasCalled(p => p.SaveFile(@"c:\file.tmp"));
+        }
+
+        [Test]
+        public void ItShouldCopyThePlaylistToTheCorrectLocation()
+        {
+            FileUtilities.AssertWasCalled(utilities => utilities.FileCopy(@"c:\file.tmp", @"c:\source\MyPodcasts.wpl", true));
+        }
     }
 }

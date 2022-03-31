@@ -151,6 +151,7 @@
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderContainsFiles.cs" />
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderContainsSubfolders.cs" />
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderIsEmpty.cs" />
+    <Compile Include="Playlists\GeneratorTests\WhenUsingTheSourceDirectoryAsRoot.cs" />
     <Compile Include="Playlists\PlaylistFactoryTests\WhenCreatingANewM3uPlaylist.cs" />
     <Compile Include="Playlists\PlaylistM3uTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="Playlists\PlaylistM3uTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
