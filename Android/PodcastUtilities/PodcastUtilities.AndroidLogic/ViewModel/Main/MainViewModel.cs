@@ -7,8 +7,10 @@ using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Playlists;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Main
@@ -37,6 +39,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         private IByteConverter ByteConverter;
         private ICrashReporter CrashReporter;
         private IAnalyticsEngine AnalyticsEngine;
+        private IGenerator PlaylistGenerator;
 
         private List<PodcastFeedRecyclerItem> AllFeedItems = new List<PodcastFeedRecyclerItem>(20);
 
@@ -46,9 +49,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             IResourceProvider resProvider,
             IApplicationControlFileProvider appControlFileProvider,
             IFileSystemHelper fsHelper,
-            IByteConverter byteConverter, 
-            ICrashReporter crashReporter, 
-            IAnalyticsEngine analyticsEngine) : base(app)
+            IByteConverter byteConverter,
+            ICrashReporter crashReporter,
+            IAnalyticsEngine analyticsEngine, 
+            IGenerator playlistGenerator) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"MainViewModel:ctor");
@@ -60,6 +64,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             ByteConverter = byteConverter;
             CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
+            PlaylistGenerator = playlistGenerator;
         }
 
         public void Initialise()
@@ -173,6 +178,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             {
                 return AllFeedItems.Count > 0;
             }
+            if (itemId == Resource.Id.action_playlist)
+            {
+                return AllFeedItems.Count > 0;
+            }
             return false;
         }
 
@@ -193,6 +202,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             {
                 Observables.NavigateToDownload?.Invoke(this, null);
                 return true;
+            }
+            if (itemId == Resource.Id.action_playlist)
+            {
+                Task.Run(() => GeneratePlaylist());
             }
             return false;
         }
@@ -229,5 +242,26 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
         }
 
+        private void GeneratePlaylist()
+        {
+            try
+            {
+                Logger.Debug(() => $"MainViewModel: GeneratePlaylist");
+                PlaylistGenerator.GeneratePlaylist(ApplicationControlFileProvider.GetApplicationConfiguration(), true, GenerateStatusUpdate);
+                Logger.Debug(() => $"MainViewModel: GeneratePlaylist - done");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogException(() => $"MainViewModel:GeneratePlaylist", ex);
+                CrashReporter.LogNonFatalException(ex);
+                Observables.ToastMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.error_generating_playlist));
+            }
+        }
+
+        private void GenerateStatusUpdate(object sender, StatusUpdateEventArgs e)
+        {
+            Logger.Debug(() => $"MainViewModel: GenerateStatusUpdate {e.Message}");
+            Observables.ToastMessage?.Invoke(this, e.Message);
+        }
     }
 }

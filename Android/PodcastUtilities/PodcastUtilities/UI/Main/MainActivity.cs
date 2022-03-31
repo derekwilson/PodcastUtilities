@@ -195,6 +195,7 @@ namespace PodcastUtilities
         {
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.AddInfoView += AddInfoView;
+            ViewModel.Observables.ToastMessage += ToastMessage;
             ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings += NavigateToSettings;
             ViewModel.Observables.SelectControlFile += SelectControlFile;
@@ -207,6 +208,7 @@ namespace PodcastUtilities
         {
             ViewModel.Observables.Title -= SetTitle;
             ViewModel.Observables.AddInfoView -= AddInfoView;
+            ViewModel.Observables.ToastMessage -= ToastMessage;
             ViewModel.Observables.ShowNoDriveMessage -= ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings -= NavigateToSettings;
             ViewModel.Observables.SelectControlFile -= SelectControlFile;
@@ -243,6 +245,11 @@ namespace PodcastUtilities
                 DriveInfoContainerView.Visibility = ViewStates.Visible;
                 DriveInfoContainerView?.AddView(view);
             });
+        }
+
+        private void ToastMessage(object sender, string message)
+        {
+            ToastMessage(message);
         }
 
         private void ToastMessage(string message)

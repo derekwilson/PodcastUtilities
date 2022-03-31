@@ -20,6 +20,7 @@
 
 	<string name="control_file_loaded">Control file loaded</string>
 	<string name="error_reading_control_file">Cannot load control file</string>
+	<string name="error_generating_playlist">Cannot write playlist</string>
 
 	<string name="drive_volume_free_label">Free Space</string>
 	<string name="drive_volume_total_label">Total Space</string>
