@@ -28,10 +28,11 @@ using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common.Playlists
 {
+
     /// <summary>
     /// generate a playlist
     /// </summary>
-    public class Generator
+    public class Generator : IGenerator
     {
         /// <summary>
         /// create a playlist generator
@@ -109,6 +110,15 @@ namespace PodcastUtilities.Common.Playlists
             OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Writing playlist to {0}", destPlaylist), true);
 
             FileUtilities.FileCopy(tempFile, destPlaylist, true);
+        }
+
+        public void GeneratePlaylist(IReadOnlyControlFile control, bool copyToDestination, EventHandler<StatusUpdateEventArgs> statusUpdate)
+        {
+            if (statusUpdate != null)
+            {
+                StatusUpdate += statusUpdate;
+            }
+            GeneratePlaylist(control, copyToDestination);
         }
     }
 }

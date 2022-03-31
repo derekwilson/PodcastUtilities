@@ -91,6 +91,7 @@ namespace PodcastUtilities.Ioc
         public static void RegisterPlaylistServices(IIocContainer container)
         {
             container.Register<IPlaylistFactory, PlaylistFactory>();
+            container.Register<IGenerator, Generator>();
         }
 
         public static void RegisterPodcastServices(IIocContainer container)
