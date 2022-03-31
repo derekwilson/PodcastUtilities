@@ -5,6 +5,7 @@ using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.Converter;
+using PodcastUtilities.Common.Playlists;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 {
@@ -21,6 +22,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         protected IResourceProvider MockResourceProvider = A.Fake<IResourceProvider>();
         protected IFileSystemHelper MockFileSystemHelper = A.Fake<IFileSystemHelper>();
         protected IApplicationControlFileProvider MockApplicationControlFileProvider = A.Fake<IApplicationControlFileProvider>();
+        protected ICrashReporter MockCrashReporter = A.Fake<ICrashReporter>();
+        protected IAnalyticsEngine MockAnalyticsEngine = A.Fake<IAnalyticsEngine>();
+        protected IGenerator MockPlaylistGenerator = A.Fake<IGenerator>();
 
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
@@ -29,7 +33,17 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         public void Setup()
         {
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.main_activity_title)).Returns("Mocked Title");
-            ViewModel = new MainViewModel(MockApplication, MockLogger, MockResourceProvider, MockApplicationControlFileProvider, MockFileSystemHelper, ByteConverter);
+            ViewModel = new MainViewModel(
+                MockApplication, 
+                MockLogger, 
+                MockResourceProvider, 
+                MockApplicationControlFileProvider, 
+                MockFileSystemHelper, 
+                ByteConverter,
+                MockCrashReporter,
+                MockAnalyticsEngine,
+                MockPlaylistGenerator
+            );
             ViewModel.Observables.Title += SetTitle;
         }
         [TearDown]
