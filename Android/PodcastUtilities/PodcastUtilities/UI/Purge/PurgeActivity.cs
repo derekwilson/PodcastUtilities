@@ -6,9 +6,14 @@ using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
+using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.CustomViews;
+using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Purge;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PodcastUtilities.UI.Purge
 {
@@ -20,10 +25,11 @@ namespace PodcastUtilities.UI.Purge
 
         private AndroidApplication AndroidApplication;
 
-        private EmptyRecyclerView RvDownloads;
+        private EmptyRecyclerView RvPurgeItems;
+        private PurgeRecyclerItemAdapter Adapter;
         private LinearLayout NoDataView;
         private ProgressSpinnerView ProgressSpinner;
-        private Button DownloadButton;
+        private Button DeleteButton;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -36,21 +42,26 @@ namespace PodcastUtilities.UI.Purge
             // Set our view from the layout resource
             SetContentView(Resource.Layout.activity_purge);
 
-            RvDownloads = FindViewById<EmptyRecyclerView>(Resource.Id.rvPurge);
+            RvPurgeItems = FindViewById<EmptyRecyclerView>(Resource.Id.rvPurge);
             NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoDataPurge);
             ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBarPurge);
-            DownloadButton = FindViewById<Button>(Resource.Id.btnPurge);
+            DeleteButton = FindViewById<Button>(Resource.Id.btnPurge);
 
-            RvDownloads.SetLayoutManager(new LinearLayoutManager(this));
-            RvDownloads.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
-            RvDownloads.SetEmptyView(NoDataView);
+            RvPurgeItems.SetLayoutManager(new LinearLayoutManager(this));
+            RvPurgeItems.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
+            RvPurgeItems.SetEmptyView(NoDataView);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(PurgeViewModel))) as PurgeViewModel;
+
+            Adapter = new PurgeRecyclerItemAdapter(this, ViewModel);
+            RvPurgeItems.SetAdapter(Adapter);
+
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
             ViewModel.Initialise();
+            Task.Run(() => ViewModel.FindItemsToDelete());
 
             AndroidApplication.Logger.Debug(() => $"PurgeActivity:OnCreate - end");
         }
@@ -72,11 +83,19 @@ namespace PodcastUtilities.UI.Purge
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.Title += SetTitle;
+            ViewModel.Observables.StartProgress += StartProgress;
+            ViewModel.Observables.UpdateProgress += UpdateProgress;
+            ViewModel.Observables.EndProgress += EndProgress;
+            ViewModel.Observables.SetPurgeItems += SetPurgeItems;
         }
 
         private void KillViewModelObservers()
         {
             ViewModel.Observables.Title -= SetTitle;
+            ViewModel.Observables.StartProgress -= StartProgress;
+            ViewModel.Observables.UpdateProgress -= UpdateProgress;
+            ViewModel.Observables.EndProgress -= EndProgress;
+            ViewModel.Observables.SetPurgeItems -= SetPurgeItems;
         }
 
         private void SetTitle(object sender, string title)
@@ -86,5 +105,41 @@ namespace PodcastUtilities.UI.Purge
                 Title = title;
             });
         }
+
+        private void SetPurgeItems(object sender, List<PurgeRecyclerItem> items)
+        {
+            RunOnUiThread(() =>
+            {
+                Adapter.SetItems(items);
+                Adapter.NotifyDataSetChanged();
+            });
+        }
+
+        private void EndProgress(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
+                DeleteButton.Enabled = true;
+            });
+        }
+
+        private void UpdateProgress(object sender, int position)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressSpinner.Progress = position;
+            });
+        }
+
+        private void StartProgress(object sender, int max)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
+                DeleteButton.Enabled = false;
+            });
+        }
+
     }
 }

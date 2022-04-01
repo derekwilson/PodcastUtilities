@@ -89,9 +89,17 @@
 
 	<!-- purge activity -->
 	<string name="purge_activity_title">Purge Podcasts</string>
+	<string name="no_purge_text">No items to delete</string>
+
 	<string name="finding_purge_progress">Finding things to delete...</string>
 
-	<string name="button_text_purge">Delete Selected</string>
-	<string name="no_purge_text">No podcasts to download</string>
+	<plurals name="purge_activity_title_after_load">
+		<item quantity="one">%d Item Selected</item>
+		<item quantity="other">%d Items Selected</item>
+	</plurals>
 
+	<string name="purge_file_label_fmt">File: {0}</string>
+	<string name="purge_directoty_label_fmt">Dir: {0}</string>
+
+	<string name="button_text_purge">Delete Selected</string>
 </resources>

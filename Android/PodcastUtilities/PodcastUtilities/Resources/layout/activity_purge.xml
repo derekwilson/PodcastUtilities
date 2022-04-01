@@ -13,7 +13,7 @@
 		android:layout_height="0dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintBottom_toTopOf="@id/layButtonContainer"
+		app:layout_constraintBottom_toTopOf="@id/layPurgeButtonContainer"
 		app:layout_constraintTop_toTopOf="parent"
 		>
 
