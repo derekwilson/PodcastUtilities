@@ -66,7 +66,7 @@ namespace PodcastUtilities.AndroidLogic.Adapters
 
         private string GetLabel(IFileInfo fileInfo)
         {
-            var fmt = Context.GetString(Resource.String.download_sublabel_fmt);
+            var fmt = Context.GetString(Resource.String.purge_file_label_fmt);
             return string.Format(fmt, fileInfo.Name);
         }
         private string GetLabel<T>(T field)
