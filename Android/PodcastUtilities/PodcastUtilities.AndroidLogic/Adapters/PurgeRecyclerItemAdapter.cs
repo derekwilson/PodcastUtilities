@@ -69,9 +69,15 @@ namespace PodcastUtilities.AndroidLogic.Adapters
             var fmt = Context.GetString(Resource.String.purge_file_label_fmt);
             return string.Format(fmt, fileInfo.Name);
         }
+        private string GetLabel(IDirectoryInfo dirInfo)
+        {
+            var fmt = Context.GetString(Resource.String.purge_directoty_label_fmt);
+            return string.Format(fmt, dirInfo.FullName);
+        }
+
         private string GetLabel<T>(T field)
         {
-            return "GetLabel not implemented for type: " + typeof(T);
+            return "GetLabel not implemented for type: " + field.GetType();
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
