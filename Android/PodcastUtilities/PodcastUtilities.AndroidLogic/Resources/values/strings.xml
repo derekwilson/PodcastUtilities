@@ -102,4 +102,8 @@
 	<string name="purge_directoty_label_fmt">Dir: {0}</string>
 
 	<string name="button_text_purge">Delete Selected</string>
+	<string name="purge_activity_complete">Done</string>
+
+	<string name="error_delete_item">Error deleting {0}</string>
+
 </resources>

@@ -63,6 +63,10 @@ namespace PodcastUtilities.UI.Purge
             ViewModel.Initialise();
             Task.Run(() => ViewModel.FindItemsToDelete());
 
+            DeleteButton.Click += (sender, e) =>
+            Task.Run(() => ViewModel.PurgeAllItems())
+                .ContinueWith(t => ViewModel.PurgeComplete());
+
             AndroidApplication.Logger.Debug(() => $"PurgeActivity:OnCreate - end");
         }
 
@@ -87,6 +91,9 @@ namespace PodcastUtilities.UI.Purge
             ViewModel.Observables.UpdateProgress += UpdateProgress;
             ViewModel.Observables.EndProgress += EndProgress;
             ViewModel.Observables.SetPurgeItems += SetPurgeItems;
+            ViewModel.Observables.StartDeleting += StartDeleting;
+            ViewModel.Observables.EndDeleting += EndDeleting;
+            ViewModel.Observables.DisplayMessage += ToastMessage;
         }
 
         private void KillViewModelObservers()
@@ -96,6 +103,9 @@ namespace PodcastUtilities.UI.Purge
             ViewModel.Observables.UpdateProgress -= UpdateProgress;
             ViewModel.Observables.EndProgress -= EndProgress;
             ViewModel.Observables.SetPurgeItems -= SetPurgeItems;
+            ViewModel.Observables.StartDeleting -= StartDeleting;
+            ViewModel.Observables.EndDeleting -= EndDeleting;
+            ViewModel.Observables.DisplayMessage -= ToastMessage;
         }
 
         private void SetTitle(object sender, string title)
@@ -115,6 +125,22 @@ namespace PodcastUtilities.UI.Purge
             });
         }
 
+        private void StartProgress(object sender, int max)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
+                DeleteButton.Enabled = false;
+            });
+        }
+        private void UpdateProgress(object sender, int position)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressSpinner.Progress = position;
+            });
+        }
+
         private void EndProgress(object sender, EventArgs e)
         {
             RunOnUiThread(() =>
@@ -124,22 +150,32 @@ namespace PodcastUtilities.UI.Purge
             });
         }
 
-        private void UpdateProgress(object sender, int position)
+        private void StartDeleting(object sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
-                ProgressSpinner.Progress = position;
-            });
-        }
-
-        private void StartProgress(object sender, int max)
-        {
-            RunOnUiThread(() =>
-            {
-                ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
+                Adapter.SetReadOnly(true);
                 DeleteButton.Enabled = false;
             });
         }
 
+        private void EndDeleting(object sender, string message)
+        {
+            RunOnUiThread(() =>
+            {
+                Adapter.SetReadOnly(false);
+                DeleteButton.Enabled = true;
+                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+                Finish();
+            });
+        }
+
+        private void ToastMessage(object sender, string message)
+        {
+            RunOnUiThread(() =>
+            {
+                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+            });
+        }
     }
 }

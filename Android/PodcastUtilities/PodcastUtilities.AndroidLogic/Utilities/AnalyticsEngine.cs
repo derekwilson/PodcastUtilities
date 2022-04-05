@@ -15,6 +15,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void LifecycleErrorEvent();
         void LifecycleErrorFatalEvent();
         void GeneratePlaylistEvent(PlaylistFormat format);
+        void PurgeScanEvent(int numberOfItems);
+        void PurgeDeleteEvent(int numberOfItems);
     }
 
     public class FirebaseAnalyticsEngine : IAnalyticsEngine
@@ -61,6 +63,9 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Action_Lifecycle_ErrorFatal = "Lifecycle_ErrorFatal";
         private const string Category_Generate = "Generate";
         private const string Action_Generate_Playlist = "Generate_Playlist";
+        private const string Category_Purge = "Purge";
+        private const string Action_Purge_Scan = "Purge_Scan";
+        private const string Action_Purge_Delete = "Purge_Delete";
 
         public void DownloadFeedEvent(int numberOfItems)
         {
@@ -147,6 +152,28 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 Action_Generate_Playlist,
                 Action_Generate_Playlist + Seperator + format.ToString(),
                 null
+                );
+        }
+
+        public void PurgeScanEvent(int numberOfItems)
+        {
+            SendEvent(
+                FirebaseAnalytics.Event.SelectContent,
+                Category_Purge,
+                Action_Purge_Scan,
+                Action_Purge_Scan + Seperator + numberOfItems.ToString(),
+                numberOfItems.ToString()
+                );
+        }
+
+        public void PurgeDeleteEvent(int numberOfItems)
+        {
+            SendEvent(
+                FirebaseAnalytics.Event.SelectContent,
+                Category_Purge,
+                Action_Purge_Delete,
+                Action_Purge_Delete + Seperator + numberOfItems.ToString(),
+                numberOfItems.ToString()
                 );
         }
     }

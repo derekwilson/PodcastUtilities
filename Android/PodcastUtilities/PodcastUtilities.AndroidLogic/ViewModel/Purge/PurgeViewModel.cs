@@ -19,6 +19,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
             public EventHandler<int> UpdateProgress;
             public EventHandler EndProgress;
             public EventHandler<List<PurgeRecyclerItem>> SetPurgeItems;
+            public EventHandler StartDeleting;
+            public EventHandler<string> EndDeleting;
+            public EventHandler<string> DisplayMessage;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -26,13 +29,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
         private IResourceProvider ResourceProvider;
         private IApplicationControlFileProvider ApplicationControlFileProvider;
         private IEpisodePurger EpisodePurger;
+        private IFileUtilities FileUtilities;
+        private ICrashReporter CrashReporter;
+        private IAnalyticsEngine AnalyticsEngine;
 
         private List<PurgeRecyclerItem> AllItems = new List<PurgeRecyclerItem>(20);
         private bool StartedFindingItems = false;
         private bool CompletedFindingItems = false;
         private int FeedCount = 0;
-        private int FileCount = 0;
-        private int DirecoryCount = 0;
 
         // do not make this anything other than private
         private object SyncLock = new object();
@@ -41,13 +45,19 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
             Application app,
             ILogger logger,
             IResourceProvider resourceProvider,
-            IApplicationControlFileProvider applicationControlFileProvider, 
-            IEpisodePurger episodePurger) : base(app)
+            IApplicationControlFileProvider applicationControlFileProvider,
+            IEpisodePurger episodePurger,
+            IFileUtilities fileUtilities, 
+            ICrashReporter crashReporter, 
+            IAnalyticsEngine analyticsEngine) : base(app)
         {
             Logger = logger;
             ResourceProvider = resourceProvider;
             ApplicationControlFileProvider = applicationControlFileProvider;
             EpisodePurger = episodePurger;
+            FileUtilities = fileUtilities;
+            CrashReporter = crashReporter;
+            AnalyticsEngine = analyticsEngine;
         }
 
         public void Initialise()
@@ -107,7 +117,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
             foreach (var podcastInfo in controlFile.GetPodcasts())
             {
                 IList<IFileInfo> filesToDeleteFromThisFeed = EpisodePurger.FindEpisodesToPurge(controlFile.GetSourceRoot(), podcastInfo);
-                foreach (var file in filesToDeleteFromThisFeed)
+                List<IFileInfo> sortedFileList = filesToDeleteFromThisFeed.OrderBy(item => item.Name).ToList();
+                foreach (var file in sortedFileList)
                 {
                     var line = $"File: {file.FullName}";
                     Logger.Debug(() => $"PurgeViewModel:FindItemsToDelete {line}");
@@ -122,7 +133,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
                 // and this is so we can work out which folder will be empty
                 allFilesToDelete.AddRange(filesToDeleteFromThisFeed);
                 count++;
-//                AnalyticsEngine.DownloadFeedEvent(episodesInThisFeed.Count);
                 Observables.UpdateProgress?.Invoke(this, count);
             }
 
@@ -130,7 +140,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
             foreach (var podcastInfo in controlFile.GetPodcasts())
             {
                 IList<IDirectoryInfo> foldersToDeleteInThisFeed = EpisodePurger.FindEmptyFoldersToDelete(controlFile.GetSourceRoot(), podcastInfo, allFilesToDelete);
-                foreach (var dir in foldersToDeleteInThisFeed)
+                List<IDirectoryInfo> sortedDirList = foldersToDeleteInThisFeed.OrderBy(item => item.FullName).ToList();
+                foreach (var dir in sortedDirList)
                 {
                     var line = $"Dir: {dir.FullName}";
                     Logger.Debug(() => $"PurgeViewModel:FindItemsToDelete {line}");
@@ -142,7 +153,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
                     AllItems.Add(item);
                 }
                 count++;
-                //                AnalyticsEngine.DownloadFeedEvent(episodesInThisFeed.Count);
                 Observables.UpdateProgress?.Invoke(this, count);
             }
 
@@ -150,6 +160,42 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
             Observables.EndProgress?.Invoke(this, null);
             Observables.SetPurgeItems?.Invoke(this, AllItems);
             SetTitle();
+            AnalyticsEngine.PurgeScanEvent(GetItemsSelectedCount());
+        }
+
+        public void PurgeAllItems()
+        {
+            AnalyticsEngine.PurgeDeleteEvent(GetItemsSelectedCount());
+            foreach (PurgeRecyclerItem item in AllItems)
+            {
+                if (item.Selected)
+                {
+                    try
+                    {
+                        DeleteItem(item.FileOrDirectoryItem);
+                    } catch (Exception ex)
+                    {
+                        var name = GetDisplayName(item.FileOrDirectoryItem);
+                        Logger.LogException(() => $"Delete item: {name}", ex);
+                        CrashReporter.LogNonFatalException(ex);
+                        string fmt = ResourceProvider.GetString(Resource.String.error_delete_item);
+                        Observables.DisplayMessage?.Invoke(this, string.Format(fmt, name));
+                    }
+                }
+            }
+        }
+
+        private string GetDisplayName(IFileInfo fileInfo) => fileInfo.Name;
+        private string GetDisplayName(IDirectoryInfo dirInfo) => dirInfo.FullName;
+        private string GetDisplayName<T>(T field) => "Unknown type: " + field.GetType();
+
+        private void DeleteItem(IFileInfo fileInfo) => FileUtilities.FileDelete(fileInfo.FullName);
+        private void DeleteItem(IDirectoryInfo dirInfo) => EpisodePurger.PurgeFolder(dirInfo);
+        private void DeleteItem<T>(T field) => Logger.Debug(() => $"Ignoring unknown type: {field.GetType()}");
+
+        public void PurgeComplete()
+        {
+            Observables.EndDeleting?.Invoke(this, ResourceProvider.GetString(Resource.String.purge_activity_complete));
         }
 
         private int GetItemsSelectedCount()
