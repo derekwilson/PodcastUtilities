@@ -4,6 +4,7 @@ using Android.Runtime;
 using Android.Util;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
@@ -92,6 +93,9 @@ namespace PodcastUtilities
             container.Register<IAnalyticsEngine, FirebaseAnalyticsEngine>(IocLifecycle.Singleton);
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
             container.Register<IFileSystemHelper, FileSystemHelper>(IocLifecycle.Singleton);
+            container.Register<INetworkHelper, NetworkHelper>(IocLifecycle.Singleton);
+            container.Register<IPreferencesProvider, AndroidDefaultSharedPreferencesProvider>(IocLifecycle.Singleton);
+            container.Register<IUserSettings, UserSettings>(IocLifecycle.Singleton);
             container.Register<IApplicationControlFileProvider, ApplicationControlFileProvider>(IocLifecycle.Singleton);
             container.Register<IByteConverter, ByteConverter>(IocLifecycle.Singleton);
             container.Register<IStatusAndProgressMessageStore, StatusAndProgressMessageStore>(IocLifecycle.Singleton);

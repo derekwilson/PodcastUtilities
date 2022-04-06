@@ -63,6 +63,7 @@
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
 	<string name="no_downloads_text">No podcasts to download</string>
+	<string name="no_network_text">You do not have any internet connectivity</string>
 	<string name="finding_podcasts_progress">Finding podcasts...</string>
 
 	<plurals name="download_activity_title_after_load">
@@ -77,6 +78,10 @@
 
 	<string name="button_text_download">Download Selected</string>
 	<string name="download_activity_complete">Download Complete</string>
+
+	<string name="download_activity_cellular_prompt">You are using mobile data, OK to continue?</string>
+	<string name="download_activity_cellular_ok">Download on Cellular</string>
+	<string name="download_activity_cellular_cancel">Cancel</string>
 
 	<string name="download_activity_exit_prompt">OK to cancel all downloads?</string>
 	<string name="download_activity_exit_ok">Cancel Downloads</string>
@@ -105,5 +110,35 @@
 	<string name="purge_activity_complete">Done</string>
 
 	<string name="error_delete_item">Error deleting {0}</string>
+
+	<!-- Settings -->
+	<string name="settings_activity">Settings</string>
+
+	<string name="settings_download_category">Downloads</string>
+	<string name="settings_download_network_key">appDownloadNetwork</string>
+	<string name="settings_download_network_title">Network</string>
+	<!--
+   Must be one of the IUserSettings.DownloadNetworkType enum values.
+    -->
+	<string name="settings_default_download_network">WIFI</string>
+
+	<string name="settings_about_category">About</string>
+
+	<string name="settings_privacy_key">appPrivacy</string>
+	<string name="settings_privacy_title">Privacy statement</string>
+	<string name="settings_privacy_url">https://github.com/derekwilson/PodcastUtilities/blob/master/PRIVACY.md</string>
+
+	<string name="settings_osl_key">appOsl</string>
+	<string name="settings_osl_title">Open-source licenses</string>
+
+	<string name="settings_version_key">appVersion</string>
+	<string name="settings_version_title">Version</string>
+
+	<!-- open source licenses -->
+	<string name="osl_title">Open-source licenses</string>
+
+	<!-- messages activity -->
+	<string name="messages_activity">Logs</string>
+
 
 </resources>

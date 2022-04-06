@@ -9,33 +9,4 @@
 	-->
 	<string name="com.google.firebase.crashlytics.mapping_file_id">none</string>
 
-	<!-- Settings -->
-	<string name="settings_activity">Settings</string>
-
-	<string name="settings_download_category">Downloads</string>
-	<string name="settings_download_network_key">appDownloadNetwork</string>
-	<string name="settings_download_network_title">Network</string>
-	<!--
-   Must be one of the DownloadNetwork enum values.
-    -->
-	<string name="settings_default_download_network">WIFI</string>
-
-	<string name="settings_about_category">About</string>
-
-	<string name="settings_privacy_key">appPrivacy</string>
-	<string name="settings_privacy_title">Privacy statement</string>
-	<string name="settings_privacy_url">https://github.com/derekwilson/PodcastUtilities/blob/master/PRIVACY.md</string>
-
-	<string name="settings_osl_key">appOsl</string>
-	<string name="settings_osl_title">Open-source licenses</string>
-
-	<string name="settings_version_key">appVersion</string>
-	<string name="settings_version_title">Version</string>
-
-	<!-- open source licenses -->
-	<string name="osl_title">Open-source licenses</string>
-
-	<!-- messages activity -->
-	<string name="messages_activity">Logs</string>
-
 </resources>

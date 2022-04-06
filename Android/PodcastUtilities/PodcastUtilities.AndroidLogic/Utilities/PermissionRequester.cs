@@ -30,7 +30,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         public static void RequestManageStoragePermission(Activity activity, int code, string packageName)
         {
-            // storage manager only happened in SDK30 / R
+            // manage_storage only happened in SDK30 / R
             // before that you only need write storage
             if (Build.VERSION.SdkInt < BuildVersionCodes.R)
             {

@@ -2,12 +2,14 @@
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Feeds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 {
@@ -28,6 +30,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             public EventHandler Exit;
             public EventHandler NavigateToDisplayLogs;
             public EventHandler<Tuple<string, string, string>> ExitPrompt;
+            public EventHandler<Tuple<string, string, string>> CellularPrompt;
+            public EventHandler<string> SetEmptyText;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -43,6 +47,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         private ICrashReporter CrashReporter;
         private IAnalyticsEngine AnalyticsEngine;
         private IStatusAndProgressMessageStore MessageStore;
+        private INetworkHelper NetworkHelper;
+        private IUserSettings UserSettings;
 
         private List<DownloadRecyclerItem> AllItems = new List<DownloadRecyclerItem>(20);
         private bool StartedFindingPodcasts = false;
@@ -67,8 +73,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             ISyncItemToEpisodeDownloaderTaskConverter converter,
             ITaskPool taskPool,
             ICrashReporter crashReporter,
-            IAnalyticsEngine analyticsEngine, 
-            IStatusAndProgressMessageStore messageStore) : base(app)
+            IAnalyticsEngine analyticsEngine,
+            IStatusAndProgressMessageStore messageStore,
+            INetworkHelper networkHelper, 
+            IUserSettings userSettings) : base(app)
         {
             ApplicationContext = app;
             Logger = logger;
@@ -82,6 +90,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
             MessageStore = messageStore;
+            NetworkHelper = networkHelper;
+            UserSettings = userSettings;
         }
 
         public void Initialise()
@@ -102,7 +112,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                         ResourceProvider.GetString(Resource.String.download_activity_exit_ok),
                         ResourceProvider.GetString(Resource.String.download_activity_exit_cancel)
                     )
-                    );
+                );
                 return false;
             }
             return true;
@@ -146,6 +156,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 Logger.Warning(() => $"DownloadViewModel:FindEpisodesToDownload - no control file");
                 return;
             }
+
+            var noItemsText = ResourceProvider.GetString(Resource.String.no_downloads_text);
+            var activeConnectionType = NetworkHelper.ActiveNetworkType;
+            Logger.Debug(() => $"DownloadViewModel:FindEpisodesToDownload Active = {activeConnectionType}");
+            if (activeConnectionType == INetworkHelper.NetworkType.None)
+            {
+                noItemsText = ResourceProvider.GetString(Resource.String.no_network_text);
+            }
+            Observables.SetEmptyText?.Invoke(this, noItemsText);
 
             lock (SyncLock)
             {
@@ -227,6 +246,53 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         internal void SelectionChanged(int position)
         {
             SetTitle();
+        }
+
+        private bool NetworkConnectionTypeAllowedPromptNeeded(INetworkHelper.NetworkType activeConnectionType, IUserSettings.DownloadNetworkType requiredConnectionType)
+        {
+            if (activeConnectionType == INetworkHelper.NetworkType.Cellular && requiredConnectionType == IUserSettings.DownloadNetworkType.WIFI)
+            {
+                Logger.Debug(() => $"DownloadViewModel:NetworkConnectionTypeAllowedPromptNeeded - on cellular");
+                Observables.CellularPrompt?.Invoke(this,
+                    Tuple.Create(
+                        ResourceProvider.GetString(Resource.String.download_activity_cellular_prompt),
+                        ResourceProvider.GetString(Resource.String.download_activity_cellular_ok),
+                        ResourceProvider.GetString(Resource.String.download_activity_cellular_cancel)
+                    )
+                );
+                return true;
+            }
+            return false;
+        }
+
+        public void DownloadAllPodcastsWithNetworkCheck()
+        {
+            Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcastsWithNetworkCheck");
+
+            var activeConnectionType = NetworkHelper.ActiveNetworkType;
+            var requiredConnectionType = UserSettings.DownloadNetworkNeeded;
+            Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcastsWithNetworkCheck Active = {activeConnectionType}, Needed = {requiredConnectionType}");
+
+            if (activeConnectionType == INetworkHelper.NetworkType.None)
+            {
+                // no internet
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.no_network_text));
+                return;
+            }
+
+            if (NetworkConnectionTypeAllowedPromptNeeded(activeConnectionType, requiredConnectionType))
+            {
+                // a prompt was needed
+                return;
+            }
+
+            DownloadAllPodcastsWithoutNetworkCheck();
+        }
+
+        public void DownloadAllPodcastsWithoutNetworkCheck()
+        {
+            Task.Run(() => DownloadAllPodcasts())
+                .ContinueWith(t => DownloadComplete());
         }
 
         public void DownloadAllPodcasts()

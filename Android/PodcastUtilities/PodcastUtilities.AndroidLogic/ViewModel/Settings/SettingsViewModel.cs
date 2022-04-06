@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Platform;
 using System;
@@ -22,13 +23,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
         private ICrashReporter CrashReporter;
+        private IUserSettings UserSettings;
 
         public SettingsViewModel(
             Application app,
             ILogger logger,
             IResourceProvider resProvider,
-            IAndroidApplication androidApplication, 
-            ICrashReporter crashReporter) : base(app)
+            IAndroidApplication androidApplication,
+            ICrashReporter crashReporter, 
+            IUserSettings userSettings) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"SettingsViewModel:ctor");
@@ -37,6 +40,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             ResourceProvider = resProvider;
             AndroidApplication = androidApplication;
             CrashReporter = crashReporter;
+            UserSettings = userSettings;
         }
 
         public void Initialise()
@@ -50,6 +54,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
                 builder.AppendLine(line);
             }
             Observables.Version?.Invoke(this, builder.ToString());
+        }
+
+        public void Pause()
+        {
+            // we should force the settings to be read again in case any values have changed
+            UserSettings.ResetCache();
         }
 
         public void TestCrashReporting()

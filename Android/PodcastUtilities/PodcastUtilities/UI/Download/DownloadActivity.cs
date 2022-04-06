@@ -24,16 +24,19 @@ namespace PodcastUtilities.UI.Download
     public class DownloadActivity : AppCompatActivity
     {
         private const string EXIT_PROMPT_TAG = "exit_prompt_tag";
+        private const string NETWORK_PROMPT_TAG = "network_prompt_tag";
 
         private DownloadViewModel ViewModel;
 
         private AndroidApplication AndroidApplication;
         private EmptyRecyclerView RvDownloads;
         private LinearLayout NoDataView;
+        private TextView NoDataText;
         private ProgressSpinnerView ProgressSpinner;
         private DownloadRecyclerItemAdapter Adapter;
         private Button DownloadButton;
         private OkCancelDialogFragment ExitPromptDialogFragment;
+        private OkCancelDialogFragment NetworkPromptDialogFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -47,6 +50,7 @@ namespace PodcastUtilities.UI.Download
 
             RvDownloads = FindViewById<EmptyRecyclerView>(Resource.Id.rvDownloads);
             NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoData);
+            NoDataText = FindViewById<TextView>(Resource.Id.txtNoData);
             ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
             DownloadButton = FindViewById<Button>(Resource.Id.btnDownload);
 
@@ -66,12 +70,12 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Initialise();
             Task.Run(() => ViewModel.FindEpisodesToDownload());
 
-            DownloadButton.Click += (sender, e) => 
-            Task.Run(() => ViewModel.DownloadAllPodcasts())
-                    .ContinueWith(t => ViewModel.DownloadComplete());
+            DownloadButton.Click += (sender, e) => ViewModel.DownloadAllPodcastsWithNetworkCheck();
 
             ExitPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(EXIT_PROMPT_TAG) as OkCancelDialogFragment;
             SetupFragmentObservers(ExitPromptDialogFragment);
+            NetworkPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(NETWORK_PROMPT_TAG) as OkCancelDialogFragment;
+            SetupFragmentObservers(NetworkPromptDialogFragment);
 
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate - end");
         }
@@ -82,6 +86,7 @@ namespace PodcastUtilities.UI.Download
             base.OnDestroy();
             KillViewModelObservers();
             KillFragmentObservers(ExitPromptDialogFragment);
+            KillFragmentObservers(NetworkPromptDialogFragment);
         }
 
         public override void OnBackPressed()
@@ -141,6 +146,8 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.Exit += Exit;
             ViewModel.Observables.NavigateToDisplayLogs += NavigateToDisplayLogs;
             ViewModel.Observables.ExitPrompt += ExitPrompt;
+            ViewModel.Observables.SetEmptyText += SetEmptyText;
+            ViewModel.Observables.CellularPrompt += CellularPrompt;
         }
 
         private void KillViewModelObservers()
@@ -158,6 +165,8 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.Exit -= Exit;
             ViewModel.Observables.NavigateToDisplayLogs -= NavigateToDisplayLogs;
             ViewModel.Observables.ExitPrompt -= ExitPrompt;
+            ViewModel.Observables.SetEmptyText -= SetEmptyText;
+            ViewModel.Observables.CellularPrompt -= CellularPrompt;
         }
 
         private void SetupFragmentObservers(OkCancelDialogFragment fragment)
@@ -189,6 +198,9 @@ namespace PodcastUtilities.UI.Download
                 case EXIT_PROMPT_TAG:
                     KillFragmentObservers(ExitPromptDialogFragment);
                     break;
+                case NETWORK_PROMPT_TAG:
+                    KillFragmentObservers(NetworkPromptDialogFragment);
+                    break;
             }
         }
 
@@ -203,6 +215,10 @@ namespace PodcastUtilities.UI.Download
                     case EXIT_PROMPT_TAG:
                         KillFragmentObservers(ExitPromptDialogFragment);
                         ViewModel.CancelAllJobsAndExit();
+                        break;
+                    case NETWORK_PROMPT_TAG:
+                        KillFragmentObservers(NetworkPromptDialogFragment);
+                        ViewModel.DownloadAllPodcastsWithoutNetworkCheck();
                         break;
                 }
             });
@@ -320,6 +336,17 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
+        private void CellularPrompt(object sender, Tuple<string, string, string> parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                (string message, string ok, string cancel) = parameters;
+                NetworkPromptDialogFragment = OkCancelDialogFragment.NewInstance(message, ok, cancel, null);
+                SetupFragmentObservers(NetworkPromptDialogFragment);
+                NetworkPromptDialogFragment.Show(SupportFragmentManager, NETWORK_PROMPT_TAG);
+            });
+        }
+
         private void NavigateToDisplayLogs(object sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"DownloadActivity: NavigateToDisplayLogs");
@@ -329,5 +356,14 @@ namespace PodcastUtilities.UI.Download
                 StartActivity(intent);
             });
         }
+
+        private void SetEmptyText(object sender, string message)
+        {
+            RunOnUiThread(() =>
+            {
+                NoDataText.Text = message;
+            });
+        }
+
     }
 }

@@ -42,6 +42,7 @@ namespace PodcastUtilities.UI.Settings
             AndroidApplication.Logger.Debug(() => $"SettingsFragment:OnPause");
             base.OnPause();
             PreferenceManager.GetDefaultSharedPreferences(Activity).UnregisterOnSharedPreferenceChangeListener(this);
+            ViewModel.Pause();
         }
 
         public override void OnResume()
