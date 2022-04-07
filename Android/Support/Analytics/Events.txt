@@ -1,0 +1,40 @@
+
+Test Event
+    my_item_id
+
+SELECT_CONTENT == PodcastUtilities_EVENT
+
+Category = ID
+    Action = NAME
+        Label = ContentType
+
+Download
+    Feed
+    Episode
+
+Purge
+    File
+
+Generate
+    Playlist
+        <format>
+
+Load
+    Control
+
+Error
+    HTTP
+        <Code>
+        
+Lifecycle
+    Launch
+        <Version>
+    Exit
+        <Version>
+    ErrorFatal
+        <Version>
+    ErrorNonFatal
+        <Version>
+
+UISelect
+    ToggleDownload

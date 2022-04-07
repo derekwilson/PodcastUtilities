@@ -68,12 +68,39 @@ namespace PodcastUtilities.AndroidLogic.Logging
         /// <param name="folder">folder for log files</param>
         public NLoggerLoggerFactory(String folder)
         {
+            // set the targets for the file loggers
             var config = LogManager.Configuration;
             var target = config.FindTargetByName("externalFileTarget");
             var fileTarget = target as FileTarget;
             fileTarget.FileName = Path.Combine(folder, "logs/${shortdate}.log.csv");
             fileTarget.ArchiveFileName = Path.Combine(folder, "logs/archive.{#}.log.csv");
+
+            // set the loglevel
+#if DEBUG
+            SetLoggingLevel(LogLevel.Debug);
+#else
+            SetLoggingLevel(LogLevel.Error);
+#endif
+            // re-apply the config
             LogManager.ReconfigExistingLoggers();
+        }
+
+        private void SetLoggingLevel(LogLevel minLevel)
+        {
+            if (minLevel == LogLevel.Off)
+            {
+                LogManager.DisableLogging();
+                return;
+            }
+
+            if (!LogManager.IsLoggingEnabled())
+            {
+                LogManager.EnableLogging();
+            }
+            foreach (var rule in LogManager.Configuration.LoggingRules)
+            {
+                rule.SetLoggingLevels(minLevel, LogLevel.Fatal);
+            }
         }
 
         public ILogger Logger

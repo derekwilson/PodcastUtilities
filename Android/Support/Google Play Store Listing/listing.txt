@@ -1,0 +1,11 @@
+PodcastUtilities is a set of utilities designed to help manage a digital media cache in your phone storage. Utilities are provided to Download Podcasts, PurgePodcasts and Generate Playlists
+
+Note: PodcastUtilities can manage the cache by downloading and deleting media however it cannot play the media, a separate player is required.
+
+The utilities can be configured to keep any number of episodes of each feed.
+
+There is no background service, the utilities are only using memory and power when they are run.
+
+The source is open and available
+
+There is no cost to using Podcast Utilities for any use.
