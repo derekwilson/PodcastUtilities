@@ -87,7 +87,13 @@ namespace PodcastUtilities
             base.OnResume();
             if (PermissionChecker.HasManageStoragePermission(this))
             {
+                AndroidApplication.Logger.Debug(() => $"MainActivity:OnResume - we have manage storage");
                 ViewModel?.RefreshFileSystemInfo();
+                AndroidApplication.Logger.Debug(() => $"MainActivity:OnResume - write storage permission = {PermissionChecker.HasWriteStoragePermission(this)}");
+                if (!PermissionChecker.HasWriteStoragePermission(this))
+                {
+                    PermissionRequester.RequestWriteStoragePermission(this, PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION);
+                }
             }
         }
 
