@@ -73,10 +73,9 @@ namespace PodcastUtilities
 
             if (!PermissionChecker.HasManageStoragePermission(this))
             {
-                AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate - permission not granted - requesting");
+                AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate - manage storage permission not granted - requesting");
                 PermissionRequester.RequestManageStoragePermission(this, PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION, AndroidApplication.PackageName);
             }
-
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate - end - observers {GetObserverCount()}");
         }
 
@@ -121,7 +120,7 @@ namespace PodcastUtilities
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
             switch (requestCode)
             {
-                // for manage storage on SDK30+ it will go to activity result - thanks google
+                // for manage storage on SDK30+ the result will go to OnActivityResult - thanks google
                 // also we get CANCELLED as the result code so its difficult to know if it worked
                 case PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
                     if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
@@ -340,7 +339,6 @@ namespace PodcastUtilities
                 CacheRoot.Text = root;
             });
         }
-
         private string GetObserverCount()
         {
             if (ViewModel == null)

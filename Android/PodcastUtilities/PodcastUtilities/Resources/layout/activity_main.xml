@@ -66,13 +66,13 @@
                 style="@style/ItemLabel" />
 
             <!-- the list of feeds -->
-            <PodcastUtilities.AndroidLogic.CustomViews.EmptyRecyclerView
+    		<podcastutilities.androidlogic.customviews.EmptyRecyclerView
 			    android:id="@+id/feed_list"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:overScrollMode="never">
-        	</PodcastUtilities.AndroidLogic.CustomViews.EmptyRecyclerView>
+        	</podcastutilities.androidlogic.customviews.EmptyRecyclerView>
 
 		    <LinearLayout
 			    android:id="@+id/layNoFeed"

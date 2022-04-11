@@ -17,6 +17,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         List<string> GetFolderFiles(string foldername);
         string GetFileContents(string filename, bool addLineEndings);
         bool Exists(string pathname);
+        void LogPersistantPermissions();
+        void TakePersistantPermission(Android.Net.Uri uri);
     }
 
     public class FileSystemHelper : IFileSystemHelper
@@ -155,6 +157,19 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             long blockSize = stat.BlockSizeLong;
             long blocks = stat.BlockCountLong;
             return blocks * blockSize;
+        }
+
+        public void LogPersistantPermissions()
+        {
+            foreach (UriPermission permission in ApplicationContext.ContentResolver.PersistedUriPermissions) 
+            {
+                Logger.Debug(() => $"FileSystemHelper:LogPersistantPermissions - {permission.Uri.ToString()}");
+            }
+        }
+
+        public void TakePersistantPermission(Android.Net.Uri uri)
+        {
+            ApplicationContext.ContentResolver.TakePersistableUriPermission(uri, ActivityFlags.GrantReadUriPermission | ActivityFlags.GrantWriteUriPermission);
         }
     }
 }

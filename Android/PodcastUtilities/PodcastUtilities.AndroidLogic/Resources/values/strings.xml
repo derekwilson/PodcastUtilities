@@ -2,6 +2,8 @@
 	<string name="placeholder">placeholder</string>
 	<string name="unknown">Unknown</string>
 
+	<string name="dialog_title">PodcastUtilities</string>
+
 	<!-- permissions -->
 	<string name="ok">OK</string>
 	<string name="permissions_title">PodcastUtilities Permissions</string>

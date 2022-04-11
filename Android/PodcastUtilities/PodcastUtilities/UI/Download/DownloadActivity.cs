@@ -325,23 +325,23 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void ExitPrompt(object sender, Tuple<string, string, string> parameters)
+        private void ExitPrompt(object sender, Tuple<string, string, string, string> parameters)
         {
             RunOnUiThread(() =>
             {
-                (string message, string ok, string cancel) = parameters;
-                ExitPromptDialogFragment = OkCancelDialogFragment.NewInstance(message, ok, cancel, null);
+                (string title, string message, string ok, string cancel) = parameters;
+                ExitPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, null);
                 SetupFragmentObservers(ExitPromptDialogFragment);
                 ExitPromptDialogFragment.Show(SupportFragmentManager, EXIT_PROMPT_TAG);
             });
         }
 
-        private void CellularPrompt(object sender, Tuple<string, string, string> parameters)
+        private void CellularPrompt(object sender, Tuple<string, string, string, string> parameters)
         {
             RunOnUiThread(() =>
             {
-                (string message, string ok, string cancel) = parameters;
-                NetworkPromptDialogFragment = OkCancelDialogFragment.NewInstance(message, ok, cancel, null);
+                (string title, string message, string ok, string cancel) = parameters;
+                NetworkPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, null);
                 SetupFragmentObservers(NetworkPromptDialogFragment);
                 NetworkPromptDialogFragment.Show(SupportFragmentManager, NETWORK_PROMPT_TAG);
             });

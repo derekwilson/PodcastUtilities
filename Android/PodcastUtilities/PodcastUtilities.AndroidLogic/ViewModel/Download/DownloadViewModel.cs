@@ -29,8 +29,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             public EventHandler<string> EndDownloading;
             public EventHandler Exit;
             public EventHandler NavigateToDisplayLogs;
-            public EventHandler<Tuple<string, string, string>> ExitPrompt;
-            public EventHandler<Tuple<string, string, string>> CellularPrompt;
+            public EventHandler<Tuple<string, string, string, string>> ExitPrompt;
+            public EventHandler<Tuple<string, string, string, string>> CellularPrompt;
             public EventHandler<string> SetEmptyText;
         }
         public ObservableGroup Observables = new ObservableGroup();
@@ -108,6 +108,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 Logger.Debug(() => $"DownloadViewModel:RequestExit - download in progress");
                 Observables.ExitPrompt?.Invoke(this, 
                     Tuple.Create(
+                        ResourceProvider.GetString(Resource.String.dialog_title),
                         ResourceProvider.GetString(Resource.String.download_activity_exit_prompt),
                         ResourceProvider.GetString(Resource.String.download_activity_exit_ok),
                         ResourceProvider.GetString(Resource.String.download_activity_exit_cancel)
@@ -255,6 +256,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 Logger.Debug(() => $"DownloadViewModel:NetworkConnectionTypeAllowedPromptNeeded - on cellular");
                 Observables.CellularPrompt?.Invoke(this,
                     Tuple.Create(
+                        ResourceProvider.GetString(Resource.String.dialog_title),
                         ResourceProvider.GetString(Resource.String.download_activity_cellular_prompt),
                         ResourceProvider.GetString(Resource.String.download_activity_cellular_ok),
                         ResourceProvider.GetString(Resource.String.download_activity_cellular_cancel)

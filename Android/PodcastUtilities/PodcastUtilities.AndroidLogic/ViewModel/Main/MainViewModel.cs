@@ -52,8 +52,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             IFileSystemHelper fsHelper,
             IByteConverter byteConverter,
             ICrashReporter crashReporter,
-            IAnalyticsEngine analyticsEngine, 
-            IGenerator playlistGenerator) : base(app)
+            IAnalyticsEngine analyticsEngine,
+            IGenerator playlistGenerator 
+            ) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"MainViewModel:ctor");

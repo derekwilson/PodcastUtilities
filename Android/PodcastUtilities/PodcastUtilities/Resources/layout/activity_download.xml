@@ -18,11 +18,11 @@
 		>
 
 		<!-- list of items to download -->
-		<podcastutilities.androidlogic.customviews.EmptyRecyclerView
+		<PodcastUtilities.AndroidLogic.CustomViews.EmptyRecyclerView
 			android:id="@+id/rvDownloads"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
-		</podcastutilities.androidlogic.customviews.EmptyRecyclerView>
+		</PodcastUtilities.AndroidLogic.CustomViews.EmptyRecyclerView>
 
 		<LinearLayout
 			android:id="@+id/layNoData"
