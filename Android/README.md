@@ -52,14 +52,34 @@ Note: it will fail if the app is already running
 
 Note: You need to have the folder `PodcastUtilities\Android\PodcastUtilities\LocalOnly`. Its not in the repo you will need to get it from one of the team, if you dont have it then you can still build the debug builds but you cannot sign the release builds.
 
+##### Building a release AAB
+
+If you intend to deploy the build using Google Play Store you need to build an AAB. The AAB is signed with the key from `LocalOnly`, this will be used as an upload key on the play store the then Google will resign the app as it is downloaded.
+
 1. Open a developer command prompt for VS2022
 1. Goto `Android\PodcastUtilities`
-1. Run `BuildRelease.bat`
-1. The `aab` will be copied to `Android\Support\Releases`
-1. Goto `Android\Support\Releases`
+1. Run `BuildReleaseAAB.bat`
+1. The `aab` will be copied to `Android\Support\_PreBuiltPackages` and will be called `com.andrewandderek.podcastutilities-Signed.aab`
+1. Goto `Android\Support\_PreBuiltPackages`
 1. Run `GenerateApks.bat`
 1. This will create a `universal.apk`
 1. Connect a test device
-1. Run `InstallApk.bat`
+1. Run `InstallUniversalApk.bat`
 
+##### Building a release APK
 
+If you are intending to deploy the app by having the user download it from GitHub then you must build an APK, as phones cannot install AAB's (thanks Google). The APK will be signed using the key in `LocalOnly`, this will be the app signing key as the user will install the APK directly, the play store is not involved. 
+
+1. Open a developer command prompt for VS2022
+1. Goto `Android\PodcastUtilities`
+1. Run `BuildReleaseAPK.bat`
+1. The `apk` will be copied to `Android\Support\_PreBuiltPackages` and will be called `com.andrewandderek.podcastutilities-Signed.apk`
+1. Goto `Android\Support\_PreBuiltPackages`
+1. Connect a test device
+1. Run `InstallReleaseApk.bat`
+
+##### Notes on installing release builds
+
+You cannot upgrade from an AAB to an APK install, or visa versa, as they are signed with different keys. The AAB is signed by Google and the APK is signed by the developer.
+
+Sometimes when running `BuildReleaseAPK.bat` it will generate a file called `com.andrewandderek.podcastutilities.debug-Signed.aab`, and the copy operation will fail, if this happens just run the script again.

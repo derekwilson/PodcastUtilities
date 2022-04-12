@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Text;
+using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
@@ -19,6 +20,7 @@ namespace PodcastUtilities.UI.Messages
         private AndroidApplication AndroidApplication;
         private MessagesViewModel ViewModel;
 
+        ScrollView MessagesTextScroller = null;
         TextView MessagesText = null;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -30,6 +32,7 @@ namespace PodcastUtilities.UI.Messages
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_messages);
 
+            MessagesTextScroller = FindViewById<ScrollView>(Resource.Id.messages_scroller);
             MessagesText = FindViewById<TextView>(Resource.Id.messages_text);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
@@ -73,7 +76,7 @@ namespace PodcastUtilities.UI.Messages
             RunOnUiThread(() =>
             {
                 // Appending to the textview auto scrolls the text to the bottom - force it back to the top
-                Selection.SetSelection(MessagesText.TextFormatted as ISpannable, 0);
+                MessagesTextScroller.FullScroll(FocusSearchDirection.Up);
             });
         }
 

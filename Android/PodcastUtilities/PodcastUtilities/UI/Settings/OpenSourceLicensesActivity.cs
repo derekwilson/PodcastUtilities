@@ -5,6 +5,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Text;
 using Android.Text.Style;
+using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
@@ -21,6 +22,7 @@ namespace PodcastUtilities.UI.Settings
         private AndroidApplication AndroidApplication;
         private OpenSourceLicensesViewModel ViewModel;
 
+        ScrollView LicenseTextScroller = null;
         TextView LicenseText = null;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -32,6 +34,7 @@ namespace PodcastUtilities.UI.Settings
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_opensourcelicenses);
 
+            LicenseTextScroller = FindViewById<ScrollView>(Resource.Id.license_scroller);
             LicenseText = FindViewById<TextView>(Resource.Id.license_text);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
@@ -73,7 +76,8 @@ namespace PodcastUtilities.UI.Settings
         private void ScrollToTop(object sender, EventArgs e)
         {
             // Appending to the textview auto scrolls the text to the bottom - force it back to the top
-            Selection.SetSelection(LicenseText.TextFormatted as ISpannable, 0);
+            AndroidApplication.Logger.Debug(() => $"OpenSourceLicensesActivity:ScrollToTop Length = {LicenseText.Text.Length}");
+            LicenseTextScroller.FullScroll(FocusSearchDirection.Up);
         }
 
         private void AddText(object sender, Tuple<string, string> textBlock)
