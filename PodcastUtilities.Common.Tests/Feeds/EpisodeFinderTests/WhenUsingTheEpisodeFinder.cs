@@ -45,6 +45,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
         protected IDirectoryInfoProvider _directoryInfoProvider;
         protected IDirectoryInfo _directoryInfo;
         protected ICommandGenerator _commandGenerator;
+        protected IPathUtilities _pathUtilities;
 
         protected string _rootFolder;
         protected int _retryWaitTime;
@@ -80,11 +81,12 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
             _directoryInfoProvider = GenerateMock<IDirectoryInfoProvider>();
             _directoryInfo = GenerateMock<IDirectoryInfo>();
             _commandGenerator = GenerateMock<ICommandGenerator>();
+            _pathUtilities = GenerateMock<IPathUtilities>();
 
             SetupData();
             SetupStubs();
 
-            _episodeFinder = new EpisodeFinder(_fileUtilities, _feedFactory, _webClientFactory, _timeProvider, _stateProvider, _directoryInfoProvider, _commandGenerator);
+            _episodeFinder = new EpisodeFinder(_fileUtilities, _feedFactory, _webClientFactory, _timeProvider, _stateProvider, _directoryInfoProvider, _commandGenerator, _pathUtilities);
             _episodeFinder.StatusUpdate += new EventHandler<StatusUpdateEventArgs>(EpisodeFinderStatusUpdate);
             _latestUpdate = null;
         }
@@ -143,6 +145,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
             _directoryInfoProvider.Stub(dir => dir.GetDirectoryInfo(Path.Combine(_rootFolder, _podcastInfo.Folder))).Return(_directoryInfo);
 
             _commandGenerator.Stub(cmd => cmd.ReplaceTokensInCommand(null, _rootFolder, null, _podcastInfo)).IgnoreArguments().Return(_externalCommand);
+            _pathUtilities.Stub(utilities => utilities.GetPathSeparator()).Return('\\');
         }
     }
 }

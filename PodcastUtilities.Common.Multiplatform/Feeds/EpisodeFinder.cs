@@ -42,11 +42,12 @@ namespace PodcastUtilities.Common.Feeds
         private readonly ITimeProvider _timeProvider;
         private readonly IStateProvider _stateProvider;
         private readonly ICommandGenerator _commandGenerator;
+        private readonly IPathUtilities _pathUtilities;
 
         /// <summary>
         /// discover items to be downloaded from a feed
         /// </summary>
-        public EpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider, IStateProvider stateProvider, IDirectoryInfoProvider directoryInfoProvider, ICommandGenerator commandGenerator)
+        public EpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider, IStateProvider stateProvider, IDirectoryInfoProvider directoryInfoProvider, ICommandGenerator commandGenerator, IPathUtilities pathUtilities)
         {
             _fileUtilities = fileFinder;
             _commandGenerator = commandGenerator;
@@ -55,6 +56,7 @@ namespace PodcastUtilities.Common.Feeds
             _timeProvider = timeProvider;
             _webClientFactory = webClientFactory;
             _feedFactory = feedFactory;
+            _pathUtilities = pathUtilities;
         }
 
         /// <summary>
@@ -62,7 +64,7 @@ namespace PodcastUtilities.Common.Feeds
         /// </summary>
         public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
-        private static string GetDownloadPathname(string rootFolder, PodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
+        private string GetDownloadPathname(string rootFolder, PodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
         {
             var proposedFilename = podcastFeedItem.FileName;
 
@@ -80,8 +82,9 @@ namespace PodcastUtilities.Common.Feeds
                                                     proposedFilename);
                     break;
                 case PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder:
-                    proposedFilename = string.Format(CultureInfo.InvariantCulture, "{0}\\{1}_{2}_{3}",
+                    proposedFilename = string.Format(CultureInfo.InvariantCulture, "{0}{1}{2}_{3}_{4}",
                                                     podcastFeedItem.Published.ToString("yyyy_MM",CultureInfo.InvariantCulture),
+                                                    _pathUtilities.GetPathSeparator(),
                                                     podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm",CultureInfo.InvariantCulture),
                                                     podcastInfo.Folder,
                                                     proposedFilename);

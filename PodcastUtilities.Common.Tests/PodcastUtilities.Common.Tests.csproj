@@ -151,6 +151,8 @@
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderContainsFiles.cs" />
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderContainsSubfolders.cs" />
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderIsEmpty.cs" />
+    <Compile Include="Playlists\GeneratorTests\WhenThereAreSomePodcastsContainingFiles.cs" />
+    <Compile Include="Playlists\GeneratorTests\WhenThereAreSomePodcastsContainingFilesNeedingSorting.cs" />
     <Compile Include="Playlists\GeneratorTests\WhenUsingTheSourceDirectoryAsRoot.cs" />
     <Compile Include="Playlists\PlaylistFactoryTests\WhenCreatingANewM3uPlaylist.cs" />
     <Compile Include="Playlists\PlaylistM3uTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
@@ -199,7 +201,6 @@
     <Compile Include="Playlists\GeneratorTests\WhenCopyToDestinationIsSpecified.cs" />
     <Compile Include="Playlists\GeneratorTests\WhenTestingThePlaylistGenerator.cs" />
     <Compile Include="Playlists\GeneratorTests\WhenThereAreNoSourcePodcasts.cs" />
-    <Compile Include="Playlists\GeneratorTests\WhenThereAreSomePodcastsContainingFiles.cs" />
     <Compile Include="Playlists\PlaylistWplTests\WhenAddinATrackToAnInvalidPlaylist.cs" />
     <Compile Include="Playlists\PlaylistWplTests\WhenAddingTrackContainingAmpersands.cs" />
     <Compile Include="Playlists\PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />

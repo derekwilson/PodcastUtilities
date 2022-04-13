@@ -25,6 +25,7 @@ using System.IO;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Files;
 using PodcastUtilities.Common.Platform;
+using System.Collections.Generic;
 
 namespace PodcastUtilities.Common.Playlists
 {
@@ -81,13 +82,14 @@ namespace PodcastUtilities.Common.Playlists
         /// <param name="copyToDestination">true to copy the playlist to the root folder, false to write it with the control file</param>
         private void GeneratePlaylist(IReadOnlyControlFile control, string rootFolder, bool copyToDestination)
         {
-			var allDestFiles = control.GetPodcasts().SelectMany(
+            IEnumerable<IFileInfo> allDestFiles = control.GetPodcasts().SelectMany(
         		podcast => FileFinder.GetFiles(Path.Combine(rootFolder, podcast.Folder), podcast.Pattern.Value));
+            List<IFileInfo> allDestFilesSorted = allDestFiles.OrderBy(item => item.FullName).ToList();
 
-			IPlaylist p = PlaylistFactory.CreatePlaylist(control.GetPlaylistFormat(), control.GetPlaylistFileName());
+            IPlaylist p = PlaylistFactory.CreatePlaylist(control.GetPlaylistFormat(), control.GetPlaylistFileName());
 
 			string pathSeparator = PathUtilities.GetPathSeparator().ToString();
-            foreach (IFileInfo thisFile in allDestFiles)
+            foreach (IFileInfo thisFile in allDestFilesSorted)
             {
                 string thisRelativeFile = thisFile.FullName;
                 string absRoot = PathUtilities.GetFullPath(rootFolder);

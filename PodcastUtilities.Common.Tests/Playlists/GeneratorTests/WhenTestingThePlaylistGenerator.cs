@@ -65,7 +65,10 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
             PathUtilities.Stub(utilities => utilities.GetTempFileName())
                 .Return("c:\\file.tmp");
 
-            Playlist = GenerateMock<IPlaylist>();
+            if (Playlist == null)
+            {
+                Playlist = GenerateMock<IPlaylist>();
+            }
             Factory = GenerateMock<IPlaylistFactory>();
             Factory.Stub(factory => factory.CreatePlaylist(PlaylistFormat.WPL, null)).IgnoreArguments().Return(Playlist);
 
