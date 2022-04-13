@@ -33,7 +33,7 @@ namespace PodcastUtilities.Common.Feeds
         // these are chars that are invalid in the file system but not in Path.GetInvalidFileNameChars()
         // for example the ? and : on Android scoped file storage (MediaStore)
         // to be fair to Mono its not possible to get Path.GetInvalidFileNameChars() correct as the rules change depending on the folder (thanks google)
-        private static char[] additional_invalid_chars = { '?', ':' };
+        private static char[] additional_invalid_chars = { '?', ':', '\'', '’' };
 
         /// <summary>
         /// title of the item
