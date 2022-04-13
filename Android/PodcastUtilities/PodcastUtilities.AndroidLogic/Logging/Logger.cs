@@ -1,9 +1,7 @@
 ﻿using NLog;
-using NLog.Config;
 using NLog.Targets;
 using System;
 using System.IO;
-using System.Xml;
 
 namespace PodcastUtilities.AndroidLogic.Logging
 {
@@ -15,6 +13,10 @@ namespace PodcastUtilities.AndroidLogic.Logging
         void Warning(MessageGenerator message);
         void LogException(MessageGenerator message, Exception ex);
     }
+    
+    /// <summary>
+    /// An implementation of ILogger that uses NLog
+    /// </summary>
     public class NLogLogger : ILogger
     {
         private Logger nlogLogger;
@@ -53,6 +55,9 @@ namespace PodcastUtilities.AndroidLogic.Logging
         ILogger Logger { get; }
     }
 
+    /// <summary>
+    /// An implementation of the ILoggerFactory that generates an NlogLogger
+    /// </summary>
     public class NLoggerLoggerFactory : ILoggerFactory
     {
         /// <summary>
