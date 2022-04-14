@@ -72,7 +72,8 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\EnvironmentTests.cs" />
-    <Compile Include="Tests\ViewModel\Main\MainViewModelTests.cs" />
+    <Compile Include="Tests\ViewModel\Main\MainViewModelBase.cs" />
+    <Compile Include="Tests\ViewModel\Main\MainViewModel_Initialise.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

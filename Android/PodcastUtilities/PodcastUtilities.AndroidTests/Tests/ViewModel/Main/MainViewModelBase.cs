@@ -6,15 +6,20 @@ using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.Common.Playlists;
+using System;
+using System.Collections.Generic;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 {
     [TestFixture]
-    public class MainViewModelTests
+    public class MainViewModelBase
     {
-        private MainViewModel ViewModel;
+        protected MainViewModel ViewModel;
 
-        private string LastSetTitle;
+        protected string LastSetTitle;
+        protected string LastSetCacheRoot;
+        protected string LastSetFeedHeading;
+        protected List<PodcastFeedRecyclerItem> LastSetFeedItems;
 
         // mocks
         protected Application MockApplication = A.Fake<Application>();
@@ -29,10 +34,17 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
 
+        private void SetupResources()
+        {
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.main_activity_title)).Returns("Mocked Title");
+            A.CallTo(() => MockResourceProvider.GetQuantityString(Resource.Plurals.feed_list_heading, A<int>.Ignored))
+                                   .ReturnsLazily((int id, int number) => "feed count == " + number.ToString());
+        }
+
         [SetUp]
         public void Setup()
         {
-            A.CallTo(() => MockResourceProvider.GetString(Resource.String.main_activity_title)).Returns("Mocked Title");
+            SetupResources();
             ViewModel = new MainViewModel(
                 MockApplication, 
                 MockLogger, 
@@ -45,32 +57,31 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
                 MockPlaylistGenerator
             );
             ViewModel.Observables.Title += SetTitle;
+            ViewModel.Observables.SetCacheRoot += SetCacheRoot;
+            ViewModel.Observables.SetFeedItems += SetFeedItems;
         }
+
         [TearDown]
         public void TearDown()
         {
             ViewModel.Observables.Title -= SetTitle;
+            ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
+            ViewModel.Observables.SetFeedItems -= SetFeedItems;
+        }
+
+        private void SetFeedItems(object sender, Tuple<string, List<PodcastFeedRecyclerItem>> items)
+        {
+            (LastSetFeedHeading, LastSetFeedItems) = items;
+        }
+
+        private void SetCacheRoot(object sender, string root)
+        {
+            LastSetCacheRoot = root;
         }
 
         private void SetTitle(object sender, string title)
         {
             LastSetTitle = title;
-        }
-
-        [Test]
-        public void Initialise_Sets_Title()
-        {
-            ViewModel.Initialise();
-
-            Assert.AreEqual("Mocked Title", LastSetTitle);
-        }
-
-        [Test]
-        public void Initialise_Logs()
-        {
-            ViewModel.Initialise();
-
-            A.CallTo(() => MockLogger.Debug(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(2, Times.Exactly);
         }
     }
 }
