@@ -12,6 +12,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
         {
             public EventHandler<string> AddText;
             public EventHandler ScrollToTop;
+            public EventHandler ResetText;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -38,6 +39,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
         public void Initialise()
         {
             Logger.Debug(() => $"MessagesViewModel:Initialise");
+            Observables.ResetText?.Invoke(this, null);
             Observables.AddText?.Invoke(this, Store.GetAllMessages());
             Observables.ScrollToTop?.Invoke(this, null);
         }

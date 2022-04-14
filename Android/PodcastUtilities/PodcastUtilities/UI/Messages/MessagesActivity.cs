@@ -63,12 +63,22 @@ namespace PodcastUtilities.UI.Messages
         {
             ViewModel.Observables.AddText += AddText;
             ViewModel.Observables.ScrollToTop += ScrollToTop;
+            ViewModel.Observables.ResetText += ResetText;
         }
 
         private void KillViewModelObservers()
         {
             ViewModel.Observables.AddText -= AddText;
             ViewModel.Observables.ScrollToTop -= ScrollToTop;
+            ViewModel.Observables.ResetText -= ResetText;
+        }
+
+        private void ResetText(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                MessagesText.Text = "";
+            });
         }
 
         private void ScrollToTop(object sender, EventArgs e)

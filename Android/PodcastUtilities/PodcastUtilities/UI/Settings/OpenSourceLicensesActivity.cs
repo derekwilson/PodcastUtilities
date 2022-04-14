@@ -65,25 +65,41 @@ namespace PodcastUtilities.UI.Settings
         {
             ViewModel.Observables.AddText += AddText;
             ViewModel.Observables.ScrollToTop += ScrollToTop;
+            ViewModel.Observables.ResetText += ResetText;
         }
 
         private void KillViewModelObservers()
         {
             ViewModel.Observables.AddText -= AddText;
             ViewModel.Observables.ScrollToTop -= ScrollToTop;
+            ViewModel.Observables.ResetText -= ResetText;
+        }
+
+        private void ResetText(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                LicenseText.Text = "";
+            });
         }
 
         private void ScrollToTop(object sender, EventArgs e)
         {
-            // Appending to the textview auto scrolls the text to the bottom - force it back to the top
             AndroidApplication.Logger.Debug(() => $"OpenSourceLicensesActivity:ScrollToTop Length = {LicenseText.Text.Length}");
-            LicenseTextScroller.FullScroll(FocusSearchDirection.Up);
+            RunOnUiThread(() =>
+            {
+                // Appending to the textview auto scrolls the text to the bottom - force it back to the top
+                LicenseTextScroller.FullScroll(FocusSearchDirection.Up);
+            });
         }
 
         private void AddText(object sender, Tuple<string, string> textBlock)
         {
-            (string title, string text) = textBlock;
-            AddTextToView(LicenseText, title, text);
+            RunOnUiThread(() =>
+            {
+                (string title, string text) = textBlock;
+                AddTextToView(LicenseText, title, text);
+            });
         }
 
         private void AddTextToView(TextView textView, string title, string text)

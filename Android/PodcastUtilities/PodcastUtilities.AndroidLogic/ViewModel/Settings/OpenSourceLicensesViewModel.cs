@@ -12,6 +12,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
         {
             public EventHandler<Tuple<string, string>> AddText;
             public EventHandler ScrollToTop;
+            public EventHandler ResetText;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -48,6 +49,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             // subfolder are supported, files and subfolders are sorted alphabetically
             // to remove a license, delete the file from the license folder in the assets
 
+            Observables.ResetText?.Invoke(this, null);
             var files = FileSystemHelper.GetAssetsFolderFiles("license");
             if (files == null)
             {

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="2" package="com.andrewandderek.podcastutilities.debug" android:installLocation="auto" android:versionName="1.0.1 step4">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="3" package="com.andrewandderek.podcastutilities" android:installLocation="auto" android:versionName="1.0.2">
   <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="31" />
-  <application android:requestLegacyExternalStorage="true" android:preserveLegacyExternalStorage="true" android:allowBackup="true" android:icon="@mipmap/ic_app" android:label="@string/app_name_debug" android:roundIcon="@mipmap/ic_app_round" android:supportsRtl="true" android:theme="@style/AppTheme">
+  <application android:requestLegacyExternalStorage="true" android:preserveLegacyExternalStorage="true" android:allowBackup="true" android:icon="@mipmap/ic_app" android:label="@string/app_name" android:roundIcon="@mipmap/ic_app_round" android:supportsRtl="true" android:theme="@style/AppTheme">
   </application>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
