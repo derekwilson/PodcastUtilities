@@ -17,6 +17,11 @@
         android:title="@string/settings_about_category">
 
 		<Preference
+            android:key="@string/settings_help_key"
+            android:title="@string/settings_help_title">
+		</Preference>
+
+		<Preference
             android:key="@string/settings_osl_key"
             android:title="@string/settings_osl_title">
 		</Preference>

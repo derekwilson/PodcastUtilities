@@ -13,6 +13,7 @@
 		<TextView android:id="@+id/messages_text"
 				  android:layout_width="fill_parent"
 				  android:layout_height="wrap_content"
+				  android:text="@string/placeholder"
 				  android:textIsSelectable="true"
 				  android:textSize="12sp"
 				  android:typeface="monospace"/>

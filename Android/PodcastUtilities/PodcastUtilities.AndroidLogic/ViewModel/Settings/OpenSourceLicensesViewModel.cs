@@ -48,7 +48,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             // subfolder are supported, files and subfolders are sorted alphabetically
             // to remove a license, delete the file from the license folder in the assets
 
-            var files = FileSystemHelper.GetFolderFiles("license");
+            var files = FileSystemHelper.GetAssetsFolderFiles("license");
             if (files == null)
             {
                 return;
@@ -63,7 +63,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
 
         private void AddLicenseText(string file)
         {
-            var text = FileSystemHelper.GetFileContents(file, true);
+            var text = FileSystemHelper.GetAssetsFileContents(file, true);
             var lineSplit = text.IndexOf("\n");
             if (lineSplit != -1)
             {

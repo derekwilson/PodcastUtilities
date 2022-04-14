@@ -133,6 +133,9 @@
 	<string name="settings_osl_key">appOsl</string>
 	<string name="settings_osl_title">Open-source licenses</string>
 
+	<string name="settings_help_key">appHelp</string>
+	<string name="settings_help_title">Help</string>
+
 	<string name="settings_version_key">appVersion</string>
 	<string name="settings_version_title">Version</string>
 
@@ -141,6 +144,9 @@
 
 	<!-- messages activity -->
 	<string name="messages_activity">Logs</string>
+
+	<!-- help activity -->
+	<string name="help_activity">Help</string>
 
 
 </resources>

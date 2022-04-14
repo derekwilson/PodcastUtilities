@@ -14,8 +14,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         long GetAvailableFileSystemSizeInBytes(string path);
         long GetTotalFileSystemSizeInBytes(string path);
         string GetApplicationFolderOnSdCard();
-        List<string> GetFolderFiles(string foldername);
-        string GetFileContents(string filename, bool addLineEndings);
+        List<string> GetAssetsFolderFiles(string foldername);
+        string GetAssetsFileContents(string filename, bool addLineEndings);
         bool Exists(string pathname);
         void LogPersistantPermissions();
         void TakePersistantPermission(Android.Net.Uri uri);
@@ -79,14 +79,14 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return availableBlocks * blockSize;
         }
 
-        public string GetFileContents(string filename, bool addLineEndings)
+        public string GetAssetsFileContents(string filename, bool addLineEndings)
         {
             Stream inputStream = null;
             StringBuilder builder = new StringBuilder();
             try
             {
                 inputStream = ApplicationContext.Assets.Open(filename);
-                Logger.Debug(() => $"FileSystemHelper:GetFileContents - {filename}");
+                Logger.Debug(() => $"FileSystemHelper:GetAssetsFileContents - {filename}");
                 using (var streamReader = new StreamReader(inputStream, Encoding.UTF8, true, 8192))
                 {
                     String line;
@@ -102,7 +102,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             }
             catch (Exception ex)
             {
-                Logger.LogException(() => $"FileSystemHelper:GetFileContents - {filename}", ex);
+                Logger.LogException(() => $"FileSystemHelper:GetAssetsFileContents - {filename}", ex);
             }
             finally
             {
@@ -112,13 +112,13 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 }
                 catch (Exception ex)
                 {
-                    Logger.LogException(() => $"FileSystemHelper:GetFileContents closing - {filename}", ex);
+                    Logger.LogException(() => $"FileSystemHelper:GetAssetsFileContents closing - {filename}", ex);
                 }
             }
             return builder.ToString();
         }
 
-        public List<string> GetFolderFiles(string foldername)
+        public List<string> GetAssetsFolderFiles(string foldername)
         {
             var allFiles = new List<string>(10);
             try
@@ -131,7 +131,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 foreach (var file in files)
                 {
                     var filename = $"{foldername}/{file}";
-                    var subFolderFiles = GetFolderFiles(filename);
+                    var subFolderFiles = GetAssetsFolderFiles(filename);
                     if (subFolderFiles != null && subFolderFiles.Count > 0)
                     {
                         // the file is a folder, add its files
@@ -146,7 +146,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             }
             catch (Exception ex) 
             {
-                Logger.LogException(() => $"FileSystemHelper:GetFolderFiles - {foldername}", ex);
+                Logger.LogException(() => $"FileSystemHelper:GetAssetsFolderFiles - {foldername}", ex);
             }
             return allFiles;
         }

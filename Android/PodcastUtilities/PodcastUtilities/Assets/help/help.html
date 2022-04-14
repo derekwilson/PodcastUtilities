@@ -1,0 +1,26 @@
+<h3>Introduction</h3>
+<p>PodcastUtilities is an RSS feed media cache management application. You can</p>
+<p>
+&#149; Download new episodes from a group of feeds<br>
+&#149; Remove old episodes from the cache<br>
+&#149; Generate playlists from episodes in the cache<br>
+&#149; Use it in conjunction with the desktop version<br>
+</p>
+<p>Note that it can only perform cache management - PodcastUtilities cannot play media you will need a separate player.</p>
+<h3>Why sideload?</h3>
+<p>To install PodcastUtilities get the APK from the <a href="https://github.com/derekwilson/PodcastUtilities/tree/feature/android-client/Android/Support/_PreBuiltPackages">_PreBuiltPackages</a> folder on Github. We did attempt to distribute it via the Google Play Store however as we needed "Manage Storage" permission Google declined saying "The feature you identified that is dependent on this permission does not appear to be critical to the core functionality of your app", rather than arguing the toss with a Google-bot we decided to sideload the APK.</p>
+<h3>Getting Started</h3>
+<p>PodcastUtilities is configured and controlled by a control file. Its probably easiest if you tweak the control file to your liking using the <a href="https://community.chocolatey.org/packages/podcastutilities-core">desktop version</a> in conjunction with the <a href="https://github.com/derekwilson/PodcastUtilities/tree/master/Documents/User">documentation.</a>.</p>
+<p>When you move the XML control file across to your phone (probably email it to yourself) there are some elements you should take care of</p>
+<p><b>sourceRoot</b> should be set to the root of your cache on the phone, probably <font face='serif-monospace'>/sdcard/Podcasts</font></p>
+<p><b>playlistPathSeparator</b> should probably be<font face='serif-monospace'>/</font></p>
+<h3>Usage</h3>
+<p>Generally the usage pattern is</p>
+<p>
+&#149; Purge Podcasts - to get rid of old media<br>
+&#149; Download Podcasts - to get new media<br>
+&#149; Generate Playlist - to get a playlist of the downloaded media<br>
+</p>
+<p>You could elect to delete the media files manually and skip the purge, also if you use a folder player for your media then you may not need a playlist.</p>
+<h3>Source code</h3>
+<p>The <a href="https://github.com/derekwilson/PodcastUtilities">source code</a> for PodcastUtilities is available on Github.</p>
