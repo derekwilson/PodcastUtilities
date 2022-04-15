@@ -59,8 +59,8 @@ If you intend to deploy the build using Google Play Store you need to build an A
 1. Open a developer command prompt for VS2022
 1. Goto `Android\PodcastUtilities`
 1. Run `BuildReleaseAAB.bat`
-1. The `aab` will be copied to `Android\Support\_PreBuiltPackages` and will be called `com.andrewandderek.podcastutilities-Signed.aab`
-1. Goto `Android\Support\_PreBuiltPackages`
+1. The `aab` will be copied to `Android\Support\CurrentBuild` and will be called `com.andrewandderek.podcastutilities-Signed.aab`
+1. Goto `Android\Support\CurrentBuild`
 1. Run `GenerateApks.bat`
 1. This will create a `universal.apk`
 1. Connect a test device
@@ -73,10 +73,17 @@ If you are intending to deploy the app by having the user download it from GitHu
 1. Open a developer command prompt for VS2022
 1. Goto `Android\PodcastUtilities`
 1. Run `BuildReleaseAPK.bat`
-1. The `apk` will be copied to `Android\Support\_PreBuiltPackages` and will be called `com.andrewandderek.podcastutilities-Signed.apk`
-1. Goto `Android\Support\_PreBuiltPackages`
+1. The `apk` will be copied to `Android\Support\CurrentBuild` and will be called `com.andrewandderek.podcastutilities-Signed.apk`
+1. Goto `Android\Support\CurrentBuild`
 1. Connect a test device
 1. Run `InstallReleaseApk.bat`
+
+##### Publishing a release APK
+
+1. Copy the `com.andrewandderek.podcastutilities-Signed.apk` to `Android\Support\_PreBuiltPackages`
+1. Edit `Android\Support\_PreBuiltPackages\README.md` with the new release details
+1. Edit `Android\Support\_PreBuiltPackages\release.xml` with the new release details
+1. Push your changes to master
 
 ##### Notes on installing release builds
 
