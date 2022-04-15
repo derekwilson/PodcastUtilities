@@ -13,15 +13,20 @@ using PodcastUtilities.AndroidTests.Helpers;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 {
-    [TestFixture]
     public class MainViewModelBase
     {
         protected MainViewModel ViewModel;
 
-        protected string LastSetTitle;
-        protected string LastSetCacheRoot;
-        protected string LastSetFeedHeading;
-        protected List<PodcastFeedRecyclerItem> LastSetFeedItems;
+        public class ObservedResultsGroup
+        {
+            public string LastSetTitle;
+            public string LastSetCacheRoot;
+            public string LastSetFeedHeading;
+            public List<PodcastFeedRecyclerItem> LastSetFeedItems;
+            public int ShowNoDriveMessageCount;
+        }
+        protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
+
 
         // mocks
         protected Application MockApplication;
@@ -36,6 +41,15 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
+
+        protected void ResetObservedResults()
+        {
+            ObservedResults.LastSetTitle = null;
+            ObservedResults.LastSetCacheRoot = null;
+            ObservedResults.LastSetFeedHeading = null;
+            ObservedResults.LastSetFeedItems = null;
+            ObservedResults.ShowNoDriveMessageCount = 0;
+        }
 
         private void SetupResources()
         {
@@ -59,6 +73,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         [SetUp]
         public void Setup()
         {
+            ResetObservedResults();
+
             MockApplication = A.Fake<Application>();
             MockLogger = A.Fake<ILogger>();
             MockResourceProvider = A.Fake<IResourceProvider>();
@@ -86,6 +102,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
             ViewModel.Observables.SetFeedItems += SetFeedItems;
+            ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
         }
 
         [TearDown]
@@ -94,21 +111,28 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ViewModel.Observables.Title -= SetTitle;
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
+            ViewModel.Observables.ShowNoDriveMessage -= ShowNoDriveMessage;
         }
 
         private void SetFeedItems(object sender, Tuple<string, List<PodcastFeedRecyclerItem>> items)
         {
-            (LastSetFeedHeading, LastSetFeedItems) = items;
+            (ObservedResults.LastSetFeedHeading, ObservedResults.LastSetFeedItems) = items;
         }
 
         private void SetCacheRoot(object sender, string root)
         {
-            LastSetCacheRoot = root;
+            ObservedResults.LastSetCacheRoot = root;
         }
 
         private void SetTitle(object sender, string title)
         {
-            LastSetTitle = title;
+            ObservedResults.LastSetTitle = title;
         }
+
+        private void ShowNoDriveMessage(object sender, EventArgs e)
+        {
+            ObservedResults.ShowNoDriveMessageCount++;
+        }
+
     }
 }

@@ -76,6 +76,7 @@
     <Compile Include="Tests\EnvironmentTests.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModelBase.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModel_Initialise.cs" />
+    <Compile Include="Tests\ViewModel\Main\MainViewModel_RefreshFilesystemInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

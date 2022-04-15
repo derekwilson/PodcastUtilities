@@ -4,6 +4,7 @@ using PodcastUtilities.AndroidLogic.Logging;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 {
+
     [TestFixture]
     public class MainViewModel_Initialise : MainViewModelBase
     {
@@ -16,7 +17,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ViewModel.Initialise();
 
             // assert
-            Assert.AreEqual("Mocked Title", LastSetTitle);
+            Assert.AreEqual("Mocked Title", ObservedResults.LastSetTitle);
         }
 
         [Test]
@@ -40,9 +41,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ViewModel.Initialise();
 
             // assert
-            Assert.AreEqual("", LastSetCacheRoot);
-            Assert.AreEqual("feed count == 0", LastSetFeedHeading);
-            Assert.AreEqual(0, LastSetFeedItems.Count);
+            Assert.AreEqual("", ObservedResults.LastSetCacheRoot);
+            Assert.AreEqual("feed count == 0", ObservedResults.LastSetFeedHeading);
+            Assert.AreEqual(0, ObservedResults.LastSetFeedItems.Count);
         }
 
         [Test]
@@ -55,9 +56,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ViewModel.Initialise();
 
             // assert
-            Assert.AreEqual("/sdcard/sourceroot", LastSetCacheRoot);
-            Assert.AreEqual("feed count == 1", LastSetFeedHeading);
-            Assert.AreEqual(1, LastSetFeedItems.Count);
+            Assert.AreEqual("/sdcard/sourceroot", ObservedResults.LastSetCacheRoot);
+            Assert.AreEqual("feed count == 1", ObservedResults.LastSetFeedHeading);
+            Assert.AreEqual(1, ObservedResults.LastSetFeedItems.Count);
+            Assert.AreEqual("folder1", ObservedResults.LastSetFeedItems[0].PodcastFeed.Folder);
         }
     }
 }
