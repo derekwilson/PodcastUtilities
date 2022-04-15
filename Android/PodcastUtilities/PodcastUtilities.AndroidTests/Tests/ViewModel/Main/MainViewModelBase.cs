@@ -134,6 +134,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
             ViewModel.Observables.SetFeedItems += SetFeedItems;
             ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
+            ViewModel.Observables.AddInfoView += AddInfoView;
         }
 
         [TearDown]
@@ -143,6 +144,14 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
             ViewModel.Observables.ShowNoDriveMessage -= ShowNoDriveMessage;
+            ViewModel.Observables.AddInfoView -= AddInfoView;
+        }
+
+        private void AddInfoView(object sender, View view)
+        {
+            // we dont need to do anything but if we dont observe it then Invoke method never happens and
+            // the DriveVolumeInfoView.GetView() method isnt called
+            // its also not a good test of the real use of the ViewModel
         }
 
         private void SetFeedItems(object sender, Tuple<string, List<PodcastFeedRecyclerItem>> items)

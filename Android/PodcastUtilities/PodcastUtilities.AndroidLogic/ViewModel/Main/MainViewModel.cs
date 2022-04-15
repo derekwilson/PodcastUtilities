@@ -146,7 +146,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                 freeSize[0], freeSize[1], 
                 totalSize[0], totalSize[1]);
 
-            Observables?.AddInfoView.Invoke(this, view.GetView());
+            Observables?.AddInfoView?.Invoke(this, view.GetView());
         }
 
         private string ConvertPathToTitle(string absolutePath)
