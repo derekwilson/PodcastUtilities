@@ -7,7 +7,16 @@ using Android.Widget;
 
 namespace PodcastUtilities.AndroidLogic.CustomViews
 {
-    public class DriveVolumeInfoView : LinearLayout
+    public interface IDriveVolumeInfoView
+    {
+        View GetView();
+
+        string Title { get; set; }
+
+        void SetSpace(int usedMb, int totalMb, string free, string freeUnits, string total, string totalUnits);
+    }
+
+    public class DriveVolumeInfoView : LinearLayout, IDriveVolumeInfoView
     {
         private TextView titleView;
         private TextView freeSpaceView;
@@ -31,6 +40,10 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
 
         public string Title
         {
+            get
+            {
+                return titleView.Text;
+            }
             set
             {
                 titleView.Text = value;
@@ -82,6 +95,11 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
         {
             LayoutInflater inflater = context.GetSystemService(Context.LayoutInflaterService) as LayoutInflater;
             return inflater.Inflate(Resource.Layout.view_drive_volume_info, this, true);
+        }
+
+        public View GetView()
+        {
+            return this;
         }
     }
 }

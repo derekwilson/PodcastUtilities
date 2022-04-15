@@ -244,7 +244,7 @@ namespace PodcastUtilities
             });
         }
 
-        private void AddInfoView(object sender, DriveVolumeInfoView view)
+        private void AddInfoView(object sender, View view)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity: AddInfoView");
             RunOnUiThread(() =>

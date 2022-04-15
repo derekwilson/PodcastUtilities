@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using FakeItEasy;
+using NUnit.Framework;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 {
@@ -16,6 +17,22 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 
             // assert
             Assert.AreEqual(1, ObservedResults.ShowNoDriveMessageCount);
+        }
+
+        [Test]
+        public void RefreshFilesystemInfo_Adds_DriveInfo()
+        {
+            // arrange
+            SetupFileSystem();
+            ViewModel.Initialise();
+
+            // act
+            ViewModel.RefreshFileSystemInfo();
+
+            // assert
+            A.CallToSet(() => MockDriveVolumeInfoView.Title).To(() => PATH1).MustHaveHappened(1, Times.Exactly);
+            A.CallTo(() => MockDriveVolumeInfoView.SetSpace(100, 200, "100", "MB", "200", "MB")).MustHaveHappened(1, Times.Exactly);
+            A.CallTo(() => MockDriveVolumeInfoView.GetView()).MustHaveHappened(1, Times.Exactly);
         }
     }
 }

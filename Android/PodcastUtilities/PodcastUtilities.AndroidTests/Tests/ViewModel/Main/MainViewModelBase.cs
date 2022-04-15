@@ -10,11 +10,17 @@ using System;
 using System.Collections.Generic;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.AndroidTests.Helpers;
+using PodcastUtilities.AndroidLogic.CustomViews;
+using Android.Views;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 {
     public class MainViewModelBase
     {
+        protected const string PATH1 = "/path/to/file1";
+        protected const string PATH2 = "/path/to/file2";
+        private const int BYTES_PER_MB = 1024 * 1024;
+
         protected MainViewModel ViewModel;
 
         public class ObservedResultsGroup
@@ -38,6 +44,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         protected IAnalyticsEngine MockAnalyticsEngine;
         protected IGenerator MockPlaylistGenerator;
         protected IReadWriteControlFile MockControlFile;
+        protected IDriveVolumeInfoViewFactory MockDriveVolumeInfoViewFactory;
+        protected IDriveVolumeInfoView MockDriveVolumeInfoView;
 
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
@@ -70,6 +78,25 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             A.CallTo(() => MockApplicationControlFileProvider.GetApplicationConfiguration()).Returns(MockControlFile);
         }
 
+        protected void SetupFileSystem()
+        {
+            var MockFile1 = A.Fake<Java.IO.File>();
+            A.CallTo(() => MockFile1.AbsolutePath).Returns(PATH1);
+            var MockFile2 = A.Fake<Java.IO.File>();
+            A.CallTo(() => MockFile2.AbsolutePath).Returns(PATH2);
+
+            Java.IO.File[] files = new Java.IO.File[]  {
+                MockFile1,
+                MockFile2
+            };
+            A.CallTo(() => MockFileSystemHelper.GetApplicationExternalFilesDirs()).Returns(files);
+
+            A.CallTo(() => MockFileSystemHelper.GetAvailableFileSystemSizeInBytes(PATH1)).Returns(100 * BYTES_PER_MB);
+            A.CallTo(() => MockFileSystemHelper.GetTotalFileSystemSizeInBytes(PATH1)).Returns(200 * BYTES_PER_MB);
+            A.CallTo(() => MockFileSystemHelper.GetAvailableFileSystemSizeInBytes(PATH2)).Returns(2000 * BYTES_PER_MB);
+            A.CallTo(() => MockFileSystemHelper.GetTotalFileSystemSizeInBytes(PATH2)).Returns(4000L * BYTES_PER_MB);
+        }
+
         [SetUp]
         public void Setup()
         {
@@ -83,6 +110,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             MockCrashReporter = A.Fake<ICrashReporter>();
             MockAnalyticsEngine = A.Fake<IAnalyticsEngine>();
             MockPlaylistGenerator = A.Fake<IGenerator>();
+            MockDriveVolumeInfoViewFactory = A.Fake<IDriveVolumeInfoViewFactory>();
+            MockDriveVolumeInfoView = A.Fake<IDriveVolumeInfoView>();
+            A.CallTo(() => MockDriveVolumeInfoViewFactory.GetNewView(MockApplication)).Returns(MockDriveVolumeInfoView);
 
             ByteConverter = new ByteConverter();
 
@@ -97,7 +127,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
                 ByteConverter,
                 MockCrashReporter,
                 MockAnalyticsEngine,
-                MockPlaylistGenerator
+                MockPlaylistGenerator,
+                MockDriveVolumeInfoViewFactory
             );
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;

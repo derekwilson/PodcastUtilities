@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Views;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
@@ -20,7 +21,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         public class ObservableGroup
         {
             public EventHandler<string> Title;
-            public EventHandler<DriveVolumeInfoView> AddInfoView;
+            public EventHandler<View> AddInfoView;
             public EventHandler ShowNoDriveMessage;
             public EventHandler NavigateToSettings;
             public EventHandler SelectControlFile;
@@ -41,6 +42,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         private ICrashReporter CrashReporter;
         private IAnalyticsEngine AnalyticsEngine;
         private IGenerator PlaylistGenerator;
+        private IDriveVolumeInfoViewFactory DriveVolumeInfoViewFactory;
 
         private List<PodcastFeedRecyclerItem> AllFeedItems = new List<PodcastFeedRecyclerItem>(20);
 
@@ -53,8 +55,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             IByteConverter byteConverter,
             ICrashReporter crashReporter,
             IAnalyticsEngine analyticsEngine,
-            IGenerator playlistGenerator 
-            ) : base(app)
+            IGenerator playlistGenerator, 
+            IDriveVolumeInfoViewFactory driveVolumeInfoViewFactory) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"MainViewModel:ctor");
@@ -67,6 +69,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
             PlaylistGenerator = playlistGenerator;
+            DriveVolumeInfoViewFactory = driveVolumeInfoViewFactory;
         }
 
         public void Initialise()
@@ -90,7 +93,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             {
                 Observables.ShowNoDriveMessage?.Invoke(this, null);
 
-                Java.IO.File[] files = ApplicationContext.GetExternalFilesDirs(null);
+                Java.IO.File[] files = FileSystemHelper.GetApplicationExternalFilesDirs();
                 foreach (Java.IO.File file in files)
                 {
                     Logger.Debug(() => $"ExternalFile = {file.AbsolutePath}");
@@ -135,7 +138,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             string[] freeSize = DisplayFormatter.RenderFileSize(freeBytes).Split(' ');
             string[] totalSize = DisplayFormatter.RenderFileSize(totalBytes).Split(' ');
 
-            var view = new DriveVolumeInfoView(ApplicationContext);
+            var view = DriveVolumeInfoViewFactory.GetNewView(ApplicationContext);
             view.Title = ConvertPathToTitle(absolutePath);
             view.SetSpace(
                 Convert.ToInt32(ByteConverter.BytesToMegabytes(usedBytes)), 
@@ -143,7 +146,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                 freeSize[0], freeSize[1], 
                 totalSize[0], totalSize[1]);
 
-            Observables?.AddInfoView.Invoke(this, view);
+            Observables?.AddInfoView.Invoke(this, view.GetView());
         }
 
         private string ConvertPathToTitle(string absolutePath)
