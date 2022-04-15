@@ -30,7 +30,7 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 	public class WhenExecutingOpenFileCommand
 		: WhenTestingConfigurePodcastsViewModel
 	{
-		public List<PodcastInfo> Podcasts { get; set; }
+		public List<IPodcastInfo> Podcasts { get; set; }
 
 		protected override void GivenThat()
 		{
@@ -44,7 +44,7 @@ namespace PodcastUtilities.Presentation.Tests.ViewModels.ConfigurePodcastsViewMo
 			ControlFileFactory.Stub(f => f.OpenControlFile(@"C:\blah\test.xml"))
 				.Return(ControlFile);
 
-			Podcasts = new List<PodcastInfo>
+			Podcasts = new List<IPodcastInfo>
 			           	{
 			           		new PodcastInfo(ControlFile),
 							new PodcastInfo(ControlFile),

@@ -64,6 +64,11 @@ namespace PodcastUtilities.Common.Configuration
         IFeedInfo Feed { get; set; }
 
         /// <summary>
+        /// command to be executed after the podcast has been downloaded
+        /// </summary>
+        ITokenisedCommand PostDownloadCommand { get; set; }
+
+        /// <summary>
         /// create a feed in the podcast
         /// </summary>
         void CreateFeed();

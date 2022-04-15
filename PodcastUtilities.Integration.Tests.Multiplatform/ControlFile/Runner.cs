@@ -64,8 +64,8 @@ namespace PodcastUtilities.Integration.Tests.ControlFile
         {
             DisplayMessage(string.Format("Reading a control file: {0}", _inputfilename));
             ReadOnlyControlFile controlFile = new ReadOnlyControlFile(_inputfilename);
-            IEnumerable<PodcastInfo> podcasts = controlFile.GetPodcasts();
-            PodcastInfo[] podcastArray = podcasts.ToArray();
+            IEnumerable<IPodcastInfo> podcasts = controlFile.GetPodcasts();
+            IPodcastInfo[] podcastArray = podcasts.ToArray();
             DisplayMessage(string.Format("Number of podcasts in test file: {0}", podcastArray.Length));
             foreach (IPodcastInfo info in podcasts)
             {

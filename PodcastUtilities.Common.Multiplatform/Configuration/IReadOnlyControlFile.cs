@@ -98,6 +98,6 @@ namespace PodcastUtilities.Common.Configuration
         /// the configuration for the individual podcasts
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
-        IEnumerable<PodcastInfo> GetPodcasts();
+        IEnumerable<IPodcastInfo> GetPodcasts();
     }
 }

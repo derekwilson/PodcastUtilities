@@ -57,7 +57,7 @@ namespace PodcastUtilities.Common.Files
         }
 
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        private static DateTime GetWhenDownloadWasPublished(PodcastInfo podcastInfo, IFileInfo file)
+        private static DateTime GetWhenDownloadWasPublished(IPodcastInfo podcastInfo, IFileInfo file)
         {
             switch (podcastInfo.Feed.NamingStyle.Value)
             {
@@ -99,7 +99,7 @@ namespace PodcastUtilities.Common.Files
         /// <param name="rootFolder">the root folder for all downloads</param>
         /// <param name="podcastInfo">info on the podcast to download</param>
         /// <returns>list of episodes to be deleted for the supplied podcastInfo</returns>
-        public IList<IFileInfo> FindEpisodesToPurge(string rootFolder, PodcastInfo podcastInfo)
+        public IList<IFileInfo> FindEpisodesToPurge(string rootFolder, IPodcastInfo podcastInfo)
         {
             List<IFileInfo> episodesToDelete = new List<IFileInfo>(10);
             if (podcastInfo.Feed == null)
@@ -132,7 +132,7 @@ namespace PodcastUtilities.Common.Files
             return style == PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder;
         }
 
-        private void ScanSubFoldersForOldFiles(string folderToScan, DateTime oldestEpisodeToKeep, List<IFileInfo> episodesToDelete, PodcastInfo podcastInfo)
+        private void ScanSubFoldersForOldFiles(string folderToScan, DateTime oldestEpisodeToKeep, List<IFileInfo> episodesToDelete, IPodcastInfo podcastInfo)
         {
             IDirectoryInfo directoryInfo = _directoryInfoProvider.GetDirectoryInfo(folderToScan);
 
@@ -153,7 +153,7 @@ namespace PodcastUtilities.Common.Files
             }
         }
 
-        private void ScanFolderForOldFiles(string folderToScan, DateTime oldestEpisodeToKeep, List<IFileInfo> episodesToDelete, PodcastInfo podcastInfo)
+        private void ScanFolderForOldFiles(string folderToScan, DateTime oldestEpisodeToKeep, List<IFileInfo> episodesToDelete, IPodcastInfo podcastInfo)
         {
             IDirectoryInfo directoryInfo = _directoryInfoProvider.GetDirectoryInfo(folderToScan);
 
@@ -188,7 +188,7 @@ namespace PodcastUtilities.Common.Files
         /// <param name="podcastInfo">info on the podcast to download</param>
         /// <param name="filesThatWillBeDeleted">files that will be removed and do not count when considering an empty folder</param>
         /// <returns></returns>
-        public IList<IDirectoryInfo> FindEmptyFoldersToDelete(string rootFolder, PodcastInfo podcastInfo, IList<IFileInfo> filesThatWillBeDeleted)
+        public IList<IDirectoryInfo> FindEmptyFoldersToDelete(string rootFolder, IPodcastInfo podcastInfo, IList<IFileInfo> filesThatWillBeDeleted)
         {
             List<IDirectoryInfo> foldersToDelete = new List<IDirectoryInfo>(10);
             if (!podcastInfo.DeleteEmptyFolder.Value)

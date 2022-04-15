@@ -149,7 +149,7 @@ namespace PodcastUtilities.Common.Configuration
             DiagnosticOutput = DiagnosticOutputLevel.None;
             DiagnosticRetainTemporaryFiles = false;
 
-            Podcasts = new List<PodcastInfo>();
+            Podcasts = new List<IPodcastInfo>();
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace PodcastUtilities.Common.Configuration
         /// the configuration for the individual podcasts
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
-        protected internal IList<PodcastInfo> Podcasts { get; private set; }
+        protected internal IList<IPodcastInfo> Podcasts { get; private set; }
 
         /// <summary>
         /// maximum number of background downloads
@@ -426,7 +426,7 @@ namespace PodcastUtilities.Common.Configuration
         /// the configuration for the individual podcasts
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
-        public IEnumerable<PodcastInfo> GetPodcasts()
+        public IEnumerable<IPodcastInfo> GetPodcasts()
         {
             return Podcasts;
         }

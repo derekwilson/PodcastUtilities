@@ -64,7 +64,7 @@ namespace PodcastUtilities.Common.Feeds
         /// </summary>
         public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
-        private string GetDownloadPathname(string rootFolder, PodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
+        private string GetDownloadPathname(string rootFolder, IPodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
         {
             var proposedFilename = podcastFeedItem.FileName;
 
@@ -106,7 +106,7 @@ namespace PodcastUtilities.Common.Feeds
             return Path.Combine(Path.Combine(rootFolder, podcastInfo.Folder), proposedFilename);
         }
 
-        private List<ISyncItem> ApplyDownloadStrategy(string stateKey, PodcastInfo podcastInfo, List<ISyncItem> episodesFound)
+        private List<ISyncItem> ApplyDownloadStrategy(string stateKey, IPodcastInfo podcastInfo, List<ISyncItem> episodesFound)
         {
             switch (podcastInfo.Feed.DownloadStrategy.Value)
             {
@@ -152,7 +152,7 @@ namespace PodcastUtilities.Common.Feeds
         /// <param name="retainFeedStream">true to keep the downloaded stream</param>
         /// <returns>list of episodes to be downloaded for the supplied podcastInfo</returns>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        public IList<ISyncItem> FindEpisodesToDownload(string rootFolder, int retryWaitTimeInSeconds, PodcastInfo podcastInfo, bool retainFeedStream)
+        public IList<ISyncItem> FindEpisodesToDownload(string rootFolder, int retryWaitTimeInSeconds, IPodcastInfo podcastInfo, bool retainFeedStream)
         {
             List<ISyncItem> episodesToDownload = new List<ISyncItem>(10);
             if (podcastInfo.Feed == null)
@@ -230,17 +230,17 @@ namespace PodcastUtilities.Common.Feeds
             return filteredEpisodes;
         }
 
-        private void OnStatusVerbose(string message, PodcastInfo podcastInfo)
+        private void OnStatusVerbose(string message, IPodcastInfo podcastInfo)
         {
             OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Verbose, message, false, podcastInfo));
         }
 
-        private void OnStatusMessageUpdate(string message, PodcastInfo podcastInfo)
+        private void OnStatusMessageUpdate(string message, IPodcastInfo podcastInfo)
         {
             OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message, false, podcastInfo));
         }
 
-        private void OnStatusError(string message, PodcastInfo podcastInfo)
+        private void OnStatusError(string message, IPodcastInfo podcastInfo)
         {
             OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Error, message, false, podcastInfo));
         }
