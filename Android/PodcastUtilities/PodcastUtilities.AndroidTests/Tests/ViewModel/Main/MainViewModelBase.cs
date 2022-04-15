@@ -8,6 +8,8 @@ using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.Common.Playlists;
 using System;
 using System.Collections.Generic;
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.AndroidTests.Helpers;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 {
@@ -22,14 +24,15 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         protected List<PodcastFeedRecyclerItem> LastSetFeedItems;
 
         // mocks
-        protected Application MockApplication = A.Fake<Application>();
-        protected ILogger MockLogger = A.Fake<ILogger>();
-        protected IResourceProvider MockResourceProvider = A.Fake<IResourceProvider>();
-        protected IFileSystemHelper MockFileSystemHelper = A.Fake<IFileSystemHelper>();
-        protected IApplicationControlFileProvider MockApplicationControlFileProvider = A.Fake<IApplicationControlFileProvider>();
-        protected ICrashReporter MockCrashReporter = A.Fake<ICrashReporter>();
-        protected IAnalyticsEngine MockAnalyticsEngine = A.Fake<IAnalyticsEngine>();
-        protected IGenerator MockPlaylistGenerator = A.Fake<IGenerator>();
+        protected Application MockApplication;
+        protected ILogger MockLogger;
+        protected IResourceProvider MockResourceProvider;
+        protected IFileSystemHelper MockFileSystemHelper;
+        protected IApplicationControlFileProvider MockApplicationControlFileProvider;
+        protected ICrashReporter MockCrashReporter;
+        protected IAnalyticsEngine MockAnalyticsEngine;
+        protected IGenerator MockPlaylistGenerator;
+        protected IReadWriteControlFile MockControlFile;
 
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
@@ -41,10 +44,34 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
                                    .ReturnsLazily((int id, int number) => "feed count == " + number.ToString());
         }
 
+        protected void SetupControlFileFor1Podcast()
+        {
+            var podcastMocker = new PodcastInfoMocker().ApplyFolder("folder1");
+            var controlFileMocker = new ControlFileMocker();
+            MockControlFile = controlFileMocker
+                .ApplySourceRoot("/sdcard/sourceroot")
+                .ApplyPodcasts(podcastMocker.GetMockedPodcastInfoAsList())
+                .GetMockedControlFile();
+
+            A.CallTo(() => MockApplicationControlFileProvider.GetApplicationConfiguration()).Returns(MockControlFile);
+        }
+
         [SetUp]
         public void Setup()
         {
+            MockApplication = A.Fake<Application>();
+            MockLogger = A.Fake<ILogger>();
+            MockResourceProvider = A.Fake<IResourceProvider>();
+            MockFileSystemHelper = A.Fake<IFileSystemHelper>();
+            MockApplicationControlFileProvider = A.Fake<IApplicationControlFileProvider>();
+            MockCrashReporter = A.Fake<ICrashReporter>();
+            MockAnalyticsEngine = A.Fake<IAnalyticsEngine>();
+            MockPlaylistGenerator = A.Fake<IGenerator>();
+
+            ByteConverter = new ByteConverter();
+
             SetupResources();
+
             ViewModel = new MainViewModel(
                 MockApplication, 
                 MockLogger, 

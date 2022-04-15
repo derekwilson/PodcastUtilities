@@ -1,7 +1,9 @@
 ﻿using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using AndroidX.Core.Content.PM;
 using PodcastUtilities.Common.Platform;
 using System.Collections.Generic;
 using System.Reflection;
@@ -53,8 +55,9 @@ namespace PodcastUtilities.AndroidTests
 
         private string GetVersionDisplay()
         {
-            var package = PackageManager.GetPackageInfo(PackageName, 0);
-            return $"v{package.VersionName}, ({package.VersionCode})";
+            PackageInfo package = PackageManager.GetPackageInfo(PackageName, 0);
+            long longVersionCode = PackageInfoCompat.GetLongVersionCode(package);
+            return $"v{package.VersionName}, ({longVersionCode})";
         }
     }
 

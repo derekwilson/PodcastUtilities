@@ -4,6 +4,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 {
     public class PodcastFeedRecyclerItem
     {
-        public PodcastInfo PodcastFeed { get; set; }
+        public IPodcastInfo PodcastFeed { get; set; }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Runtime;
 using Android.Util;
+using AndroidX.Core.Content.PM;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Settings;
@@ -126,13 +128,14 @@ namespace PodcastUtilities
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int)Android.OS.Build.VERSION.SdkInt}");
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate PackageName == {this.PackageName}");
             SetupExceptionHandler();
-            var package = PackageManager.GetPackageInfo(PackageName, 0);
+            PackageInfo package = PackageManager.GetPackageInfo(PackageName, 0);
+            long longVersionCode = PackageInfoCompat.GetLongVersionCode(package);
 #if DEBUG
             var config = "(Debug)";
 #else
             var config = "(Release)";
 #endif
-            DisplayVersion = $"v{package.VersionName}, ({package.VersionCode}), {config}";
+            DisplayVersion = $"v{package.VersionName}, ({longVersionCode}), {config}";
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Version == {DisplayVersion}");
 
             base.OnCreate();
