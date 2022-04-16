@@ -19,6 +19,15 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
     {
         protected const string PATH1 = "/path/to/file1";
         protected const string PATH2 = "/path/to/file2";
+
+        // the package name needs to match the mocked one in Setup
+        protected const string PATH3 = "/storage/SDCARD1/Android/data/com.andrewandderek.podcastutilities/path/to/file3";
+        protected const string PATH4 = "/storage/SDCARD2/anotherplace/com.andrewandderek.podcastutilities/path/to/file4";
+        protected const string PATH5 = "/storage/SDCARD3/Android/data/anotherplace/path/to/file5";
+        protected const string PATH6 = "/Android/data/com.andrewandderek.podcastutilities/path/to/file6";
+        protected const string PATH7 = "/storage/emulated/0/Android/data/com.andrewandderek.podcastutilities/path/to/file7";
+
+
         private const int BYTES_PER_MB = 1024 * 1024;
 
         protected MainViewModel ViewModel;
@@ -97,12 +106,39 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             A.CallTo(() => MockFileSystemHelper.GetTotalFileSystemSizeInBytes(PATH2)).Returns(4000L * BYTES_PER_MB);
         }
 
+        protected void SetupFileSystemStorageCardPaths()
+        {
+            var MockFile1 = A.Fake<Java.IO.File>();
+            A.CallTo(() => MockFile1.AbsolutePath).Returns(PATH3);
+            var MockFile2 = A.Fake<Java.IO.File>();
+            A.CallTo(() => MockFile2.AbsolutePath).Returns(PATH4);
+            var MockFile3 = A.Fake<Java.IO.File>();
+            A.CallTo(() => MockFile3.AbsolutePath).Returns(PATH5);
+            var MockFile4 = A.Fake<Java.IO.File>();
+            A.CallTo(() => MockFile4.AbsolutePath).Returns(PATH6);
+            var MockFile5 = A.Fake<Java.IO.File>();
+            A.CallTo(() => MockFile5.AbsolutePath).Returns(PATH7);
+
+            Java.IO.File[] files = new Java.IO.File[]  {
+                MockFile1,
+                MockFile2,
+                MockFile3,
+                MockFile4,
+                MockFile5
+            };
+            A.CallTo(() => MockFileSystemHelper.GetApplicationExternalFilesDirs()).Returns(files);
+
+            A.CallTo(() => MockFileSystemHelper.GetAvailableFileSystemSizeInBytes(A<string>.Ignored)).Returns(100 * BYTES_PER_MB);
+            A.CallTo(() => MockFileSystemHelper.GetTotalFileSystemSizeInBytes(A<string>.Ignored)).Returns(200 * BYTES_PER_MB);
+        }
+
         [SetUp]
         public void Setup()
         {
             ResetObservedResults();
 
             MockApplication = A.Fake<Application>();
+            A.CallTo(() => MockApplication.PackageName).Returns("com.andrewandderek.podcastutilities");
             MockLogger = A.Fake<ILogger>();
             MockResourceProvider = A.Fake<IResourceProvider>();
             MockFileSystemHelper = A.Fake<IFileSystemHelper>();

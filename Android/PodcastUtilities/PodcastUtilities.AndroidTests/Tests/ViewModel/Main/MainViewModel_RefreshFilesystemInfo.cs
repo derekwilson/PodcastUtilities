@@ -92,5 +92,38 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             A.CallTo(() => MockDriveVolumeInfoView.GetView()).MustHaveHappened(1, Times.Exactly);
         }
 
+        [Test]
+        public void RefreshFilesystemInfo_Adds_DriveInfo_Sdcard_Paths()
+        {
+            // arrange
+            SetupFileSystemStorageCardPaths();
+            ViewModel.Initialise();
+
+            // act
+            ViewModel.RefreshFileSystemInfo();
+
+            // assert
+            // there are no errors
+            A.CallTo(() => MockCrashReporter.LogNonFatalException(A<Exception>.Ignored)).MustNotHaveHappened();
+
+            // file 1
+            A.CallToSet(() => MockDriveVolumeInfoView.Title).To(() => "/storage/SDCARD1").MustHaveHappened(1, Times.Exactly);
+
+            // file 2
+            A.CallToSet(() => MockDriveVolumeInfoView.Title).To(() => "/storage/SDCARD2/anotherplace/").MustHaveHappened(1, Times.Exactly);
+
+            // file 3
+            A.CallToSet(() => MockDriveVolumeInfoView.Title).To(() => "/storage/SDCARD3").MustHaveHappened(1, Times.Exactly);
+
+            // file 4
+            A.CallToSet(() => MockDriveVolumeInfoView.Title).To(() => "/Android/data/").MustHaveHappened(1, Times.Exactly);
+
+            // file 5
+            A.CallToSet(() => MockDriveVolumeInfoView.Title).To(() => "/storage/emulated/0").MustHaveHappened(1, Times.Exactly);
+
+            // all
+            A.CallTo(() => MockDriveVolumeInfoView.GetView()).MustHaveHappened(5, Times.Exactly);
+        }
+
     }
 }
