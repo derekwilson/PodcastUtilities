@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
@@ -15,6 +16,8 @@ namespace PodcastUtilities.AndroidTests
     [Activity(Label = "UnitTests PodcastUtilities", MainLauncher = true)]
     public class MainActivity : TestSuiteActivity
     {
+        public static Context MainContext;
+
         protected override void OnCreate(Bundle bundle)
         {
             // tests can be inside the main assembly
@@ -25,6 +28,7 @@ namespace PodcastUtilities.AndroidTests
             // Once you called base.OnCreate(), you cannot add more assemblies.
             base.OnCreate(bundle);
 
+            MainContext = this;
             // add in our extra stuff
             View runButton = FindViewById<View>(Resource.Id.RunTestsButton);
             if (runButton != null)

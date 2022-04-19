@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<podcasts version="1.0">
+	<global>
+		<sourceRoot>/sdcard/Podcasts</sourceRoot>
+		<destinationRoot>MTP:\Nokia 7.1\Samsung SD card\Podcasts</destinationRoot>
+		<playlistFilename>podcasts.m3u</playlistFilename>
+		<playlistFormat>m3u</playlistFormat>
+		<playlistPathSeparator>/</playlistPathSeparator>
+		<freeSpaceToLeaveOnDestinationMB>300</freeSpaceToLeaveOnDestinationMB>
+		<freeSpaceToLeaveOnDownloadMB>500</freeSpaceToLeaveOnDownloadMB>
+		<sortfield>name</sortfield>
+		<sortdirection>asc</sortdirection>
+		<deleteEmptyFolder>true</deleteEmptyFolder>
+		<maximumNumberOfConcurrentDownloads>20</maximumNumberOfConcurrentDownloads>
+		<retryWaitInSeconds>10</retryWaitInSeconds>
+		<feed>
+			<maximumDaysOld>31</maximumDaysOld>
+			<format>rss</format>
+			<namingStyle>pubdate_etitle</namingStyle>
+			<downloadStrategy>high_tide</downloadStrategy>
+		</feed>
+	</global>
+	<podcast>
+		<feed>
+			<url>https://feeds.megaphone.fm/ESP9247246951</url>
+		</feed>
+		<folder>Cricinfo The Switch Hit Cricket Show</folder>
+		<pattern>*.mp3</pattern>
+		<number>-1</number>
+	</podcast>
+	<podcast>
+		<feed>
+			<url>http://podcasts.files.bbci.co.uk/p02pc9pj.rss</url>
+		</feed>
+		<folder>Friday Night Comedy from BBC Radio 4</folder>
+		<pattern>*.mp3</pattern>
+		<number>5</number>
+	</podcast>
+	<podcast>
+		<feed>
+			<url>http://podcasts.files.bbci.co.uk/p02nrtpm.rss</url>
+			<urlx>http://www.bbc.co.uk/programmes/p02nrtpm/episodes/downloads.rss</urlx>
+			<maximumDaysOld>55</maximumDaysOld>
+		</feed>
+		<folder>From Our Own Correspondent</folder>
+		<pattern>*.mp3</pattern>
+		<number>5</number>
+	</podcast>
+	<podcast>
+		<feed>
+			<url>http://www.bbc.co.uk/programmes/b00lvdrj/episodes/downloads.rss</url>
+		</feed>
+		<folder>Mark Kermode and Simon Mayos Film Reviews</folder>
+		<pattern>*.mp3</pattern>
+		<number>5</number>
+	</podcast>
+</podcasts>

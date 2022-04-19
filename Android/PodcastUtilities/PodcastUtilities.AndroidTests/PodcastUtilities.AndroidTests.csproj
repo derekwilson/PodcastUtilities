@@ -76,6 +76,7 @@
     <Compile Include="Tests\EnvironmentTests.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModelBase.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModel_Initialise.cs" />
+    <Compile Include="Tests\ViewModel\Main\MainViewModel_LoadControlFile.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModel_RefreshFilesystemInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +131,9 @@
       <Project>{c7573883-6fe6-430d-9879-10cf2c0607de}</Project>
       <Name>PodcastUtilities.AndroidLogic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\xml\testcontrolfile1.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

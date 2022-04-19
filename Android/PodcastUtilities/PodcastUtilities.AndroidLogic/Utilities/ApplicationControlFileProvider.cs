@@ -5,6 +5,7 @@ using System.IO;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
+
     public interface IApplicationControlFileProvider
     {
         IReadWriteControlFile GetApplicationConfiguration();

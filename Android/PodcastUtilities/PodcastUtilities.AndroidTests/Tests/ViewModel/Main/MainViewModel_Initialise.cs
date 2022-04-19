@@ -50,7 +50,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         public void Initialise_ControlFile_1Pod_Handled()
         {
             // arrange
-            SetupControlFileFor1Podcast();
+            SetupMockControlFileFor1Podcast();
 
             // act
             ViewModel.Initialise();

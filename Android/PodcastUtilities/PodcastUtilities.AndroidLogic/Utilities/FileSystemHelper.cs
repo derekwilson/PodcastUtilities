@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
@@ -20,6 +21,9 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         bool Exists(string pathname);
         void LogPersistantPermissions();
         void TakePersistantPermission(Android.Net.Uri uri);
+
+        XmlDocument LoadXmlFromContentUri(Android.Net.Uri uri);
+        XmlDocument LoadXmlFromAssetFile(string filename);
     }
 
     public class FileSystemHelper : IFileSystemHelper
@@ -83,6 +87,38 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public Java.IO.File[] GetApplicationExternalFilesDirs()
         {
             return ApplicationContext.GetExternalFilesDirs(null);
+        }
+
+        public XmlDocument LoadXmlFromAssetFile(string filename)
+        {
+            Stream inputStream = null;
+            try
+            {
+                inputStream = ApplicationContext.Assets.Open(filename);
+                Logger.Debug(() => $"FileSystemHelper:LoadXmlFromAssetFile - {filename}");
+                using (var streamReader = new StreamReader(inputStream, Encoding.UTF8, true, 8192))
+                {
+                    var xml = new XmlDocument();
+                    xml.Load(streamReader);
+                    return xml;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogException(() => $"FileSystemHelper:LoadXmlFromAssetFile - {filename}", ex);
+            }
+            finally
+            {
+                try
+                {
+                    inputStream?.Close();
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogException(() => $"FileSystemHelper:LoadXmlFromAssetFile closing - {filename}", ex);
+                }
+            }
+            return null;
         }
 
         public string GetAssetsFileContents(string filename, bool addLineEndings)
@@ -176,6 +212,16 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public void TakePersistantPermission(Android.Net.Uri uri)
         {
             ApplicationContext.ContentResolver.TakePersistableUriPermission(uri, ActivityFlags.GrantReadUriPermission | ActivityFlags.GrantWriteUriPermission);
+        }
+
+        public XmlDocument LoadXmlFromContentUri(Android.Net.Uri uri)
+        {
+            Logger.Debug(() => $"FileSystemHelper:LoadXmlFromContentUri = {uri.ToString()}");
+            ContentResolver resolver = ApplicationContext.ContentResolver;
+            var stream = resolver.OpenInputStream(uri);
+            var xml = new XmlDocument();
+            xml.Load(stream);
+            return xml;
         }
     }
 }

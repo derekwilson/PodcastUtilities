@@ -63,6 +63,7 @@
     <Compile Include="CustomViews\ProgressSpinnerView.cs" />
     <Compile Include="Settings\UserSettings.cs" />
     <Compile Include="Utilities\AnalyticsEngine.cs" />
+    <Compile Include="Utilities\ApplicationControlFileFactory.cs" />
     <Compile Include="Utilities\ApplicationControlFileProvider.cs" />
     <Compile Include="Utilities\CrashReporter.cs" />
     <Compile Include="Utilities\IAndroidApplication.cs" />

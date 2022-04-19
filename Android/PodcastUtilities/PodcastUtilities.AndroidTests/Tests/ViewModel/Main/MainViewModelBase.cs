@@ -39,6 +39,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             public string LastSetFeedHeading;
             public List<PodcastFeedRecyclerItem> LastSetFeedItems;
             public int ShowNoDriveMessageCount;
+            public string LastToastMessage;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
@@ -55,6 +56,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         protected IReadWriteControlFile MockControlFile;
         protected IDriveVolumeInfoViewFactory MockDriveVolumeInfoViewFactory;
         protected IDriveVolumeInfoView MockDriveVolumeInfoView;
+        protected IApplicationControlFileFactory MockApplicationControlFileFactory;
 
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
@@ -66,6 +68,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ObservedResults.LastSetFeedHeading = null;
             ObservedResults.LastSetFeedItems = null;
             ObservedResults.ShowNoDriveMessageCount = 0;
+            ObservedResults.LastToastMessage = null;
         }
 
         private void SetupResources()
@@ -73,9 +76,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.main_activity_title)).Returns("Mocked Title");
             A.CallTo(() => MockResourceProvider.GetQuantityString(Resource.Plurals.feed_list_heading, A<int>.Ignored))
                                    .ReturnsLazily((int id, int number) => "feed count == " + number.ToString());
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.control_file_loaded)).Returns("Mocked Control file loaded");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.error_reading_control_file)).Returns("Mocked control file error");
         }
 
-        protected void SetupControlFileFor1Podcast()
+        protected void SetupMockControlFileFor1Podcast()
         {
             var podcastMocker = new PodcastInfoMocker().ApplyFolder("folder1");
             var controlFileMocker = new ControlFileMocker();
@@ -149,6 +154,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             MockDriveVolumeInfoViewFactory = A.Fake<IDriveVolumeInfoViewFactory>();
             MockDriveVolumeInfoView = A.Fake<IDriveVolumeInfoView>();
             A.CallTo(() => MockDriveVolumeInfoViewFactory.GetNewView(MockApplication)).Returns(MockDriveVolumeInfoView);
+            MockApplicationControlFileFactory = A.Fake<IApplicationControlFileFactory>();
 
             ByteConverter = new ByteConverter();
 
@@ -164,13 +170,15 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
                 MockCrashReporter,
                 MockAnalyticsEngine,
                 MockPlaylistGenerator,
-                MockDriveVolumeInfoViewFactory
+                MockDriveVolumeInfoViewFactory,
+                MockApplicationControlFileFactory
             );
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
             ViewModel.Observables.SetFeedItems += SetFeedItems;
             ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
             ViewModel.Observables.AddInfoView += AddInfoView;
+            ViewModel.Observables.ToastMessage += ToastMessage;
         }
 
         [TearDown]
@@ -181,6 +189,12 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
             ViewModel.Observables.ShowNoDriveMessage -= ShowNoDriveMessage;
             ViewModel.Observables.AddInfoView -= AddInfoView;
+            ViewModel.Observables.ToastMessage -= ToastMessage;
+        }
+
+        private void ToastMessage(object sender, string message)
+        {
+            ObservedResults.LastToastMessage = message;
         }
 
         private void AddInfoView(object sender, View view)

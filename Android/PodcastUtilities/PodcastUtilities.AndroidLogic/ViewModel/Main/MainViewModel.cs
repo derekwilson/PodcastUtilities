@@ -43,6 +43,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         private IAnalyticsEngine AnalyticsEngine;
         private IGenerator PlaylistGenerator;
         private IDriveVolumeInfoViewFactory DriveVolumeInfoViewFactory;
+        private IApplicationControlFileFactory ApplicationControlFileFactory;
 
         private List<PodcastFeedRecyclerItem> AllFeedItems = new List<PodcastFeedRecyclerItem>(20);
 
@@ -55,8 +56,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             IByteConverter byteConverter,
             ICrashReporter crashReporter,
             IAnalyticsEngine analyticsEngine,
-            IGenerator playlistGenerator, 
-            IDriveVolumeInfoViewFactory driveVolumeInfoViewFactory) : base(app)
+            IGenerator playlistGenerator,
+            IDriveVolumeInfoViewFactory driveVolumeInfoViewFactory, 
+            IApplicationControlFileFactory applicationControlFileFactory) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"MainViewModel:ctor");
@@ -70,6 +72,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             AnalyticsEngine = analyticsEngine;
             PlaylistGenerator = playlistGenerator;
             DriveVolumeInfoViewFactory = driveVolumeInfoViewFactory;
+            ApplicationControlFileFactory = applicationControlFileFactory;
         }
 
         public void Initialise()
@@ -236,16 +239,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
         }
 
-        private ReadWriteControlFile OpenControlFile(Android.Net.Uri uri)
+        private IReadWriteControlFile OpenControlFile(Android.Net.Uri uri)
         {
             try
             {
-                Logger.Debug(() => $"MainViewModel:OpenControlFile = {uri.ToString()}");
-                ContentResolver resolver = ApplicationContext.ContentResolver;
-                var stream = resolver.OpenInputStream(uri);
-                var xml = new XmlDocument();
-                xml.Load(stream);
-                return new ReadWriteControlFile(xml);
+                return ApplicationControlFileFactory.CreateControlFile(FileSystemHelper.LoadXmlFromContentUri(uri));
             }
             catch (Exception ex)
             {
