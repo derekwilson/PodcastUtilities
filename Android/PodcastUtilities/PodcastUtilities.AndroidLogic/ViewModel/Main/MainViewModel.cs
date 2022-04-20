@@ -254,7 +254,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
         }
 
-        private void GeneratePlaylist()
+        public void GeneratePlaylist()
         {
             try
             {

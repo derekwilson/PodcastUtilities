@@ -78,6 +78,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
                                    .ReturnsLazily((int id, int number) => "feed count == " + number.ToString());
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.control_file_loaded)).Returns("Mocked Control file loaded");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.error_reading_control_file)).Returns("Mocked control file error");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.error_generating_playlist)).Returns("Mocked playlist error");
         }
 
         protected void SetupMockControlFileFor1Podcast()
@@ -86,6 +87,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             var controlFileMocker = new ControlFileMocker();
             MockControlFile = controlFileMocker
                 .ApplySourceRoot("/sdcard/sourceroot")
+                .ApplyPlaylistFormat(PlaylistFormat.M3U)
                 .ApplyPodcasts(podcastMocker.GetMockedPodcastInfoAsList())
                 .GetMockedControlFile();
 

@@ -1,5 +1,6 @@
 ﻿using FakeItEasy;
 using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Playlists;
 using System.Collections.Generic;
 
 namespace PodcastUtilities.AndroidTests.Helpers
@@ -13,6 +14,12 @@ namespace PodcastUtilities.AndroidTests.Helpers
         public ControlFileMocker ApplySourceRoot(string root)
         {
             A.CallTo(() => MockControlFile.GetSourceRoot()).Returns(root);
+            return this;
+        }
+
+        public ControlFileMocker ApplyPlaylistFormat(PlaylistFormat format)
+        {
+            A.CallTo(() => MockControlFile.GetPlaylistFormat()).Returns(format);
             return this;
         }
 
