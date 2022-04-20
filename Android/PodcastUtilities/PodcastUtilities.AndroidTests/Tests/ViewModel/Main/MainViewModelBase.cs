@@ -59,7 +59,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         protected IApplicationControlFileFactory MockApplicationControlFileFactory;
 
         // reals
-        protected IByteConverter ByteConverter = new ByteConverter();
+        protected IByteConverter ByteConverter;
 
         protected void ResetObservedResults()
         {

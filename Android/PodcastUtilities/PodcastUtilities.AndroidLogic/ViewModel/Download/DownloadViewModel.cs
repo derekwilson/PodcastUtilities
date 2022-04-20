@@ -80,6 +80,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         {
             ApplicationContext = app;
             Logger = logger;
+            Logger.Debug(() => $"DownloadViewModel:ctor");
             ResourceProvider = resProvider;
             ApplicationControlFileProvider = appControlFileProvider;
             FileSystemHelper = fileSystemHelper;

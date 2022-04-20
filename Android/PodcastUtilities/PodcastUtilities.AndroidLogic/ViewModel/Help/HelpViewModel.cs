@@ -16,15 +16,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Help
 
         private Application ApplicationContext;
         private ILogger Logger;
-        private IResourceProvider ResourceProvider;
         private IFileSystemHelper FileSystemHelper;
 
-        public HelpViewModel(Application app, ILogger logger, IResourceProvider resourceProvider, IFileSystemHelper fileSystemHelper) : base(app)
+        public HelpViewModel(Application app, ILogger logger, IFileSystemHelper fileSystemHelper) : base(app)
         {
             ApplicationContext = app;
             Logger = logger;
             Logger.Debug(() => $"HelpViewModel:ctor");
-            ResourceProvider = resourceProvider;
             FileSystemHelper = fileSystemHelper;
         }
         public void Initialise()
