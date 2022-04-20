@@ -30,7 +30,5 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // assert
             A.CallTo(() => MockLogger.Debug(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(2, Times.Exactly);
         }
-
     }
-
 }
