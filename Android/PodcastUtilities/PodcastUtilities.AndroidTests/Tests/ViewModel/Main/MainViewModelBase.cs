@@ -83,9 +83,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 
         protected void SetupMockControlFileFor1Podcast()
         {
-            var podcastMocker = new PodcastInfoMocker().ApplyFolder("folder1");
-            var controlFileMocker = new ControlFileMocker();
-            MockControlFile = controlFileMocker
+            var podcastMocker = new PodcastInfoMocker()
+                .ApplyFolder("folder1");
+            MockControlFile = new ControlFileMocker()
                 .ApplySourceRoot("/sdcard/sourceroot")
                 .ApplyPlaylistFormat(PlaylistFormat.M3U)
                 .ApplyPodcasts(podcastMocker.GetMockedPodcastInfoAsList())

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PodcastUtilities.AndroidTests.Helpers
 {
-    internal class PodcastInfoMocker
+    public class PodcastInfoMocker
     {
         private IPodcastInfo MockPodcastInfo = A.Fake<IPodcastInfo>();
 
@@ -16,7 +16,5 @@ namespace PodcastUtilities.AndroidTests.Helpers
             A.CallTo(() => MockPodcastInfo.Folder).Returns(folder);
             return this;
         }
-
     }
-
 }

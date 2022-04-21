@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace PodcastUtilities.AndroidTests.Helpers
 {
-    internal class ControlFileMocker
+    public class ControlFileMocker
     {
         private IReadWriteControlFile MockControlFile = A.Fake<IReadWriteControlFile>();
 
@@ -20,6 +20,18 @@ namespace PodcastUtilities.AndroidTests.Helpers
         public ControlFileMocker ApplyPlaylistFormat(PlaylistFormat format)
         {
             A.CallTo(() => MockControlFile.GetPlaylistFormat()).Returns(format);
+            return this;
+        }
+
+        public ControlFileMocker ApplyRetryWaitInSeconds(int wait)
+        {
+            A.CallTo(() => MockControlFile.GetRetryWaitInSeconds()).Returns(wait);
+            return this;
+        }
+
+        public ControlFileMocker ApplyDiagnosticRetainTemporaryFiles(bool flag)
+        {
+            A.CallTo(() => MockControlFile.GetDiagnosticRetainTemporaryFiles()).Returns(flag);
             return this;
         }
 
