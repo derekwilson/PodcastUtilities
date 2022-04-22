@@ -54,7 +54,18 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             Assert.AreEqual(1, ObservedResults.UpdateProgress[0], "upodated to 1");
             Assert.AreEqual(2, ObservedResults.UpdateProgress[1], "updated to 2");
             Assert.AreEqual(1, ObservedResults.EndProgressCount, "ended once");
+
             Assert.AreEqual(5, ObservedResults.LastDownloadItems.Count, "total number episodes found");
+            Assert.AreEqual(EPISODE_1_ID, ObservedResults.LastDownloadItems[0].SyncItem.Id, "episode 1 id");
+            Assert.AreEqual(EPISODE_1_TITLE, ObservedResults.LastDownloadItems[0].SyncItem.EpisodeTitle, "episode 1 title");
+            Assert.AreEqual(EPISODE_2_ID, ObservedResults.LastDownloadItems[1].SyncItem.Id, "episode 2 id");
+            Assert.AreEqual(EPISODE_2_TITLE, ObservedResults.LastDownloadItems[1].SyncItem.EpisodeTitle, "episode 2 title");
+            Assert.AreEqual(EPISODE_3_ID, ObservedResults.LastDownloadItems[2].SyncItem.Id, "episode 3 id");
+            Assert.AreEqual(EPISODE_3_TITLE, ObservedResults.LastDownloadItems[2].SyncItem.EpisodeTitle, "episode 3 title");
+            Assert.AreEqual(EPISODE_4_ID, ObservedResults.LastDownloadItems[3].SyncItem.Id, "episode 4 id");
+            Assert.AreEqual(EPISODE_4_TITLE, ObservedResults.LastDownloadItems[3].SyncItem.EpisodeTitle, "episode 4 title");
+            Assert.AreEqual(EPISODE_5_ID, ObservedResults.LastDownloadItems[4].SyncItem.Id, "episode 5 id");
+            Assert.AreEqual(EPISODE_5_TITLE, ObservedResults.LastDownloadItems[4].SyncItem.EpisodeTitle, "episode 5 title");
         }
 
     }
