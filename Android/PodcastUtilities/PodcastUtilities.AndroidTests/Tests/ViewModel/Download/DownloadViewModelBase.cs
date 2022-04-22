@@ -94,6 +94,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_title)).Returns("Mocked Title");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.no_downloads_text)).Returns("No downloads");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.no_network_text)).Returns("No network");
+            A.CallTo(() => MockResourceProvider.GetQuantityString(Resource.Plurals.download_activity_title_after_load, A<int>.Ignored))
+                                   .ReturnsLazily((int id, int number) => "download episodes count == " + number.ToString());
         }
 
         protected void SetupMockControlFileFor2Podcasts()

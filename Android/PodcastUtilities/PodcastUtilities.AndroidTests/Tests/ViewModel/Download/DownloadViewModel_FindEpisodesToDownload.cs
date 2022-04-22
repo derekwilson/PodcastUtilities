@@ -39,7 +39,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         }
 
         [Test]
-        public void FindEpisodesToDownload_Adds()
+        public void FindEpisodesToDownload_UpdatesProgress()
         {
             // arrange
             SetupMockControlFileFor2Podcasts();
@@ -54,7 +54,20 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             Assert.AreEqual(1, ObservedResults.UpdateProgress[0], "upodated to 1");
             Assert.AreEqual(2, ObservedResults.UpdateProgress[1], "updated to 2");
             Assert.AreEqual(1, ObservedResults.EndProgressCount, "ended once");
+        }
 
+        [Test]
+        public void FindEpisodesToDownload_Adds()
+        {
+            // arrange
+            SetupMockControlFileFor2Podcasts();
+            SetupEpisodesFor2Podcasts();
+            ViewModel.Initialise();
+
+            // act
+            ViewModel.FindEpisodesToDownload();
+
+            // assert
             Assert.AreEqual(5, ObservedResults.LastDownloadItems.Count, "total number episodes found");
             Assert.AreEqual(EPISODE_1_ID, ObservedResults.LastDownloadItems[0].SyncItem.Id, "episode 1 id");
             Assert.AreEqual(EPISODE_1_TITLE, ObservedResults.LastDownloadItems[0].SyncItem.EpisodeTitle, "episode 1 title");
@@ -68,5 +81,44 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             Assert.AreEqual(EPISODE_5_TITLE, ObservedResults.LastDownloadItems[4].SyncItem.EpisodeTitle, "episode 5 title");
         }
 
+        [Test]
+        public void FindEpisodesToDownload_SetsTitle()
+        {
+            // arrange
+            SetupMockControlFileFor2Podcasts();
+            SetupEpisodesFor2Podcasts();
+            ViewModel.Initialise();
+
+            // act
+            ViewModel.FindEpisodesToDownload();
+
+            // assert
+            Assert.AreEqual("download episodes count == 5", ObservedResults.LastSetTitle);
+        }
+
+        [Test]
+        public void FindEpisodesToDownload_DoesNotRunTwice()
+        {
+            // arrange
+            SetupMockControlFileFor2Podcasts();
+            SetupEpisodesFor2Podcasts();
+            ViewModel.Initialise();
+            ViewModel.FindEpisodesToDownload();
+            ResetObservedResults();
+
+            // act
+            ViewModel.FindEpisodesToDownload();
+
+            // assert
+            // we only use the finder once - for each episode
+            A.CallTo(MockPodcastEpisodeFinder).MustHaveHappened(2, Times.Exactly);
+            Assert.AreEqual(0, ObservedResults.StartProgressCount, "never started");
+            Assert.AreEqual(0, ObservedResults.UpdateProgressCount, "never updated");
+            Assert.AreEqual(0, ObservedResults.EndProgressCount, "never ended");
+
+            // however we do reinitialise the UI
+            Assert.AreEqual(5, ObservedResults.LastDownloadItems.Count, "total number episodes found");
+            Assert.AreEqual("download episodes count == 5", ObservedResults.LastSetTitle);
+        }
     }
 }
