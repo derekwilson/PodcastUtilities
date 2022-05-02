@@ -2,10 +2,10 @@
 using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
-using PodcastUtilities.AndroidTests.Helpers;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
 {
+
     [TestFixture]
     public class DownloadViewModel_FindEpisodesToDownload : DownloadViewModelBase
     {

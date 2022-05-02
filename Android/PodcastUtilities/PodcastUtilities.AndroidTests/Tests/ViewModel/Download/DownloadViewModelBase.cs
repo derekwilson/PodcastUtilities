@@ -50,6 +50,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             public int UpdateProgressCount;
             public int EndProgressCount;
             public List<DownloadRecyclerItem> LastDownloadItems;
+            public string LastDisplayMessage;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
@@ -87,6 +88,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ObservedResults.UpdateProgressCount = 0;
             ObservedResults.EndProgressCount = 0;
             ObservedResults.LastDownloadItems = null;
+            ObservedResults.LastDisplayMessage = null;
         }
 
         private void SetupResources()
@@ -207,6 +209,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.UpdateProgress += UpdateProgress;
             ViewModel.Observables.EndProgress += EndProgress;
             ViewModel.Observables.SetSyncItems += SetSyncItems;
+            ViewModel.Observables.DisplayMessage += DisplayMessage;
         }
 
         [TearDown]
@@ -218,6 +221,12 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.UpdateProgress -= UpdateProgress;
             ViewModel.Observables.EndProgress -= EndProgress;
             ViewModel.Observables.SetSyncItems -= SetSyncItems;
+            ViewModel.Observables.DisplayMessage -= DisplayMessage;
+        }
+
+        private void DisplayMessage(object sender, string message)
+        {
+            ObservedResults.LastDisplayMessage = message;
         }
 
         private void StartProgress(object sender, int max)
