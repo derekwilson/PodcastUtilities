@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;
-using System.Threading.Tasks;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
 {
@@ -25,7 +24,6 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         }
 
         [Test]
-
         public void DownloadAllPodcastsWithNetworkCheck_HandlesNoWifi()
         {
             // arrange
@@ -49,6 +47,22 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.Wifi);
             A.CallTo(() => MockUserSettings.DownloadNetworkNeeded).Returns(IUserSettings.DownloadNetworkType.WIFI);
+            ViewModel.Initialise();
+
+            // act
+            await ViewModel.DownloadAllPodcastsWithNetworkCheck();
+
+            // assert
+            Assert.AreEqual("No downloads", ObservedResults.LastDisplayMessage);
+            Assert.IsNull(ObservedResults.LastCellularPromptTitle);
+        }
+
+        [Test]
+        public async void DownloadAllPodcastsWithNetworkCheck_ContinuesOnCellular()
+        {
+            // arrange
+            A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.Cellular);
+            A.CallTo(() => MockUserSettings.DownloadNetworkNeeded).Returns(IUserSettings.DownloadNetworkType.WIFIANDCELLULAR);
             ViewModel.Initialise();
 
             // act

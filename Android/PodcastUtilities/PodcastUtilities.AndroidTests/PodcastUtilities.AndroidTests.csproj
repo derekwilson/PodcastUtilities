@@ -77,6 +77,7 @@
     <Compile Include="Tests\EnvironmentTests.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModelBase.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModel_DownloadAllPodcastsWithNetworkCheck.cs" />
+    <Compile Include="Tests\ViewModel\Download\DownloadViewModel_DownloadAllPodcastsWithoutNetworkCheck.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModel_FindEpisodesToDownload.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModel_Initialise.cs" />
     <Compile Include="Tests\ViewModel\Help\HelpViewModelBase.cs" />
