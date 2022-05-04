@@ -55,6 +55,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             public string LastCellularPromptBody;
             public string LastCellularPromptCancel;
             public string LastCellularPromptOk;
+            public string LastEndDownloadingMessage;
+            public int EndDownloadingCount;
+            public int StartDownloadingCount;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
@@ -97,6 +100,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ObservedResults.LastCellularPromptBody = null;
             ObservedResults.LastCellularPromptOk = null;
             ObservedResults.LastCellularPromptCancel = null;
+            ObservedResults.LastEndDownloadingMessage = null;
+            ObservedResults.StartDownloadingCount = 0;
+            ObservedResults.EndDownloadingCount = 0;
         }
 
         private void SetupResources()
@@ -105,6 +111,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.no_downloads_text)).Returns("No downloads");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.no_network_text)).Returns("No network");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.dialog_title)).Returns("dialog title");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_complete)).Returns("downloads complete");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cellular_prompt)).Returns("cellular prompt");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cellular_ok)).Returns("cellular ok");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cellular_cancel)).Returns("cellular cancel");
@@ -223,6 +230,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.SetSyncItems += SetSyncItems;
             ViewModel.Observables.DisplayMessage += DisplayMessage;
             ViewModel.Observables.CellularPrompt += CellularPrompt;
+            ViewModel.Observables.StartDownloading += StartDownloading;
+            ViewModel.Observables.EndDownloading += EndDownloading;
         }
 
         [TearDown]
@@ -236,6 +245,19 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.SetSyncItems -= SetSyncItems;
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
             ViewModel.Observables.CellularPrompt -= CellularPrompt;
+            ViewModel.Observables.StartDownloading -= StartDownloading;
+            ViewModel.Observables.EndDownloading -= EndDownloading;
+        }
+
+        private void StartDownloading(object sender, EventArgs e)
+        {
+            ObservedResults.StartDownloadingCount++;
+        }
+
+        private void EndDownloading(object sender, string message)
+        {
+            ObservedResults.EndDownloadingCount++;
+            ObservedResults.LastEndDownloadingMessage = message;
         }
 
         private void CellularPrompt(object sender, Tuple<string, string, string, string> prompt)

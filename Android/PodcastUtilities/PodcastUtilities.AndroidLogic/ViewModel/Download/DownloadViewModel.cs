@@ -268,7 +268,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             return false;
         }
 
-        public void DownloadAllPodcastsWithNetworkCheck()
+        public Task DownloadAllPodcastsWithNetworkCheck()
         {
             Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcastsWithNetworkCheck");
 
@@ -280,31 +280,31 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             {
                 // no internet
                 Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.no_network_text));
-                return;
+                return null;
             }
 
             if (NetworkConnectionTypeAllowedPromptNeeded(activeConnectionType, requiredConnectionType))
             {
                 // a prompt was needed
-                return;
+                return null;
             }
 
-            DownloadAllPodcastsWithoutNetworkCheck();
+            return DownloadAllPodcastsWithoutNetworkCheck();
         }
 
-        public void DownloadAllPodcastsWithoutNetworkCheck()
+        public Task DownloadAllPodcastsWithoutNetworkCheck()
         {
-            Task.Run(() => DownloadAllPodcasts())
+            return Task.Run(() => DownloadAllPodcasts())
                 .ContinueWith(t => DownloadComplete());
         }
 
-        public void DownloadAllPodcasts()
+        private void DownloadAllPodcasts()
         {
             Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts");
 
             if (AllItems.Count < 1)
             {
-                Observables.DisplayMessage?.Invoke(this, "Nothing to download");
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.no_downloads_text));
                 return;
             }
 
