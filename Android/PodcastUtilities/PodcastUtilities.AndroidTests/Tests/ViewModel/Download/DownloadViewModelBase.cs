@@ -51,6 +51,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             public int EndProgressCount;
             public List<DownloadRecyclerItem> LastDownloadItems;
             public string LastDisplayMessage;
+            public string LastCellularPromptTitle;
+            public string LastCellularPromptBody;
+            public string LastCellularPromptCancel;
+            public string LastCellularPromptOk;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
@@ -89,6 +93,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ObservedResults.EndProgressCount = 0;
             ObservedResults.LastDownloadItems = null;
             ObservedResults.LastDisplayMessage = null;
+            ObservedResults.LastCellularPromptTitle = null;
+            ObservedResults.LastCellularPromptBody = null;
+            ObservedResults.LastCellularPromptOk = null;
+            ObservedResults.LastCellularPromptCancel = null;
         }
 
         private void SetupResources()
@@ -96,6 +104,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_title)).Returns("Mocked Title");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.no_downloads_text)).Returns("No downloads");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.no_network_text)).Returns("No network");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.dialog_title)).Returns("dialog title");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cellular_prompt)).Returns("cellular prompt");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cellular_ok)).Returns("cellular ok");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cellular_cancel)).Returns("cellular cancel");
             A.CallTo(() => MockResourceProvider.GetQuantityString(Resource.Plurals.download_activity_title_after_load, A<int>.Ignored))
                                    .ReturnsLazily((int id, int number) => "download episodes count == " + number.ToString());
         }
@@ -210,6 +222,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.EndProgress += EndProgress;
             ViewModel.Observables.SetSyncItems += SetSyncItems;
             ViewModel.Observables.DisplayMessage += DisplayMessage;
+            ViewModel.Observables.CellularPrompt += CellularPrompt;
         }
 
         [TearDown]
@@ -222,6 +235,17 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.EndProgress -= EndProgress;
             ViewModel.Observables.SetSyncItems -= SetSyncItems;
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
+            ViewModel.Observables.CellularPrompt -= CellularPrompt;
+        }
+
+        private void CellularPrompt(object sender, Tuple<string, string, string, string> prompt)
+        {
+            (
+                ObservedResults.LastCellularPromptTitle,
+                ObservedResults.LastCellularPromptBody,
+                ObservedResults.LastCellularPromptOk,
+                ObservedResults.LastCellularPromptCancel
+            ) = prompt;
         }
 
         private void DisplayMessage(object sender, string message)
