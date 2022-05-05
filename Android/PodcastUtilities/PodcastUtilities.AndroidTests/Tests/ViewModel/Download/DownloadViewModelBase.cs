@@ -19,6 +19,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
     {
         protected const string SOURCE_ROOT = "/sdcard/sourceroot";
         protected const int RETRY_TIME = 123;
+        protected const int MAX_DOWNLOADS = 13;
         protected const bool DIAGS = false;
         protected const string PODCAST_FOLDER_1 = "folder1";
         protected const string PODCAST_FOLDER_2 = "folder2";
@@ -136,6 +137,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
                 .ApplySourceRoot(SOURCE_ROOT)
                 .ApplyRetryWaitInSeconds(RETRY_TIME)
                 .ApplyDiagnosticRetainTemporaryFiles(DIAGS)
+                .ApplyMaximumNumberOfConcurrentDownloads(MAX_DOWNLOADS)
                 .ApplyPodcasts(podcasts)
                 .GetMockedControlFile();
 

@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;
+using System.Threading.Tasks;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
 {
@@ -42,7 +43,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         }
 
         [Test]
-        public async void DownloadAllPodcastsWithNetworkCheck_Continues()
+        public async Task DownloadAllPodcastsWithNetworkCheck_Continues()
         {
             // arrange
             A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.Wifi);
@@ -50,7 +51,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Initialise();
 
             // act
-            await ViewModel.DownloadAllPodcastsWithNetworkCheck();
+            await ViewModel.DownloadAllPodcastsWithNetworkCheck().ConfigureAwait(false);
 
             // assert
             Assert.AreEqual("No downloads", ObservedResults.LastDisplayMessage);
@@ -58,7 +59,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         }
 
         [Test]
-        public async void DownloadAllPodcastsWithNetworkCheck_ContinuesOnCellular()
+        public async Task DownloadAllPodcastsWithNetworkCheck_ContinuesOnCellular()
         {
             // arrange
             A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.Cellular);
@@ -66,7 +67,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Initialise();
 
             // act
-            await ViewModel.DownloadAllPodcastsWithNetworkCheck();
+            await ViewModel.DownloadAllPodcastsWithNetworkCheck().ConfigureAwait(false);
 
             // assert
             Assert.AreEqual("No downloads", ObservedResults.LastDisplayMessage);
@@ -74,7 +75,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         }
 
         [Test]
-        public async void DownloadAllPodcastsWithNetworkCheck_ContinuesAndDownloads()
+        public async Task DownloadAllPodcastsWithNetworkCheck_ContinuesAndDownloads()
         {
             // arrange
             A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.Wifi);
@@ -85,7 +86,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.FindEpisodesToDownload();
 
             // act
-            await ViewModel.DownloadAllPodcastsWithNetworkCheck();
+            await ViewModel.DownloadAllPodcastsWithNetworkCheck().ConfigureAwait(false);
 
             // assert
             Assert.AreEqual(1, ObservedResults.StartDownloadingCount, "start count");

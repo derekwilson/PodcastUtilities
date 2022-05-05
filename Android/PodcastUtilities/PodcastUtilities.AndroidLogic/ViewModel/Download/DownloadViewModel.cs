@@ -294,10 +294,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         public Task DownloadAllPodcastsWithoutNetworkCheck()
         {
-            return Task.Run(() => DownloadAllPodcasts())
-                .ContinueWith(t => DownloadComplete());
+            return Task.Run(() =>
+                {
+                    DownloadAllPodcasts();
+                }
+            );
         }
 
+        // dont run this on the UI thread
         private void DownloadAllPodcasts()
         {
             Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts");
@@ -312,39 +316,47 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             {
                 if (DownloadingInProgress)
                 {
-                    Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts - already in progress - ignored");
+                    Logger.Warning(() => $"DownloadViewModel:DownloadAllPodcasts - already in progress - ignored");
                     return;
                 }
                 DownloadingInProgress = true;
             }
 
-            Observables.StartDownloading?.Invoke(this, null);
-
-            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-            int numberOfConnections = controlFile.GetMaximumNumberOfConcurrentDownloads();
-            System.Net.ServicePointManager.DefaultConnectionLimit = numberOfConnections;
-
-            List<ISyncItem> AllEpisodesToDownload = new List<ISyncItem>(AllItems.Count);
-            AllItems.Where(recyclerItem => recyclerItem.Selected).ToList().ForEach(item => AllEpisodesToDownload.Add(item.SyncItem));
-
-            IEpisodeDownloader[] downloadTasks = Converter.ConvertItemsToTasks(AllEpisodesToDownload, DownloadStatusUpdate, DownloadProgressUpdate);
-            foreach (var task in downloadTasks)
+            try
             {
-                Logger.Debug(() => $"DownloadViewModel:Download to: {task.SyncItem.DestinationPath}");
+                Observables.StartDownloading?.Invoke(this, null);
+
+                var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+                int numberOfConnections = controlFile.GetMaximumNumberOfConcurrentDownloads();
+                NetworkHelper.SetNetworkConnectionLimit(numberOfConnections);
+
+                List<ISyncItem> AllEpisodesToDownload = new List<ISyncItem>(AllItems.Count);
+                AllItems.Where(recyclerItem => recyclerItem.Selected).ToList().ForEach(item => AllEpisodesToDownload.Add(item.SyncItem));
+
+                IEpisodeDownloader[] downloadTasks = Converter.ConvertItemsToTasks(AllEpisodesToDownload, DownloadStatusUpdate, DownloadProgressUpdate);
+                foreach (var task in downloadTasks)
+                {
+                    Logger.Debug(() => $"DownloadViewModel:Download to: {task.SyncItem.DestinationPath}");
+                }
+
+                // run them in a task pool
+                TaskPool.RunAllTasks(numberOfConnections, downloadTasks);
+                Logger.Debug(() => $"DownloadViewModel:Download tasks complete");
             }
-
-            // run them in a task pool
-            TaskPool.RunAllTasks(numberOfConnections, downloadTasks);
-            Logger.Debug(() => $"DownloadViewModel:Download tasks complete");
-            DownloadingInProgress = false;
-        }
-
-        public void DownloadComplete()
-        {
-            Observables.EndDownloading?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_complete));
-            if (ExitRequested)
+            catch (Exception ex)
             {
-                Observables.Exit?.Invoke(this, null);
+                Logger.LogException(() => $"DownloadViewModel:DownloadAllPodcasts", ex);
+                CrashReporter.LogNonFatalException(ex);
+                Observables.DisplayMessage?.Invoke(this, ex.Message);
+            }
+            finally
+            {
+                Observables.EndDownloading?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_complete));
+                if (ExitRequested)
+                {
+                    Observables.Exit?.Invoke(this, null);
+                }
+                DownloadingInProgress = false;
             }
         }
 

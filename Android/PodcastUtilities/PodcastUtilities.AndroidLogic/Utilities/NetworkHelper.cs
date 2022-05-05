@@ -17,6 +17,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         }
 
         NetworkType ActiveNetworkType { get; }
+
+        void SetNetworkConnectionLimit(int maxNumberOfConnections);
     }
     public class NetworkHelper : INetworkHelper
     {
@@ -89,6 +91,11 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 }
                 return NetworkType.None;
             }
+        }
+
+        public void SetNetworkConnectionLimit(int maxNumberOfConnections)
+        {
+            System.Net.ServicePointManager.DefaultConnectionLimit = maxNumberOfConnections;
         }
     }
 }

@@ -35,6 +35,12 @@ namespace PodcastUtilities.AndroidTests.Helpers
             return this;
         }
 
+        public ControlFileMocker ApplyMaximumNumberOfConcurrentDownloads(int max)
+        {
+            A.CallTo(() => MockControlFile.GetMaximumNumberOfConcurrentDownloads()).Returns(max);
+            return this;
+        }
+
         public ControlFileMocker ApplyPodcasts(IEnumerable<IPodcastInfo> podcasts)
         {
             A.CallTo(() => MockControlFile.GetPodcasts()).Returns(podcasts);
