@@ -1,8 +1,11 @@
 ﻿using FakeItEasy;
 using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidTests.Helpers;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Feeds;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -59,6 +62,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             await ViewModel.DownloadAllPodcastsWithoutNetworkCheck().ConfigureAwait(false);
 
             // assert
+            A.CallTo(() => MockCrashReporter.LogNonFatalException(A<Exception>.Ignored)).MustNotHaveHappened();
             Assert.AreEqual(1, ObservedResults.StartDownloadingCount, "start count");
             Assert.AreEqual(1, ObservedResults.EndDownloadingCount, "end count");
         }
@@ -76,6 +80,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             await ViewModel.DownloadAllPodcastsWithoutNetworkCheck().ConfigureAwait(false);
 
             // assert
+            A.CallTo(() => MockCrashReporter.LogNonFatalException(A<Exception>.Ignored)).MustNotHaveHappened();
             A.CallTo(() => MockNetworkHelper.SetNetworkConnectionLimit(MAX_DOWNLOADS)).MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => MockTaskPool.RunAllTasks(MAX_DOWNLOADS, A<ITask[]>.Ignored)).MustHaveHappened(1, Times.Exactly);
         }
@@ -104,6 +109,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.DownloadAllPodcastsWithoutNetworkCheck().Wait();
 
             // assert
+            A.CallTo(() => MockCrashReporter.LogNonFatalException(A<Exception>.Ignored)).MustNotHaveHappened();
             A.CallTo(() => MockLogger.Warning(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(1, Times.Exactly);
             Assert.AreEqual(1, ObservedResults.StartDownloadingCount, "start count");
             Assert.AreEqual(1, ObservedResults.EndDownloadingCount, "end count");
@@ -124,10 +130,84 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.DownloadAllPodcastsWithoutNetworkCheck().Wait();
 
             // assert
+            A.CallTo(() => MockCrashReporter.LogNonFatalException(A<Exception>.Ignored)).MustNotHaveHappened();
             A.CallTo(() => MockLogger.Warning(A<ILogger.MessageGenerator>.Ignored)).MustNotHaveHappened();
             A.CallTo(() => MockTaskPool.RunAllTasks(A<int>.Ignored, A<ITask[]>.Ignored)).MustHaveHappened(2, Times.Exactly);
             Assert.AreEqual(2, ObservedResults.StartDownloadingCount, "start count");
             Assert.AreEqual(2, ObservedResults.EndDownloadingCount, "end count");
         }
+
+        [Test]
+        public void ProgressUpdate_ChecksFreeSpace()
+        {
+            // arrange
+            SetupMockControlFileFor2Podcasts();
+            SetupEpisodesFor2Podcasts();
+            ViewModel.Initialise();
+            ViewModel.FindEpisodesToDownload();
+
+            SetupFireProgressEvent(EPISODE_1_ID, 9);
+
+            // act
+            ViewModel.DownloadAllPodcastsWithoutNetworkCheck().Wait();
+
+            // assert
+            A.CallTo(() => MockCrashReporter.LogNonFatalException(A<Exception>.Ignored)).MustNotHaveHappened();
+            A.CallTo(() => MockFileSystemHelper.GetAvailableFileSystemSizeInBytes(A<string>.Ignored)).MustHaveHappened(1, Times.Exactly);
+            A.CallTo(() => MockTaskPool.CancelAllTasks()).MustNotHaveHappened();
+        }
+
+        [Test]
+        public void ProgressUpdate_ChecksFreeSpace_Cancels_When_Disk_Full()
+        {
+            // arrange
+            SetupMockControlFileFor2Podcasts();
+            SetupEpisodesFor2Podcasts();
+            ViewModel.Initialise();
+            ViewModel.FindEpisodesToDownload();
+
+            SetupFireProgressEvent(EPISODE_1_ID, 9);
+            // there is 1MB free in the filesystem
+            A.CallTo(() => MockFileSystemHelper.GetAvailableFileSystemSizeInBytes(A<string>.Ignored)).Returns(1024 * 1024 * 1);
+
+            // act
+            ViewModel.DownloadAllPodcastsWithoutNetworkCheck().Wait();
+
+            // assert
+            A.CallTo(() => MockCrashReporter.LogNonFatalException(A<Exception>.Ignored)).MustNotHaveHappened();
+            A.CallTo(() => MockFileSystemHelper.GetAvailableFileSystemSizeInBytes(A<string>.Ignored)).MustHaveHappened(1, Times.Exactly);
+            A.CallTo(() => MockTaskPool.CancelAllTasks()).MustHaveHappened(1, Times.Exactly);
+        }
+
+
+        private void SetupFireProgressEvent(Guid id, int percentage)
+        {
+            var syncItem = new SyncItemMocker().ApplyId(id);
+            EventHandler<ProgressEventArgs> progressEventHandler = null;
+            ProgressEventArgs progressArgs = new ProgressEventArgs();
+            A.CallTo(() =>
+                MockSyncItemToEpisodeDownloaderTaskConverter.ConvertItemsToTasks
+                (
+                    A<IList<ISyncItem>>.Ignored,
+                    A<EventHandler<StatusUpdateEventArgs>>.Ignored,
+                    A<EventHandler<ProgressEventArgs>>.Ignored
+                ))
+                .ReturnsLazily((IList<ISyncItem> items, EventHandler<StatusUpdateEventArgs> statusEvent, EventHandler<ProgressEventArgs> progressEvent) =>
+                {
+                    progressEventHandler = progressEvent;
+                    return new IEpisodeDownloader[0];
+                });
+            A.CallTo(() => MockTaskPool.RunAllTasks(A<int>.Ignored, A<ITask[]>.Ignored))
+                .Invokes(() =>
+                {
+                    progressArgs.TotalItemsToProcess = 100;
+                    progressArgs.ItemsProcessed = percentage;
+                    progressArgs.ProgressPercentage = percentage;
+                    progressArgs.UserState = syncItem.GetMockedSyncItem();
+                    progressEventHandler?.Invoke(this, progressArgs);
+                });
+        }
+
+
     }
 }

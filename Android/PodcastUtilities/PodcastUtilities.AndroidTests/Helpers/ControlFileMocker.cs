@@ -41,6 +41,18 @@ namespace PodcastUtilities.AndroidTests.Helpers
             return this;
         }
 
+        public ControlFileMocker ApplyFreeSpaceToLeaveOnDestination(int freeMB)
+        {
+            A.CallTo(() => MockControlFile.GetFreeSpaceToLeaveOnDestination()).Returns(freeMB);
+            return this;
+        }
+
+        public ControlFileMocker ApplyFreeSpaceToLeaveOnDownload(int freeMB)
+        {
+            A.CallTo(() => MockControlFile.GetFreeSpaceToLeaveOnDownload()).Returns(freeMB);
+            return this;
+        }
+
         public ControlFileMocker ApplyPodcasts(IEnumerable<IPodcastInfo> podcasts)
         {
             A.CallTo(() => MockControlFile.GetPodcasts()).Returns(podcasts);

@@ -23,6 +23,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         protected const bool DIAGS = false;
         protected const string PODCAST_FOLDER_1 = "folder1";
         protected const string PODCAST_FOLDER_2 = "folder2";
+        protected const int FREE_DISK_SPACE_MB = 10;
 
         protected Guid EPISODE_1_ID = Guid.Parse("72288452-3CD8-4BB4-BBF5-854C290CB499");
         protected const string EPISODE_1_TITLE = PODCAST_FOLDER_1 + "-episode1";
@@ -138,6 +139,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
                 .ApplyRetryWaitInSeconds(RETRY_TIME)
                 .ApplyDiagnosticRetainTemporaryFiles(DIAGS)
                 .ApplyMaximumNumberOfConcurrentDownloads(MAX_DOWNLOADS)
+                .ApplyFreeSpaceToLeaveOnDownload(FREE_DISK_SPACE_MB - 1)
                 .ApplyPodcasts(podcasts)
                 .GetMockedControlFile();
 
@@ -192,6 +194,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             MockLogger = A.Fake<ILogger>();
             MockResourceProvider = A.Fake<IResourceProvider>();
             MockFileSystemHelper = A.Fake<IFileSystemHelper>();
+            // there is 10MB free in the filesystem
+            A.CallTo(() => MockFileSystemHelper.GetAvailableFileSystemSizeInBytes(A<string>.Ignored)).Returns(1024 * 1024 * FREE_DISK_SPACE_MB);
             MockApplicationControlFileProvider = A.Fake<IApplicationControlFileProvider>();
             MockCrashReporter = A.Fake<ICrashReporter>();
             MockAnalyticsEngine = A.Fake<IAnalyticsEngine>();
