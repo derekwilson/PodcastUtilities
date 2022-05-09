@@ -166,7 +166,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Initialise();
             ViewModel.FindEpisodesToDownload();
 
-            SetupFireProgressEvent(EPISODE_1_ID, 9);
+            var syncItemMocker = SetupFireProgressEvent(EPISODE_1_ID, 9);
             // there is 1MB free in the filesystem
             A.CallTo(() => MockFileSystemHelper.GetAvailableFileSystemSizeInBytes(A<string>.Ignored)).Returns(1024 * 1024 * 1);
 
@@ -179,10 +179,79 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             A.CallTo(() => MockTaskPool.CancelAllTasks()).MustHaveHappened(1, Times.Exactly);
         }
 
-
-        private void SetupFireProgressEvent(Guid id, int percentage)
+        [Test]
+        public void ProgressUpdate_UpdatesProgress_At_10()
         {
-            var syncItem = new SyncItemMocker().ApplyId(id);
+            // arrange
+            SetupMockControlFileFor2Podcasts();
+            SetupEpisodesFor2Podcasts();
+            ViewModel.Initialise();
+            ViewModel.FindEpisodesToDownload();
+            var syncItemMocker = SetupFireProgressEvent(EPISODE_1_ID, 10);
+            Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);
+
+            // act
+            ViewModel.DownloadAllPodcastsWithoutNetworkCheck().Wait();
+
+            // assert
+            A.CallTo(() => MockCrashReporter.LogNonFatalException(A<Exception>.Ignored)).MustNotHaveHappened();
+            A.CallTo(() => MockStatusAndProgressMessageStore.StoreMessage(
+                A<Guid>.That.Matches(g => g.ToString() == EPISODE_1_ID.ToString()),
+                A<string>.That.Matches(s => s == "EpisodeTitle (10 bytes of 100 bytes) 10%")))
+                .MustHaveHappened(1, Times.Exactly);
+            Assert.AreEqual(10, ObservedResults.LastUpdatePercentage, "percentage");
+            Assert.AreEqual(syncItemMocker.GetMockedSyncItem(), ObservedResults.LastUpdateItem, "item");
+        }
+
+        [Test]
+        public void ProgressUpdate_UpdatesProgress_Not_At_11()
+        {
+            // arrange
+            SetupMockControlFileFor2Podcasts();
+            SetupEpisodesFor2Podcasts();
+            ViewModel.Initialise();
+            ViewModel.FindEpisodesToDownload();
+            var syncItemMocker = SetupFireProgressEvent(EPISODE_1_ID, 11);
+            Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);
+
+            // act
+            ViewModel.DownloadAllPodcastsWithoutNetworkCheck().Wait();
+
+            // assert
+            A.CallTo(() => MockCrashReporter.LogNonFatalException(A<Exception>.Ignored)).MustNotHaveHappened();
+            A.CallTo(MockStatusAndProgressMessageStore).MustNotHaveHappened();
+            Assert.AreEqual(0, ObservedResults.LastUpdatePercentage, "percentage");
+            Assert.IsNull(ObservedResults.LastUpdateItem, "item");
+        }
+
+        [Test]
+        public void ProgressUpdate_UpdatesProgress_At_100()
+        {
+            // arrange
+            SetupMockControlFileFor2Podcasts();
+            SetupEpisodesFor2Podcasts();
+            ViewModel.Initialise();
+            ViewModel.FindEpisodesToDownload();
+            var syncItemMocker = SetupFireProgressEvent(EPISODE_1_ID, 100);
+            Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);
+
+            // act
+            ViewModel.DownloadAllPodcastsWithoutNetworkCheck().Wait();
+
+            // assert
+            A.CallTo(() => MockCrashReporter.LogNonFatalException(A<Exception>.Ignored)).MustNotHaveHappened();
+            A.CallTo(() => MockStatusAndProgressMessageStore.StoreMessage(
+                A<Guid>.That.Matches(g => g.ToString() == EPISODE_1_ID.ToString()),
+                A<string>.That.Matches(s => s == "EpisodeTitle (100 bytes of 100 bytes) 100%")))
+                .MustHaveHappened(1, Times.Exactly);
+            Assert.AreEqual(100, ObservedResults.LastUpdatePercentage, "percentage");
+            Assert.AreEqual(syncItemMocker.GetMockedSyncItem(), ObservedResults.LastUpdateItem, "item");
+            A.CallTo(() => MockAnalyticsEngine.DownloadEpisodeEvent(A<long>.Ignored)).MustHaveHappened(1, Times.Exactly);
+        }
+
+        private SyncItemMocker SetupFireProgressEvent(Guid id, int percentage)
+        {
+            var syncItemMocker = new SyncItemMocker().ApplyId(id).ApplyEpisodeTitle("EpisodeTitle");
             EventHandler<ProgressEventArgs> progressEventHandler = null;
             ProgressEventArgs progressArgs = new ProgressEventArgs();
             A.CallTo(() =>
@@ -203,9 +272,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
                     progressArgs.TotalItemsToProcess = 100;
                     progressArgs.ItemsProcessed = percentage;
                     progressArgs.ProgressPercentage = percentage;
-                    progressArgs.UserState = syncItem.GetMockedSyncItem();
+                    progressArgs.UserState = syncItemMocker.GetMockedSyncItem();
                     progressEventHandler?.Invoke(this, progressArgs);
                 });
+            return syncItemMocker;
         }
 
 

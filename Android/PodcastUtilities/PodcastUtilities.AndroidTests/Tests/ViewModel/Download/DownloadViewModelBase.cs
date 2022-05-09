@@ -60,6 +60,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             public string LastEndDownloadingMessage;
             public int EndDownloadingCount;
             public int StartDownloadingCount;
+            public ISyncItem LastUpdateItem;
+            public int LastUpdatePercentage;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
@@ -105,6 +107,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ObservedResults.LastEndDownloadingMessage = null;
             ObservedResults.StartDownloadingCount = 0;
             ObservedResults.EndDownloadingCount = 0;
+            ObservedResults.LastUpdateItem = null;
+            ObservedResults.LastUpdatePercentage = 0;
         }
 
         private void SetupResources()
@@ -238,6 +242,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.CellularPrompt += CellularPrompt;
             ViewModel.Observables.StartDownloading += StartDownloading;
             ViewModel.Observables.EndDownloading += EndDownloading;
+            ViewModel.Observables.UpdateItemProgress += UpdateItemProgress;
         }
 
         [TearDown]
@@ -253,6 +258,12 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.CellularPrompt -= CellularPrompt;
             ViewModel.Observables.StartDownloading -= StartDownloading;
             ViewModel.Observables.EndDownloading -= EndDownloading;
+            ViewModel.Observables.UpdateItemProgress -= UpdateItemProgress;
+        }
+
+        private void UpdateItemProgress(object sender, Tuple<ISyncItem, int> item)
+        {
+            (ObservedResults.LastUpdateItem, ObservedResults.LastUpdatePercentage) = item;
         }
 
         private void StartDownloading(object sender, EventArgs e)
