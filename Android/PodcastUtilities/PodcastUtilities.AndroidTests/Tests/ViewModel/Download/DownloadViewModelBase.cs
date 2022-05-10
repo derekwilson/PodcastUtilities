@@ -60,8 +60,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             public string LastEndDownloadingMessage;
             public int EndDownloadingCount;
             public int StartDownloadingCount;
-            public ISyncItem LastUpdateItem;
+            public ISyncItem LastUpdatePercentageItem;
             public int LastUpdatePercentage;
+            public string LastUpdateStatusMessage;
+            public Status LastUpdateStatus;
+            public ISyncItem LastUpdateStatusItem;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
@@ -107,8 +110,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ObservedResults.LastEndDownloadingMessage = null;
             ObservedResults.StartDownloadingCount = 0;
             ObservedResults.EndDownloadingCount = 0;
-            ObservedResults.LastUpdateItem = null;
+            ObservedResults.LastUpdatePercentageItem = null;
             ObservedResults.LastUpdatePercentage = 0;
+            ObservedResults.LastUpdateStatusItem = null;
+            ObservedResults.LastUpdateStatusMessage = null;
+            ObservedResults.LastUpdateStatus = Status.OK;
         }
 
         private void SetupResources()
@@ -125,7 +131,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
                                    .ReturnsLazily((int id, int number) => "download episodes count == " + number.ToString());
         }
 
-        protected void SetupMockControlFileFor2Podcasts()
+        protected void SetupMockControlFileFor2Podcasts(DiagnosticOutputLevel level = DiagnosticOutputLevel.None)
         {
             podcast1Mocker = new PodcastInfoMocker()
                 .ApplyFolder(PODCAST_FOLDER_1);
@@ -144,6 +150,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
                 .ApplyDiagnosticRetainTemporaryFiles(DIAGS)
                 .ApplyMaximumNumberOfConcurrentDownloads(MAX_DOWNLOADS)
                 .ApplyFreeSpaceToLeaveOnDownload(FREE_DISK_SPACE_MB - 1)
+                .ApplyDiagnosticOutput(level)
                 .ApplyPodcasts(podcasts)
                 .GetMockedControlFile();
 
@@ -243,6 +250,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.StartDownloading += StartDownloading;
             ViewModel.Observables.EndDownloading += EndDownloading;
             ViewModel.Observables.UpdateItemProgress += UpdateItemProgress;
+            ViewModel.Observables.UpdateItemStatus += UpdateItemStatus;
         }
 
         [TearDown]
@@ -259,11 +267,17 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.StartDownloading -= StartDownloading;
             ViewModel.Observables.EndDownloading -= EndDownloading;
             ViewModel.Observables.UpdateItemProgress -= UpdateItemProgress;
+            ViewModel.Observables.UpdateItemStatus -= UpdateItemStatus;
+        }
+
+        private void UpdateItemStatus(object sender, Tuple<ISyncItem, Status, string> item)
+        {
+            (ObservedResults.LastUpdateStatusItem, ObservedResults.LastUpdateStatus, ObservedResults.LastUpdateStatusMessage) = item;
         }
 
         private void UpdateItemProgress(object sender, Tuple<ISyncItem, int> item)
         {
-            (ObservedResults.LastUpdateItem, ObservedResults.LastUpdatePercentage) = item;
+            (ObservedResults.LastUpdatePercentageItem, ObservedResults.LastUpdatePercentage) = item;
         }
 
         private void StartDownloading(object sender, EventArgs e)

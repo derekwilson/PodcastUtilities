@@ -53,6 +53,12 @@ namespace PodcastUtilities.AndroidTests.Helpers
             return this;
         }
 
+        public ControlFileMocker ApplyDiagnosticOutput(DiagnosticOutputLevel level)
+        {
+            A.CallTo(() => MockControlFile.GetDiagnosticOutput()).Returns(level);
+            return this;
+        }
+
         public ControlFileMocker ApplyPodcasts(IEnumerable<IPodcastInfo> podcasts)
         {
             A.CallTo(() => MockControlFile.GetPodcasts()).Returns(podcasts);

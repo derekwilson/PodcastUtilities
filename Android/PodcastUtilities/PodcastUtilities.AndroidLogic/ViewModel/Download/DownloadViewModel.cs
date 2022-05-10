@@ -5,6 +5,7 @@ using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using System;
 using System.Collections.Generic;
@@ -403,8 +404,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
         {
-            bool _verbose = false;
-            if (e.MessageLevel == StatusUpdateLevel.Verbose && !_verbose)
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            bool verbose = controlFile?.GetDiagnosticOutput() == DiagnosticOutputLevel.Verbose;
+            if (e.MessageLevel == StatusUpdateLevel.Verbose && !verbose)
             {
                 return;
             }

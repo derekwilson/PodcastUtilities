@@ -82,6 +82,22 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         }
 
         [Test]
+        public void FindEpisodesToDownload_Analytics()
+        {
+            // arrange
+            SetupMockControlFileFor2Podcasts();
+            SetupEpisodesFor2Podcasts();
+            ViewModel.Initialise();
+
+            // act
+            ViewModel.FindEpisodesToDownload();
+
+            // assert
+            A.CallTo(() => MockAnalyticsEngine.DownloadFeedEvent(2)).MustHaveHappened(1, Times.Exactly);
+            A.CallTo(() => MockAnalyticsEngine.DownloadFeedEvent(3)).MustHaveHappened(1, Times.Exactly);
+        }
+
+        [Test]
         public void FindEpisodesToDownload_SetsTitle()
         {
             // arrange
