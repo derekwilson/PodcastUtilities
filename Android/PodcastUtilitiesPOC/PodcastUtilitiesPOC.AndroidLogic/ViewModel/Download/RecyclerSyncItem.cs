@@ -17,7 +17,7 @@ namespace PodcastUtilitiesPOC.AndroidLogic.ViewModel.Download
     {
         public ISyncItem SyncItem { get; set; }
         public int ProgressPercentage { get; set; }
-        public PodcastInfo Podcast { get; set; }
+        public IPodcastInfo Podcast { get; set; }
         public bool Selected { get; set; }
         public Status DownloadStatus { get; set; }
     }
