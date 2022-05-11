@@ -65,6 +65,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             public string LastUpdateStatusMessage;
             public Status LastUpdateStatus;
             public ISyncItem LastUpdateStatusItem;
+            public string LastExitPromptTitle;
+            public string LastExitPromptMessage;
+            public string LastExitPromptOk;
+            public string LastExitPromptCancel;
+            public int ExitCount;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
@@ -115,6 +120,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ObservedResults.LastUpdateStatusItem = null;
             ObservedResults.LastUpdateStatusMessage = null;
             ObservedResults.LastUpdateStatus = Status.OK;
+            ObservedResults.LastExitPromptTitle = null;
+            ObservedResults.LastExitPromptMessage = null;
+            ObservedResults.LastExitPromptOk = null;
+            ObservedResults.LastExitPromptCancel = null;
+            ObservedResults.ExitCount = 0;
         }
 
         private void SetupResources()
@@ -122,7 +132,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_title)).Returns("Mocked Title");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.no_downloads_text)).Returns("No downloads");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.no_network_text)).Returns("No network");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cancelling)).Returns("cancelling");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.dialog_title)).Returns("dialog title");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_exit_prompt)).Returns("exit message");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_exit_ok)).Returns("exit ok");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_exit_cancel)).Returns("exit cancel");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_complete)).Returns("downloads complete");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cellular_prompt)).Returns("cellular prompt");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cellular_ok)).Returns("cellular ok");
@@ -251,6 +265,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.EndDownloading += EndDownloading;
             ViewModel.Observables.UpdateItemProgress += UpdateItemProgress;
             ViewModel.Observables.UpdateItemStatus += UpdateItemStatus;
+            ViewModel.Observables.ExitPrompt += ExitPrompt;
+            ViewModel.Observables.Exit += Exit;
         }
 
         [TearDown]
@@ -268,6 +284,18 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.EndDownloading -= EndDownloading;
             ViewModel.Observables.UpdateItemProgress -= UpdateItemProgress;
             ViewModel.Observables.UpdateItemStatus -= UpdateItemStatus;
+            ViewModel.Observables.ExitPrompt -= ExitPrompt;
+            ViewModel.Observables.Exit -= Exit;
+        }
+
+        private void Exit(object sender, EventArgs e)
+        {
+            ObservedResults.ExitCount++;
+        }
+
+        private void ExitPrompt(object sender, Tuple<string, string, string, string> prompt)
+        {
+            (ObservedResults.LastExitPromptTitle, ObservedResults.LastExitPromptMessage, ObservedResults.LastExitPromptOk, ObservedResults.LastExitPromptCancel) = prompt;
         }
 
         private void UpdateItemStatus(object sender, Tuple<ISyncItem, Status, string> item)
