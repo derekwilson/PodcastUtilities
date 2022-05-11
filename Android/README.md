@@ -52,6 +52,23 @@ Note: it will fail if the app is already running
 
 Note: You need to have the folder `PodcastUtilities\Android\PodcastUtilities\LocalOnly`. Its not in the repo you will need to get it from one of the team, if you dont have it then you can still build the debug builds but you cannot sign the release builds.
 
+#### Package names
+
+The deployment mechanisms (Sideload or GooglePlay) are not interchangeable as different signing keys are used for each mechanism. For GooglePlay Google will re-sign the AAB as it is downloaded and for Sideload the signing key is in `LocalOnly`. For that reason users cannot install using different mechanisms even if the package names are the same (in fact this requires them to uninstall and reinstall rather than upgrade).
+
+To keep this manageable we user different package names for each mechanism.
+
+| Deployment Mechanism | Configuration | Packagename |
+| -------------------- | ------------- | ----------- |
+| GooglePlay           | Release       | com.andrewandderek.podcastutilities
+| GooglePlay           | Debug         | com.andrewandderek.podcastutilities.debug
+| Sideload             | Release       | com.andrewandderek.podcastutilities.sideload
+| Sideload             | Debug         | com.andrewandderek.podcastutilities.sideload.debug 
+
+The packagename is displayed with the version information on settings. Its also the folder name below `sdcard/Android/data` where the logs and cached files are stored.
+
+The `.debug` suffix is automatically applied with scripts as we build the app, the presence of `sideload` needs to be manually edited into the manifest as its not often changed. As Google have declined to distribute the app it will usually be present.
+
 ##### Building a release AAB
 
 If you intend to deploy the build using Google Play Store you need to build an AAB. The AAB is signed with the key from `LocalOnly`, this will be used as an upload key on the play store the then Google will resign the app as it is downloaded.
