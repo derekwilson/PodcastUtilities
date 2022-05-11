@@ -18,6 +18,7 @@
 	<color name="data_title">@color/primary</color>
 	<color name="data_label">@color/accent</color>
 	<color name="data_value">@color/primary_text</color>
+	<color name="data_progress">@color/primary</color>
 
 	<color name="action_icon_enabled">#FFFFFF</color>
 	<color name="action_icon_disabled">#64FFFFFF</color>

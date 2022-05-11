@@ -3,5 +3,6 @@
     public interface IAndroidApplication
     {
         string DisplayVersion { get; }
+        string DisplayPackage { get; }
     }
 }

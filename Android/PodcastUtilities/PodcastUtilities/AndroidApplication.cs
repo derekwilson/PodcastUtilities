@@ -34,6 +34,7 @@ namespace PodcastUtilities
         public ILoggerFactory LoggerFactory { get; private set; }
         public ILogger Logger { get; private set; }
         public String DisplayVersion { get; private set; }
+        public String DisplayPackage { get; private set; }
         public IIocContainer IocContainer { get; private set; }
 
         private IAnalyticsEngine Analytics;
@@ -140,6 +141,7 @@ namespace PodcastUtilities
             var config = "(Release)";
 #endif
             DisplayVersion = $"v{package.VersionName}, ({longVersionCode}), {config}";
+            DisplayPackage = $"{PackageName}";
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Version == {DisplayVersion}");
 
             base.OnCreate();

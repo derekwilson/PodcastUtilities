@@ -49,6 +49,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             List<string> environment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
             StringBuilder builder = new StringBuilder();
             builder.AppendLine(AndroidApplication.DisplayVersion);
+            builder.AppendLine(AndroidApplication.DisplayPackage);
             foreach (string line in environment)
             {
                 builder.AppendLine(line);

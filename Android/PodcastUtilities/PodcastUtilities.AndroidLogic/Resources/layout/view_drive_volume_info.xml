@@ -10,6 +10,7 @@
         android:id="@+id/drive_volume_info_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/placeholder"
         style="@style/ItemTitle"/>
 
     <LinearLayout
@@ -75,6 +76,7 @@
 		android:progress="5"
 		style="?android:attr/progressBarStyleHorizontal"
 		android:indeterminate="false"
+        android:theme="@style/ItemProgressBar"
 		/>
 
 </LinearLayout>
