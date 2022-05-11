@@ -89,6 +89,10 @@
     <Compile Include="Tests\ViewModel\Main\MainViewModel_Initialise.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModel_LoadControlFile.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModel_RefreshFilesystemInfo.cs" />
+    <Compile Include="Tests\ViewModel\Messages\MessagesViewModelBase.cs" />
+    <Compile Include="Tests\ViewModel\Messages\MessagesViewModel_Initialise.cs" />
+    <Compile Include="Tests\ViewModel\Settings\OpenSourceLicensesViewModelBase.cs" />
+    <Compile Include="Tests\ViewModel\Settings\OpenSourceLicensesViewModel_Initialise.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -148,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\help\testhelp.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\license\test.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
