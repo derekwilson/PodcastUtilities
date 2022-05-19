@@ -51,7 +51,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
 
             // assert
             Assert.AreEqual(2, ObservedResults.StartProgress[0], "total number of feeds");
-            Assert.AreEqual(1, ObservedResults.UpdateProgress[0], "upodated to 1");
+            Assert.AreEqual(1, ObservedResults.UpdateProgress[0], "updated to 1");
             Assert.AreEqual(2, ObservedResults.UpdateProgress[1], "updated to 2");
             Assert.AreEqual(1, ObservedResults.EndProgressCount, "ended once");
         }

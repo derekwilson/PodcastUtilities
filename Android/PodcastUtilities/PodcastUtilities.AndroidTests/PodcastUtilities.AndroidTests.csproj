@@ -53,6 +53,7 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android.Export" />
     <Reference Include="PodcastUtilities.Common">
       <HintPath>..\..\Reference\PodcastUtilities\PodcastUtilities.Common.dll</HintPath>
@@ -69,6 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ControlFileMocker.cs" />
+    <Compile Include="Helpers\DirectoryInfoMocker.cs" />
+    <Compile Include="Helpers\FileInfoMocker.cs" />
     <Compile Include="Helpers\PodcastInfoMocker.cs" />
     <Compile Include="Helpers\SyncItemMocker.cs" />
     <Compile Include="MainActivity.cs" />
@@ -91,6 +94,10 @@
     <Compile Include="Tests\ViewModel\Main\MainViewModel_RefreshFilesystemInfo.cs" />
     <Compile Include="Tests\ViewModel\Messages\MessagesViewModelBase.cs" />
     <Compile Include="Tests\ViewModel\Messages\MessagesViewModel_Initialise.cs" />
+    <Compile Include="Tests\ViewModel\Purge\PurgeViewModelBase.cs" />
+    <Compile Include="Tests\ViewModel\Purge\PurgeViewModel_FindItemsToDelete.cs" />
+    <Compile Include="Tests\ViewModel\Purge\PurgeViewModel_Initialise.cs" />
+    <Compile Include="Tests\ViewModel\Purge\PurgeViewModel_PurgeAllItems.cs" />
     <Compile Include="Tests\ViewModel\Settings\OpenSourceLicensesViewModelBase.cs" />
     <Compile Include="Tests\ViewModel\Settings\OpenSourceLicensesViewModel_Initialise.cs" />
   </ItemGroup>

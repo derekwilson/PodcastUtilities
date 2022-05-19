@@ -10,13 +10,13 @@ The changes fall into the following groups
 
 ## PodcastUtilities .NET Standard DLLs
 
-All the fixes to `PodcastUtilities.Common` are related to its use in a multi threaded UI that reads and writes control files, such as the android client. The existing CLI UI will not be affected but the issues being fixed.
+All the fixes to `PodcastUtilities.Common` are related to its use in a multi threaded UI that reads and writes control files, such as the android client. The existing CLI UI will not be affected by the issues being fixed.
 
 Of the enhancements much the same can be said except for the new invalid filename chars and also the sorting of playlists.
 
 v3.0.2.7 The changes here are
 
-1. FIX: ControlFile loading and saving was leaving the file open because Dispose() was not being called
+1. FIX: ControlFile loading and saving was leaving the file open because `Dispose()` was not being called
 1. FIX: Added missing `PostDownloadCommand` property to `IPodcastInfo`
 1. FIX: Added missing `GetDiagnosticOutput` and `GetDiagnosticRetainTemporaryFiles` to `IReadOnlyControlFile`
 1. FIX: `postdownloadcommand` element was being written twice by `SaveToFile`, one of the an invalid format which was causing files to become corrupt when written.

@@ -66,7 +66,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
             Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.purge_activity_title));
         }
 
-        internal void SelectionChanged(int position)
+        public void SelectionChanged(int position)
         {
             SetTitle();
         }
