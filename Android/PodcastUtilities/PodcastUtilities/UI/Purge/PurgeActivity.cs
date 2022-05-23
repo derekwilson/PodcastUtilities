@@ -6,6 +6,7 @@ using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
+using Google.Android.Material.FloatingActionButton;
 using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
@@ -29,7 +30,7 @@ namespace PodcastUtilities.UI.Purge
         private PurgeRecyclerItemAdapter Adapter;
         private LinearLayout NoDataView;
         private ProgressSpinnerView ProgressSpinner;
-        private Button DeleteButton;
+        private FloatingActionButton DeleteButton;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -45,7 +46,7 @@ namespace PodcastUtilities.UI.Purge
             RvPurgeItems = FindViewById<EmptyRecyclerView>(Resource.Id.rvPurge);
             NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoDataPurge);
             ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBarPurge);
-            DeleteButton = FindViewById<Button>(Resource.Id.btnPurge);
+            DeleteButton = FindViewById<FloatingActionButton>(Resource.Id.fab_delete);
 
             RvPurgeItems.SetLayoutManager(new LinearLayoutManager(this));
             RvPurgeItems.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));

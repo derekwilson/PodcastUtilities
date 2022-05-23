@@ -13,7 +13,7 @@
 		android:layout_height="0dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintBottom_toTopOf="@id/layPurgeButtonContainer"
+		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
 		>
 
@@ -46,29 +46,25 @@
 
 	</FrameLayout>
 
-	<LinearLayout
-		android:id="@+id/layPurgeButtonContainer"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_delete"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:gravity="center_horizontal|center"
-		android:background="@color/primary_light"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintBottom_toBottomOf="parent"
-		>
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:elevation="8dp"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:fabSize="normal"
+		app:backgroundTint="@color/primary"
+        app:tint="@color/ic_icon_selector"
+		android:contentDescription="@string/button_text_purge"
+        app:srcCompat="@drawable/ic_delete" />
 
-		<Button
-			android:id="@+id/btnPurge"
-			android:text="@string/button_text_purge"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:backgroundTint="@color/accent"
-		/>
-
-	</LinearLayout>
-
-    <!-- the order of the Spinner and the ScrollView is important
+    <!-- the order of the ProgressSpinner and the FrameLayout is important
     in pre lollipop devices as elevation does not work -->
 
     <PodcastUtilities.AndroidLogic.CustomViews.ProgressSpinnerView

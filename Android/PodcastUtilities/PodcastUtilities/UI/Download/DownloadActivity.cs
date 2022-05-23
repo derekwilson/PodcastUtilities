@@ -6,6 +6,7 @@ using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
+using Google.Android.Material.FloatingActionButton;
 using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
@@ -33,8 +34,8 @@ namespace PodcastUtilities.UI.Download
         private LinearLayout NoDataView;
         private TextView NoDataText;
         private ProgressSpinnerView ProgressSpinner;
+        private FloatingActionButton DownloadButton;
         private DownloadRecyclerItemAdapter Adapter;
-        private Button DownloadButton;
         private OkCancelDialogFragment ExitPromptDialogFragment;
         private OkCancelDialogFragment NetworkPromptDialogFragment;
 
@@ -52,7 +53,7 @@ namespace PodcastUtilities.UI.Download
             NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoData);
             NoDataText = FindViewById<TextView>(Resource.Id.txtNoData);
             ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
-            DownloadButton = FindViewById<Button>(Resource.Id.btnDownload);
+            DownloadButton = FindViewById<FloatingActionButton>(Resource.Id.fab_download);
 
             RvDownloads.SetLayoutManager(new LinearLayoutManager(this));
             RvDownloads.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
