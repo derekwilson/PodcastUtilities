@@ -3,9 +3,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.Widget;
 using AndroidX.RecyclerView.Widget;
-using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Purge;
-using PodcastUtilities.Common.Platform;
 using System;
 using System.Collections.Generic;
 
@@ -45,7 +43,7 @@ namespace PodcastUtilities.AndroidLogic.Adapters
             // unsubscribe if it was subscribed before
             vh.Container.Click -= Container_Click;
 
-            vh.Label.Text = GetLabel(Items[position].FileOrDirectoryItem);
+            vh.Label.Text = ViewModel.GetLabelForList(Items[position].FileOrDirectoryItem);
             vh.CheckBox.Checked = Items[position].Selected;
             vh.CheckBox.Enabled = !ReadOnly;
 
@@ -62,22 +60,6 @@ namespace PodcastUtilities.AndroidLogic.Adapters
                 NotifyItemChanged(position);
                 ViewModel.SelectionChanged(position);
             }
-        }
-
-        private string GetLabel(IFileInfo fileInfo)
-        {
-            var fmt = Context.GetString(Resource.String.purge_file_label_fmt);
-            return string.Format(fmt, fileInfo.Name);
-        }
-        private string GetLabel(IDirectoryInfo dirInfo)
-        {
-            var fmt = Context.GetString(Resource.String.purge_directoty_label_fmt);
-            return string.Format(fmt, dirInfo.FullName);
-        }
-
-        private string GetLabel<T>(T field)
-        {
-            return "GetLabel not implemented for type: " + field.GetType();
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

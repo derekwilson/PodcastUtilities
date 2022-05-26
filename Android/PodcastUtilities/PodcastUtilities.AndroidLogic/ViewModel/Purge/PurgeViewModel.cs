@@ -193,6 +193,37 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
         private void DeleteItem(IDirectoryInfo dirInfo) => EpisodePurger.PurgeFolder(dirInfo);
         private void DeleteItem<T>(T field) => Logger.Debug(() => $"Ignoring unknown type: {field.GetType()}");
 
+        private string RemoveSourceRootIfPresent(string filePath)
+        {
+            var sourcePath = ApplicationControlFileProvider.GetApplicationConfiguration()?.GetSourceRoot();
+            if (sourcePath != null)
+            {
+                var pos = filePath.IndexOf(sourcePath);
+                if (pos >= 0)
+                {
+                    return filePath.Remove(pos, sourcePath.Length);
+                }
+            }
+            return filePath;
+        }
+
+        public string GetLabelForList(IFileInfo fileInfo)
+        {
+            var fmt = ResourceProvider.GetString(Resource.String.purge_file_label_fmt);
+            return string.Format(fmt, RemoveSourceRootIfPresent(fileInfo.FullName));
+        }
+
+        public string GetLabelForList(IDirectoryInfo dirInfo)
+        {
+            var fmt = ResourceProvider.GetString(Resource.String.purge_directoty_label_fmt);
+            return string.Format(fmt, RemoveSourceRootIfPresent(dirInfo.FullName));
+        }
+
+        public string GetLabelForList<T>(T field)
+        {
+            return "GetLabelForList not implemented for type: " + field.GetType();
+        }
+
         public void PurgeComplete()
         {
             Observables.EndDeleting?.Invoke(this, ResourceProvider.GetString(Resource.String.purge_activity_complete));
