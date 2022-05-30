@@ -14,12 +14,34 @@
 	android:paddingEnd="@dimen/listview_item_horizontal_padding"
 >
 
+	<androidx.appcompat.widget.AppCompatCheckBox
+		android:id="@+id/purge_row_check"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+		android:gravity="center_vertical"
+		android:minWidth="0dp"
+		android:minHeight="0dp"
+		android:paddingTop="@dimen/listview_item_check_vertical_padding"
+		android:paddingBottom="@dimen/listview_item_check_vertical_padding"
+		android:paddingLeft="@dimen/listview_item_check_horizontal_padding"
+		android:paddingRight="@dimen/listview_item_check_horizontal_padding"
+		android:clickable="false"
+        android:focusable="false"
+
+		app:layout_constraintEnd_toStartOf="@+id/purge_row_container"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+        />
+
 	<androidx.appcompat.widget.LinearLayoutCompat
+		android:id="@+id/purge_row_container"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:orientation="vertical"
-		app:layout_constraintEnd_toStartOf="@+id/purge_row_check"
-		app:layout_constraintStart_toStartOf="parent"
+
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/purge_row_check"
 		app:layout_constraintTop_toTopOf="parent"
 		>
 
@@ -35,24 +57,5 @@
 			/>
 
 	</androidx.appcompat.widget.LinearLayoutCompat>
-	
-	<androidx.appcompat.widget.AppCompatCheckBox
-		android:id="@+id/purge_row_check"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-		android:gravity="center_vertical"
-		android:minWidth="0dp"
-		android:minHeight="0dp"
-		android:paddingTop="@dimen/listview_item_check_vertical_padding"
-		android:paddingBottom="@dimen/listview_item_check_vertical_padding"
-		android:paddingLeft="@dimen/listview_item_check_horizontal_padding"
-		android:paddingRight="@dimen/listview_item_check_horizontal_padding"
-		android:clickable="false"
-        android:focusable="false"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toEndOf="@+id/purge_row_label_container"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintBottom_toBottomOf="parent"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
