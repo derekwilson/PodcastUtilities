@@ -5,6 +5,8 @@ This folder contains the code for the Android version of the project.
 - `PodcastUtilities` is the code for the app from the app store
 - `PodcastUtilitiesPOC` is the proof of concept code, it is a place for experements, it has never been released to the app store.
 - `Reference` is where the projects pick up any direct DLL assembly references. For example `PodcastUtilities.Common.dll`. We reference an assembly to allow for different versions of the build tools for the common code and the android code.
+- `Support` holds the prebuilt release archive as well as assets for play store releases
+
 
 ### PodcastUtilitiesPOC
 
@@ -73,6 +75,7 @@ The `.debug` suffix is automatically applied with scripts as we build the app, t
 
 If you intend to deploy the build using Google Play Store you need to build an AAB. The AAB is signed with the key from `LocalOnly`, this will be used as an upload key on the play store the then Google will resign the app as it is downloaded.
 
+1. In VS Select Project Properties for `PodcastUtilities` -> Android Manifest enter the correct VersionName and VersionNumber
 1. Open a developer command prompt for VS2022
 1. Goto `Android\PodcastUtilities`
 1. Run `BuildReleaseAAB.bat`
@@ -87,6 +90,7 @@ If you intend to deploy the build using Google Play Store you need to build an A
 
 If you are intending to deploy the app by having the user download it from GitHub then you must build an APK, as phones cannot install AAB's (thanks Google). The APK will be signed using the key in `LocalOnly`, this will be the app signing key as the user will install the APK directly, the play store is not involved. 
 
+1. In VS Select Project Properties for `PodcastUtilities` -> Android Manifest enter the correct VersionName and VersionNumber
 1. Open a developer command prompt for VS2022
 1. Goto `Android\PodcastUtilities`
 1. Run `BuildReleaseAPK.bat`
@@ -97,7 +101,7 @@ If you are intending to deploy the app by having the user download it from GitHu
 
 ##### Publishing a release APK
 
-1. Copy the `com.andrewandderek.podcastutilities-Signed.apk` to `Android\Support\_PreBuiltPackages`
+1. Copy the `com.andrewandderek.podcastutilities.sideload-Signed.apk` to `Android\Support\_PreBuiltPackages`
 1. Edit `Android\Support\_PreBuiltPackages\README.md` with the new release details
 1. Edit `Android\Support\_PreBuiltPackages\release.xml` with the new release details
 1. Push your changes to master

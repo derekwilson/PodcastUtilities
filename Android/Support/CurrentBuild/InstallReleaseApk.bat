@@ -1,1 +1,1 @@
-adb install -r com.andrewandderek.podcastutilities-Signed.apk
+adb install -r com.andrewandderek.podcastutilities.sideload-Signed.apk
