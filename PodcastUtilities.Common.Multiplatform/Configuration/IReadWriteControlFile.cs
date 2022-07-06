@@ -19,7 +19,6 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 using PodcastUtilities.Common.Playlists;
 

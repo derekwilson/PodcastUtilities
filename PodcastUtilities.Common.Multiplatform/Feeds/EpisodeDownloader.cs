@@ -188,8 +188,7 @@ namespace PodcastUtilities.Common.Feeds
 
         private void OnProgressUpdate(ProgressEventArgs e)
         {
-            if (ProgressUpdate != null)
-                ProgressUpdate(this, e);
+            ProgressUpdate?.Invoke(this, e);
         }
 
         private int ConvertBytesToMB(long bytes)
@@ -216,23 +215,23 @@ namespace PodcastUtilities.Common.Feeds
                 var syncItem = e.UserState as SyncItem;
                 if (syncItem == null)
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Error, "Missing token from download completed");
+                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Error, "Missing token from download completed", false, null);
                 }
                 else if (e.Cancelled)
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Status, string.Format(CultureInfo.InvariantCulture, "{0} Cancelled",syncItem.EpisodeTitle));
+                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Status, string.Format(CultureInfo.InvariantCulture, "{0} Cancelled",syncItem.EpisodeTitle), false, syncItem);
                 }
                 else if (e.Error != null && e.Error.InnerException != null) 
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Error, string.Format(CultureInfo.InvariantCulture, "Error in: {0}", syncItem.EpisodeTitle), e.Error.InnerException);
+                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Error, string.Format(CultureInfo.InvariantCulture, "Error in: {0}", syncItem.EpisodeTitle), e.Error.InnerException, false, syncItem);
                 }
                 else if (e.Error != null)
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Error, string.Format(CultureInfo.InvariantCulture, "Error in: {0}", syncItem.EpisodeTitle), e.Error);
+                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Error, string.Format(CultureInfo.InvariantCulture, "Error in: {0}", syncItem.EpisodeTitle), e.Error, false, syncItem);
                 }
                 else
                 {
-                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Status, string.Format(CultureInfo.InvariantCulture, "{0} Completed", syncItem.EpisodeTitle));
+                    args = new StatusUpdateEventArgs(StatusUpdateLevel.Status, string.Format(CultureInfo.InvariantCulture, "{0} Completed", syncItem.EpisodeTitle), true, syncItem);
 
                     _fileUtilities.FileRename(GetDownloadFilename(), _syncItem.DestinationPath, true);
                     RecordHighTideMark(syncItem);
@@ -259,15 +258,15 @@ namespace PodcastUtilities.Common.Feeds
         {
             if (_syncItem.PostDownloadCommand != null)
             {
-                OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, string.Format(CultureInfo.InvariantCulture, "Executing: {0} {1}", _syncItem.PostDownloadCommand.Command,_syncItem.PostDownloadCommand.Arguments), null));
+                OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, string.Format(CultureInfo.InvariantCulture, "Executing: {0} {1}", _syncItem.PostDownloadCommand.Command,_syncItem.PostDownloadCommand.Arguments), false, _syncItem));
                 try
                 {
                     string output = _commandExecuter.ExecuteCommand(_syncItem.PostDownloadCommand.Command, _syncItem.PostDownloadCommand.Arguments, _syncItem.PostDownloadCommand.WorkingDirectory);
-                    OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, string.Format(CultureInfo.InvariantCulture, "{0}", output), null));
+                    OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, string.Format(CultureInfo.InvariantCulture, "{0}", output), false, _syncItem));
                 }
                 catch (Exception ex)
                 {
-                    OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Error, string.Format(CultureInfo.InvariantCulture, "{0} {1}", _syncItem.EpisodeTitle, ex.Message), ex));
+                    OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Error, string.Format(CultureInfo.InvariantCulture, "{0} {1}", _syncItem.EpisodeTitle, ex.Message), ex, false, _syncItem));
                 }
             }
         }
@@ -286,7 +285,7 @@ namespace PodcastUtilities.Common.Feeds
                 }
                 catch (System.IO.IOException)
                 {
-                    OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Warning, string.Format(CultureInfo.InvariantCulture, "{0}, cannot write to state file, will retry", syncItem.EpisodeTitle), null));
+                    OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Warning, string.Format(CultureInfo.InvariantCulture, "{0}, cannot write to state file, will retry", syncItem.EpisodeTitle), false, syncItem));
                     if (_syncItem.RetryWaitTimeInSeconds > 0)
                     {
                         Thread.Sleep(1000 * _syncItem.RetryWaitTimeInSeconds);
@@ -302,8 +301,7 @@ namespace PodcastUtilities.Common.Feeds
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)
         {
-            if (StatusUpdate != null)
-                StatusUpdate(this, e);
+            StatusUpdate?.Invoke(this, e);
         }
 
         /// <summary>

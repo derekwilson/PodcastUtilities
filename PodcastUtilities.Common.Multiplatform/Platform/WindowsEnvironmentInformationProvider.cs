@@ -39,15 +39,23 @@ namespace PodcastUtilities.Common.Platform
             return new SystemDirectoryInfo(System.IO.Directory.GetParent(Assembly.GetEntryAssembly().Location));
         }
 
+        public static string GetCommonAssembleVersion()
+        {
+            Assembly me = System.Reflection.Assembly.GetExecutingAssembly();
+            AssemblyName name = me.GetName();
+            return name.Version.ToString();
+        }
+
         public static List<string> GetEnvironmentRuntimeDisplayInformation()
         {
             List<string> result = new List<string>();
             result.Add($".NET CLR: {Environment.Version.ToString()}");
+			result.Add($"PodcastUtilities.Common v{GetCommonAssembleVersion()}");
 #if NETSTANDARD
             // RuntimeInformation was only added in .net 4
             result.Add($"{RuntimeInformation.OSDescription}, Framework: {RuntimeInformation.FrameworkDescription}, OS: {RuntimeInformation.OSArchitecture}, Processor: {RuntimeInformation.ProcessArchitecture}");
 #endif
-            return result;
+			return result;
         }
     }
 }

@@ -42,11 +42,12 @@ namespace PodcastUtilities.Common.Feeds
         private readonly ITimeProvider _timeProvider;
         private readonly IStateProvider _stateProvider;
         private readonly ICommandGenerator _commandGenerator;
+        private readonly IPathUtilities _pathUtilities;
 
         /// <summary>
         /// discover items to be downloaded from a feed
         /// </summary>
-        public EpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider, IStateProvider stateProvider, IDirectoryInfoProvider directoryInfoProvider, ICommandGenerator commandGenerator)
+        public EpisodeFinder(IFileUtilities fileFinder, IPodcastFeedFactory feedFactory, IWebClientFactory webClientFactory, ITimeProvider timeProvider, IStateProvider stateProvider, IDirectoryInfoProvider directoryInfoProvider, ICommandGenerator commandGenerator, IPathUtilities pathUtilities)
         {
             _fileUtilities = fileFinder;
             _commandGenerator = commandGenerator;
@@ -55,6 +56,7 @@ namespace PodcastUtilities.Common.Feeds
             _timeProvider = timeProvider;
             _webClientFactory = webClientFactory;
             _feedFactory = feedFactory;
+            _pathUtilities = pathUtilities;
         }
 
         /// <summary>
@@ -62,7 +64,7 @@ namespace PodcastUtilities.Common.Feeds
         /// </summary>
         public event EventHandler<StatusUpdateEventArgs> StatusUpdate;
 
-        private static string GetDownloadPathname(string rootFolder, PodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
+        private string GetDownloadPathname(string rootFolder, IPodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
         {
             var proposedFilename = podcastFeedItem.FileName;
 
@@ -80,8 +82,9 @@ namespace PodcastUtilities.Common.Feeds
                                                     proposedFilename);
                     break;
                 case PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder:
-                    proposedFilename = string.Format(CultureInfo.InvariantCulture, "{0}\\{1}_{2}_{3}",
+                    proposedFilename = string.Format(CultureInfo.InvariantCulture, "{0}{1}{2}_{3}_{4}",
                                                     podcastFeedItem.Published.ToString("yyyy_MM",CultureInfo.InvariantCulture),
+                                                    _pathUtilities.GetPathSeparator(),
                                                     podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm",CultureInfo.InvariantCulture),
                                                     podcastInfo.Folder,
                                                     proposedFilename);
@@ -103,7 +106,7 @@ namespace PodcastUtilities.Common.Feeds
             return Path.Combine(Path.Combine(rootFolder, podcastInfo.Folder), proposedFilename);
         }
 
-        private List<ISyncItem> ApplyDownloadStrategy(string stateKey, PodcastInfo podcastInfo, List<ISyncItem> episodesFound)
+        private List<ISyncItem> ApplyDownloadStrategy(string stateKey, IPodcastInfo podcastInfo, List<ISyncItem> episodesFound)
         {
             switch (podcastInfo.Feed.DownloadStrategy.Value)
             {
@@ -149,7 +152,7 @@ namespace PodcastUtilities.Common.Feeds
         /// <param name="retainFeedStream">true to keep the downloaded stream</param>
         /// <returns>list of episodes to be downloaded for the supplied podcastInfo</returns>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        public IList<ISyncItem> FindEpisodesToDownload(string rootFolder, int retryWaitTimeInSeconds, PodcastInfo podcastInfo, bool retainFeedStream)
+        public IList<ISyncItem> FindEpisodesToDownload(string rootFolder, int retryWaitTimeInSeconds, IPodcastInfo podcastInfo, bool retainFeedStream)
         {
             List<ISyncItem> episodesToDownload = new List<ISyncItem>(10);
             if (podcastInfo.Feed == null)
@@ -191,6 +194,7 @@ namespace PodcastUtilities.Common.Feeds
                             {
                                 var downloadItem = new SyncItem()
                                                        {
+                                                           Id = Guid.NewGuid(), 
                                                            StateKey = stateKey,
                                                            RetryWaitTimeInSeconds = retryWaitTimeInSeconds,
                                                            Published = podcastFeedItem.Published,
@@ -203,48 +207,47 @@ namespace PodcastUtilities.Common.Feeds
                             }
                             else
                             {
-                                OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Episode already downloaded: {0}", podcastFeedItem.EpisodeTitle));
+                                OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Episode already downloaded: {0}", podcastFeedItem.EpisodeTitle), podcastInfo);
                             }
                         }
                         else
                         {
-                            OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Episode too old: {0}", podcastFeedItem.EpisodeTitle));
+                            OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Episode too old: {0}", podcastFeedItem.EpisodeTitle), podcastInfo);
                         }
                     }
                 }
                 catch (Exception e)
                 {
-                    OnStatusError(string.Format(CultureInfo.InvariantCulture, "Error processing feed {0}: {1}", podcastInfo.Feed.Address, e.Message));
+                    OnStatusError(string.Format(CultureInfo.InvariantCulture, "Error processing feed {0}: {1}", podcastInfo.Feed.Address, e.Message), podcastInfo);
                 }
             }
 
             var filteredEpisodes = ApplyDownloadStrategy(stateKey, podcastInfo, episodesToDownload);
             foreach (var filteredEpisode in filteredEpisodes)
             {
-                OnStatusMessageUpdate(string.Format(CultureInfo.InvariantCulture, "Queued: {0}", filteredEpisode.EpisodeTitle));
+                OnStatusMessageUpdate(string.Format(CultureInfo.InvariantCulture, "Queued: {0}", filteredEpisode.EpisodeTitle), podcastInfo);
             }
             return filteredEpisodes;
         }
 
-        private void OnStatusVerbose(string message)
+        private void OnStatusVerbose(string message, IPodcastInfo podcastInfo)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Verbose, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Verbose, message, false, podcastInfo));
         }
 
-        private void OnStatusMessageUpdate(string message)
+        private void OnStatusMessageUpdate(string message, IPodcastInfo podcastInfo)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message, false, podcastInfo));
         }
 
-        private void OnStatusError(string message)
+        private void OnStatusError(string message, IPodcastInfo podcastInfo)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Error, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Error, message, false, podcastInfo));
         }
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)
         {
-            if (StatusUpdate != null)
-                StatusUpdate(this, e);
+            StatusUpdate?.Invoke(this, e);
         }
     }
 }

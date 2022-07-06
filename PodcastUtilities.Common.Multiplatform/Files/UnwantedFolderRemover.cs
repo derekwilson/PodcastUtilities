@@ -106,13 +106,12 @@ namespace PodcastUtilities.Common.Files
 
         private void OnStatusUpdate(string message)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message, false, null));
         }
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)
         {
-            if (StatusUpdate != null)
-                StatusUpdate(this, e);
+            StatusUpdate?.Invoke(this, e);
         }
     }
 }

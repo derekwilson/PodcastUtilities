@@ -94,6 +94,7 @@
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentPlaylistSeparator.cs" />
     <Compile Include="Configuration\ControlFileTests\Serialisation\Read\WhenReadingAControlFile.cs" />
+    <Compile Include="Configuration\ControlFileTests\Serialisation\Read\WhenReadingAControlFileWrittenByPodcastUtilities.cs" />
     <Compile Include="Configuration\ControlFileTests\WhenTestingAControlFile.cs" />
     <Compile Include="Configuration\DefaultableReferenceTypeItemTests\WhenCopyingADefaultedItem.cs" />
     <Compile Include="Configuration\DefaultableReferenceTypeItemTests\WhenCopyingANonDefaultedItem.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithANullCommandline.cs" />
     <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGenerator.cs" />
     <Compile Include="Feeds\DownloaderTests\WhenTestingTheDownloaderInRssRetainingTheFile.cs" />
+    <Compile Include="Feeds\EpisodeFinderTests\WhenFindingMultipleEpisodesInAFeedTheyHaveUniqueIds.cs" />
     <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverter.cs" />
     <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsItems.cs" />
     <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsNoItems.cs" />
@@ -149,6 +151,9 @@
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderContainsFiles.cs" />
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderContainsSubfolders.cs" />
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderIsEmpty.cs" />
+    <Compile Include="Playlists\GeneratorTests\WhenThereAreSomePodcastsContainingFiles.cs" />
+    <Compile Include="Playlists\GeneratorTests\WhenThereAreSomePodcastsContainingFilesNeedingSorting.cs" />
+    <Compile Include="Playlists\GeneratorTests\WhenUsingTheSourceDirectoryAsRoot.cs" />
     <Compile Include="Playlists\PlaylistFactoryTests\WhenCreatingANewM3uPlaylist.cs" />
     <Compile Include="Playlists\PlaylistM3uTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
     <Compile Include="Playlists\PlaylistM3uTests\WhenAddingTrackThatIsAlreadyInPlaylist.cs" />
@@ -196,7 +201,6 @@
     <Compile Include="Playlists\GeneratorTests\WhenCopyToDestinationIsSpecified.cs" />
     <Compile Include="Playlists\GeneratorTests\WhenTestingThePlaylistGenerator.cs" />
     <Compile Include="Playlists\GeneratorTests\WhenThereAreNoSourcePodcasts.cs" />
-    <Compile Include="Playlists\GeneratorTests\WhenThereAreSomePodcastsContainingFiles.cs" />
     <Compile Include="Playlists\PlaylistWplTests\WhenAddinATrackToAnInvalidPlaylist.cs" />
     <Compile Include="Playlists\PlaylistWplTests\WhenAddingTrackContainingAmpersands.cs" />
     <Compile Include="Playlists\PlaylistWplTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
@@ -338,6 +342,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testcontrolfilewrittenbypodcastutilities.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

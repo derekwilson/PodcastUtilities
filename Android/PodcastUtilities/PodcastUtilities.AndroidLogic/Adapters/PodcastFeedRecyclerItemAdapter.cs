@@ -1,0 +1,119 @@
+﻿using Android.Content;
+using Android.Views;
+using Android.Widget;
+using AndroidX.RecyclerView.Widget;
+using PodcastUtilities.AndroidLogic.ViewModel.Main;
+using PodcastUtilities.Common.Configuration;
+using System.Collections.Generic;
+
+namespace PodcastUtilities.AndroidLogic.Adapters
+{
+    public class PodcastFeedRecyclerItemAdapter : RecyclerView.Adapter
+    {
+        private Context Context;
+        private List<PodcastFeedRecyclerItem> Items = new List<PodcastFeedRecyclerItem>(20);
+
+        public PodcastFeedRecyclerItemAdapter(Context context)
+        {
+            Context = context;
+        }
+
+        public void SetItems(List<PodcastFeedRecyclerItem> items)
+        {
+            Items = items;
+        }
+
+        public override int ItemCount => Items.Count;
+
+        public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
+        {
+            RecyclerViewHolder vh = holder as RecyclerViewHolder;
+
+            vh.Label.Text = Items[position].PodcastFeed.Folder;
+            //vh.SubLabel.Text = Items[position].PodcastFeed.Feed.Address.ToString();
+            var fmt = Context.GetString(Resource.String.feed_sublabel_fmt);
+            vh.SubLabel.Text = string.Format(fmt,
+                GetSublabelPart(
+                    Items[position].PodcastFeed.Feed.MaximumDaysOld.Value,
+                    Resource.Plurals.feed_sublabel_download,
+                    Resource.String.feed_sublabel_download_all),
+                GetSublabelPart(
+                    Items[position].PodcastFeed.Feed.DeleteDownloadsDaysOld.Value,
+                    Resource.Plurals.feed_sublabel_delete,
+                    Resource.String.feed_sublabel_delete_never)
+            );
+            var fmt2 = Context.GetString(Resource.String.feed_sublabel_fmt2);
+            vh.SubLabel2.Text = string.Format(fmt2,
+                Context.GetString(GetNamingStyleTextId(Items[position].PodcastFeed.Feed.NamingStyle.Value)),
+                Context.GetString(GetDownloadStratagyTextId(Items[position].PodcastFeed.Feed.DownloadStrategy.Value))
+            );
+            vh.Container.Tag = position.ToString();
+        }
+
+        private string GetSublabelPart(int value, int formattedId, int maxId)
+        {
+            if (value == int.MaxValue)
+            {
+                return Context.GetString(maxId);
+            }
+            return Context.Resources.GetQuantityString(formattedId, value, value);
+        }
+
+        private int GetNamingStyleTextId(Common.Configuration.PodcastEpisodeNamingStyle namingStyle)
+        {
+            switch (namingStyle)
+            {
+                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileName:
+                    return Resource.String.feed_naming_style_urlfilename;
+                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime:
+                    return Resource.String.feed_naming_style_urlfilenameandpublishdatetime;
+                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime:
+                    return Resource.String.feed_naming_style_urlfilenamefeedtitleandpublishdatetime;
+                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder:
+                    return Resource.String.feed_naming_style_urlfilenamefeedtitleandpublishdatetimeinfolder;
+                case Common.Configuration.PodcastEpisodeNamingStyle.EpisodeTitle:
+                    return Resource.String.feed_naming_style_episodetitle;
+                case Common.Configuration.PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
+                    return Resource.String.feed_naming_style_episodetitleandpublishdatetime;
+            }
+            return Resource.String.unknown;
+        }
+
+        private int GetDownloadStratagyTextId(PodcastEpisodeDownloadStrategy stratagy)
+        {
+            switch (stratagy)
+            {
+                case PodcastEpisodeDownloadStrategy.All:
+                    return Resource.String.feed_download_stratagy_all;
+                case PodcastEpisodeDownloadStrategy.HighTide:
+                    return Resource.String.feed_download_stratagy_hightide;
+                case PodcastEpisodeDownloadStrategy.Latest:
+                    return Resource.String.feed_download_stratagy_latest;
+            }
+            return Resource.String.unknown;
+        }
+
+
+        public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
+        {
+            View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.list_item_feeditem, parent, false);
+            return new RecyclerViewHolder(itemView);
+        }
+
+        class RecyclerViewHolder : RecyclerView.ViewHolder
+        {
+            public View Container { get; private set; }
+            public TextView Label { get; private set; }
+            public TextView SubLabel { get; private set; }
+            public TextView SubLabel2 { get; private set; }
+
+            public RecyclerViewHolder(View itemView) : base(itemView)
+            {
+                Container = itemView.FindViewById<View>(Resource.Id.item_row_label_container);
+                Label = itemView.FindViewById<TextView>(Resource.Id.item_row_label);
+                SubLabel = itemView.FindViewById<TextView>(Resource.Id.item_row_sub_label);
+                SubLabel2 = itemView.FindViewById<TextView>(Resource.Id.item_row_sub_label2);
+            }
+        }
+    }
+}

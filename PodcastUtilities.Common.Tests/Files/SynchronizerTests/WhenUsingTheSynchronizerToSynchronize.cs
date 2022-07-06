@@ -64,7 +64,7 @@ namespace PodcastUtilities.Common.Tests.Files.SynchronizerTests
 			PodcastFiles2 = new List<IFileInfo> {GenerateMock<IFileInfo>(), GenerateMock<IFileInfo>(), GenerateMock<IFileInfo>()};
 
 			ControlFile.Stub(c => c.GetPodcasts())
-				.Return(new List<PodcastInfo> {podcast1, podcast2});
+				.Return(new List<IPodcastInfo> {podcast1, podcast2});
 
 			ControlFile.Stub(c => c.GetSourceRoot())
 				.Return(@"c:\media\blah");

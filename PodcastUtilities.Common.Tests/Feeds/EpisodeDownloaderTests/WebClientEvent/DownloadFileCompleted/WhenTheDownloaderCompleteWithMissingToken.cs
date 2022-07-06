@@ -44,6 +44,8 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests.WebClientEv
             Assert.That(_statusUpdateArgs.Exception, Is.Null);
             Assert.That(_statusUpdateArgs.MessageLevel, Is.EqualTo(StatusUpdateLevel.Error));
             Assert.That(_statusUpdateArgs.Message, Is.StringContaining("Missing token"));
+            Assert.That(_statusUpdateArgs.IsTaskCompletedSuccessfully, Is.False);
+            Assert.That(_statusUpdateArgs.UserState, Is.Null);
         }
 
         [Test]

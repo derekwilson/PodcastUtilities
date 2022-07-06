@@ -23,7 +23,7 @@ PodcastUtilities are a set of utilities designed to help manage digital media on
 * To build all the .NET Core assemblies - from the command line run `PublishAll.bat` from the root of the project
 * To package the ZIP - from the command line run `BuildAll.cmd` (after installing the community tasks)
 
-Sometines when running the `BuildAll` command on Windows 10 you may get this error
+Sometimes when running the `BuildAll` command on Windows 10 you may get this error
 
 ```
 .\Build Scripts\build.xml(63,5): error MSB3231: Unable to remove directory "Build Scripts\..\CurrentBuild". The directory is not empty

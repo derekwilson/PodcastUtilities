@@ -40,8 +40,7 @@ namespace PodcastUtilities.Common.Platform
 
         private void OnProgressUpdate(ProgressEventArgs e)
         {
-            if (ProgressUpdate != null)
-                ProgressUpdate(this, e);
+            ProgressUpdate?.Invoke(this, e);
         }
 
         /// <summary>
@@ -59,7 +58,7 @@ namespace PodcastUtilities.Common.Platform
         {
             // we need to repack the System.Net.DownloadProgressChangedEventArgs
             // into a PodcastUtilities.Common.DownloadProgressEventArgs
-            // as the System.Net.DownloadProgressChangedEventArgs cannot be constructed for testing as it has an internat constructor
+            // as the System.Net.DownloadProgressChangedEventArgs cannot be constructed for testing as it has an internal constructor
 
             var progress = new ProgressEventArgs()
                                {

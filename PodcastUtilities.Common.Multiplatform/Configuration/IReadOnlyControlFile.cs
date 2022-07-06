@@ -19,7 +19,6 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using PodcastUtilities.Common.Playlists;
 
@@ -30,6 +29,17 @@ namespace PodcastUtilities.Common.Configuration
     /// </summary>
     public interface IReadOnlyControlFile : IControlFileGlobalDefaults
     {
+        /// <summary>
+        /// level of diagnostic output
+        /// </summary>
+        DiagnosticOutputLevel GetDiagnosticOutput();
+
+        /// <summary>
+        /// set to retain intermediate files
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        bool GetDiagnosticRetainTemporaryFiles();
+
         /// <summary>
         /// pathname to the root folder to copy from when synchronising
         /// </summary>
@@ -88,6 +98,6 @@ namespace PodcastUtilities.Common.Configuration
         /// the configuration for the individual podcasts
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
-        IEnumerable<PodcastInfo> GetPodcasts();
+        IEnumerable<IPodcastInfo> GetPodcasts();
     }
 }

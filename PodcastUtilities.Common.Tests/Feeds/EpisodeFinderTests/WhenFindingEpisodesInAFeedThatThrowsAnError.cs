@@ -44,6 +44,8 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeFinderTests
         public void ItShouldUpdateTheStatus()
         {
             Assert.That(_latestUpdate.MessageLevel, Is.EqualTo(StatusUpdateLevel.Error));
+            Assert.That(_latestUpdate.UserState, Is.SameAs(_podcastInfo));
+            Assert.That(_latestUpdate.IsTaskCompletedSuccessfully, Is.False);
         }
     }
 }

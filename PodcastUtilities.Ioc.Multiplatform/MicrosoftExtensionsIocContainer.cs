@@ -49,6 +49,11 @@ namespace PodcastUtilities.Ioc
             serviceCollection.AddTransient(serviceTypeToRegisterAsSelf);
         }
 
+        public void Register<TService>(TService instance) where TService : class
+        {
+            serviceCollection.AddSingleton<TService>(instance);
+        }
+
         public TService Resolve<TService>()
         {
             lock (this)

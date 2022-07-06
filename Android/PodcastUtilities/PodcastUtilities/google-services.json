@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "318369045608",
+    "project_id": "podcastutilities",
+    "storage_bucket": "podcastutilities.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318369045608:android:d9a603bbf98fec52f02fdd",
+        "android_client_info": {
+          "package_name": "com.andrewandderek.podcastutilities"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318369045608-p68o5lae75ujnfr2b6kv4q4b364e2kbv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAitw5PKAt9eOf9zL0CZtcJ0bUDM4Na3ZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318369045608-p68o5lae75ujnfr2b6kv4q4b364e2kbv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318369045608:android:b9715532de83b20cf02fdd",
+        "android_client_info": {
+          "package_name": "com.andrewandderek.podcastutilities.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318369045608-p68o5lae75ujnfr2b6kv4q4b364e2kbv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAitw5PKAt9eOf9zL0CZtcJ0bUDM4Na3ZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318369045608-p68o5lae75ujnfr2b6kv4q4b364e2kbv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318369045608:android:002caa2fccb7847ff02fdd",
+        "android_client_info": {
+          "package_name": "com.andrewandderek.podcastutilities.sideload"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318369045608-p68o5lae75ujnfr2b6kv4q4b364e2kbv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAitw5PKAt9eOf9zL0CZtcJ0bUDM4Na3ZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318369045608-p68o5lae75ujnfr2b6kv4q4b364e2kbv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318369045608:android:67b6c0f73625f24af02fdd",
+        "android_client_info": {
+          "package_name": "com.andrewandderek.podcastutilities.sideload.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318369045608-p68o5lae75ujnfr2b6kv4q4b364e2kbv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAitw5PKAt9eOf9zL0CZtcJ0bUDM4Na3ZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318369045608-p68o5lae75ujnfr2b6kv4q4b364e2kbv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

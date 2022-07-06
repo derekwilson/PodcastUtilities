@@ -39,7 +39,7 @@ namespace PodcastUtilities.Common.Feeds
             _environmentInformationProvider = environmentInformationProvider;
         }
 
-        private string ReplaceTokensInString(string input, string rootFolder, string destinationPathname, PodcastInfo podcast)
+        private string ReplaceTokensInString(string input, string rootFolder, string destinationPathname, IPodcastInfo podcast)
         {
             if (input == null)
                 return null;
@@ -65,7 +65,7 @@ namespace PodcastUtilities.Common.Feeds
         /// <param name="destinationPathname">the full pathname for the download</param>
         /// <param name="podcast">the podcast, used as a source of tokens</param>
         /// <returns>a full command line, NULL if there is no command to execute</returns>
-        public IExternalCommand ReplaceTokensInCommand(ITokenisedCommand tokenisedCommand, string rootFolder, string destinationPathname, PodcastInfo podcast)
+        public IExternalCommand ReplaceTokensInCommand(ITokenisedCommand tokenisedCommand, string rootFolder, string destinationPathname, IPodcastInfo podcast)
         {
             if (tokenisedCommand == null)
             {

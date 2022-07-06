@@ -38,13 +38,13 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
         protected IPlaylistFactory Factory { get; set; }
         protected IPlaylist Playlist { get; set; }
         protected IReadOnlyControlFile ControlFile { get; set; }
-        protected IList<PodcastInfo> Podcasts { get; set; }
+        protected IList<IPodcastInfo> Podcasts { get; set; }
 
         protected override void GivenThat()
         {
             base.GivenThat();
 
-            Podcasts = new List<PodcastInfo>(10);
+            Podcasts = new List<IPodcastInfo>(10);
 
             ControlFile = GenerateMock<IReadOnlyControlFile>();
             ControlFile.Stub(ctrl => ctrl.GetSourceRoot()).Return("c:\\source");
@@ -65,7 +65,10 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
             PathUtilities.Stub(utilities => utilities.GetTempFileName())
                 .Return("c:\\file.tmp");
 
-            Playlist = GenerateMock<IPlaylist>();
+            if (Playlist == null)
+            {
+                Playlist = GenerateMock<IPlaylist>();
+            }
             Factory = GenerateMock<IPlaylistFactory>();
             Factory.Stub(factory => factory.CreatePlaylist(PlaylistFormat.WPL, null)).IgnoreArguments().Return(Playlist);
 

@@ -110,9 +110,10 @@ namespace PodcastUtilities.Common.Files
 										new StatusUpdateEventArgs(
 											StatusUpdateLevel.Warning,
 											string.Format(CultureInfo.InvariantCulture,
-												"Cannot find available free space on drive, will continue to copy. Error: {0}", ex.Message)
-										)
-									);
+												"Cannot find available free space on drive, will continue to copy. Error: {0}", ex.Message),
+                                            false, null
+                                        )
+                                    );
 								}
 								// only report the error once
 								reportedDriveinfoError = true;
@@ -127,7 +128,8 @@ namespace PodcastUtilities.Common.Files
                             OnStatusUpdate(
                                 new StatusUpdateEventArgs(
                                     StatusUpdateLevel.Error,
-                                    string.Format(CultureInfo.InvariantCulture, "Error writing file: {0}", ex.Message)
+                                    string.Format(CultureInfo.InvariantCulture, "Error writing file: {0}", ex.Message),
+                                    false, null
                                 )
                             );
                             return;
@@ -163,13 +165,12 @@ namespace PodcastUtilities.Common.Files
 
 		private void OnStatusUpdate(string message)
 		{
-			OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message));
+			OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message, false, null));
 		}
 
 		private void OnStatusUpdate(StatusUpdateEventArgs e)
 		{
-			if (StatusUpdate != null)
-				StatusUpdate(this, e);
-		}
+            StatusUpdate?.Invoke(this, e);
+        }
 	}
 }

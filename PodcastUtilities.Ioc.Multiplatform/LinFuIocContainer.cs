@@ -74,6 +74,11 @@ namespace PodcastUtilities.Ioc
             _container.AddService(serviceTypeToRegisterAsSelf);
         }
 
+        public void Register<TService>(TService instance) where TService : class
+        {
+            _container.AddService(typeof(TService), instance);
+        }
+
         public TService Resolve<TService>()
         {
             return (TService)_container.GetService(typeof (TService));

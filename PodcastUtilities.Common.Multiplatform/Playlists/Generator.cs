@@ -25,13 +25,15 @@ using System.IO;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Files;
 using PodcastUtilities.Common.Platform;
+using System.Collections.Generic;
 
 namespace PodcastUtilities.Common.Playlists
 {
+
     /// <summary>
     /// generate a playlist
     /// </summary>
-    public class Generator
+    public class Generator : IGenerator
     {
         /// <summary>
         /// create a playlist generator
@@ -62,34 +64,35 @@ namespace PodcastUtilities.Common.Playlists
         private IPathUtilities PathUtilities { get; set; }
         private IPlaylistFactory PlaylistFactory { get; set; }
 
-    	private void OnStatusUpdate(string message)
+    	private void OnStatusUpdate(string message, Boolean complete)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message, complete, null));
         }
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)
         {
-            if (StatusUpdate != null)
-                StatusUpdate(this, e);
+            StatusUpdate?.Invoke(this, e);
         }
 
         /// <summary>
         /// generate a playlist
         /// </summary>
-        /// <param name="control">control file to use to find the destinationRoot, and playlist format</param>
-        /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
-        public void GeneratePlaylist(IReadOnlyControlFile control, bool copyToDestination)
+        /// <param name="control">control file to use to find the podcasts and playlist format</param>
+        /// <param name="rootFolder">root folder to find episodes</param>
+        /// <param name="copyToDestination">true to copy the playlist to the root folder, false to write it with the control file</param>
+        private void GeneratePlaylist(IReadOnlyControlFile control, string rootFolder, bool copyToDestination)
         {
-			var allDestFiles = control.GetPodcasts().SelectMany(
-        		podcast => FileFinder.GetFiles(Path.Combine(control.GetDestinationRoot(), podcast.Folder), podcast.Pattern.Value));
+            IEnumerable<IFileInfo> allDestFiles = control.GetPodcasts().SelectMany(
+        		podcast => FileFinder.GetFiles(Path.Combine(rootFolder, podcast.Folder), podcast.Pattern.Value));
+            List<IFileInfo> allDestFilesSorted = allDestFiles.OrderBy(item => item.FullName).ToList();
 
-			IPlaylist p = PlaylistFactory.CreatePlaylist(control.GetPlaylistFormat(), control.GetPlaylistFileName());
+            IPlaylist p = PlaylistFactory.CreatePlaylist(control.GetPlaylistFormat(), control.GetPlaylistFileName());
 
 			string pathSeparator = PathUtilities.GetPathSeparator().ToString();
-            foreach (IFileInfo thisFile in allDestFiles)
+            foreach (IFileInfo thisFile in allDestFilesSorted)
             {
                 string thisRelativeFile = thisFile.FullName;
-                string absRoot = PathUtilities.GetFullPath(control.GetDestinationRoot());
+                string absRoot = PathUtilities.GetFullPath(rootFolder);
                 if (thisRelativeFile.StartsWith(absRoot,StringComparison.Ordinal))
                 {
                     thisRelativeFile = thisRelativeFile.Substring(absRoot.Length);
@@ -99,17 +102,43 @@ namespace PodcastUtilities.Common.Playlists
             }
 
             var tempFile = PathUtilities.GetTempFileName();
-            OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Generating Playlist with {0} items", p.NumberOfTracks));
+            OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Generating Playlist with {0} items", p.NumberOfTracks), false);
 
             p.SaveFile(tempFile);
 
             var destPlaylist = copyToDestination
-                                   ? Path.Combine(control.GetDestinationRoot(), control.GetPlaylistFileName())
+                                   ? Path.Combine(rootFolder, control.GetPlaylistFileName())
                                    : control.GetPlaylistFileName();
 
-            OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Writing playlist to {0}", destPlaylist));
+            OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Writing playlist to {0}", destPlaylist), true);
 
             FileUtilities.FileCopy(tempFile, destPlaylist, true);
+        }
+
+        /// <summary>
+        /// generate a playlist for the files in the destination folder
+        /// </summary>
+        /// <param name="control">control file to use to find the destinationRoot, and playlist format</param>
+        /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
+        public void GeneratePlaylist(IReadOnlyControlFile control, bool copyToDestination)
+        {
+            GeneratePlaylist(control, control.GetDestinationRoot(), copyToDestination);
+        }
+
+        /// <summary>
+        /// generate a playlist for the files in the destination folder
+        /// </summary>
+        /// <param name="control">control file to use to find the destinationRoot, and playlist format</param>
+        /// <param name="rootFolder">root folder to find episodes</param>
+        /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
+        /// <param name="statusUpdate">the update mechanism for the generation - can be null</param>
+        public void GeneratePlaylist(IReadOnlyControlFile control, string rootFolder, bool copyToDestination, EventHandler<StatusUpdateEventArgs> statusUpdate)
+        {
+            if (statusUpdate != null)
+            {
+                StatusUpdate += statusUpdate;
+            }
+            GeneratePlaylist(control, rootFolder, copyToDestination);
         }
     }
 }

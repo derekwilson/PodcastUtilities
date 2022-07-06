@@ -35,14 +35,14 @@ namespace PodcastUtilities.Integration.Tests.Download
             RunOneTest(DownloadFile1);
         }
 
-        private PodcastInfo GetPodcastInfo(ReadOnlyControlFile controlFile, int index)
+        private IPodcastInfo GetPodcastInfo(ReadOnlyControlFile controlFile, int index)
         {
-            IEnumerable<PodcastInfo> podcasts = controlFile.GetPodcasts();
-            PodcastInfo info = podcasts.ElementAt(index);
+            IEnumerable<IPodcastInfo> podcasts = controlFile.GetPodcasts();
+            IPodcastInfo info = podcasts.ElementAt(index);
             return info;
         }
 
-        private IList<ISyncItem> GetAllEpisodesInFeed(ReadOnlyControlFile controlFile, PodcastInfo info)
+        private IList<ISyncItem> GetAllEpisodesInFeed(ReadOnlyControlFile controlFile, IPodcastInfo info)
         {
             List<ISyncItem> allEpisodes = new List<ISyncItem>(20);
             IEpisodeFinder podcastEpisodeFinder = _iocContainer.Resolve<IEpisodeFinder>();
@@ -59,7 +59,7 @@ namespace PodcastUtilities.Integration.Tests.Download
         private void ReadFeed1()
         {
             ReadOnlyControlFile controlFile = new ReadOnlyControlFile(_inputfilename);
-            PodcastInfo info = GetPodcastInfo(controlFile, 0);
+            IPodcastInfo info = GetPodcastInfo(controlFile, 0);
             DisplayMessage(string.Format("Reading a feed: {0}", info.Feed.Address));
 
             IList<ISyncItem> allEpisodes = GetAllEpisodesInFeed(controlFile, info);
@@ -74,7 +74,7 @@ namespace PodcastUtilities.Integration.Tests.Download
         private void DownloadFile1()
         {
             ReadOnlyControlFile controlFile = new ReadOnlyControlFile(_inputfilename);
-            PodcastInfo info = GetPodcastInfo(controlFile, 0);
+            IPodcastInfo info = GetPodcastInfo(controlFile, 0);
             DisplayMessage(string.Format("Reading a feed: {0}", info.Feed.Address));
             IList<ISyncItem> allEpisodes = GetAllEpisodesInFeed(controlFile, info);
             if (allEpisodes.Count < 1)

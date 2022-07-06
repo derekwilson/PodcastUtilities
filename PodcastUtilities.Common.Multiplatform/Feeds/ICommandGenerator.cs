@@ -36,6 +36,6 @@ namespace PodcastUtilities.Common.Feeds
         /// <param name="destinationPathname">the full pathname for the download</param>
         /// <param name="podcast">the podcast, used as a source of tokens</param>
         /// <returns>a full command line, NULL if there is no command to execute</returns>
-        IExternalCommand ReplaceTokensInCommand(ITokenisedCommand tokenisedCommand, string rootFolder, string destinationPathname, PodcastInfo podcast);
+        IExternalCommand ReplaceTokensInCommand(ITokenisedCommand tokenisedCommand, string rootFolder, string destinationPathname, IPodcastInfo podcast);
     }
 }

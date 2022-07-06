@@ -23,7 +23,7 @@ using Rhino.Mocks;
 
 namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
 {
-	public class WhenCopyToDestinationIsSpecified : WhenTestingThePlaylistGenerator
+    public class WhenCopyToDestinationIsSpecified : WhenTestingThePlaylistGenerator
 	{
 		protected override void When()
 		{

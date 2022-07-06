@@ -56,6 +56,12 @@ namespace PodcastUtilities.Common
         void Register(Type serviceTypeToRegisterAsSelf);
 
         ///<summary>
+        /// Register an instance as a service.
+        ///</summary>
+        ///<param name="instance">The service/implementing instance to register</param>
+        void Register<TService>(TService instance) where TService : class;
+
+        ///<summary>
         /// Resolve a service
         ///</summary>
         ///<typeparam name="TService"></typeparam>

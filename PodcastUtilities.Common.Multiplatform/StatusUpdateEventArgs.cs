@@ -33,24 +33,25 @@ namespace PodcastUtilities.Common
         private readonly StatusUpdateLevel _level;
         private readonly string _message;
         private readonly Exception _excpetion;
+        private readonly Boolean _completed;
+        private readonly Object _userState;
 
         /// <summary>
         /// Construct a new message event arg.
         /// </summary>
-        public StatusUpdateEventArgs(StatusUpdateLevel level, string message)
+        public StatusUpdateEventArgs(StatusUpdateLevel level, string message, Boolean complete, Object state) : this(level, message, null, complete, state)
         {
-            _message = message;
-            _level = level;
-            _excpetion = null;
         }
 
         /// <summary>
         /// Construct a new message event arg.
         /// </summary>
-        public StatusUpdateEventArgs(StatusUpdateLevel level, string message, Exception exception)
+        public StatusUpdateEventArgs(StatusUpdateLevel level, string message, Exception exception, Boolean complete, Object state)
         {
             _message = message;
             _level = level;
+            _completed = complete;
+            _userState = state;
             _excpetion = exception;
         }
 
@@ -84,5 +85,28 @@ namespace PodcastUtilities.Common
                 return _excpetion;
             }
         }
+
+        /// <summary>
+        /// user state that was passed to the task
+        /// </summary>
+        public object UserState
+        {
+            get
+            {
+                return _userState;
+            }
+        }
+
+        /// <summary>
+        /// has the task run to completion
+        /// </summary>
+        public Boolean IsTaskCompletedSuccessfully
+        {
+            get
+            {
+                return _completed;
+            }
+        }
+
     }
 }

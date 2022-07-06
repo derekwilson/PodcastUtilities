@@ -45,6 +45,8 @@ namespace PodcastUtilities.Common.Tests.Feeds.EpisodeDownloaderTests.WebClientEv
             Assert.That(_statusUpdateArgs.Exception, Is.Null);
             Assert.That(_statusUpdateArgs.MessageLevel, Is.EqualTo(StatusUpdateLevel.Status));
             Assert.That(_statusUpdateArgs.Message, Is.StringContaining("Cancelled"));
+            Assert.That(_statusUpdateArgs.IsTaskCompletedSuccessfully, Is.False);
+            Assert.That(_statusUpdateArgs.UserState, Is.SameAs(_syncItem));
         }
 
         [Test]

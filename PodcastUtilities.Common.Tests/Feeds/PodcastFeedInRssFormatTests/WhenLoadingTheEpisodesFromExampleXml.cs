@@ -30,6 +30,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
         private bool _statusUpdate;
         private bool _statusError;
         private bool _statusWarning;
+        private int _completeCount;
 
         protected override void GivenThat()
         {
@@ -39,6 +40,7 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
             _statusError = false;
             _statusWarning = false;
             _statusUpdate = false;
+            _completeCount = 0;
         }
 
         void Feed_StatusUpdate(object sender, StatusUpdateEventArgs e)
@@ -54,6 +56,10 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
                 case StatusUpdateLevel.Verbose:
                     _statusUpdate = true;
                     break;
+            }
+            if (e.IsTaskCompletedSuccessfully)
+            {
+                _completeCount++;
             }
         }
 
@@ -74,6 +80,12 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
             Assert.That(_statusError, Is.False);
             Assert.That(_statusWarning, Is.True);
             Assert.That(_statusUpdate, Is.True);
+        }
+
+        [Test]
+        public void ItShouldFireTheStatusEventCompleteFlagOnce()
+        {
+            Assert.That(_completeCount, Is.EqualTo(0));
         }
 
         [Test]

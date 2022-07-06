@@ -1,0 +1,100 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+			    android:id="@+id/txtNoData"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:text="@string/no_sdcard"
+			    android:textAlignment="center"
+			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:gravity="center_horizontal" />
+
+            <LinearLayout
+                android:id="@+id/drive_info_container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/activity_padding"
+                android:showDividers="middle"
+                android:divider="@drawable/info_divider">
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/cache_root_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/cache_root_label"
+                android:layout_marginRight="4dp"
+                android:layout_marginEnd="4dp"
+                style="@style/ItemLabel" />
+
+            <TextView
+                android:id="@+id/cache_root_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/placeholder"
+                style="@style/ItemValueSmall"
+                />
+
+            <TextView
+                android:id="@+id/feed_list_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/placeholder"
+                android:layout_marginRight="4dp"
+                android:layout_marginEnd="4dp"
+                style="@style/ItemLabel" />
+
+            <!-- the list of feeds -->
+    		<podcastutilities.androidlogic.customviews.EmptyRecyclerView
+			    android:id="@+id/feed_list"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never">
+        	</podcastutilities.androidlogic.customviews.EmptyRecyclerView>
+
+		    <LinearLayout
+			    android:id="@+id/layNoFeed"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginTop="18dp"
+			    android:gravity="center_horizontal|center"
+			    android:orientation="vertical"
+			    android:visibility="gone"
+			    android:padding="@dimen/listview_empty_message_padding">
+
+			    <TextView
+				    android:id="@+id/txtNoFeed"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/no_feeds_text"
+				    android:textAlignment="center"
+				    android:textAppearance="?android:attr/textAppearanceMedium"
+				    android:gravity="center_horizontal" />
+		    </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
