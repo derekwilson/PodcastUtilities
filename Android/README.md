@@ -58,7 +58,7 @@ Note: You need to have the folder `PodcastUtilities\Android\PodcastUtilities\Loc
 
 The deployment mechanisms (Sideload or GooglePlay) are not interchangeable as different signing keys are used for each mechanism. For GooglePlay Google will re-sign the AAB as it is downloaded and for Sideload the signing key is in `LocalOnly`. For that reason users cannot install using different mechanisms even if the package names are the same (in fact this requires them to uninstall and reinstall rather than upgrade).
 
-To keep this manageable we user different package names for each mechanism.
+To keep this manageable we use different package names for each mechanism.
 
 | Deployment Mechanism | Configuration | Packagename |
 | -------------------- | ------------- | ----------- |
