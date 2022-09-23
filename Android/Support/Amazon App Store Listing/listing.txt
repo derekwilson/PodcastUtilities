@@ -1,3 +1,8 @@
+SKU
+com.andrewandderek.podcastutilities
+
+An android podcast downloader and cache manager.
+
 PodcastUtilities is a set of utilities designed to help manage a digital media cache in your phone storage. Utilities are provided to Download Podcasts, PurgePodcasts and Generate Playlists
 
 Note: Manage Storage permission is needed by this application as its only function is to download new media and remove old media from a cache on your phones storage. This app cannot play the media, it enables you to use an external app to browse and play the downloaded content.
@@ -8,4 +13,15 @@ There is no background service, the utilities are only using memory and power wh
 
 The source is open and available
 
-There is no cost to using Podcast Utilities for any use.
+There is no cost to using Podcast Utilities for any purpose.
+
+
+Podast Cache Manager
+Complex download and retention rules
+Simple to download and purge
+Low memory footprint
+No background service
+No need to login or create any account, all data is local
+
+podcast, download, cache, mp3, audio
+
