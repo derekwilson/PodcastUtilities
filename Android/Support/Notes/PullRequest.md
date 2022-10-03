@@ -19,7 +19,7 @@ v3.0.2.7 The changes here are
 1. FIX: ControlFile loading and saving was leaving the file open because `Dispose()` was not being called
 1. FIX: Added missing `PostDownloadCommand` property to `IPodcastInfo`
 1. FIX: Added missing `GetDiagnosticOutput` and `GetDiagnosticRetainTemporaryFiles` to `IReadOnlyControlFile`
-1. FIX: `postdownloadcommand` element was being written twice by `SaveToFile`, one of the an invalid format which was causing files to become corrupt when written.
+1. FIX: `postdownloadcommand` element was being written twice by `SaveToFile`, one of them an invalid format which was causing files to become corrupt when written.
 1. FIX: Changed all calls to `EventHandler<>.Invoke()` to be the new `handler?.Invoke(this,args)` as it can avoid some race conditions
 1. FIX: `PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder` was always using the windows path separator in the folder name, it now follows the OS where it is running for the separator
 1. `Podcasts` property of the ControlFile changed from `IList<PodcastInfo>` to be `IList<IPodcastInfo>` as it enables mocking and testing
