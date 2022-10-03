@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>podcastutilities-core</id>
-    <version>3.0.0.2</version>
+    <version>3.0.2.7</version>
     <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
     <owners>Andrew Trvarrow and Derek Wilson</owners>
 
@@ -38,8 +38,10 @@
 
 *No need for an iTunes account* Podcasts promoted on iTunes can be downloaded however there is no need to have an iTunes account.
 
+This is the cross platform version and does not support MTP, if you want MTP support (Windows only) version then try the [podcastutilities package](https://community.chocolatey.org/packages/podcastutilities). You probably dont need to install both.
+
     </description>
-    <releaseNotes>https://github.com/derekwilson/PodcastUtilities/tags</releaseNotes>
+    <releaseNotes>https://github.com/derekwilson/PodcastUtilities/blob/master/_PreBuiltPackages/CHANGELOG.md</releaseNotes>
   </metadata>
   <files>
     <!-- this section controls what actually gets packaged into the Chocolatey package -->

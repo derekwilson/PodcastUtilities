@@ -61,11 +61,11 @@ The package `podcastutilities-core.3.x.y.z.nupkg` or `podcastutilities.3.x.y.z.n
 Get the package `podcastutilities-core.3.x.y.z.nupkg` or `podcastutilities.3.x.y.z.nupkg` in the current folder
 
 ```
-choco install "podcastutilities-core" -s ".\" 
+choco install "podcastutilities-core.3.x.y.z.nupkg" -s ".\" 
 ```
 or
 ```
-choco install "podcastutilities" -s ".\" 
+choco install "podcastutilities.3.x.y.z.nupkg" -s ".\" 
 ```
 
 ### Uninstall package
@@ -85,9 +85,9 @@ choco uninstall "podcastutilities"
 then
 
 ```
-choco push podcastutilities-core.3.0.0.2.nupkg -s https://push.chocolatey.org/
+choco push podcastutilities-core.3.x.y.z.nupkg -s https://push.chocolatey.org/
 ```
 or
 ```
-choco push podcastutilities.3.0.0.2.nupkg -s https://push.chocolatey.org/
+choco push podcastutilities.3.x.y.z.nupkg -s https://push.chocolatey.org/
 ```

@@ -5,7 +5,7 @@ $PrgmFiles = [System.Environment]::GetFolderPath("ProgramFiles");
 $PrgmData = [System.Environment]::GetFolderPath("CommonApplicationData");
 $UserPrgmData = [System.Environment]::GetFolderPath("LocalApplicationData");
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$filePath = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)\podcastutilities-core3.0.0.2.zip"
+$filePath = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)\podcastutilities-core3.0.2.7.zip"
 $defaultDotnetRuntimePath = "C:\Program Files\dotnet\dotnet.exe"
 
 $ErrorActionPreference = 'Stop'; # stop on all errors
