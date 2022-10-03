@@ -5,7 +5,7 @@
 
 Set-Location "$PSScriptRoot" 
 
-$Version = "3.0.0.2"
+$Version = "3.0.2.7"
 $ZipFile = "podcastutilities$Version.zip"
 $SrcZipPath = Join-Path ".\files\" $ZipFile
 $ZipPath = Join-Path ".\tools\" $ZipFile

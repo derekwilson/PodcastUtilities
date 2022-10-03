@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>podcastutilities</id>
-    <version>3.0.0.2</version>
+    <version>3.0.2.7</version>
     <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
     <owners>Andrew Trvarrow and Derek Wilson</owners>
 
@@ -39,7 +39,7 @@
 This version runs on Windows only as it needs the .NET Framework, if you want a cross platform (Windows,Linux,Mac) version then try the [podcastutilities-core package](https://community.chocolatey.org/packages/podcastutilities-core). You probably dont need to install both.
 
     </description>
-    <releaseNotes>https://github.com/derekwilson/PodcastUtilities/tags</releaseNotes>
+    <releaseNotes>https://github.com/derekwilson/PodcastUtilities/blob/master/_PreBuiltPackages/CHANGELOG.md</releaseNotes>
   </metadata>
   <files>
     <!-- this section controls what actually gets packaged into the Chocolatey package -->
