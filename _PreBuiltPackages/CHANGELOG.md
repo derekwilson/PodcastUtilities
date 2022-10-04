@@ -72,4 +72,21 @@
 
 1. Fixed an issue where if there was an error getting the free space on the destination drive then it would stop the copying. This prevented the destination of a sync from being a relative path, a UNC path or an MTP path
 
+# v2.1.0.1 - 28 July 2013
 
+1. Added support for MTP devices and path schemas
+
+# v2.0.0.7 - 9 September 2012
+
+1. FIX: Fixed issues with `DownloadPodcasts` and `SyncPodcasts` if the podcasts were stored and accessed via a UNC pathname in the sourceRoot of the control file.
+1. Added support for `{exefolder}` token in post download commands
+1. Added `PostDownloadCommand` into config and supported args and cwd, changed from a string to be an `ITokenisedCommand`
+1. Added `PerfmonCountersInstaller`
+1. Made `ReadWriteControlFile` support `ICloneable`, test cloning to test `XmlSerialisation` read and write
+
+# v2.0.0.0 - 6 March 2012
+
+1. Added `MaximumNumberOfFiles` (to sync) into the global defaults for a PodcastInfo
+1. Made `MaximumNumberOfFiles` defaultable
+1. Added diagnostics section to global config, implemented verbose and retain temp files
+1. Update docs for download to media player strategy, updated API CHM and example control file
