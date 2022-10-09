@@ -75,6 +75,7 @@
 # v2.1.0.1 - 28 July 2013
 
 1. Added support for MTP devices and path schemas
+1. Added `PodcastUtilities.Integration.Tests`
 
 # v2.0.0.7 - 9 September 2012
 
@@ -86,7 +87,37 @@
 
 # v2.0.0.0 - 6 March 2012
 
-1. Added `MaximumNumberOfFiles` (to sync) into the global defaults for a PodcastInfo
+1. Added `MaximumNumberOfFiles` config (to sync) into the global defaults for a PodcastInfo
 1. Made `MaximumNumberOfFiles` defaultable
 1. Added diagnostics section to global config, implemented verbose and retain temp files
 1. Update docs for download to media player strategy, updated API CHM and example control file
+
+# v1.3.5.4 - 30 July 2011
+
+1. Added `PurgePodcasts` utility
+1. Added `DownloadStrategy` config
+1. Corrected bug in publish date in naming style
+1. Added state to downloads
+1. added `UrlFilenameFeedTitleAndPublishDateTimeInFolder` naming style (pubdate_folder_title_url)
+1. Made `DownloadPodcasts` respect `FreeSpaceToLeaveOnDestination` when downloading
+1. Updated documentation used and developer, added naming styles that use the episode title
+1. Fix bug where `SyncPodcasts` (or `PurgePodcasts`) would fault if a folder was missing (issue #9)
+1. Fixed `IOException` when large number of concurrent threads (>10) were attempting to access the state file on slow flash memory - implemented retrying
+1. Eliminated chars from filenames that are illegal in xml playlist files
+1. Fixed `PurgePodcasts` so that it correctly supports `PodcastEpisodeNamingStyle.UrlFilenameFeedTitleAndPublishDateTimeInFolder`
+1. Ensure that `PurgePodcasts` will only delete files that match the `Pattern` element in the `control.xml` file for the feed
+1. Added `freeSpaceToLeaveOnDownloadMB` to control file and also added `retryWaitInSeconds` to enable file contention recovery to be configured for slow flash drives
+1. Fixed handling of invalid characters when using episode title for filename
+
+# v1.3.0.0 - 6 July 2011
+
+1. Added `DownloadPodcasts` utility
+1. Added `maxNumberOfConcurrentDownloads` to control XML file
+1. Added naming styles to the episode finder
+1. Made the feed finder take account of the `SourceRoot` of all podcasts
+1. Added max age for podcast episodes into the config file
+
+
+# v1.2.0.0 - 7 May 2011
+
+1. Utilities include `SyncPodcasts` and `GeneratePlaylist`
