@@ -21,6 +21,7 @@ using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Ioc;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace PodcastUtilities
@@ -150,12 +151,12 @@ namespace PodcastUtilities
             {
                 // use our external folder - dependes on package name
                 Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Logs == {dirs[0].AbsolutePath}");
-                LoggerFactory = new NLoggerLoggerFactory(dirs[0].AbsolutePath);
+                LoggerFactory = new NLoggerLoggerFactory(Assets, dirs[0].AbsolutePath);
             }
             else
             {
                 // hard code and hope for the best
-                LoggerFactory = new NLoggerLoggerFactory($"/sdcard/Android/data/{this.PackageName}/files/");
+                LoggerFactory = new NLoggerLoggerFactory(Assets, $"/sdcard/Android/data/{this.PackageName}/files/");
             }
             Logger = LoggerFactory.Logger;
             Logger.Debug(() => $"AndroidApplication:Logging init");
