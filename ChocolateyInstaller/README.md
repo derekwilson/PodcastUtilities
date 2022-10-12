@@ -80,7 +80,29 @@ choco uninstall "podcastutilities"
 
 ### Publish package
 
+See docs for setting your apikey
+
+https://docs.chocolatey.org/en-us/create/commands/api-key
+
 (set you API key)
+
+```
+choco apikey -s "https://push.chocolatey.org/" -k="123-123123-123"
+```
+
+you can get the apikey here
+https://community.chocolatey.org/account
+
+Check your apikey is set
+
+```
+PS C:\WINDOWS\system32> choco apikey
+Chocolatey v0.10.15
+https://push.chocolatey.org/ - (Authenticated)
+PS C:\WINDOWS\system32>
+```
+
+In Powershell
 
 then
 
