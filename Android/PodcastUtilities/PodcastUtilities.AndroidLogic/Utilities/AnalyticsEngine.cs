@@ -1,7 +1,8 @@
 ﻿using Android.Content;
 using Android.OS;
-using Firebase.Analytics;
+using Microsoft.AppCenter.Analytics;
 using PodcastUtilities.Common.Playlists;
+using System.Collections.Generic;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
@@ -19,8 +20,110 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void PurgeDeleteEvent(int numberOfItems);
     }
 
+    public class AppCenterAnalyticsEngine : IAnalyticsEngine
+    {
+        // to see the analytics go to
+        // https://appcenter.ms/orgs/AndrewAndDerek/apps/PodcastUtilitiesDebug/analytics/overview
+
+        private IAndroidApplication Application;
+
+        public AppCenterAnalyticsEngine(IAndroidApplication application)
+        {
+            Application = application;
+        }
+
+        private const string Event_Download_Feed = "Download_Feed";
+        private const string Event_Download_Episode = "Download_Episode";
+        private const string Event_Download_Episode_Complete = "Download_Episode_Complete";
+        private const string Event_Load_ControlFile = "Load_ControlFile";
+        private const string Event_Lifecycle_Launch = "Lifecycle_Launch";
+        private const string Event_Lifecycle_Error = "Lifecycle_Error";
+        private const string Event_Lifecycle_ErrorFatal = "Lifecycle_ErrorFatal";
+        private const string Event_Generate_Playlist = "Generate_Playlist";
+        private const string Event_Purge_Scan = "Purge_Scan";
+        private const string Event_Purge_Delete = "Purge_Delete";
+
+        private const string Property_Version = "Version";
+        private const string Property_SizeMB = "SizeMB";
+        private const string Property_NumberOfItems = "NumberOfItems";
+        private const string Property_Format = "Format";
+
+        public void DownloadEpisodeCompleteEvent()
+        {
+            Analytics.TrackEvent(Event_Download_Episode_Complete);
+        }
+
+        public void DownloadEpisodeEvent(long sizeInMB)
+        {
+            Analytics.TrackEvent(Event_Download_Episode, new Dictionary<string, string> {
+                { Property_SizeMB, sizeInMB.ToString()}
+            });
+        }
+
+        public void DownloadFeedEvent(int numberOfItems)
+        {
+            Analytics.TrackEvent(Event_Download_Feed, new Dictionary<string, string> {
+                { Property_NumberOfItems, numberOfItems.ToString()}
+            });
+        }
+
+        public void GeneratePlaylistEvent(PlaylistFormat format)
+        {
+            Analytics.TrackEvent(Event_Generate_Playlist, new Dictionary<string, string> {
+                { Property_Format, format.ToString()}
+            });
+        }
+
+        public void LifecycleErrorEvent()
+        {
+            Analytics.TrackEvent(Event_Lifecycle_Error, new Dictionary<string, string> {
+                { Property_Version, Application.DisplayVersion}
+            });
+        }
+
+        public void LifecycleErrorFatalEvent()
+        {
+            Analytics.TrackEvent(Event_Lifecycle_ErrorFatal, new Dictionary<string, string> {
+                { Property_Version, Application.DisplayVersion}
+            });
+        }
+
+        public void LifecycleLaunchEvent()
+        {
+            Analytics.TrackEvent(Event_Lifecycle_Launch, new Dictionary<string, string> {
+                { Property_Version, Application.DisplayVersion}
+            });
+        }
+
+        public void LoadControlFileEvent()
+        {
+            Analytics.TrackEvent(Event_Load_ControlFile);
+        }
+
+        public void PurgeDeleteEvent(int numberOfItems)
+        {
+            Analytics.TrackEvent(Event_Purge_Delete, new Dictionary<string, string> {
+                { Property_NumberOfItems, numberOfItems.ToString()}
+            });
+        }
+
+        public void PurgeScanEvent(int numberOfItems)
+        {
+            Analytics.TrackEvent(Event_Purge_Scan, new Dictionary<string, string> {
+                { Property_NumberOfItems, numberOfItems.ToString()}
+            });
+        }
+    }
+
+    /* 
+     * - cannot leave this code here as we have removed the NuGet package references
+     *
+
     public class FirebaseAnalyticsEngine : IAnalyticsEngine
     {
+        // to see the analytics go to
+        // https://console.firebase.google.com/project/podcastutilities/analytics/app/android:com.andrewandderek.podcastutilities.sideload.debug/overview
+
         private Context ApplicationContext;
         private IAndroidApplication Application;
 
@@ -177,4 +280,6 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 );
         }
     }
+
+    */
 }
