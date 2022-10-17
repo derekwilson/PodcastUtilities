@@ -3,6 +3,7 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using AndroidX.Activity;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
@@ -38,6 +39,8 @@ namespace PodcastUtilities.UI.Download
         private DownloadRecyclerItemAdapter Adapter;
         private OkCancelDialogFragment ExitPromptDialogFragment;
         private OkCancelDialogFragment NetworkPromptDialogFragment;
+
+        private DownloadBackPressedCallback BackCallback;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -78,7 +81,35 @@ namespace PodcastUtilities.UI.Download
             NetworkPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(NETWORK_PROMPT_TAG) as OkCancelDialogFragment;
             SetupFragmentObservers(NetworkPromptDialogFragment);
 
+            BackCallback = new DownloadBackPressedCallback(this, ViewModel, AndroidApplication);
+            this.OnBackPressedDispatcher.AddCallback(BackCallback);
+
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate - end");
+        }
+
+        private class DownloadBackPressedCallback : OnBackPressedCallback
+        {
+            private DownloadActivity Activity;
+            private DownloadViewModel ViewModel;
+            private AndroidApplication AndroidApplication;
+
+            internal DownloadBackPressedCallback(DownloadActivity activity, DownloadViewModel model, AndroidApplication app) : base(true)
+            {
+                Activity = activity;
+                ViewModel = model;
+                AndroidApplication = app;
+            }
+
+            public override void HandleOnBackPressed()
+            {
+                if (ViewModel.RequestExit())
+                {
+                    AndroidApplication.Logger.Debug(() => $"DownloadBackPressedCallback:HandleOnBackPressed - exit");
+                    Activity.Finish();
+                    return;
+                }
+                AndroidApplication.Logger.Debug(() => $"DownloadBackPressedCallback:HandleOnBackPressed - exit not allowed");
+            }
         }
 
         protected override void OnDestroy()
@@ -88,17 +119,6 @@ namespace PodcastUtilities.UI.Download
             KillViewModelObservers();
             KillFragmentObservers(ExitPromptDialogFragment);
             KillFragmentObservers(NetworkPromptDialogFragment);
-        }
-
-        public override void OnBackPressed()
-        {
-            if (ViewModel.RequestExit())
-            {
-                AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnBackPressed - exit");
-                base.OnBackPressed();
-                return;
-            }
-            AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnBackPressed - exit not allowed");
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -122,7 +142,7 @@ namespace PodcastUtilities.UI.Download
         {
             if (item.ItemId == Android.Resource.Id.Home)
             {
-                OnBackPressed();
+                BackCallback.HandleOnBackPressed();
                 return true;
             }
             if (ViewModel.ActionSelected(item.ItemId))

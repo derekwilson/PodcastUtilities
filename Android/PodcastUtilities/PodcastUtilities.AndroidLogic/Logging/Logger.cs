@@ -114,13 +114,13 @@ namespace PodcastUtilities.AndroidLogic.Logging
         {
             if (minLevel == LogLevel.Off)
             {
-                LogManager.DisableLogging();
+                LogManager.SuspendLogging();
                 return;
             }
 
             if (!LogManager.IsLoggingEnabled())
             {
-                LogManager.EnableLogging();
+                LogManager.ResumeLogging();
             }
             foreach (var rule in LogManager.Configuration.LoggingRules)
             {
