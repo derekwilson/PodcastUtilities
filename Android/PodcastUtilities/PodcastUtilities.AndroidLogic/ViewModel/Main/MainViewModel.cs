@@ -1,5 +1,4 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.Views;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
@@ -12,7 +11,6 @@ using PodcastUtilities.Common.Playlists;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Xml;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 {
@@ -28,7 +26,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler<string> ToastMessage;
             public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>> SetFeedItems;
             public EventHandler<string> SetCacheRoot;
-            public EventHandler NavigateToDownload;
+            public EventHandler<string> NavigateToDownload;
             public EventHandler NavigateToPurge;
         }
         public ObservableGroup Observables = new ObservableGroup();
@@ -225,6 +223,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                 Task.Run(() => GeneratePlaylist());
             }
             return false;
+        }
+
+        internal void FeedItemSelected(IPodcastInfo podcastFeed)
+        {
+            Logger.Debug(() => $"MainViewModel: FeedItemSelected {podcastFeed.Folder}");
+            Observables.NavigateToDownload?.Invoke(this, podcastFeed.Folder);
         }
 
         public void LoadContolFile(Android.Net.Uri data)

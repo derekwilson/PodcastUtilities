@@ -17,7 +17,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Initialise();
 
             // act
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // assert
             A.CallTo(() => MockLogger.Warning(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(1, Times.Exactly);
@@ -32,7 +32,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.None);
 
             // act
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // assert
             Assert.AreEqual("No network", ObservedResults.LastSetEmptyText);
@@ -47,7 +47,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Initialise();
 
             // act
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // assert
             Assert.AreEqual(2, ObservedResults.StartProgress[0], "total number of feeds");
@@ -65,7 +65,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Initialise();
 
             // act
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // assert
             Assert.AreEqual(5, ObservedResults.LastDownloadItems.Count, "total number episodes found");
@@ -90,7 +90,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Initialise();
 
             // act
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // assert
             A.CallTo(() => MockAnalyticsEngine.DownloadFeedEvent(2)).MustHaveHappened(1, Times.Exactly);
@@ -106,7 +106,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Initialise();
 
             // act
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // assert
             Assert.AreEqual("download episodes count == 5", ObservedResults.LastSetTitle);
@@ -119,11 +119,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
             ResetObservedResults();
 
             // act
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // assert
             // we only use the finder once - for each episode

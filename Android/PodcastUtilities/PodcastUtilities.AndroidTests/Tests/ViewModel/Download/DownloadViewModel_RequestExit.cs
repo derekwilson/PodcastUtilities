@@ -15,7 +15,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // act
             var result = ViewModel.RequestExit();
@@ -34,7 +34,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // act
             A.CallTo(() => MockTaskPool.RunAllTasks(A<int>.Ignored, A<ITask[]>.Ignored))

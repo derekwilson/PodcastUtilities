@@ -150,24 +150,26 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             return false;
         }
 
-        public void FindEpisodesToDownload()
+        public void FindEpisodesToDownload(string folderSelected)
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-            Logger.Debug(() => $"DownloadViewModel:FindEpisodesToDownload");
+            Logger.Debug(() => $"DownloadViewModel:FindEpisodesToDownload, folder = {folderSelected}");
             if (controlFile == null)
             {
                 Logger.Warning(() => $"DownloadViewModel:FindEpisodesToDownload - no control file");
                 return;
             }
 
-            var noItemsText = ResourceProvider.GetString(Resource.String.no_downloads_text);
+            var noItemsText = ResourceProvider.GetString(Resource.String.finding_podcasts_progress);
+            Observables.SetEmptyText?.Invoke(this, noItemsText);
             var activeConnectionType = NetworkHelper.ActiveNetworkType;
             Logger.Debug(() => $"DownloadViewModel:FindEpisodesToDownload Active = {activeConnectionType}");
             if (activeConnectionType == INetworkHelper.NetworkType.None)
             {
                 noItemsText = ResourceProvider.GetString(Resource.String.no_network_text);
+                Observables.SetEmptyText?.Invoke(this, noItemsText);
+                return;
             }
-            Observables.SetEmptyText?.Invoke(this, noItemsText);
 
             lock (SyncLock)
             {
@@ -176,8 +178,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                     Logger.Warning(() => $"DownloadViewModel:FindEpisodesToDownload - ignoring, already initialised");
                     if (CompletedFindingPodcasts)
                     {
-                        Observables.SetSyncItems?.Invoke(this, AllItems);
-                        SetTitle();
+                        RefreshUI();
                     }
                     else
                     {
@@ -191,7 +192,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
             foreach (var item in controlFile.GetPodcasts())
             {
-                FeedCount++;
+                if (string.IsNullOrEmpty(folderSelected) || item.Folder == folderSelected)
+                {
+                    FeedCount++;
+                }
             }
 
             Observables.StartProgress?.Invoke(this, FeedCount);
@@ -201,31 +205,43 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             int count = 0;
             foreach (var podcastInfo in controlFile.GetPodcasts())
             {
-                var episodesInThisFeed = PodcastEpisodeFinder.FindEpisodesToDownload(
-                    controlFile.GetSourceRoot(),
-                    controlFile.GetRetryWaitInSeconds(),
-                    podcastInfo,
-                    controlFile.GetDiagnosticRetainTemporaryFiles());
-                foreach (var episode in episodesInThisFeed)
+                if (string.IsNullOrEmpty(folderSelected) || podcastInfo.Folder == folderSelected)
                 {
-                    var line = $"{episode.Id}, {episode.EpisodeTitle}";
-                    Logger.Debug(() => $"DownloadViewModel:FindEpisodesToDownload {line}");
-                    MessageStore.StoreMessage(episode.Id, line);
-                    var item = new DownloadRecyclerItem()
+                    var episodesInThisFeed = PodcastEpisodeFinder.FindEpisodesToDownload(
+                        controlFile.GetSourceRoot(),
+                        controlFile.GetRetryWaitInSeconds(),
+                        podcastInfo,
+                        controlFile.GetDiagnosticRetainTemporaryFiles());
+                    foreach (var episode in episodesInThisFeed)
                     {
-                        SyncItem = episode,
-                        ProgressPercentage = 0,
-                        Podcast = podcastInfo,
-                        Selected = true
-                    };
-                    AllItems.Add(item);
+                        var line = $"{episode.Id}, {episode.EpisodeTitle}";
+                        Logger.Debug(() => $"DownloadViewModel:FindEpisodesToDownload {line}");
+                        MessageStore.StoreMessage(episode.Id, line);
+                        var item = new DownloadRecyclerItem()
+                        {
+                            SyncItem = episode,
+                            ProgressPercentage = 0,
+                            Podcast = podcastInfo,
+                            Selected = true
+                        };
+                        AllItems.Add(item);
+                    }
+                    count++;
+                    AnalyticsEngine.DownloadFeedEvent(episodesInThisFeed.Count);
+                    Observables.UpdateProgress?.Invoke(this, count);
                 }
-                count++;
-                AnalyticsEngine.DownloadFeedEvent(episodesInThisFeed.Count);
-                Observables.UpdateProgress?.Invoke(this, count);
             }
             CompletedFindingPodcasts = true;
             Observables.EndProgress?.Invoke(this, null);
+            RefreshUI();
+        }
+
+        private void RefreshUI()
+        {
+            if (AllItems.Count < 1)
+            {
+                Observables.SetEmptyText?.Invoke(this, ResourceProvider.GetString(Resource.String.no_downloads_text));
+            }
             Observables.SetSyncItems?.Invoke(this, AllItems);
             SetTitle();
         }

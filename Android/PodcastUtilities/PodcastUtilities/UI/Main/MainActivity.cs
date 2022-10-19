@@ -61,11 +61,13 @@ namespace PodcastUtilities
             RvFeeds.SetLayoutManager(new LinearLayoutManager(this));
             RvFeeds.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
             RvFeeds.SetEmptyView(NoFeedView);
-            FeedAdapter = new PodcastFeedRecyclerItemAdapter(this);
-            RvFeeds.SetAdapter(FeedAdapter);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(MainViewModel))) as MainViewModel;
+
+            FeedAdapter = new PodcastFeedRecyclerItemAdapter(this, ViewModel);
+            RvFeeds.SetAdapter(FeedAdapter);
+
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
@@ -279,12 +281,12 @@ namespace PodcastUtilities
             });
         }
 
-        private void NavigateToDownload(object sender, EventArgs e)
+        private void NavigateToDownload(object sender, string folder)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToDownload");
             RunOnUiThread(() =>
             {
-                var intent = new Intent(this, typeof(DownloadActivity));
+                var intent = DownloadActivity.CreateIntent(this, folder);
                 StartActivity(intent);
             });
         }

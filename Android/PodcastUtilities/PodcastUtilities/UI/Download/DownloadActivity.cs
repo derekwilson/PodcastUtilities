@@ -25,6 +25,18 @@ namespace PodcastUtilities.UI.Download
     [Activity(ParentActivity = typeof(MainActivity))]
     public class DownloadActivity : AppCompatActivity
     {
+        private const string ACTIVITY_PARAM_FOLDER = "DownloadActivity:Param:Folder";
+
+        public static Intent CreateIntent(Context context, string folder)
+        {
+            Intent intent = new Intent(context, typeof(DownloadActivity));
+            if (!string.IsNullOrEmpty(folder))
+            {
+                intent.PutExtra(ACTIVITY_PARAM_FOLDER, folder);
+            }
+            return intent;
+        }
+
         private const string EXIT_PROMPT_TAG = "exit_prompt_tag";
         private const string NETWORK_PROMPT_TAG = "network_prompt_tag";
 
@@ -72,7 +84,7 @@ namespace PodcastUtilities.UI.Download
             SetupViewModelObservers();
 
             ViewModel.Initialise();
-            Task.Run(() => ViewModel.FindEpisodesToDownload());
+            Task.Run(() => ViewModel.FindEpisodesToDownload(Intent?.GetStringExtra(ACTIVITY_PARAM_FOLDER)));
 
             DownloadButton.Click += (sender, e) => ViewModel.DownloadAllPodcastsWithNetworkCheck();
 

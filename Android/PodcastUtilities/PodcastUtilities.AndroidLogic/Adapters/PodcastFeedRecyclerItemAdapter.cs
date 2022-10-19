@@ -4,6 +4,7 @@ using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.Common.Configuration;
+using System;
 using System.Collections.Generic;
 
 namespace PodcastUtilities.AndroidLogic.Adapters
@@ -11,11 +12,13 @@ namespace PodcastUtilities.AndroidLogic.Adapters
     public class PodcastFeedRecyclerItemAdapter : RecyclerView.Adapter
     {
         private Context Context;
+        private MainViewModel ViewModel;
         private List<PodcastFeedRecyclerItem> Items = new List<PodcastFeedRecyclerItem>(20);
 
-        public PodcastFeedRecyclerItemAdapter(Context context)
+        public PodcastFeedRecyclerItemAdapter(Context context, MainViewModel viewModel)
         {
             Context = context;
+            ViewModel = viewModel;
         }
 
         public void SetItems(List<PodcastFeedRecyclerItem> items)
@@ -28,6 +31,8 @@ namespace PodcastUtilities.AndroidLogic.Adapters
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RecyclerViewHolder vh = holder as RecyclerViewHolder;
+            // unsubscribe if it was subscribed before
+            vh.Container.Click -= Container_Click;
 
             vh.Label.Text = Items[position].PodcastFeed.Folder;
             //vh.SubLabel.Text = Items[position].PodcastFeed.Feed.Address.ToString();
@@ -47,7 +52,15 @@ namespace PodcastUtilities.AndroidLogic.Adapters
                 Context.GetString(GetNamingStyleTextId(Items[position].PodcastFeed.Feed.NamingStyle.Value)),
                 Context.GetString(GetDownloadStratagyTextId(Items[position].PodcastFeed.Feed.DownloadStrategy.Value))
             );
+
             vh.Container.Tag = position.ToString();
+            vh.Container.Click += Container_Click;
+        }
+
+        private void Container_Click(object sender, EventArgs e)
+        {
+            int position = Convert.ToInt32(((View)sender).Tag.ToString());
+            ViewModel.FeedItemSelected(Items[position].PodcastFeed);
         }
 
         private string GetSublabelPart(int value, int formattedId, int maxId)
