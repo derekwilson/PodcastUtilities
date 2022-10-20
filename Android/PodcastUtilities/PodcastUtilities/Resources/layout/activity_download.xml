@@ -38,7 +38,7 @@
 				android:id="@+id/txtNoData"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="@string/no_downloads_text"
+				android:text="@string/finding_podcasts_progress"
 				android:textAlignment="center"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:gravity="center_horizontal" />

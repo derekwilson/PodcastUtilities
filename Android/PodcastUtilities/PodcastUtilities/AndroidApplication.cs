@@ -4,6 +4,9 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.Util;
 using AndroidX.Core.Content.PM;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
@@ -94,8 +97,12 @@ namespace PodcastUtilities
             // helpers
             container.Register<IAndroidApplication>(this);
             container.Register<ILogger>(Logger);
-            container.Register<ICrashReporter, CrashlyticsReporter>(IocLifecycle.Singleton);
-            container.Register<IAnalyticsEngine, FirebaseAnalyticsEngine>(IocLifecycle.Singleton);
+
+            //container.Register<ICrashReporter, CrashlyticsReporter>(IocLifecycle.Singleton);
+            //container.Register<IAnalyticsEngine, FirebaseAnalyticsEngine>(IocLifecycle.Singleton);
+            container.Register<ICrashReporter, AppCenterCrashReporter>(IocLifecycle.Singleton);
+            container.Register<IAnalyticsEngine, AppCenterAnalyticsEngine>(IocLifecycle.Singleton);
+
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
             container.Register<IFileSystemHelper, FileSystemHelper>(IocLifecycle.Singleton);
             container.Register<INetworkHelper, NetworkHelper>(IocLifecycle.Singleton);
@@ -132,6 +139,9 @@ namespace PodcastUtilities
         {
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int)Android.OS.Build.VERSION.SdkInt}");
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate PackageName == {this.PackageName}");
+
+            AppCenter.Start(Secrets.APP_CENTER_SECRET, typeof(Analytics), typeof(Crashes));
+
             SetupExceptionHandler();
             PackageInfo package = PackageManager.GetPackageInfo(PackageName, 0);
             long longVersionCode = PackageInfoCompat.GetLongVersionCode(package);
@@ -150,12 +160,12 @@ namespace PodcastUtilities
             {
                 // use our external folder - dependes on package name
                 Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Logs == {dirs[0].AbsolutePath}");
-                LoggerFactory = new NLoggerLoggerFactory(dirs[0].AbsolutePath);
+                LoggerFactory = new NLoggerLoggerFactory(Assets, dirs[0].AbsolutePath);
             }
             else
             {
                 // hard code and hope for the best
-                LoggerFactory = new NLoggerLoggerFactory($"/sdcard/Android/data/{this.PackageName}/files/");
+                LoggerFactory = new NLoggerLoggerFactory(Assets, $"/sdcard/Android/data/{this.PackageName}/files/");
             }
             Logger = LoggerFactory.Logger;
             Logger.Debug(() => $"AndroidApplication:Logging init");

@@ -35,7 +35,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
             var testException = new Exception("TEST EXCEPTION");
             A.CallTo(() => MockTaskPool.RunAllTasks(A<int>.Ignored, A<ITask[]>.Ignored)).Throws(testException);
 
@@ -57,7 +57,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // act
             await ViewModel.DownloadAllPodcastsWithoutNetworkCheck().ConfigureAwait(false);
@@ -75,7 +75,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // act
             await ViewModel.DownloadAllPodcastsWithoutNetworkCheck().ConfigureAwait(false);
@@ -94,7 +94,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
             A.CallTo(() => MockTaskPool.RunAllTasks(A<int>.Ignored, A<ITask[]>.Ignored))
                 .Invokes(() =>
                 { 
@@ -124,7 +124,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // act
             ViewModel.DownloadAllPodcastsWithoutNetworkCheck().Wait();
@@ -145,7 +145,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             SetupFireProgressEvent(EPISODE_1_ID, 9);
 
@@ -165,7 +165,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             var syncItemMocker = SetupFireProgressEvent(EPISODE_1_ID, 9);
             // there is 1MB free in the filesystem
@@ -187,7 +187,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
             var syncItemMocker = SetupFireProgressEvent(EPISODE_1_ID, 10);
             Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);
 
@@ -211,7 +211,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
             var syncItemMocker = SetupFireProgressEvent(EPISODE_1_ID, 11);
             Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);
 
@@ -232,7 +232,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
             var syncItemMocker = SetupFireProgressEvent(EPISODE_1_ID, 100);
             Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);
 
@@ -257,7 +257,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
             var syncItemMocker = SetupFireStatusEvent(EPISODE_1_ID, StatusUpdateLevel.Status, false, null, "test message");
             Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);
             Fake.ClearRecordedCalls(MockAnalyticsEngine);
@@ -284,7 +284,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts(DiagnosticOutputLevel.Verbose);
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
             var syncItemMocker = SetupFireStatusEvent(EPISODE_1_ID, StatusUpdateLevel.Verbose, false, null, "test verbose");
             Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);
             Fake.ClearRecordedCalls(MockAnalyticsEngine);
@@ -311,7 +311,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
             var syncItemMocker = SetupFireStatusEvent(EPISODE_1_ID, StatusUpdateLevel.Verbose, false, null, "test verbose");
             Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);
             Fake.ClearRecordedCalls(MockAnalyticsEngine);
@@ -335,7 +335,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
             var syncItemMocker = SetupFireStatusEvent(EPISODE_1_ID, StatusUpdateLevel.Status, true, null, "test message complete");
             Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);
             Fake.ClearRecordedCalls(MockAnalyticsEngine);
@@ -362,7 +362,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
             var testException = new Exception("TEST EXCEPTION");
             var syncItemMocker = SetupFireStatusEvent(EPISODE_1_ID, StatusUpdateLevel.Error, false, testException, "test exception");
             Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);

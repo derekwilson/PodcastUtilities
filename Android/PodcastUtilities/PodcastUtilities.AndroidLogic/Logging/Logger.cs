@@ -1,7 +1,11 @@
-﻿using NLog;
+﻿using Android.Content.Res;
+using NLog;
 using NLog.Targets;
 using System;
 using System.IO;
+using System.Net.Security;
+using System.Reflection;
+using static Android.Telephony.CarrierConfigManager;
 
 namespace PodcastUtilities.AndroidLogic.Logging
 {
@@ -60,19 +64,35 @@ namespace PodcastUtilities.AndroidLogic.Logging
     /// </summary>
     public class NLoggerLoggerFactory : ILoggerFactory
     {
+        private void LoadConfig(AssetManager assets)
+        {
+            // NLog 5 removed Xamarin specific builds so the automatic loading of config was removed
+            // see https://nlog-project.org/2021/08/25/nlog-5-0-preview1-ready.html
+
+            using (Stream inputStream = assets.Open("NLog.config")) 
+            {
+                using (var xmlReader = System.Xml.XmlReader.Create(inputStream))
+                {
+                    LogManager.Configuration = new NLog.Config.XmlLoggingConfiguration(xmlReader, null);
+                }
+            }
+        }
+
         /// <summary>
         /// Use whatever is in the config file
         /// </summary>
-        public NLoggerLoggerFactory()
+        public NLoggerLoggerFactory(AssetManager assets)
         {
+            LoadConfig(assets);
         }
 
         /// <summary>
         /// setup the file target with the supplied folder
         /// </summary>
         /// <param name="folder">folder for log files</param>
-        public NLoggerLoggerFactory(String folder)
+        public NLoggerLoggerFactory(AssetManager assets, String folder)
         {
+            LoadConfig(assets);
             // set the targets for the file loggers
             var config = LogManager.Configuration;
             var target = config.FindTargetByName("externalFileTarget");
@@ -94,13 +114,13 @@ namespace PodcastUtilities.AndroidLogic.Logging
         {
             if (minLevel == LogLevel.Off)
             {
-                LogManager.DisableLogging();
+                LogManager.SuspendLogging();
                 return;
             }
 
             if (!LogManager.IsLoggingEnabled())
             {
-                LogManager.EnableLogging();
+                LogManager.ResumeLogging();
             }
             foreach (var rule in LogManager.Configuration.LoggingRules)
             {

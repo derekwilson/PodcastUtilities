@@ -41,7 +41,7 @@ Powershell is configured by the project scripts, there is no manual process
 
 #### Building Debug Builds
 
-1. Open BS2022
+1. Open VS2022
 1. Rebuild Solution
 1. Connect Device
 1. Select the device you want to deploy to in the toolbar
@@ -49,6 +49,18 @@ Powershell is configured by the project scripts, there is no manual process
 1. Select Build -> Deploy
 
 Note: it will fail if the app is already running
+
+Note: If you dont have the folder `PodcastUtilities\Android\PodcastUtilities\LocalOnly` then you will need to provide an AppCenter secrets key in `AndroidApplication.cs`
+
+```
+public override void OnCreate()
+{
+    Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int)Android.OS.Build.VERSION.SdkInt}");
+    Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate PackageName == {this.PackageName}");
+
+    AppCenter.Start(Secrets.APP_CENTER_SECRET, typeof(Analytics), typeof(Crashes));
+```
+
 
 #### Building the Release Build
 
@@ -88,7 +100,9 @@ If you intend to deploy the build using Google Play Store you need to build an A
 
 ##### Building a release APK
 
-If you are intending to deploy the app by having the user download it from GitHub then you must build an APK, as phones cannot install AAB's (thanks Google). The APK will be signed using the key in `LocalOnly`, this will be the app signing key as the user will install the APK directly, the play store is not involved. 
+If you are intending to deploy the app using Amazon App Store or by having the user download it from GitHub then you must build an APK, as phones cannot install AAB's (thanks Google). The APK will be signed using the key in `LocalOnly`, this will be the app signing key as the user will install the APK directly, the play store is not involved. 
+
+Note: Sometimes when the `BuildReleaseAPK.bat` ,is first run it will actually produce an APK named for the `debug` configuration like this `com.andrewandderek.podcastutilities.sideload.debug-Signed.apk`. Not sure if this is an artefact of having the IDE running at the same time but running it for a second time seems to fix the issue. 
 
 1. In VS Select Project Properties for `PodcastUtilities` -> Android Manifest enter the correct VersionName and VersionNumber
 1. Open a developer command prompt for VS2022
@@ -104,7 +118,7 @@ If you are intending to deploy the app by having the user download it from GitHu
 1. Copy the `com.andrewandderek.podcastutilities.sideload-Signed.apk` to `Android\Support\_PreBuiltPackages`
 1. Edit `Android\Support\_PreBuiltPackages\README.md` with the new release details
 1. Edit `Android\Support\_PreBuiltPackages\release.xml` with the new release details
-1. Push your changes to master
+1. Push your changes to master and label the commit in the style "v1.0.3(4)" ensure the tag is pushed by using `git push team "1.0.3(4)"`
 
 ##### Notes on installing release builds
 

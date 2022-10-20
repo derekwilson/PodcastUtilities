@@ -83,7 +83,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
-            ViewModel.FindEpisodesToDownload();
+            ViewModel.FindEpisodesToDownload(null);
 
             // act
             await ViewModel.DownloadAllPodcastsWithNetworkCheck().ConfigureAwait(false);
