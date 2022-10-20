@@ -5,7 +5,7 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
-| 1.0.4   | 20 Oct 2022 | 21 (Android 5)   | 33 (Android 13)
+| 1.1.0   | 20 Oct 2022 | 21 (Android 5)   | 33 (Android 13)
 | 1.0.3   | 1 Jun 2022  | 19 (Android 4.4) | 31 (Android 12)
 | 1.0.2   | 14 Apr 2022 | 19 (Android 4.4) | 31 (Android 12)
 | 1.0.1   | 7 Apr 2022  | 19 (Android 4.4) | 31 (Android 12)

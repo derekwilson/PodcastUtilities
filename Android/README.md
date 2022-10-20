@@ -118,7 +118,7 @@ Note: Sometimes when the `BuildReleaseAPK.bat` ,is first run it will actually pr
 1. Copy the `com.andrewandderek.podcastutilities.sideload-Signed.apk` to `Android\Support\_PreBuiltPackages`
 1. Edit `Android\Support\_PreBuiltPackages\README.md` with the new release details
 1. Edit `Android\Support\_PreBuiltPackages\release.xml` with the new release details
-1. Push your changes to master and label the commit in the style "v1.0.3(4)" ensure the tag is pushed by using `git push team "1.0.3(4)"`
+1. Push your changes to master and label the commit in the style "v1.0.3(4)" ensure the tag is pushed by using `git push origin "1.0.3(4)"`
 
 ##### Notes on installing release builds
 
