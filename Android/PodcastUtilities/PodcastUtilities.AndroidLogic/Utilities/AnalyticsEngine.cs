@@ -16,6 +16,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void LifecycleErrorEvent();
         void LifecycleErrorFatalEvent();
         void GeneratePlaylistEvent(PlaylistFormat format);
+        void GeneratePlaylistCompleteEvent(int numberOfItems);
         void PurgeScanEvent(int numberOfItems);
         void PurgeDeleteEvent(int numberOfItems);
     }
@@ -40,6 +41,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Event_Lifecycle_Error = "Lifecycle_Error";
         private const string Event_Lifecycle_ErrorFatal = "Lifecycle_ErrorFatal";
         private const string Event_Generate_Playlist = "Generate_Playlist";
+        private const string Event_Generate_Playlist_Complete = "Generate_Playlist_Complete";
         private const string Event_Purge_Scan = "Purge_Scan";
         private const string Event_Purge_Delete = "Purge_Delete";
 
@@ -70,7 +72,13 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public void GeneratePlaylistEvent(PlaylistFormat format)
         {
             Analytics.TrackEvent(Event_Generate_Playlist, new Dictionary<string, string> {
-                { Property_Format, format.ToString()}
+                { Property_Format, format.ToString()},
+            });
+        }
+        public void GeneratePlaylistCompleteEvent(int numberOfItems)
+        {
+            Analytics.TrackEvent(Event_Generate_Playlist_Complete, new Dictionary<string, string> {
+                { Property_NumberOfItems, numberOfItems.ToString()}
             });
         }
 

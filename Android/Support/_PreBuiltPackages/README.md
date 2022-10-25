@@ -16,6 +16,7 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 Major changes for each version
 
 ## v1.1.0 (5)
+- First version available for Kindle Fire devices
 - switched from Crashlytics/GoogleAnalytics to AppCenter also removed all references to GooglePlayServices
 - added ability to download a specific feed
 - MinSDK moved to 21 as required by AppCenter SDK

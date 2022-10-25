@@ -286,8 +286,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 
         private void GenerateStatusUpdate(object sender, StatusUpdateEventArgs e)
         {
-            Logger.Debug(() => $"MainViewModel: GenerateStatusUpdate {e.Message}");
+            Logger.Debug(() => $"MainViewModel: GenerateStatusUpdate {e.IsTaskCompletedSuccessfully}, {e.Message}");
             Observables.ToastMessage?.Invoke(this, e.Message);
+            // TODO - call analytics engine when we know how many items were written
         }
     }
 }
