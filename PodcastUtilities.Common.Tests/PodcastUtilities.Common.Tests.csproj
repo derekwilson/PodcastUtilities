@@ -153,6 +153,7 @@
     <Compile Include="Files\UnwantedFolderRemoverTests\WhenTheFolderIsEmpty.cs" />
     <Compile Include="Playlists\GeneratorTests\WhenThereAreSomePodcastsContainingFiles.cs" />
     <Compile Include="Playlists\GeneratorTests\WhenThereAreSomePodcastsContainingFilesNeedingSorting.cs" />
+    <Compile Include="Playlists\GeneratorTests\WhenTheStatusUpdates.cs" />
     <Compile Include="Playlists\GeneratorTests\WhenUsingTheSourceDirectoryAsRoot.cs" />
     <Compile Include="Playlists\PlaylistFactoryTests\WhenCreatingANewM3uPlaylist.cs" />
     <Compile Include="Playlists\PlaylistM3uTests\WhenAddingTracksThatAreNotAlreadyInPlaylist.cs" />
