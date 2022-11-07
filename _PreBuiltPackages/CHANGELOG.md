@@ -1,4 +1,4 @@
-# v3.1.0.0 = 7 November 2022
+# v3.1.0.0 - 7 November 2022
 
 1. Updated solution to VS 2022
 1. Added support for `maximumNumberOfDownloadedItems` to throttle downloads
