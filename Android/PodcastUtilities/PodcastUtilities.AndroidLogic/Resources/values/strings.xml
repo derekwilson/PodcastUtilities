@@ -37,17 +37,23 @@
 	<string name="no_feeds_text">No Feeds.</string>
 
 	<plurals name="feed_sublabel_download">
-		<item quantity="one">Get up to %d day ago</item>
-		<item quantity="other">Get up to %d days ago</item>
+		<item quantity="one">Get %d day ago</item>
+		<item quantity="other">Get %d days ago</item>
 	</plurals>
 	<string name="feed_sublabel_download_all">Get all episodes</string>
+
+	<plurals name="feed_sublabel_max">
+		<item quantity="one">(max %d item)</item>
+		<item quantity="other">(max %d items)</item>
+	</plurals>
+	<string name="feed_sublabel_no_max">(No maximum)</string>
 
 	<plurals name="feed_sublabel_delete">
 		<item quantity="one">Delete after %d day old</item>
 		<item quantity="other">Delete after %d days old</item>
 	</plurals>
 	<string name="feed_sublabel_delete_never">Never delete</string>
-	<string name="feed_sublabel_fmt">{0}, {1}</string>
+	<string name="feed_sublabel_fmt">{0} {1}, {2}</string>
 
 	<string name="feed_naming_style_urlfilename">url</string>
 	<string name="feed_naming_style_urlfilenameandpublishdatetime">yyyy_mm_dd_HHMM_url</string>
