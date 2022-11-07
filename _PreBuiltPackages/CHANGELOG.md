@@ -1,3 +1,10 @@
+# v3.1.0.0 = 7 November 2022
+
+1. Updated solution to VS 2022
+1. Added support for `maximumNumberOfDownloadedItems` to throttle downloads
+1. Added `IPlaylist` to the `IGenerator` status updates
+1. FIX: `Latest` download strategy would download the latest episode not the cache, it now does nothing if the latest episode is in the cache
+
 # v3.0.2.7 - 15 April 2022
 1. FIX: ControlFile loading and saving was leaving the file open because `Dispose()` was not being called
 1. FIX: Added missing `PostDownloadCommand` property to `IPodcastInfo`
