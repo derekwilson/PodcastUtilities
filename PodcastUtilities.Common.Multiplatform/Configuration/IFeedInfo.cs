@@ -57,5 +57,10 @@ namespace PodcastUtilities.Common.Configuration
         /// number of days before we delete a download
         /// </summary>
         IDefaultableItem<int> DeleteDownloadsDaysOld { get; set; }
+
+        /// <summary>
+        /// maximum number of items from the feed to have in the cache
+        /// </summary>
+        IDefaultableItem<int> MaximumNumberOfDownloadedItems { get; set; }
     }
 }

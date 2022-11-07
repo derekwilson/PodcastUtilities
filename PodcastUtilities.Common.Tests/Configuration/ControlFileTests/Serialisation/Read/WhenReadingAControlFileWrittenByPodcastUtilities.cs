@@ -61,12 +61,14 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Serialisa
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.Address.ToString(), Is.EqualTo("https://feeds.megaphone.fm/ESP9247246951"));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.NamingStyle.Value, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.MaximumDaysOld.Value, Is.EqualTo(60));
-            Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DeleteDownloadsDaysOld.Value, Is.EqualTo(2147483647));
+            Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DeleteDownloadsDaysOld.Value, Is.EqualTo(32));
+            Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.MaximumNumberOfDownloadedItems.Value, Is.EqualTo(32));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DownloadStrategy.Value, Is.EqualTo(PodcastEpisodeDownloadStrategy.HighTide));
 
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.NamingStyle.IsSet, Is.EqualTo(false));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.MaximumDaysOld.IsSet, Is.EqualTo(true));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DeleteDownloadsDaysOld.IsSet, Is.EqualTo(false));
+            Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.MaximumNumberOfDownloadedItems.IsSet, Is.EqualTo(false));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DownloadStrategy.IsSet, Is.EqualTo(false));
         }
 
@@ -92,12 +94,14 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Serialisa
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.Address.ToString(), Is.EqualTo("http://podcasts.files.bbci.co.uk/p02pc9pj.rss"));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.NamingStyle.Value, Is.EqualTo(PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.MaximumDaysOld.Value, Is.EqualTo(31));
-            Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DeleteDownloadsDaysOld.Value, Is.EqualTo(2147483647));
+            Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DeleteDownloadsDaysOld.Value, Is.EqualTo(32));
+            Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.MaximumNumberOfDownloadedItems.Value, Is.EqualTo(33));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DownloadStrategy.Value, Is.EqualTo(PodcastEpisodeDownloadStrategy.HighTide));
 
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.NamingStyle.IsSet, Is.EqualTo(false));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.MaximumDaysOld.IsSet, Is.EqualTo(false));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DeleteDownloadsDaysOld.IsSet, Is.EqualTo(false));
+            Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.MaximumNumberOfDownloadedItems.IsSet, Is.EqualTo(false));
             Assert.That(_controlFile.GetPodcasts().ElementAt(1).Feed.DownloadStrategy.IsSet, Is.EqualTo(false));
         }
 
@@ -164,7 +168,13 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Serialisa
         [Test]
         public void ItShouldReadTheGlobalFeedDeleteDays()
         {
-            Assert.That(_controlFile.GetDefaultDeleteDownloadsDaysOld(), Is.EqualTo(2147483647));
+            Assert.That(_controlFile.GetDefaultDeleteDownloadsDaysOld(), Is.EqualTo(32));
+        }
+
+        [Test]
+        public void ItShouldReadTheGlobalMaximumNumberOfDownloadedItems()
+        {
+            Assert.That(_controlFile.GetDefaultMaximumNumberOfDownloadedItems(), Is.EqualTo(33));
         }
 
         [Test]

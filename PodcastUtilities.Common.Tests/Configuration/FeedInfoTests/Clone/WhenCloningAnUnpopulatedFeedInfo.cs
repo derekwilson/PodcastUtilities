@@ -51,6 +51,12 @@ namespace PodcastUtilities.Common.Tests.Configuration.FeedInfoTests.Clone
             Assert.That(_clonedFeedInfo.DeleteDownloadsDaysOld.Value, Is.EqualTo(88));
         }
         [Test]
+        public void ItShouldCloneTheMaximumNumberOfDownloadedItems()
+        {
+            Assert.That(_clonedFeedInfo.MaximumNumberOfDownloadedItems.Value, Is.EqualTo(55));
+            Assert.That(_clonedFeedInfo.MaximumNumberOfDownloadedItems.IsSet, Is.EqualTo(false));
+        }
+        [Test]
         public void ItShouldCloneTheDownloadStrategy()
         {
             Assert.That(_clonedFeedInfo.DownloadStrategy.Value, Is.EqualTo(PodcastEpisodeDownloadStrategy.Latest));

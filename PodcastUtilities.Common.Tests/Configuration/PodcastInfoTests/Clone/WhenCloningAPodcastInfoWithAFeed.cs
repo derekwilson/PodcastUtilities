@@ -40,6 +40,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
                                        Address = new Uri("http://test.com"),
                                    };
             _podcastInfo.Feed.DeleteDownloadsDaysOld.Value = 456;
+            _podcastInfo.Feed.MaximumNumberOfDownloadedItems.Value = 123;
             _podcastInfo.Feed.DownloadStrategy.Value = PodcastEpisodeDownloadStrategy.HighTide;
             _podcastInfo.Feed.Format.Value = PodcastFeedFormat.RSS;
             _podcastInfo.Feed.MaximumDaysOld.Value = 789;
@@ -91,6 +92,13 @@ namespace PodcastUtilities.Common.Tests.Configuration.PodcastInfoTests.Clone
         public void ItShouldCloneTheFeedDeleteDownloadsDaysOld()
         {
             Assert.That(_clonedPodcast.Feed.DeleteDownloadsDaysOld.Value, Is.EqualTo(456));
+        }
+
+        [Test]
+        public void ItShouldCloneTheFeedMaximumNumberOfDownloadedItems()
+        {
+            Assert.That(_clonedPodcast.Feed.MaximumNumberOfDownloadedItems.Value, Is.EqualTo(123));
+            Assert.That(_clonedPodcast.Feed.MaximumNumberOfDownloadedItems.IsSet, Is.EqualTo(true));
         }
 
         [Test]

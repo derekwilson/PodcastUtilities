@@ -36,6 +36,12 @@ namespace PodcastUtilities.Common.Configuration
         /// the global default for feeds
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        int GetDefaultMaximumNumberOfDownloadedItems();
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         PodcastEpisodeDownloadStrategy GetDefaultDownloadStrategy();
 
         /// <summary>

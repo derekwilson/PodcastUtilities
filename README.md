@@ -12,15 +12,15 @@ PodcastUtilities are a set of utilities designed to help manage digital media on
 
 ### Requirements to compile the code ###
 
-* VisualStudio 2017 (any version including the free versions)
+* VisualStudio 2022 (any version including the free versions)
 * In the past I did check that SharpDevelop worked so that might also be an option
 * NUnit, MSBuild Community Tasks (installers are in the tools folder)
 * Run the tests in NUnit UI, .NET Framework v3.5 tests are no longer supported by VisualStudio  - also there is a [TeamCity project](http://teamcity.codebetter.com/viewType.html?buildTypeId=bt1062) that runs the tests
 
 ### Building the project
 
-* To build all the .NET Framework assemblies - in VS 2017 select Build -> Batch Build and select all the Release targets and rebuild
-* To build all the .NET Core assemblies - from the command line run `PublishAll.bat` from the root of the project
+* To build all the .NET Framework assemblies - in VisualStudio select Build -> Batch Build and select all the Release targets and rebuild
+* To build all the .NET Core assemblies - from the VisualStudio developer command prompt run `PublishAll.bat` from the root of the project
 * To package the ZIP - from the command line run `BuildAll.cmd` (after installing the community tasks)
 
 Sometimes when running the `BuildAll` command on Windows 10 you may get this error

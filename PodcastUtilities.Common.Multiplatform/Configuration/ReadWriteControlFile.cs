@@ -79,6 +79,14 @@ namespace PodcastUtilities.Common.Configuration
         /// <summary>
         /// the global default for feeds
         /// </summary>
+        public void SetDefaultMaximumNumberOfDownloadedItems(int maxItems)
+        {
+            DefaultFeedMaximumNumberOfDownloadedItems = maxItems;
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
         public void SetDefaultDownloadStrategy(PodcastEpisodeDownloadStrategy strategy)
         {
             DefaultFeedEpisodeDownloadStrategy = strategy;
@@ -355,6 +363,7 @@ namespace PodcastUtilities.Common.Configuration
             writer.WriteStartElement("feed");
             writer.WriteElementString("maximumDaysOld", DefaultFeedMaximumDaysOld.ToString(CultureInfo.InvariantCulture));
             writer.WriteElementString("deleteDownloadsDaysOld", DefaultFeedDeleteDownloadsDaysOld.ToString(CultureInfo.InvariantCulture));
+            writer.WriteElementString("maximumNumberOfDownloadedItems", DefaultFeedMaximumNumberOfDownloadedItems.ToString(CultureInfo.InvariantCulture));
             writer.WriteElementString("format", FeedInfo.WriteFeedFormat(DefaultFeedFormat));
             writer.WriteElementString("namingStyle", FeedInfo.WriteFeedEpisodeNamingStyle(DefaultFeedEpisodeNamingStyle));
             writer.WriteElementString("downloadStrategy", FeedInfo.WriteFeedEpisodeDownloadStrategy(DefaultFeedEpisodeDownloadStrategy));

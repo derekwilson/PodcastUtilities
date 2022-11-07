@@ -18,7 +18,8 @@
     <sortdirection>asc</sortdirection>
     <feed>
       <maximumDaysOld>31</maximumDaysOld>
-      <deleteDownloadsDaysOld>2147483647</deleteDownloadsDaysOld>
+      <deleteDownloadsDaysOld>32</deleteDownloadsDaysOld>
+      <maximumNumberOfDownloadedItems>33</maximumNumberOfDownloadedItems>
       <format>rss</format>
       <namingStyle>PUBDATE_FOLDER_TITLE_URL</namingStyle>
       <downloadStrategy>high_tide</downloadStrategy>

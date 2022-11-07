@@ -21,7 +21,8 @@
             <maximumDaysOld>99</maximumDaysOld>
             <downloadStrategy>latest</downloadStrategy>
             <deleteDownloadsDaysOld>88</deleteDownloadsDaysOld>
-        </feed>
+			<maximumNumberOfDownloadedItems>55</maximumNumberOfDownloadedItems>
+		</feed>
         <postdownloadcommand>
             <command>command</command>
             <arguments>arg</arguments>
@@ -59,7 +60,8 @@
             <namingStyle>pubdate_title_url</namingStyle>
             <downloadStrategy>high_tide</downloadStrategy>
             <deleteDownloadsDaysOld>14</deleteDownloadsDaysOld>
-        </feed>
+			<maximumNumberOfDownloadedItems>15</maximumNumberOfDownloadedItems>
+		</feed>
         <folder>Test2</folder>
         <pattern>*.mp3</pattern>
         <number>34</number>

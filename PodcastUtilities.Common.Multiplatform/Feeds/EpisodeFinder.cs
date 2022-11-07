@@ -106,12 +106,17 @@ namespace PodcastUtilities.Common.Feeds
             return Path.Combine(Path.Combine(rootFolder, podcastInfo.Folder), proposedFilename);
         }
 
-        private List<ISyncItem> ApplyDownloadStrategy(string stateKey, IPodcastInfo podcastInfo, List<ISyncItem> episodesFound)
+        private List<ISyncItem> ApplyDownloadStrategy(string stateKey, IPodcastInfo podcastInfo, List<ISyncItem> episodesFound, int episodesAlreadyDownloadedInCache)
         {
+            if (episodesAlreadyDownloadedInCache > 0)
+            {
+                OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Items already in cache: {0} = {1}", podcastInfo.Folder, episodesAlreadyDownloadedInCache), podcastInfo);
+            }
+            int numberOfNewEpisodesToAllow = podcastInfo.Feed.MaximumNumberOfDownloadedItems.Value - episodesAlreadyDownloadedInCache;
             switch (podcastInfo.Feed.DownloadStrategy.Value)
             {
                 case PodcastEpisodeDownloadStrategy.All:
-                    return episodesFound;
+                    return episodesFound.Take(numberOfNewEpisodesToAllow).ToList();
 
                 case PodcastEpisodeDownloadStrategy.HighTide:
                     var state = _stateProvider.GetState(stateKey);
@@ -119,9 +124,7 @@ namespace PodcastUtilities.Common.Feeds
                         (from episode in episodesFound
                          where episode.Published > state.DownloadHighTide
                          select episode);
-                    var filteredEpisodes =  new List<ISyncItem>(1);
-                    filteredEpisodes.AddRange(newEpisodes);
-                    return filteredEpisodes;
+                    return newEpisodes.Take(numberOfNewEpisodesToAllow).ToList();
 
                 case PodcastEpisodeDownloadStrategy.Latest:
                     episodesFound.Sort((e1, e2) => e2.Published.CompareTo(e1.Published));
@@ -130,7 +133,7 @@ namespace PodcastUtilities.Common.Feeds
                     return latestEpisodes;
 
                 default:
-                    throw new EnumOutOfRangeException();
+                    throw new EnumOutOfRangeException(podcastInfo.Feed.DownloadStrategy.Value.ToString());
             }
         }
 
@@ -169,6 +172,8 @@ namespace PodcastUtilities.Common.Feeds
                 feedSaveFile = Path.Combine(Path.Combine(rootFolder, podcastInfo.Folder), "last_download_feed.xml");
             }
 
+            // the number of items we already have downloaded
+            var episodesAlreadyDownloadedInCache = 0;
             using (var webClient = _webClientFactory.CreateWebClient())
             {
                 var downloader = new Downloader(webClient, _feedFactory);
@@ -177,7 +182,9 @@ namespace PodcastUtilities.Common.Feeds
                 {
                     var feed = downloader.DownloadFeed(podcastInfo.Feed.Format.Value, podcastInfo.Feed.Address,feedSaveFile);
                     feed.StatusUpdate += StatusUpdate;
-                    var episodes = feed.Episodes;
+
+                    // we want to consider the episodes from earliest to latest - to make sure we get the oldest episodes
+                    var episodes = feed.Episodes.OrderBy(item => item.Published);
 
                     var oldestEpisodeToAccept = DateTime.MinValue;
                     if (podcastInfo.Feed.MaximumDaysOld.Value < int.MaxValue)
@@ -208,6 +215,14 @@ namespace PodcastUtilities.Common.Feeds
                             else
                             {
                                 OnStatusVerbose(string.Format(CultureInfo.InvariantCulture, "Episode already downloaded: {0}", podcastFeedItem.EpisodeTitle), podcastInfo);
+                                // the episode is already downloaded
+                                episodesAlreadyDownloadedInCache++;
+                                if (episodes.Last() == podcastFeedItem && podcastInfo.Feed.DownloadStrategy.Value == PodcastEpisodeDownloadStrategy.Latest)
+                                {
+                                    // special case - the latest episode has already been downloaded and we only want the latest
+                                    // do nothing
+                                    return new List<ISyncItem>();
+                                }
                             }
                         }
                         else
@@ -222,7 +237,7 @@ namespace PodcastUtilities.Common.Feeds
                 }
             }
 
-            var filteredEpisodes = ApplyDownloadStrategy(stateKey, podcastInfo, episodesToDownload);
+            var filteredEpisodes = ApplyDownloadStrategy(stateKey, podcastInfo, episodesToDownload, episodesAlreadyDownloadedInCache);
             foreach (var filteredEpisode in filteredEpisodes)
             {
                 OnStatusMessageUpdate(string.Format(CultureInfo.InvariantCulture, "Queued: {0}", filteredEpisode.EpisodeTitle), podcastInfo);

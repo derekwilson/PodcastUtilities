@@ -90,6 +90,7 @@
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentFeedConfigurations.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentFeedDeleteOldDownloads.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentFeedEpisodeExpiry.cs" />
+    <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentFeedMaximumNumberOfDownloadedItems.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentPlaylistFormats.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingAnInvalidControlFile.cs" />
     <Compile Include="Configuration\ControlFileTests\Creation\WhenCreatingWithDifferentPlaylistSeparator.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGeneratorWithANullCommandline.cs" />
     <Compile Include="Feeds\CommandGeneratorTests\WhenTestingTheGenerator.cs" />
     <Compile Include="Feeds\DownloaderTests\WhenTestingTheDownloaderInRssRetainingTheFile.cs" />
+    <Compile Include="Feeds\EpisodeFinderTests\WhenFindingEpisodesInAFeedThatIsAlreadyDownloadedAndHasMaximum.cs" />
     <Compile Include="Feeds\EpisodeFinderTests\WhenFindingMultipleEpisodesInAFeedTheyHaveUniqueIds.cs" />
     <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverter.cs" />
     <Compile Include="Feeds\SyncItemToEpisodeDownloaderTaskConverterTests\WhenTestingTheConverterConvertsItems.cs" />
