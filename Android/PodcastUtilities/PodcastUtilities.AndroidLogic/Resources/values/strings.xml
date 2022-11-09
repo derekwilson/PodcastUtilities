@@ -16,7 +16,7 @@
 
 	<string name="action_load_control">Load Control File</string>
 	<string name="action_purge">Purge Podcasts</string>
-	<string name="action_download">Download Podcasts</string>
+	<string name="action_download">Download from all Feeds</string>
 	<string name="action_playlist">Generate Playlist</string>
 	<string name="action_settings">Settings</string>
 
@@ -46,7 +46,7 @@
 		<item quantity="one">(max %d item)</item>
 		<item quantity="other">(max %d items)</item>
 	</plurals>
-	<string name="feed_sublabel_no_max">(No maximum)</string>
+	<string name="feed_sublabel_no_max">(no max)</string>
 
 	<plurals name="feed_sublabel_delete">
 		<item quantity="one">Delete after %d day old</item>

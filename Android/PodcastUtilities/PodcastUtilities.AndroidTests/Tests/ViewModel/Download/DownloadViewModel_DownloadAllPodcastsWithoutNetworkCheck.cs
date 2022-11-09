@@ -308,6 +308,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         public void StatusUpdate_StatusMessageVerboseDoesNotDisplay()
         {
             // arrange
+            // verbose is not enabled
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise();
@@ -315,6 +316,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             var syncItemMocker = SetupFireStatusEvent(EPISODE_1_ID, StatusUpdateLevel.Verbose, false, null, "test verbose");
             Fake.ClearRecordedCalls(MockStatusAndProgressMessageStore);
             Fake.ClearRecordedCalls(MockAnalyticsEngine);
+            Fake.ClearRecordedCalls(MockLogger);
 
             // act
             ViewModel.DownloadAllPodcastsWithoutNetworkCheck().Wait();
@@ -326,6 +328,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             Assert.AreEqual(Status.OK, ObservedResults.LastUpdateStatus, "status");
             A.CallTo(MockStatusAndProgressMessageStore).MustNotHaveHappened();
             A.CallTo(MockAnalyticsEngine).MustNotHaveHappened();
+            // but we have logged it
+            A.CallTo(() => MockLogger.Verbose(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(1, Times.Exactly);
         }
 
         [Test]

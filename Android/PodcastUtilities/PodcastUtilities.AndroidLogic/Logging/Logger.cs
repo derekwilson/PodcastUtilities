@@ -13,6 +13,7 @@ namespace PodcastUtilities.AndroidLogic.Logging
     {
         public delegate string MessageGenerator();
 
+        void Verbose(MessageGenerator message);
         void Debug(MessageGenerator message);
         void Warning(MessageGenerator message);
         void LogException(MessageGenerator message, Exception ex);
@@ -51,6 +52,15 @@ namespace PodcastUtilities.AndroidLogic.Logging
         public void LogException(ILogger.MessageGenerator message, Exception ex)
         {
             nlogLogger.Error(ex, message() + $" => {ex.Message}");
+        }
+
+        public void Verbose(ILogger.MessageGenerator message)
+        {
+            if (nlogLogger.IsEnabled(LogLevel.Trace))
+            {
+                // only call the message delegate if we are logging
+                nlogLogger.Trace(message());
+            }
         }
     }
 
@@ -102,7 +112,7 @@ namespace PodcastUtilities.AndroidLogic.Logging
 
             // set the loglevel
 #if DEBUG
-            SetLoggingLevel(LogLevel.Debug);
+            SetLoggingLevel(LogLevel.Trace);
 #else
             SetLoggingLevel(LogLevel.Error);
 #endif

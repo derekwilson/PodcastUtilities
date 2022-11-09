@@ -100,6 +100,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         {
             Logger.Debug(() => $"DownloadViewModel:Initialise");
             Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_title));
+            PodcastEpisodeFinder.StatusUpdate += this.DownloadStatusUpdate;
         }
 
         public bool RequestExit()
@@ -178,7 +179,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                     Logger.Warning(() => $"DownloadViewModel:FindEpisodesToDownload - ignoring, already initialised");
                     if (CompletedFindingPodcasts)
                     {
-                        RefreshUI();
+                        RefreshUI(folderSelected);
                     }
                     else
                     {
@@ -233,14 +234,22 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             }
             CompletedFindingPodcasts = true;
             Observables.EndProgress?.Invoke(this, null);
-            RefreshUI();
+            RefreshUI(folderSelected);
+            PodcastEpisodeFinder.StatusUpdate -= this.DownloadStatusUpdate;
         }
 
-        private void RefreshUI()
+        private void SetNoDownloads(string folderSelected)
+        {
+            var noDownloadsText = ResourceProvider.GetString(Resource.String.no_downloads_text);
+            var emptyMessage = (string.IsNullOrEmpty(folderSelected)) ? noDownloadsText : $"{folderSelected}\n{noDownloadsText}";
+            Observables.SetEmptyText?.Invoke(this, emptyMessage);
+        }
+
+        private void RefreshUI(string folderSelected)
         {
             if (AllItems.Count < 1)
             {
-                Observables.SetEmptyText?.Invoke(this, ResourceProvider.GetString(Resource.String.no_downloads_text));
+                SetNoDownloads(folderSelected);
             }
             Observables.SetSyncItems?.Invoke(this, AllItems);
             SetTitle();
@@ -422,21 +431,24 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             bool verbose = controlFile?.GetDiagnosticOutput() == DiagnosticOutputLevel.Verbose;
+            ISyncItem item = null;
+            string id = "NONE";
+            if (e.UserState != null && e.UserState is ISyncItem)
+            {
+                item = e.UserState as ISyncItem;
+                id = item.Id.ToString();
+            }
+
             if (e.MessageLevel == StatusUpdateLevel.Verbose && !verbose)
             {
+                // log the status update to the logger but not to the UI
+                Logger.Verbose(() => $"DownloadViewModel:StatusUpdate ID {id}, {e.Message}, Complete {e.IsTaskCompletedSuccessfully}");
                 return;
             }
 
             lock (MessageSyncLock)
             {
                 // keep all the message together
-                ISyncItem item = null;
-                string id = "NONE";
-                if (e.UserState != null && e.UserState is ISyncItem)
-                {
-                    item = e.UserState as ISyncItem;
-                    id = item.Id.ToString();
-                }
                 if (e.Exception != null)
                 {
                     Logger.LogException(() => $"DownloadViewModel:StatusUpdate ID {id} -> ", e.Exception);
