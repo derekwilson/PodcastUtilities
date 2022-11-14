@@ -228,7 +228,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                         AllItems.Add(item);
                     }
                     count++;
-                    AnalyticsEngine.DownloadFeedEvent(episodesInThisFeed.Count);
+                    if (string.IsNullOrEmpty(folderSelected))
+                    {
+                        AnalyticsEngine.DownloadFeedEvent(episodesInThisFeed.Count);
+                    }
+                    else
+                    {
+                        AnalyticsEngine.DownloadSpecificFeedEvent(episodesInThisFeed.Count, folderSelected);
+                    }
                     Observables.UpdateProgress?.Invoke(this, count);
                 }
             }

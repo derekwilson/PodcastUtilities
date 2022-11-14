@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
+using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
 {
@@ -82,6 +83,25 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         }
 
         [Test]
+        public void FindEpisodesToDownload_Folder_Adds()
+        {
+            // arrange
+            SetupMockControlFileFor2Podcasts();
+            SetupEpisodesFor2Podcasts();
+            ViewModel.Initialise();
+
+            // act
+            ViewModel.FindEpisodesToDownload(PODCAST_FOLDER_1);
+
+            // assert
+            Assert.AreEqual(2, ObservedResults.LastDownloadItems.Count, "total number episodes found");
+            Assert.AreEqual(EPISODE_1_ID, ObservedResults.LastDownloadItems[0].SyncItem.Id, "episode 1 id");
+            Assert.AreEqual(EPISODE_1_TITLE, ObservedResults.LastDownloadItems[0].SyncItem.EpisodeTitle, "episode 1 title");
+            Assert.AreEqual(EPISODE_2_ID, ObservedResults.LastDownloadItems[1].SyncItem.Id, "episode 2 id");
+            Assert.AreEqual(EPISODE_2_TITLE, ObservedResults.LastDownloadItems[1].SyncItem.EpisodeTitle, "episode 2 title");
+        }
+
+        [Test]
         public void FindEpisodesToDownload_Analytics()
         {
             // arrange
@@ -95,6 +115,23 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // assert
             A.CallTo(() => MockAnalyticsEngine.DownloadFeedEvent(2)).MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => MockAnalyticsEngine.DownloadFeedEvent(3)).MustHaveHappened(1, Times.Exactly);
+            A.CallTo(() => MockAnalyticsEngine.DownloadSpecificFeedEvent(A<int>.Ignored, A<string>.Ignored)).MustNotHaveHappened();
+        }
+
+        [Test]
+        public void FindEpisodesToDownload_Folder_Analytics()
+        {
+            // arrange
+            SetupMockControlFileFor2Podcasts();
+            SetupEpisodesFor2Podcasts();
+            ViewModel.Initialise();
+
+            // act
+            ViewModel.FindEpisodesToDownload(PODCAST_FOLDER_1);
+
+            // assert
+            A.CallTo(() => MockAnalyticsEngine.DownloadSpecificFeedEvent(2, PODCAST_FOLDER_1)).MustHaveHappened(1, Times.Exactly);
+            A.CallTo(() => MockAnalyticsEngine.DownloadFeedEvent(A<int>.Ignored)).MustNotHaveHappened();
         }
 
         [Test]
@@ -127,7 +164,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
 
             // assert
             // we only use the finder once - for each episode
-            A.CallTo(MockPodcastEpisodeFinder).MustHaveHappened(2, Times.Exactly);
+            A.CallTo(() => MockPodcastEpisodeFinder.FindEpisodesToDownload(
+                    A<string>.Ignored, A<int>.Ignored, A<IPodcastInfo>.Ignored, A<bool>.Ignored
+                )).MustHaveHappened(2, Times.Exactly);
             Assert.AreEqual(0, ObservedResults.StartProgressCount, "never started");
             Assert.AreEqual(0, ObservedResults.UpdateProgressCount, "never updated");
             Assert.AreEqual(0, ObservedResults.EndProgressCount, "never ended");
