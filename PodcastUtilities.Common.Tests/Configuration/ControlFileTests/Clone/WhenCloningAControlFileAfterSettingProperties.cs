@@ -48,6 +48,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
 
             _controlFile.SetDefaultAscendingSort(false);
             _controlFile.SetDefaultDeleteDownloadsDaysOld(246);
+            _controlFile.SetDefaultMaximumNumberOfDownloadedItems(680);
             _controlFile.SetDefaultDownloadStrategy(PodcastEpisodeDownloadStrategy.All);
             _controlFile.SetDefaultFeedFormat(PodcastFeedFormat.ATOM);
             _controlFile.SetDefaultFilePattern("PATTERN");
@@ -131,6 +132,12 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
         public void ItShouldCloneTheDefaultDeleteDaysOld()
         {
             Assert.That(_clonedControlFile.GetDefaultDeleteDownloadsDaysOld(), Is.EqualTo(246));
+        }
+
+        [Test]
+        public void ItShouldCloneTheDefaultMaximumNumberOfDownloadedItems()
+        {
+            Assert.That(_clonedControlFile.GetDefaultMaximumNumberOfDownloadedItems(), Is.EqualTo(680));
         }
 
         [Test]

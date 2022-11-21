@@ -18,6 +18,7 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
+using System;
 using System.Collections.Generic;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Files;
@@ -31,6 +32,8 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
         : WhenTestingBehaviour
     {
         protected Generator PlaylistGenerator { get; set; }
+
+        protected StatusUpdateEventArgs _statusUpdateArgs;
 
         protected IFileUtilities FileUtilities { get; set; }
         protected IPathUtilities PathUtilities { get; set; }
@@ -73,6 +76,13 @@ namespace PodcastUtilities.Common.Tests.Playlists.GeneratorTests
             Factory.Stub(factory => factory.CreatePlaylist(PlaylistFormat.WPL, null)).IgnoreArguments().Return(Playlist);
 
             PlaylistGenerator = new Generator(Finder, FileUtilities, PathUtilities, Factory);
+
+            PlaylistGenerator.StatusUpdate += new System.EventHandler<StatusUpdateEventArgs>(GenerateStatusUpdate);
+        }
+
+        private void GenerateStatusUpdate(object sender, StatusUpdateEventArgs e)
+        {
+            _statusUpdateArgs = e;
         }
     }
 

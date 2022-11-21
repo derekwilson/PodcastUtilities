@@ -34,7 +34,7 @@ namespace PodcastUtilities.Common.Configuration
     public abstract class BaseControlFile : IControlFileGlobalDefaults
     {
         /// <summary>
-        /// the file pattern for files that are in a podcast
+        /// the max number of files in a podcast to copy when syncing
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal int DefaultNumberOfFiles { get; set; }
@@ -83,6 +83,11 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         protected internal int DefaultFeedDeleteDownloadsDaysOld { get; set; }
+        /// <summary>
+        /// global default number of items that should be in the cache
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        protected internal int DefaultFeedMaximumNumberOfDownloadedItems { get; set; }
         /// <summary>
         /// global default feed format 
         /// </summary>
@@ -137,6 +142,7 @@ namespace PodcastUtilities.Common.Configuration
             DefaultFeedEpisodeDownloadStrategy = PodcastEpisodeDownloadStrategy.All;
             DefaultFeedMaximumDaysOld = int.MaxValue;
             DefaultFeedDeleteDownloadsDaysOld = int.MaxValue;
+            DefaultFeedMaximumNumberOfDownloadedItems = int.MaxValue;
             DefaultPostDownloadCommand = "";
             DefaultPostDownloadArguments = "";
             DefaultPostDownloadWorkingDirectory = "";
@@ -159,6 +165,15 @@ namespace PodcastUtilities.Common.Configuration
         public int GetDefaultDeleteDownloadsDaysOld()
         {
             return DefaultFeedDeleteDownloadsDaysOld;
+        }
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public int GetDefaultMaximumNumberOfDownloadedItems()
+        {
+            return DefaultFeedMaximumNumberOfDownloadedItems;
         }
 
         /// <summary>
@@ -675,6 +690,12 @@ namespace PodcastUtilities.Common.Configuration
                     if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture, out intValue))
                     {
                         DefaultFeedDeleteDownloadsDaysOld = intValue;
+                    }
+                    break;
+                case "maximumNumberOfDownloadedItems":
+                    if (int.TryParse(content, NumberStyles.Integer, CultureInfo.InvariantCulture, out intValue))
+                    {
+                        DefaultFeedMaximumNumberOfDownloadedItems = intValue;
                     }
                     break;
                 case "format":

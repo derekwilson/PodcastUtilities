@@ -7,6 +7,7 @@ using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.Common.Playlists;
 using System;
 using System.Collections.Generic;
@@ -288,7 +289,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         {
             Logger.Debug(() => $"MainViewModel: GenerateStatusUpdate {e.IsTaskCompletedSuccessfully}, {e.Message}");
             Observables.ToastMessage?.Invoke(this, e.Message);
-            // TODO - call analytics engine when we know how many items were written
+            IPlaylist playlist = null;
+            int items = -1;
+            if (e.UserState != null && e.UserState is IPlaylist)
+            {
+                playlist = e.UserState as IPlaylist;
+                items = playlist.NumberOfTracks;
+            }
+            AnalyticsEngine.GeneratePlaylistCompleteEvent(items);
         }
     }
 }

@@ -64,9 +64,9 @@ namespace PodcastUtilities.Common.Playlists
         private IPathUtilities PathUtilities { get; set; }
         private IPlaylistFactory PlaylistFactory { get; set; }
 
-    	private void OnStatusUpdate(string message, Boolean complete)
+    	private void OnStatusUpdate(string message, Boolean complete, IPlaylist playlist)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message, complete, null));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message, complete, playlist));
         }
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)
@@ -102,7 +102,7 @@ namespace PodcastUtilities.Common.Playlists
             }
 
             var tempFile = PathUtilities.GetTempFileName();
-            OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Generating Playlist with {0} items", p.NumberOfTracks), false);
+            OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Generating Playlist with {0} items", p.NumberOfTracks), false, p);
 
             p.SaveFile(tempFile);
 
@@ -110,7 +110,7 @@ namespace PodcastUtilities.Common.Playlists
                                    ? Path.Combine(rootFolder, control.GetPlaylistFileName())
                                    : control.GetPlaylistFileName();
 
-            OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Writing playlist to {0}", destPlaylist), true);
+            OnStatusUpdate(string.Format(CultureInfo.InvariantCulture, "Writing playlist to {0}", destPlaylist), true, p);
 
             FileUtilities.FileCopy(tempFile, destPlaylist, true);
         }

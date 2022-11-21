@@ -43,6 +43,10 @@ namespace PodcastUtilities.AndroidLogic.Adapters
                     Resource.Plurals.feed_sublabel_download,
                     Resource.String.feed_sublabel_download_all),
                 GetSublabelPart(
+                    Items[position].PodcastFeed.Feed.MaximumNumberOfDownloadedItems.Value,
+                    Resource.Plurals.feed_sublabel_max,
+                    Resource.String.feed_sublabel_no_max),
+                GetSublabelPart(
                     Items[position].PodcastFeed.Feed.DeleteDownloadsDaysOld.Value,
                     Resource.Plurals.feed_sublabel_delete,
                     Resource.String.feed_sublabel_delete_never)

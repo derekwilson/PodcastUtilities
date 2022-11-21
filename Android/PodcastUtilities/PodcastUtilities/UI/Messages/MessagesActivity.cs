@@ -2,7 +2,6 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
-using Android.Text;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
@@ -57,6 +56,17 @@ namespace PodcastUtilities.UI.Messages
             AndroidApplication.Logger.Debug(() => $"MessagesActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                AndroidApplication.Logger.Debug(() => $"MessagesActivity:toolbar back button - exit");
+                Finish();
+                return true;
+            }
+            return base.OnOptionsItemSelected(item);
         }
 
         private void SetupViewModelObservers()

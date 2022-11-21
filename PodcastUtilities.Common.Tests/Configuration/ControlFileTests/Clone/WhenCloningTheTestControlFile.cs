@@ -83,6 +83,12 @@ namespace PodcastUtilities.Common.Tests.Configuration.ControlFileTests.Clone
         }
 
         [Test]
+        public void ItShouldCloneTheDefaultMaximumNumberOfDownloadedItems()
+        {
+            Assert.That(_clonedControlFile.GetDefaultMaximumNumberOfDownloadedItems(), Is.EqualTo(55));
+        }
+
+        [Test]
         public void ItShouldCloneTheDefaultMaximumDaysOld()
         {
             Assert.That(_clonedControlFile.GetDefaultMaximumDaysOld(), Is.EqualTo(99));

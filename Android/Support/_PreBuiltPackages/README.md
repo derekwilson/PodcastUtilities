@@ -5,6 +5,7 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 1.2.0   | 21 Nov 2022 | 21 (Android 5)   | 33 (Android 13)
 | 1.1.0   | 20 Oct 2022 | 21 (Android 5)   | 33 (Android 13)
 | 1.0.3   | 1 Jun 2022  | 19 (Android 4.4) | 31 (Android 12)
 | 1.0.2   | 14 Apr 2022 | 19 (Android 4.4) | 31 (Android 12)
@@ -14,6 +15,13 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 ## Notes
 
 Major changes for each version
+
+## v1.2.0 (6)
+- Updated `PodcastUtilities.Common.Dll` to v3.1.0.0
+- When finding episodes they are now listed sorted from oldest to newest (rather than rely on the order in the feed)
+- Added support for `maximumNumberOfDownloadedItems` to throttle downloads
+- FIX: `Latest` download strategy would download the latest episode not the cache, it now does nothing if the latest episode is in the cache 
+- FIX: Back button on the toolbar for the logging display now works correctly
 
 ## v1.1.0 (5)
 - First version available for Kindle Fire devices

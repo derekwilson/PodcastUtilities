@@ -20,15 +20,12 @@
 #endregion
 using System;
 using System.Globalization;
-using System.IO;
-using System.Text;
 using System.Xml;
 using System.Xml.Schema;
-using System.Xml.Serialization;
 using PodcastUtilities.Common.Exceptions;
 
 namespace PodcastUtilities.Common.Configuration
-{    
+{
     /// <summary>
     /// configuration info for a podcast feed
     /// </summary>
@@ -47,6 +44,7 @@ namespace PodcastUtilities.Common.Configuration
             NamingStyle = new DefaultableValueTypeItem<PodcastEpisodeNamingStyle>(_controlFileGlobalDefaults.GetDefaultNamingStyle);
             DownloadStrategy = new DefaultableValueTypeItem<PodcastEpisodeDownloadStrategy>(_controlFileGlobalDefaults.GetDefaultDownloadStrategy);
             DeleteDownloadsDaysOld = new DefaultableValueTypeItem<int>(_controlFileGlobalDefaults.GetDefaultDeleteDownloadsDaysOld);
+            MaximumNumberOfDownloadedItems = new DefaultableValueTypeItem<int>(_controlFileGlobalDefaults.GetDefaultMaximumNumberOfDownloadedItems);
         }
 
         /// <summary>
@@ -78,6 +76,11 @@ namespace PodcastUtilities.Common.Configuration
         /// number of days before we delete a download
         /// </summary>
         public IDefaultableItem<int> DeleteDownloadsDaysOld { get; set;  }
+
+        /// <summary>
+        /// maximum number of items from the feed to have in the cache
+        /// </summary>
+        public IDefaultableItem<int> MaximumNumberOfDownloadedItems { get; set; }
 
         /// <summary>
         /// Creates a new object that is a copy of the current instance.
@@ -142,7 +145,10 @@ namespace PodcastUtilities.Common.Configuration
                     NamingStyle.Value = ReadFeedEpisodeNamingStyle(content);
                     break;
                 case "deleteDownloadsDaysOld":
-                    DeleteDownloadsDaysOld.Value = Convert.ToInt32(content,CultureInfo.InvariantCulture);
+                    DeleteDownloadsDaysOld.Value = Convert.ToInt32(content, CultureInfo.InvariantCulture);
+                    break;
+                case "maximumNumberOfDownloadedItems":
+                    MaximumNumberOfDownloadedItems.Value = Convert.ToInt32(content, CultureInfo.InvariantCulture);
                     break;
                 default:
                     result = ProcessorResult.Ignored;
@@ -182,6 +188,10 @@ namespace PodcastUtilities.Common.Configuration
             if (DeleteDownloadsDaysOld.IsSet)
             {
                 writer.WriteElementString("deleteDownloadsDaysOld", DeleteDownloadsDaysOld.Value.ToString(CultureInfo.InvariantCulture));
+            }
+            if (MaximumNumberOfDownloadedItems.IsSet)
+            {
+                writer.WriteElementString("maximumNumberOfDownloadedItems", MaximumNumberOfDownloadedItems.Value.ToString(CultureInfo.InvariantCulture));
             }
         }
 

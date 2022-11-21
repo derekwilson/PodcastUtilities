@@ -33,6 +33,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.FeedInfoTests.Serialisatio
                             {
                                 Address = new Uri("http://test.com"),
                             };
+            _feedInfo.MaximumNumberOfDownloadedItems.Value = 123;
             _feedInfo.DeleteDownloadsDaysOld.Value = 456;
             _feedInfo.DownloadStrategy.Value = PodcastEpisodeDownloadStrategy.HighTide;
             _feedInfo.Format.Value = PodcastFeedFormat.RSS;
@@ -49,7 +50,7 @@ namespace PodcastUtilities.Common.Tests.Configuration.FeedInfoTests.Serialisatio
         [Test]
         public void ItShouldWriteTheXml()
         {
-            Assert.That(_textReader.ReadToEnd(), Is.EqualTo("<url>http://test.com/</url><downloadStrategy>high_tide</downloadStrategy><format>rss</format><maximumDaysOld>789</maximumDaysOld><namingStyle>url</namingStyle><deleteDownloadsDaysOld>456</deleteDownloadsDaysOld>"));
+            Assert.That(_textReader.ReadToEnd(), Is.EqualTo("<url>http://test.com/</url><downloadStrategy>high_tide</downloadStrategy><format>rss</format><maximumDaysOld>789</maximumDaysOld><namingStyle>url</namingStyle><deleteDownloadsDaysOld>456</deleteDownloadsDaysOld><maximumNumberOfDownloadedItems>123</maximumNumberOfDownloadedItems>"));
         }
     }
 }

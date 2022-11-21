@@ -9,6 +9,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
     public interface IAnalyticsEngine
     {
         void DownloadFeedEvent(int numberOfItems);
+        void DownloadSpecificFeedEvent(int numberOfItems, string folder);
         void DownloadEpisodeEvent(long sizeInMB);
         void DownloadEpisodeCompleteEvent();
         void LoadControlFileEvent();
@@ -34,6 +35,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         }
 
         private const string Event_Download_Feed = "Download_Feed";
+        private const string Event_Download_Specific_Feed = "Download_Specific_Feed";
         private const string Event_Download_Episode = "Download_Episode";
         private const string Event_Download_Episode_Complete = "Download_Episode_Complete";
         private const string Event_Load_ControlFile = "Load_ControlFile";
@@ -48,6 +50,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Property_Version = "Version";
         private const string Property_SizeMB = "SizeMB";
         private const string Property_NumberOfItems = "NumberOfItems";
+        private const string Property_Folder = "Folder";
         private const string Property_Format = "Format";
 
         public void DownloadEpisodeCompleteEvent()
@@ -59,6 +62,14 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         {
             Analytics.TrackEvent(Event_Download_Episode, new Dictionary<string, string> {
                 { Property_SizeMB, sizeInMB.ToString()}
+            });
+        }
+
+        public void DownloadSpecificFeedEvent(int numberOfItems, string folder)
+        {
+            Analytics.TrackEvent(Event_Download_Specific_Feed, new Dictionary<string, string> {
+                { Property_NumberOfItems, numberOfItems.ToString()},
+                { Property_Folder, folder}
             });
         }
 
