@@ -119,6 +119,9 @@ Note: Sometimes when the `BuildReleaseAPK.bat` ,is first run it will actually pr
 1. Edit `Android\Support\_PreBuiltPackages\README.md` with the new release details
 1. Edit `Android\Support\_PreBuiltPackages\release.xml` with the new release details
 1. Push your changes to master and label the commit in the style "v1.0.3(4)" ensure the tag is pushed by using `git push origin "1.0.3(4)"`
+1. Upload the APK to the Amazon App Store
+
+https://developer.amazon.com/apps-and-games/console/apps/list.html
 
 ##### Notes on installing release builds
 
