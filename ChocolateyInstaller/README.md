@@ -44,9 +44,9 @@ choco upgrade chocolatey -y
 
 ### Create package
 
-Build all the assemblies and create a current build ZIP in  `_PreBuiltPackages`
+Build all the assemblies and create a current build ZIP in  `_PreBuiltPackages`, actually the build process uses the files in `CurrentBuild` but the process of building the release ZIP also builds that folder.
 
-Goto folder `ChocolateyInstaller\podcastutilities-core` or `ChocolateyInstaller\podcastutilities` edit the `podcastutilities.nuspec` to have the correct version number, also alter the version number in `build.ps1` and `chocolateyinstall.ps1`
+Goto folder `ChocolateyInstaller\podcastutilities-core` or `ChocolateyInstaller\podcastutilities` edit the `podcastutilities.nuspec` to have the correct version number, also alter the version number in `build.ps1` and `tools\chocolateyinstall.ps1`
 
 Run `build.ps1` in powershell
 
