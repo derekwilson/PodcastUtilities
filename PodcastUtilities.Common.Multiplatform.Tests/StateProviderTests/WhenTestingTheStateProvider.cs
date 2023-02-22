@@ -1,9 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
 using PodcastUtilities.Common.Platform;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PodcastUtilities.Common.Multiplatform.Tests.StateProviderTests
 {
