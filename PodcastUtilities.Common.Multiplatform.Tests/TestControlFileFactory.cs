@@ -18,36 +18,29 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using Moq;
-using NUnit.Framework;
-using PodcastUtilities.Common.Platform;
+using PodcastUtilities.Common.Configuration;
+using System.IO;
+using System.Reflection;
+using System.Xml;
 
-namespace PodcastUtilities.Common.Multiplatform.Tests.StateProviderTests
+namespace PodcastUtilities.Common.Multiplatform.Tests
 {
-    public class WhenTestingTheStateProvider : WhenTestingBehaviour
+    public class TestControlFileFactory
     {
-        protected StateProvider provider;
-        protected IState state;
-        protected Mock<IFileUtilities> fileUtilities;
-
-        protected override void GivenThat()
+        public static IReadOnlyControlFile CreateControlFile()
         {
-            base.GivenThat();
-            fileUtilities = GenerateMock<IFileUtilities>();
-
-            fileUtilities.Setup(utils => utils.FileExists(@"c:\folder\state.xml")).Returns(false);
-            provider = new StateProvider(fileUtilities.Object);
+            return CreateReadWriteControlFile();
         }
 
-        protected override void When()
+        public static IReadWriteControlFile CreateReadWriteControlFile()
         {
-            state = provider.GetState(@"c:\folder");
-        }
+            var testControlFileResourcePath = "PodcastUtilities.Common.Multiplatform.Tests.XML.testcontrolfile.xml";
 
-        [Test]
-        public void ItShouldGetTheState()
-        {
-            Assert.IsInstanceOf(typeof(IState), state);
+            Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(testControlFileResourcePath);
+            var controlFileXmlDocument = new XmlDocument();
+            controlFileXmlDocument.Load(s);
+
+            return new ReadWriteControlFile(controlFileXmlDocument);
         }
     }
 }

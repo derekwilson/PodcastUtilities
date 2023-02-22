@@ -18,36 +18,26 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using Moq;
-using NUnit.Framework;
 using PodcastUtilities.Common.Platform;
+using System;
+using System.IO;
 
-namespace PodcastUtilities.Common.Multiplatform.Tests.StateProviderTests
+namespace PodcastUtilities.Common.Multiplatform.Tests
 {
-    public class WhenTestingTheStateProvider : WhenTestingBehaviour
+    public class TestFileInfo : IFileInfo
     {
-        protected StateProvider provider;
-        protected IState state;
-        protected Mock<IFileUtilities> fileUtilities;
+        public string Name { get; set; }
+        public string FullName { get; set; }
+        public DateTime CreationTime { get; set; }
+        public long Length { get; set; }
 
-        protected override void GivenThat()
+        public static IFileInfo GenerateFile(string folder, string name)
         {
-            base.GivenThat();
-            fileUtilities = GenerateMock<IFileUtilities>();
-
-            fileUtilities.Setup(utils => utils.FileExists(@"c:\folder\state.xml")).Returns(false);
-            provider = new StateProvider(fileUtilities.Object);
-        }
-
-        protected override void When()
-        {
-            state = provider.GetState(@"c:\folder");
-        }
-
-        [Test]
-        public void ItShouldGetTheState()
-        {
-            Assert.IsInstanceOf(typeof(IState), state);
+            return new TestFileInfo()
+            {
+                FullName = Path.Combine(folder, name),
+                Name = name
+            };
         }
     }
 }

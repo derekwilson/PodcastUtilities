@@ -18,36 +18,44 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using Moq;
+using System;
+using System.Xml;
 using NUnit.Framework;
-using PodcastUtilities.Common.Platform;
+using PodcastUtilities.Common.Configuration;
 
-namespace PodcastUtilities.Common.Multiplatform.Tests.StateProviderTests
+namespace PodcastUtilities.Common.Multiplatform.Tests.Configuration.ControlFileTests.Creation
 {
-    public class WhenTestingTheStateProvider : WhenTestingBehaviour
+    public class WhenCreatingAnInvalidControlFile : WhenTestingAControlFile
     {
-        protected StateProvider provider;
-        protected IState state;
-        protected Mock<IFileUtilities> fileUtilities;
+        protected Exception ThrownException { get; set; }
 
         protected override void GivenThat()
         {
             base.GivenThat();
-            fileUtilities = GenerateMock<IFileUtilities>();
 
-            fileUtilities.Setup(utils => utils.FileExists(@"c:\folder\state.xml")).Returns(false);
-            provider = new StateProvider(fileUtilities.Object);
+            XmlNode n = ControlFileXmlDocument.SelectSingleNode("podcasts/global/playlistFormat");
+            n.InnerText = "XXX";    // invalid format
         }
 
         protected override void When()
         {
-            state = provider.GetState(@"c:\folder");
+            ThrownException = null;
+            try
+            {
+                ControlFile = new ReadOnlyControlFile(ControlFileXmlDocument);
+            }
+            catch (Exception exception)
+            {
+                ThrownException = exception;
+            }
         }
 
         [Test]
-        public void ItShouldGetTheState()
+        public void ItShouldThorw()
         {
-            Assert.IsInstanceOf(typeof(IState), state);
+            Assert.That(ThrownException, Is.InstanceOf<NotSupportedException>());
         }
     }
+
+
 }

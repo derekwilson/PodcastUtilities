@@ -18,36 +18,30 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using Moq;
-using NUnit.Framework;
-using PodcastUtilities.Common.Platform;
 
-namespace PodcastUtilities.Common.Multiplatform.Tests.StateProviderTests
+using PodcastUtilities.Common.Configuration;
+using System.IO;
+using System.Reflection;
+using System.Xml;
+
+namespace PodcastUtilities.Common.Multiplatform.Tests.Configuration.ControlFileTests
 {
-    public class WhenTestingTheStateProvider : WhenTestingBehaviour
+    public abstract class WhenTestingAControlFile
+        : WhenTestingBehaviour
     {
-        protected StateProvider provider;
-        protected IState state;
-        protected Mock<IFileUtilities> fileUtilities;
+        protected IReadOnlyControlFile ControlFile { get; set; }
+        protected string TestControlFileResourcePath { get; set; }
+        public XmlDocument ControlFileXmlDocument { get; set; }
 
         protected override void GivenThat()
         {
             base.GivenThat();
-            fileUtilities = GenerateMock<IFileUtilities>();
 
-            fileUtilities.Setup(utils => utils.FileExists(@"c:\folder\state.xml")).Returns(false);
-            provider = new StateProvider(fileUtilities.Object);
-        }
+            TestControlFileResourcePath = "PodcastUtilities.Common.Multiplatform.Tests.XML.testcontrolfile.xml";
 
-        protected override void When()
-        {
-            state = provider.GetState(@"c:\folder");
-        }
-
-        [Test]
-        public void ItShouldGetTheState()
-        {
-            Assert.IsInstanceOf(typeof(IState), state);
+            Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream(TestControlFileResourcePath);
+            ControlFileXmlDocument = new XmlDocument();
+            ControlFileXmlDocument.Load(s);
         }
     }
 }
