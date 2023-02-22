@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PodcastUtilities.Common.Multiplatform", "PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj", "{0A6A99B1-6764-40D6-A892-487E6DEE34BD}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -42,6 +42,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilities.App", "PodcastUtilities.App\PodcastUtilities.App.csproj", "{2AF5FA14-0B6A-4A6F-8283-06DA0C5261B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilities.Presentation.Tests", "PodcastUtilities.Presentation.Tests\PodcastUtilities.Presentation.Tests.csproj", "{F1A13B4F-1748-4237-A87D-02E1729A3190}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilities.Common.Multiplatform.Tests", "PodcastUtilities.Common.Multiplatform.Tests\PodcastUtilities.Common.Multiplatform.Tests.csproj", "{E696B09B-FC80-4AF3-8A31-3B1976EB8055}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -162,6 +164,14 @@ Global
 		{F1A13B4F-1748-4237-A87D-02E1729A3190}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1A13B4F-1748-4237-A87D-02E1729A3190}.Release|x86.ActiveCfg = Release|Any CPU
 		{F1A13B4F-1748-4237-A87D-02E1729A3190}.Release|x86.Build.0 = Release|Any CPU
+		{E696B09B-FC80-4AF3-8A31-3B1976EB8055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E696B09B-FC80-4AF3-8A31-3B1976EB8055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E696B09B-FC80-4AF3-8A31-3B1976EB8055}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E696B09B-FC80-4AF3-8A31-3B1976EB8055}.Debug|x86.Build.0 = Debug|Any CPU
+		{E696B09B-FC80-4AF3-8A31-3B1976EB8055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E696B09B-FC80-4AF3-8A31-3B1976EB8055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E696B09B-FC80-4AF3-8A31-3B1976EB8055}.Release|x86.ActiveCfg = Release|Any CPU
+		{E696B09B-FC80-4AF3-8A31-3B1976EB8055}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
