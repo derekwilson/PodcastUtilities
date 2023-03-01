@@ -8,12 +8,14 @@
 
   <ItemGroup>
     <None Remove="XML\testcontrolfile.xml" />
+    <None Remove="XML\testcontrolfilewrittenbypodcastutilities.xml" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="XML\testcontrolfile.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="XML\testcontrolfilewrittenbypodcastutilities.xml" />
   </ItemGroup>
 
   <ItemGroup>
