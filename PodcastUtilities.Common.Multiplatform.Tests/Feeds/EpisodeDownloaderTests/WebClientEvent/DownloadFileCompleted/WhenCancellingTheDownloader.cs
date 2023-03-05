@@ -27,8 +27,7 @@ namespace PodcastUtilities.Common.Multiplatform.Tests.Feeds.EpisodeDownloaderTes
     {
         protected override void When()
         {
-            _webClient.Raise(client => client.DownloadFileCompleted += null, this,
-                             new AsyncCompletedEventArgs(null, true, _syncItem));
+            _webClient.Raise(client => client.DownloadFileCompleted += null, new AsyncCompletedEventArgs(null, true, _syncItem));
         }
 
         [Test]
