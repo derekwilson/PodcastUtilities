@@ -153,7 +153,7 @@ namespace PodcastUtilities.Common.Multiplatform.Tests.Feeds.EpisodeFinderTests
             _directoryInfoProvider.Setup(dir => dir.GetDirectoryInfo(Path.Combine(_rootFolder, _podcastInfo.Folder))).Returns(_directoryInfo.Object);
 
             _commandGenerator.Setup(cmd => cmd.ReplaceTokensInCommand(
-                It.IsAny <ITokenisedCommand>(),
+                It.IsAny<ITokenisedCommand>(),
                 It.IsAny<string>(),
                 It.IsAny<string>(),
                 It.IsAny<IPodcastInfo>()))
