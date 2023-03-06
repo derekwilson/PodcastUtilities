@@ -7,15 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="XML\testbigrssfeed.xml" />
     <None Remove="XML\testcontrolfile.xml" />
     <None Remove="XML\testcontrolfilewrittenbypodcastutilities.xml" />
+    <None Remove="XML\testemptyrssfeed.xml" />
+    <None Remove="XML\testrssfeed.xml" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="XML\testbigrssfeed.xml" />
     <EmbeddedResource Include="XML\testcontrolfile.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="XML\testcontrolfilewrittenbypodcastutilities.xml" />
+    <EmbeddedResource Include="XML\testemptyrssfeed.xml" />
+    <EmbeddedResource Include="XML\testrssfeed.xml" />
   </ItemGroup>
 
   <ItemGroup>
