@@ -18,7 +18,9 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
+using Moq;
 using NUnit.Framework;
+using System;
 
 namespace PodcastUtilities.Common.Multiplatform.Tests
 {
@@ -34,5 +36,20 @@ namespace PodcastUtilities.Common.Multiplatform.Tests
         {
             Assert.AreEqual(2 + 2, 4);
         }
+
+        [Test]
+        public void Test_Moq()
+        {
+            // given
+            var mock = new Mock<IDisposable>(MockBehavior.Loose);
+
+            // then
+            mock.Object.Dispose();
+
+            // assert
+            mock.Verify(m => m.Dispose(), Times.Once());
+        }
+
+
     }
 }
