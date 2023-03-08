@@ -13,6 +13,7 @@
     <None Remove="XML\testemptyrssfeed.xml" />
     <None Remove="XML\testfile.xml" />
     <None Remove="XML\testrssfeed.xml" />
+    <None Remove="XML\teststate.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
     <EmbeddedResource Include="XML\testemptyrssfeed.xml" />
     <EmbeddedResource Include="XML\testfile.xml" />
     <EmbeddedResource Include="XML\testrssfeed.xml" />
+    <EmbeddedResource Include="XML\teststate.xml" />
   </ItemGroup>
 
   <ItemGroup>
