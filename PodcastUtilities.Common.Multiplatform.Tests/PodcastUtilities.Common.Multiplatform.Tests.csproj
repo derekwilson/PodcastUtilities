@@ -11,6 +11,7 @@
     <None Remove="XML\testcontrolfile.xml" />
     <None Remove="XML\testcontrolfilewrittenbypodcastutilities.xml" />
     <None Remove="XML\testemptyrssfeed.xml" />
+    <None Remove="XML\testfile.xml" />
     <None Remove="XML\testrssfeed.xml" />
   </ItemGroup>
 
@@ -21,6 +22,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="XML\testcontrolfilewrittenbypodcastutilities.xml" />
     <EmbeddedResource Include="XML\testemptyrssfeed.xml" />
+    <EmbeddedResource Include="XML\testfile.xml" />
     <EmbeddedResource Include="XML\testrssfeed.xml" />
   </ItemGroup>
 
