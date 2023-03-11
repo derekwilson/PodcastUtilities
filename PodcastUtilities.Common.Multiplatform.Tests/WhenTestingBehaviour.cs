@@ -74,24 +74,5 @@ namespace PodcastUtilities.Common.Multiplatform.Tests
         {
             return new Mock<MOCKTYPE>(MockBehavior.Loose);
         }
-
-        /*
-        lets leave these one Rhino functions here until I can work out how to implement them using Moq
-        protected TS GenerateStub<TS>()
-            where TS : class
-        {
-            return MockRepository.GenerateStub<TS>();
-        }
-
-        protected TP GeneratePartialMock<TP>(params object[] args) 
-            where TP : class
-        {
-            var mockRepository = new MockRepository();
-            var mock = mockRepository.PartialMock<TP>(args);
-            mockRepository.Replay(mock);
-
-            return mock;
-        }
-        */
     }
 }
