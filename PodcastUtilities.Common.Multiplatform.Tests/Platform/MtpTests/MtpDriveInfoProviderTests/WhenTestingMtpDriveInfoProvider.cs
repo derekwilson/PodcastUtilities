@@ -19,32 +19,24 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 using Moq;
-using NUnit.Framework;
-using System;
+using PodcastUtilities.Common.Platform.Mtp;
+using PodcastUtilities.PortableDevices;
 
-namespace PodcastUtilities.Common.Multiplatform.Tests
+namespace PodcastUtilities.Common.Multiplatform.Tests.Platform.Mtp.MtpDriveInfoProviderTests
 {
-    public class EnvironmentTests
+    public abstract class WhenTestingMtpDriveInfoProvider
+        : WhenTestingBehaviour
     {
-        [Test]
-        public void Test_Assert()
+        protected Mock<IDeviceManager> DeviceManager { get; set; }
+        protected MtpDriveInfoProvider DriveInfoProvider { get; set; }
+
+        protected override void GivenThat()
         {
-            Assert.AreEqual(2 + 2, 4);
+            base.GivenThat();
+
+            DeviceManager = GenerateMock<IDeviceManager>();
+
+            DriveInfoProvider = new MtpDriveInfoProvider(DeviceManager.Object);
         }
-
-        [Test]
-        public void Test_Moq()
-        {
-            // given
-            var mock = new Mock<IDisposable>(MockBehavior.Loose);
-
-            // then
-            mock.Object.Dispose();
-
-            // assert
-            mock.Verify(m => m.Dispose(), Times.Once());
-        }
-
-
     }
 }

@@ -1,4 +1,4 @@
-#region License
+﻿#region License
 // FreeBSD License
 // Copyright (c) 2010 - 2013, Andrew Trevarrow and Derek Wilson
 // All rights reserved.
@@ -20,31 +20,44 @@
 #endregion
 using Moq;
 using NUnit.Framework;
-using System;
+using PodcastUtilities.Common.Platform;
+using PodcastUtilities.Common.Platform.Mtp;
+using PodcastUtilities.PortableDevices;
 
-namespace PodcastUtilities.Common.Multiplatform.Tests
+namespace PodcastUtilities.Common.Multiplatform.Tests.Platform.Mtp.MtpDirectoryInfoProviderTests
 {
-    public class EnvironmentTests
+    public class WhenGettingDirectoryInfoAndDeviceIsFound : WhenTestingMtpDirectoryInfoProvider
     {
-        [Test]
-        public void Test_Assert()
+        protected Mock<IDevice> Device { get; set; }
+        protected IDirectoryInfo DirectoryInfo { get; set; }
+
+        protected override void GivenThat()
         {
-            Assert.AreEqual(2 + 2, 4);
+            base.GivenThat();
+
+            Device = GenerateMock<IDevice>();
+            Device.Setup(device => device.Name)
+                .Returns("test device");
+
+            DeviceManager.Setup(manager => manager.GetDevice("test device"))
+                .Returns(Device.Object);
+        }
+
+        protected override void When()
+        {
+            DirectoryInfo = DirectoryInfoProvider.GetDirectoryInfo(@"mtp:\test device\a\b\c");
         }
 
         [Test]
-        public void Test_Moq()
+        public void ItShouldCreateCorrectTypeOfDirectoryInfo()
         {
-            // given
-            var mock = new Mock<IDisposable>(MockBehavior.Loose);
-
-            // then
-            mock.Object.Dispose();
-
-            // assert
-            mock.Verify(m => m.Dispose(), Times.Once());
+            Assert.That(DirectoryInfo, Is.InstanceOf<DirectoryInfo>());
         }
 
-
+        [Test]
+        public void ItShouldCreateDirectoryInfoCorrectly()
+        {
+            Assert.That(DirectoryInfo.FullName, Is.EqualTo(@"MTP:\test device\a\b\c"));
+        }
     }
 }

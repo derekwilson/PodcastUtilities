@@ -20,31 +20,21 @@
 #endregion
 using Moq;
 using NUnit.Framework;
-using System;
 
-namespace PodcastUtilities.Common.Multiplatform.Tests
+namespace PodcastUtilities.Common.Multiplatform.Tests.Platform.FileSystemAwareFileUtilitiesTests.FileCopy
 {
-    public class EnvironmentTests
+    public class WhenBothPathsAreNotMtp
+        : WhenTestingFileUtilities
     {
-        [Test]
-        public void Test_Assert()
+        protected override void When()
         {
-            Assert.AreEqual(2 + 2, 4);
+            Utilities.FileCopy(@"C:\foo\bar.abc", @"D:\foo2\bar.abc", true);
         }
 
         [Test]
-        public void Test_Moq()
+        public void ItShouldDelegateToRegularFileUtilities()
         {
-            // given
-            var mock = new Mock<IDisposable>(MockBehavior.Loose);
-
-            // then
-            mock.Object.Dispose();
-
-            // assert
-            mock.Verify(m => m.Dispose(), Times.Once());
+            RegularFileUtilities.Verify(utilities => utilities.FileCopy(@"C:\foo\bar.abc", @"D:\foo2\bar.abc", true), Times.Once());
         }
-
-
     }
 }

@@ -69,6 +69,12 @@ namespace PodcastUtilities.Common.Multiplatform.Tests
             return new Mock<MOCKTYPE>(MockBehavior.Strict);
         }
 
+        protected Mock<MOCKTYPE> GeneratePartialMock<MOCKTYPE>(params object[] args)
+            where MOCKTYPE : class
+        {
+            return new Mock<MOCKTYPE>(MockBehavior.Loose);
+        }
+
         /*
         lets leave these one Rhino functions here until I can work out how to implement them using Moq
         protected TS GenerateStub<TS>()

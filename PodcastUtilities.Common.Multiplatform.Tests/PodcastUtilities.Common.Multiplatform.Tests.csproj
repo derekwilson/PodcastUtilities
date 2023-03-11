@@ -1,10 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <TargetFrameworks>net462;netcoreapp3.1</TargetFrameworks>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+
+		<!-- .NET Core 3.1 references, compilation flags and build options -->
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1'">
+		<DefineConstants>NETCORE;NETCORE3_1</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1'">
+		<Compile Remove=".\Platform\FileSystemAwareFileUtilitiesTests\**\*.cs" Label="NO_MTP" />
+		<Compile Remove=".\Platform\MtpTests\**\*.cs" Label="NO_MTP" />
+	</ItemGroup>
+
+	  <!-- .NET references, compilation flags and build options -->
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net462'">
+		<DefineConstants>NET462;NETFULL</DefineConstants>
+	</PropertyGroup>
 
   <ItemGroup>
     <None Remove="XML\testbigrssfeed.xml" />

@@ -1,4 +1,4 @@
-#region License
+﻿#region License
 // FreeBSD License
 // Copyright (c) 2010 - 2013, Andrew Trevarrow and Derek Wilson
 // All rights reserved.
@@ -18,33 +18,42 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using Moq;
-using NUnit.Framework;
 using System;
+using System.IO;
+using NUnit.Framework;
+using PodcastUtilities.PortableDevices;
 
-namespace PodcastUtilities.Common.Multiplatform.Tests
+namespace PodcastUtilities.Common.Multiplatform.Tests.Platform.Mtp.MtpDriveInfoProviderTests
 {
-    public class EnvironmentTests
+    public class WhenGettingDriveInfoAndDeviceIsFoundButNoStorageObject : WhenGettingDriveInfoAndDeviceIsFound
     {
-        [Test]
-        public void Test_Assert()
+        protected Exception ThrownException { get; set; }
+
+        protected override void GivenThat()
         {
-            Assert.AreEqual(2 + 2, 4);
+            base.GivenThat();
+
+            Device.Setup(device => device.GetRootStorageObjectFromPath(@"a\b\c"))
+                .Returns((IDeviceObject)null);
+        }
+
+        protected override void When()
+        {
+            try
+            {
+                DriveInfoProvider.GetDriveInfoForPath(@"mtp:\test device\a\b\c");
+            }
+            catch (Exception exception)
+            {
+                ThrownException = exception;
+            }
         }
 
         [Test]
-        public void Test_Moq()
+        public void ItShouldThrowDriveNotFoundException()
         {
-            // given
-            var mock = new Mock<IDisposable>(MockBehavior.Loose);
-
-            // then
-            mock.Object.Dispose();
-
-            // assert
-            mock.Verify(m => m.Dispose(), Times.Once());
+            Assert.That(ThrownException, Is.Not.Null);
+            Assert.That(ThrownException, Is.InstanceOf<DriveNotFoundException>());
         }
-
-
     }
 }

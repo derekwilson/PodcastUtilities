@@ -18,58 +18,61 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using Moq;
 using NUnit.Framework;
-using PodcastUtilities.Common.Configuration;
-using PodcastUtilities.Common.Platform;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using PodcastUtilities.Common.Platform.Mtp;
 
-namespace PodcastUtilities.Common.Multiplatform.Tests.Files.FinderTests
+namespace PodcastUtilities.Common.Multiplatform.Tests.Platform.Mtp.MtpPathTests
 {
-    public class WhenGettingLessThanAllFilesInAFolder : WhenTestingTheFinder
+    public class WhenPathHasMtpPrefix
+        : WhenTestingBehaviour
     {
-        Collection<IFileInfo> args;
+        private string _pathToTest;
 
         protected override void GivenThat()
         {
             base.GivenThat();
-            FileSorter.Setup(sorter => sorter.Sort(It.IsAny<IEnumerable<IFileInfo>>(), PodcastFileSortField.FileName, true))
-                .Callback(new InvocationAction(i => args = i.Arguments[0] as Collection<IFileInfo>))
-                // we must defer the execution of the returns method by passing a lambda
-                .Returns(() => args);
+
+            _pathToTest = @"mtp:\my device\path";
         }
 
         protected override void When()
         {
-            FoundFiles = FileFinder.GetFiles(@"c:\blah", "*.mp3", 2, PodcastFileSortField.FileName, true);
         }
 
         [Test]
-        public void ItShouldGetTheDirectoryInfoFromTheProvider()
+        public void IsMtpPathShouldReturnTrue()
         {
-            DirectoryInfoProvider.Verify(provider => provider.GetDirectoryInfo(@"c:\blah"), Times.Once());
+            Assert.That(MtpPath.IsMtpPath(_pathToTest), Is.True);
         }
 
         [Test]
-        public void ItShouldGetTheFilesFromTheDirectoryInfo()
+        public void StripMtpPrefixShouldRemoveMtpPrefix()
         {
-            DirectoryInfo.Verify(info => info.GetFiles("*.mp3"), Times.Once());
+            Assert.That(MtpPath.StripMtpPrefix(_pathToTest), Is.EqualTo(@"my device\path"));
         }
 
         [Test]
-        public void ItShouldSortTheFiles()
+        public void MakeFullPathShouldReturnOriginalPath()
         {
-            FileSorter.Verify(sorter => sorter.Sort(It.IsAny<IEnumerable<IFileInfo>>(), PodcastFileSortField.FileName, true), Times.Once());
-            Assert.AreEqual(3, args.Count, "all the files should be passed to the sorter");
+            Assert.That(MtpPath.MakeFullPath(_pathToTest), Is.EqualTo(@"mtp:\my device\path"));
         }
 
         [Test]
-        public void ItShouldReturnTheCorrectSubsetOfFiles()
+        public void GetMtpPathInfoShouldSetIsMtpPathToTrue()
         {
-            Assert.AreEqual(2, FoundFiles.Count);
-            Assert.AreEqual(FilesInDirectory[0], FoundFiles[0]);
-            Assert.AreEqual(FilesInDirectory[1], FoundFiles[1]);
+            Assert.That(MtpPath.GetPathInfo(_pathToTest).IsMtpPath, Is.True);
+        }
+
+        [Test]
+        public void GetMtpPathInfoShouldCorrectlySetDeviceName()
+        {
+            Assert.That(MtpPath.GetPathInfo(_pathToTest).DeviceName, Is.EqualTo("my device"));
+        }
+
+        [Test]
+        public void GetMtpPathInfoShouldCorrectlySetPath()
+        {
+            Assert.That(MtpPath.GetPathInfo(_pathToTest).RelativePathOnDevice, Is.EqualTo("path"));
         }
     }
 }

@@ -1,4 +1,4 @@
-#region License
+﻿#region License
 // FreeBSD License
 // Copyright (c) 2010 - 2013, Andrew Trevarrow and Derek Wilson
 // All rights reserved.
@@ -19,32 +19,26 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 using Moq;
-using NUnit.Framework;
-using System;
+using PodcastUtilities.Common.Platform;
+using PodcastUtilities.PortableDevices;
 
-namespace PodcastUtilities.Common.Multiplatform.Tests
+namespace PodcastUtilities.Common.Multiplatform.Tests.Platform.Mtp.MtpDriveInfoProviderTests
 {
-    public class EnvironmentTests
+    public abstract class WhenGettingDriveInfoAndDeviceIsFound : WhenTestingMtpDriveInfoProvider
     {
-        [Test]
-        public void Test_Assert()
+        protected Mock<IDevice> Device { get; set; }
+        protected IDriveInfo DriveInfo { get; set; }
+
+        protected override void GivenThat()
         {
-            Assert.AreEqual(2 + 2, 4);
+            base.GivenThat();
+
+            Device = GenerateMock<IDevice>();
+            Device.Setup(device => device.Name)
+                .Returns("test device");
+
+            DeviceManager.Setup(manager => manager.GetDevice("test device"))
+                .Returns(Device.Object);
         }
-
-        [Test]
-        public void Test_Moq()
-        {
-            // given
-            var mock = new Mock<IDisposable>(MockBehavior.Loose);
-
-            // then
-            mock.Object.Dispose();
-
-            // assert
-            mock.Verify(m => m.Dispose(), Times.Once());
-        }
-
-
     }
 }

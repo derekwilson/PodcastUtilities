@@ -1,4 +1,4 @@
-#region License
+﻿#region License
 // FreeBSD License
 // Copyright (c) 2010 - 2013, Andrew Trevarrow and Derek Wilson
 // All rights reserved.
@@ -18,33 +18,41 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
-using Moq;
 using NUnit.Framework;
-using System;
+using PodcastUtilities.Common.Platform.Mtp;
+using PodcastUtilities.PortableDevices;
 
-namespace PodcastUtilities.Common.Multiplatform.Tests
+namespace PodcastUtilities.Common.Multiplatform.Tests.Platform.Mtp.MtpDriveInfoProviderTests
 {
-    public class EnvironmentTests
+    public class WhenGettingDriveInfoAndDeviceIsFoundAndHasStorageObject : WhenGettingDriveInfoAndDeviceIsFound
     {
-        [Test]
-        public void Test_Assert()
+        protected override void GivenThat()
         {
-            Assert.AreEqual(2 + 2, 4);
+            base.GivenThat();
+
+            var storageObject = GenerateMock<IDeviceObject>();
+            storageObject.Setup(storage => storage.Name)
+                .Returns("storage");
+
+            Device.Setup(device => device.GetRootStorageObjectFromPath(@"storage\b\c"))
+                .Returns(storageObject.Object);
+        }
+
+        protected override void When()
+        {
+            DriveInfo = DriveInfoProvider.GetDriveInfoForPath(@"mtp:\test device\storage\b\c");
         }
 
         [Test]
-        public void Test_Moq()
+        public void ItShouldCreateCorrectTypeOfDriveInfo()
         {
-            // given
-            var mock = new Mock<IDisposable>(MockBehavior.Loose);
-
-            // then
-            mock.Object.Dispose();
-
-            // assert
-            mock.Verify(m => m.Dispose(), Times.Once());
+            Assert.That(DriveInfo, Is.InstanceOf<DriveInfo>());
         }
 
-
+        [Test]
+        public void ItShouldCreateDriveInfoCorrectly()
+        {
+            Assert.That(DriveInfo.Name, Is.EqualTo(@"storage"));
+        }
     }
 }
