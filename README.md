@@ -40,10 +40,42 @@ The main solution `PodcastUtilities.Multiplatform.sln` contains these projects
 
 | Project                                           | .NETCore         | .NETFramework | Notes
 |:--------------------------------------------------|:-----------------|:--------------|-------
-| PodcastUtilities.Common.Multiplatform             | .NETStandard v2  | H             | Core functionality
+| PodcastUtilities.Common.Multiplatform             | .NETStandard v2  | 3.5           | Core functionality
+| PodcastUtilities.Ioc.Multiplatform                | .NETStandard v2  | 3.5           | Optional IoC container for the core assembly
 | PodcastUtilities.Common.Multiplatform.Tests       | 3.1              | 4.6.2         | Core tests, NUnit/Moq
 | PodcastUtilities.Common.Tests                     |                  | 3.5           | Core tests, NUnit/Rhino.Mocks
 | PodcastUtilities.Integration.Tests.Multiplatform  | 2.1              | 3.5           | Integration tests, to be run on target
 
 #### CLI projects
+
+| Project                                           | .NETCore         | .NETFramework | Notes
+|:--------------------------------------------------|:-----------------|:--------------|-------
+| DownloadPodcasts.Multiplatform                    | 2.1              | 3.5           | Downloader
+| GeneratePlaylist.Multiplatform                    | 2.1              | 3.5           | Playlist generator
+| PurgePodcasts.Multiplatform                       | 2.1              | 3.5           | Purger
+| SyncPodcasts.Multiplatform                        | 2.1              | 3.5           | Sync
+
+#### Windows only projects
+
+| Project                                           | .NETCore         | .NETFramework | Notes
+|:--------------------------------------------------|:-----------------|:--------------|-------
+| PodcastUtilities.App                              |                  | 3.5           | Windows GUI
+| PodcastUtilities.Presentation                     |                  | 3.5           | logic for Windows GUI
+| PodcastUtilities.Presentation.Tests               |                  | 3.5           | tests for Windows GUI, NUnit/Rhino.Mocks
+| PerfmonCountersInstaller                          |                  | 3.5           | Installer for the perfmon counters
+| PodcastUtilities.PortableDevices                  |                  | 3.5           | MTP support
+| PodcastUtilities.PortableDevices.Tests            |                  | 3.5           | Tests MTP support, NUnit/Rhino.Mocks
+
+### Android Projects
+
+A separate solution `Android\PodcastUtilities\PodcastUtilities.sln` contains these projects for use on Android devices
+
+| Project                                           | .NETCore         | .NETFramework | Notes
+|:--------------------------------------------------|:-----------------|:--------------|-------
+| PodcastUtilities                                  | Mono v6          |               | Android app
+| PodcastUtilities.AndroidLogic                     | Mono v6          |               | Logic for Android app
+| PodcastUtilities.AndroidTests                     | Mono v6          |               | Tests for Android app, NUnit/FakeItEasy
+
+
+
 
