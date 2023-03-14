@@ -15,9 +15,10 @@ PodcastUtilities are a set of utilities designed to help manage digital media on
 * VisualStudio 2022 (any version including the free versions)
 * In the past I did check that SharpDevelop worked so that might also be an option
 * NUnit, MSBuild Community Tasks (installers are in the tools folder)
-* Run the tests in NUnit UI, .NET Framework v3.5 tests are no longer supported by VisualStudio  - also there is a [TeamCity project](http://teamcity.codebetter.com/viewType.html?buildTypeId=bt1062) that runs the tests
 
 ### Building the project
+
+Open the solution file `PodcastUtilities.Multiplatform.sln`
 
 * To build all the .NET Framework assemblies - in VisualStudio select Build -> Batch Build and select all the Release targets and rebuild
 * To build all the .NET Core assemblies - from the VisualStudio developer command prompt run `PublishAll.bat` from the root of the project
@@ -30,3 +31,19 @@ Sometimes when running the `BuildAll` command on Windows 10 you may get this err
 ```
 
 I am not sure why it happens however if you run the command a second time it does work.
+
+### The Projects
+
+The main solution `PodcastUtilities.Multiplatform.sln` contains these projects
+
+#### Core projects
+
+| Project                                           | .NETCore         | .NETFramework | Notes
+|:--------------------------------------------------|:-----------------|:--------------|-------
+| PodcastUtilities.Common.Multiplatform             | .NETStandard v2  | H             | Core functionality
+| PodcastUtilities.Common.Multiplatform.Tests       | 3.1              | 4.6.2         | Core tests, NUnit/Moq
+| PodcastUtilities.Common.Tests                     |                  | 3.5           | Core tests, NUnit/Rhino.Mocks
+| PodcastUtilities.Integration.Tests.Multiplatform  | 2.1              | 3.5           | Integration tests, to be run on target
+
+#### CLI projects
+
