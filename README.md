@@ -1,14 +1,19 @@
 # PodcastUtilities #
 
-PodcastUtilities are a set of utilities designed to help manage digital media on removable drives. Utilities are provided to Download Podcasts, Sync Podcasts and Generate Playlists
+PodcastUtilities are a set of utilities designed to help manage digital media on removable drives. Utilities are provided to Download Podcasts, Sync Podcasts and Generate Playlists and to manage an offline cache of media.
+
+The CLI tools run on Windows, Linux, and MacOS
+
+There is an incomplete GUI that runs on Windows and there is a complete Android app that you can build or get from the Amazon Appstore.
 
 ### In this repository ###
 
-* The ```_PreBuildPackages``` folder has a compiled ZIP file if you just want to run the
+* The `_PreBuildPackages` folder has a compiled ZIP file of the main projects output assemblies
   - the folder `net35` contains a build to used on Windows XP, Vista, 7, 8, 10 and .NET framework v3.5  app
   - the folder `netcoreapp2.1` contains a build for .NET Core for Linux, MacOS and Windows or for use with Mono
-* Tools section contains installers for the open source tools used to build the app
-* The rest of the repository contains the C# code, scripts and documentation to build the app
+* The `Android\Support\_PreBuiltPackages/` folder has compiled APKs for side-loading onto an Android device
+* Tools section contains installers for the open source tools used to build the apps
+* The rest of the repository contains the C# code, scripts and documentation to build the apps
 
 ### Requirements to compile the code ###
 
@@ -17,7 +22,7 @@ PodcastUtilities are a set of utilities designed to help manage digital media on
 * NUnit, MSBuild Community Tasks (installers are in the tools folder)
 * To run the tests in VS you will need to [download the developer pack](https://dotnet.microsoft.com/en-us/download/visual-studio-sdks?cid=msbuild-developerpacks) for .NETFramework, currently v4.6.2
 
-### Building the project
+### Building the solution
 
 Open the solution file `PodcastUtilities.Multiplatform.sln`
 
