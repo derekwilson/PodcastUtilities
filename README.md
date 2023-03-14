@@ -15,6 +15,7 @@ PodcastUtilities are a set of utilities designed to help manage digital media on
 * VisualStudio 2022 (any version including the free versions)
 * In the past I did check that SharpDevelop worked so that might also be an option
 * NUnit, MSBuild Community Tasks (installers are in the tools folder)
+* To run the tests in VS you will need to [download the developer pack][https://dotnet.microsoft.com/en-us/download/visual-studio-sdks?cid=msbuild-developerpacks] for .NETFramework, currently v4.6.2
 
 ### Building the project
 
@@ -46,6 +47,14 @@ The main solution `PodcastUtilities.Multiplatform.sln` contains these projects
 | PodcastUtilities.Common.Tests                     |                  | 3.5           | Core tests, NUnit/Rhino.Mocks
 | PodcastUtilities.Integration.Tests.Multiplatform  | 2.1              | 3.5           | Integration tests, to be run on target
 
+The test projects can be run from VS2022 Test Explorer, older versions of VS cannot run the tests targetting .NET 3.5
+
+The tests targetting .NETCore can be run from the command line like this
+
+```
+dotnet test --framework netcoreapp3.1
+```
+
 #### CLI projects
 
 | Project                                           | .NETCore         | .NETFramework | Notes
@@ -76,6 +85,6 @@ A separate solution `Android\PodcastUtilities\PodcastUtilities.sln` contains the
 | PodcastUtilities.AndroidLogic                     | Mono v6          |               | Logic for Android app
 | PodcastUtilities.AndroidTests                     | Mono v6          |               | Tests for Android app, NUnit/FakeItEasy
 
-
+The test project compiles to an Android app and should be run on a device.
 
 
