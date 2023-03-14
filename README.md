@@ -15,7 +15,7 @@ PodcastUtilities are a set of utilities designed to help manage digital media on
 * VisualStudio 2022 (any version including the free versions)
 * In the past I did check that SharpDevelop worked so that might also be an option
 * NUnit, MSBuild Community Tasks (installers are in the tools folder)
-* To run the tests in VS you will need to [download the developer pack][https://dotnet.microsoft.com/en-us/download/visual-studio-sdks?cid=msbuild-developerpacks] for .NETFramework, currently v4.6.2
+* To run the tests in VS you will need to [download the developer pack](https://dotnet.microsoft.com/en-us/download/visual-studio-sdks?cid=msbuild-developerpacks) for .NETFramework, currently v4.6.2
 
 ### Building the project
 
