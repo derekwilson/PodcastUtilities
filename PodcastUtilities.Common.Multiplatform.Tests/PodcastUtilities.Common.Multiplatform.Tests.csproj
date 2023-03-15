@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFrameworks>net462;netcoreapp3.1</TargetFrameworks>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+		<!-- .NET Core 3.1 references, compilation flags and build options -->
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1'">
+		<DefineConstants>NETCORE;NETCORE3_1</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1'">
+		<Compile Remove=".\Platform\FileSystemAwareFileUtilitiesTests\**\*.cs" Label="NO_MTP" />
+		<Compile Remove=".\Platform\MtpTests\**\*.cs" Label="NO_MTP" />
+	</ItemGroup>
+
+	  <!-- .NET references, compilation flags and build options -->
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net462'">
+		<DefineConstants>NET462;NETFULL</DefineConstants>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="XML\testbigrssfeed.xml" />
+    <None Remove="XML\testcontrolfile.xml" />
+    <None Remove="XML\testcontrolfilewrittenbypodcastutilities.xml" />
+    <None Remove="XML\testemptyrssfeed.xml" />
+    <None Remove="XML\testfile.xml" />
+    <None Remove="XML\testrssfeed.xml" />
+    <None Remove="XML\teststate.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="XML\testbigrssfeed.xml" />
+    <EmbeddedResource Include="XML\testcontrolfile.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XML\testcontrolfilewrittenbypodcastutilities.xml" />
+    <EmbeddedResource Include="XML\testemptyrssfeed.xml" />
+    <EmbeddedResource Include="XML\testfile.xml" />
+    <EmbeddedResource Include="XML\testrssfeed.xml" />
+    <EmbeddedResource Include="XML\teststate.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.18.4" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.3.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PodcastUtilities.Common.Multiplatform\PodcastUtilities.Common.Multiplatform.csproj" />
+  </ItemGroup>
+
+</Project>

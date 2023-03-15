@@ -62,6 +62,15 @@ namespace PodcastUtilities.Common.Platform
             _fileInfoProvider = fileInfoProvider;
         }
 
+        public static FileSystemAwareFileUtilities getUtilitiesForUnitTests(
+            IFileUtilities fileUtilities,
+            IDeviceManager deviceManager,
+            IStreamHelper streamHelper,
+            IFileInfoProvider fileInfoProvider)
+        {
+            return new FileSystemAwareFileUtilities(fileUtilities, deviceManager, streamHelper, fileInfoProvider);
+        }
+
         /// <summary>
         /// check if a file exists
         /// </summary>

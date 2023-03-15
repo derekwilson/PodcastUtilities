@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<podcasts>
+  <!--Written by PodcastUtilities.Common v3.0.1.7-->
+  <global>
+    <sourceRoot>/sdcard/Podcasts</sourceRoot>
+    <destinationRoot>MTP:\Nokia 7.1\Samsung SD card\Podcasts</destinationRoot>
+    <playlistFilename>podcasts.m3u</playlistFilename>
+    <playlistFormat>m3u</playlistFormat>
+    <playlistPathSeparator>/</playlistPathSeparator>
+    <freeSpaceToLeaveOnDestinationMB>300</freeSpaceToLeaveOnDestinationMB>
+    <freeSpaceToLeaveOnDownloadMB>500</freeSpaceToLeaveOnDownloadMB>
+    <maximumNumberOfConcurrentDownloads>20</maximumNumberOfConcurrentDownloads>
+    <retryWaitInSeconds>10</retryWaitInSeconds>
+    <number>-1</number>
+    <pattern>*.mp3</pattern>
+    <deleteEmptyFolder>True</deleteEmptyFolder>
+    <sortfield>name</sortfield>
+    <sortdirection>asc</sortdirection>
+    <feed>
+      <maximumDaysOld>31</maximumDaysOld>
+      <deleteDownloadsDaysOld>32</deleteDownloadsDaysOld>
+      <maximumNumberOfDownloadedItems>33</maximumNumberOfDownloadedItems>
+      <format>rss</format>
+      <namingStyle>PUBDATE_FOLDER_TITLE_URL</namingStyle>
+      <downloadStrategy>high_tide</downloadStrategy>
+    </feed>
+    <diagnostics>
+      <retainTempFiles>false</retainTempFiles>
+      <outputLevel>verbose</outputLevel>
+    </diagnostics>
+    <postdownloadcommand>
+      <command />
+      <arguments />
+      <workingdirectory />
+    </postdownloadcommand>
+  </global>
+  <podcast>
+    <folder>Cricinfo The Switch Hit Cricket Show</folder>
+    <pattern>*.mp3</pattern>
+    <number>-1</number>
+    <feed>
+      <url>https://feeds.megaphone.fm/ESP9247246951</url>
+      <maximumDaysOld>60</maximumDaysOld>
+    </feed>
+  </podcast>
+  <podcast>
+    <folder>Friday Night Comedy from BBC Radio 4</folder>
+    <pattern>*.mp3</pattern>
+    <number>5</number>
+    <feed>
+      <url>http://podcasts.files.bbci.co.uk/p02pc9pj.rss</url>
+    </feed>
+  </podcast>
+</podcasts>
