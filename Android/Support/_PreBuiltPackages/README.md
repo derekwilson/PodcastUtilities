@@ -5,6 +5,7 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 1.3.0   | 10 May 2023 | 21 (Android 5)   | 33 (Android 13)
 | 1.2.0   | 21 Nov 2022 | 21 (Android 5)   | 33 (Android 13)
 | 1.1.0   | 20 Oct 2022 | 21 (Android 5)   | 33 (Android 13)
 | 1.0.3   | 1 Jun 2022  | 19 (Android 4.4) | 31 (Android 12)
@@ -15,6 +16,10 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 ## Notes
 
 Major changes for each version
+
+## v1.3.0 (7)
+- Added ability to share the current control file off the device
+- Updated the UI to display the number of items found while scanning
 
 ## v1.2.0 (6)
 - Updated `PodcastUtilities.Common.Dll` to v3.1.0.0
