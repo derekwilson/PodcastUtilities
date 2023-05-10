@@ -1,5 +1,6 @@
 ﻿using Android.Content;
 using Android.OS;
+using AndroidX.Core.Content;
 using PodcastUtilities.AndroidLogic.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 {
     public interface IFileSystemHelper
     {
+        const string CONFIG_FOLDER = "config";
+
         string GetApplicationFolderOnSdCard(string subFolder, bool ensureExists);
         long GetAvailableFileSystemSizeInBytes(string path);
         long GetTotalFileSystemSizeInBytes(string path);
@@ -24,6 +27,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         XmlDocument LoadXmlFromContentUri(Android.Net.Uri uri);
         XmlDocument LoadXmlFromAssetFile(string filename);
+        Android.Net.Uri GetAttachmentUri(String filename);
     }
 
     public class FileSystemHelper : IFileSystemHelper
@@ -222,6 +226,15 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             var xml = new XmlDocument();
             xml.Load(stream);
             return xml;
+        }
+
+        public Android.Net.Uri GetAttachmentUri(String filename)
+        {
+            Logger.Debug(() => $"FileSystemHelper:getAttachmentUri - {filename}");
+            Java.IO.File shareFile = new Java.IO.File(filename);
+            Android.Net.Uri shareableUri = FileProvider.GetUriForFile(ApplicationContext, ApplicationContext.ApplicationContext.PackageName + ".provider", shareFile);
+            Logger.Debug(() => $"FileSystemHelper:getAttachmentUri uri - {shareableUri}");
+            return shareableUri;
         }
     }
 }

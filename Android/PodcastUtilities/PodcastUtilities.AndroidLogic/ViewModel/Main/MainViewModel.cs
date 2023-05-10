@@ -7,7 +7,6 @@ using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
-using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.Common.Playlists;
 using System;
 using System.Collections.Generic;

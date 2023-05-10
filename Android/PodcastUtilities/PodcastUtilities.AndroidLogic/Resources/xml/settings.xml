@@ -13,7 +13,20 @@
             android:key="@string/settings_download_network_key"
             android:defaultValue="@string/settings_default_download_network"
             android:entries="@array/download_networks_names"
-            android:entryValues="@array/download_networks_values" 
+            android:entryValues="@array/download_networks_values"
+			app:iconSpaceReserved="false"
+			/>
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		app:iconSpaceReserved="false"
+    	android:title="@string/settings_config_category">
+
+		<Preference
+            android:title="@string/settings_config_share_title"
+            android:key="@string/settings_config_share_key"
+			android:summary="@string/settings_config_share_description"
 			app:iconSpaceReserved="false"
 			/>
 

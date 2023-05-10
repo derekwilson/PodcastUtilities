@@ -130,6 +130,11 @@
     -->
 	<string name="settings_default_download_network">WIFI</string>
 
+	<string name="settings_config_category">Configuration</string>
+	<string name="settings_config_share_key">appConfigShare</string>
+	<string name="settings_config_share_title">Share</string>
+	<string name="settings_config_share_description">Share your control file, for example share via email to edit the XML off-device.</string>
+	
 	<string name="settings_about_category">About</string>
 
 	<string name="settings_privacy_key">appPrivacy</string>
@@ -144,6 +149,11 @@
 
 	<string name="settings_version_key">appVersion</string>
 	<string name="settings_version_title">Version</string>
+
+	<string name="settings_share_no_controlfile">You need to load a control file before you can share it.</string>
+	<string name="settings_share_chooser_title">Share control file</string>
+	<string name="settings_share_all_subject">PodcastUtilities Controlfile</string>
+	<string name="settings_share_all_body">This is my control file</string>
 
 	<!-- open source licenses -->
 	<string name="osl_title">Open-source licenses</string>
