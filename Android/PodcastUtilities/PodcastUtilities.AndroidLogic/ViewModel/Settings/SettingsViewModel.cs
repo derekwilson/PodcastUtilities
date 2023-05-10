@@ -83,8 +83,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             if (intent != null)
             {
                 Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.settings_share_chooser_title), intent));
+            } else
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_share_no_controlfile));
             }
-            Observables.DisplayMessage?.Invoke(this, "Done");
         }
     }
 }

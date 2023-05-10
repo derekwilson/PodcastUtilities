@@ -73,6 +73,7 @@
 	<string name="no_downloads_text">No podcasts to download</string>
 	<string name="no_network_text">You do not have any internet connectivity</string>
 	<string name="finding_podcasts_progress">Finding podcasts...</string>
+	<string name="finding_podcasts_in_folder">Finding episodes in</string>
 
 	<plurals name="download_activity_title_after_load">
 		<item quantity="one">%d Podcast Selected</item>

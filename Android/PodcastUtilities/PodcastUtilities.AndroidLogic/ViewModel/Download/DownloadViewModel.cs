@@ -208,6 +208,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             {
                 if (string.IsNullOrEmpty(folderSelected) || podcastInfo.Folder == folderSelected)
                 {
+                    SetFindingText(podcastInfo.Folder);
                     var episodesInThisFeed = PodcastEpisodeFinder.FindEpisodesToDownload(
                         controlFile.GetSourceRoot(),
                         controlFile.GetRetryWaitInSeconds(),
@@ -243,6 +244,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             Observables.EndProgress?.Invoke(this, null);
             RefreshUI(folderSelected);
             PodcastEpisodeFinder.StatusUpdate -= this.DownloadStatusUpdate;
+        }
+
+        private void SetFindingText(string folder)
+        {
+            var titleLine = ResourceProvider.GetString(Resource.String.finding_podcasts_in_folder);
+            var emptyMessage = $"{titleLine}\n{folder}";
+            Observables.SetEmptyText?.Invoke(this, emptyMessage);
         }
 
         private void SetNoDownloads(string folderSelected)
