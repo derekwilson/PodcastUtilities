@@ -248,8 +248,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         private void SetFindingText(string folder)
         {
-            var titleLine = ResourceProvider.GetString(Resource.String.finding_podcasts_in_folder);
-            var emptyMessage = $"{titleLine}\n{folder}";
+            var titleLine1 = ResourceProvider.GetQuantityString(Resource.Plurals.finding_podcasts_title1, GetItemsSelectedCount());
+            var titleLine2 = ResourceProvider.GetString(Resource.String.finding_podcasts_title2);
+            var emptyMessage = $"{titleLine1}\n{titleLine2}\n{folder}";
             Observables.SetEmptyText?.Invoke(this, emptyMessage);
         }
 
