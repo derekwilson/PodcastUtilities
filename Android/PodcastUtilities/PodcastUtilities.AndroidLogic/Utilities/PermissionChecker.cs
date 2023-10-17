@@ -9,11 +9,25 @@ namespace PodcastUtilities.AndroidLogic.Utilities
     {
         public static bool HasReadStoragePermission(Context context)
         {
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            {
+                // if we are on Android 13+ we do not need any additional permissions to do our work (we will already have Manage File System)
+                // anyway they will not be granted at Android 13 and above
+                // so lets just say we have all the permissions we are going to need
+                return true;
+            }
             return HasPermissionBeenGranted(context, Manifest.Permission.ReadExternalStorage);
         }
 
         public static bool HasWriteStoragePermission(Context context)
         {
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            {
+                // if we are on Android 13+ we do not need any additional permissions to do our work (we will already have Manage File System)
+                // anyway they will not be granted at Android 13 and above
+                // so lets just say we have all the permissions we are going to need
+                return true;
+            }
             return HasPermissionBeenGranted(context, Manifest.Permission.WriteExternalStorage);
         }
 
@@ -23,7 +37,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             // before that you only need write storage
             if (Build.VERSION.SdkInt < BuildVersionCodes.R)
             {
-                return HasPermissionBeenGranted(context, Manifest.Permission.WriteExternalStorage);
+                return HasWriteStoragePermission(context);
             }
 
             return Android.OS.Environment.IsExternalStorageManager;
