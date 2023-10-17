@@ -371,6 +371,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
                 int numberOfConnections = controlFile.GetMaximumNumberOfConcurrentDownloads();
                 NetworkHelper.SetNetworkConnectionLimit(numberOfConnections);
+                NetworkHelper.SetApplicationDefaultCertificateValidator();      // ignore SSL errors
 
                 List<ISyncItem> AllEpisodesToDownload = new List<ISyncItem>(AllItems.Count);
                 AllItems.Where(recyclerItem => recyclerItem.Selected).ToList().ForEach(item => AllEpisodesToDownload.Add(item.SyncItem));

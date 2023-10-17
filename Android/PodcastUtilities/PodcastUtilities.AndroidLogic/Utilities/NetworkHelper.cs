@@ -2,6 +2,9 @@
 using Android.Net;
 using Android.OS;
 using PodcastUtilities.AndroidLogic.Logging;
+using System.Net.Security;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using static PodcastUtilities.AndroidLogic.Utilities.INetworkHelper;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
@@ -19,6 +22,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         NetworkType ActiveNetworkType { get; }
 
         void SetNetworkConnectionLimit(int maxNumberOfConnections);
+        void SetApplicationDefaultCertificateValidator();
     }
     public class NetworkHelper : INetworkHelper
     {
@@ -52,15 +56,15 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                     {
                         return NetworkType.None;
                     }
-                    else if (capabilities.HasTransport(TransportType.Wifi))
+                    else if (capabilities.HasTransport(Android.Net.TransportType.Wifi))
                     {
                         return NetworkType.Wifi;
                     }
-                    else if (capabilities.HasTransport(TransportType.Cellular))
+                    else if (capabilities.HasTransport(Android.Net.TransportType.Cellular))
                     {
                         return NetworkType.Cellular;
                     }
-                    else if (capabilities.HasTransport(TransportType.Vpn))
+                    else if (capabilities.HasTransport(Android.Net.TransportType.Vpn))
                     {
                         return NetworkType.Vpn;
                     }
@@ -93,9 +97,20 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             }
         }
 
+        public static bool ValidatorToIgnoreAllCertificateErrors(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            // we are completely permissive of certificate errors
+            return true;
+        }
+
+        public void SetApplicationDefaultCertificateValidator()
+        {
+            ServicePointManager.ServerCertificateValidationCallback = ValidatorToIgnoreAllCertificateErrors;
+        }
+
         public void SetNetworkConnectionLimit(int maxNumberOfConnections)
         {
-            System.Net.ServicePointManager.DefaultConnectionLimit = maxNumberOfConnections;
+            ServicePointManager.DefaultConnectionLimit = maxNumberOfConnections;
         }
     }
 }
