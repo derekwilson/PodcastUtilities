@@ -105,6 +105,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         public void SetApplicationDefaultCertificateValidator()
         {
+            // see https://www.mono-project.com/archived/usingtrustedrootsrespectfully/
             ServicePointManager.ServerCertificateValidationCallback = ValidatorToIgnoreAllCertificateErrors;
         }
 
