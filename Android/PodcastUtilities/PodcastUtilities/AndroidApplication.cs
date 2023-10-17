@@ -25,6 +25,7 @@ using PodcastUtilities.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Android.OS;
 
 namespace PodcastUtilities
 {
@@ -135,15 +136,15 @@ namespace PodcastUtilities
             return container;
         }
 
-        public override void OnCreate()
+        private void SetVersionProperties()
         {
-            Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int)Android.OS.Build.VERSION.SdkInt}");
-            Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate PackageName == {this.PackageName}");
-
-            AppCenter.Start(Secrets.APP_CENTER_SECRET, typeof(Analytics), typeof(Crashes));
-
-            SetupExceptionHandler();
-            PackageInfo package = PackageManager.GetPackageInfo(PackageName, 0);
+#pragma warning disable CS0618 // Type or member is obsolete
+            PackageInfo package = (
+                Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu ?
+                PackageManager.GetPackageInfo(PackageName, PackageManager.PackageInfoFlags.Of(0)) :
+                PackageManager.GetPackageInfo(PackageName, 0)
+            );
+#pragma warning restore CS0618 // Type or member is obsolete
             long longVersionCode = PackageInfoCompat.GetLongVersionCode(package);
 #if DEBUG
             var config = "(Debug)";
@@ -152,6 +153,17 @@ namespace PodcastUtilities
 #endif
             DisplayVersion = $"v{package.VersionName}, ({longVersionCode}), {config}";
             DisplayPackage = $"{PackageName}";
+        }
+
+        public override void OnCreate()
+        {
+            Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int)Android.OS.Build.VERSION.SdkInt}");
+            Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate PackageName == {this.PackageName}");
+
+            AppCenter.Start(Secrets.APP_CENTER_SECRET, typeof(Analytics), typeof(Crashes));
+
+            SetupExceptionHandler();
+            SetVersionProperties();
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Version == {DisplayVersion}");
 
             base.OnCreate();
