@@ -9,6 +9,7 @@ using AndroidX.AppCompat.App;
 using AndroidX.Core.View;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
+using Google.Android.Material.FloatingActionButton;
 using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
@@ -19,6 +20,7 @@ using PodcastUtilities.UI.Purge;
 using PodcastUtilities.UI.Settings;
 using System;
 using System.Collections.Generic;
+using static Android.Content.ClipData;
 
 namespace PodcastUtilities
 {
@@ -40,6 +42,10 @@ namespace PodcastUtilities
         private TextView CacheRoot = null;
         private TextView FeedsTitle = null;
 
+        private FloatingActionButton PurgeButton;
+        private FloatingActionButton DownloadButton;
+
+
         private const int REQUEST_SELECT_FILE = 3000;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -57,6 +63,8 @@ namespace PodcastUtilities
             NoFeedView = FindViewById<LinearLayout>(Resource.Id.layNoFeed);
             CacheRoot = FindViewById<TextView>(Resource.Id.cache_root_value);
             FeedsTitle = FindViewById<TextView>(Resource.Id.feed_list_label);
+            PurgeButton = FindViewById<FloatingActionButton>(Resource.Id.fab_main_purge);
+            DownloadButton = FindViewById<FloatingActionButton>(Resource.Id.fab_main_download);
 
             RvFeeds.SetLayoutManager(new LinearLayoutManager(this));
             RvFeeds.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
@@ -72,6 +80,9 @@ namespace PodcastUtilities
             SetupViewModelObservers();
 
             ViewModel.Initialise();
+
+            PurgeButton.Click += (sender, e) => DoAction(Resource.Id.action_purge);
+            DownloadButton.Click += (sender, e) => DoAction(Resource.Id.action_download);
 
             if (!PermissionChecker.HasManageStoragePermission(this))
             {
@@ -177,6 +188,7 @@ namespace PodcastUtilities
             EnableMenuItemIfAvailable(menu, Resource.Id.action_download);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_playlist);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_settings);
+            EnableFabsIfAvailable();
             return true;
         }
 
@@ -197,6 +209,21 @@ namespace PodcastUtilities
                 return true;
             }
             return base.OnOptionsItemSelected(item);
+        }
+
+        private void DoAction(int action)
+        {
+            if (!PermissionChecker.HasManageStoragePermission(this))
+            {
+                ToastMessage(GetString(Resource.String.manage_external_permissions_rationale));
+            }
+            ViewModel.ActionSelected(action);
+        }
+
+        private void EnableFabsIfAvailable()
+        {
+            DownloadButton.Enabled = ViewModel.IsActionAvailable(Resource.Id.action_download);
+            PurgeButton.Enabled = ViewModel.IsActionAvailable(Resource.Id.action_purge);
         }
 
         private void SetupViewModelObservers()
@@ -331,6 +358,7 @@ namespace PodcastUtilities
                 FeedsTitle.Text = heading;
                 FeedAdapter.SetItems(items);
                 FeedAdapter.NotifyDataSetChanged();
+                EnableFabsIfAvailable();
             });
         }
 

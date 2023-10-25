@@ -97,4 +97,35 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+   	<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_main_purge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:elevation="8dp"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toStartOf="@id/fab_main_download"
+        app:fabSize="normal"
+		app:backgroundTint="@color/primary"
+        app:tint="@color/ic_icon_selector"
+		android:contentDescription="@string/button_text_main_purge"
+        app:srcCompat="@drawable/ic_delete" />
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_main_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:elevation="8dp"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:fabSize="normal"
+		app:backgroundTint="@color/primary"
+        app:tint="@color/ic_icon_selector"
+		android:contentDescription="@string/button_text_main_download"
+        app:srcCompat="@drawable/ic_download" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
