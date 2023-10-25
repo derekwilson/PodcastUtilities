@@ -25,7 +25,7 @@ Major changes for each version
 - Updated `PodcastUtilities.Common.Dll` to v3.1.0.0
 - When finding episodes they are now listed sorted from oldest to newest (rather than rely on the order in the feed)
 - Added support for `maximumNumberOfDownloadedItems` to throttle downloads
-- FIX: `Latest` download strategy would download the latest episode not the cache, it now does nothing if the latest episode is in the cache 
+- FIX: `Latest` download strategy would download the latest episode not in the cache, it now does nothing if the latest episode is in the cache 
 - FIX: Back button on the toolbar for the logging display now works correctly
 
 ## v1.1.0 (5)
