@@ -12,7 +12,7 @@
 	<string name="manage_external_permissions_rationale">PodcastUtilities needs to manage external storage to be able to manage the podcast cache.</string>
 
 	<!-- main activity -->
-	<string name="main_activity_title">PodcastUtilities Cache Manager</string>
+	<string name="main_activity_title">PodcastUtilities</string>
 
 	<string name="action_load_control">Load Control File</string>
 	<string name="action_purge">Purge Podcasts</string>
