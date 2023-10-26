@@ -5,6 +5,7 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 1.4.0   | 26 Oct 2023 | 21 (Android 5)   | 33 (Android 13)
 | 1.3.0   | 10 May 2023 | 21 (Android 5)   | 33 (Android 13)
 | 1.2.0   | 21 Nov 2022 | 21 (Android 5)   | 33 (Android 13)
 | 1.1.0   | 20 Oct 2022 | 21 (Android 5)   | 33 (Android 13)
@@ -16,6 +17,13 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 ## Notes
 
 Major changes for each version
+
+## v1.4.0 (8)
+- Added support for dark mode
+- Added shortcut buttons for Purge and Download
+- Fixed permissions issues in Android 13
+- FIX: Generate playlist displaying multiple status messages
+- FIX: Issues with SSL handshake errors on some Samsung devices
 
 ## v1.3.0 (7)
 - Added ability to share the current control file off the device

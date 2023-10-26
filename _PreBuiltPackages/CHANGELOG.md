@@ -1,5 +1,5 @@
 # v3.1.0.1 - 26 October 2023
-1. Added StatusUpdate event to IGenerator
+1. Added `StatusUpdate` event to `IGenerator`
 
 # v3.1.0.0 - 7 November 2022
 
