@@ -69,6 +69,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
             PlaylistGenerator = playlistGenerator;
+            // we only want to add this once, really we should remove it if the IGenerator is a singleton
+            PlaylistGenerator.StatusUpdate += GenerateStatusUpdate;
             DriveVolumeInfoViewFactory = driveVolumeInfoViewFactory;
             ApplicationControlFileFactory = applicationControlFileFactory;
         }
@@ -266,7 +268,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                 var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
                 if (controlFile != null)
                 {
-                    PlaylistGenerator.GeneratePlaylist(controlFile, controlFile.GetSourceRoot(), true, GenerateStatusUpdate);
+                    // the status update is added once for the whole ViewModel
+                    PlaylistGenerator.GeneratePlaylist(controlFile, controlFile.GetSourceRoot(), true, null);
                     AnalyticsEngine.GeneratePlaylistEvent(controlFile.GetPlaylistFormat());
                 }
                 else
