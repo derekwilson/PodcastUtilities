@@ -8,7 +8,16 @@
 		<item name="colorAccent">@color/colour_green</item>
 
 		<!-- set the action bar colour to be colorPrimary  -->
-		<item name="actionBarStyle">@style/Widget.MaterialComponents.ActionBar.Primary</item>
+		<item name="actionBarStyle">@style/AppTheme.ActionBar</item>
+	</style>
+
+	<style name="AppTheme.ActionBar" parent="@style/Widget.MaterialComponents.ActionBar.Primary">
+		<item name="titleTextStyle">@style/AppTheme.ActionBar.Text</item>
+	</style>
+
+	<style name="AppTheme.ActionBar.Text" parent="@android:style/TextAppearance">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">bold</item>
 	</style>
 
 	<style name="ItemTitle">
