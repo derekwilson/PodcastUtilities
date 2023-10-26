@@ -79,7 +79,7 @@ To keep this manageable we use different package names for each mechanism.
 | Sideload             | Release       | com.andrewandderek.podcastutilities.sideload
 | Sideload             | Debug         | com.andrewandderek.podcastutilities.sideload.debug 
 
-The packagename is displayed with the version information on settings. Its also the folder name below `sdcard/Android/data` where the logs and cached files are stored.
+The packagename is displayed with the version information on the settings screen in the app. Its also the folder name below `sdcard/Android/data` where the logs and cached files are stored.
 
 The `.debug` suffix is automatically applied with scripts as we build the app, the presence of `sideload` needs to be manually edited into the manifest as its not often changed. As Google have declined to distribute the app it will usually be present.
 
