@@ -183,12 +183,6 @@ namespace PodcastUtilities.UI.Settings
             ViewModel.Observables.DisplayChooser += DisplayChooser;
         }
 
-        private void DisplayChooser(object sender, Tuple<string, Intent> args)
-        {
-            (string title, Intent intent) = args;
-            StartActivity(Intent.CreateChooser(intent, title));
-        }
-
         private void KillViewModelObservers()
         {
             ViewModel.Observables.Version -= SetVersion;
@@ -210,5 +204,12 @@ namespace PodcastUtilities.UI.Settings
                 Toast.MakeText(Activity, message, ToastLength.Short).Show();
             });
         }
+
+        private void DisplayChooser(object sender, Tuple<string, Intent> args)
+        {
+            (string title, Intent intent) = args;
+            StartActivity(Intent.CreateChooser(intent, title));
+        }
+
     }
 }

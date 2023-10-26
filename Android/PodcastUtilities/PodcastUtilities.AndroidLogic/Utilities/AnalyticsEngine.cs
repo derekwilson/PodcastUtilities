@@ -13,7 +13,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void DownloadEpisodeEvent(long sizeInMB);
         void DownloadEpisodeCompleteEvent();
         void LoadControlFileEvent();
-        void LifecycleLaunchEvent();
+        void LifecycleLaunchEvent(float scaling, string uiMode);
         void LifecycleErrorEvent();
         void LifecycleErrorFatalEvent();
         void GeneratePlaylistEvent(PlaylistFormat format);
@@ -48,6 +48,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Event_Purge_Delete = "Purge_Delete";
 
         private const string Property_Version = "Version";
+        private const string Property_FontScaling = "FontScaling";
+        private const string Property_UIMode = "UIMode";
         private const string Property_SizeMB = "SizeMB";
         private const string Property_NumberOfItems = "NumberOfItems";
         private const string Property_Folder = "Folder";
@@ -107,10 +109,12 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             });
         }
 
-        public void LifecycleLaunchEvent()
+        public void LifecycleLaunchEvent(float scaling, string uiMode)
         {
             Analytics.TrackEvent(Event_Lifecycle_Launch, new Dictionary<string, string> {
-                { Property_Version, Application.DisplayVersion}
+                { Property_Version, Application.DisplayVersion},
+                { Property_FontScaling, scaling.ToString()},
+                { Property_UIMode, uiMode.ToString()}
             });
         }
 

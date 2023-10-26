@@ -29,7 +29,6 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/background"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/activity_padding"
                 android:showDividers="middle"
@@ -108,7 +107,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toStartOf="@id/fab_main_download"
         app:fabSize="normal"
-		app:backgroundTint="@color/primary"
+		app:backgroundTint="@color/colour_blue"
         app:tint="@color/ic_icon_selector"
 		android:contentDescription="@string/button_text_main_purge"
         app:srcCompat="@drawable/ic_delete" />
@@ -123,7 +122,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:fabSize="normal"
-		app:backgroundTint="@color/primary"
+		app:backgroundTint="@color/colour_blue"
         app:tint="@color/ic_icon_selector"
 		android:contentDescription="@string/button_text_main_download"
         app:srcCompat="@drawable/ic_download" />

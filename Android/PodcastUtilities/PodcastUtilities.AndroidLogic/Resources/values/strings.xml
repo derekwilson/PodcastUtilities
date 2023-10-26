@@ -1,4 +1,5 @@
 <resources>
+	<string name="ui_mode">Day</string>
 	<string name="placeholder">placeholder</string>
 	<string name="unknown">Unknown</string>
 
@@ -171,6 +172,5 @@
 
 	<!-- help activity -->
 	<string name="help_activity">Help</string>
-
 
 </resources>

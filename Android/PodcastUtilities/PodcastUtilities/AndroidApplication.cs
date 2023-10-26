@@ -195,7 +195,15 @@ namespace PodcastUtilities
             }
 
             Analytics = IocContainer.Resolve<IAnalyticsEngine>();
-            Analytics?.LifecycleLaunchEvent();
+            float scaling = 0.0F;
+            try
+            {
+                scaling = this.Resources.Configuration.FontScale;
+            } catch (Exception ex)
+            {
+                Logger.LogException(() => "error getting scaling", ex);
+            }
+            Analytics?.LifecycleLaunchEvent(scaling, GetString(Resource.String.ui_mode));
         }
     }
 }

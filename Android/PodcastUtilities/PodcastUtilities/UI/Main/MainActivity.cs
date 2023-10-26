@@ -216,6 +216,7 @@ namespace PodcastUtilities
             if (!PermissionChecker.HasManageStoragePermission(this))
             {
                 ToastMessage(GetString(Resource.String.manage_external_permissions_rationale));
+                return;
             }
             ViewModel.ActionSelected(action);
         }

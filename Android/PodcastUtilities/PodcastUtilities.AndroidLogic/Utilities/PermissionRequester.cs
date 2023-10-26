@@ -2,6 +2,7 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Google.Android.Material.Dialog;
 using System;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
@@ -48,7 +49,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
-                new AlertDialog.Builder(activity)
+                new MaterialAlertDialogBuilder(activity)
                         .SetTitle(Resource.String.permissions_title)
                         .SetMessage(rationaleId)
                         .SetPositiveButton(Resource.String.ok, delegate
@@ -76,7 +77,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             // Show an explanation to the user *asynchronously* -- don't block
             // this thread waiting for the user's response! After the user
             // sees the explanation, try again to request the permission.
-            new AlertDialog.Builder(activity)
+            new MaterialAlertDialogBuilder(activity)
                     .SetTitle(Resource.String.permissions_title)
                     .SetMessage(rationaleId)
                     .SetPositiveButton(Resource.String.ok, delegate

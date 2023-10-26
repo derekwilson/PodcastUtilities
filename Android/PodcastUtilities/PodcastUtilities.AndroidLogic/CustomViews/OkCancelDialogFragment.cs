@@ -1,6 +1,6 @@
 ﻿using Android.OS;
-using AndroidX.AppCompat.App;
 using AndroidX.Fragment.App;
+using Google.Android.Material.Dialog;
 using System;
 
 namespace PodcastUtilities.AndroidLogic.CustomViews
@@ -37,7 +37,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             var cancel = Arguments.GetString(CANCEL_KEY);
             var data = Arguments.GetString(CUSTOM_KEY);
 
-            var builder = new AlertDialog.Builder(Activity)
+            var builder = new MaterialAlertDialogBuilder(Activity)
                 .SetMessage(message);
             if (!string.IsNullOrEmpty(title))
             {
