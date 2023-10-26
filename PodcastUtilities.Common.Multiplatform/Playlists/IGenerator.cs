@@ -43,6 +43,10 @@ namespace PodcastUtilities.Common.Playlists
         /// <param name="copyToDestination">true to copy the playlist to the destination, false to write it locally</param>
         /// <param name="statusUpdate">the update mechanism for the generation - can be null</param>
         void GeneratePlaylist(IReadOnlyControlFile control, string rootFolder, bool copyToDestination, EventHandler<StatusUpdateEventArgs> statusUpdate);
-        
+
+        /// <summary>
+        /// event that is fired when the playlist is generated or copied
+        /// </summary>
+        event EventHandler<StatusUpdateEventArgs> StatusUpdate;
     }
 }

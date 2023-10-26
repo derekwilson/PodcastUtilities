@@ -1,3 +1,6 @@
+# v3.1.0.1 - 26 October 2023
+1. Added StatusUpdate event to IGenerator
+
 # v3.1.0.0 - 7 November 2022
 
 1. Updated solution to VS 2022
