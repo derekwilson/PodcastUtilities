@@ -28,6 +28,7 @@
 		android:id="@+id/steppedBar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:progressTint="@color/progress_bar"
 		android:background="@color/colour_blue"
 		android:alpha="0.8"
 		android:max="10"

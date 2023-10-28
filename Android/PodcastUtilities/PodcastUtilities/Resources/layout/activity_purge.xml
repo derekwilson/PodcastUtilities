@@ -56,7 +56,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:fabSize="normal"
-		app:backgroundTint="@color/colour_blue"
+		style="@style/fabIconButton"
         app:tint="@color/ic_icon_selector"
 		android:contentDescription="@string/button_text_purge"
         app:srcCompat="@drawable/ic_delete" />
