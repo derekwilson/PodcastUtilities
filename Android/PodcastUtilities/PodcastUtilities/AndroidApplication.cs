@@ -99,11 +99,13 @@ namespace PodcastUtilities
             container.Register<IAndroidApplication>(this);
             container.Register<ILogger>(Logger);
 
+            // these must be kept as singletons
             //container.Register<ICrashReporter, CrashlyticsReporter>(IocLifecycle.Singleton);
             //container.Register<IAnalyticsEngine, FirebaseAnalyticsEngine>(IocLifecycle.Singleton);
             container.Register<ICrashReporter, AppCenterCrashReporter>(IocLifecycle.Singleton);
             container.Register<IAnalyticsEngine, AppCenterAnalyticsEngine>(IocLifecycle.Singleton);
 
+            container.Register<IAndroidEnvironmentInformationProvider, AndroidEnvironmentInformationProvider>(IocLifecycle.Singleton);
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
             container.Register<IFileSystemHelper, FileSystemHelper>(IocLifecycle.Singleton);
             container.Register<INetworkHelper, NetworkHelper>(IocLifecycle.Singleton);

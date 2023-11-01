@@ -20,13 +20,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
         private IStatusAndProgressMessageStore Store;
+        private IAnalyticsEngine AnalyticsEngine;
 
         public MessagesViewModel(
             Application app,
             ILogger logger,
             IResourceProvider resProvider,
-            IStatusAndProgressMessageStore store
-            ) : base(app)
+            IStatusAndProgressMessageStore store,
+            IAnalyticsEngine analyticsEngine) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"MessagesViewModel:ctor");
@@ -34,11 +35,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
             ApplicationContext = app;
             ResourceProvider = resProvider;
             Store = store;
+            AnalyticsEngine = analyticsEngine;
         }
 
         public void Initialise()
         {
             Logger.Debug(() => $"MessagesViewModel:Initialise");
+            AnalyticsEngine.ViewLogsEvent(Store.GetTotalNumberOfLines());
             Observables.ResetText?.Invoke(this, null);
             Observables.AddText?.Invoke(this, Store.GetAllMessages());
             Observables.ScrollToTop?.Invoke(this, null);

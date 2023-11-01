@@ -1,5 +1,6 @@
 ﻿using Microsoft.AppCenter.Crashes;
 using System;
+using System.Collections.Generic;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
@@ -15,15 +16,25 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         // https://appcenter.ms/orgs/AndrewAndDerek/apps/PodcastUtilitiesDebug/crashes/errors?appBuild=&period=last28Days&status=&version=
 
         private IAnalyticsEngine AnalyticsEngine;
+        private IAndroidEnvironmentInformationProvider AndroidEnvironmentInformationProvider;
 
-        public AppCenterCrashReporter(IAnalyticsEngine analyticsEngine)
+        private Dictionary<string, string> LoggingExtraProperties = null;
+
+        public AppCenterCrashReporter(IAnalyticsEngine analyticsEngine, IAndroidEnvironmentInformationProvider androidEnvironmentInformationProvider)
         {
             AnalyticsEngine = analyticsEngine;
-        }
+            AndroidEnvironmentInformationProvider = androidEnvironmentInformationProvider;
 
-        public void LogNonFatalException(Exception ex)
+            LoggingExtraProperties = new Dictionary<string, string>
+            {
+                { "IsKindle", AndroidEnvironmentInformationProvider.IsKindleFire().ToString() },
+                { "IsWsa", AndroidEnvironmentInformationProvider.IsWsa().ToString()}
+            };
+    }
+
+    public void LogNonFatalException(Exception ex)
         {
-            Crashes.TrackError(ex);
+            Crashes.TrackError(ex, LoggingExtraProperties);
             AnalyticsEngine?.LifecycleErrorEvent();
         }
 

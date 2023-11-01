@@ -20,6 +20,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void GeneratePlaylistCompleteEvent(int numberOfItems);
         void PurgeScanEvent(int numberOfItems);
         void PurgeDeleteEvent(int numberOfItems);
+        void ViewLogsEvent(int numberOfLines);
     }
 
     public class AppCenterAnalyticsEngine : IAnalyticsEngine
@@ -28,10 +29,12 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         // https://appcenter.ms/orgs/AndrewAndDerek/apps/PodcastUtilitiesDebug/analytics/overview
 
         private IAndroidApplication Application;
+        private IAndroidEnvironmentInformationProvider AndroidEnvironmentInformationProvider;
 
-        public AppCenterAnalyticsEngine(IAndroidApplication application)
+        public AppCenterAnalyticsEngine(IAndroidApplication application, IAndroidEnvironmentInformationProvider androidEnvironmentInformationProvider)
         {
             Application = application;
+            AndroidEnvironmentInformationProvider = androidEnvironmentInformationProvider;
         }
 
         private const string Event_Download_Feed = "Download_Feed";
@@ -46,10 +49,13 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Event_Generate_Playlist_Complete = "Generate_Playlist_Complete";
         private const string Event_Purge_Scan = "Purge_Scan";
         private const string Event_Purge_Delete = "Purge_Delete";
+        private const string Event_View_Logs = "Logs_View";
 
         private const string Property_Version = "Version";
         private const string Property_FontScaling = "FontScaling";
         private const string Property_UIMode = "UIMode";
+        private const string Property_IsKindle = "IsKindle";
+        private const string Property_IsWsa = "IsWsa";
         private const string Property_SizeMB = "SizeMB";
         private const string Property_NumberOfItems = "NumberOfItems";
         private const string Property_Folder = "Folder";
@@ -114,7 +120,9 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             Analytics.TrackEvent(Event_Lifecycle_Launch, new Dictionary<string, string> {
                 { Property_Version, Application.DisplayVersion},
                 { Property_FontScaling, scaling.ToString()},
-                { Property_UIMode, uiMode.ToString()}
+                { Property_UIMode, uiMode.ToString()},
+                { Property_IsKindle, AndroidEnvironmentInformationProvider.IsKindleFire().ToString()},
+                { Property_IsWsa, AndroidEnvironmentInformationProvider.IsWsa().ToString()},
             });
         }
 
@@ -134,6 +142,13 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         {
             Analytics.TrackEvent(Event_Purge_Scan, new Dictionary<string, string> {
                 { Property_NumberOfItems, numberOfItems.ToString()}
+            });
+        }
+
+        public void ViewLogsEvent(int numberOfLines)
+        {
+            Analytics.TrackEvent(Event_View_Logs, new Dictionary<string, string> {
+                { Property_NumberOfItems, numberOfLines.ToString()}
             });
         }
     }
