@@ -33,7 +33,7 @@ namespace PodcastUtilities
     public class AndroidApplication : Application, IAndroidApplication
     {
         // tag used in LogCat, only used until NLog starts running
-        public const string LOGCAT_TAG = "PodcastUtilities-Tag";
+        public const string LOGCAT_TAG = "PodcastUtilitiesTag";
 
         public ILoggerFactory LoggerFactory { get; private set; }
         public ILogger Logger { get; private set; }

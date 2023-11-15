@@ -27,9 +27,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Messages
         protected Application MockApplication;
         protected ILogger MockLogger;
         protected IResourceProvider MockResourceProvider;
+        protected ICrashReporter MockCrashReporter;
+        protected IAnalyticsEngine MockAnalyticsEngine;
 
         // reals
-        protected IStatusAndProgressMessageStore StatusAndProgressMessageStore = new StatusAndProgressMessageStore();
+        protected IStatusAndProgressMessageStore StatusAndProgressMessageStore;
 
         protected void ResetObservedResults()
         {
@@ -54,12 +56,16 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Messages
             A.CallTo(() => MockApplication.PackageName).Returns("com.andrewandderek.podcastutilities");
             MockLogger = A.Fake<ILogger>();
             MockResourceProvider = A.Fake<IResourceProvider>();
+            MockCrashReporter = A.Fake<ICrashReporter>();
+            MockAnalyticsEngine = A.Fake<IAnalyticsEngine>();
+            StatusAndProgressMessageStore = new StatusAndProgressMessageStore(MockCrashReporter);
 
             ViewModel = new MessagesViewModel(
                 MockApplication,
                 MockLogger,
                 MockResourceProvider,
-                StatusAndProgressMessageStore
+                StatusAndProgressMessageStore,
+                MockAnalyticsEngine
             );
             ViewModel.Observables.ResetText += ResetText;
             ViewModel.Observables.AddText += AddText;

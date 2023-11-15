@@ -48,7 +48,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             A.CallTo(() => MockPlaylistGenerator.GeneratePlaylist(MockControlFile, "/sdcard/sourceroot", true, A<EventHandler<StatusUpdateEventArgs>>.Ignored))
                                    .Invokes((IReadOnlyControlFile control, string root, bool copy, EventHandler<StatusUpdateEventArgs> statusUpdateHandler) =>
                                    {
-                                       statusUpdateHandler?.Invoke(this, new StatusUpdateEventArgs(StatusUpdateLevel.Status, "status message", true, null));
+                                       MockPlaylistGenerator.StatusUpdate += Raise.With(new StatusUpdateEventArgs(StatusUpdateLevel.Status, "status message", true, null));
                                    });
 
 
