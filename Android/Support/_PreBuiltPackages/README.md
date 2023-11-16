@@ -5,6 +5,7 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 1.6.0   | 17 Nov 2023 | 21 (Android 5)   | 33 (Android 13)
 | 1.5.0   | 1 Nov 2023  | 21 (Android 5)   | 33 (Android 13)
 | 1.4.0   | 26 Oct 2023 | 21 (Android 5)   | 33 (Android 13)
 | 1.3.0   | 10 May 2023 | 21 (Android 5)   | 33 (Android 13)
@@ -18,6 +19,9 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 ## Notes
 
 Major changes for each version
+
+## v1.6.0 (10)
+- Fix scrolling issue in Android versions before v10
 
 ## v1.5.0 (9)
 - Accessibility fixes: Text scaling on toolbar and colour contrast
