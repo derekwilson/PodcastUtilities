@@ -90,6 +90,12 @@ namespace PodcastUtilities.UI.Settings
             {
                 // Appending to the textview auto scrolls the text to the bottom - force it back to the top
                 LicenseTextScroller.FullScroll(FocusSearchDirection.Up);
+                // Appending to the textview auto scrolls the text to the bottom - force it back to the top for old versions
+                if (Build.VERSION.SdkInt <= BuildVersionCodes.P)
+                {
+                    // scroll to the top of the page
+                    LicenseTextScroller.Parent.RequestChildFocus(LicenseTextScroller, LicenseTextScroller);
+                }
             });
         }
 

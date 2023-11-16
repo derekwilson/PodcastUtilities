@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Core.View;
+using AndroidX.Core.Widget;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
 using Google.Android.Material.FloatingActionButton;
@@ -20,7 +21,6 @@ using PodcastUtilities.UI.Purge;
 using PodcastUtilities.UI.Settings;
 using System;
 using System.Collections.Generic;
-using static Android.Content.ClipData;
 
 namespace PodcastUtilities
 {
@@ -34,6 +34,7 @@ namespace PodcastUtilities
         private AndroidApplication AndroidApplication;
         private MainViewModel ViewModel;
 
+        private NestedScrollView Container = null;
         private LinearLayout DriveInfoContainerView = null;
         private TextView NoDriveDataView = null;
         private EmptyRecyclerView RvFeeds;
@@ -57,6 +58,7 @@ namespace PodcastUtilities
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
+            Container = FindViewById<NestedScrollView>(Resource.Id.container);  
             DriveInfoContainerView = FindViewById<LinearLayout>(Resource.Id.drive_info_container);
             NoDriveDataView = FindViewById<TextView>(Resource.Id.txtNoData);
             RvFeeds = FindViewById<EmptyRecyclerView>(Resource.Id.feed_list);
@@ -360,6 +362,12 @@ namespace PodcastUtilities
                 FeedAdapter.SetItems(items);
                 FeedAdapter.NotifyDataSetChanged();
                 EnableFabsIfAvailable();
+                Container.FullScroll(((int)FocusSearchDirection.Up));
+                if (Build.VERSION.SdkInt <= BuildVersionCodes.P)
+                {
+                    // scroll to the top of the page
+                    Container.Parent.RequestChildFocus(Container, Container);
+                }
             });
         }
 
