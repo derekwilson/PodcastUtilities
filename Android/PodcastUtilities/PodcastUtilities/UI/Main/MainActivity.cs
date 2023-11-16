@@ -366,6 +366,8 @@ namespace PodcastUtilities
                 if (Build.VERSION.SdkInt <= BuildVersionCodes.P)
                 {
                     // scroll to the top of the page
+                    // weird shit for old versions of OS
+                    // see https://stackoverflow.com/questions/31014409/programmatically-scroll-to-the-top-of-a-nestedscrollview
                     Container.Parent.RequestChildFocus(Container, Container);
                 }
             });
