@@ -8,6 +8,7 @@ using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Core.Text;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Help;
 using PodcastUtilities.UI.Settings;
@@ -53,6 +54,16 @@ namespace PodcastUtilities.UI.Help
             AndroidApplication.Logger.Debug(() => $"HelpActivity:OnDestroy");
             base.OnDestroy();
             KillViewModelObservers();
+        }
+
+        public override bool DispatchKeyEvent(KeyEvent e)
+        {
+            if (BackKeyMapper.HandleKeyEvent(this, e))
+            {
+                AndroidApplication.Logger.Debug(() => $"HelpActivity:DispatchKeyEvent - handled");
+                return true;
+            }
+            return base.DispatchKeyEvent(e);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)

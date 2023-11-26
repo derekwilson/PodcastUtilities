@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
@@ -83,6 +84,16 @@ namespace PodcastUtilities.UI.Purge
             AndroidApplication.Logger.Debug(() => $"PurgeActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override bool DispatchKeyEvent(KeyEvent e)
+        {
+            if (BackKeyMapper.HandleKeyEvent(this, e))
+            {
+                AndroidApplication.Logger.Debug(() => $"PurgeActivity:DispatchKeyEvent - handled");
+                return true;
+            }
+            return base.DispatchKeyEvent(e);
         }
 
         private void SetupViewModelObservers()

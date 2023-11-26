@@ -213,6 +213,21 @@ namespace PodcastUtilities
             return base.OnOptionsItemSelected(item);
         }
 
+        public override bool DispatchKeyEvent(KeyEvent e)
+        {
+            if (BackKeyMapper.HandleKeyEvent(this, e))
+            {
+                AndroidApplication.Logger.Debug(() => $"MainActivity:DispatchKeyEvent - handled");
+                return true;
+            }
+            if (ViewModel.KeyEvent(e))
+            {
+                AndroidApplication.Logger.Debug(() => $"MainActivity:DispatchKeyEvent - handled by model");
+                return true;
+            }
+            return base.DispatchKeyEvent(e);
+        }
+
         private void DoAction(int action)
         {
             if (!PermissionChecker.HasManageStoragePermission(this))

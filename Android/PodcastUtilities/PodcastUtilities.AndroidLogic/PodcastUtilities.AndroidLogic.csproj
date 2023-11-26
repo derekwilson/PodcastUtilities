@@ -65,6 +65,7 @@
     <Compile Include="Utilities\AnalyticsEngine.cs" />
     <Compile Include="Utilities\ApplicationControlFileFactory.cs" />
     <Compile Include="Utilities\ApplicationControlFileProvider.cs" />
+    <Compile Include="Utilities\BackKeyMapper.cs" />
     <Compile Include="Utilities\CrashReporter.cs" />
     <Compile Include="Utilities\AndroidEnvironmentInformationProvider.cs" />
     <Compile Include="Utilities\IAndroidApplication.cs" />

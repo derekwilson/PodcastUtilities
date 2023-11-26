@@ -116,8 +116,8 @@
 	<string name="finding_purge_progress">Finding things to delete...</string>
 
 	<plurals name="purge_activity_title_after_load">
-		<item quantity="one">%d Item Selected</item>
-		<item quantity="other">%d Items Selected</item>
+		<item quantity="one">%d Item to Delete</item>
+		<item quantity="other">%d Items to Delete</item>
 	</plurals>
 
 	<string name="purge_file_label_fmt">File: {0}</string>

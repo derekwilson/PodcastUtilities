@@ -128,3 +128,31 @@ https://developer.amazon.com/apps-and-games/console/apps/list.html
 You cannot upgrade from an AAB to an APK install, or visa versa, as they are signed with different keys. The AAB is signed by Google and the APK is signed by the developer.
 
 Sometimes when running `BuildReleaseAPK.bat` it will generate a file called `com.andrewandderek.podcastutilities.debug-Signed.aab`, and the copy operation will fail, if this happens just run the script again.
+
+##### Installing on Android Subsystem for Windows
+
+On Windows 11 you will need to enable `Virtual Machine Platform` in `Windows Features`. Then visit the Microsoft Store and install `Amazon App Store`.
+
+See https://support.microsoft.com/en-gb/windows/install-mobile-apps-and-the-amazon-appstore-on-windows-f8d0abb5-44ad-47d8-b9fb-ad6b1459ff6c
+
+And https://developer.amazon.com/apps-and-games/blogs/2023/07/debug-android-apps-for-windows-11
+
+And ms-windows-store://pdp/?productid=9NJHK44TTKSX
+
+You need to sign in with your Amazon account
+
+To start the subsystem either run an App or Files and then 
+
+```
+adb connect localhost:58526
+```
+
+Then you can use ADB to install or select Android Subsystem for Windows from the list of devices in Android Studio or Visual Studio
+
+If you want to download podcasts to the Windows file system then you will need to change the source root to be something like this
+
+```
+<sourceRoot>/storage/emulated/0/Windows/Podcasts</sourceRoot>
+```
+
+

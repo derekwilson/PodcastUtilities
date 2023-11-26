@@ -227,6 +227,39 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             return false;
         }
 
+        private bool DoIfPossible(int itemId)
+        {
+            if (IsActionAvailable(itemId))
+            {
+                return ActionSelected(itemId);
+            }
+            return false;
+        }
+
+        public bool KeyEvent(KeyEvent e)
+        {
+            Logger.Debug(() => $"MainViewModel:KeyEvent = {e.Action}, {e.KeyCode}");
+            if (e == null || e.Action != KeyEventActions.Up)
+            {
+                // lets get rid of most of the stuff we are not interested in
+                return false;
+            }
+            switch (e.KeyCode)
+            {
+                case Keycode.P:
+                    return DoIfPossible(Resource.Id.action_purge);
+                case Keycode.D:
+                    return DoIfPossible(Resource.Id.action_download);
+                case Keycode.G:
+                    return DoIfPossible(Resource.Id.action_playlist);
+                case Keycode.C:
+                    return DoIfPossible(Resource.Id.action_load_control);
+                case Keycode.S:
+                    return DoIfPossible(Resource.Id.action_settings);
+            }
+            return false;
+        }
+
         internal void FeedItemSelected(IPodcastInfo podcastFeed)
         {
             Logger.Debug(() => $"MainViewModel: FeedItemSelected {podcastFeed.Folder}");

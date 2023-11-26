@@ -1,10 +1,10 @@
 <h3>PodcastUtilities Cache Manager</h3>
 <p>PodcastUtilities is an RSS feed media cache management application. You can</p>
 <p>
-&#149; Download new episodes from a group of feeds<br>
-&#149; Remove old episodes from the cache<br>
-&#149; Generate playlists from episodes in the cache<br>
-&#149; Use it in conjunction with the desktop version<br>
+    &#149; Download new episodes from a group of feeds<br>
+    &#149; Remove old episodes from the cache<br>
+    &#149; Generate playlists from episodes in the cache<br>
+    &#149; Use it in conjunction with the desktop version<br>
 </p>
 <p>Note that it can only perform cache management - PodcastUtilities cannot play media you will need a separate player.</p>
 <h3>Why sideload?</h3>
@@ -18,16 +18,27 @@
 <h3>Usage</h3>
 <p>Generally the usage pattern is</p>
 <p>
-&#149; Purge Podcasts - to get rid of old media<br>
-&#149; Download Podcasts - to get new media<br>
-&#149; Generate Playlist - to get a playlist of the downloaded media<br>
+    &#149; Purge Podcasts - to get rid of old media<br>
+    &#149; Download Podcasts - to get new media<br>
+    &#149; Generate Playlist - to get a playlist of the downloaded media<br>
 </p>
 <p>You could elect to delete the media files manually and skip the purge, also if you use a folder player for your media then you may not need a playlist.</p>
+<h3>Keyboard</h3>
+<p>If a keyboard is present, then the following keyboard shorcuts are available on the main screen</p>
+<p>
+    &#149; P - Purge Podcasts<br>
+    &#149; D - Download from all Feeds<br>
+    &#149; G - Generate Playlist<br>
+    &#149; S - Settings<br>
+    &#149; C - Load Control File<br>
+</p>
+<p>You can also use the ESCAPE key as the back button.</p>
+<p>If you are using Windows Subsystem for Android and want to use the shared Windows File System then you will need to change your SourceRoot to be something like <font face='serif-monospace'><b>/storage/emulated/0/Windows/Podcasts</b></font></p>
 <h3>Using with the desktop version</h3>
 <p>If you use the desktop version (DownloadPodcasts and SyncPodcasts) to manage the cache on your phone and you want to use this app in addition to that mechanism then it should work fine, there are some considerations</p>
 <p>
     &#149; Marke sure you use the same naming style on both platforms or the filenames will not match and you might end up with duplicates<br>
     &#149; Try to ensure you use the same version of <font face='serif-monospace'><b>PodcastUtilities.Common.DLL</b></font> on both platforms or the filenames might differ because of differences in the code.<br>
-    </p>
+</p>
 <h3>Source code</h3>
 <p>The <a href="https://github.com/derekwilson/PodcastUtilities">source code</a> for PodcastUtilities is available on Github.</p>
