@@ -11,6 +11,12 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
     public interface IApplicationControlFileProvider
     {
+        /// <summary>
+        /// event that is fired when the control file is updated
+        /// the implementer must be a songleton for this to work properly
+        /// </summary>
+        event EventHandler<EventArgs> ConfigurationUpdated;
+
         IReadWriteControlFile GetApplicationConfiguration();
         void ReplaceApplicationConfiguration(IReadWriteControlFile file);
         Intent GetApplicationConfigurationSharingIntent();
@@ -29,6 +35,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private IResourceProvider ResourceProvider;
         private IApplicationControlFileFactory ApplicationControlFileFactory;
 
+        public event EventHandler<EventArgs> ConfigurationUpdated;
+
         public ApplicationControlFileProvider(
             ILogger logger,
             IFileSystemHelper fileSystemHelper,
@@ -44,6 +52,10 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             ApplicationControlFileFactory = applicationControlFileFactory;
         }
 
+        private void OnConfigurationUpdated()
+        {
+            ConfigurationUpdated?.Invoke( this, EventArgs.Empty );
+        }
 
         private string GetApplicationControlFilePath()
         {
@@ -86,6 +98,20 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 file.SaveToFile(GetApplicationControlFilePath());
                 ControlFile = file;
             }
+            OnConfigurationUpdated();
+        }
+
+        public void ResetControlFile()
+        {
+            Logger.Debug(() => $"ApplicationControlFileProvider:ResetControlFile");
+            lock (SyncLock)
+            {
+                ControlFile = null;
+                var newFile = ApplicationControlFileFactory.CreateEmptyControlFile();
+                newFile.SaveToFile(GetApplicationControlFilePath());
+                ControlFile = newFile;
+            }
+            OnConfigurationUpdated();
         }
 
         public Intent GetApplicationConfigurationSharingIntent()
@@ -116,18 +142,6 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             sharingIntent.PutParcelableArrayListExtra(Intent.ExtraStream, attachmentUris);
             sharingIntent.AddFlags(ActivityFlags.GrantReadUriPermission);
             return sharingIntent;
-        }
-
-        public void ResetControlFile()
-        {
-            Logger.Debug(() => $"ApplicationControlFileProvider:ResetControlFile");
-            lock (SyncLock)
-            {
-                ControlFile = null;
-                var newFile = ApplicationControlFileFactory.CreateEmptyControlFile();
-                newFile.SaveToFile(GetApplicationControlFilePath());
-                ControlFile = newFile;
-            }
         }
     }
 }

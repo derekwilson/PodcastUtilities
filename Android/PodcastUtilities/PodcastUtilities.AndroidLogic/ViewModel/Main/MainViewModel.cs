@@ -64,6 +64,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             ApplicationContext = app;
             ResourceProvider = resProvider;
             ApplicationControlFileProvider = appControlFileProvider;
+            ApplicationControlFileProvider.ConfigurationUpdated += ConfigurationUpdated;
             FileSystemHelper = fsHelper;
             ByteConverter = byteConverter;
             CrashReporter = crashReporter;
@@ -73,6 +74,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             PlaylistGenerator.StatusUpdate += GenerateStatusUpdate;
             DriveVolumeInfoViewFactory = driveVolumeInfoViewFactory;
             ApplicationControlFileFactory = applicationControlFileFactory;
+        }
+
+        private void ConfigurationUpdated(object sender, EventArgs e)
+        {
+            Logger.Debug(() => $"MainViewModel:ConfigurationUpdated");
+            RefreshFeedList();
         }
 
         public void Initialise()
@@ -87,6 +94,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         public void OnResume()
         {
             Logger.Debug(() => $"MainViewModel:OnResume");
+        }
+
+        [Lifecycle.Event.OnDestroy]
+        [Java.Interop.Export]
+        public void OnDestroy()
+        {
+            Logger.Debug(() => $"MainViewModel:OnDestroy");
+            ApplicationControlFileProvider.ConfigurationUpdated -= ConfigurationUpdated;
+            PlaylistGenerator.StatusUpdate -= GenerateStatusUpdate;
         }
 
         public void RefreshFileSystemInfo()
@@ -339,5 +355,5 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
             AnalyticsEngine.GeneratePlaylistCompleteEvent(items);
         }
-    }
+     }
 }
