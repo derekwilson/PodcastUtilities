@@ -14,6 +14,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         IReadWriteControlFile GetApplicationConfiguration();
         void ReplaceApplicationConfiguration(IReadWriteControlFile file);
         Intent GetApplicationConfigurationSharingIntent();
+        void ResetControlFile();
     }
 
     public class ApplicationControlFileProvider : IApplicationControlFileProvider
@@ -26,17 +27,21 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private IFileSystemHelper FileSystemHelper;
         private IControlFileFactory ControlFileFactory;
         private IResourceProvider ResourceProvider;
+        private IApplicationControlFileFactory ApplicationControlFileFactory;
 
         public ApplicationControlFileProvider(
             ILogger logger,
             IFileSystemHelper fileSystemHelper,
             IControlFileFactory factory,
-            IResourceProvider resourceProvider)
+            IResourceProvider resourceProvider,
+            IApplicationControlFileFactory applicationControlFileFactory
+            )
         {
             Logger = logger;
             FileSystemHelper = fileSystemHelper;
             ControlFileFactory = factory;
             ResourceProvider = resourceProvider;
+            ApplicationControlFileFactory = applicationControlFileFactory;
         }
 
 
@@ -111,6 +116,18 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             sharingIntent.PutParcelableArrayListExtra(Intent.ExtraStream, attachmentUris);
             sharingIntent.AddFlags(ActivityFlags.GrantReadUriPermission);
             return sharingIntent;
+        }
+
+        public void ResetControlFile()
+        {
+            Logger.Debug(() => $"ApplicationControlFileProvider:ResetControlFile");
+            lock (SyncLock)
+            {
+                ControlFile = null;
+                var newFile = ApplicationControlFileFactory.CreateEmptyControlFile();
+                newFile.SaveToFile(GetApplicationControlFilePath());
+                ControlFile = newFile;
+            }
         }
     }
 }

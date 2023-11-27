@@ -27,6 +27,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
         private ICrashReporter CrashReporter;
         private IUserSettings UserSettings;
         private IApplicationControlFileProvider ApplicationControlFileProvider;
+        private IAnalyticsEngine AnalyticsEngine;
 
         public SettingsViewModel(
             Application app,
@@ -35,7 +36,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             IAndroidApplication androidApplication,
             ICrashReporter crashReporter,
             IUserSettings userSettings,
-            IApplicationControlFileProvider applicationControlFileProvider) : base(app)
+            IApplicationControlFileProvider applicationControlFileProvider,
+            IAnalyticsEngine analyticsEngine
+            ) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"SettingsViewModel:ctor");
@@ -45,6 +48,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             CrashReporter = crashReporter;
             UserSettings = userSettings;
             ApplicationControlFileProvider = applicationControlFileProvider;
+            AnalyticsEngine = analyticsEngine;
         }
 
         public void Initialise()
@@ -87,6 +91,18 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             {
                 Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_share_no_controlfile));
             }
+        }
+
+        public void ResetConfig()
+        {
+            if (ApplicationControlFileProvider == null)
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_share_no_controlfile));
+                return;
+            }
+            ApplicationControlFileProvider.ResetControlFile();
+            AnalyticsEngine.ResetControlFileEvent();
+            Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_reset));
         }
     }
 }

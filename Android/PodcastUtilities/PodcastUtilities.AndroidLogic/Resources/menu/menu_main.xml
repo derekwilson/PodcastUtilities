@@ -7,6 +7,10 @@
 			android:id="@+id/action_load_control"
 			android:title="@string/action_load_control"
 			app:showAsAction="never"/>
+		<item
+			android:id="@+id/action_edit_config"
+			android:title="@string/action_edit_config"
+			app:showAsAction="never"/>
 	</group>
 
 	<group android:id="@+id/actions" >

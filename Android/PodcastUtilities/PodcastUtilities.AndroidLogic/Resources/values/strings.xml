@@ -16,6 +16,7 @@
 	<string name="main_activity_title">PodcastUtilities</string>
 
 	<string name="action_load_control">Load Control File</string>
+	<string name="action_edit_config">Edit Configuration</string>
 	<string name="action_purge">Purge Podcasts</string>
 	<string name="action_download">Download from all Feeds</string>
 	<string name="action_playlist">Generate Playlist</string>
@@ -143,7 +144,10 @@
 	<string name="settings_config_share_key">appConfigShare</string>
 	<string name="settings_config_share_title">Share</string>
 	<string name="settings_config_share_description">Share your control file, for example share via email to edit the XML off-device.</string>
-	
+	<string name="settings_config_reset_key">appConfigReset</string>
+	<string name="settings_config_reset_title">Reset</string>
+	<string name="settings_config_reset_description">Reset your configuration, this will reset your cache root and remove all feeds. No files will be deleted.</string>
+
 	<string name="settings_about_category">About</string>
 
 	<string name="settings_privacy_key">appPrivacy</string>
@@ -163,6 +167,8 @@
 	<string name="settings_share_chooser_title">Share control file</string>
 	<string name="settings_share_all_subject">PodcastUtilities Controlfile</string>
 	<string name="settings_share_all_body">This is my control file</string>
+
+	<string name="settings_reset">Control file reset</string>
 
 	<!-- open source licenses -->
 	<string name="osl_title">Open-source licenses</string>

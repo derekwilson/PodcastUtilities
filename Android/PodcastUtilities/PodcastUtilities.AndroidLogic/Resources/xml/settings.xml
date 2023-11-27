@@ -30,6 +30,13 @@
 			app:iconSpaceReserved="false"
 			/>
 
+		<Preference
+			android:title="@string/settings_config_reset_title"
+			android:key="@string/settings_config_reset_key"
+			android:summary="@string/settings_config_reset_description"
+			app:iconSpaceReserved="false"
+			/>
+
 	</PreferenceCategory>
 
 	<PreferenceCategory

@@ -182,6 +182,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             {
                 return true;
             }
+            if (itemId == Resource.Id.action_edit_config)
+            {
+                return true;
+            }
             if (itemId == Resource.Id.action_purge)
             {
                 return AllFeedItems.Count > 0;
@@ -254,6 +258,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                     return DoIfPossible(Resource.Id.action_playlist);
                 case Keycode.C:
                     return DoIfPossible(Resource.Id.action_load_control);
+                case Keycode.E:
+                    return DoIfPossible(Resource.Id.action_edit_config);
                 case Keycode.S:
                     return DoIfPossible(Resource.Id.action_settings);
             }
