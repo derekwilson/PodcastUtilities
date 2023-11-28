@@ -9,6 +9,7 @@ using AndroidX.AppCompat.App;
 using AndroidX.Core.View;
 using AndroidX.Core.Widget;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Edit;
@@ -19,10 +20,14 @@ namespace PodcastUtilities.UI.Edit
     [Activity(Label = "@string/edit_config_activity_title", ParentActivity = typeof(MainActivity))]
     internal class EditConfigActivity : AppCompatActivity
     {
+        private const string RESET_PROMPT_TAG = "reset_prompt_tag";
+
         private AndroidApplication AndroidApplication;
         private EditConfigViewModel ViewModel;
 
         private NestedScrollView Container = null;
+
+        private OkCancelDialogFragment ResetPromptDialogFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -42,6 +47,9 @@ namespace PodcastUtilities.UI.Edit
 
             ViewModel.Initialise();
 
+            ResetPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(RESET_PROMPT_TAG) as OkCancelDialogFragment;
+            SetupFragmentObservers(ResetPromptDialogFragment);
+
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnCreate - end");
         }
 
@@ -50,6 +58,7 @@ namespace PodcastUtilities.UI.Edit
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnDestroy");
             base.OnDestroy();
             KillViewModelObservers();
+            KillFragmentObservers(ResetPromptDialogFragment);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -105,16 +114,29 @@ namespace PodcastUtilities.UI.Edit
             return base.OnOptionsItemSelected(item);
         }
 
-        private void KillViewModelObservers()
+        private void SetupViewModelObservers()
         {
             ViewModel.Observables.DisplayMessage += DisplayMessage;
             ViewModel.Observables.DisplayChooser += DisplayChooser;
+            ViewModel.Observables.ResetPrompt += ResetPrompt;
         }
 
-        private void SetupViewModelObservers()
+        private void KillViewModelObservers()
         {
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
             ViewModel.Observables.DisplayChooser -= DisplayChooser;
+            ViewModel.Observables.ResetPrompt -= ResetPrompt;
+        }
+
+        private void ResetPrompt(object sender, Tuple<string, string, string, string> parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                (string title, string message, string ok, string cancel) = parameters;
+                ResetPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, null);
+                SetupFragmentObservers(ResetPromptDialogFragment);
+                ResetPromptDialogFragment.Show(SupportFragmentManager, RESET_PROMPT_TAG);
+            });
         }
 
         private void DisplayChooser(object sender, Tuple<string, Intent> args)
@@ -132,5 +154,52 @@ namespace PodcastUtilities.UI.Edit
             });
         }
 
+        private void SetupFragmentObservers(OkCancelDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"EditConfigActivity: SetupFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected += OkSelected;
+                fragment.CancelSelected += CancelSelected;
+            }
+        }
+
+        private void KillFragmentObservers(OkCancelDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"EditConfigActivity: KillFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected -= OkSelected;
+                fragment.CancelSelected -= CancelSelected;
+            }
+        }
+
+        private void CancelSelected(object sender, Tuple<string, string> parameters)
+        {
+            (string tag, string data) = parameters;
+            AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
+            switch (tag)
+            {
+                case RESET_PROMPT_TAG:
+                    KillFragmentObservers(ResetPromptDialogFragment);
+                    break;
+            }
+        }
+
+        private void OkSelected(object sender, Tuple<string, string> parameters)
+        {
+            (string tag, string data) = parameters;
+            AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
+            RunOnUiThread(() =>
+            {
+                switch (tag)
+                {
+                    case RESET_PROMPT_TAG:
+                        KillFragmentObservers(ResetPromptDialogFragment);
+                        ViewModel.ResetConfirmed();
+                        break;
+                }
+            });
+        }
     }
 }

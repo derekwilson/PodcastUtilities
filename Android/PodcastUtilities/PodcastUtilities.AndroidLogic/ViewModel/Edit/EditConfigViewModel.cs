@@ -14,6 +14,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         {
             public EventHandler<string> DisplayMessage;
             public EventHandler<Tuple<string, Intent>> DisplayChooser;
+            public EventHandler<Tuple<string, string, string, string>> ResetPrompt;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -150,6 +151,18 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         }
 
         private void ResetConfig()
+        {
+            Observables.ResetPrompt?.Invoke(this,
+                Tuple.Create(
+                    ResourceProvider.GetString(Resource.String.dialog_title),
+                    ResourceProvider.GetString(Resource.String.edit_reset_prompt),
+                    ResourceProvider.GetString(Resource.String.edit_reset_ok),
+                    ResourceProvider.GetString(Resource.String.edit_reset_cancel)
+                )
+            );
+        }
+
+        public void ResetConfirmed()
         {
             if (ApplicationControlFileProvider == null)
             {

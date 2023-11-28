@@ -81,6 +81,10 @@
 	<string name="action_edit_globals">Global Feed Settings</string>
 
 	<string name="edit_reset">Control file reset</string>
+	<string name="edit_reset_prompt">OK to reset your configuration, this will reset your cache root and remove all feeds. No files will be deleted.</string>
+	<string name="edit_reset_ok">Reset All</string>
+	<string name="edit_reset_cancel">Cancel</string>
+
 
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
