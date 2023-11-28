@@ -26,6 +26,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.OS;
+using PodcastUtilities.AndroidLogic.ViewModel.Edit;
 
 namespace PodcastUtilities
 {
@@ -126,6 +127,7 @@ namespace PodcastUtilities
             container.Register<DownloadViewModel, DownloadViewModel>();
             container.Register<MessagesViewModel, MessagesViewModel>();
             container.Register<PurgeViewModel, PurgeViewModel>();
+            container.Register<EditConfigViewModel, EditConfigViewModel>();
 
             var factory = container.Resolve<ViewModelFactory>();
             factory.AddMap(typeof(MainViewModel));
@@ -135,6 +137,7 @@ namespace PodcastUtilities
             factory.AddMap(typeof(DownloadViewModel));
             factory.AddMap(typeof(MessagesViewModel));
             factory.AddMap(typeof(PurgeViewModel));
+            factory.AddMap(typeof(EditConfigViewModel));
             return container;
         }
 

@@ -17,6 +17,7 @@ using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.UI.Download;
+using PodcastUtilities.UI.Edit;
 using PodcastUtilities.UI.Purge;
 using PodcastUtilities.UI.Settings;
 using System;
@@ -186,6 +187,7 @@ namespace PodcastUtilities
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
             EnableMenuItemIfAvailable(menu, Resource.Id.action_load_control);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_config);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_purge);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_download);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_playlist);
@@ -256,6 +258,7 @@ namespace PodcastUtilities
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
             ViewModel.Observables.NavigateToDownload += NavigateToDownload;
             ViewModel.Observables.NavigateToPurge += NavigateToPurge;
+            ViewModel.Observables.NavigateToEditConfig += NavigateToEditConfig;
         }
 
         private void KillViewModelObservers()
@@ -270,6 +273,7 @@ namespace PodcastUtilities
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
             ViewModel.Observables.NavigateToDownload -= NavigateToDownload;
             ViewModel.Observables.NavigateToPurge -= NavigateToPurge;
+            ViewModel.Observables.NavigateToEditConfig -= NavigateToEditConfig;
         }
 
         private void SetTitle(object sender, string title)
@@ -342,6 +346,16 @@ namespace PodcastUtilities
             RunOnUiThread(() =>
             {
                 var intent = new Intent(this, typeof(PurgeActivity));
+                StartActivity(intent);
+            });
+        }
+
+        private void NavigateToEditConfig(object sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToEditConfig");
+            RunOnUiThread(() =>
+            {
+                var intent = new Intent(this, typeof(EditConfigActivity));
                 StartActivity(intent);
             });
         }

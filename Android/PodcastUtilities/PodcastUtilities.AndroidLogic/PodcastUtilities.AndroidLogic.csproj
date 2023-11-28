@@ -84,6 +84,7 @@
     <Compile Include="Utilities\StatusAndProgressMessageStore.cs" />
     <Compile Include="ViewModel\Download\DownloadRecyclerItem.cs" />
     <Compile Include="ViewModel\Download\DownloadViewModel.cs" />
+    <Compile Include="ViewModel\Edit\EditConfigViewModel.cs" />
     <Compile Include="ViewModel\Help\HelpViewModel.cs" />
     <Compile Include="ViewModel\Main\MainViewModel.cs" />
     <Compile Include="ViewModel\Main\PodcastFeedRecyclerItem.cs" />
@@ -204,6 +205,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values-night\strings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_edit_config.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

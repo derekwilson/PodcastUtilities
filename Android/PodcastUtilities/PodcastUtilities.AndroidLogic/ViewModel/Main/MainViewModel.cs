@@ -28,6 +28,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler<string> SetCacheRoot;
             public EventHandler<string> NavigateToDownload;
             public EventHandler NavigateToPurge;
+            public EventHandler NavigateToEditConfig;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -228,6 +229,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             if (itemId == Resource.Id.action_load_control)
             {
                 Observables.SelectControlFile?.Invoke(this, null);
+                return true;
+            }
+            if (itemId == Resource.Id.action_edit_config)
+            {
+                Observables.NavigateToEditConfig?.Invoke(this, null);
                 return true;
             }
             if (itemId == Resource.Id.action_purge)

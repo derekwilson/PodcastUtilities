@@ -86,23 +86,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             var intent = ApplicationControlFileProvider.GetApplicationConfigurationSharingIntent();
             if (intent != null)
             {
+                AnalyticsEngine.ShareControlFileEvent();
                 Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.settings_share_chooser_title), intent));
             } else
             {
                 Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_share_no_controlfile));
             }
-        }
-
-        public void ResetConfig()
-        {
-            if (ApplicationControlFileProvider == null)
-            {
-                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_share_no_controlfile));
-                return;
-            }
-            ApplicationControlFileProvider.ResetControlFile();
-            AnalyticsEngine.ResetControlFileEvent();
-            Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_reset));
         }
     }
 }

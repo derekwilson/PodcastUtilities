@@ -39,7 +39,6 @@ namespace PodcastUtilities.UI.Settings
             UpdateOsl();
             UpdatePrivacy();
             UpdateShare();
-            UpdateReset();
         }
 
         public override void OnPause()
@@ -71,20 +70,6 @@ namespace PodcastUtilities.UI.Settings
             {
                 preference.PreferenceClick += (sender, e) => ShareClick();
             }
-        }
-
-        private void UpdateReset()
-        {
-            var preference = FindPreference(GetString(Resource.String.settings_config_reset_key));
-            if (preference != null)
-            {
-                preference.PreferenceClick += (sender, e) => ResetClick();
-            }
-        }
-
-        private void ResetClick()
-        {
-            ViewModel.ResetConfig();
         }
 
         private void ShareClick()
