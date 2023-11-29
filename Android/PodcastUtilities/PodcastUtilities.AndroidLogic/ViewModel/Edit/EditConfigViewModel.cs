@@ -6,7 +6,6 @@ using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using System;
-using static Android.Content.ClipData;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
 {
@@ -188,6 +187,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         {
             var folder = FileSystemHelper.GetRealPathFromDocumentTreeFile(file);
             Logger.Debug(() => $"EditConfigViewModel:FolderSelected = {folder}");
+            var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            ControlFile.SetSourceRoot(folder);
+            ApplicationControlFileProvider.SaveCurrentControlFile();
             Observables.DisplayMessage?.Invoke(this, folder);
         }
     }

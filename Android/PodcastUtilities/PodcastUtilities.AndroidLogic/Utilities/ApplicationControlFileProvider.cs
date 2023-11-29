@@ -21,6 +21,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void ReplaceApplicationConfiguration(IReadWriteControlFile file);
         Intent GetApplicationConfigurationSharingIntent();
         void ResetControlFile();
+        void SaveCurrentControlFile();
     }
 
     public class ApplicationControlFileProvider : IApplicationControlFileProvider
@@ -84,6 +85,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 } catch (Exception ex) 
                 {
                     Logger.LogException(() => $"ApplicationControlFileProvider:GetApplicationConfiguration", ex);
+                    ControlFile = ApplicationControlFileFactory.CreateEmptyControlFile();
                 }
             }
             return ControlFile;
@@ -142,6 +144,21 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             sharingIntent.PutParcelableArrayListExtra(Intent.ExtraStream, attachmentUris);
             sharingIntent.AddFlags(ActivityFlags.GrantReadUriPermission);
             return sharingIntent;
+        }
+
+        public void SaveCurrentControlFile()
+        {
+            Logger.Debug(() => $"ApplicationControlFileProvider:SaveCurrentControlFile");
+            lock (SyncLock)
+            {
+                if (ControlFile == null)
+                {
+                    Logger.Debug(() => $"ApplicationControlFileProvider: cannot save null file");
+                    return;
+                }
+                ControlFile.SaveToFile(GetApplicationControlFilePath());
+            }
+            OnConfigurationUpdated();
         }
     }
 }
