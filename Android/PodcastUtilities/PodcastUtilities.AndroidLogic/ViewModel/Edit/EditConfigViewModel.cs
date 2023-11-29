@@ -1,10 +1,12 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.Views;
+using AndroidX.DocumentFile.Provider;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using System;
+using static Android.Content.ClipData;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
 {
@@ -15,6 +17,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             public EventHandler<string> DisplayMessage;
             public EventHandler<Tuple<string, Intent>> DisplayChooser;
             public EventHandler<Tuple<string, string, string, string>> ResetPrompt;
+            public EventHandler SelectFolder;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -24,6 +27,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private IApplicationControlFileProvider ApplicationControlFileProvider;
         private ICrashReporter CrashReporter;
         private IAnalyticsEngine AnalyticsEngine;
+        private IFileSystemHelper FileSystemHelper;
 
         public EditConfigViewModel(
             Application app,
@@ -31,8 +35,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             IResourceProvider resProvider,
             IApplicationControlFileProvider appControlFileProvider,
             ICrashReporter crashReporter,
-            IAnalyticsEngine analyticsEngine
-            ) : base(app)
+            IAnalyticsEngine analyticsEngine,
+            IFileSystemHelper fileSystemHelper) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"EditConfigViewModel:ctor");
@@ -43,6 +47,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             ApplicationControlFileProvider.ConfigurationUpdated += ConfigurationUpdated;
             CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
+            FileSystemHelper = fileSystemHelper;
         }
 
         private void ConfigurationUpdated(object sender, EventArgs e)
@@ -129,6 +134,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
                 ResetConfig();
                 return true;
             }
+            if (itemId == Resource.Id.action_edit_cache_root)
+            {
+                Observables.SelectFolder?.Invoke(this, null);
+                return true;
+            }
             return false;
         }
 
@@ -172,6 +182,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             ApplicationControlFileProvider.ResetControlFile();
             AnalyticsEngine.ResetControlFileEvent();
             Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.edit_reset));
+        }
+
+        public void FolderSelected(DocumentFile file)
+        {
+            var folder = FileSystemHelper.GetRealPathFromDocumentTreeFile(file);
+            Logger.Debug(() => $"EditConfigViewModel:FolderSelected = {folder}");
+            Observables.DisplayMessage?.Invoke(this, folder);
         }
     }
 }

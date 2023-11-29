@@ -2,12 +2,15 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Provider;
 using Android.Runtime;
+using Android.Security.Identity;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Core.View;
 using AndroidX.Core.Widget;
+using AndroidX.DocumentFile.Provider;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
@@ -20,6 +23,7 @@ namespace PodcastUtilities.UI.Edit
     [Activity(Label = "@string/edit_config_activity_title", ParentActivity = typeof(MainActivity))]
     internal class EditConfigActivity : AppCompatActivity
     {
+        private const int REQUEST_SELECT_FOLDER = 3001;
         private const string RESET_PROMPT_TAG = "reset_prompt_tag";
 
         private AndroidApplication AndroidApplication;
@@ -66,6 +70,27 @@ namespace PodcastUtilities.UI.Edit
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult {requestCode}, {resultCode}");
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (!resultCode.Equals(Result.Ok))
+            {
+                return;
+            }
+
+            AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult {data.Data.ToString()}");
+            switch (requestCode)
+            {
+                case REQUEST_SELECT_FOLDER:
+                    Android.Net.Uri uri = data.Data;
+                    DocumentFile file = DocumentFile.FromTreeUri(ApplicationContext, uri);
+                    AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult 1 {file.Uri.Path}");
+                    ViewModel.FolderSelected(file);
+                    break;
+            }
         }
 
         public override bool DispatchKeyEvent(KeyEvent e)
@@ -119,6 +144,7 @@ namespace PodcastUtilities.UI.Edit
             ViewModel.Observables.DisplayMessage += DisplayMessage;
             ViewModel.Observables.DisplayChooser += DisplayChooser;
             ViewModel.Observables.ResetPrompt += ResetPrompt;
+            ViewModel.Observables.SelectFolder += SelectFolder;
         }
 
         private void KillViewModelObservers()
@@ -126,6 +152,14 @@ namespace PodcastUtilities.UI.Edit
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
             ViewModel.Observables.DisplayChooser -= DisplayChooser;
             ViewModel.Observables.ResetPrompt -= ResetPrompt;
+            ViewModel.Observables.SelectFolder -= SelectFolder;
+        }
+
+        private void SelectFolder(object sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"EditConfigActivity:SelectFolder");
+            Intent intent = new Intent(Intent.ActionOpenDocumentTree);
+            StartActivityForResult(intent, REQUEST_SELECT_FOLDER);
         }
 
         private void ResetPrompt(object sender, Tuple<string, string, string, string> parameters)

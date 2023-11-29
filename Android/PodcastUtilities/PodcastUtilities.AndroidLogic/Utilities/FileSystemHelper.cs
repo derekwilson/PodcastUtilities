@@ -1,10 +1,13 @@
 ﻿using Android.Content;
 using Android.OS;
+using Android.Provider;
 using AndroidX.Core.Content;
+using AndroidX.DocumentFile.Provider;
 using PodcastUtilities.AndroidLogic.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml;
 
@@ -28,6 +31,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         XmlDocument LoadXmlFromContentUri(Android.Net.Uri uri);
         XmlDocument LoadXmlFromAssetFile(string filename);
         Android.Net.Uri GetAttachmentUri(String filename);
+
+        string GetRealPathFromDocumentTreeFile(DocumentFile documentFile);
     }
 
     public class FileSystemHelper : IFileSystemHelper
@@ -235,6 +240,52 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             Android.Net.Uri shareableUri = FileProvider.GetUriForFile(ApplicationContext, ApplicationContext.ApplicationContext.PackageName + ".provider", shareFile);
             Logger.Debug(() => $"FileSystemHelper:getAttachmentUri uri - {shareableUri}");
             return shareableUri;
+        }
+
+        public string GetRealPathFromDocumentTreeFile(DocumentFile documentFile)
+        {
+            // see https://stackoverflow.com/questions/29713587/how-to-get-the-real-path-with-action-open-document-tree-intent
+            //
+            // we get back values like this for internal storage
+            // /tree/primary:Podcasts/document/primary:Podcasts
+            // and this for external
+            // /tree/82E7-140A:Podcasts/document/82E7-140A:Podcasts
+
+            Logger.Debug(() => $"FileSystemHelper:GetRealPathFromDocumentTreeFile {documentFile.Uri.Path}");
+
+            if (documentFile == null || documentFile.Uri == null)
+                return "";
+
+            var path1 = documentFile.Uri.Path;
+            if (path1.StartsWith("/tree/"))
+            {
+                var path2 = path1.Remove(0, "/tree/".Length);
+                if (path2.StartsWith("primary:"))
+                {
+                    // internal storage
+                    var primary = path2.Remove(0, "primary:".Length);
+                    if (primary.Contains(':'))
+                    {
+                        var storeName = "/storage/emulated/0/";
+                        var last = path2.Split(':').LastOrDefault();
+                        var realPath = storeName + last;
+                        return realPath;
+                    }
+                }
+                else
+                {
+                    // external storage
+                    if (path2.Contains(':'))
+                    {
+                        var path3 = path2.Split(':').FirstOrDefault();
+                        var storeName = path3;
+                        var last = path2.Split(':').LastOrDefault();
+                        var realPath = "/" + storeName + "/" + last;
+                        return realPath;
+                    }
+                }
+            }
+            return path1;
         }
     }
 }
