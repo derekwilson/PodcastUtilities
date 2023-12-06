@@ -128,8 +128,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             Android.Net.Uri uri = FileSystemHelper.GetAttachmentUri(controlFilename);
             var attachmentUris = new List<IParcelable>() { uri };
             var intent = GetSharingIntent(
-                ResourceProvider.GetString(Resource.String.settings_share_all_subject),
-                ResourceProvider.GetString(Resource.String.settings_share_all_body),
+                ResourceProvider.GetString(Resource.String.share_all_subject),
+                ResourceProvider.GetString(Resource.String.share_all_body),
                 attachmentUris);
             return intent;
         }

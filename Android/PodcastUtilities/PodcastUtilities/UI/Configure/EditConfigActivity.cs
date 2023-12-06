@@ -29,6 +29,8 @@ namespace PodcastUtilities.UI.Edit
         private EditConfigViewModel ViewModel;
 
         private NestedScrollView Container = null;
+        private TextView CacheRootSubLabel = null;
+        private TextView CacheRootOptions = null;
 
         private OkCancelDialogFragment ResetPromptDialogFragment;
 
@@ -42,6 +44,8 @@ namespace PodcastUtilities.UI.Edit
             SetContentView(Resource.Layout.activity_edit_config);
 
             Container = FindViewById<NestedScrollView>(Resource.Id.edit_container);
+            CacheRootSubLabel = FindViewById<TextView>(Resource.Id.cache_root_row_sub_label);
+            CacheRootOptions = FindViewById<TextView>(Resource.Id.cache_root_row_options);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(EditConfigViewModel))) as EditConfigViewModel;
@@ -49,6 +53,8 @@ namespace PodcastUtilities.UI.Edit
             SetupViewModelObservers();
 
             ViewModel.Initialise();
+
+            CacheRootOptions.Click += (sender, e) => DoCacheRootOptions();
 
             ResetPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(RESET_PROMPT_TAG) as OkCancelDialogFragment;
             SetupFragmentObservers(ResetPromptDialogFragment);
@@ -88,9 +94,14 @@ namespace PodcastUtilities.UI.Edit
                     break;
                 case REQUEST_SELECT_FOLDER:
                     Android.Net.Uri uri = data.Data;
-                    DocumentFile file = DocumentFile.FromTreeUri(ApplicationContext, uri);
-                    AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult 1 {file.Uri.Path}");
-                    ViewModel.FolderSelected(file);
+
+                    //AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult treeUri {uri}");
+                    //GrantUriPermission(AndroidApplication.PackageName, uri, ActivityFlags.GrantReadUriPermission | ActivityFlags.GrantWriteUriPermission);
+                    //AndroidApplication.ContentResolver.TakePersistableUriPermission(uri, ActivityFlags.GrantReadUriPermission | ActivityFlags.GrantWriteUriPermission);
+
+                    DocumentFile folder = DocumentFile.FromTreeUri(ApplicationContext, uri);
+                    AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult folder {folder.Uri.Path}");
+                    ViewModel.FolderSelected(folder);
                     break;
             }
         }
@@ -142,6 +153,11 @@ namespace PodcastUtilities.UI.Edit
             return base.OnOptionsItemSelected(item);
         }
 
+        private void DoCacheRootOptions()
+        {
+            Toast.MakeText(Application.Context, "Options clicked", ToastLength.Short).Show();
+        }
+
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.DisplayMessage += DisplayMessage;
@@ -149,6 +165,7 @@ namespace PodcastUtilities.UI.Edit
             ViewModel.Observables.ResetPrompt += ResetPrompt;
             ViewModel.Observables.SelectFolder += SelectFolder;
             ViewModel.Observables.SelectControlFile += SelectControlFile;
+            ViewModel.Observables.SetCacheRoot += SetCacheRoot;
         }
 
         private void KillViewModelObservers()
@@ -158,6 +175,7 @@ namespace PodcastUtilities.UI.Edit
             ViewModel.Observables.ResetPrompt -= ResetPrompt;
             ViewModel.Observables.SelectFolder -= SelectFolder;
             ViewModel.Observables.SelectControlFile -= SelectControlFile;
+            ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
         }
 
         private void SelectControlFile(object sender, EventArgs e)
@@ -212,6 +230,15 @@ namespace PodcastUtilities.UI.Edit
             RunOnUiThread(() =>
             {
                 Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+            });
+        }
+
+        private void SetCacheRoot(object sender, string root)
+        {
+            AndroidApplication.Logger.Debug(() => $"EditConfigActivity: SetCacheRoot {root}");
+            RunOnUiThread(() =>
+            {
+                CacheRootSubLabel.Text = root;
             });
         }
 

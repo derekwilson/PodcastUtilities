@@ -19,6 +19,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             public EventHandler<Tuple<string, string, string, string>> ResetPrompt;
             public EventHandler SelectFolder;
             public EventHandler SelectControlFile;
+            public EventHandler<string> SetCacheRoot;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -57,11 +58,21 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private void ConfigurationUpdated(object sender, EventArgs e)
         {
             Logger.Debug(() => $"EditConfigViewModel:ConfigurationUpdated");
+            RefreshConfigDisplay();
         }
 
         public void Initialise()
         {
             Logger.Debug(() => $"EditConfigViewModel:Initialise");
+            RefreshConfigDisplay();
+        }
+
+        private void RefreshConfigDisplay()
+        {
+            var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+
+            var cacheRootSublabel = string.Format(ResourceProvider.GetString(Resource.String.cache_root_label_fmt), ControlFile.GetSourceRoot());
+            Observables.SetCacheRoot?.Invoke(this, cacheRootSublabel);
         }
 
         [Lifecycle.Event.OnDestroy]
@@ -161,17 +172,17 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         {
             if (ApplicationControlFileProvider == null)
             {
-                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_share_no_controlfile));
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.share_no_controlfile));
                 return;
             }
             var intent = ApplicationControlFileProvider.GetApplicationConfigurationSharingIntent();
             if (intent != null)
             {
-                Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.settings_share_chooser_title), intent));
+                Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.share_chooser_title), intent));
             }
             else
             {
-                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_share_no_controlfile));
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.share_no_controlfile));
             }
         }
 
@@ -191,7 +202,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         {
             if (ApplicationControlFileProvider == null)
             {
-                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_share_no_controlfile));
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.share_no_controlfile));
                 return;
             }
             ApplicationControlFileProvider.ResetControlFile();

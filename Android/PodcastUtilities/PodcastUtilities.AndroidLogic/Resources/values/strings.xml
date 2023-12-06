@@ -86,6 +86,13 @@
 	<string name="control_file_loaded">Control file loaded</string>
 	<string name="error_reading_control_file">Cannot load control file</string>
 
+	<string name="share_no_controlfile">You need to load a control file before you can share it.</string>
+	<string name="share_chooser_title">Share control file</string>
+	<string name="share_all_subject">PodcastUtilities Controlfile</string>
+	<string name="share_all_body">This is my control file</string>
+
+	<string name="row_title_cache_root">Cache Root</string>
+	<string name="cache_root_label_fmt">{0}\nThis is where podcasts will be downloaded to.</string>
 
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
@@ -168,11 +175,6 @@
 
 	<string name="settings_version_key">appVersion</string>
 	<string name="settings_version_title">Version</string>
-
-	<string name="settings_share_no_controlfile">You need to load a control file before you can share it.</string>
-	<string name="settings_share_chooser_title">Share control file</string>
-	<string name="settings_share_all_subject">PodcastUtilities Controlfile</string>
-	<string name="settings_share_all_body">This is my control file</string>
 
 	<!-- open source licenses -->
 	<string name="osl_title">Open-source licenses</string>

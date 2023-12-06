@@ -15,10 +15,68 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+	        <androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+			>
+
+				<androidx.appcompat.widget.LinearLayoutCompat
+					android:id="@+id/cache_root_row_label_container"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+					android:paddingStart="@dimen/listview_item_horizontal_padding"
+					android:paddingEnd="0dp"
+					android:paddingTop="@dimen/listview_item_vertical_padding"
+					android:paddingBottom="@dimen/listview_item_vertical_padding"
+					android:background="?attr/selectableItemBackground"
+					app:layout_constraintEnd_toStartOf="@+id/cache_root_row_options"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					>
+
+					<TextView
+						android:id="@+id/cache_root_row_label"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/row_title_cache_root"
+						style="@style/ItemListTitle"
+						/>
+
+					<TextView
+						android:id="@+id/cache_root_row_sub_label"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/placeholder"
+						style="@style/ItemListSubTitle2"
+						/>
+				</androidx.appcompat.widget.LinearLayoutCompat>
+	
+
+				<TextView
+					android:id="@+id/cache_root_row_options"
+					android:layout_width="wrap_content"
+					android:layout_height="0dp"
+					android:text="&#8942;"
+					android:gravity="center_vertical"
+					android:textAppearance="?android:textAppearanceLarge"
+					android:background="?attr/selectableItemBackground"
+					android:paddingTop="@dimen/listview_item_vertical_padding"
+					android:paddingBottom="@dimen/listview_item_vertical_padding"
+					android:paddingLeft="@dimen/overflow_menu_dots_textview_padding"
+					android:paddingRight="@dimen/overflow_menu_dots_textview_padding"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toEndOf="@+id/cache_root_row_label_container"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintBottom_toBottomOf="parent"
+				/>
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
             <TextView
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
-			    android:text="Config goes here"
+			    android:text="feeds goes here"
 			    android:textAlignment="center"
 			    android:textAppearance="?android:attr/textAppearanceMedium"
 			    android:gravity="center_horizontal" />
