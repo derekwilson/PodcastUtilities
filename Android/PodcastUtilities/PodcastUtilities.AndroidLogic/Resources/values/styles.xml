@@ -76,5 +76,22 @@
 		<item name="backgroundTint">@color/colour_dark_green</item>
 	</style>
 
+	<style name="bottomSheetTitleBorder">
+		<item name="android:background">@color/colour_dark_green</item>
+	</style>
+
+	<style name="bottomSheetTitle">
+		<item name="android:textColor">@color/colour_dark_green</item>
+	</style>
+
+	<style name="SelectableItemOption">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/color_near_black</item>
+	</style>
+
+	<style name="SelectableItemCheckMark">
+		<item name="tint">@color/colour_dark_green</item>
+	</style>
+
 </resources>
 

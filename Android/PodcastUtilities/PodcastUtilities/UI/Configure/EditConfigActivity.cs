@@ -15,14 +15,17 @@ using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Edit;
 using System;
+using System.Collections.Generic;
 
 namespace PodcastUtilities.UI.Edit
 {
     [Activity(Label = "@string/edit_config_activity_title", ParentActivity = typeof(MainActivity))]
-    internal class EditConfigActivity : AppCompatActivity
+    internal class EditConfigActivity : AppCompatActivity, SelectableStringListBottomSheetFragment.IListener
     {
         private const int REQUEST_SELECT_FILE = 3000;
         private const int REQUEST_SELECT_FOLDER = 3001;
+
+        private const string BOTTOMSHEET_CACHE_OPTIONS_TAG = "cache_options_tag";
         private const string RESET_PROMPT_TAG = "reset_prompt_tag";
 
         private AndroidApplication AndroidApplication;
@@ -155,7 +158,23 @@ namespace PodcastUtilities.UI.Edit
 
         private void DoCacheRootOptions()
         {
-            Toast.MakeText(Application.Context, "Options clicked", ToastLength.Short).Show();
+            AndroidApplication.Logger.Debug(() => $"EditConfigActivity:DoCacheRootOptions");
+            List<SelectableString> options = ViewModel.GetCacheRootOptions();
+            var sheet = SelectableStringListBottomSheetFragment.NewInstance(
+                GetString(Resource.String.cache_root_sheet_title), 
+                options);
+            sheet.Show(this.SupportFragmentManager, BOTTOMSHEET_CACHE_OPTIONS_TAG);
+        }
+
+        public void BottomsheetItemSelected(string tag, int position, SelectableString item)
+        {
+            AndroidApplication.Logger.Debug(() => $"EditConfigActivity:BottomsheetItemSelected {tag}, {position}");
+            switch (tag)
+            {
+                case BOTTOMSHEET_CACHE_OPTIONS_TAG:
+                    Toast.MakeText(Application.Context, $"BottomsheetItemSelected Options clicked = {position}", ToastLength.Short).Show();
+                    break;
+            }
         }
 
         private void SetupViewModelObservers()

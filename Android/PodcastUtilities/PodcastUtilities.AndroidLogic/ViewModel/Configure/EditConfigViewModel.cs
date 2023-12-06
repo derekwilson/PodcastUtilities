@@ -3,10 +3,12 @@ using Android.Content;
 using Android.Views;
 using AndroidX.DocumentFile.Provider;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Configuration;
 using System;
+using System.Collections.Generic;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
 {
@@ -245,5 +247,22 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
                 return null;
             }
         }
+
+        public List<SelectableString> GetCacheRootOptions()
+        {
+            List<SelectableString> options = new List<SelectableString>()
+            {
+                new SelectableString(OPTION_ID_SELECT_FOLDER, ResourceProvider.GetString(Resource.String.cache_root_option_select)),
+                new SelectableString(OPTION_ID_PHONE_ROOT, ResourceProvider.GetString(Resource.String.cache_root_option_phone)),
+                new SelectableString(OPTION_ID_WSA_ROOT, ResourceProvider.GetString(Resource.String.cache_root_option_wsa)),
+            };
+            // TODO - add SD card root
+            return options;
+        }
+
+        private const int OPTION_ID_SELECT_FOLDER = 10;
+        private const int OPTION_ID_PHONE_ROOT = 11;
+        private const int OPTION_ID_WSA_ROOT = 12;
+        private const int OPTION_ID_CUSTOM = 13;
     }
 }

@@ -91,8 +91,13 @@
 	<string name="share_all_subject">PodcastUtilities Controlfile</string>
 	<string name="share_all_body">This is my control file</string>
 
-	<string name="row_title_cache_root">Cache Root</string>
-	<string name="cache_root_label_fmt">{0}\nThis is where podcasts will be downloaded to.</string>
+	<string name="row_title_cache_root">Cache Root Folder</string>
+	<string name="cache_root_label_fmt">The folder to hold podcast downloads.\n{0}</string>
+	<string name="cache_root_sheet_title">Cache Root Options</string>
+	<string name="cache_root_option_select">Select Folder</string>
+	<string name="cache_root_option_phone">/storage/emulated/0/Podcasts</string>
+	<string name="cache_root_option_wsa">/storage/emulated/0/Windows/Podcasts</string>
+	<string name="cache_root_option_custom">Custom</string>
 
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>

@@ -61,6 +61,9 @@
     <Compile Include="CustomViews\EmptyRecyclerView.cs" />
     <Compile Include="CustomViews\OkCancelDialogFragment.cs" />
     <Compile Include="CustomViews\ProgressSpinnerView.cs" />
+    <Compile Include="CustomViews\SelectableString.cs" />
+    <Compile Include="Adapters\SelectableStringArrayAdapter.cs" />
+    <Compile Include="CustomViews\SelectableStringListBottomSheetFragment.cs" />
     <Compile Include="Settings\UserSettings.cs" />
     <Compile Include="Utilities\AnalyticsEngine.cs" />
     <Compile Include="Utilities\ApplicationControlFileFactory.cs" />
@@ -213,6 +216,19 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\fragment_bottomsheet_selectable_string_list.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\list_item_selectable_string.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_check.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
