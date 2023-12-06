@@ -19,15 +19,4 @@
 			android:title="@string/action_edit_reset_control"
 			app:showAsAction="never"/>
 	</group>
-
-	<group android:id="@+id/edit_options" >
-		<item
-			android:id="@+id/action_edit_cache_root"
-			android:title="@string/action_edit_cache_root"
-			app:showAsAction="never"/>
-		<item
-			android:id="@+id/action_edit_globals"
-			android:title="@string/action_edit_globals"
-			app:showAsAction="never"/>
-	</group>
 </menu>

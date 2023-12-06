@@ -137,8 +137,6 @@ namespace PodcastUtilities.UI.Edit
             EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_load_control);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_share_control);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_reset_control);
-            EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_cache_root);
-            EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_globals);
             return true;
         }
 
@@ -172,7 +170,7 @@ namespace PodcastUtilities.UI.Edit
             switch (tag)
             {
                 case BOTTOMSHEET_CACHE_OPTIONS_TAG:
-                    Toast.MakeText(Application.Context, $"BottomsheetItemSelected Options clicked = {position}", ToastLength.Short).Show();
+                    ViewModel.DoCacheRootOption(item);
                     break;
             }
         }

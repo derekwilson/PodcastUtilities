@@ -75,8 +75,6 @@
 	<string name="action_edit_load_control">Load Control File</string>
 	<string name="action_edit_share_control">Share Control File</string>
 	<string name="action_edit_reset_control">Reset Configuration</string>
-	<string name="action_edit_cache_root">Set Cache Root</string>
-	<string name="action_edit_globals">Global Feed Settings</string>
 
 	<string name="edit_reset">Control file reset</string>
 	<string name="edit_reset_prompt">OK to reset your configuration, this will reset your cache root and remove all feeds. No files will be deleted.</string>

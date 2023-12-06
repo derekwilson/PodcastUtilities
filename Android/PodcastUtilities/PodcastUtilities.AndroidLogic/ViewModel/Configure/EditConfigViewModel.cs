@@ -101,10 +101,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
                     return DoIfPossible(Resource.Id.action_edit_share_control);
                 case Keycode.R:
                     return DoIfPossible(Resource.Id.action_edit_reset_control);
-                case Keycode.C:
-                    return DoIfPossible(Resource.Id.action_edit_cache_root);
-                case Keycode.G:
-                    return DoIfPossible(Resource.Id.action_edit_globals);
             }
             return false;
         }
@@ -133,14 +129,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             {
                 return true;
             }
-            if (itemId == Resource.Id.action_edit_cache_root)
-            {
-                return true;
-            }
-            if (itemId == Resource.Id.action_edit_globals)
-            {
-                return true;
-            }
             return false;
         }
 
@@ -160,11 +148,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             if (itemId == Resource.Id.action_edit_reset_control)
             {
                 ResetConfig();
-                return true;
-            }
-            if (itemId == Resource.Id.action_edit_cache_root)
-            {
-                Observables.SelectFolder?.Invoke(this, null);
                 return true;
             }
             return false;
@@ -215,11 +198,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         public void FolderSelected(DocumentFile file)
         {
             var folder = FileSystemHelper.GetRealPathFromDocumentTreeFile(file);
-            Logger.Debug(() => $"EditConfigViewModel:FolderSelected = {folder}");
+            SetCacheRoot(folder);
+        }
+
+        private void SetCacheRoot(string root)
+        {
+            Logger.Debug(() => $"EditConfigViewModel:SetCacheRoot = {root}");
             var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-            ControlFile.SetSourceRoot(folder);
+            ControlFile.SetSourceRoot(root);
             ApplicationControlFileProvider.SaveCurrentControlFile();
-            Observables.DisplayMessage?.Invoke(this, folder);
+            Observables.DisplayMessage?.Invoke(this, root);
         }
 
         public void LoadContolFile(Android.Net.Uri data)
@@ -258,6 +246,23 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             };
             // TODO - add SD card root
             return options;
+        }
+
+        public void DoCacheRootOption(SelectableString item)
+        {
+            Logger.Debug(() => $"EditConfigViewModel:DoCacheRootOption = {item.Id}, {item.Name}");
+            switch (item.Id)
+            {
+                case OPTION_ID_SELECT_FOLDER:
+                    Observables.SelectFolder?.Invoke(this, null);
+                    break;
+                case OPTION_ID_PHONE_ROOT:
+                    SetCacheRoot(item.Name);
+                    break;
+                case OPTION_ID_WSA_ROOT:
+                    SetCacheRoot(item.Name);
+                    break;
+            }
         }
 
         private const int OPTION_ID_SELECT_FOLDER = 10;
