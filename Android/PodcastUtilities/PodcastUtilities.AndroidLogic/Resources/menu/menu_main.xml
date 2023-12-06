@@ -3,10 +3,6 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<group android:id="@+id/control" >
-		<item 
-			android:id="@+id/action_load_control"
-			android:title="@string/action_load_control"
-			app:showAsAction="never"/>
 		<item
 			android:id="@+id/action_edit_config"
 			android:title="@string/action_edit_config"

@@ -82,6 +82,8 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\EnvironmentTests.cs" />
+    <Compile Include="Tests\ViewModel\Configure\EditConfigViewModelBase.cs" />
+    <Compile Include="Tests\ViewModel\Configure\EditConfigViewModel_LoadControlFile.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModelBase.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModel_CancelAllJobsAndExit.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModel_DownloadAllPodcastsWithNetworkCheck.cs" />
@@ -94,7 +96,7 @@
     <Compile Include="Tests\ViewModel\Main\MainViewModelBase.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModel_GeneratePlaylist.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModel_Initialise.cs" />
-    <Compile Include="Tests\ViewModel\Main\MainViewModel_LoadControlFile.cs" />
+    <Compile Include="Tests\ViewModel\Main\MainViewModel_ControlFileUpdated.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModel_RefreshFilesystemInfo.cs" />
     <Compile Include="Tests\ViewModel\Messages\MessagesViewModelBase.cs" />
     <Compile Include="Tests\ViewModel\Messages\MessagesViewModel_Initialise.cs" />

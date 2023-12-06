@@ -3,17 +3,24 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<group android:id="@+id/edit_control" >
-		<item 
+		<item
+			android:id="@+id/action_edit_load_control"
+			android:title="@string/action_edit_load_control"
+			app:showAsAction="never"/>
+		<item
 			android:id="@+id/action_edit_share_control"
 			android:title="@string/action_edit_share_control"
 			app:showAsAction="never"/>
+	</group>
+
+	<group android:id="@+id/reset_control" >
 		<item
 			android:id="@+id/action_edit_reset_control"
 			android:title="@string/action_edit_reset_control"
 			app:showAsAction="never"/>
 	</group>
 
-	<group android:id="@+id/edit_actions" >
+	<group android:id="@+id/edit_options" >
 		<item
 			android:id="@+id/action_edit_cache_root"
 			android:title="@string/action_edit_cache_root"

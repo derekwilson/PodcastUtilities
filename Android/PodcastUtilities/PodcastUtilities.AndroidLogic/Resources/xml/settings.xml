@@ -21,19 +21,6 @@
 
 	<PreferenceCategory
 		app:iconSpaceReserved="false"
-    	android:title="@string/settings_config_category">
-
-		<Preference
-            android:title="@string/settings_config_share_title"
-            android:key="@string/settings_config_share_key"
-			android:summary="@string/settings_config_share_description"
-			app:iconSpaceReserved="false"
-			/>
-
-	</PreferenceCategory>
-
-	<PreferenceCategory
-		app:iconSpaceReserved="false"
         android:title="@string/settings_about_category">
 
 		<Preference

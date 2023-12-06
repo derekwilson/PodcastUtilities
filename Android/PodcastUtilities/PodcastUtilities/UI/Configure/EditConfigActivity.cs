@@ -2,9 +2,7 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Provider;
 using Android.Runtime;
-using Android.Security.Identity;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
@@ -23,6 +21,7 @@ namespace PodcastUtilities.UI.Edit
     [Activity(Label = "@string/edit_config_activity_title", ParentActivity = typeof(MainActivity))]
     internal class EditConfigActivity : AppCompatActivity
     {
+        private const int REQUEST_SELECT_FILE = 3000;
         private const int REQUEST_SELECT_FOLDER = 3001;
         private const string RESET_PROMPT_TAG = "reset_prompt_tag";
 
@@ -84,6 +83,9 @@ namespace PodcastUtilities.UI.Edit
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult {data.Data.ToString()}");
             switch (requestCode)
             {
+                case REQUEST_SELECT_FILE:
+                    ViewModel?.LoadContolFile(data.Data);
+                    break;
                 case REQUEST_SELECT_FOLDER:
                     Android.Net.Uri uri = data.Data;
                     DocumentFile file = DocumentFile.FromTreeUri(ApplicationContext, uri);
@@ -118,6 +120,7 @@ namespace PodcastUtilities.UI.Edit
 
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_load_control);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_share_control);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_reset_control);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_cache_root);
@@ -145,6 +148,7 @@ namespace PodcastUtilities.UI.Edit
             ViewModel.Observables.DisplayChooser += DisplayChooser;
             ViewModel.Observables.ResetPrompt += ResetPrompt;
             ViewModel.Observables.SelectFolder += SelectFolder;
+            ViewModel.Observables.SelectControlFile += SelectControlFile;
         }
 
         private void KillViewModelObservers()
@@ -153,6 +157,29 @@ namespace PodcastUtilities.UI.Edit
             ViewModel.Observables.DisplayChooser -= DisplayChooser;
             ViewModel.Observables.ResetPrompt -= ResetPrompt;
             ViewModel.Observables.SelectFolder -= SelectFolder;
+            ViewModel.Observables.SelectControlFile -= SelectControlFile;
+        }
+
+        private void SelectControlFile(object sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"EditConfigActivity: SelectControlFile");
+            // ACTION_OPEN_DOCUMENT is the intent to choose a file via the system's file browser.
+            var intent = new Intent(Intent.ActionOpenDocument);
+
+            // Filter to only show results that can be "opened", such as a
+            // file (as opposed to a list of contacts or timezones)
+            intent.AddCategory(Intent.CategoryOpenable);
+
+            // Filter using the MIME type.
+            // If one wanted to search for ogg vorbis files, the type would be "audio/ogg".
+            // To search for all documents available via installed storage providers, it would be "*/*".
+            // as we know that other apps do not always report GPX MIME type correctly lets try for everything
+            intent.SetType("*/*");
+
+            RunOnUiThread(() =>
+            {
+                StartActivityForResult(intent, REQUEST_SELECT_FILE);
+            });
         }
 
         private void SelectFolder(object sender, EventArgs e)

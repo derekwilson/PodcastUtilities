@@ -47,9 +47,6 @@ namespace PodcastUtilities
         private FloatingActionButton PurgeButton;
         private FloatingActionButton DownloadButton;
 
-
-        private const int REQUEST_SELECT_FILE = 3000;
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             AndroidApplication = Application as AndroidApplication;
@@ -167,12 +164,6 @@ namespace PodcastUtilities
                 case PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
                     ViewModel?.RefreshFileSystemInfo();
                     break;
-                case REQUEST_SELECT_FILE:
-                    if (resultCode.Equals(Result.Ok))
-                    {
-                        ViewModel?.LoadContolFile(data.Data);
-                    }
-                    break;
             }
         }
 
@@ -186,7 +177,6 @@ namespace PodcastUtilities
 
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
-            EnableMenuItemIfAvailable(menu, Resource.Id.action_load_control);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_config);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_purge);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_download);
@@ -253,7 +243,6 @@ namespace PodcastUtilities
             ViewModel.Observables.ToastMessage += ToastMessage;
             ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings += NavigateToSettings;
-            ViewModel.Observables.SelectControlFile += SelectControlFile;
             ViewModel.Observables.SetFeedItems += SetFeedItems;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
             ViewModel.Observables.NavigateToDownload += NavigateToDownload;
@@ -268,7 +257,6 @@ namespace PodcastUtilities
             ViewModel.Observables.ToastMessage -= ToastMessage;
             ViewModel.Observables.ShowNoDriveMessage -= ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings -= NavigateToSettings;
-            ViewModel.Observables.SelectControlFile -= SelectControlFile;
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
             ViewModel.Observables.NavigateToDownload -= NavigateToDownload;
@@ -357,28 +345,6 @@ namespace PodcastUtilities
             {
                 var intent = new Intent(this, typeof(EditConfigActivity));
                 StartActivity(intent);
-            });
-        }
-
-        private void SelectControlFile(object sender, EventArgs e)
-        {
-            AndroidApplication.Logger.Debug(() => $"MainActivity: SelectControlFile");
-            // ACTION_OPEN_DOCUMENT is the intent to choose a file via the system's file browser.
-            var intent = new Intent(Intent.ActionOpenDocument);
-
-            // Filter to only show results that can be "opened", such as a
-            // file (as opposed to a list of contacts or timezones)
-            intent.AddCategory(Intent.CategoryOpenable);
-
-            // Filter using the MIME type.
-            // If one wanted to search for ogg vorbis files, the type would be "audio/ogg".
-            // To search for all documents available via installed storage providers, it would be "*/*".
-            // as we know that other apps do not always report GPX MIME type correctly lets try for everything
-            intent.SetType("*/*");
-
-            RunOnUiThread(() =>
-            {
-                StartActivityForResult(intent, REQUEST_SELECT_FILE);
             });
         }
 

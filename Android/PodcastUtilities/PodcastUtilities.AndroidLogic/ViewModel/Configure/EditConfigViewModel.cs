@@ -5,6 +5,7 @@ using AndroidX.DocumentFile.Provider;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
+using PodcastUtilities.Common.Configuration;
 using System;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
@@ -17,6 +18,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             public EventHandler<Tuple<string, Intent>> DisplayChooser;
             public EventHandler<Tuple<string, string, string, string>> ResetPrompt;
             public EventHandler SelectFolder;
+            public EventHandler SelectControlFile;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -27,6 +29,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private ICrashReporter CrashReporter;
         private IAnalyticsEngine AnalyticsEngine;
         private IFileSystemHelper FileSystemHelper;
+        private IApplicationControlFileFactory ApplicationControlFileFactory;
 
         public EditConfigViewModel(
             Application app,
@@ -35,7 +38,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             IApplicationControlFileProvider appControlFileProvider,
             ICrashReporter crashReporter,
             IAnalyticsEngine analyticsEngine,
-            IFileSystemHelper fileSystemHelper) : base(app)
+            IFileSystemHelper fileSystemHelper,
+            IApplicationControlFileFactory applicationControlFileFactory) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"EditConfigViewModel:ctor");
@@ -47,6 +51,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
             FileSystemHelper = fileSystemHelper;
+            ApplicationControlFileFactory = applicationControlFileFactory;
         }
 
         private void ConfigurationUpdated(object sender, EventArgs e)
@@ -77,6 +82,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             }
             switch (e.KeyCode)
             {
+                case Keycode.L:
+                    return DoIfPossible(Resource.Id.action_edit_load_control);
                 case Keycode.S:
                     return DoIfPossible(Resource.Id.action_edit_share_control);
                 case Keycode.R:
@@ -101,6 +108,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         public bool IsActionAvailable(int itemId)
         {
             Logger.Debug(() => $"EditConfigViewModel:isActionAvailable = {itemId}");
+            if (itemId == Resource.Id.action_edit_load_control)
+            {
+                return true;
+            }
             if (itemId == Resource.Id.action_edit_share_control)
             {
                 return true;
@@ -123,6 +134,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         public bool ActionSelected(int itemId)
         {
             Logger.Debug(() => $"EditConfigViewModel:ActionSelected = {itemId}");
+            if (itemId == Resource.Id.action_edit_load_control)
+            {
+                Observables.SelectControlFile?.Invoke(this, null);
+                return true;
+            }
             if (itemId == Resource.Id.action_edit_share_control)
             {
                 ShareConfig();
@@ -191,6 +207,32 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             ControlFile.SetSourceRoot(folder);
             ApplicationControlFileProvider.SaveCurrentControlFile();
             Observables.DisplayMessage?.Invoke(this, folder);
+        }
+
+        public void LoadContolFile(Android.Net.Uri data)
+        {
+            var controlFile = OpenControlFile(data);
+            if (controlFile != null)
+            {
+                ApplicationControlFileProvider.ReplaceApplicationConfiguration(controlFile);
+                AnalyticsEngine.LoadControlFileEvent();
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.control_file_loaded));
+            }
+        }
+
+        private IReadWriteControlFile OpenControlFile(Android.Net.Uri uri)
+        {
+            try
+            {
+                return ApplicationControlFileFactory.CreateControlFile(FileSystemHelper.LoadXmlFromContentUri(uri));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogException(() => $"EditConfigViewModel:OpenControlFile", ex);
+                CrashReporter.LogNonFatalException(ex);
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.error_reading_control_file));
+                return null;
+            }
         }
     }
 }

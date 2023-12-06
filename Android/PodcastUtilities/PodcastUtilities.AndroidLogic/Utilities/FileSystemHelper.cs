@@ -280,7 +280,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                         var path3 = path2.Split(':').FirstOrDefault();
                         var storeName = path3;
                         var last = path2.Split(':').LastOrDefault();
-                        var realPath = "/" + storeName + "/" + last;
+                        var realPath = "/storage/" + storeName + "/" + last;
                         return realPath;
                     }
                 }

@@ -1,5 +1,4 @@
 ﻿using Android.App;
-using Android.Content;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Settings;
@@ -17,38 +16,28 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
         {
             public EventHandler<string> Version;
             public EventHandler<string> DisplayMessage;
-            public EventHandler<Tuple<string, Intent>> DisplayChooser;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
         private IAndroidApplication AndroidApplication;
         private ILogger Logger;
-        private IResourceProvider ResourceProvider;
         private ICrashReporter CrashReporter;
         private IUserSettings UserSettings;
-        private IApplicationControlFileProvider ApplicationControlFileProvider;
-        private IAnalyticsEngine AnalyticsEngine;
 
         public SettingsViewModel(
             Application app,
             ILogger logger,
-            IResourceProvider resProvider,
             IAndroidApplication androidApplication,
             ICrashReporter crashReporter,
-            IUserSettings userSettings,
-            IApplicationControlFileProvider applicationControlFileProvider,
-            IAnalyticsEngine analyticsEngine
+            IUserSettings userSettings
             ) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"SettingsViewModel:ctor");
 
-            ResourceProvider = resProvider;
             AndroidApplication = androidApplication;
             CrashReporter = crashReporter;
             UserSettings = userSettings;
-            ApplicationControlFileProvider = applicationControlFileProvider;
-            AnalyticsEngine = analyticsEngine;
         }
 
         public void Initialise()
@@ -74,24 +63,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
         public void TestCrashReporting()
         {
             CrashReporter.TestReporting();
-        }
-
-        public void ShareConfig()
-        {
-            if (ApplicationControlFileProvider == null)
-            {
-                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_share_no_controlfile));
-                return;
-            }
-            var intent = ApplicationControlFileProvider.GetApplicationConfigurationSharingIntent();
-            if (intent != null)
-            {
-                AnalyticsEngine.ShareControlFileEvent();
-                Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.settings_share_chooser_title), intent));
-            } else
-            {
-                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.settings_share_no_controlfile));
-            }
         }
     }
 }

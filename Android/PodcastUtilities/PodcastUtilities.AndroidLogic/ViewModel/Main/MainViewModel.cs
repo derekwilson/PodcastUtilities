@@ -42,7 +42,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         private IAnalyticsEngine AnalyticsEngine;
         private IGenerator PlaylistGenerator;
         private IDriveVolumeInfoViewFactory DriveVolumeInfoViewFactory;
-        private IApplicationControlFileFactory ApplicationControlFileFactory;
 
         private List<PodcastFeedRecyclerItem> AllFeedItems = new List<PodcastFeedRecyclerItem>(20);
 
@@ -56,8 +55,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             ICrashReporter crashReporter,
             IAnalyticsEngine analyticsEngine,
             IGenerator playlistGenerator,
-            IDriveVolumeInfoViewFactory driveVolumeInfoViewFactory, 
-            IApplicationControlFileFactory applicationControlFileFactory) : base(app)
+            IDriveVolumeInfoViewFactory driveVolumeInfoViewFactory 
+            ) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"MainViewModel:ctor");
@@ -74,7 +73,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             // we only want to add this once, really we should remove it if the IGenerator is a singleton
             PlaylistGenerator.StatusUpdate += GenerateStatusUpdate;
             DriveVolumeInfoViewFactory = driveVolumeInfoViewFactory;
-            ApplicationControlFileFactory = applicationControlFileFactory;
         }
 
         private void ConfigurationUpdated(object sender, EventArgs e)
@@ -195,10 +193,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             {
                 return true;
             }
-            if (itemId == Resource.Id.action_load_control)
-            {
-                return true;
-            }
             if (itemId == Resource.Id.action_edit_config)
             {
                 return true;
@@ -224,11 +218,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             if (itemId == Resource.Id.action_settings)
             {
                 Observables.NavigateToSettings?.Invoke(this, null);
-                return true;
-            }
-            if (itemId == Resource.Id.action_load_control)
-            {
-                Observables.SelectControlFile?.Invoke(this, null);
                 return true;
             }
             if (itemId == Resource.Id.action_edit_config)
@@ -278,8 +267,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                     return DoIfPossible(Resource.Id.action_download);
                 case Keycode.G:
                     return DoIfPossible(Resource.Id.action_playlist);
-                case Keycode.C:
-                    return DoIfPossible(Resource.Id.action_load_control);
                 case Keycode.E:
                     return DoIfPossible(Resource.Id.action_edit_config);
                 case Keycode.S:
@@ -292,33 +279,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         {
             Logger.Debug(() => $"MainViewModel: FeedItemSelected {podcastFeed.Folder}");
             Observables.NavigateToDownload?.Invoke(this, podcastFeed.Folder);
-        }
-
-        public void LoadContolFile(Android.Net.Uri data)
-        {
-            var controlFile = OpenControlFile(data);
-            if (controlFile != null)
-            {
-                ApplicationControlFileProvider.ReplaceApplicationConfiguration(controlFile);
-                AnalyticsEngine.LoadControlFileEvent();
-                RefreshFeedList();
-                Observables.ToastMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.control_file_loaded));
-            }
-        }
-
-        private IReadWriteControlFile OpenControlFile(Android.Net.Uri uri)
-        {
-            try
-            {
-                return ApplicationControlFileFactory.CreateControlFile(FileSystemHelper.LoadXmlFromContentUri(uri));
-            }
-            catch (Exception ex)
-            {
-                Logger.LogException(() => $"MainViewModel:OpenControlFile", ex);
-                CrashReporter.LogNonFatalException(ex);
-                Observables.ToastMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.error_reading_control_file));
-                return null;
-            }
         }
 
         public void GeneratePlaylist()

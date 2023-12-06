@@ -88,7 +88,7 @@
     </Compile>
     <Compile Include="AndroidApplication.cs" />
     <Compile Include="UI\Download\DownloadActivity.cs" />
-    <Compile Include="UI\Edit\EditConfigActivity.cs" />
+    <Compile Include="UI\Configure\EditConfigActivity.cs" />
     <Compile Include="UI\Help\HelpActivity.cs" />
     <Compile Include="UI\Main\MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />

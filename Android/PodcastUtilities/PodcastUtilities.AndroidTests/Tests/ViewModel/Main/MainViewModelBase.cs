@@ -172,8 +172,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
                 MockCrashReporter,
                 MockAnalyticsEngine,
                 MockPlaylistGenerator,
-                MockDriveVolumeInfoViewFactory,
-                MockApplicationControlFileFactory
+                MockDriveVolumeInfoViewFactory
             );
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;

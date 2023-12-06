@@ -15,15 +15,12 @@
 	<!-- main activity -->
 	<string name="main_activity_title">PodcastUtilities</string>
 
-	<string name="action_load_control">Load Control File</string>
-	<string name="action_edit_config">Edit Configuration</string>
+	<string name="action_edit_config">Configure</string>
 	<string name="action_purge">Purge Podcasts</string>
 	<string name="action_download">Download from all Feeds</string>
 	<string name="action_playlist">Generate Playlist</string>
 	<string name="action_settings">Settings</string>
 
-	<string name="control_file_loaded">Control file loaded</string>
-	<string name="error_reading_control_file">Cannot load control file</string>
 	<string name="error_generating_playlist">Cannot write playlist</string>
 
 	<string name="drive_volume_free_label">Free Space</string>
@@ -75,6 +72,7 @@
 
 	<!-- edit config activity -->
 	<string name="edit_config_activity_title">Edit Configuration</string>
+	<string name="action_edit_load_control">Load Control File</string>
 	<string name="action_edit_share_control">Share Control File</string>
 	<string name="action_edit_reset_control">Reset Configuration</string>
 	<string name="action_edit_cache_root">Set Cache Root</string>
@@ -84,6 +82,9 @@
 	<string name="edit_reset_prompt">OK to reset your configuration, this will reset your cache root and remove all feeds. No files will be deleted.</string>
 	<string name="edit_reset_ok">Reset All</string>
 	<string name="edit_reset_cancel">Cancel</string>
+
+	<string name="control_file_loaded">Control file loaded</string>
+	<string name="error_reading_control_file">Cannot load control file</string>
 
 
 	<!-- download activity -->
@@ -152,11 +153,6 @@
    Must be one of the IUserSettings.DownloadNetworkType enum values.
     -->
 	<string name="settings_default_download_network">WIFI</string>
-
-	<string name="settings_config_category">Configuration</string>
-	<string name="settings_config_share_key">appConfigShare</string>
-	<string name="settings_config_share_title">Share</string>
-	<string name="settings_config_share_description">Share your control file, for example share via email to edit the XML off-device.</string>
 
 	<string name="settings_about_category">About</string>
 
