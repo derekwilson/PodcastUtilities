@@ -1,0 +1,84 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/feed_defaults_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/download_free_space_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingStart="@dimen/listview_item_horizontal_padding"
+				android:paddingEnd="0dp"
+				android:paddingTop="@dimen/listview_item_vertical_padding"
+				android:paddingBottom="@dimen/listview_item_vertical_padding"
+				android:background="?attr/selectableItemBackground"
+				>
+
+				<TextView
+					android:id="@+id/download_free_space_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_download_free_space"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/download_free_space_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/playlist_file_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingStart="@dimen/listview_item_horizontal_padding"
+				android:paddingEnd="0dp"
+				android:paddingTop="@dimen/listview_item_vertical_padding"
+				android:paddingBottom="@dimen/listview_item_vertical_padding"
+				android:background="?attr/selectableItemBackground"
+				>
+
+				<TextView
+					android:id="@+id/playlist_file_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_playlist_file"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/playlist_file_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

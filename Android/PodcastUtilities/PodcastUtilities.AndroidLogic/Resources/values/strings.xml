@@ -103,6 +103,20 @@
 	<string name="row_title_global_defaults">Default values for all feeds</string>
 	<string name="row_sub_label_global_defaults">Values that are applied to all feeds, which can be overridden by an individual feed.</string>
 
+	<!-- global values activity -->
+	<string name="global_values_activity_title">Global Values</string>
+
+	<string name="row_title_download_free_space">Free space to leave on device</string>
+
+	<string name="row_title_playlist_file">Playlist filename</string>
+
+	<!-- feed defaults activity -->
+	<string name="feed_defaults_activity_title">Feed Defaults</string>
+
+	<string name="row_title_max_days_old">Maximum days old</string>
+
+	<string name="row_title_download_strategy">Download strategy</string>
+
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
 	<string name="no_downloads_text">No podcasts to download</string>

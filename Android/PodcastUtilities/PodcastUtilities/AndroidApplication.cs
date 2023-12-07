@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.OS;
 using PodcastUtilities.AndroidLogic.ViewModel.Edit;
+using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 
 namespace PodcastUtilities
 {
@@ -128,6 +129,8 @@ namespace PodcastUtilities
             container.Register<MessagesViewModel, MessagesViewModel>();
             container.Register<PurgeViewModel, PurgeViewModel>();
             container.Register<EditConfigViewModel, EditConfigViewModel>();
+            container.Register<FeedDefaultsViewModel, FeedDefaultsViewModel>();
+            container.Register<GlobalValuesViewModel, GlobalValuesViewModel>();
 
             var factory = container.Resolve<ViewModelFactory>();
             factory.AddMap(typeof(MainViewModel));
@@ -138,6 +141,8 @@ namespace PodcastUtilities
             factory.AddMap(typeof(MessagesViewModel));
             factory.AddMap(typeof(PurgeViewModel));
             factory.AddMap(typeof(EditConfigViewModel));
+            factory.AddMap(typeof(FeedDefaultsViewModel));
+            factory.AddMap(typeof(GlobalValuesViewModel));
             return container;
         }
 

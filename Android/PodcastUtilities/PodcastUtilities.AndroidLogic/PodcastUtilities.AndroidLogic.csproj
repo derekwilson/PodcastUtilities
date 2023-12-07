@@ -85,6 +85,8 @@
     <Compile Include="Utilities\ProgressViewHelper.cs" />
     <Compile Include="Utilities\ResourceProvider.cs" />
     <Compile Include="Utilities\StatusAndProgressMessageStore.cs" />
+    <Compile Include="ViewModel\Configure\FeedDefaultsViewModel.cs" />
+    <Compile Include="ViewModel\Configure\GlobalValuesViewModel.cs" />
     <Compile Include="ViewModel\Download\DownloadRecyclerItem.cs" />
     <Compile Include="ViewModel\Download\DownloadViewModel.cs" />
     <Compile Include="ViewModel\Configure\EditConfigViewModel.cs" />

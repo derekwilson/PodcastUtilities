@@ -239,7 +239,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         {
             List<SelectableString> options = new List<SelectableString>()
             {
-                new SelectableString(OPTION_ID_SELECT_FOLDER, ResourceProvider.GetString(Resource.String.cache_root_option_select)),
                 new SelectableString(OPTION_ID_PHONE_ROOT, ResourceProvider.GetString(Resource.String.cache_root_option_phone)),
                 new SelectableString(OPTION_ID_WSA_ROOT, ResourceProvider.GetString(Resource.String.cache_root_option_wsa)),
             };
@@ -252,6 +251,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
                 options.Add(new SelectableString(OPTION_ID_PRIVATE_ROOT + index, file.AbsolutePath));
                 index++;
             }
+            options.Add(new SelectableString(OPTION_ID_SELECT_FOLDER, ResourceProvider.GetString(Resource.String.cache_root_option_select)));
             options.Add(new SelectableString(OPTION_ID_CUSTOM, ResourceProvider.GetString(Resource.String.cache_root_option_custom)));
             return options;
         }

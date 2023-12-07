@@ -18,7 +18,7 @@ using PodcastUtilities.AndroidLogic.ViewModel.Edit;
 using System;
 using System.Collections.Generic;
 
-namespace PodcastUtilities.UI.Edit
+namespace PodcastUtilities.UI.Configure
 {
     [Activity(Label = "@string/edit_config_activity_title", ParentActivity = typeof(MainActivity))]
     internal class EditConfigActivity : AppCompatActivity, SelectableStringListBottomSheetFragment.IListener
@@ -36,7 +36,7 @@ namespace PodcastUtilities.UI.Edit
         private TextView CacheRootSubLabel = null;
         private TextView CacheRootOptions = null;
         private LinearLayoutCompat GlobalValuesRowContainer = null;
-        private LinearLayoutCompat GlobalDefaultsRowContainer = null;
+        private LinearLayoutCompat FeedDefaultsRowContainer = null;
 
         private OkCancelDialogFragment ResetPromptDialogFragment;
 
@@ -53,7 +53,7 @@ namespace PodcastUtilities.UI.Edit
             CacheRootSubLabel = FindViewById<TextView>(Resource.Id.cache_root_row_sub_label);
             CacheRootOptions = FindViewById<TextView>(Resource.Id.cache_root_row_options);
             GlobalValuesRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_values_row_label_container);
-            GlobalDefaultsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_defaults_row_label_container);
+            FeedDefaultsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_defaults_row_label_container);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(EditConfigViewModel))) as EditConfigViewModel;
@@ -64,7 +64,7 @@ namespace PodcastUtilities.UI.Edit
 
             CacheRootOptions.Click += (sender, e) => DoCacheRootOptions();
             GlobalValuesRowContainer.Click += (sender, e) => DoGlobalValuesOptions();
-            GlobalDefaultsRowContainer.Click += (sender, e) => DoGlobalDefaultsOptions();
+            FeedDefaultsRowContainer.Click += (sender, e) => DoFeedDefaultsOptions();
 
             ResetPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(RESET_PROMPT_TAG) as OkCancelDialogFragment;
             SetupFragmentObservers(ResetPromptDialogFragment);
@@ -163,12 +163,16 @@ namespace PodcastUtilities.UI.Edit
 
         private void DoGlobalValuesOptions()
         {
-            Toast.MakeText(Application.Context, "Clicked", ToastLength.Short).Show();
+            // is it worth calling the ViewModel?
+            var intent = new Intent(this, typeof(GlobalValuesActivity));
+            StartActivity(intent);
         }
 
-        private void DoGlobalDefaultsOptions()
+        private void DoFeedDefaultsOptions()
         {
-            Toast.MakeText(Application.Context, "Clicked 2", ToastLength.Short).Show();
+            // is it worth calling the ViewModel?
+            var intent = new Intent(this, typeof(FeedDefaultsActivity));
+            StartActivity(intent);
         }
 
         private void DoCacheRootOptions()
@@ -177,9 +181,9 @@ namespace PodcastUtilities.UI.Edit
             List<SelectableString> options = ViewModel.GetCacheRootOptions();
             var sheet = SelectableStringListBottomSheetFragment.NewInstance(
                 true,
-                GetString(Resource.String.cache_root_sheet_title), 
+                GetString(Resource.String.cache_root_sheet_title),
                 options);
-            sheet.Show(this.SupportFragmentManager, BOTTOMSHEET_CACHE_OPTIONS_TAG);
+            sheet.Show(SupportFragmentManager, BOTTOMSHEET_CACHE_OPTIONS_TAG);
         }
 
         public void BottomsheetItemSelected(string tag, int position, SelectableString item)
