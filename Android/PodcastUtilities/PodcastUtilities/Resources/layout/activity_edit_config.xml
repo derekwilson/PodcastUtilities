@@ -80,11 +80,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="vertical"
-				android:paddingStart="@dimen/listview_item_horizontal_padding"
-				android:paddingEnd="0dp"
-				android:paddingTop="@dimen/listview_item_vertical_padding"
-				android:paddingBottom="@dimen/listview_item_vertical_padding"
-				android:background="?attr/selectableItemBackground"
+				style="@style/ConfigRowContainer"
 				>
 
 				<TextView
@@ -112,11 +108,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="vertical"
-				android:paddingStart="@dimen/listview_item_horizontal_padding"
-				android:paddingEnd="0dp"
-				android:paddingTop="@dimen/listview_item_vertical_padding"
-				android:paddingBottom="@dimen/listview_item_vertical_padding"
-				android:background="?attr/selectableItemBackground"
+				style="@style/ConfigRowContainer"
 				>
 
 				<TextView

@@ -71,7 +71,7 @@
 	<string name="button_text_main_purge">Purge Podcasts</string>
 
 	<!-- edit config activity -->
-	<string name="edit_config_activity_title">Edit Configuration</string>
+	<string name="edit_config_activity_title">Configure</string>
 	<string name="action_edit_load_control">Load Control File</string>
 	<string name="action_edit_share_control">Share Control File</string>
 	<string name="action_edit_reset_control">Reset Configuration</string>
