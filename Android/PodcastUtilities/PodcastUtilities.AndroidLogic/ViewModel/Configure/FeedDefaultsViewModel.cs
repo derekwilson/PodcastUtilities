@@ -11,6 +11,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         public class ObservableGroup
         {
             public EventHandler<string> DisplayMessage;
+            public EventHandler<string> MaxDaysOld;
+            public EventHandler<string> DownloadStrategy;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -60,7 +62,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 
         private void RefreshConfigDisplay()
         {
-            var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+
+            var maxDaysOldSublabel = string.Format(ResourceProvider.GetString(Resource.String.max_days_old_label_fmt), controlFile.GetDefaultMaximumDaysOld());
+            Observables.MaxDaysOld?.Invoke(this, maxDaysOldSublabel);
+            Observables.DownloadStrategy?.Invoke(this, controlFile.GetDefaultDownloadStrategy().ToString());
         }
 
         [Lifecycle.Event.OnDestroy]

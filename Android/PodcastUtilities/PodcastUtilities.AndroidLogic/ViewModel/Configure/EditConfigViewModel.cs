@@ -71,9 +71,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
 
         private void RefreshConfigDisplay()
         {
-            var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
 
-            var cacheRootSublabel = string.Format(ResourceProvider.GetString(Resource.String.cache_root_label_fmt), ControlFile.GetSourceRoot());
+            var cacheRootSublabel = string.Format(ResourceProvider.GetString(Resource.String.cache_root_label_fmt), controlFile.GetSourceRoot());
             Observables.SetCacheRoot?.Invoke(this, cacheRootSublabel);
         }
 

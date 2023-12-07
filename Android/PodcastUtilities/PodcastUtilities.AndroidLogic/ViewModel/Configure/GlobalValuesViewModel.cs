@@ -11,6 +11,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         public class ObservableGroup
         {
             public EventHandler<string> DisplayMessage;
+            public EventHandler<string> DownloadFreeSpace;
+            public EventHandler<string> PlaylistFile;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -60,7 +62,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 
         private void RefreshConfigDisplay()
         {
-            var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+
+            var freeSpaceSublabel = string.Format(ResourceProvider.GetString(Resource.String.download_free_space_label_fmt), controlFile.GetFreeSpaceToLeaveOnDownload());
+            Observables.DownloadFreeSpace?.Invoke(this, freeSpaceSublabel);
+            Observables.PlaylistFile?.Invoke(this, controlFile.GetPlaylistFileName());
         }
 
         [Lifecycle.Event.OnDestroy]

@@ -107,6 +107,7 @@
 	<string name="global_values_activity_title">Global Values</string>
 
 	<string name="row_title_download_free_space">Free space to leave on device</string>
+	<string name="download_free_space_label_fmt">{0} MB of space will be left on the device that contains the cache root folder.</string>
 
 	<string name="row_title_playlist_file">Playlist filename</string>
 
@@ -114,6 +115,7 @@
 	<string name="feed_defaults_activity_title">Feed Defaults</string>
 
 	<string name="row_title_max_days_old">Maximum days old</string>
+	<string name="max_days_old_label_fmt">Only podcasts published in the last {0} days will be considered for download.</string>
 
 	<string name="row_title_download_strategy">Download strategy</string>
 

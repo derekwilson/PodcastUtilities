@@ -80,11 +80,31 @@ namespace PodcastUtilities.UI.Configure
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.DisplayMessage += DisplayMessage;
+            ViewModel.Observables.MaxDaysOld += MaxDaysOld;
+            ViewModel.Observables.DownloadStrategy += DownloadStrategy;
         }
 
         private void KillViewModelObservers()
         {
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
+            ViewModel.Observables.MaxDaysOld -= MaxDaysOld;
+            ViewModel.Observables.DownloadStrategy -= DownloadStrategy;
+        }
+
+        private void DownloadStrategy(object sender, string str)
+        {
+            RunOnUiThread(() =>
+            {
+                DownloadStrategyRowSubLabel.Text = str;
+            });
+        }
+
+        private void MaxDaysOld(object sender, string str)
+        {
+            RunOnUiThread(() =>
+            {
+                MaxDaysOldRowSubLabel.Text = str;
+            });
         }
 
         private void DisplayMessage(object sender, string message)

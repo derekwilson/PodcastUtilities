@@ -79,11 +79,31 @@ namespace PodcastUtilities.UI.Configure
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.DisplayMessage += DisplayMessage;
+            ViewModel.Observables.PlaylistFile += PlaylistFile;
+            ViewModel.Observables.DownloadFreeSpace += DownloadFreeSpace;
         }
 
         private void KillViewModelObservers()
         {
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
+            ViewModel.Observables.PlaylistFile -= PlaylistFile;
+            ViewModel.Observables.DownloadFreeSpace -= DownloadFreeSpace;
+        }
+
+        private void DownloadFreeSpace(object sender, string str)
+        {
+            RunOnUiThread(() =>
+            {
+                DownloadFreeSpaceRowSubLabel.Text = str;
+            });
+        }
+
+        private void PlaylistFile(object sender, string str)
+        {
+            RunOnUiThread(() =>
+            {
+                PlaylistFileRowSubLabel.Text = str;
+            });
         }
 
         private void DisplayMessage(object sender, string message)
