@@ -177,12 +177,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_app_round.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\dimens.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\info_divider.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_opensourcelicenses.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
