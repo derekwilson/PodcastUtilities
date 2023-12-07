@@ -73,6 +73,72 @@
 
 			</androidx.constraintlayout.widget.ConstraintLayout>
 
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/global_values_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingStart="@dimen/listview_item_horizontal_padding"
+				android:paddingEnd="0dp"
+				android:paddingTop="@dimen/listview_item_vertical_padding"
+				android:paddingBottom="@dimen/listview_item_vertical_padding"
+				android:background="?attr/selectableItemBackground"
+				>
+
+				<TextView
+					android:id="@+id/global_values_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_global_values"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/global_values_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_sub_label_global_values"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/global_defaults_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingStart="@dimen/listview_item_horizontal_padding"
+				android:paddingEnd="0dp"
+				android:paddingTop="@dimen/listview_item_vertical_padding"
+				android:paddingBottom="@dimen/listview_item_vertical_padding"
+				android:background="?attr/selectableItemBackground"
+				>
+
+				<TextView
+					android:id="@+id/global_defaults_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_global_defaults"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/global_defaults_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_sub_label_global_defaults"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
             <TextView
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"

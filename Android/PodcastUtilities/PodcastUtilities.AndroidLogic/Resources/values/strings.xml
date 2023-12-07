@@ -97,6 +97,12 @@
 	<string name="cache_root_option_wsa">/storage/emulated/0/Windows/Podcasts</string>
 	<string name="cache_root_option_custom">Edit custom folder</string>
 
+	<string name="row_title_global_values">Global values</string>
+	<string name="row_sub_label_global_values">Configuration values that control the whole application.</string>
+
+	<string name="row_title_global_defaults">Default values for all feeds</string>
+	<string name="row_sub_label_global_defaults">Values that are applied to all feeds, which can be overridden by an individual feed.</string>
+
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
 	<string name="no_downloads_text">No podcasts to download</string>

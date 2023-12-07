@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using AndroidX.AppCompat.Widget;
 using AndroidX.Core.View;
 using AndroidX.Core.Widget;
 using AndroidX.DocumentFile.Provider;
@@ -34,6 +35,8 @@ namespace PodcastUtilities.UI.Edit
         private NestedScrollView Container = null;
         private TextView CacheRootSubLabel = null;
         private TextView CacheRootOptions = null;
+        private LinearLayoutCompat GlobalValuesRowContainer = null;
+        private LinearLayoutCompat GlobalDefaultsRowContainer = null;
 
         private OkCancelDialogFragment ResetPromptDialogFragment;
 
@@ -49,6 +52,8 @@ namespace PodcastUtilities.UI.Edit
             Container = FindViewById<NestedScrollView>(Resource.Id.edit_container);
             CacheRootSubLabel = FindViewById<TextView>(Resource.Id.cache_root_row_sub_label);
             CacheRootOptions = FindViewById<TextView>(Resource.Id.cache_root_row_options);
+            GlobalValuesRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_values_row_label_container);
+            GlobalDefaultsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_defaults_row_label_container);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(EditConfigViewModel))) as EditConfigViewModel;
@@ -58,6 +63,8 @@ namespace PodcastUtilities.UI.Edit
             ViewModel.Initialise();
 
             CacheRootOptions.Click += (sender, e) => DoCacheRootOptions();
+            GlobalValuesRowContainer.Click += (sender, e) => DoGlobalValuesOptions();
+            GlobalDefaultsRowContainer.Click += (sender, e) => DoGlobalDefaultsOptions();
 
             ResetPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(RESET_PROMPT_TAG) as OkCancelDialogFragment;
             SetupFragmentObservers(ResetPromptDialogFragment);
@@ -152,6 +159,16 @@ namespace PodcastUtilities.UI.Edit
                 return true;
             }
             return base.OnOptionsItemSelected(item);
+        }
+
+        private void DoGlobalValuesOptions()
+        {
+            Toast.MakeText(Application.Context, "Clicked", ToastLength.Short).Show();
+        }
+
+        private void DoGlobalDefaultsOptions()
+        {
+            Toast.MakeText(Application.Context, "Clicked 2", ToastLength.Short).Show();
         }
 
         private void DoCacheRootOptions()
