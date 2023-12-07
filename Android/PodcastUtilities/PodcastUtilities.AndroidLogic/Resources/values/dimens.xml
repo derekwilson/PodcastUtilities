@@ -7,5 +7,10 @@
 	<dimen name="listview_item_vertical_padding">8dp</dimen>
 	<dimen name="listview_item_check_horizontal_padding">10dp</dimen>
 	<dimen name="listview_item_check_vertical_padding">8dp</dimen>
+	<dimen name="listview_empty_message_padding">8dp</dimen>
+
+	<dimen name="overflow_menu_dots_textview_padding">32dp</dimen>
+
+	<dimen name="bottomsheet_title_vertical_padding">16dp</dimen>
 
 </resources>

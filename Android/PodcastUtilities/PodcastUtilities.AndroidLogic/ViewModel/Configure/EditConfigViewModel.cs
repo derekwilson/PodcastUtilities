@@ -207,7 +207,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             ControlFile.SetSourceRoot(root);
             ApplicationControlFileProvider.SaveCurrentControlFile();
-            Observables.DisplayMessage?.Invoke(this, root);
         }
 
         public void LoadContolFile(Android.Net.Uri data)
@@ -244,7 +243,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
                 new SelectableString(OPTION_ID_PHONE_ROOT, ResourceProvider.GetString(Resource.String.cache_root_option_phone)),
                 new SelectableString(OPTION_ID_WSA_ROOT, ResourceProvider.GetString(Resource.String.cache_root_option_wsa)),
             };
-            // TODO - add SD card root
+            // add private folders (for SD card its all we can do)
+            int index = 0;
+            Java.IO.File[] files = FileSystemHelper.GetApplicationExternalFilesDirs();
+            foreach (Java.IO.File file in files)
+            {
+                Logger.Debug(() => $"ExternalFile = {file.AbsolutePath}");
+                options.Add(new SelectableString(OPTION_ID_PRIVATE_ROOT + index, file.AbsolutePath));
+                index++;
+            }
+            options.Add(new SelectableString(OPTION_ID_CUSTOM, ResourceProvider.GetString(Resource.String.cache_root_option_custom)));
             return options;
         }
 
@@ -256,10 +264,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
                 case OPTION_ID_SELECT_FOLDER:
                     Observables.SelectFolder?.Invoke(this, null);
                     break;
-                case OPTION_ID_PHONE_ROOT:
-                    SetCacheRoot(item.Name);
+                case OPTION_ID_CUSTOM:
+                    Observables.DisplayMessage?.Invoke(this, "Not yet implemented");
                     break;
+                case OPTION_ID_PHONE_ROOT:
                 case OPTION_ID_WSA_ROOT:
+                case OPTION_ID_PRIVATE_ROOT:
+                default:
                     SetCacheRoot(item.Name);
                     break;
             }
@@ -269,5 +280,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private const int OPTION_ID_PHONE_ROOT = 11;
         private const int OPTION_ID_WSA_ROOT = 12;
         private const int OPTION_ID_CUSTOM = 13;
+        private const int OPTION_ID_PRIVATE_ROOT = 20;
     }
 }

@@ -159,6 +159,7 @@ namespace PodcastUtilities.UI.Edit
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:DoCacheRootOptions");
             List<SelectableString> options = ViewModel.GetCacheRootOptions();
             var sheet = SelectableStringListBottomSheetFragment.NewInstance(
+                true,
                 GetString(Resource.String.cache_root_sheet_title), 
                 options);
             sheet.Show(this.SupportFragmentManager, BOTTOMSHEET_CACHE_OPTIONS_TAG);

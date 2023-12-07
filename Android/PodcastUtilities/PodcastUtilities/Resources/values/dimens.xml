@@ -4,10 +4,4 @@
 	<dimen name="info_divider_height">1dp</dimen>
 	<dimen name="info_divider_width">1dp</dimen>
 
-	<dimen name="listview_item_horizontal_padding">16dp</dimen>
-	<dimen name="listview_item_vertical_padding">8dp</dimen>
-	<dimen name="overflow_menu_dots_textview_padding">32dp</dimen>
-
-	<dimen name="listview_empty_message_padding">8dp</dimen>
-
 </resources>

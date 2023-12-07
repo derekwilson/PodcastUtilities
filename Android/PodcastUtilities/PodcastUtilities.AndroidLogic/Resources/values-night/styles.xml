@@ -38,6 +38,7 @@
 
 	<style name="bottomSheetTitle">
 		<item name="android:textColor">@color/colour_green</item>
+		<item name="android:background">@color/color_near_black</item>
 	</style>
 
 	<style name="SelectableItemCheckMark">

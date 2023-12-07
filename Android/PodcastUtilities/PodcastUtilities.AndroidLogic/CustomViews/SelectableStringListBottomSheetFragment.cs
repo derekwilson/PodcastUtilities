@@ -12,23 +12,25 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
     public class SelectableStringListBottomSheetFragment : BottomSheetDialogFragment
     {
         private static string TITLE_KEY = "title_key";
+        private static string DIVIDER_KEY = "divider_key";
         private static string OPTIONS_KEY = "options_key";
 
-        public static SelectableStringListBottomSheetFragment NewInstance(string title, List<string> options)
+        public static SelectableStringListBottomSheetFragment NewInstance(bool divider, string title, List<string> options)
         {
             var parcelableOptions = options.Select((option, index) => new SelectableString(index, option)).ToArray();
-            return NewInstance(title, parcelableOptions);
+            return NewInstance(divider, title, parcelableOptions);
         }
 
-        public static SelectableStringListBottomSheetFragment NewInstance(string title, List<SelectableString> options)
+        public static SelectableStringListBottomSheetFragment NewInstance(bool divider, string title, List<SelectableString> options)
         {
-            return NewInstance(title, options.ToArray());
+            return NewInstance(divider, title, options.ToArray());
         }
 
-        public static SelectableStringListBottomSheetFragment NewInstance(string title, SelectableString[] options)
+        public static SelectableStringListBottomSheetFragment NewInstance(bool divider, string title, SelectableString[] options)
         {
             var fragment = new SelectableStringListBottomSheetFragment();
             var args = new Bundle();
+            args.PutBoolean(DIVIDER_KEY, divider);
             args.PutString(TITLE_KEY, title);
             AddOptionsToArgs(args, options);
             fragment.Arguments = args;
@@ -96,6 +98,11 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
 
             titleView.Text = args.GetString(TITLE_KEY);
             options = GetOptionsFromArgs(args);
+
+            if (!args.GetBoolean(DIVIDER_KEY, false))
+            {
+                listView.DividerHeight = 0;
+            }
 
             var adapter = new SelectableStringArrayAdapter(RequireContext(), options);
             listView.Adapter = adapter;
