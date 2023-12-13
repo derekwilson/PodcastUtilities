@@ -11,6 +11,10 @@
 		<item name="actionBarStyle">@style/AppTheme.ActionBar</item>
 	</style>
 
+	<style name="DialogTextLayoutColours" parent="DialogTextLayout">
+		<item name="hintTextColor">@color/colour_green</item>
+	</style>
+
 	<style name="ItemLabel">
 		<item name="android:textSize">16sp</item>
 		<item name="android:textColor">@color/colour_green</item>

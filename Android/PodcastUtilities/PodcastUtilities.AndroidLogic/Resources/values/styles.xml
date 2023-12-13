@@ -22,11 +22,23 @@
 		<item name="android:textStyle">bold</item>
 	</style>
 
+	<!-- work around for material bugs -->
+	<!-- see https://stackoverflow.com/questions/56141507/there-is-always-a-default-background-on-textinputlayout-in-android -->
+	<style name="DialogTextLayout">
+		<item name="android:hint">Default</item>
+		<item name="boxBackgroundMode">filled</item>
+		<item name="boxBackgroundColor">@null</item>
+	</style>
+
+	<style name="DialogTextLayoutColours" parent="DialogTextLayout">
+		<item name="hintTextColor">@color/colour_dark_green</item>
+	</style>
+
 	<style name="DialogButton" parent="Widget.AppCompat.Button.Borderless.Colored">
 		<item name="android:minHeight">0dp</item>
 		<item name="android:minWidth">0dp</item>
-		<item name="android:paddingTop">5dp</item>
-		<item name="android:paddingBottom">5dp</item>
+		<item name="android:paddingTop">15dp</item>
+		<item name="android:paddingBottom">15dp</item>
 	</style>
 
 	<style name="Divider">
@@ -42,7 +54,12 @@
 		<item name="android:paddingBottom">@dimen/listview_item_vertical_padding</item>
 		<item name="android:background">?attr/selectableItemBackground</item>
 	</style>
-	
+
+	<style name="DialogTitle">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textColor">@color/colour_blue</item>
+	</style>
+
 	<style name="ItemTitle">
 		<item name="android:textSize">20sp</item>
 		<item name="android:textStyle">bold</item>

@@ -89,6 +89,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             }
 
             layValue.Hint = prompt;
+
             txtValue.Text = value;
             txtValue.SetSelection(txtValue.Text.Length);
             txtValue.EditorAction += (sender, args) => DoEditAction(Tag, customData, args);

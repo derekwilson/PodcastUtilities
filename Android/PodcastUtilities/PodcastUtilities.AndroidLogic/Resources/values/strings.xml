@@ -121,7 +121,7 @@
 
 	<!-- dialogs -->
 	<string name="prompt_playlist_title">Filename to use when generating a playlist</string>
-	<string name="prompt_playlist_prompt">Filename</string>
+	<string name="prompt_playlist_prompt">Playlist filename</string>
 
 	<string name="content_desc_clear">Clear Text</string>
 

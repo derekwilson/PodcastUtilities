@@ -16,7 +16,7 @@
 		android:layout_height="wrap_content"
 		app:layout_constraintTop_toTopOf="parent"
 		android:text="@string/placeholder"
-		style="@style/ItemTitle"
+		style="@style/DialogTitle"
 	/>
 
 	<FrameLayout
@@ -34,9 +34,7 @@
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
-			android:hint="@string/placeholder"
-		    app:boxBackgroundMode="filled"
-		    app:boxBackgroundColor="@null"
+			style="@style/DialogTextLayoutColours"
 			>
 			<com.google.android.material.textfield.TextInputEditText
 				android:id="@+id/value_prompt_value"
@@ -74,6 +72,7 @@
 		app:layout_constraintTop_toBottomOf="@id/value_prompt_value_wrapper"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintBottom_toBottomOf="parent"
+		android:paddingTop="@dimen/dialog_top_button_bar_padding"
 		style="@style/Widget.AppCompat.ButtonBar">
 
 		<androidx.appcompat.widget.AppCompatButton
