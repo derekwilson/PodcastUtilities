@@ -1,5 +1,4 @@
-﻿using Android.App;
-using Android.Content.Res;
+﻿using Android.Content.Res;
 using Android.OS;
 using Android.Views;
 using Android.Views.InputMethods;
@@ -7,7 +6,6 @@ using Android.Widget;
 using Google.Android.Material.TextField;
 using PodcastUtilities.AndroidLogic.Utilities;
 using System;
-using static Android.Icu.Text.ListFormatter;
 
 namespace PodcastUtilities.AndroidLogic.CustomViews
 {
@@ -110,14 +108,14 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
                 cancelButton.Click += (sender, e) => DoCancelAction(Tag, customData);
             }
 
-            DialogHelper.ShowSoftKeyboard(this.Context, txtValue);
+            DialogHelper.ShowSoftKeyboard(txtValue);
         }
 
         public override void OnResume()
         {
             // make the layout 90% of the width of the screen
             // because it looks good - and the OS default varies but is often very narrow
-            DialogHelper.SetWidth(this.Dialog, (Resources.DisplayMetrics.WidthPixels * 90) / 100);
+            DialogHelper.SetWidthByPercent(this.Dialog, Resources.DisplayMetrics, 90);
 
             base.OnResume();
         }
