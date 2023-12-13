@@ -34,17 +34,20 @@
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
+			android:hint="@string/placeholder"
+		    app:boxBackgroundMode="filled"
+		    app:boxBackgroundColor="@null"
 			>
-			<EditText
+			<com.google.android.material.textfield.TextInputEditText
 				android:id="@+id/value_prompt_value"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:singleLine="true"
 				android:paddingStart="@dimen/text_input_text_padding_left"
-				android:hint="@string/placeholder"
+				android:backgroundTint="@android:color/transparent"
 				>
 				<requestFocus />
-			</EditText>
+			</com.google.android.material.textfield.TextInputEditText>
 		</com.google.android.material.textfield.TextInputLayout>
 
 		<ImageView
