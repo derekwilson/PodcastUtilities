@@ -1,8 +1,10 @@
 ﻿using Android.App;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using System;
+using static Android.Provider.DocumentsContract;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 {
@@ -13,6 +15,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler<string> DisplayMessage;
             public EventHandler<string> DownloadFreeSpace;
             public EventHandler<string> PlaylistFile;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForPlaylistFile;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -75,6 +78,28 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         {
             Logger.Debug(() => $"GlobalValuesViewModel:OnDestroy");
             ApplicationControlFileProvider.ConfigurationUpdated -= ConfigurationUpdated;
+        }
+
+        public void PlaylistFileOptions()
+        {
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
+            {
+                Title = ResourceProvider.GetString(Resource.String.prompt_playlist_title),
+                Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                Prompt = ResourceProvider.GetString(Resource.String.prompt_playlist_prompt),
+                Value = controlFile.GetPlaylistFileName(),
+            };
+            Observables.PromptForPlaylistFile?.Invoke(this, promptParams);
+        }
+
+        public void SetPlaylistFilename(string value)
+        {
+            Logger.Debug(() => $"GlobalValuesViewModel:SetPlaylistFilename = {value}");
+            var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            ControlFile.SetPlaylistFileName(value);
+            ApplicationControlFileProvider.SaveCurrentControlFile();
         }
     }
 

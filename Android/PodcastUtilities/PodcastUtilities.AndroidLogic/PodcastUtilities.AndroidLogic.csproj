@@ -64,6 +64,7 @@
     <Compile Include="CustomViews\SelectableString.cs" />
     <Compile Include="Adapters\SelectableStringArrayAdapter.cs" />
     <Compile Include="CustomViews\SelectableStringListBottomSheetFragment.cs" />
+    <Compile Include="CustomViews\ValuePromptDialogFragment.cs" />
     <Compile Include="Settings\UserSettings.cs" />
     <Compile Include="Utilities\AnalyticsEngine.cs" />
     <Compile Include="Utilities\ApplicationControlFileFactory.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Utilities\BackKeyMapper.cs" />
     <Compile Include="Utilities\CrashReporter.cs" />
     <Compile Include="Utilities\AndroidEnvironmentInformationProvider.cs" />
+    <Compile Include="Utilities\DialogHelper.cs" />
     <Compile Include="Utilities\IAndroidApplication.cs" />
     <Compile Include="Converter\ByteConverter.cs" />
     <Compile Include="CustomViews\DriveVolumeInfoView.cs" />
@@ -237,6 +239,14 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\dialog_fragment_value_prompt.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_clear.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

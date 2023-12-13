@@ -22,6 +22,13 @@
 		<item name="android:textStyle">bold</item>
 	</style>
 
+	<style name="DialogButton" parent="Widget.AppCompat.Button.Borderless.Colored">
+		<item name="android:minHeight">0dp</item>
+		<item name="android:minWidth">0dp</item>
+		<item name="android:paddingTop">5dp</item>
+		<item name="android:paddingBottom">5dp</item>
+	</style>
+
 	<style name="Divider">
 		<item name="android:layout_width">match_parent</item>
 		<item name="android:layout_height">1dp</item>
@@ -103,7 +110,7 @@
 		<item name="android:textColor">@color/color_near_black</item>
 	</style>
 
-	<style name="SelectableItemCheckMark">
+	<style name="iconImageButton">
 		<item name="tint">@color/colour_dark_green</item>
 	</style>
 

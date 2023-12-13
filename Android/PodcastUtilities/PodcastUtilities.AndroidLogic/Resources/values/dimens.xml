@@ -17,4 +17,11 @@
 
 	<dimen name="bottomsheet_title_vertical_padding">16dp</dimen>
 
+	<dimen name="dialog_left_right_padding">16dp</dimen>
+	<dimen name="dialog_top_bottom_padding">8dp</dimen>
+
+	<dimen name="text_input_clear_button_width">50dp</dimen>
+	<dimen name="text_input_clear_button_padding">10dp</dimen>
+	<dimen name="text_input_text_padding_left">2dp</dimen>
+
 </resources>

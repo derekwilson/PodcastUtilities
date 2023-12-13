@@ -7,14 +7,18 @@ using AndroidX.AppCompat.App;
 using AndroidX.AppCompat.Widget;
 using AndroidX.Core.Widget;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
+using System;
 
 namespace PodcastUtilities.UI.Configure
 {
     [Activity(Label = "@string/global_values_activity_title", ParentActivity = typeof(EditConfigActivity))]
     internal class GlobalValuesActivity : AppCompatActivity
     {
+        private const string PLAYLIST_FILENAME_PROMPT_TAG = "playlist_filename_prompt_tag";
+
         private AndroidApplication AndroidApplication;
         private GlobalValuesViewModel ViewModel;
 
@@ -23,6 +27,8 @@ namespace PodcastUtilities.UI.Configure
         private TextView DownloadFreeSpaceRowSubLabel = null;
         private LinearLayoutCompat PlaylistFileRowContainer = null;
         private TextView PlaylistFileRowSubLabel = null;
+
+        private ValuePromptDialogFragment PlaylistFilenamePromptDialogFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -49,6 +55,9 @@ namespace PodcastUtilities.UI.Configure
             DownloadFreeSpaceRowContainer.Click += (sender, e) => DoDownloadFreeSpaceOptions();
             PlaylistFileRowContainer.Click += (sender, e) => DoPlaylistFileOptions();
 
+            PlaylistFilenamePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(PLAYLIST_FILENAME_PROMPT_TAG) as ValuePromptDialogFragment;
+            SetupFragmentObservers(PlaylistFilenamePromptDialogFragment);
+
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:OnCreate - end");
         }
 
@@ -57,6 +66,7 @@ namespace PodcastUtilities.UI.Configure
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:OnDestroy");
             base.OnDestroy();
             KillViewModelObservers();
+            KillFragmentObservers(PlaylistFilenamePromptDialogFragment);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -73,7 +83,7 @@ namespace PodcastUtilities.UI.Configure
 
         private void DoPlaylistFileOptions()
         {
-            Toast.MakeText(Application.Context, "Not implemented", ToastLength.Short).Show();
+            ViewModel.PlaylistFileOptions();
         }
 
         private void SetupViewModelObservers()
@@ -81,6 +91,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.DisplayMessage += DisplayMessage;
             ViewModel.Observables.PlaylistFile += PlaylistFile;
             ViewModel.Observables.DownloadFreeSpace += DownloadFreeSpace;
+            ViewModel.Observables.PromptForPlaylistFile += PromptForPlaylistFile;
         }
 
         private void KillViewModelObservers()
@@ -88,6 +99,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
             ViewModel.Observables.PlaylistFile -= PlaylistFile;
             ViewModel.Observables.DownloadFreeSpace -= DownloadFreeSpace;
+            ViewModel.Observables.PromptForPlaylistFile -= PromptForPlaylistFile;
         }
 
         private void DownloadFreeSpace(object sender, string str)
@@ -106,6 +118,16 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
+        private void PromptForPlaylistFile(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                PlaylistFilenamePromptDialogFragment = ValuePromptDialogFragment.NewInstance(parameters);
+                SetupFragmentObservers(PlaylistFilenamePromptDialogFragment);
+                PlaylistFilenamePromptDialogFragment.Show(SupportFragmentManager, PLAYLIST_FILENAME_PROMPT_TAG);
+            });
+        }
+
         private void DisplayMessage(object sender, string message)
         {
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity: DisplayMessage {message}");
@@ -113,6 +135,51 @@ namespace PodcastUtilities.UI.Configure
             {
                 Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
             });
+        }
+
+        private void SetupFragmentObservers(ValuePromptDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity: SetupFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected += OkSelected;
+                fragment.CancelSelected += CancelSelected;
+            }
+        }
+
+        private void KillFragmentObservers(ValuePromptDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity: KillFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected -= OkSelected;
+                fragment.CancelSelected -= CancelSelected;
+            }
+        }
+
+        private void OkSelected(object sender, Tuple<string, string, string> parameters)
+        {
+            (string tag, string data, string value) = parameters;
+            AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
+            switch (tag)
+            {
+                case PLAYLIST_FILENAME_PROMPT_TAG:
+                    KillFragmentObservers(PlaylistFilenamePromptDialogFragment);
+                    ViewModel.SetPlaylistFilename(value);
+                    break;
+            }
+        }
+
+        private void CancelSelected(object sender, Tuple<string, string, string> parameters)
+        {
+            (string tag, string data, string value) = parameters;
+            AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
+            switch (tag)
+            {
+                case PLAYLIST_FILENAME_PROMPT_TAG:
+                    KillFragmentObservers(PlaylistFilenamePromptDialogFragment);
+                    break;
+            }
         }
     }
 

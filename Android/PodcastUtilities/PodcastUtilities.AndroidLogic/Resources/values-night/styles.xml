@@ -41,7 +41,7 @@
 		<item name="android:background">@color/color_near_black</item>
 	</style>
 
-	<style name="SelectableItemCheckMark">
+	<style name="iconImageButton">
 		<item name="tint">@color/colour_green</item>
 	</style>
 
