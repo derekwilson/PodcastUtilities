@@ -64,6 +64,7 @@
     <Compile Include="CustomViews\SelectableString.cs" />
     <Compile Include="Adapters\SelectableStringArrayAdapter.cs" />
     <Compile Include="CustomViews\SelectableStringListBottomSheetFragment.cs" />
+    <Compile Include="CustomViews\NumericPromptDialogFragment.cs" />
     <Compile Include="CustomViews\ValuePromptDialogFragment.cs" />
     <Compile Include="Settings\UserSettings.cs" />
     <Compile Include="Utilities\AnalyticsEngine.cs" />
@@ -247,6 +248,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_clear.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\dialog_fragment_numeric_prompt.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/dialog_left_right_padding"
+    android:paddingRight="@dimen/dialog_left_right_padding"
+    android:paddingTop="@dimen/dialog_top_bottom_padding"
+    android:paddingBottom="@dimen/dialog_top_bottom_padding"
+    >
+
+    <TextView
+        android:id="@+id/numeric_prompt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/placeholder"
+        style="@style/DialogTitle"
+        />
+
+    <LinearLayout
+        android:id="@+id/numeric_prompt_value_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/numeric_prompt_title"
+        >
+
+    <RadioGroup
+        android:id="@+id/numeric_prompt_radio_group"
+        android:paddingTop="@dimen/radiogroup_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/numeric_prompt_radio_default"
+            android:paddingTop="@dimen/radio_button_padding_top"
+            android:paddingBottom="@dimen/radio_button_padding_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Default" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/numeric_prompt_radio_custom"
+            android:paddingTop="@dimen/radio_button_padding_top"
+            android:paddingBottom="@dimen/radio_button_padding_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Custom" />
+    </RadioGroup>
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/numeric_prompt_value_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/text_input_clear_button_width"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/DialogTextLayoutColours"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/numeric_prompt_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:paddingStart="@dimen/text_input_text_padding_left"
+                    android:backgroundTint="@android:color/transparent"
+                    >
+                    <requestFocus />
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/numeric_prompt_txt_clear"
+                android:layout_width="@dimen/text_input_clear_button_width"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|end"
+                android:background="?attr/selectableItemBackground"
+                android:paddingTop="@dimen/text_input_clear_button_padding"
+                android:paddingLeft="@dimen/text_input_clear_button_padding"
+                android:paddingRight="@dimen/text_input_clear_button_padding"
+                app:srcCompat="@drawable/ic_clear"
+                android:contentDescription="@string/content_desc_clear"
+                style="@style/iconImageButton"
+                >
+            </ImageView>
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        app:layout_constraintTop_toBottomOf="@id/numeric_prompt_value_wrapper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingTop="@dimen/dialog_top_button_bar_padding"
+        style="@style/Widget.AppCompat.ButtonBar">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/numeric_prompt_cancel"
+            android:text="@string/action_cancel"
+            style="@style/DialogButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/numeric_prompt_ok"
+            android:text="@string/action_ok"
+            style="@style/DialogButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

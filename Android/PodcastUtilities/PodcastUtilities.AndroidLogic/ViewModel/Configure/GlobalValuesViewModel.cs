@@ -16,6 +16,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler<string> DownloadFreeSpace;
             public EventHandler<string> PlaylistFile;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForPlaylistFile;
+            public EventHandler<NumericPromptDialogFragment.NumericPromptDialogFragmentParameters> PromptForDownloadFreespace;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -101,6 +102,29 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ControlFile.SetPlaylistFileName(value);
             ApplicationControlFileProvider.SaveCurrentControlFile();
         }
+
+        public void DownloadFreespaceOptions()
+        {
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            NumericPromptDialogFragment.NumericPromptDialogFragmentParameters promptParams = new NumericPromptDialogFragment.NumericPromptDialogFragmentParameters()
+            {
+                Title = ResourceProvider.GetString(Resource.String.prompt_freespace_download_title),
+                Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                Prompt = ResourceProvider.GetString(Resource.String.prompt_freespace_download_prompt),
+                Value = controlFile.GetFreeSpaceToLeaveOnDownload(),
+            };
+            Observables.PromptForDownloadFreespace?.Invoke(this, promptParams);
+        }
+
+        public void SetFreespaceOnDownload(long value)
+        {
+            Logger.Debug(() => $"GlobalValuesViewModel:SetFreespaceOnDownload = {value}");
+            var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            ControlFile.SetFreeSpaceToLeaveOnDownload(value);
+            ApplicationControlFileProvider.SaveCurrentControlFile();
+        }
+
     }
 
 }

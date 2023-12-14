@@ -11,12 +11,14 @@ using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using System;
+using static Android.Hardware.Camera;
 
 namespace PodcastUtilities.UI.Configure
 {
     [Activity(Label = "@string/global_values_activity_title", ParentActivity = typeof(EditConfigActivity))]
     internal class GlobalValuesActivity : AppCompatActivity
     {
+        private const string FREESPACE_PROMPT_TAG = "freespace_prompt_tag";
         private const string PLAYLIST_FILENAME_PROMPT_TAG = "playlist_filename_prompt_tag";
 
         private AndroidApplication AndroidApplication;
@@ -29,6 +31,7 @@ namespace PodcastUtilities.UI.Configure
         private TextView PlaylistFileRowSubLabel = null;
 
         private ValuePromptDialogFragment PlaylistFilenamePromptDialogFragment;
+        private NumericPromptDialogFragment FreespacePromptDialogFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -56,7 +59,9 @@ namespace PodcastUtilities.UI.Configure
             PlaylistFileRowContainer.Click += (sender, e) => DoPlaylistFileOptions();
 
             PlaylistFilenamePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(PLAYLIST_FILENAME_PROMPT_TAG) as ValuePromptDialogFragment;
-            SetupFragmentObservers(PlaylistFilenamePromptDialogFragment);
+            SetupValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
+            FreespacePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(FREESPACE_PROMPT_TAG) as NumericPromptDialogFragment;
+            SetupNumericFragmentObservers(FreespacePromptDialogFragment);
 
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:OnCreate - end");
         }
@@ -66,7 +71,8 @@ namespace PodcastUtilities.UI.Configure
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:OnDestroy");
             base.OnDestroy();
             KillViewModelObservers();
-            KillFragmentObservers(PlaylistFilenamePromptDialogFragment);
+            KillValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
+            KillNumericFragmentObservers(FreespacePromptDialogFragment);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -78,7 +84,7 @@ namespace PodcastUtilities.UI.Configure
 
         private void DoDownloadFreeSpaceOptions()
         {
-            Toast.MakeText(Application.Context, "Not implemented", ToastLength.Short).Show();
+            ViewModel.DownloadFreespaceOptions();
         }
 
         private void DoPlaylistFileOptions()
@@ -92,6 +98,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PlaylistFile += PlaylistFile;
             ViewModel.Observables.DownloadFreeSpace += DownloadFreeSpace;
             ViewModel.Observables.PromptForPlaylistFile += PromptForPlaylistFile;
+            ViewModel.Observables.PromptForDownloadFreespace += PromptForDownloadFreespace;
         }
 
         private void KillViewModelObservers()
@@ -100,6 +107,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PlaylistFile -= PlaylistFile;
             ViewModel.Observables.DownloadFreeSpace -= DownloadFreeSpace;
             ViewModel.Observables.PromptForPlaylistFile -= PromptForPlaylistFile;
+            ViewModel.Observables.PromptForDownloadFreespace += PromptForDownloadFreespace;
         }
 
         private void DownloadFreeSpace(object sender, string str)
@@ -123,8 +131,18 @@ namespace PodcastUtilities.UI.Configure
             RunOnUiThread(() =>
             {
                 PlaylistFilenamePromptDialogFragment = ValuePromptDialogFragment.NewInstance(parameters);
-                SetupFragmentObservers(PlaylistFilenamePromptDialogFragment);
+                SetupValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
                 PlaylistFilenamePromptDialogFragment.Show(SupportFragmentManager, PLAYLIST_FILENAME_PROMPT_TAG);
+            });
+        }
+
+        private void PromptForDownloadFreespace(object sender, NumericPromptDialogFragment.NumericPromptDialogFragmentParameters parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                FreespacePromptDialogFragment = NumericPromptDialogFragment.NewInstance(parameters);
+                SetupNumericFragmentObservers(FreespacePromptDialogFragment);
+                FreespacePromptDialogFragment.Show(SupportFragmentManager, FREESPACE_PROMPT_TAG);
             });
         }
 
@@ -137,7 +155,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void SetupFragmentObservers(ValuePromptDialogFragment fragment)
+        private void SetupValueFragmentObservers(ValuePromptDialogFragment fragment)
         {
             if (fragment != null)
             {
@@ -147,7 +165,7 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void KillFragmentObservers(ValuePromptDialogFragment fragment)
+        private void KillValueFragmentObservers(ValuePromptDialogFragment fragment)
         {
             if (fragment != null)
             {
@@ -164,7 +182,7 @@ namespace PodcastUtilities.UI.Configure
             switch (tag)
             {
                 case PLAYLIST_FILENAME_PROMPT_TAG:
-                    KillFragmentObservers(PlaylistFilenamePromptDialogFragment);
+                    KillValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
                     ViewModel.SetPlaylistFilename(value);
                     break;
             }
@@ -177,10 +195,56 @@ namespace PodcastUtilities.UI.Configure
             switch (tag)
             {
                 case PLAYLIST_FILENAME_PROMPT_TAG:
-                    KillFragmentObservers(PlaylistFilenamePromptDialogFragment);
+                    KillValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
                     break;
             }
         }
+
+        private void SetupNumericFragmentObservers(NumericPromptDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity: SetupFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected += NumericOkSelected;
+                fragment.CancelSelected += NumericCancelSelected;
+            }
+        }
+
+        private void KillNumericFragmentObservers(NumericPromptDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity: KillFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected -= NumericOkSelected;
+                fragment.CancelSelected -= NumericCancelSelected;
+            }
+        }
+
+        private void NumericOkSelected(object sender, Tuple<string, string, long> parameters)
+        {
+            (string tag, string data, long value) = parameters;
+            AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
+            switch (tag)
+            {
+                case FREESPACE_PROMPT_TAG:
+                    KillNumericFragmentObservers(FreespacePromptDialogFragment);
+                    ViewModel.SetFreespaceOnDownload(value);
+                    break;
+            }
+        }
+
+        private void NumericCancelSelected(object sender, Tuple<string, string, long> parameters)
+        {
+            (string tag, string data, long value) = parameters;
+            AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
+            switch (tag)
+            {
+                case FREESPACE_PROMPT_TAG:
+                    KillNumericFragmentObservers(FreespacePromptDialogFragment);
+                    break;
+            }
+        }
+
     }
 
 }
