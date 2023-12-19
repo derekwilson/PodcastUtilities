@@ -64,8 +64,9 @@
     <Compile Include="CustomViews\SelectableString.cs" />
     <Compile Include="Adapters\SelectableStringArrayAdapter.cs" />
     <Compile Include="CustomViews\SelectableStringListBottomSheetFragment.cs" />
-    <Compile Include="CustomViews\NumericPromptDialogFragment.cs" />
+    <Compile Include="CustomViews\DefaultableItemValuePromptDialogFragment.cs" />
     <Compile Include="CustomViews\ValuePromptDialogFragment.cs" />
+    <Compile Include="Exceptions\ConfigurationException.cs" />
     <Compile Include="Settings\UserSettings.cs" />
     <Compile Include="Utilities\AnalyticsEngine.cs" />
     <Compile Include="Utilities\ApplicationControlFileFactory.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Utilities\ProgressViewHelper.cs" />
     <Compile Include="Utilities\ResourceProvider.cs" />
     <Compile Include="Utilities\StatusAndProgressMessageStore.cs" />
+    <Compile Include="Utilities\ValueConverter.cs" />
     <Compile Include="ViewModel\Configure\FeedDefaultsViewModel.cs" />
     <Compile Include="ViewModel\Configure\GlobalValuesViewModel.cs" />
     <Compile Include="ViewModel\Download\DownloadRecyclerItem.cs" />
@@ -250,7 +252,7 @@
     <AndroidResource Include="Resources\drawable\ic_clear.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\dialog_fragment_numeric_prompt.xml">
+    <AndroidResource Include="Resources\layout\dialog_fragment_defaultableitem_value_prompt.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>

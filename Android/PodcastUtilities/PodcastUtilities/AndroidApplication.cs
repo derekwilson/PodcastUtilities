@@ -118,7 +118,8 @@ namespace PodcastUtilities
             container.Register<IStatusAndProgressMessageStore, StatusAndProgressMessageStore>(IocLifecycle.Singleton);
             container.Register<IDriveVolumeInfoViewFactory, DriveVolumeInfoViewFactory>(IocLifecycle.Singleton);
             container.Register<IApplicationControlFileFactory, ApplicationControlFileFactory>(IocLifecycle.Singleton);
-            
+            container.Register<IValueConverter, ValueConverter>(IocLifecycle.Singleton);
+
             // view models
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);
             container.Register<MainViewModel, MainViewModel>();

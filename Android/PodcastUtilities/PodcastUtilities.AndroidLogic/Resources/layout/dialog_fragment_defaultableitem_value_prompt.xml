@@ -11,7 +11,7 @@
     >
 
     <TextView
-        android:id="@+id/numeric_prompt_title"
+        android:id="@+id/defaultableitem_value_prompt_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,21 +20,21 @@
         />
 
     <LinearLayout
-        android:id="@+id/numeric_prompt_value_wrapper"
+        android:id="@+id/defaultableitem_value_prompt_value_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/numeric_prompt_title"
+        app:layout_constraintTop_toBottomOf="@id/defaultableitem_value_prompt_title"
         >
 
     <RadioGroup
-        android:id="@+id/numeric_prompt_radio_group"
+        android:id="@+id/defaultableitem_value_prompt_radio_group"
         android:paddingTop="@dimen/radiogroup_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/numeric_prompt_radio_default"
+            android:id="@+id/defaultableitem_value_prompt_radio_default"
             android:paddingTop="@dimen/radio_button_padding_top"
             android:paddingBottom="@dimen/radio_button_padding_bottom"
             android:layout_width="match_parent"
@@ -42,7 +42,15 @@
             android:text="Default" />
 
         <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/numeric_prompt_radio_custom"
+            android:id="@+id/defaultableitem_value_prompt_radio_named"
+            android:paddingTop="@dimen/radio_button_padding_top"
+            android:paddingBottom="@dimen/radio_button_padding_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Named" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/defaultableitem_value_prompt_radio_custom"
             android:paddingTop="@dimen/radio_button_padding_top"
             android:paddingBottom="@dimen/radio_button_padding_bottom"
             android:layout_width="match_parent"
@@ -55,7 +63,7 @@
                 android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/numeric_prompt_value_layout"
+                android:id="@+id/defaultableitem_value_prompt_value_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/text_input_clear_button_width"
@@ -65,7 +73,7 @@
                 style="@style/DialogTextLayoutColours"
                 >
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/numeric_prompt_value"
+                    android:id="@+id/defaultableitem_value_prompt_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
@@ -77,7 +85,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
-                android:id="@+id/numeric_prompt_txt_clear"
+                android:id="@+id/defaultableitem_value_prompt_txt_clear"
                 android:layout_width="@dimen/text_input_clear_button_width"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom|end"
@@ -99,14 +107,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="end"
-        app:layout_constraintTop_toBottomOf="@id/numeric_prompt_value_wrapper"
+        app:layout_constraintTop_toBottomOf="@id/defaultableitem_value_prompt_value_wrapper"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:paddingTop="@dimen/dialog_top_button_bar_padding"
         style="@style/Widget.AppCompat.ButtonBar">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/numeric_prompt_cancel"
+            android:id="@+id/defaultableitem_value_prompt_cancel"
             android:text="@string/action_cancel"
             style="@style/DialogButton"
             android:layout_width="wrap_content"
@@ -114,7 +122,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/numeric_prompt_ok"
+            android:id="@+id/defaultableitem_value_prompt_ok"
             android:text="@string/action_ok"
             style="@style/DialogButton"
             android:layout_width="wrap_content"

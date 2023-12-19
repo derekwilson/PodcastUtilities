@@ -1,10 +1,10 @@
 ﻿using Android.App;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.CustomViews;
+using PodcastUtilities.AndroidLogic.Exceptions;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using System;
-using static Android.Provider.DocumentsContract;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 {
@@ -16,7 +16,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler<string> DownloadFreeSpace;
             public EventHandler<string> PlaylistFile;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForPlaylistFile;
-            public EventHandler<NumericPromptDialogFragment.NumericPromptDialogFragmentParameters> PromptForDownloadFreespace;
+            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForDownloadFreespace;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -28,6 +28,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         private IAnalyticsEngine AnalyticsEngine;
         private IFileSystemHelper FileSystemHelper;
         private IApplicationControlFileFactory ApplicationControlFileFactory;
+        private IValueConverter ValueConverter;
 
         public GlobalValuesViewModel(
             Application app,
@@ -37,7 +38,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ICrashReporter crashReporter,
             IAnalyticsEngine analyticsEngine,
             IFileSystemHelper fileSystemHelper,
-            IApplicationControlFileFactory applicationControlFileFactory) : base(app)
+            IApplicationControlFileFactory applicationControlFileFactory,
+            IValueConverter valueConverter
+            ) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"GlobalValuesViewModel:ctor");
@@ -50,6 +53,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             AnalyticsEngine = analyticsEngine;
             FileSystemHelper = fileSystemHelper;
             ApplicationControlFileFactory = applicationControlFileFactory;
+            ValueConverter = valueConverter;
         }
 
         private void ConfigurationUpdated(object sender, EventArgs e)
@@ -68,8 +72,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
 
-            var freeSpaceSublabel = string.Format(ResourceProvider.GetString(Resource.String.download_free_space_label_fmt), controlFile.GetFreeSpaceToLeaveOnDownload());
-            Observables.DownloadFreeSpace?.Invoke(this, freeSpaceSublabel);
+            if (controlFile.GetFreeSpaceToLeaveOnDownload() == int.MaxValue)
+            {
+                Observables.DownloadFreeSpace?.Invoke(this, ResourceProvider.GetString(Resource.String.prompt_freespace_download_named_prompt));
+            }
+            else
+            {
+                var freeSpaceSublabel = string.Format(ResourceProvider.GetString(Resource.String.download_free_space_label_fmt), controlFile.GetFreeSpaceToLeaveOnDownload());
+                Observables.DownloadFreeSpace?.Invoke(this, freeSpaceSublabel);
+            }
             Observables.PlaylistFile?.Invoke(this, controlFile.GetPlaylistFileName());
         }
 
@@ -106,22 +117,45 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         public void DownloadFreespaceOptions()
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-            NumericPromptDialogFragment.NumericPromptDialogFragmentParameters promptParams = new NumericPromptDialogFragment.NumericPromptDialogFragmentParameters()
+            DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters promptParams = new DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters()
             {
                 Title = ResourceProvider.GetString(Resource.String.prompt_freespace_download_title),
                 Ok = ResourceProvider.GetString(Resource.String.action_ok),
                 Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
-                Prompt = ResourceProvider.GetString(Resource.String.prompt_freespace_download_prompt),
-                Value = controlFile.GetFreeSpaceToLeaveOnDownload(),
+                NamedPrompt = ResourceProvider.GetString(Resource.String.prompt_freespace_download_named_prompt),
+                CustomPrompt = ResourceProvider.GetString(Resource.String.prompt_freespace_download_custom_prompt),
+                CurrentValue = ValueConverter.ConvertToString(controlFile.GetFreeSpaceToLeaveOnDownload()),
+                NamedValue = int.MaxValue.ToString(),
+                IsNumeric = true,
             };
+            if (controlFile.GetFreeSpaceToLeaveOnDownload() == int.MaxValue)
+            {
+                promptParams.ValueType = DefaultableItemValuePromptDialogFragment.ItemValueType.Named;
+            } 
+            else
+            {
+                promptParams.ValueType = DefaultableItemValuePromptDialogFragment.ItemValueType.Custom;
+            }
             Observables.PromptForDownloadFreespace?.Invoke(this, promptParams);
         }
 
-        public void SetFreespaceOnDownload(long value)
+        public void SetFreespaceOnDownload(string value, DefaultableItemValuePromptDialogFragment.ItemValueType valueType)
         {
             Logger.Debug(() => $"GlobalValuesViewModel:SetFreespaceOnDownload = {value}");
             var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-            ControlFile.SetFreeSpaceToLeaveOnDownload(value);
+            // this is a global it cannot be defaulted
+            switch (valueType)
+            {
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Defaulted:
+                    CrashReporter.LogNonFatalException(new ConfigurationException("Defaulted value type is not allowed here"));
+                    break;
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Named:
+                    ControlFile.SetFreeSpaceToLeaveOnDownload(int.MaxValue);
+                    break;
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Custom:
+                    ControlFile.SetFreeSpaceToLeaveOnDownload(ValueConverter.ConvertStringToLong(value));
+                    break;
+            }
             ApplicationControlFileProvider.SaveCurrentControlFile();
         }
 

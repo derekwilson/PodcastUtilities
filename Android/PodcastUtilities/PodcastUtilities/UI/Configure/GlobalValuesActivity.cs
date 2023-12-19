@@ -11,7 +11,7 @@ using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using System;
-using static Android.Hardware.Camera;
+using static PodcastUtilities.AndroidLogic.CustomViews.DefaultableItemValuePromptDialogFragment;
 
 namespace PodcastUtilities.UI.Configure
 {
@@ -31,7 +31,7 @@ namespace PodcastUtilities.UI.Configure
         private TextView PlaylistFileRowSubLabel = null;
 
         private ValuePromptDialogFragment PlaylistFilenamePromptDialogFragment;
-        private NumericPromptDialogFragment FreespacePromptDialogFragment;
+        private DefaultableItemValuePromptDialogFragment FreespacePromptDialogFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -60,8 +60,8 @@ namespace PodcastUtilities.UI.Configure
 
             PlaylistFilenamePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(PLAYLIST_FILENAME_PROMPT_TAG) as ValuePromptDialogFragment;
             SetupValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
-            FreespacePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(FREESPACE_PROMPT_TAG) as NumericPromptDialogFragment;
-            SetupNumericFragmentObservers(FreespacePromptDialogFragment);
+            FreespacePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(FREESPACE_PROMPT_TAG) as DefaultableItemValuePromptDialogFragment;
+            SetupDefaultableItemValueFragmentObservers(FreespacePromptDialogFragment);
 
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:OnCreate - end");
         }
@@ -72,7 +72,7 @@ namespace PodcastUtilities.UI.Configure
             base.OnDestroy();
             KillViewModelObservers();
             KillValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
-            KillNumericFragmentObservers(FreespacePromptDialogFragment);
+            KillDefaultableItemValueFragmentObservers(FreespacePromptDialogFragment);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -136,12 +136,12 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PromptForDownloadFreespace(object sender, NumericPromptDialogFragment.NumericPromptDialogFragmentParameters parameters)
+        private void PromptForDownloadFreespace(object sender, DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
             {
-                FreespacePromptDialogFragment = NumericPromptDialogFragment.NewInstance(parameters);
-                SetupNumericFragmentObservers(FreespacePromptDialogFragment);
+                FreespacePromptDialogFragment = DefaultableItemValuePromptDialogFragment.NewInstance(parameters);
+                SetupDefaultableItemValueFragmentObservers(FreespacePromptDialogFragment);
                 FreespacePromptDialogFragment.Show(SupportFragmentManager, FREESPACE_PROMPT_TAG);
             });
         }
@@ -200,47 +200,47 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void SetupNumericFragmentObservers(NumericPromptDialogFragment fragment)
+        private void SetupDefaultableItemValueFragmentObservers(DefaultableItemValuePromptDialogFragment fragment)
         {
             if (fragment != null)
             {
                 AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity: SetupFragmentObservers - {fragment.Tag}");
-                fragment.OkSelected += NumericOkSelected;
-                fragment.CancelSelected += NumericCancelSelected;
+                fragment.OkSelected += DefaultableItemValueOkSelected;
+                fragment.CancelSelected += DefaultableItemValueCancelSelected;
             }
         }
 
-        private void KillNumericFragmentObservers(NumericPromptDialogFragment fragment)
+        private void KillDefaultableItemValueFragmentObservers(DefaultableItemValuePromptDialogFragment fragment)
         {
             if (fragment != null)
             {
                 AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity: KillFragmentObservers - {fragment.Tag}");
-                fragment.OkSelected -= NumericOkSelected;
-                fragment.CancelSelected -= NumericCancelSelected;
+                fragment.OkSelected -= DefaultableItemValueOkSelected;
+                fragment.CancelSelected -= DefaultableItemValueCancelSelected;
             }
         }
 
-        private void NumericOkSelected(object sender, Tuple<string, string, long> parameters)
+        private void DefaultableItemValueOkSelected(object sender, Tuple<string, string, string, ItemValueType> parameters)
         {
-            (string tag, string data, long value) = parameters;
+            (string tag, string data, string value, ItemValueType valueType) = parameters;
             AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
             switch (tag)
             {
                 case FREESPACE_PROMPT_TAG:
-                    KillNumericFragmentObservers(FreespacePromptDialogFragment);
-                    ViewModel.SetFreespaceOnDownload(value);
+                    KillDefaultableItemValueFragmentObservers(FreespacePromptDialogFragment);
+                    ViewModel.SetFreespaceOnDownload(value, valueType);
                     break;
             }
         }
 
-        private void NumericCancelSelected(object sender, Tuple<string, string, long> parameters)
+        private void DefaultableItemValueCancelSelected(object sender, Tuple<string, string> parameters)
         {
-            (string tag, string data, long value) = parameters;
+            (string tag, string data) = parameters;
             AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
             switch (tag)
             {
                 case FREESPACE_PROMPT_TAG:
-                    KillNumericFragmentObservers(FreespacePromptDialogFragment);
+                    KillDefaultableItemValueFragmentObservers(FreespacePromptDialogFragment);
                     break;
             }
         }
