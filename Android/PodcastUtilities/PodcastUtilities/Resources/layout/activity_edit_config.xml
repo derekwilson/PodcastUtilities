@@ -141,13 +141,13 @@
                 android:layout_marginEnd="4dp"
                 style="@style/ItemLabel" />
 
-            <TextView
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    android:text="feeds goes here"
-			    android:textAlignment="center"
-			    android:textAppearance="?android:attr/textAppearanceMedium"
-			    android:gravity="center_horizontal" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/config_feed_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never">
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 

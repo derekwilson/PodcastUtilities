@@ -305,5 +305,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private const int OPTION_ID_WSA_ROOT = 12;
         private const int OPTION_ID_CUSTOM = 13;
         private const int OPTION_ID_PRIVATE_ROOT = 20;
+
+
+        internal void FeedItemSelected(IPodcastInfo podcastFeed)
+        {
+            Observables.DisplayMessage?.Invoke(this, podcastFeed.Folder);
+        }
+
+        internal void FeedItemOptionSelected(IPodcastInfo podcastFeed)
+        {
+            Observables.DisplayMessage?.Invoke(this, "Option - " + podcastFeed.Folder);
+        }
     }
 }

@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\ConfigPodcastFeedRecyclerItemAdapter.cs" />
     <Compile Include="Adapters\DownloadRecyclerItemAdapter.cs" />
     <Compile Include="Adapters\PodcastFeedRecyclerItemAdapter.cs" />
     <Compile Include="Adapters\PurgeRecyclerItemAdapter.cs" />
@@ -254,6 +255,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\dialog_fragment_defaultableitem_value_prompt.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\list_item_configfeeditem.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>

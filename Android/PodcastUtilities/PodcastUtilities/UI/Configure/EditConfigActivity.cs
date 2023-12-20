@@ -11,6 +11,7 @@ using AndroidX.Core.View;
 using AndroidX.Core.Widget;
 using AndroidX.DocumentFile.Provider;
 using AndroidX.Lifecycle;
+using AndroidX.RecyclerView.Widget;
 using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
@@ -39,6 +40,8 @@ namespace PodcastUtilities.UI.Configure
         private LinearLayoutCompat GlobalValuesRowContainer = null;
         private LinearLayoutCompat FeedDefaultsRowContainer = null;
         private TextView FeedsTitle = null;
+        private RecyclerView RvFeedsList = null;
+        private ConfigPodcastFeedRecyclerItemAdapter FeedAdapter = null;
 
         private OkCancelDialogFragment ResetPromptDialogFragment;
 
@@ -57,9 +60,17 @@ namespace PodcastUtilities.UI.Configure
             GlobalValuesRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_values_row_label_container);
             FeedDefaultsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_defaults_row_label_container);
             FeedsTitle = FindViewById<TextView>(Resource.Id.config_feed_list_label);
+            RvFeedsList = FindViewById<RecyclerView>(Resource.Id.config_feed_list);
+
+            RvFeedsList.SetLayoutManager(new LinearLayoutManager(this));
+            RvFeedsList.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(EditConfigViewModel))) as EditConfigViewModel;
+
+            FeedAdapter = new ConfigPodcastFeedRecyclerItemAdapter(AndroidApplication.Logger, ViewModel);
+            RvFeedsList.SetAdapter(FeedAdapter);
+
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
@@ -292,6 +303,8 @@ namespace PodcastUtilities.UI.Configure
             RunOnUiThread(() =>
             {
                 FeedsTitle.Text = heading;
+                FeedAdapter.SetItems(items);
+                FeedAdapter.NotifyDataSetChanged();
             });
         }
 
