@@ -16,34 +16,6 @@
             android:layout_height="wrap_content">
 
 			<androidx.appcompat.widget.LinearLayoutCompat
-				android:id="@+id/max_days_old_row_label_container"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:orientation="vertical"
-				style="@style/ConfigRowContainer"
-				>
-
-				<TextView
-					android:id="@+id/max_days_old_row_label"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="@string/row_title_max_days_old"
-					style="@style/ItemListTitle"
-					/>
-
-				<TextView
-					android:id="@+id/max_days_old_row_sub_label"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="@string/placeholder"
-					style="@style/ItemListSubTitle2"
-					/>
-
-			</androidx.appcompat.widget.LinearLayoutCompat>
-
-			<View style="@style/Divider"/>
-
-			<androidx.appcompat.widget.LinearLayoutCompat
 				android:id="@+id/download_strategy_row_label_container"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
@@ -61,6 +33,34 @@
 
 				<TextView
 					android:id="@+id/download_strategy_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/max_days_old_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer"
+				>
+
+				<TextView
+					android:id="@+id/max_days_old_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_max_days_old"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/max_days_old_row_sub_label"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="@string/placeholder"

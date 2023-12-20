@@ -10,12 +10,15 @@ using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
+using System.Collections.Generic;
 
 namespace PodcastUtilities.UI.Configure
 {
     [Activity(Label = "@string/feed_defaults_activity_title", ParentActivity = typeof(EditConfigActivity))]
-    internal class FeedDefaultsActivity : AppCompatActivity
+    internal class FeedDefaultsActivity : AppCompatActivity, SelectableStringListBottomSheetFragment.IListener
     {
+        private const string BOTTOMSHEET_DOWNLOAD_STRATEGY_TAG = "download_strategy_tag";
+
         private AndroidApplication AndroidApplication;
         private FeedDefaultsViewModel ViewModel;
 
@@ -69,7 +72,24 @@ namespace PodcastUtilities.UI.Configure
 
         private void DoDownloadStrategyOptions()
         {
-            Toast.MakeText(Application.Context, "Not implemented", ToastLength.Short).Show();
+            AndroidApplication.Logger.Debug(() => $"FeedDefaultsActivity:DoDownloadStrategyOptions");
+            List<SelectableString> options = ViewModel.GetDownloadStrategyOptions();
+            var sheet = SelectableStringListBottomSheetFragment.NewInstance(
+                true,
+                GetString(Resource.String.download_strategy_sheet_title),
+                options);
+            sheet.Show(SupportFragmentManager, BOTTOMSHEET_DOWNLOAD_STRATEGY_TAG);
+        }
+
+        public void BottomsheetItemSelected(string tag, int position, SelectableString item)
+        {
+            AndroidApplication.Logger.Debug(() => $"FeedDefaultsActivity:BottomsheetItemSelected {tag}, {position}");
+            switch (tag)
+            {
+                case BOTTOMSHEET_DOWNLOAD_STRATEGY_TAG:
+                    ViewModel.DoDownloadStrategyOption(item);
+                    break;
+            }
         }
 
         private void DoMaxDaysOldOptions()

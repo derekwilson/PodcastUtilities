@@ -91,7 +91,7 @@
 
 	<string name="row_title_cache_root">Cache Root Folder</string>
 	<string name="cache_root_label_fmt">The folder to hold podcast downloads.\n{0}</string>
-	<string name="cache_root_sheet_title">Cache Root Options</string>
+	<string name="cache_root_sheet_title">Cache Root Folder Options</string>
 	<string name="cache_root_option_select">Select a custom folder</string>
 	<string name="cache_root_option_phone">/storage/emulated/0/Podcasts</string>
 	<string name="cache_root_option_wsa">/storage/emulated/0/Windows/Podcasts</string>
@@ -114,10 +114,11 @@
 	<!-- feed defaults activity -->
 	<string name="feed_defaults_activity_title">Feed Defaults</string>
 
+	<string name="row_title_download_strategy">Download strategy</string>
+	<string name="download_strategy_sheet_title">Download Strategy Options</string>
+
 	<string name="row_title_max_days_old">Maximum days old</string>
 	<string name="max_days_old_label_fmt">Only podcasts published in the last {0} days will be considered for download.</string>
-
-	<string name="row_title_download_strategy">Download strategy</string>
 
 	<!-- dialogs -->
 	<string name="prompt_playlist_title">Filename to use when generating a playlist</string>
