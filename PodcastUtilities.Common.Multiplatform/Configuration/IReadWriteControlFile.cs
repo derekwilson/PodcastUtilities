@@ -30,6 +30,76 @@ namespace PodcastUtilities.Common.Configuration
     public interface IReadWriteControlFile : IReadOnlyControlFile, ICloneable, IXmlSerializable
     {
         /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        void SetDefaultDeleteDownloadsDaysOld(int deleteDaysOld);
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        void SetDefaultMaximumNumberOfDownloadedItems(int maxItems);
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        void SetDefaultDownloadStrategy(PodcastEpisodeDownloadStrategy strategy);
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        void SetDefaultFeedFormat(PodcastFeedFormat format);
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        void SetDefaultMaximumDaysOld(int maximumDaysOld);
+
+        /// <summary>
+        /// the global default for feeds
+        /// </summary>
+        void SetDefaultNamingStyle(PodcastEpisodeNamingStyle namingStyle);
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        void SetDefaultNumberOfFiles(int numberOfFiles);
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        void SetDefaultFilePattern(string pattern);
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        void SetDefaultDeleteEmptyFolder(bool delete);
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        void SetDefaultAscendingSort(bool ascendingSort);
+
+        /// <summary>
+        /// the global default for podcasts
+        /// </summary>
+        void SetDefaultSortField(PodcastFileSortField sortField);
+
+        /// <summary>
+        /// the global default for post download command
+        /// </summary>
+        void SetDefaultPostDownloadCommand(string command);
+
+        /// <summary>
+        /// the global default for post download command args
+        /// </summary>
+        void SetDefaultPostDownloadArguments(string command);
+
+        /// <summary>
+        /// the global default for post download command cwd
+        /// </summary>
+        void SetDefaultPostDownloadWorkingDirectory(string command);
+
+        /// <summary>
         /// level of diagnostic output
         /// </summary>
         void SetDiagnosticOutput(DiagnosticOutputLevel level);

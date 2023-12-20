@@ -1,3 +1,6 @@
+# v3.1.0.2 - 20 December 2023
+1. Added setters for the global defaults for feeds to `IReadWriteControlFile`
+
 # v3.1.0.1 - 26 October 2023
 1. Added `StatusUpdate` event to `IGenerator`
 
