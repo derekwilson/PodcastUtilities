@@ -53,8 +53,8 @@ namespace PodcastUtilities.AndroidLogic.Adapters
             );
             var fmt2 = Context.GetString(Resource.String.feed_sublabel_fmt2);
             vh.SubLabel2.Text = string.Format(fmt2,
-                Context.GetString(GetNamingStyleTextId(Items[position].PodcastFeed.Feed.NamingStyle.Value)),
-                Context.GetString(GetDownloadStratagyTextId(Items[position].PodcastFeed.Feed.DownloadStrategy.Value))
+                ViewModel.GetNamingStyleText(Items[position].PodcastFeed.Feed.NamingStyle.Value),
+                ViewModel.GetDownloadStratagyText(Items[position].PodcastFeed.Feed.DownloadStrategy.Value)
             );
 
             vh.Container.Tag = position.ToString();
@@ -75,41 +75,6 @@ namespace PodcastUtilities.AndroidLogic.Adapters
             }
             return Context.Resources.GetQuantityString(formattedId, value, value);
         }
-
-        private int GetNamingStyleTextId(Common.Configuration.PodcastEpisodeNamingStyle namingStyle)
-        {
-            switch (namingStyle)
-            {
-                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileName:
-                    return Resource.String.feed_naming_style_urlfilename;
-                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime:
-                    return Resource.String.feed_naming_style_urlfilenameandpublishdatetime;
-                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime:
-                    return Resource.String.feed_naming_style_urlfilenamefeedtitleandpublishdatetime;
-                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder:
-                    return Resource.String.feed_naming_style_urlfilenamefeedtitleandpublishdatetimeinfolder;
-                case Common.Configuration.PodcastEpisodeNamingStyle.EpisodeTitle:
-                    return Resource.String.feed_naming_style_episodetitle;
-                case Common.Configuration.PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
-                    return Resource.String.feed_naming_style_episodetitleandpublishdatetime;
-            }
-            return Resource.String.unknown;
-        }
-
-        private int GetDownloadStratagyTextId(PodcastEpisodeDownloadStrategy stratagy)
-        {
-            switch (stratagy)
-            {
-                case PodcastEpisodeDownloadStrategy.All:
-                    return Resource.String.feed_download_stratagy_all;
-                case PodcastEpisodeDownloadStrategy.HighTide:
-                    return Resource.String.feed_download_stratagy_hightide;
-                case PodcastEpisodeDownloadStrategy.Latest:
-                    return Resource.String.feed_download_stratagy_latest;
-            }
-            return Resource.String.unknown;
-        }
-
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {

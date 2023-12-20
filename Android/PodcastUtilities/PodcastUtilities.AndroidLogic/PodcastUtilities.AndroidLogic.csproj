@@ -57,6 +57,7 @@
     <Compile Include="Adapters\DownloadRecyclerItemAdapter.cs" />
     <Compile Include="Adapters\PodcastFeedRecyclerItemAdapter.cs" />
     <Compile Include="Adapters\PurgeRecyclerItemAdapter.cs" />
+    <Compile Include="Converter\ValueFormatter.cs" />
     <Compile Include="CustomViews\DriveVolumeInfoViewFactory.cs" />
     <Compile Include="CustomViews\EmptyRecyclerView.cs" />
     <Compile Include="CustomViews\OkCancelDialogFragment.cs" />
@@ -89,7 +90,7 @@
     <Compile Include="Utilities\ProgressViewHelper.cs" />
     <Compile Include="Utilities\ResourceProvider.cs" />
     <Compile Include="Utilities\StatusAndProgressMessageStore.cs" />
-    <Compile Include="Utilities\ValueConverter.cs" />
+    <Compile Include="Converter\ValueConverter.cs" />
     <Compile Include="ViewModel\Configure\FeedDefaultsViewModel.cs" />
     <Compile Include="ViewModel\Configure\GlobalValuesViewModel.cs" />
     <Compile Include="ViewModel\Download\DownloadRecyclerItem.cs" />
@@ -97,7 +98,7 @@
     <Compile Include="ViewModel\Configure\EditConfigViewModel.cs" />
     <Compile Include="ViewModel\Help\HelpViewModel.cs" />
     <Compile Include="ViewModel\Main\MainViewModel.cs" />
-    <Compile Include="ViewModel\Main\PodcastFeedRecyclerItem.cs" />
+    <Compile Include="Adapters\PodcastFeedRecyclerItem.cs" />
     <Compile Include="ViewModel\Messages\MessagesViewModel.cs" />
     <Compile Include="ViewModel\Purge\PurgeRecyclerItem.cs" />
     <Compile Include="ViewModel\Purge\PurgeViewModel.cs" />

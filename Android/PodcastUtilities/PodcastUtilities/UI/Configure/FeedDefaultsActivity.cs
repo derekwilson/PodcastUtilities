@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.Media;
 using Android.OS;
 using Android.Runtime;
 using Android.Widget;
@@ -13,7 +12,6 @@ using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using System;
 using System.Collections.Generic;
-using static Android.Hardware.Camera;
 using static PodcastUtilities.AndroidLogic.CustomViews.DefaultableItemValuePromptDialogFragment;
 
 namespace PodcastUtilities.UI.Configure
@@ -79,7 +77,7 @@ namespace PodcastUtilities.UI.Configure
             NamingStyleRowContainer.Click += (sender, e) => DoNamingStyleOptions();
             MaxDaysOldRowContainer.Click += (sender, e) => DoMaxDaysOldOptions();
             DeleteDaysOldRowContainer.Click += (sender, e) => DoDeleteDownloadDaysOldOptions();
-            MaxDownloadItemsRowContainer.Click += (sender, e) => DoMaxMaxDownloadItemsOptions();
+            MaxDownloadItemsRowContainer.Click += (sender, e) => DoMaxDownloadItemsOptions();
 
             MaxDaysOldPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(MAX_DAYS_OLD_PROMPT_TAG) as DefaultableItemValuePromptDialogFragment;
             SetupDefaultableItemValueFragmentObservers(MaxDaysOldPromptDialogFragment);
@@ -149,9 +147,9 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.MaxDaysOldOptions();
         }
 
-        private void DoMaxMaxDownloadItemsOptions()
+        private void DoMaxDownloadItemsOptions()
         {
-            ViewModel.MaxMaxDownloadItemsOptions();
+            ViewModel.MaxDownloadItemsOptions();
         }
 
         private void DoDeleteDownloadDaysOldOptions()
@@ -249,6 +247,7 @@ namespace PodcastUtilities.UI.Configure
 
         private void MaxDaysOld(object sender, string str)
         {
+            AndroidApplication.Logger.Debug(() => $"FeedDefaultsActivity:MaxDaysOld {str}");
             RunOnUiThread(() =>
             {
                 MaxDaysOldRowSubLabel.Text = str;

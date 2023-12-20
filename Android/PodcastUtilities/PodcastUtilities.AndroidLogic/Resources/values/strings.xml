@@ -54,6 +54,12 @@
 	<string name="feed_sublabel_delete_never">Never delete</string>
 	<string name="feed_sublabel_fmt">{0} {1}, {2}</string>
 
+	<string name="feed_sublabel_fmt2">{0}, Strategy: {1}</string>
+
+	<string name="button_text_main_download">Download from all Feeds</string>
+	<string name="button_text_main_purge">Purge Podcasts</string>
+
+	<!-- formatting -->
 	<string name="feed_naming_style_urlfilename">url</string>
 	<string name="feed_naming_style_urlfilenameandpublishdatetime">yyyy_mm_dd_HHMM_url</string>
 	<string name="feed_naming_style_urlfilenamefeedtitleandpublishdatetime">yyyy_mm_dd_HHMM_title_url</string>
@@ -61,14 +67,15 @@
 	<string name="feed_naming_style_episodetitle">title</string>
 	<string name="feed_naming_style_episodetitleandpublishdatetime">yyyy_mm_dd_HHMM_title</string>
 
+	<string name="naming_style_Url_extra">url is the file name specified in the feed.</string>
+	<string name="naming_style_UrlFileNameFeedTitleAndPublishDateTimeInfolder_extra">Effectively this will group podcasts from the same month into a separate folder.</string>
+
 	<string name="feed_download_stratagy_all">All</string>
 	<string name="feed_download_stratagy_hightide">High Tide</string>
 	<string name="feed_download_stratagy_latest">Latest</string>
-
-	<string name="feed_sublabel_fmt2">{0}, Strategy: {1}</string>
-
-	<string name="button_text_main_download">Download from all Feeds</string>
-	<string name="button_text_main_purge">Purge Podcasts</string>
+	<string name="xtra_download_strategy_high_tide">When first run on a new feed all the episodes are downloaded, subsequently only new episodes are downloaded. The high tide position is kept in a file called state.xml</string>
+	<string name="xtra_download_strategy_all">All episodes in the feed will be downloaded</string>
+	<string name="xtra_download_strategy_latest">Only the latest episode in a feed is downloaded</string>
 
 	<!-- edit config activity -->
 	<string name="edit_config_activity_title">Configure</string>
@@ -121,18 +128,9 @@
 
 	<string name="row_title_download_strategy">Download strategy</string>
 	<string name="download_strategy_sheet_title">Download Strategy Options</string>
-	<string name="download_strategy_high_tide">When first run on a new feed all the episodes are downloaded, subsequently only new episodes are downloaded. The high tide position is kept in a file called state.xml</string>
-	<string name="download_strategy_all">All episodes in the feed will be downloaded</string>
-	<string name="download_strategy_latest">Only the latest episode in a feed is downloaded</string>
 
 	<string name="row_title_naming_style">Naming style</string>
 	<string name="naming_style_sheet_title">Naming Style Options</string>
-	<string name="naming_style_EpisodeTitle">The episode title, as specified in the feed will be used</string>
-	<string name="naming_style_EpisodeTitleAndPublishDateTime">Published date in the form YYYY MM DD HH MM (to enable the files to be sorted by published date) followed by the episode title, as specified in the feed</string>
-	<string name="naming_style_UrlFileName">The filename element at the end of the URL for this episode</string>
-	<string name="naming_style_UrlFileNameAndPublishDateTime">Published date in the form YYYY MM DD HH MM (to enable the files to be sorted by published date) followed by the filename element from the end of the URL</string>
-	<string name="naming_style_UrlFileNameFeedTitleAndPublishDateTime">Published date in the form YYYY MM DD HH MM (to enable the files to be sorted by published date) followed by the feed title (the folder used to store the episodes) followed by the filename element from the end of the URL</string>
-	<string name="naming_style_UrlFileNameFeedTitleAndPublishDateTimeInfolder">The files are named in the same manner as UrlFileNameFeedTitleAndPublishDateTime and then the files are placed in a folder named after the month the episode was published in the form YYYY_MM. Effectively this will group podcasts from the same month into a separate folder.</string>
 
 	<string name="row_title_max_days_old">Maximum days old</string>
 	<string name="max_days_old_label_fmt">Only podcasts published in the last {0} days will be considered for download.</string>
@@ -142,14 +140,14 @@
 
 	<string name="row_title_delete_days_old">Delete old episodes</string>
 	<string name="delete_days_old_label_fmt">Podcast episodes older than {0} days will be purged.</string>
-	<string name="prompt_delete_days_old_title">Maximum days old</string>
+	<string name="prompt_delete_days_old_title">Delete old episodes</string>
 	<string name="prompt_delete_days_old_named_prompt">Never delete</string>
 	<string name="prompt_delete_days_old_custom_prompt">days old delete</string>
 
-	<string name="row_title_max_download_items">Maximum episodes to keep in cache</string>
+	<string name="row_title_max_download_items">Maximum episodes in a feed to keep in the cache</string>
 	<string name="max_download_items_label_fmt">{0} episodes of a podcast will be kept in the cache, others will be ignored until there is room.</string>
 	<string name="prompt_max_download_items_title">Maximum number of episodes</string>
-	<string name="prompt_max_download_items_named_prompt">Unrestriced, no limit to the number of episodes</string>
+	<string name="prompt_max_download_items_named_prompt">Unrestriced, no limit to the number of episodes in the cache</string>
 	<string name="prompt_max_download_items_custom_prompt">number of episodes</string>
 
 	<!-- dialogs -->

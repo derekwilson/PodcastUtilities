@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Views;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
@@ -42,6 +43,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         private IAnalyticsEngine AnalyticsEngine;
         private IGenerator PlaylistGenerator;
         private IDriveVolumeInfoViewFactory DriveVolumeInfoViewFactory;
+        private IValueFormatter ValueFormatter;
 
         private List<PodcastFeedRecyclerItem> AllFeedItems = new List<PodcastFeedRecyclerItem>(20);
 
@@ -55,8 +57,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             ICrashReporter crashReporter,
             IAnalyticsEngine analyticsEngine,
             IGenerator playlistGenerator,
-            IDriveVolumeInfoViewFactory driveVolumeInfoViewFactory 
-            ) : base(app)
+            IDriveVolumeInfoViewFactory driveVolumeInfoViewFactory,
+            IValueFormatter valueFormatter) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"MainViewModel:ctor");
@@ -73,6 +75,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             // we only want to add this once, really we should remove it if the IGenerator is a singleton
             PlaylistGenerator.StatusUpdate += GenerateStatusUpdate;
             DriveVolumeInfoViewFactory = driveVolumeInfoViewFactory;
+            ValueFormatter = valueFormatter;
         }
 
         private void ConfigurationUpdated(object sender, EventArgs e)
@@ -135,7 +138,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                 cacheRoot = controlFile.GetSourceRoot();
                 foreach (var podcastInfo in controlFile.GetPodcasts())
                 {
-                    Logger.Debug(() => $"MainViewModel:RefreshFeedList {podcastInfo.Folder}");
                     var item = new PodcastFeedRecyclerItem()
                     {
                         PodcastFeed = podcastInfo
@@ -145,6 +147,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
             var heading = ResourceProvider.GetQuantityString(Resource.Plurals.feed_list_heading, AllFeedItems.Count);
             Observables.SetCacheRoot?.Invoke(this, cacheRoot);
+            Logger.Debug(() => $"MainViewModel:RefreshFeedList {AllFeedItems.Count}");
             Observables.SetFeedItems?.Invoke(this, Tuple.Create(heading, AllFeedItems));
         }
 
@@ -275,12 +278,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             return false;
         }
 
-        internal void FeedItemSelected(IPodcastInfo podcastFeed)
-        {
-            Logger.Debug(() => $"MainViewModel: FeedItemSelected {podcastFeed.Folder}");
-            Observables.NavigateToDownload?.Invoke(this, podcastFeed.Folder);
-        }
-
         public void GeneratePlaylist()
         {
             try
@@ -321,5 +318,20 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
             AnalyticsEngine.GeneratePlaylistCompleteEvent(items);
         }
-     }
+        internal void FeedItemSelected(IPodcastInfo podcastFeed)
+        {
+            Logger.Debug(() => $"MainViewModel: FeedItemSelected {podcastFeed.Folder}");
+            Observables.NavigateToDownload?.Invoke(this, podcastFeed.Folder);
+        }
+
+        internal string GetNamingStyleText(PodcastEpisodeNamingStyle value)
+        {
+            return ValueFormatter.GetNamingStyleText(value);
+        }
+
+        internal object GetDownloadStratagyText(PodcastEpisodeDownloadStrategy value)
+        {
+            return ValueFormatter.GetDownloadStratagyText(value);
+        }
+    }
 }

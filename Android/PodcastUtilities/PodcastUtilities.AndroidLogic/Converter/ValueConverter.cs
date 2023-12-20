@@ -1,7 +1,8 @@
 ﻿using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidLogic.Utilities;
 using System;
 
-namespace PodcastUtilities.AndroidLogic.Utilities
+namespace PodcastUtilities.AndroidLogic.Converter
 {
     public interface IValueConverter
     {
@@ -43,7 +44,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             try
             {
                 return long.Parse(value);
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 CrashReporter.LogNonFatalException(ex);
                 Logger.LogException(() => "error converting number", ex);

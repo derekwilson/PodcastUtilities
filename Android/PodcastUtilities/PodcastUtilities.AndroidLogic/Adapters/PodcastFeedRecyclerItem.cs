@@ -1,6 +1,6 @@
 ﻿using PodcastUtilities.Common.Configuration;
 
-namespace PodcastUtilities.AndroidLogic.ViewModel.Main
+namespace PodcastUtilities.AndroidLogic.Adapters
 {
     public class PodcastFeedRecyclerItem
     {

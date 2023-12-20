@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Exceptions;
 using PodcastUtilities.AndroidLogic.Logging;
@@ -48,7 +49,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ApplicationContext = app;
             ResourceProvider = resProvider;
             ApplicationControlFileProvider = appControlFileProvider;
-            ApplicationControlFileProvider.ConfigurationUpdated += ConfigurationUpdated;
             CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
             FileSystemHelper = fileSystemHelper;
@@ -83,6 +83,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             }
             Observables.PlaylistFile?.Invoke(this, controlFile.GetPlaylistFileName());
         }
+
+        [Lifecycle.Event.OnCreate]
+        [Java.Interop.Export]
+        public void OnCreate()
+        {
+            Logger.Debug(() => $"GlobalValuesViewModel:OnCreate");
+            ApplicationControlFileProvider.ConfigurationUpdated += ConfigurationUpdated;
+        }
+
 
         [Lifecycle.Event.OnDestroy]
         [Java.Interop.Export]

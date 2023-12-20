@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Exceptions;
 using PodcastUtilities.AndroidLogic.Logging;
@@ -35,6 +36,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         private IFileSystemHelper FileSystemHelper;
         private IApplicationControlFileFactory ApplicationControlFileFactory;
         private IValueConverter ValueConverter;
+        private IValueFormatter ValueFormatter;
 
         public FeedDefaultsViewModel(
             Application app,
@@ -45,7 +47,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             IAnalyticsEngine analyticsEngine,
             IFileSystemHelper fileSystemHelper,
             IApplicationControlFileFactory applicationControlFileFactory,
-            IValueConverter valueConverter) : base(app)
+            IValueConverter valueConverter,
+            IValueFormatter valueFormatter) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"FeedDefaultsViewModel:ctor");
@@ -53,12 +56,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ApplicationContext = app;
             ResourceProvider = resProvider;
             ApplicationControlFileProvider = appControlFileProvider;
-            ApplicationControlFileProvider.ConfigurationUpdated += ConfigurationUpdated;
             CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
             FileSystemHelper = fileSystemHelper;
             ApplicationControlFileFactory = applicationControlFileFactory;
             ValueConverter = valueConverter;
+            ValueFormatter = valueFormatter;
         }
 
         private void ConfigurationUpdated(object sender, EventArgs e)
@@ -77,76 +80,40 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
 
-            var downloadStrategySubLabel = controlFile.GetDefaultDownloadStrategy().ToString();
-            downloadStrategySubLabel += " - ";
-            switch (controlFile.GetDefaultDownloadStrategy())
-            {
-                case PodcastEpisodeDownloadStrategy.All:
-                    downloadStrategySubLabel += ResourceProvider.GetString(Resource.String.download_strategy_all);
-                    break;
-                case PodcastEpisodeDownloadStrategy.HighTide:
-                    downloadStrategySubLabel += ResourceProvider.GetString(Resource.String.download_strategy_high_tide);
-                    break;
-                case PodcastEpisodeDownloadStrategy.Latest:
-                    downloadStrategySubLabel += ResourceProvider.GetString(Resource.String.download_strategy_latest);
-                    break;
-            }
-            Observables.DownloadStrategy?.Invoke(this, downloadStrategySubLabel);
+            Observables.DownloadStrategy?.Invoke(this, ValueFormatter.GetDownloadStratagyTextLong(controlFile.GetDefaultDownloadStrategy()));
+            Observables.NamingStyle?.Invoke(this, ValueFormatter.GetNamingStyleTextLong(controlFile.GetDefaultNamingStyle()));
 
-            var namingStrategySubLabel = controlFile.GetDefaultNamingStyle().ToString();
-            namingStrategySubLabel += " - ";
-            switch (controlFile.GetDefaultNamingStyle())
-            {
-                case PodcastEpisodeNamingStyle.UrlFileName:
-                    namingStrategySubLabel += ResourceProvider.GetString(Resource.String.naming_style_UrlFileName);
-                    break;
-                case PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime:
-                    namingStrategySubLabel += ResourceProvider.GetString(Resource.String.naming_style_UrlFileNameAndPublishDateTime);
-                    break;
-                case PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime:
-                    namingStrategySubLabel += ResourceProvider.GetString(Resource.String.naming_style_UrlFileNameFeedTitleAndPublishDateTime);
-                    break;
-                case PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder:
-                    namingStrategySubLabel += ResourceProvider.GetString(Resource.String.naming_style_UrlFileNameFeedTitleAndPublishDateTimeInfolder);
-                    break;
-                case PodcastEpisodeNamingStyle.EpisodeTitle:
-                    namingStrategySubLabel += ResourceProvider.GetString(Resource.String.naming_style_EpisodeTitle);
-                    break;
-                case PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
-                    namingStrategySubLabel += ResourceProvider.GetString(Resource.String.naming_style_EpisodeTitleAndPublishDateTime);
-                    break;
-            }
-            Observables.NamingStyle?.Invoke(this, namingStrategySubLabel);
+            Observables.MaxDaysOld?.Invoke(this, ValueFormatter.GetCustomOrNamedIntValue(
+                Resource.String.prompt_max_days_old_named_prompt,
+                int.MaxValue,
+                Resource.String.max_days_old_label_fmt,
+                controlFile.GetDefaultMaximumDaysOld()
+                )
+            );
 
-            if (controlFile.GetDefaultMaximumDaysOld() == int.MaxValue)
-            {
-                Observables.MaxDaysOld?.Invoke(this, ResourceProvider.GetString(Resource.String.prompt_max_days_old_named_prompt));
-            }
-            else
-            {
-                var maxDaysOldSublabel = string.Format(ResourceProvider.GetString(Resource.String.max_days_old_label_fmt), controlFile.GetDefaultMaximumDaysOld());
-                Observables.MaxDaysOld?.Invoke(this, maxDaysOldSublabel);
-            }
+            Observables.DeleteDaysOld?.Invoke(this, ValueFormatter.GetCustomOrNamedIntValue(
+                Resource.String.prompt_delete_days_old_named_prompt,
+                int.MaxValue,
+                Resource.String.delete_days_old_label_fmt,
+                controlFile.GetDefaultDeleteDownloadsDaysOld()
+                )
+            );
 
-            if (controlFile.GetDefaultDeleteDownloadsDaysOld() == int.MaxValue)
-            {
-                Observables.DeleteDaysOld?.Invoke(this, ResourceProvider.GetString(Resource.String.prompt_delete_days_old_named_prompt));
-            }
-            else
-            {
-                var maxDaysOldSublabel = string.Format(ResourceProvider.GetString(Resource.String.delete_days_old_label_fmt), controlFile.GetDefaultDeleteDownloadsDaysOld());
-                Observables.DeleteDaysOld?.Invoke(this, maxDaysOldSublabel);
-            }
+            Observables.MaxDownloadItems?.Invoke(this, ValueFormatter.GetCustomOrNamedIntValue(
+                Resource.String.prompt_max_download_items_named_prompt,
+                int.MaxValue,
+                Resource.String.max_download_items_label_fmt,
+                controlFile.GetDefaultMaximumNumberOfDownloadedItems()
+                )
+            );
+        }
 
-            if (controlFile.GetDefaultMaximumNumberOfDownloadedItems() == int.MaxValue)
-            {
-                Observables.MaxDownloadItems?.Invoke(this, ResourceProvider.GetString(Resource.String.prompt_max_download_items_named_prompt));
-            }
-            else
-            {
-                var maxDaysOldSublabel = string.Format(ResourceProvider.GetString(Resource.String.max_download_items_label_fmt), controlFile.GetDefaultMaximumNumberOfDownloadedItems());
-                Observables.MaxDownloadItems?.Invoke(this, maxDaysOldSublabel);
-            }
+        [Lifecycle.Event.OnCreate]
+        [Java.Interop.Export]
+        public void OnCreate()
+        {
+            Logger.Debug(() => $"FeedDefaultsViewModel:OnCreate");
+            ApplicationControlFileProvider.ConfigurationUpdated += ConfigurationUpdated;
         }
 
         [Lifecycle.Event.OnDestroy]
@@ -247,7 +214,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ApplicationControlFileProvider.SaveCurrentControlFile();
         }
 
-        public void MaxMaxDownloadItemsOptions()
+        public void MaxDownloadItemsOptions()
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters promptParams = new DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters()

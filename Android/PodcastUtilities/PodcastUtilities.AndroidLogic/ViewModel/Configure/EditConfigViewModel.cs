@@ -3,10 +3,10 @@ using Android.Content;
 using Android.Views;
 using AndroidX.DocumentFile.Provider;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
-using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.Common.Configuration;
 using System;
 using System.Collections.Generic;
@@ -54,7 +54,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             ApplicationContext = app;
             ResourceProvider = resProvider;
             ApplicationControlFileProvider = appControlFileProvider;
-            ApplicationControlFileProvider.ConfigurationUpdated += ConfigurationUpdated;
             CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
             FileSystemHelper = fileSystemHelper;
@@ -83,15 +82,23 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             AllFeedItems.Clear();
             foreach (var podcastInfo in controlFile.GetPodcasts())
             {
-                Logger.Debug(() => $"EditConfigViewModel:RefreshFeedList {podcastInfo.Folder}");
                 var item = new PodcastFeedRecyclerItem()
                 {
                     PodcastFeed = podcastInfo
                 };
                 AllFeedItems.Add(item);
             }
+            Logger.Debug(() => $"EditConfigViewModel:RefreshFeedList {AllFeedItems.Count}");
             var heading = ResourceProvider.GetQuantityString(Resource.Plurals.feed_list_heading, AllFeedItems.Count);
             Observables.SetFeedItems?.Invoke(this, Tuple.Create(heading, AllFeedItems));
+        }
+
+        [Lifecycle.Event.OnCreate]
+        [Java.Interop.Export]
+        public void OnCreate()
+        {
+            Logger.Debug(() => $"EditConfigViewModel:OnCreate");
+            ApplicationControlFileProvider.ConfigurationUpdated += ConfigurationUpdated;
         }
 
         [Lifecycle.Event.OnDestroy]

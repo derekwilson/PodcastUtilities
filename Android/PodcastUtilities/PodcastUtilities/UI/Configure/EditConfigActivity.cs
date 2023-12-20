@@ -11,11 +11,11 @@ using AndroidX.Core.View;
 using AndroidX.Core.Widget;
 using AndroidX.DocumentFile.Provider;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Edit;
-using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using System;
 using System.Collections.Generic;
 
