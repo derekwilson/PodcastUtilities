@@ -6,6 +6,7 @@ using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
+using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.Common.Configuration;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             public EventHandler SelectFolder;
             public EventHandler SelectControlFile;
             public EventHandler<string> SetCacheRoot;
+            public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>> SetFeedItems;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -33,6 +35,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private IAnalyticsEngine AnalyticsEngine;
         private IFileSystemHelper FileSystemHelper;
         private IApplicationControlFileFactory ApplicationControlFileFactory;
+
+        private List<PodcastFeedRecyclerItem> AllFeedItems = new List<PodcastFeedRecyclerItem>(20);
 
         public EditConfigViewModel(
             Application app,
@@ -75,6 +79,19 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
 
             var cacheRootSublabel = string.Format(ResourceProvider.GetString(Resource.String.cache_root_label_fmt), controlFile.GetSourceRoot());
             Observables.SetCacheRoot?.Invoke(this, cacheRootSublabel);
+
+            AllFeedItems.Clear();
+            foreach (var podcastInfo in controlFile.GetPodcasts())
+            {
+                Logger.Debug(() => $"EditConfigViewModel:RefreshFeedList {podcastInfo.Folder}");
+                var item = new PodcastFeedRecyclerItem()
+                {
+                    PodcastFeed = podcastInfo
+                };
+                AllFeedItems.Add(item);
+            }
+            var heading = ResourceProvider.GetQuantityString(Resource.Plurals.feed_list_heading, AllFeedItems.Count);
+            Observables.SetFeedItems?.Invoke(this, Tuple.Create(heading, AllFeedItems));
         }
 
         [Lifecycle.Event.OnDestroy]

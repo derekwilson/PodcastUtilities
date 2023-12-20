@@ -15,6 +15,7 @@ using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Edit;
+using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using System;
 using System.Collections.Generic;
 
@@ -37,6 +38,7 @@ namespace PodcastUtilities.UI.Configure
         private TextView CacheRootOptions = null;
         private LinearLayoutCompat GlobalValuesRowContainer = null;
         private LinearLayoutCompat FeedDefaultsRowContainer = null;
+        private TextView FeedsTitle = null;
 
         private OkCancelDialogFragment ResetPromptDialogFragment;
 
@@ -54,6 +56,7 @@ namespace PodcastUtilities.UI.Configure
             CacheRootOptions = FindViewById<TextView>(Resource.Id.cache_root_row_options);
             GlobalValuesRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_values_row_label_container);
             FeedDefaultsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_defaults_row_label_container);
+            FeedsTitle = FindViewById<TextView>(Resource.Id.config_feed_list_label);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(EditConfigViewModel))) as EditConfigViewModel;
@@ -205,6 +208,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.SelectFolder += SelectFolder;
             ViewModel.Observables.SelectControlFile += SelectControlFile;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
+            ViewModel.Observables.SetFeedItems += SetFeedItems;
         }
 
         private void KillViewModelObservers()
@@ -215,6 +219,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.SelectFolder -= SelectFolder;
             ViewModel.Observables.SelectControlFile -= SelectControlFile;
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
+            ViewModel.Observables.SetFeedItems -= SetFeedItems;
         }
 
         private void SelectControlFile(object sender, EventArgs e)
@@ -278,6 +283,15 @@ namespace PodcastUtilities.UI.Configure
             RunOnUiThread(() =>
             {
                 CacheRootSubLabel.Text = root;
+            });
+        }
+
+        private void SetFeedItems(object sender, Tuple<string, List<PodcastFeedRecyclerItem>> feeditems)
+        {
+            (string heading, List<PodcastFeedRecyclerItem> items) = feeditems;
+            RunOnUiThread(() =>
+            {
+                FeedsTitle.Text = heading;
             });
         }
 

@@ -108,27 +108,52 @@
 
 	<string name="row_title_download_free_space">Free space to leave on device</string>
 	<string name="download_free_space_label_fmt">{0} MB of space will be left on the device that contains the cache root folder.</string>
+	<string name="prompt_freespace_download_title">Space to leave on device when downloading</string>
+	<string name="prompt_freespace_download_named_prompt">Unrestriced, use all storage if needed</string>
+	<string name="prompt_freespace_download_custom_prompt">MB to leave</string>
 
 	<string name="row_title_playlist_file">Playlist filename</string>
+	<string name="prompt_playlist_title">Filename to use when generating a playlist</string>
+	<string name="prompt_playlist_prompt">Playlist filename</string>
 
 	<!-- feed defaults activity -->
 	<string name="feed_defaults_activity_title">Feed Defaults</string>
 
 	<string name="row_title_download_strategy">Download strategy</string>
 	<string name="download_strategy_sheet_title">Download Strategy Options</string>
+	<string name="download_strategy_high_tide">When first run on a new feed all the episodes are downloaded, subsequently only new episodes are downloaded. The high tide position is kept in a file called state.xml</string>
+	<string name="download_strategy_all">All episodes in the feed will be downloaded</string>
+	<string name="download_strategy_latest">Only the latest episode in a feed is downloaded</string>
+
+	<string name="row_title_naming_style">Naming style</string>
+	<string name="naming_style_sheet_title">Naming Style Options</string>
+	<string name="naming_style_EpisodeTitle">The episode title, as specified in the feed will be used</string>
+	<string name="naming_style_EpisodeTitleAndPublishDateTime">Published date in the form YYYY MM DD HH MM (to enable the files to be sorted by published date) followed by the episode title, as specified in the feed</string>
+	<string name="naming_style_UrlFileName">The filename element at the end of the URL for this episode</string>
+	<string name="naming_style_UrlFileNameAndPublishDateTime">Published date in the form YYYY MM DD HH MM (to enable the files to be sorted by published date) followed by the filename element from the end of the URL</string>
+	<string name="naming_style_UrlFileNameFeedTitleAndPublishDateTime">Published date in the form YYYY MM DD HH MM (to enable the files to be sorted by published date) followed by the feed title (the folder used to store the episodes) followed by the filename element from the end of the URL</string>
+	<string name="naming_style_UrlFileNameFeedTitleAndPublishDateTimeInfolder">The files are named in the same manner as UrlFileNameFeedTitleAndPublishDateTime and then the files are placed in a folder named after the month the episode was published in the form YYYY_MM. Effectively this will group podcasts from the same month into a separate folder.</string>
 
 	<string name="row_title_max_days_old">Maximum days old</string>
 	<string name="max_days_old_label_fmt">Only podcasts published in the last {0} days will be considered for download.</string>
+	<string name="prompt_max_days_old_title">Maximum days ago to consider</string>
+	<string name="prompt_max_days_old_named_prompt">Unrestriced, all episodes considered</string>
+	<string name="prompt_max_days_old_custom_prompt">days old to allow</string>
+
+	<string name="row_title_delete_days_old">Delete old episodes</string>
+	<string name="delete_days_old_label_fmt">Podcast episodes older than {0} days will be purged.</string>
+	<string name="prompt_delete_days_old_title">Maximum days old</string>
+	<string name="prompt_delete_days_old_named_prompt">Never delete</string>
+	<string name="prompt_delete_days_old_custom_prompt">days old delete</string>
+
+	<string name="row_title_max_download_items">Maximum episodes to keep in cache</string>
+	<string name="max_download_items_label_fmt">{0} episodes of a podcast will be kept in the cache, others will be ignored until there is room.</string>
+	<string name="prompt_max_download_items_title">Maximum number of episodes</string>
+	<string name="prompt_max_download_items_named_prompt">Unrestriced, no limit to the number of episodes</string>
+	<string name="prompt_max_download_items_custom_prompt">number of episodes</string>
 
 	<!-- dialogs -->
-	<string name="prompt_playlist_title">Filename to use when generating a playlist</string>
-	<string name="prompt_playlist_prompt">Playlist filename</string>
-	<string name="prompt_freespace_download_title">Space to leave on device when downloading</string>
-	<string name="prompt_freespace_download_named_prompt">Unrestriced, use all storage if needed</string>
-	<string name="prompt_freespace_download_custom_prompt">MB to leave</string>
-
 	<string name="content_desc_clear">Clear Text</string>
-
 	<string name="action_ok">OK</string>
 	<string name="action_cancel">Cancel</string>
 

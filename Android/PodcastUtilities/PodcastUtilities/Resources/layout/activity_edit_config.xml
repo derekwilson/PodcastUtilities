@@ -131,6 +131,16 @@
 
 			<View style="@style/Divider"/>
 
+			<TextView
+                android:id="@+id/config_feed_list_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/placeholder"
+                android:layout_marginRight="4dp"
+                android:layout_marginEnd="4dp"
+                style="@style/ItemLabel" />
+
             <TextView
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
