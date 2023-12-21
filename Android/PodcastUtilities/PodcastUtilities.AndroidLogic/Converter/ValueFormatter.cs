@@ -1,6 +1,7 @@
 ﻿using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Configuration;
+using System.Collections.Generic;
 
 namespace PodcastUtilities.AndroidLogic.Converter
 {
@@ -132,15 +133,33 @@ namespace PodcastUtilities.AndroidLogic.Converter
 
         public string GetFeedOverrideSummary(IPodcastInfo podcastInfo)
         {
-            bool hasOverride = podcastInfo.Feed.DownloadStrategy.IsSet
-                                || podcastInfo.Feed.NamingStyle.IsSet
-                                || podcastInfo.Feed.MaximumDaysOld.IsSet
-                                || podcastInfo.Feed.DeleteDownloadsDaysOld.IsSet
-                                || podcastInfo.Feed.MaximumNumberOfDownloadedItems.IsSet
-                                ;
-            if (hasOverride)
+            IList<string> overrideTokens = new List<string>();
+            if (podcastInfo.Feed.DownloadStrategy.IsSet)
             {
-                return ResourceProvider.GetString(Resource.String.feed_overrides);
+                overrideTokens.Add(ResourceProvider.GetString(Resource.String.feed_override_strategy));
+            }
+            if (podcastInfo.Feed.NamingStyle.IsSet)
+            {
+                overrideTokens.Add(ResourceProvider.GetString(Resource.String.feed_override_naming_style));
+            }
+            if (podcastInfo.Feed.MaximumDaysOld.IsSet)
+            {
+                overrideTokens.Add(ResourceProvider.GetString(Resource.String.feed_override_max_days_old));
+            }
+            if (podcastInfo.Feed.DeleteDownloadsDaysOld.IsSet)
+            {
+                overrideTokens.Add(ResourceProvider.GetString(Resource.String.feed_override_delete_days_old));
+            }
+            if (podcastInfo.Feed.MaximumNumberOfDownloadedItems.IsSet)
+            {
+                overrideTokens.Add(ResourceProvider.GetString(Resource.String.feed_override_max_items));
+            }
+                                ;
+            if (overrideTokens.Count > 0)
+            {
+                var overrideStr = string.Join(",", overrideTokens);
+                return $"{ResourceProvider.GetString(Resource.String.feed_overrides)} {overrideStr}"
+                ;
             }
             else
             {
@@ -156,7 +175,7 @@ namespace PodcastUtilities.AndroidLogic.Converter
             }
             else
             {
-                return $"{ResourceProvider.GetString(Resource.String.feed_uses_default_prefix)}{SEPERATOR}{currentValueStr}";
+                return $"{ResourceProvider.GetString(Resource.String.feed_uses_default_prefix)} {currentValueStr}";
             }
         }
 

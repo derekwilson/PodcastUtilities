@@ -14,6 +14,8 @@ using System.Collections.Generic;
 using static PodcastUtilities.AndroidLogic.CustomViews.DefaultableItemValuePromptDialogFragment;
 using System;
 using Android.Content;
+using PodcastUtilities.AndroidLogic.Adapters;
+using Android.Graphics;
 
 namespace PodcastUtilities.UI.Configure
 {
@@ -37,12 +39,12 @@ namespace PodcastUtilities.UI.Configure
             return intent;
         }
 
-        private const string BOTTOMSHEET_DOWNLOAD_STRATEGY_TAG = "download_strategy_tag";
-        private const string BOTTOMSHEET_NAMING_STYLE_TAG = "naming_style_tag";
+        private const string BOTTOMSHEET_DOWNLOAD_STRATEGY_CONFIG_TAG = "config_download_strategy_tag";
+        private const string BOTTOMSHEET_NAMING_STYLE_CONFIG_TAG = "config_naming_style_tag";
 
-        private const string MAX_DAYS_OLD_PROMPT_TAG = "max_days_old_prompt_tag";
-        private const string DELETE_DOWNLOAD_DAYS_OLD_PROMPT_TAG = "delete_download_prompt_tag";
-        private const string MAX_DOWNLOAD_ITEMS_PROMPT_TAG = "max_download_items_prompt_tag";
+        private const string MAX_DAYS_OLD_PROMPT_CONFIG_TAG = "config_max_days_old_prompt_tag";
+        private const string DELETE_DOWNLOAD_DAYS_OLD_PROMPT_CONFIG_TAG = "config_delete_download_prompt_tag";
+        private const string MAX_DOWNLOAD_ITEMS_PROMPT_CONFIG_TAG = "config_max_download_items_prompt_tag";
 
         private AndroidApplication AndroidApplication;
         private EditFeedViewModel ViewModel;
@@ -104,11 +106,11 @@ namespace PodcastUtilities.UI.Configure
             DeleteDaysOldRowContainer.Click += (sender, e) => DoDeleteDownloadDaysOldOptions();
             MaxDownloadItemsRowContainer.Click += (sender, e) => DoMaxDownloadItemsOptions();
 
-            MaxDaysOldPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(MAX_DAYS_OLD_PROMPT_TAG) as DefaultableItemValuePromptDialogFragment;
+            MaxDaysOldPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(MAX_DAYS_OLD_PROMPT_CONFIG_TAG) as DefaultableItemValuePromptDialogFragment;
             SetupDefaultableItemValueFragmentObservers(MaxDaysOldPromptDialogFragment);
-            DeleteDaysOldPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(DELETE_DOWNLOAD_DAYS_OLD_PROMPT_TAG) as DefaultableItemValuePromptDialogFragment;
+            DeleteDaysOldPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(DELETE_DOWNLOAD_DAYS_OLD_PROMPT_CONFIG_TAG) as DefaultableItemValuePromptDialogFragment;
             SetupDefaultableItemValueFragmentObservers(DeleteDaysOldPromptDialogFragment);
-            MaxDownloadItemsPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(MAX_DOWNLOAD_ITEMS_PROMPT_TAG) as DefaultableItemValuePromptDialogFragment;
+            MaxDownloadItemsPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(MAX_DOWNLOAD_ITEMS_PROMPT_CONFIG_TAG) as DefaultableItemValuePromptDialogFragment;
             SetupDefaultableItemValueFragmentObservers(MaxDownloadItemsPromptDialogFragment);
 
             AndroidApplication.Logger.Debug(() => $"EditFeedActivity:OnCreate - end");
@@ -139,7 +141,7 @@ namespace PodcastUtilities.UI.Configure
                 true,
                 GetString(Resource.String.download_strategy_sheet_title),
                 options);
-            sheet.Show(SupportFragmentManager, BOTTOMSHEET_DOWNLOAD_STRATEGY_TAG);
+            sheet.Show(SupportFragmentManager, BOTTOMSHEET_DOWNLOAD_STRATEGY_CONFIG_TAG);
         }
 
         private void DoNamingStyleOptions()
@@ -150,12 +152,21 @@ namespace PodcastUtilities.UI.Configure
                 true,
                 GetString(Resource.String.naming_style_sheet_title),
                 options);
-            sheet.Show(SupportFragmentManager, BOTTOMSHEET_NAMING_STYLE_TAG);
+            sheet.Show(SupportFragmentManager, BOTTOMSHEET_NAMING_STYLE_CONFIG_TAG);
         }
 
         public void BottomsheetItemSelected(string tag, int position, SelectableString item)
         {
-            DisplayMessage(this, "Not implemented");
+            AndroidApplication.Logger.Debug(() => $"EditFeedActivity:BottomsheetItemSelected {tag}, {position}");
+            switch (tag)
+            {
+                case BOTTOMSHEET_DOWNLOAD_STRATEGY_CONFIG_TAG:
+                    ViewModel.DoDownloadStrategyOption(item);
+                    break;
+                case BOTTOMSHEET_NAMING_STYLE_CONFIG_TAG:
+                    ViewModel.DoNamingStyleOption(item);
+                    break;
+            }
         }
 
         private void DoMaxDaysOldOptions()
@@ -208,43 +219,68 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void MaxDownloadItems(object sender, string str)
+        private void SetTextViewToShowOverride(TextView textView, bool isSet)
         {
+            // this may not be slick enough but lets see
+            if (isSet)
+            {
+                textView.SetTypeface(textView.Typeface, TypefaceStyle.Bold);
+            }
+            else
+            {
+                textView.SetTypeface(textView.Typeface, TypefaceStyle.Normal);
+                textView.SetTypeface(Typeface.Create(textView.Typeface, TypefaceStyle.Normal), TypefaceStyle.Normal);
+            }
+        }
+
+        private void MaxDownloadItems(object sender, Tuple<bool, string> parameters)
+        {
+            (bool isSet, string str) = parameters;
             RunOnUiThread(() =>
             {
                 MaxDownloadItemsRowSubLabel.Text = str;
+                SetTextViewToShowOverride(MaxDownloadItemsRowSubLabel, isSet);
             });
         }
 
-        private void NamingStyle(object sender, string str)
+        private void NamingStyle(object sender, Tuple<bool, string> parameters)
         {
+            (bool isSet, string str) = parameters;
             RunOnUiThread(() =>
             {
                 NamingStyleRowSubLabel.Text = str;
+                SetTextViewToShowOverride(NamingStyleRowSubLabel, isSet);
             });
         }
 
-        private void DownloadStrategy(object sender, string str)
+        private void DownloadStrategy(object sender, Tuple<bool, string> parameters)
         {
+            (bool isSet, string str) = parameters;
+            AndroidApplication.Logger.Debug(() => $"EditFeedActivity:DownloadStrategy {isSet} {str}");
             RunOnUiThread(() =>
             {
                 DownloadStrategyRowSubLabel.Text = str;
+                SetTextViewToShowOverride(DownloadStrategyRowSubLabel, isSet);
             });
         }
 
-        private void MaxDaysOld(object sender, string str)
+        private void MaxDaysOld(object sender, Tuple<bool, string> parameters)
         {
-            AndroidApplication.Logger.Debug(() => $"EditFeedActivity:MaxDaysOld {str}");
+            (bool isSet, string str) = parameters;
+            AndroidApplication.Logger.Debug(() => $"EditFeedActivity:MaxDaysOld {isSet} {str}");
             RunOnUiThread(() =>
             {
                 MaxDaysOldRowSubLabel.Text = str;
+                SetTextViewToShowOverride(MaxDaysOldRowSubLabel, isSet);
             });
         }
-        private void DeleteDaysOld(object sender, string str)
+        private void DeleteDaysOld(object sender, Tuple<bool, string> parameters)
         {
+            (bool isSet, string str) = parameters;
             RunOnUiThread(() =>
             {
                 DeleteDaysOldRowSubLabel.Text = str;
+                SetTextViewToShowOverride(DeleteDaysOldRowSubLabel, isSet);
             });
         }
 
@@ -254,7 +290,7 @@ namespace PodcastUtilities.UI.Configure
             {
                 DeleteDaysOldPromptDialogFragment = DefaultableItemValuePromptDialogFragment.NewInstance(parameters);
                 SetupDefaultableItemValueFragmentObservers(DeleteDaysOldPromptDialogFragment);
-                DeleteDaysOldPromptDialogFragment.Show(SupportFragmentManager, DELETE_DOWNLOAD_DAYS_OLD_PROMPT_TAG);
+                DeleteDaysOldPromptDialogFragment.Show(SupportFragmentManager, DELETE_DOWNLOAD_DAYS_OLD_PROMPT_CONFIG_TAG);
             });
         }
 
@@ -264,7 +300,7 @@ namespace PodcastUtilities.UI.Configure
             {
                 MaxDaysOldPromptDialogFragment = DefaultableItemValuePromptDialogFragment.NewInstance(parameters);
                 SetupDefaultableItemValueFragmentObservers(MaxDaysOldPromptDialogFragment);
-                MaxDaysOldPromptDialogFragment.Show(SupportFragmentManager, MAX_DAYS_OLD_PROMPT_TAG);
+                MaxDaysOldPromptDialogFragment.Show(SupportFragmentManager, MAX_DAYS_OLD_PROMPT_CONFIG_TAG);
             });
         }
 
@@ -274,7 +310,7 @@ namespace PodcastUtilities.UI.Configure
             {
                 MaxDownloadItemsPromptDialogFragment = DefaultableItemValuePromptDialogFragment.NewInstance(parameters);
                 SetupDefaultableItemValueFragmentObservers(MaxDownloadItemsPromptDialogFragment);
-                MaxDownloadItemsPromptDialogFragment.Show(SupportFragmentManager, MAX_DOWNLOAD_ITEMS_PROMPT_TAG);
+                MaxDownloadItemsPromptDialogFragment.Show(SupportFragmentManager, MAX_DOWNLOAD_ITEMS_PROMPT_CONFIG_TAG);
             });
         }
 
@@ -304,15 +340,15 @@ namespace PodcastUtilities.UI.Configure
             AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
             switch (tag)
             {
-                case MAX_DAYS_OLD_PROMPT_TAG:
+                case MAX_DAYS_OLD_PROMPT_CONFIG_TAG:
                     KillDefaultableItemValueFragmentObservers(MaxDaysOldPromptDialogFragment);
                     //ViewModel.SetMaxDaysOld(value, valueType);
                     break;
-                case DELETE_DOWNLOAD_DAYS_OLD_PROMPT_TAG:
+                case DELETE_DOWNLOAD_DAYS_OLD_PROMPT_CONFIG_TAG:
                     KillDefaultableItemValueFragmentObservers(DeleteDaysOldPromptDialogFragment);
                     //ViewModel.SetDeleteDaysOld(value, valueType);
                     break;
-                case MAX_DOWNLOAD_ITEMS_PROMPT_TAG:
+                case MAX_DOWNLOAD_ITEMS_PROMPT_CONFIG_TAG:
                     KillDefaultableItemValueFragmentObservers(MaxDownloadItemsPromptDialogFragment);
                     //ViewModel.SetMaxDownloadItems(value, valueType);
                     break;
@@ -325,13 +361,13 @@ namespace PodcastUtilities.UI.Configure
             AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
             switch (tag)
             {
-                case MAX_DAYS_OLD_PROMPT_TAG:
+                case MAX_DAYS_OLD_PROMPT_CONFIG_TAG:
                     KillDefaultableItemValueFragmentObservers(MaxDaysOldPromptDialogFragment);
                     break;
-                case DELETE_DOWNLOAD_DAYS_OLD_PROMPT_TAG:
+                case DELETE_DOWNLOAD_DAYS_OLD_PROMPT_CONFIG_TAG:
                     KillDefaultableItemValueFragmentObservers(DeleteDaysOldPromptDialogFragment);
                     break;
-                case MAX_DOWNLOAD_ITEMS_PROMPT_TAG:
+                case MAX_DOWNLOAD_ITEMS_PROMPT_CONFIG_TAG:
                     KillDefaultableItemValueFragmentObservers(MaxDownloadItemsPromptDialogFragment);
                     break;
             }

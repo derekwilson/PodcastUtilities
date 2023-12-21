@@ -12,6 +12,11 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             return new SelectableString(Convert.ToInt32(enumOption), enumOption.ToString(), EqualityComparer<TYPE>.Default.Equals(enumOption, currentValue));
         }
 
+        public static SelectableString GenerateOption<TYPE>(TYPE enumOption, bool selected)
+        {
+            return new SelectableString(Convert.ToInt32(enumOption), enumOption.ToString(), selected);
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Selected { get; set; }
