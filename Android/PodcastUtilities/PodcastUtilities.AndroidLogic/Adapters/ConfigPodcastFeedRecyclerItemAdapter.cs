@@ -35,6 +35,7 @@ namespace PodcastUtilities.AndroidLogic.Adapters
             vh.OptionButton.Click -= Option_Click;
 
             vh.Label.Text = Items[position].PodcastFeed.Folder;
+            vh.SubLabel.Text = ViewModel.GetFeedSubLabel(Items[position].PodcastFeed);
 
             vh.Container.Tag = position.ToString();
             vh.Container.Click += Container_Click;

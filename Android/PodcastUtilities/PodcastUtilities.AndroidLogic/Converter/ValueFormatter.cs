@@ -1,5 +1,4 @@
-﻿using Android.Media;
-using PodcastUtilities.AndroidLogic.Logging;
+﻿using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Configuration;
 
@@ -12,6 +11,10 @@ namespace PodcastUtilities.AndroidLogic.Converter
         string GetDownloadStratagyText(PodcastEpisodeDownloadStrategy strategy);
         string GetDownloadStratagyTextLong(PodcastEpisodeDownloadStrategy strategy);
         string GetCustomOrNamedIntValue(int namedTextId, int namedValue, int customFormatId, int value);
+        string GetDefaultableCustomOrNamedIntValue(int namedTextId, int namedValue, int customFormatId, IDefaultableItem<int> item);
+        string GetFeedOverrideSummary(IPodcastInfo podcastInfo);
+        string GetDefaultableNamingStyleTextLong(IDefaultableItem<PodcastEpisodeNamingStyle> namingStyle);
+        string GetDefaultableDownloadStratagyTextLong(IDefaultableItem<PodcastEpisodeDownloadStrategy> downloadStrategy);
     }
 
     public class ValueFormatter : IValueFormatter
@@ -125,6 +128,54 @@ namespace PodcastUtilities.AndroidLogic.Converter
             {
                 return string.Format(ResourceProvider.GetString(customFormatId), value);
             }
+        }
+
+        public string GetFeedOverrideSummary(IPodcastInfo podcastInfo)
+        {
+            bool hasOverride = podcastInfo.Feed.DownloadStrategy.IsSet
+                                || podcastInfo.Feed.NamingStyle.IsSet
+                                || podcastInfo.Feed.MaximumDaysOld.IsSet
+                                || podcastInfo.Feed.DeleteDownloadsDaysOld.IsSet
+                                || podcastInfo.Feed.MaximumNumberOfDownloadedItems.IsSet
+                                ;
+            if (hasOverride)
+            {
+                return ResourceProvider.GetString(Resource.String.feed_overrides);
+            }
+            else
+            {
+                return ResourceProvider.GetString(Resource.String.feed_no_overrides);
+            }
+        }
+
+        private string AddDefaultPrefix(bool isSet, string currentValueStr)
+        {
+            if (isSet)
+            {
+                return currentValueStr;
+            }
+            else
+            {
+                return $"{ResourceProvider.GetString(Resource.String.feed_uses_default_prefix)}{SEPERATOR}{currentValueStr}";
+            }
+        }
+
+        public string GetDefaultableCustomOrNamedIntValue(int namedTextId, int namedValue, int customFormatId, IDefaultableItem<int> item)
+        {
+            var currentValueStr = GetCustomOrNamedIntValue(namedTextId, namedValue, customFormatId, item.Value);
+            return AddDefaultPrefix(item.IsSet, currentValueStr);
+        }
+
+        public string GetDefaultableNamingStyleTextLong(IDefaultableItem<PodcastEpisodeNamingStyle> namingStyle)
+        {
+            var currentValueStr = GetNamingStyleTextLong(namingStyle.Value);
+            return AddDefaultPrefix(namingStyle.IsSet, currentValueStr);
+        }
+
+        public string GetDefaultableDownloadStratagyTextLong(IDefaultableItem<PodcastEpisodeDownloadStrategy> downloadStrategy)
+        {
+            var currentValueStr = GetDownloadStratagyTextLong(downloadStrategy.Value);
+            return AddDefaultPrefix(downloadStrategy.IsSet, currentValueStr);
         }
     }
 }

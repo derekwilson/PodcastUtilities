@@ -98,30 +98,30 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 return;
             }
 
-            Observables.DownloadStrategy?.Invoke(this, ValueFormatter.GetDownloadStratagyTextLong(feed.Feed.DownloadStrategy.Value));
-            Observables.NamingStyle?.Invoke(this, ValueFormatter.GetNamingStyleTextLong(feed.Feed.NamingStyle.Value));
+            Observables.DownloadStrategy?.Invoke(this, ValueFormatter.GetDefaultableDownloadStratagyTextLong(feed.Feed.DownloadStrategy));
+            Observables.NamingStyle?.Invoke(this, ValueFormatter.GetDefaultableNamingStyleTextLong(feed.Feed.NamingStyle));
 
-            Observables.MaxDaysOld?.Invoke(this, ValueFormatter.GetCustomOrNamedIntValue(
+            Observables.MaxDaysOld?.Invoke(this, ValueFormatter.GetDefaultableCustomOrNamedIntValue(
                 Resource.String.prompt_max_days_old_named_prompt,
                 int.MaxValue,
                 Resource.String.max_days_old_label_fmt,
-                feed.Feed.MaximumDaysOld.Value
+                feed.Feed.MaximumDaysOld
                 )
             );
 
-            Observables.DeleteDaysOld?.Invoke(this, ValueFormatter.GetCustomOrNamedIntValue(
+            Observables.DeleteDaysOld?.Invoke(this, ValueFormatter.GetDefaultableCustomOrNamedIntValue(
                 Resource.String.prompt_delete_days_old_named_prompt,
                 int.MaxValue,
                 Resource.String.delete_days_old_label_fmt,
-                feed.Feed.DeleteDownloadsDaysOld.Value
+                feed.Feed.DeleteDownloadsDaysOld
                 )
             );
 
-            Observables.MaxDownloadItems?.Invoke(this, ValueFormatter.GetCustomOrNamedIntValue(
+            Observables.MaxDownloadItems?.Invoke(this, ValueFormatter.GetDefaultableCustomOrNamedIntValue(
                 Resource.String.prompt_max_download_items_named_prompt,
                 int.MaxValue,
                 Resource.String.max_download_items_label_fmt,
-                feed.Feed.MaximumNumberOfDownloadedItems.Value
+                feed.Feed.MaximumNumberOfDownloadedItems
                 )
             );
         }

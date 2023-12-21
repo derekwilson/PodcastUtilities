@@ -77,6 +77,10 @@
 	<string name="xtra_download_strategy_all">All episodes in the feed will be downloaded</string>
 	<string name="xtra_download_strategy_latest">Only the latest episode in a feed is downloaded</string>
 
+	<string name="feed_no_overrides">Feed only uses the default values</string>
+	<string name="feed_overrides">Feed overrides at least one value</string>
+	<string name="feed_uses_default_prefix">Using feed default value</string>
+
 	<!-- edit config activity -->
 	<string name="edit_config_activity_title">Configure</string>
 	<string name="action_edit_load_control">Load Control File</string>

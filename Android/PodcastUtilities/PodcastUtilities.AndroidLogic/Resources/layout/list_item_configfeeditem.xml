@@ -38,7 +38,6 @@
 			android:layout_height="wrap_content"
 			android:clickable="false"
             android:focusable="false"
-			android:visibility="gone"
 			android:text="@string/placeholder"
 			style="@style/ItemListSubTitle"
 			/>

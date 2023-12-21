@@ -4,6 +4,7 @@ using Android.Views;
 using AndroidX.DocumentFile.Provider;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Adapters;
+using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
@@ -36,6 +37,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private IAnalyticsEngine AnalyticsEngine;
         private IFileSystemHelper FileSystemHelper;
         private IApplicationControlFileFactory ApplicationControlFileFactory;
+        private IValueFormatter ValueFormatter;
 
         private List<PodcastFeedRecyclerItem> AllFeedItems = new List<PodcastFeedRecyclerItem>(20);
 
@@ -47,7 +49,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             ICrashReporter crashReporter,
             IAnalyticsEngine analyticsEngine,
             IFileSystemHelper fileSystemHelper,
-            IApplicationControlFileFactory applicationControlFileFactory) : base(app)
+            IApplicationControlFileFactory applicationControlFileFactory,
+            IValueFormatter valueFormatter) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"EditConfigViewModel:ctor");
@@ -59,6 +62,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             AnalyticsEngine = analyticsEngine;
             FileSystemHelper = fileSystemHelper;
             ApplicationControlFileFactory = applicationControlFileFactory;
+            ValueFormatter = valueFormatter;
         }
 
         private void ConfigurationUpdated(object sender, EventArgs e)
@@ -313,7 +317,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
 
         internal void FeedItemSelected(string id, IPodcastInfo podcastFeed)
         {
-            Observables.DisplayMessage?.Invoke(this, podcastFeed.Folder);
             Logger.Debug(() => $"EditConfigViewModel: FeedItemSelected {podcastFeed.Folder}");
             Observables.NavigateToFeed?.Invoke(this, Tuple.Create(id,  podcastFeed.Folder));
         }
@@ -321,6 +324,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         internal void FeedItemOptionSelected(string id, IPodcastInfo podcastFeed)
         {
             Observables.DisplayMessage?.Invoke(this, "Option - " + podcastFeed.Folder);
+        }
+
+        internal string GetFeedSubLabel(IPodcastInfo podcastFeed)
+        {
+            return ValueFormatter.GetFeedOverrideSummary(podcastFeed);
         }
     }
 }
