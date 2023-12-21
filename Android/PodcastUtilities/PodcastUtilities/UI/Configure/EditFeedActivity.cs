@@ -175,12 +175,12 @@ namespace PodcastUtilities.UI.Configure
 
         private void DoMaxDownloadItemsOptions()
         {
-            DisplayMessage(this, "Not implemented");
+            ViewModel.MaxDownloadItemsOptions();
         }
 
         private void DoDeleteDownloadDaysOldOptions()
         {
-            DisplayMessage(this, "Not implemented");
+            ViewModel.DeleteDownloadDaysOldOptions();
         }
 
         private void SetupViewModelObservers()
@@ -355,11 +355,11 @@ namespace PodcastUtilities.UI.Configure
                     break;
                 case DELETE_DOWNLOAD_DAYS_OLD_PROMPT_CONFIG_TAG:
                     KillDefaultableItemValueFragmentObservers(DeleteDaysOldPromptDialogFragment);
-                    //ViewModel.SetDeleteDaysOld(value, valueType);
+                    ViewModel.SetDeleteDaysOld(value, valueType);
                     break;
                 case MAX_DOWNLOAD_ITEMS_PROMPT_CONFIG_TAG:
                     KillDefaultableItemValueFragmentObservers(MaxDownloadItemsPromptDialogFragment);
-                    //ViewModel.SetMaxDownloadItems(value, valueType);
+                    ViewModel.SetMaxDownloadItems(value, valueType);
                     break;
             }
         }

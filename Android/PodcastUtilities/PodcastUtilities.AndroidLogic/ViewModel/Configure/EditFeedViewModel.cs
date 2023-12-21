@@ -291,21 +291,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 NamedValue = int.MaxValue.ToString(),
                 IsNumeric = true,
             };
-            if (feed.Feed.MaximumDaysOld.IsSet)
-            {
-                if (feed.Feed.MaximumDaysOld.Value == int.MaxValue)
-                {
-                    promptParams.ValueType = DefaultableItemValuePromptDialogFragment.ItemValueType.Named;
-                }
-                else
-                {
-                    promptParams.ValueType = DefaultableItemValuePromptDialogFragment.ItemValueType.Custom;
-                }
-            }
-            else
-            {
-                promptParams.ValueType = DefaultableItemValuePromptDialogFragment.ItemValueType.Defaulted;
-            }
+            promptParams.ValueType = DefaultableItemValuePromptDialogFragment.GetIntItemType(feed.Feed.MaximumDaysOld, int.MaxValue);
             Observables.PromptForMaxDaysOld?.Invoke(this, promptParams);
         }
 
@@ -327,6 +313,114 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                     break;
                 case DefaultableItemValuePromptDialogFragment.ItemValueType.Custom:
                     feed.Feed.MaximumDaysOld.Value = ValueConverter.ConvertStringToInt(value);
+                    break;
+            }
+            ApplicationControlFileProvider.SaveCurrentControlFile();
+        }
+
+        public void DeleteDownloadDaysOldOptions()
+        {
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            var defaultPrompt = ValueFormatter.GetCustomOrNamedIntValue(
+                Resource.String.prompt_delete_days_old_named_prompt,
+                int.MaxValue,
+                Resource.String.delete_days_old_label_fmt,
+                controlFile.GetDefaultDeleteDownloadsDaysOld()
+                );
+            DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters promptParams = new DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters()
+            {
+                Title = ResourceProvider.GetString(Resource.String.prompt_delete_days_old_title),
+                Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                DefaultPrompt = $"{ResourceProvider.GetString(Resource.String.feed_uses_default_prefix)} {defaultPrompt}",
+                DefaultValue = ValueConverter.ConvertToString(controlFile.GetDefaultDeleteDownloadsDaysOld()),
+                NamedPrompt = ResourceProvider.GetString(Resource.String.prompt_delete_days_old_named_prompt),
+                CustomPrompt = ResourceProvider.GetString(Resource.String.prompt_delete_days_old_custom_prompt),
+                CurrentValue = ValueConverter.ConvertToString(feed.Feed.DeleteDownloadsDaysOld.Value),
+                NamedValue = int.MaxValue.ToString(),
+                IsNumeric = true,
+            };
+            promptParams.ValueType = DefaultableItemValuePromptDialogFragment.GetIntItemType(feed.Feed.DeleteDownloadsDaysOld, int.MaxValue);
+            Observables.PromptForDeleteDaysOld?.Invoke(this, promptParams);
+        }
+
+        public void SetDeleteDaysOld(string value, DefaultableItemValuePromptDialogFragment.ItemValueType valueType)
+        {
+            Logger.Debug(() => $"EditFeedViewModel:SetDeleteDaysOld = {value}");
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            switch (valueType)
+            {
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Defaulted:
+                    feed.Feed.DeleteDownloadsDaysOld.RevertToDefault();
+                    break;
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Named:
+                    feed.Feed.DeleteDownloadsDaysOld.Value = int.MaxValue;
+                    break;
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Custom:
+                    feed.Feed.DeleteDownloadsDaysOld.Value = ValueConverter.ConvertStringToInt(value);
+                    break;
+            }
+            ApplicationControlFileProvider.SaveCurrentControlFile();
+        }
+
+        public void MaxDownloadItemsOptions()
+        {
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            var defaultPrompt = ValueFormatter.GetCustomOrNamedIntValue(
+                Resource.String.prompt_max_download_items_named_prompt,
+                int.MaxValue,
+                Resource.String.max_download_items_label_fmt,
+                controlFile.GetDefaultMaximumNumberOfDownloadedItems()
+                );
+            DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters promptParams = new DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters()
+            {
+                Title = ResourceProvider.GetString(Resource.String.prompt_max_download_items_title),
+                Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                DefaultPrompt = $"{ResourceProvider.GetString(Resource.String.feed_uses_default_prefix)} {defaultPrompt}",
+                DefaultValue = ValueConverter.ConvertToString(controlFile.GetDefaultMaximumNumberOfDownloadedItems()),
+                NamedPrompt = ResourceProvider.GetString(Resource.String.prompt_max_download_items_named_prompt),
+                CustomPrompt = ResourceProvider.GetString(Resource.String.prompt_max_download_items_custom_prompt),
+                CurrentValue = ValueConverter.ConvertToString(feed.Feed.MaximumNumberOfDownloadedItems.Value),
+                NamedValue = int.MaxValue.ToString(),
+                IsNumeric = true,
+            };
+            promptParams.ValueType = DefaultableItemValuePromptDialogFragment.GetIntItemType(feed.Feed.MaximumNumberOfDownloadedItems, int.MaxValue);
+            Observables.PromptForMaxDownloadItems?.Invoke(this, promptParams);
+        }
+
+        public void SetMaxDownloadItems(string value, DefaultableItemValuePromptDialogFragment.ItemValueType valueType)
+        {
+            Logger.Debug(() => $"EditFeedViewModel:SetMaxDownloadItems = {value}");
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            switch (valueType)
+            {
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Defaulted:
+                    feed.Feed.MaximumNumberOfDownloadedItems.RevertToDefault();
+                    break;
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Named:
+                    feed.Feed.MaximumNumberOfDownloadedItems.Value = int.MaxValue;
+                    break;
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Custom:
+                    feed.Feed.MaximumNumberOfDownloadedItems.Value = ValueConverter.ConvertStringToInt(value);
                     break;
             }
             ApplicationControlFileProvider.SaveCurrentControlFile();

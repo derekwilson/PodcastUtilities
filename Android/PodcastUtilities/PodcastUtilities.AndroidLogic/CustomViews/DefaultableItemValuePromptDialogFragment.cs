@@ -5,6 +5,7 @@ using Android.Views.InputMethods;
 using Android.Widget;
 using Google.Android.Material.TextField;
 using PodcastUtilities.AndroidLogic.Utilities;
+using PodcastUtilities.Common.Configuration;
 using System;
 
 namespace PodcastUtilities.AndroidLogic.CustomViews
@@ -46,6 +47,25 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             public string NamedValue;
             public bool IsNumeric;
         };
+
+        public static ItemValueType GetIntItemType(IDefaultableItem<int> intValue, int namedValue)
+        {
+            if (intValue.IsSet)
+            {
+                if (intValue.Value == namedValue)
+                {
+                    return ItemValueType.Named;
+                }
+                else
+                {
+                    return ItemValueType.Custom;
+                }
+            }
+            else
+            {
+                return ItemValueType.Defaulted;
+            }
+        }
 
         public static DefaultableItemValuePromptDialogFragment NewInstance(DefaultableItemValuePromptDialogFragmentParameters parameters)
         {
