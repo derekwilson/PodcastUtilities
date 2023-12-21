@@ -220,6 +220,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.SelectControlFile += SelectControlFile;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
             ViewModel.Observables.SetFeedItems += SetFeedItems;
+            ViewModel.Observables.NavigateToFeed += NavigateToFeed;
         }
 
         private void KillViewModelObservers()
@@ -231,6 +232,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.SelectControlFile -= SelectControlFile;
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
+            ViewModel.Observables.NavigateToFeed -= NavigateToFeed;
         }
 
         private void SelectControlFile(object sender, EventArgs e)
@@ -305,6 +307,17 @@ namespace PodcastUtilities.UI.Configure
                 FeedsTitle.Text = heading;
                 FeedAdapter.SetItems(items);
                 FeedAdapter.NotifyDataSetChanged();
+            });
+        }
+
+        private void NavigateToFeed(object sender, Tuple<string, string> parameters)
+        {
+            (string id, string folder) = parameters;
+            AndroidApplication.Logger.Debug(() => $"EditConfigActivity: NavigateToFeed {id}, {folder}");
+            RunOnUiThread(() =>
+            {
+                var intent = EditFeedActivity.CreateIntent(this, id, folder);
+                StartActivity(intent);
             });
         }
 

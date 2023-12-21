@@ -24,6 +24,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             public EventHandler SelectControlFile;
             public EventHandler<string> SetCacheRoot;
             public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>> SetFeedItems;
+            public EventHandler<Tuple<string, string>> NavigateToFeed;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -80,13 +81,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             Observables.SetCacheRoot?.Invoke(this, cacheRootSublabel);
 
             AllFeedItems.Clear();
+            int index = 0;
             foreach (var podcastInfo in controlFile.GetPodcasts())
             {
                 var item = new PodcastFeedRecyclerItem()
                 {
+                    Id = index.ToString(),
                     PodcastFeed = podcastInfo
                 };
                 AllFeedItems.Add(item);
+                index++;
             }
             Logger.Debug(() => $"EditConfigViewModel:RefreshFeedList {AllFeedItems.Count}");
             var heading = ResourceProvider.GetQuantityString(Resource.Plurals.feed_list_heading, AllFeedItems.Count);
@@ -307,12 +311,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private const int OPTION_ID_PRIVATE_ROOT = 20;
 
 
-        internal void FeedItemSelected(IPodcastInfo podcastFeed)
+        internal void FeedItemSelected(string id, IPodcastInfo podcastFeed)
         {
             Observables.DisplayMessage?.Invoke(this, podcastFeed.Folder);
+            Logger.Debug(() => $"EditConfigViewModel: FeedItemSelected {podcastFeed.Folder}");
+            Observables.NavigateToFeed?.Invoke(this, Tuple.Create(id,  podcastFeed.Folder));
         }
 
-        internal void FeedItemOptionSelected(IPodcastInfo podcastFeed)
+        internal void FeedItemOptionSelected(string id, IPodcastInfo podcastFeed)
         {
             Observables.DisplayMessage?.Invoke(this, "Option - " + podcastFeed.Folder);
         }

@@ -1,6 +1,4 @@
-﻿using Android.Content;
-using Android.Nfc;
-using Android.Views;
+﻿using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using PodcastUtilities.AndroidLogic.Logging;
@@ -48,14 +46,14 @@ namespace PodcastUtilities.AndroidLogic.Adapters
         {
             Logger.Debug(() => $"Option_Click");
             int position = Convert.ToInt32(((View)sender).Tag.ToString());
-            ViewModel.FeedItemOptionSelected(Items[position].PodcastFeed);
+            ViewModel.FeedItemOptionSelected(Items[position].Id, Items[position].PodcastFeed);
         }
 
         private void Container_Click(object sender, EventArgs e)
         {
             Logger.Debug(() => $"Container_Click");
             int position = Convert.ToInt32(((View)sender).Tag.ToString());
-            ViewModel.FeedItemSelected(Items[position].PodcastFeed);
+            ViewModel.FeedItemSelected(Items[position].Id, Items[position].PodcastFeed);
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

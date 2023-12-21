@@ -32,9 +32,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         private IResourceProvider ResourceProvider;
         private IApplicationControlFileProvider ApplicationControlFileProvider;
         private ICrashReporter CrashReporter;
-        private IAnalyticsEngine AnalyticsEngine;
-        private IFileSystemHelper FileSystemHelper;
-        private IApplicationControlFileFactory ApplicationControlFileFactory;
         private IValueConverter ValueConverter;
         private IValueFormatter ValueFormatter;
 
@@ -44,9 +41,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             IResourceProvider resProvider,
             IApplicationControlFileProvider appControlFileProvider,
             ICrashReporter crashReporter,
-            IAnalyticsEngine analyticsEngine,
-            IFileSystemHelper fileSystemHelper,
-            IApplicationControlFileFactory applicationControlFileFactory,
             IValueConverter valueConverter,
             IValueFormatter valueFormatter) : base(app)
         {
@@ -57,9 +51,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ResourceProvider = resProvider;
             ApplicationControlFileProvider = appControlFileProvider;
             CrashReporter = crashReporter;
-            AnalyticsEngine = analyticsEngine;
-            FileSystemHelper = fileSystemHelper;
-            ApplicationControlFileFactory = applicationControlFileFactory;
             ValueConverter = valueConverter;
             ValueFormatter = valueFormatter;
         }
