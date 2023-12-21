@@ -15,6 +15,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
     {
         public class ObservableGroup
         {
+            public EventHandler<string> Title;
             public EventHandler<string> DisplayMessage;
             public EventHandler<Tuple<bool, string>> DownloadStrategy;
             public EventHandler<Tuple<bool, string>> NamingStyle;
@@ -100,6 +101,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 CrashReporter.LogNonFatalException(new ConfigurationException($"Cannot find podcast {PodcastFeedToEditId}, {PodcastFeedToEditFolder}"));
                 return;
             }
+            Observables.Title?.Invoke(this, feed.Folder);
 
             Observables.DownloadStrategy?.Invoke(this, Tuple.Create(feed.Feed.DownloadStrategy.IsSet,
                                                     ValueFormatter.GetDefaultableDownloadStratagyTextLong(feed.Feed.DownloadStrategy))
@@ -260,6 +262,45 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 feed.Feed.NamingStyle.Value = strategy;
             }
             ApplicationControlFileProvider.SaveCurrentControlFile();
+        }
+
+        public void MaxDaysOldOptions()
+        {
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters promptParams = new DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters()
+            {
+                Title = ResourceProvider.GetString(Resource.String.prompt_max_days_old_title),
+                Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                DefaultPrompt = "Use Default",
+                DefaultValue = ValueConverter.ConvertToString(controlFile.GetDefaultMaximumDaysOld()),
+                NamedPrompt = ResourceProvider.GetString(Resource.String.prompt_max_days_old_named_prompt),
+                CustomPrompt = ResourceProvider.GetString(Resource.String.prompt_max_days_old_custom_prompt),
+                CurrentValue = ValueConverter.ConvertToString(feed.Feed.MaximumDaysOld.Value),
+                NamedValue = int.MaxValue.ToString(),
+                IsNumeric = true,
+            };
+            if (feed.Feed.MaximumDaysOld.IsSet)
+            {
+                if (feed.Feed.MaximumDaysOld.Value == int.MaxValue)
+                {
+                    promptParams.ValueType = DefaultableItemValuePromptDialogFragment.ItemValueType.Named;
+                }
+                else
+                {
+                    promptParams.ValueType = DefaultableItemValuePromptDialogFragment.ItemValueType.Custom;
+                }
+            }
+            else
+            {
+                promptParams.ValueType = DefaultableItemValuePromptDialogFragment.ItemValueType.Defaulted;
+            }
+            Observables.PromptForMaxDaysOld?.Invoke(this, promptParams);
         }
     }
 }

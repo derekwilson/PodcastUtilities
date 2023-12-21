@@ -14,7 +14,6 @@ using System.Collections.Generic;
 using static PodcastUtilities.AndroidLogic.CustomViews.DefaultableItemValuePromptDialogFragment;
 using System;
 using Android.Content;
-using PodcastUtilities.AndroidLogic.Adapters;
 using Android.Graphics;
 
 namespace PodcastUtilities.UI.Configure
@@ -171,7 +170,7 @@ namespace PodcastUtilities.UI.Configure
 
         private void DoMaxDaysOldOptions()
         {
-            DisplayMessage(this, "Not implemented");
+            ViewModel.MaxDaysOldOptions();
         }
 
         private void DoMaxDownloadItemsOptions()
@@ -186,6 +185,7 @@ namespace PodcastUtilities.UI.Configure
 
         private void SetupViewModelObservers()
         {
+            ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.DisplayMessage += DisplayMessage;
             ViewModel.Observables.DownloadStrategy += DownloadStrategy;
             ViewModel.Observables.NamingStyle += NamingStyle;
@@ -199,6 +199,7 @@ namespace PodcastUtilities.UI.Configure
 
         private void KillViewModelObservers()
         {
+            ViewModel.Observables.Title -= SetTitle;
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
             ViewModel.Observables.DownloadStrategy -= DownloadStrategy;
             ViewModel.Observables.NamingStyle -= NamingStyle;
@@ -208,6 +209,14 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PromptForDeleteDaysOld -= PromptForDeleteDaysOld;
             ViewModel.Observables.MaxDownloadItems -= MaxDownloadItems;
             ViewModel.Observables.PromptForMaxDownloadItems -= PromptForMaxDownloadItems;
+        }
+
+        private void SetTitle(object sender, string title)
+        {
+            RunOnUiThread(() =>
+            {
+                Title = title;
+            });
         }
 
         private void DisplayMessage(object sender, string message)
