@@ -351,7 +351,7 @@ namespace PodcastUtilities.UI.Configure
             {
                 case MAX_DAYS_OLD_PROMPT_CONFIG_TAG:
                     KillDefaultableItemValueFragmentObservers(MaxDaysOldPromptDialogFragment);
-                    //ViewModel.SetMaxDaysOld(value, valueType);
+                    ViewModel.SetMaxDaysOld(value, valueType);
                     break;
                 case DELETE_DOWNLOAD_DAYS_OLD_PROMPT_CONFIG_TAG:
                     KillDefaultableItemValueFragmentObservers(DeleteDaysOldPromptDialogFragment);

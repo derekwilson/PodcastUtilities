@@ -272,12 +272,18 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             {
                 return;
             }
+            var defaultPrompt = ValueFormatter.GetCustomOrNamedIntValue(
+                Resource.String.prompt_max_days_old_named_prompt,
+                int.MaxValue,
+                Resource.String.max_days_old_label_fmt,
+                controlFile.GetDefaultMaximumDaysOld()
+                );
             DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters promptParams = new DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters()
             {
                 Title = ResourceProvider.GetString(Resource.String.prompt_max_days_old_title),
                 Ok = ResourceProvider.GetString(Resource.String.action_ok),
                 Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
-                DefaultPrompt = "Use Default",
+                DefaultPrompt = $"{ResourceProvider.GetString(Resource.String.feed_uses_default_prefix)} {defaultPrompt}",
                 DefaultValue = ValueConverter.ConvertToString(controlFile.GetDefaultMaximumDaysOld()),
                 NamedPrompt = ResourceProvider.GetString(Resource.String.prompt_max_days_old_named_prompt),
                 CustomPrompt = ResourceProvider.GetString(Resource.String.prompt_max_days_old_custom_prompt),
@@ -301,6 +307,29 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 promptParams.ValueType = DefaultableItemValuePromptDialogFragment.ItemValueType.Defaulted;
             }
             Observables.PromptForMaxDaysOld?.Invoke(this, promptParams);
+        }
+
+        public void SetMaxDaysOld(string value, DefaultableItemValuePromptDialogFragment.ItemValueType valueType)
+        {
+            Logger.Debug(() => $"EditFeedViewModel:SetMaxDaysOld = {value}");
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            switch (valueType)
+            {
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Defaulted:
+                    feed.Feed.MaximumDaysOld.RevertToDefault();
+                    break;
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Named:
+                    feed.Feed.MaximumDaysOld.Value = int.MaxValue;
+                    break;
+                case DefaultableItemValuePromptDialogFragment.ItemValueType.Custom:
+                    feed.Feed.MaximumDaysOld.Value = ValueConverter.ConvertStringToInt(value);
+                    break;
+            }
+            ApplicationControlFileProvider.SaveCurrentControlFile();
         }
     }
 }
