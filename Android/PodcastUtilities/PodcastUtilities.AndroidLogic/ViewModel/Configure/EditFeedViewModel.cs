@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Locations;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
@@ -452,7 +453,21 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 
         public void SetUrl(string value)
         {
-            throw new NotImplementedException();
+            Logger.Debug(() => $"EditFeedViewModel:SetUrl = {value}");
+            var feed = GetFeedToEdit();
+            if (feed == null || value == null)
+            {
+                return;
+            }
+            if (Uri.IsWellFormedUriString(value, UriKind.Absolute))
+            {
+                feed.Feed.Address = new Uri(value);
+            }
+            else
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_url));
+            }
+            ApplicationControlFileProvider.SaveCurrentControlFile();
         }
 
         public void FolderOptions()
@@ -475,7 +490,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 
         public void SetFolder(string value)
         {
-            throw new NotImplementedException();
+            Logger.Debug(() => $"EditFeedViewModel:SetFolder = {value}");
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            feed.Folder = value;
+            ApplicationControlFileProvider.SaveCurrentControlFile();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using FakeItEasy;
 using NUnit.Framework;
+using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Edit;
@@ -28,6 +29,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Configure
         protected ICrashReporter MockCrashReporter;
         protected IAnalyticsEngine MockAnalyticsEngine;
         protected IReadWriteControlFile MockControlFile;
+        protected IValueFormatter MockValueFormatter;
 
         [SetUp]
         public void Setup()
@@ -43,6 +45,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Configure
             MockApplicationControlFileFactory = A.Fake<IApplicationControlFileFactory>();
             MockCrashReporter = A.Fake<ICrashReporter>();
             MockAnalyticsEngine = A.Fake<IAnalyticsEngine>();
+            MockValueFormatter = A.Fake<IValueFormatter>();
 
             SetupResources();
 
@@ -54,7 +57,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Configure
                 MockCrashReporter,
                 MockAnalyticsEngine,
                 MockFileSystemHelper,
-                MockApplicationControlFileFactory
+                MockApplicationControlFileFactory,
+                MockValueFormatter
             );
 
             ViewModel.Observables.DisplayMessage += DisplayMessage;
