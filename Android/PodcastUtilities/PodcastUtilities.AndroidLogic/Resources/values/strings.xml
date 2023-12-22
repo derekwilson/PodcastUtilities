@@ -167,6 +167,9 @@
 	<string name="prompt_folder_title">Folder to store the episodes</string>
 	<string name="prompt_folder_prompt">Folder</string>
 
+	<string name="bad_folder_empty">The folder should not be empty</string>
+	<string name="bad_folder_duplicate">The folder name has been used more than once</string>
+
 	<string name="row_title_url">Podcast feed url</string>
 	<string name="prompt_url_title">RSS Feed Url</string>
 	<string name="prompt_url_prompt">Feed url</string>

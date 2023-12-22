@@ -462,12 +462,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             if (Uri.IsWellFormedUriString(value, UriKind.Absolute))
             {
                 feed.Feed.Address = new Uri(value);
+                ApplicationControlFileProvider.SaveCurrentControlFile();
             }
             else
             {
                 Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_url));
             }
-            ApplicationControlFileProvider.SaveCurrentControlFile();
         }
 
         public void FolderOptions()
@@ -496,8 +496,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             {
                 return;
             }
-            feed.Folder = value;
-            ApplicationControlFileProvider.SaveCurrentControlFile();
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_folder_empty));
+            }
+            else
+            {
+                feed.Folder = value;
+                ApplicationControlFileProvider.SaveCurrentControlFile();
+            }
         }
     }
 }
