@@ -17,6 +17,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         {
             public EventHandler<string> Title;
             public EventHandler<string> DisplayMessage;
+            public EventHandler<string> Folder;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForFolder;
+            public EventHandler<string> Url;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForUrl;
             public EventHandler<Tuple<bool, string>> DownloadStrategy;
             public EventHandler<Tuple<bool, string>> NamingStyle;
             public EventHandler<Tuple<bool, string>> MaxDaysOld;
@@ -102,6 +106,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 return;
             }
             Observables.Title?.Invoke(this, feed.Folder);
+            Observables.Folder?.Invoke(this, feed.Folder);
+            Observables.Url?.Invoke(this, feed.Feed.Address.ToString());
 
             Observables.DownloadStrategy?.Invoke(this, Tuple.Create(feed.Feed.DownloadStrategy.IsSet,
                                                     ValueFormatter.GetDefaultableDownloadStratagyTextLong(feed.Feed.DownloadStrategy))
@@ -424,6 +430,52 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                     break;
             }
             ApplicationControlFileProvider.SaveCurrentControlFile();
+        }
+
+        public void UrlOptions()
+        {
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
+            {
+                Title = ResourceProvider.GetString(Resource.String.prompt_url_title),
+                Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                Prompt = ResourceProvider.GetString(Resource.String.prompt_url_prompt),
+                Value = feed.Feed.Address.ToString(),
+            };
+            Observables.PromptForUrl?.Invoke(this, promptParams);
+        }
+
+        public void SetUrl(string value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void FolderOptions()
+        {
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
+            {
+                Title = ResourceProvider.GetString(Resource.String.prompt_folder_title),
+                Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                Prompt = ResourceProvider.GetString(Resource.String.prompt_folder_prompt),
+                Value = feed.Folder,
+            };
+            Observables.PromptForFolder?.Invoke(this, promptParams);
+        }
+
+        public void SetFolder(string value)
+        {
+            throw new NotImplementedException();
         }
     }
 }

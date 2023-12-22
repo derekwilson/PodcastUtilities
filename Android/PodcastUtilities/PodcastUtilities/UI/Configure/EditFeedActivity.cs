@@ -41,6 +41,8 @@ namespace PodcastUtilities.UI.Configure
         private const string BOTTOMSHEET_DOWNLOAD_STRATEGY_CONFIG_TAG = "config_download_strategy_tag";
         private const string BOTTOMSHEET_NAMING_STYLE_CONFIG_TAG = "config_naming_style_tag";
 
+        private const string FOLDER_PROMPT_TAG = "folder_prompt_tag";
+        private const string URL_PROMPT_TAG = "url_prompt_tag";
         private const string MAX_DAYS_OLD_PROMPT_CONFIG_TAG = "config_max_days_old_prompt_tag";
         private const string DELETE_DOWNLOAD_DAYS_OLD_PROMPT_CONFIG_TAG = "config_delete_download_prompt_tag";
         private const string MAX_DOWNLOAD_ITEMS_PROMPT_CONFIG_TAG = "config_max_download_items_prompt_tag";
@@ -49,6 +51,10 @@ namespace PodcastUtilities.UI.Configure
         private EditFeedViewModel ViewModel;
 
         private NestedScrollView Container = null;
+        private LinearLayoutCompat FolderRowContainer = null;
+        private TextView FolderRowSubLabel = null;
+        private LinearLayoutCompat UrlRowContainer = null;
+        private TextView UrlRowSubLabel = null;
         private LinearLayoutCompat DownloadStrategyRowContainer = null;
         private TextView DownloadStrategyRowSubLabel = null;
         private LinearLayoutCompat NamingStyleRowContainer = null;
@@ -60,6 +66,8 @@ namespace PodcastUtilities.UI.Configure
         private LinearLayoutCompat MaxDownloadItemsRowContainer = null;
         private TextView MaxDownloadItemsRowSubLabel = null;
 
+        private ValuePromptDialogFragment FolderPromptDialogFragment;
+        private ValuePromptDialogFragment UrlPromptDialogFragment;
         private DefaultableItemValuePromptDialogFragment MaxDaysOldPromptDialogFragment;
         private DefaultableItemValuePromptDialogFragment DeleteDaysOldPromptDialogFragment;
         private DefaultableItemValuePromptDialogFragment MaxDownloadItemsPromptDialogFragment;
@@ -81,6 +89,10 @@ namespace PodcastUtilities.UI.Configure
             }
 
             Container = FindViewById<NestedScrollView>(Resource.Id.edit_feed_container);
+            FolderRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.feed_folder_row_label_container);
+            FolderRowSubLabel = FindViewById<TextView>(Resource.Id.feed_folder_row_sub_label);
+            UrlRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.feed_url_row_label_container);
+            UrlRowSubLabel = FindViewById<TextView>(Resource.Id.feed_url_row_sub_label);
             DownloadStrategyRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.feed_download_strategy_row_label_container);
             DownloadStrategyRowSubLabel = FindViewById<TextView>(Resource.Id.feed_download_strategy_row_sub_label);
             NamingStyleRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.feed_naming_style_row_label_container);
@@ -99,12 +111,18 @@ namespace PodcastUtilities.UI.Configure
 
             ViewModel.Initialise(id, folder);
 
+            FolderRowContainer.Click += (sender, e) => DoFolderOptions();
+            UrlRowContainer.Click += (sender, e) => DoUrlOptions();
             DownloadStrategyRowContainer.Click += (sender, e) => DoDownloadStrategyOptions();
             NamingStyleRowContainer.Click += (sender, e) => DoNamingStyleOptions();
             MaxDaysOldRowContainer.Click += (sender, e) => DoMaxDaysOldOptions();
             DeleteDaysOldRowContainer.Click += (sender, e) => DoDeleteDownloadDaysOldOptions();
             MaxDownloadItemsRowContainer.Click += (sender, e) => DoMaxDownloadItemsOptions();
 
+            FolderPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(FOLDER_PROMPT_TAG) as ValuePromptDialogFragment;
+            SetupValueFragmentObservers(FolderPromptDialogFragment);
+            UrlPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(URL_PROMPT_TAG) as ValuePromptDialogFragment;
+            SetupValueFragmentObservers(UrlPromptDialogFragment);
             MaxDaysOldPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(MAX_DAYS_OLD_PROMPT_CONFIG_TAG) as DefaultableItemValuePromptDialogFragment;
             SetupDefaultableItemValueFragmentObservers(MaxDaysOldPromptDialogFragment);
             DeleteDaysOldPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(DELETE_DOWNLOAD_DAYS_OLD_PROMPT_CONFIG_TAG) as DefaultableItemValuePromptDialogFragment;
@@ -120,6 +138,8 @@ namespace PodcastUtilities.UI.Configure
             AndroidApplication.Logger.Debug(() => $"EditFeedActivity:OnDestroy");
             base.OnDestroy();
             KillViewModelObservers();
+            KillValueFragmentObservers(FolderPromptDialogFragment);
+            KillValueFragmentObservers(UrlPromptDialogFragment);
             KillDefaultableItemValueFragmentObservers(MaxDaysOldPromptDialogFragment);
             KillDefaultableItemValueFragmentObservers(DeleteDaysOldPromptDialogFragment);
             KillDefaultableItemValueFragmentObservers(MaxDownloadItemsPromptDialogFragment);
@@ -130,6 +150,16 @@ namespace PodcastUtilities.UI.Configure
             AndroidApplication.Logger.Debug(() => $"EditFeedActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        private void DoUrlOptions()
+        {
+            ViewModel.UrlOptions();
+        }
+
+        private void DoFolderOptions()
+        {
+            ViewModel.FolderOptions();
         }
 
         private void DoDownloadStrategyOptions()
@@ -186,6 +216,10 @@ namespace PodcastUtilities.UI.Configure
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.Title += SetTitle;
+            ViewModel.Observables.Folder += Folder;
+            ViewModel.Observables.PromptForFolder += PromptForFolder;
+            ViewModel.Observables.Url += Url;
+            ViewModel.Observables.PromptForUrl += PromptForUrl;
             ViewModel.Observables.DisplayMessage += DisplayMessage;
             ViewModel.Observables.DownloadStrategy += DownloadStrategy;
             ViewModel.Observables.NamingStyle += NamingStyle;
@@ -200,6 +234,10 @@ namespace PodcastUtilities.UI.Configure
         private void KillViewModelObservers()
         {
             ViewModel.Observables.Title -= SetTitle;
+            ViewModel.Observables.Folder -= Folder;
+            ViewModel.Observables.PromptForFolder -= PromptForFolder;
+            ViewModel.Observables.Url -= Url;
+            ViewModel.Observables.PromptForUrl -= PromptForUrl;
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
             ViewModel.Observables.DownloadStrategy -= DownloadStrategy;
             ViewModel.Observables.NamingStyle -= NamingStyle;
@@ -211,11 +249,47 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PromptForMaxDownloadItems -= PromptForMaxDownloadItems;
         }
 
+        private void PromptForUrl(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                UrlPromptDialogFragment = ValuePromptDialogFragment.NewInstance(parameters);
+                SetupValueFragmentObservers(UrlPromptDialogFragment);
+                UrlPromptDialogFragment.Show(SupportFragmentManager, URL_PROMPT_TAG);
+            });
+        }
+
+        private void PromptForFolder(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                FolderPromptDialogFragment = ValuePromptDialogFragment.NewInstance(parameters);
+                SetupValueFragmentObservers(FolderPromptDialogFragment);
+                FolderPromptDialogFragment.Show(SupportFragmentManager, FOLDER_PROMPT_TAG);
+            });
+        }
+
         private void SetTitle(object sender, string title)
         {
             RunOnUiThread(() =>
             {
                 Title = title;
+            });
+        }
+
+        private void Folder(object sender, string str)
+        {
+            RunOnUiThread(() =>
+            {
+                FolderRowSubLabel.Text = str;
+            });
+        }
+
+        private void Url(object sender, string str)
+        {
+            RunOnUiThread(() =>
+            {
+                UrlRowSubLabel.Text = str;
             });
         }
 
@@ -237,7 +311,7 @@ namespace PodcastUtilities.UI.Configure
             }
             else
             {
-                textView.SetTypeface(textView.Typeface, TypefaceStyle.Normal);
+                //textView.SetTypeface(textView.Typeface, TypefaceStyle.Normal);
                 textView.SetTypeface(Typeface.Create(textView.Typeface, TypefaceStyle.Normal), TypefaceStyle.Normal);
             }
         }
@@ -321,6 +395,58 @@ namespace PodcastUtilities.UI.Configure
                 SetupDefaultableItemValueFragmentObservers(MaxDownloadItemsPromptDialogFragment);
                 MaxDownloadItemsPromptDialogFragment.Show(SupportFragmentManager, MAX_DOWNLOAD_ITEMS_PROMPT_CONFIG_TAG);
             });
+        }
+
+        private void SetupValueFragmentObservers(ValuePromptDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"EditFeedActivity: SetupFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected += OkSelected;
+                fragment.CancelSelected += CancelSelected;
+            }
+        }
+
+        private void KillValueFragmentObservers(ValuePromptDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"EditFeedActivity: KillFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected -= OkSelected;
+                fragment.CancelSelected -= CancelSelected;
+            }
+        }
+
+        private void OkSelected(object sender, Tuple<string, string, string> parameters)
+        {
+            (string tag, string data, string value) = parameters;
+            AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
+            switch (tag)
+            {
+                case FOLDER_PROMPT_TAG:
+                    KillValueFragmentObservers(FolderPromptDialogFragment);
+                    ViewModel.SetFolder(value);
+                    break;
+                case URL_PROMPT_TAG:
+                    KillValueFragmentObservers(UrlPromptDialogFragment);
+                    ViewModel.SetUrl(value);
+                    break;
+            }
+        }
+
+        private void CancelSelected(object sender, Tuple<string, string, string> parameters)
+        {
+            (string tag, string data, string value) = parameters;
+            AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
+            switch (tag)
+            {
+                case FOLDER_PROMPT_TAG:
+                    KillValueFragmentObservers(FolderPromptDialogFragment);
+                    break;
+                case URL_PROMPT_TAG:
+                    KillValueFragmentObservers(UrlPromptDialogFragment);
+                    break;
+            }
         }
 
         private void SetupDefaultableItemValueFragmentObservers(DefaultableItemValuePromptDialogFragment fragment)

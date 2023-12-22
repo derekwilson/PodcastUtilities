@@ -134,7 +134,7 @@
 
 	<!-- feed defaults activity -->
 	<string name="feed_defaults_activity_title">Feed Defaults</string>
-
+	
 	<string name="row_title_download_strategy">Download strategy</string>
 	<string name="download_strategy_sheet_title">Download Strategy Options</string>
 
@@ -162,6 +162,14 @@
 	<!-- edit feed activity -->
 	<string name="edit_feed_activity_title">Feed</string>
 	<string name="edit_feed_cannot_find_podcast">Cannot find podcast</string>
+
+	<string name="row_title_folder">Folder for episodes</string>
+	<string name="prompt_folder_title">Folder to store the episodes</string>
+	<string name="prompt_folder_prompt">Folder</string>
+
+	<string name="row_title_url">Podcast feed url</string>
+	<string name="prompt_url_title">RSS Feed Url</string>
+	<string name="prompt_url_prompt">Feed url</string>
 
 	<!-- dialogs -->
 	<string name="content_desc_clear">Clear Text</string>
