@@ -42,7 +42,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         private IValueFormatter ValueFormatter;
 
         private int PodcastFeedToEditId = -1;
-        private string PodcastFeedToEditFolder = null;
 
         public EditFeedViewModel(
             Application app,
@@ -70,32 +69,35 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             RefreshConfigDisplay();
         }
 
+        public void Initialise(string id)
+        {
+            Logger.Debug(() => $"EditFeedViewModel:Initialise {id}");
+            PodcastFeedToEditId = Convert.ToInt32(id);
+            RefreshConfigDisplay();
+        }
+
         private IPodcastInfo GetFeedToEdit()
         {
-            // TODO - fix this crappy code
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             int index = 0;
             foreach (var podcastInfo in controlFile.GetPodcasts())
             {
                 if (index == PodcastFeedToEditId)
                 {
-                    if (podcastInfo.Folder == PodcastFeedToEditFolder)
+                    if (podcastInfo.Feed == null)
+                    {
+                        Logger.Debug(() => $"EditFeedViewModel:GetFeedToEdit podcast has no feed {PodcastFeedToEditId}");
+                        return null;
+                    }
+                    else
                     {
                         return podcastInfo;
                     }
                 }
                 index++;
             }
-            Logger.Debug(() => $"EditFeedViewModel:GetFeedToEdit cannot find podcast {PodcastFeedToEditId}, {PodcastFeedToEditFolder}");
+            Logger.Debug(() => $"EditFeedViewModel:GetFeedToEdit cannot find podcast {PodcastFeedToEditId}");
             return null;
-        }
-
-        public void Initialise(string id, string folder)
-        {
-            Logger.Debug(() => $"EditFeedViewModel:Initialise {id}, {folder} ");
-            PodcastFeedToEditId = Convert.ToInt32(id);
-            PodcastFeedToEditFolder = folder;
-            RefreshConfigDisplay();
         }
 
         private void RefreshConfigDisplay()
@@ -103,7 +105,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             var feed = GetFeedToEdit();
             if (feed == null)
             {
-                CrashReporter.LogNonFatalException(new ConfigurationException($"Cannot find podcast {PodcastFeedToEditId}, {PodcastFeedToEditFolder}"));
+                CrashReporter.LogNonFatalException(new ConfigurationException($"Cannot find podcast {PodcastFeedToEditId}"));
                 return;
             }
             Observables.Title?.Invoke(this, feed.Folder);

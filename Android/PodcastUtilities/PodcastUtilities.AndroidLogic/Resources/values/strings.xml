@@ -119,6 +119,8 @@
 	<string name="row_title_global_defaults">Default values for all feeds</string>
 	<string name="row_sub_label_global_defaults">Values that are applied to all feeds, which can be overridden by an individual feed.</string>
 
+	<string name="config_no_feed">There is no feed.</string>
+
 	<!-- global values activity -->
 	<string name="global_values_activity_title">Global Values</string>
 
@@ -186,15 +188,21 @@
 	<string name="no_downloads_text">No podcasts to download</string>
 	<string name="no_network_text">You do not have any internet connectivity</string>
 	<string name="finding_podcasts_progress">Finding podcasts...</string>
-	<string name="finding_podcasts_title2">Finding podcasts in</string>
 	<plurals name="finding_podcasts_title1">
-		<item quantity="one">%d Podcast Found</item>
-		<item quantity="other">%d Podcasts Found</item>
+		<item quantity="one">%d Episodes Found</item>
+		<item quantity="other">%d Episodes Found</item>
 	</plurals>
+	<string name="finding_podcasts_title2">Finding podcasts in</string>
+	<string name="finding_podcasts_all_title1">Looking in all feeds</string>
+	<plurals name="finding_podcasts_all_title2">
+		<item quantity="one">found %d Episodes so far</item>
+		<item quantity="other">found %d Episodes so far</item>
+	</plurals>
+	<string name="finding_podcasts_all_title3">Now checking</string>
 
 	<plurals name="download_activity_title_after_load">
-		<item quantity="one">%d Podcast Selected</item>
-		<item quantity="other">%d Podcasts Selected</item>
+		<item quantity="one">%d Episodes Selected</item>
+		<item quantity="other">%d Episodes Selected</item>
 	</plurals>
 
 	<string name="download_status_complete">Complete</string>

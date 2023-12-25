@@ -310,13 +310,12 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void NavigateToFeed(object sender, Tuple<string, string> parameters)
+        private void NavigateToFeed(object sender, string id)
         {
-            (string id, string folder) = parameters;
-            AndroidApplication.Logger.Debug(() => $"EditConfigActivity: NavigateToFeed {id}, {folder}");
+            AndroidApplication.Logger.Debug(() => $"EditConfigActivity: NavigateToFeed {id}");
             RunOnUiThread(() =>
             {
-                var intent = EditFeedActivity.CreateIntent(this, id, folder);
+                var intent = EditFeedActivity.CreateIntent(this, id);
                 StartActivity(intent);
             });
         }

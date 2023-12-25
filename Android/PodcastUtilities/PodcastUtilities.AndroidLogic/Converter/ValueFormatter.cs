@@ -133,6 +133,11 @@ namespace PodcastUtilities.AndroidLogic.Converter
 
         public string GetFeedOverrideSummary(IPodcastInfo podcastInfo)
         {
+            if (podcastInfo == null || podcastInfo.Feed == null)
+            {
+                return ResourceProvider.GetString(Resource.String.feed_no_overrides);
+            }
+
             IList<string> overrideTokens = new List<string>();
             if (podcastInfo.Feed.DownloadStrategy.IsSet)
             {

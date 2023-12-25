@@ -22,18 +22,13 @@ namespace PodcastUtilities.UI.Configure
     internal class EditFeedActivity : AppCompatActivity, SelectableStringListBottomSheetFragment.IListener
     {
         private const string ACTIVITY_PARAM_ID_CONFIG = "EditFeedActivity:Param:Id";
-        private const string ACTIVITY_PARAM_FOLDER_CONFIG = "EditFeedActivity:Param:Folder";
 
-        public static Intent CreateIntent(Context context, string id, string folder)
+        public static Intent CreateIntent(Context context, string id)
         {
             Intent intent = new Intent(context, typeof(EditFeedActivity));
             if (!string.IsNullOrEmpty(id))
             {
                 intent.PutExtra(ACTIVITY_PARAM_ID_CONFIG, id);
-            }
-            if (!string.IsNullOrEmpty(folder))
-            {
-                intent.PutExtra(ACTIVITY_PARAM_FOLDER_CONFIG, folder);
             }
             return intent;
         }
@@ -82,10 +77,9 @@ namespace PodcastUtilities.UI.Configure
             SetContentView(Resource.Layout.activity_edit_feed);
 
             var id = Intent?.GetStringExtra(ACTIVITY_PARAM_ID_CONFIG);
-            var folder = Intent?.GetStringExtra(ACTIVITY_PARAM_FOLDER_CONFIG);
-            if (folder == null || id == null)
+            if (id == null)
             {
-                AndroidApplication.Logger.Debug(() => $"EditFeedActivity:OnCreate - no id/folder specified");
+                AndroidApplication.Logger.Debug(() => $"EditFeedActivity:OnCreate - no id specified");
             }
 
             Container = FindViewById<NestedScrollView>(Resource.Id.edit_feed_container);
@@ -109,7 +103,7 @@ namespace PodcastUtilities.UI.Configure
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
-            ViewModel.Initialise(id, folder);
+            ViewModel.Initialise(id);
 
             FolderRowContainer.Click += (sender, e) => DoFolderOptions();
             UrlRowContainer.Click += (sender, e) => DoUrlOptions();

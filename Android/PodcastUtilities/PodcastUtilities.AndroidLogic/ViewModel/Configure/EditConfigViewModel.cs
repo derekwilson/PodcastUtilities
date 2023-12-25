@@ -25,7 +25,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             public EventHandler SelectControlFile;
             public EventHandler<string> SetCacheRoot;
             public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>> SetFeedItems;
-            public EventHandler<Tuple<string, string>> NavigateToFeed;
+            public EventHandler<string> NavigateToFeed;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -318,7 +318,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         internal void FeedItemSelected(string id, IPodcastInfo podcastFeed)
         {
             Logger.Debug(() => $"EditConfigViewModel: FeedItemSelected {podcastFeed.Folder}");
-            Observables.NavigateToFeed?.Invoke(this, Tuple.Create(id,  podcastFeed.Folder));
+            if (podcastFeed.Feed == null)
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.config_no_feed));
+            }
+            else
+            {
+                Observables.NavigateToFeed?.Invoke(this, id);
+            }
         }
 
         internal void FeedItemOptionSelected(string id, IPodcastInfo podcastFeed)
