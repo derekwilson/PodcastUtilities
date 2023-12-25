@@ -120,6 +120,8 @@
 	<string name="row_sub_label_global_defaults">Values that are applied to all feeds, which can be overridden by an individual feed.</string>
 
 	<string name="config_no_feed">There is no feed.</string>
+	<string name="default_podcast_folder">Podcast{0}</string>
+	<string name="button_text_config_add">Add podcast configuration</string>
 
 	<!-- global values activity -->
 	<string name="global_values_activity_title">Global Values</string>

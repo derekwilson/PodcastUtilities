@@ -9,6 +9,7 @@ using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Feeds;
 using System;
 using System.Collections.Generic;
 
@@ -336,6 +337,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         internal string GetFeedSubLabel(IPodcastInfo podcastFeed)
         {
             return ValueFormatter.GetFeedOverrideSummary(podcastFeed);
+        }
+
+        public void AddPodcastSelected()
+        {
+            Observables.DisplayMessage?.Invoke(this, "Add feed");
         }
     }
 }

@@ -12,6 +12,7 @@ using AndroidX.Core.Widget;
 using AndroidX.DocumentFile.Provider;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
+using Google.Android.Material.FloatingActionButton;
 using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
@@ -42,6 +43,7 @@ namespace PodcastUtilities.UI.Configure
         private TextView FeedsTitle = null;
         private RecyclerView RvFeedsList = null;
         private ConfigPodcastFeedRecyclerItemAdapter FeedAdapter = null;
+        private FloatingActionButton AddButton;
 
         private OkCancelDialogFragment ResetPromptDialogFragment;
 
@@ -61,6 +63,7 @@ namespace PodcastUtilities.UI.Configure
             FeedDefaultsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_defaults_row_label_container);
             FeedsTitle = FindViewById<TextView>(Resource.Id.config_feed_list_label);
             RvFeedsList = FindViewById<RecyclerView>(Resource.Id.config_feed_list);
+            AddButton = FindViewById<FloatingActionButton>(Resource.Id.fab_config_add);
 
             RvFeedsList.SetLayoutManager(new LinearLayoutManager(this));
             RvFeedsList.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
@@ -79,6 +82,7 @@ namespace PodcastUtilities.UI.Configure
             CacheRootOptions.Click += (sender, e) => DoCacheRootOptions();
             GlobalValuesRowContainer.Click += (sender, e) => DoGlobalValuesOptions();
             FeedDefaultsRowContainer.Click += (sender, e) => DoFeedDefaultsOptions();
+            AddButton.Click += (sender, e) => ViewModel.AddPodcastSelected();
 
             ResetPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(RESET_PROMPT_TAG) as OkCancelDialogFragment;
             SetupFragmentObservers(ResetPromptDialogFragment);
