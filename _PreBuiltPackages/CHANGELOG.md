@@ -1,3 +1,6 @@
+# v3.1.0.3 - 26 December 2023
+1. Added `AddPodcast()` and `DeletePodcast()` to `IReadWriteControlFile`
+
 # v3.1.0.2 - 20 December 2023
 1. Added setters for the global defaults for feeds to `IReadWriteControlFile`
 

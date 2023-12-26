@@ -427,5 +427,15 @@ namespace PodcastUtilities.Common.Configuration
                     throw new ArgumentOutOfRangeException("playlistFormat");
             }
         }
-	}
+
+        public void AddPodcast(IPodcastInfo podcast)
+        {
+            Podcasts.Add(podcast);
+        }
+
+        public void DeletePodcast(IPodcastInfo podcast)
+        {
+            Podcasts.Remove(podcast);
+        }
+    }
 }

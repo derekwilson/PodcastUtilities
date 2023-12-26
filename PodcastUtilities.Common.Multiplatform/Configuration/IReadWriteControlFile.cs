@@ -159,5 +159,17 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         /// <param name="fileName"></param>
         void SaveToFile(string fileName);
+
+        /// <summary>
+        /// add a new podcast to the configuration
+        /// </summary>
+        /// <param name="podcast"></param>
+        void AddPodcast(IPodcastInfo podcast);
+
+        /// <summary>
+        /// remove a podcast from the configuration
+        /// </summary>
+        /// <param name="podcast"></param>
+        void DeletePodcast(IPodcastInfo podcast);
     }
 }
