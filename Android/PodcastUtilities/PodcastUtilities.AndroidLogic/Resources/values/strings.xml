@@ -123,6 +123,14 @@
 	<string name="default_podcast_folder">Podcast{0}</string>
 	<string name="button_text_config_add">Add podcast configuration</string>
 
+	<string name="prompt_add_podcast_title">Enter a name so you can find the podcast, its also used as the folder to store episodes</string>
+	<string name="prompt_add_podcast_prompt">Folder name</string>
+	<string name="prompt_add_podcast_ok">Add</string>
+
+	<string name="prompt_delete_podcast_title_fmt">Remove {0}</string>
+	<string name="prompt_delete_podcast_prompt">This will remove the configuration.\nNo files will be deleted.</string>
+	<string name="prompt_delete_podcast_ok">Remove</string>
+
 	<!-- global values activity -->
 	<string name="global_values_activity_title">Global Values</string>
 

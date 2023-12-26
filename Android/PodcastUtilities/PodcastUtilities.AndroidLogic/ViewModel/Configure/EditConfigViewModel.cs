@@ -9,7 +9,6 @@ using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Configuration;
-using PodcastUtilities.Common.Feeds;
 using System;
 using System.Collections.Generic;
 
@@ -22,11 +21,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             public EventHandler<string> DisplayMessage;
             public EventHandler<Tuple<string, Intent>> DisplayChooser;
             public EventHandler<Tuple<string, string, string, string>> ResetPrompt;
+            public EventHandler<Tuple<string, string, string, string, string>> DeletePrompt;
             public EventHandler SelectFolder;
             public EventHandler SelectControlFile;
             public EventHandler<string> SetCacheRoot;
             public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>> SetFeedItems;
             public EventHandler<string> NavigateToFeed;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptToAddPodcast;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForCacheRoot;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -51,7 +53,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             IAnalyticsEngine analyticsEngine,
             IFileSystemHelper fileSystemHelper,
             IApplicationControlFileFactory applicationControlFileFactory,
-            IValueFormatter valueFormatter) : base(app)
+            IValueFormatter valueFormatter
+            ) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"EditConfigViewModel:ctor");
@@ -315,6 +318,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private const int OPTION_ID_CUSTOM = 13;
         private const int OPTION_ID_PRIVATE_ROOT = 20;
 
+        internal string GetFeedSubLabel(IPodcastInfo podcastFeed)
+        {
+            return ValueFormatter.GetFeedOverrideSummary(podcastFeed);
+        }
 
         internal void FeedItemSelected(string id, IPodcastInfo podcastFeed)
         {
@@ -331,17 +338,68 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
 
         internal void FeedItemOptionSelected(string id, IPodcastInfo podcastFeed)
         {
-            Observables.DisplayMessage?.Invoke(this, "Option - " + podcastFeed.Folder);
+            Observables.DeletePrompt?.Invoke(this,
+                Tuple.Create(
+                    string.Format(ResourceProvider.GetString(Resource.String.prompt_delete_podcast_title_fmt), podcastFeed.Folder),
+                    ResourceProvider.GetString(Resource.String.prompt_delete_podcast_prompt),
+                    ResourceProvider.GetString(Resource.String.prompt_delete_podcast_ok),
+                    ResourceProvider.GetString(Resource.String.action_cancel),
+                    id
+                )
+            );
         }
 
-        internal string GetFeedSubLabel(IPodcastInfo podcastFeed)
+        public void DeleteConfirmed(string data)
         {
-            return ValueFormatter.GetFeedOverrideSummary(podcastFeed);
+            // find the podcast
+            Logger.Debug(() => $"EditConfigViewModel:FeedItemOptionSelected {data}");
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            int index = 0;
+            int indexToDelete = Convert.ToInt32(data);
+            IPodcastInfo podcastToDelete = null;
+            foreach (var podcastInfo in controlFile.GetPodcasts())
+            {
+                if (index == indexToDelete)
+                {
+                    podcastToDelete = podcastInfo;
+                    break;
+                }
+                index++;
+            }
+            if (podcastToDelete != null)
+            {
+                Logger.Debug(() => $"EditConfigViewModel:FeedItemOptionSelected deleting {podcastToDelete.Folder}");
+                controlFile.DeletePodcast(podcastToDelete);
+                ApplicationControlFileProvider.SaveCurrentControlFile();
+            }
         }
 
         public void AddPodcastSelected()
         {
-            Observables.DisplayMessage?.Invoke(this, "Add feed");
+            ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
+            {
+                Title = ResourceProvider.GetString(Resource.String.prompt_add_podcast_title),
+                Ok = ResourceProvider.GetString(Resource.String.prompt_add_podcast_ok),
+                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                Prompt = ResourceProvider.GetString(Resource.String.prompt_add_podcast_prompt),
+            };
+            Observables.PromptToAddPodcast?.Invoke(this, promptParams);
+        }
+
+        public void AddPodcastConfirmed(string value)
+        {
+            Logger.Debug(() => $"EditConfigViewModel:Add = {value}");
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_folder_empty));
+                return;
+            }
+
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            var newPodcast = new PodcastInfo(controlFile);
+            newPodcast.Folder = value;
+            controlFile.AddPodcast(newPodcast);
+            ApplicationControlFileProvider.SaveCurrentControlFile();
         }
     }
 }

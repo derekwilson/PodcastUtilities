@@ -31,6 +31,8 @@ namespace PodcastUtilities.UI.Configure
 
         private const string BOTTOMSHEET_CACHE_OPTIONS_TAG = "cache_options_tag";
         private const string RESET_PROMPT_TAG = "reset_prompt_tag";
+        private const string DELETE_PROMPT_TAG = "delete_prompt_tag";
+        private const string ADD_PROMPT_TAG = "add_prompt_tag";
 
         private AndroidApplication AndroidApplication;
         private EditConfigViewModel ViewModel;
@@ -46,6 +48,8 @@ namespace PodcastUtilities.UI.Configure
         private FloatingActionButton AddButton;
 
         private OkCancelDialogFragment ResetPromptDialogFragment;
+        private OkCancelDialogFragment DeletePodcastPromptDialogFragment;
+        private ValuePromptDialogFragment AddPodcastPromptDialogFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -86,6 +90,10 @@ namespace PodcastUtilities.UI.Configure
 
             ResetPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(RESET_PROMPT_TAG) as OkCancelDialogFragment;
             SetupFragmentObservers(ResetPromptDialogFragment);
+            DeletePodcastPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(DELETE_PROMPT_TAG) as OkCancelDialogFragment;
+            SetupFragmentObservers(DeletePodcastPromptDialogFragment);
+            AddPodcastPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(ADD_PROMPT_TAG) as ValuePromptDialogFragment;
+            SetupValueFragmentObservers(AddPodcastPromptDialogFragment);
 
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnCreate - end");
         }
@@ -96,6 +104,8 @@ namespace PodcastUtilities.UI.Configure
             base.OnDestroy();
             KillViewModelObservers();
             KillFragmentObservers(ResetPromptDialogFragment);
+            KillFragmentObservers(DeletePodcastPromptDialogFragment);
+            KillValueFragmentObservers(AddPodcastPromptDialogFragment);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -225,6 +235,8 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
             ViewModel.Observables.SetFeedItems += SetFeedItems;
             ViewModel.Observables.NavigateToFeed += NavigateToFeed;
+            ViewModel.Observables.DeletePrompt += DeletePrompt;
+            ViewModel.Observables.PromptToAddPodcast += PromptToAddPodcast;
         }
 
         private void KillViewModelObservers()
@@ -237,6 +249,8 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
             ViewModel.Observables.NavigateToFeed -= NavigateToFeed;
+            ViewModel.Observables.DeletePrompt -= DeletePrompt;
+            ViewModel.Observables.PromptToAddPodcast -= PromptToAddPodcast;
         }
 
         private void SelectControlFile(object sender, EventArgs e)
@@ -276,6 +290,27 @@ namespace PodcastUtilities.UI.Configure
                 ResetPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, null);
                 SetupFragmentObservers(ResetPromptDialogFragment);
                 ResetPromptDialogFragment.Show(SupportFragmentManager, RESET_PROMPT_TAG);
+            });
+        }
+
+        private void DeletePrompt(object sender, Tuple<string, string, string, string, string> parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                (string title, string message, string ok, string cancel, string data) = parameters;
+                ResetPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, data);
+                SetupFragmentObservers(ResetPromptDialogFragment);
+                ResetPromptDialogFragment.Show(SupportFragmentManager, DELETE_PROMPT_TAG);
+            });
+        }
+
+        private void PromptToAddPodcast(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                AddPodcastPromptDialogFragment = ValuePromptDialogFragment.NewInstance(parameters);
+                SetupValueFragmentObservers(AddPodcastPromptDialogFragment);
+                AddPodcastPromptDialogFragment.Show(SupportFragmentManager, ADD_PROMPT_TAG);
             });
         }
 
@@ -353,6 +388,9 @@ namespace PodcastUtilities.UI.Configure
                 case RESET_PROMPT_TAG:
                     KillFragmentObservers(ResetPromptDialogFragment);
                     break;
+                case DELETE_PROMPT_TAG:
+                    KillFragmentObservers(DeletePodcastPromptDialogFragment); 
+                    break;
             }
         }
 
@@ -368,8 +406,57 @@ namespace PodcastUtilities.UI.Configure
                         KillFragmentObservers(ResetPromptDialogFragment);
                         ViewModel.ResetConfirmed();
                         break;
+                    case DELETE_PROMPT_TAG:
+                        KillFragmentObservers(DeletePodcastPromptDialogFragment);
+                        ViewModel.DeleteConfirmed(data);
+                        break;
                 }
             });
+        }
+
+        private void SetupValueFragmentObservers(ValuePromptDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"EditConfigActivity: SetupFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected += OkSelected;
+                fragment.CancelSelected += CancelSelected;
+            }
+        }
+
+        private void KillValueFragmentObservers(ValuePromptDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"EditConfigActivity: KillFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected -= OkSelected;
+                fragment.CancelSelected -= CancelSelected;
+            }
+        }
+
+        private void OkSelected(object sender, Tuple<string, string, string> parameters)
+        {
+            (string tag, string data, string value) = parameters;
+            AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
+            switch (tag)
+            {
+                case ADD_PROMPT_TAG:
+                    KillValueFragmentObservers(AddPodcastPromptDialogFragment);
+                    ViewModel.AddPodcastConfirmed(value);
+                    break;
+            }
+        }
+
+        private void CancelSelected(object sender, Tuple<string, string, string> parameters)
+        {
+            (string tag, string data, string value) = parameters;
+            AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
+            switch (tag)
+            {
+                case ADD_PROMPT_TAG:
+                    KillValueFragmentObservers(AddPodcastPromptDialogFragment);
+                    break;
+            }
         }
     }
 }
