@@ -270,7 +270,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                     return DoIfPossible(Resource.Id.action_download);
                 case Keycode.G:
                     return DoIfPossible(Resource.Id.action_playlist);
-                case Keycode.E:
+                case Keycode.C:
                     return DoIfPossible(Resource.Id.action_edit_config);
                 case Keycode.S:
                     return DoIfPossible(Resource.Id.action_settings);

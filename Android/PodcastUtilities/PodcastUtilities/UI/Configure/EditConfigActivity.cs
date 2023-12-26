@@ -40,8 +40,8 @@ namespace PodcastUtilities.UI.Configure
         private EditConfigViewModel ViewModel;
 
         private NestedScrollView Container = null;
+        private LinearLayoutCompat CacheRootRowContainer = null;
         private TextView CacheRootSubLabel = null;
-        private TextView CacheRootOptions = null;
         private LinearLayoutCompat GlobalValuesRowContainer = null;
         private LinearLayoutCompat FeedDefaultsRowContainer = null;
         private TextView FeedsTitle = null;
@@ -66,7 +66,7 @@ namespace PodcastUtilities.UI.Configure
 
             Container = FindViewById<NestedScrollView>(Resource.Id.edit_container);
             CacheRootSubLabel = FindViewById<TextView>(Resource.Id.cache_root_row_sub_label);
-            CacheRootOptions = FindViewById<TextView>(Resource.Id.cache_root_row_options);
+            CacheRootRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.cache_root_row_label_container);
             GlobalValuesRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_values_row_label_container);
             FeedDefaultsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_defaults_row_label_container);
             FeedsTitle = FindViewById<TextView>(Resource.Id.config_feed_list_label);
@@ -87,7 +87,7 @@ namespace PodcastUtilities.UI.Configure
 
             ViewModel.Initialise();
 
-            CacheRootOptions.Click += (sender, e) => DoCacheRootOptions();
+            CacheRootRowContainer.Click += (sender, e) => DoCacheRootOptions();
             GlobalValuesRowContainer.Click += (sender, e) => DoGlobalValuesOptions();
             FeedDefaultsRowContainer.Click += (sender, e) => DoFeedDefaultsOptions();
             AddButton.Click += (sender, e) => ViewModel.AddPodcastSelected();

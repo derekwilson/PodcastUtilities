@@ -10,69 +10,35 @@
         android:layout_height="match_parent"
         >
 
-        <LinearLayout
+		<LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-	        <androidx.constraintlayout.widget.ConstraintLayout
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/cache_root_row_label_container"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-			>
-
-				<androidx.appcompat.widget.LinearLayoutCompat
-					android:id="@+id/cache_root_row_label_container"
-					android:layout_width="0dp"
-					android:layout_height="wrap_content"
-					android:orientation="vertical"
-					android:paddingStart="@dimen/listview_item_horizontal_padding"
-					android:paddingEnd="0dp"
-					android:paddingTop="@dimen/listview_item_vertical_padding"
-					android:paddingBottom="@dimen/listview_item_vertical_padding"
-					android:background="?attr/selectableItemBackground"
-					app:layout_constraintEnd_toStartOf="@+id/cache_root_row_options"
-					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent"
-					>
-
-					<TextView
-						android:id="@+id/cache_root_row_label"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="@string/row_title_cache_root"
-						style="@style/ItemListTitle"
-						/>
-
-					<TextView
-						android:id="@+id/cache_root_row_sub_label"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="@string/placeholder"
-						style="@style/ItemListSubTitle2"
-						/>
-				</androidx.appcompat.widget.LinearLayoutCompat>
-	
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer">
 
 				<TextView
-					android:id="@+id/cache_root_row_options"
+					android:id="@+id/cache_root_row_label"
 					android:layout_width="wrap_content"
-					android:layout_height="0dp"
-					android:text="&#8942;"
-					android:gravity="center_vertical"
-					android:textAppearance="?android:textAppearanceLarge"
-					android:background="?attr/selectableItemBackground"
-					android:paddingTop="@dimen/listview_item_vertical_padding"
-					android:paddingBottom="@dimen/listview_item_vertical_padding"
-					android:paddingLeft="@dimen/overflow_menu_dots_textview_padding"
-					android:paddingRight="@dimen/overflow_menu_dots_textview_padding"
-					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintStart_toEndOf="@+id/cache_root_row_label_container"
-					app:layout_constraintTop_toTopOf="parent"
-					app:layout_constraintBottom_toBottomOf="parent"
-				/>
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_cache_root"
+					style="@style/ItemListTitle"
+					/>
 
-			</androidx.constraintlayout.widget.ConstraintLayout>
-
+				<TextView
+					android:id="@+id/cache_root_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+			</androidx.appcompat.widget.LinearLayoutCompat>
+	
 			<View style="@style/Divider"/>
 
 			<androidx.appcompat.widget.LinearLayoutCompat
@@ -157,7 +123,10 @@
         android:id="@+id/fab_config_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+		android:layout_marginBottom="32dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginEnd="32dp"
         app:elevation="8dp"
         app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
