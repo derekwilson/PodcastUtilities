@@ -85,25 +85,33 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private void RefreshConfigDisplay()
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-
-            var cacheRootSublabel = string.Format(ResourceProvider.GetString(Resource.String.cache_root_label_fmt), controlFile.GetSourceRoot());
-            Observables.SetCacheRoot?.Invoke(this, cacheRootSublabel);
-
-            AllFeedItems.Clear();
-            int index = 0;
-            foreach (var podcastInfo in controlFile.GetPodcasts())
+            if (controlFile == null)
             {
-                var item = new PodcastFeedRecyclerItem()
-                {
-                    Id = index.ToString(),
-                    PodcastFeed = podcastInfo
-                };
-                AllFeedItems.Add(item);
-                index++;
+                Logger.Debug(() => $"EditConfigViewModel:resetting control file");
+                controlFile = ApplicationControlFileProvider.ResetControlFile();
             }
-            Logger.Debug(() => $"EditConfigViewModel:RefreshFeedList {AllFeedItems.Count}");
-            var heading = ResourceProvider.GetQuantityString(Resource.Plurals.feed_list_heading, AllFeedItems.Count);
-            Observables.SetFeedItems?.Invoke(this, Tuple.Create(heading, AllFeedItems));
+
+            if (controlFile != null)
+            {
+                var cacheRootSublabel = string.Format(ResourceProvider.GetString(Resource.String.cache_root_label_fmt), controlFile.GetSourceRoot());
+                Observables.SetCacheRoot?.Invoke(this, cacheRootSublabel);
+
+                AllFeedItems.Clear();
+                int index = 0;
+                foreach (var podcastInfo in controlFile.GetPodcasts())
+                {
+                    var item = new PodcastFeedRecyclerItem()
+                    {
+                        Id = index.ToString(),
+                        PodcastFeed = podcastInfo
+                    };
+                    AllFeedItems.Add(item);
+                    index++;
+                }
+                Logger.Debug(() => $"EditConfigViewModel:RefreshFeedList {AllFeedItems.Count}");
+                var heading = ResourceProvider.GetQuantityString(Resource.Plurals.feed_list_heading, AllFeedItems.Count);
+                Observables.SetFeedItems?.Invoke(this, Tuple.Create(heading, AllFeedItems));
+            }
         }
 
         [Lifecycle.Event.OnCreate]

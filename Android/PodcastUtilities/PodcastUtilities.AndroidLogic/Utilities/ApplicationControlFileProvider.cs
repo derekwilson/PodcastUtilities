@@ -20,7 +20,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         IReadWriteControlFile GetApplicationConfiguration();
         void ReplaceApplicationConfiguration(IReadWriteControlFile file);
         Intent GetApplicationConfigurationSharingIntent();
-        void ResetControlFile();
+        IReadWriteControlFile ResetControlFile();
         void SaveCurrentControlFile();
     }
 
@@ -103,7 +103,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             OnConfigurationUpdated();
         }
 
-        public void ResetControlFile()
+        public IReadWriteControlFile ResetControlFile()
         {
             Logger.Debug(() => $"ApplicationControlFileProvider:ResetControlFile");
             lock (SyncLock)
@@ -114,6 +114,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 ControlFile = newFile;
             }
             OnConfigurationUpdated();
+            return ControlFile;
         }
 
         public Intent GetApplicationConfigurationSharingIntent()
