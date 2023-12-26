@@ -251,18 +251,18 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             if (string.IsNullOrEmpty(folderSelected))
             {
                 // we are looking in all feeds
-                var titleLine1 = ResourceProvider.GetQuantityString(Resource.Plurals.finding_podcasts_title1, GetItemsSelectedCount());
-                var titleLine2 = ResourceProvider.GetString(Resource.String.finding_podcasts_title2);
-                var emptyMessage = $"{titleLine1}\n{titleLine2}\n{thisFolder}";
+                var titleLine1 = ResourceProvider.GetString(Resource.String.finding_podcasts_all_title1);
+                var titleLine2 = ResourceProvider.GetQuantityString(Resource.Plurals.finding_podcasts_all_title2, GetItemsSelectedCount());
+                var titleLine3 = ResourceProvider.GetString(Resource.String.finding_podcasts_all_title3);
+                var emptyMessage = $"{titleLine1}\n{titleLine2}\n{titleLine3}\n{thisFolder}";
                 Observables.SetEmptyText?.Invoke(this, emptyMessage);
             }
             else
             {
                 // we are looking in a specific folder
-                var titleLine1 = ResourceProvider.GetString(Resource.String.finding_podcasts_all_title1);
-                var titleLine2 = ResourceProvider.GetQuantityString(Resource.Plurals.finding_podcasts_all_title2, GetItemsSelectedCount());
-                var titleLine3 = ResourceProvider.GetString(Resource.String.finding_podcasts_all_title3);
-                var emptyMessage = $"{titleLine1}\n{titleLine2}\n{titleLine3} {thisFolder}";
+                var titleLine1 = ResourceProvider.GetQuantityString(Resource.Plurals.finding_podcasts_title1, GetItemsSelectedCount());
+                var titleLine2 = ResourceProvider.GetString(Resource.String.finding_podcasts_title2);
+                var emptyMessage = $"{titleLine1}\n{titleLine2}\n{thisFolder}";
                 Observables.SetEmptyText?.Invoke(this, emptyMessage);
             }
         }
