@@ -431,12 +431,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
                 Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_folder_empty));
                 return;
             }
-
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             var newPodcast = new PodcastInfo(controlFile);
             newPodcast.Folder = value;
-            controlFile.AddPodcast(newPodcast);
-            ApplicationControlFileProvider.SaveCurrentControlFile();
+            if (!ApplicationControlFileProvider.AddPodcastIfFoldernameUnique(newPodcast))
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_folder_duplicate));
+                return;
+            }
         }
 
         public void AddFeedConfirmed(string value, string data)

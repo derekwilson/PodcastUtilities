@@ -5,6 +5,7 @@ using PodcastUtilities.Common.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
@@ -22,6 +23,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         Intent GetApplicationConfigurationSharingIntent();
         IReadWriteControlFile ResetControlFile();
         void SaveCurrentControlFile();
+        bool SetFoldernameIfUnique(IPodcastInfo podcast, string foldername);
+        bool AddPodcastIfFoldernameUnique(IPodcastInfo podcast);
     }
 
     public class ApplicationControlFileProvider : IApplicationControlFileProvider
@@ -160,6 +163,55 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 ControlFile.SaveToFile(GetApplicationControlFilePath());
             }
             OnConfigurationUpdated();
+        }
+
+        public bool AddPodcastIfFoldernameUnique(IPodcastInfo podcast)
+        {
+            Logger.Debug(() => $"ApplicationControlFileProvider:AddPodcastIfFoldernameUnique - {podcast.Folder}");
+            lock (SyncLock)
+            {
+                if (ControlFile == null)
+                {
+                    Logger.Debug(() => $"ApplicationControlFileProvider: IsFoldernameDuplicated - null control file");
+                    return false;
+                }
+                var found = ControlFile.GetPodcasts().FirstOrDefault(item => item.Folder.Equals(podcast.Folder, StringComparison.InvariantCultureIgnoreCase));
+                if (found != null)
+                {
+                    return false;
+                }
+                ControlFile.AddPodcast(podcast);
+                ControlFile.SaveToFile(GetApplicationControlFilePath());
+            }
+            OnConfigurationUpdated();
+            return true;
+        }
+
+        public bool SetFoldernameIfUnique(IPodcastInfo podcast, string foldername)
+        {
+            Logger.Debug(() => $"ApplicationControlFileProvider:SetFoldernameIfNotDuplicated - {foldername}");
+            lock (SyncLock)
+            {
+                if (ControlFile == null)
+                {
+                    Logger.Debug(() => $"ApplicationControlFileProvider: SetFoldernameIfNotDuplicated - null control file");
+                    return false;
+                }
+                // PU allows for things in a control file that does not make much sense for this app
+                foreach (var thisPodcastInfo in ControlFile.GetPodcasts())
+                {
+                    // make sure each podcastinfo has a unique folder but do not compare with self
+                    if (thisPodcastInfo != podcast && thisPodcastInfo.Folder.Equals(foldername, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        Logger.Debug(() => $"ApplicationControlFileProvider: SetFoldernameIfNotDuplicated - duplicate foldername");
+                        return false;
+                    }
+                }
+                podcast.Folder = foldername;
+                ControlFile.SaveToFile(GetApplicationControlFilePath());
+            }
+            OnConfigurationUpdated();
+            return true;
         }
     }
 }

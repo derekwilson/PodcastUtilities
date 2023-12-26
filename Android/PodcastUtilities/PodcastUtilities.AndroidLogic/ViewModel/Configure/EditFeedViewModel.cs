@@ -502,10 +502,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             {
                 Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_folder_empty));
             }
-            else
+            else if (!ApplicationControlFileProvider.SetFoldernameIfUnique(feed, value))
             {
-                feed.Folder = value;
-                ApplicationControlFileProvider.SaveCurrentControlFile();
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_folder_duplicate));
             }
         }
     }

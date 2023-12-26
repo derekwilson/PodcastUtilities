@@ -77,6 +77,7 @@
 	<string name="xtra_download_strategy_all">All episodes in the feed will be downloaded</string>
 	<string name="xtra_download_strategy_latest">Only the latest episode in a feed is downloaded</string>
 
+	<string name="feed_no_feed">No feed</string>
 	<string name="feed_no_overrides">Default configuration</string>
 	<string name="feed_overrides">Overrides</string>
 	<string name="feed_override_strategy">Strategy</string>
@@ -186,7 +187,7 @@
 	<string name="prompt_folder_prompt">Folder</string>
 
 	<string name="bad_folder_empty">The folder should not be empty</string>
-	<string name="bad_folder_duplicate">The folder name has been used more than once</string>
+	<string name="bad_folder_duplicate">This folder name is already used by another feed</string>
 
 	<string name="row_title_url">Podcast feed url</string>
 	<string name="prompt_url_title">RSS Feed Url</string>
@@ -205,19 +206,19 @@
 	<string name="no_network_text">You do not have any internet connectivity</string>
 	<string name="finding_podcasts_progress">Finding podcasts...</string>
 	<plurals name="finding_podcasts_title1">
-		<item quantity="one">%d Episodes Found</item>
+		<item quantity="one">%d Episode Found</item>
 		<item quantity="other">%d Episodes Found</item>
 	</plurals>
 	<string name="finding_podcasts_title2">Finding podcasts in</string>
 	<string name="finding_podcasts_all_title1">Looking in all feeds</string>
 	<plurals name="finding_podcasts_all_title2">
-		<item quantity="one">found %d Episodes so far</item>
-		<item quantity="other">found %d Episodes so far</item>
+		<item quantity="one">Found %d Episode so far</item>
+		<item quantity="other">Found %d Episodes so far</item>
 	</plurals>
 	<string name="finding_podcasts_all_title3">Now checking</string>
 
 	<plurals name="download_activity_title_after_load">
-		<item quantity="one">%d Episodes Selected</item>
+		<item quantity="one">%d Episode Selected</item>
 		<item quantity="other">%d Episodes Selected</item>
 	</plurals>
 
