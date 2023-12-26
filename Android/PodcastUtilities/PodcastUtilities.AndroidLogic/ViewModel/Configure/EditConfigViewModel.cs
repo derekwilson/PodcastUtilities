@@ -28,6 +28,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>> SetFeedItems;
             public EventHandler<string> NavigateToFeed;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptToAddPodcast;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptToAddFeed;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForCacheRoot;
         }
         public ObservableGroup Observables = new ObservableGroup();
@@ -301,7 +302,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
                     Observables.SelectFolder?.Invoke(this, null);
                     break;
                 case OPTION_ID_CUSTOM:
-                    Observables.DisplayMessage?.Invoke(this, "Not yet implemented");
+                    var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+                    ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
+                    {
+                        Title = ResourceProvider.GetString(Resource.String.prompt_cache_root_title),
+                        Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                        Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                        Prompt = ResourceProvider.GetString(Resource.String.prompt_cache_root_prompt),
+                        Value = controlFile.GetSourceRoot(),
+                    };
+                    Observables.PromptForCacheRoot?.Invoke(this, promptParams);
                     break;
                 case OPTION_ID_PHONE_ROOT:
                 case OPTION_ID_WSA_ROOT:
@@ -318,6 +328,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private const int OPTION_ID_CUSTOM = 13;
         private const int OPTION_ID_PRIVATE_ROOT = 20;
 
+        public void CacheRootConfirmed(string value)
+        {
+            SetCacheRoot(value);
+        }
+
         internal string GetFeedSubLabel(IPodcastInfo podcastFeed)
         {
             return ValueFormatter.GetFeedOverrideSummary(podcastFeed);
@@ -328,7 +343,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             Logger.Debug(() => $"EditConfigViewModel: FeedItemSelected {podcastFeed.Folder}");
             if (podcastFeed.Feed == null)
             {
-                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.config_no_feed));
+                ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
+                {
+                    Title = ResourceProvider.GetString(Resource.String.prompt_add_feed_title),
+                    Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                    Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                    Prompt = ResourceProvider.GetString(Resource.String.prompt_add_feed_prompt),
+                    Data = id,
+                };
+                Observables.PromptToAddFeed?.Invoke(this, promptParams);
             }
             else
             {
@@ -349,23 +372,29 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             );
         }
 
+        private IPodcastInfo GetPodcastByPosition(string position)
+        {
+            // find the podcast
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            int index = 0;
+            int indexToFind = Convert.ToInt32(position);
+            foreach (var podcastInfo in controlFile.GetPodcasts())
+            {
+                if (index == indexToFind)
+                {
+                    return podcastInfo;
+                }
+                index++;
+            }
+            return null;
+        }
+
         public void DeleteConfirmed(string data)
         {
             // find the podcast
             Logger.Debug(() => $"EditConfigViewModel:FeedItemOptionSelected {data}");
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-            int index = 0;
-            int indexToDelete = Convert.ToInt32(data);
-            IPodcastInfo podcastToDelete = null;
-            foreach (var podcastInfo in controlFile.GetPodcasts())
-            {
-                if (index == indexToDelete)
-                {
-                    podcastToDelete = podcastInfo;
-                    break;
-                }
-                index++;
-            }
+            IPodcastInfo podcastToDelete = GetPodcastByPosition(data);
             if (podcastToDelete != null)
             {
                 Logger.Debug(() => $"EditConfigViewModel:FeedItemOptionSelected deleting {podcastToDelete.Folder}");
@@ -400,6 +429,34 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             newPodcast.Folder = value;
             controlFile.AddPodcast(newPodcast);
             ApplicationControlFileProvider.SaveCurrentControlFile();
+        }
+
+        public void AddFeedConfirmed(string value, string data)
+        {
+            Logger.Debug(() => $"EditConfigViewModel:Add Feed = {value}");
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_url));
+                return;
+            }
+            if (!Uri.IsWellFormedUriString(value, UriKind.Absolute))
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_url));
+                return;
+            }
+
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            IPodcastInfo podcastToEdit = GetPodcastByPosition(data);
+            if (podcastToEdit != null)
+            {
+                if (podcastToEdit.Feed == null)
+                {
+                    podcastToEdit.Feed = new FeedInfo(controlFile);
+                }
+                podcastToEdit.Feed.Address = new Uri(value);
+                ApplicationControlFileProvider.SaveCurrentControlFile();
+                Observables.NavigateToFeed?.Invoke(this, data);
+            }
         }
     }
 }

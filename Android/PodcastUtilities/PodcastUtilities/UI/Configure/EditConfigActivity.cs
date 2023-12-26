@@ -33,6 +33,8 @@ namespace PodcastUtilities.UI.Configure
         private const string RESET_PROMPT_TAG = "reset_prompt_tag";
         private const string DELETE_PROMPT_TAG = "delete_prompt_tag";
         private const string ADD_PROMPT_TAG = "add_prompt_tag";
+        private const string ADD_FEED_PROMPT_TAG = "add_feed_prompt_tag";
+        private const string EDIT_CACHE_ROOT_PROMPT_TAG = "edit_cache_root_prompt_tag";
 
         private AndroidApplication AndroidApplication;
         private EditConfigViewModel ViewModel;
@@ -50,6 +52,8 @@ namespace PodcastUtilities.UI.Configure
         private OkCancelDialogFragment ResetPromptDialogFragment;
         private OkCancelDialogFragment DeletePodcastPromptDialogFragment;
         private ValuePromptDialogFragment AddPodcastPromptDialogFragment;
+        private ValuePromptDialogFragment AddFeedPromptDialogFragment;
+        private ValuePromptDialogFragment CacheRootPromptDialogFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -94,6 +98,10 @@ namespace PodcastUtilities.UI.Configure
             SetupFragmentObservers(DeletePodcastPromptDialogFragment);
             AddPodcastPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(ADD_PROMPT_TAG) as ValuePromptDialogFragment;
             SetupValueFragmentObservers(AddPodcastPromptDialogFragment);
+            AddFeedPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(ADD_FEED_PROMPT_TAG) as ValuePromptDialogFragment;
+            SetupValueFragmentObservers(AddFeedPromptDialogFragment);
+            CacheRootPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(EDIT_CACHE_ROOT_PROMPT_TAG) as ValuePromptDialogFragment;
+            SetupValueFragmentObservers(CacheRootPromptDialogFragment);
 
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnCreate - end");
         }
@@ -106,6 +114,8 @@ namespace PodcastUtilities.UI.Configure
             KillFragmentObservers(ResetPromptDialogFragment);
             KillFragmentObservers(DeletePodcastPromptDialogFragment);
             KillValueFragmentObservers(AddPodcastPromptDialogFragment);
+            KillValueFragmentObservers(AddFeedPromptDialogFragment);
+            KillValueFragmentObservers(CacheRootPromptDialogFragment);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -237,6 +247,8 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.NavigateToFeed += NavigateToFeed;
             ViewModel.Observables.DeletePrompt += DeletePrompt;
             ViewModel.Observables.PromptToAddPodcast += PromptToAddPodcast;
+            ViewModel.Observables.PromptToAddFeed += PromptToAddFeed;
+            ViewModel.Observables.PromptForCacheRoot += PromptForCacheRoot;
         }
 
         private void KillViewModelObservers()
@@ -251,6 +263,8 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.NavigateToFeed -= NavigateToFeed;
             ViewModel.Observables.DeletePrompt -= DeletePrompt;
             ViewModel.Observables.PromptToAddPodcast -= PromptToAddPodcast;
+            ViewModel.Observables.PromptToAddFeed -= PromptToAddFeed;
+            ViewModel.Observables.PromptForCacheRoot -= PromptForCacheRoot;
         }
 
         private void SelectControlFile(object sender, EventArgs e)
@@ -313,6 +327,27 @@ namespace PodcastUtilities.UI.Configure
                 AddPodcastPromptDialogFragment.Show(SupportFragmentManager, ADD_PROMPT_TAG);
             });
         }
+
+        private void PromptToAddFeed(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                AddFeedPromptDialogFragment = ValuePromptDialogFragment.NewInstance(parameters);
+                SetupValueFragmentObservers(AddFeedPromptDialogFragment);
+                AddFeedPromptDialogFragment.Show(SupportFragmentManager, ADD_FEED_PROMPT_TAG);
+            });
+        }
+
+        private void PromptForCacheRoot(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                CacheRootPromptDialogFragment = ValuePromptDialogFragment.NewInstance(parameters);
+                SetupValueFragmentObservers(CacheRootPromptDialogFragment);
+                CacheRootPromptDialogFragment.Show(SupportFragmentManager, EDIT_CACHE_ROOT_PROMPT_TAG);
+            });
+        }
+
 
         private void DisplayChooser(object sender, Tuple<string, Intent> args)
         {
@@ -444,6 +479,14 @@ namespace PodcastUtilities.UI.Configure
                     KillValueFragmentObservers(AddPodcastPromptDialogFragment);
                     ViewModel.AddPodcastConfirmed(value);
                     break;
+                case ADD_FEED_PROMPT_TAG:
+                    KillValueFragmentObservers(AddFeedPromptDialogFragment);
+                    ViewModel.AddFeedConfirmed(value, data);
+                    break;
+                case EDIT_CACHE_ROOT_PROMPT_TAG:
+                    KillValueFragmentObservers(CacheRootPromptDialogFragment);
+                    ViewModel.CacheRootConfirmed(value);
+                    break;
             }
         }
 
@@ -455,6 +498,12 @@ namespace PodcastUtilities.UI.Configure
             {
                 case ADD_PROMPT_TAG:
                     KillValueFragmentObservers(AddPodcastPromptDialogFragment);
+                    break;
+                case ADD_FEED_PROMPT_TAG:
+                    KillValueFragmentObservers(AddFeedPromptDialogFragment);
+                    break;
+                case EDIT_CACHE_ROOT_PROMPT_TAG:
+                    KillValueFragmentObservers(CacheRootPromptDialogFragment);
                     break;
             }
         }

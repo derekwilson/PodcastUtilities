@@ -127,9 +127,15 @@
 	<string name="prompt_add_podcast_prompt">Folder name</string>
 	<string name="prompt_add_podcast_ok">Add</string>
 
+	<string name="prompt_add_feed_title">You must enter a podcast RSS feed URL before you can configure the podcast.</string>
+	<string name="prompt_add_feed_prompt">Feed URL</string>
+
 	<string name="prompt_delete_podcast_title_fmt">Remove {0}</string>
 	<string name="prompt_delete_podcast_prompt">This will remove the configuration.\nNo files will be deleted.</string>
 	<string name="prompt_delete_podcast_ok">Remove</string>
+
+	<string name="prompt_cache_root_title">The folder to hold podcast downloads.</string>
+	<string name="prompt_cache_root_prompt">Cache root folder</string>
 
 	<!-- global values activity -->
 	<string name="global_values_activity_title">Global Values</string>
