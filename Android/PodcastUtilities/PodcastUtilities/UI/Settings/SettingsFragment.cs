@@ -6,7 +6,6 @@ using AndroidX.Preference;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Settings;
 using PodcastUtilities.UI.Help;
-using System;
 
 namespace PodcastUtilities.UI.Settings
 {
@@ -38,7 +37,6 @@ namespace PodcastUtilities.UI.Settings
             UpdateHelp();
             UpdateOsl();
             UpdatePrivacy();
-            UpdateShare();
         }
 
         public override void OnPause()
@@ -61,20 +59,6 @@ namespace PodcastUtilities.UI.Settings
             AndroidApplication.Logger.Debug(() => $"SettingsFragment:OnDestroy");
             base.OnDestroy();
             KillViewModelObservers();
-        }
-
-        private void UpdateShare()
-        {
-            var preference = FindPreference(GetString(Resource.String.settings_config_share_key));
-            if (preference != null)
-            {
-                preference.PreferenceClick += (sender, e) => ShareClick();
-            }
-        }
-
-        private void ShareClick()
-        {
-            ViewModel.ShareConfig();
         }
 
         private void UpdatePrivacy()
@@ -180,14 +164,12 @@ namespace PodcastUtilities.UI.Settings
         {
             ViewModel.Observables.Version += SetVersion;
             ViewModel.Observables.DisplayMessage += DisplayMessage;
-            ViewModel.Observables.DisplayChooser += DisplayChooser;
         }
 
         private void KillViewModelObservers()
         {
             ViewModel.Observables.Version -= SetVersion;
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
-            ViewModel.Observables.DisplayChooser -= DisplayChooser;
         }
 
         private void SetVersion(object sender, string version)
@@ -204,12 +186,5 @@ namespace PodcastUtilities.UI.Settings
                 Toast.MakeText(Activity, message, ToastLength.Short).Show();
             });
         }
-
-        private void DisplayChooser(object sender, Tuple<string, Intent> args)
-        {
-            (string title, Intent intent) = args;
-            StartActivity(Intent.CreateChooser(intent, title));
-        }
-
     }
 }

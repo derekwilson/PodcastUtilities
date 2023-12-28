@@ -54,13 +54,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\ConfigPodcastFeedRecyclerItemAdapter.cs" />
     <Compile Include="Adapters\DownloadRecyclerItemAdapter.cs" />
     <Compile Include="Adapters\PodcastFeedRecyclerItemAdapter.cs" />
     <Compile Include="Adapters\PurgeRecyclerItemAdapter.cs" />
+    <Compile Include="Converter\ValueFormatter.cs" />
     <Compile Include="CustomViews\DriveVolumeInfoViewFactory.cs" />
     <Compile Include="CustomViews\EmptyRecyclerView.cs" />
     <Compile Include="CustomViews\OkCancelDialogFragment.cs" />
     <Compile Include="CustomViews\ProgressSpinnerView.cs" />
+    <Compile Include="CustomViews\SelectableString.cs" />
+    <Compile Include="Adapters\SelectableStringArrayAdapter.cs" />
+    <Compile Include="CustomViews\SelectableStringListBottomSheetFragment.cs" />
+    <Compile Include="CustomViews\DefaultableItemValuePromptDialogFragment.cs" />
+    <Compile Include="CustomViews\ValuePromptDialogFragment.cs" />
+    <Compile Include="Exceptions\ConfigurationException.cs" />
     <Compile Include="Settings\UserSettings.cs" />
     <Compile Include="Utilities\AnalyticsEngine.cs" />
     <Compile Include="Utilities\ApplicationControlFileFactory.cs" />
@@ -68,6 +76,7 @@
     <Compile Include="Utilities\BackKeyMapper.cs" />
     <Compile Include="Utilities\CrashReporter.cs" />
     <Compile Include="Utilities\AndroidEnvironmentInformationProvider.cs" />
+    <Compile Include="Utilities\DialogHelper.cs" />
     <Compile Include="Utilities\IAndroidApplication.cs" />
     <Compile Include="Converter\ByteConverter.cs" />
     <Compile Include="CustomViews\DriveVolumeInfoView.cs" />
@@ -82,11 +91,16 @@
     <Compile Include="Utilities\ProgressViewHelper.cs" />
     <Compile Include="Utilities\ResourceProvider.cs" />
     <Compile Include="Utilities\StatusAndProgressMessageStore.cs" />
+    <Compile Include="Converter\ValueConverter.cs" />
+    <Compile Include="ViewModel\Configure\EditFeedViewModel.cs" />
+    <Compile Include="ViewModel\Configure\FeedDefaultsViewModel.cs" />
+    <Compile Include="ViewModel\Configure\GlobalValuesViewModel.cs" />
     <Compile Include="ViewModel\Download\DownloadRecyclerItem.cs" />
     <Compile Include="ViewModel\Download\DownloadViewModel.cs" />
+    <Compile Include="ViewModel\Configure\EditConfigViewModel.cs" />
     <Compile Include="ViewModel\Help\HelpViewModel.cs" />
     <Compile Include="ViewModel\Main\MainViewModel.cs" />
-    <Compile Include="ViewModel\Main\PodcastFeedRecyclerItem.cs" />
+    <Compile Include="Adapters\PodcastFeedRecyclerItem.cs" />
     <Compile Include="ViewModel\Messages\MessagesViewModel.cs" />
     <Compile Include="ViewModel\Purge\PurgeRecyclerItem.cs" />
     <Compile Include="ViewModel\Purge\PurgeViewModel.cs" />
@@ -206,6 +220,54 @@
     <AndroidResource Include="Resources\values-night\strings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_edit_config.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\fragment_bottomsheet_selectable_string_list.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\list_item_selectable_string.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_check.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\info_divider.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\dialog_fragment_value_prompt.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_clear.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\dialog_fragment_defaultableitem_value_prompt.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\list_item_configfeeditem.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_add.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

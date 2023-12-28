@@ -11,6 +11,10 @@
 		<item name="actionBarStyle">@style/AppTheme.ActionBar</item>
 	</style>
 
+	<style name="DialogTextLayoutColours" parent="DialogTextLayout">
+		<item name="hintTextColor">@color/colour_green</item>
+	</style>
+
 	<style name="ItemLabel">
 		<item name="android:textSize">16sp</item>
 		<item name="android:textColor">@color/colour_green</item>
@@ -30,6 +34,24 @@
 
 	<style name="fabIconButton">
 		<item name="backgroundTint">@color/colour_green</item>
+	</style>
+
+	<style name="bottomSheetTitleBorder">
+		<item name="android:background">@color/colour_green</item>
+	</style>
+
+	<style name="bottomSheetTitle">
+		<item name="android:textColor">@color/colour_green</item>
+		<item name="android:background">@color/color_near_black</item>
+	</style>
+
+	<style name="iconImageButton">
+		<item name="tint">@color/colour_green</item>
+	</style>
+
+	<style name="SelectableItemOption">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/colour_white</item>
 	</style>
 
 </resources>

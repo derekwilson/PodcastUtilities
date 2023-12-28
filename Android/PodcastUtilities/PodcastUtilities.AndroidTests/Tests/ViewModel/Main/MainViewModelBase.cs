@@ -12,6 +12,7 @@ using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.AndroidTests.Helpers;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using Android.Views;
+using PodcastUtilities.AndroidLogic.Adapters;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 {
@@ -57,6 +58,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         protected IDriveVolumeInfoViewFactory MockDriveVolumeInfoViewFactory;
         protected IDriveVolumeInfoView MockDriveVolumeInfoView;
         protected IApplicationControlFileFactory MockApplicationControlFileFactory;
+        protected IValueFormatter MockValueFormatter;
 
         // reals
         protected IByteConverter ByteConverter;
@@ -157,6 +159,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             MockDriveVolumeInfoView = A.Fake<IDriveVolumeInfoView>();
             A.CallTo(() => MockDriveVolumeInfoViewFactory.GetNewView(MockApplication)).Returns(MockDriveVolumeInfoView);
             MockApplicationControlFileFactory = A.Fake<IApplicationControlFileFactory>();
+            MockValueFormatter = A.Fake<IValueFormatter>();
 
             ByteConverter = new ByteConverter();
 
@@ -173,7 +176,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
                 MockAnalyticsEngine,
                 MockPlaylistGenerator,
                 MockDriveVolumeInfoViewFactory,
-                MockApplicationControlFileFactory
+                MockValueFormatter
             );
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;

@@ -1,11 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
 
+	<dimen name="activity_padding">8dp</dimen>
+
 	<dimen name="info_padding">8dp</dimen>
+	<dimen name="info_divider_height">1dp</dimen>
+	<dimen name="info_divider_width">1dp</dimen>
 
 	<dimen name="listview_item_horizontal_padding">16dp</dimen>
 	<dimen name="listview_item_vertical_padding">8dp</dimen>
 	<dimen name="listview_item_check_horizontal_padding">10dp</dimen>
 	<dimen name="listview_item_check_vertical_padding">8dp</dimen>
+	<dimen name="listview_empty_message_padding">8dp</dimen>
+
+	<dimen name="overflow_menu_dots_textview_padding">32dp</dimen>
+
+	<dimen name="bottomsheet_title_vertical_padding">16dp</dimen>
+
+	<dimen name="dialog_left_right_padding">16dp</dimen>
+	<dimen name="dialog_top_bottom_padding">8dp</dimen>
+	<dimen name="dialog_top_button_bar_padding">16dp</dimen>
+
+	<dimen name="text_input_clear_button_width">50dp</dimen>
+	<dimen name="text_input_clear_button_padding">10dp</dimen>
+	<dimen name="text_input_text_padding_left">2dp</dimen>
+
+	<dimen name="radio_button_padding_top">10dp</dimen>
+	<dimen name="radio_button_padding_bottom">10dp</dimen>
+	<dimen name="radiogroup_padding">8dp</dimen>
 
 </resources>

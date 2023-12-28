@@ -9,13 +9,35 @@
 <p>Note that it can only perform cache management - PodcastUtilities cannot play media you will need a separate player.</p>
 <h3>Why sideload?</h3>
 <p>To install PodcastUtilities get the APK from the <a href="https://github.com/derekwilson/PodcastUtilities/tree/master/Android/Support/_PreBuiltPackages">_PreBuiltPackages</a> folder on Github. We did attempt to distribute it via the Google Play Store however as we needed "Manage Storage" permission Google declined saying "The feature you identified that is dependent on this permission does not appear to be critical to the core functionality of your app", rather than arguing the toss with a Google-bot we decided to sideload the APK.</p>
-<h3>Getting Started</h3>
-<p>PodcastUtilities is configured and controlled by a control file. Its probably easiest if you tweak the control file to your liking using the <a href="https://community.chocolatey.org/packages/podcastutilities-core">desktop version</a> in conjunction with the <a href="https://github.com/derekwilson/PodcastUtilities/tree/master/Documents/User">documentation.</a>.</p>
-<p>When you move the XML control file across to your phone (probably email it to yourself) there are some elements you should take care of</p>
-<p><b>sourceRoot</b> should be set to the root of your cache on the phone, probably <font face='serif-monospace'><b>/sdcard/Podcasts</b></font></p>
+<h3>Configuring the downloads</h3>
+<p>The PodcastUtilities engine <font face='serif-monospace'><b>PodcastUtilities.Common.DLL</b></font> is configured and controlled by an XML control file. There are two mechanisms for changing the configuration</p>
+<p>
+    &#149; Edit the XML control file directly, usually a a destop computer<br>
+    &#149; Modify the configuration in this app<br>
+</p>
+<p>You can use both mechanisms interchangeably</p>
+<h3>Editing the XML control file directly</h3>
+<p>You can tweak the control file to your liking using the <a href="https://community.chocolatey.org/packages/podcastutilities-core">desktop version</a> in conjunction with the <a href="https://github.com/derekwilson/PodcastUtilities/tree/master/Documents/User">documentation.</a>.</p>
+<p>When you move the XML control file across to your phone (possibly email it to yourself) there are some elements you should take care of</p>
+<p><b>sourceRoot</b> should be set to the root of your cache on the phone, probably <font face='serif-monospace'><b>/storage/emulated/0/Podcasts</b></font></p>
 <p><b>playlistPathSeparator</b> should probably be<font face='serif-monospace'><b>/</b></font></p>
 <p>Do remember that when you load the control file into this app then the app takes a copy of the control file, if you make any further edits to the file you will need to load it again.</p>
-<h3>Usage</h3>
+<p>Generally the usage pattern is to share your existing control file, via email or the file system, edit the XML and then load the control file back in.</p>
+<h3>Configuring within the application</h3>
+<p>The configuration screens are a work-in-progress, also they do not give access to every item in the control file.</p>
+<h3>The Cache Root</h3>
+<p>For a phone its probably easiest to use <font face='serif-monospace'><b>/storage/emulated/0/Podcasts</b></font>.</p>
+<p>If you are using Windows Subsystem for Android and want to use the shared Windows File System then you will need to change your SourceRoot to be something like <font face='serif-monospace'><b>/storage/emulated/0/Windows/Podcasts</b></font></p>
+<h3>Getting Started</h3>
+<p>To add new podcast feeds to the configuration follow these steps</p>
+<p>
+    &#149; Select Configure from the main screen<br>
+    &#149; Set the cache root to suite you, ensure the global values and feed defaults are set how you want them<br>
+    &#149; Select + to add a new feed, give it a name, the name must be unique<br>
+    &#149; Select the new feed and enter a valid <a href="https://en.wikipedia.org/wiki/RSS">RSS feed</a><br>
+    &#149; Override any of the feed defaults for this specific feed<br>
+</p>
+<h3>Downloading episodes</h3>
 <p>Generally the usage pattern is</p>
 <p>
     &#149; Purge Podcasts - to get rid of old media<br>
@@ -30,10 +52,9 @@
     &#149; D - Download from all Feeds<br>
     &#149; G - Generate Playlist<br>
     &#149; S - Settings<br>
-    &#149; C - Load Control File<br>
+    &#149; C - Configure<br>
 </p>
 <p>You can also use the ESCAPE key as the back button.</p>
-<p>If you are using Windows Subsystem for Android and want to use the shared Windows File System then you will need to change your SourceRoot to be something like <font face='serif-monospace'><b>/storage/emulated/0/Windows/Podcasts</b></font></p>
 <h3>Using with the desktop version</h3>
 <p>If you use the desktop version (DownloadPodcasts and SyncPodcasts) to manage the cache on your phone and you want to use this app in addition to that mechanism then it should work fine, there are some considerations</p>
 <p>

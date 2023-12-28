@@ -13,6 +13,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void DownloadEpisodeEvent(long sizeInMB);
         void DownloadEpisodeCompleteEvent();
         void LoadControlFileEvent();
+        void ResetControlFileEvent();
+        void ShareControlFileEvent();
         void LifecycleLaunchEvent(float scaling, string uiMode);
         void LifecycleErrorEvent();
         void LifecycleErrorFatalEvent();
@@ -42,6 +44,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Event_Download_Episode = "Download_Episode";
         private const string Event_Download_Episode_Complete = "Download_Episode_Complete";
         private const string Event_Load_ControlFile = "Load_ControlFile";
+        private const string Event_Reset_ControlFile = "Reset_ControlFile";
+        private const string Event_Share_ControlFile = "Share_ControlFile";
         private const string Event_Lifecycle_Launch = "Lifecycle_Launch";
         private const string Event_Lifecycle_Error = "Lifecycle_Error";
         private const string Event_Lifecycle_ErrorFatal = "Lifecycle_ErrorFatal";
@@ -129,6 +133,16 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public void LoadControlFileEvent()
         {
             Analytics.TrackEvent(Event_Load_ControlFile);
+        }
+
+        public void ResetControlFileEvent()
+        {
+            Analytics.TrackEvent(Event_Reset_ControlFile);
+        }
+
+        public void ShareControlFileEvent()
+        {
+            Analytics.TrackEvent(Event_Share_ControlFile);
         }
 
         public void PurgeDeleteEvent(int numberOfItems)

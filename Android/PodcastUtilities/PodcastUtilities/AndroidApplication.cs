@@ -26,6 +26,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.OS;
+using PodcastUtilities.AndroidLogic.ViewModel.Edit;
+using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 
 namespace PodcastUtilities
 {
@@ -104,6 +106,7 @@ namespace PodcastUtilities
             //container.Register<IAnalyticsEngine, FirebaseAnalyticsEngine>(IocLifecycle.Singleton);
             container.Register<ICrashReporter, AppCenterCrashReporter>(IocLifecycle.Singleton);
             container.Register<IAnalyticsEngine, AppCenterAnalyticsEngine>(IocLifecycle.Singleton);
+            container.Register<IApplicationControlFileProvider, ApplicationControlFileProvider>(IocLifecycle.Singleton);
 
             container.Register<IAndroidEnvironmentInformationProvider, AndroidEnvironmentInformationProvider>(IocLifecycle.Singleton);
             container.Register<IResourceProvider, AndroidResourceProvider>(IocLifecycle.Singleton);
@@ -111,12 +114,13 @@ namespace PodcastUtilities
             container.Register<INetworkHelper, NetworkHelper>(IocLifecycle.Singleton);
             container.Register<IPreferencesProvider, AndroidDefaultSharedPreferencesProvider>(IocLifecycle.Singleton);
             container.Register<IUserSettings, UserSettings>(IocLifecycle.Singleton);
-            container.Register<IApplicationControlFileProvider, ApplicationControlFileProvider>(IocLifecycle.Singleton);
             container.Register<IByteConverter, ByteConverter>(IocLifecycle.Singleton);
             container.Register<IStatusAndProgressMessageStore, StatusAndProgressMessageStore>(IocLifecycle.Singleton);
             container.Register<IDriveVolumeInfoViewFactory, DriveVolumeInfoViewFactory>(IocLifecycle.Singleton);
             container.Register<IApplicationControlFileFactory, ApplicationControlFileFactory>(IocLifecycle.Singleton);
-            
+            container.Register<IValueConverter, ValueConverter>(IocLifecycle.Singleton);
+            container.Register<IValueFormatter, ValueFormatter>(IocLifecycle.Singleton);
+
             // view models
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);
             container.Register<MainViewModel, MainViewModel>();
@@ -126,6 +130,10 @@ namespace PodcastUtilities
             container.Register<DownloadViewModel, DownloadViewModel>();
             container.Register<MessagesViewModel, MessagesViewModel>();
             container.Register<PurgeViewModel, PurgeViewModel>();
+            container.Register<EditConfigViewModel, EditConfigViewModel>();
+            container.Register<FeedDefaultsViewModel, FeedDefaultsViewModel>();
+            container.Register<GlobalValuesViewModel, GlobalValuesViewModel>();
+            container.Register<EditFeedViewModel, EditFeedViewModel>();
 
             var factory = container.Resolve<ViewModelFactory>();
             factory.AddMap(typeof(MainViewModel));
@@ -135,6 +143,10 @@ namespace PodcastUtilities
             factory.AddMap(typeof(DownloadViewModel));
             factory.AddMap(typeof(MessagesViewModel));
             factory.AddMap(typeof(PurgeViewModel));
+            factory.AddMap(typeof(EditConfigViewModel));
+            factory.AddMap(typeof(FeedDefaultsViewModel));
+            factory.AddMap(typeof(GlobalValuesViewModel));
+            factory.AddMap(typeof(EditFeedViewModel));
             return container;
         }
 

@@ -15,14 +15,12 @@
 	<!-- main activity -->
 	<string name="main_activity_title">PodcastUtilities</string>
 
-	<string name="action_load_control">Load Control File</string>
+	<string name="action_edit_config">Configure</string>
 	<string name="action_purge">Purge Podcasts</string>
 	<string name="action_download">Download from all Feeds</string>
 	<string name="action_playlist">Generate Playlist</string>
 	<string name="action_settings">Settings</string>
 
-	<string name="control_file_loaded">Control file loaded</string>
-	<string name="error_reading_control_file">Cannot load control file</string>
 	<string name="error_generating_playlist">Cannot write playlist</string>
 
 	<string name="drive_volume_free_label">Free Space</string>
@@ -56,6 +54,12 @@
 	<string name="feed_sublabel_delete_never">Never delete</string>
 	<string name="feed_sublabel_fmt">{0} {1}, {2}</string>
 
+	<string name="feed_sublabel_fmt2">{0}, Strategy: {1}</string>
+
+	<string name="button_text_main_download">Download from all Feeds</string>
+	<string name="button_text_main_purge">Purge Podcasts</string>
+
+	<!-- formatting -->
 	<string name="feed_naming_style_urlfilename">url</string>
 	<string name="feed_naming_style_urlfilenameandpublishdatetime">yyyy_mm_dd_HHMM_url</string>
 	<string name="feed_naming_style_urlfilenamefeedtitleandpublishdatetime">yyyy_mm_dd_HHMM_title_url</string>
@@ -63,29 +67,159 @@
 	<string name="feed_naming_style_episodetitle">title</string>
 	<string name="feed_naming_style_episodetitleandpublishdatetime">yyyy_mm_dd_HHMM_title</string>
 
+	<string name="naming_style_Url_extra">url is the file name specified in the feed.</string>
+	<string name="naming_style_UrlFileNameFeedTitleAndPublishDateTimeInfolder_extra">Effectively this will group podcasts from the same month into a separate folder.</string>
+
 	<string name="feed_download_stratagy_all">All</string>
 	<string name="feed_download_stratagy_hightide">High Tide</string>
 	<string name="feed_download_stratagy_latest">Latest</string>
+	<string name="xtra_download_strategy_high_tide">When first run on a new feed all the episodes are downloaded, subsequently only new episodes are downloaded. The high tide position is kept in a file called state.xml</string>
+	<string name="xtra_download_strategy_all">All episodes in the feed will be downloaded</string>
+	<string name="xtra_download_strategy_latest">Only the latest episode in a feed is downloaded</string>
 
-	<string name="feed_sublabel_fmt2">{0}, Strategy: {1}</string>
+	<string name="feed_no_feed">No feed</string>
+	<string name="feed_no_overrides">Default configuration</string>
+	<string name="feed_overrides">Overrides</string>
+	<string name="feed_override_strategy">Strategy</string>
+	<string name="feed_override_naming_style">Naming</string>
+	<string name="feed_override_max_days_old">Days old</string>
+	<string name="feed_override_delete_days_old">Delete days old</string>
+	<string name="feed_override_max_items">Max items</string>
+	<string name="feed_uses_default_prefix">Default Value:</string>
 
-	<string name="button_text_main_download">Download from all Feeds</string>
-	<string name="button_text_main_purge">Purge Podcasts</string>
+	<!-- edit config activity -->
+	<string name="edit_config_activity_title">Configure</string>
+	<string name="action_edit_load_control">Load Control File</string>
+	<string name="action_edit_share_control">Share Control File</string>
+	<string name="action_edit_reset_control">Reset Configuration</string>
+
+	<string name="edit_reset">Control file reset</string>
+	<string name="edit_reset_prompt">OK to reset your configuration, this will reset your cache root and remove all feeds. No files will be deleted.</string>
+	<string name="edit_reset_ok">Reset All</string>
+	<string name="edit_reset_cancel">Cancel</string>
+
+	<string name="control_file_loaded">Control file loaded</string>
+	<string name="error_reading_control_file">Cannot load control file</string>
+
+	<string name="share_no_controlfile">You need to load a control file before you can share it.</string>
+	<string name="share_chooser_title">Share control file</string>
+	<string name="share_all_subject">PodcastUtilities Controlfile</string>
+	<string name="share_all_body">This is my control file</string>
+
+	<string name="row_title_cache_root">Cache Root Folder</string>
+	<string name="cache_root_label_fmt">The folder to hold podcast downloads.\n{0}</string>
+	<string name="cache_root_sheet_title">Cache Root Folder Options</string>
+	<string name="cache_root_option_select">Select a custom folder</string>
+	<string name="cache_root_option_phone">/storage/emulated/0/Podcasts</string>
+	<string name="cache_root_option_wsa">/storage/emulated/0/Windows/Podcasts</string>
+	<string name="cache_root_option_custom">Edit custom folder</string>
+
+	<string name="row_title_global_values">Global values</string>
+	<string name="row_sub_label_global_values">Configuration values that control the whole application.</string>
+
+	<string name="row_title_global_defaults">Default values for all feeds</string>
+	<string name="row_sub_label_global_defaults">Values that are applied to all feeds, which can be overridden by an individual feed.</string>
+
+	<string name="config_no_feed">There is no feed.</string>
+	<string name="default_podcast_folder">Podcast{0}</string>
+	<string name="button_text_config_add">Add podcast configuration</string>
+
+	<string name="prompt_add_podcast_title">Enter a name so you can find the podcast, its also used as the folder to store episodes</string>
+	<string name="prompt_add_podcast_prompt">Folder name</string>
+	<string name="prompt_add_podcast_ok">Add</string>
+
+	<string name="prompt_add_feed_title">You must enter a podcast RSS feed URL before you can configure the podcast.</string>
+	<string name="prompt_add_feed_prompt">Feed URL</string>
+
+	<string name="prompt_delete_podcast_title_fmt">Remove {0}</string>
+	<string name="prompt_delete_podcast_prompt">This will remove the configuration.\nNo files will be deleted.</string>
+	<string name="prompt_delete_podcast_ok">Remove</string>
+
+	<string name="prompt_cache_root_title">The folder to hold podcast downloads.</string>
+	<string name="prompt_cache_root_prompt">Cache root folder</string>
+
+	<!-- global values activity -->
+	<string name="global_values_activity_title">Global Values</string>
+
+	<string name="row_title_download_free_space">Free space to leave on device</string>
+	<string name="download_free_space_label_fmt">{0} MB of space will be left on the device that contains the cache root folder.</string>
+	<string name="prompt_freespace_download_title">Space to leave on device when downloading</string>
+	<string name="prompt_freespace_download_named_prompt">Unrestriced, use all storage if needed</string>
+	<string name="prompt_freespace_download_custom_prompt">MB to leave</string>
+
+	<string name="row_title_playlist_file">Playlist filename</string>
+	<string name="prompt_playlist_title">Filename to use when generating a playlist</string>
+	<string name="prompt_playlist_prompt">Playlist filename</string>
+
+	<!-- feed defaults activity -->
+	<string name="feed_defaults_activity_title">Feed Defaults</string>
+	
+	<string name="row_title_download_strategy">Download strategy</string>
+	<string name="download_strategy_sheet_title">Download Strategy Options</string>
+
+	<string name="row_title_naming_style">Naming style</string>
+	<string name="naming_style_sheet_title">Naming Style Options</string>
+
+	<string name="row_title_max_days_old">Maximum days old</string>
+	<string name="max_days_old_label_fmt">Only podcasts published in the last {0} days will be considered for download.</string>
+	<string name="prompt_max_days_old_title">Maximum days ago to consider</string>
+	<string name="prompt_max_days_old_named_prompt">Unrestriced, all episodes considered</string>
+	<string name="prompt_max_days_old_custom_prompt">days old to allow</string>
+
+	<string name="row_title_delete_days_old">Delete old episodes</string>
+	<string name="delete_days_old_label_fmt">Podcast episodes older than {0} days will be purged.</string>
+	<string name="prompt_delete_days_old_title">Delete old episodes</string>
+	<string name="prompt_delete_days_old_named_prompt">Never delete</string>
+	<string name="prompt_delete_days_old_custom_prompt">days old delete</string>
+
+	<string name="row_title_max_download_items">Maximum episodes in a feed to keep in the cache</string>
+	<string name="max_download_items_label_fmt">{0} episodes of a podcast will be kept in the cache, others will be ignored until there is room.</string>
+	<string name="prompt_max_download_items_title">Maximum number of episodes</string>
+	<string name="prompt_max_download_items_named_prompt">Unrestriced, no limit to the number of episodes in the cache</string>
+	<string name="prompt_max_download_items_custom_prompt">number of episodes</string>
+
+	<!-- edit feed activity -->
+	<string name="edit_feed_activity_title">Feed</string>
+	<string name="edit_feed_cannot_find_podcast">Cannot find podcast</string>
+
+	<string name="row_title_folder">Folder for episodes</string>
+	<string name="prompt_folder_title">Folder to store the episodes</string>
+	<string name="prompt_folder_prompt">Folder</string>
+
+	<string name="bad_folder_empty">The folder should not be empty</string>
+	<string name="bad_folder_duplicate">This folder name is already used by another feed</string>
+
+	<string name="row_title_url">Podcast feed url</string>
+	<string name="prompt_url_title">RSS Feed Url</string>
+	<string name="prompt_url_prompt">Feed url</string>
+
+	<string name="bad_url">Inavlid Url</string>
+
+	<!-- dialogs -->
+	<string name="content_desc_clear">Clear Text</string>
+	<string name="action_ok">OK</string>
+	<string name="action_cancel">Cancel</string>
 
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
 	<string name="no_downloads_text">No podcasts to download</string>
 	<string name="no_network_text">You do not have any internet connectivity</string>
 	<string name="finding_podcasts_progress">Finding podcasts...</string>
-	<string name="finding_podcasts_title2">Finding podcasts in</string>
 	<plurals name="finding_podcasts_title1">
-		<item quantity="one">%d Podcast Found</item>
-		<item quantity="other">%d Podcasts Found</item>
+		<item quantity="one">%d Episode Found</item>
+		<item quantity="other">%d Episodes Found</item>
 	</plurals>
+	<string name="finding_podcasts_title2">Finding podcasts in</string>
+	<string name="finding_podcasts_all_title1">Looking in all feeds</string>
+	<plurals name="finding_podcasts_all_title2">
+		<item quantity="one">Found %d Episode so far</item>
+		<item quantity="other">Found %d Episodes so far</item>
+	</plurals>
+	<string name="finding_podcasts_all_title3">Now checking</string>
 
 	<plurals name="download_activity_title_after_load">
-		<item quantity="one">%d Podcast Selected</item>
-		<item quantity="other">%d Podcasts Selected</item>
+		<item quantity="one">%d Episode Selected</item>
+		<item quantity="other">%d Episodes Selected</item>
 	</plurals>
 
 	<string name="download_status_complete">Complete</string>
@@ -139,11 +273,6 @@
     -->
 	<string name="settings_default_download_network">WIFI</string>
 
-	<string name="settings_config_category">Configuration</string>
-	<string name="settings_config_share_key">appConfigShare</string>
-	<string name="settings_config_share_title">Share</string>
-	<string name="settings_config_share_description">Share your control file, for example share via email to edit the XML off-device.</string>
-	
 	<string name="settings_about_category">About</string>
 
 	<string name="settings_privacy_key">appPrivacy</string>
@@ -158,11 +287,6 @@
 
 	<string name="settings_version_key">appVersion</string>
 	<string name="settings_version_title">Version</string>
-
-	<string name="settings_share_no_controlfile">You need to load a control file before you can share it.</string>
-	<string name="settings_share_chooser_title">Share control file</string>
-	<string name="settings_share_all_subject">PodcastUtilities Controlfile</string>
-	<string name="settings_share_all_body">This is my control file</string>
 
 	<!-- open source licenses -->
 	<string name="osl_title">Open-source licenses</string>

@@ -35,27 +35,37 @@ namespace PodcastUtilities.AndroidLogic.Adapters
             vh.Container.Click -= Container_Click;
 
             vh.Label.Text = Items[position].PodcastFeed.Folder;
-            //vh.SubLabel.Text = Items[position].PodcastFeed.Feed.Address.ToString();
-            var fmt = Context.GetString(Resource.String.feed_sublabel_fmt);
-            vh.SubLabel.Text = string.Format(fmt,
-                GetSublabelPart(
-                    Items[position].PodcastFeed.Feed.MaximumDaysOld.Value,
-                    Resource.Plurals.feed_sublabel_download,
-                    Resource.String.feed_sublabel_download_all),
-                GetSublabelPart(
-                    Items[position].PodcastFeed.Feed.MaximumNumberOfDownloadedItems.Value,
-                    Resource.Plurals.feed_sublabel_max,
-                    Resource.String.feed_sublabel_no_max),
-                GetSublabelPart(
-                    Items[position].PodcastFeed.Feed.DeleteDownloadsDaysOld.Value,
-                    Resource.Plurals.feed_sublabel_delete,
-                    Resource.String.feed_sublabel_delete_never)
-            );
-            var fmt2 = Context.GetString(Resource.String.feed_sublabel_fmt2);
-            vh.SubLabel2.Text = string.Format(fmt2,
-                Context.GetString(GetNamingStyleTextId(Items[position].PodcastFeed.Feed.NamingStyle.Value)),
-                Context.GetString(GetDownloadStratagyTextId(Items[position].PodcastFeed.Feed.DownloadStrategy.Value))
-            );
+            if (Items[position].PodcastFeed.Feed != null)
+            {
+                // feeds are optional
+                vh.SubLabel.Visibility = ViewStates.Visible;
+                vh.SubLabel2.Visibility = ViewStates.Visible;
+                var fmt = Context.GetString(Resource.String.feed_sublabel_fmt);
+                vh.SubLabel.Text = string.Format(fmt,
+                    GetSublabelPart(
+                        Items[position].PodcastFeed.Feed.MaximumDaysOld.Value,
+                        Resource.Plurals.feed_sublabel_download,
+                        Resource.String.feed_sublabel_download_all),
+                    GetSublabelPart(
+                        Items[position].PodcastFeed.Feed.MaximumNumberOfDownloadedItems.Value,
+                        Resource.Plurals.feed_sublabel_max,
+                        Resource.String.feed_sublabel_no_max),
+                    GetSublabelPart(
+                        Items[position].PodcastFeed.Feed.DeleteDownloadsDaysOld.Value,
+                        Resource.Plurals.feed_sublabel_delete,
+                        Resource.String.feed_sublabel_delete_never)
+                );
+                var fmt2 = Context.GetString(Resource.String.feed_sublabel_fmt2);
+                vh.SubLabel2.Text = string.Format(fmt2,
+                    ViewModel.GetNamingStyleText(Items[position].PodcastFeed.Feed.NamingStyle.Value),
+                    ViewModel.GetDownloadStratagyText(Items[position].PodcastFeed.Feed.DownloadStrategy.Value)
+                );
+            } else
+            {
+                // nothing to display as there is no feed
+                vh.SubLabel.Visibility = ViewStates.Gone;
+                vh.SubLabel2.Visibility = ViewStates.Gone;
+            }
 
             vh.Container.Tag = position.ToString();
             vh.Container.Click += Container_Click;
@@ -75,41 +85,6 @@ namespace PodcastUtilities.AndroidLogic.Adapters
             }
             return Context.Resources.GetQuantityString(formattedId, value, value);
         }
-
-        private int GetNamingStyleTextId(Common.Configuration.PodcastEpisodeNamingStyle namingStyle)
-        {
-            switch (namingStyle)
-            {
-                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileName:
-                    return Resource.String.feed_naming_style_urlfilename;
-                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileNameAndPublishDateTime:
-                    return Resource.String.feed_naming_style_urlfilenameandpublishdatetime;
-                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTime:
-                    return Resource.String.feed_naming_style_urlfilenamefeedtitleandpublishdatetime;
-                case Common.Configuration.PodcastEpisodeNamingStyle.UrlFileNameFeedTitleAndPublishDateTimeInfolder:
-                    return Resource.String.feed_naming_style_urlfilenamefeedtitleandpublishdatetimeinfolder;
-                case Common.Configuration.PodcastEpisodeNamingStyle.EpisodeTitle:
-                    return Resource.String.feed_naming_style_episodetitle;
-                case Common.Configuration.PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
-                    return Resource.String.feed_naming_style_episodetitleandpublishdatetime;
-            }
-            return Resource.String.unknown;
-        }
-
-        private int GetDownloadStratagyTextId(PodcastEpisodeDownloadStrategy stratagy)
-        {
-            switch (stratagy)
-            {
-                case PodcastEpisodeDownloadStrategy.All:
-                    return Resource.String.feed_download_stratagy_all;
-                case PodcastEpisodeDownloadStrategy.HighTide:
-                    return Resource.String.feed_download_stratagy_hightide;
-                case PodcastEpisodeDownloadStrategy.Latest:
-                    return Resource.String.feed_download_stratagy_latest;
-            }
-            return Resource.String.unknown;
-        }
-
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
