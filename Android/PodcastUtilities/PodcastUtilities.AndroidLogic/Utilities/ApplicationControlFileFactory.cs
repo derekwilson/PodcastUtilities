@@ -54,6 +54,13 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             file.SetSourceRoot(ResourceProvider.GetString(Resource.String.cache_root_option_phone));
             // the file system uses unix style seperators
             file.SetPlaylistPathSeparator("/");
+            // set a reasonable default for playlists
+            file.SetPlaylistFormat(Common.Playlists.PlaylistFormat.M3U);
+            file.SetPlaylistFileName("podcasts.m3u");
+            // feed defaults that work for me
+            file.SetDefaultDownloadStrategy(PodcastEpisodeDownloadStrategy.HighTide);
+            file.SetDefaultNamingStyle(PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime);
+            file.SetDefaultMaximumDaysOld(31);
         }
     }
 }

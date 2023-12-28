@@ -72,7 +72,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
 
-            if (controlFile.GetFreeSpaceToLeaveOnDownload() == int.MaxValue)
+            if (controlFile.GetFreeSpaceToLeaveOnDownload() == 0)
             {
                 Observables.DownloadFreeSpace?.Invoke(this, ResourceProvider.GetString(Resource.String.prompt_freespace_download_named_prompt));
             }
@@ -134,10 +134,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 NamedPrompt = ResourceProvider.GetString(Resource.String.prompt_freespace_download_named_prompt),
                 CustomPrompt = ResourceProvider.GetString(Resource.String.prompt_freespace_download_custom_prompt),
                 CurrentValue = ValueConverter.ConvertToString(controlFile.GetFreeSpaceToLeaveOnDownload()),
-                NamedValue = int.MaxValue.ToString(),
+                NamedValue = "0",
                 IsNumeric = true,
             };
-            if (controlFile.GetFreeSpaceToLeaveOnDownload() == int.MaxValue)
+            if (controlFile.GetFreeSpaceToLeaveOnDownload() == 0)
             {
                 promptParams.ValueType = DefaultableItemValuePromptDialogFragment.ItemValueType.Named;
             } 
@@ -159,7 +159,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                     CrashReporter.LogNonFatalException(new ConfigurationException("Defaulted value type is not allowed here"));
                     break;
                 case DefaultableItemValuePromptDialogFragment.ItemValueType.Named:
-                    ControlFile.SetFreeSpaceToLeaveOnDownload(int.MaxValue);
+                    ControlFile.SetFreeSpaceToLeaveOnDownload(0);
                     break;
                 case DefaultableItemValuePromptDialogFragment.ItemValueType.Custom:
                     ControlFile.SetFreeSpaceToLeaveOnDownload(ValueConverter.ConvertStringToLong(value));
