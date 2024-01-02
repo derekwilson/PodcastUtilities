@@ -1,9 +1,11 @@
 ﻿using Android.App;
+using Android.Text;
 using FakeItEasy;
 using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Help;
+using System;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Help
 {
@@ -19,9 +21,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Help
 
 
         // mocks
-        protected Application MockApplication;
+        protected Android.App.Application MockApplication;
         protected ILogger MockLogger;
         protected IFileSystemHelper MockFileSystemHelper;
+        protected Html.IImageGetter MockImageGetter;
 
         protected void ResetObservedResults()
         {
@@ -41,15 +44,17 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Help
         {
             ResetObservedResults();
 
-            MockApplication = A.Fake<Application>();
+            MockApplication = A.Fake<Android.App.Application>();
             A.CallTo(() => MockApplication.PackageName).Returns("com.andrewandderek.podcastutilities");
             MockLogger = A.Fake<ILogger>();
             MockFileSystemHelper = A.Fake<IFileSystemHelper>();
+            MockImageGetter = A.Fake<Html.IImageGetter>();
 
             ViewModel = new HelpViewModel(
                 MockApplication,
                 MockLogger,
-                MockFileSystemHelper
+                MockFileSystemHelper,
+                MockImageGetter
             );
             ViewModel.Observables.SetText += SetText;
         }
@@ -60,8 +65,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Help
             ViewModel.Observables.SetText -= SetText;
         }
 
-        private void SetText(object sender, string text)
+        private void SetText(object sender, Tuple<string, Html.IImageGetter> parameters)
         {
+            (string text, Html.IImageGetter getter) = parameters;
             ObservedResults.LastSetText = text;
         }
     }

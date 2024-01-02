@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Text;
 using Android.Text.Method;
 using Android.Views;
 using Android.Widget;
@@ -83,12 +84,13 @@ namespace PodcastUtilities.UI.Help
             ViewModel.Observables.SetText -= SetText;
         }
 
-        private void SetText(object sender, string textBlock)
+        private void SetText(object sender, Tuple<string, Html.IImageGetter> parameters)
         {
+            (string textBlock, Html.IImageGetter imageGetter) = parameters;
             AndroidApplication.Logger.Debug(() => $"HelpActivity:SetText");
             RunOnUiThread(() =>
             {
-                HelpText.TextFormatted = HtmlCompat.FromHtml(textBlock, HtmlCompat.FromHtmlModeLegacy);
+                HelpText.TextFormatted = HtmlCompat.FromHtml(textBlock, HtmlCompat.FromHtmlModeLegacy, imageGetter, null);
             });
         }
     }

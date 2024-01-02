@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 using Android.OS;
 using PodcastUtilities.AndroidLogic.ViewModel.Edit;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
+using Android.Text;
 
 namespace PodcastUtilities
 {
@@ -97,6 +98,7 @@ namespace PodcastUtilities
             // android things
             container.Register<Context>(ApplicationContext);
             container.Register<Application>(this);
+            container.Register<Html.IImageGetter, ImageGetter>(IocLifecycle.Singleton);
             // helpers
             container.Register<IAndroidApplication>(this);
             container.Register<ILogger>(Logger);

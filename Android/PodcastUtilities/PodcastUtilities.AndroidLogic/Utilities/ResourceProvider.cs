@@ -1,4 +1,5 @@
 ﻿using Android.Content;
+using Android.Graphics.Drawables;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
@@ -6,6 +7,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
     {
         string GetString(int id);
         string GetQuantityString(int id, int quantity);
+        Drawable GetDrawable(int id);
     };
 
     public class AndroidResourceProvider : IResourceProvider
@@ -15,6 +17,11 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public AndroidResourceProvider(Context context)
         {
             ResourceContext = context;
+        }
+
+        public Drawable GetDrawable(int id)
+        {
+            return ResourceContext.GetDrawable(id);
         }
 
         public string GetQuantityString(int id, int quantity)

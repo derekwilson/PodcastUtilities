@@ -29,7 +29,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ViewModel.Initialise();
 
             // assert
-            A.CallTo(() => MockLogger.Debug(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(2, Times.Exactly);
+            A.CallTo(() => MockLogger.Debug(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(3, Times.Exactly);
         }
 
         [Test]
