@@ -87,6 +87,10 @@
 	<string name="feed_override_max_items">Max items</string>
 	<string name="feed_uses_default_prefix">Default Value:</string>
 
+	<string name="xtra_playlist_format_asx">Advanced streaming redirector, a good choice for windows based devices</string>
+	<string name="xtra_playlist_format_m3u">Mp3 Url, a good choice for Android based devices</string>
+	<string name="xtra_playlist_format_wpl">Windows playlist, a good choice for Windows based devices</string>
+
 	<!-- edit config activity -->
 	<string name="edit_config_activity_title">Configure</string>
 	<string name="action_edit_load_control">Load Control File</string>
@@ -150,6 +154,14 @@
 	<string name="row_title_playlist_file">Playlist filename</string>
 	<string name="prompt_playlist_title">Filename to use when generating a playlist</string>
 	<string name="prompt_playlist_prompt">Playlist filename</string>
+
+	<string name="row_title_playlist_format">Playlist format</string>
+	<string name="playlist_format_sheet_title">Playlist format</string>
+
+	<string name="row_title_playlist_seperator">Playlist file seperator</string>
+	<string name="prompt_playlist_seperator_title">Seperator to use between the folder and the filename in a generated playlist</string>
+	<string name="prompt_playlist_seperator_prompt">Playlist filename</string>
+	<string name="prompt_playlist_seperator_label_fmt">{0} - use the correct char for the target OS, \\ for Windows and / for Android or Linux</string>
 
 	<!-- feed defaults activity -->
 	<string name="feed_defaults_activity_title">Feed Defaults</string>

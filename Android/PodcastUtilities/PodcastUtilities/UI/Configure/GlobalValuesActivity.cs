@@ -11,15 +11,18 @@ using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using System;
+using System.Collections.Generic;
 using static PodcastUtilities.AndroidLogic.CustomViews.DefaultableItemValuePromptDialogFragment;
 
 namespace PodcastUtilities.UI.Configure
 {
     [Activity(Label = "@string/global_values_activity_title", ParentActivity = typeof(EditConfigActivity))]
-    internal class GlobalValuesActivity : AppCompatActivity
+    internal class GlobalValuesActivity : AppCompatActivity, SelectableStringListBottomSheetFragment.IListener
     {
+        private const string BOTTOMSHEET_PLAYLIST_FORMAT_TAG = "playlist_format_tag";
         private const string FREESPACE_PROMPT_TAG = "freespace_prompt_tag";
         private const string PLAYLIST_FILENAME_PROMPT_TAG = "playlist_filename_prompt_tag";
+        private const string PLAYLIST_SEPERATOR_PROMPT_TAG = "playlist_seperator_prompt_tag";
 
         private AndroidApplication AndroidApplication;
         private GlobalValuesViewModel ViewModel;
@@ -29,8 +32,13 @@ namespace PodcastUtilities.UI.Configure
         private TextView DownloadFreeSpaceRowSubLabel = null;
         private LinearLayoutCompat PlaylistFileRowContainer = null;
         private TextView PlaylistFileRowSubLabel = null;
+        private LinearLayoutCompat PlaylistSeperatorRowContainer = null;
+        private TextView PlaylistSeperatorRowSubLabel = null;
+        private LinearLayoutCompat PlaylistFormatRowContainer = null;
+        private TextView PlaylistFormatRowSubLabel = null;
 
         private ValuePromptDialogFragment PlaylistFilenamePromptDialogFragment;
+        private ValuePromptDialogFragment PlaylistSeperatorPromptDialogFragment;
         private DefaultableItemValuePromptDialogFragment FreespacePromptDialogFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -47,6 +55,10 @@ namespace PodcastUtilities.UI.Configure
             DownloadFreeSpaceRowSubLabel = FindViewById<TextView>(Resource.Id.download_free_space_row_sub_label);
             PlaylistFileRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_file_row_label_container);
             PlaylistFileRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_file_row_sub_label);
+            PlaylistSeperatorRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_seperator_row_label_container);
+            PlaylistSeperatorRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_seperator_row_sub_label);
+            PlaylistFormatRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_format_row_label_container);
+            PlaylistFormatRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_format_row_sub_label);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(GlobalValuesViewModel))) as GlobalValuesViewModel;
@@ -57,9 +69,13 @@ namespace PodcastUtilities.UI.Configure
 
             DownloadFreeSpaceRowContainer.Click += (sender, e) => DoDownloadFreeSpaceOptions();
             PlaylistFileRowContainer.Click += (sender, e) => DoPlaylistFileOptions();
+            PlaylistSeperatorRowContainer.Click += (sender, e) => DoPlaylistSeperatorOptions();
+            PlaylistFormatRowContainer.Click += (sender, e) => DoPlaylistFormatOptions();
 
             PlaylistFilenamePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(PLAYLIST_FILENAME_PROMPT_TAG) as ValuePromptDialogFragment;
             SetupValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
+            PlaylistSeperatorPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(PLAYLIST_SEPERATOR_PROMPT_TAG) as ValuePromptDialogFragment;
+            SetupValueFragmentObservers(PlaylistSeperatorPromptDialogFragment);
             FreespacePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(FREESPACE_PROMPT_TAG) as DefaultableItemValuePromptDialogFragment;
             SetupDefaultableItemValueFragmentObservers(FreespacePromptDialogFragment);
 
@@ -72,6 +88,7 @@ namespace PodcastUtilities.UI.Configure
             base.OnDestroy();
             KillViewModelObservers();
             KillValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
+            KillValueFragmentObservers(PlaylistSeperatorPromptDialogFragment);
             KillDefaultableItemValueFragmentObservers(FreespacePromptDialogFragment);
         }
 
@@ -92,6 +109,33 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.PlaylistFileOptions();
         }
 
+        private void DoPlaylistSeperatorOptions()
+        {
+            ViewModel.PlaylistSeperatorOptions();
+        }
+
+        private void DoPlaylistFormatOptions()
+        {
+            AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:DoPlaylistFormatOptions");
+            List<SelectableString> options = ViewModel.GetPlaylistFormatOptions();
+            var sheet = SelectableStringListBottomSheetFragment.NewInstance(
+                true,
+                GetString(Resource.String.playlist_format_sheet_title),
+                options);
+            sheet.Show(SupportFragmentManager, BOTTOMSHEET_PLAYLIST_FORMAT_TAG);
+        }
+
+        public void BottomsheetItemSelected(string tag, int position, SelectableString item)
+        {
+            AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:BottomsheetItemSelected {tag}, {position}");
+            switch (tag)
+            {
+                case BOTTOMSHEET_PLAYLIST_FORMAT_TAG:
+                    ViewModel.DoPlaylistFormatOption(item);
+                    break;
+            }
+        }
+
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.DisplayMessage += DisplayMessage;
@@ -99,6 +143,9 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.DownloadFreeSpace += DownloadFreeSpace;
             ViewModel.Observables.PromptForPlaylistFile += PromptForPlaylistFile;
             ViewModel.Observables.PromptForDownloadFreespace += PromptForDownloadFreespace;
+            ViewModel.Observables.PlaylistFormat += PlaylistFormat;
+            ViewModel.Observables.PlaylistSeperator += PlaylistSeperator;
+            ViewModel.Observables.PromptForPlaylistSeperator += PromptForPlaylistSeperator;
         }
 
         private void KillViewModelObservers()
@@ -107,7 +154,10 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PlaylistFile -= PlaylistFile;
             ViewModel.Observables.DownloadFreeSpace -= DownloadFreeSpace;
             ViewModel.Observables.PromptForPlaylistFile -= PromptForPlaylistFile;
-            ViewModel.Observables.PromptForDownloadFreespace += PromptForDownloadFreespace;
+            ViewModel.Observables.PromptForDownloadFreespace -= PromptForDownloadFreespace;
+            ViewModel.Observables.PlaylistFormat -= PlaylistFormat;
+            ViewModel.Observables.PlaylistSeperator -= PlaylistSeperator;
+            ViewModel.Observables.PromptForPlaylistSeperator -= PromptForPlaylistSeperator;
         }
 
         private void DownloadFreeSpace(object sender, string str)
@@ -126,6 +176,22 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
+        private void PlaylistFormat(object sender, string str)
+        {
+            RunOnUiThread(() =>
+            {
+                PlaylistFormatRowSubLabel.Text = str;
+            });
+        }
+
+        private void PlaylistSeperator(object sender, string str)
+        {
+            RunOnUiThread(() =>
+            {
+                PlaylistSeperatorRowSubLabel.Text = str;
+            });
+        }
+
         private void PromptForPlaylistFile(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
@@ -133,6 +199,16 @@ namespace PodcastUtilities.UI.Configure
                 PlaylistFilenamePromptDialogFragment = ValuePromptDialogFragment.NewInstance(parameters);
                 SetupValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
                 PlaylistFilenamePromptDialogFragment.Show(SupportFragmentManager, PLAYLIST_FILENAME_PROMPT_TAG);
+            });
+        }
+
+        private void PromptForPlaylistSeperator(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                PlaylistSeperatorPromptDialogFragment = ValuePromptDialogFragment.NewInstance(parameters);
+                SetupValueFragmentObservers(PlaylistSeperatorPromptDialogFragment);
+                PlaylistSeperatorPromptDialogFragment.Show(SupportFragmentManager, PLAYLIST_SEPERATOR_PROMPT_TAG);
             });
         }
 
@@ -185,6 +261,10 @@ namespace PodcastUtilities.UI.Configure
                     KillValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
                     ViewModel.SetPlaylistFilename(value);
                     break;
+                case PLAYLIST_SEPERATOR_PROMPT_TAG:
+                    KillValueFragmentObservers(PlaylistSeperatorPromptDialogFragment);
+                    ViewModel.SetPlaylistSeperator(value);
+                    break;
             }
         }
 
@@ -196,6 +276,9 @@ namespace PodcastUtilities.UI.Configure
             {
                 case PLAYLIST_FILENAME_PROMPT_TAG:
                     KillValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
+                    break;
+                case PLAYLIST_SEPERATOR_PROMPT_TAG:
+                    KillValueFragmentObservers(PlaylistSeperatorPromptDialogFragment);
                     break;
             }
         }

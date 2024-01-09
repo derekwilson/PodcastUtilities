@@ -5,7 +5,10 @@ using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Exceptions;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Playlists;
 using System;
+using System.Collections.Generic;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 {
@@ -16,8 +19,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler<string> DisplayMessage;
             public EventHandler<string> DownloadFreeSpace;
             public EventHandler<string> PlaylistFile;
+            public EventHandler<string> PlaylistFormat;
+            public EventHandler<string> PlaylistSeperator;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForPlaylistFile;
             public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForDownloadFreespace;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForPlaylistSeperator;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -30,6 +36,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         private IFileSystemHelper FileSystemHelper;
         private IApplicationControlFileFactory ApplicationControlFileFactory;
         private IValueConverter ValueConverter;
+        private IValueFormatter ValueFormatter;
 
         public GlobalValuesViewModel(
             Application app,
@@ -40,8 +47,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             IAnalyticsEngine analyticsEngine,
             IFileSystemHelper fileSystemHelper,
             IApplicationControlFileFactory applicationControlFileFactory,
-            IValueConverter valueConverter
-            ) : base(app)
+            IValueConverter valueConverter,
+            IValueFormatter valueFormatter) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"GlobalValuesViewModel:ctor");
@@ -54,6 +61,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             FileSystemHelper = fileSystemHelper;
             ApplicationControlFileFactory = applicationControlFileFactory;
             ValueConverter = valueConverter;
+            ValueFormatter = valueFormatter;
         }
 
         private void ConfigurationUpdated(object sender, EventArgs e)
@@ -81,7 +89,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 var freeSpaceSublabel = string.Format(ResourceProvider.GetString(Resource.String.download_free_space_label_fmt), controlFile.GetFreeSpaceToLeaveOnDownload());
                 Observables.DownloadFreeSpace?.Invoke(this, freeSpaceSublabel);
             }
+
             Observables.PlaylistFile?.Invoke(this, controlFile.GetPlaylistFileName());
+            Observables.PlaylistFormat?.Invoke(this, ValueFormatter.GetPlaylistFormatTextLong(controlFile.GetPlaylistFormat()));
+
+            var seperatorSublabel = string.Format(ResourceProvider.GetString(Resource.String.prompt_playlist_seperator_label_fmt), controlFile.GetPlaylistPathSeparator());
+            Observables.PlaylistSeperator?.Invoke(this, seperatorSublabel);
         }
 
         [Lifecycle.Event.OnCreate]
@@ -168,6 +181,48 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ApplicationControlFileProvider.SaveCurrentControlFile();
         }
 
+        public List<SelectableString> GetPlaylistFormatOptions()
+        {
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            List<SelectableString> options = new List<SelectableString>()
+            {
+                SelectableString.GenerateOption(PlaylistFormat.ASX, controlFile.GetPlaylistFormat()),
+                SelectableString.GenerateOption(PlaylistFormat.M3U, controlFile.GetPlaylistFormat()),
+                SelectableString.GenerateOption(PlaylistFormat.WPL, controlFile.GetPlaylistFormat()),
+            };
+            return options;
+        }
+
+        public void DoPlaylistFormatOption(SelectableString item)
+        {
+            Logger.Debug(() => $"GlobalValuesViewModel:DoPlaylistFormatOption = {item.Id}, {item.Name}");
+            var format = (PlaylistFormat)item.Id;
+            var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            ControlFile.SetPlaylistFormat(format);
+            ApplicationControlFileProvider.SaveCurrentControlFile();
+        }
+
+        public void PlaylistSeperatorOptions()
+        {
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
+            {
+                Title = ResourceProvider.GetString(Resource.String.prompt_playlist_seperator_title),
+                Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                Prompt = ResourceProvider.GetString(Resource.String.prompt_playlist_seperator_prompt),
+                Value = controlFile.GetPlaylistPathSeparator(),
+            };
+            Observables.PromptForPlaylistSeperator?.Invoke(this, promptParams);
+        }
+
+        public void SetPlaylistSeperator(string value)
+        {
+            Logger.Debug(() => $"GlobalValuesViewModel:SetPlaylistSeperator = {value}");
+            var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            ControlFile.SetPlaylistPathSeparator(value);
+            ApplicationControlFileProvider.SaveCurrentControlFile();
+        }
     }
 
 }

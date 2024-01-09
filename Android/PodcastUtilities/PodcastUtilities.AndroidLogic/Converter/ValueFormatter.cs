@@ -1,6 +1,7 @@
 ﻿using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Playlists;
 using System.Collections.Generic;
 
 namespace PodcastUtilities.AndroidLogic.Converter
@@ -16,6 +17,7 @@ namespace PodcastUtilities.AndroidLogic.Converter
         string GetFeedOverrideSummary(IPodcastInfo podcastInfo);
         string GetDefaultableNamingStyleTextLong(IDefaultableItem<PodcastEpisodeNamingStyle> namingStyle);
         string GetDefaultableDownloadStratagyTextLong(IDefaultableItem<PodcastEpisodeDownloadStrategy> downloadStrategy);
+        string GetPlaylistFormatTextLong(PlaylistFormat playlistFormat);
     }
 
     public class ValueFormatter : IValueFormatter
@@ -105,7 +107,6 @@ namespace PodcastUtilities.AndroidLogic.Converter
 
         public string GetDownloadStratagyTextLong(PodcastEpisodeDownloadStrategy strategy)
         {
-            var fred = GetDownloadStrategyAdditionalText(strategy);
             return $"{GetDownloadStratagyText(strategy)}{GetDownloadStrategyAdditionalText(strategy)}";
         }
 
@@ -200,6 +201,25 @@ namespace PodcastUtilities.AndroidLogic.Converter
         {
             var currentValueStr = GetDownloadStratagyTextLong(downloadStrategy.Value);
             return AddDefaultPrefix(downloadStrategy.IsSet, currentValueStr);
+        }
+
+        private string GetPlaylistFormatAdditionalText(PlaylistFormat playlistFormat)
+        {
+            switch (playlistFormat)
+            {
+                case PlaylistFormat.ASX:
+                    return $"{SEPERATOR}{ResourceProvider.GetString(Resource.String.xtra_playlist_format_asx)}";
+                case PlaylistFormat.M3U:
+                    return $"{SEPERATOR}{ResourceProvider.GetString(Resource.String.xtra_playlist_format_m3u)}";
+                case PlaylistFormat.WPL:
+                    return $"{SEPERATOR}{ResourceProvider.GetString(Resource.String.xtra_playlist_format_wpl)}";
+            }
+            return string.Empty;
+        }
+
+        public string GetPlaylistFormatTextLong(PlaylistFormat playlistFormat)
+        {
+            return $"{playlistFormat}{GetPlaylistFormatAdditionalText(playlistFormat)}";
         }
     }
 }
