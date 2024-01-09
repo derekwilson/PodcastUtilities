@@ -110,7 +110,17 @@
 		<item name="android:background">@color/colour_blue</item>
 	</style>
 
-	<style name="fabIconButton">
+	<style name="FabLayout">
+		<item name="android:layout_marginTop">16dp</item>
+		<item name="android:layout_marginBottom">32dp</item>
+		<item name="android:layout_marginStart">16dp</item>
+		<item name="android:layout_marginEnd">32dp</item>
+		<item name="elevation">8dp</item>
+		<item name="borderWidth">0dp</item>
+		<item name="fabSize">normal</item>
+	</style>
+
+	<style name="fabIconButton" parent="FabLayout">
 		<item name="backgroundTint">@color/colour_dark_green</item>
 	</style>
 

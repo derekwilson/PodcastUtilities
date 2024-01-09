@@ -32,7 +32,7 @@
 		<item name="android:textColor">@color/color_grey</item>
 	</style>
 
-	<style name="fabIconButton">
+	<style name="fabIconButton" parent="FabLayout">
 		<item name="backgroundTint">@color/colour_green</item>
 	</style>
 
