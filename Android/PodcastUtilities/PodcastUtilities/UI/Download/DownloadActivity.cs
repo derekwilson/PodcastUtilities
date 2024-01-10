@@ -26,6 +26,7 @@ namespace PodcastUtilities.UI.Download
     public class DownloadActivity : AppCompatActivity
     {
         private const string ACTIVITY_PARAM_FOLDER = "DownloadActivity:Param:Folder";
+        private const string ACTIVITY_PARAM_TEST = "DownloadActivity:Param:Test";
 
         public static Intent CreateIntent(Context context, string folder)
         {
@@ -34,6 +35,18 @@ namespace PodcastUtilities.UI.Download
             {
                 intent.PutExtra(ACTIVITY_PARAM_FOLDER, folder);
             }
+            return intent;
+        }
+
+        public static Intent CreateIntentToTestFeed(Context context, string folder)
+        {
+            Intent intent = new Intent(context, typeof(DownloadActivity));
+            if (string.IsNullOrEmpty(folder))
+            {
+                return null;
+            }
+            intent.PutExtra(ACTIVITY_PARAM_FOLDER, folder);
+            intent.PutExtra(ACTIVITY_PARAM_TEST, true);
             return intent;
         }
 
@@ -83,8 +96,10 @@ namespace PodcastUtilities.UI.Download
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
-            ViewModel.Initialise();
-            Task.Run(() => ViewModel.FindEpisodesToDownload(Intent?.GetStringExtra(ACTIVITY_PARAM_FOLDER)));
+            var folder = Intent?.GetStringExtra(ACTIVITY_PARAM_FOLDER);
+            bool test = Intent?.GetBooleanExtra(ACTIVITY_PARAM_TEST, false) ?? false;
+            ViewModel.Initialise(test);
+            Task.Run(() => ViewModel.FindEpisodesToDownload(folder));
 
             DownloadButton.Click += (sender, e) => ViewModel.DownloadAllPodcastsWithNetworkCheck();
 

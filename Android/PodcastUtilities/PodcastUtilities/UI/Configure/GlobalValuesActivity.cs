@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.AppCompat.Widget;
@@ -9,6 +10,7 @@ using AndroidX.ConstraintLayout.Widget;
 using AndroidX.Core.Widget;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.CustomViews;
+using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using System;
@@ -111,6 +113,16 @@ namespace PodcastUtilities.UI.Configure
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override bool DispatchKeyEvent(KeyEvent e)
+        {
+            if (BackKeyMapper.HandleKeyEvent(this, e))
+            {
+                AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:DispatchKeyEvent - handled");
+                return true;
+            }
+            return base.DispatchKeyEvent(e);
         }
 
         private void DoDownloadFreeSpaceOptions()

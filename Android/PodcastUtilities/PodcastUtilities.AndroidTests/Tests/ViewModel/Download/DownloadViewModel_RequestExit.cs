@@ -14,7 +14,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
-            ViewModel.Initialise();
+            ViewModel.Initialise(false);
             ViewModel.FindEpisodesToDownload(null);
 
             // act
@@ -33,7 +33,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             int taskStartCount = 0;
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
-            ViewModel.Initialise();
+            ViewModel.Initialise(false);
             ViewModel.FindEpisodesToDownload(null);
 
             // act

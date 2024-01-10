@@ -15,6 +15,9 @@ using static PodcastUtilities.AndroidLogic.CustomViews.DefaultableItemValuePromp
 using System;
 using Android.Content;
 using Android.Graphics;
+using Android.Views;
+using PodcastUtilities.AndroidLogic.Utilities;
+using AndroidX.Core.View;
 
 namespace PodcastUtilities.UI.Configure
 {
@@ -144,6 +147,44 @@ namespace PodcastUtilities.UI.Configure
             AndroidApplication.Logger.Debug(() => $"EditFeedActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override bool DispatchKeyEvent(KeyEvent e)
+        {
+            if (BackKeyMapper.HandleKeyEvent(this, e))
+            {
+                AndroidApplication.Logger.Debug(() => $"EditFeedActivity:DispatchKeyEvent - handled");
+                return true;
+            }
+            return base.DispatchKeyEvent(e);
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_edit_feed, menu);
+            // we want a separator on the menu
+            MenuCompat.SetGroupDividerEnabled(menu, true);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnPrepareOptionsMenu(IMenu menu)
+        {
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_test_feed);
+            return true;
+        }
+
+        private void EnableMenuItemIfAvailable(IMenu menu, int itemId)
+        {
+            menu.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (ViewModel.ActionSelected(item.ItemId))
+            {
+                return true;
+            }
+            return base.OnOptionsItemSelected(item);
         }
 
         private void DoUrlOptions()

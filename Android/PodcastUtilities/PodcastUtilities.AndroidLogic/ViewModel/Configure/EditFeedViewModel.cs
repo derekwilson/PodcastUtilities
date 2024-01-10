@@ -1,5 +1,4 @@
 ﻿using Android.App;
-using Android.Locations;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
@@ -164,6 +163,36 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         {
             Logger.Debug(() => $"EditFeedViewModel:OnDestroy");
             ApplicationControlFileProvider.ConfigurationUpdated -= ConfigurationUpdated;
+        }
+
+
+        public bool IsActionAvailable(int itemId)
+        {
+            Logger.Debug(() => $"EditFeedViewModel:isActionAvailable = {itemId}");
+            if (itemId == Resource.Id.action_test_feed)
+            {
+                var feed = GetFeedToEdit();
+                if (feed != null)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool ActionSelected(int itemId)
+        {
+            Logger.Debug(() => $"EditFeedViewModel:ActionSelected = {itemId}");
+            if (itemId == Resource.Id.action_test_feed)
+            {
+                var feed = GetFeedToEdit();
+                if (feed != null)
+                {
+                    Observables.DisplayMessage?.Invoke(this, "TEST");
+                    return true;
+                }
+            }
+            return false;
         }
 
         private string AddDefaultPrefix(string str)

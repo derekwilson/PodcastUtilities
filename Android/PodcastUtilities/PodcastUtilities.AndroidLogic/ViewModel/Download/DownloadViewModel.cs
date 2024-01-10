@@ -96,7 +96,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             UserSettings = userSettings;
         }
 
-        public void Initialise()
+        public void Initialise(bool test)
         {
             Logger.Debug(() => $"DownloadViewModel:Initialise");
             Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_title));

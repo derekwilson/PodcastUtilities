@@ -204,6 +204,8 @@
 	<string name="edit_feed_activity_title">Feed</string>
 	<string name="edit_feed_cannot_find_podcast">Cannot find podcast</string>
 
+	<string name="action_test_feed">Test</string>
+
 	<string name="row_title_folder">Folder for episodes</string>
 	<string name="prompt_folder_title">Folder to store the episodes</string>
 	<string name="prompt_folder_prompt">Folder</string>

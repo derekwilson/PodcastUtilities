@@ -14,7 +14,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         {
             // arrange
             A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.None);
-            ViewModel.Initialise();
+            ViewModel.Initialise(false);
 
             // act
             ViewModel.DownloadAllPodcastsWithNetworkCheck();
@@ -30,7 +30,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.Cellular);
             A.CallTo(() => MockUserSettings.DownloadNetworkNeeded).Returns(IUserSettings.DownloadNetworkType.WIFI);
-            ViewModel.Initialise();
+            ViewModel.Initialise(false);
 
             // act
             ViewModel.DownloadAllPodcastsWithNetworkCheck();
@@ -48,7 +48,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.Wifi);
             A.CallTo(() => MockUserSettings.DownloadNetworkNeeded).Returns(IUserSettings.DownloadNetworkType.WIFI);
-            ViewModel.Initialise();
+            ViewModel.Initialise(false);
 
             // act
             await ViewModel.DownloadAllPodcastsWithNetworkCheck().ConfigureAwait(false);
@@ -64,7 +64,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.Cellular);
             A.CallTo(() => MockUserSettings.DownloadNetworkNeeded).Returns(IUserSettings.DownloadNetworkType.WIFIANDCELLULAR);
-            ViewModel.Initialise();
+            ViewModel.Initialise(false);
 
             // act
             await ViewModel.DownloadAllPodcastsWithNetworkCheck().ConfigureAwait(false);
@@ -82,7 +82,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             A.CallTo(() => MockUserSettings.DownloadNetworkNeeded).Returns(IUserSettings.DownloadNetworkType.WIFI);
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
-            ViewModel.Initialise();
+            ViewModel.Initialise(false);
             ViewModel.FindEpisodesToDownload(null);
 
             // act
