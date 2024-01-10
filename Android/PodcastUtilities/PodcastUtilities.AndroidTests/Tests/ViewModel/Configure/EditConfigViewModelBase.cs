@@ -4,7 +4,7 @@ using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
-using PodcastUtilities.AndroidLogic.ViewModel.Edit;
+using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using PodcastUtilities.Common.Configuration;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Configure

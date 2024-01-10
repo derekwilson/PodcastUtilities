@@ -2,12 +2,10 @@
 using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
-using PodcastUtilities.AndroidLogic.ViewModel.Main;
-using PodcastUtilities.Common.Configuration;
 using System;
 using System.Collections.Generic;
 
-namespace PodcastUtilities.AndroidLogic.Adapters
+namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 {
     public class PodcastFeedRecyclerItemAdapter : RecyclerView.Adapter
     {
@@ -60,7 +58,8 @@ namespace PodcastUtilities.AndroidLogic.Adapters
                     ViewModel.GetNamingStyleText(Items[position].PodcastFeed.Feed.NamingStyle.Value),
                     ViewModel.GetDownloadStratagyText(Items[position].PodcastFeed.Feed.DownloadStrategy.Value)
                 );
-            } else
+            }
+            else
             {
                 // nothing to display as there is no feed
                 vh.SubLabel.Visibility = ViewStates.Gone;

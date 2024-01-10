@@ -6,7 +6,6 @@ using PodcastUtilities.AndroidLogic.Exceptions;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Configuration;
-using PodcastUtilities.Common.Feeds;
 using System;
 using System.Collections.Generic;
 

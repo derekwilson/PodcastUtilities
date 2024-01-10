@@ -2,17 +2,17 @@
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using PodcastUtilities.AndroidLogic.Logging;
-using PodcastUtilities.AndroidLogic.ViewModel.Edit;
+using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using System;
 using System.Collections.Generic;
 
-namespace PodcastUtilities.AndroidLogic.Adapters
+namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 {
     public class ConfigPodcastFeedRecyclerItemAdapter : RecyclerView.Adapter
     {
         private ILogger Logger;
         private EditConfigViewModel ViewModel;
-        private List<PodcastFeedRecyclerItem> Items = new List<PodcastFeedRecyclerItem>(20);
+        private List<ConfigPodcastFeedRecyclerItem> Items = new List<ConfigPodcastFeedRecyclerItem>(20);
 
         public ConfigPodcastFeedRecyclerItemAdapter(ILogger logger, EditConfigViewModel viewModel)
         {
@@ -20,7 +20,7 @@ namespace PodcastUtilities.AndroidLogic.Adapters
             ViewModel = viewModel;
         }
 
-        public void SetItems(List<PodcastFeedRecyclerItem> items)
+        public void SetItems(List<ConfigPodcastFeedRecyclerItem> items)
         {
             Items = items;
         }

@@ -3,11 +3,10 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.Widget;
 using AndroidX.RecyclerView.Widget;
-using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using System;
 using System.Collections.Generic;
 
-namespace PodcastUtilities.AndroidLogic.Adapters
+namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 {
     public class DownloadRecyclerItemAdapter : RecyclerView.Adapter
     {
@@ -59,7 +58,7 @@ namespace PodcastUtilities.AndroidLogic.Adapters
 
         public void SetReadOnly(bool readOnly)
         {
-            this.ReadOnly = readOnly;
+            ReadOnly = readOnly;
             // everything needs to be redrawn
             NotifyDataSetChanged();
         }

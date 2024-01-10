@@ -3,7 +3,6 @@ using Android.Content;
 using Android.Views;
 using AndroidX.DocumentFile.Provider;
 using AndroidX.Lifecycle;
-using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
@@ -12,7 +11,7 @@ using PodcastUtilities.Common.Configuration;
 using System;
 using System.Collections.Generic;
 
-namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
+namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 {
     public class EditConfigViewModel : AndroidViewModel, ILifecycleObserver
     {
@@ -25,7 +24,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
             public EventHandler SelectFolder;
             public EventHandler SelectControlFile;
             public EventHandler<string> SetCacheRoot;
-            public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>> SetFeedItems;
+            public EventHandler<Tuple<string, List<ConfigPodcastFeedRecyclerItem>>> SetFeedItems;
             public EventHandler<string> NavigateToFeed;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptToAddPodcast;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptToAddFeed;
@@ -43,7 +42,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
         private IApplicationControlFileFactory ApplicationControlFileFactory;
         private IValueFormatter ValueFormatter;
 
-        private List<PodcastFeedRecyclerItem> AllFeedItems = new List<PodcastFeedRecyclerItem>(20);
+        private List<ConfigPodcastFeedRecyclerItem> AllFeedItems = new List<ConfigPodcastFeedRecyclerItem>(20);
 
         public EditConfigViewModel(
             Application app,
@@ -100,7 +99,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Edit
                 int index = 0;
                 foreach (var podcastInfo in controlFile.GetPodcasts())
                 {
-                    var item = new PodcastFeedRecyclerItem()
+                    var item = new ConfigPodcastFeedRecyclerItem()
                     {
                         Id = index.ToString(),
                         PodcastFeed = podcastInfo

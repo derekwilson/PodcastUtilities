@@ -2,10 +2,9 @@
 using Android.Views;
 using Android.Widget;
 using Java.Lang;
-using PodcastUtilities.AndroidLogic.CustomViews;
 using System.Collections.Generic;
 
-namespace PodcastUtilities.AndroidLogic.Adapters
+namespace PodcastUtilities.AndroidLogic.CustomViews
 {
     public class SelectableStringArrayAdapter : BaseAdapter
     {

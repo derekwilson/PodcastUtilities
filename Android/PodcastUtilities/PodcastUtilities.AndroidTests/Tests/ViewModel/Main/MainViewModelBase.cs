@@ -12,7 +12,6 @@ using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.AndroidTests.Helpers;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using Android.Views;
-using PodcastUtilities.AndroidLogic.Adapters;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 {

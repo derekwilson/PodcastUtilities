@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.Views;
 using AndroidX.Lifecycle;
-using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;

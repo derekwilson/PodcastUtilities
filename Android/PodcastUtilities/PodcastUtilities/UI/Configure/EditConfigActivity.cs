@@ -13,11 +13,10 @@ using AndroidX.DocumentFile.Provider;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
 using Google.Android.Material.FloatingActionButton;
-using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
-using PodcastUtilities.AndroidLogic.ViewModel.Edit;
+using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using System;
 using System.Collections.Generic;
 
@@ -373,9 +372,9 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void SetFeedItems(object sender, Tuple<string, List<PodcastFeedRecyclerItem>> feeditems)
+        private void SetFeedItems(object sender, Tuple<string, List<ConfigPodcastFeedRecyclerItem>> feeditems)
         {
-            (string heading, List<PodcastFeedRecyclerItem> items) = feeditems;
+            (string heading, List<ConfigPodcastFeedRecyclerItem> items) = feeditems;
             RunOnUiThread(() =>
             {
                 FeedsTitle.Text = heading;

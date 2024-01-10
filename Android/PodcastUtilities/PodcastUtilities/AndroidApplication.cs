@@ -26,7 +26,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.OS;
-using PodcastUtilities.AndroidLogic.ViewModel.Edit;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using Android.Text;
 

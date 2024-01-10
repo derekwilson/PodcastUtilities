@@ -54,17 +54,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapters\ConfigPodcastFeedRecyclerItemAdapter.cs" />
-    <Compile Include="Adapters\DownloadRecyclerItemAdapter.cs" />
-    <Compile Include="Adapters\PodcastFeedRecyclerItemAdapter.cs" />
-    <Compile Include="Adapters\PurgeRecyclerItemAdapter.cs" />
+    <Compile Include="ViewModel\Configure\ConfigPodcastFeedRecyclerItemAdapter.cs" />
+    <Compile Include="ViewModel\Configure\ConfigPodcastFeedRecyclerItem.cs" />
+    <Compile Include="ViewModel\Download\DownloadRecyclerItemAdapter.cs" />
+    <Compile Include="ViewModel\Main\PodcastFeedRecyclerItemAdapter.cs" />
+    <Compile Include="ViewModel\Purge\PurgeRecyclerItemAdapter.cs" />
     <Compile Include="Converter\ValueFormatter.cs" />
     <Compile Include="CustomViews\DriveVolumeInfoViewFactory.cs" />
     <Compile Include="CustomViews\EmptyRecyclerView.cs" />
     <Compile Include="CustomViews\OkCancelDialogFragment.cs" />
     <Compile Include="CustomViews\ProgressSpinnerView.cs" />
     <Compile Include="CustomViews\SelectableString.cs" />
-    <Compile Include="Adapters\SelectableStringArrayAdapter.cs" />
+    <Compile Include="CustomViews\SelectableStringArrayAdapter.cs" />
     <Compile Include="CustomViews\SelectableStringListBottomSheetFragment.cs" />
     <Compile Include="CustomViews\DefaultableItemValuePromptDialogFragment.cs" />
     <Compile Include="CustomViews\ValuePromptDialogFragment.cs" />
@@ -102,7 +103,7 @@
     <Compile Include="ViewModel\Configure\EditConfigViewModel.cs" />
     <Compile Include="ViewModel\Help\HelpViewModel.cs" />
     <Compile Include="ViewModel\Main\MainViewModel.cs" />
-    <Compile Include="Adapters\PodcastFeedRecyclerItem.cs" />
+    <Compile Include="ViewModel\Main\PodcastFeedRecyclerItem.cs" />
     <Compile Include="ViewModel\Messages\MessagesViewModel.cs" />
     <Compile Include="ViewModel\Purge\PurgeRecyclerItem.cs" />
     <Compile Include="ViewModel\Purge\PurgeViewModel.cs" />
@@ -277,6 +278,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\menu\menu_edit_feed.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

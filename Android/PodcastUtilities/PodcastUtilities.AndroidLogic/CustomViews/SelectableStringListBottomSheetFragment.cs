@@ -3,7 +3,6 @@ using Android.Views;
 using Android.Widget;
 using Google.Android.Material.BottomSheet;
 using Java.Lang;
-using PodcastUtilities.AndroidLogic.Adapters;
 using System.Collections.Generic;
 using System.Linq;
 

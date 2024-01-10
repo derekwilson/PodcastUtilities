@@ -11,7 +11,6 @@ using AndroidX.Core.Widget;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
 using Google.Android.Material.FloatingActionButton;
-using PodcastUtilities.AndroidLogic.Adapters;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
