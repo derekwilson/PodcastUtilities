@@ -18,6 +18,7 @@ using Android.Graphics;
 using Android.Views;
 using PodcastUtilities.AndroidLogic.Utilities;
 using AndroidX.Core.View;
+using PodcastUtilities.UI.Download;
 
 namespace PodcastUtilities.UI.Configure
 {
@@ -251,6 +252,7 @@ namespace PodcastUtilities.UI.Configure
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.Title += SetTitle;
+            ViewModel.Observables.NavigateToDownload += NavigateToDownload;
             ViewModel.Observables.Folder += Folder;
             ViewModel.Observables.PromptForFolder += PromptForFolder;
             ViewModel.Observables.Url += Url;
@@ -269,6 +271,7 @@ namespace PodcastUtilities.UI.Configure
         private void KillViewModelObservers()
         {
             ViewModel.Observables.Title -= SetTitle;
+            ViewModel.Observables.NavigateToDownload -= NavigateToDownload;
             ViewModel.Observables.Folder -= Folder;
             ViewModel.Observables.PromptForFolder -= PromptForFolder;
             ViewModel.Observables.Url -= Url;
@@ -282,6 +285,16 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PromptForDeleteDaysOld -= PromptForDeleteDaysOld;
             ViewModel.Observables.MaxDownloadItems -= MaxDownloadItems;
             ViewModel.Observables.PromptForMaxDownloadItems -= PromptForMaxDownloadItems;
+        }
+
+        private void NavigateToDownload(object sender, string folder)
+        {
+            AndroidApplication.Logger.Debug(() => $"EditFeedActivity: NavigateToDownload {folder}");
+            RunOnUiThread(() =>
+            {
+                var intent = DownloadActivity.CreateIntentToTestFeed(this, folder);
+                StartActivity(intent);
+            });
         }
 
         private void PromptForUrl(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)

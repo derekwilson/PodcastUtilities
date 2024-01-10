@@ -81,9 +81,11 @@ namespace PodcastUtilities.AndroidLogic.Adapters
             );
 
             vh.Progress.Progress = Items[position].ProgressPercentage;
+            vh.Progress.Visibility = Items[position].AllowSelection ? ViewStates.Visible : ViewStates.Gone;
 
             vh.CheckBox.Checked = Items[position].Selected;
             vh.CheckBox.Enabled = !ReadOnly && Items[position].DownloadStatus != Status.Complete;
+            vh.CheckBox.Visibility = Items[position].AllowSelection ? ViewStates.Visible : ViewStates.Gone;
 
             vh.Container.Tag = position.ToString();
             vh.Container.Click += Container_Click;
@@ -112,9 +114,12 @@ namespace PodcastUtilities.AndroidLogic.Adapters
             if (!ReadOnly)
             {
                 int position = Convert.ToInt32(((View)sender).Tag.ToString());
-                Items[position].Selected = !Items[position].Selected;
-                NotifyItemChanged(position);
-                ViewModel.SelectionChanged(position);
+                if (Items[position].AllowSelection)
+                {
+                    Items[position].Selected = !Items[position].Selected;
+                    NotifyItemChanged(position);
+                    ViewModel.SelectionChanged(position);
+                }
             }
         }
 

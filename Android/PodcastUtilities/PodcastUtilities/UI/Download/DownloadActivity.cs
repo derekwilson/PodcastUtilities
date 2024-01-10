@@ -192,6 +192,7 @@ namespace PodcastUtilities.UI.Download
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.Title += SetTitle;
+            ViewModel.Observables.TestMode += TestMode;
             ViewModel.Observables.StartProgress += StartProgress;
             ViewModel.Observables.UpdateProgress += UpdateProgress;
             ViewModel.Observables.EndProgress += EndProgress;
@@ -211,6 +212,7 @@ namespace PodcastUtilities.UI.Download
         private void KillViewModelObservers()
         {
             ViewModel.Observables.Title -= SetTitle;
+            ViewModel.Observables.TestMode -= TestMode;
             ViewModel.Observables.StartProgress -= StartProgress;
             ViewModel.Observables.UpdateProgress -= UpdateProgress;
             ViewModel.Observables.EndProgress -= EndProgress;
@@ -315,6 +317,13 @@ namespace PodcastUtilities.UI.Download
             {
                 ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
                 DownloadButton.Enabled = false;
+            });
+        }
+        private void TestMode(object sender, bool testMode)
+        {
+            RunOnUiThread(() =>
+            {
+                DownloadButton.Visibility = testMode ? ViewStates.Gone : ViewStates.Visible;
             });
         }
 

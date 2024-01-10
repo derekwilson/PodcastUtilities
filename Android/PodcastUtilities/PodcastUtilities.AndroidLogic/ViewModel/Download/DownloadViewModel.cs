@@ -33,6 +33,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             public EventHandler<Tuple<string, string, string, string>> ExitPrompt;
             public EventHandler<Tuple<string, string, string, string>> CellularPrompt;
             public EventHandler<string> SetEmptyText;
+            public EventHandler<bool> TestMode;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -57,6 +58,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         private bool DownloadingInProgress = false;
         private bool ExitRequested = false;
         private int FeedCount = 0;
+        private bool TestMode = false;
 
         // do not make this anything other than private
         private object SyncLock = new object();
@@ -98,8 +100,17 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         public void Initialise(bool test)
         {
-            Logger.Debug(() => $"DownloadViewModel:Initialise");
-            Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_title));
+            Logger.Debug(() => $"DownloadViewModel:Initialise - {test}");
+            TestMode = test;
+            if (TestMode)
+            {
+                Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_test_title));
+            }
+            else
+            {
+                Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_title));
+            }
+            Observables.TestMode?.Invoke(this, TestMode);
             PodcastEpisodeFinder.StatusUpdate += this.DownloadStatusUpdate;
         }
 
@@ -224,7 +235,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                             SyncItem = episode,
                             ProgressPercentage = 0,
                             Podcast = podcastInfo,
-                            Selected = true
+                            Selected = true,
+                            AllowSelection = !TestMode
                         };
                         AllItems.Add(item);
                     }
@@ -295,7 +307,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         private void SetTitle()
         {
-            var title = ResourceProvider.GetQuantityString(Resource.Plurals.download_activity_title_after_load, GetItemsSelectedCount());
+            string title = "";
+            if (TestMode)
+            {
+                title = ResourceProvider.GetQuantityString(Resource.Plurals.download_activity_test_title_after_load, GetItemsSelectedCount());
+            } else
+            {
+                title = ResourceProvider.GetQuantityString(Resource.Plurals.download_activity_title_after_load, GetItemsSelectedCount());
+            }
             Logger.Debug(() => $"DownloadViewModel:SetTitle - {title}");
             Observables.Title?.Invoke(this, title);
         }

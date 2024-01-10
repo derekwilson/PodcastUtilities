@@ -9,6 +9,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         public int ProgressPercentage { get; set; }
         public IPodcastInfo Podcast { get; set; }
         public bool Selected { get; set; }
+        public bool AllowSelection { get; set; }
         public Status DownloadStatus { get; set; }
     }
 

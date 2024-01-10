@@ -6,6 +6,7 @@ using PodcastUtilities.AndroidLogic.Exceptions;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Feeds;
 using System;
 using System.Collections.Generic;
 
@@ -17,6 +18,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         {
             public EventHandler<string> Title;
             public EventHandler<string> DisplayMessage;
+            public EventHandler<string> NavigateToDownload;
             public EventHandler<string> Folder;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForFolder;
             public EventHandler<string> Url;
@@ -188,7 +190,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 var feed = GetFeedToEdit();
                 if (feed != null)
                 {
-                    Observables.DisplayMessage?.Invoke(this, "TEST");
+                    Logger.Debug(() => $"EditFeedViewModel: FeedItemSelected {feed.Folder}");
+                    Observables.NavigateToDownload?.Invoke(this, feed.Folder);
                     return true;
                 }
             }

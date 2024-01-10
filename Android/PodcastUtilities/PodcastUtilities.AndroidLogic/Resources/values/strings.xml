@@ -226,6 +226,8 @@
 
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
+	<string name="download_activity_test_title">Test Feed</string>	
+	
 	<string name="no_downloads_text">No podcasts to download</string>
 	<string name="no_network_text">You do not have any internet connectivity</string>
 	<string name="finding_podcasts_progress">Finding podcasts...</string>
@@ -244,6 +246,11 @@
 	<plurals name="download_activity_title_after_load">
 		<item quantity="one">%d Episode Selected</item>
 		<item quantity="other">%d Episodes Selected</item>
+	</plurals>
+
+	<plurals name="download_activity_test_title_after_load">
+		<item quantity="one">%d Episode Found</item>
+		<item quantity="other">%d Episodes Found</item>
 	</plurals>
 
 	<string name="download_status_complete">Complete</string>
