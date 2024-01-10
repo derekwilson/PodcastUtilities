@@ -381,6 +381,7 @@ namespace PodcastUtilities.UI.Configure
                 FeedsTitle.Text = heading;
                 FeedAdapter.SetItems(items);
                 FeedAdapter.NotifyDataSetChanged();
+                ViewScrollHelper.ScrollToTop(Container);
             });
         }
 

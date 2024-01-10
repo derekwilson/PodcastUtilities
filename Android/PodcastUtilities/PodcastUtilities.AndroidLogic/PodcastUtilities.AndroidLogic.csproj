@@ -93,6 +93,7 @@
     <Compile Include="Utilities\ResourceProvider.cs" />
     <Compile Include="Utilities\StatusAndProgressMessageStore.cs" />
     <Compile Include="Converter\ValueConverter.cs" />
+    <Compile Include="Utilities\ViewScrollHelper.cs" />
     <Compile Include="ViewModel\Configure\EditFeedViewModel.cs" />
     <Compile Include="ViewModel\Configure\FeedDefaultsViewModel.cs" />
     <Compile Include="ViewModel\Configure\GlobalValuesViewModel.cs" />
