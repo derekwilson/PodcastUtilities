@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.AppCompat.Widget;
+using AndroidX.ConstraintLayout.Widget;
 using AndroidX.Core.Widget;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.CustomViews;
@@ -20,6 +21,7 @@ namespace PodcastUtilities.UI.Configure
     internal class GlobalValuesActivity : AppCompatActivity, SelectableStringListBottomSheetFragment.IListener
     {
         private const string BOTTOMSHEET_PLAYLIST_FORMAT_TAG = "playlist_format_tag";
+        private const string BOTTOMSHEET_DIAG_OUTPUT_TAG = "diag_output_tag";
         private const string FREESPACE_PROMPT_TAG = "freespace_prompt_tag";
         private const string PLAYLIST_FILENAME_PROMPT_TAG = "playlist_filename_prompt_tag";
         private const string PLAYLIST_SEPERATOR_PROMPT_TAG = "playlist_seperator_prompt_tag";
@@ -36,6 +38,11 @@ namespace PodcastUtilities.UI.Configure
         private TextView PlaylistSeperatorRowSubLabel = null;
         private LinearLayoutCompat PlaylistFormatRowContainer = null;
         private TextView PlaylistFormatRowSubLabel = null;
+        private LinearLayoutCompat DiagOutputRowContainer = null;
+        private TextView DiagOutputRowSubLabel = null;
+        private ConstraintLayout DiagRetainTempRowContainer = null;
+        private TextView DiagRetainTempRowSubLabel = null;
+        private AppCompatCheckBox DiagRetainTempRowCheck = null;
 
         private ValuePromptDialogFragment PlaylistFilenamePromptDialogFragment;
         private ValuePromptDialogFragment PlaylistSeperatorPromptDialogFragment;
@@ -59,6 +66,11 @@ namespace PodcastUtilities.UI.Configure
             PlaylistSeperatorRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_seperator_row_sub_label);
             PlaylistFormatRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_format_row_label_container);
             PlaylistFormatRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_format_row_sub_label);
+            DiagOutputRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.diag_output_row_label_container);
+            DiagOutputRowSubLabel = FindViewById<TextView>(Resource.Id.diag_output_row_sub_label);
+            DiagRetainTempRowContainer = FindViewById<ConstraintLayout>(Resource.Id.diag_retain_temp_row_container);
+            DiagRetainTempRowSubLabel = FindViewById<TextView>(Resource.Id.diag_retain_temp_row_sub_label);
+            DiagRetainTempRowCheck = FindViewById<AppCompatCheckBox>(Resource.Id.diag_retain_temp_row_check);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(GlobalValuesViewModel))) as GlobalValuesViewModel;
@@ -71,6 +83,8 @@ namespace PodcastUtilities.UI.Configure
             PlaylistFileRowContainer.Click += (sender, e) => DoPlaylistFileOptions();
             PlaylistSeperatorRowContainer.Click += (sender, e) => DoPlaylistSeperatorOptions();
             PlaylistFormatRowContainer.Click += (sender, e) => DoPlaylistFormatOptions();
+            DiagOutputRowContainer.Click += (sender, e) => DoDiagOutputOptions();
+            DiagRetainTempRowContainer.Click += (sender, e) => DoDiagRetainTempOptions();
 
             PlaylistFilenamePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(PLAYLIST_FILENAME_PROMPT_TAG) as ValuePromptDialogFragment;
             SetupValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
@@ -125,6 +139,22 @@ namespace PodcastUtilities.UI.Configure
             sheet.Show(SupportFragmentManager, BOTTOMSHEET_PLAYLIST_FORMAT_TAG);
         }
 
+        private void DoDiagOutputOptions()
+        {
+            AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:DoDiagOutputOptions");
+            List<SelectableString> options = ViewModel.GetDiagOutputOptions();
+            var sheet = SelectableStringListBottomSheetFragment.NewInstance(
+                true,
+                GetString(Resource.String.diag_output_sheet_title),
+                options);
+            sheet.Show(SupportFragmentManager, BOTTOMSHEET_DIAG_OUTPUT_TAG);
+        }
+
+        private void DoDiagRetainTempOptions()
+        {
+            ViewModel.DiagRetainTempOptions();
+        }
+
         public void BottomsheetItemSelected(string tag, int position, SelectableString item)
         {
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:BottomsheetItemSelected {tag}, {position}");
@@ -132,6 +162,9 @@ namespace PodcastUtilities.UI.Configure
             {
                 case BOTTOMSHEET_PLAYLIST_FORMAT_TAG:
                     ViewModel.DoPlaylistFormatOption(item);
+                    break;
+                case BOTTOMSHEET_DIAG_OUTPUT_TAG:
+                    ViewModel.DoDiagOutputOption(item);
                     break;
             }
         }
@@ -146,6 +179,8 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PlaylistFormat += PlaylistFormat;
             ViewModel.Observables.PlaylistSeperator += PlaylistSeperator;
             ViewModel.Observables.PromptForPlaylistSeperator += PromptForPlaylistSeperator;
+            ViewModel.Observables.DiagOutput += DiagOutput;
+            ViewModel.Observables.DiagRetainTemp += DiagRetainTemp;
         }
 
         private void KillViewModelObservers()
@@ -158,6 +193,26 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PlaylistFormat -= PlaylistFormat;
             ViewModel.Observables.PlaylistSeperator -= PlaylistSeperator;
             ViewModel.Observables.PromptForPlaylistSeperator -= PromptForPlaylistSeperator;
+            ViewModel.Observables.DiagOutput -= DiagOutput;
+            ViewModel.Observables.DiagRetainTemp -= DiagRetainTemp;
+        }
+
+        private void DiagRetainTemp(object sender, Tuple<bool, string> parameters)
+        {
+            (bool isSet, string str) = parameters;
+            RunOnUiThread(() =>
+            {
+                DiagRetainTempRowCheck.Checked = isSet;
+                DiagRetainTempRowSubLabel.Text = str;
+            });
+        }
+
+        private void DiagOutput(object sender, string str)
+        {
+            RunOnUiThread(() =>
+            {
+                DiagOutputRowSubLabel.Text = str;
+            });
         }
 
         private void DownloadFreeSpace(object sender, string str)

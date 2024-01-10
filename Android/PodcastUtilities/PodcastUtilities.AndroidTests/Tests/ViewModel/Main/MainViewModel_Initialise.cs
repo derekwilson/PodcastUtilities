@@ -1,6 +1,8 @@
 ﻿using FakeItEasy;
 using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.Common.Configuration;
+using System;
 
 namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 {
@@ -29,7 +31,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ViewModel.Initialise();
 
             // assert
-            A.CallTo(() => MockLogger.Debug(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(3, Times.Exactly);
+            A.CallTo(() => MockLogger.Debug(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(6, Times.Exactly);
         }
 
         [Test]
@@ -60,6 +62,19 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             Assert.AreEqual("feed count == 1", ObservedResults.LastSetFeedHeading);
             Assert.AreEqual(1, ObservedResults.LastSetFeedItems.Count);
             Assert.AreEqual("folder1", ObservedResults.LastSetFeedItems[0].PodcastFeed.Folder);
+        }
+
+        [Test]
+        public void Initialise_ControlFile_Sets_Log_Level()
+        {
+            // arrange
+            SetupMockControlFileFor1Podcast();
+
+            // act
+            ViewModel.Initialise();
+
+            // assert
+            A.CallTo(() => MockAndroidApplication.SetLoggingNone()).MustHaveHappened(1, Times.Exactly);
         }
     }
 }

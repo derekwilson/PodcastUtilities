@@ -97,6 +97,7 @@
     <Compile Include="Tests\ViewModel\Main\MainViewModel_GeneratePlaylist.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModel_Initialise.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModel_ControlFileUpdated.cs" />
+    <Compile Include="Tests\ViewModel\Main\MainViewModel_LogLevelUpdated.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModel_RefreshFilesystemInfo.cs" />
     <Compile Include="Tests\ViewModel\Messages\MessagesViewModelBase.cs" />
     <Compile Include="Tests\ViewModel\Messages\MessagesViewModel_Initialise.cs" />

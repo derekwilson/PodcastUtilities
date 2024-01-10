@@ -18,6 +18,7 @@ namespace PodcastUtilities.AndroidLogic.Converter
         string GetDefaultableNamingStyleTextLong(IDefaultableItem<PodcastEpisodeNamingStyle> namingStyle);
         string GetDefaultableDownloadStratagyTextLong(IDefaultableItem<PodcastEpisodeDownloadStrategy> downloadStrategy);
         string GetPlaylistFormatTextLong(PlaylistFormat playlistFormat);
+        string GetDiagOutputTextLong(DiagnosticOutputLevel diagnosticOutputLevel);
     }
 
     public class ValueFormatter : IValueFormatter
@@ -25,15 +26,18 @@ namespace PodcastUtilities.AndroidLogic.Converter
         private ICrashReporter CrashReporter;
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
+        private IFileSystemHelper FileSystemHelper;
 
         public ValueFormatter(
             ICrashReporter crashReporter,
             ILogger logger,
-            IResourceProvider resourceProvider)
+            IResourceProvider resourceProvider,
+            IFileSystemHelper fileSystemHelper)
         {
             CrashReporter = crashReporter;
             Logger = logger;
             ResourceProvider = resourceProvider;
+            FileSystemHelper = fileSystemHelper;
         }
 
         private const string SEPERATOR = " - ";
@@ -221,5 +225,23 @@ namespace PodcastUtilities.AndroidLogic.Converter
         {
             return $"{playlistFormat}{GetPlaylistFormatAdditionalText(playlistFormat)}";
         }
+
+        private object GetDiagOutputAdditionalText(DiagnosticOutputLevel diagnosticOutputLevel)
+        {
+            switch (diagnosticOutputLevel)
+            {
+                case DiagnosticOutputLevel.None:
+                    return $"{SEPERATOR}{ResourceProvider.GetString(Resource.String.xtra_diag_output_none)}\n{FileSystemHelper.GetApplicationFirstExternalPath()}";
+                case DiagnosticOutputLevel.Verbose:
+                    return $"{SEPERATOR}{ResourceProvider.GetString(Resource.String.xtra_diag_output_verbose)}\n{FileSystemHelper.GetApplicationFirstExternalPath()}";
+            }
+            return string.Empty;
+        }
+
+        public string GetDiagOutputTextLong(DiagnosticOutputLevel diagnosticOutputLevel)
+        {
+            return $"{diagnosticOutputLevel}{GetDiagOutputAdditionalText(diagnosticOutputLevel)}";
+        }
+
     }
 }

@@ -116,11 +116,9 @@ namespace PodcastUtilities.AndroidLogic.Logging
 #else
             SetLoggingLevel(LogLevel.Error);
 #endif
-            // re-apply the config
-            LogManager.ReconfigExistingLoggers();
         }
 
-        private void SetLoggingLevel(LogLevel minLevel)
+        public void SetLoggingLevel(LogLevel minLevel)
         {
             if (minLevel == LogLevel.Off)
             {
@@ -136,6 +134,8 @@ namespace PodcastUtilities.AndroidLogic.Logging
             {
                 rule.SetLoggingLevels(minLevel, LogLevel.Fatal);
             }
+            // re-apply the config
+            LogManager.ReconfigExistingLoggers();
         }
 
         public ILogger Logger

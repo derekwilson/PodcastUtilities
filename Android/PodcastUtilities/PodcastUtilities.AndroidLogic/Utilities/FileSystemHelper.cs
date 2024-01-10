@@ -21,6 +21,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         long GetAvailableFileSystemSizeInBytes(string path);
         long GetTotalFileSystemSizeInBytes(string path);
         string GetApplicationFolderOnSdCard();
+        string GetApplicationFirstExternalPath();
         Java.IO.File[] GetApplicationExternalFilesDirs();
         List<string> GetAssetsFolderFiles(string foldername);
         string GetAssetsFileContents(string filename, bool addLineEndings);
@@ -91,6 +92,16 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             long blockSize = stat.BlockSizeLong;
             long availableBlocks = stat.AvailableBlocksLong;
             return availableBlocks * blockSize;
+        }
+
+        public string GetApplicationFirstExternalPath()
+        {
+            var dirs = ApplicationContext.GetExternalFilesDirs(null);
+            if (dirs != null && dirs[0] != null)
+            {
+                return dirs[0].AbsolutePath;
+            }
+            return null;
         }
 
         public Java.IO.File[] GetApplicationExternalFilesDirs()

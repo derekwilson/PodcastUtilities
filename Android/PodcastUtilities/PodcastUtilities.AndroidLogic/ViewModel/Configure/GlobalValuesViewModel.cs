@@ -21,6 +21,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler<string> PlaylistFile;
             public EventHandler<string> PlaylistFormat;
             public EventHandler<string> PlaylistSeperator;
+            public EventHandler<string> DiagOutput;
+            public EventHandler<Tuple<bool, string>> DiagRetainTemp;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForPlaylistFile;
             public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForDownloadFreespace;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForPlaylistSeperator;
@@ -95,6 +97,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 
             var seperatorSublabel = string.Format(ResourceProvider.GetString(Resource.String.prompt_playlist_seperator_label_fmt), controlFile.GetPlaylistPathSeparator());
             Observables.PlaylistSeperator?.Invoke(this, seperatorSublabel);
+
+            Observables.DiagOutput?.Invoke(this, ValueFormatter.GetDiagOutputTextLong(controlFile.GetDiagnosticOutput()));
+
+            var labelId = Resource.String.diag_retain_temp_off;
+            if (controlFile.GetDiagnosticRetainTemporaryFiles())
+            {
+                labelId = Resource.String.diag_retain_temp_on;
+            }
+            Observables.DiagRetainTemp?.Invoke(this, Tuple.Create(controlFile.GetDiagnosticRetainTemporaryFiles(), ResourceProvider.GetString(labelId)));
         }
 
         [Lifecycle.Event.OnCreate]
@@ -221,6 +232,34 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             Logger.Debug(() => $"GlobalValuesViewModel:SetPlaylistSeperator = {value}");
             var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             ControlFile.SetPlaylistPathSeparator(value);
+            ApplicationControlFileProvider.SaveCurrentControlFile();
+        }
+
+        public List<SelectableString> GetDiagOutputOptions()
+        {
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            List<SelectableString> options = new List<SelectableString>()
+            {
+                SelectableString.GenerateOption(DiagnosticOutputLevel.Verbose, controlFile.GetDiagnosticOutput()),
+                SelectableString.GenerateOption(DiagnosticOutputLevel.None, controlFile.GetDiagnosticOutput())
+            };
+            return options;
+        }
+
+        public void DoDiagOutputOption(SelectableString item)
+        {
+            Logger.Debug(() => $"GlobalValuesViewModel:DoDiagOutputOption = {item.Id}, {item.Name}");
+            var level = (DiagnosticOutputLevel)item.Id;
+            // we also need the event to fire
+            ApplicationControlFileProvider.SetDiagnosticOutput(level);
+        }
+
+        public void DiagRetainTempOptions()
+        {
+            Logger.Debug(() => $"GlobalValuesViewModel:DiagRetainTempOptions");
+            var ControlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            // we toggle
+            ControlFile.SetDiagnosticRetainTemporaryFiles(!ControlFile.GetDiagnosticRetainTemporaryFiles());
             ApplicationControlFileProvider.SaveCurrentControlFile();
         }
     }

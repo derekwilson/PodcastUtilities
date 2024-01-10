@@ -125,6 +125,93 @@
 
 			</androidx.appcompat.widget.LinearLayoutCompat>
 
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/diag_output_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer"
+				>
+
+				<TextView
+					android:id="@+id/diag_output_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_diag_output"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/diag_output_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/diag_retain_temp_row_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				style="@style/ConfigRowContainer"
+			>
+
+				<androidx.appcompat.widget.AppCompatCheckBox
+					android:id="@+id/diag_retain_temp_row_check"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:gravity="center_vertical"
+					android:minWidth="0dp"
+					android:minHeight="0dp"
+					android:paddingTop="@dimen/listview_item_check_vertical_padding"
+					android:paddingBottom="@dimen/listview_item_check_vertical_padding"
+					android:paddingLeft="@dimen/listview_item_check_horizontal_padding"
+					android:paddingRight="@dimen/listview_item_check_horizontal_padding"
+					android:clickable="false"
+					android:focusable="false"
+
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintBottom_toBottomOf="parent"
+					/>
+
+				<androidx.appcompat.widget.LinearLayoutCompat
+					android:id="@+id/diag_retain_temp_row_label_container"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+
+					app:layout_constraintEnd_toStartOf="@+id/diag_retain_temp_row_check"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					>
+
+						<TextView
+							android:id="@+id/diag_retain_temp_row_label"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/row_title_diag_retain_temp"
+							style="@style/ItemListTitle"
+							/>
+
+						<TextView
+							android:id="@+id/diag_retain_temp_row_sub_label"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/placeholder"
+							style="@style/ItemListSubTitle2"
+							/>
+
+				</androidx.appcompat.widget.LinearLayoutCompat>
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

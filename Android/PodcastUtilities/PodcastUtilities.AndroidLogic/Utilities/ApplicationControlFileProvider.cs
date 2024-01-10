@@ -17,6 +17,12 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         /// the implementer must be a songleton for this to work properly
         /// </summary>
         event EventHandler<EventArgs> ConfigurationUpdated;
+        /// <summary>
+        /// event that is fired when the logging level is changed
+        /// the implementer must be a songleton for this to work properly
+        /// its a seperate event as resetting NLog could be an expensive operation
+        /// </summary>
+        event EventHandler<EventArgs> LoggingLevelUpdated;
 
         IReadWriteControlFile GetApplicationConfiguration();
         void ReplaceApplicationConfiguration(IReadWriteControlFile file);
@@ -25,6 +31,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void SaveCurrentControlFile();
         bool SetFoldernameIfUnique(IPodcastInfo podcast, string foldername);
         bool AddPodcastIfFoldernameUnique(IPodcastInfo podcast);
+        void SetDiagnosticOutput(DiagnosticOutputLevel level);
     }
 
     public class ApplicationControlFileProvider : IApplicationControlFileProvider
@@ -40,6 +47,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private IApplicationControlFileFactory ApplicationControlFileFactory;
 
         public event EventHandler<EventArgs> ConfigurationUpdated;
+        public event EventHandler<EventArgs> LoggingLevelUpdated;
 
         public ApplicationControlFileProvider(
             ILogger logger,
@@ -58,7 +66,12 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         private void OnConfigurationUpdated()
         {
-            ConfigurationUpdated?.Invoke( this, EventArgs.Empty );
+            ConfigurationUpdated?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnLoggingLevelUpdated()
+        {
+            LoggingLevelUpdated?.Invoke(this, EventArgs.Empty);
         }
 
         private string GetApplicationControlFilePath()
@@ -104,6 +117,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 ControlFile = file;
             }
             OnConfigurationUpdated();
+            OnLoggingLevelUpdated();
         }
 
         public IReadWriteControlFile ResetControlFile()
@@ -212,6 +226,25 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             }
             OnConfigurationUpdated();
             return true;
+        }
+
+        public void SetDiagnosticOutput(DiagnosticOutputLevel level)
+        {
+            Logger.Debug(() => $"ApplicationControlFileProvider:SetDiagnosticOutput");
+            lock (SyncLock)
+            {
+                if (ControlFile == null)
+                {
+                    Logger.Debug(() => $"ApplicationControlFileProvider: cannot SetDiagnosticOutput null file");
+                    return;
+                }
+                ControlFile.SetDiagnosticOutput(level);
+                ControlFile.SaveToFile(GetApplicationControlFilePath());
+            }
+            // we have written the file so lets update the UI
+            OnConfigurationUpdated();
+            // the logging has changed
+            OnLoggingLevelUpdated();
         }
     }
 }

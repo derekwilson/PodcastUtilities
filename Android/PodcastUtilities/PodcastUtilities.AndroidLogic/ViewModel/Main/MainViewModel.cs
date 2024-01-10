@@ -44,6 +44,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         private IGenerator PlaylistGenerator;
         private IDriveVolumeInfoViewFactory DriveVolumeInfoViewFactory;
         private IValueFormatter ValueFormatter;
+        private IAndroidApplication AndroidApplication;
 
         private List<PodcastFeedRecyclerItem> AllFeedItems = new List<PodcastFeedRecyclerItem>(20);
 
@@ -58,7 +59,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             IAnalyticsEngine analyticsEngine,
             IGenerator playlistGenerator,
             IDriveVolumeInfoViewFactory driveVolumeInfoViewFactory,
-            IValueFormatter valueFormatter) : base(app)
+            IValueFormatter valueFormatter,
+            IAndroidApplication androidApplication) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"MainViewModel:ctor");
@@ -67,6 +69,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             ResourceProvider = resProvider;
             ApplicationControlFileProvider = appControlFileProvider;
             ApplicationControlFileProvider.ConfigurationUpdated += ConfigurationUpdated;
+            ApplicationControlFileProvider.LoggingLevelUpdated += LoggingLevelUpdated;
             FileSystemHelper = fsHelper;
             ByteConverter = byteConverter;
             CrashReporter = crashReporter;
@@ -76,6 +79,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             PlaylistGenerator.StatusUpdate += GenerateStatusUpdate;
             DriveVolumeInfoViewFactory = driveVolumeInfoViewFactory;
             ValueFormatter = valueFormatter;
+            AndroidApplication = androidApplication;
+        }
+
+        private void LoggingLevelUpdated(object sender, EventArgs e)
+        {
+            Logger.Debug(() => $"MainViewModel:LoggingLevelUpdated");
+            SetLoggingLevel();
         }
 
         private void ConfigurationUpdated(object sender, EventArgs e)
@@ -88,6 +98,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         {
             Logger.Debug(() => $"MainViewModel:Initialise");
             Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.main_activity_title));
+            SetLoggingLevel();
             RefreshFeedList();
         }
 
@@ -104,6 +115,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         {
             Logger.Debug(() => $"MainViewModel:OnDestroy");
             ApplicationControlFileProvider.ConfigurationUpdated -= ConfigurationUpdated;
+            ApplicationControlFileProvider.LoggingLevelUpdated -= LoggingLevelUpdated;
             PlaylistGenerator.StatusUpdate -= GenerateStatusUpdate;
         }
 
@@ -126,6 +138,27 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                 CrashReporter.LogNonFatalException(ex);
                 // if we didnt add any drive info views then the default message will remain
             }
+        }
+
+        private void SetLoggingLevel()
+        {
+            Logger.Debug(() => $"MainViewModel:SetLoggingLevel");
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            if (controlFile != null)
+            {
+                switch (controlFile.GetDiagnosticOutput())
+                    {
+                        case DiagnosticOutputLevel.None:
+                            Logger.Debug(() => $"MainViewModel:SetLoggingLevel = {controlFile.GetDiagnosticOutput()}");
+                            AndroidApplication.SetLoggingNone();
+                            break;
+                        case DiagnosticOutputLevel.Verbose:
+                            AndroidApplication.SetLoggingVerbose();
+                            Logger.Debug(() => $"MainViewModel:SetLoggingLevel = {controlFile.GetDiagnosticOutput()}");
+                            break;
+                    }
+            }
+            Logger.Debug(() => $"MainViewModel:SetLoggingLevel - end");
         }
 
         private void RefreshFeedList()

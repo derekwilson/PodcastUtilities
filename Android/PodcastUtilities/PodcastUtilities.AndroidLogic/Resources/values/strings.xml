@@ -91,6 +91,9 @@
 	<string name="xtra_playlist_format_m3u">Mp3 Url, a good choice for Android based devices</string>
 	<string name="xtra_playlist_format_wpl">Windows playlist, a good choice for Windows based devices</string>
 
+	<string name="xtra_diag_output_none">only errors are logged to</string>
+	<string name="xtra_diag_output_verbose">diagnostic logging is written to</string>
+
 	<!-- edit config activity -->
 	<string name="edit_config_activity_title">Configure</string>
 	<string name="action_edit_load_control">Load Control File</string>
@@ -162,6 +165,13 @@
 	<string name="prompt_playlist_seperator_title">Seperator to use between the folder and the filename in a generated playlist</string>
 	<string name="prompt_playlist_seperator_prompt">Playlist filename</string>
 	<string name="prompt_playlist_seperator_label_fmt">{0} - use the correct char for the target OS, \\ for Windows and / for Android or Linux</string>
+
+	<string name="row_title_diag_output">Diagnostic output</string>
+	<string name="diag_output_sheet_title">Diagnostic output</string>
+
+	<string name="row_title_diag_retain_temp">Retain temporoaty files</string>
+	<string name="diag_retain_temp_off">Temporary files are deleted</string>
+	<string name="diag_retain_temp_on">RSS feed xml for each feed is saved before it is processed. The file is stored in the same folder as the podcast episodes in a file called last_download_feed.xml</string>
 
 	<!-- feed defaults activity -->
 	<string name="feed_defaults_activity_title">Feed Defaults</string>

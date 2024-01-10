@@ -46,7 +46,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 
 
         // mocks
-        protected Application MockApplication;
+        protected Application MockApplication;  // this gets passed to the AndroidViewModel ctor
         protected ILogger MockLogger;
         protected IResourceProvider MockResourceProvider;
         protected IFileSystemHelper MockFileSystemHelper;
@@ -59,6 +59,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         protected IDriveVolumeInfoView MockDriveVolumeInfoView;
         protected IApplicationControlFileFactory MockApplicationControlFileFactory;
         protected IValueFormatter MockValueFormatter;
+        protected IAndroidApplication MockAndroidApplication;
 
         // reals
         protected IByteConverter ByteConverter;
@@ -160,6 +161,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             A.CallTo(() => MockDriveVolumeInfoViewFactory.GetNewView(MockApplication)).Returns(MockDriveVolumeInfoView);
             MockApplicationControlFileFactory = A.Fake<IApplicationControlFileFactory>();
             MockValueFormatter = A.Fake<IValueFormatter>();
+            MockAndroidApplication = A.Fake<IAndroidApplication>();
 
             ByteConverter = new ByteConverter();
 
@@ -176,7 +178,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
                 MockAnalyticsEngine,
                 MockPlaylistGenerator,
                 MockDriveVolumeInfoViewFactory,
-                MockValueFormatter
+                MockValueFormatter,
+                MockAndroidApplication
             );
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;

@@ -38,7 +38,7 @@ namespace PodcastUtilities
         // tag used in LogCat, only used until NLog starts running
         public const string LOGCAT_TAG = "PodcastUtilitiesTag";
 
-        public ILoggerFactory LoggerFactory { get; private set; }
+        public NLoggerLoggerFactory LoggerFactory { get; private set; }
         public ILogger Logger { get; private set; }
         public String DisplayVersion { get; private set; }
         public String DisplayPackage { get; private set; }
@@ -220,6 +220,17 @@ namespace PodcastUtilities
                 Logger.LogException(() => "error getting scaling", ex);
             }
             Analytics?.LifecycleLaunchEvent(scaling, GetString(Resource.String.ui_mode));
+        }
+
+        public void SetLoggingNone()
+        {
+            // we always log errors
+            LoggerFactory.SetLoggingLevel(NLog.LogLevel.Error);
+        }
+
+        public void SetLoggingVerbose()
+        {
+            LoggerFactory.SetLoggingLevel(NLog.LogLevel.Trace);
         }
     }
 }
