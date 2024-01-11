@@ -5,6 +5,7 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 2.1.0   | 11 Jan 2024 | 21 (Android 5)   | 33 (Android 13)
 | 2.0.0   | 28 Dec 2023 | 21 (Android 5)   | 33 (Android 13)
 | 1.7.0   | 27 Nov 2023 | 21 (Android 5)   | 33 (Android 13)
 | 1.6.0   | 17 Nov 2023 | 21 (Android 5)   | 33 (Android 13)
@@ -21,6 +22,14 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 ## Notes
 
 Major changes for each version
+
+## v2.1.0 (13)
+- Updated help text
+- Added playlist config to global values screen
+- Added diagnostic config to global values screen
+- Added ability to test a feed from the edit feed screen
+- Fix scrolling issue in the config screens on Android versions before v10
+- Fixed ESC key on config screens
 
 ## v2.0.0 (12)
 - Added ability to modify the configuration from within the app
