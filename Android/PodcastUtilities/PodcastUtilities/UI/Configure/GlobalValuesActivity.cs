@@ -9,6 +9,7 @@ using AndroidX.AppCompat.Widget;
 using AndroidX.ConstraintLayout.Widget;
 using AndroidX.Core.Widget;
 using AndroidX.Lifecycle;
+using Google.Android.Material.SwitchMaterial;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
@@ -44,7 +45,7 @@ namespace PodcastUtilities.UI.Configure
         private TextView DiagOutputRowSubLabel = null;
         private ConstraintLayout DiagRetainTempRowContainer = null;
         private TextView DiagRetainTempRowSubLabel = null;
-        private AppCompatCheckBox DiagRetainTempRowCheck = null;
+        private SwitchMaterial DiagRetainTempRowCheck = null;
 
         private ValuePromptDialogFragment PlaylistFilenamePromptDialogFragment;
         private ValuePromptDialogFragment PlaylistSeperatorPromptDialogFragment;
@@ -72,7 +73,7 @@ namespace PodcastUtilities.UI.Configure
             DiagOutputRowSubLabel = FindViewById<TextView>(Resource.Id.diag_output_row_sub_label);
             DiagRetainTempRowContainer = FindViewById<ConstraintLayout>(Resource.Id.diag_retain_temp_row_container);
             DiagRetainTempRowSubLabel = FindViewById<TextView>(Resource.Id.diag_retain_temp_row_sub_label);
-            DiagRetainTempRowCheck = FindViewById<AppCompatCheckBox>(Resource.Id.diag_retain_temp_row_check);
+            DiagRetainTempRowCheck = FindViewById<SwitchMaterial>(Resource.Id.diag_retain_temp_row_check);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(GlobalValuesViewModel))) as GlobalValuesViewModel;

@@ -508,6 +508,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                         MessageStore.StoreMessage(item.Id, e.Exception.ToString());
                         Observables.UpdateItemStatus?.Invoke(this, Tuple.Create(item, Status.Error, e.Message));
                     }
+                    else
+                    {
+                        // its just a message - its not attached to a ISyncItem
+                        MessageStore.StoreMessage(Guid.Empty, e.Message);
+                        MessageStore.StoreMessage(Guid.Empty, e.Exception.ToString());
+                    }
                 }
                 else
                 {
@@ -519,8 +525,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                     }
                     if (item != null)
                     {
+                        // we are updating the UI as we have a ISyncItem
                         MessageStore.StoreMessage(item.Id, e.Message);
                         Observables.UpdateItemStatus?.Invoke(this, Tuple.Create(item, status, e.Message));
+                    }
+                    else
+                    {
+                        // its just a message - its not attached to a ISyncItem
+                        MessageStore.StoreMessage(Guid.Empty, e.Message);
                     }
                 }
             }

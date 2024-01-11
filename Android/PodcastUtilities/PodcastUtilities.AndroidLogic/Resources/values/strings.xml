@@ -169,7 +169,7 @@
 	<string name="row_title_diag_output">Diagnostic output</string>
 	<string name="diag_output_sheet_title">Diagnostic output</string>
 
-	<string name="row_title_diag_retain_temp">Retain temporoaty files</string>
+	<string name="row_title_diag_retain_temp">Retain temporary files</string>
 	<string name="diag_retain_temp_off">Temporary files are deleted</string>
 	<string name="diag_retain_temp_on">RSS feed xml for each feed is saved before it is processed. The file is stored in the same folder as the podcast episodes in a file called last_download_feed.xml</string>
 

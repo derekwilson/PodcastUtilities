@@ -162,13 +162,11 @@
 				style="@style/ConfigRowContainer"
 			>
 
-				<androidx.appcompat.widget.AppCompatCheckBox
+				 <com.google.android.material.switchmaterial.SwitchMaterial
 					android:id="@+id/diag_retain_temp_row_check"
 					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:gravity="center_vertical"
-					android:minWidth="0dp"
-					android:minHeight="0dp"
+					android:layout_height="wrap_content"
+
 					android:paddingTop="@dimen/listview_item_check_vertical_padding"
 					android:paddingBottom="@dimen/listview_item_check_vertical_padding"
 					android:paddingLeft="@dimen/listview_item_check_horizontal_padding"
