@@ -111,6 +111,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_title));
             }
             Observables.TestMode?.Invoke(this, TestMode);
+
+            NetworkHelper.SetApplicationDefaultCertificateValidator();      // ignore SSL errors
             PodcastEpisodeFinder.StatusUpdate += this.DownloadStatusUpdate;
         }
 
