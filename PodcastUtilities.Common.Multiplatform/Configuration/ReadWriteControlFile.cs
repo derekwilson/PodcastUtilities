@@ -437,5 +437,10 @@ namespace PodcastUtilities.Common.Configuration
         {
             Podcasts.Remove(podcast);
         }
+
+        public void DeleteAllPodcast()
+        {
+            Podcasts.Clear();
+        }
     }
 }

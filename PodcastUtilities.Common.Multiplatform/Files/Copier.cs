@@ -129,7 +129,7 @@ namespace PodcastUtilities.Common.Files
                                 new StatusUpdateEventArgs(
                                     StatusUpdateLevel.Error,
                                     string.Format(CultureInfo.InvariantCulture, "Error writing file: {0}", ex.Message),
-                                    false, null
+                                    ex,false, null
                                 )
                             );
                             return;

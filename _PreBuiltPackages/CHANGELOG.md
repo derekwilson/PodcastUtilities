@@ -1,3 +1,7 @@
+# v3.1.0.4 - 13 January 2024
+1. Added `DeleteAllPodcast()` to `IReadWriteControlFile`
+1. Expose the inner exception when returning errors from `IEpisodeFinder` and `ICopier`
+
 # v3.1.0.3 - 26 December 2023
 1. Added `AddPodcast()` and `DeletePodcast()` to `IReadWriteControlFile`
 

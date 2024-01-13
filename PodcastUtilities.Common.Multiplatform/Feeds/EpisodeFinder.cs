@@ -233,7 +233,7 @@ namespace PodcastUtilities.Common.Feeds
                 }
                 catch (Exception e)
                 {
-                    OnStatusError(string.Format(CultureInfo.InvariantCulture, "Error processing feed {0}: {1}", podcastInfo.Feed.Address, e.Message), podcastInfo);
+                    OnStatusError(e, string.Format(CultureInfo.InvariantCulture, "Error processing feed {0}: {1}", podcastInfo.Feed.Address, e.Message), podcastInfo);
                 }
             }
 
@@ -255,9 +255,9 @@ namespace PodcastUtilities.Common.Feeds
             OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Status, message, false, podcastInfo));
         }
 
-        private void OnStatusError(string message, IPodcastInfo podcastInfo)
+        private void OnStatusError(Exception e, string message, IPodcastInfo podcastInfo)
         {
-            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Error, message, false, podcastInfo));
+            OnStatusUpdate(new StatusUpdateEventArgs(StatusUpdateLevel.Error, message, e, false, podcastInfo));
         }
 
         private void OnStatusUpdate(StatusUpdateEventArgs e)

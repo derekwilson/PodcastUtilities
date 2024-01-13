@@ -171,5 +171,11 @@ namespace PodcastUtilities.Common.Configuration
         /// </summary>
         /// <param name="podcast"></param>
         void DeletePodcast(IPodcastInfo podcast);
+
+        /// <summary>
+        /// remove all podcasts from the configuration
+        /// </summary>
+        /// <param name="podcast"></param>
+        void DeleteAllPodcast();
     }
 }
