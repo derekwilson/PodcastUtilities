@@ -10,6 +10,7 @@ using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 {
@@ -207,6 +208,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             var intent = ApplicationControlFileProvider.GetApplicationConfigurationSharingIntent();
             if (intent != null)
             {
+                var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+                AnalyticsEngine.ShareControlFileEvent(controlFile?.GetPodcasts().Count() ?? -1);
                 Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.share_chooser_title), intent));
             }
             else
@@ -258,8 +261,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             var controlFile = OpenControlFile(data);
             if (controlFile != null)
             {
-                ApplicationControlFileProvider.ReplaceApplicationConfiguration(controlFile);
-                AnalyticsEngine.LoadControlFileEvent();
+                var items = ApplicationControlFileProvider.ReplaceApplicationConfiguration(controlFile);
+                AnalyticsEngine.LoadControlFileEvent(items);
                 Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.control_file_loaded));
             }
         }
@@ -405,6 +408,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             if (podcastToDelete != null)
             {
                 Logger.Debug(() => $"EditConfigViewModel:FeedItemOptionSelected deleting {podcastToDelete.Folder}");
+                AnalyticsEngine.RemovePodcastEvent(podcastToDelete.Folder);
                 controlFile.DeletePodcast(podcastToDelete);
                 ApplicationControlFileProvider.SaveCurrentControlFile();
             }
@@ -433,10 +437,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             var newPodcast = new PodcastInfo(controlFile);
             newPodcast.Folder = value;
-            if (!ApplicationControlFileProvider.AddPodcastIfFoldernameUnique(newPodcast))
+            if (ApplicationControlFileProvider.AddPodcastIfFoldernameUnique(newPodcast))
+            {
+                AnalyticsEngine.AddPodcastEvent(value);
+            }
+            else
             {
                 Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_folder_duplicate));
-                return;
             }
         }
 
@@ -464,6 +471,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 }
                 podcastToEdit.Feed.Address = new Uri(value);
                 ApplicationControlFileProvider.SaveCurrentControlFile();
+                AnalyticsEngine.AddPodcastFeedEvent(value);
                 Observables.NavigateToFeed?.Invoke(this, data);
             }
         }

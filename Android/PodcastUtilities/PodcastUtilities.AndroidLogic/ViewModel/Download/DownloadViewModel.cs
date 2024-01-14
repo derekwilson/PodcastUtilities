@@ -249,7 +249,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                     }
                     else
                     {
-                        AnalyticsEngine.DownloadSpecificFeedEvent(episodesInThisFeed.Count, folderSelected);
+                        // a specific feed
+                        if (TestMode)
+                        {
+                            AnalyticsEngine.TestSpecificFeedEvent(episodesInThisFeed.Count, folderSelected);
+                        }
+                        else
+                        {
+                            AnalyticsEngine.DownloadSpecificFeedEvent(episodesInThisFeed.Count, folderSelected);
+                        }
                     }
                     Observables.UpdateProgress?.Invoke(this, count);
                 }

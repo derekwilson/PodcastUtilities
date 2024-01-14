@@ -25,7 +25,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         event EventHandler<EventArgs> LoggingLevelUpdated;
 
         IReadWriteControlFile GetApplicationConfiguration();
-        void ReplaceApplicationConfiguration(IReadWriteControlFile file);
+        int ReplaceApplicationConfiguration(IReadWriteControlFile file);
         Intent GetApplicationConfigurationSharingIntent();
         IReadWriteControlFile ResetControlFile();
         void SaveCurrentControlFile();
@@ -107,7 +107,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return ControlFile;
         }
 
-        public void ReplaceApplicationConfiguration(IReadWriteControlFile file)
+        public int ReplaceApplicationConfiguration(IReadWriteControlFile file)
         {
             Logger.Debug(() => $"ApplicationControlFileProvider:ReplaceApplicationConfiguration");
             lock (SyncLock)
@@ -118,6 +118,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             }
             OnConfigurationUpdated();
             OnLoggingLevelUpdated();
+            return ControlFile.GetPodcasts().Count();
         }
 
         public IReadWriteControlFile ResetControlFile()

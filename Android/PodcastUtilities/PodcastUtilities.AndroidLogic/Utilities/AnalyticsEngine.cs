@@ -1,6 +1,4 @@
-﻿using Android.Content;
-using Android.OS;
-using Microsoft.AppCenter.Analytics;
+﻿using Microsoft.AppCenter.Analytics;
 using PodcastUtilities.Common.Playlists;
 using System.Collections.Generic;
 
@@ -10,11 +8,12 @@ namespace PodcastUtilities.AndroidLogic.Utilities
     {
         void DownloadFeedEvent(int numberOfItems);
         void DownloadSpecificFeedEvent(int numberOfItems, string folder);
+        void TestSpecificFeedEvent(int numberOfItems, string folder);
         void DownloadEpisodeEvent(long sizeInMB);
         void DownloadEpisodeCompleteEvent();
-        void LoadControlFileEvent();
+        void LoadControlFileEvent(int numberOfItems);
         void ResetControlFileEvent();
-        void ShareControlFileEvent();
+        void ShareControlFileEvent(int numberOfItems);
         void LifecycleLaunchEvent(float scaling, string uiMode);
         void LifecycleErrorEvent();
         void LifecycleErrorFatalEvent();
@@ -23,6 +22,9 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void PurgeScanEvent(int numberOfItems);
         void PurgeDeleteEvent(int numberOfItems);
         void ViewLogsEvent(int numberOfLines);
+        void AddPodcastEvent(string folder);
+        void AddPodcastFeedEvent(string url);
+        void RemovePodcastEvent(string folder);
     }
 
     public class AppCenterAnalyticsEngine : IAnalyticsEngine
@@ -41,6 +43,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         private const string Event_Download_Feed = "Download_Feed";
         private const string Event_Download_Specific_Feed = "Download_Specific_Feed";
+        private const string Event_Test_Specific_Feed = "Test_Specific_Feed";
         private const string Event_Download_Episode = "Download_Episode";
         private const string Event_Download_Episode_Complete = "Download_Episode_Complete";
         private const string Event_Load_ControlFile = "Load_ControlFile";
@@ -54,6 +57,9 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Event_Purge_Scan = "Purge_Scan";
         private const string Event_Purge_Delete = "Purge_Delete";
         private const string Event_View_Logs = "Logs_View";
+        private const string Event_Add_Podcast = "Config_Add_Podcast";
+        private const string Event_Add_Podcast_Feed = "Config_Add_Podcast_Feed";
+        private const string Event_Remove_Podcast = "Config_Remove_Podcast";
 
         private const string Property_Version = "Version";
         private const string Property_FontScaling = "FontScaling";
@@ -63,6 +69,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Property_SizeMB = "SizeMB";
         private const string Property_NumberOfItems = "NumberOfItems";
         private const string Property_Folder = "Folder";
+        private const string Property_Url = "Url";
         private const string Property_Format = "Format";
 
         public void DownloadEpisodeCompleteEvent()
@@ -80,6 +87,14 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public void DownloadSpecificFeedEvent(int numberOfItems, string folder)
         {
             Analytics.TrackEvent(Event_Download_Specific_Feed, new Dictionary<string, string> {
+                { Property_NumberOfItems, numberOfItems.ToString()},
+                { Property_Folder, folder}
+            });
+        }
+
+        public void TestSpecificFeedEvent(int numberOfItems, string folder)
+        {
+            Analytics.TrackEvent(Event_Test_Specific_Feed, new Dictionary<string, string> {
                 { Property_NumberOfItems, numberOfItems.ToString()},
                 { Property_Folder, folder}
             });
@@ -130,9 +145,11 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             });
         }
 
-        public void LoadControlFileEvent()
+        public void LoadControlFileEvent(int numberOfItems)
         {
-            Analytics.TrackEvent(Event_Load_ControlFile);
+            Analytics.TrackEvent(Event_Load_ControlFile, new Dictionary<string, string> {
+                { Property_NumberOfItems, numberOfItems.ToString()}
+            });
         }
 
         public void ResetControlFileEvent()
@@ -140,9 +157,11 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             Analytics.TrackEvent(Event_Reset_ControlFile);
         }
 
-        public void ShareControlFileEvent()
+        public void ShareControlFileEvent(int numberOfItems)
         {
-            Analytics.TrackEvent(Event_Share_ControlFile);
+            Analytics.TrackEvent(Event_Share_ControlFile, new Dictionary<string, string> {
+                { Property_NumberOfItems, numberOfItems.ToString()}
+            });
         }
 
         public void PurgeDeleteEvent(int numberOfItems)
@@ -163,6 +182,27 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         {
             Analytics.TrackEvent(Event_View_Logs, new Dictionary<string, string> {
                 { Property_NumberOfItems, numberOfLines.ToString()}
+            });
+        }
+
+        public void AddPodcastEvent(string folder)
+        {
+            Analytics.TrackEvent(Event_Add_Podcast, new Dictionary<string, string> {
+                { Property_Folder, folder}
+            });
+        }
+
+        public void AddPodcastFeedEvent(string url)
+        {
+            Analytics.TrackEvent(Event_Add_Podcast_Feed, new Dictionary<string, string> {
+                { Property_Url, url}
+            });
+        }
+
+        public void RemovePodcastEvent(string folder)
+        {
+            Analytics.TrackEvent(Event_Remove_Podcast, new Dictionary<string, string> {
+                { Property_Folder, folder}
             });
         }
     }

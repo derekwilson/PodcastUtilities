@@ -48,7 +48,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Configure
             ViewModel.LoadContolFile(uri);
 
             // assert
-            A.CallTo(() => MockAnalyticsEngine.LoadControlFileEvent()).MustHaveHappened(1, Times.Exactly);
+            A.CallTo(() => MockAnalyticsEngine.LoadControlFileEvent(A<int>.Ignored)).MustHaveHappened(1, Times.Exactly);
         }
 
         [Test]
