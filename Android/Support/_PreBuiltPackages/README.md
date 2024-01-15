@@ -5,6 +5,7 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 2.2.0   | 16 Jan 2024 | 21 (Android 5)   | 33 (Android 13)
 | 2.1.0   | 11 Jan 2024 | 21 (Android 5)   | 33 (Android 13)
 | 2.0.0   | 28 Dec 2023 | 21 (Android 5)   | 33 (Android 13)
 | 1.7.0   | 27 Nov 2023 | 21 (Android 5)   | 33 (Android 13)
@@ -23,13 +24,19 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 
 Major changes for each version
 
+## v2.2.0 (14)
+- Added delete button to edit feed page
+- FIX: Issues with logging errors when finding episodes
+- FIX: Issues with SSL handshake errors when finding episodes
+- FIX: ESC key on feed defaults page
+
 ## v2.1.0 (13)
 - Updated help text
 - Added playlist config to global values screen
 - Added diagnostic config to global values screen
 - Added ability to test a feed from the edit feed screen
-- Fix scrolling issue in the config screens on Android versions before v10
-- Fixed ESC key on config screens
+- FIX: scrolling issue in the config screens on Android versions before v10
+- FIX: ESC key on config screens
 
 ## v2.0.0 (12)
 - Added ability to modify the configuration from within the app
@@ -42,7 +49,7 @@ Major changes for each version
 - Made available for Windows Subsystem for Android
 
 ## v1.6.0 (10)
-- Fix scrolling issue in Android versions before v10
+- FIX: scrolling issue in Android versions before v10
 
 ## v1.5.0 (9)
 - Accessibility fixes: Text scaling on toolbar and colour contrast
@@ -52,7 +59,7 @@ Major changes for each version
 - Added shortcut buttons for Purge and Download
 - Fixed permissions issues in Android 13
 - FIX: Generate playlist displaying multiple status messages
-- FIX: Issues with SSL handshake errors on some Samsung devices
+- FIX: Issues with SSL handshake errors on some Samsung devices when downloading episodes
 
 ## v1.3.0 (7)
 - Added ability to share the current control file off the device
