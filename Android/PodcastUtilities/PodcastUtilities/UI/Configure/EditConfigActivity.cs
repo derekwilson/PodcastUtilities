@@ -311,9 +311,9 @@ namespace PodcastUtilities.UI.Configure
             RunOnUiThread(() =>
             {
                 (string title, string message, string ok, string cancel, string data) = parameters;
-                ResetPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, data);
-                SetupFragmentObservers(ResetPromptDialogFragment);
-                ResetPromptDialogFragment.Show(SupportFragmentManager, DELETE_PROMPT_TAG);
+                DeletePodcastPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, data);
+                SetupFragmentObservers(DeletePodcastPromptDialogFragment);
+                DeletePodcastPromptDialogFragment.Show(SupportFragmentManager, DELETE_PROMPT_TAG);
             });
         }
 

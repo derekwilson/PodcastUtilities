@@ -219,6 +219,8 @@
 
 	<string name="bad_url">Inavlid Url</string>
 
+	<string name="button_text_config_delete_podcast">Remove podcast configuration</string>
+
 	<!-- dialogs -->
 	<string name="content_desc_clear">Clear Text</string>
 	<string name="action_ok">OK</string>

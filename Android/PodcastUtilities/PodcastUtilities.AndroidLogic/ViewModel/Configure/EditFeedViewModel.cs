@@ -30,6 +30,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForDeleteDaysOld;
             public EventHandler<Tuple<bool, string>> MaxDownloadItems;
             public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForMaxDownloadItems;
+            public EventHandler<Tuple<string, string, string, string>> DeletePrompt;
+            public EventHandler Exit;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -40,6 +42,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         private ICrashReporter CrashReporter;
         private IValueConverter ValueConverter;
         private IValueFormatter ValueFormatter;
+        private IAnalyticsEngine AnalyticsEngine;
 
         private int PodcastFeedToEditId = -1;
 
@@ -50,7 +53,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             IApplicationControlFileProvider appControlFileProvider,
             ICrashReporter crashReporter,
             IValueConverter valueConverter,
-            IValueFormatter valueFormatter) : base(app)
+            IValueFormatter valueFormatter,
+            IAnalyticsEngine analyticsEngine) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"EditFeedViewModel:ctor");
@@ -61,6 +65,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             CrashReporter = crashReporter;
             ValueConverter = valueConverter;
             ValueFormatter = valueFormatter;
+            AnalyticsEngine = analyticsEngine;
         }
 
         private void ConfigurationUpdated(object sender, EventArgs e)
@@ -537,6 +542,41 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             {
                 Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_folder_duplicate));
             }
+        }
+
+        public void RemovePodcastSelected()
+        {
+            Logger.Debug(() => $"EditFeedViewModel:RemovePodcastSelected");
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            Observables.DeletePrompt?.Invoke(this,
+                Tuple.Create(
+                    string.Format(ResourceProvider.GetString(Resource.String.prompt_delete_podcast_title_fmt), feed.Folder),
+                    ResourceProvider.GetString(Resource.String.prompt_delete_podcast_prompt),
+                    ResourceProvider.GetString(Resource.String.prompt_delete_podcast_ok),
+                    ResourceProvider.GetString(Resource.String.action_cancel)
+                )
+            );
+        }
+
+        public void DeleteConfirmed()
+        {
+            // find the podcast
+            Logger.Debug(() => $"EditFeedViewModel:DeleteConfirmed");
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            Logger.Debug(() => $"EditFeedViewModel:DeleteConfirmed deleting {feed.Folder}");
+            AnalyticsEngine.RemovePodcastEvent(feed.Folder);
+            controlFile.DeletePodcast(feed);
+            ApplicationControlFileProvider.SaveCurrentControlFile();
+            Observables.Exit?.Invoke(this, null);
         }
     }
 }

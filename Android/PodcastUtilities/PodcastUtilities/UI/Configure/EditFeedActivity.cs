@@ -19,6 +19,7 @@ using Android.Views;
 using PodcastUtilities.AndroidLogic.Utilities;
 using AndroidX.Core.View;
 using PodcastUtilities.UI.Download;
+using Google.Android.Material.FloatingActionButton;
 
 namespace PodcastUtilities.UI.Configure
 {
@@ -45,6 +46,7 @@ namespace PodcastUtilities.UI.Configure
         private const string MAX_DAYS_OLD_PROMPT_CONFIG_TAG = "config_max_days_old_prompt_tag";
         private const string DELETE_DOWNLOAD_DAYS_OLD_PROMPT_CONFIG_TAG = "config_delete_download_prompt_tag";
         private const string MAX_DOWNLOAD_ITEMS_PROMPT_CONFIG_TAG = "config_max_download_items_prompt_tag";
+        private const string DELETE_PROMPT_TAG = "delete_prompt_tag";
 
         private AndroidApplication AndroidApplication;
         private EditFeedViewModel ViewModel;
@@ -64,12 +66,15 @@ namespace PodcastUtilities.UI.Configure
         private TextView DeleteDaysOldRowSubLabel = null;
         private LinearLayoutCompat MaxDownloadItemsRowContainer = null;
         private TextView MaxDownloadItemsRowSubLabel = null;
+        private FloatingActionButton RemoveButton;
 
         private ValuePromptDialogFragment FolderPromptDialogFragment;
         private ValuePromptDialogFragment UrlPromptDialogFragment;
         private DefaultableItemValuePromptDialogFragment MaxDaysOldPromptDialogFragment;
         private DefaultableItemValuePromptDialogFragment DeleteDaysOldPromptDialogFragment;
         private DefaultableItemValuePromptDialogFragment MaxDownloadItemsPromptDialogFragment;
+
+        private OkCancelDialogFragment DeletePodcastPromptDialogFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -101,6 +106,7 @@ namespace PodcastUtilities.UI.Configure
             DeleteDaysOldRowSubLabel = FindViewById<TextView>(Resource.Id.feed_delete_download_days_old_row_sub_label);
             MaxDownloadItemsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.feed_max_download_items_row_label_container);
             MaxDownloadItemsRowSubLabel = FindViewById<TextView>(Resource.Id.feed_max_download_items_row_sub_label);
+            RemoveButton = FindViewById<FloatingActionButton>(Resource.Id.fab_config_remove_podcast);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(EditFeedViewModel))) as EditFeedViewModel;
@@ -116,6 +122,7 @@ namespace PodcastUtilities.UI.Configure
             MaxDaysOldRowContainer.Click += (sender, e) => DoMaxDaysOldOptions();
             DeleteDaysOldRowContainer.Click += (sender, e) => DoDeleteDownloadDaysOldOptions();
             MaxDownloadItemsRowContainer.Click += (sender, e) => DoMaxDownloadItemsOptions();
+            RemoveButton.Click += (sender, e) => ViewModel.RemovePodcastSelected();
 
             FolderPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(FOLDER_PROMPT_TAG) as ValuePromptDialogFragment;
             SetupValueFragmentObservers(FolderPromptDialogFragment);
@@ -127,6 +134,8 @@ namespace PodcastUtilities.UI.Configure
             SetupDefaultableItemValueFragmentObservers(DeleteDaysOldPromptDialogFragment);
             MaxDownloadItemsPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(MAX_DOWNLOAD_ITEMS_PROMPT_CONFIG_TAG) as DefaultableItemValuePromptDialogFragment;
             SetupDefaultableItemValueFragmentObservers(MaxDownloadItemsPromptDialogFragment);
+            DeletePodcastPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(DELETE_PROMPT_TAG) as OkCancelDialogFragment;
+            SetupFragmentObservers(DeletePodcastPromptDialogFragment);
 
             AndroidApplication.Logger.Debug(() => $"EditFeedActivity:OnCreate - end");
         }
@@ -141,6 +150,7 @@ namespace PodcastUtilities.UI.Configure
             KillDefaultableItemValueFragmentObservers(MaxDaysOldPromptDialogFragment);
             KillDefaultableItemValueFragmentObservers(DeleteDaysOldPromptDialogFragment);
             KillDefaultableItemValueFragmentObservers(MaxDownloadItemsPromptDialogFragment);
+            KillFragmentObservers(DeletePodcastPromptDialogFragment);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -266,6 +276,8 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PromptForDeleteDaysOld += PromptForDeleteDaysOld;
             ViewModel.Observables.MaxDownloadItems += MaxDownloadItems;
             ViewModel.Observables.PromptForMaxDownloadItems += PromptForMaxDownloadItems;
+            ViewModel.Observables.DeletePrompt += DeletePrompt;
+            ViewModel.Observables.Exit += Exit;
         }
 
         private void KillViewModelObservers()
@@ -285,6 +297,17 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PromptForDeleteDaysOld -= PromptForDeleteDaysOld;
             ViewModel.Observables.MaxDownloadItems -= MaxDownloadItems;
             ViewModel.Observables.PromptForMaxDownloadItems -= PromptForMaxDownloadItems;
+            ViewModel.Observables.DeletePrompt -= DeletePrompt;
+            ViewModel.Observables.Exit -= Exit;
+        }
+
+        private void Exit(object sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"EditFeedActivity: Exit");
+            RunOnUiThread(() =>
+            {
+                Finish();
+            });
         }
 
         private void NavigateToDownload(object sender, string folder)
@@ -442,6 +465,65 @@ namespace PodcastUtilities.UI.Configure
                 MaxDownloadItemsPromptDialogFragment = DefaultableItemValuePromptDialogFragment.NewInstance(parameters);
                 SetupDefaultableItemValueFragmentObservers(MaxDownloadItemsPromptDialogFragment);
                 MaxDownloadItemsPromptDialogFragment.Show(SupportFragmentManager, MAX_DOWNLOAD_ITEMS_PROMPT_CONFIG_TAG);
+            });
+        }
+
+        private void DeletePrompt(object sender, Tuple<string, string, string, string> parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                (string title, string message, string ok, string cancel) = parameters;
+                DeletePodcastPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, null);
+                SetupFragmentObservers(DeletePodcastPromptDialogFragment);
+                DeletePodcastPromptDialogFragment.Show(SupportFragmentManager, DELETE_PROMPT_TAG);
+            });
+        }
+
+        private void SetupFragmentObservers(OkCancelDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"EditFeedActivity: SetupFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected += OkSelected;
+                fragment.CancelSelected += CancelSelected;
+            }
+        }
+
+        private void KillFragmentObservers(OkCancelDialogFragment fragment)
+        {
+            if (fragment != null)
+            {
+                AndroidApplication.Logger.Debug(() => $"EditFeedActivity: KillFragmentObservers - {fragment.Tag}");
+                fragment.OkSelected -= OkSelected;
+                fragment.CancelSelected -= CancelSelected;
+            }
+        }
+
+        private void CancelSelected(object sender, Tuple<string, string> parameters)
+        {
+            (string tag, string data) = parameters;
+            AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
+            switch (tag)
+            {
+                case DELETE_PROMPT_TAG:
+                    KillFragmentObservers(DeletePodcastPromptDialogFragment);
+                    break;
+            }
+        }
+
+        private void OkSelected(object sender, Tuple<string, string> parameters)
+        {
+            (string tag, string data) = parameters;
+            AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
+            RunOnUiThread(() =>
+            {
+                switch (tag)
+                {
+                    case DELETE_PROMPT_TAG:
+                        KillFragmentObservers(DeletePodcastPromptDialogFragment);
+                        ViewModel.DeleteConfirmed();
+                        break;
+                }
             });
         }
 
