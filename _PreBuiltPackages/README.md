@@ -37,8 +37,8 @@ The files are in a folder called `net35`. It will run on Windows XP, Vista, Wind
 
 See https://docs.microsoft.com/en-us/dotnet/framework/install/dotnet-35-windows-10
 
-* .NET Core v2.1
-The files are in a folder called `netcoreapp2.1`. It will run on any platform that is supported by the .NET Core runtime, it includes Windows, Linux and Mac. You will need to install the runtime before using the utilities.
+* .NET Core v3.1
+The files are in a folder called `netcoreapp3.1`. It will run on any platform that is supported by the .NET Core runtime, it includes Windows, Linux and Mac. You will need to install the runtime before using the utilities.
 
 See https://dotnet.microsoft.com/download
 

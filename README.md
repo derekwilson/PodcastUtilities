@@ -10,7 +10,7 @@ There is an incomplete GUI that runs on Windows and there is a complete Android 
 
 * The `_PreBuildPackages` folder has a compiled ZIP file of the main projects output assemblies
   - the folder `net35` contains a build to used on Windows XP, Vista, 7, 8, 10 and .NET framework v3.5  app
-  - the folder `netcoreapp2.1` contains a build for .NET Core for Linux, MacOS and Windows or for use with Mono
+  - the folder `netcoreapp3.1` contains a build for .NET Core for Linux, MacOS and Windows or for use with Mono
 * The `Android\Support\_PreBuiltPackages/` folder has compiled APKs for side-loading onto an Android device
 * Tools section contains installers for the open source tools used to build the apps
 * The rest of the repository contains the C# code, scripts and documentation to build the apps
@@ -50,7 +50,7 @@ The main solution `PodcastUtilities.Multiplatform.sln` contains these projects
 | PodcastUtilities.Ioc.Multiplatform                | .NETStandard v2  | 3.5           | Optional IoC container for the core assembly
 | PodcastUtilities.Common.Multiplatform.Tests       | 3.1              | 4.6.2         | Core tests, NUnit/Moq
 | PodcastUtilities.Common.Tests                     |                  | 3.5           | Core tests, NUnit/Rhino.Mocks
-| PodcastUtilities.Integration.Tests.Multiplatform  | 2.1              | 3.5           | Integration tests, to be run on target
+| PodcastUtilities.Integration.Tests.Multiplatform  | 3.1              | 3.5           | Integration tests, to be run on target
 
 The test projects can be run from VS2022 Test Explorer, older versions of VS cannot run the tests targetting .NET 3.5
 
@@ -64,10 +64,10 @@ dotnet test --framework netcoreapp3.1
 
 | Project                                           | .NETCore         | .NETFramework | Notes
 |:--------------------------------------------------|:-----------------|:--------------|-------
-| DownloadPodcasts.Multiplatform                    | 2.1              | 3.5           | Downloader
-| GeneratePlaylist.Multiplatform                    | 2.1              | 3.5           | Playlist generator
-| PurgePodcasts.Multiplatform                       | 2.1              | 3.5           | Purger
-| SyncPodcasts.Multiplatform                        | 2.1              | 3.5           | Sync
+| DownloadPodcasts.Multiplatform                    | 3.1              | 3.5           | Downloader
+| GeneratePlaylist.Multiplatform                    | 3.1              | 3.5           | Playlist generator
+| PurgePodcasts.Multiplatform                       | 3.1              | 3.5           | Purger
+| SyncPodcasts.Multiplatform                        | 3.1              | 3.5           | Sync
 
 #### Windows only projects
 

@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFrameworks>net35;netcoreapp2.1</TargetFrameworks>
+		<TargetFrameworks>net35;netcoreapp3.1</TargetFrameworks>
 		<AssemblyName>PodcastUtilities.Integration.Tests</AssemblyName>
 		<RootNamespace>PodcastUtilities.Integration.Tests</RootNamespace>
 		<Version>3.0.0</Version>
@@ -11,15 +11,15 @@
 		<Product>PodcastUtilities</Product>
 		<Copyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2019</Copyright>
 		<Description>Full stack integration tests for Podcast Utilities</Description>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
 	<!-- .NET Standard 2.0 references, compilation flags and build options -->
-	<PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1'">
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1'">
 		<DefineConstants>NETSTANDARD;NETSTANDARD2_0</DefineConstants>
 	</PropertyGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1'">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1'">
 		<Compile Remove=".\PortableDevices\**\*.cs" Label="NO_MTP" />
 	</ItemGroup>
 
@@ -70,7 +70,7 @@
 		<ProjectReference Include="..\PodcastUtilities.Ioc.Multiplatform\PodcastUtilities.Ioc.Multiplatform.csproj" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection">
 			<Version>2.2.0</Version>
 		</PackageReference>

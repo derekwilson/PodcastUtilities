@@ -15,7 +15,7 @@ If(!(test-path ".\files\"))
       New-Item -ItemType Directory -Force -Path ".\files\"
 }
 remove-item $SrcZipPath -ErrorAction SilentlyContinue
-compress-archive ..\..\CurrentBuild\netcoreapp2.1\*.* $SrcZipPath
+compress-archive ..\..\CurrentBuild\netcoreapp3.1\*.* $SrcZipPath
 remove-item ".\tools\*.zip" -ErrorAction SilentlyContinue
 Copy-Item $SrcZipPath -Destination  $ZipPath
 

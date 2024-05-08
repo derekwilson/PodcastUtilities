@@ -24,20 +24,20 @@
 	</global>
 	<podcast>
 		<feed>
-			<url>http://feeds.feedburner.com/HanselminutesCompleteMP3</url>
-			<maximumDaysOld>30</maximumDaysOld>
-		</feed>
-		<folder>Hanselminutes</folder>
-		<pattern>*.mp3</pattern>
-		<number>-1</number>
-	</podcast>
-	<podcast>
-		<feed>
 			<url>http://www.bbc.co.uk/programmes/b006qpgr/episodes/downloads.rss</url>
 			<maximumDaysOld>10</maximumDaysOld>
 		</feed>
 		<folder>The Archers</folder>
 		<pattern>*.mp3</pattern>
 		<number>5</number>
+	</podcast>
+	<podcast>
+		<feed>
+			<url>http://feeds.feedburner.com/HanselminutesCompleteMP3</url>
+			<maximumDaysOld>30</maximumDaysOld>
+		</feed>
+		<folder>Hanselminutes</folder>
+		<pattern>*.mp3</pattern>
+		<number>-1</number>
 	</podcast>
 </podcasts>
