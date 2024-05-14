@@ -18,8 +18,8 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
+using PodcastUtilities.Common.Platform;
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace PodcastUtilities.Common.Feeds
 {
@@ -46,12 +46,11 @@ namespace PodcastUtilities.Common.Feeds
         /// <summary>
         /// filename to use when saving the podcast file
         /// </summary>
-        string FileName { get;  }
+        string GetFileName(IPathUtilities pathUtilities);
 
         /// <summary>
         /// get the episode title in a form that can be used as a filename
         /// </summary>
-        string TitleAsFileName { get; }
-
+        string GetTitleAsFileName(IPathUtilities pathUtilities);
     }
 }

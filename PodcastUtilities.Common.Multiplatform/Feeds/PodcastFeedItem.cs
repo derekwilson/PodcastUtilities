@@ -18,6 +18,7 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
+using PodcastUtilities.Common.Platform;
 using System;
 using System.IO;
 
@@ -33,7 +34,7 @@ namespace PodcastUtilities.Common.Feeds
         // these are chars that are invalid in the file system but not in Path.GetInvalidFileNameChars()
         // for example the ? and : on Android scoped file storage (MediaStore)
         // to be fair to Mono its not possible to get Path.GetInvalidFileNameChars() correct as the rules change depending on the folder (thanks google)
-        private static char[] additional_invalid_chars = { '?', ':', '\'', '’' };
+        private static char[] additional_invalid_chars = { '?', ':', '\'', '’' , '|' , '*' };
 
         /// <summary>
         /// title of the item
@@ -53,36 +54,27 @@ namespace PodcastUtilities.Common.Feeds
         /// <summary>
         /// filename to use when saving the podcast file
         /// </summary>
-        public string FileName
+        public string GetFileName(IPathUtilities pathUtilities)
         {
-            get
-            {
-                string filename = Address.Segments[Address.Segments.Length - 1];
-
-                filename = ProcessFilenameForInvalidChars(filename);
-
-                return filename;
-            }
+            string filename = Address.Segments[Address.Segments.Length - 1];
+            filename = ProcessFilenameForInvalidChars(pathUtilities, filename);
+            return filename;
         }
 
         /// <summary>
         /// get the episode title in a form that can be used as a filename
         /// </summary>
-        public string TitleAsFileName
+        public string GetTitleAsFileName(IPathUtilities pathUtilities)
         {
-            get
-            {
-                var sanitizedTitle = ProcessFilenameForInvalidChars(EpisodeTitle);
-
-                return Path.ChangeExtension(sanitizedTitle, Path.GetExtension(FileName));
-            }
+            var sanitizedTitle = ProcessFilenameForInvalidChars(pathUtilities, EpisodeTitle);
+            return Path.ChangeExtension(sanitizedTitle, Path.GetExtension(GetFileName(pathUtilities)));
         }
 
-        private static string ProcessFilenameForInvalidChars(string filename)
+        private static string ProcessFilenameForInvalidChars(IPathUtilities pathUtilities, string filename)
         {
-            if (filename.IndexOfAny(Path.GetInvalidFileNameChars()) != -1)
+            if (pathUtilities!= null && pathUtilities.GetInvalidFileNameChars()!=null && filename.IndexOfAny(pathUtilities.GetInvalidFileNameChars()) != -1)
             {
-                filename = RemoveInvalidChars(filename, Path.GetInvalidFileNameChars());
+                filename = RemoveInvalidChars(filename, pathUtilities.GetInvalidFileNameChars());
             }
             if (filename.IndexOfAny(xml_invalid_chars) != -1)
             {

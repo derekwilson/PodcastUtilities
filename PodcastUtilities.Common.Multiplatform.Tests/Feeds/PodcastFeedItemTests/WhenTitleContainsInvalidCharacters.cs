@@ -19,8 +19,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 using System;
+using Moq;
 using NUnit.Framework;
 using PodcastUtilities.Common.Feeds;
+using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.Common.Multiplatform.Tests.Feeds.PodcastFeedItemTests
 {
@@ -31,6 +33,8 @@ namespace PodcastUtilities.Common.Multiplatform.Tests.Feeds.PodcastFeedItemTests
 
         private string Filename { get; set; }
 
+        protected Mock<IPathUtilities> _pathUtilities;
+
         protected override void GivenThat()
         {
             base.GivenThat();
@@ -38,19 +42,28 @@ namespace PodcastUtilities.Common.Multiplatform.Tests.Feeds.PodcastFeedItemTests
             FeedItem = new PodcastFeedItem
             {
                 Address = new Uri("http://www.blah.com/path/filename.mp3"),
-                EpisodeTitle = "Derek'’s Test: This is \\\"invalid\\\" - isnt it?"
+                // we mock the OS so only 'D' and '\' are illegal plus any hardcoded
+                EpisodeTitle = "Derek'’s Test: This is \\\"invalid\\\" - isnt it? And (*|) this."
             };
+
+            _pathUtilities = GenerateMock<IPathUtilities>();
+            SetupStubs();
+        }
+
+        protected virtual void SetupStubs()
+        {
+            _pathUtilities.Setup(utils => utils.GetInvalidFileNameChars()).Returns(new char[] { 'D', '\\' });
         }
 
         protected override void When()
         {
-            Filename = FeedItem.TitleAsFileName;
+            Filename = FeedItem.GetTitleAsFileName(_pathUtilities.Object);
         }
 
         [Test]
         public void ItShouldReplaceTheInvalidCharactersWhenGettingFilenameFromTitle()
         {
-            Assert.That(Filename, Is.EqualTo("Derek__s Test_ This is __invalid__ - isnt it_.mp3"));
+            Assert.That(Filename, Is.EqualTo("_erek__s Test_ This is __invalid__ - isnt it_ And (__) this.mp3"));
         }
     }
 }

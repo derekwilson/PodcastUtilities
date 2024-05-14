@@ -42,6 +42,16 @@ namespace PodcastUtilities.Common.Platform
         }
 
         /// <summary>
+        /// get array of chars that are illegal in files in the current file system
+        /// this could be incomplete thanks to Google's MediaStore shambles
+        /// </summary>
+        /// <returns>array of illegal chars</returns>
+        public char[] GetInvalidFileNameChars()
+        {
+            return Path.GetInvalidFileNameChars();
+        }
+
+        /// <summary>
         /// get the char used by the current file system to seperate elements in the path
         /// </summary>
         /// <returns>path seperator char</returns>

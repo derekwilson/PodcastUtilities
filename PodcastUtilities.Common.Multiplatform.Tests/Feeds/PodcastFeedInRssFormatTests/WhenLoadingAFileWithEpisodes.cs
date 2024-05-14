@@ -59,7 +59,7 @@ namespace PodcastUtilities.Common.Multiplatform.Tests.Feeds.PodcastFeedInRssForm
         {
             var proposedFilename = string.Format("{0}_{1}",
                                                  podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm"),
-                                                 podcastFeedItem.TitleAsFileName);
+                                                 podcastFeedItem.GetTitleAsFileName(null));
 
             //Debug.WriteLine(string.Format("Filename: {0}",proposedFilename));
 

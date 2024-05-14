@@ -46,5 +46,12 @@ namespace PodcastUtilities.Common.Platform
 		/// </summary>
 		/// <returns>path seperator char</returns>
 		char GetPathSeparator();
+
+        /// <summary>
+        /// get array of chars that are illegal in files in the current file system
+        /// this could be incomplete thanks to Google's MediaStore shambles
+        /// </summary>
+        /// <returns>array of illegal chars</returns>
+        char[] GetInvalidFileNameChars();
     }
 }

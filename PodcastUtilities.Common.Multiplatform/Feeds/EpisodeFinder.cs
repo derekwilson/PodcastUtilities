@@ -66,7 +66,7 @@ namespace PodcastUtilities.Common.Feeds
 
         private string GetDownloadPathname(string rootFolder, IPodcastInfo podcastInfo, IPodcastFeedItem podcastFeedItem)
         {
-            var proposedFilename = podcastFeedItem.FileName;
+            var proposedFilename = podcastFeedItem.GetFileName(_pathUtilities);
 
             switch (podcastInfo.Feed.NamingStyle.Value)
             {
@@ -90,12 +90,12 @@ namespace PodcastUtilities.Common.Feeds
                                                     proposedFilename);
                     break;
                 case PodcastEpisodeNamingStyle.EpisodeTitle:
-                    proposedFilename = podcastFeedItem.TitleAsFileName;
+                    proposedFilename = podcastFeedItem.GetTitleAsFileName(_pathUtilities);
                     break;
                 case PodcastEpisodeNamingStyle.EpisodeTitleAndPublishDateTime:
                     proposedFilename = string.Format(CultureInfo.InvariantCulture, "{0}_{1}",
                                                     podcastFeedItem.Published.ToString("yyyy_MM_dd_HHmm",CultureInfo.InvariantCulture),
-                                                    podcastFeedItem.TitleAsFileName);
+                                                    podcastFeedItem.GetTitleAsFileName(_pathUtilities));
                     break;
                 case PodcastEpisodeNamingStyle.UrlFileName:
                     break;

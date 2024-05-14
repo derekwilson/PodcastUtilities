@@ -91,20 +91,20 @@ namespace PodcastUtilities.Common.Tests.Feeds.PodcastFeedInRssFormatTests
         [Test]
         public void ItShouldExcludeIllegalFilenames()
         {
-            Assert.That(_episodes[0].FileName, Is.EqualTo("15-_Revolt_.mp3"));
-            Assert.That(_episodes[2].FileName, Is.EqualTo("___"));
+            Assert.That(_episodes[0].GetFileName(null), Is.EqualTo("15-_Revolt_.mp3"));
+            Assert.That(_episodes[2].GetFileName(null), Is.EqualTo("___"));
         }
 
         [Test]
         public void ItShouldCopeWithSimpleUrls()
         {
-            Assert.That(_episodes[1].FileName, Is.EqualTo("114_Obsession.mp3"));
+            Assert.That(_episodes[1].GetFileName(null), Is.EqualTo("114_Obsession.mp3"));
         }
 
         [Test]
         public void ItShouldEliminateEmptyUrl()
         {
-            Assert.That(_episodes[3].FileName, Is.EqualTo("11-Scars.mp3"));
+            Assert.That(_episodes[3].GetFileName(null), Is.EqualTo("11-Scars.mp3"));
         }
 
         [Test]
