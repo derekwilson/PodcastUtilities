@@ -1,3 +1,6 @@
+# v3.2.0.1 - 15 May 2024
+1. Improved processing of episodes with '.' in the title when used as a filename
+
 # v3.2.0.0 - 14 May 2024
 1. Added these chars to the invalid filename chars ('|', '*') as Google's crappy MediaStore implementation treats them as invalid but they are not in the Path Invalid chars
 1. updated .NET Core CLI tools to target .NET Core 3.1 rather than 2.1 (2.1 has security warnings that are not going to be patched)

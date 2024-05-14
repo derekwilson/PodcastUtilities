@@ -43,7 +43,7 @@ namespace PodcastUtilities.Common.Multiplatform.Tests.Feeds.PodcastFeedItemTests
             {
                 Address = new Uri("http://www.blah.com/path/filename.mp3"),
                 // we mock the OS so only 'D' and '\' are illegal plus any hardcoded
-                EpisodeTitle = "Derek'’s Test: This is \\\"invalid\\\" - isnt it? And (*|) this."
+                EpisodeTitle = "1.2 Derek'’s Test: This is \\\"invalid\\\" - isnt it? And (*|) this."
             };
 
             _pathUtilities = GenerateMock<IPathUtilities>();
@@ -63,7 +63,7 @@ namespace PodcastUtilities.Common.Multiplatform.Tests.Feeds.PodcastFeedItemTests
         [Test]
         public void ItShouldReplaceTheInvalidCharactersWhenGettingFilenameFromTitle()
         {
-            Assert.That(Filename, Is.EqualTo("_erek__s Test_ This is __invalid__ - isnt it_ And (__) this.mp3"));
+            Assert.That(Filename, Is.EqualTo("1_2 _erek__s Test_ This is __invalid__ - isnt it_ And (__) this_.mp3"));
         }
     }
 }

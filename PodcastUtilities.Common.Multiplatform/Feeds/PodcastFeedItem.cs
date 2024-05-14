@@ -35,6 +35,11 @@ namespace PodcastUtilities.Common.Feeds
         // for example the ? and : on Android scoped file storage (MediaStore)
         // to be fair to Mono its not possible to get Path.GetInvalidFileNameChars() correct as the rules change depending on the folder (thanks google)
         private static char[] additional_invalid_chars = { '?', ':', '\'', '’' , '|' , '*' };
+        // these are chars we eliminate from the title only when it is being used as a filename
+        // the reason is that we need to migrate the filename like this "filename.partial" -> "filename.mp3"
+        // if the title was "1.2 Episode Two" then the filename would end up "1.partial" and "1.mp3"
+        // eliminating these chars means if the title was "1.2 Episode Two" then the filename would end up "1_2 Episode Two.mp3"
+        private static char[] title_undesirable_chars = { '.' };
 
         /// <summary>
         /// title of the item
@@ -66,8 +71,18 @@ namespace PodcastUtilities.Common.Feeds
         /// </summary>
         public string GetTitleAsFileName(IPathUtilities pathUtilities)
         {
-            var sanitizedTitle = ProcessFilenameForInvalidChars(pathUtilities, EpisodeTitle);
+            var sanitizedTitle = ProcessTitleForUndesireableChars(pathUtilities, EpisodeTitle);
+            sanitizedTitle = ProcessFilenameForInvalidChars(pathUtilities, sanitizedTitle);
             return Path.ChangeExtension(sanitizedTitle, Path.GetExtension(GetFileName(pathUtilities)));
+        }
+
+        private string ProcessTitleForUndesireableChars(IPathUtilities pathUtilities, string episodeTitle)
+        {
+            if (episodeTitle.IndexOfAny(title_undesirable_chars) != -1)
+            {
+                episodeTitle = RemoveInvalidChars(episodeTitle, title_undesirable_chars);
+            }
+            return episodeTitle;
         }
 
         private static string ProcessFilenameForInvalidChars(IPathUtilities pathUtilities, string filename)
