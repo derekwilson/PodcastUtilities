@@ -1,3 +1,7 @@
+# v3.2.0.0 - 14 May 2024
+1. Added these chars to the invalid filename chars ('|', '*', '\'', '’') as Google's crappy MediaStore implementation treats them as invalid but they are not in the Path Invalid chars
+1. updated .NET Core CLI tools to target .NET Core 3.1 rather than 2.1 (2.1 has security warnings that are not going to be patched)
+
 # v3.1.0.4 - 13 January 2024
 1. Added `DeleteAllPodcast()` to `IReadWriteControlFile`
 1. Expose the inner exception when returning errors from `IEpisodeFinder` and `ICopier`
