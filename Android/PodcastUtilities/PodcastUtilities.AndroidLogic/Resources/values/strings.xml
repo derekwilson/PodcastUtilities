@@ -228,8 +228,10 @@
 
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
-	<string name="download_activity_test_title">Test Feed</string>	
-	
+	<string name="download_activity_test_title">Test Feed</string>
+
+	<string name="finding_podcasts_error_message">Error processing feeds,\ncheck logs for details</string>
+
 	<string name="no_downloads_text">No podcasts to download</string>
 	<string name="no_network_text">You do not have any internet connectivity</string>
 	<string name="finding_podcasts_progress">Finding podcasts...</string>

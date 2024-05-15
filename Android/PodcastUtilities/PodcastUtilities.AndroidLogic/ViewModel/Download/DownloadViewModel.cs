@@ -34,6 +34,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             public EventHandler<Tuple<string, string, string, string>> CellularPrompt;
             public EventHandler<string> SetEmptyText;
             public EventHandler<bool> TestMode;
+            public EventHandler<string> DisplayErrorMessage;
+            public EventHandler HideErrorMessage;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -113,6 +115,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             Observables.TestMode?.Invoke(this, TestMode);
 
             NetworkHelper.SetApplicationDefaultCertificateValidator();      // ignore SSL errors
+
+            Observables.HideErrorMessage?.Invoke(this, null);
             PodcastEpisodeFinder.StatusUpdate += this.DownloadStatusUpdate;
         }
 
@@ -524,6 +528,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                         MessageStore.StoreMessage(Guid.Empty, e.Message);
                         MessageStore.StoreMessage(Guid.Empty, e.Exception.ToString());
                     }
+                    Observables.DisplayErrorMessage?.Invoke(this, null);        // use the canned in message
                 }
                 else
                 {

@@ -55,6 +55,8 @@ namespace PodcastUtilities.UI.Download
         private DownloadViewModel ViewModel;
 
         private AndroidApplication AndroidApplication;
+
+        private TextView ErrorMessage;
         private EmptyRecyclerView RvDownloads;
         private LinearLayout NoDataView;
         private TextView NoDataText;
@@ -76,6 +78,7 @@ namespace PodcastUtilities.UI.Download
             // Set our view from the layout resource
             SetContentView(Resource.Layout.activity_download);
 
+            ErrorMessage = FindViewById<TextView>(Resource.Id.txtErrorMessage);
             RvDownloads = FindViewById<EmptyRecyclerView>(Resource.Id.rvDownloads);
             NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoData);
             NoDataText = FindViewById<TextView>(Resource.Id.txtNoData);
@@ -101,6 +104,7 @@ namespace PodcastUtilities.UI.Download
             Task.Run(() => ViewModel.FindEpisodesToDownload(folder));
 
             DownloadButton.Click += (sender, e) => ViewModel.DownloadAllPodcastsWithNetworkCheck();
+            ErrorMessage.Click += (sender, e) => ViewModel.ActionSelected(Resource.Id.action_display_logs);
 
             ExitPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(EXIT_PROMPT_TAG) as OkCancelDialogFragment;
             SetupFragmentObservers(ExitPromptDialogFragment);
@@ -206,6 +210,8 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.ExitPrompt += ExitPrompt;
             ViewModel.Observables.SetEmptyText += SetEmptyText;
             ViewModel.Observables.CellularPrompt += CellularPrompt;
+            ViewModel.Observables.DisplayErrorMessage += DisplayErrorMessage;
+            ViewModel.Observables.HideErrorMessage += HideErrorMessage;
         }
 
         private void KillViewModelObservers()
@@ -226,6 +232,8 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.ExitPrompt -= ExitPrompt;
             ViewModel.Observables.SetEmptyText -= SetEmptyText;
             ViewModel.Observables.CellularPrompt -= CellularPrompt;
+            ViewModel.Observables.DisplayErrorMessage -= DisplayErrorMessage;
+            ViewModel.Observables.HideErrorMessage -= HideErrorMessage;
         }
 
         private void SetupFragmentObservers(OkCancelDialogFragment fragment)
@@ -283,6 +291,25 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
+        private void DisplayErrorMessage(object sender, string message)
+        {
+            RunOnUiThread(() =>
+            {
+                if (!String.IsNullOrEmpty(message))
+                {
+                    ErrorMessage.Text = message;
+                }
+                ErrorMessage.Visibility = ViewStates.Visible;
+            });
+        }
+
+        private void HideErrorMessage(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ErrorMessage.Visibility = ViewStates.Gone;
+            });
+        }
 
         private void SetSyncItems(object sender, List<DownloadRecyclerItem> items)
         {
