@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.Runtime;
+using Android.Text;
 using Android.Util;
 using AndroidX.Core.Content.PM;
 using Microsoft.AppCenter.Analytics;
@@ -27,7 +28,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.OS;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
-using Android.Text;
 
 namespace PodcastUtilities
 {
@@ -98,6 +98,7 @@ namespace PodcastUtilities
             container.Register<Context>(ApplicationContext);
             container.Register<Application>(this);
             container.Register<Html.IImageGetter, ImageGetter>(IocLifecycle.Singleton);
+            container.Register<Android.Content.ClipboardManager>((Android.Content.ClipboardManager)GetSystemService(Context.ClipboardService));
             // helpers
             container.Register<IAndroidApplication>(this);
             container.Register<ILogger>(Logger);
@@ -121,6 +122,7 @@ namespace PodcastUtilities
             container.Register<IApplicationControlFileFactory, ApplicationControlFileFactory>(IocLifecycle.Singleton);
             container.Register<IValueConverter, ValueConverter>(IocLifecycle.Singleton);
             container.Register<IValueFormatter, ValueFormatter>(IocLifecycle.Singleton);
+            container.Register<IClipboardHelper, ClipboardHelper>(IocLifecycle.Singleton);
 
             // view models
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);

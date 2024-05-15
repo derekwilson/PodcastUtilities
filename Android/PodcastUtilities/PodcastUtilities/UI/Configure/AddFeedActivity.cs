@@ -52,6 +52,12 @@ namespace PodcastUtilities.UI.Configure
             AndroidApplication.Logger.Debug(() => $"AddFeedActivity:OnCreate - end");
         }
 
+        public override void OnWindowFocusChanged(bool hasFocus)
+        {
+            base.OnWindowFocusChanged(hasFocus);
+            ViewModel?.CheckClipboardForUrl(FeedUrlText.Text);
+        }
+
         protected override void OnDestroy()
         {
             AndroidApplication.Logger.Debug(() => $"AddFeedActivity:OnDestroy");
@@ -104,7 +110,8 @@ namespace PodcastUtilities.UI.Configure
         {
             RunOnUiThread(() =>
             {
-                FolderText.Text = str;
+                FolderText.Text = "";
+                FolderText.Append(str);     // because it sets the cursor to the end
             });
         }
 
@@ -112,7 +119,8 @@ namespace PodcastUtilities.UI.Configure
         {
             RunOnUiThread(() =>
             {
-                FeedUrlText.Text = str;
+                FeedUrlText.Text = "";
+                FeedUrlText.Append(str);    // because it sets the cursor to the end
             });
         }
     }

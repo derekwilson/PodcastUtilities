@@ -25,6 +25,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         private IApplicationControlFileProvider ApplicationControlFileProvider;
         private ICrashReporter CrashReporter;
         private IAnalyticsEngine AnalyticsEngine;
+        private IClipboardHelper ClipboardHelper;
+
+        private bool ShouldCheckClipboard = true;
 
         public AddFeedViewModel(
             Application app,
@@ -32,7 +35,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             IResourceProvider resProvider,
             IApplicationControlFileProvider appControlFileProvider,
             ICrashReporter crashReporter,
-            IAnalyticsEngine analyticsEngine) : base(app)
+            IAnalyticsEngine analyticsEngine,
+            IClipboardHelper clipboardHelper) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"AddFeedViewModel:ctor");
@@ -42,6 +46,36 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ApplicationControlFileProvider = appControlFileProvider;
             CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
+            ClipboardHelper = clipboardHelper;
+        }
+
+        [Lifecycle.Event.OnCreate]
+        [Java.Interop.Export]
+        public void OnCreate()
+        {
+            Logger.Debug(() => $"AddFeedViewModel:OnCreate");
+        }
+
+        [Lifecycle.Event.OnDestroy]
+        [Java.Interop.Export]
+        public void OnDestroy()
+        {
+            Logger.Debug(() => $"AddFeedViewModel:OnDestroy");
+        }
+
+        [Lifecycle.Event.OnResume]
+        [Java.Interop.Export]
+        public void OnResume()
+        {
+            Logger.Debug(() => $"AddFeedViewModel:OnResume");
+        }
+
+        [Lifecycle.Event.OnStop]
+        [Java.Interop.Export]
+        public void OnStop()
+        {
+            Logger.Debug(() => $"AddFeedViewModel:OnStop");
+            ShouldCheckClipboard = true;
         }
 
         public void Initialise()
@@ -88,6 +122,27 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         public void TestFeed(string text)
         {
             Logger.Debug(() => $"AddFeedViewModel:TestFeed {text}");
+        }
+
+        public void CheckClipboardForUrl(string text)
+        {
+            if (!ShouldCheckClipboard)
+            {
+                return;
+            }
+            ShouldCheckClipboard = false;   // this is a one shot
+            Logger.Debug(() => $"AddFeedViewModel:CheckClipboardForUrl {text}");
+
+            if (!string.IsNullOrWhiteSpace(text)) {
+                // we already have text
+                return;
+            }
+            var clipUrl = ClipboardHelper.GetUrlIfAvailable();
+            if (string.IsNullOrWhiteSpace(clipUrl))
+            {
+                return;
+            }
+            Observables.Url?.Invoke(this, clipUrl);
         }
     }
 }
