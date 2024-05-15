@@ -216,6 +216,17 @@
     </androidx.core.widget.NestedScrollView>
 
 	<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_config_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toStartOf="@id/fab_config_remove_podcast"
+		style="@style/fabIconButton"
+        app:tint="@color/ic_icon_selector"
+		android:contentDescription="@string/button_text_config_share_podcast"
+        app:srcCompat="@drawable/ic_share" />
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_config_remove_podcast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

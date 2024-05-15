@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
@@ -32,6 +33,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForMaxDownloadItems;
             public EventHandler<Tuple<string, string, string, string>> DeletePrompt;
             public EventHandler Exit;
+            public EventHandler<Tuple<string, Intent>> DisplayChooser;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -577,6 +579,35 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             controlFile.DeletePodcast(feed);
             ApplicationControlFileProvider.SaveCurrentControlFile();
             Observables.Exit?.Invoke(this, null);
+        }
+
+        public void SharePodcastSelected()
+        {
+            Logger.Debug(() => $"EditFeedViewModel:SharePodcastSelected");
+            var feed = GetFeedToEdit();
+            if (feed == null)
+            {
+                return;
+            }
+            var subject = string.Format(ResourceProvider.GetString(Resource.String.share_feed_subject),
+                feed.Folder
+                );
+            var body = string.Format(ResourceProvider.GetString(Resource.String.share_feed_body),
+                feed.Folder,
+                feed.Feed.Address,
+                ResourceProvider.GetString(Resource.String.share_advert_app_url)
+                );
+            var intent = GetSharingIntent(subject, body);
+            Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.share_chooser_title), intent));
+        }
+
+        private Intent GetSharingIntent(string subject, string shareText)
+        {
+            Intent sharingIntent = new Intent(Android.Content.Intent.ActionSend);
+            sharingIntent.SetType("vnd.android.cursor.dir/email");
+            sharingIntent.PutExtra(Intent.ExtraSubject, subject);
+            sharingIntent.PutExtra(Intent.ExtraText, shareText);
+            return sharingIntent;
         }
     }
 }

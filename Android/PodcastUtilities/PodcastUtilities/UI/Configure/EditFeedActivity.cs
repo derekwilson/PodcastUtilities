@@ -66,7 +66,9 @@ namespace PodcastUtilities.UI.Configure
         private TextView DeleteDaysOldRowSubLabel = null;
         private LinearLayoutCompat MaxDownloadItemsRowContainer = null;
         private TextView MaxDownloadItemsRowSubLabel = null;
+
         private FloatingActionButton RemoveButton;
+        private FloatingActionButton ShareButton;
 
         private ValuePromptDialogFragment FolderPromptDialogFragment;
         private ValuePromptDialogFragment UrlPromptDialogFragment;
@@ -106,7 +108,9 @@ namespace PodcastUtilities.UI.Configure
             DeleteDaysOldRowSubLabel = FindViewById<TextView>(Resource.Id.feed_delete_download_days_old_row_sub_label);
             MaxDownloadItemsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.feed_max_download_items_row_label_container);
             MaxDownloadItemsRowSubLabel = FindViewById<TextView>(Resource.Id.feed_max_download_items_row_sub_label);
+
             RemoveButton = FindViewById<FloatingActionButton>(Resource.Id.fab_config_remove_podcast);
+            ShareButton = FindViewById<FloatingActionButton>(Resource.Id.fab_config_share);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
             ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(EditFeedViewModel))) as EditFeedViewModel;
@@ -123,6 +127,7 @@ namespace PodcastUtilities.UI.Configure
             DeleteDaysOldRowContainer.Click += (sender, e) => DoDeleteDownloadDaysOldOptions();
             MaxDownloadItemsRowContainer.Click += (sender, e) => DoMaxDownloadItemsOptions();
             RemoveButton.Click += (sender, e) => ViewModel.RemovePodcastSelected();
+            ShareButton.Click += (sender, e) => ViewModel.SharePodcastSelected();
 
             FolderPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(FOLDER_PROMPT_TAG) as ValuePromptDialogFragment;
             SetupValueFragmentObservers(FolderPromptDialogFragment);
@@ -278,6 +283,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PromptForMaxDownloadItems += PromptForMaxDownloadItems;
             ViewModel.Observables.DeletePrompt += DeletePrompt;
             ViewModel.Observables.Exit += Exit;
+            ViewModel.Observables.DisplayChooser += DisplayChooser;
         }
 
         private void KillViewModelObservers()
@@ -299,6 +305,14 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PromptForMaxDownloadItems -= PromptForMaxDownloadItems;
             ViewModel.Observables.DeletePrompt -= DeletePrompt;
             ViewModel.Observables.Exit -= Exit;
+            ViewModel.Observables.DisplayChooser -= DisplayChooser;
+        }
+
+        private void DisplayChooser(object sender, Tuple<string, Intent> args)
+        {
+            AndroidApplication.Logger.Debug(() => $"EditFeedActivity: DisplayChooser");
+            (string title, Intent intent) = args;
+            StartActivity(Intent.CreateChooser(intent, title));
         }
 
         private void Exit(object sender, EventArgs e)

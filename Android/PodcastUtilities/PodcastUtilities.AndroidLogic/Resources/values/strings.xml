@@ -232,7 +232,22 @@
 	<string name="bad_url">Inavlid Url</string>
 
 	<string name="button_text_config_delete_podcast">Remove podcast configuration</string>
+	<string name="button_text_config_share_podcast">Share podcast RSS feed URL</string>
 
+	<string name="share_advert_app_url">https://www.amazon.com/dp/B0BG7SZJTL/</string>
+	<string name="share_feed_chooser_title">Share RSS feed URL</string>
+	<string name="share_feed_subject">PodcastUtilities RSS Feed for {0}</string>
+	<!-- do not indent this string unless you want indentation in the shared text -->
+	<string name="share_feed_body">This is the RSS feed URL for {0}\n
+\n
+{1}\n
+\n
+You can add this to your podcast app. If you use PodcastUtilitie copy the RSS URL then select Configure and then add the feed URL\n
+\n
+You can get PodcastUtilities from here\n
+\n
+{2}\n</string>
+	
 	<!-- dialogs -->
 	<string name="content_desc_clear">Clear Text</string>
 	<string name="action_ok">OK</string>
