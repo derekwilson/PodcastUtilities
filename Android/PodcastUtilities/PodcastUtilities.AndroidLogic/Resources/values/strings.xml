@@ -212,6 +212,17 @@
 	<string name="prompt_max_download_items_named_prompt">Unrestriced, no limit to the number of episodes in the cache</string>
 	<string name="prompt_max_download_items_custom_prompt">number of episodes</string>
 
+	<!-- add feed activity -->
+	<string name="add_feed_activity_title">Add Feed</string>
+
+	<string name="add_feed_folder_title">Folder name for the podcast</string>
+	<string name="add_feed_folder_prompt">Folder name</string>
+
+	<string name="add_feed_url_title">RSS feed URL</string>
+	<string name="add_feed_url_prompt">URL</string>
+
+	<string name="add_feed_test_feed">Test Feed</string>
+	
 	<!-- edit feed activity -->
 	<string name="edit_feed_activity_title">Feed</string>
 	<string name="edit_feed_cannot_find_podcast">Cannot find podcast</string>

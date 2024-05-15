@@ -17,6 +17,7 @@ using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
+using PodcastUtilities.UI.Settings;
 using System;
 using System.Collections.Generic;
 
@@ -244,6 +245,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
             ViewModel.Observables.SetFeedItems += SetFeedItems;
             ViewModel.Observables.NavigateToFeed += NavigateToFeed;
+            ViewModel.Observables.NavigateToAddFeed += NavigateToAddFeed;
             ViewModel.Observables.DeletePrompt += DeletePrompt;
             ViewModel.Observables.PromptToAddPodcast += PromptToAddPodcast;
             ViewModel.Observables.PromptToAddFeed += PromptToAddFeed;
@@ -260,6 +262,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
             ViewModel.Observables.NavigateToFeed -= NavigateToFeed;
+            ViewModel.Observables.NavigateToAddFeed -= NavigateToAddFeed;
             ViewModel.Observables.DeletePrompt -= DeletePrompt;
             ViewModel.Observables.PromptToAddPodcast -= PromptToAddPodcast;
             ViewModel.Observables.PromptToAddFeed -= PromptToAddFeed;
@@ -390,6 +393,16 @@ namespace PodcastUtilities.UI.Configure
             RunOnUiThread(() =>
             {
                 var intent = EditFeedActivity.CreateIntent(this, id);
+                StartActivity(intent);
+            });
+        }
+
+        private void NavigateToAddFeed(object sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"EditConfigActivity: NavigateToAddFeed");
+            RunOnUiThread(() =>
+            {
+                var intent = new Intent(this, typeof(AddFeedActivity));
                 StartActivity(intent);
             });
         }

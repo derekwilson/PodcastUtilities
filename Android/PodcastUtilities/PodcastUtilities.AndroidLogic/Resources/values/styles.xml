@@ -47,11 +47,14 @@
 		<item name="android:background">?android:attr/listDivider</item>
 	</style>
 
-	<style name="ConfigRowContainer">
+	<style name="ConfigRow">
 		<item name="android:paddingStart">@dimen/listview_item_horizontal_padding</item>
 		<item name="android:paddingEnd">@dimen/listview_item_horizontal_padding</item>
 		<item name="android:paddingTop">@dimen/listview_item_vertical_padding</item>
 		<item name="android:paddingBottom">@dimen/listview_item_vertical_padding</item>
+	</style>
+
+	<style name="ConfigRowContainer" parent="ConfigRow">
 		<item name="android:background">?attr/selectableItemBackground</item>
 	</style>
 
@@ -104,6 +107,11 @@
 	</style>
 
 	<color name="progress_bar">@color/colour_green</color>
+
+	<style name="OutlineButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+		<item name="strokeColor">@color/colour_blue</item>
+		<item name="cornerRadius">8dp</item>
+	</style>
 
 	<style name="progressSpinnerViewBar">
 		<item name="android:indeterminateTint">@color/colour_green</item>

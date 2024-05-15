@@ -135,6 +135,7 @@ namespace PodcastUtilities
             container.Register<FeedDefaultsViewModel, FeedDefaultsViewModel>();
             container.Register<GlobalValuesViewModel, GlobalValuesViewModel>();
             container.Register<EditFeedViewModel, EditFeedViewModel>();
+            container.Register<AddFeedViewModel, AddFeedViewModel>();
 
             var factory = container.Resolve<ViewModelFactory>();
             factory.AddMap(typeof(MainViewModel));
@@ -148,6 +149,7 @@ namespace PodcastUtilities
             factory.AddMap(typeof(FeedDefaultsViewModel));
             factory.AddMap(typeof(GlobalValuesViewModel));
             factory.AddMap(typeof(EditFeedViewModel));
+            factory.AddMap(typeof(AddFeedViewModel));
             return container;
         }
 

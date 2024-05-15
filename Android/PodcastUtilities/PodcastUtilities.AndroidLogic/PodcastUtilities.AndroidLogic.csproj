@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModel\Configure\AddFeedViewModel.cs" />
     <Compile Include="ViewModel\Configure\ConfigPodcastFeedRecyclerItemAdapter.cs" />
     <Compile Include="ViewModel\Configure\ConfigPodcastFeedRecyclerItem.cs" />
     <Compile Include="ViewModel\Download\DownloadRecyclerItemAdapter.cs" />

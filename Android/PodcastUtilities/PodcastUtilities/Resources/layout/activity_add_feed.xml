@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/edit_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+		<LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+			style="@style/ConfigRow"
+			>
+
+			<TextView
+				android:id="@+id/folder_prompt_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/add_feed_folder_title"
+				style="@style/DialogTitle"
+			/>
+
+			<FrameLayout
+				android:id="@+id/folder_prompt_value_wrapper"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:paddingBottom="15dp"
+				>
+
+				<com.google.android.material.textfield.TextInputLayout
+					android:id="@+id/folder_prompt_value_layout"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="@dimen/text_input_clear_button_width"
+					android:hint="@string/add_feed_folder_prompt"
+					style="@style/DialogTextLayoutColours"
+					>
+					<com.google.android.material.textfield.TextInputEditText
+						android:id="@+id/folder_prompt_value"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:singleLine="true"
+						android:paddingStart="@dimen/text_input_text_padding_left"
+						android:backgroundTint="@android:color/transparent"
+						>
+						<requestFocus />
+					</com.google.android.material.textfield.TextInputEditText>
+				</com.google.android.material.textfield.TextInputLayout>
+
+				<ImageView
+					android:id="@+id/folder_prompt_txt_clear"
+					android:layout_width="@dimen/text_input_clear_button_width"
+					android:layout_height="match_parent"
+					android:layout_gravity="bottom|end"
+					android:background="?attr/selectableItemBackground"
+					android:paddingTop="@dimen/text_input_clear_button_padding"
+					android:paddingLeft="@dimen/text_input_clear_button_padding"
+					android:paddingRight="@dimen/text_input_clear_button_padding"
+					app:srcCompat="@drawable/ic_clear"
+					android:contentDescription="@string/content_desc_clear"
+					style="@style/iconImageButton"
+					>
+				</ImageView>
+			</FrameLayout>
+
+			<TextView
+				android:id="@+id/url_prompt_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/add_feed_url_title"
+				style="@style/DialogTitle"
+			/>
+
+			<FrameLayout
+				android:id="@+id/url_prompt_value_wrapper"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:paddingBottom="15dp"
+				>
+
+				<com.google.android.material.textfield.TextInputLayout
+					android:id="@+id/url_prompt_value_layout"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="@dimen/text_input_clear_button_width"
+					android:hint="@string/add_feed_url_prompt"
+					style="@style/DialogTextLayoutColours"
+					>
+					<com.google.android.material.textfield.TextInputEditText
+						android:id="@+id/url_prompt_value"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:singleLine="true"
+						android:paddingStart="@dimen/text_input_text_padding_left"
+						android:backgroundTint="@android:color/transparent"
+						>
+					</com.google.android.material.textfield.TextInputEditText>
+				</com.google.android.material.textfield.TextInputLayout>
+
+				<ImageView
+					android:id="@+id/url_prompt_txt_clear"
+					android:layout_width="@dimen/text_input_clear_button_width"
+					android:layout_height="match_parent"
+					android:layout_gravity="bottom|end"
+					android:background="?attr/selectableItemBackground"
+					android:paddingTop="@dimen/text_input_clear_button_padding"
+					android:paddingLeft="@dimen/text_input_clear_button_padding"
+					android:paddingRight="@dimen/text_input_clear_button_padding"
+					app:srcCompat="@drawable/ic_clear"
+					android:contentDescription="@string/content_desc_clear"
+					style="@style/iconImageButton"
+					>
+				</ImageView>
+			</FrameLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:orientation="vertical">
+
+				<com.google.android.material.button.MaterialButton
+					android:id="@+id/test_feed_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/add_feed_test_feed"
+					style="@style/OutlineButton"
+					/>
+			</LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+		style="@style/fabIconButton"
+        app:tint="@color/ic_icon_selector"
+		android:contentDescription="@string/button_text_config_add"
+        app:srcCompat="@drawable/ic_add" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

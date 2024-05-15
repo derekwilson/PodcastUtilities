@@ -87,6 +87,7 @@
       <Link>Secrets.cs</Link>
     </Compile>
     <Compile Include="AndroidApplication.cs" />
+    <Compile Include="UI\Configure\AddFeedActivity.cs" />
     <Compile Include="UI\Configure\EditFeedActivity.cs" />
     <Compile Include="UI\Configure\FeedDefaultsActivity.cs" />
     <Compile Include="UI\Configure\GlobalValuesActivity.cs" />
@@ -264,6 +265,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_edit_feed.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_add_feed.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

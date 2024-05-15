@@ -30,6 +30,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptToAddPodcast;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptToAddFeed;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForCacheRoot;
+            public EventHandler NavigateToAddFeed;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -353,6 +354,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             Logger.Debug(() => $"EditConfigViewModel: FeedItemSelected {podcastFeed.Folder}");
             if (podcastFeed.Feed == null)
             {
+                // this will happen if a podcast element is created without a feed element
                 ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
                 {
                     Title = ResourceProvider.GetString(Resource.String.prompt_add_feed_title),
@@ -423,7 +425,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
                 Prompt = ResourceProvider.GetString(Resource.String.prompt_add_podcast_prompt),
             };
-            Observables.PromptToAddPodcast?.Invoke(this, promptParams);
+            //Observables.PromptToAddPodcast?.Invoke(this, promptParams);
+
+            Observables.NavigateToAddFeed?.Invoke(this, null);
         }
 
         public void AddPodcastConfirmed(string value)

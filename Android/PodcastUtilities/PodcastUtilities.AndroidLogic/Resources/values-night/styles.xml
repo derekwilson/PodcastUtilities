@@ -32,6 +32,11 @@
 		<item name="android:textColor">@color/color_grey</item>
 	</style>
 
+	<style name="OutlineButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+		<item name="strokeColor">@color/colour_very_dark_blue</item>
+		<item name="cornerRadius">8dp</item>
+	</style>
+
 	<style name="fabIconButton" parent="FabLayout">
 		<item name="backgroundTint">@color/colour_green</item>
 	</style>
