@@ -18,6 +18,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         {
             public EventHandler<string> DisplayMessage;
             public EventHandler<string> DownloadFreeSpace;
+            public EventHandler<string> MaxConcurrentDownloads;
+            public EventHandler<string> RetryWait;
             public EventHandler<string> PlaylistFile;
             public EventHandler<string> PlaylistFormat;
             public EventHandler<string> PlaylistSeperator;
@@ -26,6 +28,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForPlaylistFile;
             public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForDownloadFreespace;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForPlaylistSeperator;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForMaxConcurrentDownloads;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForRetrySeconds;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -91,6 +95,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 var freeSpaceSublabel = string.Format(ResourceProvider.GetString(Resource.String.download_free_space_label_fmt), controlFile.GetFreeSpaceToLeaveOnDownload());
                 Observables.DownloadFreeSpace?.Invoke(this, freeSpaceSublabel);
             }
+
+            var maxConcurrentDownloadsSublabel = string.Format(ResourceProvider.GetString(Resource.String.max_concurrent_downloads_label_fmt), controlFile.GetMaximumNumberOfConcurrentDownloads());
+            Observables.MaxConcurrentDownloads?.Invoke(this, maxConcurrentDownloadsSublabel);
+
+            var retryWaitSublabel = string.Format(ResourceProvider.GetString(Resource.String.retry_seconds_label_fmt), controlFile.GetRetryWaitInSeconds());
+            Observables.RetryWait?.Invoke(this, retryWaitSublabel);
 
             Observables.PlaylistFile?.Invoke(this, controlFile.GetPlaylistFileName());
             Observables.PlaylistFormat?.Invoke(this, ValueFormatter.GetPlaylistFormatTextLong(controlFile.GetPlaylistFormat()));
@@ -190,6 +200,67 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                     break;
             }
             ApplicationControlFileProvider.SaveCurrentControlFile();
+        }
+
+        public void DoMaxConcurrentDownloadsOptions()
+        {
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
+            {
+                Title = ResourceProvider.GetString(Resource.String.prompt_max_concurrent_downloads_title),
+                Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                Prompt = ResourceProvider.GetString(Resource.String.prompt_max_concurrent_downloads_prompt),
+                Value = ValueConverter.ConvertToString(controlFile.GetMaximumNumberOfConcurrentDownloads()),
+                IsNumeric = true,
+            };
+            Observables.PromptForMaxConcurrentDownloads?.Invoke(this, promptParams);
+        }
+
+        public void SetMaxConcurrentDownloads(string value)
+        {
+            Logger.Debug(() => $"GlobalValuesViewModel:SetMaxConcurrentDownloads = {value}");
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            var number = ValueConverter.ConvertStringToInt(value);
+            if (number < 1)
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_number_need_positive));
+            } else
+            {
+                controlFile.SetMaximumNumberOfConcurrentDownloads(number);
+                ApplicationControlFileProvider.SaveCurrentControlFile();
+            }
+        }
+
+        public void DoRetrySecondsOptions()
+        {
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
+            {
+                Title = ResourceProvider.GetString(Resource.String.prompt_retry_seconds_title),
+                Ok = ResourceProvider.GetString(Resource.String.action_ok),
+                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
+                Prompt = ResourceProvider.GetString(Resource.String.prompt_retry_seconds_title),
+                Value = ValueConverter.ConvertToString(controlFile.GetRetryWaitInSeconds()),
+                IsNumeric = true,
+            };
+            Observables.PromptForRetrySeconds?.Invoke(this, promptParams);
+        }
+
+        public void SetRetrySeconds(string value)
+        {
+            Logger.Debug(() => $"GlobalValuesViewModel:SetRetrySeconds = {value}");
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            var number = ValueConverter.ConvertStringToInt(value);
+            if (number < 1)
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_number_need_positive));
+            }
+            else
+            {
+                controlFile.SetRetryWaitInSeconds(number);
+                ApplicationControlFileProvider.SaveCurrentControlFile();
+            }
         }
 
         public List<SelectableString> GetPlaylistFormatOptions()

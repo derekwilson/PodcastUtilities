@@ -17,6 +17,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
         private static string DATA_KEY = "data_key";
         private static string PROMPT_KEY = "prompt_key";
         private static string VALUE_KEY = "value_key";
+        private static string NUMERIC_KEY = "numeric_key";
 
         public struct ValuePromptDialogFragmentParameters
         {
@@ -26,6 +27,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             public string Data;
             public string Prompt;
             public string Value;
+            public bool IsNumeric;
         };
 
         public static ValuePromptDialogFragment NewInstance(ValuePromptDialogFragmentParameters parameters)
@@ -38,6 +40,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             args.PutString(DATA_KEY, parameters.Data);
             args.PutString(PROMPT_KEY, parameters.Prompt);
             args.PutString(VALUE_KEY, parameters.Value);
+            args.PutBoolean(NUMERIC_KEY, parameters.IsNumeric);
             dialog.Arguments = args;
             return dialog;
         }
@@ -76,6 +79,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             var customData = args.GetString(DATA_KEY);
             var prompt = args.GetString(PROMPT_KEY);
             var value = args.GetString(VALUE_KEY);
+            var isNumeric = args.GetBoolean(NUMERIC_KEY);
 
             if (string.IsNullOrWhiteSpace(title)) {
                 txtTitle.Visibility = ViewStates.Gone;
@@ -87,7 +91,10 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             }
 
             layValue.Hint = prompt;
-
+            if (isNumeric)
+            {
+                txtValue.InputType = Android.Text.InputTypes.ClassNumber;
+            }
             txtValue.Text = value;
             txtValue.SetSelection(txtValue.Text.Length);
             txtValue.EditorAction += (sender, args) => DoEditAction(Tag, customData, args);

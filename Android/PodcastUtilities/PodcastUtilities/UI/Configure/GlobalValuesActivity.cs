@@ -28,6 +28,8 @@ namespace PodcastUtilities.UI.Configure
         private const string FREESPACE_PROMPT_TAG = "freespace_prompt_tag";
         private const string PLAYLIST_FILENAME_PROMPT_TAG = "playlist_filename_prompt_tag";
         private const string PLAYLIST_SEPERATOR_PROMPT_TAG = "playlist_seperator_prompt_tag";
+        private const string MAX_CONCURRENT_TAG = "max_concurrent_prompt_tag";
+        private const string RETRY_SECONDS_TAG = "retry_seconds_prompt_tag";
 
         private AndroidApplication AndroidApplication;
         private GlobalValuesViewModel ViewModel;
@@ -35,6 +37,10 @@ namespace PodcastUtilities.UI.Configure
         private NestedScrollView Container = null;
         private LinearLayoutCompat DownloadFreeSpaceRowContainer = null;
         private TextView DownloadFreeSpaceRowSubLabel = null;
+        private LinearLayoutCompat MaxConcurrentDownloadsRowContainer = null;
+        private TextView MaxConcurrentDownloadsRowSubLabel = null;
+        private LinearLayoutCompat RetrySecondsRowContainer = null;
+        private TextView RetrySecondsRowSubLabel = null;
         private LinearLayoutCompat PlaylistFileRowContainer = null;
         private TextView PlaylistFileRowSubLabel = null;
         private LinearLayoutCompat PlaylistSeperatorRowContainer = null;
@@ -50,6 +56,8 @@ namespace PodcastUtilities.UI.Configure
         private ValuePromptDialogFragment PlaylistFilenamePromptDialogFragment;
         private ValuePromptDialogFragment PlaylistSeperatorPromptDialogFragment;
         private DefaultableItemValuePromptDialogFragment FreespacePromptDialogFragment;
+        private ValuePromptDialogFragment MaxConcurrentDownloadsPromptDialogFragment;
+        private ValuePromptDialogFragment RetrySecondsPromptDialogFragment;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -63,6 +71,10 @@ namespace PodcastUtilities.UI.Configure
             Container = FindViewById<NestedScrollView>(Resource.Id.feed_defaults_container);
             DownloadFreeSpaceRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.download_free_space_row_label_container);
             DownloadFreeSpaceRowSubLabel = FindViewById<TextView>(Resource.Id.download_free_space_row_sub_label);
+            MaxConcurrentDownloadsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.max_concurrent_downloads_row_label_container);
+            MaxConcurrentDownloadsRowSubLabel = FindViewById<TextView>(Resource.Id.max_concurrent_downloads_row_sub_label);
+            RetrySecondsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.retry_seconds_row_label_container);
+            RetrySecondsRowSubLabel = FindViewById<TextView>(Resource.Id.retry_seconds_row_sub_label);
             PlaylistFileRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_file_row_label_container);
             PlaylistFileRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_file_row_sub_label);
             PlaylistSeperatorRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_seperator_row_label_container);
@@ -83,6 +95,8 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Initialise();
 
             DownloadFreeSpaceRowContainer.Click += (sender, e) => DoDownloadFreeSpaceOptions();
+            MaxConcurrentDownloadsRowContainer.Click += (sender, e) => DoMaxConcurrentDownloadsOptions();
+            RetrySecondsRowContainer.Click += (sender, e) => DoRetrySecondsOptions();
             PlaylistFileRowContainer.Click += (sender, e) => DoPlaylistFileOptions();
             PlaylistSeperatorRowContainer.Click += (sender, e) => DoPlaylistSeperatorOptions();
             PlaylistFormatRowContainer.Click += (sender, e) => DoPlaylistFormatOptions();
@@ -95,6 +109,10 @@ namespace PodcastUtilities.UI.Configure
             SetupValueFragmentObservers(PlaylistSeperatorPromptDialogFragment);
             FreespacePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(FREESPACE_PROMPT_TAG) as DefaultableItemValuePromptDialogFragment;
             SetupDefaultableItemValueFragmentObservers(FreespacePromptDialogFragment);
+            MaxConcurrentDownloadsPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(MAX_CONCURRENT_TAG) as ValuePromptDialogFragment;
+            SetupValueFragmentObservers(MaxConcurrentDownloadsPromptDialogFragment);
+            RetrySecondsPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(RETRY_SECONDS_TAG) as ValuePromptDialogFragment;
+            SetupValueFragmentObservers(RetrySecondsPromptDialogFragment);
 
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:OnCreate - end");
         }
@@ -107,6 +125,8 @@ namespace PodcastUtilities.UI.Configure
             KillValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
             KillValueFragmentObservers(PlaylistSeperatorPromptDialogFragment);
             KillDefaultableItemValueFragmentObservers(FreespacePromptDialogFragment);
+            KillValueFragmentObservers(MaxConcurrentDownloadsPromptDialogFragment);
+            KillValueFragmentObservers(RetrySecondsPromptDialogFragment);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -129,6 +149,16 @@ namespace PodcastUtilities.UI.Configure
         private void DoDownloadFreeSpaceOptions()
         {
             ViewModel.DownloadFreespaceOptions();
+        }
+
+        private void DoMaxConcurrentDownloadsOptions()
+        {
+            ViewModel.DoMaxConcurrentDownloadsOptions();
+        }
+
+        private void DoRetrySecondsOptions()
+        {
+            ViewModel.DoRetrySecondsOptions();
         }
 
         private void DoPlaylistFileOptions()
@@ -187,6 +217,10 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.DisplayMessage += DisplayMessage;
             ViewModel.Observables.PlaylistFile += PlaylistFile;
             ViewModel.Observables.DownloadFreeSpace += DownloadFreeSpace;
+            ViewModel.Observables.MaxConcurrentDownloads += MaxConcurrentDownloads;
+            ViewModel.Observables.RetryWait += RetryWait;
+            ViewModel.Observables.PromptForMaxConcurrentDownloads += PromptForMaxConcurrentDownloads;
+            ViewModel.Observables.PromptForRetrySeconds += PromptForRetrySeconds;
             ViewModel.Observables.PromptForPlaylistFile += PromptForPlaylistFile;
             ViewModel.Observables.PromptForDownloadFreespace += PromptForDownloadFreespace;
             ViewModel.Observables.PlaylistFormat += PlaylistFormat;
@@ -201,6 +235,10 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
             ViewModel.Observables.PlaylistFile -= PlaylistFile;
             ViewModel.Observables.DownloadFreeSpace -= DownloadFreeSpace;
+            ViewModel.Observables.MaxConcurrentDownloads -= MaxConcurrentDownloads;
+            ViewModel.Observables.RetryWait -= RetryWait;
+            ViewModel.Observables.PromptForMaxConcurrentDownloads -= PromptForMaxConcurrentDownloads;
+            ViewModel.Observables.PromptForRetrySeconds -= PromptForRetrySeconds;
             ViewModel.Observables.PromptForPlaylistFile -= PromptForPlaylistFile;
             ViewModel.Observables.PromptForDownloadFreespace -= PromptForDownloadFreespace;
             ViewModel.Observables.PlaylistFormat -= PlaylistFormat;
@@ -208,6 +246,42 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PromptForPlaylistSeperator -= PromptForPlaylistSeperator;
             ViewModel.Observables.DiagOutput -= DiagOutput;
             ViewModel.Observables.DiagRetainTemp -= DiagRetainTemp;
+        }
+
+        private void RetryWait(object sender, string str)
+        {
+            RunOnUiThread(() =>
+            {
+                RetrySecondsRowSubLabel.Text = str;
+            });
+        }
+
+        private void MaxConcurrentDownloads(object sender, string str)
+        {
+            RunOnUiThread(() =>
+            {
+                MaxConcurrentDownloadsRowSubLabel.Text = str;
+            });
+        }
+
+        private void PromptForRetrySeconds(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                RetrySecondsPromptDialogFragment = ValuePromptDialogFragment.NewInstance(parameters);
+                SetupValueFragmentObservers(RetrySecondsPromptDialogFragment);
+                RetrySecondsPromptDialogFragment.Show(SupportFragmentManager, RETRY_SECONDS_TAG);
+            });
+        }
+
+        private void PromptForMaxConcurrentDownloads(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        {
+            RunOnUiThread(() =>
+            {
+                MaxConcurrentDownloadsPromptDialogFragment = ValuePromptDialogFragment.NewInstance(parameters);
+                SetupValueFragmentObservers(MaxConcurrentDownloadsPromptDialogFragment);
+                MaxConcurrentDownloadsPromptDialogFragment.Show(SupportFragmentManager, MAX_CONCURRENT_TAG);
+            });
         }
 
         private void DiagRetainTemp(object sender, Tuple<bool, string> parameters)
@@ -333,6 +407,14 @@ namespace PodcastUtilities.UI.Configure
                     KillValueFragmentObservers(PlaylistSeperatorPromptDialogFragment);
                     ViewModel.SetPlaylistSeperator(value);
                     break;
+                case MAX_CONCURRENT_TAG:
+                    KillValueFragmentObservers(MaxConcurrentDownloadsPromptDialogFragment);
+                    ViewModel.SetMaxConcurrentDownloads(value);
+                    break;
+                case RETRY_SECONDS_TAG:
+                    KillValueFragmentObservers(RetrySecondsPromptDialogFragment);
+                    ViewModel.SetRetrySeconds(value);
+                    break;
             }
         }
 
@@ -347,6 +429,12 @@ namespace PodcastUtilities.UI.Configure
                     break;
                 case PLAYLIST_SEPERATOR_PROMPT_TAG:
                     KillValueFragmentObservers(PlaylistSeperatorPromptDialogFragment);
+                    break;
+                case MAX_CONCURRENT_TAG:
+                    KillValueFragmentObservers(MaxConcurrentDownloadsPromptDialogFragment);
+                    break;
+                case RETRY_SECONDS_TAG:
+                    KillValueFragmentObservers(RetrySecondsPromptDialogFragment);
                     break;
             }
         }

@@ -154,6 +154,16 @@
 	<string name="prompt_freespace_download_named_prompt">Unrestriced, use all storage if needed</string>
 	<string name="prompt_freespace_download_custom_prompt">MB to leave</string>
 
+	<string name="row_title_max_concurrent_downloads">Maximum concurrent downloads</string>
+	<string name="max_concurrent_downloads_label_fmt">{0} episodes will be downloaded at the same time.</string>
+	<string name="prompt_max_concurrent_downloads_title">Maximum concurrent downloads</string>
+	<string name="prompt_max_concurrent_downloads_prompt">Number of downloads</string>
+
+	<string name="row_title_retry_seconds">Retry time for high tide mark</string>
+	<string name="retry_seconds_label_fmt">Wait {0} seconds before trying to write to high tide mark (state.xml). If you are seeing errors saving the high tide mark then try making this value larger or reducing the number of concurrent downloads.</string>
+	<string name="prompt_retry_seconds_title">Retry time for high tide mark</string>
+	<string name="prompt_retry_seconds_prompt">Number of seconds</string>
+
 	<string name="row_title_playlist_file">Playlist filename</string>
 	<string name="prompt_playlist_title">Filename to use when generating a playlist</string>
 	<string name="prompt_playlist_prompt">Playlist filename</string>
@@ -173,6 +183,8 @@
 	<string name="diag_retain_temp_off">Temporary files are deleted</string>
 	<string name="diag_retain_temp_on">RSS feed xml for each feed is saved before it is processed. The file is stored in the same folder as the podcast episodes in a file called last_download_feed.xml</string>
 
+	<string name="bad_number_need_positive">Value must be greater then zero</string>
+	
 	<!-- feed defaults activity -->
 	<string name="feed_defaults_activity_title">Feed Defaults</string>
 	
