@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\DownloadException.cs" />
     <Compile Include="Utilities\ClipboardHelper.cs" />
     <Compile Include="ViewModel\Configure\AddFeedViewModel.cs" />
     <Compile Include="ViewModel\Configure\ConfigPodcastFeedRecyclerItemAdapter.cs" />

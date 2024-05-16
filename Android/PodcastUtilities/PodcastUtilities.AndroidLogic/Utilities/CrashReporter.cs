@@ -8,6 +8,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
     {
         void TestReporting();
         void LogNonFatalException(Exception ex);
+        void LogNonFatalException(string message, Exception ex);
     }
 
     public class AppCenterCrashReporter : ICrashReporter
@@ -30,11 +31,19 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 { "IsKindle", AndroidEnvironmentInformationProvider.IsKindleFire().ToString() },
                 { "IsWsa", AndroidEnvironmentInformationProvider.IsWsa().ToString()}
             };
-    }
+        }
 
-    public void LogNonFatalException(Exception ex)
+        public void LogNonFatalException(Exception ex)
         {
             Crashes.TrackError(ex, LoggingExtraProperties);
+            AnalyticsEngine?.LifecycleErrorEvent();
+        }
+
+        public void LogNonFatalException(string message, Exception ex)
+        {
+            var properties = new Dictionary<string, string>(LoggingExtraProperties);
+            properties.Add("message", message);
+            Crashes.TrackError(ex, properties);
             AnalyticsEngine?.LifecycleErrorEvent();
         }
 

@@ -10,28 +10,28 @@ namespace PodcastUtilities.AndroidLogic.Exceptions
     public class ConfigurationException : System.Exception
     {
         /// <summary>
-        /// a ControlFileValueFormatException
+        /// a ConfigurationException
         /// </summary>
         public ConfigurationException()
             : base()
         { }
 
         /// <summary>
-        /// a ControlFileValueFormatException
+        /// a ConfigurationException
         /// </summary>
         public ConfigurationException(string message)
             : base(message)
         { }
 
         /// <summary>
-        /// a ControlFileValueFormatException
+        /// a ConfigurationException
         /// </summary>
         public ConfigurationException(string message, Exception innerException)
             : base(message, innerException)
         { }
 
         /// <summary>
-        /// a ControlFileValueFormatException
+        /// a ConfigurationException
         /// </summary>
         protected ConfigurationException(SerializationInfo info, StreamingContext context)
             : base(info, context)

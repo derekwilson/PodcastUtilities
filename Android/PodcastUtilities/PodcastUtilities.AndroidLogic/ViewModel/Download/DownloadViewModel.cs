@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
+using PodcastUtilities.AndroidLogic.Exceptions;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;
@@ -514,8 +515,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 // keep all the message together
                 if (e.Exception != null)
                 {
-                    Logger.LogException(() => $"DownloadViewModel:StatusUpdate ID {id} -> ", e.Exception);
-                    CrashReporter.LogNonFatalException(e.Exception);
+                    Logger.LogException(() => $"DownloadViewModel:StatusUpdate ID {id}, {e.Message} -> ", e.Exception);
+                    CrashReporter.LogNonFatalException(e.Message, e.Exception);
                     if (item != null)
                     {
                         MessageStore.StoreMessage(item.Id, e.Message);
