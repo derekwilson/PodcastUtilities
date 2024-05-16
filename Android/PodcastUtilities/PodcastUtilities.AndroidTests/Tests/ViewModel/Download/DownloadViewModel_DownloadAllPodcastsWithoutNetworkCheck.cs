@@ -376,7 +376,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.DownloadAllPodcastsWithoutNetworkCheck().Wait();
 
             // assert
-            A.CallTo(() => MockCrashReporter.LogNonFatalException(testException)).MustHaveHappened(1, Times.Exactly);
+            A.CallTo(() => MockCrashReporter.LogNonFatalException(
+                A<string>.That.Matches(s => s == "test exception"),
+                testException))
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => MockStatusAndProgressMessageStore.StoreMessage(
                 A<Guid>.That.Matches(g => g.ToString() == EPISODE_1_ID.ToString()),
                 A<string>.That.Matches(s => s == "test exception")))
