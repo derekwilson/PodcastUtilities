@@ -38,26 +38,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                 // feeds are optional
                 vh.SubLabel.Visibility = ViewStates.Visible;
                 vh.SubLabel2.Visibility = ViewStates.Visible;
-                var fmt = Context.GetString(Resource.String.feed_sublabel_fmt);
-                vh.SubLabel.Text = string.Format(fmt,
-                    GetSublabelPart(
-                        Items[position].PodcastFeed.Feed.MaximumDaysOld.Value,
-                        Resource.Plurals.feed_sublabel_download,
-                        Resource.String.feed_sublabel_download_all),
-                    GetSublabelPart(
-                        Items[position].PodcastFeed.Feed.MaximumNumberOfDownloadedItems.Value,
-                        Resource.Plurals.feed_sublabel_max,
-                        Resource.String.feed_sublabel_no_max),
-                    GetSublabelPart(
-                        Items[position].PodcastFeed.Feed.DeleteDownloadsDaysOld.Value,
-                        Resource.Plurals.feed_sublabel_delete,
-                        Resource.String.feed_sublabel_delete_never)
-                );
-                var fmt2 = Context.GetString(Resource.String.feed_sublabel_fmt2);
-                vh.SubLabel2.Text = string.Format(fmt2,
-                    ViewModel.GetNamingStyleText(Items[position].PodcastFeed.Feed.NamingStyle.Value),
-                    ViewModel.GetDownloadStratagyText(Items[position].PodcastFeed.Feed.DownloadStrategy.Value)
-                );
+                vh.SubLabel.Text = ViewModel.GetFeedItemSubLabel(Items[position].PodcastFeed);
+                vh.SubLabel2.Text = ViewModel.GetFeedItemSubLabel2(Items[position].PodcastFeed);
             }
             else
             {
@@ -74,15 +56,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         {
             int position = Convert.ToInt32(((View)sender).Tag.ToString());
             ViewModel.FeedItemSelected(Items[position].PodcastFeed);
-        }
-
-        private string GetSublabelPart(int value, int formattedId, int maxId)
-        {
-            if (value == int.MaxValue)
-            {
-                return Context.GetString(maxId);
-            }
-            return Context.Resources.GetQuantityString(formattedId, value, value);
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

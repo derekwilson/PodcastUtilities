@@ -356,14 +356,54 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             Observables.NavigateToDownload?.Invoke(this, podcastFeed.Folder);
         }
 
-        internal string GetNamingStyleText(PodcastEpisodeNamingStyle value)
-        {
-            return ValueFormatter.GetNamingStyleText(value);
-        }
-
-        internal object GetDownloadStratagyText(PodcastEpisodeDownloadStrategy value)
+        private string GetDownloadStratagyText(PodcastEpisodeDownloadStrategy value)
         {
             return ValueFormatter.GetDownloadStratagyText(value);
+        }
+
+        internal string GetFeedItemSubLabel(IPodcastInfo podcastFeed)
+        {
+            var fmt = ResourceProvider.GetString(Resource.String.feed_sublabel_fmt);
+            return string.Format(fmt,
+                GetSublabelDatePart(
+                        podcastFeed.Feed.MaximumDaysOld.Value,
+                        Resource.String.feed_sublabel_download_from,
+                        Resource.String.feed_sublabel_download_all),
+                GetSublabelPart(
+                        podcastFeed.Feed.MaximumNumberOfDownloadedItems.Value,
+                        Resource.Plurals.feed_sublabel_max,
+                        Resource.String.feed_sublabel_no_max)
+            );
+        }
+
+        internal string GetFeedItemSubLabel2(IPodcastInfo podcastFeed)
+        {
+            var fmt2 = ResourceProvider.GetString(Resource.String.feed_sublabel_fmt2);
+            return string.Format(fmt2,
+                GetSublabelDatePart(
+                        podcastFeed.Feed.DeleteDownloadsDaysOld.Value,
+                        Resource.String.feed_sublabel_delete_before,
+                        Resource.String.feed_sublabel_delete_never),
+                GetDownloadStratagyText(podcastFeed.Feed.DownloadStrategy.Value)
+            );
+        }
+
+        private string GetSublabelDatePart(int value, int formattedId, int maxId)
+        {
+            if (value == int.MaxValue)
+            {
+                return ResourceProvider.GetString(maxId);
+            }
+            return string.Format(ResourceProvider.GetString(formattedId), ValueFormatter.GetDayOffsetAsDateString(-value));
+        }
+
+        private string GetSublabelPart(int value, int formattedId, int maxId)
+        {
+            if (value == int.MaxValue)
+            {
+                return ResourceProvider.GetString(maxId);
+            }
+            return ResourceProvider.GetQuantityString(formattedId, value);
         }
     }
 }

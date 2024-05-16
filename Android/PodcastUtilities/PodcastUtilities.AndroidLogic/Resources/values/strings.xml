@@ -35,10 +35,7 @@
 	</plurals>
 	<string name="no_feeds_text">No Feeds.</string>
 
-	<plurals name="feed_sublabel_download">
-		<item quantity="one">Get %d day ago</item>
-		<item quantity="other">Get %d days ago</item>
-	</plurals>
+	<string name="feed_sublabel_download_from">Get after {0}</string>
 	<string name="feed_sublabel_download_all">Get all episodes</string>
 
 	<plurals name="feed_sublabel_max">
@@ -47,13 +44,10 @@
 	</plurals>
 	<string name="feed_sublabel_no_max">(no max)</string>
 
-	<plurals name="feed_sublabel_delete">
-		<item quantity="one">Delete after %d day old</item>
-		<item quantity="other">Delete after %d days old</item>
-	</plurals>
+	<string name="feed_sublabel_delete_before">Delete before {0}</string>
 	<string name="feed_sublabel_delete_never">Never delete</string>
-	<string name="feed_sublabel_fmt">{0} {1}, {2}</string>
 
+	<string name="feed_sublabel_fmt">{0} {1}</string>
 	<string name="feed_sublabel_fmt2">{0}, Strategy: {1}</string>
 
 	<string name="button_text_main_download">Download from all Feeds</string>
@@ -257,9 +251,10 @@
 \n
 {1}\n
 \n
-You can add this to your podcast app. If you use PodcastUtilitie copy the RSS URL then select Configure and then add the feed URL\n
+To copy the URL to the clipboard: long press to select the URL and then select copy\n
+You can then add this to your podcast app. If you use PodcastUtilities select Configure and then select add, the URL should be automatically pasted into the URL field, if you select Test the folder will also be automatically set.\n
 \n
-You can get PodcastUtilities from here\n
+You can get PodcastUtilities here\n
 \n
 {2}\n</string>
 	

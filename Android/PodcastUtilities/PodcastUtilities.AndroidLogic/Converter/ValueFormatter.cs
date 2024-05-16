@@ -1,8 +1,10 @@
 ﻿using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Common.Playlists;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace PodcastUtilities.AndroidLogic.Converter
 {
@@ -19,6 +21,7 @@ namespace PodcastUtilities.AndroidLogic.Converter
         string GetDefaultableDownloadStratagyTextLong(IDefaultableItem<PodcastEpisodeDownloadStrategy> downloadStrategy);
         string GetPlaylistFormatTextLong(PlaylistFormat playlistFormat);
         string GetDiagOutputTextLong(DiagnosticOutputLevel diagnosticOutputLevel);
+        string GetDayOffsetAsDateString(int offset);
     }
 
     public class ValueFormatter : IValueFormatter
@@ -27,17 +30,20 @@ namespace PodcastUtilities.AndroidLogic.Converter
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
         private IFileSystemHelper FileSystemHelper;
+        private ITimeProvider TimeProvider;
 
         public ValueFormatter(
             ICrashReporter crashReporter,
             ILogger logger,
             IResourceProvider resourceProvider,
-            IFileSystemHelper fileSystemHelper)
+            IFileSystemHelper fileSystemHelper,
+            ITimeProvider timeProvider)
         {
             CrashReporter = crashReporter;
             Logger = logger;
             ResourceProvider = resourceProvider;
             FileSystemHelper = fileSystemHelper;
+            TimeProvider = timeProvider;
         }
 
         private const string SEPERATOR = " - ";
@@ -241,6 +247,12 @@ namespace PodcastUtilities.AndroidLogic.Converter
         public string GetDiagOutputTextLong(DiagnosticOutputLevel diagnosticOutputLevel)
         {
             return $"{diagnosticOutputLevel}{GetDiagOutputAdditionalText(diagnosticOutputLevel)}";
+        }
+
+        public string GetDayOffsetAsDateString(int offset)
+        {
+            var date = TimeProvider.UtcNow.AddDays(offset);
+            return date.ToString("d MMM yyyy", CultureInfo.InvariantCulture);
         }
 
     }
