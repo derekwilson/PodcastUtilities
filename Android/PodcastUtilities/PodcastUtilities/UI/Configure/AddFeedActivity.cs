@@ -10,6 +10,9 @@ using PodcastUtilities.AndroidLogic.ViewModel;
 using System;
 using Android.Content.PM;
 using Google.Android.Material.Button;
+using Android.Views;
+using PodcastUtilities.AndroidLogic.Utilities;
+using PodcastUtilities.AndroidLogic.CustomViews;
 
 namespace PodcastUtilities.UI.Configure
 {
@@ -19,10 +22,12 @@ namespace PodcastUtilities.UI.Configure
         private AndroidApplication AndroidApplication;
         private AddFeedViewModel ViewModel;
 
+        private ProgressSpinnerView ProgressSpinner = null;
         private EditText FolderText = null;
         private EditText FeedUrlText = null;
-        private MaterialButton TestButton;
-        private FloatingActionButton AddButton;
+        private MaterialButton TestButton = null;
+        private TextView TestFeedErrorMessage = null;
+        private FloatingActionButton AddButton = null;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -33,9 +38,11 @@ namespace PodcastUtilities.UI.Configure
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_add_feed);
 
+            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.add_feed_progress_bar);
             FolderText = FindViewById<EditText>(Resource.Id.folder_prompt_value);
             FeedUrlText = FindViewById<EditText>(Resource.Id.url_prompt_value);
             TestButton = FindViewById<MaterialButton>(Resource.Id.test_feed_button);
+            TestFeedErrorMessage = FindViewById<TextView>(Resource.Id.test_feed_error_message);
             AddButton = FindViewById<FloatingActionButton>(Resource.Id.fab_add_add);
 
             var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
@@ -47,7 +54,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Initialise();
 
             AddButton.Click += (sender, e) => ViewModel.AddFeed(FolderText.Text, FeedUrlText.Text);
-            TestButton.Click += (sender, e) => ViewModel.TestFeed(FeedUrlText.Text);
+            TestButton.Click += (sender, e) => ViewModel.TestFeed(FolderText.Text, FeedUrlText.Text);
 
             AndroidApplication.Logger.Debug(() => $"AddFeedActivity:OnCreate - end");
         }
@@ -78,6 +85,10 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.Url += Url;
             ViewModel.Observables.DisplayMessage += DisplayMessage;
             ViewModel.Observables.Exit += Exit;
+            ViewModel.Observables.DisplayErrorMessage += DisplayErrorMessage;
+            ViewModel.Observables.HideErrorMessage += HideErrorMessage;
+            ViewModel.Observables.StartDownloading += StartDownloading;
+            ViewModel.Observables.EndDownloading += EndDownloading;
         }
 
         private void KillViewModelObservers()
@@ -86,6 +97,48 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.Url -= Url;
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
             ViewModel.Observables.Exit -= Exit;
+            ViewModel.Observables.DisplayErrorMessage -= DisplayErrorMessage;
+            ViewModel.Observables.HideErrorMessage -= HideErrorMessage;
+            ViewModel.Observables.StartDownloading -= StartDownloading;
+            ViewModel.Observables.EndDownloading -= EndDownloading;
+        }
+
+        private void EndDownloading(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
+                TestButton.Enabled = true;
+            });
+        }
+
+        private void StartDownloading(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.StartProgress(ProgressSpinner, Window);
+                TestButton.Enabled = false;
+            });
+        }
+
+        private void HideErrorMessage(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                TestFeedErrorMessage.Visibility = ViewStates.Gone;
+            });
+        }
+
+        private void DisplayErrorMessage(object sender, string message)
+        {
+            RunOnUiThread(() =>
+            {
+                if (!String.IsNullOrEmpty(message))
+                {
+                    TestFeedErrorMessage.Text = message;
+                }
+                TestFeedErrorMessage.Visibility = ViewStates.Visible;
+            });
         }
 
         private void DisplayMessage(object sender, string message)

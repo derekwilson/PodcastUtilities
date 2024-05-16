@@ -134,6 +134,20 @@
 					/>
 			</LinearLayout>
 
+			<TextView
+				android:id="@+id/test_feed_error_message"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				android:text="@string/placeholder"
+				android:textAlignment="center"
+				android:gravity="center_horizontal" 
+				android:visibility="gone"
+				style="@style/ItemTitle"
+				/>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -147,5 +161,18 @@
         app:tint="@color/ic_icon_selector"
 		android:contentDescription="@string/button_text_config_add"
         app:srcCompat="@drawable/ic_add" />
+
+    <!-- the order of the ProgressSpinner and the FrameLayout is important
+    in pre lollipop devices as elevation does not work -->
+    <PodcastUtilities.AndroidLogic.CustomViews.ProgressSpinnerView
+        android:id="@+id/add_feed_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="2dp"
+        android:visibility="gone"
+        app:message="@string/add_feed_test_feed_progress"
+        >
+    </PodcastUtilities.AndroidLogic.CustomViews.ProgressSpinnerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

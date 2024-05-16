@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
-using PodcastUtilities.AndroidLogic.Exceptions;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;

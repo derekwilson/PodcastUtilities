@@ -222,7 +222,11 @@
 	<string name="add_feed_url_prompt">URL</string>
 
 	<string name="add_feed_test_feed">Test Feed</string>
-	
+	<string name="add_feed_test_feed_progress">Testing the feed...</string>
+
+	<string name="add_feed_test_feed_ok_fmt">Feed {0} OK</string>
+	<string name="add_feed_test_feed_error">Cannot load feed</string>
+
 	<!-- edit feed activity -->
 	<string name="edit_feed_activity_title">Feed</string>
 	<string name="edit_feed_cannot_find_podcast">Cannot find podcast</string>

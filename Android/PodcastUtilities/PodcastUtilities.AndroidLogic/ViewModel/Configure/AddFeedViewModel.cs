@@ -2,9 +2,11 @@
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
+using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Feeds;
 using System;
-using static Android.Renderscripts.Sampler;
+using System.Threading.Tasks;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 {
@@ -16,6 +18,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler<string> Folder;
             public EventHandler<string> Url;
             public EventHandler Exit;
+            public EventHandler<string> DisplayErrorMessage;
+            public EventHandler HideErrorMessage;
+            public EventHandler StartDownloading;
+            public EventHandler EndDownloading;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -26,8 +32,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         private ICrashReporter CrashReporter;
         private IAnalyticsEngine AnalyticsEngine;
         private IClipboardHelper ClipboardHelper;
+        private IPodcastFeedFactory FeedFactory;
+        private IWebClientFactory WebClientFactory;
 
         private bool ShouldCheckClipboard = true;
+        private bool DownloadingInProgress = false;
+        // do not make this anything other than private
+        private object SyncLock = new object();
 
         public AddFeedViewModel(
             Application app,
@@ -36,7 +47,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             IApplicationControlFileProvider appControlFileProvider,
             ICrashReporter crashReporter,
             IAnalyticsEngine analyticsEngine,
-            IClipboardHelper clipboardHelper) : base(app)
+            IClipboardHelper clipboardHelper,
+            IPodcastFeedFactory feedFactory,
+            IWebClientFactory webClientFactory) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"AddFeedViewModel:ctor");
@@ -47,6 +60,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
             ClipboardHelper = clipboardHelper;
+            FeedFactory = feedFactory;
+            WebClientFactory = webClientFactory;
         }
 
         [Lifecycle.Event.OnCreate]
@@ -119,11 +134,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             }
         }
 
-        public void TestFeed(string text)
-        {
-            Logger.Debug(() => $"AddFeedViewModel:TestFeed {text}");
-        }
-
         public void CheckClipboardForUrl(string text)
         {
             if (!ShouldCheckClipboard)
@@ -143,6 +153,80 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                 return;
             }
             Observables.Url?.Invoke(this, clipUrl);
+        }
+
+        public Task TestFeed(string folder, string feedUrl)
+        {
+            Logger.Debug(() => $"AddFeedViewModel:TestFeed {feedUrl}");
+
+            if (string.IsNullOrWhiteSpace(feedUrl))
+            {
+                Observables.DisplayErrorMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_url));
+                return null;
+            }
+            if (!Uri.IsWellFormedUriString(feedUrl, UriKind.Absolute))
+            {
+                Observables.DisplayErrorMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_url));
+                return null;
+            }
+
+            return Task.Run(() =>
+                {
+                    GetFeedChannelData(feedUrl, string.IsNullOrWhiteSpace(folder));
+                }
+            );
+        }
+
+        // dont run this on the UI thread
+        private void GetFeedChannelData(string address, bool replaceFolder)
+        {
+            Logger.Debug(() => $"AddFeedViewModel:GetFeedChannelData");
+            lock (SyncLock)
+            {
+                if (DownloadingInProgress)
+                {
+                    Logger.Warning(() => $"AddFeedViewModel:DownloadAllPodcasts - already in progress - ignored");
+                    return;
+                }
+                DownloadingInProgress = true;
+            }
+
+            try
+            {
+                Observables.HideErrorMessage?.Invoke(this, null);
+                Observables.StartDownloading?.Invoke(this, null);
+                var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+                using (var webClient = WebClientFactory.CreateWebClient())
+                {
+                    var downloader = new Downloader(webClient, FeedFactory);
+                    var feed = downloader.DownloadFeed(controlFile.GetDefaultFeedFormat(), new Uri(address), null);
+                    if (feed != null)
+                    {
+                        if (replaceFolder)
+                        {
+                            Observables.Folder?.Invoke(this, feed.Title);
+                        }
+                        var message = string.Format(ResourceProvider.GetString(Resource.String.add_feed_test_feed_ok_fmt), feed.Title);
+                        Observables.DisplayErrorMessage?.Invoke(this, message);
+                    }
+                    else
+                    {
+                        // you would have liked to think we got an exception
+                        Observables.DisplayErrorMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.add_feed_test_feed_error));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogException(() => $"AddFeedViewModel:GetFeedChannelData", ex);
+                CrashReporter.LogNonFatalException($"Adding: {address}", ex);
+                Observables.DisplayErrorMessage?.Invoke(this, ex.Message);
+            }
+            finally
+            {
+                Observables.EndDownloading?.Invoke(this, null);
+                DownloadingInProgress = false;
+            }
         }
     }
 }
