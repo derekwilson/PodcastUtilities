@@ -16,7 +16,7 @@ using PodcastUtilities.AndroidLogic.CustomViews;
 
 namespace PodcastUtilities.UI.Configure
 {
-    [Activity(Label = "@string/add_feed_activity_title", ParentActivity = typeof(EditConfigActivity))]
+    [Activity(Label = "@string/add_feed_activity_title", WindowSoftInputMode = SoftInput.StateVisible, ParentActivity = typeof(EditConfigActivity))]
     internal class AddFeedActivity : AppCompatActivity
     {
         private AndroidApplication AndroidApplication;
@@ -24,7 +24,9 @@ namespace PodcastUtilities.UI.Configure
 
         private ProgressSpinnerView ProgressSpinner = null;
         private EditText FolderText = null;
+        private ImageView ClearFolderButton = null;
         private EditText FeedUrlText = null;
+        private ImageView ClearFeedButton = null;
         private MaterialButton TestButton = null;
         private TextView TestFeedErrorMessage = null;
         private FloatingActionButton AddButton = null;
@@ -40,7 +42,9 @@ namespace PodcastUtilities.UI.Configure
 
             ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.add_feed_progress_bar);
             FolderText = FindViewById<EditText>(Resource.Id.folder_prompt_value);
+            ClearFolderButton = FindViewById<ImageView>(Resource.Id.folder_prompt_txt_clear);
             FeedUrlText = FindViewById<EditText>(Resource.Id.url_prompt_value);
+            ClearFeedButton = FindViewById<ImageView>(Resource.Id.url_prompt_txt_clear);
             TestButton = FindViewById<MaterialButton>(Resource.Id.test_feed_button);
             TestFeedErrorMessage = FindViewById<TextView>(Resource.Id.test_feed_error_message);
             AddButton = FindViewById<FloatingActionButton>(Resource.Id.fab_add_add);
@@ -53,10 +57,19 @@ namespace PodcastUtilities.UI.Configure
 
             ViewModel.Initialise();
 
+            ClearFolderButton.Click += (sender, e) => FolderText.Text = "";
+            ClearFeedButton.Click += (sender, e) => FeedUrlText.Text = "";
             AddButton.Click += (sender, e) => ViewModel.AddFeed(FolderText.Text, FeedUrlText.Text);
             TestButton.Click += (sender, e) => ViewModel.TestFeed(FolderText.Text, FeedUrlText.Text);
 
             AndroidApplication.Logger.Debug(() => $"AddFeedActivity:OnCreate - end");
+        }
+
+        protected override void OnStart()
+        {
+            AndroidApplication.Logger.Debug(() => $"AddFeedActivity:OnStart");
+            base.OnStart();
+            DialogHelper.ShowSoftKeyboard(FolderText);
         }
 
         public override void OnWindowFocusChanged(bool hasFocus)

@@ -52,7 +52,6 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
             Action action = () =>
             {
-                // your code that you want to delay here
                 view.RequestFocus();
                 view.SetSelection(view.Text.Length);
                 inputMethodManager.ShowSoftInput(view, ShowFlags.Implicit);

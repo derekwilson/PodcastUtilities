@@ -49,7 +49,6 @@
 						android:paddingStart="@dimen/text_input_text_padding_left"
 						android:backgroundTint="@android:color/transparent"
 						>
-						<requestFocus />
 					</com.google.android.material.textfield.TextInputEditText>
 				</com.google.android.material.textfield.TextInputLayout>
 
