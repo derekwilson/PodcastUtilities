@@ -92,6 +92,16 @@ namespace PodcastUtilities.UI.Configure
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
+        public override bool DispatchKeyEvent(KeyEvent e)
+        {
+            if (BackKeyMapper.HandleKeyEvent(this, e))
+            {
+                AndroidApplication.Logger.Debug(() => $"AddFeedActivity:DispatchKeyEvent - handled");
+                return true;
+            }
+            return base.DispatchKeyEvent(e);
+        }
+
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.Folder += Folder;
