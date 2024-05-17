@@ -5,6 +5,7 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 2.3.0   | 17 May 2024 | 21 (Android 5)   | 33 (Android 13)
 | 2.2.0   | 16 Jan 2024 | 21 (Android 5)   | 33 (Android 13)
 | 2.1.0   | 11 Jan 2024 | 21 (Android 5)   | 33 (Android 13)
 | 2.0.0   | 28 Dec 2023 | 21 (Android 5)   | 33 (Android 13)
@@ -23,6 +24,16 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 ## Notes
 
 Major changes for each version
+
+## v2.3.0 (15)
+- Updated `PodcastUtilities.Common.Dll` to v3.2.0.1
+- Reworked the UI for adding a new feed to lookup the URL from the clipboard and the title from the feed
+- Updated the main feed list display to be more useful
+- Added ability to share a podcast RSS feed URL
+- Added global configuration of number of concurrent downloads and the retry time when writing to state
+- Display an error alert if there is an error testing the feed or finding episodes to download
+- Handling of "." in episode titles that are used as filenames is improved
+- FIX: Issue with filenames containing "|" and "*"
 
 ## v2.2.0 (14)
 - Added delete button to edit feed page
