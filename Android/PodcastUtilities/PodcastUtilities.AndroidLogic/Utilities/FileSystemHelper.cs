@@ -4,6 +4,7 @@ using Android.Provider;
 using AndroidX.Core.Content;
 using AndroidX.DocumentFile.Provider;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.Common.Platform;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,6 +35,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         Android.Net.Uri GetAttachmentUri(String filename);
 
         string GetRealPathFromDocumentTreeFile(DocumentFile documentFile);
+
+        string RemoveInvalidFilenameChars(string filename);
     }
 
     public class FileSystemHelper : IFileSystemHelper
@@ -297,6 +300,36 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 }
             }
             return path1;
+        }
+
+        // these are chars that are invalid in the file system but not in Path.GetInvalidFileNameChars()
+        // for example the ? and : on Android scoped file storage (MediaStore)
+        // to be fair to Mono its not possible to get Path.GetInvalidFileNameChars() correct as the rules change depending on the folder (thanks google)
+        private static char[] additional_invalid_chars = { '?', ':', '\'', '’', '|', '*' };
+
+        public string RemoveInvalidFilenameChars(string filename)
+        {
+            Logger.Debug(() => $"FileSystemHelper:RemoveInvalidFilenameChars input = {filename}");
+            if (Path.GetInvalidFileNameChars() != null && filename.IndexOfAny(Path.GetInvalidFileNameChars()) != -1)
+            {
+                Logger.Debug(() => $"FileSystemHelper:RemoveInvalidFilenameChars Path invalid = {Path.GetInvalidFileNameChars()}");
+                filename = RemoveInvalidChars(filename, Path.GetInvalidFileNameChars());
+            }
+            if (filename.IndexOfAny(additional_invalid_chars) != -1)
+            {
+                filename = RemoveInvalidChars(filename, additional_invalid_chars);
+            }
+            Logger.Debug(() => $"FileSystemHelper:RemoveInvalidFilenameChars output = {filename}");
+            return filename;
+        }
+
+        private static string RemoveInvalidChars(string filename, char[] invalid)
+        {
+            foreach (char invalidFileNameChar in invalid)
+            {
+                filename = filename.Replace(invalidFileNameChar, '_');
+            }
+            return filename;
         }
     }
 }

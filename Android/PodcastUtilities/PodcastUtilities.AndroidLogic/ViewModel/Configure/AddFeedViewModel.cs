@@ -34,6 +34,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         private IClipboardHelper ClipboardHelper;
         private IPodcastFeedFactory FeedFactory;
         private IWebClientFactory WebClientFactory;
+        private IFileSystemHelper FileSystemHelper;
 
         private bool ShouldCheckClipboard = true;
         private bool DownloadingInProgress = false;
@@ -49,7 +50,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             IAnalyticsEngine analyticsEngine,
             IClipboardHelper clipboardHelper,
             IPodcastFeedFactory feedFactory,
-            IWebClientFactory webClientFactory) : base(app)
+            IWebClientFactory webClientFactory,
+            IFileSystemHelper fileSystemHelper) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"AddFeedViewModel:ctor");
@@ -62,6 +64,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ClipboardHelper = clipboardHelper;
             FeedFactory = feedFactory;
             WebClientFactory = webClientFactory;
+            FileSystemHelper = fileSystemHelper;
         }
 
         [Lifecycle.Event.OnCreate]
@@ -204,7 +207,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
                     {
                         if (replaceFolder)
                         {
-                            Observables.Folder?.Invoke(this, feed.Title);
+                            Observables.Folder?.Invoke(this, FileSystemHelper.RemoveInvalidFilenameChars(feed.Title));
                         }
                         var message = string.Format(ResourceProvider.GetString(Resource.String.add_feed_test_feed_ok_fmt), feed.Title);
                         Observables.DisplayErrorMessage?.Invoke(this, message);
