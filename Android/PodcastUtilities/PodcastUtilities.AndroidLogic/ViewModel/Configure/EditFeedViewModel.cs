@@ -603,8 +603,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 
         private Intent GetSharingIntent(string subject, string shareText)
         {
-            Intent sharingIntent = new Intent(Android.Content.Intent.ActionSend);
-            sharingIntent.SetType("vnd.android.cursor.dir/email");
+            Intent sharingIntent = new Intent(Intent.ActionSend);
+            sharingIntent.SetType("text/plain");
             sharingIntent.PutExtra(Intent.ExtraSubject, subject);
             sharingIntent.PutExtra(Intent.ExtraText, shareText);
             return sharingIntent;

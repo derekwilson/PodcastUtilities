@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.andrewandderek.podcastutilities.sideload" android:installLocation="auto" android:versionName="2.3.0" android:versionCode="15">
-  <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33" />
-  <application android:requestLegacyExternalStorage="true" android:preserveLegacyExternalStorage="true" android:dataExtractionRules="@xml/appcenter_backup_rule" android:allowBackup="true" android:icon="@mipmap/ic_app" android:label="@string/app_name" android:supportsRtl="true" android:theme="@style/AppTheme">
-    <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
-      <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths" />
-    </provider>
-  </application>
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.andrewandderek.podcastutilities.sideload.debug" android:installLocation="auto" android:versionName="2.3.0step2" android:versionCode="15">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33" />
+	<application android:requestLegacyExternalStorage="true" android:preserveLegacyExternalStorage="true" android:dataExtractionRules="@xml/appcenter_backup_rule" android:allowBackup="true" android:icon="@mipmap/ic_app" android:label="@string/app_name_debug" android:supportsRtl="true" android:theme="@style/AppTheme">
+		<provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths" />
+		</provider>
+	</application>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>
