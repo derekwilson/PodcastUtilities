@@ -27,7 +27,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler<string> SetCacheRoot;
             public EventHandler<Tuple<string, List<ConfigPodcastFeedRecyclerItem>>> SetFeedItems;
             public EventHandler<string> NavigateToFeed;
-            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptToAddPodcast;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptToAddFeed;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForCacheRoot;
             public EventHandler NavigateToAddFeed;
@@ -418,37 +417,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 
         public void AddPodcastSelected()
         {
-            ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
-            {
-                Title = ResourceProvider.GetString(Resource.String.prompt_add_podcast_title),
-                Ok = ResourceProvider.GetString(Resource.String.prompt_add_podcast_ok),
-                Cancel = ResourceProvider.GetString(Resource.String.action_cancel),
-                Prompt = ResourceProvider.GetString(Resource.String.prompt_add_podcast_prompt),
-            };
-            //Observables.PromptToAddPodcast?.Invoke(this, promptParams);
-
             Observables.NavigateToAddFeed?.Invoke(this, null);
-        }
-
-        public void AddPodcastConfirmed(string value)
-        {
-            Logger.Debug(() => $"EditConfigViewModel:Add = {value}");
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_folder_empty));
-                return;
-            }
-            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-            var newPodcast = new PodcastInfo(controlFile);
-            newPodcast.Folder = value;
-            if (ApplicationControlFileProvider.AddPodcastIfFoldernameUnique(newPodcast))
-            {
-                AnalyticsEngine.AddPodcastEvent(value);
-            }
-            else
-            {
-                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.bad_folder_duplicate));
-            }
         }
 
         public void AddFeedConfirmed(string value, string data)
