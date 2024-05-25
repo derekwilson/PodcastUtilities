@@ -5,7 +5,7 @@ $PrgmFiles = [System.Environment]::GetFolderPath("ProgramFiles");
 $PrgmData = [System.Environment]::GetFolderPath("CommonApplicationData");
 $UserPrgmData = [System.Environment]::GetFolderPath("LocalApplicationData");
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$filePath = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)\podcastutilities3.1.0.0.zip"
+$filePath = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)\podcastutilities3.2.0.1.zip"
 
 $ErrorActionPreference = 'Stop'; # stop on all errors
 
