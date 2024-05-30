@@ -123,7 +123,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public void LogMixpanelErrors(string message, Exception exception)
         {
             Logger.LogException(() => $"MixpanelAnalyticsEngine - error - {message}", exception);
-            CrashReporter.LogNonFatalException("MixpanelAnalyticsEngine - error - {message}", exception);
+            CrashReporter.LogNonFatalException($"MixpanelAnalyticsEngine - error - {message}", exception);
         }
 
         private void trackEventAsync(string eventName, object properties) {
