@@ -1,6 +1,8 @@
-﻿using Microsoft.AppCenter.Crashes;
-using System;
-using System.Collections.Generic;
+﻿using System;
+
+using Firebase.Crashlytics;
+using PodcastUtilities.AndroidLogic.Exceptions;
+using PodcastUtilities.Common.Platform;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
@@ -11,19 +13,56 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void LogNonFatalException(string message, Exception ex);
     }
 
+    public class CrashlyticsReporter : ICrashReporter
+    {
+        // to see crashes go to
+        // https://console.firebase.google.com/project/podcastutilities/crashlytics/app/android:com.andrewandderek.podcastutilities.sideload.debug
+
+        private IAndroidEnvironmentInformationProvider AndroidEnvironmentInformationProvider;
+
+        public CrashlyticsReporter(IAndroidEnvironmentInformationProvider androidEnvironmentInformationProvider)
+        {
+            AndroidEnvironmentInformationProvider = androidEnvironmentInformationProvider;
+
+            var crashlytics = FirebaseCrashlytics.Instance;
+            crashlytics.SetCustomKey("isWsa", AndroidEnvironmentInformationProvider.IsWsa());
+            crashlytics.SetCustomKey("isKindle", AndroidEnvironmentInformationProvider.IsWsa());
+        }
+
+        public void LogNonFatalException(Exception ex)
+        {
+            var throwable = Java.Lang.Throwable.FromException(ex);
+            FirebaseCrashlytics.Instance.RecordException(throwable);
+        }
+
+        public void LogNonFatalException(string message, Exception ex)
+        {
+            var wrappedException = new NonFatalMessageException(message, ex);
+            var throwable = Java.Lang.Throwable.FromException(wrappedException);
+            FirebaseCrashlytics.Instance.RecordException(throwable);
+        }
+
+        public void TestReporting()
+        {
+            throw new NotImplementedException("Test Crash Reporting");
+        }
+    }
+
+    /* 
+     * - cannot leave this code here as we have removed the NuGet package references
+     *
+
     public class AppCenterCrashReporter : ICrashReporter
     {
         // to see crashes go to
         // https://appcenter.ms/orgs/AndrewAndDerek/apps/PodcastUtilitiesDebug/crashes/errors?appBuild=&period=last28Days&status=&version=
 
-        private IAnalyticsEngine AnalyticsEngine;
         private IAndroidEnvironmentInformationProvider AndroidEnvironmentInformationProvider;
 
         private Dictionary<string, string> LoggingExtraProperties = null;
 
-        public AppCenterCrashReporter(IAnalyticsEngine analyticsEngine, IAndroidEnvironmentInformationProvider androidEnvironmentInformationProvider)
+        public AppCenterCrashReporter(IAndroidEnvironmentInformationProvider androidEnvironmentInformationProvider)
         {
-            AnalyticsEngine = analyticsEngine;
             AndroidEnvironmentInformationProvider = androidEnvironmentInformationProvider;
 
             LoggingExtraProperties = new Dictionary<string, string>
@@ -36,7 +75,6 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public void LogNonFatalException(Exception ex)
         {
             Crashes.TrackError(ex, LoggingExtraProperties);
-            AnalyticsEngine?.LifecycleErrorEvent();
         }
 
         public void LogNonFatalException(string message, Exception ex)
@@ -44,44 +82,12 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             var properties = new Dictionary<string, string>(LoggingExtraProperties);
             properties.Add("message", message);
             Crashes.TrackError(ex, properties);
-            AnalyticsEngine?.LifecycleErrorEvent();
         }
 
         public void TestReporting()
         {
             // Note - this will only do anything in a debug build
             Crashes.GenerateTestCrash();
-        }
-    }
-
-
-    /* 
-     * - cannot leave this code here as we have removed the NuGet package references
-     *
-
-    public class CrashlyticsReporter : ICrashReporter
-    {
-        // to see crashes go to
-        // https://console.firebase.google.com/project/podcastutilities/crashlytics/app/android:com.andrewandderek.podcastutilities.sideload.debug
-
-        private IAnalyticsEngine AnalyticsEngine;
-
-        public CrashlyticsReporter(IAnalyticsEngine analyticsEngine)
-        {
-            AnalyticsEngine = analyticsEngine;
-        }
-
-        public void LogNonFatalException(Exception ex)
-        {
-            var throwable = Java.Lang.Throwable.FromException(ex);
-            FirebaseCrashlytics.Instance.RecordException(throwable);
-
-            AnalyticsEngine?.LifecycleErrorEvent();
-        }
-
-        public void TestReporting()
-        {
-            throw new NotImplementedException("Test Crash Reporting");
         }
     }
 

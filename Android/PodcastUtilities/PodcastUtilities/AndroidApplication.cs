@@ -5,9 +5,6 @@ using Android.Runtime;
 using Android.Text;
 using Android.Util;
 using AndroidX.Core.Content.PM;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Logging;
@@ -104,10 +101,12 @@ namespace PodcastUtilities
             container.Register<ILogger>(Logger);
 
             // these must be kept as singletons
-            //container.Register<ICrashReporter, CrashlyticsReporter>(IocLifecycle.Singleton);
+            //container.Register<ICrashReporter, AppCenterCrashReporter>(IocLifecycle.Singleton);
+            //container.Register<IAnalyticsEngine, NullAnalyticsEngine>(IocLifecycle.Singleton);
             //container.Register<IAnalyticsEngine, FirebaseAnalyticsEngine>(IocLifecycle.Singleton);
-            container.Register<ICrashReporter, AppCenterCrashReporter>(IocLifecycle.Singleton);
-            container.Register<IAnalyticsEngine, AppCenterAnalyticsEngine>(IocLifecycle.Singleton);
+            //container.Register<IAnalyticsEngine, AppCenterAnalyticsEngine>(IocLifecycle.Singleton);
+            container.Register<ICrashReporter, CrashlyticsReporter>(IocLifecycle.Singleton);
+            container.Register<IAnalyticsEngine, MixpanelAnalyticsEngine>(IocLifecycle.Singleton);
             container.Register<IApplicationControlFileProvider, ApplicationControlFileProvider>(IocLifecycle.Singleton);
 
             container.Register<IAndroidEnvironmentInformationProvider, AndroidEnvironmentInformationProvider>(IocLifecycle.Singleton);
@@ -179,8 +178,6 @@ namespace PodcastUtilities
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate SDK == {Android.OS.Build.VERSION.SdkInt}, {(int)Android.OS.Build.VERSION.SdkInt}");
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate PackageName == {this.PackageName}");
 
-            AppCenter.Start(Secrets.APP_CENTER_SECRET, typeof(Analytics), typeof(Crashes));
-
             SetupExceptionHandler();
             SetVersionProperties();
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Version == {DisplayVersion}");
@@ -214,15 +211,7 @@ namespace PodcastUtilities
             }
 
             Analytics = IocContainer.Resolve<IAnalyticsEngine>();
-            float scaling = 0.0F;
-            try
-            {
-                scaling = this.Resources.Configuration.FontScale;
-            } catch (Exception ex)
-            {
-                Logger.LogException(() => "error getting scaling", ex);
-            }
-            Analytics?.LifecycleLaunchEvent(scaling, GetString(Resource.String.ui_mode));
+            Analytics?.LifecycleLaunchEvent();
         }
 
         public void SetLoggingNone()

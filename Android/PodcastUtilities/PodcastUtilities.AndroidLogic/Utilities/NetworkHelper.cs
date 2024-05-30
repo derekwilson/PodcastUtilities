@@ -6,6 +6,7 @@ using System.Net.Security;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using static PodcastUtilities.AndroidLogic.Utilities.INetworkHelper;
+using System;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
@@ -20,6 +21,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         }
 
         NetworkType ActiveNetworkType { get; }
+        IPAddress ActiveNetworkAddress { get; }
 
         void SetNetworkConnectionLimit(int maxNumberOfConnections);
         void SetApplicationDefaultCertificateValidator();
@@ -35,6 +37,39 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             Logger = logger;
         }
 
+        public IPAddress ActiveNetworkAddress
+        {
+            get
+            {
+                try
+                {
+                    var connectivityManager = ApplicationContext.GetSystemService(Context.ConnectivityService) as ConnectivityManager;
+                    if (connectivityManager == null)
+                    {
+                        Logger.Debug(() => $"NetworkHelper:ActiveNetworkType - cannot get connectivity manager");
+                        return IPAddress.Parse("127.0.0.1");
+                    }
+                    var linkProperties = connectivityManager.GetLinkProperties(connectivityManager.ActiveNetwork);
+                    if (linkProperties != null && linkProperties.LinkAddresses.Count > 0)
+                    {
+                        foreach (var thisAddress in linkProperties.LinkAddresses)
+                        {
+                            if (thisAddress != null && thisAddress.Address.HostAddress.Contains("."))
+                            {
+                                Logger.Debug(() => $"NetworkHelper:ActiveNetworkAddress - {thisAddress.Address.HostAddress}");
+                                return IPAddress.Parse(thisAddress.Address.HostAddress);
+                            }
+                        }
+                    }
+                    return IPAddress.Parse("127.0.0.1");
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogException(() => $"NetworkHelper:ActiveNetworkAddress", ex);
+                    return IPAddress.Parse("127.0.0.1");
+                }
+            }
+        }
 
         public INetworkHelper.NetworkType ActiveNetworkType
         {

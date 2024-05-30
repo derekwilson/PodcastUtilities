@@ -40,6 +40,4 @@ namespace PodcastUtilities.AndroidLogic.Exceptions
             : base(info, context)
         {}
     }
-
-
 }
