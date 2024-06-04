@@ -94,7 +94,11 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             Logger.Debug(() => $"MixpanelAnalyticsEngine - init - start {Secrets.MIXPANEL_PROJECT_TOKEN}");
             try
             {
+                // log all errors
                 MixpanelConfig.Global.ErrorLogFn = LogMixpanelErrors;
+                // enable IP address geolocation
+                MixpanelConfig.Global.IpAddressHandling = MixpanelIpAddressHandling.UseRequestIp;
+
                 MixpanelClient = new MixpanelClient(
                     Secrets.MIXPANEL_PROJECT_TOKEN,
                     null,
@@ -119,7 +123,6 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             Logger.Debug(() => $"MixpanelAnalyticsEngine - init - end");
         }
 
-        // Example: provide custom error log method
         public void LogMixpanelErrors(string message, Exception exception)
         {
             Logger.LogException(() => $"MixpanelAnalyticsEngine - error - {message}", exception);
