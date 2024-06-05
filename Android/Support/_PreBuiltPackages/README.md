@@ -5,6 +5,7 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 2.5.0   | 5 Jun 2024  | 21 (Android 5)   | 33 (Android 13)
 | 2.4.0   | 20 May 2024 | 21 (Android 5)   | 33 (Android 13)
 | 2.3.0   | 17 May 2024 | 21 (Android 5)   | 33 (Android 13)
 | 2.2.0   | 16 Jan 2024 | 21 (Android 5)   | 33 (Android 13)
@@ -25,6 +26,9 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 ## Notes
 
 Major changes for each version
+
+## v2.5.0 (17)
+- Removed dependency on AppCenter as it is being retired
 
 ## v2.4.0 (16)
 - Fixed sharing Feed RSS URL via WhatsApp
