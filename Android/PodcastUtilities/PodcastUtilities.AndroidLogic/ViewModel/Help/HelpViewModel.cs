@@ -19,18 +19,27 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Help
         private ILogger Logger;
         private IFileSystemHelper FileSystemHelper;
         private Html.IImageGetter ImageGetter;
+        private IAnalyticsEngine AnalyticsEngine;
 
-        public HelpViewModel(Application app, ILogger logger, IFileSystemHelper fileSystemHelper, Html.IImageGetter imageGetter) : base(app)
+        public HelpViewModel(
+            Application app, 
+            ILogger logger, 
+            IFileSystemHelper fileSystemHelper, 
+            Html.IImageGetter imageGetter, 
+            IAnalyticsEngine analyticsEngine
+        ) : base(app)
         {
             ApplicationContext = app;
             Logger = logger;
             Logger.Debug(() => $"HelpViewModel:ctor");
             FileSystemHelper = fileSystemHelper;
             ImageGetter = imageGetter;
+            AnalyticsEngine = analyticsEngine;
         }
         public void Initialise()
         {
             Logger.Debug(() => $"HelpViewModel:Initialise");
+            AnalyticsEngine.ViewPageEvent(IAnalyticsEngine.Page_Help, 0);
             Observables.SetText?.Invoke(this,Tuple.Create(GetHelpText(), ImageGetter));
         }
 

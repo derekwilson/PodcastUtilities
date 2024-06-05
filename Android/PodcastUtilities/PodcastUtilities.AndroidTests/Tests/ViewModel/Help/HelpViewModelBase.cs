@@ -25,6 +25,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Help
         protected ILogger MockLogger;
         protected IFileSystemHelper MockFileSystemHelper;
         protected Html.IImageGetter MockImageGetter;
+        protected IAnalyticsEngine MockAnalyticsEngine;
 
         protected void ResetObservedResults()
         {
@@ -49,12 +50,14 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Help
             MockLogger = A.Fake<ILogger>();
             MockFileSystemHelper = A.Fake<IFileSystemHelper>();
             MockImageGetter = A.Fake<Html.IImageGetter>();
+            MockAnalyticsEngine = A.Fake<IAnalyticsEngine>();
 
             ViewModel = new HelpViewModel(
                 MockApplication,
                 MockLogger,
                 MockFileSystemHelper,
-                MockImageGetter
+                MockImageGetter,
+                MockAnalyticsEngine
             );
             ViewModel.Observables.SetText += SetText;
         }

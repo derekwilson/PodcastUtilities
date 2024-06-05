@@ -41,7 +41,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
         public void Initialise()
         {
             Logger.Debug(() => $"MessagesViewModel:Initialise");
-            AnalyticsEngine.ViewLogsEvent(Store.GetTotalNumberOfLines());
+            AnalyticsEngine.ViewPageEvent(IAnalyticsEngine.Page_Logs, Store.GetTotalNumberOfLines());
             Observables.ResetText?.Invoke(this, null);
             Observables.AddText?.Invoke(this, Store.GetAllMessages());
             Observables.ScrollToTop?.Invoke(this, null);

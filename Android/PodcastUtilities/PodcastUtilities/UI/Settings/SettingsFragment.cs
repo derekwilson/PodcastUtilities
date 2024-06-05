@@ -73,6 +73,7 @@ namespace PodcastUtilities.UI.Settings
 
         private void PrivacyClick()
         {
+            ViewModel.PrivacySelected();
             var browserIntent = new Intent(Intent.ActionView, Android.Net.Uri.Parse(GetString(Resource.String.settings_privacy_url)));
             StartActivity(browserIntent);
         }

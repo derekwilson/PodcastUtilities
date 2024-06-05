@@ -353,7 +353,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             Logger.Debug(() => $"EditConfigViewModel: FeedItemSelected {podcastFeed.Folder}");
             if (podcastFeed.Feed == null)
             {
-                // this will happen if a podcast element is created without a feed element
+                // this will happen if a podcast element is created without a feed element - for example after importing an XML control file
                 ValuePromptDialogFragment.ValuePromptDialogFragmentParameters promptParams = new ValuePromptDialogFragment.ValuePromptDialogFragmentParameters()
                 {
                     Title = ResourceProvider.GetString(Resource.String.prompt_add_feed_title),
@@ -422,6 +422,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 
         public void AddFeedConfirmed(string value, string data)
         {
+            // this will happen if a podcast element is created without a feed element - for example after importing an XML control file
             Logger.Debug(() => $"EditConfigViewModel:Add Feed = {value}");
             if (string.IsNullOrWhiteSpace(value))
             {

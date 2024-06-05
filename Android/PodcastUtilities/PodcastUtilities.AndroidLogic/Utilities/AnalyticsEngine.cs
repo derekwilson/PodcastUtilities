@@ -25,10 +25,15 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void GeneratePlaylistCompleteEvent(int numberOfItems);
         void PurgeScanEvent(int numberOfItems);
         void PurgeDeleteEvent(int numberOfItems);
-        void ViewLogsEvent(int numberOfLines);
+        void ViewPageEvent(string title, int numberOfItems);
         void AddPodcastEvent(string folder);
         void AddPodcastFeedEvent(string url);
         void RemovePodcastEvent(string folder);
+
+        public const string Page_Logs = "Logs";
+        public const string Page_Help = "Help";
+        public const string Page_Osl = "Osl";
+        public const string Page_Privacy = "Privacy";
     }
 
     /// <summary>
@@ -52,7 +57,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Event_Generate_Playlist_Complete = "Generate_Playlist_Complete";
         private const string Event_Purge_Scan = "Purge_Scan";
         private const string Event_Purge_Delete = "Purge_Delete";
-        private const string Event_View_Logs = "Logs_View";
+        private const string Event_View_Page = "Page_View";
         private const string Event_Add_Podcast = "Config_Add_Podcast";
         private const string Event_Add_Podcast_Feed = "Config_Add_Podcast_Feed";
         private const string Event_Remove_Podcast = "Config_Remove_Podcast";
@@ -68,6 +73,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Property_IsKindle = "IsKindle";
         private const string Property_IsWsa = "IsWsa";
         private const string Property_SizeMB = "SizeMB";
+        private const string Property_Name = "Name";
         private const string Property_NumberOfItems = "NumberOfItems";
         private const string Property_Folder = "Folder";
         private const string Property_Url = "Url";
@@ -284,12 +290,13 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             );
         }
 
-        public void ViewLogsEvent(int numberOfLines)
+        public void ViewPageEvent(string title, int numberOfItems)
         {
-            trackEventAsync(Event_View_Logs,
+            trackEventAsync(Event_View_Page,
                 new Dictionary<string, object>
                 {
-                    {Property_NumberOfItems, numberOfLines}
+                    {Property_Name, title},
+                    {Property_NumberOfItems, numberOfItems}
                 }
             );
         }
@@ -402,7 +409,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         {
         }
 
-        public void ViewLogsEvent(int numberOfLines)
+        public void ViewPageEvent(string title, int numberOfItems)
         {
         }
     }

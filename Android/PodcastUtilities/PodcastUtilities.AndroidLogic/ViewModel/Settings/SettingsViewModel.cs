@@ -23,14 +23,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
         private ILogger Logger;
         private ICrashReporter CrashReporter;
         private IUserSettings UserSettings;
+        private IAnalyticsEngine AnalyticsEngine;
 
         public SettingsViewModel(
             Application app,
             ILogger logger,
             IAndroidApplication androidApplication,
             ICrashReporter crashReporter,
-            IUserSettings userSettings
-            ) : base(app)
+            IUserSettings userSettings,
+            IAnalyticsEngine analyticsEngine) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"SettingsViewModel:ctor");
@@ -38,6 +39,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             AndroidApplication = androidApplication;
             CrashReporter = crashReporter;
             UserSettings = userSettings;
+            AnalyticsEngine = analyticsEngine;
         }
 
         public void Initialise()
@@ -63,6 +65,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
         public void TestCrashReporting()
         {
             CrashReporter.TestReporting();
+        }
+
+        public void PrivacySelected()
+        {
+            AnalyticsEngine.ViewPageEvent(IAnalyticsEngine.Page_Privacy, 0);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Settings
         protected ILogger MockLogger;
         protected IFileSystemHelper MockFileSystemHelper;
         protected IResourceProvider MockResourceProvider;
+        protected IAnalyticsEngine MockAnalyticsEngine;
 
         protected void ResetObservedResults()
         {
@@ -56,12 +57,14 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Settings
             MockLogger = A.Fake<ILogger>();
             MockFileSystemHelper = A.Fake<IFileSystemHelper>();
             MockResourceProvider = A.Fake<IResourceProvider>();
+            MockAnalyticsEngine = A.Fake<IAnalyticsEngine>();
 
             ViewModel = new OpenSourceLicensesViewModel(
                 MockApplication,
                 MockLogger,
                 MockResourceProvider,
-                MockFileSystemHelper
+                MockFileSystemHelper,
+                MockAnalyticsEngine
             );
             ViewModel.Observables.ScrollToTop += ScrollToTop;
             ViewModel.Observables.ResetText += ResetText;

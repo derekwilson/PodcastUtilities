@@ -20,13 +20,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
         private IFileSystemHelper FileSystemHelper;
+        private IAnalyticsEngine AnalyticsEngine;
 
         public OpenSourceLicensesViewModel(
             Application app,
             ILogger logger,
             IResourceProvider resProvider,
-            IFileSystemHelper fsHelper
-            ) : base(app)
+            IFileSystemHelper fsHelper,
+            IAnalyticsEngine analyticsEngine) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"OpenSourceLicensesViewModel:ctor");
@@ -34,11 +35,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             ApplicationContext = app;
             ResourceProvider = resProvider;
             FileSystemHelper = fsHelper;
+            AnalyticsEngine = analyticsEngine;
         }
 
         public void Initialise()
         {
             Logger.Debug(() => $"OpenSourceLicensesViewModel:Initialise");
+            AnalyticsEngine.ViewPageEvent(IAnalyticsEngine.Page_Osl, 0);
             AddAllLicenseFiles();
         }
 
