@@ -240,9 +240,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\license\vsappcenter.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\xml\provider_paths.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
@@ -273,6 +270,9 @@
     <AndroidResource Include="Resources\layout\activity_add_feed.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\license\mixpanel.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <PropertyGroup>
