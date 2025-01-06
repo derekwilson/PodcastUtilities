@@ -3,7 +3,7 @@
 This folder contains the code for the Android version of the project.
 
 - `PodcastUtilities` is the code for the app from the app store
-- `PodcastUtilitiesPOC` is the proof of concept code, it is a place for experements, it has never been released to the app store.
+- `PodcastUtilitiesPOC` is the proof of concept code, it is a place for experiments, it has never been released to the app store.
 - `Reference` is where the projects pick up any direct DLL assembly references. For example `PodcastUtilities.Common.dll`. We reference an assembly to allow for different versions of the build tools for the common code and the android code.
 - `Support` holds the prebuilt release archive as well as assets for play store releases
 
