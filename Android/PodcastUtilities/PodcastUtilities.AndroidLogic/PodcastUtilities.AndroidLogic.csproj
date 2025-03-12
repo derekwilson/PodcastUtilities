@@ -59,6 +59,8 @@
     </Compile>
     <Compile Include="Exceptions\DownloadException.cs" />
     <Compile Include="Exceptions\NonFatalMessageException.cs" />
+    <Compile Include="Services\Download\IDownloadServiceController.cs" />
+    <Compile Include="Services\Download\IDownloadService.cs" />
     <Compile Include="Utilities\ClipboardHelper.cs" />
     <Compile Include="ViewModel\Configure\AddFeedViewModel.cs" />
     <Compile Include="ViewModel\Configure\ConfigPodcastFeedRecyclerItemAdapter.cs" />

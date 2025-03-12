@@ -2,6 +2,7 @@
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidLogic.Services.Download;
 using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 {
-    public class DownloadViewModel : AndroidViewModel, ILifecycleObserver
+    public class DownloadViewModel : AndroidViewModel, ILifecycleObserver, IDownloadServiceConnectionListener
     {
         public class ObservableGroup
         {
@@ -53,6 +54,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         private IStatusAndProgressMessageStore MessageStore;
         private INetworkHelper NetworkHelper;
         private IUserSettings UserSettings;
+        private IDownloadServiceController DownloadServiceController;
 
         private List<DownloadRecyclerItem> AllItems = new List<DownloadRecyclerItem>(20);
         private bool StartedFindingPodcasts = false;
@@ -80,8 +82,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             ICrashReporter crashReporter,
             IAnalyticsEngine analyticsEngine,
             IStatusAndProgressMessageStore messageStore,
-            INetworkHelper networkHelper, 
-            IUserSettings userSettings) : base(app)
+            INetworkHelper networkHelper,
+            IUserSettings userSettings,
+            IDownloadServiceController downloadServiceController) : base(app)
         {
             ApplicationContext = app;
             Logger = logger;
@@ -98,11 +101,23 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             MessageStore = messageStore;
             NetworkHelper = networkHelper;
             UserSettings = userSettings;
+            DownloadServiceController = downloadServiceController;
+        }
+
+        public void ConnectService(IDownloadService service)
+        {
+            Logger.Debug(() => $"DownloadViewModel:ConnectService isDownloading - {service.IsDownloading}");
+        }
+
+        public void DisconnectService()
+        {
+            Logger.Debug(() => $"DownloadViewModel:DisconnectService");
         }
 
         public void Initialise(bool test)
         {
             Logger.Debug(() => $"DownloadViewModel:Initialise - {test}");
+            DownloadServiceController.BindToService(this);
             TestMode = test;
             if (TestMode)
             {
@@ -118,6 +133,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
             Observables.HideErrorMessage?.Invoke(this, null);
             PodcastEpisodeFinder.StatusUpdate += this.DownloadStatusUpdate;
+        }
+
+        public void Finalise()
+        {
+            Logger.Debug(() => $"DownloadViewModel:Finalise");
+            DownloadServiceController.UnbindFromService();
         }
 
         public bool RequestExit()
@@ -552,6 +573,5 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 }
             }
         }
-
     }
 }

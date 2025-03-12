@@ -87,6 +87,9 @@
       <Link>Secrets.cs</Link>
     </Compile>
     <Compile Include="AndroidApplication.cs" />
+    <Compile Include="Services\Download\DownloadService.cs" />
+    <Compile Include="Services\Download\DownloadServiceBinder.cs" />
+    <Compile Include="Services\Download\DownloadServiceController.cs" />
     <Compile Include="UI\Configure\AddFeedActivity.cs" />
     <Compile Include="UI\Configure\EditFeedActivity.cs" />
     <Compile Include="UI\Configure\FeedDefaultsActivity.cs" />
@@ -274,6 +277,7 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\license\mixpanel.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>PowerShell -ExecutionPolicy Unrestricted -File "$(ProjectDir)..\Update-PackageName.ps1" $(ProjectDir) $(ConfigurationName)</PreBuildEvent>

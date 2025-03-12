@@ -135,6 +135,7 @@ namespace PodcastUtilities.UI.Download
                 if (ViewModel.RequestExit())
                 {
                     AndroidApplication.Logger.Debug(() => $"DownloadBackPressedCallback:HandleOnBackPressed - exit");
+                    ViewModel.Finalise();
                     Activity.Finish();
                     return;
                 }
@@ -412,6 +413,7 @@ namespace PodcastUtilities.UI.Download
         private void Exit(object sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"DownloadActivity: Exit");
+            ViewModel.Finalise();
             RunOnUiThread(() =>
             {
                 Finish();

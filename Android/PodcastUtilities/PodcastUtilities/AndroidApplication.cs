@@ -25,6 +25,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.OS;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
+using PodcastUtilities.Services.Download;
+using PodcastUtilities.AndroidLogic.Services.Download;
 
 namespace PodcastUtilities
 {
@@ -122,6 +124,8 @@ namespace PodcastUtilities
             container.Register<IValueConverter, ValueConverter>(IocLifecycle.Singleton);
             container.Register<IValueFormatter, ValueFormatter>(IocLifecycle.Singleton);
             container.Register<IClipboardHelper, ClipboardHelper>(IocLifecycle.Singleton);
+
+            container.Register<IDownloadServiceController, DownloadServiceController>(IocLifecycle.PerRequest);
 
             // view models
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);
