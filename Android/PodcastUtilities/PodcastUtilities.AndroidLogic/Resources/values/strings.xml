@@ -11,6 +11,7 @@
 	<string name="read_external_permissions_rationale">PodcastUtilities needs read access to storage</string>
 	<string name="write_external_permissions_rationale">PodcastUtilities needs write access to storage to be able to manage the podcast cache.</string>
 	<string name="manage_external_permissions_rationale">PodcastUtilities needs to manage external storage to be able to manage the podcast cache.</string>
+	<string name="post_notification_permissions_rationale">PodcastUtilities needs notification permission to download podcasts.</string>
 
 	<!-- main activity -->
 	<string name="main_activity_title">PodcastUtilities</string>

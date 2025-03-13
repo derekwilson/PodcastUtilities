@@ -90,6 +90,7 @@
     <Compile Include="Services\Download\DownloadService.cs" />
     <Compile Include="Services\Download\DownloadServiceBinder.cs" />
     <Compile Include="Services\Download\DownloadServiceController.cs" />
+    <Compile Include="Services\Download\DownloadServiceControlsReceiver.cs" />
     <Compile Include="UI\Configure\AddFeedActivity.cs" />
     <Compile Include="UI\Configure\EditFeedActivity.cs" />
     <Compile Include="UI\Configure\FeedDefaultsActivity.cs" />

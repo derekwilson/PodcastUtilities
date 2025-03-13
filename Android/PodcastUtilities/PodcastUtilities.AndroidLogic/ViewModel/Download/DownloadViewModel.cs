@@ -64,6 +64,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         private int FeedCount = 0;
         private bool TestMode = false;
 
+        private IDownloadService DownloadService = null;
+
         // do not make this anything other than private
         private object SyncLock = new object();
         // do not make this anything other than private
@@ -106,7 +108,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         public void ConnectService(IDownloadService service)
         {
-            Logger.Debug(() => $"DownloadViewModel:ConnectService isDownloading - {service.IsDownloading}");
+            DownloadService = service;
+            Logger.Debug(() => $"DownloadViewModel:ConnectService isDownloading - {DownloadService?.IsDownloading}");
         }
 
         public void DisconnectService()
@@ -434,6 +437,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             try
             {
                 Observables.StartDownloading?.Invoke(this, null);
+
+                DownloadServiceController.StartService();       // we need to stop the service from disappearing when we unbind
+                DownloadService?.StartDownload(AllItems);
 
                 var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
                 int numberOfConnections = controlFile.GetMaximumNumberOfConcurrentDownloads();

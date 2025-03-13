@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using System;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
@@ -29,6 +30,17 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 return true;
             }
             return HasPermissionBeenGranted(context, Manifest.Permission.WriteExternalStorage);
+        }
+
+        public static bool HasPostNotifcationPermission(Context context)
+        {
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            {
+                return HasPermissionBeenGranted(context, Manifest.Permission.PostNotifications);
+            }
+            
+            // earlier versions didnt need to ask
+            return true;
         }
 
         public static bool HasManageStoragePermission(Context context)
