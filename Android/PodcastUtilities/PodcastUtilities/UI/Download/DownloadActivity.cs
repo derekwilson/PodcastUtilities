@@ -26,6 +26,7 @@ namespace PodcastUtilities.UI.Download
     {
         private const string ACTIVITY_PARAM_FOLDER = "DownloadActivity:Param:Folder";
         private const string ACTIVITY_PARAM_TEST = "DownloadActivity:Param:Test";
+        private const string ACTIVITY_PARAM_HUD = "DownloadActivity:Param:Hud";
 
         public static Intent CreateIntent(Context context, string folder)
         {
@@ -48,6 +49,12 @@ namespace PodcastUtilities.UI.Download
             intent.PutExtra(ACTIVITY_PARAM_TEST, true);
             return intent;
         }
+        public static Intent CreateIntentFromHud(Context context)
+        {
+            Intent intent = new Intent(context, typeof(DownloadActivity));
+            intent.PutExtra(ACTIVITY_PARAM_HUD, true);
+            return intent;
+        }
 
         private const string EXIT_PROMPT_TAG = "exit_prompt_tag";
         private const string NETWORK_PROMPT_TAG = "network_prompt_tag";
@@ -62,6 +69,7 @@ namespace PodcastUtilities.UI.Download
         private TextView NoDataText;
         private ProgressSpinnerView ProgressSpinner;
         private FloatingActionButton DownloadButton;
+        private FloatingActionButton CancelButton;
         private DownloadRecyclerItemAdapter Adapter;
         private OkCancelDialogFragment ExitPromptDialogFragment;
         private OkCancelDialogFragment NetworkPromptDialogFragment;
@@ -84,6 +92,7 @@ namespace PodcastUtilities.UI.Download
             NoDataText = FindViewById<TextView>(Resource.Id.txtNoData);
             ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
             DownloadButton = FindViewById<FloatingActionButton>(Resource.Id.fab_download);
+            CancelButton = FindViewById<FloatingActionButton>(Resource.Id.fab_cancel);
 
             RvDownloads.SetLayoutManager(new LinearLayoutManager(this));
             RvDownloads.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
@@ -100,10 +109,12 @@ namespace PodcastUtilities.UI.Download
 
             var folder = Intent?.GetStringExtra(ACTIVITY_PARAM_FOLDER);
             bool test = Intent?.GetBooleanExtra(ACTIVITY_PARAM_TEST, false) ?? false;
-            ViewModel.Initialise(test);
-            Task.Run(() => ViewModel.FindEpisodesToDownload(folder));
+            bool fromHud = Intent?.GetBooleanExtra(ACTIVITY_PARAM_HUD, false) ?? false;
+            ViewModel.Initialise(test, folder, fromHud);
+            //Task.Run(() => ViewModel.FindEpisodesToDownload(folder));
 
             DownloadButton.Click += (sender, e) => ViewModel.DownloadAllPodcastsWithNetworkCheck();
+            CancelButton.Click += (sender, e) => ViewModel.CancelAllDownloads();
             ErrorMessage.Click += (sender, e) => ViewModel.ActionSelected(Resource.Id.action_display_logs);
 
             ExitPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(EXIT_PROMPT_TAG) as OkCancelDialogFragment;
@@ -323,6 +334,7 @@ namespace PodcastUtilities.UI.Download
 
         private void EndProgress(object sender, EventArgs e)
         {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:EndProgress");
             RunOnUiThread(() =>
             {
                 ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
@@ -332,6 +344,7 @@ namespace PodcastUtilities.UI.Download
 
         private void UpdateProgress(object sender, int position)
         {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:UpdateProgress {position}");
             RunOnUiThread(() =>
             {
                 ProgressSpinner.Progress = position;
@@ -340,6 +353,7 @@ namespace PodcastUtilities.UI.Download
 
         private void StartProgress(object sender, int max)
         {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:StartProgress {max}");
             RunOnUiThread(() =>
             {
                 ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
@@ -351,6 +365,8 @@ namespace PodcastUtilities.UI.Download
             RunOnUiThread(() =>
             {
                 DownloadButton.Visibility = testMode ? ViewStates.Gone : ViewStates.Visible;
+                DownloadButton.Enabled = false;
+                CancelButton.Visibility = ViewStates.Gone;
             });
         }
 
@@ -396,6 +412,8 @@ namespace PodcastUtilities.UI.Download
             {
                 Adapter.SetReadOnly(true);
                 DownloadButton.Enabled = false;
+                DownloadButton.Visibility = ViewStates.Gone;
+                CancelButton.Visibility = ViewStates.Visible;
             });
         }
 
@@ -405,6 +423,8 @@ namespace PodcastUtilities.UI.Download
             {
                 Adapter.SetReadOnly(false);
                 DownloadButton.Enabled = true;
+                DownloadButton.Visibility = ViewStates.Visible;
+                CancelButton.Visibility = ViewStates.Gone;
                 ExitPromptDialogFragment?.Dismiss();
                 Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
             });

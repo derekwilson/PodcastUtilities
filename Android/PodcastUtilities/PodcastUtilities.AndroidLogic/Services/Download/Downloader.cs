@@ -1,41 +1,90 @@
-﻿using PodcastUtilities.AndroidLogic.Logging;
+﻿using PodcastUtilities.AndroidLogic.Converter;
+using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
-using PodcastUtilities.Common.Platform;
+using PodcastUtilities.Common;
+using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Feeds;
 using System;
 using System.Collections.Generic;
-using static Android.InputMethodServices.Keyboard;
+using System.Linq;
 
 namespace PodcastUtilities.AndroidLogic.Services.Download
 {
-	public interface IDownloader
+    public class DownloaderEvents
+    {
+        public EventHandler<Tuple<ISyncItem, int>> UpdateItemProgressEvent;
+        public EventHandler<Tuple<ISyncItem, Status, string>> UpdateItemStatusEvent;
+        public EventHandler<string> DisplayMessageEvent;
+        public EventHandler CompleteEvent;
+        public EventHandler ExceptionEvent;
+    }
+
+    public interface IDownloader
 	{
-        bool IsDownloading { get; }
         string NotifcationTitle { get; }
         string NotifcationText { get; }
         string NotifcationAccessibilityText { get; }
 
+        bool IsDownloading { get; }
         void CancelAll();
-        void SetDownloadItems(List<DownloadRecyclerItem> allItems);
+        void SetDownloadingItems(List<DownloadRecyclerItem> allItems);
+        void DownloadAllItems();
+        List<DownloadRecyclerItem> GetDownloadItems();
+        DownloaderEvents GetDownloaderEvents();
     }
 
     public class Downloader : IDownloader
     {
         private ILogger Logger;
-        private ITimeProvider TimeProvider;
+        private ITaskPool TaskPool;
+        private IApplicationControlFileProvider ApplicationControlFileProvider;
+        private INetworkHelper NetworkHelper;
+        private ISyncItemToEpisodeDownloaderTaskConverter Converter;
+        private ICrashReporter CrashReporter;
+        private IAnalyticsEngine AnalyticsEngine;
+        private IStatusAndProgressMessageStore MessageStore;
+        private IByteConverter ByteConverter;
+        private IFileSystemHelper FileSystemHelper;
 
+        // this is just in case we try and start a download before we have completed the last one
         private bool DownloadingInProgress = false;
+        // these are the recycler items to download its maintained by the UI - in response to events
+        private List<DownloadRecyclerItem> AllItems = null;
+        // these are our published events
+        private DownloaderEvents Events = new DownloaderEvents();
 
-        public Downloader(ILogger logger, ITimeProvider timeProvider)
+        // do not make this anything other than private
+        private object SyncLock = new object();
+        // do not make this anything other than private
+        private object MessageSyncLock = new object();
+
+        public Downloader(ILogger logger, ITaskPool taskPool, IApplicationControlFileProvider applicationControlFileProvider, INetworkHelper networkHelper, ISyncItemToEpisodeDownloaderTaskConverter converter, ICrashReporter crashReporter, IAnalyticsEngine analyticsEngine, IStatusAndProgressMessageStore messageStore, IByteConverter byteConverter, IFileSystemHelper fileSystemHelper)
         {
             Logger = logger;
-            TimeProvider = timeProvider;
+            TaskPool = taskPool;
+            ApplicationControlFileProvider = applicationControlFileProvider;
+            NetworkHelper = networkHelper;
+            Converter = converter;
+            CrashReporter = crashReporter;
+            AnalyticsEngine = analyticsEngine;
+            MessageStore = messageStore;
+            ByteConverter = byteConverter;
+            FileSystemHelper = fileSystemHelper;
+        }
+        public DownloaderEvents GetDownloaderEvents()
+        {
+            return Events;
         }
 
         public bool IsDownloading
         {
             get
             {
-                return DownloadingInProgress;
+                lock (SyncLock)
+                {
+                    return DownloadingInProgress;
+                }
             }
         }
 
@@ -43,7 +92,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         {
             get
             {
-                return "Downloading";
+                return $"{AllItems?.Count} Items To Download";
             }
         }
 
@@ -51,7 +100,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         {
             get
             {
-                return "Text";
+                return "Downloading...";
             }
         }
 
@@ -66,13 +115,196 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         public void CancelAll()
         {
             Logger.Debug(() => $"Downloader:CancelAll");
-            DownloadingInProgress = false;
+            TaskPool.CancelAllTasks();
+            lock (SyncLock)
+            {
+                DownloadingInProgress = false;
+                AllItems = null;
+            }
         }
 
-        public void SetDownloadItems(List<DownloadRecyclerItem> allItems)
+        public List<DownloadRecyclerItem> GetDownloadItems()
         {
-            Logger.Debug(() => $"Downloader:SetDownloadItems = {allItems?.Count}");
-            DownloadingInProgress = true;
+            lock (SyncLock)
+            {
+                return AllItems;
+            }
         }
+
+        public void SetDownloadingItems(List<DownloadRecyclerItem> allItems)
+        {
+            Logger.Debug(() => $"Downloader:StartDownloadingItems = {allItems?.Count}");
+            lock (SyncLock)
+            {
+                if (AllItems != null || DownloadingInProgress)
+                {
+                    Logger.Warning(() => $"Downloader:SetDownloadingItems - all items already set - ignoring");
+                    return;
+                }
+                AllItems = allItems;
+                DownloadingInProgress = false;
+            }
+        }
+
+        // this must not be run on the UI thread - it blocks
+        public void DownloadAllItems()
+        {
+            lock (SyncLock)
+            {
+                if (AllItems == null)
+                {
+                    Logger.Warning(() => $"Downloader:StartDownloadingItems - all items not set - ignoring");
+                    return;
+                }
+                if (DownloadingInProgress)
+                {
+                    Logger.Warning(() => $"Downloader:StartDownloadingItems - already downloading - ignoring");
+                    return;
+                }
+                DownloadingInProgress = true;
+            }
+
+            try
+            {
+                var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+                int numberOfConnections = controlFile.GetMaximumNumberOfConcurrentDownloads();
+                NetworkHelper.SetNetworkConnectionLimit(numberOfConnections);
+                NetworkHelper.SetApplicationDefaultCertificateValidator();      // ignore SSL errors
+
+                // the TaskPool needs a list of ISyncItems
+                List<ISyncItem> AllEpisodesToDownload = new List<ISyncItem>(AllItems.Count);
+                AllItems.Where(recyclerItem => recyclerItem.Selected).ToList().ForEach(item => AllEpisodesToDownload.Add(item.SyncItem));
+
+                IEpisodeDownloader[] downloadTasks = Converter.ConvertItemsToTasks(AllEpisodesToDownload, DownloadStatusUpdate, DownloadProgressUpdate);
+                Logger.Debug(() => $"Downloader: Number of tasks = {downloadTasks.Length}");
+                foreach (var task in downloadTasks)
+                {
+                    Logger.Debug(() => $"Downloader:Download to: {task.SyncItem.DestinationPath}");
+                }
+
+                // run them in a task pool
+                TaskPool.RunAllTasks(numberOfConnections, downloadTasks);
+                Logger.Debug(() => $"Downloader:Download tasks complete");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogException(() => $"Downloader:DownloadAllItems", ex);
+                CrashReporter.LogNonFatalException(ex);
+
+                Events.DisplayMessageEvent?.Invoke(this, ex.Message);
+            }
+            finally
+            {
+                Logger.Debug(() => $"Downloader:finally");
+                DownloadingInProgress = false;
+                AllItems = null;
+
+                Events.CompleteEvent?.Invoke(this, null);
+            }
+        }
+
+        private void DownloadProgressUpdate(object sender, ProgressEventArgs e)
+        {
+            lock (MessageSyncLock)
+            {
+                ISyncItem syncItem = e.UserState as ISyncItem;
+                if (e.ProgressPercentage % 10 == 0)
+                {
+                    // only do every 10%
+                    var line = string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
+                                                    DisplayFormatter.RenderFileSize(e.ItemsProcessed),
+                                                    DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
+                                                    e.ProgressPercentage);
+                    Logger.Debug(() => line);
+                    MessageStore.StoreMessage(syncItem.Id, line);
+                    if (e.ProgressPercentage == 100)
+                    {
+                        AnalyticsEngine.DownloadEpisodeEvent(ByteConverter.BytesToMegabytes(e.TotalItemsToProcess));
+                    }
+                    Events.UpdateItemProgressEvent?.Invoke(this, Tuple.Create(syncItem, e.ProgressPercentage));
+                }
+                var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+                if (IsDestinationDriveFull(controlFile.GetSourceRoot(), controlFile.GetFreeSpaceToLeaveOnDownload()))
+                {
+                    TaskPool?.CancelAllTasks();
+                }
+            }
+        }
+        private bool IsDestinationDriveFull(string root, long freeSpaceToLeaveInMb)
+        {
+            var freeMb = ByteConverter.BytesToMegabytes(FileSystemHelper.GetAvailableFileSystemSizeInBytes(root));
+            if (freeMb < freeSpaceToLeaveInMb)
+            {
+                var message = string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeMb);
+                Events.DisplayMessageEvent?.Invoke(this, message);
+                Logger.Debug(() => message);
+                return true;
+            }
+            return false;
+        }
+
+        private void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
+        {
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            bool verbose = controlFile?.GetDiagnosticOutput() == DiagnosticOutputLevel.Verbose;
+            ISyncItem item = null;
+            string id = "NONE";
+            if (e.UserState != null && e.UserState is ISyncItem)
+            {
+                item = e.UserState as ISyncItem;
+                id = item.Id.ToString();
+            }
+
+            if (e.MessageLevel == StatusUpdateLevel.Verbose && !verbose)
+            {
+                // log the status update to the logger but not to the UI
+                Logger.Verbose(() => $"Downloader:StatusUpdate ID {id}, {e.Message}, Complete {e.IsTaskCompletedSuccessfully}");
+                return;
+            }
+
+            // keep all the message together
+            lock (MessageSyncLock)
+            {
+                if (e.Exception != null)
+                {
+                    Logger.LogException(() => $"Downloader:StatusUpdate ID {id}, {e.Message} -> ", e.Exception);
+                    CrashReporter.LogNonFatalException(e.Message, e.Exception);
+                    if (item != null)
+                    {
+                        MessageStore.StoreMessage(item.Id, e.Message);
+                        MessageStore.StoreMessage(item.Id, e.Exception.ToString());
+                        Events.UpdateItemStatusEvent?.Invoke(this, Tuple.Create(item, Status.Error, e.Message));
+                    }
+                    else
+                    {
+                        // its just a message - its not attached to a ISyncItem
+                        MessageStore.StoreMessage(Guid.Empty, e.Message);
+                        MessageStore.StoreMessage(Guid.Empty, e.Exception.ToString());
+                    }
+                    Events.ExceptionEvent?.Invoke(this, null);
+                }
+                else
+                {
+                    Logger.Debug(() => $"Downloader:StatusUpdate ID {id}, {e.Message}, Complete {e.IsTaskCompletedSuccessfully}");
+                    Status status = (e.IsTaskCompletedSuccessfully ? Status.Complete : Status.Information);
+                    if (status == Status.Complete)
+                    {
+                        AnalyticsEngine.DownloadEpisodeCompleteEvent();
+                    }
+                    if (item != null)
+                    {
+                        // we are updating the UI as we have a ISyncItem
+                        MessageStore.StoreMessage(item.Id, e.Message);
+                        Events.UpdateItemStatusEvent?.Invoke(this, Tuple.Create(item, status, e.Message));
+                    }
+                    else
+                    {
+                        // its just a message - its not attached to a ISyncItem
+                        MessageStore.StoreMessage(Guid.Empty, e.Message);
+                    }
+                }
+            }
+        }
+
     }
 }

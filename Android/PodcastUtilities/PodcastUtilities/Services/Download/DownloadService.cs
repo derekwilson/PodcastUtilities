@@ -6,6 +6,7 @@ using AndroidX.Core.App;
 using PodcastUtilities.AndroidLogic.Services.Download;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.UI.Download;
+using System;
 using System.Collections.Generic;
 
 namespace PodcastUtilities.Services.Download
@@ -22,6 +23,7 @@ namespace PodcastUtilities.Services.Download
         // injected
         private NotificationManager NotificationManager;
         private IDownloader Downloader;
+        private DownloaderEvents DownloaderEvents;
 
         public override void OnCreate()
         {
@@ -32,8 +34,35 @@ namespace PodcastUtilities.Services.Download
 
             // maybe there is a better way to do the injection
             Downloader = AndroidApplication.IocContainer.Resolve<IDownloader>();
+            DownloaderEvents = Downloader.GetDownloaderEvents();
+            AttachDownloaderEvents();
             NotificationManager = AndroidApplication.IocContainer.Resolve<NotificationManager>();
             AndroidApplication.Logger.Debug(() => "DownloadService:OnCreate - Complete");
+        }
+
+        private void AttachDownloaderEvents()
+        {
+            if (DownloaderEvents == null)
+            {
+                return;
+            }
+            DownloaderEvents.CompleteEvent += DownloaderComplete;
+        }
+
+        private void DetachDownloaderEvents()
+        {
+            if (DownloaderEvents == null)
+            {
+                return;
+            }
+            DownloaderEvents.CompleteEvent -= DownloaderComplete;
+        }
+
+        private void DownloaderComplete(object sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => "DownloadService:DownloaderComplete");
+            StopSelf();
+            AndroidApplication.Logger.Debug(() => "DownloadService:DownloaderComplete - complete");
         }
 
         public override IBinder OnBind(Intent intent)
@@ -52,7 +81,8 @@ namespace PodcastUtilities.Services.Download
         public override void OnDestroy()
         {
             AndroidApplication.Logger.Debug(() => "DownloadService:OnDestroy");
-            Downloader.CancelAll();
+            DetachDownloaderEvents();
+            Downloader?.CancelAll();
             base.OnDestroy();
         }
 
@@ -61,7 +91,6 @@ namespace PodcastUtilities.Services.Download
         {
             AndroidApplication.Logger.Debug(() => "DownloadService:OnStartCommand");
             return StartCommandResult.Sticky;
-            //return base.OnStartCommand(intent, flags, startId);
         }
 
         private void StartForeground()
@@ -114,7 +143,7 @@ namespace PodcastUtilities.Services.Download
 
         private PendingIntent GetNotificationIntent()
         {
-            var intent = new Intent(this, typeof(DownloadActivity));
+            var intent = DownloadActivity.CreateIntentFromHud(this);
             intent.SetAction(Intent.ActionMain);
             intent.AddCategory(Intent.CategoryLauncher);
             intent.AddFlags(ActivityFlags.NewTask);
@@ -139,10 +168,26 @@ namespace PodcastUtilities.Services.Download
                 PendingIntentFlags.CancelCurrent | PendingIntentFlags.Immutable);
         }
 
-        public void StartDownload(List<DownloadRecyclerItem> allItems)
+        public void StartDownloads(List<DownloadRecyclerItem> allItems)
         {
-            Downloader?.SetDownloadItems(allItems);
+            Downloader?.SetDownloadingItems(allItems);
             StartForeground();      // we need to create the notification
+            Downloader?.DownloadAllItems();
+        }
+
+        public DownloaderEvents GetDownloaderEvents()
+        {
+            return Downloader?.GetDownloaderEvents();
+        }
+
+        public List<DownloadRecyclerItem> GetItems()
+        {
+            return Downloader?.GetDownloadItems();
+        }
+
+        public void CancelDownloads()
+        {
+            Downloader?.CancelAll();
         }
 
         public bool IsDownloading

@@ -301,6 +301,7 @@ You can get PodcastUtilities here\n
 	<string name="download_sublabel_fmt">{0} {1}</string>
 
 	<string name="button_text_download">Download Selected</string>
+	<string name="button_text_cancel">Cancel All Downloads</string>
 	<string name="download_activity_complete">Download Complete</string>
 
 	<string name="download_activity_cellular_prompt">You are using mobile data, OK to continue?</string>

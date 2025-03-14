@@ -63,8 +63,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         private bool ExitRequested = false;
         private int FeedCount = 0;
         private bool TestMode = false;
+        private bool FromHud = false;
+        private string FolderSelected = null;
 
         private IDownloadService DownloadService = null;
+        private DownloaderEvents DownloaderEvents = null;
 
         // do not make this anything other than private
         private object SyncLock = new object();
@@ -108,8 +111,79 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         public void ConnectService(IDownloadService service)
         {
+            Logger.Debug(() => $"DownloadViewModel:ConnectService isDownloading - {service?.IsDownloading}");
             DownloadService = service;
-            Logger.Debug(() => $"DownloadViewModel:ConnectService isDownloading - {DownloadService?.IsDownloading}");
+            DownloaderEvents = service?.GetDownloaderEvents();
+            if (TestMode || !(DownloadService?.IsDownloading ?? false))
+            {
+                // there is no download (or we are in test mode) - so we can start looking for episodes
+                Task.Run(() => FindEpisodesToDownload(FolderSelected));
+                //FindEpisodesToDownload(FolderSelected);
+            }
+            else
+            {
+                // there already was a download running
+                // setup the UI as if the items had been found
+                AllItems = DownloadService.GetItems();
+                RefreshUI(FolderSelected);
+            }
+            AttachToDownloaderEvents();
+        }
+
+        private void AttachToDownloaderEvents()
+        {
+            if (DownloaderEvents == null)
+            {
+                return;
+            }
+            DownloaderEvents.DisplayMessageEvent += DownloaderServiceDisplayMessage;
+            DownloaderEvents.UpdateItemProgressEvent += DownloaderServiceUpdateItemProgress;
+            DownloaderEvents.UpdateItemStatusEvent += DownloaderServiceUpdateItemStatus;
+            DownloaderEvents.CompleteEvent += DownloaderServiceComplete;
+            DownloaderEvents.ExceptionEvent += DownloaderServiceException;
+        }
+
+        private void DetachFromDownloaderEvents()
+        {
+            if (DownloaderEvents == null)
+            {
+                return;
+            }
+            DownloaderEvents.DisplayMessageEvent -= DownloaderServiceDisplayMessage;
+            DownloaderEvents.UpdateItemProgressEvent -= DownloaderServiceUpdateItemProgress;
+            DownloaderEvents.UpdateItemStatusEvent -= DownloaderServiceUpdateItemStatus;
+            DownloaderEvents.CompleteEvent -= DownloaderServiceComplete;
+        }
+
+        // mostly we just bubble the events from the service back to the UI
+        private void DownloaderServiceDisplayMessage(object sender, string message)
+        {
+            Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Message: {message}");
+            Observables.DisplayMessage?.Invoke(this, message);
+        }
+
+        private void DownloaderServiceUpdateItemStatus(object sender, Tuple<ISyncItem, Status, string> status)
+        {
+            Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Status: {status.Item2}");
+            Observables.UpdateItemStatus?.Invoke(this, status);
+        }
+
+        private void DownloaderServiceUpdateItemProgress(object sender, Tuple<ISyncItem, int> progress)
+        {
+            Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Progres: {progress.Item2}");
+            Observables.UpdateItemProgress?.Invoke(this, progress);
+        }
+
+        private void DownloaderServiceComplete(object sender, EventArgs e)
+        {
+            Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Complete");
+            Observables.EndDownloading?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_complete));
+        }
+
+        private void DownloaderServiceException(object sender, EventArgs e)
+        {
+            Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Exception");
+            Observables.DisplayErrorMessage?.Invoke(this, null);        // use the canned in message
         }
 
         public void DisconnectService()
@@ -117,11 +191,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             Logger.Debug(() => $"DownloadViewModel:DisconnectService");
         }
 
-        public void Initialise(bool test)
+        public void Initialise(bool test, string folder, bool fromHud)
         {
-            Logger.Debug(() => $"DownloadViewModel:Initialise - {test}");
+            Logger.Debug(() => $"DownloadViewModel:Initialise - {test}, {fromHud}, {folder}");
             DownloadServiceController.BindToService(this);
             TestMode = test;
+            FolderSelected = folder;
+            FromHud = fromHud;
             if (TestMode)
             {
                 Observables.Title?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_test_title));
@@ -141,6 +217,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         public void Finalise()
         {
             Logger.Debug(() => $"DownloadViewModel:Finalise");
+            DetachFromDownloaderEvents();
             DownloadServiceController.UnbindFromService();
         }
 
@@ -413,8 +490,31 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             );
         }
 
-        // dont run this on the UI thread
         private void DownloadAllPodcasts()
+        {
+            Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts");
+
+            if (AllItems.Count < 1)
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.no_downloads_text));
+                return;
+            }
+
+            Observables.StartDownloading?.Invoke(this, null);   // EndDownloading observable is triggered from the Downloader events
+
+            DownloadServiceController.StartService();           // we need to stop the service from disappearing when we unbind
+            DownloadService?.StartDownloads(AllItems);
+        }
+
+        public void CancelAllDownloads()
+        {
+            DownloadService.CancelDownloads();
+            DownloadServiceController.StopService();
+        }
+
+        // dont run this on the UI thread
+        /*
+        private void DownloadAllPodcastsOld()
         {
             Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts");
 
@@ -516,7 +616,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             }
             return false;
         }
-
+        */
         void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
