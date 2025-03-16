@@ -26,12 +26,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             Items = items;
         }
 
-        public DownloadRecyclerItem GetItemById(Guid id)
+        private DownloadRecyclerItem GetItemById(Guid id)
         {
             return Items.Find(item => item.SyncItem.Id == id);
         }
 
-        public int GetItemPositionById(Guid id)
+        private int GetItemPositionById(Guid id)
         {
             return Items.IndexOf(GetItemById(id));
         }
@@ -39,21 +39,29 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         public int SetItemProgress(Guid id, int progress)
         {
             var item = GetItemById(id);
-            item.ProgressPercentage = progress;
-            return Items.IndexOf(item);
+            if (item != null)
+            {
+                item.ProgressPercentage = progress;
+                return Items.IndexOf(item);
+            }
+            return -1;
         }
 
         public int SetItemStatus(Guid id, Status status, string message)
         {
             var item = GetItemById(id);
-            item.DownloadStatus = status;
-            var position = Items.IndexOf(item);
-            if (status == Status.Complete)
+            if (item != null)
             {
-                item.Selected = false;
-                ViewModel.SelectionChanged(position);
+                item.DownloadStatus = status;
+                var position = Items.IndexOf(item);
+                if (status == Status.Complete)
+                {
+                    item.Selected = false;
+                    ViewModel.SelectionChanged(position);
+                }
+                return position;
             }
-            return position;
+            return -1;
         }
 
         public void SetReadOnly(bool readOnly)

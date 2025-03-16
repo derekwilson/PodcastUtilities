@@ -117,7 +117,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             if (TestMode || !(DownloadService?.IsDownloading ?? false))
             {
                 // there is no download (or we are in test mode) - so we can start looking for episodes
-                Task.Run(() => FindEpisodesToDownload(FolderSelected));
+                // we must not do this on the UI thread
+                FindEpisodesToDownloadInBackground(FolderSelected);
+                //Task.Run(() => FindEpisodesToDownload(FolderSelected));
                 //FindEpisodesToDownload(FolderSelected);
             }
             else
@@ -128,6 +130,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 RefreshUI(FolderSelected);
             }
             AttachToDownloaderEvents();
+        }
+
+        // public for testing
+        public Task FindEpisodesToDownloadInBackground(string folder)
+        {
+            return Task.Run(() => FindEpisodesToDownload(folder));
         }
 
         private void AttachToDownloaderEvents()
@@ -164,7 +172,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         private void DownloaderServiceUpdateItemStatus(object sender, Tuple<ISyncItem, Status, string> status)
         {
-            Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Status: {status.Item2}");
+            Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Status: {status?.Item2}");
             Observables.UpdateItemStatus?.Invoke(this, status);
         }
 
@@ -343,7 +351,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                             ProgressPercentage = 0,
                             Podcast = podcastInfo,
                             Selected = true,
-                            AllowSelection = !TestMode
+                            AllowSelection = !TestMode,
+                            DownloadStatus = Status.OK
                         };
                         AllItems.Add(item);
                     }

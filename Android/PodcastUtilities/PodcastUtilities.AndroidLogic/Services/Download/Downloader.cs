@@ -92,7 +92,11 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         {
             get
             {
-                return $"{AllItems?.Count} Items To Download";
+                if (CountItemsToDownload() < 1)
+                {
+                    return "Download Complete";
+                }
+                return "Downloading";
             }
         }
 
@@ -100,7 +104,8 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         {
             get
             {
-                return "Downloading...";
+                (int toDownload, int complete, int errored) = GetItemCounts();
+                return $"{toDownload} To Download, {complete} Complete, {errored} Errors";
             }
         }
 
@@ -131,14 +136,51 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             }
         }
 
+        private int CountItemsToDownload()
+        {
+            if (AllItems == null || AllItems.Count < 1)
+            {
+                return 0;
+            }
+            // only count items that have been seleected and that have not errored
+            return AllItems.Where(recyclerItem => recyclerItem.Selected && recyclerItem.DownloadStatus != Status.Error).Count();
+        }
+
+        private Tuple<int,int,int> GetItemCounts()
+        {
+            if (AllItems == null || AllItems.Count < 1)
+            {
+                return Tuple.Create(0,0,0);
+            }
+            int toDownload = 0;
+            int complete = 0;
+            int errored = 0;
+            AllItems.ToList().ForEach(item =>
+            {
+                if (item.DownloadStatus == Status.Error)
+                {
+                    errored++;
+                }
+                else if (item.ProgressPercentage == 100 || item.DownloadStatus == Status.Complete)
+                {
+                    complete++;
+                }
+                else if (item.Selected)
+                {
+                    toDownload++;
+                }
+            });
+            return Tuple.Create(toDownload, complete, errored);
+        }
+
         public void SetDownloadingItems(List<DownloadRecyclerItem> allItems)
         {
             Logger.Debug(() => $"Downloader:StartDownloadingItems = {allItems?.Count}");
             lock (SyncLock)
             {
-                if (AllItems != null || DownloadingInProgress)
+                if (DownloadingInProgress)
                 {
-                    Logger.Warning(() => $"Downloader:SetDownloadingItems - all items already set - ignoring");
+                    Logger.Warning(() => $"Downloader:SetDownloadingItems - downloading in progress - ignoring");
                     return;
                 }
                 AllItems = allItems;
@@ -197,7 +239,6 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             {
                 Logger.Debug(() => $"Downloader:finally");
                 DownloadingInProgress = false;
-                AllItems = null;
 
                 Events.CompleteEvent?.Invoke(this, null);
             }

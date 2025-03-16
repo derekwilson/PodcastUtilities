@@ -5,6 +5,7 @@ using Android.Runtime;
 using AndroidX.Core.App;
 using PodcastUtilities.AndroidLogic.Services.Download;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
+using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.UI.Download;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace PodcastUtilities.Services.Download
 
         // injected
         private NotificationManager NotificationManager;
-        private IDownloader Downloader;
+        private AndroidLogic.Services.Download.IDownloader Downloader;
         private DownloaderEvents DownloaderEvents;
 
         public override void OnCreate()
@@ -33,7 +34,7 @@ namespace PodcastUtilities.Services.Download
             base.OnCreate();
 
             // maybe there is a better way to do the injection
-            Downloader = AndroidApplication.IocContainer.Resolve<IDownloader>();
+            Downloader = AndroidApplication.IocContainer.Resolve<AndroidLogic.Services.Download.IDownloader>();
             DownloaderEvents = Downloader.GetDownloaderEvents();
             AttachDownloaderEvents();
             NotificationManager = AndroidApplication.IocContainer.Resolve<NotificationManager>();
@@ -46,6 +47,8 @@ namespace PodcastUtilities.Services.Download
             {
                 return;
             }
+            DownloaderEvents.UpdateItemProgressEvent += DownloaderProgress;
+            DownloaderEvents.UpdateItemStatusEvent += DownloaderStatus;
             DownloaderEvents.CompleteEvent += DownloaderComplete;
         }
 
@@ -56,13 +59,36 @@ namespace PodcastUtilities.Services.Download
                 return;
             }
             DownloaderEvents.CompleteEvent -= DownloaderComplete;
+            DownloaderEvents.UpdateItemProgressEvent -= DownloaderProgress;
+            DownloaderEvents.UpdateItemStatusEvent -= DownloaderStatus;
         }
 
         private void DownloaderComplete(object sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => "DownloadService:DownloaderComplete");
+            UpdateNotification();
             StopSelf();
             AndroidApplication.Logger.Debug(() => "DownloadService:DownloaderComplete - complete");
+        }
+
+        private void DownloaderStatus(object sender, Tuple<Common.Feeds.ISyncItem, Status, string> e)
+        {
+            (ISyncItem item, Status status, string message) = e;
+            if (status == Status.Complete || status == Status.Error)
+            {
+                AndroidApplication.Logger.Debug(() => "DownloadService:DownloaderStatus");
+                UpdateNotification();
+            }
+        }
+
+        private void DownloaderProgress(object sender, Tuple<Common.Feeds.ISyncItem, int> e)
+        {
+            (ISyncItem item, int progressPercentage) = e;
+            if (progressPercentage == 100)
+            {
+                AndroidApplication.Logger.Debug(() => "DownloadService:DownloaderProgress");
+                UpdateNotification();
+            }
         }
 
         public override IBinder OnBind(Intent intent)
@@ -98,6 +124,13 @@ namespace PodcastUtilities.Services.Download
             AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - start");
             StartForeground(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification());
             AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - end");
+        }
+
+        private void UpdateNotification()
+        {
+            AndroidApplication.Logger.Debug(() => "DownloadService:UpdateNotification - start");
+            NotificationManager.Notify(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification());
+            AndroidApplication.Logger.Debug(() => "DownloadService:UpdateNotification - end");
         }
 
         private void CreateChannel()
