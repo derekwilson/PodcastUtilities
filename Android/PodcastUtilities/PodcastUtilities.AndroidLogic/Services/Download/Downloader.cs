@@ -46,6 +46,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         private IStatusAndProgressMessageStore MessageStore;
         private IByteConverter ByteConverter;
         private IFileSystemHelper FileSystemHelper;
+        private IResourceProvider ResourceProvider;
 
         // this is just in case we try and start a download before we have completed the last one
         private bool DownloadingInProgress = false;
@@ -59,7 +60,18 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         // do not make this anything other than private
         private object MessageSyncLock = new object();
 
-        public Downloader(ILogger logger, ITaskPool taskPool, IApplicationControlFileProvider applicationControlFileProvider, INetworkHelper networkHelper, ISyncItemToEpisodeDownloaderTaskConverter converter, ICrashReporter crashReporter, IAnalyticsEngine analyticsEngine, IStatusAndProgressMessageStore messageStore, IByteConverter byteConverter, IFileSystemHelper fileSystemHelper)
+        public Downloader(
+            ILogger logger, 
+            ITaskPool taskPool, 
+            IApplicationControlFileProvider applicationControlFileProvider, 
+            INetworkHelper networkHelper, 
+            ISyncItemToEpisodeDownloaderTaskConverter converter, 
+            ICrashReporter crashReporter, 
+            IAnalyticsEngine analyticsEngine, 
+            IStatusAndProgressMessageStore messageStore, 
+            IByteConverter byteConverter, 
+            IFileSystemHelper fileSystemHelper, 
+            IResourceProvider resourceProvider)
         {
             Logger = logger;
             TaskPool = taskPool;
@@ -71,6 +83,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             MessageStore = messageStore;
             ByteConverter = byteConverter;
             FileSystemHelper = fileSystemHelper;
+            ResourceProvider = resourceProvider;
         }
         public DownloaderEvents GetDownloaderEvents()
         {
@@ -94,9 +107,9 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             {
                 if (CountItemsToDownload() < 1)
                 {
-                    return "Download Complete";
+                    return ResourceProvider.GetString(Resource.String.download_notification_title_complete);
                 }
-                return "Downloading";
+                return ResourceProvider.GetString(Resource.String.download_notification_title_in_progress);
             }
         }
 
@@ -104,8 +117,9 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         {
             get
             {
+                var fmt = ResourceProvider.GetString(Resource.String.download_notification_status_fmt);
                 (int toDownload, int complete, int errored) = GetItemCounts();
-                return $"{toDownload} To Download, {complete} Complete, {errored} Errors";
+                return string.Format(fmt, toDownload, complete, errored);
             }
         }
 
@@ -113,7 +127,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         {
             get
             {
-                return "Text";
+                return NotifcationText;
             }
         }
 

@@ -264,12 +264,18 @@ You can get PodcastUtilities here\n
 	<string name="action_ok">OK</string>
 	<string name="action_cancel">Cancel</string>
 
+	<!-- download service -->
+	<string name="download_notification_title_complete">Download Complete</string>
+	<string name="download_notification_title_in_progress">Download In Progress</string>
+	<string name="download_notification_status_fmt">{0} To Download, {1} Complete, {2} Errors</string>
+
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
 	<string name="download_activity_test_title">Test Feed</string>
 
 	<string name="finding_podcasts_error_message">Error processing feeds,\ncheck logs for details</string>
 
+	<string name="no_downloads_from_hud_text">Downloading is complete</string>
 	<string name="no_downloads_text">No podcasts to download</string>
 	<string name="no_network_text">You do not have any internet connectivity</string>
 	<string name="finding_podcasts_progress">Finding podcasts...</string>
@@ -308,9 +314,9 @@ You can get PodcastUtilities here\n
 	<string name="download_activity_cellular_ok">Download on Cellular</string>
 	<string name="download_activity_cellular_cancel">Cancel</string>
 
-	<string name="download_activity_exit_prompt">OK to cancel all downloads?</string>
-	<string name="download_activity_exit_ok">Cancel Downloads</string>
-	<string name="download_activity_exit_cancel">Continue</string>
+	<string name="download_activity_kill_prompt">OK to cancel all downloads?</string>
+	<string name="download_activity_kill_ok">Cancel Downloads</string>
+	<string name="download_activity_kill_cancel">Continue</string>
 
 	<string name="download_activity_cancelling">Cancelling downloads</string>
 

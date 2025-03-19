@@ -11,6 +11,8 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
 
         void CancelDownloads();
 
+        void KillNotification();
+
         List<DownloadRecyclerItem> GetItems();
 
         DownloaderEvents GetDownloaderEvents();

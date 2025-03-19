@@ -3,7 +3,6 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using AndroidX.Activity;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
@@ -16,12 +15,11 @@ using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.UI.Messages;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace PodcastUtilities.UI.Download
 {
     // Title is set dynamically
-    [Activity(ParentActivity = typeof(MainActivity))]
+    [Activity(ParentActivity = typeof(MainActivity), LaunchMode = Android.Content.PM.LaunchMode.SingleTask)]
     public class DownloadActivity : AppCompatActivity
     {
         private const string ACTIVITY_PARAM_FOLDER = "DownloadActivity:Param:Folder";
@@ -56,7 +54,7 @@ namespace PodcastUtilities.UI.Download
             return intent;
         }
 
-        private const string EXIT_PROMPT_TAG = "exit_prompt_tag";
+        private const string KILL_PROMPT_TAG = "kill_prompt_tag";
         private const string NETWORK_PROMPT_TAG = "network_prompt_tag";
 
         private DownloadViewModel ViewModel;
@@ -71,10 +69,8 @@ namespace PodcastUtilities.UI.Download
         private FloatingActionButton DownloadButton;
         private FloatingActionButton CancelButton;
         private DownloadRecyclerItemAdapter Adapter;
-        private OkCancelDialogFragment ExitPromptDialogFragment;
+        private OkCancelDialogFragment KillPromptDialogFragment;
         private OkCancelDialogFragment NetworkPromptDialogFragment;
-
-        private DownloadBackPressedCallback BackCallback;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -110,48 +106,33 @@ namespace PodcastUtilities.UI.Download
             var folder = Intent?.GetStringExtra(ACTIVITY_PARAM_FOLDER);
             bool test = Intent?.GetBooleanExtra(ACTIVITY_PARAM_TEST, false) ?? false;
             bool fromHud = Intent?.GetBooleanExtra(ACTIVITY_PARAM_HUD, false) ?? false;
-            ViewModel.Initialise(test, folder, fromHud);
-            //Task.Run(() => ViewModel.FindEpisodesToDownload(folder));
+            ViewModel.Initialise(false, test, folder, fromHud);
 
             DownloadButton.Click += (sender, e) => ViewModel.DownloadAllPodcastsWithNetworkCheck();
-            CancelButton.Click += (sender, e) => ViewModel.CancelAllDownloads();
+            CancelButton.Click += (sender, e) => ViewModel.RequestKillDownloads();
             ErrorMessage.Click += (sender, e) => ViewModel.ActionSelected(Resource.Id.action_display_logs);
 
-            ExitPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(EXIT_PROMPT_TAG) as OkCancelDialogFragment;
-            SetupFragmentObservers(ExitPromptDialogFragment);
+            KillPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(KILL_PROMPT_TAG) as OkCancelDialogFragment;
+            SetupFragmentObservers(KillPromptDialogFragment);
             NetworkPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(NETWORK_PROMPT_TAG) as OkCancelDialogFragment;
             SetupFragmentObservers(NetworkPromptDialogFragment);
-
-            BackCallback = new DownloadBackPressedCallback(this, ViewModel, AndroidApplication);
-            this.OnBackPressedDispatcher.AddCallback(BackCallback);
 
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate - end");
         }
 
-        private class DownloadBackPressedCallback : OnBackPressedCallback
+        protected override void OnNewIntent(Intent intent)
         {
-            private DownloadActivity Activity;
-            private DownloadViewModel ViewModel;
-            private AndroidApplication AndroidApplication;
-
-            internal DownloadBackPressedCallback(DownloadActivity activity, DownloadViewModel model, AndroidApplication app) : base(true)
+            // we are SingleTask launchmode so if a new activity is needed then this gets called
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnNewIntent");
+            base.OnNewIntent(intent);
+            if (intent != null)
             {
-                Activity = activity;
-                ViewModel = model;
-                AndroidApplication = app;
+                var folder = Intent?.GetStringExtra(ACTIVITY_PARAM_FOLDER);
+                bool test = Intent?.GetBooleanExtra(ACTIVITY_PARAM_TEST, false) ?? false;
+                bool fromHud = Intent?.GetBooleanExtra(ACTIVITY_PARAM_HUD, false) ?? false;
+                ViewModel.Initialise(true, test, folder, fromHud);
             }
-
-            public override void HandleOnBackPressed()
-            {
-                if (ViewModel.RequestExit())
-                {
-                    AndroidApplication.Logger.Debug(() => $"DownloadBackPressedCallback:HandleOnBackPressed - exit");
-                    ViewModel.Finalise();
-                    Activity.Finish();
-                    return;
-                }
-                AndroidApplication.Logger.Debug(() => $"DownloadBackPressedCallback:HandleOnBackPressed - exit not allowed");
-            }
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnNewIntent - end");
         }
 
         protected override void OnDestroy()
@@ -159,7 +140,7 @@ namespace PodcastUtilities.UI.Download
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnDestroy");
             base.OnDestroy();
             KillViewModelObservers();
-            KillFragmentObservers(ExitPromptDialogFragment);
+            KillFragmentObservers(KillPromptDialogFragment);
             KillFragmentObservers(NetworkPromptDialogFragment);
         }
 
@@ -192,11 +173,6 @@ namespace PodcastUtilities.UI.Download
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Android.Resource.Id.Home)
-            {
-                BackCallback.HandleOnBackPressed();
-                return true;
-            }
             if (ViewModel.ActionSelected(item.ItemId))
             {
                 return true;
@@ -217,9 +193,8 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.DisplayMessage += ToastMessage;
             ViewModel.Observables.StartDownloading += StartDownloading;
             ViewModel.Observables.EndDownloading += EndDownloading;
-            ViewModel.Observables.Exit += Exit;
             ViewModel.Observables.NavigateToDisplayLogs += NavigateToDisplayLogs;
-            ViewModel.Observables.ExitPrompt += ExitPrompt;
+            ViewModel.Observables.KillPrompt += KillPrompt;
             ViewModel.Observables.SetEmptyText += SetEmptyText;
             ViewModel.Observables.CellularPrompt += CellularPrompt;
             ViewModel.Observables.DisplayErrorMessage += DisplayErrorMessage;
@@ -239,9 +214,8 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.DisplayMessage -= ToastMessage;
             ViewModel.Observables.StartDownloading -= StartDownloading;
             ViewModel.Observables.EndDownloading -= EndDownloading;
-            ViewModel.Observables.Exit -= Exit;
             ViewModel.Observables.NavigateToDisplayLogs -= NavigateToDisplayLogs;
-            ViewModel.Observables.ExitPrompt -= ExitPrompt;
+            ViewModel.Observables.KillPrompt -= KillPrompt;
             ViewModel.Observables.SetEmptyText -= SetEmptyText;
             ViewModel.Observables.CellularPrompt -= CellularPrompt;
             ViewModel.Observables.DisplayErrorMessage -= DisplayErrorMessage;
@@ -274,8 +248,8 @@ namespace PodcastUtilities.UI.Download
             AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
             switch (tag)
             {
-                case EXIT_PROMPT_TAG:
-                    KillFragmentObservers(ExitPromptDialogFragment);
+                case KILL_PROMPT_TAG:
+                    KillFragmentObservers(KillPromptDialogFragment);
                     break;
                 case NETWORK_PROMPT_TAG:
                     KillFragmentObservers(NetworkPromptDialogFragment);
@@ -291,9 +265,9 @@ namespace PodcastUtilities.UI.Download
             {
                 switch (tag)
                 {
-                    case EXIT_PROMPT_TAG:
-                        KillFragmentObservers(ExitPromptDialogFragment);
-                        ViewModel.CancelAllJobsAndExit();
+                    case KILL_PROMPT_TAG:
+                        KillFragmentObservers(KillPromptDialogFragment);
+                        ViewModel.CancelAllDownloads();
                         break;
                     case NETWORK_PROMPT_TAG:
                         KillFragmentObservers(NetworkPromptDialogFragment);
@@ -425,29 +399,19 @@ namespace PodcastUtilities.UI.Download
                 DownloadButton.Enabled = true;
                 DownloadButton.Visibility = ViewStates.Visible;
                 CancelButton.Visibility = ViewStates.Gone;
-                ExitPromptDialogFragment?.Dismiss();
+                KillPromptDialogFragment?.Dismiss();
                 Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
             });
         }
 
-        private void Exit(object sender, EventArgs e)
-        {
-            AndroidApplication.Logger.Debug(() => $"DownloadActivity: Exit");
-            ViewModel.Finalise();
-            RunOnUiThread(() =>
-            {
-                Finish();
-            });
-        }
-
-        private void ExitPrompt(object sender, Tuple<string, string, string, string> parameters)
+        private void KillPrompt(object sender, Tuple<string, string, string, string> parameters)
         {
             RunOnUiThread(() =>
             {
                 (string title, string message, string ok, string cancel) = parameters;
-                ExitPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, null);
-                SetupFragmentObservers(ExitPromptDialogFragment);
-                ExitPromptDialogFragment.Show(SupportFragmentManager, EXIT_PROMPT_TAG);
+                KillPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, null);
+                SetupFragmentObservers(KillPromptDialogFragment);
+                KillPromptDialogFragment.Show(SupportFragmentManager, KILL_PROMPT_TAG);
             });
         }
 

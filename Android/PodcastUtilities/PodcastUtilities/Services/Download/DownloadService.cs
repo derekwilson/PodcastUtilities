@@ -109,6 +109,7 @@ namespace PodcastUtilities.Services.Download
             AndroidApplication.Logger.Debug(() => "DownloadService:OnDestroy");
             DetachDownloaderEvents();
             Downloader?.CancelAll();
+            NotificationManager.Cancel(FOREGROUND_NOTIFICATION_ID);
             base.OnDestroy();
         }
 
@@ -165,11 +166,17 @@ namespace PodcastUtilities.Services.Download
             builder.SetContentIntent(GetNotificationIntent());
             builder.SetSilent(true);
 
-            builder.AddAction(
-                Resource.Drawable.ic_clear,
-                GetString(Resource.String.action_cancel),
-                GetButtonIntent(DownloadServiceControlsReceiver.ACTION_STOP)
-            );
+/*
+            if (Downloader?.IsDownloading ??  false)
+            {
+                // we can only cancel downloads if they are in progress
+                builder.AddAction(
+                    Resource.Drawable.ic_clear,
+                    GetString(Resource.String.action_cancel),
+                    GetButtonIntent(DownloadServiceControlsReceiver.ACTION_STOP)
+                );
+            }
+*/
 
             return builder.Build();
         }
@@ -221,6 +228,12 @@ namespace PodcastUtilities.Services.Download
         public void CancelDownloads()
         {
             Downloader?.CancelAll();
+        }
+
+        public void KillNotification()
+        {
+            NotificationManager.Cancel(FOREGROUND_NOTIFICATION_ID);
+            StopForeground(StopForegroundFlags.Remove);
         }
 
         public bool IsDownloading

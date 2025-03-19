@@ -23,6 +23,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         public void SetItems(List<DownloadRecyclerItem> items)
         {
+            if (items == null)
+            {
+                Items = new List<DownloadRecyclerItem>(20);
+                return;
+            }
             Items = items;
         }
 
