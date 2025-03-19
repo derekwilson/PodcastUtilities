@@ -19,7 +19,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         Complete,
         Error,
         Warning,
-        Information
+        Information,
+        Cancelled
     }
 
 }

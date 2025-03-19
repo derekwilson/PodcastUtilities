@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Messages;
@@ -20,8 +21,9 @@ namespace PodcastUtilities.UI.Messages
         private AndroidApplication AndroidApplication;
         private MessagesViewModel ViewModel;
 
-        ScrollView MessagesTextScroller = null;
-        TextView MessagesText = null;
+        private ProgressSpinnerView ProgressSpinner = null;
+        private ScrollView MessagesTextScroller = null;
+        private TextView MessagesText = null;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,6 +34,7 @@ namespace PodcastUtilities.UI.Messages
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_messages);
 
+            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
             MessagesTextScroller = FindViewById<ScrollView>(Resource.Id.messages_scroller);
             MessagesText = FindViewById<TextView>(Resource.Id.messages_text);
 
@@ -85,6 +88,8 @@ namespace PodcastUtilities.UI.Messages
             ViewModel.Observables.AddText += AddText;
             ViewModel.Observables.ScrollToTop += ScrollToTop;
             ViewModel.Observables.ResetText += ResetText;
+            ViewModel.Observables.StartLoading += StartLoading;
+            ViewModel.Observables.EndLoading += EndLoading;
         }
 
         private void KillViewModelObservers()
@@ -92,6 +97,24 @@ namespace PodcastUtilities.UI.Messages
             ViewModel.Observables.AddText -= AddText;
             ViewModel.Observables.ScrollToTop -= ScrollToTop;
             ViewModel.Observables.ResetText -= ResetText;
+            ViewModel.Observables.StartLoading -= StartLoading;
+            ViewModel.Observables.EndLoading -= EndLoading;
+        }
+
+        private void EndLoading(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
+            });
+        }
+
+        private void StartLoading(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.StartProgress(ProgressSpinner, Window);
+            });
         }
 
         private void ResetText(object sender, EventArgs e)
@@ -106,15 +129,20 @@ namespace PodcastUtilities.UI.Messages
         {
             RunOnUiThread(() =>
             {
-                // Appending to the textview auto scrolls the text to the bottom - force it back to the top
-                MessagesTextScroller.FullScroll(FocusSearchDirection.Up);
-                // Appending to the textview auto scrolls the text to the bottom - force it back to the top for old versions
-                if (Build.VERSION.SdkInt <= BuildVersionCodes.P)
-                {
-                    // scroll to the top of the page
-                    MessagesTextScroller.Parent.RequestChildFocus(MessagesTextScroller, MessagesTextScroller);
-                }
+                ScrollToTopOfText();
             });
+        }
+
+        private void ScrollToTopOfText()
+        {
+            // Appending to the textview auto scrolls the text to the bottom - force it back to the top
+            MessagesTextScroller.FullScroll(FocusSearchDirection.Up);
+            // Appending to the textview auto scrolls the text to the bottom - force it back to the top for old versions
+            if (Build.VERSION.SdkInt <= BuildVersionCodes.P)
+            {
+                // scroll to the top of the page
+                MessagesTextScroller.Parent.RequestChildFocus(MessagesTextScroller, MessagesTextScroller);
+            }
         }
 
         private void AddText(object sender, string textBlock)

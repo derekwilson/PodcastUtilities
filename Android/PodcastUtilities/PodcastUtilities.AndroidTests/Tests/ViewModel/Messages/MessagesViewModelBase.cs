@@ -2,6 +2,7 @@
 using FakeItEasy;
 using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidLogic.MessageStore;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Messages;
 using System;

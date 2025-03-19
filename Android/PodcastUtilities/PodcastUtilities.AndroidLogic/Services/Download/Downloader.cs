@@ -1,5 +1,6 @@
 ﻿using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidLogic.MessageStore;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.Common;
@@ -47,6 +48,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         private IByteConverter ByteConverter;
         private IFileSystemHelper FileSystemHelper;
         private IResourceProvider ResourceProvider;
+        private IMessageStoreInserter MessageStoreInserter;
 
         // this is just in case we try and start a download before we have completed the last one
         private bool DownloadingInProgress = false;
@@ -61,17 +63,18 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         private object MessageSyncLock = new object();
 
         public Downloader(
-            ILogger logger, 
-            ITaskPool taskPool, 
-            IApplicationControlFileProvider applicationControlFileProvider, 
-            INetworkHelper networkHelper, 
-            ISyncItemToEpisodeDownloaderTaskConverter converter, 
-            ICrashReporter crashReporter, 
-            IAnalyticsEngine analyticsEngine, 
-            IStatusAndProgressMessageStore messageStore, 
-            IByteConverter byteConverter, 
-            IFileSystemHelper fileSystemHelper, 
-            IResourceProvider resourceProvider)
+            ILogger logger,
+            ITaskPool taskPool,
+            IApplicationControlFileProvider applicationControlFileProvider,
+            INetworkHelper networkHelper,
+            ISyncItemToEpisodeDownloaderTaskConverter converter,
+            ICrashReporter crashReporter,
+            IAnalyticsEngine analyticsEngine,
+            IStatusAndProgressMessageStore messageStore,
+            IByteConverter byteConverter,
+            IFileSystemHelper fileSystemHelper,
+            IResourceProvider resourceProvider,
+            IMessageStoreInserter messageStoreInserter)
         {
             Logger = logger;
             TaskPool = taskPool;
@@ -84,6 +87,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             ByteConverter = byteConverter;
             FileSystemHelper = fileSystemHelper;
             ResourceProvider = resourceProvider;
+            MessageStoreInserter = messageStoreInserter;
         }
         public DownloaderEvents GetDownloaderEvents()
         {
@@ -258,7 +262,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             }
         }
 
-        private void DownloadProgressUpdate(object sender, ProgressEventArgs e)
+        private void DownloadProgressUpdateOld(object sender, ProgressEventArgs e)
         {
             lock (MessageSyncLock)
             {
@@ -285,6 +289,21 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
                 }
             }
         }
+
+        private void DownloadProgressUpdate(object sender, ProgressEventArgs e)
+        {
+            var update = MessageStoreInserter.InsertProgress(e);
+            if (update != null)
+            {
+                Events.UpdateItemProgressEvent?.Invoke(this, update);
+            }
+            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
+            if (IsDestinationDriveFull(controlFile.GetSourceRoot(), controlFile.GetFreeSpaceToLeaveOnDownload()))
+            {
+                TaskPool?.CancelAllTasks();
+            }
+        }
+
         private bool IsDestinationDriveFull(string root, long freeSpaceToLeaveInMb)
         {
             var freeMb = ByteConverter.BytesToMegabytes(FileSystemHelper.GetAvailableFileSystemSizeInBytes(root));
@@ -299,6 +318,20 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         }
 
         private void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
+        {
+            var update = MessageStoreInserter.InsertStatus(e);
+            if (update != null)
+            {
+                // we need to signal the UI
+                Events.UpdateItemStatusEvent?.Invoke(this, update);
+            }
+            if (e.Exception != null)
+            {
+                Events.ExceptionEvent?.Invoke(this, null);
+            }
+        }
+
+        private void DownloadStatusUpdateOld(object sender, StatusUpdateEventArgs e)
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             bool verbose = controlFile?.GetDiagnosticOutput() == DiagnosticOutputLevel.Verbose;

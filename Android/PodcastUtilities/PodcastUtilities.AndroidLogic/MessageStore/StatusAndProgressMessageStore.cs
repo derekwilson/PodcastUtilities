@@ -1,9 +1,10 @@
-﻿using System;
+﻿using PodcastUtilities.AndroidLogic.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace PodcastUtilities.AndroidLogic.Utilities
+namespace PodcastUtilities.AndroidLogic.MessageStore
 {
     public interface IStatusAndProgressMessageStore
     {
@@ -18,6 +19,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
     public class StatusAndProgressMessageStore : IStatusAndProgressMessageStore
     {
         private const string NEWLINE = "\n";
+        private const string END_OF_LOGS = "\n--- end of logs ---\n";
 
         // do not make this anything other than private
         private object SyncLock = new object();
@@ -39,6 +41,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 {
                     result.Append(Store[key]);
                 }
+                result.Append(END_OF_LOGS);
                 return result.ToString();
             }
         }

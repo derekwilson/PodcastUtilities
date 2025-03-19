@@ -2,11 +2,11 @@
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidLogic.MessageStore;
 using PodcastUtilities.AndroidLogic.Services.Download;
 using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common;
-using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using System;
 using System.Collections.Generic;
@@ -54,6 +54,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         private INetworkHelper NetworkHelper;
         private IUserSettings UserSettings;
         private IDownloadServiceController DownloadServiceController;
+        private IMessageStoreInserter MessageStoreInserter;
 
         private List<DownloadRecyclerItem> AllItems = new List<DownloadRecyclerItem>(20);
         private bool StartedFindingPodcasts = false;
@@ -86,7 +87,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             IStatusAndProgressMessageStore messageStore,
             INetworkHelper networkHelper,
             IUserSettings userSettings,
-            IDownloadServiceController downloadServiceController) : base(app)
+            IDownloadServiceController downloadServiceController,
+            IMessageStoreInserter messageStoreInserter) : base(app)
         {
             ApplicationContext = app;
             Logger = logger;
@@ -104,6 +106,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             NetworkHelper = networkHelper;
             UserSettings = userSettings;
             DownloadServiceController = downloadServiceController;
+            MessageStoreInserter = messageStoreInserter;
         }
 
         public void ConnectService(IDownloadService service)
@@ -155,6 +158,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 AllItems = DownloadService?.GetItems();
                 RefreshUI(FolderSelected);
                 Observables.StartDownloading?.Invoke(this, null);   // EndDownloading observable is triggered from the Downloader events
+                if (FromHud && !(DownloadService?.IsDownloading ?? false))
+                {
+                    // we forced the display of the download - but there is nothing to do
+                    Observables.EndDownloading?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_complete));
+                }
             }
         }
 
@@ -649,7 +657,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             }
             return false;
         }
-        */
+
         void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
@@ -712,5 +720,22 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 }
             }
         }
+        */
+
+        private void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
+        {
+            var update = MessageStoreInserter.InsertStatus(e);
+            if (update != null)
+            {
+                // we need to signal the UI
+                Observables.UpdateItemStatus?.Invoke(this, update);
+            }
+            if (e.Exception != null)
+            {
+                Observables.DisplayErrorMessage?.Invoke(this, null);        // use the canned in message
+            }
+        }
+
+
     }
 }

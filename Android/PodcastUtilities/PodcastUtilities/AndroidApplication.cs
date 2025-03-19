@@ -27,6 +27,7 @@ using Android.OS;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using PodcastUtilities.Services.Download;
 using PodcastUtilities.AndroidLogic.Services.Download;
+using PodcastUtilities.AndroidLogic.MessageStore;
 
 namespace PodcastUtilities
 {
@@ -120,6 +121,7 @@ namespace PodcastUtilities
             container.Register<IUserSettings, UserSettings>(IocLifecycle.Singleton);
             container.Register<IByteConverter, ByteConverter>(IocLifecycle.Singleton);
             container.Register<IStatusAndProgressMessageStore, StatusAndProgressMessageStore>(IocLifecycle.Singleton);
+            container.Register<IMessageStoreInserter, MessageStoreInserter>(IocLifecycle.Singleton);
             container.Register<IDriveVolumeInfoViewFactory, DriveVolumeInfoViewFactory>(IocLifecycle.Singleton);
             container.Register<IApplicationControlFileFactory, ApplicationControlFileFactory>(IocLifecycle.Singleton);
             container.Register<IValueConverter, ValueConverter>(IocLifecycle.Singleton);
