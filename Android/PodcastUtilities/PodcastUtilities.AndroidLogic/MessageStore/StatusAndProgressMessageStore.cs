@@ -1,4 +1,5 @@
 ﻿using PodcastUtilities.AndroidLogic.Utilities;
+using PodcastUtilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,11 +14,18 @@ namespace PodcastUtilities.AndroidLogic.MessageStore
         void StoreMessage(Guid id, string message);
         string GetMessage(Guid id);
         string GetAllMessages();
+        string GetErrorMessages();
         int GetTotalNumberOfLines();
+        string ConvertStatusUpdateLevelToString(StatusUpdateLevel level);
     }
 
     public class StatusAndProgressMessageStore : IStatusAndProgressMessageStore
     {
+        private const string START_WARNING = "W,";
+        private const string START_ERROR = "E,";
+        private const string START_VERBOSE = "V,";
+        private const string START_STATUS = " ,";
+
         private const string NEWLINE = "\n";
         private const string END_OF_LOGS = "\n--- end of logs ---\n";
 
@@ -45,6 +53,31 @@ namespace PodcastUtilities.AndroidLogic.MessageStore
                 return result.ToString();
             }
         }
+
+        public string GetErrorMessages()
+        {
+            lock (SyncLock)
+            {
+                StringBuilder result = new StringBuilder(100);
+                foreach (var key in Store.Keys)
+                {
+                    var multilineMessage = Store[key].ToString();
+                    var lines = multilineMessage.Split(NEWLINE);
+                    foreach (var line in lines)
+                    {
+                        // NOTE: this will only get the first line of multiline error messages
+                        if (line.StartsWith(START_ERROR) || line.StartsWith(START_WARNING))
+                        {
+                            result.Append(line);
+                            result.Append(NEWLINE);
+                        }
+                    }
+                }
+                result.Append(END_OF_LOGS);
+                return result.ToString();
+            }
+        }
+
         public int GetTotalNumberOfLines()
         {
             try
@@ -108,6 +141,23 @@ namespace PodcastUtilities.AndroidLogic.MessageStore
                     Store.Add(id, new StringBuilder(message));
                 }
                 Store[id].Append(NEWLINE);
+            }
+        }
+
+        public string ConvertStatusUpdateLevelToString(StatusUpdateLevel level)
+        {
+            switch (level)
+            {
+                case StatusUpdateLevel.Status:
+                    return START_STATUS;
+                case StatusUpdateLevel.Warning:
+                    return START_WARNING;
+                case StatusUpdateLevel.Error:
+                    return START_ERROR;
+                case StatusUpdateLevel.Verbose:
+                    return START_VERBOSE;
+                default:
+                    return START_STATUS;
             }
         }
     }

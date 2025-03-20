@@ -18,4 +18,16 @@
 
 	</group>
 
+	<group android:id="@+id/filters" >
+
+		<item
+			android:id="@+id/action_logs_errors_only"
+			android:title="@string/action_logs_error_only"
+			app:showAsAction="never"
+			android:checkable="true"
+			android:checked="false"
+			app:actionViewClass="android.widget.CheckBox" />
+
+	</group>
+
 </menu>

@@ -1,5 +1,15 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:tint="#FFFFFF" android:viewportHeight="960" android:viewportWidth="960" android:width="24dp">
-      
-    <path android:fillColor="@android:color/white" android:pathData="M440,160L440,647L216,423L160,480L480,800L800,480L744,423L520,647L520,160L440,160Z"/>
-    
+<vector xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960"
+    android:autoMirrored="true"
+	android:tintMode="multiply"
+	android:tint="@color/ic_icon_selector">
+	<!-- fill colour has to be white for the multiply tinting to work -->	
+
+    <path 
+        android:fillColor="@android:color/white" 
+        android:pathData="M440,160L440,647L216,423L160,480L480,800L800,480L744,423L520,647L520,160L440,160Z"/>
+
 </vector>

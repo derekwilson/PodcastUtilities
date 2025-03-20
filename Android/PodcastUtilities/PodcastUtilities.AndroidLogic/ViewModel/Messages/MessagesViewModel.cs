@@ -27,6 +27,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
         private IStatusAndProgressMessageStore Store;
         private IAnalyticsEngine AnalyticsEngine;
 
+        private bool DisplayErrorsOnly = false;
+
         public MessagesViewModel(
             Application app,
             ILogger logger,
@@ -63,7 +65,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
                 Observables.StartLoading?.Invoke(this, null);
                 AnalyticsEngine.ViewPageEvent(IAnalyticsEngine.Page_Logs, Store.GetTotalNumberOfLines());
                 Observables.ResetText?.Invoke(this, null);
-                Observables.AddText?.Invoke(this, Store.GetAllMessages());
+                if (DisplayErrorsOnly) 
+                {
+                    Observables.AddText?.Invoke(this, Store.GetErrorMessages());
+                }
+                else
+                {
+                    Observables.AddText?.Invoke(this, Store.GetAllMessages());
+                }
             }
             finally
             {
@@ -88,6 +97,19 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
             {
                 return true;
             }
+            if (itemId == Resource.Id.action_logs_errors_only)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool IsActionChecked(int itemId)
+        {
+            if (itemId == Resource.Id.action_logs_errors_only)
+            {
+                return DisplayErrorsOnly;
+            }
             return false;
         }
 
@@ -104,7 +126,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
                 Observables.ScrollToBottom(this, null);
                 return true;
             }
+            if (itemId == Resource.Id.action_logs_errors_only)
+            {
+                DisplayErrorsOnly = !DisplayErrorsOnly;
+                LoadMessagesInBackground();
+                return true;
+            }
             return false;
         }
+
     }
 }

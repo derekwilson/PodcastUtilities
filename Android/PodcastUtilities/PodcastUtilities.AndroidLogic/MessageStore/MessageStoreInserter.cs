@@ -6,7 +6,6 @@ using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using System;
-using static Android.Provider.CalendarContract;
 
 namespace PodcastUtilities.AndroidLogic.MessageStore
 {
@@ -45,6 +44,11 @@ namespace PodcastUtilities.AndroidLogic.MessageStore
             ByteConverter = byteConverter;
         }
 
+        private void AddMessageToStore(StatusUpdateLevel level, Guid id, string message)
+        {
+            MessageStore.StoreMessage(id, $"{MessageStore.ConvertStatusUpdateLevelToString(level)}{message}");
+        }
+
         public Tuple<ISyncItem, Status, string> InsertStatus(StatusUpdateEventArgs statusUpdateEventArgs)
         {
             // the return value is used to signal anything that the UI needs to know about, null if there is nothing
@@ -76,15 +80,15 @@ namespace PodcastUtilities.AndroidLogic.MessageStore
                     CrashReporter.LogNonFatalException(statusUpdateEventArgs.Message, statusUpdateEventArgs.Exception);
                     if (item != null)
                     {
-                        MessageStore.StoreMessage(item.Id, statusUpdateEventArgs.Message);
-                        MessageStore.StoreMessage(item.Id, statusUpdateEventArgs.Exception.ToString());
+                        AddMessageToStore(statusUpdateEventArgs.MessageLevel, item.Id, statusUpdateEventArgs.Message);
+                        AddMessageToStore(statusUpdateEventArgs.MessageLevel, item.Id, statusUpdateEventArgs.Exception.ToString());
                         retval = Tuple.Create(item, Status.Error, statusUpdateEventArgs.Message);
                     }
                     else
                     {
                         // its just a message - its not attached to a ISyncItem
-                        MessageStore.StoreMessage(Guid.Empty, statusUpdateEventArgs.Message);
-                        MessageStore.StoreMessage(Guid.Empty, statusUpdateEventArgs.Exception.ToString());
+                        AddMessageToStore(statusUpdateEventArgs.MessageLevel, Guid.Empty, statusUpdateEventArgs.Message);
+                        AddMessageToStore(statusUpdateEventArgs.MessageLevel, Guid.Empty, statusUpdateEventArgs.Exception.ToString());
                     }
                 }
                 else
@@ -98,13 +102,13 @@ namespace PodcastUtilities.AndroidLogic.MessageStore
                     if (item != null)
                     {
                         // we are updating the UI as we have a ISyncItem
-                        MessageStore.StoreMessage(item.Id, statusUpdateEventArgs.Message);
+                        AddMessageToStore(statusUpdateEventArgs.MessageLevel, item.Id, statusUpdateEventArgs.Message);
                         retval = Tuple.Create(item, status, statusUpdateEventArgs.Message);
                     }
                     else
                     {
                         // its just a message - its not attached to a ISyncItem
-                        MessageStore.StoreMessage(Guid.Empty, statusUpdateEventArgs.Message);
+                        AddMessageToStore(statusUpdateEventArgs.MessageLevel, Guid.Empty, statusUpdateEventArgs.Message);
                     }
                 }
             }

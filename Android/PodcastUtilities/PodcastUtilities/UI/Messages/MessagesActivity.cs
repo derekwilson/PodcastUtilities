@@ -85,7 +85,14 @@ namespace PodcastUtilities.UI.Messages
         {
             EnableMenuItemIfAvailable(menu, Resource.Id.action_logs_top);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_logs_bottom);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_logs_errors_only);
+            SetMenuItemCheckedState(menu, Resource.Id.action_logs_errors_only);
             return true;
+        }
+
+        private void SetMenuItemCheckedState(IMenu menu, int itemId)
+        {
+            menu.FindItem(itemId)?.SetChecked(ViewModel.IsActionChecked(itemId));
         }
 
         private void EnableMenuItemIfAvailable(IMenu menu, int itemId)
