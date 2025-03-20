@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using AndroidX.Core.View;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
@@ -72,12 +73,30 @@ namespace PodcastUtilities.UI.Messages
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_messages, menu);
+            // we want a separator on the menu
+            MenuCompat.SetGroupDividerEnabled(menu, true);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnPrepareOptionsMenu(IMenu menu)
+        {
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_logs_top);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_logs_bottom);
+            return true;
+        }
+
+        private void EnableMenuItemIfAvailable(IMenu menu, int itemId)
+        {
+            menu.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
+        }
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Android.Resource.Id.Home)
+            if (ViewModel.ActionSelected(item.ItemId))
             {
-                AndroidApplication.Logger.Debug(() => $"MessagesActivity:toolbar back button - exit");
-                Finish();
                 return true;
             }
             return base.OnOptionsItemSelected(item);
@@ -87,6 +106,7 @@ namespace PodcastUtilities.UI.Messages
         {
             ViewModel.Observables.AddText += AddText;
             ViewModel.Observables.ScrollToTop += ScrollToTop;
+            ViewModel.Observables.ScrollToBottom += ScrollToBottom;
             ViewModel.Observables.ResetText += ResetText;
             ViewModel.Observables.StartLoading += StartLoading;
             ViewModel.Observables.EndLoading += EndLoading;
@@ -96,6 +116,7 @@ namespace PodcastUtilities.UI.Messages
         {
             ViewModel.Observables.AddText -= AddText;
             ViewModel.Observables.ScrollToTop -= ScrollToTop;
+            ViewModel.Observables.ScrollToBottom -= ScrollToBottom;
             ViewModel.Observables.ResetText -= ResetText;
             ViewModel.Observables.StartLoading -= StartLoading;
             ViewModel.Observables.EndLoading -= EndLoading;
@@ -131,6 +152,19 @@ namespace PodcastUtilities.UI.Messages
             {
                 ScrollToTopOfText();
             });
+        }
+
+        private void ScrollToBottom(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ScrollToBottomOfText();
+            });
+        }
+
+        private void ScrollToBottomOfText()
+        {
+            MessagesTextScroller.FullScroll(FocusSearchDirection.Down);
         }
 
         private void ScrollToTopOfText()

@@ -14,6 +14,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
         {
             public EventHandler<string> AddText;
             public EventHandler ScrollToTop;
+            public EventHandler ScrollToBottom;
             public EventHandler ResetText;
             public EventHandler StartLoading;
             public EventHandler EndLoading;
@@ -74,6 +75,36 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
         public Task DelayedScrollToTop()
         {
             return Task.Delay(1000).ContinueWith((_) => Observables.ScrollToTop(this, null));
+        }
+
+        public bool IsActionAvailable(int itemId)
+        {
+            Logger.Debug(() => $"MessagesViewModel:isActionAvailable = {itemId}");
+            if (itemId == Resource.Id.action_logs_top)
+            {
+                return true;
+            }
+            if (itemId == Resource.Id.action_logs_bottom)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ActionSelected(int itemId)
+        {
+            Logger.Debug(() => $"MessagesViewModel:ActionSelected = {itemId}");
+            if (itemId == Resource.Id.action_logs_top)
+            {
+                Observables.ScrollToTop(this, null);
+                return true;
+            }
+            if (itemId == Resource.Id.action_logs_bottom)
+            {
+                Observables.ScrollToBottom(this, null);
+                return true;
+            }
+            return false;
         }
     }
 }

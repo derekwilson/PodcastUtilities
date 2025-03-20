@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<group android:id="@+id/actions" >
+
+		<item
+            android:id="@+id/action_logs_top"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/ic_rounded_arrow_upward"
+            android:title="@string/action_logs_top" />
+
+		<item
+			android:id="@+id/action_logs_bottom"
+			app:showAsAction="ifRoom"
+			android:icon="@drawable/ic_rounded_arrow_downward"
+			android:title="@string/action_logs_bottom" />
+
+	</group>
+
+</menu>

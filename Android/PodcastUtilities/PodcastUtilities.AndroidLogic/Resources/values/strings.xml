@@ -325,6 +325,10 @@ You can get PodcastUtilities here\n
 
 	<string name="display_logs_loading">Loading Logs...</string>
 
+	<string name="action_logs_top">Top</string>
+	<string name="action_logs_bottom">Bottom</string>
+	<string name="action_logs_error_only">Errors Only</string>
+
 	<!-- purge activity -->
 	<string name="purge_activity_title">Purge Podcasts</string>
 	<string name="no_purge_text">No items to delete</string>
