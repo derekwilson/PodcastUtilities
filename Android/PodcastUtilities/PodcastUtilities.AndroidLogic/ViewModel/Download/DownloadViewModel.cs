@@ -64,8 +64,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         // do not make this anything other than private
         private object SyncLock = new object();
-        // do not make this anything other than private
-        private object MessageSyncLock = new object();
 
         public DownloadViewModel(
             Application app,
