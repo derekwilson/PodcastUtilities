@@ -9,7 +9,6 @@ using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.AndroidTests.Helpers;
-using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using System;
@@ -97,6 +96,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
 
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
+        private DownloaderEvents Events = new DownloaderEvents();
 
         protected void ResetObservedResults()
         {
@@ -230,6 +230,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             MockMessageStoreInserter = A.Fake<IMessageStoreInserter>();
             MockPermissionChecker = A.Fake<IPermissionChecker>();
             MockDownloaderService = A.Fake<IDownloadService>();
+            A.CallTo(() => MockDownloaderService.GetDownloaderEvents()).Returns(Events);
 
             SetupResources();
 

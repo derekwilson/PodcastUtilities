@@ -45,10 +45,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
             AnalyticsEngine = analyticsEngine;
         }
 
-        public void Initialise()
+        public Task Initialise()
         {
             Logger.Debug(() => $"MessagesViewModel:Initialise");
-            LoadMessagesInBackground();
+            return LoadMessagesInBackground();
         }
 
         // public for testing

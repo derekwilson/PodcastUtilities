@@ -94,17 +94,24 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             PermissionChecker = permissionChecker;
         }
 
-        public void ConnectService(IDownloadService service)
+        // only public for tests
+        public void ConnectServiceForUnitTests(IDownloadService service)
         {
-            Logger.Debug(() => $"DownloadViewModel:ConnectService isDownloading - {service?.IsDownloading}");
+            Logger.Debug(() => $"DownloadViewModel:ConnectServiceForUnitTests isDownloading - {service?.IsDownloading}");
             DownloadService = service;
             DownloaderEvents = service?.GetDownloaderEvents();
-
-            DiscoverStartModeFromService();
             AttachToDownloaderEvents();
         }
 
-        private void DiscoverStartModeFromService()
+        public void ConnectService(IDownloadService service)
+        {
+            ConnectServiceForUnitTests(service);
+
+            DiscoverStartModeFromService();
+        }
+
+        // only public for tests
+        public Task DiscoverStartModeFromService()
         {
             Logger.Debug(() => $"DownloadViewModel:DiscoverStartModeFromService");
             bool findEpisodesOnLoad = false;
@@ -134,7 +141,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             if (findEpisodesOnLoad)
             {
                 // we must not do this on the UI thread
-                FindEpisodesToDownloadInBackground(FolderSelected);
+                return FindEpisodesToDownloadInBackground(FolderSelected);
             }
             else
             {
@@ -149,6 +156,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                     Observables.EndDownloading?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_complete));
                 }
             }
+            return null;
         }
 
         // public for testing
