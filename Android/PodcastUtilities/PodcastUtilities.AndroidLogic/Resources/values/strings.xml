@@ -309,7 +309,8 @@ You can get PodcastUtilities here\n
 	<string name="button_text_download">Download Selected</string>
 	<string name="button_text_cancel">Cancel All Downloads</string>
 	<string name="download_activity_complete">Download Complete</string>
-
+	<string name="download_no_notification_permission">PodcastUtilities cannot display notifications, please enable the permission.</string>
+	
 	<string name="download_activity_cellular_prompt">You are using mobile data, OK to continue?</string>
 	<string name="download_activity_cellular_ok">Download on Cellular</string>
 	<string name="download_activity_cellular_cancel">Cancel</string>

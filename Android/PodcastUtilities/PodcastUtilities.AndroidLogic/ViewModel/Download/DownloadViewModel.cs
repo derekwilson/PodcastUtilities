@@ -49,6 +49,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         private IUserSettings UserSettings;
         private IDownloadServiceController DownloadServiceController;
         private IMessageStoreInserter MessageStoreInserter;
+        private IPermissionChecker PermissionChecker;
 
         private List<DownloadRecyclerItem> AllItems = new List<DownloadRecyclerItem>(20);
         private bool StartedFindingPodcasts = false;
@@ -77,7 +78,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             INetworkHelper networkHelper,
             IUserSettings userSettings,
             IDownloadServiceController downloadServiceController,
-            IMessageStoreInserter messageStoreInserter) : base(app)
+            IMessageStoreInserter messageStoreInserter,
+            IPermissionChecker permissionChecker) : base(app)
         {
             ApplicationContext = app;
             Logger = logger;
@@ -91,6 +93,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             UserSettings = userSettings;
             DownloadServiceController = downloadServiceController;
             MessageStoreInserter = messageStoreInserter;
+            PermissionChecker = permissionChecker;
         }
 
         public void ConnectService(IDownloadService service)
@@ -523,6 +526,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             {
                 Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.no_downloads_text));
                 return;
+            }
+
+            if (!PermissionChecker.HasPostNotifcationPermission(ApplicationContext))
+            {
+                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.download_no_notification_permission));
+                // but we will carry on
             }
 
             Observables.StartDownloading?.Invoke(this, null);   // EndDownloading observable is triggered from the Downloader events
