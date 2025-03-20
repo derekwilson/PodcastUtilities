@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using AndroidX.Lifecycle;
-using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.MessageStore;
 using PodcastUtilities.AndroidLogic.Services.Download;
@@ -43,12 +42,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
         private IApplicationControlFileProvider ApplicationControlFileProvider;
-        private IFileSystemHelper FileSystemHelper;
-        private IByteConverter ByteConverter;
         private IEpisodeFinder PodcastEpisodeFinder;
-        private ISyncItemToEpisodeDownloaderTaskConverter Converter;
-        private ITaskPool TaskPool;
-        private ICrashReporter CrashReporter;
         private IAnalyticsEngine AnalyticsEngine;
         private IStatusAndProgressMessageStore MessageStore;
         private INetworkHelper NetworkHelper;
@@ -77,12 +71,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             ILogger logger,
             IResourceProvider resProvider,
             IApplicationControlFileProvider appControlFileProvider,
-            IFileSystemHelper fileSystemHelper,
-            IByteConverter byteConverter,
             IEpisodeFinder podcastEpisodeFinder,
-            ISyncItemToEpisodeDownloaderTaskConverter converter,
-            ITaskPool taskPool,
-            ICrashReporter crashReporter,
             IAnalyticsEngine analyticsEngine,
             IStatusAndProgressMessageStore messageStore,
             INetworkHelper networkHelper,
@@ -95,12 +84,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             Logger.Debug(() => $"DownloadViewModel:ctor");
             ResourceProvider = resProvider;
             ApplicationControlFileProvider = appControlFileProvider;
-            FileSystemHelper = fileSystemHelper;
-            ByteConverter = byteConverter;
             PodcastEpisodeFinder = podcastEpisodeFinder;
-            Converter = converter;
-            TaskPool = taskPool;
-            CrashReporter = crashReporter;
             AnalyticsEngine = analyticsEngine;
             MessageStore = messageStore;
             NetworkHelper = networkHelper;
@@ -553,175 +537,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             DownloadServiceController.StopService();
         }
 
-        // dont run this on the UI thread
-        /*
-        private void DownloadAllPodcastsOld()
-        {
-            Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts");
-
-            if (AllItems.Count < 1)
-            {
-                Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.no_downloads_text));
-                return;
-            }
-
-            lock (SyncLock)
-            {
-                if (DownloadingInProgress)
-                {
-                    Logger.Warning(() => $"DownloadViewModel:DownloadAllPodcasts - already in progress - ignored");
-                    return;
-                }
-                DownloadingInProgress = true;
-            }
-
-            try
-            {
-                Observables.StartDownloading?.Invoke(this, null);
-
-                DownloadServiceController.StartService();       // we need to stop the service from disappearing when we unbind
-                DownloadService?.StartDownload(AllItems);
-
-                var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-                int numberOfConnections = controlFile.GetMaximumNumberOfConcurrentDownloads();
-                NetworkHelper.SetNetworkConnectionLimit(numberOfConnections);
-                NetworkHelper.SetApplicationDefaultCertificateValidator();      // ignore SSL errors
-
-                List<ISyncItem> AllEpisodesToDownload = new List<ISyncItem>(AllItems.Count);
-                AllItems.Where(recyclerItem => recyclerItem.Selected).ToList().ForEach(item => AllEpisodesToDownload.Add(item.SyncItem));
-
-                IEpisodeDownloader[] downloadTasks = Converter.ConvertItemsToTasks(AllEpisodesToDownload, DownloadStatusUpdate, DownloadProgressUpdate);
-                foreach (var task in downloadTasks)
-                {
-                    Logger.Debug(() => $"DownloadViewModel:Download to: {task.SyncItem.DestinationPath}");
-                }
-
-                // run them in a task pool
-                TaskPool.RunAllTasks(numberOfConnections, downloadTasks);
-                Logger.Debug(() => $"DownloadViewModel:Download tasks complete");
-            }
-            catch (Exception ex)
-            {
-                Logger.LogException(() => $"DownloadViewModel:DownloadAllPodcasts", ex);
-                CrashReporter.LogNonFatalException(ex);
-                Observables.DisplayMessage?.Invoke(this, ex.Message);
-            }
-            finally
-            {
-                Observables.EndDownloading?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_complete));
-                if (ExitRequested)
-                {
-                    Observables.Exit?.Invoke(this, null);
-                }
-                DownloadingInProgress = false;
-            }
-        }
-
-        void DownloadProgressUpdate(object sender, ProgressEventArgs e)
-        {
-            lock (MessageSyncLock)
-            {
-                ISyncItem syncItem = e.UserState as ISyncItem;
-                if (e.ProgressPercentage % 10 == 0)
-                {
-                    // only do every 10%
-                    var line = string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
-                                                    DisplayFormatter.RenderFileSize(e.ItemsProcessed),
-                                                    DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
-                                                    e.ProgressPercentage);
-                    Logger.Debug(() => line);
-                    MessageStore.StoreMessage(syncItem.Id, line);
-                    if (e.ProgressPercentage == 100)
-                    {
-                        AnalyticsEngine.DownloadEpisodeEvent(ByteConverter.BytesToMegabytes(e.TotalItemsToProcess));
-                    }
-                    Observables.UpdateItemProgress?.Invoke(this, Tuple.Create(syncItem, e.ProgressPercentage));
-                }
-                var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-                if (IsDestinationDriveFull(controlFile.GetSourceRoot(), controlFile.GetFreeSpaceToLeaveOnDownload()))
-                {
-                    TaskPool?.CancelAllTasks();
-                }
-            }
-        }
-
-        private bool IsDestinationDriveFull(string root, long freeSpaceToLeaveInMb)
-        {
-            var freeMb = ByteConverter.BytesToMegabytes(FileSystemHelper.GetAvailableFileSystemSizeInBytes(root));
-            if (freeMb < freeSpaceToLeaveInMb)
-            {
-                var message = string.Format("Destination drive is full leaving {0:#,0.##} MB free", freeMb);
-                Observables.DisplayMessage?.Invoke(this, message);
-                Logger.Debug(() => message);
-                return true;
-            }
-            return false;
-        }
-
-        void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
-        {
-            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-            bool verbose = controlFile?.GetDiagnosticOutput() == DiagnosticOutputLevel.Verbose;
-            ISyncItem item = null;
-            string id = "NONE";
-            if (e.UserState != null && e.UserState is ISyncItem)
-            {
-                item = e.UserState as ISyncItem;
-                id = item.Id.ToString();
-            }
-
-            if (e.MessageLevel == StatusUpdateLevel.Verbose && !verbose)
-            {
-                // log the status update to the logger but not to the UI
-                Logger.Verbose(() => $"DownloadViewModel:StatusUpdate ID {id}, {e.Message}, Complete {e.IsTaskCompletedSuccessfully}");
-                return;
-            }
-
-            lock (MessageSyncLock)
-            {
-                // keep all the message together
-                if (e.Exception != null)
-                {
-                    Logger.LogException(() => $"DownloadViewModel:StatusUpdate ID {id}, {e.Message} -> ", e.Exception);
-                    CrashReporter.LogNonFatalException(e.Message, e.Exception);
-                    if (item != null)
-                    {
-                        MessageStore.StoreMessage(item.Id, e.Message);
-                        MessageStore.StoreMessage(item.Id, e.Exception.ToString());
-                        Observables.UpdateItemStatus?.Invoke(this, Tuple.Create(item, Status.Error, e.Message));
-                    }
-                    else
-                    {
-                        // its just a message - its not attached to a ISyncItem
-                        MessageStore.StoreMessage(Guid.Empty, e.Message);
-                        MessageStore.StoreMessage(Guid.Empty, e.Exception.ToString());
-                    }
-                    Observables.DisplayErrorMessage?.Invoke(this, null);        // use the canned in message
-                }
-                else
-                {
-                    Logger.Debug(() => $"DownloadViewModel:StatusUpdate ID {id}, {e.Message}, Complete {e.IsTaskCompletedSuccessfully}");
-                    Status status = (e.IsTaskCompletedSuccessfully ? Status.Complete : Status.Information);
-                    if (status == Status.Complete)
-                    {
-                        AnalyticsEngine.DownloadEpisodeCompleteEvent();
-                    }
-                    if (item != null)
-                    {
-                        // we are updating the UI as we have a ISyncItem
-                        MessageStore.StoreMessage(item.Id, e.Message);
-                        Observables.UpdateItemStatus?.Invoke(this, Tuple.Create(item, status, e.Message));
-                    }
-                    else
-                    {
-                        // its just a message - its not attached to a ISyncItem
-                        MessageStore.StoreMessage(Guid.Empty, e.Message);
-                    }
-                }
-            }
-        }
-        */
-
         private void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
         {
             var update = MessageStoreInserter.InsertStatus(e);
@@ -735,7 +550,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 Observables.DisplayErrorMessage?.Invoke(this, null);        // use the canned in message
             }
         }
-
 
     }
 }

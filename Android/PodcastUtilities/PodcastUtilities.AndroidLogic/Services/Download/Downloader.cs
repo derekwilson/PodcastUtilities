@@ -4,7 +4,6 @@ using PodcastUtilities.AndroidLogic.MessageStore;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.Common;
-using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using System;
 using System.Collections.Generic;
@@ -43,8 +42,6 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         private INetworkHelper NetworkHelper;
         private ISyncItemToEpisodeDownloaderTaskConverter Converter;
         private ICrashReporter CrashReporter;
-        private IAnalyticsEngine AnalyticsEngine;
-        private IStatusAndProgressMessageStore MessageStore;
         private IByteConverter ByteConverter;
         private IFileSystemHelper FileSystemHelper;
         private IResourceProvider ResourceProvider;
@@ -59,8 +56,6 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
 
         // do not make this anything other than private
         private object SyncLock = new object();
-        // do not make this anything other than private
-        private object MessageSyncLock = new object();
 
         public Downloader(
             ILogger logger,
@@ -69,8 +64,6 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             INetworkHelper networkHelper,
             ISyncItemToEpisodeDownloaderTaskConverter converter,
             ICrashReporter crashReporter,
-            IAnalyticsEngine analyticsEngine,
-            IStatusAndProgressMessageStore messageStore,
             IByteConverter byteConverter,
             IFileSystemHelper fileSystemHelper,
             IResourceProvider resourceProvider,
@@ -82,8 +75,6 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             NetworkHelper = networkHelper;
             Converter = converter;
             CrashReporter = crashReporter;
-            AnalyticsEngine = analyticsEngine;
-            MessageStore = messageStore;
             ByteConverter = byteConverter;
             FileSystemHelper = fileSystemHelper;
             ResourceProvider = resourceProvider;
@@ -262,34 +253,6 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             }
         }
 
-        private void DownloadProgressUpdateOld(object sender, ProgressEventArgs e)
-        {
-            lock (MessageSyncLock)
-            {
-                ISyncItem syncItem = e.UserState as ISyncItem;
-                if (e.ProgressPercentage % 10 == 0)
-                {
-                    // only do every 10%
-                    var line = string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
-                                                    DisplayFormatter.RenderFileSize(e.ItemsProcessed),
-                                                    DisplayFormatter.RenderFileSize(e.TotalItemsToProcess),
-                                                    e.ProgressPercentage);
-                    Logger.Debug(() => line);
-                    MessageStore.StoreMessage(syncItem.Id, line);
-                    if (e.ProgressPercentage == 100)
-                    {
-                        AnalyticsEngine.DownloadEpisodeEvent(ByteConverter.BytesToMegabytes(e.TotalItemsToProcess));
-                    }
-                    Events.UpdateItemProgressEvent?.Invoke(this, Tuple.Create(syncItem, e.ProgressPercentage));
-                }
-                var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-                if (IsDestinationDriveFull(controlFile.GetSourceRoot(), controlFile.GetFreeSpaceToLeaveOnDownload()))
-                {
-                    TaskPool?.CancelAllTasks();
-                }
-            }
-        }
-
         private void DownloadProgressUpdate(object sender, ProgressEventArgs e)
         {
             var update = MessageStoreInserter.InsertProgress(e);
@@ -328,69 +291,6 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             if (e.Exception != null)
             {
                 Events.ExceptionEvent?.Invoke(this, null);
-            }
-        }
-
-        private void DownloadStatusUpdateOld(object sender, StatusUpdateEventArgs e)
-        {
-            var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-            bool verbose = controlFile?.GetDiagnosticOutput() == DiagnosticOutputLevel.Verbose;
-            ISyncItem item = null;
-            string id = "NONE";
-            if (e.UserState != null && e.UserState is ISyncItem)
-            {
-                item = e.UserState as ISyncItem;
-                id = item.Id.ToString();
-            }
-
-            if (e.MessageLevel == StatusUpdateLevel.Verbose && !verbose)
-            {
-                // log the status update to the logger but not to the UI
-                Logger.Verbose(() => $"Downloader:StatusUpdate ID {id}, {e.Message}, Complete {e.IsTaskCompletedSuccessfully}");
-                return;
-            }
-
-            // keep all the message together
-            lock (MessageSyncLock)
-            {
-                if (e.Exception != null)
-                {
-                    Logger.LogException(() => $"Downloader:StatusUpdate ID {id}, {e.Message} -> ", e.Exception);
-                    CrashReporter.LogNonFatalException(e.Message, e.Exception);
-                    if (item != null)
-                    {
-                        MessageStore.StoreMessage(item.Id, e.Message);
-                        MessageStore.StoreMessage(item.Id, e.Exception.ToString());
-                        Events.UpdateItemStatusEvent?.Invoke(this, Tuple.Create(item, Status.Error, e.Message));
-                    }
-                    else
-                    {
-                        // its just a message - its not attached to a ISyncItem
-                        MessageStore.StoreMessage(Guid.Empty, e.Message);
-                        MessageStore.StoreMessage(Guid.Empty, e.Exception.ToString());
-                    }
-                    Events.ExceptionEvent?.Invoke(this, null);
-                }
-                else
-                {
-                    Logger.Debug(() => $"Downloader:StatusUpdate ID {id}, {e.Message}, Complete {e.IsTaskCompletedSuccessfully}");
-                    Status status = (e.IsTaskCompletedSuccessfully ? Status.Complete : Status.Information);
-                    if (status == Status.Complete)
-                    {
-                        AnalyticsEngine.DownloadEpisodeCompleteEvent();
-                    }
-                    if (item != null)
-                    {
-                        // we are updating the UI as we have a ISyncItem
-                        MessageStore.StoreMessage(item.Id, e.Message);
-                        Events.UpdateItemStatusEvent?.Invoke(this, Tuple.Create(item, status, e.Message));
-                    }
-                    else
-                    {
-                        // its just a message - its not attached to a ISyncItem
-                        MessageStore.StoreMessage(Guid.Empty, e.Message);
-                    }
-                }
             }
         }
 
