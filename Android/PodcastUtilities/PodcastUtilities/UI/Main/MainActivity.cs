@@ -111,15 +111,6 @@ namespace PodcastUtilities
             }
         }
 
-        private void RequestPostNotificationPermission()
-        {
-            if (!PermissionChecker.HasPostNotifcationPermission(this))
-            {
-                AndroidApplication.Logger.Debug(() => $"MainActivity:RequestPostNotificationPermission - post notification permission = {PermissionChecker.HasPostNotifcationPermission(this)}");
-                PermissionRequester.RequestPostNotificationPermission(this, PermissionRequester.REQUEST_CODE_POST_NOTIFICATION_PERMISSION);
-            }
-        }
-
         protected override void OnPause()
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnPause - observers {GetObserverCount()}");
@@ -150,17 +141,6 @@ namespace PodcastUtilities
                     if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
                     {
                         ViewModel?.RefreshFileSystemInfo();
-                        RequestPostNotificationPermission();
-                    }
-                    else
-                    {
-                        ToastMessage("Permission Denied");
-                    }
-                    break;
-                case PermissionRequester.REQUEST_CODE_POST_NOTIFICATION_PERMISSION:
-                    if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
-                    {
-                        AndroidApplication.Logger.Debug(() => $"MainActivity:OnRequestPermissionsResult post notification OK");
                     }
                     else
                     {
@@ -185,7 +165,6 @@ namespace PodcastUtilities
                 // we asked for manage storage access in SDK30+
                 case PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
                     ViewModel?.RefreshFileSystemInfo();
-                    RequestPostNotificationPermission();
                     break;
             }
         }

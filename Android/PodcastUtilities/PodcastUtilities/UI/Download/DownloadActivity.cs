@@ -1,6 +1,8 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
+using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
@@ -57,9 +59,11 @@ namespace PodcastUtilities.UI.Download
         private const string KILL_PROMPT_TAG = "kill_prompt_tag";
         private const string NETWORK_PROMPT_TAG = "network_prompt_tag";
 
+        private AndroidApplication AndroidApplication;
         private DownloadViewModel ViewModel;
 
-        private AndroidApplication AndroidApplication;
+        private IPermissionChecker PermissionChecker;
+        private DownloadRecyclerItemAdapter Adapter;
 
         private TextView ErrorMessage;
         private EmptyRecyclerView RvDownloads;
@@ -68,7 +72,6 @@ namespace PodcastUtilities.UI.Download
         private ProgressSpinnerView ProgressSpinner;
         private FloatingActionButton DownloadButton;
         private FloatingActionButton CancelButton;
-        private DownloadRecyclerItemAdapter Adapter;
         private OkCancelDialogFragment KillPromptDialogFragment;
         private OkCancelDialogFragment NetworkPromptDialogFragment;
 
@@ -76,6 +79,7 @@ namespace PodcastUtilities.UI.Download
         {
             AndroidApplication = Application as AndroidApplication;
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate");
+            PermissionChecker = new PermissionChecker();
 
             base.OnCreate(savedInstanceState);
 
@@ -117,6 +121,8 @@ namespace PodcastUtilities.UI.Download
             NetworkPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(NETWORK_PROMPT_TAG) as OkCancelDialogFragment;
             SetupFragmentObservers(NetworkPromptDialogFragment);
 
+            RequestPostNotificationPermission();
+
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate - end");
         }
 
@@ -142,6 +148,37 @@ namespace PodcastUtilities.UI.Download
             KillViewModelObservers();
             KillFragmentObservers(KillPromptDialogFragment);
             KillFragmentObservers(NetworkPromptDialogFragment);
+        }
+
+        private void RequestPostNotificationPermission()
+        {
+            if (!PermissionChecker.HasPostNotifcationPermission(this))
+            {
+                AndroidApplication.Logger.Debug(() => $"DownloadActivity:RequestPostNotificationPermission - post notification permission = {PermissionChecker.HasPostNotifcationPermission(this)}");
+                PermissionRequester.RequestPostNotificationPermission(this, PermissionRequester.REQUEST_CODE_POST_NOTIFICATION_PERMISSION);
+            }
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
+            switch (requestCode)
+            {
+                case PermissionRequester.REQUEST_CODE_POST_NOTIFICATION_PERMISSION:
+                    if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
+                    {
+                        AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnRequestPermissionsResult post notification OK");
+                    }
+                    else
+                    {
+                        AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnRequestPermissionsResult post notification permission denied");
+                    }
+                    break;
+                default:
+                    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    break;
+            }
         }
 
         public override bool DispatchKeyEvent(KeyEvent e)
