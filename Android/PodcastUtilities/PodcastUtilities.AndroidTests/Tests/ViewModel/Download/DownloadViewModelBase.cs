@@ -54,6 +54,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             public int EndProgressCount;
             public List<DownloadRecyclerItem> LastDownloadItems;
             public string LastDisplayMessage;
+            public string LastDisplayErrorMessage;
+            public int DisplayErrorMessageCount;
             public string LastCellularPromptTitle;
             public string LastCellularPromptBody;
             public string LastCellularPromptCancel;
@@ -96,7 +98,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
 
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
-        private DownloaderEvents Events = new DownloaderEvents();
+        protected DownloaderEvents Events = new DownloaderEvents();
 
         protected void ResetObservedResults()
         {
@@ -109,6 +111,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ObservedResults.EndProgressCount = 0;
             ObservedResults.LastDownloadItems = null;
             ObservedResults.LastDisplayMessage = null;
+            ObservedResults.DisplayErrorMessageCount = 0;
+            ObservedResults.LastDisplayErrorMessage = null;
             ObservedResults.LastCellularPromptTitle = null;
             ObservedResults.LastCellularPromptBody = null;
             ObservedResults.LastCellularPromptOk = null;
@@ -255,6 +259,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.EndProgress += EndProgress;
             ViewModel.Observables.SetSyncItems += SetSyncItems;
             ViewModel.Observables.DisplayMessage += DisplayMessage;
+            ViewModel.Observables.DisplayErrorMessage += DisplayErrorMessage;
             ViewModel.Observables.CellularPrompt += CellularPrompt;
             ViewModel.Observables.StartDownloading += StartDownloading;
             ViewModel.Observables.EndDownloading += EndDownloading;
@@ -273,12 +278,19 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.EndProgress -= EndProgress;
             ViewModel.Observables.SetSyncItems -= SetSyncItems;
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
+            ViewModel.Observables.DisplayErrorMessage -= DisplayErrorMessage;
             ViewModel.Observables.CellularPrompt -= CellularPrompt;
             ViewModel.Observables.StartDownloading -= StartDownloading;
             ViewModel.Observables.EndDownloading -= EndDownloading;
             ViewModel.Observables.UpdateItemProgress -= UpdateItemProgress;
             ViewModel.Observables.UpdateItemStatus -= UpdateItemStatus;
             ViewModel.Observables.KillPrompt -= KillPrompt;
+        }
+
+        private void DisplayErrorMessage(object sender, string message)
+        {
+            ObservedResults.LastDisplayErrorMessage = message;
+            ObservedResults.DisplayErrorMessageCount++;
         }
 
         private void KillPrompt(object sender, Tuple<string, string, string, string> prompt)

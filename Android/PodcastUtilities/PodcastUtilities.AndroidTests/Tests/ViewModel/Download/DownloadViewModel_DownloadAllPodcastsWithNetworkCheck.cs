@@ -94,8 +94,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
 
             // assert
             Assert.AreEqual(1, ObservedResults.StartDownloadingCount, "start count");
-            A.CallTo(() => MockDownloadServiceController.StartService())
-                .MustHaveHappened(1, Times.Exactly);
+            A.CallTo(() => MockDownloadServiceController.StartService()).MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => MockDownloaderService.StartDownloads(
                 A<List<DownloadRecyclerItem>>.That.Matches(items => items == ObservedResults.LastDownloadItems)))
                 .MustHaveHappened(1, Times.Exactly);
