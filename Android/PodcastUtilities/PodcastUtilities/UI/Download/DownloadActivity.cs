@@ -350,6 +350,7 @@ namespace PodcastUtilities.UI.Download
             {
                 ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
                 DownloadButton.Enabled = true;
+                InvalidateOptionsMenu();
             });
         }
 
@@ -369,6 +370,7 @@ namespace PodcastUtilities.UI.Download
             {
                 ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
                 DownloadButton.Enabled = false;
+                InvalidateOptionsMenu();
             });
         }
         private void TestMode(object sender, bool testMode)

@@ -14,7 +14,7 @@
 		<TextView android:id="@+id/messages_text"
 				  android:layout_width="fill_parent"
 				  android:layout_height="wrap_content"
-				  android:text="@string/placeholder"
+				  android:text="@string/display_logs_loading"
 				  android:textIsSelectable="true"
 				  android:textSize="12sp"
 				  android:typeface="monospace"/>

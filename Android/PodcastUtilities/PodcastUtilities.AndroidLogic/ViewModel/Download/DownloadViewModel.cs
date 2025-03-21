@@ -295,7 +295,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             Logger.Debug(() => $"DownloadViewModel:isActionAvailable = {itemId}");
             if (itemId == Resource.Id.action_display_logs)
             {
-                return true;
+                if (!StartedFindingPodcasts)
+                {
+                    return true;
+                }
+                if (CompletedFindingPodcasts)
+                {
+                    return true;
+                }
+                return false;
             }
             return false;
         }
