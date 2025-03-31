@@ -11,6 +11,7 @@
 	<string name="read_external_permissions_rationale">PodcastUtilities needs read access to storage</string>
 	<string name="write_external_permissions_rationale">PodcastUtilities needs write access to storage to be able to manage the podcast cache.</string>
 	<string name="manage_external_permissions_rationale">PodcastUtilities needs to manage external storage to be able to manage the podcast cache.</string>
+	<string name="post_notification_permissions_rationale">PodcastUtilities needs notification permission to download podcasts.</string>
 
 	<!-- main activity -->
 	<string name="main_activity_title">PodcastUtilities</string>
@@ -263,12 +264,18 @@ You can get PodcastUtilities here\n
 	<string name="action_ok">OK</string>
 	<string name="action_cancel">Cancel</string>
 
+	<!-- download service -->
+	<string name="download_notification_title_complete">Download Complete</string>
+	<string name="download_notification_title_in_progress">Download In Progress</string>
+	<string name="download_notification_status_fmt">{0} To Download, {1} Complete, {2} Errors</string>
+
 	<!-- download activity -->
 	<string name="download_activity_title">Download Podcasts</string>
 	<string name="download_activity_test_title">Test Feed</string>
 
 	<string name="finding_podcasts_error_message">Error processing feeds,\ncheck logs for details</string>
 
+	<string name="no_downloads_from_hud_text">Downloading is complete</string>
 	<string name="no_downloads_text">No podcasts to download</string>
 	<string name="no_network_text">You do not have any internet connectivity</string>
 	<string name="finding_podcasts_progress">Finding podcasts...</string>
@@ -300,20 +307,28 @@ You can get PodcastUtilities here\n
 	<string name="download_sublabel_fmt">{0} {1}</string>
 
 	<string name="button_text_download">Download Selected</string>
+	<string name="button_text_cancel">Cancel All Downloads</string>
 	<string name="download_activity_complete">Download Complete</string>
-
+	<string name="download_no_notification_permission">PodcastUtilities cannot display notifications, please enable the permission.</string>
+	
 	<string name="download_activity_cellular_prompt">You are using mobile data, OK to continue?</string>
 	<string name="download_activity_cellular_ok">Download on Cellular</string>
 	<string name="download_activity_cellular_cancel">Cancel</string>
 
-	<string name="download_activity_exit_prompt">OK to cancel all downloads?</string>
-	<string name="download_activity_exit_ok">Cancel Downloads</string>
-	<string name="download_activity_exit_cancel">Continue</string>
+	<string name="download_activity_kill_prompt">OK to cancel all downloads?</string>
+	<string name="download_activity_kill_ok">Cancel Downloads</string>
+	<string name="download_activity_kill_cancel">Continue</string>
 
 	<string name="download_activity_cancelling">Cancelling downloads</string>
 
 	<!-- display logs activity -->
 	<string name="action_display_logs">Display Logs</string>
+
+	<string name="display_logs_loading">Loading Logs...</string>
+
+	<string name="action_logs_top">Top</string>
+	<string name="action_logs_bottom">Bottom</string>
+	<string name="action_logs_error_only">Errors Only</string>
 
 	<!-- purge activity -->
 	<string name="purge_activity_title">Purge Podcasts</string>

@@ -8,29 +8,30 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Messages
     public class MessagesViewModel_Initialise : MessagesViewModelBase
     {
         [Test]
-        public void Initialise_Logs()
+        public async void Initialise_Logs()
         {
             // arrange
 
             // act
-            ViewModel.Initialise();
+            await ViewModel.Initialise().ConfigureAwait(false);
 
             // assert
             A.CallTo(() => MockLogger.Debug(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(2, Times.Exactly);
         }
 
         [Test]
-        public void Initialise_SetsTheText()
+        public async void Initialise_SetsTheText()
         {
             // arrange
             SetupStore();
 
             // act
-            ViewModel.Initialise();
+            await ViewModel.Initialise().ConfigureAwait(false);
 
             // assert
-            Assert.AreEqual("line 1\nline 2\nline 3\n", ObservedResults.Messages.ToString());
-            Assert.AreEqual(1, ObservedResults.ScrollToTopCount);
+            Assert.AreEqual("line 1\nline 2\nline 3\n\n--- end of logs ---\n", ObservedResults.Messages.ToString());
+            Assert.AreEqual(1, ObservedResults.StartLoadingCount, "start loading");
+            Assert.AreEqual(1, ObservedResults.EndLoadingCount, "end loading");
         }
     }
 }

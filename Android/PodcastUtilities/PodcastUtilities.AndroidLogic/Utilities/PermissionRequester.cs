@@ -15,9 +15,11 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public const int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_PURGE = 1003;
         public const int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 1004;
         public const int REQUEST_CODE_READ_EXTERNAL_STORAGE_PERMISSION = 1100;
+        public const int REQUEST_CODE_POST_NOTIFICATION_PERMISSION = 1101;
 
         static readonly string READ_PERMISSIONS_TO_REQUEST = Manifest.Permission.ReadExternalStorage;
         static readonly string WRITE_PERMISSIONS_TO_REQUEST = Manifest.Permission.WriteExternalStorage;
+        static readonly string POST_NOTIFICATION_TO_REQUEST = Manifest.Permission.PostNotifications;
 
         public static void RequestReadStoragePermission(Activity activity)
         {
@@ -27,6 +29,11 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public static void RequestWriteStoragePermission(Activity activity, int code)
         {
             RequestPermission(activity, Resource.String.write_external_permissions_rationale, WRITE_PERMISSIONS_TO_REQUEST, code);
+        }
+
+        public static void RequestPostNotificationPermission(Activity activity, int code)
+        {
+            RequestPermission(activity, Resource.String.post_notification_permissions_rationale, POST_NOTIFICATION_TO_REQUEST, code);
         }
 
         public static void RequestManageStoragePermission(Activity activity, int code, string packageName)

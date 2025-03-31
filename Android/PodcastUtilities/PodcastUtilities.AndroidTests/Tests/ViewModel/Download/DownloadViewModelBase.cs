@@ -3,11 +3,12 @@ using FakeItEasy;
 using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.Converter;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidLogic.MessageStore;
+using PodcastUtilities.AndroidLogic.Services.Download;
 using PodcastUtilities.AndroidLogic.Settings;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.AndroidTests.Helpers;
-using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
 using System;
@@ -53,6 +54,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             public int EndProgressCount;
             public List<DownloadRecyclerItem> LastDownloadItems;
             public string LastDisplayMessage;
+            public string LastDisplayErrorMessage;
+            public int DisplayErrorMessageCount;
             public string LastCellularPromptTitle;
             public string LastCellularPromptBody;
             public string LastCellularPromptCancel;
@@ -65,11 +68,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             public string LastUpdateStatusMessage;
             public Status LastUpdateStatus;
             public ISyncItem LastUpdateStatusItem;
-            public string LastExitPromptTitle;
-            public string LastExitPromptMessage;
-            public string LastExitPromptOk;
-            public string LastExitPromptCancel;
-            public int ExitCount;
+            public string LastKillPromptTitle;
+            public string LastKillPromptMessage;
+            public string LastKillPromptOk;
+            public string LastKillPromptCancel;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
@@ -78,24 +80,25 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         protected Application MockApplication;
         protected ILogger MockLogger;
         protected IResourceProvider MockResourceProvider;
-        protected IFileSystemHelper MockFileSystemHelper;
         protected IApplicationControlFileProvider MockApplicationControlFileProvider;
-        protected ICrashReporter MockCrashReporter;
         protected IAnalyticsEngine MockAnalyticsEngine;
+        protected IStatusAndProgressMessageStore MockStatusAndProgressMessageStore;
         protected IReadWriteControlFile MockControlFile;
         protected IApplicationControlFileFactory MockApplicationControlFileFactory;
         protected IEpisodeFinder MockPodcastEpisodeFinder;
-        protected ISyncItemToEpisodeDownloaderTaskConverter MockSyncItemToEpisodeDownloaderTaskConverter;
-        protected ITaskPool MockTaskPool;
-        protected IStatusAndProgressMessageStore MockStatusAndProgressMessageStore;
         protected INetworkHelper MockNetworkHelper;
         protected IUserSettings MockUserSettings;
+        protected IDownloadServiceController MockDownloadServiceController;
+        protected IMessageStoreInserter MockMessageStoreInserter;
+        protected IPermissionChecker MockPermissionChecker;
+        protected IDownloadService MockDownloaderService;
 
         protected PodcastInfoMocker podcast1Mocker;
         protected PodcastInfoMocker podcast2Mocker;
 
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
+        protected DownloaderEvents Events = new DownloaderEvents();
 
         protected void ResetObservedResults()
         {
@@ -108,6 +111,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ObservedResults.EndProgressCount = 0;
             ObservedResults.LastDownloadItems = null;
             ObservedResults.LastDisplayMessage = null;
+            ObservedResults.DisplayErrorMessageCount = 0;
+            ObservedResults.LastDisplayErrorMessage = null;
             ObservedResults.LastCellularPromptTitle = null;
             ObservedResults.LastCellularPromptBody = null;
             ObservedResults.LastCellularPromptOk = null;
@@ -120,11 +125,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ObservedResults.LastUpdateStatusItem = null;
             ObservedResults.LastUpdateStatusMessage = null;
             ObservedResults.LastUpdateStatus = Status.OK;
-            ObservedResults.LastExitPromptTitle = null;
-            ObservedResults.LastExitPromptMessage = null;
-            ObservedResults.LastExitPromptOk = null;
-            ObservedResults.LastExitPromptCancel = null;
-            ObservedResults.ExitCount = 0;
+            ObservedResults.LastKillPromptTitle = null;
+            ObservedResults.LastKillPromptMessage = null;
+            ObservedResults.LastKillPromptOk = null;
+            ObservedResults.LastKillPromptCancel = null;
         }
 
         private void SetupResources()
@@ -134,9 +138,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.no_network_text)).Returns("No network");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cancelling)).Returns("cancelling");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.dialog_title)).Returns("dialog title");
-            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_exit_prompt)).Returns("exit message");
-            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_exit_ok)).Returns("exit ok");
-            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_exit_cancel)).Returns("exit cancel");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_kill_prompt)).Returns("kill message");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_kill_ok)).Returns("kill ok");
+            A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_kill_cancel)).Returns("kill cancel");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_complete)).Returns("downloads complete");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cellular_prompt)).Returns("cellular prompt");
             A.CallTo(() => MockResourceProvider.GetString(Resource.String.download_activity_cellular_ok)).Returns("cellular ok");
@@ -218,22 +222,19 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             A.CallTo(() => MockApplication.PackageName).Returns("com.andrewandderek.podcastutilities");
             MockLogger = A.Fake<ILogger>();
             MockResourceProvider = A.Fake<IResourceProvider>();
-            MockFileSystemHelper = A.Fake<IFileSystemHelper>();
-            // there is 10MB free in the filesystem
-            A.CallTo(() => MockFileSystemHelper.GetAvailableFileSystemSizeInBytes(A<string>.Ignored)).Returns(1024 * 1024 * FREE_DISK_SPACE_MB);
             MockApplicationControlFileProvider = A.Fake<IApplicationControlFileProvider>();
-            MockCrashReporter = A.Fake<ICrashReporter>();
             MockAnalyticsEngine = A.Fake<IAnalyticsEngine>();
+            MockStatusAndProgressMessageStore = A.Fake<IStatusAndProgressMessageStore>();
             MockApplicationControlFileFactory = A.Fake<IApplicationControlFileFactory>();
             MockPodcastEpisodeFinder = A.Fake<IEpisodeFinder>();
-            MockSyncItemToEpisodeDownloaderTaskConverter = A.Fake<ISyncItemToEpisodeDownloaderTaskConverter>();
-            MockTaskPool = A.Fake<ITaskPool>();
-            MockStatusAndProgressMessageStore = A.Fake<IStatusAndProgressMessageStore>();
             MockNetworkHelper = A.Fake<INetworkHelper>();
             A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.Wifi);
             MockUserSettings = A.Fake<IUserSettings>();
-
-            ByteConverter = new ByteConverter();
+            MockDownloadServiceController = A.Fake<IDownloadServiceController>();
+            MockMessageStoreInserter = A.Fake<IMessageStoreInserter>();
+            MockPermissionChecker = A.Fake<IPermissionChecker>();
+            MockDownloaderService = A.Fake<IDownloadService>();
+            A.CallTo(() => MockDownloaderService.GetDownloaderEvents()).Returns(Events);
 
             SetupResources();
 
@@ -242,16 +243,14 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
                 MockLogger,
                 MockResourceProvider,
                 MockApplicationControlFileProvider,
-                MockFileSystemHelper,
-                ByteConverter,
                 MockPodcastEpisodeFinder,
-                MockSyncItemToEpisodeDownloaderTaskConverter,
-                MockTaskPool,
-                MockCrashReporter,
                 MockAnalyticsEngine,
                 MockStatusAndProgressMessageStore,
                 MockNetworkHelper,
-                MockUserSettings
+                MockUserSettings,
+                MockDownloadServiceController,
+                MockMessageStoreInserter,
+                MockPermissionChecker
             );
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.SetEmptyText += SetEmptyText;
@@ -260,13 +259,13 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.EndProgress += EndProgress;
             ViewModel.Observables.SetSyncItems += SetSyncItems;
             ViewModel.Observables.DisplayMessage += DisplayMessage;
+            ViewModel.Observables.DisplayErrorMessage += DisplayErrorMessage;
             ViewModel.Observables.CellularPrompt += CellularPrompt;
             ViewModel.Observables.StartDownloading += StartDownloading;
             ViewModel.Observables.EndDownloading += EndDownloading;
             ViewModel.Observables.UpdateItemProgress += UpdateItemProgress;
             ViewModel.Observables.UpdateItemStatus += UpdateItemStatus;
-            ViewModel.Observables.ExitPrompt += ExitPrompt;
-            ViewModel.Observables.Exit += Exit;
+            ViewModel.Observables.KillPrompt += KillPrompt;
         }
 
         [TearDown]
@@ -279,23 +278,24 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.EndProgress -= EndProgress;
             ViewModel.Observables.SetSyncItems -= SetSyncItems;
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
+            ViewModel.Observables.DisplayErrorMessage -= DisplayErrorMessage;
             ViewModel.Observables.CellularPrompt -= CellularPrompt;
             ViewModel.Observables.StartDownloading -= StartDownloading;
             ViewModel.Observables.EndDownloading -= EndDownloading;
             ViewModel.Observables.UpdateItemProgress -= UpdateItemProgress;
             ViewModel.Observables.UpdateItemStatus -= UpdateItemStatus;
-            ViewModel.Observables.ExitPrompt -= ExitPrompt;
-            ViewModel.Observables.Exit -= Exit;
+            ViewModel.Observables.KillPrompt -= KillPrompt;
         }
 
-        private void Exit(object sender, EventArgs e)
+        private void DisplayErrorMessage(object sender, string message)
         {
-            ObservedResults.ExitCount++;
+            ObservedResults.LastDisplayErrorMessage = message;
+            ObservedResults.DisplayErrorMessageCount++;
         }
 
-        private void ExitPrompt(object sender, Tuple<string, string, string, string> prompt)
+        private void KillPrompt(object sender, Tuple<string, string, string, string> prompt)
         {
-            (ObservedResults.LastExitPromptTitle, ObservedResults.LastExitPromptMessage, ObservedResults.LastExitPromptOk, ObservedResults.LastExitPromptCancel) = prompt;
+            (ObservedResults.LastKillPromptTitle, ObservedResults.LastKillPromptMessage, ObservedResults.LastKillPromptOk, ObservedResults.LastKillPromptCancel) = prompt;
         }
 
         private void UpdateItemStatus(object sender, Tuple<ISyncItem, Status, string> item)

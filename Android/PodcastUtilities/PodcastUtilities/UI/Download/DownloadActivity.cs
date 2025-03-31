@@ -1,9 +1,10 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
+using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using AndroidX.Activity;
 using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
 using AndroidX.RecyclerView.Widget;
@@ -16,16 +17,16 @@ using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.UI.Messages;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace PodcastUtilities.UI.Download
 {
     // Title is set dynamically
-    [Activity(ParentActivity = typeof(MainActivity))]
+    [Activity(ParentActivity = typeof(MainActivity), LaunchMode = Android.Content.PM.LaunchMode.SingleTask)]
     public class DownloadActivity : AppCompatActivity
     {
         private const string ACTIVITY_PARAM_FOLDER = "DownloadActivity:Param:Folder";
         private const string ACTIVITY_PARAM_TEST = "DownloadActivity:Param:Test";
+        private const string ACTIVITY_PARAM_HUD = "DownloadActivity:Param:Hud";
 
         public static Intent CreateIntent(Context context, string folder)
         {
@@ -48,13 +49,21 @@ namespace PodcastUtilities.UI.Download
             intent.PutExtra(ACTIVITY_PARAM_TEST, true);
             return intent;
         }
+        public static Intent CreateIntentFromHud(Context context)
+        {
+            Intent intent = new Intent(context, typeof(DownloadActivity));
+            intent.PutExtra(ACTIVITY_PARAM_HUD, true);
+            return intent;
+        }
 
-        private const string EXIT_PROMPT_TAG = "exit_prompt_tag";
+        private const string KILL_PROMPT_TAG = "kill_prompt_tag";
         private const string NETWORK_PROMPT_TAG = "network_prompt_tag";
 
+        private AndroidApplication AndroidApplication;
         private DownloadViewModel ViewModel;
 
-        private AndroidApplication AndroidApplication;
+        private IPermissionChecker PermissionChecker;
+        private DownloadRecyclerItemAdapter Adapter;
 
         private TextView ErrorMessage;
         private EmptyRecyclerView RvDownloads;
@@ -62,16 +71,15 @@ namespace PodcastUtilities.UI.Download
         private TextView NoDataText;
         private ProgressSpinnerView ProgressSpinner;
         private FloatingActionButton DownloadButton;
-        private DownloadRecyclerItemAdapter Adapter;
-        private OkCancelDialogFragment ExitPromptDialogFragment;
+        private FloatingActionButton CancelButton;
+        private OkCancelDialogFragment KillPromptDialogFragment;
         private OkCancelDialogFragment NetworkPromptDialogFragment;
-
-        private DownloadBackPressedCallback BackCallback;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             AndroidApplication = Application as AndroidApplication;
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate");
+            PermissionChecker = new PermissionChecker();
 
             base.OnCreate(savedInstanceState);
 
@@ -84,6 +92,7 @@ namespace PodcastUtilities.UI.Download
             NoDataText = FindViewById<TextView>(Resource.Id.txtNoData);
             ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
             DownloadButton = FindViewById<FloatingActionButton>(Resource.Id.fab_download);
+            CancelButton = FindViewById<FloatingActionButton>(Resource.Id.fab_cancel);
 
             RvDownloads.SetLayoutManager(new LinearLayoutManager(this));
             RvDownloads.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
@@ -100,46 +109,36 @@ namespace PodcastUtilities.UI.Download
 
             var folder = Intent?.GetStringExtra(ACTIVITY_PARAM_FOLDER);
             bool test = Intent?.GetBooleanExtra(ACTIVITY_PARAM_TEST, false) ?? false;
-            ViewModel.Initialise(test);
-            Task.Run(() => ViewModel.FindEpisodesToDownload(folder));
+            bool fromHud = Intent?.GetBooleanExtra(ACTIVITY_PARAM_HUD, false) ?? false;
+            ViewModel.Initialise(false, test, folder, fromHud);
 
             DownloadButton.Click += (sender, e) => ViewModel.DownloadAllPodcastsWithNetworkCheck();
+            CancelButton.Click += (sender, e) => ViewModel.RequestKillDownloads();
             ErrorMessage.Click += (sender, e) => ViewModel.ActionSelected(Resource.Id.action_display_logs);
 
-            ExitPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(EXIT_PROMPT_TAG) as OkCancelDialogFragment;
-            SetupFragmentObservers(ExitPromptDialogFragment);
+            KillPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(KILL_PROMPT_TAG) as OkCancelDialogFragment;
+            SetupFragmentObservers(KillPromptDialogFragment);
             NetworkPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(NETWORK_PROMPT_TAG) as OkCancelDialogFragment;
             SetupFragmentObservers(NetworkPromptDialogFragment);
 
-            BackCallback = new DownloadBackPressedCallback(this, ViewModel, AndroidApplication);
-            this.OnBackPressedDispatcher.AddCallback(BackCallback);
+            RequestPostNotificationPermission();
 
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate - end");
         }
 
-        private class DownloadBackPressedCallback : OnBackPressedCallback
+        protected override void OnNewIntent(Intent intent)
         {
-            private DownloadActivity Activity;
-            private DownloadViewModel ViewModel;
-            private AndroidApplication AndroidApplication;
-
-            internal DownloadBackPressedCallback(DownloadActivity activity, DownloadViewModel model, AndroidApplication app) : base(true)
+            // we are SingleTask launchmode so if a new activity is needed then this gets called
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnNewIntent");
+            base.OnNewIntent(intent);
+            if (intent != null)
             {
-                Activity = activity;
-                ViewModel = model;
-                AndroidApplication = app;
+                var folder = Intent?.GetStringExtra(ACTIVITY_PARAM_FOLDER);
+                bool test = Intent?.GetBooleanExtra(ACTIVITY_PARAM_TEST, false) ?? false;
+                bool fromHud = Intent?.GetBooleanExtra(ACTIVITY_PARAM_HUD, false) ?? false;
+                ViewModel.Initialise(true, test, folder, fromHud);
             }
-
-            public override void HandleOnBackPressed()
-            {
-                if (ViewModel.RequestExit())
-                {
-                    AndroidApplication.Logger.Debug(() => $"DownloadBackPressedCallback:HandleOnBackPressed - exit");
-                    Activity.Finish();
-                    return;
-                }
-                AndroidApplication.Logger.Debug(() => $"DownloadBackPressedCallback:HandleOnBackPressed - exit not allowed");
-            }
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnNewIntent - end");
         }
 
         protected override void OnDestroy()
@@ -147,8 +146,39 @@ namespace PodcastUtilities.UI.Download
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnDestroy");
             base.OnDestroy();
             KillViewModelObservers();
-            KillFragmentObservers(ExitPromptDialogFragment);
+            KillFragmentObservers(KillPromptDialogFragment);
             KillFragmentObservers(NetworkPromptDialogFragment);
+        }
+
+        private void RequestPostNotificationPermission()
+        {
+            if (!PermissionChecker.HasPostNotifcationPermission(this))
+            {
+                AndroidApplication.Logger.Debug(() => $"DownloadActivity:RequestPostNotificationPermission - post notification permission = {PermissionChecker.HasPostNotifcationPermission(this)}");
+                PermissionRequester.RequestPostNotificationPermission(this, PermissionRequester.REQUEST_CODE_POST_NOTIFICATION_PERMISSION);
+            }
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
+            switch (requestCode)
+            {
+                case PermissionRequester.REQUEST_CODE_POST_NOTIFICATION_PERMISSION:
+                    if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
+                    {
+                        AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnRequestPermissionsResult post notification OK");
+                    }
+                    else
+                    {
+                        AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnRequestPermissionsResult post notification permission denied");
+                    }
+                    break;
+                default:
+                    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    break;
+            }
         }
 
         public override bool DispatchKeyEvent(KeyEvent e)
@@ -180,11 +210,6 @@ namespace PodcastUtilities.UI.Download
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Android.Resource.Id.Home)
-            {
-                BackCallback.HandleOnBackPressed();
-                return true;
-            }
             if (ViewModel.ActionSelected(item.ItemId))
             {
                 return true;
@@ -205,9 +230,8 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.DisplayMessage += ToastMessage;
             ViewModel.Observables.StartDownloading += StartDownloading;
             ViewModel.Observables.EndDownloading += EndDownloading;
-            ViewModel.Observables.Exit += Exit;
             ViewModel.Observables.NavigateToDisplayLogs += NavigateToDisplayLogs;
-            ViewModel.Observables.ExitPrompt += ExitPrompt;
+            ViewModel.Observables.KillPrompt += KillPrompt;
             ViewModel.Observables.SetEmptyText += SetEmptyText;
             ViewModel.Observables.CellularPrompt += CellularPrompt;
             ViewModel.Observables.DisplayErrorMessage += DisplayErrorMessage;
@@ -227,9 +251,8 @@ namespace PodcastUtilities.UI.Download
             ViewModel.Observables.DisplayMessage -= ToastMessage;
             ViewModel.Observables.StartDownloading -= StartDownloading;
             ViewModel.Observables.EndDownloading -= EndDownloading;
-            ViewModel.Observables.Exit -= Exit;
             ViewModel.Observables.NavigateToDisplayLogs -= NavigateToDisplayLogs;
-            ViewModel.Observables.ExitPrompt -= ExitPrompt;
+            ViewModel.Observables.KillPrompt -= KillPrompt;
             ViewModel.Observables.SetEmptyText -= SetEmptyText;
             ViewModel.Observables.CellularPrompt -= CellularPrompt;
             ViewModel.Observables.DisplayErrorMessage -= DisplayErrorMessage;
@@ -262,8 +285,8 @@ namespace PodcastUtilities.UI.Download
             AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
             switch (tag)
             {
-                case EXIT_PROMPT_TAG:
-                    KillFragmentObservers(ExitPromptDialogFragment);
+                case KILL_PROMPT_TAG:
+                    KillFragmentObservers(KillPromptDialogFragment);
                     break;
                 case NETWORK_PROMPT_TAG:
                     KillFragmentObservers(NetworkPromptDialogFragment);
@@ -279,9 +302,9 @@ namespace PodcastUtilities.UI.Download
             {
                 switch (tag)
                 {
-                    case EXIT_PROMPT_TAG:
-                        KillFragmentObservers(ExitPromptDialogFragment);
-                        ViewModel.CancelAllJobsAndExit();
+                    case KILL_PROMPT_TAG:
+                        KillFragmentObservers(KillPromptDialogFragment);
+                        ViewModel.CancelAllDownloads();
                         break;
                     case NETWORK_PROMPT_TAG:
                         KillFragmentObservers(NetworkPromptDialogFragment);
@@ -322,15 +345,18 @@ namespace PodcastUtilities.UI.Download
 
         private void EndProgress(object sender, EventArgs e)
         {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:EndProgress");
             RunOnUiThread(() =>
             {
                 ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
                 DownloadButton.Enabled = true;
+                InvalidateOptionsMenu();
             });
         }
 
         private void UpdateProgress(object sender, int position)
         {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:UpdateProgress {position}");
             RunOnUiThread(() =>
             {
                 ProgressSpinner.Progress = position;
@@ -339,10 +365,12 @@ namespace PodcastUtilities.UI.Download
 
         private void StartProgress(object sender, int max)
         {
+            AndroidApplication.Logger.Debug(() => $"DownloadActivity:StartProgress {max}");
             RunOnUiThread(() =>
             {
                 ProgressViewHelper.StartProgress(ProgressSpinner, Window, max);
                 DownloadButton.Enabled = false;
+                InvalidateOptionsMenu();
             });
         }
         private void TestMode(object sender, bool testMode)
@@ -350,6 +378,8 @@ namespace PodcastUtilities.UI.Download
             RunOnUiThread(() =>
             {
                 DownloadButton.Visibility = testMode ? ViewStates.Gone : ViewStates.Visible;
+                DownloadButton.Enabled = false;
+                CancelButton.Visibility = ViewStates.Gone;
             });
         }
 
@@ -395,6 +425,8 @@ namespace PodcastUtilities.UI.Download
             {
                 Adapter.SetReadOnly(true);
                 DownloadButton.Enabled = false;
+                DownloadButton.Visibility = ViewStates.Gone;
+                CancelButton.Visibility = ViewStates.Visible;
             });
         }
 
@@ -404,28 +436,21 @@ namespace PodcastUtilities.UI.Download
             {
                 Adapter.SetReadOnly(false);
                 DownloadButton.Enabled = true;
-                ExitPromptDialogFragment?.Dismiss();
+                DownloadButton.Visibility = ViewStates.Visible;
+                CancelButton.Visibility = ViewStates.Gone;
+                KillPromptDialogFragment?.Dismiss();
                 Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
             });
         }
 
-        private void Exit(object sender, EventArgs e)
-        {
-            AndroidApplication.Logger.Debug(() => $"DownloadActivity: Exit");
-            RunOnUiThread(() =>
-            {
-                Finish();
-            });
-        }
-
-        private void ExitPrompt(object sender, Tuple<string, string, string, string> parameters)
+        private void KillPrompt(object sender, Tuple<string, string, string, string> parameters)
         {
             RunOnUiThread(() =>
             {
                 (string title, string message, string ok, string cancel) = parameters;
-                ExitPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, null);
-                SetupFragmentObservers(ExitPromptDialogFragment);
-                ExitPromptDialogFragment.Show(SupportFragmentManager, EXIT_PROMPT_TAG);
+                KillPromptDialogFragment = OkCancelDialogFragment.NewInstance(title, message, ok, cancel, null);
+                SetupFragmentObservers(KillPromptDialogFragment);
+                KillPromptDialogFragment.Show(SupportFragmentManager, KILL_PROMPT_TAG);
             });
         }
 

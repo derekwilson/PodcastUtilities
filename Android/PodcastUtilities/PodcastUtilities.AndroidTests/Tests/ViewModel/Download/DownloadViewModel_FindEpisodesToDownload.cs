@@ -15,7 +15,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         {
             // arrange
             A.CallTo(() => MockApplicationControlFileProvider.GetApplicationConfiguration()).Returns(null);
-            ViewModel.Initialise(false);
+            ViewModel.Initialise(false, false, null, false);
 
             // act
             ViewModel.FindEpisodesToDownload(null);
@@ -29,7 +29,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         {
             // arrange
             SetupMockControlFileFor2Podcasts();
-            ViewModel.Initialise(false);
+            ViewModel.Initialise(false, false, null, false);
             A.CallTo(() => MockNetworkHelper.ActiveNetworkType).Returns(INetworkHelper.NetworkType.None);
 
             // act
@@ -45,7 +45,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
-            ViewModel.Initialise(false);
+            ViewModel.Initialise(false, false, null, false);
 
             // act
             ViewModel.FindEpisodesToDownload(null);
@@ -63,7 +63,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
-            ViewModel.Initialise(false);
+            ViewModel.Initialise(false, false, null, false);
 
             // act
             ViewModel.FindEpisodesToDownload(null);
@@ -88,7 +88,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
-            ViewModel.Initialise(false);
+            ViewModel.Initialise(false, false, null, false);
 
             // act
             ViewModel.FindEpisodesToDownload(PODCAST_FOLDER_1);
@@ -107,7 +107,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
-            ViewModel.Initialise(false);
+            ViewModel.Initialise(false, false, null, false);
 
             // act
             ViewModel.FindEpisodesToDownload(null);
@@ -124,7 +124,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
-            ViewModel.Initialise(false);
+            ViewModel.Initialise(false, false, null, false);
 
             // act
             ViewModel.FindEpisodesToDownload(PODCAST_FOLDER_1);
@@ -140,7 +140,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
-            ViewModel.Initialise(false);
+            ViewModel.Initialise(false, false, null, false);
 
             // act
             ViewModel.FindEpisodesToDownload(null);
@@ -155,7 +155,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
             SetupMockControlFileFor2Podcasts();
             SetupEpisodesFor2Podcasts();
-            ViewModel.Initialise(false);
+            ViewModel.Initialise(false, false, null, false);
             ViewModel.FindEpisodesToDownload(null);
             ResetObservedResults();
 

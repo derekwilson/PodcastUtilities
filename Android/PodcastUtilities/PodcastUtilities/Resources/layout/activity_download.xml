@@ -61,6 +61,18 @@
 	</FrameLayout>
 
 	<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+		android:visibility="gone"
+		style="@style/fabIconButton"
+        app:tint="@color/ic_icon_selector"
+		android:contentDescription="@string/button_text_cancel"
+        app:srcCompat="@drawable/ic_clear" />
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_download"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,7 +83,7 @@
 		android:contentDescription="@string/button_text_download"
         app:srcCompat="@drawable/ic_download" />
 
-    <!-- the order of the ProgressSpinner and the FrameLayout is important
+	<!-- the order of the ProgressSpinner and the FrameLayout is important
     in pre lollipop devices as elevation does not work -->
 
     <PodcastUtilities.AndroidLogic.CustomViews.ProgressSpinnerView

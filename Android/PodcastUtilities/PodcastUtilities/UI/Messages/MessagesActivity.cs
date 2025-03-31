@@ -5,7 +5,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using AndroidX.Core.View;
 using AndroidX.Lifecycle;
+using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
 using PodcastUtilities.AndroidLogic.ViewModel.Messages;
@@ -20,8 +22,9 @@ namespace PodcastUtilities.UI.Messages
         private AndroidApplication AndroidApplication;
         private MessagesViewModel ViewModel;
 
-        ScrollView MessagesTextScroller = null;
-        TextView MessagesText = null;
+        private ProgressSpinnerView ProgressSpinner = null;
+        private ScrollView MessagesTextScroller = null;
+        private TextView MessagesText = null;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,6 +35,7 @@ namespace PodcastUtilities.UI.Messages
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_messages);
 
+            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
             MessagesTextScroller = FindViewById<ScrollView>(Resource.Id.messages_scroller);
             MessagesText = FindViewById<TextView>(Resource.Id.messages_text);
 
@@ -69,12 +73,37 @@ namespace PodcastUtilities.UI.Messages
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_messages, menu);
+            // we want a separator on the menu
+            MenuCompat.SetGroupDividerEnabled(menu, true);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnPrepareOptionsMenu(IMenu menu)
+        {
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_logs_top);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_logs_bottom);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_logs_errors_only);
+            SetMenuItemCheckedState(menu, Resource.Id.action_logs_errors_only);
+            return true;
+        }
+
+        private void SetMenuItemCheckedState(IMenu menu, int itemId)
+        {
+            menu.FindItem(itemId)?.SetChecked(ViewModel.IsActionChecked(itemId));
+        }
+
+        private void EnableMenuItemIfAvailable(IMenu menu, int itemId)
+        {
+            menu.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
+        }
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Android.Resource.Id.Home)
+            if (ViewModel.ActionSelected(item.ItemId))
             {
-                AndroidApplication.Logger.Debug(() => $"MessagesActivity:toolbar back button - exit");
-                Finish();
                 return true;
             }
             return base.OnOptionsItemSelected(item);
@@ -84,14 +113,36 @@ namespace PodcastUtilities.UI.Messages
         {
             ViewModel.Observables.AddText += AddText;
             ViewModel.Observables.ScrollToTop += ScrollToTop;
+            ViewModel.Observables.ScrollToBottom += ScrollToBottom;
             ViewModel.Observables.ResetText += ResetText;
+            ViewModel.Observables.StartLoading += StartLoading;
+            ViewModel.Observables.EndLoading += EndLoading;
         }
 
         private void KillViewModelObservers()
         {
             ViewModel.Observables.AddText -= AddText;
             ViewModel.Observables.ScrollToTop -= ScrollToTop;
+            ViewModel.Observables.ScrollToBottom -= ScrollToBottom;
             ViewModel.Observables.ResetText -= ResetText;
+            ViewModel.Observables.StartLoading -= StartLoading;
+            ViewModel.Observables.EndLoading -= EndLoading;
+        }
+
+        private void EndLoading(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
+            });
+        }
+
+        private void StartLoading(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.StartProgress(ProgressSpinner, Window);
+            });
         }
 
         private void ResetText(object sender, EventArgs e)
@@ -106,15 +157,33 @@ namespace PodcastUtilities.UI.Messages
         {
             RunOnUiThread(() =>
             {
-                // Appending to the textview auto scrolls the text to the bottom - force it back to the top
-                MessagesTextScroller.FullScroll(FocusSearchDirection.Up);
-                // Appending to the textview auto scrolls the text to the bottom - force it back to the top for old versions
-                if (Build.VERSION.SdkInt <= BuildVersionCodes.P)
-                {
-                    // scroll to the top of the page
-                    MessagesTextScroller.Parent.RequestChildFocus(MessagesTextScroller, MessagesTextScroller);
-                }
+                ScrollToTopOfText();
             });
+        }
+
+        private void ScrollToBottom(object sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ScrollToBottomOfText();
+            });
+        }
+
+        private void ScrollToBottomOfText()
+        {
+            MessagesTextScroller.FullScroll(FocusSearchDirection.Down);
+        }
+
+        private void ScrollToTopOfText()
+        {
+            // Appending to the textview auto scrolls the text to the bottom - force it back to the top
+            MessagesTextScroller.FullScroll(FocusSearchDirection.Up);
+            // Appending to the textview auto scrolls the text to the bottom - force it back to the top for old versions
+            if (Build.VERSION.SdkInt <= BuildVersionCodes.P)
+            {
+                // scroll to the top of the page
+                MessagesTextScroller.Parent.RequestChildFocus(MessagesTextScroller, MessagesTextScroller);
+            }
         }
 
         private void AddText(object sender, string textBlock)

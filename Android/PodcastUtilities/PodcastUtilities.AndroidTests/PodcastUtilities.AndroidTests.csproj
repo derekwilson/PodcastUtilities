@@ -85,12 +85,10 @@
     <Compile Include="Tests\ViewModel\Configure\EditConfigViewModelBase.cs" />
     <Compile Include="Tests\ViewModel\Configure\EditConfigViewModel_LoadControlFile.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModelBase.cs" />
-    <Compile Include="Tests\ViewModel\Download\DownloadViewModel_CancelAllJobsAndExit.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModel_DownloadAllPodcastsWithNetworkCheck.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModel_DownloadAllPodcastsWithoutNetworkCheck.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModel_FindEpisodesToDownload.cs" />
     <Compile Include="Tests\ViewModel\Download\DownloadViewModel_Initialise.cs" />
-    <Compile Include="Tests\ViewModel\Download\DownloadViewModel_RequestExit.cs" />
     <Compile Include="Tests\ViewModel\Help\HelpViewModelBase.cs" />
     <Compile Include="Tests\ViewModel\Help\HelpViewModel_Initialise.cs" />
     <Compile Include="Tests\ViewModel\Main\MainViewModelBase.cs" />

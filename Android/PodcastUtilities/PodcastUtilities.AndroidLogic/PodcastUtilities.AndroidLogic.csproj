@@ -59,6 +59,10 @@
     </Compile>
     <Compile Include="Exceptions\DownloadException.cs" />
     <Compile Include="Exceptions\NonFatalMessageException.cs" />
+    <Compile Include="MessageStore\MessageStoreInserter.cs" />
+    <Compile Include="Services\Download\Downloader.cs" />
+    <Compile Include="Services\Download\IDownloadServiceController.cs" />
+    <Compile Include="Services\Download\IDownloadService.cs" />
     <Compile Include="Utilities\ClipboardHelper.cs" />
     <Compile Include="ViewModel\Configure\AddFeedViewModel.cs" />
     <Compile Include="ViewModel\Configure\ConfigPodcastFeedRecyclerItemAdapter.cs" />
@@ -99,7 +103,7 @@
     <Compile Include="Utilities\PreferencesProvider.cs" />
     <Compile Include="Utilities\ProgressViewHelper.cs" />
     <Compile Include="Utilities\ResourceProvider.cs" />
-    <Compile Include="Utilities\StatusAndProgressMessageStore.cs" />
+    <Compile Include="MessageStore\StatusAndProgressMessageStore.cs" />
     <Compile Include="Converter\ValueConverter.cs" />
     <Compile Include="Utilities\ViewScrollHelper.cs" />
     <Compile Include="ViewModel\Configure\EditFeedViewModel.cs" />
@@ -287,6 +291,17 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_share.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_rounded_arrow_downward.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\ic_rounded_arrow_upward.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\menu_messages.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
   </ItemGroup>

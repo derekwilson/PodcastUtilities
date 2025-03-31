@@ -2,6 +2,7 @@
 using FakeItEasy;
 using NUnit.Framework;
 using PodcastUtilities.AndroidLogic.Logging;
+using PodcastUtilities.AndroidLogic.MessageStore;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Messages;
 using System;
@@ -19,6 +20,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Messages
         {
             public StringBuilder Messages;
             public int ScrollToTopCount;
+            public int ScrollToBottomCount;
+            public int StartLoadingCount;
+            public int EndLoadingCount;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
@@ -37,6 +41,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Messages
         {
             ObservedResults.Messages = new StringBuilder();
             ObservedResults.ScrollToTopCount = 0;
+            ObservedResults.ScrollToBottomCount = 0;
+            ObservedResults.StartLoadingCount = 0;
+            ObservedResults.EndLoadingCount = 0;
         }
 
         protected void SetupStore()
@@ -70,6 +77,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Messages
             ViewModel.Observables.ResetText += ResetText;
             ViewModel.Observables.AddText += AddText;
             ViewModel.Observables.ScrollToTop += ScrollToTop;
+            ViewModel.Observables.ScrollToBottom += ScrollToBottom;
+            ViewModel.Observables.StartLoading += StartLoading;
+            ViewModel.Observables.EndLoading += EndLoading;
         }
 
         [TearDown]
@@ -78,6 +88,24 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Messages
             ViewModel.Observables.ResetText -= ResetText;
             ViewModel.Observables.AddText -= AddText;
             ViewModel.Observables.ScrollToTop -= ScrollToTop;
+            ViewModel.Observables.ScrollToBottom -= ScrollToBottom;
+            ViewModel.Observables.StartLoading -= StartLoading;
+            ViewModel.Observables.EndLoading -= EndLoading;
+        }
+
+        private void EndLoading(object sender, EventArgs e)
+        {
+            ObservedResults.EndLoadingCount++;
+        }
+
+        private void StartLoading(object sender, EventArgs e)
+        {
+            ObservedResults.StartLoadingCount++;
+        }
+
+        private void ScrollToBottom(object sender, EventArgs e)
+        {
+            ObservedResults.ScrollToBottomCount++;
         }
 
         private void ScrollToTop(object sender, EventArgs e)

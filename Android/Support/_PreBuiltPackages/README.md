@@ -5,6 +5,7 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 2.6.0   | 24 Mar 2025 | 21 (Android 5)   | 33 (Android 13)
 | 2.5.0   | 5 Jun 2024  | 21 (Android 5)   | 33 (Android 13)
 | 2.4.0   | 20 May 2024 | 21 (Android 5)   | 33 (Android 13)
 | 2.3.0   | 17 May 2024 | 21 (Android 5)   | 33 (Android 13)
@@ -26,6 +27,11 @@ This is the release archive for PodcastUtilities. If you cannot get an APK from 
 ## Notes
 
 Major changes for each version
+
+## v2.6.0 (18)
+- Request notification permission on Android 13+, needed for service
+- Moved downloading into a foreground service to avoid the network being shutdown when the phone is switched off
+- UI improvements to the log viewer
 
 ## v2.5.0 (17)
 - Removed dependency on AppCenter as it is being retired

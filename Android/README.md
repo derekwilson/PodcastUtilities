@@ -104,7 +104,7 @@ If you are intending to deploy the app using Amazon App Store or by having the u
 
 Note: Sometimes when the `BuildReleaseAPK.bat` ,is first run it will actually produce an APK named for the `debug` configuration like this `com.andrewandderek.podcastutilities.sideload.debug-Signed.apk`. Not sure if this is an artefact of having the IDE running at the same time but running it for a second time seems to fix the issue. 
 
-1. In VS Select Project Properties for `PodcastUtilities` -> Android Manifest enter the correct VersionName and VersionNumber
+1. In VS open `PodcastUtilities\Properties\AndroidManifest.xml` enter the correct `VersionName` and `VersionNumber`
 1. Open a developer command prompt for VS2022
 1. Goto `Android\PodcastUtilities`
 1. Run `BuildReleaseAPK.bat`

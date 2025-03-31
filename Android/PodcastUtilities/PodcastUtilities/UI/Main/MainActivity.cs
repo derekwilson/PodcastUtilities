@@ -34,6 +34,8 @@ namespace PodcastUtilities
         private AndroidApplication AndroidApplication;
         private MainViewModel ViewModel;
 
+        private IPermissionChecker PermissionChecker;
+
         private NestedScrollView Container = null;
         private LinearLayout DriveInfoContainerView = null;
         private TextView NoDriveDataView = null;
@@ -50,6 +52,7 @@ namespace PodcastUtilities
         {
             AndroidApplication = Application as AndroidApplication;
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate");
+            PermissionChecker = new PermissionChecker();
 
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

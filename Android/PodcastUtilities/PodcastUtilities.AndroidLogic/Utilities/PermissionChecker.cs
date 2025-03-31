@@ -5,9 +5,20 @@ using Android.OS;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
-    public class PermissionChecker
+    public interface IPermissionChecker
     {
-        public static bool HasReadStoragePermission(Context context)
+        public bool HasReadStoragePermission(Context context);
+
+        public bool HasWriteStoragePermission(Context context);
+
+        public bool HasPostNotifcationPermission(Context context);
+
+        public bool HasManageStoragePermission(Context context);
+    }
+
+    public class PermissionChecker : IPermissionChecker
+    {
+        public bool HasReadStoragePermission(Context context)
         {
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
             {
@@ -19,7 +30,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return HasPermissionBeenGranted(context, Manifest.Permission.ReadExternalStorage);
         }
 
-        public static bool HasWriteStoragePermission(Context context)
+        public bool HasWriteStoragePermission(Context context)
         {
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
             {
@@ -31,7 +42,18 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return HasPermissionBeenGranted(context, Manifest.Permission.WriteExternalStorage);
         }
 
-        public static bool HasManageStoragePermission(Context context)
+        public bool HasPostNotifcationPermission(Context context)
+        {
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            {
+                return HasPermissionBeenGranted(context, Manifest.Permission.PostNotifications);
+            }
+            
+            // earlier versions didnt need to ask
+            return true;
+        }
+
+        public bool HasManageStoragePermission(Context context)
         {
             // storage manager only happened in SDK30 / R
             // before that you only need write storage
@@ -43,7 +65,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return Android.OS.Environment.IsExternalStorageManager;
         }
 
-        private static bool HasPermissionBeenGranted(Context context, string permission)
+        private bool HasPermissionBeenGranted(Context context, string permission)
         {
             // dynamic permission requests were added in API 23 (Marshmellow)
             if (Build.VERSION.SdkInt < BuildVersionCodes.M)

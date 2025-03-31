@@ -13,7 +13,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
 
             // act
-            ViewModel.Initialise(false);
+            ViewModel.Initialise(false, false, null, false);
 
             // assert
             Assert.AreEqual("Mocked Title", ObservedResults.LastSetTitle);
@@ -25,7 +25,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             // arrange
 
             // act
-            ViewModel.Initialise(false);
+            ViewModel.Initialise(false, false, null, false);
 
             // assert
             A.CallTo(() => MockLogger.Debug(A<ILogger.MessageGenerator>.Ignored)).MustHaveHappened(2, Times.Exactly);

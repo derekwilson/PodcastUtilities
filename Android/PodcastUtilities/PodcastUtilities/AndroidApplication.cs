@@ -25,6 +25,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.OS;
 using PodcastUtilities.AndroidLogic.ViewModel.Configure;
+using PodcastUtilities.Services.Download;
+using PodcastUtilities.AndroidLogic.Services.Download;
+using PodcastUtilities.AndroidLogic.MessageStore;
 
 namespace PodcastUtilities
 {
@@ -96,6 +99,7 @@ namespace PodcastUtilities
             container.Register<Application>(this);
             container.Register<Html.IImageGetter, ImageGetter>(IocLifecycle.Singleton);
             container.Register<Android.Content.ClipboardManager>((Android.Content.ClipboardManager)GetSystemService(Context.ClipboardService));
+            container.Register<Android.App.NotificationManager>((Android.App.NotificationManager)GetSystemService(Context.NotificationService));
             // helpers
             container.Register<IAndroidApplication>(this);
             container.Register<ILogger>(Logger);
@@ -117,11 +121,17 @@ namespace PodcastUtilities
             container.Register<IUserSettings, UserSettings>(IocLifecycle.Singleton);
             container.Register<IByteConverter, ByteConverter>(IocLifecycle.Singleton);
             container.Register<IStatusAndProgressMessageStore, StatusAndProgressMessageStore>(IocLifecycle.Singleton);
+            container.Register<IMessageStoreInserter, MessageStoreInserter>(IocLifecycle.Singleton);
             container.Register<IDriveVolumeInfoViewFactory, DriveVolumeInfoViewFactory>(IocLifecycle.Singleton);
             container.Register<IApplicationControlFileFactory, ApplicationControlFileFactory>(IocLifecycle.Singleton);
             container.Register<IValueConverter, ValueConverter>(IocLifecycle.Singleton);
             container.Register<IValueFormatter, ValueFormatter>(IocLifecycle.Singleton);
             container.Register<IClipboardHelper, ClipboardHelper>(IocLifecycle.Singleton);
+            container.Register<IPermissionChecker, PermissionChecker>(IocLifecycle.Singleton);
+
+            // these must be transient
+            container.Register<IDownloadServiceController, DownloadServiceController>(IocLifecycle.PerRequest);
+            container.Register<IDownloader, Downloader>(IocLifecycle.PerRequest);
 
             // view models
             container.Register<ViewModelFactory, ViewModelFactory>(IocLifecycle.Singleton);
