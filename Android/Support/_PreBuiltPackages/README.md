@@ -1,6 +1,8 @@
 # PodcastUtilities Release Archive
 This is the release archive for PodcastUtilities. If you cannot get an APK from google you can side-load it from here
 
+It is also available from the [Amazon App Store](https://www.amazon.com/dp/B0BG7SZJTL/) and for [sideloading using Obtainium](https://derekwilson.net/static/obtainium.html)
+
 ## APKs
 
 | Version | Date        | MinSDK           | TargetSDK
