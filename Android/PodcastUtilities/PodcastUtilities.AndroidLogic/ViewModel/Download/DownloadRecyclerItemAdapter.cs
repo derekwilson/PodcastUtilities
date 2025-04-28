@@ -62,6 +62,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 if (status == Status.Complete)
                 {
                     item.Selected = false;
+                    item.ProgressPercentage = 100;
                     ViewModel.SelectionChanged(position);
                 }
                 return position;
