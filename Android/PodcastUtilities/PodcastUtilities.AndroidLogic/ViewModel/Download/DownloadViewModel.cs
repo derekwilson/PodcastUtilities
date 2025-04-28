@@ -140,6 +140,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
             if (findEpisodesOnLoad)
             {
+                // clear the notification as we are now finding again
+                DownloadServiceController.StopService();
+                DownloadService.KillNotification();
                 // we must not do this on the UI thread
                 return FindEpisodesToDownloadInBackground(FolderSelected);
             }
