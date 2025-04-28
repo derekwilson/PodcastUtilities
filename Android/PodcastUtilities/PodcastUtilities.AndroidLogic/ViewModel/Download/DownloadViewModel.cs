@@ -550,6 +550,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
             Observables.StartDownloading?.Invoke(this, null);   // EndDownloading observable is triggered from the Downloader events
 
+            foreach (var item in AllItems)
+            {
+                if (item?.Selected ?? false)
+                {
+                    // clear any errors that may have happened before, but only for utems we will try to download again
+                    Observables.UpdateItemStatus?.Invoke(this, Tuple.Create(item.SyncItem, Status.OK, ""));
+                }
+            }
+            Observables.HideErrorMessage?.Invoke(this, null);
+
             DownloadServiceController.StartService();           // we need to stop the service from disappearing when we unbind
             DownloadService?.StartDownloads(AllItems);
         }
@@ -560,6 +570,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             DownloadServiceController.StopService();
         }
 
+        // the status update from the episode finder
         private void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
         {
             var update = MessageStoreInserter.InsertStatus(e);
