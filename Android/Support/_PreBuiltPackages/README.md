@@ -7,6 +7,7 @@ It is also available from the [Amazon App Store](https://www.amazon.com/dp/B0BG7
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 2.7.0   | 6 May 2025  | 21 (Android 5)   | 33 (Android 13)
 | 2.6.0   | 24 Mar 2025 | 21 (Android 5)   | 33 (Android 13)
 | 2.5.0   | 5 Jun 2024  | 21 (Android 5)   | 33 (Android 13)
 | 2.4.0   | 20 May 2024 | 21 (Android 5)   | 33 (Android 13)
@@ -29,6 +30,12 @@ It is also available from the [Amazon App Store](https://www.amazon.com/dp/B0BG7
 ## Notes
 
 Major changes for each version
+
+## v2.7.0 (19)
+- FIX: Reset the download status if we retry the download
+- FIX: Get the download percentage correct if the download completes when the app is in the background
+- Remove the service notification when we start a new find
+- Updated help text
 
 ## v2.6.0 (18)
 - Request notification permission on Android 13+, needed for service

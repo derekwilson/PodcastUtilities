@@ -119,6 +119,9 @@ Note: Sometimes when the `BuildReleaseAPK.bat` ,is first run it will actually pr
 1. Edit `Android\Support\_PreBuiltPackages\README.md` with the new release details
 1. Push your changes to master and label the commit in the style "v1.0.3(4)" ensure the tag is pushed by using `git push origin "1.0.3(4)"`
 1. Upload the APK to the Amazon App Store - replace the APK in the upcoming version to keep the same device support
+1. After the APK has been merged into master, goto the [release archive][release-archive-url], and get the URL to the new APK, it should be like this `https://github.com/derekwilson/PodcastUtilities/raw/refs/heads/master/Android/Support/_PreBuiltPackages/v2.6.0/com.andrewandderek.podcastutilities.sideload-Signed-v2.6.0.apk`
+1. In the `derekwilson.github.io` (Github Pages) repo, edit the file `\static\podcastutilities-obtainium.html` and add the URL obtained in the last step to the *top* of the list of URLs and then push the file to github
+1. Test with Obtainium
 
 https://developer.amazon.com/apps-and-games/console/apps/list.html
 
@@ -154,4 +157,5 @@ If you want to download podcasts to the Windows file system then you will need t
 <sourceRoot>/storage/emulated/0/Windows/Podcasts</sourceRoot>
 ```
 
+[release-archive-url]:  https://github.com/derekwilson/PodcastUtilities/tree/master/Android/Support/_PreBuiltPackages
 
