@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:id="@+id/scrollContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtVersions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="placeholder\nline2\nline3"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            />
+
+        <TextView
+            android:id="@+id/txtAppStorage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            />
+
+        <Button
+            android:id="@+id/btnLoadConfig"
+            android:text="Load Config"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/txtConfigFilePath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            />
+
+        <Button
+            android:id="@+id/btnFindPodcasts"
+            android:text="Find Podcasts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/txtOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            />
+
+        <Button
+            android:id="@+id/btnSetRoot"
+            android:text="Set Root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/txtRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            />
+
+        <Button
+            android:id="@+id/btnDownload"
+            android:text="Download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- the order of the Spinner and the ScrollView is important
+    in pre lollipop devices as elevation does not work -->
+
+    <podcastutilitiespoc.customviews.ProgressSpinnerView
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="2dp"
+        android:visibility="gone"
+        app:message="@string/finding_podcasts_progress"
+        >
+    </podcastutilitiespoc.customviews.ProgressSpinnerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

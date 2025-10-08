@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilitiesPOC.AndroidLogic", "PodcastUtilitiesPOC.AndroidLogic\PodcastUtilitiesPOC.AndroidLogic.csproj", "{5B72B75D-26A5-44CA-8267-562698A9CD93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastUtilitiesPOC", "PodcastUtilitiesPOC\PodcastUtilitiesPOC.csproj", "{0401C94E-C12E-4C47-A6D7-7DA9C6A7F45D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B72B75D-26A5-44CA-8267-562698A9CD93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B72B75D-26A5-44CA-8267-562698A9CD93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B72B75D-26A5-44CA-8267-562698A9CD93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B72B75D-26A5-44CA-8267-562698A9CD93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0401C94E-C12E-4C47-A6D7-7DA9C6A7F45D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0401C94E-C12E-4C47-A6D7-7DA9C6A7F45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0401C94E-C12E-4C47-A6D7-7DA9C6A7F45D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0401C94E-C12E-4C47-A6D7-7DA9C6A7F45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0401C94E-C12E-4C47-A6D7-7DA9C6A7F45D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0401C94E-C12E-4C47-A6D7-7DA9C6A7F45D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56A45BA3-E8DE-4531-8BE5-3A227A2D2090}
+	EndGlobalSection
+EndGlobal

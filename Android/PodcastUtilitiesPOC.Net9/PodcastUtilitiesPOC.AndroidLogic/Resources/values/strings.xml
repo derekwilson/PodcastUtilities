@@ -1,0 +1,7 @@
+<resources>
+    <string name="download_activity_title">Download Podcasts</string>
+	<string name="download_activity_after_load_title">Download {0} Podcasts</string>
+	<string name="download_activity_complete">Download Complete</string>
+
+	<string name="example_activity_body_text">Hello World\nFrom Resources</string>
+</resources>
