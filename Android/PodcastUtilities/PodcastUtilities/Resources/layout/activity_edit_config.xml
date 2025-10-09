@@ -1,0 +1,133 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/edit_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+		<LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/cache_root_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer">
+
+				<TextView
+					android:id="@+id/cache_root_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_cache_root"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/cache_root_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+			</androidx.appcompat.widget.LinearLayoutCompat>
+	
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/global_values_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer"
+				>
+
+				<TextView
+					android:id="@+id/global_values_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_global_values"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/global_values_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_sub_label_global_values"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/global_defaults_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer"
+				>
+
+				<TextView
+					android:id="@+id/global_defaults_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_global_defaults"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/global_defaults_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_sub_label_global_defaults"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+			<TextView
+                android:id="@+id/config_feed_list_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/placeholder"
+                android:layout_marginRight="4dp"
+                android:layout_marginEnd="4dp"
+                style="@style/ItemLabel" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/config_feed_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never">
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_config_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+		style="@style/fabIconButton"
+        app:tint="@color/ic_icon_selector"
+		android:contentDescription="@string/button_text_config_add"
+        app:srcCompat="@drawable/ic_add" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

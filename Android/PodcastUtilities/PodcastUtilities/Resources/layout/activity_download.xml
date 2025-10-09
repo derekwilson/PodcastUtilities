@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+	<TextView
+		android:id="@+id/txtErrorMessage"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		android:text="@string/finding_podcasts_error_message"
+		android:textAlignment="center"
+		android:gravity="center_horizontal" 
+		android:visibility="gone"
+		style="@style/ItemTitle"
+		/>
+
+	<FrameLayout
+		android:id="@+id/rvHolder"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/txtErrorMessage"
+		>
+
+		<!-- list of items to download -->
+		<PodcastUtilities.AndroidLogic.CustomViews.EmptyRecyclerView
+			android:id="@+id/rvDownloads"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+		</PodcastUtilities.AndroidLogic.CustomViews.EmptyRecyclerView>
+
+		<LinearLayout
+			android:id="@+id/layNoData"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginTop="18dp"
+			android:gravity="center_horizontal|center"
+			android:orientation="vertical"
+			android:visibility="gone"
+			android:padding="@dimen/listview_empty_message_padding">
+
+			<TextView
+				android:id="@+id/txtNoData"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/finding_podcasts_progress"
+				android:textAlignment="center"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:gravity="center_horizontal" />
+		</LinearLayout>
+
+	</FrameLayout>
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+		android:visibility="gone"
+		style="@style/fabIconButton"
+        app:tint="@color/ic_icon_selector"
+		android:contentDescription="@string/button_text_cancel"
+        app:srcCompat="@drawable/ic_clear" />
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+		style="@style/fabIconButton"
+        app:tint="@color/ic_icon_selector"
+		android:contentDescription="@string/button_text_download"
+        app:srcCompat="@drawable/ic_download" />
+
+	<!-- the order of the ProgressSpinner and the FrameLayout is important
+    in pre lollipop devices as elevation does not work -->
+
+    <PodcastUtilities.AndroidLogic.CustomViews.ProgressSpinnerView
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="2dp"
+        android:visibility="gone"
+        app:message="@string/finding_podcasts_progress"
+        >
+    </PodcastUtilities.AndroidLogic.CustomViews.ProgressSpinnerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

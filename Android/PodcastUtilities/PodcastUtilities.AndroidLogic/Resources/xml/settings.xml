@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PreferenceScreen 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	>
+
+	<PreferenceCategory
+		app:iconSpaceReserved="false"
+    	android:title="@string/settings_download_category">
+
+		<ListPreference
+            android:title="@string/settings_download_network_title"
+            android:key="@string/settings_download_network_key"
+            android:defaultValue="@string/settings_default_download_network"
+            android:entries="@array/download_networks_names"
+            android:entryValues="@array/download_networks_values"
+			app:iconSpaceReserved="false"
+			/>
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		app:iconSpaceReserved="false"
+        android:title="@string/settings_about_category">
+
+		<Preference
+            android:key="@string/settings_help_key"
+            android:title="@string/settings_help_title"
+			app:iconSpaceReserved="false"
+			>
+		</Preference>
+
+		<Preference
+            android:key="@string/settings_osl_key"
+            android:title="@string/settings_osl_title"
+			app:iconSpaceReserved="false"
+			>
+		</Preference>
+
+		<Preference
+            android:key="@string/settings_privacy_key"
+            android:title="@string/settings_privacy_title"
+			app:iconSpaceReserved="false"
+			>
+		</Preference>
+
+		<Preference
+            android:key="@string/settings_version_key"
+            android:title="@string/settings_version_title"
+            android:summary="@string/placeholder"
+			app:iconSpaceReserved="false"
+            >
+		</Preference>
+
+	</PreferenceCategory>
+
+</PreferenceScreen>

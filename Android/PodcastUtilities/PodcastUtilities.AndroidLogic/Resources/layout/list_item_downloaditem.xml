@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	android:id="@+id/item_row_label_container"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="?attr/selectableItemBackground"
+	android:paddingTop="@dimen/listview_item_vertical_padding"
+	android:paddingBottom="@dimen/listview_item_vertical_padding"
+	android:paddingLeft="@dimen/listview_item_horizontal_padding"
+	android:paddingRight="@dimen/listview_item_horizontal_padding"
+	android:paddingStart="@dimen/listview_item_horizontal_padding"
+	android:paddingEnd="@dimen/listview_item_horizontal_padding"
+>
+
+	<androidx.appcompat.widget.AppCompatCheckBox
+		android:id="@+id/item_row_check"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+		android:gravity="center_vertical"
+		android:minWidth="0dp"
+		android:minHeight="0dp"
+		android:paddingTop="@dimen/listview_item_check_vertical_padding"
+		android:paddingBottom="@dimen/listview_item_check_vertical_padding"
+		android:paddingLeft="@dimen/listview_item_check_horizontal_padding"
+		android:paddingRight="@dimen/listview_item_check_horizontal_padding"
+		android:clickable="false"
+        android:focusable="false"
+
+		app:layout_constraintEnd_toStartOf="@+id/item_row_container"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+	<androidx.appcompat.widget.LinearLayoutCompat
+		android:id="@+id/item_row_container"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/item_row_check"
+		app:layout_constraintTop_toTopOf="parent"
+		>
+
+		<TextView
+			android:id="@+id/item_row_label"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/placeholder"
+            android:singleLine="false"
+			android:clickable="false"
+            android:focusable="false"
+			style="@style/ItemListTitle"
+			/>
+
+		<TextView
+			android:id="@+id/item_row_sub_label"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:clickable="false"
+            android:focusable="false"
+			android:text="@string/placeholder"
+			style="@style/ItemListSubTitle"
+			/>
+
+		<ProgressBar
+			android:id="@+id/item_row_progress"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:max="100"
+			android:progress="5"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:indeterminate="false"
+		/>
+
+	</androidx.appcompat.widget.LinearLayoutCompat>
+	
+</androidx.constraintlayout.widget.ConstraintLayout>
