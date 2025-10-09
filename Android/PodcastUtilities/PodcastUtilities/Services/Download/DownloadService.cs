@@ -1,18 +1,16 @@
-﻿using Android.App;
-using Android.Content;
+﻿using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using AndroidX.Core.App;
 using PodcastUtilities.AndroidLogic.Services.Download;
+using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.UI.Download;
-using System;
-using System.Collections.Generic;
 
 namespace PodcastUtilities.Services.Download
 {
-    [Service]
+    [Service(ForegroundServiceType = Android.Content.PM.ForegroundService.TypeMediaProcessing)]
     public class DownloadService : Service, IDownloadService
 	{
         private const int FOREGROUND_NOTIFICATION_ID = 100;
@@ -24,6 +22,8 @@ namespace PodcastUtilities.Services.Download
         // injected
         private NotificationManager NotificationManager;
         private AndroidLogic.Services.Download.IDownloader Downloader;
+        private ICrashReporter CrashReporter;
+
         private DownloaderEvents DownloaderEvents;
 
         public override void OnCreate()
@@ -34,6 +34,7 @@ namespace PodcastUtilities.Services.Download
             base.OnCreate();
 
             // maybe there is a better way to do the injection
+            CrashReporter = AndroidApplication.IocContainer.Resolve<ICrashReporter>();
             Downloader = AndroidApplication.IocContainer.Resolve<AndroidLogic.Services.Download.IDownloader>();
             DownloaderEvents = Downloader.GetDownloaderEvents();
             AttachDownloaderEvents();
@@ -122,9 +123,23 @@ namespace PodcastUtilities.Services.Download
 
         private void StartForeground()
         {
-            AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - start");
-            StartForeground(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification());
-            AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - end");
+            try
+            {
+                AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - start");
+                if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
+                {
+                    StartForeground(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification(), Android.Content.PM.ForegroundService.TypeMediaProcessing);
+                }
+                else
+                {
+                    StartForeground(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification());
+                }
+                AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - end");
+            }
+            catch (Exception ex)
+            {
+                CrashReporter.LogNonFatalException(ex);
+            }
         }
 
         private void UpdateNotification()
