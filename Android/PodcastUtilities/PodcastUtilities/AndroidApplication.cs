@@ -194,8 +194,6 @@ namespace PodcastUtilities
             SetVersionProperties();
             Log.Debug(LOGCAT_TAG, $"AndroidApplication:OnCreate Version == {DisplayVersion}");
 
-            //Firebase.FirebaseApp.InitializeApp(this);
-
             base.OnCreate();
             var dirs = Context.GetExternalFilesDirs(null);
             if (dirs != null && dirs[0] != null)
