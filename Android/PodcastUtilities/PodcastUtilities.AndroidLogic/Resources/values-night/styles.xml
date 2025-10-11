@@ -2,7 +2,7 @@
 	<!-- Dark Mode -->
 
 	<!-- Base application theme. -->
-	<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+	<style name="AppTheme.Base" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 		<item name="colorPrimary">@color/colour_very_dark_blue</item>
 		<item name="colorPrimaryDark">@color/colour_dark_blue</item>
 		<item name="colorAccent">@color/colour_green</item>
