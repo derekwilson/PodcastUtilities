@@ -88,43 +88,47 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
         }
 
         // event callback: tag, customData, value
-        public EventHandler<Tuple<string, string, string, ItemValueType>> OkSelected;
-        public EventHandler<Tuple<string, string>> CancelSelected;
+        public EventHandler<Tuple<string?, string?, string, ItemValueType>>? OkSelected;
+        public EventHandler<Tuple<string?, string?>>? CancelSelected;
 
         // vars
         private ItemValueType valueType;
 
-        // controls
-        private TextView txtTitle = null;
-        private RadioGroup radioGroup = null;
-        private RadioButton radioButtonDefault = null;
-        private RadioButton radioButtonNamed = null;
-        private RadioButton radioButtonCustom = null;
-        // custom value
-        private TextInputLayout layValue = null;
-        private EditText txtValue = null;
-        private ImageView clearButton = null;
-        // ok / cancel
-        private Button okButton = null;
-        private Button cancelButton = null;
+        private struct Controls
+        {
+            // controls
+            public TextView txtTitle;
+            public RadioGroup radioGroup;
+            public RadioButton radioButtonDefault;
+            public RadioButton radioButtonNamed;
+            public RadioButton radioButtonCustom;
+            // custom value
+            public TextInputLayout layValue;
+            public EditText txtValue;
+            public ImageView clearButton;
+            // ok / cancel
+            public Button okButton;
+            public Button cancelButton;
+        }
+        private Controls dialogControls;
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public override View? OnCreateView(LayoutInflater inflater, ViewGroup? container, Bundle? savedInstanceState)
         {
             var view = inflater.Inflate(Resource.Layout.dialog_fragment_defaultableitem_value_prompt, container);
-            txtTitle = view.FindViewById<TextView>(Resource.Id.defaultableitem_value_prompt_title);
-            radioGroup = view.FindViewById<RadioGroup>(Resource.Id.defaultableitem_value_prompt_radio_group);
-            radioButtonDefault = view.FindViewById<RadioButton>(Resource.Id.defaultableitem_value_prompt_radio_default);
-            radioButtonNamed = view.FindViewById<RadioButton>(Resource.Id.defaultableitem_value_prompt_radio_named);
-            radioButtonCustom = view.FindViewById<RadioButton>(Resource.Id.defaultableitem_value_prompt_radio_custom);
-            layValue = view.FindViewById<TextInputLayout>(Resource.Id.defaultableitem_value_prompt_value_layout);
-            txtValue = view.FindViewById<EditText>(Resource.Id.defaultableitem_value_prompt_value);
-            clearButton = view.FindViewById<ImageView>(Resource.Id.defaultableitem_value_prompt_txt_clear);
-            okButton = view.FindViewById<Button>(Resource.Id.defaultableitem_value_prompt_ok);
-            cancelButton = view.FindViewById<Button>(Resource.Id.defaultableitem_value_prompt_cancel);
+            dialogControls.txtTitle = ViewHelper.FindViewByIdOrThrow<TextView>("title", view, Resource.Id.defaultableitem_value_prompt_title);
+            dialogControls.radioGroup = ViewHelper.FindViewByIdOrThrow<RadioGroup>("radio group", view, Resource.Id.defaultableitem_value_prompt_radio_group);
+            dialogControls.radioButtonDefault = ViewHelper.FindViewByIdOrThrow<RadioButton>("default button", view, Resource.Id.defaultableitem_value_prompt_radio_default);
+            dialogControls.radioButtonNamed = ViewHelper.FindViewByIdOrThrow<RadioButton>("named button", view, Resource.Id.defaultableitem_value_prompt_radio_named);
+            dialogControls.radioButtonCustom = ViewHelper.FindViewByIdOrThrow<RadioButton>("custom button", view, Resource.Id.defaultableitem_value_prompt_radio_custom);
+            dialogControls.layValue = ViewHelper.FindViewByIdOrThrow<TextInputLayout>("value layout", view, Resource.Id.defaultableitem_value_prompt_value_layout);
+            dialogControls.txtValue = ViewHelper.FindViewByIdOrThrow<EditText>("value text", view, Resource.Id.defaultableitem_value_prompt_value);
+            dialogControls.clearButton = ViewHelper.FindViewByIdOrThrow<ImageView>("clear button", view, Resource.Id.defaultableitem_value_prompt_txt_clear);
+            dialogControls.okButton = ViewHelper.FindViewByIdOrThrow<Button>("ok button", view, Resource.Id.defaultableitem_value_prompt_ok);
+            dialogControls.cancelButton = ViewHelper.FindViewByIdOrThrow<Button>("cancel button", view, Resource.Id.defaultableitem_value_prompt_cancel);
             return view;
         }
 
-        public override void OnViewCreated(View view, Bundle savedInstanceState)
+        public override void OnViewCreated(View view, Bundle? savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
 
@@ -144,112 +148,112 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
 
             // title is optional
             if (string.IsNullOrWhiteSpace(title)) {
-                txtTitle.Visibility = ViewStates.Gone;
+                dialogControls.txtTitle.Visibility = ViewStates.Gone;
             } 
             else
             {
-                txtTitle.Visibility = ViewStates.Visible;
-                txtTitle.Text = title;
+                dialogControls.txtTitle.Visibility = ViewStates.Visible;
+                dialogControls.txtTitle.Text = title;
             }
 
             // default is optional
             if (string.IsNullOrWhiteSpace(defaultPrompt))
             {
-                radioButtonDefault.Visibility = ViewStates.Gone;
+                dialogControls.radioButtonDefault.Visibility = ViewStates.Gone;
             }
             else
             {
-                radioButtonDefault.Visibility = ViewStates.Visible;
-                radioButtonDefault.Text = defaultPrompt;
+                dialogControls.radioButtonDefault.Visibility = ViewStates.Visible;
+                dialogControls.radioButtonDefault.Text = defaultPrompt;
             }
 
             // named is optional
             if (string.IsNullOrWhiteSpace(namedPrompt))
             {
-                radioButtonNamed.Visibility = ViewStates.Gone;
+                dialogControls.radioButtonNamed.Visibility = ViewStates.Gone;
             }
             else
             {
-                radioButtonNamed.Visibility = ViewStates.Visible;
-                radioButtonNamed.Text = namedPrompt;
+                dialogControls.radioButtonNamed.Visibility = ViewStates.Visible;
+                dialogControls.radioButtonNamed.Text = namedPrompt;
             }
 
-            layValue.Hint = customPrompt;
+            dialogControls.layValue.Hint = customPrompt;
             if (isNumeric)
             {
-                txtValue.InputType = Android.Text.InputTypes.ClassNumber;
+                dialogControls.txtValue.InputType = Android.Text.InputTypes.ClassNumber;
             }
-            txtValue.EditorAction += (sender, args) => DoEditAction(Tag, customData, valueType, args);
-            clearButton.Click += (sender, e) => DoClear();
+            dialogControls.txtValue.EditorAction += (sender, args) => DoEditAction(Tag, customData, valueType, args);
+            dialogControls.clearButton.Click += (sender, e) => DoClear();
 
             SetupControlsByType(valueType, currentValue);
-            radioGroup.CheckedChange += (sender, e) => DoCheckChanged((View) sender, e);
+            dialogControls.radioGroup.CheckedChange += (sender, e) => DoCheckChanged((View?) sender, e);
 
-            okButton.Text = ok;
-            okButton.Click += (sender, e) => DoOkAction(Tag, customData, valueType);
+            dialogControls.okButton.Text = ok;
+            dialogControls.okButton.Click += (sender, e) => DoOkAction(Tag, customData, valueType);
 
             // cancel is optional
             if (string.IsNullOrWhiteSpace(cancel))
             {
-                cancelButton.Visibility = ViewStates.Gone;
+                dialogControls.cancelButton.Visibility = ViewStates.Gone;
             } else
             {
-                cancelButton.Visibility = ViewStates.Visible;
-                cancelButton.Text = cancel;
-                cancelButton.Click += (sender, e) => DoCancelAction(Tag, customData);
+                dialogControls.cancelButton.Visibility = ViewStates.Visible;
+                dialogControls.cancelButton.Text = cancel;
+                dialogControls.cancelButton.Click += (sender, e) => DoCancelAction(Tag, customData);
             }
 
             if (valueType == ItemValueType.Custom)
             {
-                DialogHelper.ShowSoftKeyboard(txtValue);
+                DialogHelper.ShowSoftKeyboard(dialogControls.txtValue);
             }
         }
 
-        private void DoCheckChanged(View sender, RadioGroup.CheckedChangeEventArgs eventParams)
+        private void DoCheckChanged(View? sender, RadioGroup.CheckedChangeEventArgs eventParams)
         {
-            var button = sender.FindViewById<RadioButton>(eventParams.CheckedId);
+            var button = sender?.FindViewById<RadioButton>(eventParams.CheckedId);
             if (button != null && button.Checked)
             {
                 if (eventParams.CheckedId == Resource.Id.defaultableitem_value_prompt_radio_default)
                 {
-                    txtValue.Text = "";
-                    txtValue.Enabled = false;
+                    dialogControls.txtValue.Text = "";
+                    dialogControls.txtValue.Enabled = false;
                     valueType = ItemValueType.Defaulted;
                 }
                 if (eventParams.CheckedId == Resource.Id.defaultableitem_value_prompt_radio_named)
                 {
-                    txtValue.Text = "";
-                    txtValue.Enabled = false;
+                    dialogControls.txtValue.Text = "";
+                    dialogControls.txtValue.Enabled = false;
                     valueType = ItemValueType.Named;
                 }
                 if (eventParams.CheckedId == Resource.Id.defaultableitem_value_prompt_radio_custom)
                 {
-                    txtValue.Enabled = true;
-                    DialogHelper.ShowSoftKeyboard(txtValue);
+                    dialogControls.txtValue.Enabled = true;
+                    DialogHelper.ShowSoftKeyboard(dialogControls.txtValue);
                     valueType = ItemValueType.Custom;
                 }
             }
         }
 
-        private void SetupControlsByType(ItemValueType valueType, string currentValue)
+        private void SetupControlsByType(ItemValueType valueType, string? currentValue)
         {
             switch (valueType)
             {
                 case ItemValueType.Defaulted:
-                    radioGroup.Check(Resource.Id.defaultableitem_value_prompt_radio_default);
-                    txtValue.Text = "";
-                    txtValue.Enabled = false;
+                    dialogControls.radioGroup.Check(Resource.Id.defaultableitem_value_prompt_radio_default);
+                    dialogControls.txtValue.Text = "";
+                    dialogControls.txtValue.Enabled = false;
                     break;
                 case ItemValueType.Named:
-                    radioGroup.Check(Resource.Id.defaultableitem_value_prompt_radio_named);
-                    txtValue.Text = "";
-                    txtValue.Enabled = false;
+                    dialogControls.radioGroup.Check(Resource.Id.defaultableitem_value_prompt_radio_named);
+                    dialogControls.txtValue.Text = "";
+                    dialogControls.txtValue.Enabled = false;
                     break;
                 case ItemValueType.Custom:
-                    radioGroup.Check(Resource.Id.defaultableitem_value_prompt_radio_custom);
-                    txtValue.Text = currentValue;
-                    txtValue.SetSelection(txtValue.Text.Length);
-                    txtValue.Enabled = true;
+                    dialogControls.radioGroup.Check(Resource.Id.defaultableitem_value_prompt_radio_custom);
+                    dialogControls.txtValue.Enabled = true;
+                    dialogControls.txtValue.Text = currentValue;
+                    dialogControls.txtValue.SetSelection(dialogControls.txtValue?.Text?.Length ?? 0);
                     break;
             }
         }
@@ -265,10 +269,10 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
 
         private void DoClear()
         {
-            txtValue.Text = "";
+            dialogControls.txtValue.Text = "";
         }
 
-        private void DoEditAction(string tag, string customData, ItemValueType valueType, TextView.EditorActionEventArgs args)
+        private void DoEditAction(string? tag, string? customData, ItemValueType valueType, TextView.EditorActionEventArgs args)
         {
             if (args.ActionId == ImeAction.Done)
             {
@@ -276,13 +280,13 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             }
         }
 
-        private void DoCancelAction(string tag, string customData)
+        private void DoCancelAction(string? tag, string? customData)
         {
             CancelSelected?.Invoke(this, Tuple.Create(tag, customData));
             ExitDialog();
         }
 
-        private void DoOkAction(string tag, string customData, ItemValueType valueType)
+        private void DoOkAction(string? tag, string? customData, ItemValueType valueType)
         {
             OkSelected?.Invoke(this, Tuple.Create(tag, customData, GetResult(), valueType));
             ExitDialog();
@@ -290,7 +294,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
 
         private string GetResult()
         {
-            return txtValue.Text;
+            return dialogControls.txtValue.Text ?? "";
         }
 
         private void ExitDialog()

@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationVersion>19</ApplicationVersion>
-    <ApplicationDisplayVersion>2.7.0step13</ApplicationDisplayVersion>
+    <ApplicationDisplayVersion>2.7.0step17</ApplicationDisplayVersion>
     <!--
       Enables trim analyzers and full trimming during Release mode.
       To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity

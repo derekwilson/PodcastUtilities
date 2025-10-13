@@ -15,8 +15,12 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         /// <param name="dialog">dialog to set</param>
         /// <param name="displayMetrics">screen metrics</param>
         /// <param name="percent">percentage to use for the dialog</param>
-        public static void SetWidthByPercent(Dialog dialog, Android.Util.DisplayMetrics displayMetrics, int percent)
+        public static void SetWidthByPercent(Dialog? dialog, Android.Util.DisplayMetrics? displayMetrics, int percent)
         {
+            if (displayMetrics == null)
+            {
+                return;
+            }
             DialogHelper.SetWidth(dialog, (displayMetrics.WidthPixels * 90) / 100);
         }
 
@@ -25,7 +29,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         /// </summary>
         /// <param name="dialog">dialog to set</param>
         /// <param name="widthPx">width in pixels, maybe work it out from the screen dimentions</param>
-        public static void SetWidth(Dialog dialog, int widthPx)
+        public static void SetWidth(Dialog? dialog, int widthPx)
         {
             if (dialog == null)
             {
