@@ -97,7 +97,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
 
         private View? InflateView(Context context)
         {
-            var inflater = context?.GetSystemService(Context.LayoutInflaterService) as LayoutInflater;
+            var inflater = context.GetSystemService(Context.LayoutInflaterService) as LayoutInflater;
             return inflater?.Inflate(Resource.Layout.view_drive_volume_info, this, true);
         }
 

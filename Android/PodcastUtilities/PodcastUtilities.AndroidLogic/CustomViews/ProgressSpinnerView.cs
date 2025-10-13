@@ -3,6 +3,7 @@ using Android.Util;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
+using PodcastUtilities.AndroidLogic.Utilities;
 
 namespace PodcastUtilities.AndroidLogic.CustomViews
 {
@@ -11,21 +12,25 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
     /// </summary>
     public class ProgressSpinnerView : LinearLayout
     {
-        private TextView messageView;
-        private ProgressBar indeterminateBar;
-        private ProgressBar steppedBar;
+        private struct Controls
+        {
+            public TextView messageView;
+            public ProgressBar indeterminateBar;
+            public ProgressBar steppedBar;
+        }
+        private Controls viewControls;
 
         public ProgressSpinnerView(Context context) : base(context)
         {
             Init(context, null, 0);
         }
 
-        public ProgressSpinnerView(Context context, IAttributeSet attrs) : base(context, attrs)
+        public ProgressSpinnerView(Context context, IAttributeSet? attrs) : base(context, attrs)
         {
             Init(context, attrs, 0);
         }
 
-        public ProgressSpinnerView(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
+        public ProgressSpinnerView(Context context, IAttributeSet? attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
         {
             Init(context, attrs, defStyleAttr);
         }
@@ -34,7 +39,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
         {
             set
             {
-                messageView.Text = value;
+                viewControls.messageView.Text = value;
             }
         }
 
@@ -42,7 +47,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
         {
             set
             {
-                steppedBar.Max = value;
+                viewControls.steppedBar.Max = value;
             }
         }
 
@@ -50,39 +55,39 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
         {
             set
             {
-                steppedBar.Progress = value;
+                viewControls.steppedBar.Progress = value;
             }
         }
 
-        private void Init(Context context, IAttributeSet attrs, int defStyle)
+        private void Init(Context context, IAttributeSet? attrs, int defStyle)
         {
             var view = InflateView(context);
-            messageView = FindViewById<TextView>(Resource.Id.progress_bar_message);
-            indeterminateBar = FindViewById<ProgressBar>(Resource.Id.indeterminateBar);
-            steppedBar = FindViewById<ProgressBar>(Resource.Id.steppedBar);
+            viewControls.messageView = ViewHelper.FindViewByIdOrThrow<TextView>("message", view, Resource.Id.progress_bar_message);
+            viewControls.indeterminateBar = ViewHelper.FindViewByIdOrThrow<ProgressBar>("bar", view, Resource.Id.indeterminateBar);
+            viewControls.steppedBar = ViewHelper.FindViewByIdOrThrow<ProgressBar>("stepped bar", view, Resource.Id.steppedBar);
 
             LoadAttributes(attrs, defStyle);
         }
 
-        private void LoadAttributes(IAttributeSet attrs, int defStyle)
+        private void LoadAttributes(IAttributeSet? attrs, int defStyle)
         {
-            var a = Context.ObtainStyledAttributes(attrs, Resource.Styleable.ProgressSpinnerView, defStyle, 0);
+            var a = Context?.ObtainStyledAttributes(attrs, Resource.Styleable.ProgressSpinnerView, defStyle, 0);
 
-            Message = a.GetString(Resource.Styleable.ProgressSpinnerView_message);
+            Message = a?.GetString(Resource.Styleable.ProgressSpinnerView_message) ?? "NO MESSAGE";
 
-            a.Recycle();
+            a?.Recycle();
         }
 
-        private View InflateView(Context context)
+        private View? InflateView(Context context)
         {
-            LayoutInflater inflater = context.GetSystemService(Context.LayoutInflaterService) as LayoutInflater;
-            return inflater.Inflate(Resource.Layout.view_progress_spinner, this, true);
+            var inflater = context.GetSystemService(Context.LayoutInflaterService) as LayoutInflater;
+            return inflater?.Inflate(Resource.Layout.view_progress_spinner, this, true);
         }
 
         public void SlideDown(bool indeterminateProgress)
         {
-            indeterminateBar.Visibility = indeterminateProgress ? ViewStates.Visible : ViewStates.Gone;
-            steppedBar.Visibility = indeterminateProgress ? ViewStates.Gone : ViewStates.Visible;
+            viewControls.indeterminateBar.Visibility = indeterminateProgress ? ViewStates.Visible : ViewStates.Gone;
+            viewControls.steppedBar.Visibility = indeterminateProgress ? ViewStates.Gone : ViewStates.Visible;
             this.Visibility = ViewStates.Visible;
             var animate = new TranslateAnimation(
                 0f,             // fromXDelta
