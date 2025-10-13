@@ -2,12 +2,13 @@
 using Android.Util;
 using Android.Views;
 using AndroidX.RecyclerView.Widget;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PodcastUtilities.AndroidLogic.CustomViews
 {
     public class EmptyRecyclerView : RecyclerView
     {
-        private View emptyView = null;
+        private View? emptyView = null;
         private AdapterDataObserver observer;
 
         public EmptyRecyclerView(Context context) : base(context)
@@ -25,6 +26,9 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             Init();
         }
 
+        // a bit shit but aparently the code analyser cannot work it out on its own
+        // see https://stackoverflow.com/questions/72347014/understanding-why-im-still-getting-cs8618-error-in-constructor
+        [MemberNotNull(nameof(observer))]
         private void Init()
         {
             observer = new AdapterObserver(this);
@@ -35,7 +39,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             if (emptyView != null)
             {
                 // if there is no adapter then its empty by definition
-                bool emptyViewVisible = GetAdapter() == null || GetAdapter().ItemCount == 0;
+                bool emptyViewVisible = GetAdapter() == null || GetAdapter()?.ItemCount == 0;
                 // we either show the recycler or the empty message but not both
                 emptyView.Visibility = emptyViewVisible ? ViewStates.Visible : ViewStates.Gone;
                 this.Visibility = emptyViewVisible ? ViewStates.Gone : ViewStates.Visible;
@@ -49,7 +53,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             CheckIfEmpty();
         }
 
-        public override void SetAdapter(Adapter adapter)
+        public override void SetAdapter(Adapter? adapter)
         {
             var oldAdapter = GetAdapter();
             oldAdapter?.UnregisterAdapterDataObserver(observer);
