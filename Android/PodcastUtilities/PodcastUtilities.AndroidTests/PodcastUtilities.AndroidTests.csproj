@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>2.5.0 step3</ApplicationDisplayVersion>
+    <!--
+      Enables trim analyzers and full trimming during Release mode.
+      To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity
+    -->
+    <TrimMode>partial</TrimMode>
+    <IsTrimmable>false</IsTrimmable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="FakeItEasy" Version="8.3.0" />
+    <PackageReference Include="Xamarin.Legacy.NUnitLite" Version="0.0.1-alpha" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PodcastUtilities.AndroidLogic\PodcastUtilities.AndroidLogic.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PodcastUtilities.Common">
+      <HintPath>..\..\Reference\PodcastUtilities\PodcastUtilities.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PodcastUtilities.Ioc">
+      <HintPath>..\..\Reference\PodcastUtilities\PodcastUtilities.Ioc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
