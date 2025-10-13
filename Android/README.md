@@ -39,11 +39,20 @@ Is built using VS2022
 
 And also install Android workloads
 
+### PodcastUtilities.Xamarin
+
+Is built using VS2022, targets Mono on Android
+
+#### Install VS2022
+
+And also install Xamarin Android
+
+Powershell is configured by the project scripts, there is no manual process
 
 
 ### PodcastUtilities
 
-Is built using VS2022
+Is built using VS2022, targets .NET 9 on Android
 
 #### Install VS2022
 

@@ -12,9 +12,11 @@
       Enables trim analyzers and full trimming during Release mode.
       To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity
     -->
-    <TrimMode>full</TrimMode>
+    <TrimMode>partial</TrimMode>
+    <IsTrimmable>false</IsTrimmable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
+  <Import Project="$(ProjectDir)..\LocalOnly\keystoreproperties.xml" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
   <ItemGroup>
     <ProjectReference Include="..\PodcastUtilities.AndroidLogic\PodcastUtilities.AndroidLogic.csproj" />
   </ItemGroup>
@@ -34,4 +36,7 @@
     <PackageReference Include="Xamarin.Firebase.Core" Version="121.1.1" />
     <PackageReference Include="Xamarin.Firebase.Crashlytics" Version="118.2.13" />
   </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="PowerShell -ExecutionPolicy Unrestricted -File &quot;$(ProjectDir)..\Update-PackageName.ps1&quot; $(ProjectDir) $(ConfigurationName)" />
+  </Target>
 </Project>
