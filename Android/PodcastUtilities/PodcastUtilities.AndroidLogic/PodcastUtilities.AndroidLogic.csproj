@@ -4,12 +4,18 @@
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Assembly Information Properties -->
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <AssemblyCompany>AAD</AssemblyCompany>
+    <AssemblyProduct>PodcastUtilities for Android</AssemblyProduct>
+    <AssemblyCopyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2025</AssemblyCopyright>
+    <AssemblyTitle>PodcastUtilities.AndroidLogic</AssemblyTitle>
+    <AssemblyDescription>Logic for the android app in a seperate assembly for testing</AssemblyDescription>
     <!--
       Enable trim analyzers for Android class libraries.
       To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/prepare-libraries-for-trimming
     -->
     <IsTrimmable>false</IsTrimmable>
-	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.9" />
@@ -32,5 +38,8 @@
     <Compile Include="..\LocalOnly\Secrets.cs">
       <Link>Secrets.cs</Link>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 </Project>
