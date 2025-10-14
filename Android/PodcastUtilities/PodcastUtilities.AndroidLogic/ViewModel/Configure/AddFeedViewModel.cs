@@ -14,14 +14,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
     {
         public class ObservableGroup
         {
-            public EventHandler<string> DisplayMessage;
-            public EventHandler<string> Folder;
-            public EventHandler<string> Url;
-            public EventHandler Exit;
-            public EventHandler<string> DisplayErrorMessage;
-            public EventHandler HideErrorMessage;
-            public EventHandler StartDownloading;
-            public EventHandler EndDownloading;
+            public EventHandler<string>? DisplayMessage;
+            public EventHandler<string>? Folder;
+            public EventHandler<string>? Url;
+            public EventHandler? Exit;
+            public EventHandler<string>? DisplayErrorMessage;
+            public EventHandler? HideErrorMessage;
+            public EventHandler? StartDownloading;
+            public EventHandler? EndDownloading;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -129,7 +129,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             {
                 AnalyticsEngine.AddPodcastEvent(folder);
                 AnalyticsEngine.AddPodcastFeedEvent(feedUrl);
-                Observables.Exit?.Invoke(this, null);
+                Observables.Exit?.Invoke(this, EventArgs.Empty);
             }
             else
             {
@@ -158,7 +158,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             Observables.Url?.Invoke(this, clipUrl);
         }
 
-        public Task TestFeed(string folder, string feedUrl)
+        public Task? TestFeed(string folder, string feedUrl)
         {
             Logger.Debug(() => $"AddFeedViewModel:TestFeed {feedUrl}");
 
@@ -196,8 +196,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 
             try
             {
-                Observables.HideErrorMessage?.Invoke(this, null);
-                Observables.StartDownloading?.Invoke(this, null);
+                Observables.HideErrorMessage?.Invoke(this, EventArgs.Empty);
+                Observables.StartDownloading?.Invoke(this, EventArgs.Empty);
                 var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
                 using (var webClient = WebClientFactory.CreateWebClient())
                 {
@@ -227,7 +227,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             }
             finally
             {
-                Observables.EndDownloading?.Invoke(this, null);
+                Observables.EndDownloading?.Invoke(this, EventArgs.Empty);
                 DownloadingInProgress = false;
             }
         }
