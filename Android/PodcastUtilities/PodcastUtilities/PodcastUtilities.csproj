@@ -1,19 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net9.0-android</TargetFramework>
-    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationVersion>19</ApplicationVersion>
-    <ApplicationDisplayVersion>2.7.0step24</ApplicationDisplayVersion>
+    <ApplicationDisplayVersion>2.7.0step25</ApplicationDisplayVersion>
+    <!-- Assembly Information Properties -->
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <AssemblyCompany>AAD</AssemblyCompany>
+    <AssemblyProduct>PodcastUtilities for Android</AssemblyProduct>
+    <AssemblyCopyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2025</AssemblyCopyright>
+    <AssemblyTitle>PodcastUtilities</AssemblyTitle>
+    <AssemblyDescription>PodcastUtilities Android App</AssemblyDescription>
     <!--
       Enables trim analyzers and full trimming during Release mode.
       To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity
     -->
     <TrimMode>partial</TrimMode>
     <IsTrimmable>false</IsTrimmable>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
