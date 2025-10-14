@@ -1,12 +1,13 @@
 ﻿using Android.Content;
 using Android.Views;
+using PodcastUtilities.AndroidLogic.Utilities;
 using Object = Java.Lang.Object;
 
 namespace PodcastUtilities.AndroidLogic.CustomViews
 {
     public class SelectableStringArrayAdapter : BaseAdapter
     {
-        private LayoutInflater inflater;
+        private LayoutInflater? inflater = null;
         private List<SelectableString> itemList;
 
         public SelectableStringArrayAdapter(Context context, List<SelectableString> items)
@@ -23,12 +24,12 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
 
         public override bool HasStableIds => true;
 
-        public override View GetView(int position, View convertView, ViewGroup parent)
+        public override View? GetView(int position, View? convertView, ViewGroup? parent)
         {
             var itemView = convertView;
             if (itemView == null)
             {
-                itemView = inflater.Inflate(Resource.Layout.list_item_selectable_string, parent, false);
+                itemView = inflater?.Inflate(Resource.Layout.list_item_selectable_string, parent, false);
             }
             var holder = new ViewHolder(itemView);
             holder.Bind(itemList[position]);
@@ -40,10 +41,10 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             private TextView txtLabel;
             private ImageView btnCheck;
 
-            public ViewHolder(View view)
+            public ViewHolder(View? view)
             {
-                txtLabel = view.FindViewById<TextView>(Resource.Id.selectable_string_text);
-                btnCheck = view.FindViewById<ImageView>(Resource.Id.selectable_string_check);
+                txtLabel = ViewHelper.FindViewByIdOrThrow<TextView>("label", view, Resource.Id.selectable_string_text);
+                btnCheck = ViewHelper.FindViewByIdOrThrow<ImageView>("check", view, Resource.Id.selectable_string_check);
             }
 
             internal void Bind(SelectableString item)

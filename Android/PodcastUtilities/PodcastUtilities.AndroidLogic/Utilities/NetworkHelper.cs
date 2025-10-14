@@ -54,10 +54,11 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                     {
                         foreach (var thisAddress in linkProperties.LinkAddresses)
                         {
-                            if (thisAddress != null && thisAddress.Address.HostAddress.Contains("."))
+                            bool containsDots = thisAddress.Address?.HostAddress?.Contains(".") ?? false;
+                            if (containsDots)
                             {
-                                Logger.Debug(() => $"NetworkHelper:ActiveNetworkAddress - {thisAddress.Address.HostAddress}");
-                                return IPAddress.Parse(thisAddress.Address.HostAddress);
+                                Logger.Debug(() => $"NetworkHelper:ActiveNetworkAddress - {thisAddress.Address!.HostAddress}");
+                                return IPAddress.Parse(thisAddress.Address!.HostAddress!);
                             }
                         }
                     }
@@ -86,7 +87,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
                 {
                     // new mechanism introduced in SDK 23 (M)
-                    NetworkCapabilities capabilities = connectivityManager.GetNetworkCapabilities(connectivityManager.ActiveNetwork);
+                    NetworkCapabilities? capabilities = connectivityManager.GetNetworkCapabilities(connectivityManager.ActiveNetwork);
                     if (capabilities == null)
                     {
                         return NetworkType.None;
@@ -109,7 +110,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                     // old mechanism for old OS
                     // the code is obsolete
                     #pragma warning disable CS0618 // Type or member is obsolete
-                    NetworkInfo activeNetwork = connectivityManager.ActiveNetworkInfo;
+                    NetworkInfo? activeNetwork = connectivityManager.ActiveNetworkInfo;
                     if (activeNetwork == null)
                     {
                         return NetworkType.None;
@@ -132,7 +133,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             }
         }
 
-        public static bool ValidatorToIgnoreAllCertificateErrors(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        public static bool ValidatorToIgnoreAllCertificateErrors(object? sender, X509Certificate? certificate, X509Chain? chain, SslPolicyErrors sslPolicyErrors)
         {
             // we are completely permissive of certificate errors
             return true;
@@ -141,12 +142,16 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public void SetApplicationDefaultCertificateValidator()
         {
             // see https://www.mono-project.com/archived/usingtrustedrootsrespectfully/
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
             ServicePointManager.ServerCertificateValidationCallback = ValidatorToIgnoreAllCertificateErrors;
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
         }
 
         public void SetNetworkConnectionLimit(int maxNumberOfConnections)
         {
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
             ServicePointManager.DefaultConnectionLimit = maxNumberOfConnections;
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
         }
     }
 }

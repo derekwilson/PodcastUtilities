@@ -58,8 +58,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 // sees the explanation, try again to request the permission.
                 new MaterialAlertDialogBuilder(activity)
                         .SetTitle(Resource.String.permissions_title)
-                        .SetMessage(rationaleId)
-                        .SetPositiveButton(Resource.String.ok, delegate
+                        ?.SetMessage(rationaleId)
+                        ?.SetPositiveButton(Resource.String.ok, delegate
                         {
                             // they clicked OK - ask for the permission
                             RequestAPermission(activity, permission, code);
@@ -85,9 +85,9 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             // this thread waiting for the user's response! After the user
             // sees the explanation, try again to request the permission.
             new MaterialAlertDialogBuilder(activity)
-                    .SetTitle(Resource.String.permissions_title)
-                    .SetMessage(rationaleId)
-                    .SetPositiveButton(Resource.String.ok, delegate
+                    ?.SetTitle(Resource.String.permissions_title)
+                    ?.SetMessage(rationaleId)
+                    ?.SetPositiveButton(Resource.String.ok, delegate
                     {
                         // they clicked OK - ask for the permission
                         try

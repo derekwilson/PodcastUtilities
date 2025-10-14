@@ -84,7 +84,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private ICrashReporter CrashReporter;
         private ILogger Logger;
 
-        private MixpanelClient MixpanelClient;
+        private MixpanelClient? MixpanelClient;
 
         public MixpanelAnalyticsEngine(
             IAndroidApplication application,
@@ -135,7 +135,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             CrashReporter.LogNonFatalException($"MixpanelAnalyticsEngine - error - {message}", exception);
         }
 
-        private void trackEventAsync(string eventName, object properties) {
+        private void trackEventAsync(string eventName, object? properties) {
             if (MixpanelClient == null)
             {
                 Logger.Warning(() => $"MixpanelAnalyticsEngine - trackEvent - {eventName} - Mixpanel not init");

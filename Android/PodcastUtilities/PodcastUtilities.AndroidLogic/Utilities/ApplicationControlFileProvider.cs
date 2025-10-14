@@ -26,7 +26,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         IReadWriteControlFile GetApplicationConfiguration();
         int ReplaceApplicationConfiguration(IReadWriteControlFile file);
-        Intent GetApplicationConfigurationSharingIntent();
+        Intent? GetApplicationConfigurationSharingIntent();
         IReadWriteControlFile ResetControlFile();
         void SaveCurrentControlFile();
         bool SetFoldernameIfUnique(IPodcastInfo podcast, string foldername);
@@ -36,7 +36,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
     public class ApplicationControlFileProvider : IApplicationControlFileProvider
     {
-        private IReadWriteControlFile ControlFile = null;
+        private IReadWriteControlFile? ControlFile = null;
         // do not make this anything other than private
         private object SyncLock = new object();
 
@@ -46,8 +46,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private IResourceProvider ResourceProvider;
         private IApplicationControlFileFactory ApplicationControlFileFactory;
 
-        public event EventHandler<EventArgs> ConfigurationUpdated;
-        public event EventHandler<EventArgs> LoggingLevelUpdated;
+        public event EventHandler<EventArgs>? ConfigurationUpdated;
+        public event EventHandler<EventArgs>? LoggingLevelUpdated;
 
         public ApplicationControlFileProvider(
             ILogger logger,
@@ -104,7 +104,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                     ControlFile = ApplicationControlFileFactory.CreateEmptyControlFile();
                 }
             }
-            return ControlFile;
+            return ControlFile!;
         }
 
         public int ReplaceApplicationConfiguration(IReadWriteControlFile file)
@@ -135,7 +135,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return ControlFile;
         }
 
-        public Intent GetApplicationConfigurationSharingIntent()
+        public Intent? GetApplicationConfigurationSharingIntent()
         {
             if (ControlFile == null)
             {

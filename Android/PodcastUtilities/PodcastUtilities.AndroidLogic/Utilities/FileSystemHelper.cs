@@ -22,16 +22,16 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         long GetAvailableFileSystemSizeInBytes(string path);
         long GetTotalFileSystemSizeInBytes(string path);
         string GetApplicationFolderOnSdCard();
-        string GetApplicationFirstExternalPath();
-        Java.IO.File[] GetApplicationExternalFilesDirs();
-        List<string> GetAssetsFolderFiles(string foldername);
+        string? GetApplicationFirstExternalPath();
+        Java.IO.File[]? GetApplicationExternalFilesDirs();
+        List<string>? GetAssetsFolderFiles(string foldername);
         string GetAssetsFileContents(string filename, bool addLineEndings);
         bool Exists(string pathname);
         void LogPersistantPermissions();
         void TakePersistantPermission(Android.Net.Uri uri);
 
         XmlDocument LoadXmlFromContentUri(Android.Net.Uri uri);
-        XmlDocument LoadXmlFromAssetFile(string filename);
+        XmlDocument? LoadXmlFromAssetFile(string filename);
         Android.Net.Uri GetAttachmentUri(String filename);
 
         string GetRealPathFromDocumentTreeFile(DocumentFile documentFile);
@@ -63,10 +63,10 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return false;
         }
 
-        public string GetApplicationFolderOnSdCard(string subFolder, bool ensureExists)
+        public string GetApplicationFolderOnSdCard(string? subFolder, bool ensureExists)
         {
             // we are limited where we can write unless we ask for extra permissions in android 11+
-            var dir = ApplicationContext.GetExternalFilesDir(null);
+            var dir = ApplicationContext.GetExternalFilesDir(null)!;
             // throw if we cannot get the path
             var path = dir.AbsolutePath;
             if (!String.IsNullOrEmpty(subFolder))
@@ -97,7 +97,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return availableBlocks * blockSize;
         }
 
-        public string GetApplicationFirstExternalPath()
+        public string? GetApplicationFirstExternalPath()
         {
             var dirs = ApplicationContext.GetExternalFilesDirs(null);
             if (dirs != null && dirs[0] != null)
@@ -107,17 +107,17 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return null;
         }
 
-        public Java.IO.File[] GetApplicationExternalFilesDirs()
+        public Java.IO.File[]? GetApplicationExternalFilesDirs()
         {
             return ApplicationContext.GetExternalFilesDirs(null);
         }
 
-        public XmlDocument LoadXmlFromAssetFile(string filename)
+        public XmlDocument? LoadXmlFromAssetFile(string filename)
         {
-            Stream inputStream = null;
+            Stream? inputStream = null;
             try
             {
-                inputStream = ApplicationContext.Assets.Open(filename);
+                inputStream = ApplicationContext.Assets!.Open(filename);
                 Logger.Debug(() => $"FileSystemHelper:LoadXmlFromAssetFile - {filename}");
                 using (var streamReader = new StreamReader(inputStream, Encoding.UTF8, true, 8192))
                 {
@@ -146,15 +146,15 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         public string GetAssetsFileContents(string filename, bool addLineEndings)
         {
-            Stream inputStream = null;
+            Stream? inputStream = null;
             StringBuilder builder = new StringBuilder();
             try
             {
-                inputStream = ApplicationContext.Assets.Open(filename);
+                inputStream = ApplicationContext.Assets!.Open(filename);
                 Logger.Debug(() => $"FileSystemHelper:GetAssetsFileContents - {filename}");
                 using (var streamReader = new StreamReader(inputStream, Encoding.UTF8, true, 8192))
                 {
-                    String line;
+                    string? line;
                     while ((line = streamReader.ReadLine()) != null)
                     {
                         builder.Append(line);
@@ -183,12 +183,12 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return builder.ToString();
         }
 
-        public List<string> GetAssetsFolderFiles(string foldername)
+        public List<string>? GetAssetsFolderFiles(string foldername)
         {
             var allFiles = new List<string>(10);
             try
             {
-                var files = ApplicationContext.Assets.List(foldername);
+                var files = ApplicationContext.Assets!.List(foldername);
                 if (files == null)
                 {
                     return null;
@@ -226,24 +226,27 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         public void LogPersistantPermissions()
         {
-            foreach (UriPermission permission in ApplicationContext.ContentResolver.PersistedUriPermissions) 
+            foreach (UriPermission permission in ApplicationContext.ContentResolver!.PersistedUriPermissions) 
             {
-                Logger.Debug(() => $"FileSystemHelper:LogPersistantPermissions - {permission.Uri.ToString()}");
+                Logger.Debug(() => $"FileSystemHelper:LogPersistantPermissions - {permission?.Uri?.ToString()}");
             }
         }
 
         public void TakePersistantPermission(Android.Net.Uri uri)
         {
-            ApplicationContext.ContentResolver.TakePersistableUriPermission(uri, ActivityFlags.GrantReadUriPermission | ActivityFlags.GrantWriteUriPermission);
+            ApplicationContext.ContentResolver!.TakePersistableUriPermission(uri, ActivityFlags.GrantReadUriPermission | ActivityFlags.GrantWriteUriPermission);
         }
 
         public XmlDocument LoadXmlFromContentUri(Android.Net.Uri uri)
         {
             Logger.Debug(() => $"FileSystemHelper:LoadXmlFromContentUri = {uri.ToString()}");
-            ContentResolver resolver = ApplicationContext.ContentResolver;
+            ContentResolver resolver = ApplicationContext.ContentResolver!;
             var stream = resolver.OpenInputStream(uri);
             var xml = new XmlDocument();
-            xml.Load(stream);
+            if (stream != null)
+            {
+                xml.Load(stream);
+            }
             return xml;
         }
 
@@ -251,7 +254,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         {
             Logger.Debug(() => $"FileSystemHelper:getAttachmentUri - {filename}");
             Java.IO.File shareFile = new Java.IO.File(filename);
-            Android.Net.Uri shareableUri = FileProvider.GetUriForFile(ApplicationContext, ApplicationContext.ApplicationContext.PackageName + ".provider", shareFile);
+            Android.Net.Uri shareableUri = FileProvider.GetUriForFile(ApplicationContext, ApplicationContext?.ApplicationContext?.PackageName + ".provider", shareFile)
+                ?? throw new InvalidOperationException("cannot get URI");
             Logger.Debug(() => $"FileSystemHelper:getAttachmentUri uri - {shareableUri}");
             return shareableUri;
         }
@@ -270,7 +274,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             if (documentFile == null || documentFile.Uri == null)
                 return "";
 
-            var path1 = documentFile.Uri.Path;
+            var path1 = documentFile.Uri.Path!;
             if (path1.StartsWith("/tree/"))
             {
                 var path2 = path1.Remove(0, "/tree/".Length);

@@ -29,13 +29,6 @@ namespace PodcastUtilities.AndroidLogic.Exceptions
         public ConfigurationException(string message, Exception innerException)
             : base(message, innerException)
         { }
-
-        /// <summary>
-        /// a ConfigurationException
-        /// </summary>
-        protected ConfigurationException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
     }
 
 }
