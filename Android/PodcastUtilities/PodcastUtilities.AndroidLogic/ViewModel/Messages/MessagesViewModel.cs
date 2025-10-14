@@ -12,12 +12,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
     {
         public class ObservableGroup
         {
-            public EventHandler<string> AddText;
-            public EventHandler ScrollToTop;
-            public EventHandler ScrollToBottom;
-            public EventHandler ResetText;
-            public EventHandler StartLoading;
-            public EventHandler EndLoading;
+            public EventHandler<string>? AddText;
+            public EventHandler? ScrollToTop;
+            public EventHandler? ScrollToBottom;
+            public EventHandler? ResetText;
+            public EventHandler? StartLoading;
+            public EventHandler? EndLoading;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -62,9 +62,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
         {
             try
             {
-                Observables.StartLoading?.Invoke(this, null);
+                Observables.StartLoading?.Invoke(this, EventArgs.Empty);
                 AnalyticsEngine.ViewPageEvent(IAnalyticsEngine.Page_Logs, Store.GetTotalNumberOfLines());
-                Observables.ResetText?.Invoke(this, null);
+                Observables.ResetText?.Invoke(this, EventArgs.Empty);
                 if (DisplayErrorsOnly) 
                 {
                     Observables.AddText?.Invoke(this, Store.GetErrorMessages());
@@ -76,14 +76,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
             }
             finally
             {
-                Observables.EndLoading?.Invoke(this, null);
+                Observables.EndLoading?.Invoke(this, EventArgs.Empty);
                 DelayedScrollToTop();       // if you dont delay - it doesnt work
             }
         }
 
         public Task DelayedScrollToTop()
         {
-            return Task.Delay(1000).ContinueWith((_) => Observables.ScrollToTop(this, null));
+            return Task.Delay(1000).ContinueWith((_) => Observables.ScrollToTop?.Invoke(this, EventArgs.Empty));
         }
 
         public bool IsActionAvailable(int itemId)
@@ -118,12 +118,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Messages
             Logger.Debug(() => $"MessagesViewModel:ActionSelected = {itemId}");
             if (itemId == Resource.Id.action_logs_top)
             {
-                Observables.ScrollToTop(this, null);
+                Observables.ScrollToTop?.Invoke(this, EventArgs.Empty);
                 return true;
             }
             if (itemId == Resource.Id.action_logs_bottom)
             {
-                Observables.ScrollToBottom(this, null);
+                Observables.ScrollToBottom?.Invoke(this, EventArgs.Empty);
                 return true;
             }
             if (itemId == Resource.Id.action_logs_errors_only)

@@ -18,17 +18,17 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
     {
         public class ObservableGroup
         {
-            public EventHandler<string> Title;
-            public EventHandler<View> AddInfoView;
-            public EventHandler ShowNoDriveMessage;
-            public EventHandler NavigateToSettings;
-            public EventHandler SelectControlFile;
-            public EventHandler<string> ToastMessage;
-            public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>> SetFeedItems;
-            public EventHandler<string> SetCacheRoot;
-            public EventHandler<string> NavigateToDownload;
-            public EventHandler NavigateToPurge;
-            public EventHandler NavigateToEditConfig;
+            public EventHandler<string>? Title;
+            public EventHandler<View>? AddInfoView;
+            public EventHandler? ShowNoDriveMessage;
+            public EventHandler? NavigateToSettings;
+            public EventHandler? SelectControlFile;
+            public EventHandler<string>? ToastMessage;
+            public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>>? SetFeedItems;
+            public EventHandler<string>? SetCacheRoot;
+            public EventHandler<string?>? NavigateToDownload;
+            public EventHandler? NavigateToPurge;
+            public EventHandler? NavigateToEditConfig;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -81,13 +81,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             AndroidApplication = androidApplication;
         }
 
-        private void LoggingLevelUpdated(object sender, EventArgs e)
+        private void LoggingLevelUpdated(object? sender, EventArgs e)
         {
             Logger.Debug(() => $"MainViewModel:LoggingLevelUpdated");
             SetLoggingLevel();
         }
 
-        private void ConfigurationUpdated(object sender, EventArgs e)
+        private void ConfigurationUpdated(object? sender, EventArgs e)
         {
             Logger.Debug(() => $"MainViewModel:ConfigurationUpdated");
             RefreshFeedList();
@@ -123,13 +123,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             Logger.Debug(() => $"MainViewModel:RefreshFileSystemInfo");
             try
             {
-                Observables.ShowNoDriveMessage?.Invoke(this, null);
+                Observables.ShowNoDriveMessage?.Invoke(this, EventArgs.Empty);
 
-                Java.IO.File[] files = FileSystemHelper.GetApplicationExternalFilesDirs();
-                foreach (Java.IO.File file in files)
+                Java.IO.File[]? files = FileSystemHelper.GetApplicationExternalFilesDirs();
+                if (files != null)
                 {
-                    Logger.Debug(() => $"ExternalFile = {file.AbsolutePath}");
-                    AddFileSystem(file.AbsolutePath);
+                    foreach (Java.IO.File file in files)
+                    {
+                        Logger.Debug(() => $"ExternalFile = {file.AbsolutePath}");
+                        AddFileSystem(file.AbsolutePath);
+                    }
                 }
             } catch (Exception ex)
             {
@@ -206,7 +209,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         {
             var retval = absolutePath; 
             // strip off our package name
-            var pos = retval.IndexOf(ApplicationContext.PackageName);
+            var pos = retval.IndexOf(ApplicationContext.PackageName ?? "");
             if (pos > 0)
             {
                 retval = retval.Substring(0, pos);
@@ -252,17 +255,17 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             Logger.Debug(() => $"MainViewModel:ActionSelected = {itemId}");
             if (itemId == Resource.Id.action_settings)
             {
-                Observables.NavigateToSettings?.Invoke(this, null);
+                Observables.NavigateToSettings?.Invoke(this, EventArgs.Empty);
                 return true;
             }
             if (itemId == Resource.Id.action_edit_config)
             {
-                Observables.NavigateToEditConfig?.Invoke(this, null);
+                Observables.NavigateToEditConfig?.Invoke(this, EventArgs.Empty);
                 return true;
             }
             if (itemId == Resource.Id.action_purge)
             {
-                Observables.NavigateToPurge?.Invoke(this, null);
+                Observables.NavigateToPurge?.Invoke(this, EventArgs.Empty);
                 return true;
             }
             if (itemId == Resource.Id.action_download)
@@ -337,16 +340,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
         }
 
-        private void GenerateStatusUpdate(object sender, StatusUpdateEventArgs e)
+        private void GenerateStatusUpdate(object? sender, StatusUpdateEventArgs e)
         {
             Logger.Debug(() => $"MainViewModel: GenerateStatusUpdate {e.IsTaskCompletedSuccessfully}, {e.Message}");
             Observables.ToastMessage?.Invoke(this, e.Message);
-            IPlaylist playlist = null;
+            IPlaylist? playlist = null;
             int items = -1;
             if (e.UserState != null && e.UserState is IPlaylist)
             {
                 playlist = e.UserState as IPlaylist;
-                items = playlist.NumberOfTracks;
+                items = playlist?.NumberOfTracks ?? 0;
             }
             AnalyticsEngine.GeneratePlaylistCompleteEvent(items);
         }

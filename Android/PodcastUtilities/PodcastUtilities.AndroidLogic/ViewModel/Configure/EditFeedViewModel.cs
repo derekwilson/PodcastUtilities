@@ -16,24 +16,24 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
     {
         public class ObservableGroup
         {
-            public EventHandler<string> Title;
-            public EventHandler<string> DisplayMessage;
-            public EventHandler<string> NavigateToDownload;
-            public EventHandler<string> Folder;
-            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForFolder;
-            public EventHandler<string> Url;
-            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForUrl;
-            public EventHandler<Tuple<bool, string>> DownloadStrategy;
-            public EventHandler<Tuple<bool, string>> NamingStyle;
-            public EventHandler<Tuple<bool, string>> MaxDaysOld;
-            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForMaxDaysOld;
-            public EventHandler<Tuple<bool, string>> DeleteDaysOld;
-            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForDeleteDaysOld;
-            public EventHandler<Tuple<bool, string>> MaxDownloadItems;
-            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForMaxDownloadItems;
-            public EventHandler<Tuple<string, string, string, string>> DeletePrompt;
-            public EventHandler Exit;
-            public EventHandler<Tuple<string, Intent>> DisplayChooser;
+            public EventHandler<string>? Title;
+            public EventHandler<string>? DisplayMessage;
+            public EventHandler<string>? NavigateToDownload;
+            public EventHandler<string>? Folder;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters>? PromptForFolder;
+            public EventHandler<string>? Url;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters>? PromptForUrl;
+            public EventHandler<Tuple<bool, string>>? DownloadStrategy;
+            public EventHandler<Tuple<bool, string>>? NamingStyle;
+            public EventHandler<Tuple<bool, string>>? MaxDaysOld;
+            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters>? PromptForMaxDaysOld;
+            public EventHandler<Tuple<bool, string>>? DeleteDaysOld;
+            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters>? PromptForDeleteDaysOld;
+            public EventHandler<Tuple<bool, string>>? MaxDownloadItems;
+            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters>? PromptForMaxDownloadItems;
+            public EventHandler<Tuple<string, string, string, string>>? DeletePrompt;
+            public EventHandler? Exit;
+            public EventHandler<Tuple<string, Intent>>? DisplayChooser;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -70,7 +70,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             AnalyticsEngine = analyticsEngine;
         }
 
-        private void ConfigurationUpdated(object sender, EventArgs e)
+        private void ConfigurationUpdated(object? sender, EventArgs e)
         {
             Logger.Debug(() => $"EditFeedViewModel:ConfigurationUpdated");
             RefreshConfigDisplay();
@@ -83,7 +83,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             RefreshConfigDisplay();
         }
 
-        private IPodcastInfo GetFeedToEdit()
+        private IPodcastInfo? GetFeedToEdit()
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             int index = 0;
@@ -578,7 +578,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             AnalyticsEngine.RemovePodcastEvent(feed.Folder);
             controlFile.DeletePodcast(feed);
             ApplicationControlFileProvider.SaveCurrentControlFile();
-            Observables.Exit?.Invoke(this, null);
+            Observables.Exit?.Invoke(this, EventArgs.Empty);
         }
 
         public void SharePodcastSelected()

@@ -18,23 +18,23 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
     {
         public class ObservableGroup
         {
-            public EventHandler<string> Title;
-            public EventHandler<int> StartProgress;
-            public EventHandler<int> UpdateProgress;
-            public EventHandler EndProgress;
-            public EventHandler<List<DownloadRecyclerItem>> SetSyncItems;
-            public EventHandler<Tuple<ISyncItem, int>> UpdateItemProgress;
-            public EventHandler<Tuple<ISyncItem, Status, string>> UpdateItemStatus;
-            public EventHandler<string> DisplayMessage;
-            public EventHandler StartDownloading;
-            public EventHandler<string> EndDownloading;
-            public EventHandler NavigateToDisplayLogs;
-            public EventHandler<Tuple<string, string, string, string>> KillPrompt;
-            public EventHandler<Tuple<string, string, string, string>> CellularPrompt;
-            public EventHandler<string> SetEmptyText;
-            public EventHandler<bool> TestMode;
-            public EventHandler<string> DisplayErrorMessage;
-            public EventHandler HideErrorMessage;
+            public EventHandler<string>? Title;
+            public EventHandler<int>? StartProgress;
+            public EventHandler<int>? UpdateProgress;
+            public EventHandler? EndProgress;
+            public EventHandler<List<DownloadRecyclerItem>>? SetSyncItems;
+            public EventHandler<Tuple<ISyncItem, int>>? UpdateItemProgress;
+            public EventHandler<Tuple<ISyncItem, Status, string>>? UpdateItemStatus;
+            public EventHandler<string>? DisplayMessage;
+            public EventHandler? StartDownloading;
+            public EventHandler<string>? EndDownloading;
+            public EventHandler? NavigateToDisplayLogs;
+            public EventHandler<Tuple<string, string, string, string>>? KillPrompt;
+            public EventHandler<Tuple<string, string, string, string>>? CellularPrompt;
+            public EventHandler<string>? SetEmptyText;
+            public EventHandler<bool>? TestMode;
+            public EventHandler<string?>? DisplayErrorMessage;
+            public EventHandler? HideErrorMessage;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -57,10 +57,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         private int FeedCount = 0;
         private bool TestMode = false;
         private bool FromHud = false;
-        private string FolderSelected = null;
+        private string? FolderSelected = null;
 
-        private IDownloadService DownloadService = null;
-        private DownloaderEvents DownloaderEvents = null;
+        private IDownloadService? DownloadService = null;
+        private DownloaderEvents? DownloaderEvents = null;
 
         // do not make this anything other than private
         private object SyncLock = new object();
@@ -111,7 +111,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         }
 
         // only public for tests
-        public Task DiscoverStartModeFromService()
+        public Task? DiscoverStartModeFromService()
         {
             Logger.Debug(() => $"DownloadViewModel:DiscoverStartModeFromService");
             bool findEpisodesOnLoad = false;
@@ -134,7 +134,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 {
                     Logger.Debug(() => $"DownloadViewModel:DiscoverStartModeFromService - tidy up service");
                     DownloadServiceController.StopService();
-                    DownloadService.KillNotification();
+                    DownloadService?.KillNotification();
                 }
             }
 
@@ -142,7 +142,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             {
                 // clear the notification as we are now finding again
                 DownloadServiceController.StopService();
-                DownloadService.KillNotification();
+                DownloadService?.KillNotification();
                 // we must not do this on the UI thread
                 return FindEpisodesToDownloadInBackground(FolderSelected);
             }
@@ -150,9 +150,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             {
                 // there already was a download running
                 // setup the UI as if the items had been found
-                AllItems = DownloadService?.GetItems();
+                AllItems = DownloadService?.GetItems() ?? new List<DownloadRecyclerItem>(20);
                 RefreshUI(FolderSelected);
-                Observables.StartDownloading?.Invoke(this, null);   // EndDownloading observable is triggered from the Downloader events
+                Observables.StartDownloading?.Invoke(this, EventArgs.Empty);   // EndDownloading observable is triggered from the Downloader events
                 if (FromHud && !(DownloadService?.IsDownloading ?? false))
                 {
                     // we forced the display of the download - but there is nothing to do
@@ -163,7 +163,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         }
 
         // public for testing
-        public Task FindEpisodesToDownloadInBackground(string folder)
+        public Task FindEpisodesToDownloadInBackground(string? folder)
         {
             return Task.Run(() => FindEpisodesToDownload(folder));
         }
@@ -194,31 +194,31 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         }
 
         // mostly we just bubble the events from the service back to the UI
-        private void DownloaderServiceDisplayMessage(object sender, string message)
+        private void DownloaderServiceDisplayMessage(object? sender, string message)
         {
             Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Message: {message}");
             Observables.DisplayMessage?.Invoke(this, message);
         }
 
-        private void DownloaderServiceUpdateItemStatus(object sender, Tuple<ISyncItem, Status, string> status)
+        private void DownloaderServiceUpdateItemStatus(object? sender, Tuple<ISyncItem, Status, string> status)
         {
             Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Status: {status?.Item2}");
             Observables.UpdateItemStatus?.Invoke(this, status);
         }
 
-        private void DownloaderServiceUpdateItemProgress(object sender, Tuple<ISyncItem, int> progress)
+        private void DownloaderServiceUpdateItemProgress(object? sender, Tuple<ISyncItem, int> progress)
         {
             Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Progres: {progress.Item2}");
             Observables.UpdateItemProgress?.Invoke(this, progress);
         }
 
-        private void DownloaderServiceComplete(object sender, EventArgs e)
+        private void DownloaderServiceComplete(object? sender, EventArgs e)
         {
             Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Complete");
             Observables.EndDownloading?.Invoke(this, ResourceProvider.GetString(Resource.String.download_activity_complete));
         }
 
-        private void DownloaderServiceException(object sender, EventArgs e)
+        private void DownloaderServiceException(object? sender, EventArgs e)
         {
             Logger.Debug(() => $"DownloadViewModel:DownloaderServiceEvent:Exception");
             Observables.DisplayErrorMessage?.Invoke(this, null);        // use the canned in message
@@ -251,7 +251,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
             NetworkHelper.SetApplicationDefaultCertificateValidator();      // ignore SSL errors
 
-            Observables.HideErrorMessage?.Invoke(this, null);
+            Observables.HideErrorMessage?.Invoke(this, EventArgs.Empty);
             if (!onNew)
             {
                 PodcastEpisodeFinder.StatusUpdate += this.DownloadStatusUpdate;
@@ -287,7 +287,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             Logger.Debug(() => $"DownloadViewModel:ActionSelected = {itemId}");
             if (itemId == Resource.Id.action_display_logs)
             {
-                Observables.NavigateToDisplayLogs?.Invoke(this, null);
+                Observables.NavigateToDisplayLogs?.Invoke(this, EventArgs.Empty);
                 return true;
             }
             return false;
@@ -311,7 +311,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             return false;
         }
 
-        public void FindEpisodesToDownload(string folderSelected)
+        public void FindEpisodesToDownload(string? folderSelected)
         {
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             Logger.Debug(() => $"DownloadViewModel:FindEpisodesToDownload, folder = {folderSelected}");
@@ -411,12 +411,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 }
             }
             CompletedFindingPodcasts = true;
-            Observables.EndProgress?.Invoke(this, null);
+            Observables.EndProgress?.Invoke(this, EventArgs.Empty);
             RefreshUI(folderSelected);
             PodcastEpisodeFinder.StatusUpdate -= this.DownloadStatusUpdate;
         }
 
-        private void SetFindingText(string folderSelected, string thisFolder)
+        private void SetFindingText(string? folderSelected, string thisFolder)
         {
             if (string.IsNullOrEmpty(folderSelected))
             {
@@ -437,7 +437,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             }
         }
 
-        private void SetNoDownloads(string folderSelected)
+        private void SetNoDownloads(string? folderSelected)
         {
             if (FromHud)
             {
@@ -449,20 +449,23 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             Observables.SetEmptyText?.Invoke(this, emptyMessage);
         }
 
-        private void RefreshUI(string folderSelected)
+        private void RefreshUI(string? folderSelected)
         {
-            var itemCount = AllItems?.Count ?? 0;
+            var itemCount = AllItems.Count;
             if (itemCount < 1)
             {
                 SetNoDownloads(folderSelected);
             }
-            Observables.SetSyncItems?.Invoke(this, AllItems);
+            else
+            {
+                Observables.SetSyncItems?.Invoke(this, AllItems);
+            }
             SetTitle();
         }
 
         private int GetItemsSelectedCount()
         {
-            return AllItems?.Where(recyclerItem => recyclerItem.Selected).Count() ?? 0;
+            return AllItems.Where(recyclerItem => recyclerItem.Selected).Count();
         }
 
         private void SetTitle()
@@ -502,7 +505,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             return false;
         }
 
-        public Task DownloadAllPodcastsWithNetworkCheck()
+        public Task? DownloadAllPodcastsWithNetworkCheck()
         {
             Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcastsWithNetworkCheck");
 
@@ -539,7 +542,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
         {
             Logger.Debug(() => $"DownloadViewModel:DownloadAllPodcasts");
 
-            if (AllItems?.Count < 1)
+            if (AllItems.Count < 1)
             {
                 Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.no_downloads_text));
                 return;
@@ -551,7 +554,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                 // but we will carry on
             }
 
-            Observables.StartDownloading?.Invoke(this, null);   // EndDownloading observable is triggered from the Downloader events
+            Observables.StartDownloading?.Invoke(this, EventArgs.Empty);   // EndDownloading observable is triggered from the Downloader events
 
             foreach (var item in AllItems)
             {
@@ -561,7 +564,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
                     Observables.UpdateItemStatus?.Invoke(this, Tuple.Create(item.SyncItem, Status.OK, ""));
                 }
             }
-            Observables.HideErrorMessage?.Invoke(this, null);
+
+            Observables.HideErrorMessage?.Invoke(this, EventArgs.Empty);
 
             DownloadServiceController.StartService();           // we need to stop the service from disappearing when we unbind
             DownloadService?.StartDownloads(AllItems);
@@ -569,12 +573,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         public void CancelAllDownloads()
         {
-            DownloadService.CancelDownloads();
+            DownloadService?.CancelDownloads();
             DownloadServiceController.StopService();
         }
 
         // the status update from the episode finder
-        private void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
+        private void DownloadStatusUpdate(object? sender, StatusUpdateEventArgs e)
         {
             var update = MessageStoreInserter.InsertStatus(e);
             if (update != null)

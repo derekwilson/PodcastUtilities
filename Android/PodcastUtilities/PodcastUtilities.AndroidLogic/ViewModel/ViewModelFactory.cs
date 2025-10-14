@@ -31,8 +31,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel
 
         public void AddMap(ClassMap item)
         {
-            Logger.Debug(() => $"ViewModelFactory:AddMap {item.javaClassType.CanonicalName}");
-            ModelMap.Add(item.javaClassType.CanonicalName, item);
+            string name = item.javaClassType.CanonicalName ?? throw new InvalidOperationException($"Cannot get name of class {item.ToString}");
+            Logger.Debug(() => $"ViewModelFactory:AddMap {name}");
+            ModelMap.Add(name, item);
         }
 
         public void AddMap(Type type)
@@ -48,12 +49,13 @@ namespace PodcastUtilities.AndroidLogic.ViewModel
             // instead of a generic call like this
             // var obj = IocContainer.Resolve<DownloadViewModel>();
             // we do this - because we do not know the type (DownloadViewModel in this example) at compile time
-            MethodInfo method = typeof(IIocContainer).GetMethod(nameof(IIocContainer.Resolve));
-            MethodInfo generic = method.MakeGenericMethod(ModelMap[classType.CanonicalName].netType);
+            MethodInfo method = typeof(IIocContainer).GetMethod(nameof(IIocContainer.Resolve))!;
+            string name = classType.CanonicalName ?? throw new InvalidOperationException($"Cannot get name of class {classType.Name}");
+            MethodInfo generic = method.MakeGenericMethod(ModelMap[name].netType);
             var obj = generic.Invoke(IocContainer, null);
 
             Logger.Debug(() => $"ViewModelFactory:Create null == {obj == null}");
-            return (Java.Lang.Object)obj;
+            return (Java.Lang.Object)obj!;
         }
     }
 }

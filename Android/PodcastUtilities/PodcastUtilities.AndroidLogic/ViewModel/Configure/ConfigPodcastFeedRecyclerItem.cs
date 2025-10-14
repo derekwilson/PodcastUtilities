@@ -4,8 +4,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 {
     public class ConfigPodcastFeedRecyclerItem
     {
-        public string Id { get; set; }
-        public IPodcastInfo PodcastFeed { get; set; }
+        public required string Id { get; set; }
+        public required IPodcastInfo PodcastFeed { get; set; }
     }
 
 }

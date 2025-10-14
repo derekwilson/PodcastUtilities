@@ -16,20 +16,20 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
     {
         public class ObservableGroup
         {
-            public EventHandler<string> DisplayMessage;
-            public EventHandler<string> DownloadFreeSpace;
-            public EventHandler<string> MaxConcurrentDownloads;
-            public EventHandler<string> RetryWait;
-            public EventHandler<string> PlaylistFile;
-            public EventHandler<string> PlaylistFormat;
-            public EventHandler<string> PlaylistSeperator;
-            public EventHandler<string> DiagOutput;
-            public EventHandler<Tuple<bool, string>> DiagRetainTemp;
-            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForPlaylistFile;
-            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForDownloadFreespace;
-            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForPlaylistSeperator;
-            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForMaxConcurrentDownloads;
-            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForRetrySeconds;
+            public EventHandler<string>? DisplayMessage;
+            public EventHandler<string>? DownloadFreeSpace;
+            public EventHandler<string>? MaxConcurrentDownloads;
+            public EventHandler<string>? RetryWait;
+            public EventHandler<string>? PlaylistFile;
+            public EventHandler<string>? PlaylistFormat;
+            public EventHandler<string>? PlaylistSeperator;
+            public EventHandler<string>? DiagOutput;
+            public EventHandler<Tuple<bool, string>>? DiagRetainTemp;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters>? PromptForPlaylistFile;
+            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters>? PromptForDownloadFreespace;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters>? PromptForPlaylistSeperator;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters>? PromptForMaxConcurrentDownloads;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters>? PromptForRetrySeconds;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -70,7 +70,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ValueFormatter = valueFormatter;
         }
 
-        private void ConfigurationUpdated(object sender, EventArgs e)
+        private void ConfigurationUpdated(object? sender, EventArgs e)
         {
             Logger.Debug(() => $"GlobalValuesViewModel:ConfigurationUpdated");
             RefreshConfigDisplay();

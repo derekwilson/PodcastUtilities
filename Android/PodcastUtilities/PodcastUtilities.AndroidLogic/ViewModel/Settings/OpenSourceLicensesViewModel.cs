@@ -10,9 +10,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
     {
         public class ObservableGroup
         {
-            public EventHandler<Tuple<string, string>> AddText;
-            public EventHandler ScrollToTop;
-            public EventHandler ResetText;
+            public EventHandler<Tuple<string, string>>? AddText;
+            public EventHandler? ScrollToTop;
+            public EventHandler? ResetText;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -52,7 +52,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
             // subfolder are supported, files and subfolders are sorted alphabetically
             // to remove a license, delete the file from the license folder in the assets
 
-            Observables.ResetText?.Invoke(this, null);
+            Observables.ResetText?.Invoke(this, EventArgs.Empty);
             var files = FileSystemHelper.GetAssetsFolderFiles("license");
             if (files == null)
             {
@@ -63,7 +63,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
                 Logger.Debug(() => $"OpenSourceLicensesViewModel:AddAllLicenseFiles found file {file}");
                 AddLicenseText(file);
             };
-            Observables.ScrollToTop?.Invoke(this, null);
+            Observables.ScrollToTop?.Invoke(this, EventArgs.Empty);
         }
 
         private void AddLicenseText(string file)

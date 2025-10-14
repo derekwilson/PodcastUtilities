@@ -11,7 +11,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Help
     {
         public class ObservableGroup
         {
-            public EventHandler<Tuple<string, Html.IImageGetter>> SetText;
+            public EventHandler<Tuple<string, Html.IImageGetter>>? SetText;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
