@@ -10,7 +10,11 @@ using PodcastUtilities.UI.Download;
 
 namespace PodcastUtilities.Services.Download
 {
-    [Service(ForegroundServiceType = Android.Content.PM.ForegroundService.TypeMediaProcessing)]
+#if DEBUG
+    [Service(Name = "com.andrewandderek.podcastutilities.sideload.debug.DownloadService", ForegroundServiceType = Android.Content.PM.ForegroundService.TypeMediaProcessing)]
+#else
+    [Service(Name = "com.andrewandderek.podcastutilities.sideload.DownloadService", ForegroundServiceType = Android.Content.PM.ForegroundService.TypeMediaProcessing)]
+#endif
     public class DownloadService : Service, IDownloadService
 	{
         private const int FOREGROUND_NOTIFICATION_ID = 100;
@@ -126,12 +130,15 @@ namespace PodcastUtilities.Services.Download
             try
             {
                 AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - start");
-                if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
+                //if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
+                if (OperatingSystem.IsAndroidVersionAtLeast(34))
                 {
+                    AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - new style >34");
                     StartForeground(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification(), Android.Content.PM.ForegroundService.TypeMediaProcessing);
                 }
                 else
                 {
+                    AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - old style");
                     StartForeground(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification());
                 }
                 AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - end");

@@ -4,6 +4,15 @@
     <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
       <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths" />
     </provider>
+	<!-- cannot get ${applicationId} to work so lets declare both flavours as it seems OK to do this -->  
+	<service
+	  android:name="com.andrewandderek.podcastutilities.sideload.debug.DownloadService"
+	  android:foregroundServiceType="mediaProcessing">
+	</service>  
+	<service
+	  android:name="com.andrewandderek.podcastutilities.sideload.DownloadService"
+	  android:foregroundServiceType="mediaProcessing">
+	</service>  
   </application>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
