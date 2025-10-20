@@ -51,16 +51,15 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             var originalClassLoader = args.ClassLoader;
             args.ClassLoader = Java.Lang.Class.FromType(typeof(SelectableString)).ClassLoader;
 
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            //if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            if (OperatingSystem.IsAndroidVersionAtLeast(33))
             {
                 var array = args.GetParcelableArray(OPTIONS_KEY, Java.Lang.Class.FromType(typeof(SelectableString)));
                 items = array?.Cast<SelectableString>()?.ToList();
             } else
             {
                 // excellent work google - way to break an API - there really should be a compat version - but there isnt
-#pragma warning disable CA1422 // Validate platform compatibility
                 var array = args.GetParcelableArray(OPTIONS_KEY);
-#pragma warning restore CA1422 // Validate platform compatibility
                 items = array?.Cast<SelectableString>()?.ToList();
             }
             args.ClassLoader = originalClassLoader;

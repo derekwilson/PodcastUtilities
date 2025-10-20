@@ -44,8 +44,9 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 try
                 {
                     var connectivityManager = ApplicationContext.GetSystemService(Context.ConnectivityService) as ConnectivityManager;
-                    if (connectivityManager == null)
+                    if (connectivityManager == null || !OperatingSystem.IsAndroidVersionAtLeast(23))
                     {
+                        // API 21 and 22 dont have connectivityManager
                         Logger.Debug(() => $"NetworkHelper:ActiveNetworkType - cannot get connectivity manager");
                         return IPAddress.Parse("127.0.0.1");
                     }
@@ -84,7 +85,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                     Logger.Debug(() => $"NetworkHelper:ActiveNetworkType - cannot get connectivity manager");
                     return NetworkType.None;
                 }
-                if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+                //if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+                if (OperatingSystem.IsAndroidVersionAtLeast(23))
                 {
                     // new mechanism introduced in SDK 23 (M)
                     NetworkCapabilities? capabilities = connectivityManager.GetNetworkCapabilities(connectivityManager.ActiveNetwork);
@@ -108,8 +110,6 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 else
                 {
                     // old mechanism for old OS
-                    // the code is obsolete
-                    #pragma warning disable CS0618 // Type or member is obsolete
                     NetworkInfo? activeNetwork = connectivityManager.ActiveNetworkInfo;
                     if (activeNetwork == null)
                     {
@@ -127,7 +127,6 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                     {
                         return NetworkType.Vpn;
                     }
-                    #pragma warning restore CS0618 // Type or member is obsolete
                 }
                 return NetworkType.None;
             }
