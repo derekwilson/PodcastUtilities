@@ -36,6 +36,7 @@ Major changes for each version
 - Moved from Xamarin/Mono runtime to .NET 9 runtime, Xamarin is now deprecated
 - TargetSDK moved to 35 (Android 15) as required by .NET9
 - Disable edge to edge support
+- Fixed some edge case errors in Android 5
 
 
 ## v2.7.0 (19)

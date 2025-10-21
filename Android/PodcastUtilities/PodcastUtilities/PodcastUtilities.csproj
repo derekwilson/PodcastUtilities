@@ -5,8 +5,8 @@
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationVersion>19</ApplicationVersion>
-    <ApplicationDisplayVersion>2.7.0step34</ApplicationDisplayVersion>
+    <ApplicationVersion>20</ApplicationVersion>
+    <ApplicationDisplayVersion>2.8.0</ApplicationDisplayVersion>
     <!-- Assembly Information Properties -->
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AssemblyCompany>AAD</AssemblyCompany>
