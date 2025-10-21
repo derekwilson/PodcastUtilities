@@ -9,7 +9,7 @@ namespace PodcastUtilities.UI.Settings
     [Activity(Label = "@string/settings_activity", ParentActivity = typeof(MainActivity))]
     public class SettingsActivity : AppCompatActivity
     {
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -26,7 +26,7 @@ namespace PodcastUtilities.UI.Settings
             actionBar?.SetDisplayHomeAsUpEnabled(true);
         }
 
-        public override bool DispatchKeyEvent(KeyEvent e)
+        public override bool DispatchKeyEvent(KeyEvent? e)
         {
             if (BackKeyMapper.HandleKeyEvent(this, e))
             {

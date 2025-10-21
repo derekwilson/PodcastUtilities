@@ -1,0 +1,25 @@
+<resources>
+	<string name="app_name">PodcastUtilitiesPOC</string>
+	<string name="app_name_debug">Dbg PodcastUtilitiesPOC</string>
+
+	<string name="placeholder">placeholder</string>
+	<string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+	<string name="lorem_ipsum_short">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+
+	<string name="prefs_file_key">com.andrewandderek.podcastutilitiespoc</string>
+	<string name="prefs_control_uri_key">key_control_uri</string>
+
+	<string name="action_example">Example</string>
+
+	<string name="action_download">Download</string>
+	<string name="no_downloads_text">No podcasts to download</string>
+
+	<string name="action_download_all">Download All</string>
+
+	<string name="ok">OK</string>
+	<string name="permissions_title">PodcastUtilities Permissions</string>
+	<string name="read_external_permissions_rationale">PodcastUtilities needs read access to storage</string>
+	<string name="write_external_permissions_rationale">PodcastUtilities needs write access to storage</string>
+	<string name="manage_external_permissions_rationale">PodcastUtilities needs to manage external storage</string>
+	<string name="finding_podcasts_progress">Finding podcasts...</string>
+</resources>

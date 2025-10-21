@@ -11,8 +11,8 @@ namespace PodcastUtilities.AndroidLogic.MessageStore
 {
 	public interface IMessageStoreInserter
 	{
-        Tuple<ISyncItem, Status, string> InsertStatus(StatusUpdateEventArgs statusUpdateEventArgs);
-        Tuple<ISyncItem, int> InsertProgress(ProgressEventArgs progressEventArgs);
+        Tuple<ISyncItem, Status, string>? InsertStatus(StatusUpdateEventArgs statusUpdateEventArgs);
+        Tuple<ISyncItem, int>? InsertProgress(ProgressEventArgs progressEventArgs);
 	}
 
 
@@ -49,19 +49,19 @@ namespace PodcastUtilities.AndroidLogic.MessageStore
             MessageStore.StoreMessage(id, $"{MessageStore.ConvertStatusUpdateLevelToString(level)}{message}");
         }
 
-        public Tuple<ISyncItem, Status, string> InsertStatus(StatusUpdateEventArgs statusUpdateEventArgs)
+        public Tuple<ISyncItem, Status, string>? InsertStatus(StatusUpdateEventArgs statusUpdateEventArgs)
         {
             // the return value is used to signal anything that the UI needs to know about, null if there is nothing
-            Tuple<ISyncItem, Status, string> retval = null;
+            Tuple<ISyncItem, Status, string>? retval = null;
 
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             bool verbose = controlFile?.GetDiagnosticOutput() == DiagnosticOutputLevel.Verbose;
-            ISyncItem item = null;
+            ISyncItem? item = null;
             string id = "NONE";
             if (statusUpdateEventArgs.UserState != null && statusUpdateEventArgs.UserState is ISyncItem)
             {
                 item = statusUpdateEventArgs.UserState as ISyncItem;
-                id = item.Id.ToString();
+                id = item?.Id.ToString() ?? "NONE";
             }
 
             if (statusUpdateEventArgs.MessageLevel == StatusUpdateLevel.Verbose && !verbose)
@@ -115,26 +115,34 @@ namespace PodcastUtilities.AndroidLogic.MessageStore
             return retval;
         }
 
-        public Tuple<ISyncItem, int> InsertProgress(ProgressEventArgs progressEventArgs)
+        public Tuple<ISyncItem, int>? InsertProgress(ProgressEventArgs progressEventArgs)
         {
-            Tuple<ISyncItem, int> retval = null;
+            Tuple<ISyncItem, int>? retval = null;
             lock (MessageSyncLock)
             {
-                ISyncItem syncItem = progressEventArgs.UserState as ISyncItem;
+                ISyncItem? syncItem = progressEventArgs.UserState as ISyncItem;
                 if (progressEventArgs.ProgressPercentage % 10 == 0)
                 {
                     // only do every 10%
-                    var line = string.Format("{0} ({1} of {2}) {3}%", syncItem.EpisodeTitle,
+                    var line = string.Format("{0} ({1} of {2}) {3}%", syncItem?.EpisodeTitle,
                                                     DisplayFormatter.RenderFileSize(progressEventArgs.ItemsProcessed),
                                                     DisplayFormatter.RenderFileSize(progressEventArgs.TotalItemsToProcess),
                                                     progressEventArgs.ProgressPercentage);
                     Logger.Debug(() => line);
-                    MessageStore.StoreMessage(syncItem.Id, line);
+                    if (syncItem != null)
+                    {
+                        // we are updating the UI as we have a ISyncItem
+                        MessageStore.StoreMessage(syncItem.Id, line);
+                        retval = Tuple.Create(syncItem, progressEventArgs.ProgressPercentage);
+                    }
+                    else
+                    {
+                        MessageStore.StoreMessage(Guid.Empty, line);
+                    }
                     if (progressEventArgs.ProgressPercentage == 100)
                     {
                         AnalyticsEngine.DownloadEpisodeEvent(ByteConverter.BytesToMegabytes(progressEventArgs.TotalItemsToProcess));
                     }
-                    retval = Tuple.Create(syncItem, progressEventArgs.ProgressPercentage);
                 }
             }
             return retval;

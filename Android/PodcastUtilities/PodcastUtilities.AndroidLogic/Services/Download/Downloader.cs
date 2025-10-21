@@ -13,11 +13,11 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
 {
     public class DownloaderEvents
     {
-        public EventHandler<Tuple<ISyncItem, int>> UpdateItemProgressEvent;
-        public EventHandler<Tuple<ISyncItem, Status, string>> UpdateItemStatusEvent;
-        public EventHandler<string> DisplayMessageEvent;
-        public EventHandler CompleteEvent;
-        public EventHandler ExceptionEvent;
+        public EventHandler<Tuple<ISyncItem, int>>? UpdateItemProgressEvent;
+        public EventHandler<Tuple<ISyncItem, Status, string>>? UpdateItemStatusEvent;
+        public EventHandler<string>? DisplayMessageEvent;
+        public EventHandler? CompleteEvent;
+        public EventHandler? ExceptionEvent;
     }
 
     public interface IDownloader
@@ -30,7 +30,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         void CancelAll();
         void SetDownloadingItems(List<DownloadRecyclerItem> allItems);
         void DownloadAllItems();
-        List<DownloadRecyclerItem> GetDownloadItems();
+        List<DownloadRecyclerItem>? GetDownloadItems();
         DownloaderEvents GetDownloaderEvents();
     }
 
@@ -50,7 +50,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
         // this is just in case we try and start a download before we have completed the last one
         private bool DownloadingInProgress = false;
         // these are the recycler items to download its maintained by the UI - in response to events
-        private List<DownloadRecyclerItem> AllItems = null;
+        private List<DownloadRecyclerItem>? AllItems = null;
         // these are our published events
         private DownloaderEvents Events = new DownloaderEvents();
 
@@ -137,7 +137,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             }
         }
 
-        public List<DownloadRecyclerItem> GetDownloadItems()
+        public List<DownloadRecyclerItem>? GetDownloadItems()
         {
             lock (SyncLock)
             {
@@ -182,7 +182,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             return Tuple.Create(toDownload, complete, errored);
         }
 
-        public void SetDownloadingItems(List<DownloadRecyclerItem> allItems)
+        public void SetDownloadingItems(List<DownloadRecyclerItem>? allItems)
         {
             Logger.Debug(() => $"Downloader:StartDownloadingItems = {allItems?.Count}");
             lock (SyncLock)
@@ -249,11 +249,11 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
                 Logger.Debug(() => $"Downloader:finally");
                 DownloadingInProgress = false;
 
-                Events.CompleteEvent?.Invoke(this, null);
+                Events.CompleteEvent?.Invoke(this, EventArgs.Empty);
             }
         }
 
-        private void DownloadProgressUpdate(object sender, ProgressEventArgs e)
+        private void DownloadProgressUpdate(object? sender, ProgressEventArgs e)
         {
             var update = MessageStoreInserter.InsertProgress(e);
             if (update != null)
@@ -280,7 +280,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             return false;
         }
 
-        private void DownloadStatusUpdate(object sender, StatusUpdateEventArgs e)
+        private void DownloadStatusUpdate(object? sender, StatusUpdateEventArgs e)
         {
             var update = MessageStoreInserter.InsertStatus(e);
             if (update != null)
@@ -290,7 +290,7 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
             }
             if (e.Exception != null)
             {
-                Events.ExceptionEvent?.Invoke(this, null);
+                Events.ExceptionEvent?.Invoke(this, EventArgs.Empty);
             }
         }
 

@@ -16,7 +16,7 @@ namespace PodcastUtilities.AndroidTests
     [Activity(Label = "UnitTests PodcastUtilities", MainLauncher = true)]
     public class MainActivity : TestSuiteActivity
     {
-        public static Context MainContext;
+        public static Context MainContext = null!;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -30,13 +30,13 @@ namespace PodcastUtilities.AndroidTests
 
             MainContext = this;
             // add in our extra stuff
-            View runButton = FindViewById<View>(Resource.Id.RunTestsButton);
+            View runButton = FindViewById<View>(Resource.Id.RunTestsButton)!;
             if (runButton != null)
             {
                 var linearLayout = runButton.Parent;
                 if (linearLayout is LinearLayout)
                 {
-                    (linearLayout as LinearLayout).AddView(GenerateDiagnosticInfo());
+                    (linearLayout as LinearLayout)?.AddView(GenerateDiagnosticInfo());
                 }
             }
         }
@@ -59,9 +59,13 @@ namespace PodcastUtilities.AndroidTests
 
         private string GetVersionDisplay()
         {
-            PackageInfo package = PackageManager.GetPackageInfo(PackageName, 0);
-            long longVersionCode = PackageInfoCompat.GetLongVersionCode(package);
-            return $"v{package.VersionName}, ({longVersionCode})";
+            var package = PackageManager?.GetPackageInfo(PackageName ?? "", 0);
+            if (package != null)
+            {
+                long longVersionCode = PackageInfoCompat.GetLongVersionCode(package);
+                return $"v{package.VersionName}, ({longVersionCode})";
+            }
+            return "UNKNOWN";
         }
     }
 

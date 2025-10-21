@@ -18,7 +18,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             Logger = logger;
         }
 
-        public Drawable GetDrawable(string source)
+        public Drawable? GetDrawable(string? source)
         {
             int id;
 
@@ -33,8 +33,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                     return null;
             }
 
-            Drawable d = ResourceProvider.GetDrawable(id);
-            d.SetBounds(0, 0, d.IntrinsicWidth, d.IntrinsicHeight);
+            Drawable? d = ResourceProvider.GetDrawable(id);
+            d?.SetBounds(0, 0, d.IntrinsicWidth, d.IntrinsicHeight);
             return d;
         }
     }

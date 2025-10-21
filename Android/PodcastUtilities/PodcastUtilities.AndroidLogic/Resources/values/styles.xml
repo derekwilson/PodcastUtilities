@@ -2,8 +2,10 @@
 <resources>
 	<!-- Light Mode -->
 
+	<style name="AppTheme" parent="AppTheme.Base"/>
+
 	<!-- Base application theme. -->
-	<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+	<style name="AppTheme.Base" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 		<item name="colorPrimary">@color/colour_blue</item>
 		<item name="colorPrimaryDark">@color/colour_dark_blue</item>
 		<item name="colorAccent">@color/colour_dark_green</item>

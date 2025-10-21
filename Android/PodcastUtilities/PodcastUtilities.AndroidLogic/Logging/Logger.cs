@@ -107,8 +107,11 @@ namespace PodcastUtilities.AndroidLogic.Logging
             var config = LogManager.Configuration;
             var target = config.FindTargetByName("externalFileTarget");
             var fileTarget = target as FileTarget;
-            fileTarget.FileName = Path.Combine(folder, "logs/${shortdate}.log");
-            fileTarget.ArchiveFileName = Path.Combine(folder, "logs/archive.{#}.log");
+            if (fileTarget != null)
+            {
+                fileTarget.FileName = Path.Combine(folder, "logs/${shortdate}.log");
+                fileTarget.ArchiveFileName = Path.Combine(folder, "logs/archive.{#}.log");
+            }
 
             // set the loglevel
 #if DEBUG

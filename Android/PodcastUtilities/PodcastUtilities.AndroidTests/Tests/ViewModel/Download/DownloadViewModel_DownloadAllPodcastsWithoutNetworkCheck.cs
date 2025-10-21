@@ -36,11 +36,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise(false, false, null, false);
             ViewModel.ConnectServiceForUnitTests(MockDownloaderService);
-            await ViewModel.DiscoverStartModeFromService().ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
+            await ViewModel.DiscoverStartModeFromService()!.ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
             A.CallTo(() => MockDownloaderService.StartDownloads(A<List<DownloadRecyclerItem>>.Ignored))
                   .Invokes(() =>
                   {
-                      Events.CompleteEvent?.Invoke(this, null);
+                      Events.CompleteEvent?.Invoke(this, EventArgs.Empty);
                   });
 
             // act
@@ -59,7 +59,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise(false, false, null, false);
             ViewModel.ConnectServiceForUnitTests(MockDownloaderService);
-            await ViewModel.DiscoverStartModeFromService().ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
+            await ViewModel.DiscoverStartModeFromService()!.ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
 
             // act
             ViewModel.DownloadAllPodcastsWithoutNetworkCheck().Wait();
@@ -82,7 +82,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise(false, false, null, false);
             ViewModel.ConnectServiceForUnitTests(MockDownloaderService);
-            await ViewModel.DiscoverStartModeFromService().ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
+            await ViewModel.DiscoverStartModeFromService()!.ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
             var syncItemMocker = SetupFireProgressEvent(EPISODE_1_ID, 123);
 
             // act
@@ -101,7 +101,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise(false, false, null, false);
             ViewModel.ConnectServiceForUnitTests(MockDownloaderService);
-            await ViewModel.DiscoverStartModeFromService().ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
+            await ViewModel.DiscoverStartModeFromService()!.ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
             var syncItemMocker = SetupFireStatusEvent(EPISODE_1_ID, Status.Error, "test message");
 
             // act
@@ -121,11 +121,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise(false, false, null, false);
             ViewModel.ConnectServiceForUnitTests(MockDownloaderService);
-            await ViewModel.DiscoverStartModeFromService().ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
+            await ViewModel.DiscoverStartModeFromService()!.ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
             A.CallTo(() => MockDownloaderService.StartDownloads(A<List<DownloadRecyclerItem>>.Ignored))
                   .Invokes(() =>
                   {
-                      Events.ExceptionEvent?.Invoke(this, null);
+                      Events.ExceptionEvent?.Invoke(this, EventArgs.Empty);
                   });
 
             // act

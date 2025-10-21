@@ -14,7 +14,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 // scroll to the top of the page
                 // weird shit for old versions of OS
                 // see https://stackoverflow.com/questions/31014409/programmatically-scroll-to-the-top-of-a-nestedscrollview
-                scrollView.Parent.RequestChildFocus(scrollView, scrollView);
+                scrollView.Parent?.RequestChildFocus(scrollView, scrollView);
             }
         }
     }

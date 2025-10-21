@@ -44,8 +44,9 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 try
                 {
                     var connectivityManager = ApplicationContext.GetSystemService(Context.ConnectivityService) as ConnectivityManager;
-                    if (connectivityManager == null)
+                    if (connectivityManager == null || !OperatingSystem.IsAndroidVersionAtLeast(23))
                     {
+                        // API 21 and 22 dont have connectivityManager
                         Logger.Debug(() => $"NetworkHelper:ActiveNetworkType - cannot get connectivity manager");
                         return IPAddress.Parse("127.0.0.1");
                     }
@@ -54,10 +55,11 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                     {
                         foreach (var thisAddress in linkProperties.LinkAddresses)
                         {
-                            if (thisAddress != null && thisAddress.Address.HostAddress.Contains("."))
+                            bool containsDots = thisAddress.Address?.HostAddress?.Contains(".") ?? false;
+                            if (containsDots)
                             {
-                                Logger.Debug(() => $"NetworkHelper:ActiveNetworkAddress - {thisAddress.Address.HostAddress}");
-                                return IPAddress.Parse(thisAddress.Address.HostAddress);
+                                Logger.Debug(() => $"NetworkHelper:ActiveNetworkAddress - {thisAddress.Address!.HostAddress}");
+                                return IPAddress.Parse(thisAddress.Address!.HostAddress!);
                             }
                         }
                     }
@@ -83,10 +85,11 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                     Logger.Debug(() => $"NetworkHelper:ActiveNetworkType - cannot get connectivity manager");
                     return NetworkType.None;
                 }
-                if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+                //if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+                if (OperatingSystem.IsAndroidVersionAtLeast(23))
                 {
                     // new mechanism introduced in SDK 23 (M)
-                    NetworkCapabilities capabilities = connectivityManager.GetNetworkCapabilities(connectivityManager.ActiveNetwork);
+                    NetworkCapabilities? capabilities = connectivityManager.GetNetworkCapabilities(connectivityManager.ActiveNetwork);
                     if (capabilities == null)
                     {
                         return NetworkType.None;
@@ -107,9 +110,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 else
                 {
                     // old mechanism for old OS
-                    // the code is obsolete
-                    #pragma warning disable CS0618 // Type or member is obsolete
-                    NetworkInfo activeNetwork = connectivityManager.ActiveNetworkInfo;
+                    NetworkInfo? activeNetwork = connectivityManager.ActiveNetworkInfo;
                     if (activeNetwork == null)
                     {
                         return NetworkType.None;
@@ -126,13 +127,12 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                     {
                         return NetworkType.Vpn;
                     }
-                    #pragma warning restore CS0618 // Type or member is obsolete
                 }
                 return NetworkType.None;
             }
         }
 
-        public static bool ValidatorToIgnoreAllCertificateErrors(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        public static bool ValidatorToIgnoreAllCertificateErrors(object? sender, X509Certificate? certificate, X509Chain? chain, SslPolicyErrors sslPolicyErrors)
         {
             // we are completely permissive of certificate errors
             return true;
@@ -141,12 +141,16 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         public void SetApplicationDefaultCertificateValidator()
         {
             // see https://www.mono-project.com/archived/usingtrustedrootsrespectfully/
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
             ServicePointManager.ServerCertificateValidationCallback = ValidatorToIgnoreAllCertificateErrors;
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
         }
 
         public void SetNetworkConnectionLimit(int maxNumberOfConnections)
         {
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
             ServicePointManager.DefaultConnectionLimit = maxNumberOfConnections;
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
         }
     }
 }

@@ -45,7 +45,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             // assert
             Assert.AreEqual("", ObservedResults.LastSetCacheRoot);
             Assert.AreEqual("feed count == 0", ObservedResults.LastSetFeedHeading);
-            Assert.AreEqual(0, ObservedResults.LastSetFeedItems.Count);
+            Assert.AreEqual(0, ObservedResults.LastSetFeedItems?.Count);
         }
 
         [Test]
@@ -60,8 +60,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             // assert
             Assert.AreEqual("/sdcard/sourceroot", ObservedResults.LastSetCacheRoot);
             Assert.AreEqual("feed count == 1", ObservedResults.LastSetFeedHeading);
-            Assert.AreEqual(1, ObservedResults.LastSetFeedItems.Count);
-            Assert.AreEqual("folder1", ObservedResults.LastSetFeedItems[0].PodcastFeed.Folder);
+            Assert.AreEqual(1, ObservedResults.LastSetFeedItems?.Count);
+            Assert.AreEqual("folder1", ObservedResults.LastSetFeedItems?[0].PodcastFeed.Folder);
         }
 
         [Test]

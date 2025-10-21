@@ -32,12 +32,5 @@ namespace PodcastUtilities.AndroidLogic.Exceptions
         public NonFatalMessageException(string message, Exception innerException)
             : base(message, innerException)
         { }
-
-        /// <summary>
-        /// a NonFatalMessageException
-        /// </summary>
-        protected NonFatalMessageException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
     }
 }

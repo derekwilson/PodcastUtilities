@@ -19,7 +19,6 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         static readonly string READ_PERMISSIONS_TO_REQUEST = Manifest.Permission.ReadExternalStorage;
         static readonly string WRITE_PERMISSIONS_TO_REQUEST = Manifest.Permission.WriteExternalStorage;
-        static readonly string POST_NOTIFICATION_TO_REQUEST = Manifest.Permission.PostNotifications;
 
         public static void RequestReadStoragePermission(Activity activity)
         {
@@ -33,24 +32,35 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         public static void RequestPostNotificationPermission(Activity activity, int code)
         {
-            RequestPermission(activity, Resource.String.post_notification_permissions_rationale, POST_NOTIFICATION_TO_REQUEST, code);
+            if (OperatingSystem.IsAndroidVersionAtLeast(33))
+            {
+                const string POST_NOTIFICATION_TO_REQUEST = Manifest.Permission.PostNotifications;
+                RequestPermission(activity, Resource.String.post_notification_permissions_rationale, POST_NOTIFICATION_TO_REQUEST, code);
+            }
         }
 
         public static void RequestManageStoragePermission(Activity activity, int code, string packageName)
         {
             // manage_storage only happened in SDK30 / R
             // before that you only need write storage
-            if (Build.VERSION.SdkInt < BuildVersionCodes.R)
+            //if (Build.VERSION.SdkInt < BuildVersionCodes.R)
+            if (OperatingSystem.IsAndroidVersionAtLeast(30))
             {
-                RequestPermission(activity, Resource.String.write_external_permissions_rationale, WRITE_PERMISSIONS_TO_REQUEST, code);
+                // we cannot use the existing permissions request mechanism - 'cuz that would just be too simple
+                RequestManageStorage(activity, Resource.String.manage_external_permissions_rationale, code, packageName);
                 return;
             }
-            // we cannot use the existing permissions request mechanism - 'cuz that would just be too simple
-            RequestManageStorage(activity, Resource.String.manage_external_permissions_rationale, code, packageName);
+            RequestPermission(activity, Resource.String.write_external_permissions_rationale, WRITE_PERMISSIONS_TO_REQUEST, code);
         }
 
         private static void RequestPermission(Activity activity, int rationaleId, string permission, int code)
         {
+            // dynamic permission requests were added in API 23 (Marshmellow)
+            if (!OperatingSystem.IsAndroidVersionAtLeast(23))
+            {
+                return;
+            }
+
             if (activity.ShouldShowRequestPermissionRationale(permission))
             {
                 // Show an explanation to the user *asynchronously* -- don't block
@@ -58,8 +68,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 // sees the explanation, try again to request the permission.
                 new MaterialAlertDialogBuilder(activity)
                         .SetTitle(Resource.String.permissions_title)
-                        .SetMessage(rationaleId)
-                        .SetPositiveButton(Resource.String.ok, delegate
+                        ?.SetMessage(rationaleId)
+                        ?.SetPositiveButton(Resource.String.ok, delegate
                         {
                             // they clicked OK - ask for the permission
                             RequestAPermission(activity, permission, code);
@@ -75,37 +85,57 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         private static void RequestAPermission(Activity activity, string permission, int code)
         {
+            // dynamic permission requests were added in API 23 (Marshmellow)
+            if (!OperatingSystem.IsAndroidVersionAtLeast(23))
+            {
+                return;
+            }
+
             string[] permissionArray = { permission };
             activity.RequestPermissions(permissionArray, code);
         }
 
         private static void RequestManageStorage(Activity activity, int rationaleId, int code, string packageName)
         {
-            // Show an explanation to the user *asynchronously* -- don't block
-            // this thread waiting for the user's response! After the user
-            // sees the explanation, try again to request the permission.
-            new MaterialAlertDialogBuilder(activity)
-                    .SetTitle(Resource.String.permissions_title)
-                    .SetMessage(rationaleId)
-                    .SetPositiveButton(Resource.String.ok, delegate
-                    {
-                        // they clicked OK - ask for the permission
-                        try
+            // storage manager only happened in SDK30 / R
+            if (OperatingSystem.IsAndroidVersionAtLeast(30))
+            {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+                new MaterialAlertDialogBuilder(activity)
+                        ?.SetTitle(Resource.String.permissions_title)
+                        ?.SetMessage(rationaleId)
+                        ?.SetPositiveButton(Resource.String.ok, delegate
                         {
-                            Intent intent = new Intent(Android.Provider.Settings.ActionManageAllFilesAccessPermission);
-                            intent.AddCategory("android.intent.category.DEFAULT");
-                            intent.SetData(Android.Net.Uri.Parse($"package:{packageName}"));
-                            activity.StartActivityForResult(intent, code);
-                        }
-                        catch (Exception)
-                        {
-                            Intent intent = new Intent();
-                            intent.SetAction(Android.Provider.Settings.ActionManageAllFilesAccessPermission);
-                            activity.StartActivityForResult(intent, code);
-                        }
-                    })
-                    .Create()
-                    .Show();
+                            // they clicked OK - ask for the permission
+                            try
+                            {
+                                if (OperatingSystem.IsAndroidVersionAtLeast(30))
+                                {
+                                    Intent intent = new Intent(Android.Provider.Settings.ActionManageAllFilesAccessPermission);
+                                    intent.AddCategory("android.intent.category.DEFAULT");
+                                    intent.SetData(Android.Net.Uri.Parse($"package:{packageName}"));
+                                    activity.StartActivityForResult(intent, code);
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                if (OperatingSystem.IsAndroidVersionAtLeast(30))
+                                {
+                                    Intent intent = new Intent();
+                                    intent.SetAction(Android.Provider.Settings.ActionManageAllFilesAccessPermission);
+                                    activity.StartActivityForResult(intent, code);
+                                }
+                                else
+                                {
+                                    throw;
+                                }
+                            }
+                        })
+                        .Create()
+                        .Show();
+            }
         }
     }
 }

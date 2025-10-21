@@ -3,6 +3,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.Widget;
 using AndroidX.RecyclerView.Widget;
+using PodcastUtilities.AndroidLogic.Utilities;
 using System;
 using System.Collections.Generic;
 
@@ -38,7 +39,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            RecyclerViewHolder vh = holder as RecyclerViewHolder;
+            RecyclerViewHolder? vh = holder as RecyclerViewHolder;
+            if (vh == null)
+            {
+                return;
+            }
             // unsubscribe if it was subscribed before
             vh.Container.Click -= Container_Click;
 
@@ -50,11 +55,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
             vh.Container.Click += Container_Click;
         }
 
-        private void Container_Click(object sender, EventArgs e)
+        private void Container_Click(object? sender, EventArgs e)
         {
             if (!ReadOnly)
             {
-                int position = Convert.ToInt32(((View)sender).Tag.ToString());
+                var senderView = sender as View;
+                if (sender == null || senderView == null)
+                {
+                    throw new InvalidOperationException("no sender");
+                }
+                int position = Convert.ToInt32(senderView.Tag?.ToString());
                 Items[position].Selected = !Items[position].Selected;
                 NotifyItemChanged(position);
                 ViewModel.SelectionChanged(position);
@@ -63,8 +73,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-            View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.list_item_purgeitem, parent, false);
-            return new RecyclerViewHolder(itemView);
+            View? itemView = LayoutInflater.From(parent.Context)?.Inflate(Resource.Layout.list_item_purgeitem, parent, false);
+            return new RecyclerViewHolder(itemView!);
         }
 
         class RecyclerViewHolder : RecyclerView.ViewHolder
@@ -75,9 +85,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
 
             public RecyclerViewHolder(View itemView) : base(itemView)
             {
-                Container = itemView.FindViewById<View>(Resource.Id.purge_row_label_container);
-                Label = itemView.FindViewById<TextView>(Resource.Id.purge_row_label);
-                CheckBox = itemView.FindViewById<AppCompatCheckBox>(Resource.Id.purge_row_check);
+                Container = ViewHelper.FindViewByIdOrThrow<View>("container", itemView, Resource.Id.purge_row_label_container);
+                Label = ViewHelper.FindViewByIdOrThrow<TextView>("label", itemView, Resource.Id.purge_row_label);
+                CheckBox = ViewHelper.FindViewByIdOrThrow<AppCompatCheckBox>("check", itemView, Resource.Id.purge_row_check);
             }
         }
     }

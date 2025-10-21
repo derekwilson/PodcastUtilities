@@ -3,6 +3,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.Widget;
 using AndroidX.RecyclerView.Widget;
+using PodcastUtilities.AndroidLogic.Utilities;
 using System;
 using System.Collections.Generic;
 
@@ -31,14 +32,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             Items = items;
         }
 
-        private DownloadRecyclerItem GetItemById(Guid id)
+        private DownloadRecyclerItem? GetItemById(Guid id)
         {
             return Items.Find(item => item.SyncItem.Id == id);
-        }
-
-        private int GetItemPositionById(Guid id)
-        {
-            return Items.IndexOf(GetItemById(id));
         }
 
         public int SetItemProgress(Guid id, int progress)
@@ -81,7 +77,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            RecyclerViewHolder vh = holder as RecyclerViewHolder;
+            RecyclerViewHolder? vh = holder as RecyclerViewHolder;
+            if (vh == null)
+            {
+                return;
+            }
             // unsubscribe if it was subscribed before
             vh.Container.Click -= Container_Click;
 
@@ -122,11 +122,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             return "";
         }
 
-        private void Container_Click(object sender, EventArgs e)
+        private void Container_Click(object? sender, EventArgs e)
         {
             if (!ReadOnly)
             {
-                int position = Convert.ToInt32(((View)sender).Tag.ToString());
+                var senderView = sender as View;
+                if (sender == null || senderView == null)
+                {
+                    throw new InvalidOperationException("no sender");
+                }
+                int position = Convert.ToInt32(senderView.Tag?.ToString());
                 if (Items[position].AllowSelection)
                 {
                     Items[position].Selected = !Items[position].Selected;
@@ -138,8 +143,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-            View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.list_item_downloaditem, parent, false);
-            return new RecyclerViewHolder(itemView);
+            View? itemView = LayoutInflater.From(parent.Context)?.Inflate(Resource.Layout.list_item_downloaditem, parent, false);
+            return new RecyclerViewHolder(itemView!);
         }
 
         class RecyclerViewHolder : RecyclerView.ViewHolder
@@ -152,11 +157,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
 
             public RecyclerViewHolder(View itemView) : base(itemView)
             {
-                Container = itemView.FindViewById<View>(Resource.Id.item_row_label_container);
-                Label = itemView.FindViewById<TextView>(Resource.Id.item_row_label);
-                SubLabel = itemView.FindViewById<TextView>(Resource.Id.item_row_sub_label);
-                Progress = itemView.FindViewById<ProgressBar>(Resource.Id.item_row_progress);
-                CheckBox = itemView.FindViewById<AppCompatCheckBox>(Resource.Id.item_row_check);
+                Container = ViewHelper.FindViewByIdOrThrow<View>("container", itemView, Resource.Id.item_row_label_container);
+                Label = ViewHelper.FindViewByIdOrThrow<TextView>("label", itemView, Resource.Id.item_row_label);
+                SubLabel = ViewHelper.FindViewByIdOrThrow<TextView>("sub label", itemView, Resource.Id.item_row_sub_label);
+                Progress = ViewHelper.FindViewByIdOrThrow<ProgressBar>("progress", itemView, Resource.Id.item_row_progress);
+                CheckBox = ViewHelper.FindViewByIdOrThrow<AppCompatCheckBox>("check box", itemView, Resource.Id.item_row_check);
             }
         }
     }

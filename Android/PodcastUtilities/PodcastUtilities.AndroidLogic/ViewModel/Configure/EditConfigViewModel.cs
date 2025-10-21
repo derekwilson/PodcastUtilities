@@ -18,18 +18,18 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
     {
         public class ObservableGroup
         {
-            public EventHandler<string> DisplayMessage;
-            public EventHandler<Tuple<string, Intent>> DisplayChooser;
-            public EventHandler<Tuple<string, string, string, string>> ResetPrompt;
-            public EventHandler<Tuple<string, string, string, string, string>> DeletePrompt;
-            public EventHandler SelectFolder;
-            public EventHandler SelectControlFile;
-            public EventHandler<string> SetCacheRoot;
-            public EventHandler<Tuple<string, List<ConfigPodcastFeedRecyclerItem>>> SetFeedItems;
-            public EventHandler<string> NavigateToFeed;
-            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptToAddFeed;
-            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters> PromptForCacheRoot;
-            public EventHandler NavigateToAddFeed;
+            public EventHandler<string>? DisplayMessage;
+            public EventHandler<Tuple<string, Intent>>? DisplayChooser;
+            public EventHandler<Tuple<string, string, string, string>>? ResetPrompt;
+            public EventHandler<Tuple<string, string, string, string, string>>? DeletePrompt;
+            public EventHandler? SelectFolder;
+            public EventHandler? SelectControlFile;
+            public EventHandler<string>? SetCacheRoot;
+            public EventHandler<Tuple<string, List<ConfigPodcastFeedRecyclerItem>>>? SetFeedItems;
+            public EventHandler<string?>? NavigateToFeed;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters>? PromptToAddFeed;
+            public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters>? PromptForCacheRoot;
+            public EventHandler? NavigateToAddFeed;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -70,7 +70,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ValueFormatter = valueFormatter;
         }
 
-        private void ConfigurationUpdated(object sender, EventArgs e)
+        private void ConfigurationUpdated(object? sender, EventArgs e)
         {
             Logger.Debug(() => $"EditConfigViewModel:ConfigurationUpdated");
             RefreshConfigDisplay();
@@ -130,9 +130,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ApplicationControlFileProvider.ConfigurationUpdated -= ConfigurationUpdated;
         }
 
-        public bool KeyEvent(KeyEvent e)
+        public bool KeyEvent(KeyEvent? e)
         {
-            Logger.Debug(() => $"EditConfigViewModel:KeyEvent = {e.Action}, {e.KeyCode}");
+            Logger.Debug(() => $"EditConfigViewModel:KeyEvent = {e?.Action}, {e?.KeyCode}");
             if (e == null || e.Action != KeyEventActions.Up)
             {
                 // lets get rid of most of the stuff we are not interested in
@@ -182,7 +182,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             Logger.Debug(() => $"EditConfigViewModel:ActionSelected = {itemId}");
             if (itemId == Resource.Id.action_edit_load_control)
             {
-                Observables.SelectControlFile?.Invoke(this, null);
+                Observables.SelectControlFile?.Invoke(this, EventArgs.Empty);
                 return true;
             }
             if (itemId == Resource.Id.action_edit_share_control)
@@ -242,7 +242,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.edit_reset));
         }
 
-        public void FolderSelected(DocumentFile file)
+        public void FolderSelected(DocumentFile? file)
         {
             var folder = FileSystemHelper.GetRealPathFromDocumentTreeFile(file);
             SetCacheRoot(folder);
@@ -256,8 +256,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ApplicationControlFileProvider.SaveCurrentControlFile();
         }
 
-        public void LoadContolFile(Android.Net.Uri data)
+        public void LoadContolFile(Android.Net.Uri? data)
         {
+            if (data == null)
+            {
+                return;
+            }
             var controlFile = OpenControlFile(data);
             if (controlFile != null)
             {
@@ -267,7 +271,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             }
         }
 
-        private IReadWriteControlFile OpenControlFile(Android.Net.Uri uri)
+        private IReadWriteControlFile? OpenControlFile(Android.Net.Uri uri)
         {
             try
             {
@@ -291,12 +295,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             };
             // add private folders (for SD card its all we can do)
             int index = 0;
-            Java.IO.File[] files = FileSystemHelper.GetApplicationExternalFilesDirs();
-            foreach (Java.IO.File file in files)
+            Java.IO.File[]? files = FileSystemHelper.GetApplicationExternalFilesDirs();
+            if (files != null)
             {
-                Logger.Debug(() => $"ExternalFile = {file.AbsolutePath}");
-                options.Add(new SelectableString(OPTION_ID_PRIVATE_ROOT + index, file.AbsolutePath));
-                index++;
+                foreach (Java.IO.File file in files)
+                {
+                    Logger.Debug(() => $"ExternalFile = {file.AbsolutePath}");
+                    options.Add(new SelectableString(OPTION_ID_PRIVATE_ROOT + index, file.AbsolutePath));
+                    index++;
+                }
             }
             options.Add(new SelectableString(OPTION_ID_SELECT_FOLDER, ResourceProvider.GetString(Resource.String.cache_root_option_select)));
             options.Add(new SelectableString(OPTION_ID_CUSTOM, ResourceProvider.GetString(Resource.String.cache_root_option_custom)));
@@ -309,7 +316,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             switch (item.Id)
             {
                 case OPTION_ID_SELECT_FOLDER:
-                    Observables.SelectFolder?.Invoke(this, null);
+                    Observables.SelectFolder?.Invoke(this, EventArgs.Empty);
                     break;
                 case OPTION_ID_CUSTOM:
                     var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
@@ -383,8 +390,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             );
         }
 
-        private IPodcastInfo GetPodcastByPosition(string position)
+        private IPodcastInfo? GetPodcastByPosition(string? position)
         {
+            if (position == null)
+            {
+                return null;
+            }
             // find the podcast
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             int index = 0;
@@ -400,12 +411,16 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             return null;
         }
 
-        public void DeleteConfirmed(string data)
+        public void DeleteConfirmed(string? data)
         {
+            if (data == null)
+            {
+                return;
+            }
             // find the podcast
             Logger.Debug(() => $"EditConfigViewModel:FeedItemOptionSelected {data}");
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-            IPodcastInfo podcastToDelete = GetPodcastByPosition(data);
+            IPodcastInfo? podcastToDelete = GetPodcastByPosition(data);
             if (podcastToDelete != null)
             {
                 Logger.Debug(() => $"EditConfigViewModel:FeedItemOptionSelected deleting {podcastToDelete.Folder}");
@@ -417,10 +432,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
 
         public void AddPodcastSelected()
         {
-            Observables.NavigateToAddFeed?.Invoke(this, null);
+            Observables.NavigateToAddFeed?.Invoke(this, EventArgs.Empty);
         }
 
-        public void AddFeedConfirmed(string value, string data)
+        public void AddFeedConfirmed(string value, string? data)
         {
             // this will happen if a podcast element is created without a feed element - for example after importing an XML control file
             Logger.Debug(() => $"EditConfigViewModel:Add Feed = {value}");
@@ -436,7 +451,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             }
 
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
-            IPodcastInfo podcastToEdit = GetPodcastByPosition(data);
+            IPodcastInfo? podcastToEdit = GetPodcastByPosition(data);
             if (podcastToEdit != null)
             {
                 if (podcastToEdit.Feed == null)

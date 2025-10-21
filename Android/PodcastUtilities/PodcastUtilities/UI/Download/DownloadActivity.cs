@@ -12,6 +12,7 @@ using Google.Android.Material.FloatingActionButton;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
+using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.UI.Messages;
@@ -28,7 +29,7 @@ namespace PodcastUtilities.UI.Download
         private const string ACTIVITY_PARAM_TEST = "DownloadActivity:Param:Test";
         private const string ACTIVITY_PARAM_HUD = "DownloadActivity:Param:Hud";
 
-        public static Intent CreateIntent(Context context, string folder)
+        public static Intent CreateIntent(Context context, string? folder)
         {
             Intent intent = new Intent(context, typeof(DownloadActivity));
             if (!string.IsNullOrEmpty(folder))
@@ -38,7 +39,7 @@ namespace PodcastUtilities.UI.Download
             return intent;
         }
 
-        public static Intent CreateIntentToTestFeed(Context context, string folder)
+        public static Intent? CreateIntentToTestFeed(Context context, string folder)
         {
             Intent intent = new Intent(context, typeof(DownloadActivity));
             if (string.IsNullOrEmpty(folder))
@@ -59,25 +60,25 @@ namespace PodcastUtilities.UI.Download
         private const string KILL_PROMPT_TAG = "kill_prompt_tag";
         private const string NETWORK_PROMPT_TAG = "network_prompt_tag";
 
-        private AndroidApplication AndroidApplication;
-        private DownloadViewModel ViewModel;
+        private AndroidApplication AndroidApplication = null!;
+        private DownloadViewModel ViewModel = null!;
 
-        private IPermissionChecker PermissionChecker;
-        private DownloadRecyclerItemAdapter Adapter;
+        private IPermissionChecker PermissionChecker = null!;
+        private DownloadRecyclerItemAdapter Adapter = null!;
 
-        private TextView ErrorMessage;
-        private EmptyRecyclerView RvDownloads;
-        private LinearLayout NoDataView;
-        private TextView NoDataText;
-        private ProgressSpinnerView ProgressSpinner;
-        private FloatingActionButton DownloadButton;
-        private FloatingActionButton CancelButton;
-        private OkCancelDialogFragment KillPromptDialogFragment;
-        private OkCancelDialogFragment NetworkPromptDialogFragment;
+        private TextView ErrorMessage = null!;
+        private EmptyRecyclerView RvDownloads = null!;
+        private LinearLayout NoDataView = null!;
+        private TextView NoDataText = null!;
+        private ProgressSpinnerView ProgressSpinner = null!;
+        private FloatingActionButton DownloadButton = null!;
+        private FloatingActionButton CancelButton = null!;
+        private OkCancelDialogFragment KillPromptDialogFragment = null!;
+        private OkCancelDialogFragment NetworkPromptDialogFragment = null!;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
-            AndroidApplication = Application as AndroidApplication;
+            AndroidApplication = (AndroidApplication)Application!;
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate");
             PermissionChecker = new PermissionChecker();
 
@@ -86,20 +87,20 @@ namespace PodcastUtilities.UI.Download
             // Set our view from the layout resource
             SetContentView(Resource.Layout.activity_download);
 
-            ErrorMessage = FindViewById<TextView>(Resource.Id.txtErrorMessage);
-            RvDownloads = FindViewById<EmptyRecyclerView>(Resource.Id.rvDownloads);
-            NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoData);
-            NoDataText = FindViewById<TextView>(Resource.Id.txtNoData);
-            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
-            DownloadButton = FindViewById<FloatingActionButton>(Resource.Id.fab_download);
-            CancelButton = FindViewById<FloatingActionButton>(Resource.Id.fab_cancel);
+            ErrorMessage = FindViewById<TextView>(Resource.Id.txtErrorMessage)!;
+            RvDownloads = FindViewById<EmptyRecyclerView>(Resource.Id.rvDownloads)!;
+            NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoData)!;
+            NoDataText = FindViewById<TextView>(Resource.Id.txtNoData)!;
+            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar)!;
+            DownloadButton = FindViewById<FloatingActionButton>(Resource.Id.fab_download)!;
+            CancelButton = FindViewById<FloatingActionButton>(Resource.Id.fab_cancel)!;
 
             RvDownloads.SetLayoutManager(new LinearLayoutManager(this));
             RvDownloads.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
             RvDownloads.SetEmptyView(NoDataView);
 
-            var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
-            ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(DownloadViewModel))) as DownloadViewModel;
+            var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
+            ViewModel = (DownloadViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(DownloadViewModel)));
 
             Adapter = new DownloadRecyclerItemAdapter(this, ViewModel);
             RvDownloads.SetAdapter(Adapter);
@@ -116,9 +117,9 @@ namespace PodcastUtilities.UI.Download
             CancelButton.Click += (sender, e) => ViewModel.RequestKillDownloads();
             ErrorMessage.Click += (sender, e) => ViewModel.ActionSelected(Resource.Id.action_display_logs);
 
-            KillPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(KILL_PROMPT_TAG) as OkCancelDialogFragment;
+            KillPromptDialogFragment = (OkCancelDialogFragment)SupportFragmentManager.FindFragmentByTag(KILL_PROMPT_TAG)!;
             SetupFragmentObservers(KillPromptDialogFragment);
-            NetworkPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(NETWORK_PROMPT_TAG) as OkCancelDialogFragment;
+            NetworkPromptDialogFragment = (OkCancelDialogFragment)SupportFragmentManager.FindFragmentByTag(NETWORK_PROMPT_TAG)!;
             SetupFragmentObservers(NetworkPromptDialogFragment);
 
             RequestPostNotificationPermission();
@@ -126,7 +127,7 @@ namespace PodcastUtilities.UI.Download
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnCreate - end");
         }
 
-        protected override void OnNewIntent(Intent intent)
+        protected override void OnNewIntent(Intent? intent)
         {
             // we are SingleTask launchmode so if a new activity is needed then this gets called
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:OnNewIntent");
@@ -175,13 +176,15 @@ namespace PodcastUtilities.UI.Download
                     }
                     break;
                 default:
-                    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-                    base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    if (OperatingSystem.IsAndroidVersionAtLeast(23))
+                    {
+                        base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    }
                     break;
             }
         }
 
-        public override bool DispatchKeyEvent(KeyEvent e)
+        public override bool DispatchKeyEvent(KeyEvent? e)
         {
             if (BackKeyMapper.HandleKeyEvent(this, e))
             {
@@ -191,21 +194,21 @@ namespace PodcastUtilities.UI.Download
             return base.DispatchKeyEvent(e);
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
+        public override bool OnCreateOptionsMenu(IMenu? menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_download, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
-        public override bool OnPrepareOptionsMenu(IMenu menu)
+        public override bool OnPrepareOptionsMenu(IMenu? menu)
         {
             EnableMenuItemIfAvailable(menu, Resource.Id.action_display_logs);
             return true;
         }
 
-        private void EnableMenuItemIfAvailable(IMenu menu, int itemId)
+        private void EnableMenuItemIfAvailable(IMenu? menu, int itemId)
         {
-            menu.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
+            menu?.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -279,9 +282,9 @@ namespace PodcastUtilities.UI.Download
             }
         }
 
-        private void CancelSelected(object sender, Tuple<string, string> parameters)
+        private void CancelSelected(object? sender, Tuple<string?, string?> parameters)
         {
-            (string tag, string data) = parameters;
+            (string? tag, string? data) = parameters;
             AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
             switch (tag)
             {
@@ -294,9 +297,9 @@ namespace PodcastUtilities.UI.Download
             }
         }
 
-        private void OkSelected(object sender, Tuple<string, string> parameters)
+        private void OkSelected(object? sender, Tuple<string?, string?> parameters)
         {
-            (string tag, string data) = parameters;
+            (string? tag, string? data) = parameters;
             AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
             RunOnUiThread(() =>
             {
@@ -314,7 +317,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void DisplayErrorMessage(object sender, string message)
+        private void DisplayErrorMessage(object? sender, string? message)
         {
             RunOnUiThread(() =>
             {
@@ -326,7 +329,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void HideErrorMessage(object sender, EventArgs e)
+        private void HideErrorMessage(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -334,7 +337,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void SetSyncItems(object sender, List<DownloadRecyclerItem> items)
+        private void SetSyncItems(object? sender, List<DownloadRecyclerItem> items)
         {
             RunOnUiThread(() =>
             {
@@ -343,7 +346,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void EndProgress(object sender, EventArgs e)
+        private void EndProgress(object? sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:EndProgress");
             RunOnUiThread(() =>
@@ -354,7 +357,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void UpdateProgress(object sender, int position)
+        private void UpdateProgress(object? sender, int position)
         {
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:UpdateProgress {position}");
             RunOnUiThread(() =>
@@ -363,7 +366,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void StartProgress(object sender, int max)
+        private void StartProgress(object? sender, int max)
         {
             AndroidApplication.Logger.Debug(() => $"DownloadActivity:StartProgress {max}");
             RunOnUiThread(() =>
@@ -373,7 +376,7 @@ namespace PodcastUtilities.UI.Download
                 InvalidateOptionsMenu();
             });
         }
-        private void TestMode(object sender, bool testMode)
+        private void TestMode(object? sender, bool testMode)
         {
             RunOnUiThread(() =>
             {
@@ -383,7 +386,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void SetTitle(object sender, string title)
+        private void SetTitle(object? sender, string title)
         {
             RunOnUiThread(() =>
             {
@@ -391,7 +394,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void UpdateItemProgress(object sender, Tuple<ISyncItem, int> updateItem)
+        private void UpdateItemProgress(object? sender, Tuple<ISyncItem, int> updateItem)
         {
             RunOnUiThread(() =>
             {
@@ -401,7 +404,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void UpdateItemStatus(object sender, Tuple<ISyncItem, Status, string> updateItem)
+        private void UpdateItemStatus(object? sender, Tuple<ISyncItem, Status, string> updateItem)
         {
             RunOnUiThread(() =>
             {
@@ -411,15 +414,15 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void ToastMessage(object sender, string message)
+        private void ToastMessage(object? sender, string message)
         {
             RunOnUiThread(() =>
             {
-                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+                Toast.MakeText(Application.Context, message, ToastLength.Short)?.Show();
             });
         }
 
-        private void StartDownloading(object sender, EventArgs e)
+        private void StartDownloading(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -430,7 +433,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void EndDownloading(object sender, string message)
+        private void EndDownloading(object? sender, string message)
         {
             RunOnUiThread(() =>
             {
@@ -439,11 +442,11 @@ namespace PodcastUtilities.UI.Download
                 DownloadButton.Visibility = ViewStates.Visible;
                 CancelButton.Visibility = ViewStates.Gone;
                 KillPromptDialogFragment?.Dismiss();
-                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+                Toast.MakeText(Application.Context, message, ToastLength.Short)?.Show();
             });
         }
 
-        private void KillPrompt(object sender, Tuple<string, string, string, string> parameters)
+        private void KillPrompt(object? sender, Tuple<string, string, string, string> parameters)
         {
             RunOnUiThread(() =>
             {
@@ -454,7 +457,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void CellularPrompt(object sender, Tuple<string, string, string, string> parameters)
+        private void CellularPrompt(object? sender, Tuple<string, string, string, string> parameters)
         {
             RunOnUiThread(() =>
             {
@@ -465,7 +468,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void NavigateToDisplayLogs(object sender, EventArgs e)
+        private void NavigateToDisplayLogs(object? sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"DownloadActivity: NavigateToDisplayLogs");
             RunOnUiThread(() =>
@@ -475,7 +478,7 @@ namespace PodcastUtilities.UI.Download
             });
         }
 
-        private void SetEmptyText(object sender, string message)
+        private void SetEmptyText(object? sender, string message)
         {
             RunOnUiThread(() =>
             {

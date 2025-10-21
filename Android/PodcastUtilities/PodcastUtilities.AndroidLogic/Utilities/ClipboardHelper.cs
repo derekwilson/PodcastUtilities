@@ -1,15 +1,11 @@
 ﻿using Android.Content;
-using Android.Content.Res.Loader;
 using PodcastUtilities.AndroidLogic.Logging;
-using System;
-using System.Drawing.Drawing2D;
-using Xamarin.Essentials;
 
 namespace PodcastUtilities.AndroidLogic.Utilities
 {
     public interface IClipboardHelper
     {
-        string GetUrlIfAvailable();
+        string? GetUrlIfAvailable();
     }
 
     public class ClipboardHelper : IClipboardHelper
@@ -23,7 +19,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             Logger = logger;
         }
 
-        public string GetUrlIfAvailable()
+        public string? GetUrlIfAvailable()
         {
             if (!ClipboardManager.HasPrimaryClip)
             {
@@ -41,8 +37,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 Logger.Debug(() => $"ClipboardHelper:GetUrlIfAvailable - no plain text");
                 return null;
             }
-            var item = ClipboardManager.PrimaryClip.GetItemAt(0);
-            var clipText = item.Text;
+            var item = ClipboardManager.PrimaryClip?.GetItemAt(0);
+            var clipText = item?.Text;
             Logger.Debug(() => $"ClipboardHelper:GetUrlIfAvailable - {clipText}");
             if (string.IsNullOrWhiteSpace(clipText))
             {

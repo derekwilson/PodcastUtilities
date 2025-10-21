@@ -1,0 +1,240 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/edit_feed_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/feed_folder_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer"
+				>
+
+				<TextView
+					android:id="@+id/feed_folder_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_folder"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/feed_folder_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/feed_url_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer"
+				>
+
+				<TextView
+					android:id="@+id/feed_url_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_url"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/feed_url_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/feed_download_strategy_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer"
+				>
+
+				<TextView
+					android:id="@+id/feed_download_strategy_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_download_strategy"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/feed_download_strategy_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/feed_naming_style_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer"
+				>
+
+				<TextView
+					android:id="@+id/feed_naming_style_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_naming_style"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/feed_naming_style_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/feed_max_days_old_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer"
+				>
+
+				<TextView
+					android:id="@+id/feed_max_days_old_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_max_days_old"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/feed_max_days_old_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/feed_delete_download_days_old_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer"
+				>
+
+				<TextView
+					android:id="@+id/feed_delete_download_days_old_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_delete_days_old"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/feed_delete_download_days_old_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<View style="@style/Divider"/>
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/feed_max_download_items_row_label_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				style="@style/ConfigRowContainer"
+				>
+
+				<TextView
+					android:id="@+id/feed_max_download_items_row_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/row_title_max_download_items"
+					style="@style/ItemListTitle"
+					/>
+
+				<TextView
+					android:id="@+id/feed_max_download_items_row_sub_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/placeholder"
+					style="@style/ItemListSubTitle2"
+					/>
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_config_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toStartOf="@id/fab_config_remove_podcast"
+		style="@style/fabIconButton"
+        app:tint="@color/ic_icon_selector"
+		android:contentDescription="@string/button_text_config_share_podcast"
+        app:srcCompat="@drawable/ic_share" />
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_config_remove_podcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+		style="@style/fabIconButton"
+        app:tint="@color/ic_icon_selector"
+		android:contentDescription="@string/button_text_config_delete_podcast"
+        app:srcCompat="@drawable/ic_delete" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

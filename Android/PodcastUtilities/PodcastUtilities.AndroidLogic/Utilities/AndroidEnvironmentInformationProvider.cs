@@ -41,7 +41,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 string id = "UNKNOWN";
                 try
                 {
-                    id = Android.Provider.Settings.Secure.GetString(applicationContext.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
+                    id = Android.Provider.Settings.Secure.GetString(applicationContext.ContentResolver, Android.Provider.Settings.Secure.AndroidId)
+                        ?? "UNKNOWN";
                 }
                 catch (Exception ex)
                 {
@@ -59,7 +60,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 float scaling = 0.0F;
                 try
                 {
-                    scaling = applicationContext.Resources.Configuration.FontScale;
+                    scaling = applicationContext.Resources?.Configuration?.FontScale ?? 0.0F;
                 }
                 catch (Exception ex)
                 {
@@ -71,36 +72,42 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         public bool IsKindleFire()
         {
-            return Android.OS.Build.Manufacturer.Equals("Amazon", StringComparison.InvariantCultureIgnoreCase)
-                    && (Android.OS.Build.Model.Equals("Kindle Fire", StringComparison.InvariantCultureIgnoreCase)
-                        || Android.OS.Build.Model.StartsWith("KF", StringComparison.InvariantCultureIgnoreCase));
+            var manufacturer = Android.OS.Build.Manufacturer;
+            bool isAmazon = manufacturer?.Equals("Amazon", StringComparison.InvariantCultureIgnoreCase) ?? false;
+            var model = Android.OS.Build.Model;
+            bool isKindle = model?.Equals("Kindle Fire", StringComparison.InvariantCultureIgnoreCase) ?? false;
+            bool isKf = model?.StartsWith("KF", StringComparison.InvariantCultureIgnoreCase) ?? false;
+            return isAmazon && (isKindle || isKf);
         }
 
         public bool IsWsa()
         {
-            return Android.OS.Build.Manufacturer.Equals("Microsoft Corporation", StringComparison.InvariantCultureIgnoreCase)
-                    && (Android.OS.Build.Model.Equals("Subsystem for Android(TM)", StringComparison.InvariantCultureIgnoreCase));
+            var manufacturer = Android.OS.Build.Manufacturer;
+            bool isMicrosoft = manufacturer?.Equals("Microsoft Corporation", StringComparison.InvariantCultureIgnoreCase) ?? false;
+            var model = Android.OS.Build.Model;
+            bool isWsa = model?.Equals("Subsystem for Android(TM)", StringComparison.InvariantCultureIgnoreCase) ?? false;
+            return isMicrosoft && isWsa;
         }
 
         string IAndroidEnvironmentInformationProvider.Manufacturer
         {
             get
             {
-                return Android.OS.Build.Manufacturer;
+                return Android.OS.Build.Manufacturer ?? "UNKNOWN";
             }
         }
         string IAndroidEnvironmentInformationProvider.Brand
         {
             get
             {
-                return Android.OS.Build.Brand;
+                return Android.OS.Build.Brand ?? "UNKNOWN";
             }
         }
         string IAndroidEnvironmentInformationProvider.Model
         {
             get
             {
-                return Android.OS.Build.Model;
+                return Android.OS.Build.Model ?? "UNKNOWN";
             }
         }
 
@@ -108,7 +115,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         {
             get
             {
-                return Android.OS.Build.VERSION.Release;
+                return Android.OS.Build.VERSION.Release ?? "UNKNOWN";
             }
         }
 

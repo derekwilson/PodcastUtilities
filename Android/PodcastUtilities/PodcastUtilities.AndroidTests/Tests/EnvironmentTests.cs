@@ -25,8 +25,6 @@ namespace PodcastUtilities.AndroidTests.Tests
         [Test]
         public void Assertion_Succeeds()
         {
-            var writeTime = File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location);
-            Console.WriteLine($"Write Time (Local): {writeTime.ToLocalTime().ToString()}");
             List<string> environment = WindowsEnvironmentInformationProvider.GetEnvironmentRuntimeDisplayInformation();
             foreach (var line in environment)
             {

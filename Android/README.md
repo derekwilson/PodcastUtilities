@@ -2,8 +2,10 @@
 
 This folder contains the code for the Android version of the project.
 
-- `PodcastUtilities` is the code for the app from the app store
-- `PodcastUtilitiesPOC` is the proof of concept code, it is a place for experiments, it has never been released to the app store.
+- `PodcastUtilities` is the code for the app from app stores, obtainium etc
+- `PodcastUtilities.Xamarin` is the code for the app from app stores, it uses `Xamarin/Mono` which is obsolete
+- `PodcastUtilitiesPOC` is the proof of concept code using `Xamarin/Mono`, it is a place for experiments, it has never been released to the app store.
+- `PodcastUtilitiesPOC.Net9` is the proof of concept code, it is a place for experiments, it has never been released to the app store. This is a port of `PodcastUtilitiesPOC` from `Xamarin/Mono` to `.NET 9`
 - `Reference` is where the projects pick up any direct DLL assembly references. For example `PodcastUtilities.Common.dll`. We reference an assembly to allow for different versions of the build tools for the common code and the android code.
 - `Support` holds the prebuilt release archive as well as assets for play store releases
 
@@ -29,9 +31,28 @@ See
 https://stackoverflow.com/questions/27798862/is-it-possible-to-specify-package-name-dynamically-during-build
 
 
-### PodcastUtilities
+### PodcastUtilitiesPOC.Net9
 
 Is built using VS2022
+
+#### Install VS2022
+
+And also install Android workloads
+
+### PodcastUtilities.Xamarin
+
+Is built using VS2022, targets Mono on Android
+
+#### Install VS2022
+
+And also install Xamarin Android
+
+Powershell is configured by the project scripts, there is no manual process
+
+
+### PodcastUtilities
+
+Is built using VS2022, targets .NET 9 on Android
 
 #### Install VS2022
 
@@ -87,7 +108,7 @@ The `.debug` suffix is automatically applied with scripts as we build the app, t
 
 If you intend to deploy the build using Google Play Store you need to build an AAB. The AAB is signed with the key from `LocalOnly`, this will be used as an upload key on the play store the then Google will resign the app as it is downloaded.
 
-1. In VS Select Project Properties for `PodcastUtilities` -> Android Manifest enter the correct VersionName and VersionNumber
+1. In VS open `PodcastUtilities.csproj` enter the correct `ApplicationVersion` and `ApplicationDisplayVersion`
 1. Open a developer command prompt for VS2022
 1. Goto `Android\PodcastUtilities`
 1. Run `BuildReleaseAAB.bat`
@@ -104,7 +125,7 @@ If you are intending to deploy the app using Amazon App Store or by having the u
 
 Note: Sometimes when the `BuildReleaseAPK.bat` ,is first run it will actually produce an APK named for the `debug` configuration like this `com.andrewandderek.podcastutilities.sideload.debug-Signed.apk`. Not sure if this is an artefact of having the IDE running at the same time but running it for a second time seems to fix the issue. 
 
-1. In VS open `PodcastUtilities\Properties\AndroidManifest.xml` enter the correct `VersionName` and `VersionNumber`
+1. In VS open `PodcastUtilities.csproj` enter the correct `ApplicationVersion` and `ApplicationDisplayVersion`
 1. Open a developer command prompt for VS2022
 1. Goto `Android\PodcastUtilities`
 1. Run `BuildReleaseAPK.bat`

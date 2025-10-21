@@ -34,47 +34,46 @@ namespace PodcastUtilities.UI.Configure
         private const string ADD_FEED_PROMPT_TAG = "add_feed_prompt_tag";
         private const string EDIT_CACHE_ROOT_PROMPT_TAG = "edit_cache_root_prompt_tag";
 
-        private AndroidApplication AndroidApplication;
-        private EditConfigViewModel ViewModel;
+        private AndroidApplication AndroidApplication = null!;
+        private EditConfigViewModel ViewModel = null!;
 
-        private NestedScrollView Container = null;
-        private LinearLayoutCompat CacheRootRowContainer = null;
-        private TextView CacheRootSubLabel = null;
-        private LinearLayoutCompat GlobalValuesRowContainer = null;
-        private LinearLayoutCompat FeedDefaultsRowContainer = null;
-        private TextView FeedsTitle = null;
-        private RecyclerView RvFeedsList = null;
-        private ConfigPodcastFeedRecyclerItemAdapter FeedAdapter = null;
-        private FloatingActionButton AddButton;
+        private NestedScrollView Container = null!;
+        private LinearLayoutCompat CacheRootRowContainer = null!;
+        private TextView CacheRootSubLabel = null!;
+        private LinearLayoutCompat GlobalValuesRowContainer = null!;
+        private LinearLayoutCompat FeedDefaultsRowContainer = null!;
+        private TextView FeedsTitle = null!;
+        private RecyclerView RvFeedsList = null!;
+        private ConfigPodcastFeedRecyclerItemAdapter FeedAdapter = null!;
+        private FloatingActionButton AddButton = null!;
 
-        private OkCancelDialogFragment ResetPromptDialogFragment;
-        private OkCancelDialogFragment DeletePodcastPromptDialogFragment;
-        private ValuePromptDialogFragment AddFeedPromptDialogFragment;
-        private ValuePromptDialogFragment CacheRootPromptDialogFragment;
+        private OkCancelDialogFragment ResetPromptDialogFragment = null!;
+        private OkCancelDialogFragment DeletePodcastPromptDialogFragment = null!;
+        private ValuePromptDialogFragment AddFeedPromptDialogFragment = null!;
+        private ValuePromptDialogFragment CacheRootPromptDialogFragment = null!;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
-            AndroidApplication = Application as AndroidApplication;
+            AndroidApplication = (AndroidApplication)Application!;
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnCreate");
 
             base.OnCreate(savedInstanceState);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_edit_config);
 
-            Container = FindViewById<NestedScrollView>(Resource.Id.edit_container);
-            CacheRootSubLabel = FindViewById<TextView>(Resource.Id.cache_root_row_sub_label);
-            CacheRootRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.cache_root_row_label_container);
-            GlobalValuesRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_values_row_label_container);
-            FeedDefaultsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_defaults_row_label_container);
-            FeedsTitle = FindViewById<TextView>(Resource.Id.config_feed_list_label);
-            RvFeedsList = FindViewById<RecyclerView>(Resource.Id.config_feed_list);
-            AddButton = FindViewById<FloatingActionButton>(Resource.Id.fab_config_add);
+            Container = FindViewById<NestedScrollView>(Resource.Id.edit_container)!;
+            CacheRootSubLabel = FindViewById<TextView>(Resource.Id.cache_root_row_sub_label)!;
+            CacheRootRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.cache_root_row_label_container)!;
+            GlobalValuesRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_values_row_label_container)!;
+            FeedDefaultsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.global_defaults_row_label_container)!;
+            FeedsTitle = FindViewById<TextView>(Resource.Id.config_feed_list_label)!;
+            RvFeedsList = FindViewById<RecyclerView>(Resource.Id.config_feed_list)!;
+            AddButton = FindViewById<FloatingActionButton>(Resource.Id.fab_config_add)!;
 
             RvFeedsList.SetLayoutManager(new LinearLayoutManager(this));
             RvFeedsList.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
 
-            var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
-            ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(EditConfigViewModel))) as EditConfigViewModel;
+            var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
+            ViewModel = (EditConfigViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(EditConfigViewModel)));
 
             FeedAdapter = new ConfigPodcastFeedRecyclerItemAdapter(AndroidApplication.Logger, ViewModel);
             RvFeedsList.SetAdapter(FeedAdapter);
@@ -89,13 +88,13 @@ namespace PodcastUtilities.UI.Configure
             FeedDefaultsRowContainer.Click += (sender, e) => DoFeedDefaultsOptions();
             AddButton.Click += (sender, e) => ViewModel.AddPodcastSelected();
 
-            ResetPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(RESET_PROMPT_TAG) as OkCancelDialogFragment;
+            ResetPromptDialogFragment = (OkCancelDialogFragment)SupportFragmentManager.FindFragmentByTag(RESET_PROMPT_TAG)!;
             SetupFragmentObservers(ResetPromptDialogFragment);
-            DeletePodcastPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(DELETE_PROMPT_TAG) as OkCancelDialogFragment;
+            DeletePodcastPromptDialogFragment = (OkCancelDialogFragment)SupportFragmentManager.FindFragmentByTag(DELETE_PROMPT_TAG)!;
             SetupFragmentObservers(DeletePodcastPromptDialogFragment);
-            AddFeedPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(ADD_FEED_PROMPT_TAG) as ValuePromptDialogFragment;
+            AddFeedPromptDialogFragment = (ValuePromptDialogFragment)SupportFragmentManager.FindFragmentByTag(ADD_FEED_PROMPT_TAG)!;
             SetupValueFragmentObservers(AddFeedPromptDialogFragment);
-            CacheRootPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(EDIT_CACHE_ROOT_PROMPT_TAG) as ValuePromptDialogFragment;
+            CacheRootPromptDialogFragment = (ValuePromptDialogFragment)SupportFragmentManager.FindFragmentByTag(EDIT_CACHE_ROOT_PROMPT_TAG)!;
             SetupValueFragmentObservers(CacheRootPromptDialogFragment);
 
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnCreate - end");
@@ -115,11 +114,13 @@ namespace PodcastUtilities.UI.Configure
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (OperatingSystem.IsAndroidVersionAtLeast(23))
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
         }
 
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent? data)
         {
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult {requestCode}, {resultCode}");
             base.OnActivityResult(requestCode, resultCode, data);
@@ -128,27 +129,27 @@ namespace PodcastUtilities.UI.Configure
                 return;
             }
 
-            AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult {data.Data.ToString()}");
+            AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult {data?.Data?.ToString()}");
             switch (requestCode)
             {
                 case REQUEST_SELECT_FILE:
-                    ViewModel?.LoadContolFile(data.Data);
+                    ViewModel?.LoadContolFile(data?.Data);
                     break;
                 case REQUEST_SELECT_FOLDER:
-                    Android.Net.Uri uri = data.Data;
+                    Android.Net.Uri uri = data?.Data!;
 
                     //AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult treeUri {uri}");
                     //GrantUriPermission(AndroidApplication.PackageName, uri, ActivityFlags.GrantReadUriPermission | ActivityFlags.GrantWriteUriPermission);
                     //AndroidApplication.ContentResolver.TakePersistableUriPermission(uri, ActivityFlags.GrantReadUriPermission | ActivityFlags.GrantWriteUriPermission);
 
-                    DocumentFile folder = DocumentFile.FromTreeUri(ApplicationContext, uri);
-                    AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult folder {folder.Uri.Path}");
+                    DocumentFile? folder = DocumentFile.FromTreeUri(ApplicationContext!, uri);
+                    AndroidApplication.Logger.Debug(() => $"EditConfigActivity:OnActivityResult folder {folder?.Uri.Path}");
                     ViewModel.FolderSelected(folder);
                     break;
             }
         }
 
-        public override bool DispatchKeyEvent(KeyEvent e)
+        public override bool DispatchKeyEvent(KeyEvent? e)
         {
             if (BackKeyMapper.HandleKeyEvent(this, e))
             {
@@ -163,15 +164,18 @@ namespace PodcastUtilities.UI.Configure
             return base.DispatchKeyEvent(e);
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
+        public override bool OnCreateOptionsMenu(IMenu? menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_edit_config, menu);
             // we want a separator on the menu
-            MenuCompat.SetGroupDividerEnabled(menu, true);
+            if (menu != null)
+            {
+                MenuCompat.SetGroupDividerEnabled(menu, true);
+            }
             return base.OnCreateOptionsMenu(menu);
         }
 
-        public override bool OnPrepareOptionsMenu(IMenu menu)
+        public override bool OnPrepareOptionsMenu(IMenu? menu)
         {
             EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_load_control);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_share_control);
@@ -179,9 +183,9 @@ namespace PodcastUtilities.UI.Configure
             return true;
         }
 
-        private void EnableMenuItemIfAvailable(IMenu menu, int itemId)
+        private void EnableMenuItemIfAvailable(IMenu? menu, int itemId)
         {
-            menu.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
+            menu?.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -218,7 +222,7 @@ namespace PodcastUtilities.UI.Configure
             sheet.Show(SupportFragmentManager, BOTTOMSHEET_CACHE_OPTIONS_TAG);
         }
 
-        public void BottomsheetItemSelected(string tag, int position, SelectableString item)
+        public void BottomsheetItemSelected(string? tag, int position, SelectableString item)
         {
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:BottomsheetItemSelected {tag}, {position}");
             switch (tag)
@@ -261,7 +265,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PromptForCacheRoot -= PromptForCacheRoot;
         }
 
-        private void SelectControlFile(object sender, EventArgs e)
+        private void SelectControlFile(object? sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity: SelectControlFile");
             // ACTION_OPEN_DOCUMENT is the intent to choose a file via the system's file browser.
@@ -283,14 +287,14 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void SelectFolder(object sender, EventArgs e)
+        private void SelectFolder(object? sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity:SelectFolder");
             Intent intent = new Intent(Intent.ActionOpenDocumentTree);
             StartActivityForResult(intent, REQUEST_SELECT_FOLDER);
         }
 
-        private void ResetPrompt(object sender, Tuple<string, string, string, string> parameters)
+        private void ResetPrompt(object? sender, Tuple<string, string, string, string> parameters)
         {
             RunOnUiThread(() =>
             {
@@ -301,7 +305,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void DeletePrompt(object sender, Tuple<string, string, string, string, string> parameters)
+        private void DeletePrompt(object? sender, Tuple<string, string, string, string, string> parameters)
         {
             RunOnUiThread(() =>
             {
@@ -312,7 +316,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PromptToAddFeed(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        private void PromptToAddFeed(object? sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
             {
@@ -322,7 +326,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PromptForCacheRoot(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        private void PromptForCacheRoot(object? sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
             {
@@ -333,22 +337,22 @@ namespace PodcastUtilities.UI.Configure
         }
 
 
-        private void DisplayChooser(object sender, Tuple<string, Intent> args)
+        private void DisplayChooser(object? sender, Tuple<string, Intent> args)
         {
             (string title, Intent intent) = args;
             StartActivity(Intent.CreateChooser(intent, title));
         }
 
-        private void DisplayMessage(object sender, string message)
+        private void DisplayMessage(object? sender, string message)
         {
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity: DisplayMessage {message}");
             RunOnUiThread(() =>
             {
-                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+                Toast.MakeText(Application.Context, message, ToastLength.Short)?.Show();
             });
         }
 
-        private void SetCacheRoot(object sender, string root)
+        private void SetCacheRoot(object? sender, string root)
         {
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity: SetCacheRoot {root}");
             RunOnUiThread(() =>
@@ -357,7 +361,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void SetFeedItems(object sender, Tuple<string, List<ConfigPodcastFeedRecyclerItem>> feeditems)
+        private void SetFeedItems(object? sender, Tuple<string, List<ConfigPodcastFeedRecyclerItem>> feeditems)
         {
             (string heading, List<ConfigPodcastFeedRecyclerItem> items) = feeditems;
             RunOnUiThread(() =>
@@ -369,9 +373,14 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void NavigateToFeed(object sender, string id)
+        private void NavigateToFeed(object? sender, string? id)
         {
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity: NavigateToFeed {id}");
+            if (id == null)
+            {
+                return;
+            }
+
             RunOnUiThread(() =>
             {
                 var intent = EditFeedActivity.CreateIntent(this, id);
@@ -379,7 +388,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void NavigateToAddFeed(object sender, EventArgs e)
+        private void NavigateToAddFeed(object? sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"EditConfigActivity: NavigateToAddFeed");
             RunOnUiThread(() =>
@@ -409,9 +418,9 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void CancelSelected(object sender, Tuple<string, string> parameters)
+        private void CancelSelected(object? sender, Tuple<string?, string?> parameters)
         {
-            (string tag, string data) = parameters;
+            (string? tag, string? data) = parameters;
             AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
             switch (tag)
             {
@@ -424,9 +433,9 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void OkSelected(object sender, Tuple<string, string> parameters)
+        private void OkSelected(object? sender, Tuple<string?, string?> parameters)
         {
-            (string tag, string data) = parameters;
+            (string? tag, string? data) = parameters;
             AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
             RunOnUiThread(() =>
             {
@@ -464,9 +473,9 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void OkSelected(object sender, Tuple<string, string, string> parameters)
+        private void OkSelected(object? sender, Tuple<string?, string?, string> parameters)
         {
-            (string tag, string data, string value) = parameters;
+            (string? tag, string? data, string value) = parameters;
             AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
             switch (tag)
             {
@@ -481,9 +490,9 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void CancelSelected(object sender, Tuple<string, string, string> parameters)
+        private void CancelSelected(object? sender, Tuple<string?, string?, string> parameters)
         {
-            (string tag, string data, string value) = parameters;
+            (string? tag, string? data, string value) = parameters;
             AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
             switch (tag)
             {

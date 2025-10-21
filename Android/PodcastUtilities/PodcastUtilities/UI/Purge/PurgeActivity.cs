@@ -11,6 +11,7 @@ using Google.Android.Material.FloatingActionButton;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
+using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using PodcastUtilities.AndroidLogic.ViewModel.Purge;
 using System;
 using System.Collections.Generic;
@@ -22,38 +23,36 @@ namespace PodcastUtilities.UI.Purge
     [Activity(ParentActivity = typeof(MainActivity))]
     public class PurgeActivity : AppCompatActivity
     {
-        private PurgeViewModel ViewModel;
+        private AndroidApplication AndroidApplication = null!;
+        private PurgeViewModel ViewModel = null!;
 
-        private AndroidApplication AndroidApplication;
+        private EmptyRecyclerView RvPurgeItems = null!;
+        private PurgeRecyclerItemAdapter Adapter = null!;
+        private LinearLayout NoDataView = null!;
+        private ProgressSpinnerView ProgressSpinner = null!;
+        private FloatingActionButton DeleteButton = null!;
 
-        private EmptyRecyclerView RvPurgeItems;
-        private PurgeRecyclerItemAdapter Adapter;
-        private LinearLayout NoDataView;
-        private ProgressSpinnerView ProgressSpinner;
-        private FloatingActionButton DeleteButton;
-
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
-            AndroidApplication = Application as AndroidApplication;
+            AndroidApplication = (AndroidApplication)Application!;
             AndroidApplication.Logger.Debug(() => $"PurgeActivity:OnCreate");
 
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             base.OnCreate(savedInstanceState);
 
             // Set our view from the layout resource
             SetContentView(Resource.Layout.activity_purge);
 
-            RvPurgeItems = FindViewById<EmptyRecyclerView>(Resource.Id.rvPurge);
-            NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoDataPurge);
-            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBarPurge);
-            DeleteButton = FindViewById<FloatingActionButton>(Resource.Id.fab_delete);
+            RvPurgeItems = FindViewById<EmptyRecyclerView>(Resource.Id.rvPurge)!;
+            NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoDataPurge)!;
+            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBarPurge)!;
+            DeleteButton = FindViewById<FloatingActionButton>(Resource.Id.fab_delete)!;
 
             RvPurgeItems.SetLayoutManager(new LinearLayoutManager(this));
             RvPurgeItems.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
             RvPurgeItems.SetEmptyView(NoDataView);
 
-            var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
-            ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(PurgeViewModel))) as PurgeViewModel;
+            var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
+            ViewModel = (PurgeViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(PurgeViewModel)));
 
             Adapter = new PurgeRecyclerItemAdapter(this, ViewModel);
             RvPurgeItems.SetAdapter(Adapter);
@@ -81,11 +80,13 @@ namespace PodcastUtilities.UI.Purge
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             AndroidApplication.Logger.Debug(() => $"PurgeActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (OperatingSystem.IsAndroidVersionAtLeast(23))
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
         }
 
-        public override bool DispatchKeyEvent(KeyEvent e)
+        public override bool DispatchKeyEvent(KeyEvent? e)
         {
             if (BackKeyMapper.HandleKeyEvent(this, e))
             {
@@ -119,7 +120,7 @@ namespace PodcastUtilities.UI.Purge
             ViewModel.Observables.DisplayMessage -= ToastMessage;
         }
 
-        private void SetTitle(object sender, string title)
+        private void SetTitle(object? sender, string title)
         {
             RunOnUiThread(() =>
             {
@@ -127,7 +128,7 @@ namespace PodcastUtilities.UI.Purge
             });
         }
 
-        private void SetPurgeItems(object sender, List<PurgeRecyclerItem> items)
+        private void SetPurgeItems(object? sender, List<PurgeRecyclerItem> items)
         {
             RunOnUiThread(() =>
             {
@@ -136,7 +137,7 @@ namespace PodcastUtilities.UI.Purge
             });
         }
 
-        private void StartProgress(object sender, int max)
+        private void StartProgress(object? sender, int max)
         {
             RunOnUiThread(() =>
             {
@@ -144,7 +145,7 @@ namespace PodcastUtilities.UI.Purge
                 DeleteButton.Enabled = false;
             });
         }
-        private void UpdateProgress(object sender, int position)
+        private void UpdateProgress(object? sender, int position)
         {
             RunOnUiThread(() =>
             {
@@ -152,7 +153,7 @@ namespace PodcastUtilities.UI.Purge
             });
         }
 
-        private void EndProgress(object sender, EventArgs e)
+        private void EndProgress(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -161,7 +162,7 @@ namespace PodcastUtilities.UI.Purge
             });
         }
 
-        private void StartDeleting(object sender, EventArgs e)
+        private void StartDeleting(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -170,22 +171,22 @@ namespace PodcastUtilities.UI.Purge
             });
         }
 
-        private void EndDeleting(object sender, string message)
+        private void EndDeleting(object? sender, string message)
         {
             RunOnUiThread(() =>
             {
                 Adapter.SetReadOnly(false);
                 DeleteButton.Enabled = true;
-                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+                Toast.MakeText(Application.Context, message, ToastLength.Short)?.Show();
                 Finish();
             });
         }
 
-        private void ToastMessage(object sender, string message)
+        private void ToastMessage(object? sender, string message)
         {
             RunOnUiThread(() =>
             {
-                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+                Toast.MakeText(Application.Context, message, ToastLength.Short)?.Show();
             });
         }
     }

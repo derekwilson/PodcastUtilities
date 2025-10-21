@@ -1,44 +1,49 @@
-﻿using Android.App;
-using Android.Content;
+﻿using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using AndroidX.Core.App;
+using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Services.Download;
+using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel.Download;
 using PodcastUtilities.Common.Feeds;
 using PodcastUtilities.UI.Download;
-using System;
-using System.Collections.Generic;
 
 namespace PodcastUtilities.Services.Download
 {
-    [Service]
+#if DEBUG
+    [Service(Name = "com.andrewandderek.podcastutilities.sideload.debug.DownloadService", ForegroundServiceType = Android.Content.PM.ForegroundService.TypeMediaProcessing)]
+#else
+    [Service(Name = "com.andrewandderek.podcastutilities.sideload.DownloadService", ForegroundServiceType = Android.Content.PM.ForegroundService.TypeMediaProcessing)]
+#endif
     public class DownloadService : Service, IDownloadService
 	{
         private const int FOREGROUND_NOTIFICATION_ID = 100;
         private const string NOTIFICATION_CHANNEL_ID = "podcastutilities-download-service-channel-id-01";
 
-        private AndroidApplication AndroidApplication;
-        private DownloadServiceBinder Binder;
+        private AndroidApplication AndroidApplication = null!;
 
         // injected
-        private NotificationManager NotificationManager;
-        private AndroidLogic.Services.Download.IDownloader Downloader;
-        private DownloaderEvents DownloaderEvents;
+        private NotificationManager? NotificationManager;       // can be null on old OS
+        private AndroidLogic.Services.Download.IDownloader Downloader = null!;
+        private ICrashReporter CrashReporter = null!;
+
+        private DownloaderEvents? DownloaderEvents;
 
         public override void OnCreate()
         {
-            AndroidApplication = Application as AndroidApplication;
+            AndroidApplication = (AndroidApplication)Application!;
             AndroidApplication.Logger.Debug(() => "DownloadService:OnCreate");
 
             base.OnCreate();
 
             // maybe there is a better way to do the injection
-            Downloader = AndroidApplication.IocContainer.Resolve<AndroidLogic.Services.Download.IDownloader>();
+            CrashReporter = AndroidApplication?.IocContainer?.Resolve<ICrashReporter>()!;
+            Downloader = AndroidApplication?.IocContainer?.Resolve<AndroidLogic.Services.Download.IDownloader>()!;
             DownloaderEvents = Downloader.GetDownloaderEvents();
             AttachDownloaderEvents();
-            NotificationManager = AndroidApplication.IocContainer.Resolve<NotificationManager>();
-            AndroidApplication.Logger.Debug(() => "DownloadService:OnCreate - Complete");
+            NotificationManager = AndroidApplication?.IocContainer?.Resolve<NotificationManager>()!;
+            AndroidApplication!.Logger.Debug(() => "DownloadService:OnCreate - Complete");
         }
 
         private void AttachDownloaderEvents()
@@ -63,7 +68,7 @@ namespace PodcastUtilities.Services.Download
             DownloaderEvents.UpdateItemStatusEvent -= DownloaderStatus;
         }
 
-        private void DownloaderComplete(object sender, EventArgs e)
+        private void DownloaderComplete(object? sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => "DownloadService:DownloaderComplete");
             UpdateNotification();
@@ -71,7 +76,7 @@ namespace PodcastUtilities.Services.Download
             AndroidApplication.Logger.Debug(() => "DownloadService:DownloaderComplete - complete");
         }
 
-        private void DownloaderStatus(object sender, Tuple<Common.Feeds.ISyncItem, Status, string> e)
+        private void DownloaderStatus(object? sender, Tuple<Common.Feeds.ISyncItem, Status, string> e)
         {
             (ISyncItem item, Status status, string message) = e;
             if (status == Status.Complete || status == Status.Error)
@@ -81,7 +86,7 @@ namespace PodcastUtilities.Services.Download
             }
         }
 
-        private void DownloaderProgress(object sender, Tuple<Common.Feeds.ISyncItem, int> e)
+        private void DownloaderProgress(object? sender, Tuple<Common.Feeds.ISyncItem, int> e)
         {
             (ISyncItem item, int progressPercentage) = e;
             if (progressPercentage == 100)
@@ -91,14 +96,14 @@ namespace PodcastUtilities.Services.Download
             }
         }
 
-        public override IBinder OnBind(Intent intent)
+        public override IBinder OnBind(Intent? intent)
         {
-            Binder = new DownloadServiceBinder(this);
+            DownloadServiceBinder binder = new DownloadServiceBinder(this);
             AndroidApplication.Logger.Debug(() => "DownloadService:OnBind");
-            return Binder;
+            return binder;
         }
 
-        public override bool OnUnbind(Intent intent)
+        public override bool OnUnbind(Intent? intent)
         {
             AndroidApplication.Logger.Debug(() => "DownloadService:OnUnbind");
             return base.OnUnbind(intent);
@@ -108,13 +113,13 @@ namespace PodcastUtilities.Services.Download
         {
             AndroidApplication.Logger.Debug(() => "DownloadService:OnDestroy");
             DetachDownloaderEvents();
-            Downloader?.CancelAll();
-            NotificationManager.Cancel(FOREGROUND_NOTIFICATION_ID);
+            Downloader.CancelAll();
+            NotificationManager?.Cancel(FOREGROUND_NOTIFICATION_ID);
             base.OnDestroy();
         }
 
         [return: GeneratedEnum]
-        public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)
+        public override StartCommandResult OnStartCommand(Intent? intent, [GeneratedEnum] StartCommandFlags flags, int startId)
         {
             AndroidApplication.Logger.Debug(() => "DownloadService:OnStartCommand");
             return StartCommandResult.Sticky;
@@ -122,21 +127,40 @@ namespace PodcastUtilities.Services.Download
 
         private void StartForeground()
         {
-            AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - start");
-            StartForeground(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification());
-            AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - end");
+            try
+            {
+                AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - start");
+                //if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
+                if (OperatingSystem.IsAndroidVersionAtLeast(34))
+                {
+                    AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - new style >34");
+                    StartForeground(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification(), Android.Content.PM.ForegroundService.TypeManifest);
+                }
+                else
+                {
+                    AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - old style");
+                    StartForeground(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification());
+                }
+                AndroidApplication.Logger.Debug(() => "DownloadService:StartForeground - end");
+            }
+            catch (Exception ex)
+            {
+                CrashReporter.LogNonFatalException(ex);
+                AndroidApplication.Logger.LogException(() => "StartForeground", ex);
+            }
         }
 
         private void UpdateNotification()
         {
             AndroidApplication.Logger.Debug(() => "DownloadService:UpdateNotification - start");
-            NotificationManager.Notify(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification());
+            NotificationManager?.Notify(FOREGROUND_NOTIFICATION_ID, GetForegroundNotification());
             AndroidApplication.Logger.Debug(() => "DownloadService:UpdateNotification - end");
         }
 
         private void CreateChannel()
         {
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            //if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            if (OperatingSystem.IsAndroidVersionAtLeast(26))
             {
                 var notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "Trailblazer Notifications", NotificationImportance.Default);
 
@@ -144,7 +168,7 @@ namespace PodcastUtilities.Services.Download
                 notificationChannel.Description = "Track recording updates";
                 notificationChannel.EnableLights(false);
                 notificationChannel.EnableVibration(false);
-                NotificationManager.CreateNotificationChannel(notificationChannel);
+                NotificationManager?.CreateNotificationChannel(notificationChannel);
             }
         }
 
@@ -181,8 +205,13 @@ namespace PodcastUtilities.Services.Download
             return builder.Build();
         }
 
-        private PendingIntent GetNotificationIntent()
+        private PendingIntent? GetNotificationIntent()
         {
+            if (!OperatingSystem.IsAndroidVersionAtLeast(23))
+            {
+                return null;
+            }
+
             var intent = DownloadActivity.CreateIntentFromHud(this);
             intent.SetAction(Intent.ActionMain);
             intent.AddCategory(Intent.CategoryLauncher);
@@ -196,8 +225,13 @@ namespace PodcastUtilities.Services.Download
             );
         }
 
-        private PendingIntent GetButtonIntent(string action)
+        private PendingIntent? GetButtonIntent(string action)
         {
+            if (!OperatingSystem.IsAndroidVersionAtLeast(23))
+            {
+                return null;
+            }
+
             var intent = new Intent(this, typeof(DownloadServiceControlsReceiver));
             intent.SetAction(action);
 
@@ -210,37 +244,40 @@ namespace PodcastUtilities.Services.Download
 
         public void StartDownloads(List<DownloadRecyclerItem> allItems)
         {
-            Downloader?.SetDownloadingItems(allItems);
+            Downloader.SetDownloadingItems(allItems);
             StartForeground();      // we need to create the notification
-            Downloader?.DownloadAllItems();
+            Downloader.DownloadAllItems();
         }
 
         public DownloaderEvents GetDownloaderEvents()
         {
-            return Downloader?.GetDownloaderEvents();
+            return Downloader.GetDownloaderEvents();
         }
 
-        public List<DownloadRecyclerItem> GetItems()
+        public List<DownloadRecyclerItem>? GetItems()
         {
-            return Downloader?.GetDownloadItems();
+            return Downloader.GetDownloadItems();
         }
 
         public void CancelDownloads()
         {
-            Downloader?.CancelAll();
+            Downloader.CancelAll();
         }
 
         public void KillNotification()
         {
-            NotificationManager.Cancel(FOREGROUND_NOTIFICATION_ID);
-            StopForeground(StopForegroundFlags.Remove);
+            NotificationManager?.Cancel(FOREGROUND_NOTIFICATION_ID);
+            if (OperatingSystem.IsAndroidVersionAtLeast(24))
+            {
+                StopForeground(StopForegroundFlags.Remove);
+            }
         }
 
         public bool IsDownloading
         {
             get
             {
-                return Downloader?.IsDownloading ?? false;
+                return Downloader.IsDownloading;
             }
         }
     }

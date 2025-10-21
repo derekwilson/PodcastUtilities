@@ -15,15 +15,15 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
     {
         public class ObservableGroup
         {
-            public EventHandler<string> DisplayMessage;
-            public EventHandler<string> DownloadStrategy;
-            public EventHandler<string> NamingStyle;
-            public EventHandler<string> MaxDaysOld;
-            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForMaxDaysOld;
-            public EventHandler<string> DeleteDaysOld;
-            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForDeleteDaysOld;
-            public EventHandler<string> MaxDownloadItems;
-            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters> PromptForMaxDownloadItems;
+            public EventHandler<string>? DisplayMessage;
+            public EventHandler<string>? DownloadStrategy;
+            public EventHandler<string>? NamingStyle;
+            public EventHandler<string>? MaxDaysOld;
+            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters>? PromptForMaxDaysOld;
+            public EventHandler<string>? DeleteDaysOld;
+            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters>? PromptForDeleteDaysOld;
+            public EventHandler<string>? MaxDownloadItems;
+            public EventHandler<DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters>? PromptForMaxDownloadItems;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -55,7 +55,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ValueFormatter = valueFormatter;
         }
 
-        private void ConfigurationUpdated(object sender, EventArgs e)
+        private void ConfigurationUpdated(object? sender, EventArgs e)
         {
             Logger.Debug(() => $"FeedDefaultsViewModel:ConfigurationUpdated");
             RefreshConfigDisplay();

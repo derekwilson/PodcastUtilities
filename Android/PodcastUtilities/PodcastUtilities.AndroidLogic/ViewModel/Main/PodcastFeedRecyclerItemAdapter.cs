@@ -2,6 +2,7 @@
 using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
+using PodcastUtilities.AndroidLogic.Utilities;
 using System;
 using System.Collections.Generic;
 
@@ -28,7 +29,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            RecyclerViewHolder vh = holder as RecyclerViewHolder;
+            RecyclerViewHolder? vh = holder as RecyclerViewHolder;
+            if (vh == null)
+            {
+                return;
+            }
             // unsubscribe if it was subscribed before
             vh.Container.Click -= Container_Click;
 
@@ -52,16 +57,21 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             vh.Container.Click += Container_Click;
         }
 
-        private void Container_Click(object sender, EventArgs e)
+        private void Container_Click(object? sender, EventArgs e)
         {
-            int position = Convert.ToInt32(((View)sender).Tag.ToString());
+            var senderView = sender as View;
+            if (sender == null || senderView == null)
+            {
+                throw new InvalidOperationException("no sender");
+            }
+            int position = Convert.ToInt32(senderView.Tag?.ToString());
             ViewModel.FeedItemSelected(Items[position].PodcastFeed);
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-            View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.list_item_feeditem, parent, false);
-            return new RecyclerViewHolder(itemView);
+            View? itemView = LayoutInflater.From(parent.Context)?.Inflate(Resource.Layout.list_item_feeditem, parent, false);
+            return new RecyclerViewHolder(itemView!);
         }
 
         class RecyclerViewHolder : RecyclerView.ViewHolder
@@ -73,10 +83,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 
             public RecyclerViewHolder(View itemView) : base(itemView)
             {
-                Container = itemView.FindViewById<View>(Resource.Id.item_row_label_container);
-                Label = itemView.FindViewById<TextView>(Resource.Id.item_row_label);
-                SubLabel = itemView.FindViewById<TextView>(Resource.Id.item_row_sub_label);
-                SubLabel2 = itemView.FindViewById<TextView>(Resource.Id.item_row_sub_label2);
+                Container = ViewHelper.FindViewByIdOrThrow<View>("container", itemView, Resource.Id.item_row_label_container);
+                Label = ViewHelper.FindViewByIdOrThrow<TextView>("label", itemView, Resource.Id.item_row_label);
+                SubLabel = ViewHelper.FindViewByIdOrThrow<TextView>("sub label", itemView, Resource.Id.item_row_sub_label);
+                SubLabel2 = ViewHelper.FindViewByIdOrThrow<TextView>("sub label2", itemView, Resource.Id.item_row_sub_label2);
             }
         }
     }

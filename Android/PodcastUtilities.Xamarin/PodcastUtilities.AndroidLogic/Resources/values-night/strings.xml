@@ -1,0 +1,6 @@
+<resources>
+	<!-- Dark Mode -->
+
+	<string name="ui_mode">Night</string>
+
+</resources>

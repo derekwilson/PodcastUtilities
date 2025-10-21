@@ -1,7 +1,8 @@
 ﻿using Android.OS;
 using Android.Runtime;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using static Android.Provider.Settings;
 
 namespace PodcastUtilities.AndroidLogic.CustomViews
 {
@@ -9,21 +10,17 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
     {
         public static SelectableString GenerateOption<TYPE>(TYPE enumOption, TYPE currentValue)
         {
-            return new SelectableString(Convert.ToInt32(enumOption), enumOption.ToString(), EqualityComparer<TYPE>.Default.Equals(enumOption, currentValue));
+            return new SelectableString(Convert.ToInt32(enumOption), enumOption?.ToString()!, EqualityComparer<TYPE>.Default.Equals(enumOption, currentValue));
         }
 
         public static SelectableString GenerateOption<TYPE>(TYPE enumOption, bool selected)
         {
-            return new SelectableString(Convert.ToInt32(enumOption), enumOption.ToString(), selected);
+            return new SelectableString(Convert.ToInt32(enumOption), enumOption?.ToString()!, selected);
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Selected { get; set; }
-
-        public SelectableString()
-        {
-        }
 
         public SelectableString(int id, string name)
         {
@@ -41,15 +38,17 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
         public SelectableString(Parcel parcel)
         {
             Id = parcel.ReadInt();
-            Name = parcel.ReadString();
-            Selected = parcel.ReadBoolean();
+            Name = parcel.ReadString()!;
+            //Selected = parcel.ReadBoolean();
+            Selected = parcel.ReadInt() == 1;
         }
 
         public void WriteToParcel(Parcel dest, [GeneratedEnum] ParcelableWriteFlags flags)
         {
             dest.WriteInt(Id);
             dest.WriteString(Name);
-            dest.WriteBoolean(Selected);
+            //dest.WriteBoolean(Selected);
+            dest.WriteInt(Selected ? 1 : 0);
         }
 
         [Java.Interop.ExportField("CREATOR")]
@@ -66,8 +65,12 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
 
     public class SelectableStringParcelableCreator : Java.Lang.Object, IParcelableCreator
     {
-        Java.Lang.Object IParcelableCreator.CreateFromParcel(Parcel source)
+        Java.Lang.Object IParcelableCreator.CreateFromParcel(Parcel? source)
         {
+            if (source == null)
+            {
+                throw new InvalidOperationException("no parcel");
+            }
             return new SelectableString(source);
         }
 

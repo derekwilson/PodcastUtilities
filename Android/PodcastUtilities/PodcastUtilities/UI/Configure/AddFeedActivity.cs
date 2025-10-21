@@ -19,38 +19,37 @@ namespace PodcastUtilities.UI.Configure
     [Activity(Label = "@string/add_feed_activity_title", WindowSoftInputMode = SoftInput.StateVisible, ParentActivity = typeof(EditConfigActivity))]
     internal class AddFeedActivity : AppCompatActivity
     {
-        private AndroidApplication AndroidApplication;
-        private AddFeedViewModel ViewModel;
+        private AndroidApplication AndroidApplication = null!;
+        private AddFeedViewModel ViewModel = null!;
 
-        private ProgressSpinnerView ProgressSpinner = null;
-        private EditText FolderText = null;
-        private ImageView ClearFolderButton = null;
-        private EditText FeedUrlText = null;
-        private ImageView ClearFeedButton = null;
-        private MaterialButton TestButton = null;
-        private TextView TestFeedErrorMessage = null;
-        private FloatingActionButton AddButton = null;
+        private ProgressSpinnerView ProgressSpinner = null!;
+        private EditText FolderText = null!;
+        private ImageView ClearFolderButton = null!;
+        private EditText FeedUrlText = null!;
+        private ImageView ClearFeedButton = null!;
+        private MaterialButton TestButton = null!;
+        private TextView TestFeedErrorMessage = null!;
+        private FloatingActionButton AddButton = null!;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
-            AndroidApplication = Application as AndroidApplication;
+            AndroidApplication = (AndroidApplication)Application!;
             AndroidApplication.Logger.Debug(() => $"AddFeedActivity:OnCreate");
 
             base.OnCreate(savedInstanceState);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_add_feed);
 
-            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.add_feed_progress_bar);
-            FolderText = FindViewById<EditText>(Resource.Id.folder_prompt_value);
-            ClearFolderButton = FindViewById<ImageView>(Resource.Id.folder_prompt_txt_clear);
-            FeedUrlText = FindViewById<EditText>(Resource.Id.url_prompt_value);
-            ClearFeedButton = FindViewById<ImageView>(Resource.Id.url_prompt_txt_clear);
-            TestButton = FindViewById<MaterialButton>(Resource.Id.test_feed_button);
-            TestFeedErrorMessage = FindViewById<TextView>(Resource.Id.test_feed_error_message);
-            AddButton = FindViewById<FloatingActionButton>(Resource.Id.fab_add_add);
+            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.add_feed_progress_bar)!;
+            FolderText = FindViewById<EditText>(Resource.Id.folder_prompt_value)!;
+            ClearFolderButton = FindViewById<ImageView>(Resource.Id.folder_prompt_txt_clear)!;
+            FeedUrlText = FindViewById<EditText>(Resource.Id.url_prompt_value)!;
+            ClearFeedButton = FindViewById<ImageView>(Resource.Id.url_prompt_txt_clear)!;
+            TestButton = FindViewById<MaterialButton>(Resource.Id.test_feed_button)!;
+            TestFeedErrorMessage = FindViewById<TextView>(Resource.Id.test_feed_error_message)!;
+            AddButton = FindViewById<FloatingActionButton>(Resource.Id.fab_add_add)!;
 
-            var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
-            ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(AddFeedViewModel))) as AddFeedViewModel;
+            var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
+            ViewModel = (AddFeedViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(AddFeedViewModel)));
 
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
@@ -88,11 +87,13 @@ namespace PodcastUtilities.UI.Configure
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             AndroidApplication.Logger.Debug(() => $"AddFeedActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (OperatingSystem.IsAndroidVersionAtLeast(23))
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
         }
 
-        public override bool DispatchKeyEvent(KeyEvent e)
+        public override bool DispatchKeyEvent(KeyEvent? e)
         {
             if (BackKeyMapper.HandleKeyEvent(this, e))
             {
@@ -126,7 +127,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.EndDownloading -= EndDownloading;
         }
 
-        private void EndDownloading(object sender, EventArgs e)
+        private void EndDownloading(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -135,7 +136,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void StartDownloading(object sender, EventArgs e)
+        private void StartDownloading(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -144,7 +145,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void HideErrorMessage(object sender, EventArgs e)
+        private void HideErrorMessage(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -152,7 +153,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void DisplayErrorMessage(object sender, string message)
+        private void DisplayErrorMessage(object? sender, string message)
         {
             RunOnUiThread(() =>
             {
@@ -164,16 +165,16 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void DisplayMessage(object sender, string message)
+        private void DisplayMessage(object? sender, string message)
         {
             AndroidApplication.Logger.Debug(() => $"AddFeedActivity: DisplayMessage {message}");
             RunOnUiThread(() =>
             {
-                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+                Toast.MakeText(Application.Context, message, ToastLength.Short)?.Show();
             });
         }
 
-        private void Exit(object sender, EventArgs e)
+        private void Exit(object? sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"AddFeedActivity: Exit");
             RunOnUiThread(() =>
@@ -182,7 +183,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void Folder(object sender, string str)
+        private void Folder(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -191,7 +192,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void Url(object sender, string str)
+        private void Url(object? sender, string str)
         {
             RunOnUiThread(() =>
             {

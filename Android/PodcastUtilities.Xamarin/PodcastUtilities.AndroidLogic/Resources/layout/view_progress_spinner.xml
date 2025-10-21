@@ -1,0 +1,39 @@
+<LinearLayout
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<TextView
+		android:id="@+id/progress_bar_message"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingTop="5dp"
+		android:textAlignment="center"
+		style="@style/progressSpinnerViewBar"
+		android:alpha="0.8"
+		android:textColor="@color/colour_white"
+		android:text="@string/placeholder"
+		android:gravity="center_horizontal" />
+	<ProgressBar
+		android:id="@+id/indeterminateBar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingTop="5dp"
+		android:paddingBottom="5dp"
+		style="@style/progressSpinnerViewBar"
+		android:alpha="0.5"
+		android:indeterminate="true"
+		/>
+	<ProgressBar
+		android:id="@+id/steppedBar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:progressTint="@color/progress_bar"
+		android:background="@color/colour_blue"
+		android:alpha="0.8"
+		android:max="10"
+		android:progress="5"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:indeterminate="false"
+		/>
+</LinearLayout>

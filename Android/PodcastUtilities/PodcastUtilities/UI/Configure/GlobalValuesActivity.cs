@@ -31,64 +31,63 @@ namespace PodcastUtilities.UI.Configure
         private const string MAX_CONCURRENT_TAG = "max_concurrent_prompt_tag";
         private const string RETRY_SECONDS_TAG = "retry_seconds_prompt_tag";
 
-        private AndroidApplication AndroidApplication;
-        private GlobalValuesViewModel ViewModel;
+        private AndroidApplication AndroidApplication = null!;
+        private GlobalValuesViewModel ViewModel = null!;
 
-        private NestedScrollView Container = null;
-        private LinearLayoutCompat DownloadFreeSpaceRowContainer = null;
-        private TextView DownloadFreeSpaceRowSubLabel = null;
-        private LinearLayoutCompat MaxConcurrentDownloadsRowContainer = null;
-        private TextView MaxConcurrentDownloadsRowSubLabel = null;
-        private LinearLayoutCompat RetrySecondsRowContainer = null;
-        private TextView RetrySecondsRowSubLabel = null;
-        private LinearLayoutCompat PlaylistFileRowContainer = null;
-        private TextView PlaylistFileRowSubLabel = null;
-        private LinearLayoutCompat PlaylistSeperatorRowContainer = null;
-        private TextView PlaylistSeperatorRowSubLabel = null;
-        private LinearLayoutCompat PlaylistFormatRowContainer = null;
-        private TextView PlaylistFormatRowSubLabel = null;
-        private LinearLayoutCompat DiagOutputRowContainer = null;
-        private TextView DiagOutputRowSubLabel = null;
-        private ConstraintLayout DiagRetainTempRowContainer = null;
-        private TextView DiagRetainTempRowSubLabel = null;
-        private SwitchMaterial DiagRetainTempRowCheck = null;
+        private NestedScrollView Container = null!;
+        private LinearLayoutCompat DownloadFreeSpaceRowContainer = null!;
+        private TextView DownloadFreeSpaceRowSubLabel = null!;
+        private LinearLayoutCompat MaxConcurrentDownloadsRowContainer = null!;
+        private TextView MaxConcurrentDownloadsRowSubLabel = null!;
+        private LinearLayoutCompat RetrySecondsRowContainer = null!;
+        private TextView RetrySecondsRowSubLabel = null!;
+        private LinearLayoutCompat PlaylistFileRowContainer = null!;
+        private TextView PlaylistFileRowSubLabel = null!;
+        private LinearLayoutCompat PlaylistSeperatorRowContainer = null!;
+        private TextView PlaylistSeperatorRowSubLabel = null!;
+        private LinearLayoutCompat PlaylistFormatRowContainer = null!;
+        private TextView PlaylistFormatRowSubLabel = null!;
+        private LinearLayoutCompat DiagOutputRowContainer = null!;
+        private TextView DiagOutputRowSubLabel = null!;
+        private ConstraintLayout DiagRetainTempRowContainer = null!;
+        private TextView DiagRetainTempRowSubLabel = null!;
+        private SwitchMaterial DiagRetainTempRowCheck = null!;
 
-        private ValuePromptDialogFragment PlaylistFilenamePromptDialogFragment;
-        private ValuePromptDialogFragment PlaylistSeperatorPromptDialogFragment;
-        private DefaultableItemValuePromptDialogFragment FreespacePromptDialogFragment;
-        private ValuePromptDialogFragment MaxConcurrentDownloadsPromptDialogFragment;
-        private ValuePromptDialogFragment RetrySecondsPromptDialogFragment;
+        private ValuePromptDialogFragment PlaylistFilenamePromptDialogFragment = null!;
+        private ValuePromptDialogFragment PlaylistSeperatorPromptDialogFragment = null!;
+        private DefaultableItemValuePromptDialogFragment FreespacePromptDialogFragment = null!;
+        private ValuePromptDialogFragment MaxConcurrentDownloadsPromptDialogFragment = null!;
+        private ValuePromptDialogFragment RetrySecondsPromptDialogFragment = null!;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
-            AndroidApplication = Application as AndroidApplication;
+            AndroidApplication = (AndroidApplication)Application!;
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:OnCreate");
 
             base.OnCreate(savedInstanceState);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_global_values);
 
-            Container = FindViewById<NestedScrollView>(Resource.Id.feed_defaults_container);
-            DownloadFreeSpaceRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.download_free_space_row_label_container);
-            DownloadFreeSpaceRowSubLabel = FindViewById<TextView>(Resource.Id.download_free_space_row_sub_label);
-            MaxConcurrentDownloadsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.max_concurrent_downloads_row_label_container);
-            MaxConcurrentDownloadsRowSubLabel = FindViewById<TextView>(Resource.Id.max_concurrent_downloads_row_sub_label);
-            RetrySecondsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.retry_seconds_row_label_container);
-            RetrySecondsRowSubLabel = FindViewById<TextView>(Resource.Id.retry_seconds_row_sub_label);
-            PlaylistFileRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_file_row_label_container);
-            PlaylistFileRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_file_row_sub_label);
-            PlaylistSeperatorRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_seperator_row_label_container);
-            PlaylistSeperatorRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_seperator_row_sub_label);
-            PlaylistFormatRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_format_row_label_container);
-            PlaylistFormatRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_format_row_sub_label);
-            DiagOutputRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.diag_output_row_label_container);
-            DiagOutputRowSubLabel = FindViewById<TextView>(Resource.Id.diag_output_row_sub_label);
-            DiagRetainTempRowContainer = FindViewById<ConstraintLayout>(Resource.Id.diag_retain_temp_row_container);
-            DiagRetainTempRowSubLabel = FindViewById<TextView>(Resource.Id.diag_retain_temp_row_sub_label);
-            DiagRetainTempRowCheck = FindViewById<SwitchMaterial>(Resource.Id.diag_retain_temp_row_check);
+            Container = FindViewById<NestedScrollView>(Resource.Id.feed_defaults_container)!;
+            DownloadFreeSpaceRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.download_free_space_row_label_container)!;
+            DownloadFreeSpaceRowSubLabel = FindViewById<TextView>(Resource.Id.download_free_space_row_sub_label)!;
+            MaxConcurrentDownloadsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.max_concurrent_downloads_row_label_container)!;
+            MaxConcurrentDownloadsRowSubLabel = FindViewById<TextView>(Resource.Id.max_concurrent_downloads_row_sub_label)!;
+            RetrySecondsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.retry_seconds_row_label_container)!;
+            RetrySecondsRowSubLabel = FindViewById<TextView>(Resource.Id.retry_seconds_row_sub_label)!;
+            PlaylistFileRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_file_row_label_container)!;
+            PlaylistFileRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_file_row_sub_label)!;
+            PlaylistSeperatorRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_seperator_row_label_container)!;
+            PlaylistSeperatorRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_seperator_row_sub_label)!;
+            PlaylistFormatRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.playlist_format_row_label_container)!;
+            PlaylistFormatRowSubLabel = FindViewById<TextView>(Resource.Id.playlist_format_row_sub_label)!;
+            DiagOutputRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.diag_output_row_label_container)!;
+            DiagOutputRowSubLabel = FindViewById<TextView>(Resource.Id.diag_output_row_sub_label)!;
+            DiagRetainTempRowContainer = FindViewById<ConstraintLayout>(Resource.Id.diag_retain_temp_row_container)!;
+            DiagRetainTempRowSubLabel = FindViewById<TextView>(Resource.Id.diag_retain_temp_row_sub_label)!;
+            DiagRetainTempRowCheck = FindViewById<SwitchMaterial>(Resource.Id.diag_retain_temp_row_check)!;
 
-            var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
-            ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(GlobalValuesViewModel))) as GlobalValuesViewModel;
+            var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
+            ViewModel = (GlobalValuesViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(GlobalValuesViewModel)));
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
@@ -103,15 +102,15 @@ namespace PodcastUtilities.UI.Configure
             DiagOutputRowContainer.Click += (sender, e) => DoDiagOutputOptions();
             DiagRetainTempRowContainer.Click += (sender, e) => DoDiagRetainTempOptions();
 
-            PlaylistFilenamePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(PLAYLIST_FILENAME_PROMPT_TAG) as ValuePromptDialogFragment;
+            PlaylistFilenamePromptDialogFragment = (ValuePromptDialogFragment)SupportFragmentManager.FindFragmentByTag(PLAYLIST_FILENAME_PROMPT_TAG)!;
             SetupValueFragmentObservers(PlaylistFilenamePromptDialogFragment);
-            PlaylistSeperatorPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(PLAYLIST_SEPERATOR_PROMPT_TAG) as ValuePromptDialogFragment;
+            PlaylistSeperatorPromptDialogFragment = (ValuePromptDialogFragment)SupportFragmentManager.FindFragmentByTag(PLAYLIST_SEPERATOR_PROMPT_TAG)!;
             SetupValueFragmentObservers(PlaylistSeperatorPromptDialogFragment);
-            FreespacePromptDialogFragment = SupportFragmentManager.FindFragmentByTag(FREESPACE_PROMPT_TAG) as DefaultableItemValuePromptDialogFragment;
+            FreespacePromptDialogFragment = (DefaultableItemValuePromptDialogFragment)SupportFragmentManager.FindFragmentByTag(FREESPACE_PROMPT_TAG)!;
             SetupDefaultableItemValueFragmentObservers(FreespacePromptDialogFragment);
-            MaxConcurrentDownloadsPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(MAX_CONCURRENT_TAG) as ValuePromptDialogFragment;
+            MaxConcurrentDownloadsPromptDialogFragment = (ValuePromptDialogFragment)SupportFragmentManager.FindFragmentByTag(MAX_CONCURRENT_TAG)!;
             SetupValueFragmentObservers(MaxConcurrentDownloadsPromptDialogFragment);
-            RetrySecondsPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(RETRY_SECONDS_TAG) as ValuePromptDialogFragment;
+            RetrySecondsPromptDialogFragment = (ValuePromptDialogFragment)SupportFragmentManager.FindFragmentByTag(RETRY_SECONDS_TAG)!;
             SetupValueFragmentObservers(RetrySecondsPromptDialogFragment);
 
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:OnCreate - end");
@@ -132,11 +131,13 @@ namespace PodcastUtilities.UI.Configure
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (OperatingSystem.IsAndroidVersionAtLeast(23))
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
         }
 
-        public override bool DispatchKeyEvent(KeyEvent e)
+        public override bool DispatchKeyEvent(KeyEvent? e)
         {
             if (BackKeyMapper.HandleKeyEvent(this, e))
             {
@@ -198,7 +199,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.DiagRetainTempOptions();
         }
 
-        public void BottomsheetItemSelected(string tag, int position, SelectableString item)
+        public void BottomsheetItemSelected(string? tag, int position, SelectableString item)
         {
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity:BottomsheetItemSelected {tag}, {position}");
             switch (tag)
@@ -248,7 +249,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.DiagRetainTemp -= DiagRetainTemp;
         }
 
-        private void RetryWait(object sender, string str)
+        private void RetryWait(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -256,7 +257,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void MaxConcurrentDownloads(object sender, string str)
+        private void MaxConcurrentDownloads(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -264,7 +265,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PromptForRetrySeconds(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        private void PromptForRetrySeconds(object? sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
             {
@@ -274,7 +275,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PromptForMaxConcurrentDownloads(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        private void PromptForMaxConcurrentDownloads(object? sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
             {
@@ -284,7 +285,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void DiagRetainTemp(object sender, Tuple<bool, string> parameters)
+        private void DiagRetainTemp(object? sender, Tuple<bool, string> parameters)
         {
             (bool isSet, string str) = parameters;
             RunOnUiThread(() =>
@@ -294,7 +295,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void DiagOutput(object sender, string str)
+        private void DiagOutput(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -302,7 +303,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void DownloadFreeSpace(object sender, string str)
+        private void DownloadFreeSpace(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -310,7 +311,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PlaylistFile(object sender, string str)
+        private void PlaylistFile(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -318,7 +319,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PlaylistFormat(object sender, string str)
+        private void PlaylistFormat(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -326,7 +327,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PlaylistSeperator(object sender, string str)
+        private void PlaylistSeperator(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -334,7 +335,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PromptForPlaylistFile(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        private void PromptForPlaylistFile(object? sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
             {
@@ -344,7 +345,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PromptForPlaylistSeperator(object sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
+        private void PromptForPlaylistSeperator(object? sender, ValuePromptDialogFragment.ValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
             {
@@ -354,7 +355,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PromptForDownloadFreespace(object sender, DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters parameters)
+        private void PromptForDownloadFreespace(object? sender, DefaultableItemValuePromptDialogFragment.DefaultableItemValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
             {
@@ -364,12 +365,12 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void DisplayMessage(object sender, string message)
+        private void DisplayMessage(object? sender, string message)
         {
             AndroidApplication.Logger.Debug(() => $"GlobalValuesActivity: DisplayMessage {message}");
             RunOnUiThread(() =>
             {
-                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+                Toast.MakeText(Application.Context, message, ToastLength.Short)?.Show();
             });
         }
 
@@ -393,9 +394,9 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void OkSelected(object sender, Tuple<string, string, string> parameters)
+        private void OkSelected(object? sender, Tuple<string?, string?, string> parameters)
         {
-            (string tag, string data, string value) = parameters;
+            (string? tag, string? data, string value) = parameters;
             AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
             switch (tag)
             {
@@ -418,9 +419,9 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void CancelSelected(object sender, Tuple<string, string, string> parameters)
+        private void CancelSelected(object? sender, Tuple<string?, string?, string> parameters)
         {
-            (string tag, string data, string value) = parameters;
+            (string? tag, string? data, string value) = parameters;
             AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
             switch (tag)
             {
@@ -459,9 +460,9 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void DefaultableItemValueOkSelected(object sender, Tuple<string, string, string, ItemValueType> parameters)
+        private void DefaultableItemValueOkSelected(object? sender, Tuple<string?, string?, string, ItemValueType> parameters)
         {
-            (string tag, string data, string value, ItemValueType valueType) = parameters;
+            (string? tag, string? data, string value, ItemValueType valueType) = parameters;
             AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
             switch (tag)
             {
@@ -472,9 +473,9 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void DefaultableItemValueCancelSelected(object sender, Tuple<string, string> parameters)
+        private void DefaultableItemValueCancelSelected(object? sender, Tuple<string?, string?> parameters)
         {
-            (string tag, string data) = parameters;
+            (string? tag, string? data) = parameters;
             AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
             switch (tag)
             {

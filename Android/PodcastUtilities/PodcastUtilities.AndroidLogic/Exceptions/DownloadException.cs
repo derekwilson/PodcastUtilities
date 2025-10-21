@@ -32,12 +32,5 @@ namespace PodcastUtilities.AndroidLogic.Exceptions
         public DownloadException(string message, Exception innerException)
             : base(message, innerException)
         { }
-
-        /// <summary>
-        /// a DownloadException
-        /// </summary>
-        protected DownloadException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {}
     }
 }

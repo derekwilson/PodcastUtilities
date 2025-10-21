@@ -14,11 +14,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Messages
     {
         protected Guid ITEM_ID = Guid.Parse("72288452-3CD8-4BB4-BBF5-854C290CB499");
 
-        protected MessagesViewModel ViewModel;
+        protected MessagesViewModel ViewModel = null!;
 
         public class ObservedResultsGroup
         {
-            public StringBuilder Messages;
+            public StringBuilder? Messages;
             public int ScrollToTopCount;
             public int ScrollToBottomCount;
             public int StartLoadingCount;
@@ -28,14 +28,14 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Messages
 
 
         // mocks
-        protected Application MockApplication;
-        protected ILogger MockLogger;
-        protected IResourceProvider MockResourceProvider;
-        protected ICrashReporter MockCrashReporter;
-        protected IAnalyticsEngine MockAnalyticsEngine;
+        protected Application MockApplication = null!;
+        protected ILogger MockLogger = null!;
+        protected IResourceProvider MockResourceProvider = null!;
+        protected ICrashReporter MockCrashReporter = null!;
+        protected IAnalyticsEngine MockAnalyticsEngine = null!;
 
         // reals
-        protected IStatusAndProgressMessageStore StatusAndProgressMessageStore;
+        protected IStatusAndProgressMessageStore StatusAndProgressMessageStore = null!;
 
         protected void ResetObservedResults()
         {
@@ -93,34 +93,34 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Messages
             ViewModel.Observables.EndLoading -= EndLoading;
         }
 
-        private void EndLoading(object sender, EventArgs e)
+        private void EndLoading(object? sender, EventArgs e)
         {
             ObservedResults.EndLoadingCount++;
         }
 
-        private void StartLoading(object sender, EventArgs e)
+        private void StartLoading(object? sender, EventArgs e)
         {
             ObservedResults.StartLoadingCount++;
         }
 
-        private void ScrollToBottom(object sender, EventArgs e)
+        private void ScrollToBottom(object? sender, EventArgs e)
         {
             ObservedResults.ScrollToBottomCount++;
         }
 
-        private void ScrollToTop(object sender, EventArgs e)
+        private void ScrollToTop(object? sender, EventArgs e)
         {
             ObservedResults.ScrollToTopCount++;
         }
 
-        private void AddText(object sender, string line)
+        private void AddText(object? sender, string line)
         {
-            ObservedResults.Messages.Append(line);
+            ObservedResults.Messages?.Append(line);
         }
 
-        private void ResetText(object sender, EventArgs e)
+        private void ResetText(object? sender, EventArgs e)
         {
-            ObservedResults.Messages.Clear();
+            ObservedResults.Messages?.Clear();
         }
     }
 }

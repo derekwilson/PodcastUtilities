@@ -13,7 +13,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Configure
         private IReadWriteControlFile SetupRealControlFile(Android.Net.Uri uri)
         {
             FileSystemHelper helper = new FileSystemHelper(MainActivity.MainContext, MockLogger);
-            XmlDocument xml = helper.LoadXmlFromAssetFile("xml/testcontrolfile1.xml");
+            XmlDocument xml = helper.LoadXmlFromAssetFile("xml/testcontrolfile1.xml") ?? throw new InvalidOperationException("cannot find xml/testcontrolfile1.xml");
             A.CallTo(() => MockFileSystemHelper.LoadXmlFromContentUri(uri)).Returns(xml);
             IReadWriteControlFile control = new ReadWriteControlFile(xml);
             A.CallTo(() => MockApplicationControlFileFactory.CreateControlFile(xml)).Returns(control);
@@ -24,7 +24,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Configure
         public void LoadControlFile_LoadsFile()
         {
             // arrange
-            Android.Net.Uri uri = Android.Net.Uri.Parse("content://com.android.externalstorage.documents/document/primary%3APodcastUtilities%2FDerekPodcastsSmall2.xml");
+            Android.Net.Uri uri = Android.Net.Uri.Parse("content://com.android.externalstorage.documents/document/primary%3APodcastUtilities%2FDerekPodcastsSmall2.xml")
+                 ?? throw new InvalidOperationException("bad url");
             var control = SetupRealControlFile(uri);
             ViewModel.Initialise();
 
@@ -40,7 +41,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Configure
         public void LoadControlFile_RecordsAnalytics()
         {
             // arrange
-            Android.Net.Uri uri = Android.Net.Uri.Parse("content://com.android.externalstorage.documents/document/primary%3APodcastUtilities%2FDerekPodcastsSmall2.xml");
+            Android.Net.Uri uri = Android.Net.Uri.Parse("content://com.android.externalstorage.documents/document/primary%3APodcastUtilities%2FDerekPodcastsSmall2.xml")
+                 ?? throw new InvalidOperationException("bad url");
+
             var control = SetupRealControlFile(uri);
             ViewModel.Initialise();
 
@@ -55,7 +58,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Configure
         public void LoadControlFile_HandlesErrors()
         {
             // arrange
-            Android.Net.Uri uri = Android.Net.Uri.Parse("content://com.android.externalstorage.documents/document/primary%3APodcastUtilities%2FDerekPodcastsSmall2.xml");
+            Android.Net.Uri uri = Android.Net.Uri.Parse("content://com.android.externalstorage.documents/document/primary%3APodcastUtilities%2FDerekPodcastsSmall2.xml")
+                 ?? throw new InvalidOperationException("bad url");
+
             var control = SetupRealControlFile(uri);
             ViewModel.Initialise();
             var testException = new Exception();

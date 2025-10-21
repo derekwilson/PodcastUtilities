@@ -7,7 +7,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
     {
         string GetString(int id);
         string GetQuantityString(int id, int quantity);
-        Drawable GetDrawable(int id);
+        Drawable? GetDrawable(int id);
     };
 
     public class AndroidResourceProvider : IResourceProvider
@@ -19,14 +19,14 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             ResourceContext = context;
         }
 
-        public Drawable GetDrawable(int id)
+        public Drawable? GetDrawable(int id)
         {
             return ResourceContext.GetDrawable(id);
         }
 
         public string GetQuantityString(int id, int quantity)
         {
-            return ResourceContext.Resources.GetQuantityString(id, quantity, quantity);
+            return ResourceContext.Resources!.GetQuantityString(id, quantity, quantity);
         }
 
         public string GetString(int id)

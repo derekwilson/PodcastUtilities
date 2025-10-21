@@ -20,7 +20,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
     {
         public bool HasReadStoragePermission(Context context)
         {
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            //if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            if (OperatingSystem.IsAndroidVersionAtLeast(33))
             {
                 // if we are on Android 13+ we do not need any additional permissions to do our work (we will already have Manage File System)
                 // anyway they will not be granted at Android 13 and above
@@ -32,7 +33,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         public bool HasWriteStoragePermission(Context context)
         {
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            //if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            if (OperatingSystem.IsAndroidVersionAtLeast(33))
             {
                 // if we are on Android 13+ we do not need any additional permissions to do our work (we will already have Manage File System)
                 // anyway they will not be granted at Android 13 and above
@@ -44,7 +46,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
 
         public bool HasPostNotifcationPermission(Context context)
         {
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            //if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            if (OperatingSystem.IsAndroidVersionAtLeast(33))
             {
                 return HasPermissionBeenGranted(context, Manifest.Permission.PostNotifications);
             }
@@ -57,22 +60,23 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         {
             // storage manager only happened in SDK30 / R
             // before that you only need write storage
-            if (Build.VERSION.SdkInt < BuildVersionCodes.R)
+            //if (Build.VERSION.SdkInt < BuildVersionCodes.R)
+            if (OperatingSystem.IsAndroidVersionAtLeast(30))
             {
-                return HasWriteStoragePermission(context);
+                return Android.OS.Environment.IsExternalStorageManager;
             }
-
-            return Android.OS.Environment.IsExternalStorageManager;
+            return HasWriteStoragePermission(context);
         }
 
         private bool HasPermissionBeenGranted(Context context, string permission)
         {
             // dynamic permission requests were added in API 23 (Marshmellow)
-            if (Build.VERSION.SdkInt < BuildVersionCodes.M)
+            //if (Build.VERSION.SdkInt < BuildVersionCodes.M)
+            if (OperatingSystem.IsAndroidVersionAtLeast(23))
             {
-                return true;
+                return context.CheckSelfPermission(permission) == Permission.Granted;
             }
-            return context.CheckSelfPermission(permission) == Permission.Granted;
+            return true;
         }
     }
 }

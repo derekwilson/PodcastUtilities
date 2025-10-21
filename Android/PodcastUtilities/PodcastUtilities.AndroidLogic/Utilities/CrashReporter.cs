@@ -13,6 +13,21 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void LogNonFatalException(string message, Exception ex);
     }
 
+    public class NullCrashReporter : ICrashReporter
+    {
+        public void LogNonFatalException(Exception ex)
+        {
+        }
+
+        public void LogNonFatalException(string message, Exception ex)
+        {
+        }
+
+        public void TestReporting()
+        {
+        }
+    }
+
     public class CrashlyticsReporter : ICrashReporter
     {
         // to see crashes go to

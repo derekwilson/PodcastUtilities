@@ -13,22 +13,22 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Settings
 {
     public class OpenSourceLicensesViewModelBase
     {
-        protected OpenSourceLicensesViewModel ViewModel;
+        protected OpenSourceLicensesViewModel ViewModel = null!;
 
         public class ObservedResultsGroup
         {
-            public StringBuilder Text;
+            public StringBuilder? Text;
             public int ScrollToTopCount;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
 
         // mocks
-        protected Application MockApplication;
-        protected ILogger MockLogger;
-        protected IFileSystemHelper MockFileSystemHelper;
-        protected IResourceProvider MockResourceProvider;
-        protected IAnalyticsEngine MockAnalyticsEngine;
+        protected Application MockApplication = null!;
+        protected ILogger MockLogger = null!;
+        protected IFileSystemHelper MockFileSystemHelper = null!;
+        protected IResourceProvider MockResourceProvider = null!;
+        protected IAnalyticsEngine MockAnalyticsEngine = null!;
 
         protected void ResetObservedResults()
         {
@@ -79,21 +79,21 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Settings
             ViewModel.Observables.AddText -= AddText;
         }
 
-        private void ScrollToTop(object sender, EventArgs e)
+        private void ScrollToTop(object? sender, EventArgs e)
         {
             ObservedResults.ScrollToTopCount++;
         }
-        private void AddText(object sender, Tuple<string, string> textBlock)
+        private void AddText(object? sender, Tuple<string, string> textBlock)
         {
             (string title, string text) = textBlock;
-            ObservedResults.Text.Append(title);
-            ObservedResults.Text.Append("\n");
-            ObservedResults.Text.Append(text);
+            ObservedResults?.Text?.Append(title);
+            ObservedResults?.Text?.Append("\n");
+            ObservedResults?.Text?.Append(text);
         }
 
-        private void ResetText(object sender, EventArgs e)
+        private void ResetText(object? sender, EventArgs e)
         {
-            ObservedResults.Text.Clear();
+            ObservedResults?.Text?.Clear();
         }
 
     }

@@ -19,35 +19,35 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Purge
         protected const string PODCAST_FOLDER_1 = "folder1";
         protected const string PODCAST_FOLDER_2 = "folder2";
 
-        protected PurgeViewModel ViewModel;
+        protected PurgeViewModel ViewModel = null!;
 
         public class ObservedResultsGroup
         {
-            public string LastSetTitle;
-            public List<int> StartProgress;
+            public string? LastSetTitle;
+            public List<int>? StartProgress;
             public int StartProgressCount;
-            public List<int> UpdateProgress;
+            public List<int>? UpdateProgress;
             public int UpdateProgressCount;
             public int EndProgressCount;
-            public List<PurgeRecyclerItem> LastPurgeItems;
-            public string LastDisplayMessage;
+            public List<PurgeRecyclerItem>? LastPurgeItems;
+            public string? LastDisplayMessage;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
 
         // mocks
-        protected Application MockApplication;
-        protected ILogger MockLogger;
-        protected IFileUtilities MockFileUtilities;
-        protected IResourceProvider MockResourceProvider;
-        protected IEpisodePurger MockEpisodePurger;
-        protected IApplicationControlFileProvider MockApplicationControlFileProvider;
-        protected IReadWriteControlFile MockControlFile;
-        protected ICrashReporter MockCrashReporter;
-        protected IAnalyticsEngine MockAnalyticsEngine;
+        protected Application MockApplication = null!;
+        protected ILogger MockLogger = null!;
+        protected IFileUtilities MockFileUtilities = null!;
+        protected IResourceProvider MockResourceProvider = null!;
+        protected IEpisodePurger MockEpisodePurger = null!;
+        protected IApplicationControlFileProvider MockApplicationControlFileProvider = null!;
+        protected IReadWriteControlFile MockControlFile = null!;
+        protected ICrashReporter MockCrashReporter = null!;
+        protected IAnalyticsEngine MockAnalyticsEngine = null!;
 
-        protected PodcastInfoMocker podcast1Mocker;
-        protected PodcastInfoMocker podcast2Mocker;
+        protected PodcastInfoMocker podcast1Mocker = null!;
+        protected PodcastInfoMocker podcast2Mocker = null!;
 
         protected void ResetObservedResults()
         {
@@ -159,34 +159,34 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Purge
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
         }
 
-        private void SetTitle(object sender, string text)
+        private void SetTitle(object? sender, string text)
         {
             ObservedResults.LastSetTitle = text;
         }
 
-        private void StartProgress(object sender, int max)
+        private void StartProgress(object? sender, int max)
         {
-            ObservedResults.StartProgress.Add(max);
+            ObservedResults.StartProgress?.Add(max);
             ObservedResults.StartProgressCount++;
         }
 
-        private void UpdateProgress(object sender, int position)
+        private void UpdateProgress(object? sender, int position)
         {
-            ObservedResults.UpdateProgress.Add(position);
+            ObservedResults.UpdateProgress?.Add(position);
             ObservedResults.UpdateProgressCount++;
         }
 
-        private void EndProgress(object sender, EventArgs e)
+        private void EndProgress(object? sender, EventArgs e)
         {
             ObservedResults.EndProgressCount++;
         }
 
-        private void SetPurgeItems(object sender, List<PurgeRecyclerItem> items)
+        private void SetPurgeItems(object? sender, List<PurgeRecyclerItem> items)
         {
             ObservedResults.LastPurgeItems = items;
         }
 
-        private void DisplayMessage(object sender, string message)
+        private void DisplayMessage(object? sender, string message)
         {
             ObservedResults.LastDisplayMessage = message;
         }

@@ -14,8 +14,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Settings
     {
         public class ObservableGroup
         {
-            public EventHandler<string> Version;
-            public EventHandler<string> DisplayMessage;
+            public EventHandler<string>? Version;
+            public EventHandler<string>? DisplayMessage;
         }
         public ObservableGroup Observables = new ObservableGroup();
 

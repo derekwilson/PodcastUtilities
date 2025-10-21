@@ -20,21 +20,21 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             ApplicationContext = applicationContext;
         }
 
-        private ISharedPreferences GetSharedPreferences()
+        private ISharedPreferences? GetSharedPreferences()
         {
             return PreferenceManager.GetDefaultSharedPreferences(ApplicationContext);
         }
 
         public string GetPreferenceString(string key, string defaultValue)
         {
-            return GetSharedPreferences().GetString(key, defaultValue) ?? defaultValue;
+            return GetSharedPreferences()?.GetString(key, defaultValue) ?? defaultValue;
         }
 
         public void SetPreferenceString(string key, string value)
         {
-            GetSharedPreferences().Edit()
-                    .PutString(key, value)
-                    .Apply();
+            GetSharedPreferences()?.Edit()
+                    ?.PutString(key, value)
+                    ?.Apply();
         }
     }
 }

@@ -14,14 +14,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
     {
         public class ObservableGroup
         {
-            public EventHandler<string> Title;
-            public EventHandler<int> StartProgress;
-            public EventHandler<int> UpdateProgress;
-            public EventHandler EndProgress;
-            public EventHandler<List<PurgeRecyclerItem>> SetPurgeItems;
-            public EventHandler StartDeleting;
-            public EventHandler<string> EndDeleting;
-            public EventHandler<string> DisplayMessage;
+            public EventHandler<string>? Title;
+            public EventHandler<int>? StartProgress;
+            public EventHandler<int>? UpdateProgress;
+            public EventHandler? EndProgress;
+            public EventHandler<List<PurgeRecyclerItem>>? SetPurgeItems;
+            public EventHandler? StartDeleting;
+            public EventHandler<string>? EndDeleting;
+            public EventHandler<string>? DisplayMessage;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -157,7 +157,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
             }
 
             CompletedFindingItems = true;
-            Observables.EndProgress?.Invoke(this, null);
+            Observables.EndProgress?.Invoke(this, EventArgs.Empty);
             Observables.SetPurgeItems?.Invoke(this, AllItems);
             SetTitle();
             AnalyticsEngine.PurgeScanEvent(GetItemsSelectedCount());
@@ -187,11 +187,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
 
         private string GetDisplayName(IFileInfo fileInfo) => fileInfo.Name;
         private string GetDisplayName(IDirectoryInfo dirInfo) => dirInfo.FullName;
-        private string GetDisplayName<T>(T field) => "Unknown type: " + field.GetType();
+        private string GetDisplayName<T>(T field) => "Unknown type: " + field?.GetType();
 
         private void DeleteItem(IFileInfo fileInfo) => FileUtilities.FileDelete(fileInfo.FullName);
         private void DeleteItem(IDirectoryInfo dirInfo) => EpisodePurger.PurgeFolder(dirInfo);
-        private void DeleteItem<T>(T field) => Logger.Debug(() => $"Ignoring unknown type: {field.GetType()}");
+        private void DeleteItem<T>(T field) => Logger.Debug(() => $"Ignoring unknown type: {field?.GetType()}");
 
         private string RemoveSourceRootIfPresent(string filePath)
         {
@@ -221,7 +221,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
 
         public string GetLabelForList<T>(T field)
         {
-            return "GetLabelForList not implemented for type: " + field.GetType();
+            return "GetLabelForList not implemented for type: " + field?.GetType();
         }
 
         public void PurgeComplete()

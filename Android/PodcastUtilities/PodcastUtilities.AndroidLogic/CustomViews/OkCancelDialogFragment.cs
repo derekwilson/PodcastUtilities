@@ -5,7 +5,7 @@ using System;
 
 namespace PodcastUtilities.AndroidLogic.CustomViews
 {
-    public class OkCancelDialogFragment : DialogFragment
+    public class OkCancelDialogFragment : AndroidX.Fragment.App.DialogFragment
     {
         private static string TITLE_KEY = "title_key";
         private static string MESSAGE_KEY = "message_key";
@@ -13,7 +13,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
         private static string CANCEL_KEY = "cancel_key";
         private static string CUSTOM_KEY = "custom_key";
 
-        public static OkCancelDialogFragment NewInstance(string title, string message, string ok, string cancel, string data)
+        public static OkCancelDialogFragment NewInstance(string title, string message, string ok, string cancel, string? data)
         {
             var dialog = new OkCancelDialogFragment();
             var args = new Bundle();
@@ -26,32 +26,35 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
             return dialog;
         }
 
-        public EventHandler<Tuple<string, string>> OkSelected;
-        public EventHandler<Tuple<string, string>> CancelSelected;
+        public EventHandler<Tuple<string?, string?>>? OkSelected;
+        public EventHandler<Tuple<string?, string?>>? CancelSelected;
 
-        public override Android.App.Dialog OnCreateDialog(Bundle savedInstanceState)
+        public override Android.App.Dialog OnCreateDialog(Bundle? savedInstanceState)
         {
-            var title = Arguments.GetString(TITLE_KEY);
-            var message = Arguments.GetString(MESSAGE_KEY);
-            var ok = Arguments.GetString(OK_KEY);
-            var cancel = Arguments.GetString(CANCEL_KEY);
-            var data = Arguments.GetString(CUSTOM_KEY);
+            var args = RequireArguments();
 
-            var builder = new MaterialAlertDialogBuilder(Activity)
+            var title = args.GetString(TITLE_KEY);
+            var message = args.GetString(MESSAGE_KEY);
+            var ok = args.GetString(OK_KEY);
+            var cancel = args.GetString(CANCEL_KEY);
+            var data = args.GetString(CUSTOM_KEY);
+
+            var activity = RequireActivity();
+            var builder = new MaterialAlertDialogBuilder(activity)
                 .SetMessage(message);
             if (!string.IsNullOrEmpty(title))
             {
-                builder.SetTitle(title);
+                builder?.SetTitle(title);
             }
             if (!string.IsNullOrEmpty(ok))
             {
-                builder.SetPositiveButton("OK", (s, e) => OkSelected?.Invoke(this, Tuple.Create(Tag, data)));
+                builder?.SetPositiveButton("OK", (s, e) => OkSelected?.Invoke(this, Tuple.Create(Tag, data)));
             }
             if (!string.IsNullOrEmpty(cancel))
             {
-                builder.SetNegativeButton(cancel, (sender, args) => CancelSelected?.Invoke(this, Tuple.Create(Tag, data)));
+                builder?.SetNegativeButton(cancel, (sender, args) => CancelSelected?.Invoke(this, Tuple.Create(Tag, data)));
             }
-            return builder.Create();
+            return builder?.Create() ?? throw new InvalidOperationException("cannot build dialog");
         }
     }
 }

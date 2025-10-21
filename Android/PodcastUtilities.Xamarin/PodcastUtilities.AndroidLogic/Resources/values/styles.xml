@@ -1,0 +1,153 @@
+﻿
+<resources>
+	<!-- Light Mode -->
+
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+		<item name="colorPrimary">@color/colour_blue</item>
+		<item name="colorPrimaryDark">@color/colour_dark_blue</item>
+		<item name="colorAccent">@color/colour_dark_green</item>
+
+		<!-- set the action bar colour to be colorPrimary  -->
+		<item name="actionBarStyle">@style/AppTheme.ActionBar</item>
+	</style>
+
+	<style name="AppTheme.ActionBar" parent="@style/Widget.MaterialComponents.ActionBar.Primary">
+		<item name="titleTextStyle">@style/AppTheme.ActionBar.Text</item>
+	</style>
+
+	<!-- we want the text on the action bar to be scaleable -->
+	<style name="AppTheme.ActionBar.Text" parent="@android:style/TextAppearance">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
+	<!-- work around for material bugs -->
+	<!-- see https://stackoverflow.com/questions/56141507/there-is-always-a-default-background-on-textinputlayout-in-android -->
+	<style name="DialogTextLayout">
+		<item name="android:hint">Default</item>
+		<item name="boxBackgroundMode">filled</item>
+		<item name="boxBackgroundColor">@null</item>
+	</style>
+
+	<style name="DialogTextLayoutColours" parent="DialogTextLayout">
+		<item name="hintTextColor">@color/colour_dark_green</item>
+	</style>
+
+	<style name="DialogButton" parent="Widget.AppCompat.Button.Borderless.Colored">
+		<item name="android:minHeight">0dp</item>
+		<item name="android:minWidth">0dp</item>
+		<item name="android:paddingTop">15dp</item>
+		<item name="android:paddingBottom">15dp</item>
+	</style>
+
+	<style name="Divider">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">1dp</item>
+		<item name="android:background">?android:attr/listDivider</item>
+	</style>
+
+	<style name="ConfigRow">
+		<item name="android:paddingStart">@dimen/listview_item_horizontal_padding</item>
+		<item name="android:paddingEnd">@dimen/listview_item_horizontal_padding</item>
+		<item name="android:paddingTop">@dimen/listview_item_vertical_padding</item>
+		<item name="android:paddingBottom">@dimen/listview_item_vertical_padding</item>
+	</style>
+
+	<style name="ConfigRowContainer" parent="ConfigRow">
+		<item name="android:background">?attr/selectableItemBackground</item>
+	</style>
+
+	<style name="DialogTitle">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textColor">@color/colour_blue</item>
+	</style>
+
+	<style name="ItemTitle">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">@color/colour_blue</item>
+	</style>
+
+	<style name="ItemLabel">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/colour_dark_green</item>
+	</style>
+
+	<style name="ItemValue">
+		<item name="android:textSize">32sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">@color/color_near_black</item>
+	</style>
+
+	<style name="ItemValueSmall">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">@color/color_near_black</item>
+	</style>
+
+	<style name="ItemProgressBar" parent="@style/AppTheme">
+		<item name="colorAccent">@color/colour_blue</item>
+	</style>
+
+	<style name="ItemListSubTitle2">
+		<item name="android:textSize">16sp</item>
+	</style>
+
+	<style name="ItemListSubTitle">
+		<item name="android:layout_centerHorizontal">true</item>
+		<item name="android:ellipsize">marquee</item>
+		<item name="android:singleLine">true</item>
+		<item name="android:textSize">16sp</item>
+	</style>
+
+	<style name="ItemListTitle" parent="ItemListSubTitle">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
+	<color name="progress_bar">@color/colour_green</color>
+
+	<style name="OutlineButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+		<item name="strokeColor">@color/colour_blue</item>
+		<item name="cornerRadius">8dp</item>
+	</style>
+
+	<style name="progressSpinnerViewBar">
+		<item name="android:indeterminateTint">@color/colour_green</item>
+		<item name="android:background">@color/colour_blue</item>
+	</style>
+
+	<style name="FabLayout">
+		<item name="android:layout_marginTop">16dp</item>
+		<item name="android:layout_marginBottom">32dp</item>
+		<item name="android:layout_marginStart">16dp</item>
+		<item name="android:layout_marginEnd">32dp</item>
+		<item name="elevation">8dp</item>
+		<item name="borderWidth">0dp</item>
+		<item name="fabSize">normal</item>
+	</style>
+
+	<style name="fabIconButton" parent="FabLayout">
+		<item name="backgroundTint">@color/colour_dark_green</item>
+	</style>
+
+	<style name="bottomSheetTitleBorder">
+		<item name="android:background">@color/colour_dark_green</item>
+	</style>
+
+	<style name="bottomSheetTitle">
+		<item name="android:textColor">@color/colour_dark_green</item>
+	</style>
+
+	<style name="SelectableItemOption">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/color_near_black</item>
+	</style>
+
+	<style name="iconImageButton">
+		<item name="tint">@color/colour_dark_green</item>
+	</style>
+
+</resources>
+

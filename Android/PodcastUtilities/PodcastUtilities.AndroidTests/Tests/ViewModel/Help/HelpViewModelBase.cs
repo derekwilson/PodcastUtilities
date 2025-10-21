@@ -11,21 +11,21 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Help
 {
     public class HelpViewModelBase
     {
-        protected HelpViewModel ViewModel;
+        protected HelpViewModel ViewModel = null!;
 
         public class ObservedResultsGroup
         {
-            public string LastSetText;
+            public string? LastSetText;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
 
         // mocks
-        protected Android.App.Application MockApplication;
-        protected ILogger MockLogger;
-        protected IFileSystemHelper MockFileSystemHelper;
-        protected Html.IImageGetter MockImageGetter;
-        protected IAnalyticsEngine MockAnalyticsEngine;
+        protected Android.App.Application MockApplication = null!;
+        protected ILogger MockLogger = null!;
+        protected IFileSystemHelper MockFileSystemHelper = null!;
+        protected Html.IImageGetter MockImageGetter = null!;
+        protected IAnalyticsEngine MockAnalyticsEngine = null!;
 
         protected void ResetObservedResults()
         {
@@ -68,7 +68,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Help
             ViewModel.Observables.SetText -= SetText;
         }
 
-        private void SetText(object sender, Tuple<string, Html.IImageGetter> parameters)
+        private void SetText(object? sender, Tuple<string, Html.IImageGetter> parameters)
         {
             (string text, Html.IImageGetter getter) = parameters;
             ObservedResults.LastSetText = text;

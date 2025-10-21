@@ -1,0 +1,22 @@
+﻿<!--For all properties see: https://aka.ms/android-menu-resource-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<group android:id="@+id/edit_control" >
+		<item
+			android:id="@+id/action_edit_load_control"
+			android:title="@string/action_edit_load_control"
+			app:showAsAction="never"/>
+		<item
+			android:id="@+id/action_edit_share_control"
+			android:title="@string/action_edit_share_control"
+			app:showAsAction="never"/>
+	</group>
+
+	<group android:id="@+id/reset_control" >
+		<item
+			android:id="@+id/action_edit_reset_control"
+			android:title="@string/action_edit_reset_control"
+			app:showAsAction="never"/>
+	</group>
+</menu>
