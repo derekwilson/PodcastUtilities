@@ -5,8 +5,8 @@
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationVersion>20</ApplicationVersion>
-    <ApplicationDisplayVersion>2.8.0</ApplicationDisplayVersion>
+    <ApplicationVersion>21</ApplicationVersion>
+    <ApplicationDisplayVersion>2.8.1</ApplicationDisplayVersion>
     <!-- Assembly Information Properties -->
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AssemblyCompany>AAD</AssemblyCompany>
@@ -20,9 +20,13 @@
     -->
     <TrimMode>partial</TrimMode>
     <IsTrimmable>false</IsTrimmable>
+    <RuntimeIdentifiers>android-arm;android-arm64</RuntimeIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
   </PropertyGroup>
   <Import Project="$(ProjectDir)..\LocalOnly\keystoreproperties.xml" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
   <ItemGroup>
