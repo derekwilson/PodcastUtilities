@@ -4,6 +4,7 @@ using Android.Widget;
 using AndroidX.Lifecycle;
 using AndroidX.Preference;
 using PodcastUtilities.AndroidLogic.ViewModel;
+using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using PodcastUtilities.AndroidLogic.ViewModel.Settings;
 using PodcastUtilities.UI.Help;
 
@@ -11,25 +12,25 @@ namespace PodcastUtilities.UI.Settings
 {
     public class SettingsFragment : PreferenceFragmentCompat, ISharedPreferencesOnSharedPreferenceChangeListener
     {
-        private AndroidApplication AndroidApplication;
-        private SettingsViewModel ViewModel;
+        private AndroidApplication AndroidApplication = null!;
+        private SettingsViewModel ViewModel = null!;
 
-        public override void OnCreate(Bundle savedInstanceState)
+        public override void OnCreate(Bundle? savedInstanceState)
         {
-            AndroidApplication = Activity.Application as AndroidApplication;
+            AndroidApplication = (AndroidApplication)Activity?.Application!;
             AndroidApplication.Logger.Debug(() => $"SettingsFragment:OnCreate");
 
             base.OnCreate(savedInstanceState);
 
-            var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
-            ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(SettingsViewModel))) as SettingsViewModel;
+            var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
+            ViewModel = (SettingsViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(SettingsViewModel)));
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
             ViewModel.Initialise();
         }
 
-        public override void OnCreatePreferences(Bundle savedInstanceState, string rootKey)
+        public override void OnCreatePreferences(Bundle? savedInstanceState, string? rootKey)
         {
             SetPreferencesFromResource(Resource.Xml.settings, rootKey);
             UpdateAllPreferenceSummaries();
@@ -43,7 +44,10 @@ namespace PodcastUtilities.UI.Settings
         {
             AndroidApplication.Logger.Debug(() => $"SettingsFragment:OnPause");
             base.OnPause();
-            PreferenceManager.GetDefaultSharedPreferences(Activity).UnregisterOnSharedPreferenceChangeListener(this);
+            if (Activity != null)
+            {
+                PreferenceManager.GetDefaultSharedPreferences(Activity)?.UnregisterOnSharedPreferenceChangeListener(this);
+            }
             ViewModel.Pause();
         }
 
@@ -51,7 +55,10 @@ namespace PodcastUtilities.UI.Settings
         {
             AndroidApplication.Logger.Debug(() => $"SettingsFragment:OnResume");
             base.OnResume();
-            PreferenceManager.GetDefaultSharedPreferences(Activity).RegisterOnSharedPreferenceChangeListener(this);
+            if (Activity != null)
+            {
+                PreferenceManager.GetDefaultSharedPreferences(Activity)?.RegisterOnSharedPreferenceChangeListener(this);
+            }
         }
 
         public override void OnDestroy()
@@ -89,8 +96,11 @@ namespace PodcastUtilities.UI.Settings
         }
         private void OslClick()
         {
-            var intent = new Intent(Activity, typeof(OpenSourceLicensesActivity));
-            StartActivity(intent);
+            if (Activity != null)
+            {
+                var intent = new Intent(Activity, typeof(OpenSourceLicensesActivity));
+                StartActivity(intent);
+            }
         }
 
         private void UpdateHelp()
@@ -105,8 +115,11 @@ namespace PodcastUtilities.UI.Settings
 
         private void HelpClick()
         {
-            var intent = new Intent(Activity, typeof(HelpActivity));
-            StartActivity(intent);
+            if (Activity != null)
+            {
+                var intent = new Intent(Activity, typeof(HelpActivity));
+                StartActivity(intent);
+            }
         }
 
         private void UpdateVersion()
@@ -126,26 +139,36 @@ namespace PodcastUtilities.UI.Settings
 #endif
         }
 
-        public void OnSharedPreferenceChanged(ISharedPreferences sharedPreferences, string key)
+        public void OnSharedPreferenceChanged(ISharedPreferences? sharedPreferences, string? key)
         {
-            UpdatePreferenceSummaryByKey(key);
+            if (key !=  null)
+            {
+                UpdatePreferenceSummaryByKey(key);
+            }
         }
 
         private void UpdateAllPreferenceSummaries()
         {
-            foreach (var item in PreferenceManager.GetDefaultSharedPreferences(Activity).All.Keys)
+            if (Activity != null)
             {
-                UpdatePreferenceSummaryByKey(item);
+                var keys = PreferenceManager.GetDefaultSharedPreferences(Activity)?.All?.Keys;
+                if (keys != null)
+                {
+                    foreach (var item in keys)
+                    {
+                        UpdatePreferenceSummaryByKey(item);
+                    }
+                }
             }
         }
 
         private void UpdatePreferenceSummaryByKey(string key)
         {
-            if (key == null || FindPreference(key) == null)
+            Preference? pref = FindPreference(key);
+            if (pref != null)
             {
-                return;
+                UpdatePreferenceSummary(pref);
             }
-            UpdatePreferenceSummary(FindPreference(key));
         }
 
         private void UpdatePreferenceSummary(Preference preference)
@@ -156,9 +179,12 @@ namespace PodcastUtilities.UI.Settings
             }
         }
 
-        private void UpdateListPreferenceSummary(ListPreference listPreference)
+        private void UpdateListPreferenceSummary(ListPreference? listPreference)
         {
-            listPreference.Summary = listPreference.Entry;
+            if (listPreference != null)
+            {
+                listPreference.Summary = listPreference.Entry;
+            }
         }
 
         private void SetupViewModelObservers()
@@ -173,18 +199,21 @@ namespace PodcastUtilities.UI.Settings
             ViewModel.Observables.DisplayMessage -= DisplayMessage;
         }
 
-        private void SetVersion(object sender, string version)
+        private void SetVersion(object? sender, string version)
         {
             var versionPreference = FindPreference(GetString(Resource.String.settings_version_key));
-            versionPreference.Summary = version;
+            if (versionPreference != null)
+            {
+                versionPreference.Summary = version;
+            }
         }
 
-        private void DisplayMessage(object sender, string message)
+        private void DisplayMessage(object? sender, string message)
         {
             AndroidApplication.Logger.Debug(() => $"SettingsFragment: Message {message}");
             Activity?.RunOnUiThread(() =>
             {
-                Toast.MakeText(Activity, message, ToastLength.Short).Show();
+                Toast.MakeText(Activity, message, ToastLength.Short)?.Show();
             });
         }
     }

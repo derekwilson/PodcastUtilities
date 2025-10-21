@@ -11,6 +11,7 @@ using AndroidX.AppCompat.App;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
+using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using PodcastUtilities.AndroidLogic.ViewModel.Settings;
 using System;
 
@@ -20,25 +21,25 @@ namespace PodcastUtilities.UI.Settings
 
     public class OpenSourceLicensesActivity : AppCompatActivity
     {
-        private AndroidApplication AndroidApplication;
-        private OpenSourceLicensesViewModel ViewModel;
+        private AndroidApplication AndroidApplication = null!;
+        private OpenSourceLicensesViewModel ViewModel = null!;
 
-        ScrollView LicenseTextScroller = null;
-        TextView LicenseText = null;
+        ScrollView LicenseTextScroller = null!;
+        TextView LicenseText = null!;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
-            AndroidApplication = Application as AndroidApplication;
+            AndroidApplication = (AndroidApplication)Application!;
             AndroidApplication.Logger.Debug(() => $"OpenSourceLicensesActivity:OnCreate");
 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_opensourcelicenses);
 
-            LicenseTextScroller = FindViewById<ScrollView>(Resource.Id.license_scroller);
-            LicenseText = FindViewById<TextView>(Resource.Id.license_text);
+            LicenseTextScroller = FindViewById<ScrollView>(Resource.Id.license_scroller)!;
+            LicenseText = FindViewById<TextView>(Resource.Id.license_text)!;
 
-            var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
-            ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(OpenSourceLicensesViewModel))) as OpenSourceLicensesViewModel;
+            var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
+            ViewModel = (OpenSourceLicensesViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(OpenSourceLicensesViewModel)));
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
@@ -54,7 +55,7 @@ namespace PodcastUtilities.UI.Settings
             KillViewModelObservers();
         }
 
-        public override bool DispatchKeyEvent(KeyEvent e)
+        public override bool DispatchKeyEvent(KeyEvent? e)
         {
             if (BackKeyMapper.HandleKeyEvent(this, e))
             {
@@ -67,7 +68,10 @@ namespace PodcastUtilities.UI.Settings
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             AndroidApplication.Logger.Debug(() => $"OpenSourceLicensesActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (OperatingSystem.IsAndroidVersionAtLeast(23))
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
         }
 
         private void SetupViewModelObservers()
@@ -84,7 +88,7 @@ namespace PodcastUtilities.UI.Settings
             ViewModel.Observables.ResetText -= ResetText;
         }
 
-        private void ResetText(object sender, EventArgs e)
+        private void ResetText(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -92,23 +96,24 @@ namespace PodcastUtilities.UI.Settings
             });
         }
 
-        private void ScrollToTop(object sender, EventArgs e)
+        private void ScrollToTop(object? sender, EventArgs e)
         {
-            AndroidApplication.Logger.Debug(() => $"OpenSourceLicensesActivity:ScrollToTop Length = {LicenseText.Text.Length}");
+            AndroidApplication.Logger.Debug(() => $"OpenSourceLicensesActivity:ScrollToTop Length = {LicenseText?.Text?.Length}");
             RunOnUiThread(() =>
             {
                 // Appending to the textview auto scrolls the text to the bottom - force it back to the top
                 LicenseTextScroller.FullScroll(FocusSearchDirection.Up);
                 // Appending to the textview auto scrolls the text to the bottom - force it back to the top for old versions
-                if (Build.VERSION.SdkInt <= BuildVersionCodes.P)
+                //if (Build.VERSION.SdkInt <= BuildVersionCodes.P)
+                if (!OperatingSystem.IsAndroidVersionAtLeast(29))
                 {
                     // scroll to the top of the page
-                    LicenseTextScroller.Parent.RequestChildFocus(LicenseTextScroller, LicenseTextScroller);
+                    LicenseTextScroller?.Parent?.RequestChildFocus(LicenseTextScroller, LicenseTextScroller);
                 }
             });
         }
 
-        private void AddText(object sender, Tuple<string, string> textBlock)
+        private void AddText(object? sender, Tuple<string, string> textBlock)
         {
             RunOnUiThread(() =>
             {

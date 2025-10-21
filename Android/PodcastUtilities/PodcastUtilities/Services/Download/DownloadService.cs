@@ -24,9 +24,9 @@ namespace PodcastUtilities.Services.Download
         private AndroidApplication AndroidApplication = null!;
 
         // injected
-        private NotificationManager? NotificationManager;
-        private AndroidLogic.Services.Download.IDownloader? Downloader;
-        private ICrashReporter? CrashReporter;
+        private NotificationManager? NotificationManager;       // can be null on old OS
+        private AndroidLogic.Services.Download.IDownloader Downloader = null!;
+        private ICrashReporter CrashReporter = null!;
 
         private DownloaderEvents? DownloaderEvents;
 
@@ -113,7 +113,7 @@ namespace PodcastUtilities.Services.Download
         {
             AndroidApplication.Logger.Debug(() => "DownloadService:OnDestroy");
             DetachDownloaderEvents();
-            Downloader?.CancelAll();
+            Downloader.CancelAll();
             NotificationManager?.Cancel(FOREGROUND_NOTIFICATION_ID);
             base.OnDestroy();
         }
@@ -145,7 +145,7 @@ namespace PodcastUtilities.Services.Download
             }
             catch (Exception ex)
             {
-                CrashReporter?.LogNonFatalException(ex);
+                CrashReporter.LogNonFatalException(ex);
                 AndroidApplication.Logger.LogException(() => "StartForeground", ex);
             }
         }
@@ -244,24 +244,24 @@ namespace PodcastUtilities.Services.Download
 
         public void StartDownloads(List<DownloadRecyclerItem> allItems)
         {
-            Downloader?.SetDownloadingItems(allItems);
+            Downloader.SetDownloadingItems(allItems);
             StartForeground();      // we need to create the notification
-            Downloader?.DownloadAllItems();
+            Downloader.DownloadAllItems();
         }
 
-        public DownloaderEvents? GetDownloaderEvents()
+        public DownloaderEvents GetDownloaderEvents()
         {
-            return Downloader?.GetDownloaderEvents();
+            return Downloader.GetDownloaderEvents();
         }
 
         public List<DownloadRecyclerItem>? GetItems()
         {
-            return Downloader?.GetDownloadItems();
+            return Downloader.GetDownloadItems();
         }
 
         public void CancelDownloads()
         {
-            Downloader?.CancelAll();
+            Downloader.CancelAll();
         }
 
         public void KillNotification()
@@ -277,7 +277,7 @@ namespace PodcastUtilities.Services.Download
         {
             get
             {
-                return Downloader?.IsDownloading ?? false;
+                return Downloader.IsDownloading;
             }
         }
     }

@@ -26,7 +26,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             public EventHandler? SelectControlFile;
             public EventHandler<string>? SetCacheRoot;
             public EventHandler<Tuple<string, List<ConfigPodcastFeedRecyclerItem>>>? SetFeedItems;
-            public EventHandler<string>? NavigateToFeed;
+            public EventHandler<string?>? NavigateToFeed;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters>? PromptToAddFeed;
             public EventHandler<ValuePromptDialogFragment.ValuePromptDialogFragmentParameters>? PromptForCacheRoot;
             public EventHandler? NavigateToAddFeed;

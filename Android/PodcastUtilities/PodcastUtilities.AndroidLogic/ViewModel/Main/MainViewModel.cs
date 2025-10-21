@@ -289,9 +289,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             return false;
         }
 
-        public bool KeyEvent(KeyEvent e)
+        public bool KeyEvent(KeyEvent? e)
         {
-            Logger.Debug(() => $"MainViewModel:KeyEvent = {e.Action}, {e.KeyCode}");
+            Logger.Debug(() => $"MainViewModel:KeyEvent = {e?.Action}, {e?.KeyCode}");
             if (e == null || e.Action != KeyEventActions.Up)
             {
                 // lets get rid of most of the stuff we are not interested in

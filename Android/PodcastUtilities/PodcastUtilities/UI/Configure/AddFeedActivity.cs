@@ -20,7 +20,6 @@ namespace PodcastUtilities.UI.Configure
     internal class AddFeedActivity : AppCompatActivity
     {
         private AndroidApplication AndroidApplication = null!;
-
         private AddFeedViewModel ViewModel = null!;
 
         private ProgressSpinnerView ProgressSpinner = null!;

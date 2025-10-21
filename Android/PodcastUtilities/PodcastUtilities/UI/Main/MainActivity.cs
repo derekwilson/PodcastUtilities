@@ -14,6 +14,7 @@ using Google.Android.Material.FloatingActionButton;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
+using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.UI.Configure;
 using PodcastUtilities.UI.Download;
@@ -31,48 +32,48 @@ namespace PodcastUtilities
 #endif
     public class MainActivity : AppCompatActivity
     {
-        private AndroidApplication AndroidApplication;
-        private MainViewModel ViewModel;
+        private AndroidApplication AndroidApplication = null!;
+        private MainViewModel ViewModel = null!;
 
-        private IPermissionChecker PermissionChecker;
+        private IPermissionChecker PermissionChecker = null!;
 
-        private NestedScrollView Container = null;
-        private LinearLayout DriveInfoContainerView = null;
-        private TextView NoDriveDataView = null;
-        private EmptyRecyclerView RvFeeds;
-        private LinearLayout NoFeedView;
-        private PodcastFeedRecyclerItemAdapter FeedAdapter;
-        private TextView CacheRoot = null;
-        private TextView FeedsTitle = null;
+        private NestedScrollView Container = null!;
+        private LinearLayout DriveInfoContainerView = null!;
+        private TextView NoDriveDataView = null!;
+        private EmptyRecyclerView RvFeeds = null!;
+        private LinearLayout NoFeedView = null!;
+        private PodcastFeedRecyclerItemAdapter FeedAdapter = null!;
+        private TextView CacheRoot = null!;
+        private TextView FeedsTitle = null!;
 
-        private FloatingActionButton PurgeButton;
-        private FloatingActionButton DownloadButton;
+        private FloatingActionButton PurgeButton = null!;
+        private FloatingActionButton DownloadButton = null!;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
-            AndroidApplication = Application as AndroidApplication;
+            AndroidApplication = (AndroidApplication)Application!;
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate");
             PermissionChecker = new PermissionChecker();
 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
-            Container = FindViewById<NestedScrollView>(Resource.Id.container);  
-            DriveInfoContainerView = FindViewById<LinearLayout>(Resource.Id.drive_info_container);
-            NoDriveDataView = FindViewById<TextView>(Resource.Id.txtNoData);
-            RvFeeds = FindViewById<EmptyRecyclerView>(Resource.Id.feed_list);
-            NoFeedView = FindViewById<LinearLayout>(Resource.Id.layNoFeed);
-            CacheRoot = FindViewById<TextView>(Resource.Id.cache_root_value);
-            FeedsTitle = FindViewById<TextView>(Resource.Id.feed_list_label);
-            PurgeButton = FindViewById<FloatingActionButton>(Resource.Id.fab_main_purge);
-            DownloadButton = FindViewById<FloatingActionButton>(Resource.Id.fab_main_download);
+            Container = FindViewById<NestedScrollView>(Resource.Id.container)!;
+            DriveInfoContainerView = FindViewById<LinearLayout>(Resource.Id.drive_info_container)!;
+            NoDriveDataView = FindViewById<TextView>(Resource.Id.txtNoData)!;
+            RvFeeds = FindViewById<EmptyRecyclerView>(Resource.Id.feed_list)!;
+            NoFeedView = FindViewById<LinearLayout>(Resource.Id.layNoFeed)!;
+            CacheRoot = FindViewById<TextView>(Resource.Id.cache_root_value)!;
+            FeedsTitle = FindViewById<TextView>(Resource.Id.feed_list_label)!;
+            PurgeButton = FindViewById<FloatingActionButton>(Resource.Id.fab_main_purge)!;
+            DownloadButton = FindViewById<FloatingActionButton>(Resource.Id.fab_main_download)!;
 
             RvFeeds.SetLayoutManager(new LinearLayoutManager(this));
             RvFeeds.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
             RvFeeds.SetEmptyView(NoFeedView);
 
-            var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
-            ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(MainViewModel))) as MainViewModel;
+            var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
+            ViewModel = (MainViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(MainViewModel)));
 
             FeedAdapter = new PodcastFeedRecyclerItemAdapter(this, ViewModel);
             RvFeeds.SetAdapter(FeedAdapter);
@@ -88,7 +89,7 @@ namespace PodcastUtilities
             if (!PermissionChecker.HasManageStoragePermission(this))
             {
                 AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate - manage storage permission not granted - requesting");
-                PermissionRequester.RequestManageStoragePermission(this, PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION, AndroidApplication.PackageName);
+                PermissionRequester.RequestManageStoragePermission(this, PermissionRequester.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION, AndroidApplication.PackageName ?? "");
             }
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnCreate - end - observers {GetObserverCount()}");
         }
@@ -147,12 +148,15 @@ namespace PodcastUtilities
                     }
                     break;
                 default:
-                    base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    if (OperatingSystem.IsAndroidVersionAtLeast(23))
+                    {
+                        base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    }
                     break;
             }
         }
 
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent? data)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity:OnActivityResult {requestCode}, {resultCode}");
             base.OnActivityResult(requestCode, resultCode, data);
@@ -167,15 +171,18 @@ namespace PodcastUtilities
             }
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
+        public override bool OnCreateOptionsMenu(IMenu? menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_main, menu);
             // we want a separator on the menu
-            MenuCompat.SetGroupDividerEnabled(menu, true);
+            if (menu != null)
+            {
+                MenuCompat.SetGroupDividerEnabled(menu, true);
+            }
             return base.OnCreateOptionsMenu(menu);
         }
 
-        public override bool OnPrepareOptionsMenu(IMenu menu)
+        public override bool OnPrepareOptionsMenu(IMenu? menu)
         {
             EnableMenuItemIfAvailable(menu, Resource.Id.action_edit_config);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_purge);
@@ -186,9 +193,9 @@ namespace PodcastUtilities
             return true;
         }
 
-        private void EnableMenuItemIfAvailable(IMenu menu, int itemId)
+        private void EnableMenuItemIfAvailable(IMenu? menu, int itemId)
         {
-            menu.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
+            menu?.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -205,7 +212,7 @@ namespace PodcastUtilities
             return base.OnOptionsItemSelected(item);
         }
 
-        public override bool DispatchKeyEvent(KeyEvent e)
+        public override bool DispatchKeyEvent(KeyEvent? e)
         {
             if (BackKeyMapper.HandleKeyEvent(this, e))
             {
@@ -264,7 +271,7 @@ namespace PodcastUtilities
             ViewModel.Observables.NavigateToEditConfig -= NavigateToEditConfig;
         }
 
-        private void SetTitle(object sender, string title)
+        private void SetTitle(object? sender, string title)
         {
             RunOnUiThread(() =>
             {
@@ -272,7 +279,7 @@ namespace PodcastUtilities
             });
         }
 
-        private void ShowNoDriveMessage(object sender, EventArgs e)
+        private void ShowNoDriveMessage(object? sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity: ShowNoDriveMessage");
             RunOnUiThread(() =>
@@ -283,7 +290,7 @@ namespace PodcastUtilities
             });
         }
 
-        private void AddInfoView(object sender, View view)
+        private void AddInfoView(object? sender, View view)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity: AddInfoView");
             RunOnUiThread(() =>
@@ -294,21 +301,21 @@ namespace PodcastUtilities
             });
         }
 
-        private void ToastMessage(object sender, string message)
+        private void ToastMessage(object? sender, string message)
         {
             ToastMessage(message);
         }
 
-        private void ToastMessage(string message)
+        private void ToastMessage(string? message)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity: ToastMessage {message}");
             RunOnUiThread(() =>
             {
-                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+                Toast.MakeText(Application.Context, message, ToastLength.Short)?.Show();
             });
         }
 
-        private void NavigateToSettings(object sender, EventArgs e)
+        private void NavigateToSettings(object? sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToSettings");
             RunOnUiThread(() =>
@@ -318,7 +325,7 @@ namespace PodcastUtilities
             });
         }
 
-        private void NavigateToDownload(object sender, string folder)
+        private void NavigateToDownload(object? sender, string? folder)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToDownload");
             RunOnUiThread(() =>
@@ -328,7 +335,7 @@ namespace PodcastUtilities
             });
         }
 
-        private void NavigateToPurge(object sender, EventArgs e)
+        private void NavigateToPurge(object? sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToPurge");
             RunOnUiThread(() =>
@@ -338,7 +345,7 @@ namespace PodcastUtilities
             });
         }
 
-        private void NavigateToEditConfig(object sender, EventArgs e)
+        private void NavigateToEditConfig(object? sender, EventArgs e)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToEditConfig");
             RunOnUiThread(() =>
@@ -348,7 +355,7 @@ namespace PodcastUtilities
             });
         }
 
-        private void SetFeedItems(object sender, Tuple<string, List<PodcastFeedRecyclerItem>> feeditems)
+        private void SetFeedItems(object? sender, Tuple<string, List<PodcastFeedRecyclerItem>> feeditems)
         {
             (string heading, List<PodcastFeedRecyclerItem> items) = feeditems;
             RunOnUiThread(() =>
@@ -361,7 +368,7 @@ namespace PodcastUtilities
             });
         }
 
-        private void SetCacheRoot(object sender, string root)
+        private void SetCacheRoot(object? sender, string root)
         {
             RunOnUiThread(() =>
             {

@@ -28,47 +28,47 @@ namespace PodcastUtilities.UI.Configure
         private const string DELETE_DOWNLOAD_DAYS_OLD_PROMPT_TAG = "delete_download_prompt_tag";
         private const string MAX_DOWNLOAD_ITEMS_PROMPT_TAG = "max_download_items_prompt_tag";
 
-        private AndroidApplication AndroidApplication;
-        private FeedDefaultsViewModel ViewModel;
+        private AndroidApplication AndroidApplication = null!;
+        private FeedDefaultsViewModel ViewModel = null!;
 
-        private NestedScrollView Container = null;
-        private LinearLayoutCompat DownloadStrategyRowContainer = null;
-        private TextView DownloadStrategyRowSubLabel = null;
-        private LinearLayoutCompat NamingStyleRowContainer = null;
-        private TextView NamingStyleRowSubLabel = null;
-        private LinearLayoutCompat MaxDaysOldRowContainer = null;
-        private TextView MaxDaysOldRowSubLabel = null;
-        private LinearLayoutCompat DeleteDaysOldRowContainer = null;
-        private TextView DeleteDaysOldRowSubLabel = null;
-        private LinearLayoutCompat MaxDownloadItemsRowContainer = null;
-        private TextView MaxDownloadItemsRowSubLabel = null;
+        private NestedScrollView Container = null!;
+        private LinearLayoutCompat DownloadStrategyRowContainer = null!;
+        private TextView DownloadStrategyRowSubLabel = null!;
+        private LinearLayoutCompat NamingStyleRowContainer = null!;
+        private TextView NamingStyleRowSubLabel = null!;
+        private LinearLayoutCompat MaxDaysOldRowContainer = null!;
+        private TextView MaxDaysOldRowSubLabel = null!;
+        private LinearLayoutCompat DeleteDaysOldRowContainer = null!;
+        private TextView DeleteDaysOldRowSubLabel = null!;
+        private LinearLayoutCompat MaxDownloadItemsRowContainer = null!;
+        private TextView MaxDownloadItemsRowSubLabel = null!;
 
-        private DefaultableItemValuePromptDialogFragment MaxDaysOldPromptDialogFragment;
-        private DefaultableItemValuePromptDialogFragment DeleteDaysOldPromptDialogFragment;
-        private DefaultableItemValuePromptDialogFragment MaxDownloadItemsPromptDialogFragment;
+        private DefaultableItemValuePromptDialogFragment MaxDaysOldPromptDialogFragment = null!;
+        private DefaultableItemValuePromptDialogFragment DeleteDaysOldPromptDialogFragment = null!;
+        private DefaultableItemValuePromptDialogFragment MaxDownloadItemsPromptDialogFragment = null!;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
-            AndroidApplication = Application as AndroidApplication;
+            AndroidApplication = (AndroidApplication)Application!;
             AndroidApplication.Logger.Debug(() => $"FeedDefaultsActivity:OnCreate");
 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_feed_defaults);
 
-            Container = FindViewById<NestedScrollView>(Resource.Id.feed_defaults_container);
-            DownloadStrategyRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.download_strategy_row_label_container);
-            DownloadStrategyRowSubLabel = FindViewById<TextView>(Resource.Id.download_strategy_row_sub_label);
-            NamingStyleRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.naming_style_row_label_container);
-            NamingStyleRowSubLabel = FindViewById<TextView>(Resource.Id.naming_style_row_sub_label);
-            MaxDaysOldRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.max_days_old_row_label_container);
-            MaxDaysOldRowSubLabel = FindViewById<TextView>(Resource.Id.max_days_old_row_sub_label);
-            DeleteDaysOldRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.delete_download_days_old_row_label_container);
-            DeleteDaysOldRowSubLabel = FindViewById<TextView>(Resource.Id.delete_download_days_old_row_sub_label);
-            MaxDownloadItemsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.max_download_items_row_label_container);
-            MaxDownloadItemsRowSubLabel = FindViewById<TextView>(Resource.Id.max_download_items_row_sub_label);
+            Container = FindViewById<NestedScrollView>(Resource.Id.feed_defaults_container)!;
+            DownloadStrategyRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.download_strategy_row_label_container)!;
+            DownloadStrategyRowSubLabel = FindViewById<TextView>(Resource.Id.download_strategy_row_sub_label)!;
+            NamingStyleRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.naming_style_row_label_container)!;
+            NamingStyleRowSubLabel = FindViewById<TextView>(Resource.Id.naming_style_row_sub_label)!;
+            MaxDaysOldRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.max_days_old_row_label_container)!;
+            MaxDaysOldRowSubLabel = FindViewById<TextView>(Resource.Id.max_days_old_row_sub_label)!;
+            DeleteDaysOldRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.delete_download_days_old_row_label_container)!;
+            DeleteDaysOldRowSubLabel = FindViewById<TextView>(Resource.Id.delete_download_days_old_row_sub_label)!;
+            MaxDownloadItemsRowContainer = FindViewById<LinearLayoutCompat>(Resource.Id.max_download_items_row_label_container)!;
+            MaxDownloadItemsRowSubLabel = FindViewById<TextView>(Resource.Id.max_download_items_row_sub_label)!;
 
-            var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
-            ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(FeedDefaultsViewModel))) as FeedDefaultsViewModel;
+            var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
+            ViewModel = (FeedDefaultsViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(FeedDefaultsViewModel)));
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
@@ -80,11 +80,11 @@ namespace PodcastUtilities.UI.Configure
             DeleteDaysOldRowContainer.Click += (sender, e) => DoDeleteDownloadDaysOldOptions();
             MaxDownloadItemsRowContainer.Click += (sender, e) => DoMaxDownloadItemsOptions();
 
-            MaxDaysOldPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(MAX_DAYS_OLD_PROMPT_TAG) as DefaultableItemValuePromptDialogFragment;
+            MaxDaysOldPromptDialogFragment = (DefaultableItemValuePromptDialogFragment)SupportFragmentManager.FindFragmentByTag(MAX_DAYS_OLD_PROMPT_TAG)!;
             SetupDefaultableItemValueFragmentObservers(MaxDaysOldPromptDialogFragment);
-            DeleteDaysOldPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(DELETE_DOWNLOAD_DAYS_OLD_PROMPT_TAG) as DefaultableItemValuePromptDialogFragment;
+            DeleteDaysOldPromptDialogFragment = (DefaultableItemValuePromptDialogFragment)SupportFragmentManager.FindFragmentByTag(DELETE_DOWNLOAD_DAYS_OLD_PROMPT_TAG)!;
             SetupDefaultableItemValueFragmentObservers(DeleteDaysOldPromptDialogFragment);
-            MaxDownloadItemsPromptDialogFragment = SupportFragmentManager.FindFragmentByTag(MAX_DOWNLOAD_ITEMS_PROMPT_TAG) as DefaultableItemValuePromptDialogFragment;
+            MaxDownloadItemsPromptDialogFragment = (DefaultableItemValuePromptDialogFragment)SupportFragmentManager.FindFragmentByTag(MAX_DOWNLOAD_ITEMS_PROMPT_TAG)!;
             SetupDefaultableItemValueFragmentObservers(MaxDownloadItemsPromptDialogFragment);
 
             AndroidApplication.Logger.Debug(() => $"FeedDefaultsActivity:OnCreate - end");
@@ -103,10 +103,13 @@ namespace PodcastUtilities.UI.Configure
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             AndroidApplication.Logger.Debug(() => $"FeedDefaultsActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (OperatingSystem.IsAndroidVersionAtLeast(23))
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
         }
 
-        public override bool DispatchKeyEvent(KeyEvent e)
+        public override bool DispatchKeyEvent(KeyEvent? e)
         {
             if (BackKeyMapper.HandleKeyEvent(this, e))
             {
@@ -138,7 +141,7 @@ namespace PodcastUtilities.UI.Configure
             sheet.Show(SupportFragmentManager, BOTTOMSHEET_NAMING_STYLE_TAG);
         }
 
-        public void BottomsheetItemSelected(string tag, int position, SelectableString item)
+        public void BottomsheetItemSelected(string? tag, int position, SelectableString item)
         {
             AndroidApplication.Logger.Debug(() => $"FeedDefaultsActivity:BottomsheetItemSelected {tag}, {position}");
             switch (tag)
@@ -193,7 +196,7 @@ namespace PodcastUtilities.UI.Configure
             ViewModel.Observables.PromptForMaxDownloadItems -= PromptForMaxDownloadItems;
         }
 
-        private void MaxDownloadItems(object sender, string str)
+        private void MaxDownloadItems(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -201,7 +204,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PromptForMaxDownloadItems(object sender, DefaultableItemValuePromptDialogFragmentParameters parameters)
+        private void PromptForMaxDownloadItems(object? sender, DefaultableItemValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
             {
@@ -211,7 +214,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void DeleteDaysOld(object sender, string str)
+        private void DeleteDaysOld(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -219,7 +222,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PromptForDeleteDaysOld(object sender, DefaultableItemValuePromptDialogFragmentParameters parameters)
+        private void PromptForDeleteDaysOld(object? sender, DefaultableItemValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
             {
@@ -229,7 +232,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void PromptForMaxDaysOld(object sender, DefaultableItemValuePromptDialogFragmentParameters parameters)
+        private void PromptForMaxDaysOld(object? sender, DefaultableItemValuePromptDialogFragmentParameters parameters)
         {
             RunOnUiThread(() =>
             {
@@ -239,7 +242,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void NamingStyle(object sender, string str)
+        private void NamingStyle(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -247,7 +250,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void DownloadStrategy(object sender, string str)
+        private void DownloadStrategy(object? sender, string str)
         {
             RunOnUiThread(() =>
             {
@@ -255,7 +258,7 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void MaxDaysOld(object sender, string str)
+        private void MaxDaysOld(object? sender, string str)
         {
             AndroidApplication.Logger.Debug(() => $"FeedDefaultsActivity:MaxDaysOld {str}");
             RunOnUiThread(() =>
@@ -264,12 +267,12 @@ namespace PodcastUtilities.UI.Configure
             });
         }
 
-        private void DisplayMessage(object sender, string message)
+        private void DisplayMessage(object? sender, string message)
         {
             AndroidApplication.Logger.Debug(() => $"FeedDefaultsActivity: DisplayMessage {message}");
             RunOnUiThread(() =>
             {
-                Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
+                Toast.MakeText(Application.Context, message, ToastLength.Short)?.Show();
             });
         }
 
@@ -293,9 +296,9 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void DefaultableItemValueOkSelected(object sender, Tuple<string, string, string, ItemValueType> parameters)
+        private void DefaultableItemValueOkSelected(object? sender, Tuple<string?, string?, string, ItemValueType> parameters)
         {
-            (string tag, string data, string value, ItemValueType valueType) = parameters;
+            (string? tag, string? data, string value, ItemValueType valueType) = parameters;
             AndroidApplication.Logger.Debug(() => $"OkSelected: {tag}");
             switch (tag)
             {
@@ -314,9 +317,9 @@ namespace PodcastUtilities.UI.Configure
             }
         }
 
-        private void DefaultableItemValueCancelSelected(object sender, Tuple<string, string> parameters)
+        private void DefaultableItemValueCancelSelected(object? sender, Tuple<string?, string?> parameters)
         {
-            (string tag, string data) = parameters;
+            (string? tag, string? data) = parameters;
             AndroidApplication.Logger.Debug(() => $"CancelSelected: {tag}");
             switch (tag)
             {

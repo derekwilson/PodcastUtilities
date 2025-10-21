@@ -10,6 +10,7 @@ using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.CustomViews;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.AndroidLogic.ViewModel;
+using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using PodcastUtilities.AndroidLogic.ViewModel.Messages;
 using PodcastUtilities.UI.Download;
 using System;
@@ -19,27 +20,27 @@ namespace PodcastUtilities.UI.Messages
     [Activity(Label = "@string/messages_activity", Theme = "@style/AppTheme", ParentActivity = typeof(DownloadActivity))]
     public class MessagesActivity : AppCompatActivity
     {
-        private AndroidApplication AndroidApplication;
-        private MessagesViewModel ViewModel;
+        private AndroidApplication AndroidApplication = null!;
+        private MessagesViewModel ViewModel = null!;
 
-        private ProgressSpinnerView ProgressSpinner = null;
-        private ScrollView MessagesTextScroller = null;
-        private TextView MessagesText = null;
+        private ProgressSpinnerView ProgressSpinner = null!;
+        private ScrollView MessagesTextScroller = null!;
+        private TextView MessagesText = null!;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
-            AndroidApplication = Application as AndroidApplication;
+            AndroidApplication = (AndroidApplication)Application!;
             AndroidApplication.Logger.Debug(() => $"MessagesActivity:OnCreate");
 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_messages);
 
-            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar);
-            MessagesTextScroller = FindViewById<ScrollView>(Resource.Id.messages_scroller);
-            MessagesText = FindViewById<TextView>(Resource.Id.messages_text);
+            ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar)!;
+            MessagesTextScroller = FindViewById<ScrollView>(Resource.Id.messages_scroller)!;
+            MessagesText = FindViewById<TextView>(Resource.Id.messages_text)!;
 
-            var factory = AndroidApplication.IocContainer.Resolve<ViewModelFactory>();
-            ViewModel = new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(MessagesViewModel))) as MessagesViewModel;
+            var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
+            ViewModel = (MessagesViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(MessagesViewModel)));
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
@@ -55,7 +56,7 @@ namespace PodcastUtilities.UI.Messages
             KillViewModelObservers();
         }
 
-        public override bool DispatchKeyEvent(KeyEvent e)
+        public override bool DispatchKeyEvent(KeyEvent? e)
         {
             if (BackKeyMapper.HandleKeyEvent(this, e))
             {
@@ -68,18 +69,24 @@ namespace PodcastUtilities.UI.Messages
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             AndroidApplication.Logger.Debug(() => $"MessagesActivity:OnRequestPermissionsResult code {requestCode}, res {grantResults.Length}");
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (OperatingSystem.IsAndroidVersionAtLeast(23))
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
+        public override bool OnCreateOptionsMenu(IMenu? menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_messages, menu);
             // we want a separator on the menu
-            MenuCompat.SetGroupDividerEnabled(menu, true);
+            if (menu != null)
+            {
+                MenuCompat.SetGroupDividerEnabled(menu, true);
+            }
             return base.OnCreateOptionsMenu(menu);
         }
 
-        public override bool OnPrepareOptionsMenu(IMenu menu)
+        public override bool OnPrepareOptionsMenu(IMenu? menu)
         {
             EnableMenuItemIfAvailable(menu, Resource.Id.action_logs_top);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_logs_bottom);
@@ -88,14 +95,14 @@ namespace PodcastUtilities.UI.Messages
             return true;
         }
 
-        private void SetMenuItemCheckedState(IMenu menu, int itemId)
+        private void SetMenuItemCheckedState(IMenu? menu, int itemId)
         {
-            menu.FindItem(itemId)?.SetChecked(ViewModel.IsActionChecked(itemId));
+            menu?.FindItem(itemId)?.SetChecked(ViewModel.IsActionChecked(itemId));
         }
 
-        private void EnableMenuItemIfAvailable(IMenu menu, int itemId)
+        private void EnableMenuItemIfAvailable(IMenu? menu, int itemId)
         {
-            menu.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
+            menu?.FindItem(itemId)?.SetEnabled(ViewModel.IsActionAvailable(itemId));
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -127,7 +134,7 @@ namespace PodcastUtilities.UI.Messages
             ViewModel.Observables.EndLoading -= EndLoading;
         }
 
-        private void EndLoading(object sender, EventArgs e)
+        private void EndLoading(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -135,7 +142,7 @@ namespace PodcastUtilities.UI.Messages
             });
         }
 
-        private void StartLoading(object sender, EventArgs e)
+        private void StartLoading(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -143,7 +150,7 @@ namespace PodcastUtilities.UI.Messages
             });
         }
 
-        private void ResetText(object sender, EventArgs e)
+        private void ResetText(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -151,7 +158,7 @@ namespace PodcastUtilities.UI.Messages
             });
         }
 
-        private void ScrollToTop(object sender, EventArgs e)
+        private void ScrollToTop(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -159,7 +166,7 @@ namespace PodcastUtilities.UI.Messages
             });
         }
 
-        private void ScrollToBottom(object sender, EventArgs e)
+        private void ScrollToBottom(object? sender, EventArgs e)
         {
             RunOnUiThread(() =>
             {
@@ -177,14 +184,15 @@ namespace PodcastUtilities.UI.Messages
             // Appending to the textview auto scrolls the text to the bottom - force it back to the top
             MessagesTextScroller.FullScroll(FocusSearchDirection.Up);
             // Appending to the textview auto scrolls the text to the bottom - force it back to the top for old versions
-            if (Build.VERSION.SdkInt <= BuildVersionCodes.P)
+            //if (Build.VERSION.SdkInt <= BuildVersionCodes.P)
+            if (!OperatingSystem.IsAndroidVersionAtLeast(29))
             {
                 // scroll to the top of the page
-                MessagesTextScroller.Parent.RequestChildFocus(MessagesTextScroller, MessagesTextScroller);
+                MessagesTextScroller?.Parent?.RequestChildFocus(MessagesTextScroller, MessagesTextScroller);
             }
         }
 
-        private void AddText(object sender, string textBlock)
+        private void AddText(object? sender, string textBlock)
         {
             AndroidApplication.Logger.Debug(() => $"MessagesActivity:AddTextBlock");
             RunOnUiThread(() =>

@@ -229,7 +229,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Download
             Logger.Debug(() => $"DownloadViewModel:DisconnectService");
         }
 
-        public void Initialise(bool onNew, bool test, string folder, bool fromHud)
+        public void Initialise(bool onNew, bool test, string? folder, bool fromHud)
         {
             Logger.Debug(() => $"DownloadViewModel:Initialise - {onNew}, {test}, {fromHud}, {folder}");
             if (!onNew)

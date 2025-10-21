@@ -76,7 +76,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             RefreshConfigDisplay();
         }
 
-        public void Initialise(string id)
+        public void Initialise(string? id)
         {
             Logger.Debug(() => $"EditFeedViewModel:Initialise {id}");
             PodcastFeedToEditId = Convert.ToInt32(id);
