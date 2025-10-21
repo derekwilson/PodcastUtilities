@@ -130,9 +130,9 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ApplicationControlFileProvider.ConfigurationUpdated -= ConfigurationUpdated;
         }
 
-        public bool KeyEvent(KeyEvent e)
+        public bool KeyEvent(KeyEvent? e)
         {
-            Logger.Debug(() => $"EditConfigViewModel:KeyEvent = {e.Action}, {e.KeyCode}");
+            Logger.Debug(() => $"EditConfigViewModel:KeyEvent = {e?.Action}, {e?.KeyCode}");
             if (e == null || e.Action != KeyEventActions.Up)
             {
                 // lets get rid of most of the stuff we are not interested in
@@ -242,7 +242,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             Observables.DisplayMessage?.Invoke(this, ResourceProvider.GetString(Resource.String.edit_reset));
         }
 
-        public void FolderSelected(DocumentFile file)
+        public void FolderSelected(DocumentFile? file)
         {
             var folder = FileSystemHelper.GetRealPathFromDocumentTreeFile(file);
             SetCacheRoot(folder);
@@ -256,8 +256,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ApplicationControlFileProvider.SaveCurrentControlFile();
         }
 
-        public void LoadContolFile(Android.Net.Uri data)
+        public void LoadContolFile(Android.Net.Uri? data)
         {
+            if (data == null)
+            {
+                return;
+            }
             var controlFile = OpenControlFile(data);
             if (controlFile != null)
             {
@@ -386,8 +390,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             );
         }
 
-        private IPodcastInfo? GetPodcastByPosition(string position)
+        private IPodcastInfo? GetPodcastByPosition(string? position)
         {
+            if (position == null)
+            {
+                return null;
+            }
             // find the podcast
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             int index = 0;
@@ -403,8 +411,12 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             return null;
         }
 
-        public void DeleteConfirmed(string data)
+        public void DeleteConfirmed(string? data)
         {
+            if (data == null)
+            {
+                return;
+            }
             // find the podcast
             Logger.Debug(() => $"EditConfigViewModel:FeedItemOptionSelected {data}");
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
@@ -423,7 +435,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             Observables.NavigateToAddFeed?.Invoke(this, EventArgs.Empty);
         }
 
-        public void AddFeedConfirmed(string value, string data)
+        public void AddFeedConfirmed(string value, string? data)
         {
             // this will happen if a podcast element is created without a feed element - for example after importing an XML control file
             Logger.Debug(() => $"EditConfigViewModel:Add Feed = {value}");

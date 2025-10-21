@@ -39,7 +39,15 @@ namespace PodcastUtilities
         public const string LOGCAT_TAG = "PodcastUtilitiesTag";
 
         public NLoggerLoggerFactory? LoggerFactory { get; private set; }
-        public ILogger? Logger { get; private set; }
+        public ILogger Logger
+        {
+            get
+            {
+                return _logger!;
+            }
+        }
+        private ILogger? _logger = null;
+
         public String DisplayVersion { get; private set; }
         public String DisplayPackage { get; private set; }
         public IIocContainer? IocContainer { get; private set; }
@@ -61,14 +69,14 @@ namespace PodcastUtilities
 
         private void TaskSchedulerOnUnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
         {
-            Logger?.LogException(() => "TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
+            _logger?.LogException(() => "TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
             Analytics?.LifecycleErrorFatalEvent();
         }
 
         private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
         {
             var ex = unhandledExceptionEventArgs.ExceptionObject as Exception ?? new Exception("EXCEPTION NOT PROVIDED");
-            Logger?.LogException(() => "CurrentDomainOnUnhandledException", ex);
+            _logger?.LogException(() => "CurrentDomainOnUnhandledException", ex);
             Analytics?.LifecycleErrorFatalEvent();
         }
 
@@ -106,7 +114,7 @@ namespace PodcastUtilities
             container?.Register<Android.App.NotificationManager>((Android.App.NotificationManager)GetSystemService(Context.NotificationService)!);
             // helpers
             container?.Register<IAndroidApplication>(this);
-            container?.Register<ILogger>(Logger!);
+            container?.Register<ILogger>(_logger!);
 
             // these must be kept as singletons
             //container.Register<ICrashReporter, NullCrashReporter>(IocLifecycle.Singleton);
@@ -171,13 +179,12 @@ namespace PodcastUtilities
 
         private void SetVersionProperties()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
             PackageInfo? package = (
-                Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu ?
+                //Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu ?
+                OperatingSystem.IsAndroidVersionAtLeast(33) ?
                 PackageManager?.GetPackageInfo(PackageName ?? "", PackageManager.PackageInfoFlags.Of((long) 0)) :
                 PackageManager?.GetPackageInfo(PackageName ?? "", 0)
             );
-#pragma warning restore CS0618 // Type or member is obsolete
             long longVersionCode = package != null ? PackageInfoCompat.GetLongVersionCode(package) : 0;
 #if DEBUG
             var config = "(Debug)";
@@ -210,7 +217,7 @@ namespace PodcastUtilities
                 // hard code and hope for the best
                 LoggerFactory = new NLoggerLoggerFactory(Assets!, $"/sdcard/Android/data/{this.PackageName}/files/");
             }
-            Logger = LoggerFactory.Logger;
+            _logger = LoggerFactory.Logger;
             Logger.Debug(() => $"AndroidApplication:Logging init");
 
             // initialise the IoC container

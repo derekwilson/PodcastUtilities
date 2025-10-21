@@ -13,8 +13,8 @@ namespace PodcastUtilities.AndroidLogic.Services.Download
 
         void KillNotification();
 
-        List<DownloadRecyclerItem> GetItems();
+        List<DownloadRecyclerItem>? GetItems();
 
-        DownloaderEvents GetDownloaderEvents();
+        DownloaderEvents? GetDownloaderEvents();
     }
 }

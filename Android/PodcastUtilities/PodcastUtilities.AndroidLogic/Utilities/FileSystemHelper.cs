@@ -34,7 +34,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         XmlDocument? LoadXmlFromAssetFile(string filename);
         Android.Net.Uri GetAttachmentUri(String filename);
 
-        string GetRealPathFromDocumentTreeFile(DocumentFile documentFile);
+        string GetRealPathFromDocumentTreeFile(DocumentFile? documentFile);
 
         string RemoveInvalidFilenameChars(string filename);
     }
@@ -260,7 +260,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             return shareableUri;
         }
 
-        public string GetRealPathFromDocumentTreeFile(DocumentFile documentFile)
+        public string GetRealPathFromDocumentTreeFile(DocumentFile? documentFile)
         {
             // see https://stackoverflow.com/questions/29713587/how-to-get-the-real-path-with-action-open-document-tree-intent
             //
@@ -269,7 +269,7 @@ namespace PodcastUtilities.AndroidLogic.Utilities
             // and this for external
             // /tree/82E7-140A:Podcasts/document/82E7-140A:Podcasts
 
-            Logger.Debug(() => $"FileSystemHelper:GetRealPathFromDocumentTreeFile {documentFile.Uri.Path}");
+            Logger.Debug(() => $"FileSystemHelper:GetRealPathFromDocumentTreeFile {documentFile?.Uri.Path}");
 
             if (documentFile == null || documentFile.Uri == null)
                 return "";

@@ -101,7 +101,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             Logger.Debug(() => $"AddFeedViewModel:Initialise");
         }
 
-        public void AddFeed(string folder, string feedUrl)
+        public void AddFeed(string? folder, string? feedUrl)
         {
             Logger.Debug(() => $"AddFeedViewModel:AddFeed {folder}, {feedUrl}");
 
@@ -137,7 +137,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             }
         }
 
-        public void CheckClipboardForUrl(string text)
+        public void CheckClipboardForUrl(string? text)
         {
             if (!ShouldCheckClipboard)
             {
@@ -158,7 +158,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             Observables.Url?.Invoke(this, clipUrl);
         }
 
-        public Task? TestFeed(string folder, string feedUrl)
+        public Task? TestFeed(string? folder, string? feedUrl)
         {
             Logger.Debug(() => $"AddFeedViewModel:TestFeed {feedUrl}");
 

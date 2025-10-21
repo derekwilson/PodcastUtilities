@@ -17,7 +17,7 @@ namespace PodcastUtilities.Services.Download
         }
 
         // there is only one listener so do not make the controller a singleton - we need a new object every time
-        private IDownloadServiceConnectionListener connectionListener = null;
+        private IDownloadServiceConnectionListener? connectionListener = null;
 
         private Intent GetServiceIntent()
         {
@@ -49,7 +49,7 @@ namespace PodcastUtilities.Services.Download
             ApplicationContext.UnbindService(this);
         }
 
-        public void OnServiceConnected(ComponentName name, IBinder service)
+        public void OnServiceConnected(ComponentName? name, IBinder? service)
         {
             Logger.Debug(() => $"DownloadServiceController:OnServiceConnected - {name}");
             var binder = service as DownloadServiceBinder;
@@ -63,7 +63,7 @@ namespace PodcastUtilities.Services.Download
             }
         }
 
-        public void OnServiceDisconnected(ComponentName name)
+        public void OnServiceDisconnected(ComponentName? name)
         {
             Logger.Debug(() => $"DownloadServiceController:OnServiceDisconnected - {name}");
             if (connectionListener != null)

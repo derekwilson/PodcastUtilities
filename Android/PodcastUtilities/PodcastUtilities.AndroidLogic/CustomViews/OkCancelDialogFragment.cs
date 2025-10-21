@@ -13,7 +13,7 @@ namespace PodcastUtilities.AndroidLogic.CustomViews
         private static string CANCEL_KEY = "cancel_key";
         private static string CUSTOM_KEY = "custom_key";
 
-        public static OkCancelDialogFragment NewInstance(string title, string message, string ok, string cancel, string data)
+        public static OkCancelDialogFragment NewInstance(string title, string message, string ok, string cancel, string? data)
         {
             var dialog = new OkCancelDialogFragment();
             var args = new Bundle();
