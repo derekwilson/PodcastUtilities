@@ -41,60 +41,60 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
         protected Guid EPISODE_5_ID = Guid.Parse("AFB9DD0B-C208-4066-9DFE-21726AABE2AF");
         protected const string EPISODE_5_TITLE = PODCAST_FOLDER_2 + "-episode3";
 
-        protected DownloadViewModel ViewModel;
+        protected DownloadViewModel ViewModel = null!;
 
         public class ObservedResultsGroup
         {
-            public string LastSetTitle;
-            public string LastSetEmptyText;
-            public List<int> StartProgress;
+            public string? LastSetTitle;
+            public string? LastSetEmptyText;
+            public List<int>? StartProgress;
             public int StartProgressCount;
-            public List<int> UpdateProgress;
+            public List<int>? UpdateProgress;
             public int UpdateProgressCount;
             public int EndProgressCount;
-            public List<DownloadRecyclerItem> LastDownloadItems;
-            public string LastDisplayMessage;
-            public string LastDisplayErrorMessage;
+            public List<DownloadRecyclerItem>? LastDownloadItems;
+            public string? LastDisplayMessage;
+            public string? LastDisplayErrorMessage;
             public int DisplayErrorMessageCount;
-            public string LastCellularPromptTitle;
-            public string LastCellularPromptBody;
-            public string LastCellularPromptCancel;
-            public string LastCellularPromptOk;
-            public string LastEndDownloadingMessage;
+            public string? LastCellularPromptTitle;
+            public string? LastCellularPromptBody;
+            public string? LastCellularPromptCancel;
+            public string? LastCellularPromptOk;
+            public string? LastEndDownloadingMessage;
             public int EndDownloadingCount;
             public int StartDownloadingCount;
-            public ISyncItem LastUpdatePercentageItem;
+            public ISyncItem? LastUpdatePercentageItem;
             public int LastUpdatePercentage;
-            public string LastUpdateStatusMessage;
+            public string? LastUpdateStatusMessage;
             public Status LastUpdateStatus;
-            public ISyncItem LastUpdateStatusItem;
-            public string LastKillPromptTitle;
-            public string LastKillPromptMessage;
-            public string LastKillPromptOk;
-            public string LastKillPromptCancel;
+            public ISyncItem? LastUpdateStatusItem;
+            public string? LastKillPromptTitle;
+            public string? LastKillPromptMessage;
+            public string? LastKillPromptOk;
+            public string? LastKillPromptCancel;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
 
         // mocks
-        protected Application MockApplication;
-        protected ILogger MockLogger;
-        protected IResourceProvider MockResourceProvider;
-        protected IApplicationControlFileProvider MockApplicationControlFileProvider;
-        protected IAnalyticsEngine MockAnalyticsEngine;
-        protected IStatusAndProgressMessageStore MockStatusAndProgressMessageStore;
-        protected IReadWriteControlFile MockControlFile;
-        protected IApplicationControlFileFactory MockApplicationControlFileFactory;
-        protected IEpisodeFinder MockPodcastEpisodeFinder;
-        protected INetworkHelper MockNetworkHelper;
-        protected IUserSettings MockUserSettings;
-        protected IDownloadServiceController MockDownloadServiceController;
-        protected IMessageStoreInserter MockMessageStoreInserter;
-        protected IPermissionChecker MockPermissionChecker;
-        protected IDownloadService MockDownloaderService;
+        protected Application MockApplication = null!;
+        protected ILogger MockLogger = null!;
+        protected IResourceProvider MockResourceProvider = null!;
+        protected IApplicationControlFileProvider MockApplicationControlFileProvider = null!;
+        protected IAnalyticsEngine MockAnalyticsEngine = null!;
+        protected IStatusAndProgressMessageStore MockStatusAndProgressMessageStore = null!;
+        protected IReadWriteControlFile MockControlFile = null!;
+        protected IApplicationControlFileFactory MockApplicationControlFileFactory = null!;
+        protected IEpisodeFinder MockPodcastEpisodeFinder = null!;
+        protected INetworkHelper MockNetworkHelper = null!;
+        protected IUserSettings MockUserSettings = null!;
+        protected IDownloadServiceController MockDownloadServiceController = null!;
+        protected IMessageStoreInserter MockMessageStoreInserter = null!;
+        protected IPermissionChecker MockPermissionChecker = null!;
+        protected IDownloadService MockDownloaderService = null!;
 
-        protected PodcastInfoMocker podcast1Mocker;
-        protected PodcastInfoMocker podcast2Mocker;
+        protected PodcastInfoMocker podcast1Mocker = null!;
+        protected PodcastInfoMocker podcast2Mocker = null!;
 
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
@@ -287,39 +287,39 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Observables.KillPrompt -= KillPrompt;
         }
 
-        private void DisplayErrorMessage(object sender, string message)
+        private void DisplayErrorMessage(object? sender, string? message)
         {
             ObservedResults.LastDisplayErrorMessage = message;
             ObservedResults.DisplayErrorMessageCount++;
         }
 
-        private void KillPrompt(object sender, Tuple<string, string, string, string> prompt)
+        private void KillPrompt(object? sender, Tuple<string, string, string, string> prompt)
         {
             (ObservedResults.LastKillPromptTitle, ObservedResults.LastKillPromptMessage, ObservedResults.LastKillPromptOk, ObservedResults.LastKillPromptCancel) = prompt;
         }
 
-        private void UpdateItemStatus(object sender, Tuple<ISyncItem, Status, string> item)
+        private void UpdateItemStatus(object? sender, Tuple<ISyncItem, Status, string> item)
         {
             (ObservedResults.LastUpdateStatusItem, ObservedResults.LastUpdateStatus, ObservedResults.LastUpdateStatusMessage) = item;
         }
 
-        private void UpdateItemProgress(object sender, Tuple<ISyncItem, int> item)
+        private void UpdateItemProgress(object? sender, Tuple<ISyncItem, int> item)
         {
             (ObservedResults.LastUpdatePercentageItem, ObservedResults.LastUpdatePercentage) = item;
         }
 
-        private void StartDownloading(object sender, EventArgs e)
+        private void StartDownloading(object? sender, EventArgs e)
         {
             ObservedResults.StartDownloadingCount++;
         }
 
-        private void EndDownloading(object sender, string message)
+        private void EndDownloading(object? sender, string message)
         {
             ObservedResults.EndDownloadingCount++;
             ObservedResults.LastEndDownloadingMessage = message;
         }
 
-        private void CellularPrompt(object sender, Tuple<string, string, string, string> prompt)
+        private void CellularPrompt(object? sender, Tuple<string, string, string, string> prompt)
         {
             (
                 ObservedResults.LastCellularPromptTitle,
@@ -329,39 +329,39 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ) = prompt;
         }
 
-        private void DisplayMessage(object sender, string message)
+        private void DisplayMessage(object? sender, string message)
         {
             ObservedResults.LastDisplayMessage = message;
         }
 
-        private void StartProgress(object sender, int max)
+        private void StartProgress(object? sender, int max)
         {
-            ObservedResults.StartProgress.Add(max);
+            ObservedResults.StartProgress?.Add(max);
             ObservedResults.StartProgressCount++;
         }
 
-        private void UpdateProgress(object sender, int position)
+        private void UpdateProgress(object? sender, int position)
         {
-            ObservedResults.UpdateProgress.Add(position);
+            ObservedResults.UpdateProgress?.Add(position);
             ObservedResults.UpdateProgressCount++;
         }
 
-        private void EndProgress(object sender, EventArgs e)
+        private void EndProgress(object? sender, EventArgs e)
         {
             ObservedResults.EndProgressCount++;
         }
 
-        private void SetSyncItems(object sender, List<DownloadRecyclerItem> items)
+        private void SetSyncItems(object? sender, List<DownloadRecyclerItem> items)
         {
             ObservedResults.LastDownloadItems = items;
         }
 
-        private void SetEmptyText(object sender, string text)
+        private void SetEmptyText(object? sender, string text)
         {
             ObservedResults.LastSetEmptyText = text;
         }
 
-        private void SetTitle(object sender, string title)
+        private void SetTitle(object? sender, string title)
         {
             ObservedResults.LastSetTitle = title;
         }

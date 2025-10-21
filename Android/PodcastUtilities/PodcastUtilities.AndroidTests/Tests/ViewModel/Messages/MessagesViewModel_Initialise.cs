@@ -29,7 +29,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Messages
             await ViewModel.Initialise().ConfigureAwait(false);
 
             // assert
-            Assert.AreEqual("line 1\nline 2\nline 3\n\n--- end of logs ---\n", ObservedResults.Messages.ToString());
+            Assert.AreEqual("line 1\nline 2\nline 3\n\n--- end of logs ---\n", ObservedResults.Messages?.ToString());
             Assert.AreEqual(1, ObservedResults.StartLoadingCount, "start loading");
             Assert.AreEqual(1, ObservedResults.EndLoadingCount, "end loading");
         }

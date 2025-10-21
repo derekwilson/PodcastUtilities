@@ -11,25 +11,25 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Configure
 {
     public class EditConfigViewModelBase
     {
-        protected EditConfigViewModel ViewModel;
+        protected EditConfigViewModel ViewModel = null!;
 
         public class ObservedResultsGroup
         {
-            public string LastMessage;
+            public string? LastMessage = null;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
         // mocks
-        protected Application MockApplication;
-        protected ILogger MockLogger;
-        protected IResourceProvider MockResourceProvider;
-        protected IFileSystemHelper MockFileSystemHelper;
-        protected IApplicationControlFileProvider MockApplicationControlFileProvider;
-        protected IApplicationControlFileFactory MockApplicationControlFileFactory;
-        protected ICrashReporter MockCrashReporter;
-        protected IAnalyticsEngine MockAnalyticsEngine;
-        protected IReadWriteControlFile MockControlFile;
-        protected IValueFormatter MockValueFormatter;
+        protected Application MockApplication = null!;
+        protected ILogger MockLogger = null!;
+        protected IResourceProvider MockResourceProvider = null!;
+        protected IFileSystemHelper MockFileSystemHelper = null!;
+        protected IApplicationControlFileProvider MockApplicationControlFileProvider = null!;
+        protected IApplicationControlFileFactory MockApplicationControlFileFactory = null!;
+        protected ICrashReporter MockCrashReporter = null!;
+        protected IAnalyticsEngine MockAnalyticsEngine = null!;
+        protected IReadWriteControlFile MockControlFile = null!;
+        protected IValueFormatter MockValueFormatter = null!;
 
         [SetUp]
         public void Setup()
@@ -82,7 +82,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Configure
             ObservedResults.LastMessage = null;
         }
 
-        private void DisplayMessage(object sender, string message)
+        private void DisplayMessage(object? sender, string message)
         {
             ObservedResults.LastMessage = message;
         }

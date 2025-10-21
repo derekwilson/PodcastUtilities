@@ -14,7 +14,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         private IReadWriteControlFile SetupRealControlFile(Android.Net.Uri uri)
         {
             FileSystemHelper helper = new FileSystemHelper(MainActivity.MainContext, MockLogger);
-            XmlDocument xml = helper.LoadXmlFromAssetFile("xml/testcontrolfile1.xml");
+            XmlDocument xml = helper.LoadXmlFromAssetFile("xml/testcontrolfile1.xml") ?? throw new InvalidOperationException("cannot find xml/testcontrolfile1.xml");
             A.CallTo(() => MockFileSystemHelper.LoadXmlFromContentUri(uri)).Returns(xml);
             IReadWriteControlFile control = new ReadWriteControlFile(xml);
             A.CallTo(() => MockApplicationControlFileFactory.CreateControlFile(xml)).Returns(control);
@@ -25,7 +25,9 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         public void ControlFileUpdated_RefreshesFeeds()
         {
             // arrange
-            Android.Net.Uri uri = Android.Net.Uri.Parse("content://com.android.externalstorage.documents/document/primary%3APodcastUtilities%2FDerekPodcastsSmall2.xml");
+            Android.Net.Uri uri = Android.Net.Uri.Parse("content://com.android.externalstorage.documents/document/primary%3APodcastUtilities%2FDerekPodcastsSmall2.xml")
+                 ?? throw new InvalidOperationException("bad url");
+
             var control = SetupRealControlFile(uri);
             ViewModel.Initialise();
             A.CallTo(() => MockApplicationControlFileProvider.GetApplicationConfiguration()).Returns(control);
@@ -37,11 +39,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             // assert
             Assert.AreEqual("/sdcard/Podcasts", ObservedResults.LastSetCacheRoot);
             Assert.AreEqual("feed count == 4", ObservedResults.LastSetFeedHeading);
-            Assert.AreEqual(4, ObservedResults.LastSetFeedItems.Count);
-            Assert.AreEqual("Cricinfo The Switch Hit Cricket Show", ObservedResults.LastSetFeedItems[0].PodcastFeed.Folder);
-            Assert.AreEqual("Friday Night Comedy from BBC Radio 4", ObservedResults.LastSetFeedItems[1].PodcastFeed.Folder);
-            Assert.AreEqual("From Our Own Correspondent", ObservedResults.LastSetFeedItems[2].PodcastFeed.Folder);
-            Assert.AreEqual("Mark Kermode and Simon Mayos Film Reviews", ObservedResults.LastSetFeedItems[3].PodcastFeed.Folder);
+            Assert.AreEqual(4, ObservedResults.LastSetFeedItems?.Count);
+            Assert.AreEqual("Cricinfo The Switch Hit Cricket Show", ObservedResults.LastSetFeedItems?[0].PodcastFeed.Folder);
+            Assert.AreEqual("Friday Night Comedy from BBC Radio 4", ObservedResults.LastSetFeedItems?[1].PodcastFeed.Folder);
+            Assert.AreEqual("From Our Own Correspondent", ObservedResults.LastSetFeedItems?[2].PodcastFeed.Folder);
+            Assert.AreEqual("Mark Kermode and Simon Mayos Film Reviews", ObservedResults.LastSetFeedItems?[3].PodcastFeed.Folder);
         }
     }
 }

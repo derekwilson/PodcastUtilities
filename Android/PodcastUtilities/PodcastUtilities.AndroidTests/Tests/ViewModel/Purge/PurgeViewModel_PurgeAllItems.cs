@@ -38,7 +38,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Purge
             var dir = SetupMockPurgerWithRealItems();
             ViewModel.Initialise();
             ViewModel.FindItemsToDelete();
-            ObservedResults.LastPurgeItems[0].Selected = false;
+            if (ObservedResults.LastPurgeItems != null)
+            {
+                ObservedResults.LastPurgeItems[0].Selected = false;
+            }
 
             // act
             ViewModel.PurgeAllItems();
@@ -56,7 +59,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Purge
             var dir = SetupMockPurgerWithRealItems();
             ViewModel.Initialise();
             ViewModel.FindItemsToDelete();
-            ObservedResults.LastPurgeItems[1].Selected = false;
+            if (ObservedResults.LastPurgeItems != null)
+            {
+                ObservedResults.LastPurgeItems[1].Selected = false;
+            }
 
             // act
             ViewModel.PurgeAllItems();

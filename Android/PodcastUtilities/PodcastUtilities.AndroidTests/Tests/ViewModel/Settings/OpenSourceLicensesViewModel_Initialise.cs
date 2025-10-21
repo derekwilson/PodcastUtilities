@@ -29,7 +29,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Settings
             ViewModel.Initialise();
 
             // assert
-            Assert.AreEqual("License header\nLicense body line 1\nLicense body line 2\n", ObservedResults.Text.ToString());
+            Assert.AreEqual("License header\nLicense body line 1\nLicense body line 2\n", ObservedResults.Text?.ToString());
             Assert.AreEqual(1, ObservedResults.ScrollToTopCount);
         }
     }

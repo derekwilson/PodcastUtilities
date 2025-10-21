@@ -30,38 +30,38 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
 
         private const int BYTES_PER_MB = 1024 * 1024;
 
-        protected MainViewModel ViewModel;
+        protected MainViewModel ViewModel = null!;
 
         public class ObservedResultsGroup
         {
-            public string LastSetTitle;
-            public string LastSetCacheRoot;
-            public string LastSetFeedHeading;
-            public List<PodcastFeedRecyclerItem> LastSetFeedItems;
-            public int ShowNoDriveMessageCount;
-            public string LastToastMessage;
+            public string? LastSetTitle;
+            public string? LastSetCacheRoot;
+            public string? LastSetFeedHeading;
+            public List<PodcastFeedRecyclerItem>? LastSetFeedItems;
+            public int? ShowNoDriveMessageCount;
+            public string? LastToastMessage;
         }
         protected ObservedResultsGroup ObservedResults = new ObservedResultsGroup();
 
 
         // mocks
-        protected Application MockApplication;  // this gets passed to the AndroidViewModel ctor
-        protected ILogger MockLogger;
-        protected IResourceProvider MockResourceProvider;
-        protected IFileSystemHelper MockFileSystemHelper;
-        protected IApplicationControlFileProvider MockApplicationControlFileProvider;
-        protected ICrashReporter MockCrashReporter;
-        protected IAnalyticsEngine MockAnalyticsEngine;
-        protected IGenerator MockPlaylistGenerator;
-        protected IReadWriteControlFile MockControlFile;
-        protected IDriveVolumeInfoViewFactory MockDriveVolumeInfoViewFactory;
-        protected IDriveVolumeInfoView MockDriveVolumeInfoView;
-        protected IApplicationControlFileFactory MockApplicationControlFileFactory;
-        protected IValueFormatter MockValueFormatter;
-        protected IAndroidApplication MockAndroidApplication;
+        protected Application MockApplication = null!;  // this gets passed to the AndroidViewModel ctor
+        protected ILogger MockLogger = null!;
+        protected IResourceProvider MockResourceProvider = null!;
+        protected IFileSystemHelper MockFileSystemHelper = null!;
+        protected IApplicationControlFileProvider MockApplicationControlFileProvider = null!;
+        protected ICrashReporter MockCrashReporter = null!;
+        protected IAnalyticsEngine MockAnalyticsEngine = null!;
+        protected IGenerator MockPlaylistGenerator = null!;
+        protected IReadWriteControlFile MockControlFile = null!;
+        protected IDriveVolumeInfoViewFactory MockDriveVolumeInfoViewFactory = null!;
+        protected IDriveVolumeInfoView MockDriveVolumeInfoView = null!;
+        protected IApplicationControlFileFactory MockApplicationControlFileFactory = null!;
+        protected IValueFormatter MockValueFormatter = null!;
+        protected IAndroidApplication MockAndroidApplication = null!;
 
         // reals
-        protected IByteConverter ByteConverter;
+        protected IByteConverter ByteConverter = new ByteConverter();
 
         protected void ResetObservedResults()
         {
@@ -199,34 +199,34 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             ViewModel.Observables.ToastMessage -= ToastMessage;
         }
 
-        private void ToastMessage(object sender, string message)
+        private void ToastMessage(object? sender, string message)
         {
             ObservedResults.LastToastMessage = message;
         }
 
-        private void AddInfoView(object sender, View view)
+        private void AddInfoView(object? sender, View view)
         {
             // we dont need to do anything but if we dont observe it then Invoke method never happens and
             // the DriveVolumeInfoView.GetView() method isnt called
             // its also not a good test of the real use of the ViewModel
         }
 
-        private void SetFeedItems(object sender, Tuple<string, List<PodcastFeedRecyclerItem>> items)
+        private void SetFeedItems(object? sender, Tuple<string, List<PodcastFeedRecyclerItem>> items)
         {
             (ObservedResults.LastSetFeedHeading, ObservedResults.LastSetFeedItems) = items;
         }
 
-        private void SetCacheRoot(object sender, string root)
+        private void SetCacheRoot(object? sender, string root)
         {
             ObservedResults.LastSetCacheRoot = root;
         }
 
-        private void SetTitle(object sender, string title)
+        private void SetTitle(object? sender, string title)
         {
             ObservedResults.LastSetTitle = title;
         }
 
-        private void ShowNoDriveMessage(object sender, EventArgs e)
+        private void ShowNoDriveMessage(object? sender, EventArgs e)
         {
             ObservedResults.ShowNoDriveMessageCount++;
         }

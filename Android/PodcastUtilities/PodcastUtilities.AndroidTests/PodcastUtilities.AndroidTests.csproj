@@ -6,14 +6,20 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationVersion>1</ApplicationVersion>
-    <ApplicationDisplayVersion>2.5.0 step3</ApplicationDisplayVersion>
+    <ApplicationDisplayVersion>2.5.0 step5</ApplicationDisplayVersion>
+    <!-- Assembly Information Properties -->
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <AssemblyCompany>AAD</AssemblyCompany>
+    <AssemblyProduct>PodcastUtilities for Android</AssemblyProduct>
+    <AssemblyCopyright>Copyright © Andrew Trevarrow and Derek Wilson 2008 - 2025</AssemblyCopyright>
+    <AssemblyTitle>PodcastUtilities.AndroidTests</AssemblyTitle>
+    <AssemblyDescription>PodcastUtilities Android Unit Tests</AssemblyDescription>
     <!--
       Enables trim analyzers and full trimming during Release mode.
       To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity
     -->
     <TrimMode>partial</TrimMode>
     <IsTrimmable>false</IsTrimmable>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FakeItEasy" Version="8.3.0" />

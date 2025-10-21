@@ -54,7 +54,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Initialise(false, false, null, false);
 
             // act
-            await ViewModel.DownloadAllPodcastsWithNetworkCheck().ConfigureAwait(false);
+            await ViewModel.DownloadAllPodcastsWithNetworkCheck()!.ConfigureAwait(false);
 
             // assert
             Assert.AreEqual("No downloads", ObservedResults.LastDisplayMessage);
@@ -70,7 +70,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             ViewModel.Initialise(false, false, null, false);
 
             // act
-            await ViewModel.DownloadAllPodcastsWithNetworkCheck().ConfigureAwait(false);
+            await ViewModel.DownloadAllPodcastsWithNetworkCheck()!.ConfigureAwait(false);
 
             // assert
             Assert.AreEqual("No downloads", ObservedResults.LastDisplayMessage);
@@ -87,10 +87,10 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Download
             SetupEpisodesFor2Podcasts();
             ViewModel.Initialise(false, false, null, false);
             ViewModel.ConnectServiceForUnitTests(MockDownloaderService);
-            await ViewModel.DiscoverStartModeFromService().ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
+            await ViewModel.DiscoverStartModeFromService()!.ConfigureAwait(false);   // will trigger a call to FindEpisodesToDownload
 
             // act
-            await ViewModel.DownloadAllPodcastsWithNetworkCheck().ConfigureAwait(false);
+            await ViewModel.DownloadAllPodcastsWithNetworkCheck()!.ConfigureAwait(false);
 
             // assert
             Assert.AreEqual(1, ObservedResults.StartDownloadingCount, "start count");

@@ -12,7 +12,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Purge
         public void FindItemsToDelete_HandlesNoControlFile()
         {
             // arrange
-            A.CallTo(() => MockApplicationControlFileProvider.GetApplicationConfiguration()).Returns(null);
+            A.CallTo(() => MockApplicationControlFileProvider.GetApplicationConfiguration()).Returns(null!);
             ViewModel.Initialise();
 
             // act
@@ -33,11 +33,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Purge
             ViewModel.FindItemsToDelete();
 
             // assert
-            Assert.AreEqual(4, ObservedResults.StartProgress[0], "total number of feeds * 2");
-            Assert.AreEqual(1, ObservedResults.UpdateProgress[0], "updated to 1");
-            Assert.AreEqual(2, ObservedResults.UpdateProgress[1], "updated to 2");
-            Assert.AreEqual(3, ObservedResults.UpdateProgress[2], "updated to 3");
-            Assert.AreEqual(4, ObservedResults.UpdateProgress[3], "updated to 4");
+            Assert.AreEqual(4, ObservedResults.StartProgress?[0], "total number of feeds * 2");
+            Assert.AreEqual(1, ObservedResults.UpdateProgress?[0], "updated to 1");
+            Assert.AreEqual(2, ObservedResults.UpdateProgress?[1], "updated to 2");
+            Assert.AreEqual(3, ObservedResults.UpdateProgress?[2], "updated to 3");
+            Assert.AreEqual(4, ObservedResults.UpdateProgress?[3], "updated to 4");
             Assert.AreEqual(1, ObservedResults.EndProgressCount, "ended once");
         }
 
@@ -53,11 +53,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Purge
             ViewModel.FindItemsToDelete();
 
             // assert
-            Assert.AreEqual(4, ObservedResults.LastPurgeItems.Count, "total number items found");
-            Assert.AreEqual("File1", GetDisplayName(ObservedResults.LastPurgeItems[0].FileOrDirectoryItem), "item 1 name");
-            Assert.AreEqual("File2", GetDisplayName(ObservedResults.LastPurgeItems[1].FileOrDirectoryItem), "item 2 name");
-            Assert.AreEqual("Dir1Full", GetDisplayName(ObservedResults.LastPurgeItems[2].FileOrDirectoryItem), "item 3 name");
-            Assert.AreEqual("Dir2Full", GetDisplayName(ObservedResults.LastPurgeItems[3].FileOrDirectoryItem), "item 4 name");
+            Assert.AreEqual(4, ObservedResults.LastPurgeItems?.Count, "total number items found");
+            Assert.AreEqual("File1", GetDisplayName(ObservedResults.LastPurgeItems?[0].FileOrDirectoryItem), "item 1 name");
+            Assert.AreEqual("File2", GetDisplayName(ObservedResults.LastPurgeItems?[1].FileOrDirectoryItem), "item 2 name");
+            Assert.AreEqual("Dir1Full", GetDisplayName(ObservedResults.LastPurgeItems?[2].FileOrDirectoryItem), "item 3 name");
+            Assert.AreEqual("Dir2Full", GetDisplayName(ObservedResults.LastPurgeItems?[3].FileOrDirectoryItem), "item 4 name");
         }
 
         [Test]
@@ -111,7 +111,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Purge
             Assert.AreEqual(0, ObservedResults.EndProgressCount, "never ended");
 
             // however we do reinitialise the UI
-            Assert.AreEqual(4, ObservedResults.LastPurgeItems.Count, "total items found");
+            Assert.AreEqual(4, ObservedResults.LastPurgeItems?.Count, "total items found");
             Assert.AreEqual("item count == 4", ObservedResults.LastSetTitle);
         }
 
@@ -120,11 +120,11 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Purge
         {
             if (item is IFileInfo)
             {
-                return (item as IFileInfo).Name;
+                return ((IFileInfo)item).Name;
             }
             if (item is IDirectoryInfo)
             {
-                return (item as IDirectoryInfo).FullName;
+                return ((IDirectoryInfo)item).FullName;
             }
             return "UNKNOWN TYPE";
         }
