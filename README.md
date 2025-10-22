@@ -86,9 +86,9 @@ A separate solution `Android\PodcastUtilities\PodcastUtilities.sln` contains the
 
 | Project                                           | .NETCore         | .NETFramework | Notes
 |:--------------------------------------------------|:-----------------|:--------------|-------
-| PodcastUtilities                                  | Mono v6          |               | Android app
-| PodcastUtilities.AndroidLogic                     | Mono v6          |               | Logic for Android app
-| PodcastUtilities.AndroidTests                     | Mono v6          |               | Tests for Android app, NUnit/FakeItEasy
+| PodcastUtilities                                  | 9                |               | Android app
+| PodcastUtilities.AndroidLogic                     | 9                |               | Logic for Android app
+| PodcastUtilities.AndroidTests                     | 9                |               | Tests for Android app, NUnit/FakeItEasy
 
 The test project compiles to an Android app and should be run on a device.
 

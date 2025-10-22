@@ -34,7 +34,7 @@ It is also available from the [Amazon App Store](https://www.amazon.com/dp/B0BG7
 Major changes for each version
 
 ## v2.8.0 (21)
-- Rebuilt to support ArmV7 (32 bit)
+- Rebuilt to support ArmV7 (32 bit) as well as ArmV8 (64 Bit)
 
 
 ## v2.8.0 (20)
