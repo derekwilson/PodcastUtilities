@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationVersion>21</ApplicationVersion>
-    <ApplicationDisplayVersion>2.8.1</ApplicationDisplayVersion>
+    <ApplicationDisplayVersion>2.8.1step6</ApplicationDisplayVersion>
     <!-- Assembly Information Properties -->
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AssemblyCompany>AAD</AssemblyCompany>
@@ -23,9 +23,11 @@
     <RuntimeIdentifiers>android-arm;android-arm64</RuntimeIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <ApplicationId>com.andrewandderek.podcastutilities.sideload.debug</ApplicationId>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <ApplicationId>com.andrewandderek.podcastutilities.sideload</ApplicationId>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
   </PropertyGroup>
   <Import Project="$(ProjectDir)..\LocalOnly\keystoreproperties.xml" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
@@ -48,7 +50,4 @@
     <PackageReference Include="Xamarin.Firebase.Core" Version="121.1.1" />
     <PackageReference Include="Xamarin.Firebase.Crashlytics" Version="118.2.13" />
   </ItemGroup>
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="PowerShell -ExecutionPolicy Unrestricted -File &quot;$(ProjectDir)..\Update-PackageName.ps1&quot; $(ProjectDir) $(ConfigurationName)" />
-  </Target>
 </Project>

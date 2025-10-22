@@ -136,6 +136,8 @@ namespace PodcastUtilities.UI.Settings
         {
 #if DEBUG
             ViewModel.TestCrashReporting();
+#else
+            AndroidApplication.Logger.Debug(() => $"SettingsFragment:VersionClick - supressed");
 #endif
         }
 

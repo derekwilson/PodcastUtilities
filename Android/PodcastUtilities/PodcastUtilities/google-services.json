@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "318369045608",
     "project_id": "podcastutilities",
-    "storage_bucket": "podcastutilities.appspot.com"
+    "storage_bucket": "podcastutilities.firebasestorage.app"
   },
   "client": [
     {
