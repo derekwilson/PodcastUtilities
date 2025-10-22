@@ -1,4 +1,5 @@
 <resources>
+	<!-- the manifest value is set in the csproj file -->
     <string name="app_name">PodcastUtilities</string>
 	<string name="app_name_debug">Dbg PodcastUtilities</string>
 
