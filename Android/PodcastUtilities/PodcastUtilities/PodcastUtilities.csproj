@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationVersion>22</ApplicationVersion>
-    <ApplicationDisplayVersion>2.8.2</ApplicationDisplayVersion>
+    <ApplicationDisplayVersion>2.8.2step1</ApplicationDisplayVersion>
     <!-- Assembly Information Properties -->
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AssemblyCompany>AAD</AssemblyCompany>
@@ -20,7 +20,7 @@
     -->
     <TrimMode>partial</TrimMode>
     <IsTrimmable>false</IsTrimmable>
-    <RuntimeIdentifiers>android-arm;android-arm64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <ApplicationId>com.andrewandderek.podcastutilities.sideload.debug</ApplicationId>
