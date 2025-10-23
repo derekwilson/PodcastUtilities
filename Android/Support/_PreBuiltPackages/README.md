@@ -7,6 +7,7 @@ It is also available from the [Amazon App Store](https://www.amazon.com/dp/B0BG7
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 2.8.2   | 23 Oct 2025 | 21 (Android 5)   | 35 (Android 15)
 | 2.8.1   | 22 Oct 2025 | 21 (Android 5)   | 35 (Android 15)
 | 2.8.0   | 22 Oct 2025 | 21 (Android 5)   | 35 (Android 15)
 | 2.7.0   | 6 May 2025  | 21 (Android 5)   | 33 (Android 13)
@@ -33,16 +34,18 @@ It is also available from the [Amazon App Store](https://www.amazon.com/dp/B0BG7
 
 Major changes for each version
 
-## v2.8.0 (21)
-- Rebuilt to support ArmV7 (32 bit) as well as ArmV8 (64 Bit)
+## v2.8.2 (22)
+- Fixed issue with release build crash logs going to the debug project
+- Fixed issue with starting the service on Android 14
 
+## v2.8.1 (21)
+- Rebuilt to support ArmV7 (32 bit) as well as ArmV8 (64 Bit)
 
 ## v2.8.0 (20)
 - Moved from Xamarin/Mono framework and bindings to .NET 9 framework, Xamarin is now deprecated
 - TargetSDK moved to 35 (Android 15) as required by .NET9
 - Disable edge to edge support
 - Fixed some edge case errors in Android 5
-
 
 ## v2.7.0 (19)
 - FIX: Reset the download status if we retry the download

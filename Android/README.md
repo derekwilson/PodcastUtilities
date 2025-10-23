@@ -56,9 +56,9 @@ Is built using VS2022, targets .NET 9 on Android
 
 #### Install VS2022
 
-And also install Xamarin Android
+And also install .NET for Android
 
-Powershell is configured by the project scripts, there is no manual process
+The package name is set from the csproj file, there is no need to use powershell
 
 #### Building Debug Builds
 
@@ -100,9 +100,9 @@ To keep this manageable we use different package names for each mechanism.
 | Sideload             | Release       | com.andrewandderek.podcastutilities.sideload
 | Sideload             | Debug         | com.andrewandderek.podcastutilities.sideload.debug 
 
-The packagename is displayed with the version information on the settings screen in the app. Its also the folder name below `sdcard/Android/data` where the logs and cached files are stored.
+The package name is displayed with the version information on the settings screen in the app. Its also the folder name below `sdcard/Android/data` where the logs and cached files are stored.
 
-The `.debug` suffix is automatically applied with scripts as we build the app, the presence of `sideload` needs to be manually edited into the manifest as its not often changed. As Google have declined to distribute the app it will usually be present.
+The package name is set in the csproj file using the `ApplicationId` element, one for debug and one for release. The presence of `sideload` indicates that the build is sideloaded, either manually or from Obtainium. As Google have declined to distribute the app it will usually be present.
 
 ##### Building a release AAB
 
