@@ -20,6 +20,7 @@ using PodcastUtilities.UI.Configure;
 using PodcastUtilities.UI.Download;
 using PodcastUtilities.UI.Purge;
 using PodcastUtilities.UI.Settings;
+using PodcastUtilities.UI.Share;
 using System;
 using System.Collections.Generic;
 
@@ -256,6 +257,7 @@ namespace PodcastUtilities
             ViewModel.Observables.NavigateToPurge += NavigateToPurge;
             ViewModel.Observables.NavigateToEditConfig += NavigateToEditConfig;
             ViewModel.Observables.DisplayChooser += DisplayChooser;
+            ViewModel.Observables.NavigateToShareEpisode += NavigateToShareEpisode;
         }
 
         private void KillViewModelObservers()
@@ -271,6 +273,7 @@ namespace PodcastUtilities
             ViewModel.Observables.NavigateToPurge -= NavigateToPurge;
             ViewModel.Observables.NavigateToEditConfig -= NavigateToEditConfig;
             ViewModel.Observables.DisplayChooser -= DisplayChooser;
+            ViewModel.Observables.NavigateToShareEpisode -= NavigateToShareEpisode;
         }
 
         private void SetTitle(object? sender, string title)
@@ -362,6 +365,16 @@ namespace PodcastUtilities
             AndroidApplication.Logger.Debug(() => $"MainActivity: DisplayChooser");
             (string title, Intent intent) = args;
             StartActivity(Intent.CreateChooser(intent, title));
+        }
+
+        private void NavigateToShareEpisode(object? sender, string? folder)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToShareEpisode");
+            RunOnUiThread(() =>
+            {
+                var intent = ShareEpisodeActivity.CreateIntent(this, folder);
+                StartActivity(intent);
+            });
         }
 
         private void SetFeedItems(object? sender, Tuple<string, List<PodcastFeedRecyclerItem>> feeditems)

@@ -31,6 +31,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler? NavigateToPurge;
             public EventHandler? NavigateToEditConfig;
             public EventHandler<Tuple<string, Intent>>? DisplayChooser;
+            public EventHandler<string?>? NavigateToShareEpisode;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -378,6 +379,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
 
         internal void ShareFeedEpisode(IPodcastInfo podcastFeed)
         {
+            Logger.Debug(() => $"MainViewModel: ShareFeedEpisode {podcastFeed.Folder}");
+            Observables.NavigateToShareEpisode?.Invoke(this, podcastFeed.Folder);
         }
 
         private Intent GetSharingIntent(string subject, string shareText)

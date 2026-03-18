@@ -21,6 +21,7 @@ using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.AndroidLogic.ViewModel.Messages;
 using PodcastUtilities.AndroidLogic.ViewModel.Purge;
 using PodcastUtilities.AndroidLogic.ViewModel.Settings;
+using PodcastUtilities.AndroidLogic.ViewModel.Share;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Platform;
 using PodcastUtilities.Ioc;
@@ -155,6 +156,7 @@ namespace PodcastUtilities
             container?.Register<DownloadViewModel, DownloadViewModel>();
             container?.Register<MessagesViewModel, MessagesViewModel>();
             container?.Register<PurgeViewModel, PurgeViewModel>();
+            container?.Register<ShareEpisodeViewModel, ShareEpisodeViewModel>();
             container?.Register<EditConfigViewModel, EditConfigViewModel>();
             container?.Register<FeedDefaultsViewModel, FeedDefaultsViewModel>();
             container?.Register<GlobalValuesViewModel, GlobalValuesViewModel>();
@@ -169,6 +171,7 @@ namespace PodcastUtilities
             factory?.AddMap(typeof(DownloadViewModel));
             factory?.AddMap(typeof(MessagesViewModel));
             factory?.AddMap(typeof(PurgeViewModel));
+            factory?.AddMap(typeof(ShareEpisodeViewModel));
             factory?.AddMap(typeof(EditConfigViewModel));
             factory?.AddMap(typeof(FeedDefaultsViewModel));
             factory?.AddMap(typeof(GlobalValuesViewModel));

@@ -353,6 +353,11 @@ You can get PodcastUtilities here\n
 
 	<string name="error_delete_item">Error deleting {0}</string>
 
+	<!-- Share Episode Activity -->
+	<string name="share_episode_activity_title">Share Episode</string>
+	<string name="no_share_episodes_text">No episodes to share</string>
+
+
 	<!-- Settings -->
 	<string name="settings_activity">Settings</string>
 

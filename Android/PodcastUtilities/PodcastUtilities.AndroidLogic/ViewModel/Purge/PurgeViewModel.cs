@@ -1,12 +1,8 @@
-﻿using Android.App;
-using AndroidX.Lifecycle;
+﻿using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Files;
 using PodcastUtilities.Common.Platform;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PodcastUtilities.AndroidLogic.ViewModel.Purge
 {
