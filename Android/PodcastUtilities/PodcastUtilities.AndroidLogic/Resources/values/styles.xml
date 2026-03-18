@@ -151,5 +151,10 @@
 		<item name="tint">@color/colour_dark_green</item>
 	</style>
 
+	<style name="iconTextButton">
+		<item name="android:textColor">@color/colour_dark_green</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
 </resources>
 

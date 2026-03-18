@@ -1,0 +1,25 @@
+﻿<!--For all properties see: https://aka.ms/android-menu-resource-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<group android:id="@+id/download" >
+		<item
+			android:id="@+id/action_download_single"
+			android:title="@string/action_download_single"
+			/>
+	</group>
+
+	<group android:id="@+id/share" >
+		<item
+			android:id="@+id/action_share_feed"
+			android:title="@string/action_share_feed"
+			/>
+
+		<item
+			android:id="@+id/action_share_feed_episode"
+			android:title="@string/action_share_feed_episode"
+			/>
+
+	</group>
+
+</menu>

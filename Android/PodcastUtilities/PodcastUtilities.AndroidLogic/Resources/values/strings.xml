@@ -22,6 +22,10 @@
 	<string name="action_playlist">Generate Playlist</string>
 	<string name="action_settings">Settings</string>
 
+	<string name="action_download_single">Download Episodes</string>
+	<string name="action_share_feed">Share Feed</string>
+	<string name="action_share_feed_episode">Share Episode</string>
+	
 	<string name="error_generating_playlist">Cannot write playlist</string>
 
 	<string name="drive_volume_free_label">Free Space</string>
@@ -244,7 +248,7 @@
 	<string name="button_text_config_delete_podcast">Remove podcast configuration</string>
 	<string name="button_text_config_share_podcast">Share podcast RSS feed URL</string>
 
-	<string name="share_advert_app_url">https://www.amazon.com/dp/B0BG7SZJTL/</string>
+	<string name="share_advert_app_url">https://github.com/derekwilson/PodcastUtilities/tree/master/Android/Support/_PreBuiltPackages</string>
 	<string name="share_feed_chooser_title">Share RSS feed URL</string>
 	<string name="share_feed_subject">PodcastUtilities RSS Feed for {0}</string>
 	<!-- do not indent this string unless you want indentation in the shared text -->

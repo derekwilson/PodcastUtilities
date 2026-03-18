@@ -75,7 +75,7 @@ namespace PodcastUtilities
             var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
             ViewModel = (MainViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(MainViewModel)));
 
-            FeedAdapter = new PodcastFeedRecyclerItemAdapter(this, ViewModel);
+            FeedAdapter = new PodcastFeedRecyclerItemAdapter(this, ViewModel, AndroidApplication.Logger);
             RvFeeds.SetAdapter(FeedAdapter);
 
             Lifecycle.AddObserver(ViewModel);
@@ -255,6 +255,7 @@ namespace PodcastUtilities
             ViewModel.Observables.NavigateToDownload += NavigateToDownload;
             ViewModel.Observables.NavigateToPurge += NavigateToPurge;
             ViewModel.Observables.NavigateToEditConfig += NavigateToEditConfig;
+            ViewModel.Observables.DisplayChooser += DisplayChooser;
         }
 
         private void KillViewModelObservers()
@@ -269,6 +270,7 @@ namespace PodcastUtilities
             ViewModel.Observables.NavigateToDownload -= NavigateToDownload;
             ViewModel.Observables.NavigateToPurge -= NavigateToPurge;
             ViewModel.Observables.NavigateToEditConfig -= NavigateToEditConfig;
+            ViewModel.Observables.DisplayChooser -= DisplayChooser;
         }
 
         private void SetTitle(object? sender, string title)
@@ -353,6 +355,13 @@ namespace PodcastUtilities
                 var intent = new Intent(this, typeof(EditConfigActivity));
                 StartActivity(intent);
             });
+        }
+
+        private void DisplayChooser(object? sender, Tuple<string, Intent> args)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: DisplayChooser");
+            (string title, Intent intent) = args;
+            StartActivity(Intent.CreateChooser(intent, title));
         }
 
         private void SetFeedItems(object? sender, Tuple<string, List<PodcastFeedRecyclerItem>> feeditems)

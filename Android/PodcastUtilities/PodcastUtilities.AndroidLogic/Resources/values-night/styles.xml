@@ -54,6 +54,11 @@
 		<item name="tint">@color/colour_green</item>
 	</style>
 
+	<style name="iconTextButton">
+		<item name="android:textColor">@color/colour_green</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
 	<style name="SelectableItemOption">
 		<item name="android:textSize">16sp</item>
 		<item name="android:textColor">@color/colour_white</item>

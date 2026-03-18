@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Views;
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Converter;
@@ -29,6 +30,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler<string?>? NavigateToDownload;
             public EventHandler? NavigateToPurge;
             public EventHandler? NavigateToEditConfig;
+            public EventHandler<Tuple<string, Intent>>? DisplayChooser;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -357,6 +359,34 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         {
             Logger.Debug(() => $"MainViewModel: FeedItemSelected {podcastFeed.Folder}");
             Observables.NavigateToDownload?.Invoke(this, podcastFeed.Folder);
+        }
+
+        internal void ShareFeed(IPodcastInfo podcastFeed)
+        {
+            Logger.Debug(() => $"MainViewModel:ShareFeed");
+            var subject = string.Format(ResourceProvider.GetString(Resource.String.share_feed_subject),
+                podcastFeed.Folder
+                );
+            var body = string.Format(ResourceProvider.GetString(Resource.String.share_feed_body),
+                podcastFeed.Folder,
+                podcastFeed.Feed.Address,
+                ResourceProvider.GetString(Resource.String.share_advert_app_url)
+                );
+            var intent = GetSharingIntent(subject, body);
+            Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.share_chooser_title), intent));
+        }
+
+        internal void ShareFeedEpisode(IPodcastInfo podcastFeed)
+        {
+        }
+
+        private Intent GetSharingIntent(string subject, string shareText)
+        {
+            Intent sharingIntent = new Intent(Intent.ActionSend);
+            sharingIntent.SetType("text/plain");
+            sharingIntent.PutExtra(Intent.ExtraSubject, subject);
+            sharingIntent.PutExtra(Intent.ExtraText, shareText);
+            return sharingIntent;
         }
 
         private string GetDownloadStratagyText(PodcastEpisodeDownloadStrategy value)
