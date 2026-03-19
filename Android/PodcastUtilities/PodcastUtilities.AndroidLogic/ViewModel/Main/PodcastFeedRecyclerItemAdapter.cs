@@ -139,7 +139,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
             int position = Convert.ToInt32(senderView.Tag?.ToString());
             Logger.Debug(() => $"PodcastFeedRecyclerItemAdapter:Container_Click - position: {position}");
-            ViewModel.FeedItemSelected(Items[PopupAnchorPosition].Id, Items[position].PodcastFeed);
+            ViewModel.FeedItemSelected(Items[position].Id, Items[position].PodcastFeed);
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
