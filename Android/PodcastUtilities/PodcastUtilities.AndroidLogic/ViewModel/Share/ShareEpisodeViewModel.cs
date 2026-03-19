@@ -18,7 +18,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Share
             public EventHandler? StartProgress;
             public EventHandler? EndProgress;
             public EventHandler<List<ShareEpisodeRecyclerItem>>? SetItems;
+            public EventHandler<string>? SetEmptyText;
             public EventHandler<Tuple<string, Intent>>? DisplayChooser;
+            public EventHandler<string?>? DisplayErrorMessage;
+            public EventHandler? HideErrorMessage;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
@@ -110,7 +113,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Share
                     Logger.Warning(() => $"ShareEpisodeViewModel:FindItemsInFeed - ignoring, already initialised");
                     if (CompletedFindingItems)
                     {
-                        Observables.SetItems?.Invoke(this, AllItems);
+                        RefreshUI();
                     }
                     else
                     {
@@ -121,6 +124,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Share
                 StartedFindingItems = true;
             }
 
+            Observables.HideErrorMessage?.Invoke(this, EventArgs.Empty);
             Observables.StartProgress?.Invoke(this, EventArgs.Empty);
 
             // lets find some items
@@ -152,13 +156,37 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Share
             {
                 Logger.LogException(() => $"ShareEpisodeViewModel:FindItemsInFeed", ex);
                 CrashReporter.LogNonFatalException(ex);
+                Observables.DisplayErrorMessage?.Invoke(this, ex.Message);
             }
 
             CompletedFindingItems = true;
             Observables.EndProgress?.Invoke(this, EventArgs.Empty);
-            Observables.SetItems?.Invoke(this, AllItems);
+            RefreshUI();
             AnalyticsEngine.ShareEpisodeScanEvent(AllItems.Count);
         }
+
+        private void RefreshUI()
+        {
+            Observables.SetItems?.Invoke(this, AllItems);
+            SetTitle();
+            SetNoDownloads();
+        }
+
+        private void SetTitle()
+        {
+            var title = ResourceProvider.GetQuantityString(Resource.Plurals.share_episode_activity_title_after_load, AllItems.Count);
+            Logger.Debug(() => $"ShareEpisodeViewModel:SetTitle - {title}");
+            Observables.Title?.Invoke(this, title);
+        }
+
+        private void SetNoDownloads()
+        {
+            var noDownloadsText = ResourceProvider.GetString(Resource.String.no_episodes_text);
+            var emptyMessage = (string.IsNullOrEmpty(FeedToDownload?.Folder)) ? noDownloadsText : $"{FeedToDownload.Folder}\n{noDownloadsText}";
+            Observables.SetEmptyText?.Invoke(this, emptyMessage);
+        }
+
+        #region recycler calls
 
         internal string? GetEpisodeItemLabel(IPodcastFeedItem episode)
         {
@@ -178,5 +206,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Share
             Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.share_episode_chooser_title), intent));
             AnalyticsEngine.ShareEpisodeEvent($"{FeedToDownload?.Folder}:{episode.EpisodeTitle}");
         }
+
+        #endregion
     }
 }

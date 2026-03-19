@@ -28,9 +28,11 @@ namespace PodcastUtilities.UI.Share
         private ShareEpisodeViewModel ViewModel = null!;
 
         // controls
+        private TextView ErrorMessage = null!;
         private EmptyRecyclerView RvEpisodes = null!;
         private ShareEpisodeRecyclerItemAdapter Adapter = null;
         private LinearLayout NoDataView = null!;
+        private TextView NoDataText = null!;
         private ProgressSpinnerView ProgressSpinner = null!;
 
         protected override void OnCreate(Bundle? savedInstanceState)
@@ -43,8 +45,10 @@ namespace PodcastUtilities.UI.Share
             // Set our view from the layout resource
             SetContentView(Resource.Layout.activity_share_episode);
 
+            ErrorMessage = FindViewById<TextView>(Resource.Id.txtErrorMessage)!;
             RvEpisodes = FindViewById<EmptyRecyclerView>(Resource.Id.rvEpisodes)!;
             NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoData)!;
+            NoDataText = FindViewById<TextView>(Resource.Id.txtNoData)!;
             ProgressSpinner = FindViewById<ProgressSpinnerView>(Resource.Id.progressBar)!;
 
             RvEpisodes.SetLayoutManager(new LinearLayoutManager(this));
@@ -99,7 +103,10 @@ namespace PodcastUtilities.UI.Share
             ViewModel.Observables.StartProgress += StartProgress;
             ViewModel.Observables.EndProgress += EndProgress;
             ViewModel.Observables.SetItems += SetItems;
+            ViewModel.Observables.SetEmptyText += SetEmptyText;
             ViewModel.Observables.DisplayChooser += DisplayChooser;
+            ViewModel.Observables.DisplayErrorMessage += DisplayErrorMessage;
+            ViewModel.Observables.HideErrorMessage += HideErrorMessage;
         }
 
         private void KillViewModelObservers()
@@ -109,7 +116,10 @@ namespace PodcastUtilities.UI.Share
             ViewModel.Observables.StartProgress -= StartProgress;
             ViewModel.Observables.EndProgress -= EndProgress;
             ViewModel.Observables.SetItems -= SetItems;
+            ViewModel.Observables.SetEmptyText -= SetEmptyText;
             ViewModel.Observables.DisplayChooser -= DisplayChooser;
+            ViewModel.Observables.DisplayErrorMessage -= DisplayErrorMessage;
+            ViewModel.Observables.HideErrorMessage -= HideErrorMessage;
         }
 
         private void DisplayChooser(object? sender, Tuple<string, Intent> args)
@@ -125,6 +135,14 @@ namespace PodcastUtilities.UI.Share
             {
                 Adapter.SetItems(items);
                 Adapter.NotifyDataSetChanged();
+            });
+        }
+
+        private void SetEmptyText(object? sender, string message)
+        {
+            RunOnUiThread(() =>
+            {
+                NoDataText.Text = message;
             });
         }
 
@@ -160,5 +178,26 @@ namespace PodcastUtilities.UI.Share
                 ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
             });
         }
+
+        private void DisplayErrorMessage(object? sender, string? message)
+        {
+            RunOnUiThread(() =>
+            {
+                if (!String.IsNullOrEmpty(message))
+                {
+                    ErrorMessage.Text = message;
+                }
+                ErrorMessage.Visibility = ViewStates.Visible;
+            });
+        }
+
+        private void HideErrorMessage(object? sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ErrorMessage.Visibility = ViewStates.Gone;
+            });
+        }
+
     }
 }

@@ -357,7 +357,13 @@ You can get PodcastUtilities here\n
 	<string name="share_episode_activity_title">Select episode to share</string>
 	<string name="no_share_episodes_text">No episodes to share</string>
 
+	<plurals name="share_episode_activity_title_after_load">
+		<item quantity="one">Select from %d episode</item>
+		<item quantity="other">Select from %d episodes</item>
+	</plurals>
+
 	<string name="finding_episodes_progress">Finding episodes...</string>
+	<string name="no_episodes_text">No episodes found in feed.</string>
 
 	<string name="share_episode_chooser_title">Share Episode Details</string>
 	<string name="share_episode_subject">Podcast episode: {0}</string>
