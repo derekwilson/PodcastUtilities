@@ -142,6 +142,7 @@ namespace PodcastUtilities
             container?.Register<IValueFormatter, ValueFormatter>(IocLifecycle.Singleton);
             container?.Register<IClipboardHelper, ClipboardHelper>(IocLifecycle.Singleton);
             container?.Register<IPermissionChecker, PermissionChecker>(IocLifecycle.Singleton);
+            container?.Register<IShareProvider, ShareProvider>(IocLifecycle.Singleton);
 
             // these must be transient
             container?.Register<IDownloadServiceController, DownloadServiceController>(IocLifecycle.PerRequest);

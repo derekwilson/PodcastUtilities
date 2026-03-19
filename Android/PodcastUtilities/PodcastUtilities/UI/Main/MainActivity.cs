@@ -367,12 +367,12 @@ namespace PodcastUtilities
             StartActivity(Intent.CreateChooser(intent, title));
         }
 
-        private void NavigateToShareEpisode(object? sender, string? folder)
+        private void NavigateToShareEpisode(object? sender, string id)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToShareEpisode");
             RunOnUiThread(() =>
             {
-                var intent = ShareEpisodeActivity.CreateIntent(this, folder);
+                var intent = ShareEpisodeActivity.CreateIntent(this, id);
                 StartActivity(intent);
             });
         }

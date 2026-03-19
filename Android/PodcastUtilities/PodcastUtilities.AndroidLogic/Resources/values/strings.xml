@@ -354,10 +354,24 @@ You can get PodcastUtilities here\n
 	<string name="error_delete_item">Error deleting {0}</string>
 
 	<!-- Share Episode Activity -->
-	<string name="share_episode_activity_title">Share Episode</string>
+	<string name="share_episode_activity_title">Select episode to share</string>
 	<string name="no_share_episodes_text">No episodes to share</string>
 
+	<string name="finding_episodes_progress">Finding episodes...</string>
 
+	<string name="share_episode_chooser_title">Share Episode Details</string>
+	<string name="share_episode_subject">Podcast episode: {0}</string>
+	<!-- do not indent this string unless you want indentation in the shared text -->
+	<string name="share_episode_body">I thought you might be interested in this episode \'{0}\' its from the \'{1}\' podcast\n
+\n
+Published: {2}\n
+Audio Link: \n{3}\n
+\n
+You should be able to click on the audio link, or maybe copy paste it into a browser, it depends on how you computer is setup\n
+\n
+\n</string>
+	
+	
 	<!-- Settings -->
 	<string name="settings_activity">Settings</string>
 

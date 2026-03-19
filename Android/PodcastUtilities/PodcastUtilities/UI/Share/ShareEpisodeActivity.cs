@@ -15,22 +15,21 @@ namespace PodcastUtilities.UI.Share
     [Activity(Label = "@string/share_episode_activity_title", ParentActivity = typeof(MainActivity))]
     internal class ShareEpisodeActivity : AppCompatActivity
     {
-        private const string ACTIVITY_PARAM_FOLDER = "ShareEpisodeActivity:Param:Folder";
+        private const string ACTIVITY_PARAM_ID = "ShareEpisodeActivity:Param:Id";
 
-        public static Intent CreateIntent(Context context, string? folder)
+        public static Intent CreateIntent(Context context, string id)
         {
             Intent intent = new Intent(context, typeof(ShareEpisodeActivity));
-            if (!string.IsNullOrEmpty(folder))
-            {
-                intent.PutExtra(ACTIVITY_PARAM_FOLDER, folder);
-            }
+            intent.PutExtra(ACTIVITY_PARAM_ID, id);
             return intent;
         }
 
         private AndroidApplication AndroidApplication = null!;
         private ShareEpisodeViewModel ViewModel = null!;
 
+        // controls
         private EmptyRecyclerView RvEpisodes = null!;
+        private ShareEpisodeRecyclerItemAdapter Adapter = null;
         private LinearLayout NoDataView = null!;
         private ProgressSpinnerView ProgressSpinner = null!;
 
@@ -55,12 +54,16 @@ namespace PodcastUtilities.UI.Share
             var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
             ViewModel = (ShareEpisodeViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(ShareEpisodeViewModel)));
 
+            Adapter = new ShareEpisodeRecyclerItemAdapter(this, ViewModel, AndroidApplication.Logger);
+            RvEpisodes.SetAdapter(Adapter);
+
             Lifecycle.AddObserver(ViewModel);
             SetupViewModelObservers();
 
-            var folder = Intent?.GetStringExtra(ACTIVITY_PARAM_FOLDER);
+            var id = Intent?.GetStringExtra(ACTIVITY_PARAM_ID);
 
-            ViewModel.Initialise(folder);
+            ViewModel.Initialise(id);
+            Task.Run(() => ViewModel.FindItemsInFeed());
         }
 
         protected override void OnDestroy()
@@ -93,12 +96,36 @@ namespace PodcastUtilities.UI.Share
         {
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.DisplayMessage += ToastMessage;
+            ViewModel.Observables.StartProgress += StartProgress;
+            ViewModel.Observables.EndProgress += EndProgress;
+            ViewModel.Observables.SetItems += SetItems;
+            ViewModel.Observables.DisplayChooser += DisplayChooser;
         }
 
         private void KillViewModelObservers()
         {
             ViewModel.Observables.Title -= SetTitle;
             ViewModel.Observables.DisplayMessage -= ToastMessage;
+            ViewModel.Observables.StartProgress -= StartProgress;
+            ViewModel.Observables.EndProgress -= EndProgress;
+            ViewModel.Observables.SetItems -= SetItems;
+            ViewModel.Observables.DisplayChooser -= DisplayChooser;
+        }
+
+        private void DisplayChooser(object? sender, Tuple<string, Intent> args)
+        {
+            AndroidApplication.Logger.Debug(() => $"ShareEpisodeActivity: DisplayChooser");
+            (string title, Intent intent) = args;
+            StartActivity(Intent.CreateChooser(intent, title));
+        }
+
+        private void SetItems(object? sender, List<ShareEpisodeRecyclerItem> items)
+        {
+            RunOnUiThread(() =>
+            {
+                Adapter.SetItems(items);
+                Adapter.NotifyDataSetChanged();
+            });
         }
 
         private void SetTitle(object? sender, string title)
@@ -117,5 +144,21 @@ namespace PodcastUtilities.UI.Share
             });
         }
 
+        private void StartProgress(object? sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                // indeterminate
+                ProgressViewHelper.StartProgress(ProgressSpinner, Window);
+            });
+        }
+
+        private void EndProgress(object? sender, EventArgs e)
+        {
+            RunOnUiThread(() =>
+            {
+                ProgressViewHelper.CompleteProgress(ProgressSpinner, Window);
+            });
+        }
     }
 }

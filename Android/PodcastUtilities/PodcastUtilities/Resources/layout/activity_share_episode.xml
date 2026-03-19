@@ -52,7 +52,7 @@
 				android:id="@+id/txtNoData"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="@string/finding_podcasts_progress"
+				android:text="@string/finding_episodes_progress"
 				android:textAlignment="center"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:gravity="center_horizontal" />
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:elevation="2dp"
         android:visibility="gone"
-        app:message="@string/finding_podcasts_progress"
+        app:message="@string/finding_episodes_progress"
         >
 	</PodcastUtilities.AndroidLogic.CustomViews.ProgressSpinnerView>
 

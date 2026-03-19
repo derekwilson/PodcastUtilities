@@ -115,17 +115,17 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
             if (e.Item?.ItemId == Resource.Id.action_download_single)
             {
-                ViewModel.FeedItemSelected(Items[PopupAnchorPosition].PodcastFeed);
+                ViewModel.FeedItemSelected(Items[PopupAnchorPosition].Id, Items[PopupAnchorPosition].PodcastFeed);
                 return;
             }
             if (e.Item?.ItemId == Resource.Id.action_share_feed)
             {
-                ViewModel.ShareFeed(Items[PopupAnchorPosition].PodcastFeed);
+                ViewModel.ShareFeed(Items[PopupAnchorPosition].Id, Items[PopupAnchorPosition].PodcastFeed);
                 return;
             }
             if (e.Item?.ItemId == Resource.Id.action_share_feed_episode)
             {
-                ViewModel.ShareFeedEpisode(Items[PopupAnchorPosition].PodcastFeed);
+                ViewModel.ShareFeedEpisode(Items[PopupAnchorPosition].Id, Items[PopupAnchorPosition].PodcastFeed);
                 return;
             }
         }
@@ -139,7 +139,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
             int position = Convert.ToInt32(senderView.Tag?.ToString());
             Logger.Debug(() => $"PodcastFeedRecyclerItemAdapter:Container_Click - position: {position}");
-            ViewModel.FeedItemSelected(Items[position].PodcastFeed);
+            ViewModel.FeedItemSelected(Items[PopupAnchorPosition].Id, Items[position].PodcastFeed);
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

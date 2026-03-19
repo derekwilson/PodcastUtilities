@@ -31,13 +31,14 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler? NavigateToPurge;
             public EventHandler? NavigateToEditConfig;
             public EventHandler<Tuple<string, Intent>>? DisplayChooser;
-            public EventHandler<string?>? NavigateToShareEpisode;
+            public EventHandler<string>? NavigateToShareEpisode;
         }
         public ObservableGroup Observables = new ObservableGroup();
 
         private Application ApplicationContext;
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
+        private IShareProvider ShareProvider;
         private IApplicationControlFileProvider ApplicationControlFileProvider;
         private IFileSystemHelper FileSystemHelper;
         private IByteConverter ByteConverter;
@@ -62,7 +63,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             IGenerator playlistGenerator,
             IDriveVolumeInfoViewFactory driveVolumeInfoViewFactory,
             IValueFormatter valueFormatter,
-            IAndroidApplication androidApplication) : base(app)
+            IAndroidApplication androidApplication,
+            IShareProvider shareProvider) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"MainViewModel:ctor");
@@ -82,6 +84,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             DriveVolumeInfoViewFactory = driveVolumeInfoViewFactory;
             ValueFormatter = valueFormatter;
             AndroidApplication = androidApplication;
+            ShareProvider = shareProvider;
         }
 
         private void LoggingLevelUpdated(object? sender, EventArgs e)
@@ -169,6 +172,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         private void RefreshFeedList()
         {
             AllFeedItems.Clear();
+            int index = 0;
             var cacheRoot = "";
             var controlFile = ApplicationControlFileProvider.GetApplicationConfiguration();
             if (controlFile != null)
@@ -178,9 +182,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                 {
                     var item = new PodcastFeedRecyclerItem()
                     {
+                        Id = index.ToString(),      // we use the position in the list as the id
                         PodcastFeed = podcastInfo
                     };
                     AllFeedItems.Add(item);
+                    index++;
                 }
             }
             var heading = ResourceProvider.GetQuantityString(Resource.Plurals.feed_list_heading, AllFeedItems.Count);
@@ -356,40 +362,29 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             }
             AnalyticsEngine.GeneratePlaylistCompleteEvent(items);
         }
-        internal void FeedItemSelected(IPodcastInfo podcastFeed)
+        internal void FeedItemSelected(string id, IPodcastInfo podcastFeed)
         {
-            Logger.Debug(() => $"MainViewModel: FeedItemSelected {podcastFeed.Folder}");
+            Logger.Debug(() => $"MainViewModel: FeedItemSelected {id}, {podcastFeed.Folder}");
             Observables.NavigateToDownload?.Invoke(this, podcastFeed.Folder);
         }
 
-        internal void ShareFeed(IPodcastInfo podcastFeed)
+        internal void ShareFeed(string id, IPodcastInfo podcastFeed)
         {
-            Logger.Debug(() => $"MainViewModel:ShareFeed");
-            var subject = string.Format(ResourceProvider.GetString(Resource.String.share_feed_subject),
-                podcastFeed.Folder
-                );
-            var body = string.Format(ResourceProvider.GetString(Resource.String.share_feed_body),
-                podcastFeed.Folder,
-                podcastFeed.Feed.Address,
-                ResourceProvider.GetString(Resource.String.share_advert_app_url)
-                );
-            var intent = GetSharingIntent(subject, body);
-            Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.share_chooser_title), intent));
+            Logger.Debug(() => $"MainViewModel:ShareFeed {id}");
+            var intent = ShareProvider.GetFeedSharingIntent(podcastFeed);
+            Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.share_feed_chooser_title), intent));
         }
 
-        internal void ShareFeedEpisode(IPodcastInfo podcastFeed)
+        internal void ShareFeedEpisode(string id, IPodcastInfo podcastFeed)
         {
-            Logger.Debug(() => $"MainViewModel: ShareFeedEpisode {podcastFeed.Folder}");
-            Observables.NavigateToShareEpisode?.Invoke(this, podcastFeed.Folder);
-        }
-
-        private Intent GetSharingIntent(string subject, string shareText)
-        {
-            Intent sharingIntent = new Intent(Intent.ActionSend);
-            sharingIntent.SetType("text/plain");
-            sharingIntent.PutExtra(Intent.ExtraSubject, subject);
-            sharingIntent.PutExtra(Intent.ExtraText, shareText);
-            return sharingIntent;
+            // lets do a quick test here just to save the trip to the share activity if the whole thing is not possible
+            if (podcastFeed.Feed == null || podcastFeed.Feed.Address == null)
+            {
+                Logger.Debug(() => $"MainViewModel: ShareFeedEpisode {podcastFeed.Folder}, no feed address");
+                return;
+            }
+            Logger.Debug(() => $"MainViewModel: ShareFeedEpisode {id}, {podcastFeed.Folder}");
+            Observables.NavigateToShareEpisode?.Invoke(this, id);
         }
 
         private string GetDownloadStratagyText(PodcastEpisodeDownloadStrategy value)
