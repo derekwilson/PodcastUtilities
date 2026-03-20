@@ -65,7 +65,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Share
             ShareProvider = shareProvider;
         }
 
-        public void Initialise(string id)
+        public void Initialise(string? id)
         {
             Logger.Debug(() => $"ShareEpisodeViewModel:Initialise - {id}");
             PodcastFeedToEditId = Convert.ToInt32(id);

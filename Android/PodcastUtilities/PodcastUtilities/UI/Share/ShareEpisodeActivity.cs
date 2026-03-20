@@ -30,7 +30,7 @@ namespace PodcastUtilities.UI.Share
         // controls
         private TextView ErrorMessage = null!;
         private EmptyRecyclerView RvEpisodes = null!;
-        private ShareEpisodeRecyclerItemAdapter Adapter = null;
+        private ShareEpisodeRecyclerItemAdapter Adapter = null!;
         private LinearLayout NoDataView = null!;
         private TextView NoDataText = null!;
         private ProgressSpinnerView ProgressSpinner = null!;
