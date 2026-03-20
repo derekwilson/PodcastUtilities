@@ -28,6 +28,7 @@ namespace PodcastUtilities.UI.Share
         private ShareEpisodeViewModel ViewModel = null!;
 
         // controls
+        private TextView ListLabel = null!;
         private TextView ErrorMessage = null!;
         private EmptyRecyclerView RvEpisodes = null!;
         private ShareEpisodeRecyclerItemAdapter Adapter = null!;
@@ -45,6 +46,7 @@ namespace PodcastUtilities.UI.Share
             // Set our view from the layout resource
             SetContentView(Resource.Layout.activity_share_episode);
 
+            ListLabel = FindViewById<TextView>(Resource.Id.txtEpisodeListLabel)!;
             ErrorMessage = FindViewById<TextView>(Resource.Id.txtErrorMessage)!;
             RvEpisodes = FindViewById<EmptyRecyclerView>(Resource.Id.rvEpisodes)!;
             NoDataView = FindViewById<LinearLayout>(Resource.Id.layNoData)!;
@@ -99,6 +101,7 @@ namespace PodcastUtilities.UI.Share
         private void SetupViewModelObservers()
         {
             ViewModel.Observables.Title += SetTitle;
+            ViewModel.Observables.ListLabel += SetListLabel;
             ViewModel.Observables.DisplayMessage += ToastMessage;
             ViewModel.Observables.StartProgress += StartProgress;
             ViewModel.Observables.EndProgress += EndProgress;
@@ -112,6 +115,7 @@ namespace PodcastUtilities.UI.Share
         private void KillViewModelObservers()
         {
             ViewModel.Observables.Title -= SetTitle;
+            ViewModel.Observables.ListLabel -= SetListLabel;
             ViewModel.Observables.DisplayMessage -= ToastMessage;
             ViewModel.Observables.StartProgress -= StartProgress;
             ViewModel.Observables.EndProgress -= EndProgress;
@@ -151,6 +155,14 @@ namespace PodcastUtilities.UI.Share
             RunOnUiThread(() =>
             {
                 Title = title;
+            });
+        }
+
+        private void SetListLabel(object? sender, string label)
+        {
+            RunOnUiThread(() =>
+            {
+                ListLabel.Text = label;
             });
         }
 

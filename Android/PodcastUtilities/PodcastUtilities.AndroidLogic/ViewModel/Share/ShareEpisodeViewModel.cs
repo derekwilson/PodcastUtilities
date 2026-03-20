@@ -2,7 +2,6 @@
 using AndroidX.Lifecycle;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
-using PodcastUtilities.AndroidLogic.ViewModel.Purge;
 using PodcastUtilities.Common;
 using PodcastUtilities.Common.Configuration;
 using PodcastUtilities.Common.Feeds;
@@ -14,6 +13,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Share
         public class ObservableGroup
         {
             public EventHandler<string>? Title;
+            public EventHandler<string>? ListLabel;
             public EventHandler<string>? DisplayMessage;
             public EventHandler? StartProgress;
             public EventHandler? EndProgress;
@@ -69,6 +69,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Share
         {
             Logger.Debug(() => $"ShareEpisodeViewModel:Initialise - {id}");
             PodcastFeedToEditId = Convert.ToInt32(id);
+            FeedToDownload = GetFeedToDownloadEpisodesFrom();
+            Observables.ListLabel?.Invoke(this, FeedToDownload?.Folder ?? "");
         }
 
         private IPodcastInfo? GetFeedToDownloadEpisodesFrom()
@@ -98,7 +100,6 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Share
         public void FindItemsInFeed()
         {
             Logger.Debug(() => $"ShareEpisodeViewModel:FindItemsInFeed");
-            FeedToDownload = GetFeedToDownloadEpisodesFrom();
             if (FeedToDownload == null)
             {
                 Logger.Warning(() => $"ShareEpisodeViewModel:FindItemsInFeed bad feed {PodcastFeedToEditId}");
