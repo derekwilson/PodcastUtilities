@@ -1,10 +1,11 @@
 <h3>PodcastUtilities Cache Manager</h3>
-<p>PodcastUtilities is an RSS feed media cache management application. You can</p>
+<p>PodcastUtilities is an RSS feed media cache management application. It can manage a local cache of media. With a local cache you can download podcasts when you have internet access and then play them without internet access. You can</p>
 <p>
     &#149; Download new episodes from a group of feeds<br>
     &#149; Remove old episodes from the cache<br>
     &#149; Generate playlists from episodes in the cache<br>
     &#149; Use it in conjunction with the desktop version<br>
+    &#149; Share feeds and individual episodes<br>
 </p>
 <p>Note that it can only perform cache management - PodcastUtilities cannot play media you will need a separate player.</p>
 <h3>Configuring the downloads</h3>
@@ -46,23 +47,28 @@
 </p>
 <p>You could elect to delete the media files manually and skip the purge, also if you use a folder player for your media then you may not need a playlist.</p>
 <h3>Keyboard</h3>
-<p>If a keyboard is present, then the following keyboard shorcuts are available on the main screen</p>
+<p>If a keyboard is present, then the following keyboard shortcuts are available on the main screen</p>
 <p>
     &#149; P - Purge Podcasts<br>
     &#149; D - Download from all Feeds<br>
     &#149; G - Generate Playlist<br>
     &#149; S - Settings<br>
+    &#149; H - Help<br>
     &#149; C - Configure<br>
 </p>
 <p>You can also use the ESCAPE key as the back button.</p>
 <h3>Using with the desktop version</h3>
 <p>If you use the desktop version (DownloadPodcasts and SyncPodcasts) to manage the cache on your phone and you want to use this app in addition to that mechanism then it should work fine, there are some considerations</p>
 <p>
-    &#149; Marke sure you use the same naming style on both platforms or the filenames will not match and you might end up with duplicates<br>
+    &#149; Make sure you use the same naming style on both platforms or the filenames will not match and you might end up with duplicates<br>
     &#149; Try to ensure you use the same version of <font face='serif-monospace'><b>PodcastUtilities.Common.DLL</b></font> on both platforms or the filenames might differ because of differences in the code.<br>
 </p>
+<h3>Caring is sharing</h3>
+<p>Sharing is the mechanism for getting items out of an app on android. For example to get your configuration out of the app select Share from the configuration screen and then share using email to backup your configuration.</p>
+<p>To share an RSS feed, select Share Feed from the main screen podcast overflow menu. The person you share the RSS feed with will need to load the RSS feed into a podcast app, it could be PodcastUtilities or any other podcast app. This link will contain all the episodes in the feed.</p>
+<p>To share an individual episode select Share Episode from the main screen podcast overflow menu. The link that is shared is a direct link to the MP3 for a specific episode. The person you share with can just play the episode, no podcast software is needed. On a laptop most browsers can directly play MP3 files without any other software, on phones or tablets you may find that the person can download the MP3 and then play it using a separate player, it will depend on how the recipient's device is configured.</p>
 <h3>Not on Google Play?</h3>
-<p>To install PodcastUtilities you can get the APK from the <a href="https://github.com/derekwilson/PodcastUtilities/tree/master/Android/Support/_PreBuiltPackages">_PreBuiltPackages</a> folder on Github. We did attempt to distribute it via the Google Play Store however as we needed "Manage Storage" permission Google declined saying "The feature you identified that is dependent on this permission does not appear to be critical to the core functionality of your app", rather than arguing the toss with a Google-bot we decided to not list the app there.</p>
+<p>To install PodcastUtilities you can sideload the APK from the <a href="https://github.com/derekwilson/PodcastUtilities/tree/master/Android/Support/_PreBuiltPackages">_PreBuiltPackages</a> folder on Github. We did attempt to distribute it via the Google Play Store however as we needed "Manage Storage" permission Google declined saying "The feature you identified that is dependent on this permission does not appear to be critical to the core functionality of your app", rather than arguing with a Google-bot we decided to not list the app in the play store.</p>
 <p>You can install <a href="https://derekwilson.net/static/obtainium.html">any of my apps</a> using Obtainium without an app store.</p>
 <h3>Source code</h3>
 <p>The <a href="https://github.com/derekwilson/PodcastUtilities">source code</a> for PodcastUtilities is available on Github.</p>
