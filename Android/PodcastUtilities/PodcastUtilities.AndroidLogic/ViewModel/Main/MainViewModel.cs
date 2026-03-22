@@ -23,6 +23,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
             public EventHandler<View>? AddInfoView;
             public EventHandler? ShowNoDriveMessage;
             public EventHandler? NavigateToSettings;
+            public EventHandler? NavigateToHelp;
             public EventHandler? SelectControlFile;
             public EventHandler<string>? ToastMessage;
             public EventHandler<Tuple<string, List<PodcastFeedRecyclerItem>>>? SetFeedItems;
@@ -236,6 +237,10 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         public bool IsActionAvailable(int itemId)
         {
             Logger.Debug(() => $"MainViewModel:isActionAvailable = {itemId}");
+            if (itemId == Resource.Id.action_help)
+            {
+                return true;
+            }
             if (itemId == Resource.Id.action_settings)
             {
                 return true;
@@ -262,6 +267,11 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
         public bool ActionSelected(int itemId)
         {
             Logger.Debug(() => $"MainViewModel:ActionSelected = {itemId}");
+            if (itemId == Resource.Id.action_help)
+            {
+                Observables.NavigateToHelp?.Invoke(this, EventArgs.Empty);
+                return true;
+            }
             if (itemId == Resource.Id.action_settings)
             {
                 Observables.NavigateToSettings?.Invoke(this, EventArgs.Empty);
@@ -318,6 +328,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Main
                     return DoIfPossible(Resource.Id.action_edit_config);
                 case Keycode.S:
                     return DoIfPossible(Resource.Id.action_settings);
+                case Keycode.H:
+                    return DoIfPossible(Resource.Id.action_help);
             }
             return false;
         }

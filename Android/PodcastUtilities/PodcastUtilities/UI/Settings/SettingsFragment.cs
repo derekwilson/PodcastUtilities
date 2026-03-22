@@ -35,7 +35,6 @@ namespace PodcastUtilities.UI.Settings
             SetPreferencesFromResource(Resource.Xml.settings, rootKey);
             UpdateAllPreferenceSummaries();
             UpdateVersion();
-            UpdateHelp();
             UpdateOsl();
             UpdatePrivacy();
         }
@@ -99,25 +98,6 @@ namespace PodcastUtilities.UI.Settings
             if (Activity != null)
             {
                 var intent = new Intent(Activity, typeof(OpenSourceLicensesActivity));
-                StartActivity(intent);
-            }
-        }
-
-        private void UpdateHelp()
-        {
-            // we cannot do this in the XML file as our package name changes between flavours
-            var helpPreference = FindPreference(GetString(Resource.String.settings_help_key));
-            if (helpPreference != null)
-            {
-                helpPreference.PreferenceClick += (sender, e) => HelpClick();
-            }
-        }
-
-        private void HelpClick()
-        {
-            if (Activity != null)
-            {
-                var intent = new Intent(Activity, typeof(HelpActivity));
                 StartActivity(intent);
             }
         }

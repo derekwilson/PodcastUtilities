@@ -21,6 +21,7 @@
 	<string name="action_download">Download from all Feeds</string>
 	<string name="action_playlist">Generate Playlist</string>
 	<string name="action_settings">Settings</string>
+	<string name="action_help">Help</string>
 
 	<string name="action_download_single">Download Episodes</string>
 	<string name="action_share_feed">Share Feed</string>
@@ -397,9 +398,6 @@ You should be able to click on the audio link, or maybe copy paste it into a bro
 
 	<string name="settings_osl_key">appOsl</string>
 	<string name="settings_osl_title">Open-source licenses</string>
-
-	<string name="settings_help_key">appHelp</string>
-	<string name="settings_help_title">Help</string>
 
 	<string name="settings_version_key">appVersion</string>
 	<string name="settings_version_title">Version</string>

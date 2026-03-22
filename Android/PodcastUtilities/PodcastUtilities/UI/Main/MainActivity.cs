@@ -18,6 +18,7 @@ using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.UI.Configure;
 using PodcastUtilities.UI.Download;
+using PodcastUtilities.UI.Help;
 using PodcastUtilities.UI.Purge;
 using PodcastUtilities.UI.Settings;
 using PodcastUtilities.UI.Share;
@@ -190,6 +191,7 @@ namespace PodcastUtilities
             EnableMenuItemIfAvailable(menu, Resource.Id.action_download);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_playlist);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_settings);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_help);
             EnableFabsIfAvailable();
             return true;
         }
@@ -251,6 +253,7 @@ namespace PodcastUtilities
             ViewModel.Observables.ToastMessage += ToastMessage;
             ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings += NavigateToSettings;
+            ViewModel.Observables.NavigateToHelp += NavigateToHelp;
             ViewModel.Observables.SetFeedItems += SetFeedItems;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
             ViewModel.Observables.NavigateToDownload += NavigateToDownload;
@@ -267,6 +270,7 @@ namespace PodcastUtilities
             ViewModel.Observables.ToastMessage -= ToastMessage;
             ViewModel.Observables.ShowNoDriveMessage -= ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings -= NavigateToSettings;
+            ViewModel.Observables.NavigateToHelp -= NavigateToHelp;
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
             ViewModel.Observables.NavigateToDownload -= NavigateToDownload;
@@ -326,6 +330,16 @@ namespace PodcastUtilities
             RunOnUiThread(() =>
             {
                 var intent = new Intent(this, typeof(SettingsActivity));
+                StartActivity(intent);
+            });
+        }
+
+        private void NavigateToHelp(object? sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToHelp");
+            RunOnUiThread(() =>
+            {
+                var intent = new Intent(this, typeof(HelpActivity));
                 StartActivity(intent);
             });
         }
