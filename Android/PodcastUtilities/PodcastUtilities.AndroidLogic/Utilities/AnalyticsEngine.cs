@@ -29,6 +29,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         void AddPodcastEvent(string folder);
         void AddPodcastFeedEvent(string url);
         void RemovePodcastEvent(string folder);
+        void ShareEpisodeScanEvent(int numberOfItems);
+        void ShareEpisodeEvent(string name);
 
         public const string Page_Logs = "Logs";
         public const string Page_Help = "Help";
@@ -61,6 +63,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         private const string Event_Add_Podcast = "Config_Add_Podcast";
         private const string Event_Add_Podcast_Feed = "Config_Add_Podcast_Feed";
         private const string Event_Remove_Podcast = "Config_Remove_Podcast";
+        private const string Event_Share_Episode_Scan = "Share_Episode_Scan";
+        private const string Event_Share_Episode = "Share_Episode";
 
         private const string Mixpanel_Property_Manufacturer = "$manufacturer";
         private const string Mixpanel_Property_Brand = "$brand";
@@ -330,6 +334,26 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 }
             );
         }
+
+        public void ShareEpisodeScanEvent(int numberOfItems)
+        {
+            trackEventAsync(Event_Share_Episode_Scan,
+                new Dictionary<string, object>
+                {
+                    {Property_NumberOfItems, numberOfItems}
+                }
+            );
+        }
+
+        public void ShareEpisodeEvent(string name)
+        {
+            trackEventAsync(Event_Share_Episode,
+                new Dictionary<string, object>
+                {
+                    {Property_Name, name}
+                }
+            );
+        }
     }
 
     /// <summary>
@@ -402,6 +426,14 @@ namespace PodcastUtilities.AndroidLogic.Utilities
         }
 
         public void ShareControlFileEvent(int numberOfItems)
+        {
+        }
+
+        public void ShareEpisodeEvent(string name)
+        {
+        }
+
+        public void ShareEpisodeScanEvent(int numberOfItems)
         {
         }
 

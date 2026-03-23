@@ -18,7 +18,7 @@ using System;
 
 namespace PodcastUtilities.UI.Help
 {
-    [Activity(Label = "@string/help_activity", ParentActivity = typeof(SettingsActivity))]
+    [Activity(Label = "@string/help_activity", ParentActivity = typeof(MainActivity))]
     public class HelpActivity : AppCompatActivity
     {
         private AndroidApplication AndroidApplication = null!;

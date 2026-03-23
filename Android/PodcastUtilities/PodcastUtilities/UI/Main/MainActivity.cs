@@ -18,8 +18,10 @@ using PodcastUtilities.AndroidLogic.ViewModel.Configure;
 using PodcastUtilities.AndroidLogic.ViewModel.Main;
 using PodcastUtilities.UI.Configure;
 using PodcastUtilities.UI.Download;
+using PodcastUtilities.UI.Help;
 using PodcastUtilities.UI.Purge;
 using PodcastUtilities.UI.Settings;
+using PodcastUtilities.UI.Share;
 using System;
 using System.Collections.Generic;
 
@@ -75,7 +77,7 @@ namespace PodcastUtilities
             var factory = AndroidApplication.IocContainer?.Resolve<ViewModelFactory>() ?? throw new MissingMemberException("ViewModelFactory");
             ViewModel = (MainViewModel)new ViewModelProvider(this, factory).Get(Java.Lang.Class.FromType(typeof(MainViewModel)));
 
-            FeedAdapter = new PodcastFeedRecyclerItemAdapter(this, ViewModel);
+            FeedAdapter = new PodcastFeedRecyclerItemAdapter(this, ViewModel, AndroidApplication.Logger);
             RvFeeds.SetAdapter(FeedAdapter);
 
             Lifecycle.AddObserver(ViewModel);
@@ -189,6 +191,7 @@ namespace PodcastUtilities
             EnableMenuItemIfAvailable(menu, Resource.Id.action_download);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_playlist);
             EnableMenuItemIfAvailable(menu, Resource.Id.action_settings);
+            EnableMenuItemIfAvailable(menu, Resource.Id.action_help);
             EnableFabsIfAvailable();
             return true;
         }
@@ -250,11 +253,14 @@ namespace PodcastUtilities
             ViewModel.Observables.ToastMessage += ToastMessage;
             ViewModel.Observables.ShowNoDriveMessage += ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings += NavigateToSettings;
+            ViewModel.Observables.NavigateToHelp += NavigateToHelp;
             ViewModel.Observables.SetFeedItems += SetFeedItems;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;
             ViewModel.Observables.NavigateToDownload += NavigateToDownload;
             ViewModel.Observables.NavigateToPurge += NavigateToPurge;
             ViewModel.Observables.NavigateToEditConfig += NavigateToEditConfig;
+            ViewModel.Observables.DisplayChooser += DisplayChooser;
+            ViewModel.Observables.NavigateToShareEpisode += NavigateToShareEpisode;
         }
 
         private void KillViewModelObservers()
@@ -264,11 +270,14 @@ namespace PodcastUtilities
             ViewModel.Observables.ToastMessage -= ToastMessage;
             ViewModel.Observables.ShowNoDriveMessage -= ShowNoDriveMessage;
             ViewModel.Observables.NavigateToSettings -= NavigateToSettings;
+            ViewModel.Observables.NavigateToHelp -= NavigateToHelp;
             ViewModel.Observables.SetFeedItems -= SetFeedItems;
             ViewModel.Observables.SetCacheRoot -= SetCacheRoot;
             ViewModel.Observables.NavigateToDownload -= NavigateToDownload;
             ViewModel.Observables.NavigateToPurge -= NavigateToPurge;
             ViewModel.Observables.NavigateToEditConfig -= NavigateToEditConfig;
+            ViewModel.Observables.DisplayChooser -= DisplayChooser;
+            ViewModel.Observables.NavigateToShareEpisode -= NavigateToShareEpisode;
         }
 
         private void SetTitle(object? sender, string title)
@@ -325,6 +334,16 @@ namespace PodcastUtilities
             });
         }
 
+        private void NavigateToHelp(object? sender, EventArgs e)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToHelp");
+            RunOnUiThread(() =>
+            {
+                var intent = new Intent(this, typeof(HelpActivity));
+                StartActivity(intent);
+            });
+        }
+
         private void NavigateToDownload(object? sender, string? folder)
         {
             AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToDownload");
@@ -351,6 +370,23 @@ namespace PodcastUtilities
             RunOnUiThread(() =>
             {
                 var intent = new Intent(this, typeof(EditConfigActivity));
+                StartActivity(intent);
+            });
+        }
+
+        private void DisplayChooser(object? sender, Tuple<string, Intent> args)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: DisplayChooser");
+            (string title, Intent intent) = args;
+            StartActivity(Intent.CreateChooser(intent, title));
+        }
+
+        private void NavigateToShareEpisode(object? sender, string id)
+        {
+            AndroidApplication.Logger.Debug(() => $"MainActivity: NavigateToShareEpisode");
+            RunOnUiThread(() =>
+            {
+                var intent = ShareEpisodeActivity.CreateIntent(this, id);
                 StartActivity(intent);
             });
         }

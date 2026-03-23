@@ -21,7 +21,12 @@
 	<string name="action_download">Download from all Feeds</string>
 	<string name="action_playlist">Generate Playlist</string>
 	<string name="action_settings">Settings</string>
+	<string name="action_help">Help</string>
 
+	<string name="action_download_single">Download Episodes</string>
+	<string name="action_share_feed">Share Feed</string>
+	<string name="action_share_feed_episode">Share Episode</string>
+	
 	<string name="error_generating_playlist">Cannot write playlist</string>
 
 	<string name="drive_volume_free_label">Free Space</string>
@@ -146,7 +151,7 @@
 	<string name="row_title_download_free_space">Free space to leave on device</string>
 	<string name="download_free_space_label_fmt">{0} MB of space will be left on the device that contains the cache root folder.</string>
 	<string name="prompt_freespace_download_title">Space to leave on device when downloading</string>
-	<string name="prompt_freespace_download_named_prompt">Unrestriced, use all storage if needed</string>
+	<string name="prompt_freespace_download_named_prompt">Unrestricted, use all storage if needed</string>
 	<string name="prompt_freespace_download_custom_prompt">MB to leave</string>
 
 	<string name="row_title_max_concurrent_downloads">Maximum concurrent downloads</string>
@@ -167,7 +172,7 @@
 	<string name="playlist_format_sheet_title">Playlist format</string>
 
 	<string name="row_title_playlist_seperator">Playlist file seperator</string>
-	<string name="prompt_playlist_seperator_title">Seperator to use between the folder and the filename in a generated playlist</string>
+	<string name="prompt_playlist_seperator_title">Separator to use between the folder and the filename in a generated playlist</string>
 	<string name="prompt_playlist_seperator_prompt">Playlist filename</string>
 	<string name="prompt_playlist_seperator_label_fmt">{0} - use the correct char for the target OS, \\ for Windows and / for Android or Linux</string>
 
@@ -192,7 +197,7 @@
 	<string name="row_title_max_days_old">Maximum days old</string>
 	<string name="max_days_old_label_fmt">Only podcasts published in the last {0} days will be considered for download.</string>
 	<string name="prompt_max_days_old_title">Maximum days ago to consider</string>
-	<string name="prompt_max_days_old_named_prompt">Unrestriced, all episodes considered</string>
+	<string name="prompt_max_days_old_named_prompt">Unrestricted, all episodes considered</string>
 	<string name="prompt_max_days_old_custom_prompt">days old to allow</string>
 
 	<string name="row_title_delete_days_old">Delete old episodes</string>
@@ -204,7 +209,7 @@
 	<string name="row_title_max_download_items">Maximum episodes in a feed to keep in the cache</string>
 	<string name="max_download_items_label_fmt">{0} episodes of a podcast will be kept in the cache, others will be ignored until there is room.</string>
 	<string name="prompt_max_download_items_title">Maximum number of episodes</string>
-	<string name="prompt_max_download_items_named_prompt">Unrestriced, no limit to the number of episodes in the cache</string>
+	<string name="prompt_max_download_items_named_prompt">Unrestricted, no limit to the number of episodes in the cache</string>
 	<string name="prompt_max_download_items_custom_prompt">number of episodes</string>
 
 	<!-- add feed activity -->
@@ -244,7 +249,7 @@
 	<string name="button_text_config_delete_podcast">Remove podcast configuration</string>
 	<string name="button_text_config_share_podcast">Share podcast RSS feed URL</string>
 
-	<string name="share_advert_app_url">https://www.amazon.com/dp/B0BG7SZJTL/</string>
+	<string name="share_advert_app_url">https://github.com/derekwilson/PodcastUtilities/tree/master/Android/Support/_PreBuiltPackages</string>
 	<string name="share_feed_chooser_title">Share RSS feed URL</string>
 	<string name="share_feed_subject">PodcastUtilities RSS Feed for {0}</string>
 	<!-- do not indent this string unless you want indentation in the shared text -->
@@ -255,7 +260,7 @@
 To copy the URL to the clipboard: long press to select the URL and then select copy\n
 You can then add this to your podcast app. If you use PodcastUtilities select Configure and then select add, the URL should be automatically pasted into the URL field, if you select Test the folder will also be automatically set.\n
 \n
-You can get PodcastUtilities here\n
+No adverts, no user accounts, no hassle, sideload PodcastUtilities from here\n
 \n
 {2}\n</string>
 	
@@ -349,6 +354,33 @@ You can get PodcastUtilities here\n
 
 	<string name="error_delete_item">Error deleting {0}</string>
 
+	<!-- Share Episode Activity -->
+	<string name="share_episode_activity_title">Select episode to share</string>
+	<string name="no_share_episodes_text">No episodes to share</string>
+
+	<plurals name="share_episode_activity_title_after_load">
+		<item quantity="one">Select from %d episode</item>
+		<item quantity="other">Select from %d episodes</item>
+	</plurals>
+
+	<string name="finding_episodes_progress">Finding episodes...</string>
+	<string name="no_episodes_text">No episodes found in feed.</string>
+
+	<string name="share_episode_chooser_title">Share Episode Details</string>
+	<string name="share_episode_subject">Podcast episode: {0}</string>
+	<!-- do not indent this string unless you want indentation in the shared text -->
+	<string name="share_episode_body">I thought you might be interested in this episode \'{0}\' its from the \'{1}\' podcast\n
+\n
+Published: {2}\n
+Audio Link: \n{3}\n
+\n
+You should be able to click on the audio link, or maybe copy paste it into a browser, it depends on how your device is setup\n
+\n\n
+No adverts, no user accounts, no hassle, sideload PodcastUtilities from here\n
+\n
+{4}\n</string>
+	
+	
 	<!-- Settings -->
 	<string name="settings_activity">Settings</string>
 
@@ -368,9 +400,6 @@ You can get PodcastUtilities here\n
 
 	<string name="settings_osl_key">appOsl</string>
 	<string name="settings_osl_title">Open-source licenses</string>
-
-	<string name="settings_help_key">appHelp</string>
-	<string name="settings_help_title">Help</string>
 
 	<string name="settings_version_key">appVersion</string>
 	<string name="settings_version_title">Version</string>

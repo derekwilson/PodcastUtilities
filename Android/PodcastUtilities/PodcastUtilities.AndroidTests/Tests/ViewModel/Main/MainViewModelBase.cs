@@ -59,6 +59,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
         protected IApplicationControlFileFactory MockApplicationControlFileFactory = null!;
         protected IValueFormatter MockValueFormatter = null!;
         protected IAndroidApplication MockAndroidApplication = null!;
+        protected IShareProvider MockShareProvider = null!;
 
         // reals
         protected IByteConverter ByteConverter = new ByteConverter();
@@ -161,6 +162,7 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
             MockApplicationControlFileFactory = A.Fake<IApplicationControlFileFactory>();
             MockValueFormatter = A.Fake<IValueFormatter>();
             MockAndroidApplication = A.Fake<IAndroidApplication>();
+            MockShareProvider = A.Fake<IShareProvider>();
 
             ByteConverter = new ByteConverter();
 
@@ -178,7 +180,8 @@ namespace PodcastUtilities.AndroidTests.Tests.ViewModel.Main
                 MockPlaylistGenerator,
                 MockDriveVolumeInfoViewFactory,
                 MockValueFormatter,
-                MockAndroidApplication
+                MockAndroidApplication,
+                MockShareProvider
             );
             ViewModel.Observables.Title += SetTitle;
             ViewModel.Observables.SetCacheRoot += SetCacheRoot;

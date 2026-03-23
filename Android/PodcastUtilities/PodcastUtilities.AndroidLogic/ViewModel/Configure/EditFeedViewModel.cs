@@ -7,6 +7,7 @@ using PodcastUtilities.AndroidLogic.Exceptions;
 using PodcastUtilities.AndroidLogic.Logging;
 using PodcastUtilities.AndroidLogic.Utilities;
 using PodcastUtilities.Common.Configuration;
+using PodcastUtilities.Common.Feeds;
 using System;
 using System.Collections.Generic;
 
@@ -40,6 +41,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
         private Application ApplicationContext;
         private ILogger Logger;
         private IResourceProvider ResourceProvider;
+        private IShareProvider ShareProvider;
         private IApplicationControlFileProvider ApplicationControlFileProvider;
         private ICrashReporter CrashReporter;
         private IValueConverter ValueConverter;
@@ -56,7 +58,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ICrashReporter crashReporter,
             IValueConverter valueConverter,
             IValueFormatter valueFormatter,
-            IAnalyticsEngine analyticsEngine) : base(app)
+            IAnalyticsEngine analyticsEngine,
+            IShareProvider shareProvider) : base(app)
         {
             Logger = logger;
             Logger.Debug(() => $"EditFeedViewModel:ctor");
@@ -68,6 +71,7 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             ValueConverter = valueConverter;
             ValueFormatter = valueFormatter;
             AnalyticsEngine = analyticsEngine;
+            ShareProvider = shareProvider;
         }
 
         private void ConfigurationUpdated(object? sender, EventArgs e)
@@ -589,25 +593,8 @@ namespace PodcastUtilities.AndroidLogic.ViewModel.Configure
             {
                 return;
             }
-            var subject = string.Format(ResourceProvider.GetString(Resource.String.share_feed_subject),
-                feed.Folder
-                );
-            var body = string.Format(ResourceProvider.GetString(Resource.String.share_feed_body),
-                feed.Folder,
-                feed.Feed.Address,
-                ResourceProvider.GetString(Resource.String.share_advert_app_url)
-                );
-            var intent = GetSharingIntent(subject, body);
-            Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.share_chooser_title), intent));
-        }
-
-        private Intent GetSharingIntent(string subject, string shareText)
-        {
-            Intent sharingIntent = new Intent(Intent.ActionSend);
-            sharingIntent.SetType("text/plain");
-            sharingIntent.PutExtra(Intent.ExtraSubject, subject);
-            sharingIntent.PutExtra(Intent.ExtraText, shareText);
-            return sharingIntent;
+            var intent = ShareProvider.GetFeedSharingIntent(feed);
+            Observables.DisplayChooser?.Invoke(this, Tuple.Create(ResourceProvider.GetString(Resource.String.share_feed_chooser_title), intent));
         }
     }
 }
