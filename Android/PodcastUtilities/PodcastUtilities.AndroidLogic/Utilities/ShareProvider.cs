@@ -31,7 +31,8 @@ namespace PodcastUtilities.AndroidLogic.Utilities
                 episode.EpisodeTitle,
                 feedToDownload?.Folder,
                 episode.Published.ToLongDateString(),
-                episode.Address.ToString()
+                episode.Address.ToString(),
+                ResourceProvider.GetString(Resource.String.share_advert_app_url)
                 );
             return GetSendSharingIntent(subject, body);
         }

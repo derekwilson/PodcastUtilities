@@ -151,7 +151,7 @@
 	<string name="row_title_download_free_space">Free space to leave on device</string>
 	<string name="download_free_space_label_fmt">{0} MB of space will be left on the device that contains the cache root folder.</string>
 	<string name="prompt_freespace_download_title">Space to leave on device when downloading</string>
-	<string name="prompt_freespace_download_named_prompt">Unrestriced, use all storage if needed</string>
+	<string name="prompt_freespace_download_named_prompt">Unrestricted, use all storage if needed</string>
 	<string name="prompt_freespace_download_custom_prompt">MB to leave</string>
 
 	<string name="row_title_max_concurrent_downloads">Maximum concurrent downloads</string>
@@ -172,7 +172,7 @@
 	<string name="playlist_format_sheet_title">Playlist format</string>
 
 	<string name="row_title_playlist_seperator">Playlist file seperator</string>
-	<string name="prompt_playlist_seperator_title">Seperator to use between the folder and the filename in a generated playlist</string>
+	<string name="prompt_playlist_seperator_title">Separator to use between the folder and the filename in a generated playlist</string>
 	<string name="prompt_playlist_seperator_prompt">Playlist filename</string>
 	<string name="prompt_playlist_seperator_label_fmt">{0} - use the correct char for the target OS, \\ for Windows and / for Android or Linux</string>
 
@@ -197,7 +197,7 @@
 	<string name="row_title_max_days_old">Maximum days old</string>
 	<string name="max_days_old_label_fmt">Only podcasts published in the last {0} days will be considered for download.</string>
 	<string name="prompt_max_days_old_title">Maximum days ago to consider</string>
-	<string name="prompt_max_days_old_named_prompt">Unrestriced, all episodes considered</string>
+	<string name="prompt_max_days_old_named_prompt">Unrestricted, all episodes considered</string>
 	<string name="prompt_max_days_old_custom_prompt">days old to allow</string>
 
 	<string name="row_title_delete_days_old">Delete old episodes</string>
@@ -209,7 +209,7 @@
 	<string name="row_title_max_download_items">Maximum episodes in a feed to keep in the cache</string>
 	<string name="max_download_items_label_fmt">{0} episodes of a podcast will be kept in the cache, others will be ignored until there is room.</string>
 	<string name="prompt_max_download_items_title">Maximum number of episodes</string>
-	<string name="prompt_max_download_items_named_prompt">Unrestriced, no limit to the number of episodes in the cache</string>
+	<string name="prompt_max_download_items_named_prompt">Unrestricted, no limit to the number of episodes in the cache</string>
 	<string name="prompt_max_download_items_custom_prompt">number of episodes</string>
 
 	<!-- add feed activity -->
@@ -260,7 +260,7 @@
 To copy the URL to the clipboard: long press to select the URL and then select copy\n
 You can then add this to your podcast app. If you use PodcastUtilities select Configure and then select add, the URL should be automatically pasted into the URL field, if you select Test the folder will also be automatically set.\n
 \n
-You can get PodcastUtilities here\n
+No adverts, no user accounts, no hassle, sideload PodcastUtilities from here\n
 \n
 {2}\n</string>
 	
@@ -374,9 +374,11 @@ You can get PodcastUtilities here\n
 Published: {2}\n
 Audio Link: \n{3}\n
 \n
-You should be able to click on the audio link, or maybe copy paste it into a browser, it depends on how you computer is setup\n
+You should be able to click on the audio link, or maybe copy paste it into a browser, it depends on how your device is setup\n
+\n\n
+No adverts, no user accounts, no hassle, sideload PodcastUtilities from here\n
 \n
-\n</string>
+{4}\n</string>
 	
 	
 	<!-- Settings -->
