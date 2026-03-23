@@ -7,6 +7,7 @@ It is also available from the [Amazon App Store](https://www.amazon.com/dp/B0BG7
 
 | Version | Date        | MinSDK           | TargetSDK
 | ------- | ----------- | ---------------- | ---------------
+| 2.9.0   | 23 Mar 2026 | 21 (Android 5)   | 35 (Android 15)
 | 2.8.2   | 23 Oct 2025 | 21 (Android 5)   | 35 (Android 15)
 | 2.8.1   | 22 Oct 2025 | 21 (Android 5)   | 35 (Android 15)
 | 2.8.0   | 22 Oct 2025 | 21 (Android 5)   | 35 (Android 15)
@@ -33,6 +34,12 @@ It is also available from the [Amazon App Store](https://www.amazon.com/dp/B0BG7
 ## Notes
 
 Major changes for each version
+
+## v2.9.0 (23)
+- Added ability to share a single episode media link
+- Added ability to share RSS feed to main screen
+- Updated help text
+- Moved help to main screen from settings
 
 ## v2.8.2 (22)
 - Fixed issue with release build crash logs going to the debug project
