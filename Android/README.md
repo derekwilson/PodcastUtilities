@@ -144,7 +144,12 @@ Note: Sometimes when the `BuildReleaseAPK.bat` ,is first run it will actually pr
 1. In the `derekwilson.github.io` (Github Pages) repo, edit the file `\static\podcastutilities-obtainium.html` and add the URL obtained in the last step to the *top* of the list of URLs and then push the file to github
 1. Test with Obtainium
 
+Amazon App Store
 https://developer.amazon.com/apps-and-games/console/apps/list.html
+
+APKPure
+https://developer.apkpure.com/console
+
 
 ##### Notes on installing release builds
 
