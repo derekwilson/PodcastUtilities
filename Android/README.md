@@ -2,7 +2,7 @@
 
 This folder contains the code for the Android version of the project.
 
-- `PodcastUtilities` is the code for the app from app stores, obtainium etc
+- `PodcastUtilities` is the code for the app from app stores, Obtainium etc
 - `PodcastUtilities.Xamarin` is the code for the app from app stores, it uses `Xamarin/Mono` which is obsolete
 - `PodcastUtilitiesPOC` is the proof of concept code using `Xamarin/Mono`, it is a place for experiments, it has never been released to the app store.
 - `PodcastUtilitiesPOC.Net9` is the proof of concept code, it is a place for experiments, it has never been released to the app store. This is a port of `PodcastUtilitiesPOC` from `Xamarin/Mono` to `.NET 9`
